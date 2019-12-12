@@ -1,8 +1,5 @@
-'''
-Created on 12.12.2019
-
-@author: Peter
-'''
+""" Read an .yw7 project file and create .odt for proof reading.  
+"""
 
 import sys
 import xml.etree.ElementTree as ET
@@ -19,7 +16,8 @@ def format_md(text):
     return(text)
 
 
-def read_xml(yw7File):
+def yw7_to_markdown(yw7File):
+    """ Convert .yw7 format into markdown_strict. """
     tree = ET.parse(yw7File)
     root = tree.getroot()  # all item attributes
 
@@ -53,10 +51,10 @@ def read_xml(yw7File):
 
 
 def main():
-    """ Collect command line arguments and call the function. """
+    """ Collect command line arguments, call conversion and generate .odt. """
     try:
         yw7Path = sys.argv[1]
-        prjText = read_xml(yw7Path)
+        prjText = yw7_to_markdown(yw7Path)
         odtPath = yw7Path.split('.yw7')[0] + '.odt'
         pypandoc.convert_text(
             prjText, 'odt', format='markdown_strict', outputfile=odtPath)

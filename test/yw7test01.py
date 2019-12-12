@@ -17,8 +17,8 @@ class NormalOperation(unittest.TestCase):
         Expected result: converted string matches the refData string. 
     """
 
-    def test_read(self):
-        self.assertEqual(yw7read.read_xml(YW7_FILE), yw7.refData)
+    def test_markdown(self):
+        self.assertEqual(yw7read.yw7_to_markdown(YW7_FILE), yw7.refData)
 
 
 def main():
