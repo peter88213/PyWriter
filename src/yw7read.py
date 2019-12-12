@@ -1,4 +1,4 @@
-""" Read an .yw7 project file and create .odt for proof reading.  
+""" Export chapters for proofing.  
 """
 
 import sys
@@ -7,6 +7,7 @@ import pypandoc
 
 
 def format_md(text):
+    """ Convert yw7 specific markup """
     text = text.replace('\n\n', '\n')
     text = text.replace('\n', '\n\n')
     text = text.replace('[i]', '*')
@@ -26,37 +27,28 @@ def yw7_to_markdown(yw7File):
         scnID = scn.find('ID').text
         scenes[scnID] = scn.find('SceneContent').text
 
-    chapters = {}
+    prjText = ''
     for chp in root.iter('CHAPTER'):
-        chpNr = int(chp.find('SortOrder').text)
-        chpContent = ''
-        chpID = chp.find('ID').text
-        chpContent = chpContent + '\\[ChID:' + chpID + '\\]\n'
+        prjText = prjText + '\\[ChID:' + chp.find('ID').text + '\\]\n'
         scnList = chp.find('Scenes')
         for scn in scnList.findall('ScID'):
             scnID = scn.text
-            chpContent = chpContent + '\\[ScID:' + scnID + '\\]\n'
-            chpContent = chpContent + scenes[scnID] + '\n'
-            chpContent = chpContent + '\\[/ScID\\]\n'
-        chpContent = chpContent + '\\[/ChID\\]\n'
-        chapters[chpNr] = chpContent
-
-    prjText = ''
-    chpNr = 1
-    while chpNr <= len(chapters):
-        prjText = prjText + chapters[chpNr]
-        chpNr = chpNr + 1
+            prjText = prjText + '\\[ScID:' + scnID + '\\]\n'
+            prjText = prjText + scenes[scnID] + '\n'
+            prjText = prjText + '\\[/ScID\\]\n'
+        prjText = prjText + '\\[/ChID\\]\n'
     prjText = format_md(prjText)
     return(prjText)
 
 
-def markdown_to_odt(prjText, odtPath):
+def markdown_to_odt(prjText, odtFile):
+    """ run pandoc to create an .odt file """
     pypandoc.convert_text(
-        prjText, 'odt', format='markdown_strict', outputfile=odtPath)
+        prjText, 'odt', format='markdown_strict', outputfile=odtFile)
 
 
 def main():
-    """ Collect command line arguments, call conversion and generate .odt. """
+    """ Collect command line arguments and call the functions """
     try:
         yw7Path = sys.argv[1]
         prjText = yw7_to_markdown(yw7Path)
