@@ -3,14 +3,17 @@
 For further information see https://github.com/peter88213/yWrestler
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import os
 import unittest
 import yw7
 import yw7read
 import yw7write
 
+TEST_PATH = os.getcwd()
+TEST_EXEC_PATH = 'yWriter7 Sample/'
 
-YW7_FILE = 'yWriter7 Sample/yW7 Sample Project.yw7'
-ODT_FILE = 'yWriter7 Sample/yW7 Sample Project.odt'
+YW7_FILE = 'yW7 Sample Project.yw7'
+ODT_FILE = 'yW7 Sample Project.odt'
 
 
 class NormalOperation(unittest.TestCase):
@@ -20,9 +23,19 @@ class NormalOperation(unittest.TestCase):
         Expected result: converted string matches the refData string. 
     """
 
+    def setUp(self):
+        try:
+            os.remove(TEST_EXEC_PATH + ODT_FILE)
+        except:
+            pass
+
     def test_markdown(self):
-        self.assertEqual(yw7read.yw7_to_markdown(YW7_FILE), yw7.refData)
-        self.assertEqual(yw7write.odt_to_markdown(ODT_FILE), yw7.refData)
+        prjText = yw7read.yw7_to_markdown(
+            TEST_EXEC_PATH + YW7_FILE)
+        self.assertEqual(prjText, yw7.refData)
+        yw7read.markdown_to_odt(prjText, TEST_EXEC_PATH + ODT_FILE)
+        self.assertEqual(yw7write.odt_to_markdown(
+            TEST_EXEC_PATH + ODT_FILE), yw7.refData)
 
 
 def main():

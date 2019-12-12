@@ -35,7 +35,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<LaTeXHeaderFile><![CDATA[]]></LaTeXHeaderFile>
 		<MRUSpecificDate>1899-12-30</MRUSpecificDate>
 		<MRUSpecificTime>00:00:00</MRUSpecificTime>
-		<LastViewedScID>3</LastViewedScID>
+		<LastViewedScID>2</LastViewedScID>
 		<DeadlineDate1>2004-09-01</DeadlineDate1>
 		<DeadlineDate2>2004-12-14</DeadlineDate2>
 		<DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -207,7 +207,7 @@ Jerling catches up on a few minor business matters. He reluctantly approves the 
 He examines the Seraph file. There's a shipment of robot parts ordered and paid for, but the source planet (Seraph IV) is in the middle of war games and the massed ships of the Seraph Space Corps have already shot down three unarmed freighters by mistake. The parts are needed urgently by Jerling's assembly line, they're putting together a last-minute order of robots for the Emperor's summer palace. Late delivery isn't an option.
 Carina explains that they can't risk their own ships, they wouldn't be covered by insurance and anyway, none of their pilots will fly into the danger zone. They tried to hire a freelancer but none of them wanted the job either - they were all warned off by a Spacers Guild bulletin. Jerling asks why they didn't try non-Guild pilots, Carina explains that they could only locate one and he turned it down because he was convinced it was a stolen goods racket. Jerling is annoyed that his staff hid the problem from him. Carina explains that they didn't want to worry him.  Jerling says they should have come to him before, this is important, if they lose preferred supplier status his business is at risk, and worse still the Hinchfigs will gain on him.
 Jerling asks Carina to call the idiot, the one who thought it was stolen goods. Before the assistant makes the call, she discovers that there's a message from the 'idiot' already - he wants the job. Carina tries to pursuade Jerling that others can deal with the issue but Jerling's fired up and won't let go, it's his pet project.]]></Desc>
-		<BelongsToChID>2</BelongsToChID>
+		<BelongsToChID>1</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00002.rtf]]></RTFFile>
 		<Field1>4</Field1>
 		<Field2>1</Field2>
@@ -235,7 +235,7 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
 		<Title><![CDATA[Hal takes a call from Jerling]]></Title>
 		<Desc><![CDATA[Back with Hal, Jerling's call comes through and the businessman explains about his cargo, reassures Hal it's not stolen goods, then explains he has a pilot at the Lamira Spaceport (the same location as Hal) who needs a lift to Seraph IV. If Hal can take him, the pilot will return the favour by landing Hal's ship when they arrive at the destination.
 Hal says he doesn't need help, Jerling explains that the landing is at night, with no guidance. This makes Hal suspicious about the job again, but he decides that nothing could be worse than another session with Brutus. Jerling reassures him that the pilot can handle everything and reminds him that delivery is to his premises on Forg. Hal agrees to the job, starts to ask for an advance but Jerling disconnects.]]></Desc>
-		<BelongsToChID>2</BelongsToChID>
+		<BelongsToChID>1</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00003.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
@@ -243,7 +243,7 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
 		<Field4>3</Field4>
 		<Status>4</Status>
 		<WordCount>88</WordCount>
-		<LetterCount>489</LetterCount>
+		<LetterCount>487</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>10</CharID>
@@ -260,7 +260,6 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
 "Negative, we can't afford the search fees." The Navcom hesitated. "Incidentally, it's your move."
 "How can you think of a bloody chess game at a time like this?"
 "You're only saying that because you're losing."
-
 . . .]]></SceneContent>
 	</SCENE>
 
@@ -278,7 +277,7 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>67</WordCount>
-		<LetterCount>383</LetterCount>
+		<LetterCount>381</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>3</CharID>
@@ -292,7 +291,6 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
 		<SceneContent><![CDATA["No sign of Jerling's pilot," said Hal, who was standing in the Black Gull's airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. "There could be an army out there and I wouldn't know it."
 "Why don't you open the door?" asked the Navcom.
 "No thanks. Vurdi's robot might be hanging around."
-
 . . .]]></SceneContent>
 	</SCENE>
 
@@ -312,7 +310,7 @@ Hal drives off, oblivious to the flames starting to flicker around the fallen ro
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>177</WordCount>
-		<LetterCount>1050</LetterCount>
+		<LetterCount>1046</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -323,7 +321,6 @@ Hal drives off, oblivious to the flames starting to flicker around the fallen ro
 		</Items>
 		<SceneContent><![CDATA[Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport's administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the 'A' list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.
 Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the Black Gull was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
-
 . . .]]></SceneContent>
 	</SCENE>
 
@@ -340,7 +337,7 @@ Sitting at the console, Clunk uses the Black Gull's simulation mode to practice 
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>125</WordCount>
-		<LetterCount>736</LetterCount>
+		<LetterCount>734</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 			<CharID>10</CharID>
@@ -356,7 +353,6 @@ Sitting at the console, Clunk uses the Black Gull's simulation mode to practice 
 There was a brief pause. "Owned by Redge Muller. Incubots specialises in robot programming and advanced pilot training."
 Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I questioned him on the subject he was rather evasive."
 "Humans tell lies about the most trivial matters."
-
 . . .]]></SceneContent>
 	</SCENE>
 
@@ -374,7 +370,7 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>89</WordCount>
-		<LetterCount>538</LetterCount>
+		<LetterCount>536</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>12</CharID>
@@ -385,7 +381,6 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
 		</Items>
 		<SceneContent><![CDATA[Hal left the maintenance vehicle in the spaceport's outer carpark and walked to the admin block. An information kiosk directed him to an elevator, where he pressed the button marked 'Portmaster'.
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
-
 . . .]]></SceneContent>
 	</SCENE>
 
@@ -440,7 +435,7 @@ Then the control tower calls to say the landing field is on fire around the Blac
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>157</WordCount>
-		<LetterCount>863</LetterCount>
+		<LetterCount>861</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>3</CharID>
@@ -461,7 +456,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 "Not yet, Mr Spacejock, but it soon will be. Would you like me to move it out of the way?"
 "You keep your hands off the controls. I'll be there in a tick."
 "You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"
-
 . . .]]></SceneContent>
 	</SCENE>
 
@@ -479,7 +473,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>34</WordCount>
-		<LetterCount>197</LetterCount>
+		<LetterCount>195</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 			<CharID>10</CharID>
@@ -492,7 +486,6 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 "Deploying." There was a whining sound outside the hull, which stopped with a sharp crack.
 "What was that?"
 "The reel just fell off," said the Navcom.
-
 . . .]]></SceneContent>
 	</SCENE>
 
@@ -506,7 +499,7 @@ During the scuffle, Hal manages to tell Vurdi that he accepted a cargo job earli
 After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer (the Navcom), reviewing the cargo jobs he's been offered. He chooses the one which sounds less risky than the others, a freight job offered by the Jerling corporation. The Navcom objects, reminding Hal that he turned it down earlier because he thought it involved stolen goods. Hal doesn't care - he can't afford to be choosy any more.]]></Desc>
 		<ImageFile><![CDATA[Hal3Launch10.jpg]]></ImageFile>
 		<Notes><![CDATA[This is a note. Notice how the N icon shows up when there's a note attached to a scene.]]></Notes>
-		<BelongsToChID>1</BelongsToChID>
+		<BelongsToChID>2</BelongsToChID>
 		<Day>1</Day>
 		<RTFFile><![CDATA[RTF_00001.rtf]]></RTFFile>
 		<Field1>5</Field1>
@@ -515,7 +508,7 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
 		<Field4>3</Field4>
 		<Status>4</Status>
 		<WordCount>376</WordCount>
-		<LetterCount>2213</LetterCount>
+		<LetterCount>2207</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>10</CharID>
@@ -533,9 +526,7 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
 "I'm thinking."
 "While you're planning your opening move, can I tell you about a special offer?"
 "What kind of offer?" asked Hal suspiciously.
-
 "[b]Planet books[/b] have a chess title on sale." - "Really? Put it on main."
-
 The wide viewscreen above the console turned red, and the word 'SaLE' appeared in vibrating yellow text. The letters grew legs and marched off the screen, bringing a wire basket on wheels into view.
 "I don't need all this crap," said Hal. "Just show me the deal."
 "Almost there," said the Navcom. "Keep watching."
@@ -544,22 +535,11 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 "It's part of a popular series," said the Navcom.
 "What are the others? Interstellar navigation for nutters? Moon landings for morons?"
 "Shall I add those titles to your basket?"
-
 . . .]]></SceneContent>
 	</SCENE>
 
 	</SCENES>
 	<CHAPTERS>
-	<CHAPTER>
-		<ID>3</ID>
-		<Title><![CDATA[Chapter 3]]></Title>
-		<SortOrder>3</SortOrder>
-		<Type>0</Type>
-		<Scenes>
-			<ScID>4</ScID>
-		</Scenes>
-	</CHAPTER>
-
 	<CHAPTER>
 		<ID>2</ID>
 		<Title><![CDATA[Chapter 1]]></Title>
@@ -582,13 +562,12 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 	</CHAPTER>
 
 	<CHAPTER>
-		<ID>5</ID>
-		<Title><![CDATA[Chapter 5]]></Title>
-		<SortOrder>5</SortOrder>
+		<ID>3</ID>
+		<Title><![CDATA[Chapter 3]]></Title>
+		<SortOrder>3</SortOrder>
 		<Type>0</Type>
 		<Scenes>
-			<ScID>10</ScID>
-			<ScID>9</ScID>
+			<ScID>4</ScID>
 		</Scenes>
 	</CHAPTER>
 
@@ -602,6 +581,17 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 			<ScID>6</ScID>
 			<ScID>7</ScID>
 			<ScID>8</ScID>
+		</Scenes>
+	</CHAPTER>
+
+	<CHAPTER>
+		<ID>5</ID>
+		<Title><![CDATA[Chapter 5]]></Title>
+		<SortOrder>5</SortOrder>
+		<Type>0</Type>
+		<Scenes>
+			<ScID>10</ScID>
+			<ScID>9</ScID>
 		</Scenes>
 	</CHAPTER>
 

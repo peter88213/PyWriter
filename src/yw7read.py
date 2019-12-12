@@ -50,14 +50,18 @@ def yw7_to_markdown(yw7File):
     return(prjText)
 
 
+def markdown_to_odt(prjText, odtPath):
+    pypandoc.convert_text(
+        prjText, 'odt', format='markdown_strict', outputfile=odtPath)
+
+
 def main():
     """ Collect command line arguments, call conversion and generate .odt. """
     try:
         yw7Path = sys.argv[1]
         prjText = yw7_to_markdown(yw7Path)
         odtPath = yw7Path.split('.yw7')[0] + '.odt'
-        pypandoc.convert_text(
-            prjText, 'odt', format='markdown_strict', outputfile=odtPath)
+        markdown_to_odt(prjText, odtPath)
     except:
         print('Syntax: yw7read.py filename')
         sys.exit(1)
