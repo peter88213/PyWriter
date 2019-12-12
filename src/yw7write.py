@@ -19,8 +19,6 @@ def odt_to_markdown(odtPath):
     prjText = pypandoc.convert_file(
         odtPath, 'markdown_strict', format='odt', extra_args=['--wrap=none'])
     prjText = format_md(prjText)
-    with open('out.md', 'w') as f:
-        f.write(prjText)
     return(prjText)
 
 
@@ -29,10 +27,15 @@ def main():
     try:
         odtPath = sys.argv[1]
         prjText = odt_to_markdown(odtPath)
-        yw7Path = odtPath.split('.odt')[0] + '.yw7'
     except:
         print('Syntax: yw7read.py filename')
         sys.exit(1)
+
+    mdPath = odtPath.split('.odt')[0] + '.md'
+    with open(mdPath, 'w') as f:
+        f.write(prjText)
+
+    yw7Path = odtPath.split('.odt')[0] + '.yw7'
 
 
 if __name__ == '__main__':
