@@ -1,6 +1,6 @@
-\[ChID:1\]
+\[ChID:2\]
 
-\[ScID:1\]
+\[ScID:2\]
 
 Hal Spacejock was sitting at the *Black Gull's* flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he'd read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article's claims. He didn't feel any smarter and he couldn't remember the last time he'd spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull's onboard computer. Underpowered and outdated, it was still more than capable of running the ship's accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.
 
@@ -36,17 +36,15 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 
 \[/ChID\]
 
-\[ChID:2\]
+\[ChID:1\]
 
-\[ScID:2\]
+\[ScID:1\]
 
 On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
 
 . . .
 
 \[/ScID\]
-
-\[/ChID\]
 
 \[ScID:3\]
 
@@ -96,8 +94,6 @@ Hal's ship was somewhat further down the alphabet, and was therefore sitting in 
 
 \[/ScID\]
 
-\[/ChID\]
-
 \[ScID:6\]
 
 Clunk dropped the last chess piece into the small wooden box and looked around the flight deck. Despite his best efforts with the mop, it didn't look particularly clean, but compared to its previous state it was as sterile as a hospital ward. After a moment's hesitation, he sat in the pilot's chair. "Navcom, do you have a business directory?"
@@ -116,8 +112,6 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 
 \[/ScID\]
 
-\[/ChID\]
-
 \[ScID:7\]
 
 Hal left the maintenance vehicle in the spaceport's outer carpark and walked to the admin block. An information kiosk directed him to an elevator, where he pressed the button marked 'Portmaster'.
@@ -127,8 +121,6 @@ Hal watched the floor numbers changing as he dropped further and further undergr
 . . .
 
 \[/ScID\]
-
-\[/ChID\]
 
 \[ScID:8\]
 
@@ -160,7 +152,7 @@ Clunk sat up straight. "Please open the connection."
 
 \[ChID:5\]
 
-\[ScID:9\]
+\[ScID:10\]
 
 Portmaster Linten studied Hal across the desk, eyes narrowed. "Are you telling me this Jerling character will pay your bill?"
 
@@ -188,9 +180,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 
 \[/ScID\]
 
-\[/ChID\]
-
-\[ScID:10\]
+\[ScID:9\]
 
 "Deploy fire hose!" shouted Clunk.
 
@@ -205,3 +195,4 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 \[/ScID\]
 
 \[/ChID\]
+
