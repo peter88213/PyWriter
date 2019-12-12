@@ -6,8 +6,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import unittest
 import yw7
 import yw7read
+import yw7write
+
 
 YW7_FILE = 'yWriter7 Sample/yW7 Sample Project.yw7'
+ODT_FILE = 'yWriter7 Sample/yW7 Sample Project.odt'
 
 
 class NormalOperation(unittest.TestCase):
@@ -19,6 +22,7 @@ class NormalOperation(unittest.TestCase):
 
     def test_markdown(self):
         self.assertEqual(yw7read.yw7_to_markdown(YW7_FILE), yw7.refData)
+        self.assertEqual(yw7write.odt_to_markdown(ODT_FILE), yw7.refData)
 
 
 def main():
