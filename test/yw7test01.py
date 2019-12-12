@@ -5,7 +5,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import unittest
-import json
+import yw7
 
 
 def main():
