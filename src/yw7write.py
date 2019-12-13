@@ -3,16 +3,13 @@
 import re
 import sys
 import xml.etree.ElementTree as ET
-import pypandoc
 
 
-def format_md(text):
-    """ Beautify pandoc-generated md """
-    text = text.replace('\r', '\n')
-    text = text.replace('\n\n', '\n')
-    text = text.replace('\n\n', '\n')
-    text = text.replace('\n', '\n\n')
-    return(text)
+def read_md(mdFile):
+    """ Read markdown from .md file. """
+    with open(mdFile, 'r') as f:
+        mdText = f.read()
+    return(mdText)
 
 
 def format_yw7(text):
@@ -25,8 +22,17 @@ def format_yw7(text):
     return(text)
 
 
+def markdown_to_yw7(prjText, yw7File):
+    """ Convert markdown to xml and replace .yw7 file. """
+    prjText = format_yw7(prjText)
+    prjObj = parse_yw7(prjText)
+    tree = ET.parse(yw7File)
+    root = tree.getroot()  # all item attributes
+    return()
+
+
 def parse_yw7(rawText):
-    """ Part yw7 raw text into chapters and scenes """
+    """ Part yw7 raw text into chapters and scenes. """
     project = {}
     chapters = {}
     scenes = {}
@@ -54,41 +60,19 @@ def parse_yw7(rawText):
     return(project)
 
 
-def odt_to_markdown(odtFile):
-    """ run pandoc to create a markdown string """
-    mdText = pypandoc.convert_file(
-        odtFile, 'markdown_strict', format='odt', extra_args=['--wrap=none'])
-    mdText = format_md(mdText)
-    return(mdText)
-
-
-def write_markdown(mdText, mdFile):
-    with open(mdFile, 'w') as f:
-        f.write(mdText)
-
-
-def markdown_to_yw7(prjText, yw7File):
-    prjText = format_yw7(prjText)
-    prjObj = parse_yw7(prjText)
-    tree = ET.parse(yw7File)
-    root = tree.getroot()  # all item attributes
-    return()
-
-
 def main():
-    """ Collect command line arguments, call conversion and generate string. """
+    """ Call the functions with command line arguments. """
     try:
-        odtPath = sys.argv[1]
-        mdText = odt_to_markdown(odtPath)
+        mdPath = sys.argv[1]
     except:
-        print('Syntax: yw7write.py filename')
+        print('Syntax: yw7write.py filename.md')
         sys.exit(1)
 
-    mdPath = odtPath.split('.odt')[0] + '.md'
-    write_markdown(mdText, mdPath)
-
-    yw7Path = odtPath.split('.odt')[0] + '.yw7'
-    markdown_to_yw7(mdText, yw7Path)
+    prjText = read_md(mdPath)
+    # Read markdown from .md file.
+    yw7Path = mdPath.split('.md')[0] + '.yw7'
+    markdown_to_yw7(prjText, yw7Path)
+    # Convert markdown to xml and replace .yw7 file.
 
 
 if __name__ == '__main__':

@@ -1,9 +1,11 @@
-""" Export chapters for proofing.  
-"""
+""" Export chapters for proofing.
 
+    Read yWriter7 project file and create a Markdown file 
+    with scene text divided by [ChID:x] and [ScID:y] tags
+    as known by yWriter5 RTF proofing export.
+"""
 import sys
 import xml.etree.ElementTree as ET
-import pypandoc
 
 
 def format_md(text):
@@ -18,7 +20,7 @@ def format_md(text):
 
 
 def yw7_to_markdown(yw7File):
-    """ Convert .yw7 format into markdown_strict. """
+    """ Read .yw7 file and convert xml to markdown. """
     tree = ET.parse(yw7File)
     root = tree.getroot()  # all item attributes
 
@@ -41,22 +43,25 @@ def yw7_to_markdown(yw7File):
     return(prjText)
 
 
-def markdown_to_odt(prjText, odtFile):
-    """ run pandoc to create an .odt file """
-    pypandoc.convert_text(
-        prjText, 'odt', format='markdown_strict', outputfile=odtFile)
+def write_md(mdText, mdPath):
+    """ Write markdown to .md file. """
+    with open(mdPath, 'w') as f:
+        f.write(mdText)
 
 
 def main():
-    """ Collect command line arguments and call the functions """
+    """ Call the functions with command line arguments. """
     try:
         yw7Path = sys.argv[1]
-        prjText = yw7_to_markdown(yw7Path)
-        odtPath = yw7Path.split('.yw7')[0] + '.odt'
-        markdown_to_odt(prjText, odtPath)
     except:
-        print('Syntax: yw7read.py filename')
+        print('Syntax: yw7read.py filename.yw7')
         sys.exit(1)
+
+    prjText = yw7_to_markdown(yw7Path)
+    # Read .yw7 file and convert xml to markdown.
+    mdPath = yw7Path.split('.yw7')[0] + '.md'
+    write_md(prjText, mdPath)
+    # Write markdown to .md file.
 
 
 if __name__ == '__main__':
