@@ -110,6 +110,8 @@ class NormalOperation(unittest.TestCase):
         # Verify the yw7 file.
 
     def test_develop_markdown_to_yw7(self):
+        yw7write.markdown_to_yw7(yw7.afterProofing, TEST_EXEC_PATH + YW7_FILE)
+        # Convert markdown to xml and replace .yw7 file.
         self.assertEqual(yw7read.yw7_to_markdown(
             TEST_EXEC_PATH + YW7_FILE), yw7.afterProofing)
 
