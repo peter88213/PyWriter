@@ -29,15 +29,6 @@ def format_yw7(text):
     return(text)
 
 
-def markdown_to_yw7(prjText, yw7File):
-    """ Convert markdown to xml and replace .yw7 file. """
-    prjText = format_yw7(prjText)
-    prjObj = parse_yw7(prjText)
-    tree = ET.parse(yw7File)
-    root = tree.getroot()  # all item attributes
-    return()
-
-
 def parse_yw7(rawText):
     """ Part yw7 raw text into chapters and scenes. """
     project = {}
@@ -65,6 +56,15 @@ def parse_yw7(rawText):
     project['scenes'] = scenes
     project['chapters'] = chapters
     return(project)
+
+
+def markdown_to_yw7(prjText, yw7File):
+    """ Convert markdown to xml and replace .yw7 file. """
+    prjText = format_yw7(prjText)
+    prjObj = parse_yw7(prjText)
+    tree = ET.parse(yw7File)
+    root = tree.getroot()  # all item attributes
+    return()
 
 
 def main():
