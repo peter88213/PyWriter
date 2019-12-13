@@ -1,6 +1,9 @@
 """ Create ODT for yWriter proofing.
 
-    A Pandoc wrapper for Python modules.
+A Pandoc wrapper for Python modules.
+
+For further information see https://github.com/peter88213/yWrestler
+Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
 import pypandoc

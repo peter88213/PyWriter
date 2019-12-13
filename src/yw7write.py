@@ -1,4 +1,11 @@
 """ Import proofed chapters. 
+
+Read a markdown file with scene text divided by [ChID:x] and [ScID:y] tags 
+(as known by yWriter5 RTF proofing export) and replace the scenes
+in an yw7 project file.
+
+For further information see https://github.com/peter88213/yWrestler
+Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
 import sys

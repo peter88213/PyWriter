@@ -65,6 +65,7 @@ class NormalOperation(unittest.TestCase):
             read_file(TEST_DATA_PATH + MD_PROOFED_FILE),
             yw7.refData)
 
+    @unittest.skip('save time while developing markdown_to_yw7')
     def test_export(self):
         """ Convert yw7 scenes to odt for proofing. """
         prjText = yw7read.yw7_to_markdown(
@@ -84,6 +85,7 @@ class NormalOperation(unittest.TestCase):
             TEST_EXEC_PATH + ODT_FILE), yw7.refData)
         # Verify the ODT file.
 
+    @unittest.skip('save time while developing markdown_to_yw7')
     def test_import(self):
         """ Read and replace proofed scenes. """
         copy_file(TEST_DATA_PATH + ODT_PROOFED_FILE,
@@ -102,11 +104,14 @@ class NormalOperation(unittest.TestCase):
         self.assertEqual(prjText, yw7.afterProofing)
         yw7write.markdown_to_yw7(prjText, TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
-        '''
+
         self.assertEqual(yw7read.yw7_to_markdown(
             TEST_EXEC_PATH + YW7_FILE), yw7.afterProofing)
         # Verify the yw7 file.
-        '''
+
+    def test_develop_markdown_to_yw7(self):
+        self.assertEqual(yw7read.yw7_to_markdown(
+            TEST_EXEC_PATH + YW7_FILE), yw7.afterProofing)
 
 
 def main():
