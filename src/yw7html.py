@@ -49,13 +49,14 @@ def format_yw7(text):
     return(text)
 
 
-def yw7_to_html(yw7File):
+def yw7_to_html(yw7File, htmlFile):
     """ Read .yw7 file and convert scenes to html. """
-    tree = ET.parse(yw7File)
-    root = tree.getroot()  # all item attributes
-
     scenes = {}
     titles = {}
+
+    tree = ET.parse(yw7File)
+    root = tree.getroot()
+
     for prj in root.iter('PROJECT'):
         bookTitle = prj.find('Title').text
 
@@ -65,6 +66,7 @@ def yw7_to_html(yw7File):
         titles[scnID] = scn.find('Title').text
 
     htmlText = HTML_HEADER.replace('$bookTitle$', bookTitle)
+
     for chp in root.iter('CHAPTER'):
         htmlText = htmlText + '<div id="ChID:' + chp.find('ID').text + '">\n<h2>' + \
             format_chapter_title(chp.find('Title').text) + '</h2>\n'
@@ -79,13 +81,13 @@ def yw7_to_html(yw7File):
         htmlText = htmlText + '</div>\n'
     htmlText = htmlText.replace(
         '</h2>\n<h4>' + SCENE_DIVIDER + '</h4>', '</h2>\n')
-    return(htmlText + HTML_FOOTER)
+    htmlText = htmlText + HTML_FOOTER
 
-
-def write_html(htmlText, htmlPath):
-    """ Create .html file. """
-    with open(htmlPath, 'w') as f:
-        f.write(htmlText)
+    try:
+        with open(htmlFile, 'w') as f:
+            f.write(htmlText)
+    except:
+        pass
 
 
 def main():
@@ -96,11 +98,8 @@ def main():
         print('Syntax: yw7html.py filename.yw7')
         sys.exit(1)
 
-    prjText = yw7_to_html(yw7Path)
-    # Read .yw7 file and convert scenes to html.
     htmlPath = yw7Path.split('.yw7')[0] + '.html'
-    write_html(prjText, htmlPath)
-    # Create .html file.
+    yw7_to_html(yw7Path, htmlPath)
 
 
 if __name__ == '__main__':

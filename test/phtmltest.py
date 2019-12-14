@@ -57,15 +57,15 @@ class NormalOperation(unittest.TestCase):
         self.assertNotEqual(
             read_file(TEST_DATA_PATH + HTML_FILE),
             read_file(TEST_DATA_PATH + HTML_PROOFED_FILE))
+        self.assertNotEqual(
+            read_file(TEST_DATA_PATH + YW7_FILE),
+            read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
 
     def test_export(self):
         """ Convert yw7 scenes to html for proofing. """
-        prjText = yw7html.yw7_to_html(
-            TEST_EXEC_PATH + YW7_FILE)
+        yw7html.yw7_to_html(
+            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
         # Read .yw7 file and convert scenes to html.
-        self.assertEqual(prjText, read_file(TEST_DATA_PATH + HTML_FILE))
-        yw7html.write_html(prjText, TEST_EXEC_PATH + HTML_FILE)
-        # Create .html file.
         self.assertEqual(read_file(TEST_EXEC_PATH + HTML_FILE),
                          read_file(TEST_DATA_PATH + HTML_FILE))
         # Verify the html file.
@@ -76,17 +76,12 @@ class NormalOperation(unittest.TestCase):
                   TEST_EXEC_PATH + HTML_FILE)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
-
-        prjText = htmlyw7.read_file(TEST_EXEC_PATH + HTML_FILE)
-        # Read document from html file.
-        self.assertEqual(prjText, read_file(
-            TEST_DATA_PATH + HTML_PROOFED_FILE))
-        htmlyw7.write_yw7(prjText, TEST_EXEC_PATH + YW7_FILE)
+        htmlyw7.html_to_yw7(TEST_EXEC_PATH + HTML_FILE,
+                            TEST_EXEC_PATH + YW7_FILE)
         # Convert document to xml and replace .yw7 file.
-
-        # self.assertEqual(yw7read.yw7_to_markdown(
-        self.assertEqual(yw7html.yw7_to_html(
-            TEST_EXEC_PATH + YW7_FILE), read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+        self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
+                         read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+        # Verify the html file.
 
 
 def main():

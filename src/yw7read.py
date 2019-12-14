@@ -22,12 +22,13 @@ def format_md(text):
     return(text)
 
 
-def yw7_to_markdown(yw7File):
+def yw7_to_markdown(yw7File, mdFile):
     """ Read .yw7 file and convert xml to markdown. """
-    tree = ET.parse(yw7File)
-    root = tree.getroot()  # all item attributes
-
     scenes = {}
+
+    tree = ET.parse(yw7File)
+    root = tree.getroot()
+
     for scn in root.iter('SCENE'):
         scnID = scn.find('ID').text
         scenes[scnID] = scn.find('SceneContent').text
@@ -43,13 +44,9 @@ def yw7_to_markdown(yw7File):
             prjText = prjText + '\\[/ScID\\]\n'
         prjText = prjText + '\\[/ChID\\]\n'
     prjText = format_md(prjText)
-    return(prjText)
 
-
-def write_md(mdText, mdPath):
-    """ Write markdown to .md file. """
-    with open(mdPath, 'w') as f:
-        f.write(mdText)
+    with open(mdFile, 'w') as f:
+        f.write(prjText)
 
 
 def main():
@@ -60,11 +57,8 @@ def main():
         print('Syntax: yw7read.py filename.yw7')
         sys.exit(1)
 
-    prjText = yw7_to_markdown(yw7Path)
-    # Read .yw7 file and convert xml to markdown.
     mdPath = yw7Path.split('.yw7')[0] + '.md'
-    write_md(prjText, mdPath)
-    # Write markdown to .md file.
+    yw7_to_markdown(yw7Path, mdPath)
 
 
 if __name__ == '__main__':

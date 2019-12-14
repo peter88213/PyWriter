@@ -63,27 +63,24 @@ class NormalOperation(unittest.TestCase):
             read_file(TEST_DATA_PATH + MD_PROOFED_FILE),
             read_file(TEST_DATA_PATH + MD_FILE))
 
-    @unittest.skip('save time while developing write_yw7()')
     def test_export(self):
         """ Convert yw7 scenes to odt for proofing. """
-        prjText = yw7read.yw7_to_markdown(
-            TEST_EXEC_PATH + YW7_FILE)
+        yw7read.yw7_to_markdown(
+            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
         # Read .yw7 file and convert xml to markdown.
-        self.assertEqual(prjText, read_file(TEST_DATA_PATH + MD_FILE))
-        yw7read.write_md(prjText, TEST_EXEC_PATH + MD_FILE)
-        # Write markdown to .md file.
+        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
+                         read_file(TEST_DATA_PATH + MD_FILE))
 
-        prjText = odtwrite.read_file(TEST_EXEC_PATH + MD_FILE)
-        # Read markdown from .md file.
-        self.assertEqual(prjText, read_file(TEST_DATA_PATH + MD_FILE))
-        odtwrite.markdown_to_odt(prjText, TEST_EXEC_PATH + ODT_FILE)
+        odtwrite.markdown_to_odt(
+            TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + ODT_FILE)
         # Let pandoc convert markdown and write to .odt file.
 
-        self.assertEqual(odtread.odt_to_markdown(
-            TEST_EXEC_PATH + ODT_FILE), read_file(TEST_DATA_PATH + MD_FILE))
+        odtread.odt_to_markdown(
+            TEST_EXEC_PATH + ODT_FILE, TEST_EXEC_PATH + MD_FILE)
         # Verify the ODT file.
+        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
+                         read_file(TEST_DATA_PATH + MD_FILE))
 
-    @unittest.skip('save time while developing write_yw7()')
     def test_import(self):
         """ Read and replace proofed scenes. """
         copy_file(TEST_DATA_PATH + ODT_PROOFED_FILE,
@@ -91,28 +88,20 @@ class NormalOperation(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        prjText = odtread.odt_to_markdown(TEST_EXEC_PATH + ODT_FILE)
+        odtread.odt_to_markdown(
+            TEST_EXEC_PATH + ODT_FILE, TEST_EXEC_PATH + MD_FILE)
         # Let pandoc read .odt file and convert to markdown.
-        self.assertEqual(prjText, read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
-        odtread.write_md(prjText, TEST_EXEC_PATH + MD_FILE)
-        # Write markdown to .md file.
+        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
+                         read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
 
-        prjText = yw7write.read_file(TEST_EXEC_PATH + MD_FILE)
-        # Read markdown from .md file.
-        self.assertEqual(prjText, read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
-        yw7write.write_yw7(prjText, TEST_EXEC_PATH + YW7_FILE)
+        yw7write.md_to_yw7(TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
 
-        self.assertEqual(yw7read.yw7_to_markdown(
-            TEST_EXEC_PATH + YW7_FILE), read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
-        # Verify the yw7 file.
-
-    def test_develop_write_yw7(self):
-        yw7write.write_yw7(
-            read_file(TEST_DATA_PATH + MD_PROOFED_FILE), TEST_EXEC_PATH + YW7_FILE)
-        # Convert markdown to xml and replace .yw7 file.
-        self.assertEqual(yw7read.yw7_to_markdown(
-            TEST_EXEC_PATH + YW7_FILE), read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
+        yw7read.yw7_to_markdown(TEST_EXEC_PATH + YW7_FILE,
+                                # Verify the yw7 file.
+                                TEST_EXEC_PATH + MD_FILE)
+        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
+                         read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
 
 
 def main():

@@ -18,18 +18,13 @@ def format_md(text):
     return(text)
 
 
-def odt_to_markdown(odtFile):
+def odt_to_markdown(odtFile, mdFile):
     """ Let pandoc read .odt file and convert to markdown. """
-    mdText = pypandoc.convert_file(
+    text = pypandoc.convert_file(
         odtFile, 'markdown_strict', format='odt', extra_args=['--wrap=none'])
-    mdText = format_md(mdText)
-    return(mdText)
-
-
-def write_md(mdText, mdPath):
-    """ Write markdown to .md file. """
-    with open(mdPath, 'w') as f:
-        f.write(mdText)
+    text = format_md(text)
+    with open(mdFile, 'w') as f:
+        f.write(text)
 
 
 def main():
@@ -40,11 +35,8 @@ def main():
         print('Syntax: odtread.py filename.odt')
         sys.exit(1)
 
-    prjText = odt_to_markdown(odtPath)
-    # Let pandoc read .odt file and convert to markdown.
     mdPath = odtPath.split('.odt')[0] + '.md'
-    write_md(prjText, mdPath)
-    # Write markdown to .md file.
+    odt_to_markdown(odtPath, mdPath)
 
 
 if __name__ == '__main__':
