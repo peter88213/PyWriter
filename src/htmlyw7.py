@@ -14,22 +14,10 @@ import xml.etree.ElementTree as ET
 
 def format_yw7(text):
     """ Convert html markup to yw7 raw markup """
-    text = re.sub('<i.*?>', '[i]', text)
-    text = text.replace('</i>', '[/i]')
-    text = re.sub('<I.*?>', '[i]', text)
-    text = text.replace('</I>', '[/i]')
-    text = re.sub('<em.*?>', '[i]', text)
-    text = text.replace('</em>', '[/i]')
-    text = re.sub('<EM.*?>', '[i]', text)
-    text = text.replace('</EM>', '[/i]')
-    text = re.sub('<b.*?>', '[b]', text)
-    text = text.replace('</b>', '[/b]')
-    text = re.sub('<B.*?>', '[b]', text)
-    text = text.replace('</B>', '[/b]')
-    text = re.sub('<strong.*?>', '[b]', text)
-    text = text.replace('</strong>', '[/b]')
-    text = re.sub('<STRONG.*?>', '[b]', text)
-    text = text.replace('</STRONG>', '[/b]')
+    text = re.sub('<i.*?>|<I.*?>|<em.*?>|<EM.*?>', '[i]', text)
+    text = re.sub('</i>|</I>|</em>|</EM>', '[/i]', text)
+    text = re.sub('<b.*?>|<B.*?>|<strong.*?>|<STRONG.*?>', '[b]', text)
+    text = re.sub('</b>|</B>|</strong><|</STRONG>', '[/b]', text)
     text = text.replace('\n', '')
     text = text.replace('\t', ' ')
     while text.count('  '):
