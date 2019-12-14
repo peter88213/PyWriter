@@ -21,6 +21,7 @@ h2 {font-weight: bold}
 h2, h4 {text-align: center}
 strong {font-weight:normal; text-transform: uppercase}
 </style>
+<title>$bookTitle$</title>
 </head>
 <body>
 '''
@@ -31,20 +32,20 @@ HTML_FOOTER = '''
 '''
 
 
-def format_scene(text):
+def format_chapter_title(text):
+    """ Fix auto-chapter titles for non-English """
+    text = text.replace('Chapter ', '')
+    return(text)
+
+
+def format_yw7(text):
     """ Convert yw7 raw markup """
     text = text.replace('\n\n', '\n')
-    text = text.replace('\n', "</p>\n<p class='firstlineindent'>")
+    text = text.replace('\n', '</p>\n<p class="firstlineindent">')
     text = text.replace('[i]', '<em>')
     text = text.replace('[/i]', '</em>')
     text = text.replace('[b]', '<strong>')
     text = text.replace('[/b]', '</strong>')
-    return(text)
-
-
-def format_chapter_title(text):
-    """ Fix auto-chapter titles for non-English """
-    text = text.replace('Chapter ', '')
     return(text)
 
 
@@ -55,22 +56,27 @@ def yw7_to_html(yw7File):
 
     scenes = {}
     titles = {}
+    for prj in root.iter('PROJECT'):
+        bookTitle = prj.find('Title').text
+
     for scn in root.iter('SCENE'):
         scnID = scn.find('ID').text
         scenes[scnID] = scn.find('SceneContent').text
         titles[scnID] = scn.find('Title').text
 
-    htmlText = HTML_HEADER
+    htmlText = HTML_HEADER.replace('$bookTitle$', bookTitle)
     for chp in root.iter('CHAPTER'):
-        htmlText = htmlText + '<h2>' + \
+        htmlText = htmlText + '<div id="ChID:' + chp.find('ID').text + '">\n<h2>' + \
             format_chapter_title(chp.find('Title').text) + '</h2>\n'
         scnList = chp.find('Scenes')
         for scn in scnList.findall('ScID'):
             scnID = scn.text
-            htmlText = htmlText + '<h4>' + SCENE_DIVIDER + '</h4>\n' + \
-                '<!-- ' + titles[scnID] + " -->\n<p class='textbody'>"
+            htmlText = htmlText + '<h4>' + SCENE_DIVIDER + '</h4>\n<div id="ScID:' + scnID +\
+                '">\n<p class="textbody"><!-- ' + titles[scnID] + ' -->\n'
             # Insert scene title as html comment.
-            htmlText = htmlText + format_scene(scenes[scnID]) + '</p>\n'
+            htmlText = htmlText + \
+                format_yw7(scenes[scnID]) + '</p>\n</div>\n'
+        htmlText = htmlText + '</div>\n'
     htmlText = htmlText.replace(
         '</h2>\n<h4>' + SCENE_DIVIDER + '</h4>', '</h2>\n')
     return(htmlText + HTML_FOOTER)

@@ -9,11 +9,9 @@ import sys
 import pypandoc
 
 
-def read_md(mdFile):
-    """ Read markdown from .md file. """
-    with open(mdFile, 'r') as f:
-        mdText = f.read()
-    return(mdText)
+def read_file(inputFile):
+    with open(inputFile, 'r') as f:
+        return(f.read())
 
 
 def markdown_to_odt(prjText, odtFile):
@@ -30,7 +28,7 @@ def main():
         print('Syntax: odtwrite.py filename.md')
         sys.exit(1)
 
-    prjText = read_md(mdPath)
+    prjText = read_file(mdPath)
     # Read markdown from .md file.
     odtPath = mdPath.split('.md')[0] + '.odt'
     markdown_to_odt(prjText, odtPath)

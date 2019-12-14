@@ -11,60 +11,55 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 
-
-def read_md(mdFile):
-    """ Read markdown from .md file. """
-    with open(mdFile, 'r') as f:
-        mdText = f.read()
-    return(mdText)
+# Transfer data for document parsing
+CHAPTERS = {}
+SCENES = {}
 
 
-def format_yw7(text):
-    """ Convert into yw7 raw markup """
-    text = text.replace('\n\n', '\n')
-    text = text.replace('\[', '[')
-    text = text.replace('\]', ']')
-    text = re.sub('\*\*(.+?)\*\*', '[b]\g<1>[/b]', text)
-    text = re.sub('\*(.+?)\*', '[i]\g<1>[/i]', text)
-    return(text)
+def read_file(inputFile):
+    with open(inputFile, 'r') as f:
+        return(f.read())
 
 
-def parse_yw7(rawText):
-    """ Part yw7 raw text into chapters and scenes. """
-    project = {}
-    chapters = {}
-    scenes = {}
-    sceneList = []
-    sceneText = ''
-    chpID = 0
-    scnID = 0
-    projectData = rawText.split('\n')
-    for line in projectData:
-        if line.count('[ChID'):
-            chpID = re.search('[0-9]+', line).group()
-        elif line.count('[ScID'):
-            scnID = re.search('[0-9]+', line).group()
-            sceneList.append(scnID)
-        elif line.count('[/ChID]'):
-            chapters[chpID] = sceneList
-            sceneList = []
-        elif line.count('[/ScID]'):
-            scenes[scnID] = sceneText
-            sceneText = ''
-        else:
-            sceneText = sceneText + line + '\n'
-    project['scenes'] = scenes
-    project['chapters'] = chapters
-    return(project)
-
-
-def markdown_to_yw7(prjText, yw7File):
+def write_yw7(text, yw7File):
     """ Convert markdown to xml and replace .yw7 file. """
-    prjText = format_yw7(prjText)
-    prjObj = parse_yw7(prjText)
+
+    def format_yw7(text):
+        """ Convert markdown to yw7 raw markup. """
+        text = text.replace('\n\n', '\n')
+        text = text.replace('\[', '[')
+        text = text.replace('\]', ']')
+        text = re.sub('\*\*(.+?)\*\*', '[b]\g<1>[/b]', text)
+        text = re.sub('\*(.+?)\*', '[i]\g<1>[/i]', text)
+        return(text)
+
+    def convert_markdown(text):
+        """ Convert markdown into yw7 chapters and scenes. """
+        global CHAPTERS, SCENES
+        text = format_yw7(text)
+        sceneList = []
+        sceneText = ''
+        chpID = 0
+        scnID = 0
+        projectData = text.split('\n')
+        for line in projectData:
+            if line.count('[ChID'):
+                chpID = re.search('[0-9]+', line).group()
+            elif line.count('[ScID'):
+                scnID = re.search('[0-9]+', line).group()
+                sceneList.append(scnID)
+            elif line.count('[/ChID]'):
+                CHAPTERS[chpID] = sceneList
+                sceneList = []
+            elif line.count('[/ScID]'):
+                SCENES[scnID] = sceneText
+                sceneText = ''
+            else:
+                sceneText = sceneText + line + '\n'
+
+    convert_markdown(text)
     tree = ET.parse(yw7File)
     root = tree.getroot()  # all item attributes
-    return()
 
 
 def main():
@@ -75,11 +70,17 @@ def main():
         print('Syntax: yw7write.py filename.md')
         sys.exit(1)
 
-    prjText = read_md(mdPath)
-    # Read markdown from .md file.
+    prjText = read_file(mdPath)
+    # Read document from markdown file.
+
     yw7Path = mdPath.split('.md')[0] + '.yw7'
-    markdown_to_yw7(prjText, yw7Path)
-    # Convert markdown to xml and replace .yw7 file.
+    write_yw7(prjText, yw7Path)
+    # Convert markdown to xml and modify .yw7 file.
+
+    for scene in SCENES.values():
+        print(scene)
+    for chapter in CHAPTERS.values():
+        print(chapter)
 
 
 if __name__ == '__main__':
