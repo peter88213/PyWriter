@@ -58,7 +58,7 @@ class NormalOperation(unittest.TestCase):
             read_file(TEST_DATA_PATH + HTML_FILE),
             read_file(TEST_DATA_PATH + HTML_PROOFED_FILE))
 
-    #@unittest.skip('save time while developing write_yw7()')
+    @unittest.skip('save time while developing write_yw7()')
     def test_export(self):
         """ Convert yw7 scenes to html for proofing. """
         prjText = yw7html.yw7_to_html(
@@ -71,7 +71,7 @@ class NormalOperation(unittest.TestCase):
                          read_file(TEST_DATA_PATH + HTML_FILE))
         # Verify the html file.
 
-    #@unittest.skip('save time while developing write_yw7()')
+    @unittest.skip('save time while developing write_yw7()')
     def test_import(self):
         """ Read and replace proofed scenes. """
         copy_file(TEST_DATA_PATH + HTML_PROOFED_FILE,
@@ -87,15 +87,15 @@ class NormalOperation(unittest.TestCase):
         # Convert document to xml and replace .yw7 file.
 
         # self.assertEqual(yw7read.yw7_to_markdown(
-        #    TEST_EXEC_PATH + YW7_FILE), yw7.afterProofing)
-        # Verify the yw7 file.
+        self.assertEqual(yw7html.yw7_to_html(
+            TEST_EXEC_PATH + YW7_FILE), read_file(TEST_DATA_PATH + HTML_PROOFED_FILE))
 
     def test_develop_write_yw7(self):
         htmlyw7.write_yw7(read_file(
             TEST_DATA_PATH + HTML_PROOFED_FILE), TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
-        # self.assertEqual(yw7read.yw7_to_markdown(
-        #    TEST_EXEC_PATH + YW7_FILE), yw7.afterProofing)
+        self.assertEqual(yw7html.yw7_to_html(
+            TEST_EXEC_PATH + YW7_FILE), read_file(TEST_DATA_PATH + HTML_PROOFED_FILE))
 
 
 def main():
