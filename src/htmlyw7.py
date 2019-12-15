@@ -79,10 +79,14 @@ class MyHTMLParser(HTMLParser):
 def html_to_yw7(htmlFile, yw7File):
     """ Convert html into yw7 scenes and modify .yw7 file. """
     try:
-        with open(htmlFile, 'r') as f:
+        with open(htmlFile, 'r', encoding='utf-8') as f:
             text = (f.read())
-    except(IOError):
-        sys.exit(1)
+    except:
+        try:
+            with open(htmlFile, 'r') as f:
+                text = (f.read())
+        except:
+            sys.exit(1)
 
     text = format_yw7(text)
 
@@ -95,9 +99,12 @@ def html_to_yw7(htmlFile, yw7File):
 
     for scn in root.iter('SCENE'):
         scnID = scn.find('ID').text
-        scn.find('SceneContent').text = scenes[scnID]
-        scn.find('WordCount').text = count_words(scenes[scnID])
-        scn.find('LetterCount').text = count_letters(scenes[scnID])
+        try:
+            scn.find('SceneContent').text = scenes[scnID]
+            scn.find('WordCount').text = count_words(scenes[scnID])
+            scn.find('LetterCount').text = count_letters(scenes[scnID])
+        except:
+            pass
     tree.write(yw7File, encoding='utf-8')
 
 

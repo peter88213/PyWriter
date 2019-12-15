@@ -41,12 +41,15 @@ def format_chapter_title(text):
 
 def format_yw7(text):
     """ Convert yw7 raw markup """
-    text = text.replace('\n\n', '\n')
-    text = text.replace('\n', '</p>\n<p class="firstlineindent">')
-    text = text.replace('[i]', '<em>')
-    text = text.replace('[/i]', '</em>')
-    text = text.replace('[b]', '<strong>')
-    text = text.replace('[/b]', '</strong>')
+    try:
+        text = text.replace('\n\n', '\n')
+        text = text.replace('\n', '</p>\n<p class="firstlineindent">')
+        text = text.replace('[i]', '<em>')
+        text = text.replace('[/i]', '</em>')
+        text = text.replace('[b]', '<strong>')
+        text = text.replace('[/b]', '</strong>')
+    except:
+        pass
     return(text)
 
 
@@ -77,8 +80,11 @@ def yw7_to_html(yw7File, htmlFile):
             htmlText = htmlText + '<h4>' + SCENE_DIVIDER + '</h4>\n<div id="ScID:' + scnID +\
                 '">\n<p class="textbody"><!-- ' + titles[scnID] + ' -->\n'
             # Insert scene title as html comment.
-            htmlText = htmlText + \
-                format_yw7(scenes[scnID]) + '</p>\n</div>\n'
+            try:
+                htmlText = htmlText + \
+                    format_yw7(scenes[scnID]) + '</p>\n</div>\n'
+            except:
+                pass
         htmlText = htmlText + '</div>\n'
     htmlText = htmlText.replace(
         '</h2>\n<h4>' + SCENE_DIVIDER + '</h4>', '</h2>\n')
