@@ -13,6 +13,7 @@ SCENE_DIVIDER = '* * *'
 # Make the html file look good in a web browser.
 HTML_HEADER = '''<html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <style type='text/css'>
 h2, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}
 p.textbody {margin-top:0; margin-bottom:0}
