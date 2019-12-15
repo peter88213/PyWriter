@@ -66,6 +66,7 @@ class NormalOperation(unittest.TestCase):
         yw7html.yw7_to_html(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
         # Read .yw7 file and convert scenes to html.
+
         self.assertEqual(read_file(TEST_EXEC_PATH + HTML_FILE),
                          read_file(TEST_DATA_PATH + HTML_FILE))
         # Verify the html file.
@@ -76,12 +77,14 @@ class NormalOperation(unittest.TestCase):
                   TEST_EXEC_PATH + HTML_FILE)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
+
         htmlyw7.html_to_yw7(TEST_EXEC_PATH + HTML_FILE,
                             TEST_EXEC_PATH + YW7_FILE)
         # Convert document to xml and replace .yw7 file.
+
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
                          read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
-        # Verify the html file.
+        # Verify the yw7 project.
 
 
 def main():

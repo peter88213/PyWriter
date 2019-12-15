@@ -22,6 +22,23 @@ def format_yw7(text):
     return(text)
 
 
+def count_words(text):
+    """ Required, because yWriter stores word counts. """
+    text = re.sub('\[.+?\]|\.|\,| -', '', text)
+    # Remove yw7 raw markup
+    wordList = text.split()
+    wordCount = len(wordList)
+    return str(wordCount)
+
+
+def count_letters(text):
+    """ Required, because yWriter stores letter counts. """
+    text = re.sub('\[.+?\]', '', text)
+    # Remove yw7 raw markup
+    letterCount = len(text)
+    return str(letterCount)
+
+
 def md_to_yw7(mdFile, yw7File):
     """ Convert markdown to xml and replace .yw7 file. """
     try:
@@ -53,6 +70,8 @@ def md_to_yw7(mdFile, yw7File):
     for scn in root.iter('SCENE'):
         scnID = scn.find('ID').text
         scn.find('SceneContent').text = scenes[scnID]
+        scn.find('WordCount').text = count_words(scenes[scnID])
+        scn.find('LetterCount').text = count_letters(scenes[scnID])
     tree.write(yw7File, encoding='utf-8')
 
 
