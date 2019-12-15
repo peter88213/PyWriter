@@ -45,7 +45,7 @@ def yw7_to_markdown(yw7File, mdFile):
         prjText = prjText + '\\[/ChID\\]\n'
     prjText = format_md(prjText)
 
-    with open(mdFile, 'w') as f:
+    with open(mdFile, 'w', encoding='utf-8') as f:
         f.write(prjText)
 
 

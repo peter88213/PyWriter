@@ -25,7 +25,7 @@ MD_PROOFED_FILE = 'after_proofing.md'
 
 
 def read_file(inputFile):
-    with open(inputFile, 'r') as f:
+    with open(inputFile, 'r', encoding='utf-8') as f:
         return(f.read())
 
 
@@ -97,9 +97,9 @@ class NormalOperation(unittest.TestCase):
         yw7write.md_to_yw7(TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
 
-        yw7read.yw7_to_markdown(TEST_EXEC_PATH + YW7_FILE,
-                                # Verify the yw7 file.
-                                TEST_EXEC_PATH + MD_FILE)
+        yw7read.yw7_to_markdown(
+            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
+        # Verify the yw7 file.
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
 

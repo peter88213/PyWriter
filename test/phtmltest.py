@@ -21,7 +21,7 @@ HTML_PROOFED_FILE = 'after_proofing.html'
 
 
 def read_file(inputFile):
-    with open(inputFile, 'r') as f:
+    with open(inputFile, 'r', encoding='utf-8') as f:
         return(f.read())
 
 

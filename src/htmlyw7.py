@@ -79,7 +79,7 @@ def html_to_yw7(htmlFile, yw7File):
     for scn in root.iter('SCENE'):
         scnID = scn.find('ID').text
         scn.find('SceneContent').text = scenes[scnID]
-    tree.write(yw7File)
+    tree.write(yw7File, encoding='utf-8')
 
 
 def main():

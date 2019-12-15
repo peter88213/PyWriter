@@ -25,7 +25,7 @@ def format_yw7(text):
 def md_to_yw7(mdFile, yw7File):
     """ Convert markdown to xml and replace .yw7 file. """
     try:
-        with open(mdFile, 'r') as f:
+        with open(mdFile, 'r', encoding='utf-8') as f:
             text = (f.read())
     except(IOError):
         sys.exit(1)
@@ -53,7 +53,7 @@ def md_to_yw7(mdFile, yw7File):
     for scn in root.iter('SCENE'):
         scnID = scn.find('ID').text
         scn.find('SceneContent').text = scenes[scnID]
-    tree.write(yw7File)
+    tree.write(yw7File, encoding='utf-8')
 
 
 def main():

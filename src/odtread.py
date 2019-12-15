@@ -23,7 +23,7 @@ def odt_to_markdown(odtFile, mdFile):
     text = pypandoc.convert_file(
         odtFile, 'markdown_strict', format='odt', extra_args=['--wrap=none'])
     text = format_md(text)
-    with open(mdFile, 'w') as f:
+    with open(mdFile, 'w', encoding='utf-8') as f:
         f.write(text)
 
 
