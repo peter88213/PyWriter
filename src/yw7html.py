@@ -84,7 +84,7 @@ def yw7_to_html(yw7File, htmlFile):
     htmlText = htmlText + HTML_FOOTER
 
     try:
-        with open(htmlFile, 'w') as f:
+        with open(htmlFile, 'w', encoding='utf-8') as f:
             f.write(htmlText)
     except:
         pass
