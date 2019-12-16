@@ -9,7 +9,9 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 import re
 from html.parser import HTMLParser
-import xml.etree.ElementTree as ET
+import ywrestler
+
+PROGRAM_TITLE = 'Import yw7 scenes from html'
 
 
 def format_yw7(text):
@@ -45,13 +47,13 @@ def count_letters(text):
 class MyHTMLParser(HTMLParser):
     """ Collect scene contents in a dictionary. """
     sceneText = ''
-    scnID = 0
+    scID = 0
     inScene = False
-    scenes = {}
+    scnContents = {}
 
     def getScenes(self):
         """ Export scene content dictionary. """
-        return(self.scenes)
+        return(self.scnContents)
 
     def handle_starttag(self, tag, attrs):
         """ Get scene ID at scene start. """
@@ -59,13 +61,13 @@ class MyHTMLParser(HTMLParser):
             if attrs[0][0] == 'id':
                 if attrs[0][1].count('ScID'):
                     self.inScene = True
-                    self.scnID = re.search('[0-9]+', attrs[0][1]).group()
+                    self.scID = re.search('[0-9]+', attrs[0][1]).group()
 
     def handle_endtag(self, tag):
         """ Save scene content in dictionary at scene end. """
         if tag == 'div':
             if self.inScene:
-                self.scenes[self.scnID] = self.sceneText
+                self.scnContents[self.scID] = self.sceneText
                 self.sceneText = ''
                 self.inScene = False
 
@@ -85,8 +87,8 @@ def html_to_yw7(htmlFile, yw7File):
         try:
             with open(htmlFile, 'r') as f:
                 text = (f.read())
-        except:
-            sys.exit(1)
+        except(FileNotFoundError):
+            return('\nERROR: "' + htmlFile + '" not found.')
 
     text = format_yw7(text)
 
@@ -94,30 +96,28 @@ def html_to_yw7(htmlFile, yw7File):
     parser.feed(text)
     scenes = parser.getScenes()
 
-    tree = ET.parse(yw7File)
-    root = tree.getroot()
+    myPrj = ywrestler.Project(yw7File)
 
-    for scn in root.iter('SCENE'):
-        scnID = scn.find('ID').text
-        try:
-            scn.find('SceneContent').text = scenes[scnID]
-            scn.find('WordCount').text = count_words(scenes[scnID])
-            scn.find('LetterCount').text = count_letters(scenes[scnID])
-        except:
-            pass
-    tree.write(yw7File, encoding='utf-8')
+    return(myPrj.write_scenes(scenes))
 
 
 def main():
-    """ Call the functions with command line arguments. """
+    print('\n*** ' + PROGRAM_TITLE + ' ***')
     try:
         htmlPath = sys.argv[1]
-    except:
-        print('Syntax: htmlyw7.py filename.html')
-        sys.exit(1)
+    except(IndexError):
+        htmlPath = input('\nEnter html filename: ')
 
     yw7Path = htmlPath.split('.html')[0] + '.yw7'
-    html_to_yw7(htmlPath, yw7Path)
+
+    print('\nWARNING: This will overwrite "' +
+          yw7Path + '" (if exists)!')
+    userConfirmation = input('Continue (y/n)? ')
+    if userConfirmation in ('y', 'Y'):
+        print(html_to_yw7(htmlPath, yw7Path))
+    else:
+        print('Program abort by user.\n')
+    input('Press ENTER to continue ...')
 
 
 if __name__ == '__main__':

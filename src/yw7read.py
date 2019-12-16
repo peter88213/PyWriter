@@ -8,7 +8,9 @@ For further information see https://github.com/peter88213/yWrestler
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
-import xml.etree.ElementTree as ET
+import ywrestler
+
+PROGRAM_TITLE = 'Export yw7 scenes to (strict) markdown'
 
 
 def format_md(text):
@@ -24,23 +26,18 @@ def format_md(text):
 
 def yw7_to_markdown(yw7File, mdFile):
     """ Read .yw7 file and convert xml to markdown. """
-    scenes = {}
 
-    tree = ET.parse(yw7File)
-    root = tree.getroot()
+    myPrj = ywrestler.Project(yw7File)
 
-    for scn in root.iter('SCENE'):
-        scnID = scn.find('ID').text
-        scenes[scnID] = scn.find('SceneContent').text
+    sceneContents = myPrj.get_scenes()[1]
+    chapterContents = myPrj.get_chapters()[1]
 
     prjText = ''
-    for chp in root.iter('CHAPTER'):
-        prjText = prjText + '\\[ChID:' + chp.find('ID').text + '\\]\n'
-        scnList = chp.find('Scenes')
-        for scn in scnList.findall('ScID'):
-            scnID = scn.text
-            prjText = prjText + '\\[ScID:' + scnID + '\\]\n'
-            prjText = prjText + scenes[scnID] + '\n'
+    for chID in chapterContents:
+        prjText = prjText + '\\[ChID:' + chID + '\\]\n'
+        for scID in chapterContents[chID]:
+            prjText = prjText + '\\[ScID:' + scID + '\\]\n'
+            prjText = prjText + sceneContents[scID] + '\n'
             prjText = prjText + '\\[/ScID\\]\n'
         prjText = prjText + '\\[/ChID\\]\n'
     prjText = format_md(prjText)
@@ -48,17 +45,27 @@ def yw7_to_markdown(yw7File, mdFile):
     with open(mdFile, 'w', encoding='utf-8') as f:
         f.write(prjText)
 
+    return('\n' + str(len(sceneContents)) + ' Scenes written to "' + mdFile + '".')
+
 
 def main():
-    """ Call the functions with command line arguments. """
+    print('\n*** ' + PROGRAM_TITLE + ' ***')
     try:
         yw7Path = sys.argv[1]
-    except:
-        print('Syntax: yw7read.py filename.yw7')
-        sys.exit(1)
+    except(IndexError):
+        yw7Path = input('\nEnter yW7 project filename: ')
 
     mdPath = yw7Path.split('.yw7')[0] + '.md'
-    yw7_to_markdown(yw7Path, mdPath)
+
+    print('\nWARNING: This will overwrite "' +
+          mdPath + '" (if exists)!')
+    userConfirmation = input('Continue (y/n)? ')
+
+    if userConfirmation in ('y', 'Y'):
+        print(yw7_to_markdown(yw7Path, mdPath))
+    else:
+        print('Program abort by user.\n')
+    input('Press ENTER to continue ...')
 
 
 if __name__ == '__main__':

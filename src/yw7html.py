@@ -6,7 +6,9 @@ For further information see https://github.com/peter88213/yWrestler
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
-import xml.etree.ElementTree as ET
+import ywrestler
+
+PROGRAM_TITLE = 'Export yw7 scenes to html'
 
 SCENE_DIVIDER = '* * *'
 
@@ -54,35 +56,27 @@ def format_yw7(text):
 
 
 def yw7_to_html(yw7File, htmlFile):
-    """ Read .yw7 file and convert scenes to html. """
-    scenes = {}
-    titles = {}
+    """ Read .yw7 file and convert sceneContents to html. """
 
-    tree = ET.parse(yw7File)
-    root = tree.getroot()
+    myPrj = ywrestler.Project(yw7File)
 
-    for prj in root.iter('PROJECT'):
-        bookTitle = prj.find('Title').text
+    sceneTitles = myPrj.get_scenes()[0]
+    sceneContents = myPrj.get_scenes()[1]
+    chapterTitles = myPrj.get_chapters()[0]
+    chapterContents = myPrj.get_chapters()[1]
 
-    for scn in root.iter('SCENE'):
-        scnID = scn.find('ID').text
-        scenes[scnID] = scn.find('SceneContent').text
-        titles[scnID] = scn.find('Title').text
+    htmlText = HTML_HEADER.replace('$bookTitle$', myPrj.get_title())
 
-    htmlText = HTML_HEADER.replace('$bookTitle$', bookTitle)
-
-    for chp in root.iter('CHAPTER'):
-        htmlText = htmlText + '<div id="ChID:' + chp.find('ID').text + '">\n<h2>' + \
-            format_chapter_title(chp.find('Title').text) + '</h2>\n'
-        scnList = chp.find('Scenes')
-        for scn in scnList.findall('ScID'):
-            scnID = scn.text
-            htmlText = htmlText + '<h4>' + SCENE_DIVIDER + '</h4>\n<div id="ScID:' + scnID +\
-                '">\n<p class="textbody"><!-- ' + titles[scnID] + ' -->\n'
+    for chID in chapterTitles:
+        htmlText = htmlText + '<div id="ChID:' + chID + '">\n<h2>' + \
+            format_chapter_title(chapterTitles[chID]) + '</h2>\n'
+        for scID in chapterContents[chID]:
+            htmlText = htmlText + '<h4>' + SCENE_DIVIDER + '</h4>\n<div id="ScID:' + scID +\
+                '">\n<p class="textbody"><!-- ' + sceneTitles[scID] + ' -->\n'
             # Insert scene title as html comment.
             try:
                 htmlText = htmlText + \
-                    format_yw7(scenes[scnID]) + '</p>\n</div>\n'
+                    format_yw7(sceneContents[scID]) + '</p>\n</div>\n'
             except:
                 pass
         htmlText = htmlText + '</div>\n'
@@ -93,20 +87,30 @@ def yw7_to_html(yw7File, htmlFile):
     try:
         with open(htmlFile, 'w', encoding='utf-8') as f:
             f.write(htmlText)
-    except:
-        pass
+    except(PermissionError):
+        return('\nERROR: ' + htmlFile + '" is write protected.')
+
+    return('\n' + str(len(sceneContents)) + ' Scenes written to "' + htmlFile + '".')
 
 
 def main():
-    """ Call the functions with command line arguments. """
+    print('\n*** ' + PROGRAM_TITLE + ' ***')
     try:
         yw7Path = sys.argv[1]
-    except:
-        print('Syntax: yw7html.py filename.yw7')
-        sys.exit(1)
+    except(IndexError):
+        yw7Path = input('\nEnter yW7 project filename: ')
 
     htmlPath = yw7Path.split('.yw7')[0] + '.html'
-    yw7_to_html(yw7Path, htmlPath)
+
+    print('\nWARNING: This will overwrite "' +
+          htmlPath + '" (if exists)!')
+    userConfirmation = input('Continue (y/n)? ')
+
+    if userConfirmation in ('y', 'Y'):
+        print(yw7_to_html(yw7Path, htmlPath))
+    else:
+        print('Program abort by user.\n')
+    input('Press ENTER to continue ...')
 
 
 if __name__ == '__main__':

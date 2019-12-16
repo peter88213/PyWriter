@@ -9,7 +9,9 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 import sys
-import xml.etree.ElementTree as ET
+import ywrestler
+
+PROGRAM_TITLE = 'Import yw7 scenes from (strict) markdown'
 
 
 def format_yw7(text):
@@ -22,69 +24,54 @@ def format_yw7(text):
     return(text)
 
 
-def count_words(text):
-    """ Required, because yWriter stores word counts. """
-    text = re.sub('\[.+?\]|\.|\,| -', '', text)
-    # Remove yw7 raw markup
-    wordList = text.split()
-    wordCount = len(wordList)
-    return str(wordCount)
-
-
-def count_letters(text):
-    """ Required, because yWriter stores letter counts. """
-    text = re.sub('\[.+?\]', '', text)
-    # Remove yw7 raw markup
-    letterCount = len(text)
-    return str(letterCount)
-
-
 def md_to_yw7(mdFile, yw7File):
     """ Convert markdown to xml and replace .yw7 file. """
     try:
         with open(mdFile, 'r', encoding='utf-8') as f:
             text = (f.read())
-    except(IOError):
-        sys.exit(1)
+    except(FileNotFoundError):
+        return('\nERROR: "' + mdFile + '" not found.')
 
     text = format_yw7(text)
     scenes = {}
     sceneText = ''
-    scnID = ''
+    scID = ''
     lines = text.split('\n')
     for line in lines:
         if line.count('[ChID'):
             pass
         elif line.count('[ScID'):
-            scnID = re.search('[0-9]+', line).group()
+            scID = re.search('[0-9]+', line).group()
         elif line.count('[/ChID]'):
             pass
         elif line.count('[/ScID]'):
-            scenes[scnID] = sceneText
+            scenes[scID] = sceneText
             sceneText = ''
         else:
             sceneText = sceneText + line + '\n'
 
-    tree = ET.parse(yw7File)
-    root = tree.getroot()
-    for scn in root.iter('SCENE'):
-        scnID = scn.find('ID').text
-        scn.find('SceneContent').text = scenes[scnID]
-        scn.find('WordCount').text = count_words(scenes[scnID])
-        scn.find('LetterCount').text = count_letters(scenes[scnID])
-    tree.write(yw7File, encoding='utf-8')
+    myPrj = ywrestler.Project(yw7File)
+
+    return(myPrj.write_scenes(scenes))
 
 
 def main():
-    """ Call the functions with command line arguments. """
+    print('\n*** ' + PROGRAM_TITLE + ' ***')
     try:
         mdPath = sys.argv[1]
     except:
-        print('Syntax: yw7write.py filename.md')
-        sys.exit(1)
+        mdPath = input('\nEnter md filename: ')
 
     yw7Path = mdPath.split('.md')[0] + '.yw7'
-    md_to_yw7(mdPath, yw7Path)
+
+    print('\nWARNING: This will overwrite "' +
+          yw7Path + '" (if exists)!')
+    userConfirmation = input('Continue (y/n)? ')
+    if userConfirmation in ('y', 'Y'):
+        print(md_to_yw7(mdPath, yw7Path))
+    else:
+        print('Program abort by user.\n')
+    input('Press ENTER to continue ...')
 
 
 if __name__ == '__main__':
