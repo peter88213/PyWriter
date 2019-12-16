@@ -7,8 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import unittest
-import yw7html
-import htmlyw7
+import ywrestler
 
 TEST_PATH = os.getcwd()
 TEST_EXEC_PATH = 'yWriter7 Sample/'
@@ -63,7 +62,7 @@ class NormalOperation(unittest.TestCase):
 
     def test_export(self):
         """ Convert yw7 scenes to html for proofing. """
-        yw7html.yw7_to_html(
+        ywrestler.yw7_to_html(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
         # Read .yw7 file and convert scenes to html.
 
@@ -78,8 +77,8 @@ class NormalOperation(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        htmlyw7.html_to_yw7(TEST_EXEC_PATH + HTML_FILE,
-                            TEST_EXEC_PATH + YW7_FILE)
+        ywrestler.html_to_yw7(TEST_EXEC_PATH + HTML_FILE,
+                              TEST_EXEC_PATH + YW7_FILE)
         # Convert document to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),

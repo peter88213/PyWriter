@@ -7,20 +7,15 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import unittest
-import yw7md
-import mdodt
-import odtmd
-import mdyw7
+import ywrestler
 
 TEST_PATH = os.getcwd()
 TEST_EXEC_PATH = 'yWriter7 Sample/'
 TEST_DATA_PATH = 'data/'
 
 YW7_FILE = 'yW7 Sample Project.yw7'
-ODT_FILE = 'yW7 Sample Project.odt'
 MD_FILE = 'yW7 Sample Project.md'
 YW7_PROOFED_FILE = 'after_proofing.yw7'
-ODT_PROOFED_FILE = 'after_proofing.odt'
 MD_PROOFED_FILE = 'after_proofing.md'
 
 
@@ -48,7 +43,6 @@ class NormalOperation(unittest.TestCase):
 
     def setUp(self):
         try:
-            os.remove(TEST_EXEC_PATH + ODT_FILE)
             os.remove(TEST_EXEC_PATH + MD_FILE)
         except:
             pass
@@ -68,37 +62,21 @@ class NormalOperation(unittest.TestCase):
 
     def test_export(self):
         """ Convert yw7 scenes to odt for proofing. """
-        yw7md.yw7_to_markdown(
+        ywrestler.yw7_to_markdown(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
         # Read .yw7 file and convert xml to markdown.
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_FILE))
 
-        mdodt.markdown_to_odt(
-            TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + ODT_FILE)
-        # Let pandoc convert markdown and write to .odt file.
-
-        odtmd.odt_to_markdown(
-            TEST_EXEC_PATH + ODT_FILE, TEST_EXEC_PATH + MD_FILE)
-        # Verify the ODT file.
-        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
-                         read_file(TEST_DATA_PATH + MD_FILE))
-
     def test_import(self):
         """ Read and replace proofed scenes. """
-        copy_file(TEST_DATA_PATH + ODT_PROOFED_FILE,
-                  TEST_EXEC_PATH + ODT_FILE)
+        copy_file(TEST_DATA_PATH + MD_PROOFED_FILE,
+                  TEST_EXEC_PATH + MD_FILE)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        odtmd.odt_to_markdown(
-            TEST_EXEC_PATH + ODT_FILE, TEST_EXEC_PATH + MD_FILE)
-        # Let pandoc read .odt file and convert to markdown.
-
-        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
-                         read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
-
-        mdyw7.md_to_yw7(TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + YW7_FILE)
+        ywrestler.md_to_yw7(TEST_EXEC_PATH + MD_FILE,
+                            TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
