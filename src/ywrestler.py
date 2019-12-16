@@ -176,22 +176,27 @@ def yw7_to_html(yw7File, htmlFile):
     prj = Yw7Prj(yw7File)
     htmlText = htmlHeader.replace('$bookTitle$', prj.projectTitle)
     for chID in prj.chapterTitles:
-        htmlText = htmlText + '<div id="ChID:' + chID + '">\n<h2>' + \
+        #htmlText = htmlText + '<div id="ChID:' + chID + '">\n'
+        htmlText = htmlText + '<h2>' + \
             format_chapter_title(prj.chapterTitles[chID]) + '</h2>\n'
         for scID in prj.sceneLists[chID]:
-            htmlText = htmlText + '<h4>' + sceneDivider + '</h4>\n<div id="ScID:' + scID +\
-                '">\n<p class="textbody"><!-- ' + \
-                prj.sceneTitles[scID] + ' -->\n'
-            # Insert scene title as html comment.
+            htmlText = htmlText + '<h4>' + sceneDivider + '</h4>\n'
+            htmlText = htmlText + '<div id="ScID:' + scID + '">\n'
+            htmlText = htmlText + '<p class="textbody">'
+            htmlText = htmlText + '<a name="ScID:' + scID + '" />'
+            # Insert scene ID as anchor.
+            htmlText = htmlText + '<!-- ' + prj.sceneTitles[scID] + ' -->\n'
+            # Insert scene title as comment.
             try:
-                htmlText = htmlText + \
-                    format_yw7(prj.sceneContents[scID]) + '</p>\n</div>\n'
+                htmlText = htmlText + format_yw7(prj.sceneContents[scID])
             except:
-                pass
+                htmlText = htmlText + '&nbsp;'
+            htmlText = htmlText + '</p>\n'
+            htmlText = htmlText + '</div>\n'
 
-        htmlText = htmlText + '</div>\n'
+        #htmlText = htmlText + '</div>\n'
     htmlText = htmlText.replace(
-        '</h2>\n<h4>' + sceneDivider + '</h4>', '</h2>\n')
+        '</h2>\n<h4>' + sceneDivider + '</h4>', '</h2>')
     htmlText = htmlText + htmlFooter
 
     try:
