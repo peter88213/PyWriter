@@ -58,19 +58,19 @@ def format_yw7(text):
 def yw7_to_html(yw7File, htmlFile):
     """ Read .yw7 file and convert sceneContents to html. """
 
-    myPrj = ywrestler.Project(yw7File)
+    yw7Project = ywrestler.Project(yw7File)
 
-    sceneTitles = myPrj.get_scenes()[0]
-    sceneContents = myPrj.get_scenes()[1]
-    chapterTitles = myPrj.get_chapters()[0]
-    chapterContents = myPrj.get_chapters()[1]
+    sceneTitles = yw7Project.get_scenes()[0]
+    sceneContents = yw7Project.get_scenes()[1]
+    chapterTitles = yw7Project.get_chapters()[0]
+    sceneLists = yw7Project.get_chapters()[1]
 
-    htmlText = HTML_HEADER.replace('$bookTitle$', myPrj.get_title())
+    htmlText = HTML_HEADER.replace('$bookTitle$', yw7Project.get_title())
 
     for chID in chapterTitles:
         htmlText = htmlText + '<div id="ChID:' + chID + '">\n<h2>' + \
             format_chapter_title(chapterTitles[chID]) + '</h2>\n'
-        for scID in chapterContents[chID]:
+        for scID in sceneLists[chID]:
             htmlText = htmlText + '<h4>' + SCENE_DIVIDER + '</h4>\n<div id="ScID:' + scID +\
                 '">\n<p class="textbody"><!-- ' + sceneTitles[scID] + ' -->\n'
             # Insert scene title as html comment.

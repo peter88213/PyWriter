@@ -49,11 +49,11 @@ class MyHTMLParser(HTMLParser):
     sceneText = ''
     scID = 0
     inScene = False
-    scnContents = {}
+    sceneContents = {}
 
-    def getScenes(self):
+    def get_scene_contents(self):
         """ Export scene content dictionary. """
-        return(self.scnContents)
+        return(self.sceneContents)
 
     def handle_starttag(self, tag, attrs):
         """ Get scene ID at scene start. """
@@ -67,7 +67,7 @@ class MyHTMLParser(HTMLParser):
         """ Save scene content in dictionary at scene end. """
         if tag == 'div':
             if self.inScene:
-                self.scnContents[self.scID] = self.sceneText
+                self.sceneContents[self.scID] = self.sceneText
                 self.sceneText = ''
                 self.inScene = False
 
@@ -79,7 +79,7 @@ class MyHTMLParser(HTMLParser):
 
 
 def html_to_yw7(htmlFile, yw7File):
-    """ Convert html into yw7 scenes and modify .yw7 file. """
+    """ Convert html into yw7 sceneContents and modify .yw7 file. """
     try:
         with open(htmlFile, 'r', encoding='utf-8') as f:
             text = (f.read())
@@ -94,11 +94,9 @@ def html_to_yw7(htmlFile, yw7File):
 
     parser = MyHTMLParser()
     parser.feed(text)
-    scenes = parser.getScenes()
+    yw7Project = ywrestler.Project(yw7File)
 
-    myPrj = ywrestler.Project(yw7File)
-
-    return(myPrj.write_scenes(scenes))
+    return(yw7Project.write_scene_contents(parser.get_scene_contents()))
 
 
 def main():

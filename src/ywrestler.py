@@ -27,30 +27,30 @@ class Project():
     """ yWriter 7 project data """
 
     file = ''
-    title = ''
-    chpTitles = {}
-    sceneList = {}
-    scnContents = {}
-    scnTitles = {}
+    projectTitle = ''
+    chapterTitles = {}
+    sceneLists = {}
+    sceneContents = {}
+    sceneTitles = {}
     tree = None
 
     def get_title(self):
-        """ Get the yw7 project title """
-        return(self.title)
+        """ Get the yw7 project projectTitle """
+        return(self.projectTitle)
 
     def get_chapters(self):
         """ Get a list of chapter properties """
-        return([self.chpTitles, self.sceneList])
+        return([self.chapterTitles, self.sceneLists])
 
     def get_scenes(self):
         """ Get a list of scene properties """
-        return([self.scnTitles, self.scnContents])
+        return([self.sceneTitles, self.sceneContents])
 
     def __init__(self, yw7File):
         """ Read data from yw7 project file """
         self.file = yw7File
-        self.scnContents = {}
-        self.scnTitles = {}
+        self.sceneContents = {}
+        self.sceneTitles = {}
         try:
             self.tree = ET.parse(self.file)
             root = self.tree.getroot()
@@ -58,33 +58,34 @@ class Project():
             return('\nERROR: "' + self.file + '" not found.')
 
         for prj in root.iter('PROJECT'):
-            self.title = prj.find('Title').text
+            self.projectTitle = prj.find('Title').text
 
         for chp in root.iter('CHAPTER'):
-            chpID = chp.find('ID').text
-            self.chpTitles[chpID] = chp.find('Title').text
-            self.sceneList[chpID] = []
+            chID = chp.find('ID').text
+            self.chapterTitles[chID] = chp.find('Title').text
+            self.sceneLists[chID] = []
             for scn in chp.find('Scenes').findall('ScID'):
-                self.sceneList[chpID].append(scn.text)
+                self.sceneLists[chID].append(scn.text)
 
         for scn in root.iter('SCENE'):
-            scnID = scn.find('ID').text
-            self.scnContents[scnID] = scn.find('SceneContent').text
-            self.scnTitles[scnID] = scn.find('Title').text
+            scID = scn.find('ID').text
+            self.sceneContents[scID] = scn.find('SceneContent').text
+            self.sceneTitles[scID] = scn.find('Title').text
 
-    def write_scenes(self, newScnContents):
+    def write_scene_contents(self, newContents):
         """ Write scene data to yw7 project file """
+        self.sceneContents = newContents
         sceneCount = 0
         root = self.tree.getroot()
 
         for scn in root.iter('SCENE'):
-            scnID = scn.find('ID').text
+            scID = scn.find('ID').text
             try:
-                scn.find('SceneContent').text = newScnContents[scnID]
+                scn.find('SceneContent').text = self.sceneContents[scID]
                 scn.find('WordCount').text = count_words(
-                    newScnContents[scnID])
+                    self.sceneContents[scID])
                 scn.find('LetterCount').text = count_letters(
-                    newScnContents[scnID])
+                    self.sceneContents[scID])
             except:
                 pass
             sceneCount = sceneCount + 1

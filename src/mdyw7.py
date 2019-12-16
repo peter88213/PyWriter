@@ -33,7 +33,7 @@ def md_to_yw7(mdFile, yw7File):
         return('\nERROR: "' + mdFile + '" not found.')
 
     text = format_yw7(text)
-    scenes = {}
+    sceneContents = {}
     sceneText = ''
     scID = ''
     lines = text.split('\n')
@@ -45,14 +45,14 @@ def md_to_yw7(mdFile, yw7File):
         elif line.count('[/ChID]'):
             pass
         elif line.count('[/ScID]'):
-            scenes[scID] = sceneText
+            sceneContents[scID] = sceneText
             sceneText = ''
         else:
             sceneText = sceneText + line + '\n'
 
-    myPrj = ywrestler.Project(yw7File)
+    yw7Project = ywrestler.Project(yw7File)
 
-    return(myPrj.write_scenes(scenes))
+    return(yw7Project.write_scene_contents(sceneContents))
 
 
 def main():

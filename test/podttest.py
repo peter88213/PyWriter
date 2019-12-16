@@ -7,10 +7,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import unittest
-import yw7read
-import odtwrite
-import odtread
-import yw7write
+import yw7md
+import mdodt
+import odtmd
+import mdyw7
 
 TEST_PATH = os.getcwd()
 TEST_EXEC_PATH = 'yWriter7 Sample/'
@@ -68,17 +68,17 @@ class NormalOperation(unittest.TestCase):
 
     def test_export(self):
         """ Convert yw7 scenes to odt for proofing. """
-        yw7read.yw7_to_markdown(
+        yw7md.yw7_to_markdown(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
         # Read .yw7 file and convert xml to markdown.
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_FILE))
 
-        odtwrite.markdown_to_odt(
+        mdodt.markdown_to_odt(
             TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + ODT_FILE)
         # Let pandoc convert markdown and write to .odt file.
 
-        odtread.odt_to_markdown(
+        odtmd.odt_to_markdown(
             TEST_EXEC_PATH + ODT_FILE, TEST_EXEC_PATH + MD_FILE)
         # Verify the ODT file.
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
@@ -91,14 +91,14 @@ class NormalOperation(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        odtread.odt_to_markdown(
+        odtmd.odt_to_markdown(
             TEST_EXEC_PATH + ODT_FILE, TEST_EXEC_PATH + MD_FILE)
         # Let pandoc read .odt file and convert to markdown.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
 
-        yw7write.md_to_yw7(TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + YW7_FILE)
+        mdyw7.md_to_yw7(TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
