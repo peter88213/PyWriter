@@ -8,7 +8,7 @@ For further information see https://github.com/peter88213/yWrestler
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
-from ywrestler import md_to_yw7
+from ywrestler import markdown_to_yw7
 
 print('\n*** Import yw7 scenes from (strict) markdown ***')
 try:
@@ -20,7 +20,7 @@ print('\nWARNING: This will overwrite "' +
       yw7Path + '"!')
 userConfirmation = input('Continue (y/n)? ')
 if userConfirmation in ('y', 'Y'):
-    print(md_to_yw7(mdPath, yw7Path))
+    print(markdown_to_yw7(mdPath, yw7Path))
 else:
     print('Program abort by user.\n')
 input('Press ENTER to continue ...')

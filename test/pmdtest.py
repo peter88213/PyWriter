@@ -75,7 +75,7 @@ class NormalOperation(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        ywrestler.md_to_yw7(TEST_EXEC_PATH + MD_FILE,
+        ywrestler.markdown_to_yw7(TEST_EXEC_PATH + MD_FILE,
                             TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
 
