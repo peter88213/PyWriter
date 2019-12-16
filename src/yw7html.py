@@ -58,27 +58,22 @@ def format_yw7(text):
 def yw7_to_html(yw7File, htmlFile):
     """ Read .yw7 file and convert sceneContents to html. """
 
-    yw7Project = ywrestler.Project(yw7File)
-
-    sceneTitles = yw7Project.get_scenes()[0]
-    sceneContents = yw7Project.get_scenes()[1]
-    chapterTitles = yw7Project.get_chapters()[0]
-    sceneLists = yw7Project.get_chapters()[1]
-
-    htmlText = HTML_HEADER.replace('$bookTitle$', yw7Project.get_title())
-
-    for chID in chapterTitles:
+    prj = ywrestler.Project(yw7File)
+    htmlText = HTML_HEADER.replace('$bookTitle$', prj.projectTitle)
+    for chID in prj.chapterTitles:
         htmlText = htmlText + '<div id="ChID:' + chID + '">\n<h2>' + \
-            format_chapter_title(chapterTitles[chID]) + '</h2>\n'
-        for scID in sceneLists[chID]:
+            format_chapter_title(prj.chapterTitles[chID]) + '</h2>\n'
+        for scID in prj.sceneLists[chID]:
             htmlText = htmlText + '<h4>' + SCENE_DIVIDER + '</h4>\n<div id="ScID:' + scID +\
-                '">\n<p class="textbody"><!-- ' + sceneTitles[scID] + ' -->\n'
+                '">\n<p class="textbody"><!-- ' + \
+                prj.sceneTitles[scID] + ' -->\n'
             # Insert scene title as html comment.
             try:
                 htmlText = htmlText + \
-                    format_yw7(sceneContents[scID]) + '</p>\n</div>\n'
+                    format_yw7(prj.sceneContents[scID]) + '</p>\n</div>\n'
             except:
                 pass
+
         htmlText = htmlText + '</div>\n'
     htmlText = htmlText.replace(
         '</h2>\n<h4>' + SCENE_DIVIDER + '</h4>', '</h2>\n')
@@ -90,7 +85,7 @@ def yw7_to_html(yw7File, htmlFile):
     except(PermissionError):
         return('\nERROR: ' + htmlFile + '" is write protected.')
 
-    return('\n' + str(len(sceneContents)) + ' Scenes written to "' + htmlFile + '".')
+    return('\n' + str(len(prj.sceneContents)) + ' Scenes written to "' + htmlFile + '".')
 
 
 def main():

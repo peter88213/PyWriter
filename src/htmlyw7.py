@@ -94,9 +94,9 @@ def html_to_yw7(htmlFile, yw7File):
 
     parser = MyHTMLParser()
     parser.feed(text)
-    yw7Project = ywrestler.Project(yw7File)
+    prj = ywrestler.Project(yw7File)
 
-    return(yw7Project.write_scene_contents(parser.get_scene_contents()))
+    return(prj.write_scene_contents(parser.get_scene_contents()))
 
 
 def main():

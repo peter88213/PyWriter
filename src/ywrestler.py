@@ -26,31 +26,15 @@ def count_letters(text):
 class Project():
     """ yWriter 7 project data """
 
-    file = ''
-    projectTitle = ''
-    chapterTitles = {}
-    sceneLists = {}
-    sceneContents = {}
-    sceneTitles = {}
-    tree = None
-
-    def get_title(self):
-        """ Get the yw7 project projectTitle """
-        return(self.projectTitle)
-
-    def get_chapters(self):
-        """ Get a list of chapter properties """
-        return([self.chapterTitles, self.sceneLists])
-
-    def get_scenes(self):
-        """ Get a list of scene properties """
-        return([self.sceneTitles, self.sceneContents])
-
     def __init__(self, yw7File):
         """ Read data from yw7 project file """
         self.file = yw7File
+        self.projectTitle = ''
+        self.chapterTitles = {}
+        self.sceneLists = {}
         self.sceneContents = {}
         self.sceneTitles = {}
+
         try:
             self.tree = ET.parse(self.file)
             root = self.tree.getroot()

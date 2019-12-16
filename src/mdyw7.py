@@ -50,9 +50,9 @@ def md_to_yw7(mdFile, yw7File):
         else:
             sceneText = sceneText + line + '\n'
 
-    yw7Project = ywrestler.Project(yw7File)
+    prj = ywrestler.Project(yw7File)
 
-    return(yw7Project.write_scene_contents(sceneContents))
+    return(prj.write_scene_contents(sceneContents))
 
 
 def main():

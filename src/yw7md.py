@@ -27,17 +27,13 @@ def format_md(text):
 def yw7_to_markdown(yw7File, mdFile):
     """ Read .yw7 file and convert xml to markdown. """
 
-    yw7Project = ywrestler.Project(yw7File)
-
-    sceneContents = yw7Project.get_scenes()[1]
-    sceneLists = yw7Project.get_chapters()[1]
-
+    prj = ywrestler.Project(yw7File)
     prjText = ''
-    for chID in sceneLists:
+    for chID in prj.sceneLists:
         prjText = prjText + '\\[ChID:' + chID + '\\]\n'
-        for scID in sceneLists[chID]:
+        for scID in prj.sceneLists[chID]:
             prjText = prjText + '\\[ScID:' + scID + '\\]\n'
-            prjText = prjText + sceneContents[scID] + '\n'
+            prjText = prjText + prj.sceneContents[scID] + '\n'
             prjText = prjText + '\\[/ScID\\]\n'
         prjText = prjText + '\\[/ChID\\]\n'
     prjText = format_md(prjText)
@@ -45,7 +41,7 @@ def yw7_to_markdown(yw7File, mdFile):
     with open(mdFile, 'w', encoding='utf-8') as f:
         f.write(prjText)
 
-    return('\n' + str(len(sceneContents)) + ' Scenes written to "' + mdFile + '".')
+    return('\n' + str(len(prj.sceneContents)) + ' Scenes written to "' + mdFile + '".')
 
 
 def main():
