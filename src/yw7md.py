@@ -4,7 +4,7 @@ Read an yWriter7 project file and create a markdown file with scene
 text divided by [ChID:x] and [ScID:y] tags (as known by 
 yWriter5 RTF proofing export).
 
-For further information see https://github.com/peter88213/yWrestler
+For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys

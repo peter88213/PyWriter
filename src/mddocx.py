@@ -2,7 +2,7 @@
 
 A Pandoc wrapper for Python modules.
 
-For further information see https://github.com/peter88213/yWrestler
+For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
@@ -20,7 +20,7 @@ def main():
     try:
         mdPath = sys.argv[1]
     except:
-        print('Syntax: mddocx.py filename.md')
+        print('Syntax: docxwrite.py filename.md')
         sys.exit(1)
 
     docxPath = mdPath.split('.md')[0] + '.docx'
