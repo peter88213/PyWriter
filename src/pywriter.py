@@ -189,7 +189,7 @@ def yw7_to_html(yw7File, htmlFile):
     prj = Yw7Prj(yw7File)
     htmlText = htmlHeader.replace('$bookTitle$', prj.projectTitle)
     for chID in prj.chapterTitles:
-        #htmlText = htmlText + '<div id="ChID:' + chID + '">\n'
+        htmlText = htmlText + '<div id="ChID:' + chID + '">\n'
         htmlText = htmlText + '<h2>' + \
             format_chapter_title(prj.chapterTitles[chID]) + '</h2>\n'
         for scID in prj.sceneLists[chID]:
@@ -207,7 +207,7 @@ def yw7_to_html(yw7File, htmlFile):
             htmlText = htmlText + '</p>\n'
             htmlText = htmlText + '</div>\n'
 
-        #htmlText = htmlText + '</div>\n'
+        htmlText = htmlText + '</div>\n'
     htmlText = htmlText.replace(
         '</h2>\n<h4>' + sceneDivider + '</h4>', '</h2>')
     htmlText = htmlText + htmlFooter
@@ -218,7 +218,7 @@ def yw7_to_html(yw7File, htmlFile):
     except(PermissionError):
         return('\nERROR: ' + htmlFile + '" is write protected.')
 
-    create_csv(prj, htmlFile)
+    #create_csv(prj, htmlFile)
 
     return('\n' + str(len(prj.sceneContents)) + ' Scenes written to "' + htmlFile + '".')
 

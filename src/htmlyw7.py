@@ -7,7 +7,7 @@ For further information see https://github.com/peter88213/yWrestler
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
-from ywrestler import html_to_yw7
+from pywriter import html_to_yw7
 
 print('\n*** Import yw7 scenes from html ***')
 try:

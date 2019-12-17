@@ -7,16 +7,18 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import unittest
-import ywrestler
+import pywriter
 
 TEST_PATH = os.getcwd()
-TEST_EXEC_PATH = 'yWriter7 Sample/'
+TEST_EXEC_PATH = 'yw7/'
 TEST_DATA_PATH = 'data/'
 
-YW7_FILE = 'yW7 Sample Project.yw7'
-HTML_FILE = 'yW7 Sample Project.html'
-YW7_PROOFED_FILE = 'after_proofing.yw7'
-HTML_PROOFED_FILE = 'after_proofing.html'
+YW7_FILE = 'project.yw7'
+HTML_FILE = 'project.html'
+YW7_REFERENCE_FILE = 'original.yw7'
+HTML_REFERENCE_FILE = 'original.html'
+YW7_PROOFED_FILE = 'proofed.yw7'
+HTML_PROOFED_FILE = 'proofed.html'
 
 
 def read_file(inputFile):
@@ -47,27 +49,27 @@ class NormalOperation(unittest.TestCase):
         except:
             pass
         # Place the correct yw7 project file.
-        copy_file(TEST_DATA_PATH + YW7_FILE,
+        copy_file(TEST_DATA_PATH + YW7_REFERENCE_FILE,
                   TEST_EXEC_PATH + YW7_FILE)
 
     def test_data(self):
         """ Verify test data integrity. """
         # Initial test data must differ from the "proofed" test data.
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + HTML_FILE),
+            read_file(TEST_DATA_PATH + HTML_REFERENCE_FILE),
             read_file(TEST_DATA_PATH + HTML_PROOFED_FILE))
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + YW7_FILE),
+            read_file(TEST_DATA_PATH + YW7_REFERENCE_FILE),
             read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
 
     def test_export(self):
         """ Convert yw7 scenes to html for proofing. """
-        ywrestler.yw7_to_html(
+        pywriter.yw7_to_html(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
         # Read .yw7 file and convert scenes to html.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + HTML_FILE),
-                         read_file(TEST_DATA_PATH + HTML_FILE))
+                         read_file(TEST_DATA_PATH + HTML_REFERENCE_FILE))
         # Verify the html file.
 
     def test_import(self):
@@ -77,8 +79,8 @@ class NormalOperation(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        ywrestler.html_to_yw7(TEST_EXEC_PATH + HTML_FILE,
-                              TEST_EXEC_PATH + YW7_FILE)
+        pywriter.html_to_yw7(TEST_EXEC_PATH + HTML_FILE,
+                             TEST_EXEC_PATH + YW7_FILE)
         # Convert document to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
