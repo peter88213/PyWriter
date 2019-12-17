@@ -20,6 +20,7 @@ class Yw7Prj():
         self.sceneLists = {}
         self.sceneContents = {}
         self.sceneTitles = {}
+        self.sceneDescriptions = {}
 
         try:
             self.tree = ET.parse(self.file)
@@ -41,6 +42,7 @@ class Yw7Prj():
             scID = scn.find('ID').text
             self.sceneContents[scID] = scn.find('SceneContent').text
             self.sceneTitles[scID] = scn.find('Title').text
+            self.sceneDescriptions[scID] = scn.find('Desc').text
 
     def write_scene_contents(self, newContents):
         """ Write scene data to yw7 project file """
@@ -156,6 +158,17 @@ def yw7_to_html(yw7File, htmlFile):
             pass
         return(text)
 
+    def create_csv(prj, htmlPath):
+        """ Create scenes link list """
+        csvFile = htmlPath.split('.html')[0] + '.csv'
+        with open(csvFile, 'w') as f:
+            for chID in prj.chapterTitles:
+                for scID in prj.sceneLists[chID]:
+                    f.write(scID + ',"')
+                    for line in prj.sceneDescriptions[scID]:
+                        f.write(line.replace('"', "'"))
+                    f.write('"\n')
+
     sceneDivider = '* * *'
 
     # Make the html file look good in a web browser.
@@ -204,6 +217,8 @@ def yw7_to_html(yw7File, htmlFile):
             f.write(htmlText)
     except(PermissionError):
         return('\nERROR: ' + htmlFile + '" is write protected.')
+
+    create_csv(prj, htmlFile)
 
     return('\n' + str(len(prj.sceneContents)) + ' Scenes written to "' + htmlFile + '".')
 
