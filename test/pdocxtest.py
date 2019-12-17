@@ -7,8 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import unittest
-import docxmd
-import mddocx
+import pywriter
 
 TEST_PATH = os.getcwd()
 TEST_EXEC_PATH = 'yw7/'
@@ -51,11 +50,11 @@ class NormalOperation(unittest.TestCase):
 
     def test_roundtrip(self):
         """ Convert md to docx and back to md. """
-        mddocx.markdown_to_docx(
+        pywriter.markdown_to_docx(
             TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + DOCX_FILE)
         os.remove(TEST_EXEC_PATH + MD_FILE)
-        docxmd.docx_to_markdown(TEST_EXEC_PATH + DOCX_FILE,
-                                TEST_EXEC_PATH + MD_FILE)
+        pywriter.docx_to_markdown(TEST_EXEC_PATH + DOCX_FILE,
+                                  TEST_EXEC_PATH + MD_FILE)
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_REFERENCE_FILE))
         # Verify the yw7 project.
