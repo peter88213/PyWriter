@@ -10,14 +10,16 @@ import pywriter
 
 def yw7_to_docx(yw7File, mdFile, docxFile):
     """ Export to docx """
-    pywriter.yw7_to_markdown(yw7File, mdFile)
+    message = pywriter.yw7_to_markdown(yw7File, mdFile)
     pywriter.markdown_to_docx(mdFile, docxFile)
+    return(message)
 
 
 def docx_to_yw7(docxFile, mdFile, yw7File):
     """ Import from markdown """
     pywriter.docx_to_markdown(docxFile, mdFile)
-    pywriter.markdown_to_yw7(mdFile, yw7File)
+    message = pywriter.markdown_to_yw7(mdFile, yw7File)
+    return(message)
 
 
 def main():
@@ -40,7 +42,7 @@ def main():
               docxFile + '" (if exists)!')
         userConfirmation = input('Continue (y/n)? ')
         if userConfirmation in ('y', 'Y'):
-            yw7_to_docx(yw7File, mdFile, docxFile)
+            print(yw7_to_docx(yw7File, mdFile, docxFile))
         else:
             print('Program abort by user.\n')
 
@@ -55,9 +57,11 @@ def main():
               yw7File + '"!')
         userConfirmation = input('Continue (y/n)? ')
         if userConfirmation in ('y', 'Y'):
-            docx_to_yw7(docxFile, mdFile, yw7File)
+            print(docx_to_yw7(docxFile, mdFile, yw7File))
         else:
             print('Program abort by user.\n')
+    else:
+        print('Input file must be YW7 or DOCX.')
     input('Press ENTER to continue ...')
 
 

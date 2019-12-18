@@ -98,7 +98,7 @@ class Yw7Prj():
         except(PermissionError):
             return('\nERROR: "' + self.file + '" is write protected.')
 
-        return('\n' + str(sceneCount) + ' Scenes written to "' + self.file + '".')
+        return('\nSUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self.file + '".')
 
 
 class MyHTMLParser(HTMLParser):
@@ -252,7 +252,7 @@ def yw7_to_html(yw7File, htmlFile):
 
     #create_csv(prj, htmlFile)
 
-    return('\n' + str(len(prj.sceneContents)) + ' Scenes written to "' + htmlFile + '".')
+    return('\nSUCCESS: ' + str(len(prj.sceneContents)) + ' Scenes written to "' + htmlFile + '".')
 
 
 def markdown_to_yw7(mdFile, yw7File):
@@ -323,7 +323,7 @@ def yw7_to_markdown(yw7File, mdFile):
     with open(mdFile, 'w', encoding='utf-8') as f:
         f.write(prjText)
 
-    return('\n' + str(len(prj.sceneContents)) + ' Scenes written to "' + mdFile + '".')
+    return('\nSUCCESS: ' + str(len(prj.sceneContents)) + ' Scenes written to "' + mdFile + '".')
 
 
 def count_words(text):

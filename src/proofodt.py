@@ -10,14 +10,16 @@ import pywriter
 
 def yw7_to_odt(yw7File, mdFile, odtFile):
     """ Export to odt """
-    pywriter.yw7_to_markdown(yw7File, mdFile)
+    message = pywriter.yw7_to_markdown(yw7File, mdFile)
     pywriter.markdown_to_odt(mdFile, odtFile)
+    return(message)
 
 
 def odt_to_yw7(odtFile, mdFile, yw7File):
     """ Import from markdown """
     pywriter.odt_to_markdown(odtFile, mdFile)
-    pywriter.markdown_to_yw7(mdFile, yw7File)
+    message = pywriter.markdown_to_yw7(mdFile, yw7File)
+    return(message)
 
 
 def main():
@@ -40,7 +42,7 @@ def main():
               odtFile + '" (if exists)!')
         userConfirmation = input('Continue (y/n)? ')
         if userConfirmation in ('y', 'Y'):
-            yw7_to_odt(yw7File, mdFile, odtFile)
+            print(yw7_to_odt(yw7File, mdFile, odtFile))
         else:
             print('Program abort by user.\n')
 
@@ -55,9 +57,11 @@ def main():
               yw7File + '"!')
         userConfirmation = input('Continue (y/n)? ')
         if userConfirmation in ('y', 'Y'):
-            odt_to_yw7(odtFile, mdFile, yw7File)
+            print(odt_to_yw7(odtFile, mdFile, yw7File))
         else:
             print('Program abort by user.\n')
+    else:
+        print('Input file must be YW7 or ODT.')
     input('Press ENTER to continue ...')
 
 
