@@ -3,11 +3,42 @@
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
+import os
 import re
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
-from pypandoc import convert_file
+
+
+def convert_file(srcFile, dstFormat, format='', outputfile='', extra_args=[]):
+    """ Pandoc wrapper. """
+
+    temporaryFile = 'temp.txt'
+
+    extraArgs = ' '
+    for extraArgument in extra_args:
+        extraArgs = extraArgs + extraArgument + ' '
+
+    if outputfile != '':
+        dstFile = outputfile
+    else:
+        dstFile = temporaryFile
+
+    argument1 = 'pandoc.exe'
+    argument2 = ' -w ' + dstFormat
+    argument3 = ' -r ' + format
+    argument4 = ' -o ' + dstFile
+    argument5 = ' ' + extraArgs
+    argument6 = ' ' + srcFile
+
+    status = os.system(argument1 + argument2 + argument3 +
+                       argument4 + argument5 + argument6)
+
+    if status == 0:
+        if outputfile == '':
+            with open(temporaryFile, 'r', encoding='utf-8') as f:
+                result = f.read()
+            os.remove(temporaryFile)
+            return(result)
 
 
 class Yw7Prj():
