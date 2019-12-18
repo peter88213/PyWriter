@@ -46,14 +46,16 @@ def main():
         odtFile = sourceFile[0] + '/' + \
             sourceFile[1].split('.yw7')[0] + '.odt'
         print('\n*** Export yWriter7 scenes to ODT ***')
-        print('Project: "' + yw7File + '"\n')
-        print('\nWARNING: This will overwrite "' +
-              odtFile + '" (if exists)!')
-        userConfirmation = input('Continue (y/n)? ')
-        if userConfirmation in ('y', 'Y'):
-            print(yw7_to_odt(yw7File, mdFile, odtFile))
-        else:
-            print('Program abort by user.\n')
+        print('Project: "' + yw7File + '"')
+        if os.path.isfile(odtFile):
+            print('\nWARNING: This will overwrite "' +
+                  odtFile + '"!')
+            userConfirmation = input('Continue (y/n)? ')
+            if not userConfirmation in ('y', 'Y'):
+                print('Program abort by user.\n')
+                input('Press ENTER to continue ...')
+                sys.exit()
+        print(yw7_to_odt(yw7File, mdFile, odtFile))
 
     elif sourceFile[1].count('.odt'):
         odtFile = sourceFile[0] + '/' + sourceFile[1]

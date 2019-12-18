@@ -20,14 +20,16 @@ if sourceFile[1].count('.yw7'):
     mdFile = sourceFile[0] + '/' + \
         sourceFile[1].split('.yw7')[0] + '.md'
     print('\n*** Export yw7 scenes to Markdown (Strict) ***')
-    print('Project: "' + yw7File + '"\n')
-    print('\nWARNING: This will overwrite "' +
-          mdFile + '" (if exists)!')
-    userConfirmation = input('Continue (y/n)? ')
-    if userConfirmation in ('y', 'Y'):
-        print(pywriter.yw7_to_md(yw7File, mdFile))
-    else:
-        print('Program abort by user.\n')
+    print('Project: "' + yw7File + '"')
+    if os.path.isfile(mdFile):
+        print('\nWARNING: This will overwrite "' +
+              mdFile + '"!')
+        userConfirmation = input('Continue (y/n)? ')
+        if not userConfirmation in ('y', 'Y'):
+            print('Program abort by user.\n')
+            input('Press ENTER to continue ...')
+            sys.exit()
+    print(pywriter.yw7_to_md(yw7File, mdFile))
 
 elif sourceFile[1].count('.md'):
     mdFile = sourceFile[0] + '/' + sourceFile[1]

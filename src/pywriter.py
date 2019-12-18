@@ -26,9 +26,9 @@ def convert_file(srcFile, dstFormat, format='', outputfile='', extra_args=[]):
     argument1 = 'pandoc.exe'
     argument2 = ' -w ' + dstFormat
     argument3 = ' -r ' + format
-    argument4 = ' -o ' + dstFile
+    argument4 = ' -o "' + dstFile + '"'
     argument5 = ' ' + extraArgs
-    argument6 = ' ' + srcFile
+    argument6 = ' "' + srcFile + '"'
 
     status = os.system(argument1 + argument2 + argument3 +
                        argument4 + argument5 + argument6)
