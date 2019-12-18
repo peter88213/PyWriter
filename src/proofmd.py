@@ -46,7 +46,10 @@ def main():
             else:
                 print('Program abort by user.\n')
         else:
-            print('\n"' + yw7File + '" not found.\nPlease make sure that your proofed file is in the same directory as your yWriter7 project.\nProgram abort.')
+            print('\n"' + yw7File + '" not found.')
+            print(
+                'Please make sure that your proofed file is in the same directory as your yWriter7 project.')
+            print('Program abort.')
     else:
         print('Input file must be YW7 or md.')
     input('Press ENTER to continue ...')
