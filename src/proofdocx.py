@@ -16,7 +16,7 @@ def yw7_to_docx(yw7File, mdFile, docxFile):
 
 
 def docx_to_yw7(docxFile, mdFile, yw7File):
-    """ Import from markdown """
+    """ Import from yw7 """
     pywriter.docx_to_markdown(docxFile, mdFile)
     message = pywriter.markdown_to_yw7(mdFile, yw7File)
     return(message)
@@ -27,7 +27,7 @@ def main():
     try:
         sourcePath = sys.argv[1]
     except:
-        print('ERROR: "' + sourcePath + '" is no valid input!')
+        print('Syntax: proofdocx.py filename')
         exit(1)
 
     sourceFile = os.path.split(sourcePath)

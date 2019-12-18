@@ -16,7 +16,7 @@ def yw7_to_odt(yw7File, mdFile, odtFile):
 
 
 def odt_to_yw7(odtFile, mdFile, yw7File):
-    """ Import from markdown """
+    """ Import from odt """
     pywriter.odt_to_markdown(odtFile, mdFile)
     message = pywriter.markdown_to_yw7(mdFile, yw7File)
     return(message)
@@ -27,7 +27,7 @@ def main():
     try:
         sourcePath = sys.argv[1]
     except:
-        print('ERROR: "' + sourcePath + '" is no valid input!')
+        print('Syntax: proofodt.py filename')
         exit(1)
 
     sourceFile = os.path.split(sourcePath)
