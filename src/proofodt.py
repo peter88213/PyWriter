@@ -36,8 +36,8 @@ def main():
         mdFile = sourceFile[0] + '/' + sourceFile[1].split('.yw7')[0] + '.md'
         odtFile = sourceFile[0] + '/' + \
             sourceFile[1].split('.yw7')[0] + '.odt'
-        print('*** Export yWriter7 scenes to ODT ***')
-        print('Project: "', yw7File, '"')
+        print('\n*** Export yWriter7 scenes to ODT ***')
+        print('Project: "' + yw7File + '"\n')
         print('\nWARNING: This will overwrite "' +
               odtFile + '" (if exists)!')
         userConfirmation = input('Continue (y/n)? ')
@@ -51,15 +51,18 @@ def main():
         mdFile = sourceFile[0] + '/' + sourceFile[1].split('.odt')[0] + '.md'
         yw7File = sourceFile[0] + '/' + \
             sourceFile[1].split('.odt')[0] + '.yw7'
-        print('*** Import yWriter7 scenes from ODT ***')
-        print('Proofed scenes in "', odtFile, '"')
-        print('\nWARNING: This will overwrite "' +
-              yw7File + '"!')
-        userConfirmation = input('Continue (y/n)? ')
-        if userConfirmation in ('y', 'Y'):
-            print(odt_to_yw7(odtFile, mdFile, yw7File))
+        print('\n*** Import yWriter7 scenes from ODT ***')
+        print('Proofed scenes in "' + odtFile + '"')
+        if os.path.isfile(yw7File):
+            print('\nWARNING: This will overwrite "' +
+                  yw7File + '"!')
+            userConfirmation = input('Continue (y/n)? ')
+            if userConfirmation in ('y', 'Y'):
+                print(odt_to_yw7(odtFile, mdFile, yw7File))
+            else:
+                print('Program abort by user.\n')
         else:
-            print('Program abort by user.\n')
+            print('\n"' + yw7File + '" not found.\nPlease make sure that your proofed file is in the same directory as your yWriter7 project.\nProgram abort.')
     else:
         print('Input file must be YW7 or ODT.')
     input('Press ENTER to continue ...')

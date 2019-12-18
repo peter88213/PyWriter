@@ -22,7 +22,7 @@ def main():
         mdFile = sourceFile[0] + '/' + \
             sourceFile[1].split('.yw7')[0] + '.md'
         print('\n*** Export yw7 scenes to Markdown (Strict) ***')
-        print('Project: "', yw7File, '"')
+        print('Project: "' + yw7File + '"\n')
         print('\nWARNING: This will overwrite "' +
               mdFile + '" (if exists)!')
         userConfirmation = input('Continue (y/n)? ')
@@ -36,14 +36,17 @@ def main():
         yw7File = sourceFile[0] + '/' + \
             sourceFile[1].split('.md')[0] + '.yw7'
         print('\n*** Import yw7 scenes from Markdown (Strict) ***')
-        print('Proofed scenes in "', mdFile, '"')
-        print('\nWARNING: This will overwrite "' +
-              yw7File + '"!')
-        userConfirmation = input('Continue (y/n)? ')
-        if userConfirmation in ('y', 'Y'):
-            print(pywriter.markdown_to_yw7(mdFile, yw7File))
+        print('Proofed scenes in "' + mdFile + '"')
+        if os.path.isfile(yw7File):
+            print('\nWARNING: This will overwrite "' +
+                  yw7File + '"!')
+            userConfirmation = input('Continue (y/n)? ')
+            if userConfirmation in ('y', 'Y'):
+                print(pywriter.markdown_to_yw7(mdFile, yw7File))
+            else:
+                print('Program abort by user.\n')
         else:
-            print('Program abort by user.\n')
+            print('\n"' + yw7File + '" not found.\nPlease make sure that your proofed file is in the same directory as your yWriter7 project.\nProgram abort.')
     else:
         print('Input file must be YW7 or md.')
     input('Press ENTER to continue ...')

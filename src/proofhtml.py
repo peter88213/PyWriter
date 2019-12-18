@@ -22,7 +22,7 @@ def main():
         htmlFile = sourceFile[0] + '/' + \
             sourceFile[1].split('.yw7')[0] + '.html'
         print('\n*** Export yw7 scenes to html ***')
-        print('Project: "', yw7File, '"')
+        print('Project: "' + yw7File + '"\n')
         print('\nWARNING: This will overwrite "' +
               htmlFile + '" (if exists)!')
         userConfirmation = input('Continue (y/n)? ')
@@ -36,14 +36,17 @@ def main():
         yw7File = sourceFile[0] + '/' + \
             sourceFile[1].split('.html')[0] + '.yw7'
         print('\n*** Import yw7 scenes from html ***')
-        print('Proofed scenes in "', htmlFile, '"')
-        print('\nWARNING: This will overwrite "' +
-              yw7File + '"!')
-        userConfirmation = input('Continue (y/n)? ')
-        if userConfirmation in ('y', 'Y'):
-            print(pywriter.html_to_yw7(htmlFile, yw7File))
+        print('Proofed scenes in "' + htmlFile + '"')
+        if os.path.isfile(yw7File):
+            print('\nWARNING: This will overwrite "' +
+                  yw7File + '"!')
+            userConfirmation = input('Continue (y/n)? ')
+            if userConfirmation in ('y', 'Y'):
+                print(pywriter.html_to_yw7(htmlFile, yw7File))
+            else:
+                print('Program abort by user.\n')
         else:
-            print('Program abort by user.\n')
+            print('\n"' + yw7File + '" not found.\nPlease make sure that your proofed file is in the same directory as your yWriter7 project.\nProgram abort.')
     else:
         print('Input file must be YW7 or html.')
     input('Press ENTER to continue ...')
