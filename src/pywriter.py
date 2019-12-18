@@ -255,7 +255,7 @@ def yw7_to_html(yw7File, htmlFile):
     return('\nSUCCESS: ' + str(len(prj.sceneContents)) + ' Scenes written to "' + htmlFile + '".')
 
 
-def markdown_to_yw7(mdFile, yw7File):
+def md_to_yw7(mdFile, yw7File):
     """ Convert markdown to xml and replace .yw7 file. """
 
     def format_yw7(text):
@@ -296,7 +296,7 @@ def markdown_to_yw7(mdFile, yw7File):
     return(prj.write_scene_contents(sceneContents))
 
 
-def yw7_to_markdown(yw7File, mdFile):
+def yw7_to_md(yw7File, mdFile):
     """ Read .yw7 file and convert xml to markdown. """
 
     def format_md(text):
@@ -343,12 +343,12 @@ def count_letters(text):
     return str(letterCount)
 
 
-def markdown_to_odt(mdFile, odtFile):
+def md_to_odt(mdFile, odtFile):
     """ Let pandoc convert markdown and write to .odt file. """
     convert_file(mdFile, 'odt', format='markdown_strict', outputfile=odtFile)
 
 
-def markdown_to_docx(mdFile, docxFile):
+def md_to_docx(mdFile, docxFile):
     """ Let pandoc convert markdown and write to .docx file. """
     convert_file(mdFile, 'docx', format='markdown_strict', outputfile=docxFile)
 
@@ -365,14 +365,14 @@ def fix_pandoc_md(mdFile):
         f.write(text)
 
 
-def odt_to_markdown(odtFile, mdFile):
+def odt_to_md(odtFile, mdFile):
     """ Let pandoc read .odt file and convert to markdown. """
     convert_file(odtFile, 'markdown_strict', format='odt',
                  outputfile=mdFile, extra_args=['--wrap=none'])
     fix_pandoc_md(mdFile)
 
 
-def docx_to_markdown(docxFile, mdFile):
+def docx_to_md(docxFile, mdFile):
     """ Let pandoc read .docx file and convert to markdown. """
     convert_file(docxFile, 'markdown_strict', format='docx',
                  outputfile=mdFile, extra_args=['--wrap=none'])

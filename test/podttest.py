@@ -50,10 +50,10 @@ class NormalOperation(unittest.TestCase):
 
     def test_roundtrip(self):
         """ Convert md to odt and back to md. """
-        pywriter.markdown_to_odt(
+        pywriter.md_to_odt(
             TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + ODT_FILE)
         os.remove(TEST_EXEC_PATH + MD_FILE)
-        pywriter.odt_to_markdown(TEST_EXEC_PATH + ODT_FILE,
+        pywriter.odt_to_md(TEST_EXEC_PATH + ODT_FILE,
                                  TEST_EXEC_PATH + MD_FILE)
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_REFERENCE_FILE))

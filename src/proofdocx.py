@@ -10,14 +10,14 @@ import pywriter
 
 def yw7_to_docx(yw7File, mdFile, docxFile):
     """ Export to docx """
-    message = pywriter.yw7_to_markdown(yw7File, mdFile)
+    message = pywriter.yw7_to_md(yw7File, mdFile)
     if message.count('ERROR'):
         return(message)
     try:
         os.remove(docxFile)
     except(FileNotFoundError):
         pass
-    pywriter.markdown_to_docx(mdFile, docxFile)
+    pywriter.md_to_docx(mdFile, docxFile)
     if os.path.isfile(docxFile):
         return(message.replace(mdFile, docxFile))
     else:
@@ -26,8 +26,8 @@ def yw7_to_docx(yw7File, mdFile, docxFile):
 
 def docx_to_yw7(docxFile, mdFile, yw7File):
     """ Import from yw7 """
-    pywriter.docx_to_markdown(docxFile, mdFile)
-    message = pywriter.markdown_to_yw7(mdFile, yw7File)
+    pywriter.docx_to_md(docxFile, mdFile)
+    message = pywriter.md_to_yw7(mdFile, yw7File)
     return(message)
 
 

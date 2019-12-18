@@ -64,7 +64,7 @@ class NormalOperation(unittest.TestCase):
 
     def test_export(self):
         """ Convert yw7 scenes to odt for proofing. """
-        pywriter.yw7_to_markdown(
+        pywriter.yw7_to_md(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
         # Read .yw7 file and convert xml to markdown.
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
@@ -77,7 +77,7 @@ class NormalOperation(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        pywriter.markdown_to_yw7(TEST_EXEC_PATH + MD_FILE,
+        pywriter.md_to_yw7(TEST_EXEC_PATH + MD_FILE,
                                  TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
 

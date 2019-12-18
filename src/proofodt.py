@@ -10,14 +10,14 @@ import pywriter
 
 def yw7_to_odt(yw7File, mdFile, odtFile):
     """ Export to odt """
-    message = pywriter.yw7_to_markdown(yw7File, mdFile)
+    message = pywriter.yw7_to_md(yw7File, mdFile)
     if message.count('ERROR'):
         return(message)
     try:
         os.remove(odtFile)
     except(FileNotFoundError):
         pass
-    pywriter.markdown_to_odt(mdFile, odtFile)
+    pywriter.md_to_odt(mdFile, odtFile)
     if os.path.isfile(odtFile):
         return(message.replace(mdFile, odtFile))
     else:
@@ -26,8 +26,8 @@ def yw7_to_odt(yw7File, mdFile, odtFile):
 
 def odt_to_yw7(odtFile, mdFile, yw7File):
     """ Import from odt """
-    pywriter.odt_to_markdown(odtFile, mdFile)
-    message = pywriter.markdown_to_yw7(mdFile, yw7File)
+    pywriter.odt_to_md(odtFile, mdFile)
+    message = pywriter.md_to_yw7(mdFile, yw7File)
     return(message)
 
 

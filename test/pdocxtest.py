@@ -50,10 +50,10 @@ class NormalOperation(unittest.TestCase):
 
     def test_roundtrip(self):
         """ Convert md to docx and back to md. """
-        pywriter.markdown_to_docx(
+        pywriter.md_to_docx(
             TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + DOCX_FILE)
         os.remove(TEST_EXEC_PATH + MD_FILE)
-        pywriter.docx_to_markdown(TEST_EXEC_PATH + DOCX_FILE,
+        pywriter.docx_to_md(TEST_EXEC_PATH + DOCX_FILE,
                                   TEST_EXEC_PATH + MD_FILE)
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_REFERENCE_FILE))

@@ -25,7 +25,7 @@ if sourceFile[1].count('.yw7'):
           mdFile + '" (if exists)!')
     userConfirmation = input('Continue (y/n)? ')
     if userConfirmation in ('y', 'Y'):
-        print(pywriter.yw7_to_markdown(yw7File, mdFile))
+        print(pywriter.yw7_to_md(yw7File, mdFile))
     else:
         print('Program abort by user.\n')
 
@@ -40,7 +40,7 @@ elif sourceFile[1].count('.md'):
               yw7File + '"!')
         userConfirmation = input('Continue (y/n)? ')
         if userConfirmation in ('y', 'Y'):
-            print(pywriter.markdown_to_yw7(mdFile, yw7File))
+            print(pywriter.md_to_yw7(mdFile, yw7File))
         else:
             print('Program abort by user.\n')
     else:
