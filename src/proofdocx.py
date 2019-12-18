@@ -11,8 +11,17 @@ import pywriter
 def yw7_to_docx(yw7File, mdFile, docxFile):
     """ Export to docx """
     message = pywriter.yw7_to_markdown(yw7File, mdFile)
+    if message.count('ERROR'):
+        return(message)
+    try:
+        os.remove(docxFile)
+    except(FileNotFoundError):
+        pass
     pywriter.markdown_to_docx(mdFile, docxFile)
-    return(message)
+    if os.path.isfile(docxFile):
+        return(message.replace(mdFile, docxFile))
+    else:
+        return('\nERROR: Could not create file!')
 
 
 def docx_to_yw7(docxFile, mdFile, yw7File):
@@ -68,6 +77,10 @@ def main():
             print('Program abort.')
     else:
         print('Input file must be YW7 or DOCX.')
+    try:
+        os.remove(mdFile)
+    except:
+        pass
     input('Press ENTER to continue ...')
 
 

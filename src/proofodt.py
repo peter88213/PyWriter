@@ -11,8 +11,17 @@ import pywriter
 def yw7_to_odt(yw7File, mdFile, odtFile):
     """ Export to odt """
     message = pywriter.yw7_to_markdown(yw7File, mdFile)
+    if message.count('ERROR'):
+        return(message)
+    try:
+        os.remove(odtFile)
+    except(FileNotFoundError):
+        pass
     pywriter.markdown_to_odt(mdFile, odtFile)
-    return(message)
+    if os.path.isfile(odtFile):
+        return(message.replace(mdFile, odtFile))
+    else:
+        return('\nERROR: Could not create file!')
 
 
 def odt_to_yw7(odtFile, mdFile, yw7File):
@@ -68,6 +77,10 @@ def main():
             print('Program abort.')
     else:
         print('Input file must be YW7 or ODT.')
+    try:
+        os.remove(mdFile)
+    except:
+        pass
     input('Press ENTER to continue ...')
 
 

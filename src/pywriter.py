@@ -10,7 +10,7 @@ from html.parser import HTMLParser
 
 
 def convert_file(srcFile, dstFormat, format='', outputfile='', extra_args=[]):
-    """ Pandoc wrapper. """
+    """ Pandoc wrapper emulating the pypandoc.convert_file functon. """
 
     temporaryFile = 'temp.txt'
 
