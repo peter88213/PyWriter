@@ -1,6 +1,6 @@
-""" Python unit tests for the yWrestler project.
+""" Python unit tests for the pyWriter project.
 
-Test the MS Word docx conversion.
+Test the "proof read" functions.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -9,7 +9,7 @@ import os
 import unittest
 import pywriter
 
-TEST_PROJECT = 'Sample Project'
+TEST_PROJECT = 'yw7 Sample Project'
 
 TEST_PATH = os.getcwd()
 TEST_EXEC_PATH = 'yw7/'
@@ -170,7 +170,7 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_REFERENCE_FILE))
 
-    def TearDown(self):
+    def tearDown(self):
         remove_all_testfiles()
 
 
