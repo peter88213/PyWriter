@@ -18,10 +18,8 @@
 
 	<target name="prepare">
 		<copy file="${src}/pywriter.py" todir="${build}/${release-name}" />
-		<copy file="${src}/proofmd.py" todir="${build}/${release-name}" />
 		<copy file="${src}/proofodt.py" todir="${build}/${release-name}" />
 		<copy file="${src}/proofdocx.py" todir="${build}/${release-name}" />
-		<copy file="${src}/proofhtml.py" todir="${build}/${release-name}" />
 		<copy file="./LICENSE" todir="${build}/${release-name}" />
 		<copy file="./README.md" todir="${build}/${release-name}" />
 	</target>
