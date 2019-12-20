@@ -2,7 +2,7 @@
 
 \[ScID:120\]
 
-**IMPORTANT**
+\*\*\* IMPORTANT \*\*\*
 
 Uninstalling yWriter5 will uninstall (delete) this sample project.
 
@@ -19,8 +19,6 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 \[ChID:1\]
 
 \[ScID:1\]
-
-(You can download the complete text of Hal Spacejock, free, from http://www.spacejock.com.au/Hal1Download.html)
 
 Hal Spacejock was sitting at the Black Gull's flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he'd read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article's claims. He didn't feel any smarter and he couldn't remember the last time he'd spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull's onboard computer. Underpowered and outdated, it was still more than capable of running the ship's accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.
 
@@ -317,12 +315,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 \[/ChID\]
 
 \[ChID:14\]
-
-\[ScID:121\]
-
- 
-
-\[/ScID\]
 
 \[/ChID\]
 

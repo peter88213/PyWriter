@@ -1,6 +1,6 @@
 """ Python unit tests for the pyWriter project.
 
-Test the "proof read" functions.
+Test the "proof read" tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -17,21 +17,18 @@ TEST_EXEC_PATH = 'yw7/'
 TEST_DATA_PATH = 'data/'
 
 DOCX_FILE = TEST_PROJECT + '.docx'
-DOCX_PROOFED_FILE = 'proofed.docx'
+DOCX_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.docx'
 DOCX_CONTENT = 'word/document.xml'
 
 ODT_FILE = TEST_PROJECT + '.odt'
-ODT_PROOFED_FILE = 'proofed.odt'
+ODT_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.odt'
 ODT_CONTENT = 'content.xml'
 
-HTML_FILE = TEST_PROJECT + '.html'
-HTML_PROOFED_FILE = 'proofed.html'
-
 MD_FILE = TEST_PROJECT + '.md'
-MD_PROOFED_FILE = 'proofed.md'
+MD_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.md'
 
 YW7_FILE = TEST_PROJECT + '.yw7'
-YW7_PROOFED_FILE = 'proofed.yw7'
+YW7_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.yw7'
 
 
 def read_file(inputFile):
@@ -54,10 +51,6 @@ def remove_all_testfiles():
         pass
     try:
         os.remove(TEST_EXEC_PATH + MD_FILE)
-    except:
-        pass
-    try:
-        os.remove(TEST_EXEC_PATH + HTML_FILE)
     except:
         pass
     try:
@@ -101,10 +94,8 @@ class NrmOpr(unittest.TestCase):
         self.assertNotEqual(
             read_file(TEST_DATA_PATH + MD_PROOFED_FILE),
             read_file(TEST_DATA_PATH + MD_FILE))
-        self.assertNotEqual(
-            read_file(TEST_DATA_PATH + HTML_FILE),
-            read_file(TEST_DATA_PATH + HTML_PROOFED_FILE))
 
+    #@unittest.skip('development')
     def test_exp_to_md(self):
         """ Export yW7 scenes to markdown. """
         pywriter.yw7_to_md(
@@ -113,6 +104,7 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_FILE))
 
+    #@unittest.skip('development')
     def test_imp_from_md(self):
         """ Import proofed yw7 scenes from markdown . """
         copy_file(TEST_DATA_PATH + MD_PROOFED_FILE,
@@ -128,31 +120,7 @@ class NrmOpr(unittest.TestCase):
                          read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
         # Verify the yw7 project.
 
-    def test_exp_to_html(self):
-        """ Export yW7 scenes to html. """
-        pywriter.yw7_to_html(
-            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
-        # Read .yw7 file and convert scenes to html.
-
-        self.assertEqual(read_file(TEST_EXEC_PATH + HTML_FILE),
-                         read_file(TEST_DATA_PATH + HTML_FILE))
-        # Verify the html file.
-
-    def test_imp_from_html(self):
-        """ Import proofed yw7 scenes from html . """
-        copy_file(TEST_DATA_PATH + HTML_PROOFED_FILE,
-                  TEST_EXEC_PATH + HTML_FILE)
-        # This substitutes the proof reading process.
-        # Note: The yw7 project file is still unchanged.
-
-        pywriter.html_to_yw7(TEST_EXEC_PATH + HTML_FILE,
-                             TEST_EXEC_PATH + YW7_FILE)
-        # Convert document to xml and replace .yw7 file.
-
-        self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
-                         read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
-        # Verify the yw7 project.
-
+    #@unittest.skip('development')
     def test_md_to_docx(self):
         """ Convert markdown to docx. """
         copy_file(TEST_DATA_PATH + MD_FILE,
@@ -167,6 +135,7 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_EXEC_PATH + DOCX_CONTENT),
                          read_file(TEST_DATA_PATH + DOCX_CONTENT))
 
+    #@unittest.skip('development')
     def test_docx_to_md(self):
         """ Convert docx to markdown. """
         copy_file(TEST_DATA_PATH + DOCX_PROOFED_FILE,
@@ -176,6 +145,7 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
 
+    #@unittest.skip('development')
     def test_md_to_odt(self):
         """ Convert markdown to odt. """
         copy_file(TEST_DATA_PATH + MD_FILE,
@@ -190,6 +160,7 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_EXEC_PATH + ODT_CONTENT),
                          read_file(TEST_DATA_PATH + ODT_CONTENT))
 
+    #@unittest.skip('development')
     def test_odt_to_md(self):
         """ Convert odt to markdown. """
         copy_file(TEST_DATA_PATH + ODT_PROOFED_FILE,
@@ -199,6 +170,7 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
 
+    @unittest.skip('development')
     def tearDown(self):
         remove_all_testfiles()
 

@@ -2,7 +2,7 @@
 
 \[ScID:120\]
 
-\*\*IMPORTANT\*\*
+\*\*\* IMPORTANT \*\*\*
 
 This message has been modified by proof reader.
 

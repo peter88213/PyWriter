@@ -17,7 +17,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<FieldTitle2>Tension</FieldTitle2>
 		<FieldTitle3>Humour</FieldTitle3>
 		<FieldTitle4>Quality</FieldTitle4>
-		<LastFullBackup>2019-12-19</LastFullBackup>
+		<LastFullBackup>2019-12-20</LastFullBackup>
 		<WordTarget>0</WordTarget>
 		<WordTargetStartDate>2007-07-28</WordTargetStartDate>
 		<WordTargetEndDate>2007-08-27</WordTargetEndDate>
@@ -34,7 +34,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<LaTeXHeaderFile> </LaTeXHeaderFile>
 		<MRUSpecificDate>1899-12-30</MRUSpecificDate>
 		<MRUSpecificTime>00:00:00</MRUSpecificTime>
-		<LastViewedScID>1</LastViewedScID>
+		<LastViewedScID>6</LastViewedScID>
 		<DeadlineDate1>2004-09-01</DeadlineDate1>
 		<DeadlineDate2>2004-12-14</DeadlineDate2>
 		<DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -1579,7 +1579,6 @@ Clunk's batteries are failing, and he can't hang on much longer.</Desc>
 		<WordCount>0</WordCount>
 		<LetterCount>0</LetterCount>
 		<Characters>
-			<CharID>1</CharID>
 		</Characters>
 		<Locations>
 		</Locations>
@@ -1598,8 +1597,8 @@ Clunk's batteries are failing, and he can't hang on much longer.</Desc>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>1</Status>
-		<WordCount>21</WordCount>
-		<LetterCount>141</LetterCount>
+		<WordCount>23</WordCount>
+		<LetterCount>145</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1607,31 +1606,10 @@ Clunk's batteries are failing, and he can't hang on much longer.</Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent>**IMPORTANT**
+		<SceneContent>*** IMPORTANT ***
 This message has been modified by proof reader.
 Besides, the proof reader [b]replaced straight quotes and apostrophes by curly ones[/b].
 </SceneContent>
-	</SCENE>
-
-	<SCENE>
-		<ID>121</ID>
-		<Title>New Scene</Title>
-		<BelongsToChID>14</BelongsToChID>
-		<Field1>1</Field1>
-		<Field2>1</Field2>
-		<Field3>1</Field3>
-		<Field4>1</Field4>
-		<Status>1</Status>
-		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
-		<Characters>
-			<CharID>1</CharID>
-		</Characters>
-		<Locations>
-		</Locations>
-		<Items>
-		</Items>
-		<SceneContent> </SceneContent>
 	</SCENE>
 
 	</SCENES>
@@ -1789,9 +1767,6 @@ Besides, the proof reader [b]replaced straight quotes and apostrophes by curly o
 		<Title>Chapter 14</Title>
 		<SortOrder>15</SortOrder>
 		<Type>0</Type>
-		<Scenes>
-			<ScID>121</ScID>
-		</Scenes>
 	</CHAPTER>
 
 	<CHAPTER>
@@ -2013,7 +1988,7 @@ Besides, the proof reader [b]replaced straight quotes and apostrophes by curly o
 	</WC>
 
 	<WC>
-		<Date>2019-12-19</Date>
+		<Date>2019-12-20</Date>
 		<Count>1266</Count>
 		<TotalCount>1330</TotalCount>
 	</WC>
