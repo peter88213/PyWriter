@@ -1,5 +1,7 @@
 \[ChID:33\]
 
+##Info
+
 \[ScID:120\]
 
 \*\*\* IMPORTANT \*\*\*
@@ -13,6 +15,8 @@ Besides, the proof reader **replaced straight quotes and apostrophes by curly on
 \[/ChID\]
 
 \[ChID:1\]
+
+##1
 
 \[ScID:1\]
 
@@ -56,6 +60,8 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 
 \[ChID:2\]
 
+##2
+
 \[ScID:2\]
 
 On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
@@ -86,6 +92,8 @@ Hal was pacing the Black Gull’s flight deck, ready to put his fist through the
 
 \[ChID:3\]
 
+##3
+
 \[ScID:4\]
 
 “No sign of Jerling’s pilot,” said Hal, who was standing in the Black Gull’s airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. “There could be an army out there and I wouldn’t know it.”
@@ -101,6 +109,8 @@ Hal was pacing the Black Gull’s flight deck, ready to put his fist through the
 \[/ChID\]
 
 \[ChID:4\]
+
+##4
 
 \[ScID:5\]
 
@@ -170,6 +180,8 @@ Clunk sat up straight. “Please open the connection.”
 
 \[ChID:5\]
 
+##5
+
 \[ScID:9\]
 
 Portmaster Linten studied Hal across the desk, eyes narrowed. “Are you telling me this Jerling character will pay your bill?”
@@ -216,6 +228,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:6\]
 
+##6
+
 \[ScID:58\]
 
 \[/ScID\]
@@ -228,6 +242,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:7\]
 
+##7
+
 \[ScID:15\]
 
 \[/ScID\]
@@ -235,6 +251,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 \[/ChID\]
 
 \[ChID:8\]
+
+##8
 
 \[ScID:17\]
 
@@ -244,6 +262,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:9\]
 
+##9
+
 \[ScID:19\]
 
 \[/ScID\]
@@ -252,6 +272,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:10\]
 
+##10
+
 \[ScID:22\]
 
 \[/ScID\]
@@ -259,6 +281,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 \[/ChID\]
 
 \[ChID:11\]
+
+##11
 
 \[ScID:25\]
 
@@ -272,6 +296,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:12\]
 
+##12
+
 \[ScID:29\]
 
 \[/ScID\]
@@ -284,6 +310,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:13\]
 
+##13
+
 \[ScID:34\]
 
 \[/ScID\]
@@ -292,9 +320,13 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:14\]
 
+##14
+
 \[/ChID\]
 
 \[ChID:15\]
+
+##15
 
 \[ScID:38\]
 
@@ -308,6 +340,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:16\]
 
+##16
+
 \[ScID:43\]
 
 \[/ScID\]
@@ -319,6 +353,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 \[/ChID\]
 
 \[ChID:17\]
+
+##17
 
 \[ScID:47\]
 
@@ -332,6 +368,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:18\]
 
+##18
+
 \[ScID:51\]
 
 \[/ScID\]
@@ -344,6 +382,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:19\]
 
+##19
+
 \[ScID:55\]
 
 \[/ScID\]
@@ -355,6 +395,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 \[/ChID\]
 
 \[ChID:20\]
+
+##20
 
 \[ScID:60\]
 
@@ -372,6 +414,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:21\]
 
+##21
+
 \[ScID:66\]
 
 \[/ScID\]
@@ -384,6 +428,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:22\]
 
+##22
+
 \[ScID:71\]
 
 \[/ScID\]
@@ -392,6 +438,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:23\]
 
+##23
+
 \[ScID:74\]
 
 \[/ScID\]
@@ -399,6 +447,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 \[/ChID\]
 
 \[ChID:24\]
+
+##24
 
 \[ScID:77\]
 
@@ -416,6 +466,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:25\]
 
+##25
+
 \[ScID:84\]
 
 \[/ScID\]
@@ -428,6 +480,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:26\]
 
+##26
+
 \[ScID:89\]
 
 \[/ScID\]
@@ -435,6 +489,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 \[/ChID\]
 
 \[ChID:27\]
+
+##27
 
 \[ScID:92\]
 
@@ -448,6 +504,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:28\]
 
+##28
+
 \[ScID:96\]
 
 \[/ScID\]
@@ -459,6 +517,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 \[/ChID\]
 
 \[ChID:29\]
+
+##29
 
 \[ScID:101\]
 
@@ -476,6 +536,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:30\]
 
+##30
+
 \[ScID:108\]
 
 \[/ScID\]
@@ -492,6 +554,8 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:31\]
 
+##31
+
 \[ScID:114\]
 
 \[/ScID\]
@@ -504,8 +568,11 @@ There was a crackling sound. “Help! Fire!” said a voice over the noise.
 
 \[ChID:32\]
 
+##32
+
 \[ScID:119\]
 
 \[/ScID\]
 
 \[/ChID\]
+

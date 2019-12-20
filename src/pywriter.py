@@ -193,11 +193,6 @@ def html_to_yw7(htmlFile, yw7File):
 def yw7_to_html(yw7File, htmlFile):
     """ Read .yw7 file and convert sceneContents to html. """
 
-    def format_chapter_title(text):
-        """ Fix auto-chapter titles for non-English """
-        text = text.replace('Chapter ', '')
-        return(text)
-
     def format_yw7(text):
         """ Convert yw7 raw markup """
         try:
@@ -300,18 +295,21 @@ def md_to_yw7(mdFile, yw7File):
     sceneContents = {}
     sceneText = ''
     scID = ''
+    inScene = False
     lines = text.split('\n')
     for line in lines:
         if line.count('[ChID'):
             pass
         elif line.count('[ScID'):
             scID = re.search('[0-9]+', line).group()
+            inScene = True
         elif line.count('[/ChID]'):
             pass
         elif line.count('[/ScID]'):
             sceneContents[scID] = sceneText
             sceneText = ''
-        else:
+            inScene = False
+        elif inScene:
             sceneText = sceneText + line + '\n'
 
     prj = Yw7Prj(yw7File)
@@ -337,6 +335,8 @@ def yw7_to_md(yw7File, mdFile):
     prjText = ''
     for chID in prj.sceneLists:
         prjText = prjText + '\\[ChID:' + chID + '\\]\n'
+        prjText = prjText + '##' + \
+            format_chapter_title(prj.chapterTitles[chID]) + '\n'
         for scID in prj.sceneLists[chID]:
             prjText = prjText + '\\[ScID:' + scID + '\\]\n'
             try:
@@ -351,6 +351,12 @@ def yw7_to_md(yw7File, mdFile):
         f.write(prjText)
 
     return('\nSUCCESS: ' + str(len(prj.sceneContents)) + ' Scenes written to "' + mdFile + '".')
+
+
+def format_chapter_title(text):
+    """ Fix auto-chapter titles for non-English """
+    text = text.replace('Chapter ', '')
+    return(text)
 
 
 def count_words(text):

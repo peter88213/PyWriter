@@ -136,14 +136,19 @@ class NrmOpr(unittest.TestCase):
                          read_file(TEST_DATA_PATH + DOCX_CONTENT))
 
     #@unittest.skip('development')
-    def test_docx_to_md(self):
+    def test_docx_to_yw7(self):
         """ Convert docx to markdown. """
         copy_file(TEST_DATA_PATH + DOCX_PROOFED_FILE,
                   TEST_EXEC_PATH + DOCX_FILE)
         pywriter.docx_to_md(TEST_EXEC_PATH + DOCX_FILE,
                             TEST_EXEC_PATH + MD_FILE)
-        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
-                         read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
+        pywriter.md_to_yw7(TEST_EXEC_PATH + MD_FILE,
+                           TEST_EXEC_PATH + YW7_FILE)
+        # Convert markdown to xml and replace .yw7 file.
+
+        self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
+                         read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+        # Verify the yw7 project.
 
     #@unittest.skip('development')
     def test_md_to_odt(self):
@@ -161,14 +166,19 @@ class NrmOpr(unittest.TestCase):
                          read_file(TEST_DATA_PATH + ODT_CONTENT))
 
     #@unittest.skip('development')
-    def test_odt_to_md(self):
+    def test_odt_to_yw7(self):
         """ Convert odt to markdown. """
         copy_file(TEST_DATA_PATH + ODT_PROOFED_FILE,
                   TEST_EXEC_PATH + ODT_FILE)
         pywriter.odt_to_md(TEST_EXEC_PATH + ODT_FILE,
                            TEST_EXEC_PATH + MD_FILE)
-        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
-                         read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
+        pywriter.md_to_yw7(TEST_EXEC_PATH + MD_FILE,
+                           TEST_EXEC_PATH + YW7_FILE)
+        # Convert markdown to xml and replace .yw7 file.
+
+        self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
+                         read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+        # Verify the yw7 project.
 
     #@unittest.skip('development')
     def tearDown(self):
