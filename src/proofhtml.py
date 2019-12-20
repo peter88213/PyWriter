@@ -15,9 +15,12 @@ except:
     exit(1)
 
 sourceFile = os.path.split(sourcePath)
+pathToSource = sourceFile[0]
+if pathToSource:
+    pathToSource = pathToSource + '/'
 if sourceFile[1].count('.yw7'):
-    yw7File = sourceFile[0] + '/' + sourceFile[1]
-    htmlFile = sourceFile[0] + '/' + \
+    yw7File = pathToSource + sourceFile[1]
+    htmlFile = pathToSource + \
         sourceFile[1].split('.yw7')[0] + '.html'
     print('\n*** Export yw7 scenes to html ***')
     print('Project: "' + yw7File + '"')
@@ -32,8 +35,8 @@ if sourceFile[1].count('.yw7'):
     print(pywriter.yw7_to_html(yw7File, htmlFile))
 
 elif sourceFile[1].count('.html'):
-    htmlFile = sourceFile[0] + '/' + sourceFile[1]
-    yw7File = sourceFile[0] + '/' + \
+    htmlFile = pathToSource + sourceFile[1]
+    yw7File = pathToSource + \
         sourceFile[1].split('.html')[0] + '.yw7'
     print('\n*** Import yw7 scenes from html ***')
     print('Proofed scenes in "' + htmlFile + '"')

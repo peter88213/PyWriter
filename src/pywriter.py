@@ -55,10 +55,26 @@ class Yw7Prj():
         self.sceneDescriptions = {}
 
         try:
-            self.tree = ET.parse(self.file)
-            root = self.tree.getroot()
+            with open(self.file, 'r', encoding='utf-8') as f:
+                # Empty scenes will crash the xml parser, so put a blank in
+                # them.
+                xmlData = f.read()
         except(FileNotFoundError):
             return('\nERROR: "' + self.file + '" not found.')
+
+        if xmlData.count('<![CDATA[]]>'):
+            xmlData = xmlData.replace('<![CDATA[]]>', '<![CDATA[ ]]>')
+            try:
+                with open(self.file, 'w', encoding='utf-8') as f:
+                    f.write(xmlData)
+            except(PermissionError):
+                return('\nERROR: "' + self.file + '" is write protected.')
+
+        try:
+            self.tree = ET.parse(self.file)
+            root = self.tree.getroot()
+        except:
+            return('\nERROR: Can not process "' + self.file + '".')
 
         for prj in root.iter('PROJECT'):
             self.projectTitle = prj.find('Title').text
@@ -67,14 +83,16 @@ class Yw7Prj():
             chID = chp.find('ID').text
             self.chapterTitles[chID] = chp.find('Title').text
             self.sceneLists[chID] = []
-            for scn in chp.find('Scenes').findall('ScID'):
-                self.sceneLists[chID].append(scn.text)
+            if chp.find('Scenes'):
+                for scn in chp.find('Scenes').findall('ScID'):
+                    self.sceneLists[chID].append(scn.text)
 
         for scn in root.iter('SCENE'):
             scID = scn.find('ID').text
             self.sceneContents[scID] = scn.find('SceneContent').text
             self.sceneTitles[scID] = scn.find('Title').text
-            self.sceneDescriptions[scID] = scn.find('Desc').text
+            if scn.find('Desc'):
+                self.sceneDescriptions[scID] = scn.find('Desc').text
 
     def write_scene_contents(self, newContents):
         """ Write scene data to yw7 project file """
@@ -85,11 +103,12 @@ class Yw7Prj():
         for scn in root.iter('SCENE'):
             scID = scn.find('ID').text
             try:
-                scn.find('SceneContent').text = self.sceneContents[scID]
-                scn.find('WordCount').text = count_words(
-                    self.sceneContents[scID])
-                scn.find('LetterCount').text = count_letters(
-                    self.sceneContents[scID])
+                if self.sceneContents[scID] != ' ':
+                    scn.find('SceneContent').text = self.sceneContents[scID]
+                    scn.find('WordCount').text = count_words(
+                        self.sceneContents[scID])
+                    scn.find('LetterCount').text = count_letters(
+                        self.sceneContents[scID])
             except:
                 pass
             sceneCount = sceneCount + 1
@@ -140,11 +159,13 @@ def html_to_yw7(htmlFile, yw7File):
 
     def format_yw7(text):
         """ Convert html markup to yw7 raw markup """
+        text = re.sub('<br.*?>|<BR.*?>', '', text)
         text = re.sub('<i.*?>|<I.*?>|<em.*?>|<EM.*?>', '[i]', text)
         text = re.sub('</i>|</I>|</em>|</EM>', '[/i]', text)
         text = re.sub('<b.*?>|<B.*?>|<strong.*?>|<STRONG.*?>', '[b]', text)
         text = re.sub('</b>|</B>|</strong><|</STRONG>', '[/b]', text)
         text = text.replace('\n', '')
+        text = text.replace('\r', '')
         text = text.replace('\t', ' ')
         while text.count('  '):
             text = text.replace('  ', ' ')
@@ -234,8 +255,8 @@ def yw7_to_html(yw7File, htmlFile):
             # Insert scene title as comment.
             try:
                 htmlText = htmlText + format_yw7(prj.sceneContents[scID])
-            except:
-                htmlText = htmlText + '&nbsp;'
+            except(TypeError):
+                htmlText = htmlText + ' '
             htmlText = htmlText + '</p>\n'
             htmlText = htmlText + '</div>\n'
 
@@ -263,8 +284,10 @@ def md_to_yw7(mdFile, yw7File):
         text = text.replace('\n\n', '\n')
         text = text.replace('\[', '[')
         text = text.replace('\]', ']')
+        text = text.replace('\\*', '_asterisk_')
         text = re.sub('\*\*(.+?)\*\*', '[b]\g<1>[/b]', text)
         text = re.sub('\*(.+?)\*', '[i]\g<1>[/i]', text)
+        text = text.replace('_asterisk_', '*')
         return(text)
 
     try:
@@ -303,6 +326,7 @@ def yw7_to_md(yw7File, mdFile):
         """ Convert yw7 specific markup """
         text = text.replace('\n\n', '\n')
         text = text.replace('\n', '\n\n')
+        text = text.replace('*', '\*')
         text = text.replace('[i]', '*')
         text = text.replace('[/i]', '*')
         text = text.replace('[b]', '**')
@@ -315,7 +339,10 @@ def yw7_to_md(yw7File, mdFile):
         prjText = prjText + '\\[ChID:' + chID + '\\]\n'
         for scID in prj.sceneLists[chID]:
             prjText = prjText + '\\[ScID:' + scID + '\\]\n'
-            prjText = prjText + prj.sceneContents[scID] + '\n'
+            try:
+                prjText = prjText + prj.sceneContents[scID] + '\n'
+            except(TypeError):
+                prjText = prjText + '\n'
             prjText = prjText + '\\[/ScID\\]\n'
         prjText = prjText + '\\[/ChID\\]\n'
     prjText = format_md(prjText)
@@ -338,6 +365,8 @@ def count_words(text):
 def count_letters(text):
     """ Required, because yWriter stores letter counts. """
     text = re.sub('\[.+?\]', '', text)
+    text = text.replace('\n', '')
+    text = text.replace('\r', '')
     # Remove yw7 raw markup
     letterCount = len(text)
     return str(letterCount)
@@ -358,9 +387,6 @@ def fix_pandoc_md(mdFile):
     with open(mdFile, 'r', encoding='utf-8') as f:
         text = f.read()
         text = text.replace('\r', '\n')
-        text = text.replace('\n\n', '\n')
-        text = text.replace('\n\n', '\n')
-        text = text.replace('\n', '\n\n')
     with open(mdFile, 'w', encoding='utf-8') as f:
         f.write(text)
 

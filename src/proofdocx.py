@@ -40,10 +40,13 @@ def main():
         exit(1)
 
     sourceFile = os.path.split(sourcePath)
+    pathToSource = sourceFile[0]
+    if pathToSource:
+        pathToSource = pathToSource + '/'
     if sourceFile[1].count('.yw7'):
-        yw7File = sourceFile[0] + '/' + sourceFile[1]
-        mdFile = sourceFile[0] + '/' + sourceFile[1].split('.yw7')[0] + '.md'
-        docxFile = sourceFile[0] + '/' + \
+        yw7File = pathToSource + sourceFile[1]
+        mdFile = pathToSource + sourceFile[1].split('.yw7')[0] + '.md'
+        docxFile = pathToSource + \
             sourceFile[1].split('.yw7')[0] + '.docx'
         print('\n*** Export yWriter7 scenes to ODT ***')
         print('Project: "' + yw7File + '"')
@@ -58,9 +61,9 @@ def main():
         print(yw7_to_docx(yw7File, mdFile, docxFile))
 
     elif sourceFile[1].count('.docx'):
-        docxFile = sourceFile[0] + '/' + sourceFile[1]
-        mdFile = sourceFile[0] + '/' + sourceFile[1].split('.docx')[0] + '.md'
-        yw7File = sourceFile[0] + '/' + \
+        docxFile = pathToSource + sourceFile[1]
+        mdFile = pathToSource + sourceFile[1].split('.docx')[0] + '.md'
+        yw7File = pathToSource + \
             sourceFile[1].split('.docx')[0] + '.yw7'
         print('\n*** Import yWriter7 scenes from DOCX ***')
         print('Proofed scenes in "' + docxFile + '"')

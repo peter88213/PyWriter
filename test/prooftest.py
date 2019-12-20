@@ -7,6 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import unittest
+import zipfile
 import pywriter
 
 TEST_PROJECT = 'yw7 Sample Project'
@@ -16,23 +17,21 @@ TEST_EXEC_PATH = 'yw7/'
 TEST_DATA_PATH = 'data/'
 
 DOCX_FILE = TEST_PROJECT + '.docx'
+DOCX_PROOFED_FILE = 'proofed.docx'
+DOCX_CONTENT = 'word/document.xml'
 
 ODT_FILE = TEST_PROJECT + '.odt'
+ODT_PROOFED_FILE = 'proofed.odt'
+ODT_CONTENT = 'content.xml'
 
 HTML_FILE = TEST_PROJECT + '.html'
-HTML_REFERENCE_FILE = 'original.html'
 HTML_PROOFED_FILE = 'proofed.html'
 
 MD_FILE = TEST_PROJECT + '.md'
-MD_REFERENCE_FILE = 'original.md'
 MD_PROOFED_FILE = 'proofed.md'
 
 YW7_FILE = TEST_PROJECT + '.yw7'
-YW7_REFERENCE_FILE = 'original.yw7'
 YW7_PROOFED_FILE = 'proofed.yw7'
-
-MD_FILE = TEST_PROJECT + '.md'
-MD_REFERENCE_FILE = 'original.md'
 
 
 def read_file(inputFile):
@@ -69,6 +68,14 @@ def remove_all_testfiles():
         os.remove(TEST_EXEC_PATH + YW7_FILE)
     except:
         pass
+    try:
+        os.remove(TEST_EXEC_PATH + DOCX_CONTENT)
+    except:
+        pass
+    try:
+        os.remove(TEST_EXEC_PATH + ODT_CONTENT)
+    except:
+        pass
 
 
 class NrmOpr(unittest.TestCase):
@@ -82,20 +89,20 @@ class NrmOpr(unittest.TestCase):
 
     def setUp(self):
         remove_all_testfiles()
-        copy_file(TEST_DATA_PATH + YW7_REFERENCE_FILE,
+        copy_file(TEST_DATA_PATH + YW7_FILE,
                   TEST_EXEC_PATH + YW7_FILE)
 
     def test_data(self):
         """ Verify test data integrity. """
         # Initial test data must differ from the "proofed" test data.
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + YW7_REFERENCE_FILE),
+            read_file(TEST_DATA_PATH + YW7_FILE),
             read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
         self.assertNotEqual(
             read_file(TEST_DATA_PATH + MD_PROOFED_FILE),
-            read_file(TEST_DATA_PATH + MD_REFERENCE_FILE))
+            read_file(TEST_DATA_PATH + MD_FILE))
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + HTML_REFERENCE_FILE),
+            read_file(TEST_DATA_PATH + HTML_FILE),
             read_file(TEST_DATA_PATH + HTML_PROOFED_FILE))
 
     def test_exp_to_md(self):
@@ -104,7 +111,7 @@ class NrmOpr(unittest.TestCase):
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
         # Read .yw7 file and convert xml to markdown.
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
-                         read_file(TEST_DATA_PATH + MD_REFERENCE_FILE))
+                         read_file(TEST_DATA_PATH + MD_FILE))
 
     def test_imp_from_md(self):
         """ Import proofed yw7 scenes from markdown . """
@@ -128,7 +135,7 @@ class NrmOpr(unittest.TestCase):
         # Read .yw7 file and convert scenes to html.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + HTML_FILE),
-                         read_file(TEST_DATA_PATH + HTML_REFERENCE_FILE))
+                         read_file(TEST_DATA_PATH + HTML_FILE))
         # Verify the html file.
 
     def test_imp_from_html(self):
@@ -146,29 +153,51 @@ class NrmOpr(unittest.TestCase):
                          read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
         # Verify the yw7 project.
 
-    def test_docx(self):
-        """ Convert markdown to docx and back to markdown. """
-        copy_file(TEST_DATA_PATH + MD_REFERENCE_FILE,
+    def test_md_to_docx(self):
+        """ Convert markdown to docx. """
+        copy_file(TEST_DATA_PATH + MD_FILE,
                   TEST_EXEC_PATH + MD_FILE)
         pywriter.md_to_docx(
             TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + DOCX_FILE)
-        os.remove(TEST_EXEC_PATH + MD_FILE)
+
+        with zipfile.ZipFile(TEST_EXEC_PATH + DOCX_FILE, 'r') as myzip:
+            myzip.extract(DOCX_CONTENT, TEST_EXEC_PATH)
+            myzip.close
+
+        self.assertEqual(read_file(TEST_EXEC_PATH + DOCX_CONTENT),
+                         read_file(TEST_DATA_PATH + DOCX_CONTENT))
+
+    def test_docx_to_md(self):
+        """ Convert docx to markdown. """
+        copy_file(TEST_DATA_PATH + DOCX_PROOFED_FILE,
+                  TEST_EXEC_PATH + DOCX_FILE)
         pywriter.docx_to_md(TEST_EXEC_PATH + DOCX_FILE,
                             TEST_EXEC_PATH + MD_FILE)
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
-                         read_file(TEST_DATA_PATH + MD_REFERENCE_FILE))
+                         read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
 
-    def test_odt(self):
-        """ Convert markdown to odt and back to markdown. """
-        copy_file(TEST_DATA_PATH + MD_REFERENCE_FILE,
+    def test_md_to_odt(self):
+        """ Convert markdown to odt. """
+        copy_file(TEST_DATA_PATH + MD_FILE,
                   TEST_EXEC_PATH + MD_FILE)
         pywriter.md_to_odt(
             TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + ODT_FILE)
-        os.remove(TEST_EXEC_PATH + MD_FILE)
+
+        with zipfile.ZipFile(TEST_EXEC_PATH + ODT_FILE, 'r') as myzip:
+            myzip.extract(ODT_CONTENT, TEST_EXEC_PATH)
+            myzip.close
+
+        self.assertEqual(read_file(TEST_EXEC_PATH + ODT_CONTENT),
+                         read_file(TEST_DATA_PATH + ODT_CONTENT))
+
+    def test_odt_to_md(self):
+        """ Convert odt to markdown. """
+        copy_file(TEST_DATA_PATH + ODT_PROOFED_FILE,
+                  TEST_EXEC_PATH + ODT_FILE)
         pywriter.odt_to_md(TEST_EXEC_PATH + ODT_FILE,
                            TEST_EXEC_PATH + MD_FILE)
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
-                         read_file(TEST_DATA_PATH + MD_REFERENCE_FILE))
+                         read_file(TEST_DATA_PATH + MD_PROOFED_FILE))
 
     def tearDown(self):
         remove_all_testfiles()
