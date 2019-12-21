@@ -7,8 +7,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import unittest
-import zipfile
-import pywriter
+from pywriter.html.html_to_yw7 import html_to_yw7
+from pywriter.html.yw7_to_html import yw7_to_html
 
 TEST_PROJECT = 'yw7 Sample Project'
 
@@ -74,7 +74,7 @@ class NrmOpr(unittest.TestCase):
     #@unittest.skip('development')
     def test_exp_to_html(self):
         """ Export yW7 scenes to html. """
-        pywriter.yw7_to_html(
+        yw7_to_html(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
         # Read .yw7 file and convert scenes to html.
 
@@ -90,8 +90,8 @@ class NrmOpr(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        pywriter.html_to_yw7(TEST_EXEC_PATH + HTML_FILE,
-                             TEST_EXEC_PATH + YW7_FILE)
+        html_to_yw7(TEST_EXEC_PATH + HTML_FILE,
+                    TEST_EXEC_PATH + YW7_FILE)
         # Convert document to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),

@@ -1,17 +1,24 @@
 """ Import and export ywriter7 scenes for proofing. 
 
+    Proof reading file format = HTML
+
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
 import os
-import pywriter
+from pywriter.html.html_to_yw7 import html_to_yw7
+from pywriter.html.yw7_to_html import yw7_to_html
 
 
 try:
     sourcePath = sys.argv[1]
 except:
     print('Syntax: proofhtml.py filename')
+    exit(1)
+
+if not os.path.isfile(sourcePath):
+    print('\nERROR: File "' + sourcePath + '" not found.')
     exit(1)
 
 sourceFile = os.path.split(sourcePath)
@@ -32,7 +39,7 @@ if sourceFile[1].count('.yw7'):
             print('Program abort by user.\n')
             input('Press ENTER to continue ...')
             sys.exit()
-    print(pywriter.yw7_to_html(yw7File, htmlFile))
+    print(yw7_to_html(yw7File, htmlFile))
 
 elif sourceFile[1].count('.html'):
     htmlFile = pathToSource + sourceFile[1]
@@ -45,7 +52,7 @@ elif sourceFile[1].count('.html'):
               yw7File + '"!')
         userConfirmation = input('Continue (y/n)? ')
         if userConfirmation in ('y', 'Y'):
-            print(pywriter.html_to_yw7(htmlFile, yw7File))
+            print(html_to_yw7(htmlFile, yw7File))
         else:
             print('Program abort by user.\n')
     else:

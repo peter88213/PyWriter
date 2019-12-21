@@ -1,17 +1,24 @@
 """ Import and export ywriter7 scenes for proofing. 
 
+    Proof reading file format = Markdown (strict) 
+
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
 import os
-import pywriter
+from pywriter.proof.yw7_to_md import yw7_to_md
+from pywriter.proof.md_to_yw7 import md_to_yw7
 
 
 try:
     sourcePath = sys.argv[1]
 except:
     print('Syntax: proofmd.py filename')
+    exit(1)
+
+if not os.path.isfile(sourcePath):
+    print('\nERROR: File "' + sourcePath + '" not found.')
     exit(1)
 
 sourceFile = os.path.split(sourcePath)
@@ -32,7 +39,7 @@ if sourceFile[1].count('.yw7'):
             print('Program abort by user.\n')
             input('Press ENTER to continue ...')
             sys.exit()
-    print(pywriter.yw7_to_md(yw7File, mdFile))
+    print(yw7_to_md(yw7File, mdFile))
 
 elif sourceFile[1].count('.md'):
     mdFile = pathToSource + sourceFile[1]
@@ -45,7 +52,7 @@ elif sourceFile[1].count('.md'):
               yw7File + '"!')
         userConfirmation = input('Continue (y/n)? ')
         if userConfirmation in ('y', 'Y'):
-            print(pywriter.md_to_yw7(mdFile, yw7File))
+            print(md_to_yw7(mdFile, yw7File))
         else:
             print('Program abort by user.\n')
     else:

@@ -8,7 +8,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 import zipfile
-import pywriter
+from pywriter.proof.yw7_to_md import yw7_to_md
+from pywriter.proof.md_to_yw7 import md_to_yw7
+from pywriter.proof.md_to_docx import md_to_docx
+from pywriter.proof.docx_to_md import docx_to_md
+from pywriter.proof.md_to_odt import md_to_odt
+from pywriter.proof.odt_to_md import odt_to_md
 
 TEST_PROJECT = 'yw7 Sample Project'
 
@@ -98,7 +103,7 @@ class NrmOpr(unittest.TestCase):
     #@unittest.skip('development')
     def test_exp_to_md(self):
         """ Export yW7 scenes to markdown. """
-        pywriter.yw7_to_md(
+        yw7_to_md(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
         # Read .yw7 file and convert xml to markdown.
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
@@ -112,8 +117,8 @@ class NrmOpr(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        pywriter.md_to_yw7(TEST_EXEC_PATH + MD_FILE,
-                           TEST_EXEC_PATH + YW7_FILE)
+        md_to_yw7(TEST_EXEC_PATH + MD_FILE,
+                  TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
@@ -125,7 +130,7 @@ class NrmOpr(unittest.TestCase):
         """ Convert markdown to docx. """
         copy_file(TEST_DATA_PATH + MD_FILE,
                   TEST_EXEC_PATH + MD_FILE)
-        pywriter.md_to_docx(
+        md_to_docx(
             TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + DOCX_FILE)
 
         with zipfile.ZipFile(TEST_EXEC_PATH + DOCX_FILE, 'r') as myzip:
@@ -140,10 +145,10 @@ class NrmOpr(unittest.TestCase):
         """ Convert docx to markdown. """
         copy_file(TEST_DATA_PATH + DOCX_PROOFED_FILE,
                   TEST_EXEC_PATH + DOCX_FILE)
-        pywriter.docx_to_md(TEST_EXEC_PATH + DOCX_FILE,
-                            TEST_EXEC_PATH + MD_FILE)
-        pywriter.md_to_yw7(TEST_EXEC_PATH + MD_FILE,
-                           TEST_EXEC_PATH + YW7_FILE)
+        docx_to_md(TEST_EXEC_PATH + DOCX_FILE,
+                   TEST_EXEC_PATH + MD_FILE)
+        md_to_yw7(TEST_EXEC_PATH + MD_FILE,
+                  TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
@@ -155,7 +160,7 @@ class NrmOpr(unittest.TestCase):
         """ Convert markdown to odt. """
         copy_file(TEST_DATA_PATH + MD_FILE,
                   TEST_EXEC_PATH + MD_FILE)
-        pywriter.md_to_odt(
+        md_to_odt(
             TEST_EXEC_PATH + MD_FILE, TEST_EXEC_PATH + ODT_FILE)
 
         with zipfile.ZipFile(TEST_EXEC_PATH + ODT_FILE, 'r') as myzip:
@@ -170,10 +175,10 @@ class NrmOpr(unittest.TestCase):
         """ Convert odt to markdown. """
         copy_file(TEST_DATA_PATH + ODT_PROOFED_FILE,
                   TEST_EXEC_PATH + ODT_FILE)
-        pywriter.odt_to_md(TEST_EXEC_PATH + ODT_FILE,
-                           TEST_EXEC_PATH + MD_FILE)
-        pywriter.md_to_yw7(TEST_EXEC_PATH + MD_FILE,
-                           TEST_EXEC_PATH + YW7_FILE)
+        odt_to_md(TEST_EXEC_PATH + ODT_FILE,
+                  TEST_EXEC_PATH + MD_FILE)
+        md_to_yw7(TEST_EXEC_PATH + MD_FILE,
+                  TEST_EXEC_PATH + YW7_FILE)
         # Convert markdown to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
