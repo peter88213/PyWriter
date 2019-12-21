@@ -22,9 +22,8 @@ class PywProject():
         self.sceneDescriptions = {}
 
         try:
+            # Empty scenes will crash the xml parser, so put a blank in them.
             with open(self.file, 'r', encoding='utf-8') as f:
-                # Empty scenes will crash the xml parser, so put a blank in
-                # them.
                 xmlData = f.read()
         except(FileNotFoundError):
             sys.exit('\nERROR: "' + self.file + '" not found.')
@@ -63,22 +62,30 @@ class PywProject():
 
     def write_scene_contents(self, newContents):
         """ Write scene data to yw7 project file """
-        self.sceneContents = newContents
+        if len(newContents) != len(self.sceneContents):
+            return('\nERROR: Scenes total mismatch - yWriter project not modified.')
+
         sceneCount = 0
         root = self.tree.getroot()
 
         for scn in root.iter('SCENE'):
             scID = scn.find('ID').text
             try:
-                if self.sceneContents[scID] != ' ':
-                    scn.find('SceneContent').text = self.sceneContents[scID]
+                if newContents[scID] == ' ':
+                    scn.find('SceneContent').text = ''
+                    scn.find('WordCount').text = '0'
+                    scn.find('LetterCount').text = '0'
+                else:
+                    scn.find('SceneContent').text = newContents[scID]
                     scn.find('WordCount').text = self.count_words(
-                        self.sceneContents[scID])
+                        newContents[scID])
                     scn.find('LetterCount').text = self.count_letters(
-                        self.sceneContents[scID])
-            except:
-                pass
-            sceneCount = sceneCount + 1
+                        newContents[scID])
+                sceneCount = sceneCount + 1
+            except(KeyError):
+                return('\nERROR: Scene with ID:' + scID + ' is missing in input file - yWriter project not modified.')
+
+        self.sceneContents = newContents
         try:
             self.tree.write(self.file, encoding='utf-8')
         except(PermissionError):
@@ -97,8 +104,8 @@ class PywProject():
     def count_letters(self, text):
         """ Required, because yWriter stores letter counts. """
         text = re.sub('\[.+?\]', '', text)
+        # Remove yw7 raw markup
         text = text.replace('\n', '')
         text = text.replace('\r', '')
-        # Remove yw7 raw markup
         letterCount = len(text)
         return str(letterCount)
