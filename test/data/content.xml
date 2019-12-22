@@ -12,7 +12,7 @@
 <office:body>
 <office:text>
 <text:p text:style-name="Text_20_body">[ChID:33]</text:p>
-<text:h text:style-name="Heading_20_2" text:outline-level="2">Info</text:h>
+<text:h text:style-name="Heading_20_1" text:outline-level="1">Info</text:h>
 <text:p text:style-name="First_20_paragraph">[ScID:120]</text:p>
 <text:p text:style-name="Text_20_body">*** IMPORTANT ***</text:p>
 <text:p text:style-name="Text_20_body">Uninstalling yWriter5 will uninstall (delete) this sample project.</text:p>

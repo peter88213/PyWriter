@@ -16,6 +16,7 @@ class PywProject():
         self.file = yw7File
         self.projectTitle = ''
         self.chapterTitles = {}
+        self.chapterTypes = {}
         self.sceneLists = {}
         self.sceneContents = {}
         self.sceneTitles = {}
@@ -48,6 +49,7 @@ class PywProject():
         for chp in root.iter('CHAPTER'):
             chID = chp.find('ID').text
             self.chapterTitles[chID] = chp.find('Title').text
+            self.chapterTypes[chID] = int(chp.find('Type').text)
             self.sceneLists[chID] = []
             if chp.find('Scenes'):
                 for scn in chp.find('Scenes').findall('ScID'):

@@ -5,6 +5,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 from pywriter.project import PywProject
 
+HEADING_MARKER = ("##", "#")
+
 
 def yw7_to_md(yw7File, mdFile):
     """ Read .yw7 file and convert xml to markdown. """
@@ -29,7 +31,8 @@ def yw7_to_md(yw7File, mdFile):
     prjText = ''
     for chID in prj.sceneLists:
         prjText = prjText + '\\[ChID:' + chID + '\\]\n'
-        prjText = prjText + '##' + \
+        headingMarker = HEADING_MARKER[prj.chapterTypes[chID]]
+        prjText = prjText + headingMarker + \
             format_chapter_title(prj.chapterTitles[chID]) + '\n'
         for scID in prj.sceneLists[chID]:
             prjText = prjText + '\\[ScID:' + scID + '\\]\n'

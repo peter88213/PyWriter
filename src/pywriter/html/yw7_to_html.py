@@ -5,6 +5,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 from pywriter.project import PywProject
 
+HEADING_MARKER = ("h2", "h1")
+
 
 def yw7_to_html(yw7File, htmlFile):
     """ Read .yw7 file and convert sceneContents to html. """
@@ -59,8 +61,10 @@ def yw7_to_html(yw7File, htmlFile):
     htmlText = htmlHeader.replace('$bookTitle$', prj.projectTitle)
     for chID in prj.chapterTitles:
         htmlText = htmlText + '<div id="ChID:' + chID + '">\n'
-        htmlText = htmlText + '<h2>' + \
-            format_chapter_title(prj.chapterTitles[chID]) + '</h2>\n'
+        headingMarker = HEADING_MARKER[prj.chapterTypes[chID]]
+        htmlText = htmlText + '<' + headingMarker + '>' + \
+            format_chapter_title(
+                prj.chapterTitles[chID]) + '</' + headingMarker + '>\n'
         for scID in prj.sceneLists[chID]:
             htmlText = htmlText + '<h4>' + sceneDivider + '</h4>\n'
             htmlText = htmlText + '<div id="ScID:' + scID + '">\n'
@@ -77,6 +81,8 @@ def yw7_to_html(yw7File, htmlFile):
             htmlText = htmlText + '</div>\n'
 
         htmlText = htmlText + '</div>\n'
+    htmlText = htmlText.replace(
+        '</h1>\n<h4>' + sceneDivider + '</h4>', '</h1>')
     htmlText = htmlText.replace(
         '</h2>\n<h4>' + sceneDivider + '</h4>', '</h2>')
     htmlText = htmlText + htmlFooter

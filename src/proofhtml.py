@@ -1,4 +1,4 @@
-""" Import and export ywriter7 scenes for proofing. 
+"""Import and export ywriter7 scenes for proofing. 
 
 Proof reading file format = HTML
 
@@ -72,7 +72,7 @@ if __name__ == '__main__':
         sourcePath = sys.argv[1]
 
     except:
-        print('Syntax: proofdocx.py filename')
+        print(__doc__)
         exit(1)
 
     run(sourcePath, True)
