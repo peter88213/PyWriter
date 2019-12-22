@@ -36,62 +36,74 @@ def docx_to_yw7(docxFile, mdFile, yw7File):
     return(message)
 
 
-try:
-    sourcePath = sys.argv[1]
-
-except:
-    print('Syntax: proofdocx.py filename')
-    exit(1)
-
-if not os.path.isfile(sourcePath):
-    print('\nERROR: File "' + sourcePath + '" not found.')
-    exit(1)
-
-sourceFile = os.path.split(sourcePath)
-pathToSource = sourceFile[0]
-if pathToSource:
-    pathToSource = pathToSource + '/'
-if sourceFile[1].count('.yw7'):
-    yw7File = pathToSource + sourceFile[1]
-    mdFile = pathToSource + sourceFile[1].split('.yw7')[0] + '.md'
-    docxFile = pathToSource + \
-        sourceFile[1].split('.yw7')[0] + '.docx'
-    print('\n*** Export yWriter7 scenes to ODT ***')
-    print('Project: "' + yw7File + '"')
-    if os.path.isfile(docxFile):
+def confirm_overwrite(file):
+    if os.path.isfile(file):
         print('\nWARNING: This will overwrite "' +
-              docxFile + '"!')
+              file + '"!')
         userConfirmation = input('Continue (y/n)? ')
         if not userConfirmation in ('y', 'Y'):
             print('Program abort by user.\n')
             input('Press ENTER to continue ...')
-            sys.exit()
-    print(yw7_to_docx(yw7File, mdFile, docxFile))
+            return(False)
+    return(True)
 
-elif sourceFile[1].count('.docx'):
-    docxFile = pathToSource + sourceFile[1]
-    mdFile = pathToSource + sourceFile[1].split('.docx')[0] + '.md'
-    yw7File = pathToSource + \
-        sourceFile[1].split('.docx')[0] + '.yw7'
-    print('\n*** Import yWriter7 scenes from DOCX ***')
-    print('Proofed scenes in "' + docxFile + '"')
-    if os.path.isfile(yw7File):
-        print('\nWARNING: This will overwrite "' +
-              yw7File + '"!')
-        userConfirmation = input('Continue (y/n)? ')
-        if userConfirmation in ('y', 'Y'):
+
+def run(sourcePath, silentMode=False):
+    if not os.path.isfile(sourcePath):
+        print('\nERROR: File "' + sourcePath + '" not found.')
+        exit(1)
+
+    sourceFile = os.path.split(sourcePath)
+    pathToSource = sourceFile[0]
+    if pathToSource:
+        pathToSource = pathToSource + '/'
+    if sourceFile[1].count('.yw7'):
+        yw7File = pathToSource + sourceFile[1]
+        mdFile = pathToSource + sourceFile[1].split('.yw7')[0] + '.md'
+        docxFile = pathToSource + \
+            sourceFile[1].split('.yw7')[0] + '.docx'
+        print('\n*** Export yWriter7 scenes to ODT ***')
+        print('Project: "' + yw7File + '"')
+        if not silentMode:
+            if not confirm_overwrite(docxFile):
+                sys.exit(1)
+
+        print(yw7_to_docx(yw7File, mdFile, docxFile))
+
+    elif sourceFile[1].count('.docx'):
+        docxFile = pathToSource + sourceFile[1]
+        mdFile = pathToSource + sourceFile[1].split('.docx')[0] + '.md'
+        yw7File = pathToSource + \
+            sourceFile[1].split('.docx')[0] + '.yw7'
+        print('\n*** Import yWriter7 scenes from DOCX ***')
+        print('Proofed scenes in "' + docxFile + '"')
+        if not silentMode:
+            if not confirm_overwrite(yw7File):
+                sys.exit(1)
+
+        if os.path.isfile(yw7File):
             print(docx_to_yw7(docxFile, mdFile, yw7File))
         else:
-            print('Program abort by user.\n')
+            print('\n"' + yw7File + '" not found.')
+            print(
+                'Please make sure that your proofed file is in the same directory as your yWriter7 project.')
+            print('Program abort.')
     else:
-        print('\n"' + yw7File + '" not found.')
-        print(
-            'Please make sure that your proofed file is in the same directory as your yWriter7 project.')
-        print('Program abort.')
-else:
-    print('Input file must be YW7 or DOCX.')
-try:
-    os.remove(mdFile)
-except:
-    pass
-input('Press ENTER to continue ...')
+        print('Input file must be YW7 or DOCX.')
+    try:
+        os.remove(mdFile)
+    except:
+        pass
+    if not silentMode:
+        input('Press ENTER to continue ...')
+
+
+if __name__ == '__main__':
+    try:
+        sourcePath = sys.argv[1]
+
+    except:
+        print('Syntax: proofdocx.py filename')
+        exit(1)
+
+    run(sourcePath)

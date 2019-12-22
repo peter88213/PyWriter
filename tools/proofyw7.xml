@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="proofyw7" basedir=".">
+	<property name="release" value="v1.00beta" />
+	<property name="src" location="../src" />
+	<property name="build" location="../test" />
+	<property name="dist" location="../dist" />
+	<property name="project-name" value="${ant.project.name}" />
+	<property name="release-name" value="${project-name}_${release}" />
+
+	<target name="build">
+		<delete dir="${dist}" />
+		<delete file="${build}/yw_proof_docx.py" />
+		<delete file="${build}/yw_proof_odt.py" />
+			<exec executable="python" failonerror="true">
+			    <arg value="inliner.py"/>
+			</exec>
+			<exec executable="python" failonerror="true">
+			    <arg value="../test/buildtest.py"/>
+			</exec>
+	</target>
+
+<target name="dist" description="generate the distribution">
+	<!-- Create the distribution directory -->
+		<mkdir dir="${dist}" />
+		
+		<mkdir dir="${dist}/proofdocx_${release}" />
+   		<copy file="${build}/yw_proof_docx.py" todir="${dist}/proofdocx_${release}" />
+		<copy file="../LICENSE" todir="${dist}/proofdocx_${release}" />
+		<copy file="../docs/proofdocx/README.md" todir="${dist}/proofdocx_${release}" />
+   		<zip destfile="${dist}/proofdocx_${release}.zip" basedir="${dist}/proofdocx_${release}" />
+		
+   		<mkdir dir="${dist}/proofodt_${release}" />
+		<copy file="${build}/yw_proof_odt.py" todir="${dist}/proofodt_${release}" />
+		<copy file="../LICENSE" todir="${dist}/proofodt_${release}" />
+		<copy file="../docs/proofodt/README.md" todir="${dist}/proofodt_${release}" />
+   		<zip destfile="${dist}/proofodt_${release}.zip" basedir="${dist}/proofodt_${release}" />
+
+		<delete file="${build}/yw_proof_docx.py" />
+		<delete file="${build}/yw_proof_odt.py" />
+	
+</target>
+
+<target name="clean" description="clean up">
+	<!-- Delete the ${dist} and $build directory tree -->
+	<delete dir="${dist}" />
+	<delete dir="${build}" />
+</target>
+
+</project>
