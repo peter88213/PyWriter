@@ -1,4 +1,4 @@
-""" Python unit tests for the pyWriter project.
+""" Integration tests for the pyWriter project.
 
 Test the "export project" tasks.
 
