@@ -36,6 +36,8 @@ The proof reading document contains chapter titles as formatted headings in orde
 
 Keep in mind that you must not modify your document's chapter and scene structure, if you want to reimport it into yWriter.
 
+__Warning:__  Due to  _Pandoc_  operation, the converter may  __remove blank lines__  within scenes.
+
 
 
 ### Import proofed document
