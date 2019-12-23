@@ -1,6 +1,6 @@
 # yw_proof_odt
 
-Import and export ywriter7 scenes for proofing. 
+Import and export ywriter7 scenes for proof reading. 
 
 Proof reading file format =  __ODT__  (OASIS Open Document format) for _LibreOffice Writer_ and _OpenOffice Writer_.
 
@@ -8,7 +8,7 @@ Proof reading file format =  __ODT__  (OASIS Open Document format) for _LibreOff
 
 ## Features
 
-* Imports and exports [yWriter 7](http://www.spacejock.com/yWriter7_Download.html) projects similar to yWriter 5's RTF  _proofing_  roundtrip.
+* Imports and exports [yWriter 7](http://www.spacejock.com/yWriter7_Download.html) projects similar to yWriter 5's RTF  _proof reading_  roundtrip.
 
 * Provides a convenient  _drag and drop_  user interface.
 
@@ -20,19 +20,19 @@ Proof reading file format =  __ODT__  (OASIS Open Document format) for _LibreOff
 
 ## How to use
 
-### Export for proofing
+### Export for proof reading
 
 1. In yWriter 7,  __make a full backup__  and close your yWriter 7 app.
 
 2. Open the folder containing your yWriter 7 project. Drag your project file's Icon and drop it on the `yw_proof_odt.py` Icon.
 
-3. A window opens on the desktop, asking for confirmation to overwrite existing files. answer with `y` and hit `Enter`.
+3. A window opens on the desktop, asking for confirmation to overwrite existing files. Answer with `y` and hit `Enter`.
 
-4. On success, an `odt` proofreading document appears in the folder. Close the converter's message window and double click the proofreading document icon.
+4. On success, an `odt` proof reading document appears in the folder. Close the converter's message window and double click the proof reading document icon.
 
-The proofing document contains Chapter `[ChID:x]` and scene `[ScID:y]` markers according to yWriter 5 standard.  __Do not touch them__  if you want to be able to reimport the document into yWriter. If you have installed the [OOTyW extension](https://github.com/peter88213/OOTyW) Version 2.0.1 (or later), clicking the `Format for yWriter proofing` button will display the scene and chapter markers small and colored.  
+The proof reading document contains Chapter `[ChID:x]` and scene `[ScID:y]` markers according to yWriter 5 standard.  __Do not touch them__  if you want to be able to reimport the document into yWriter. If you have installed the [OOTyW extension](https://github.com/peter88213/OOTyW) Version 2.0.1 (or later), clicking the `Format for yWriter proofing` button will display the scene and chapter markers small and colored.  
 
-The proofing document contains chapter titles as formatted headings in order to make navigation convenient. These titles will not be reimported into yWriter, so do not edit them. 
+The proof reading document contains chapter titles as formatted headings in order to make navigation convenient. These titles will not be reimported into yWriter, so do not edit them. 
 
 Keep in mind that you must not modify your document's chapter and scene structure, if you want to reimport it into yWriter.
 
@@ -44,7 +44,7 @@ Keep in mind that you must not modify your document's chapter and scene structur
 
 2. Drag your proof read document's Icon and drop it on the `yw_proof_odt.py` Icon.
   
-3. A window opens on the desktop, asking for confirmation to overwrite existing files. answer with `y` and hit `Enter`.
+3. A window opens on the desktop, asking for confirmation to overwrite existing files. Answer with `y` and hit `Enter`.
 
 4. On success, the `yw7` project file is updated. Close the converter's message window and double click the yWriter 7 project icon.
 
@@ -68,7 +68,7 @@ _yw_proof_odt_ comes as a zipfile, containing the Python script and documentatio
 
 3. Unzip the downloaded file  _proofodt_<release>.zip_  anywhere in your user profile (e.g. on the desktop). If Python is installed properly on Windows,   _yw_proof_odt.py_  will show up with an Icon like this: ![Python sourcefile Icon](https://upload.wikimedia.org/wikipedia/commons/8/82/Text-x-python.svg)
 
-4. (Optional) Right-click on the  _yw_proof_odt.py_  icon and draw it as a link into your yWriter project folder.
+4. (Optional) Right-click on the  _yw_proof_odt.py_  icon and drag it as a link into your yWriter project folder.
 
 
 
