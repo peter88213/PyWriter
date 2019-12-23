@@ -22,6 +22,8 @@ class PywProject():
         self.sceneTitles = {}
         self.sceneDescriptions = {}
 
+        self.cdataTags = []
+
         try:
             # Empty scenes will crash the xml parser, so put a blank in them.
             with open(self.file, 'r', encoding='utf-8') as f:
@@ -37,6 +39,13 @@ class PywProject():
             except(PermissionError):
                 sys.exit('\nERROR: "' + self.file + '" is write protected.')
 
+        lines = xmlData.split('\n')
+
+        for line in lines:
+            tag = re.search('\<(.+?)\>\<\!\[CDATA', line)
+            if tag:
+                if not (tag.group(1) in self.cdataTags):
+                    self.cdataTags.append(tag.group(1))
         try:
             self.tree = ET.parse(self.file)
             root = self.tree.getroot()
@@ -92,6 +101,25 @@ class PywProject():
             self.tree.write(self.file, encoding='utf-8')
         except(PermissionError):
             return('\nERROR: "' + self.file + '" is write protected.')
+
+        newXml = ['<?xml version="1.0" encoding="utf-8"?>\n']
+        # try:
+        with open(self.file, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+            for line in lines:
+                for tag in self.cdataTags:
+                    line = re.sub('\<' + tag + '\>', '<' +
+                                  tag + '><![CDATA[', line)
+                    line = re.sub('\<\/' + tag + '\>',
+                                  ']]></' + tag + '>', line)
+                newXml.append(line)
+        # except:
+        #    return('\nERROR: Can not read"' + self.file + '".')
+        try:
+            with open(self.file, 'w', encoding='utf-8') as f:
+                f.writelines(newXml)
+        except:
+            return('\nERROR: Can not write"' + self.file + '".')
 
         return('\nSUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self.file + '".')
 

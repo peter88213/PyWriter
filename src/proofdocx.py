@@ -101,7 +101,6 @@ def run(sourcePath, silentMode=False):
 if __name__ == '__main__':
     try:
         sourcePath = sys.argv[1]
-
     except:
         print(__doc__)
         exit(1)

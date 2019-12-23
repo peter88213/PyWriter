@@ -46,11 +46,13 @@ def yw7_to_html(yw7File, htmlFile):
     htmlHeader = '<html>\n' + '<head>\n' + \
         '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + \
         '<style type="text/css">\n' + \
-        'h2, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
+        'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
+        'h1, h2, h3, h4 {text-align: center}\n' +\
+        'h1 {letter-spacing: 0.5em; font-style: italic}' + \
+        'h1, h2 {font-weight: bold}\n' + \
+        'h3 {font-style: italic}\n' + \
         'p.textbody {margin-top:0; margin-bottom:0}\n' + \
         'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
-        'h2 {font-weight: bold}\n' + \
-        'h2, h4 {text-align: center}\n' +\
         'strong {font-weight:normal; text-transform: uppercase}\n' + \
         '</style>\n' + \
         '<title>$bookTitle$</title>\n' + \
