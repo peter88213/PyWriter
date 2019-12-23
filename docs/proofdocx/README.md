@@ -26,7 +26,7 @@ Proof reading file format =  __DOCX__  (Office Open XML format) for _Microsoft W
 
 2. Open the folder containing your yWriter 7 project. Drag your project file's Icon and drop it on the `yw_proof_docx.py` Icon.
 
-3. A window opens on the desktop, asking for confirmation to overwrite existing files. Answer `y` and hit `Enter`.
+3. A window opens on the desktop, asking for confirmation to overwrite existing files. answer with `y` and hit `Enter`.
 
 4. On success, a `docx` proofreading document appears in the folder. Close the converter's message window and double click the proofreading document icon.
 
@@ -44,7 +44,7 @@ Keep in mind that you must not modify your document's chapter and scene structur
 
 2. Drag your proof read document's Icon and drop it on the `yw_proof_docx.py` Icon.
   
-3. A window opens on the desktop, asking for confirmation to overwrite existing files. Answer `y` and hit `Enter`.
+3. A window opens on the desktop, asking for confirmation to overwrite existing files. answer with `y` and hit `Enter`.
 
 4. On success, the `yw7` project file is updated. Close the converter's message window and double click the yWriter 7 project icon.
 
