@@ -12,9 +12,9 @@ Proof reading file format =  __DOCX__  (Office Open XML format) for _Microsoft W
 
 * Provides a convenient  _drag and drop_  user interface.
 
-* Generates well-formatted  _docx_  documents using the free  [Pandoc](https://pandoc.org/)  document converter.  __You need a Pandoc installation__  on your computer in order to make  _yw_proof_docx_  work.
+* Generates well-formatted  _docx_  documents using the free  [Pandoc](https://pandoc.org/)  document converter.  __You need a Pandoc installation__  on your computer in order to make  *yw_proof_docx*  work.
 
-*  _yw_proof_docx.py_  is nothing but a [Python](https://www.python.org/downloads/) source file. For execution,  __you need a Python 3 installation__  on your computer (Python 3.8 recommended). Although developed and tested on windows 10,  _yw_proof_docx_  may also run on Mac OS X, provided a proper  _Python 3_  installation. 
+*  *yw_proof_docx.py*  is nothing but a [Python](https://www.python.org/downloads/) source file. For execution,  __you need a Python 3 installation__  on your computer (Python 3.8 recommended). Although developed and tested on windows 10,  *yw_proof_docx*  may also run on Mac OS X, provided a proper  _Python 3_  installation. 
 
 
 
@@ -22,7 +22,7 @@ Proof reading file format =  __DOCX__  (Office Open XML format) for _Microsoft W
 
 ### Export for proof reading
 
-1. In yWriter 7,  __make a full backup__  and close your yWriter 7 app.
+1. In yWriter 7,  __make a full backup__  and close the yWriter 7 app.
 
 2. Open the folder containing your yWriter 7 project. Drag your project file's Icon and drop it on the `yw_proof_docx.py` Icon.
 
@@ -50,13 +50,13 @@ __Warning:__  Due to  _Pandoc_  operation, the converter may  __remove blank lin
 
 4. On success, the `yw7` project file is updated. Close the converter's message window and double click the yWriter 7 project icon.
 
-5. Although  _yw_proof_docx_  updates word and letter counts automatically, there can be a slight difference of totals to yWriter's built-in counting. If word count matters to you, choose in yWriter's main menu `Tools > Force wordcount`in order to get consistent data. 
+5. Although  *yw_proof_docx*  updates word and letter counts automatically, there can be a slight difference of totals to yWriter's built-in counting. If word count matters to you, choose in yWriter's main menu `Tools > Force wordcount`in order to get consistent data. 
 
 
 
 ## Download
 
-_yw_proof_docx_ comes as a zipfile, containing the Python script and documentation.
+*yw_proof_docx* comes as a zipfile, containing the Python script and documentation.
 
 [Download page](https://github.com/peter88213/PyWriter/releases/latest)
 
@@ -68,15 +68,15 @@ _yw_proof_docx_ comes as a zipfile, containing the Python script and documentati
 
 2. Make sure you have a working  __Pandoc__  installation. If not, you can download it from here: [https://pandoc.org/installing.html](https://pandoc.org/installing.html)
 
-3. Unzip the downloaded file `proofdocx_<release>.zip` anywhere in your user profile (e.g. on the desktop). If Python is installed properly on Windows,   _yw_proof_docx.py_  will show up with an Icon like this: ![Python sourcefile Icon](https://upload.wikimedia.org/wikipedia/commons/8/82/Text-x-python.svg)
+3. Unzip the downloaded file  *proofdocx_<release>.zip*  anywhere in your user profile (e.g. on the desktop). If Python is installed properly on Windows,   *yw_proof_docx.py*  will show up with an Icon like this: ![Python sourcefile Icon](https://upload.wikimedia.org/wikipedia/commons/8/82/Text-x-python.svg)
 
-4. (Optional) Right-click on the  _yw_proof_docx.py_  icon and drag it as a link into your yWriter project folder.
+4. (Optional) Right-click on the  *yw_proof_docx.py*  icon and drag it as a link into your yWriter project folder.
 
 
 
 ## How to uninstall
 
-Just delete the files you extracted from  _proofdocx_<release>.zip_  and possibly the links.   
+Just delete the files you extracted from  *proofdocx_<release>.zip*  and possibly the links.   
 
 
 
