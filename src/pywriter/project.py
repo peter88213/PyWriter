@@ -22,19 +22,6 @@ class PywProject():
     class Scene():
         """ yWriter 7 scene representation """
 
-        def count_words(self):
-            text = re.sub('\[.+?\]|\.|\,| -', '', self._sceneContent)
-            # Remove yw7 raw markup
-            wordList = text.split()
-            self._wordCount = len(wordList)
-
-        def count_letters(self):
-            text = re.sub('\[.+?\]', '', self._sceneContent)
-            # Remove yw7 raw markup
-            text = text.replace('\n', '')
-            text = text.replace('\r', '')
-            self._letterCount = len(text)
-
         def __init__(self):
             self.title = ''
             self.desc = ''
@@ -47,10 +34,23 @@ class PywProject():
             return(self._sceneContent)
 
         @sceneContent.setter
-        def set_sceneContent(self, text):
+        def sceneContent(self, text):
             self._sceneContent = text
             self.count_words()
             self.count_letters()
+
+        def count_words(self):
+            text = re.sub('\[.+?\]|\.|\,| -', '', self._sceneContent)
+            # Remove yw7 raw markup
+            wordList = text.split()
+            self._wordCount = len(wordList)
+
+        def count_letters(self):
+            text = re.sub('\[.+?\]', '', self._sceneContent)
+            # Remove yw7 raw markup
+            text = text.replace('\n', '')
+            text = text.replace('\r', '')
+            self._letterCount = len(text)
 
     def __init__(self, yw7File):
         """ Read data from yw7 project file """
@@ -109,30 +109,34 @@ class PywProject():
                 self.scenes[scID].desc = scn.find('Desc').text
             self.scenes[scID]._sceneContent = scn.find('SceneContent').text
 
-    def write_scene_contents(self, newContents):
+    def write_scenes(self):
         """ Write scene data to yw7 project file """
-        if len(newContents) != len(self.scenes):
-            return('\nERROR: Scenes total mismatch - yWriter project not modified.')
-
         sceneCount = 0
         root = self.tree.getroot()
 
         for scn in root.iter('SCENE'):
             scID = scn.find('ID').text
             try:
-                if newContents[scID] == ' ':
+                if self.scenes[scID]._sceneContent == ' ':
                     scn.find('SceneContent').text = ''
                     scn.find('WordCount').text = '0'
                     scn.find('LetterCount').text = '0'
                 else:
-                    scn.find('SceneContent').text = newContents[scID]
-                    scn.find('WordCount').text = self.count_words(
-                        newContents[scID])
-                    scn.find('LetterCount').text = self.count_letters(
-                        newContents[scID])
+                    scn.find(
+                        'SceneContent').text = self.scenes[scID]._sceneContent
+                    scn.find('WordCount').text = str(
+                        self.scenes[scID]._wordCount)
+                    scn.find('LetterCount').text = str(
+                        self.scenes[scID]._letterCount)
+                scn.find('Title').text = self.scenes[scID].title
+                if scn.find('Desc'):
+                    scn.find('Desc').text = self.scenes[scID].desc
                 sceneCount = sceneCount + 1
             except(KeyError):
                 return('\nERROR: Scene with ID:' + scID + ' is missing in input file - yWriter project not modified.')
+
+        if sceneCount != len(self.scenes):
+            return('\nERROR: Scenes total mismatch - yWriter project not modified.')
 
         try:
             self.tree.write(self.file, encoding='utf-8')
@@ -159,20 +163,3 @@ class PywProject():
             return('\nERROR: Can not write"' + self.file + '".')
 
         return('\nSUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self.file + '".')
-
-    def count_words(self, text):
-        """ Required, because yWriter stores word counts. """
-        text = re.sub('\[.+?\]|\.|\,| -', '', text)
-        # Remove yw7 raw markup
-        wordList = text.split()
-        wordCount = len(wordList)
-        return str(wordCount)
-
-    def count_letters(self, text):
-        """ Required, because yWriter stores letter counts. """
-        text = re.sub('\[.+?\]', '', text)
-        # Remove yw7 raw markup
-        text = text.replace('\n', '')
-        text = text.replace('\r', '')
-        letterCount = len(text)
-        return str(letterCount)

@@ -35,7 +35,7 @@ def md_to_yw7(mdFile, yw7File):
         return('\nERROR: "' + mdFile + '" not found.')
 
     text = format_yw7(text)
-    sceneContents = {}
+    newContents = {}
     sceneText = ''
     scID = ''
     inScene = False
@@ -49,7 +49,7 @@ def md_to_yw7(mdFile, yw7File):
         elif line.count('[/ChID]'):
             pass
         elif line.count('[/ScID]'):
-            sceneContents[scID] = sceneText
+            newContents[scID] = sceneText
             sceneText = ''
             inScene = False
         elif inScene:
@@ -57,7 +57,10 @@ def md_to_yw7(mdFile, yw7File):
 
     prj = PywProject(yw7File)
 
-    return(prj.write_scene_contents(sceneContents))
+    for scID in newContents:
+        prj.scenes[scID].sceneContent = newContents[scID]
+
+    return(prj.write_scenes())
 
 
 if __name__ == '__main__':

@@ -9,7 +9,7 @@ from pywriter.project import PywProject
 
 
 def html_to_yw7(htmlFile, yw7File):
-    """ Convert html into yw7 sceneContents and modify .yw7 file. """
+    """ Convert html into yw7 newContents and modify .yw7 file. """
 
     def format_yw7(text):
         """ Convert html markup to yw7 raw markup """
@@ -41,7 +41,12 @@ def html_to_yw7(htmlFile, yw7File):
     parser.feed(text)
     prj = PywProject(yw7File)
 
-    return(prj.write_scene_contents(parser.get_scene_contents()))
+    newContents = parser.get_scene_contents()
+
+    for scID in newContents:
+        prj.scenes[scID].sceneContent = newContents[scID]
+
+    return(prj.write_scenes())
 
 
 if __name__ == '__main__':
