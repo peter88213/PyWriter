@@ -60,7 +60,7 @@ def md_to_yw7(mdFile, yw7File):
     for scID in newContents:
         prj.scenes[scID].sceneContent = newContents[scID]
 
-    return(prj.write_scenes())
+    return(prj.write())
 
 
 if __name__ == '__main__':

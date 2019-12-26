@@ -109,8 +109,8 @@ class PywProject():
                 self.scenes[scID].desc = scn.find('Desc').text
             self.scenes[scID]._sceneContent = scn.find('SceneContent').text
 
-    def write_scenes(self):
-        """ Write scene data to yw7 project file """
+    def write(self):
+        """ Write attributes to yw7 project file """
         sceneCount = 0
         root = self.tree.getroot()
 
