@@ -22,10 +22,35 @@ class PywProject():
     class Scene():
         """ yWriter 7 scene representation """
 
+        def count_words(self):
+            text = re.sub('\[.+?\]|\.|\,| -', '', self._sceneContent)
+            # Remove yw7 raw markup
+            wordList = text.split()
+            self._wordCount = len(wordList)
+
+        def count_letters(self):
+            text = re.sub('\[.+?\]', '', self._sceneContent)
+            # Remove yw7 raw markup
+            text = text.replace('\n', '')
+            text = text.replace('\r', '')
+            self._letterCount = len(text)
+
         def __init__(self):
             self.title = ''
-            self.description = ''
-            self.sceneContent = ''
+            self.desc = ''
+            self._wordCount = 0
+            self._letterCount = 0
+            self._sceneContent = ''
+
+        def get_sceneContent(self):
+            return(self._sceneContent)
+
+        def set_sceneContent(self, text):
+            self._sceneContent = text
+            self.count_words()
+            self.count_letters()
+
+        sceneContent = property(get_sceneContent, set_sceneContent)
 
     def __init__(self, yw7File):
         """ Read data from yw7 project file """
@@ -81,8 +106,8 @@ class PywProject():
             self.scenes[scID] = self.Scene()
             self.scenes[scID].title = scn.find('Title').text
             if scn.find('Desc'):
-                self.scenes[scID].description = scn.find('Desc').text
-            self.scenes[scID].sceneContent = scn.find('SceneContent').text
+                self.scenes[scID].desc = scn.find('Desc').text
+            self.scenes[scID].set_sceneContent(scn.find('SceneContent').text)
 
     def write_scene_contents(self, newContents):
         """ Write scene data to yw7 project file """
@@ -109,7 +134,6 @@ class PywProject():
             except(KeyError):
                 return('\nERROR: Scene with ID:' + scID + ' is missing in input file - yWriter project not modified.')
 
-        self.sceneContents = newContents
         try:
             self.tree.write(self.file, encoding='utf-8')
         except(PermissionError):

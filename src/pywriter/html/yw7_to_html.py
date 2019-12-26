@@ -36,7 +36,7 @@ def yw7_to_html(yw7File, htmlFile):
             for chID in prj.chapterTitles:
                 for scID in prj.chapters[chID].scene:
                     f.write(scID + ',"')
-                    for line in prj.scenes[scID].description:
+                    for line in prj.scenes[scID].desc:
                         f.write(line.replace('"', "'"))
                     f.write('"\n')
 
@@ -76,7 +76,8 @@ def yw7_to_html(yw7File, htmlFile):
             htmlText = htmlText + '<!-- ' + prj.scenes[scID].title + ' -->\n'
             # Insert scene title as comment.
             try:
-                htmlText = htmlText + format_yw7(prj.scenes[scID].sceneContent)
+                htmlText = htmlText + \
+                    format_yw7(prj.scenes[scID].get_sceneContent())
             except(TypeError):
                 htmlText = htmlText + ' '
             htmlText = htmlText + '</p>\n'

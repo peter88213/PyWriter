@@ -37,7 +37,7 @@ def yw7_to_md(yw7File, mdFile):
         for scID in prj.chapters[chID].scenes:
             prjText = prjText + '\\[ScID:' + scID + '\\]\n'
             try:
-                prjText = prjText + prj.scenes[scID].sceneContent + '\n'
+                prjText = prjText + prj.scenes[scID].get_sceneContent() + '\n'
             except(TypeError):
                 prjText = prjText + '\n'
             prjText = prjText + '\\[/ScID\\]\n'
