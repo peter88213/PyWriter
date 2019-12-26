@@ -29,15 +29,15 @@ def yw7_to_md(yw7File, mdFile):
 
     prj = PywProject(yw7File)
     prjText = ''
-    for chID in prj.sceneLists:
+    for chID in prj.chapters:
         prjText = prjText + '\\[ChID:' + chID + '\\]\n'
-        headingMarker = HEADING_MARKER[prj.chapterTypes[chID]]
+        headingMarker = HEADING_MARKER[prj.chapters[chID].type]
         prjText = prjText + headingMarker + \
-            format_chapter_title(prj.chapterTitles[chID]) + '\n'
-        for scID in prj.sceneLists[chID]:
+            format_chapter_title(prj.chapters[chID].title) + '\n'
+        for scID in prj.chapters[chID].scenes:
             prjText = prjText + '\\[ScID:' + scID + '\\]\n'
             try:
-                prjText = prjText + prj.sceneContents[scID] + '\n'
+                prjText = prjText + prj.scenes[scID].sceneContent + '\n'
             except(TypeError):
                 prjText = prjText + '\n'
             prjText = prjText + '\\[/ScID\\]\n'
@@ -47,7 +47,7 @@ def yw7_to_md(yw7File, mdFile):
     with open(mdFile, 'w', encoding='utf-8') as f:
         f.write(prjText)
 
-    return('\nSUCCESS: ' + str(len(prj.sceneContents)) + ' Scenes written to "' + mdFile + '".')
+    return('\nSUCCESS: ' + str(len(prj.scenes)) + ' Scenes written to "' + mdFile + '".')
 
 
 if __name__ == '__main__':

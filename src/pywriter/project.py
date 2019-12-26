@@ -9,20 +9,31 @@ import xml.etree.ElementTree as ET
 
 
 class PywProject():
-    """ yWriter 7 project data """
+    """ yWriter 7 project representation """
+
+    class Chapter():
+        """ yWriter 7 chapter representation """
+
+        def __init__(self):
+            self.title = ''
+            self.type = ''
+            self.scenes = []
+
+    class Scene():
+        """ yWriter 7 scene representation """
+
+        def __init__(self):
+            self.title = ''
+            self.description = ''
+            self.sceneContent = ''
 
     def __init__(self, yw7File):
         """ Read data from yw7 project file """
         self.file = yw7File
         self.projectTitle = ''
-        self.chapterTitles = {}
-        self.chapterTypes = {}
-        self.sceneLists = {}
-        self.sceneContents = {}
-        self.sceneTitles = {}
-        self.sceneDescriptions = {}
-
         self.cdataTags = []
+        self.chapters = {}
+        self.scenes = {}
 
         try:
             # Empty scenes will crash the xml parser, so put a blank in them.
@@ -57,23 +68,25 @@ class PywProject():
 
         for chp in root.iter('CHAPTER'):
             chID = chp.find('ID').text
-            self.chapterTitles[chID] = chp.find('Title').text
-            self.chapterTypes[chID] = int(chp.find('Type').text)
-            self.sceneLists[chID] = []
+            self.chapters[chID] = self.Chapter()
+            self.chapters[chID].title = chp.find('Title').text
+            self.chapters[chID].type = int(chp.find('Type').text)
+            self.chapters[chID].scenes = []
             if chp.find('Scenes'):
                 for scn in chp.find('Scenes').findall('ScID'):
-                    self.sceneLists[chID].append(scn.text)
+                    self.chapters[chID].scenes.append(scn.text)
 
         for scn in root.iter('SCENE'):
             scID = scn.find('ID').text
-            self.sceneContents[scID] = scn.find('SceneContent').text
-            self.sceneTitles[scID] = scn.find('Title').text
+            self.scenes[scID] = self.Scene()
+            self.scenes[scID].title = scn.find('Title').text
             if scn.find('Desc'):
-                self.sceneDescriptions[scID] = scn.find('Desc').text
+                self.scenes[scID].description = scn.find('Desc').text
+            self.scenes[scID].sceneContent = scn.find('SceneContent').text
 
     def write_scene_contents(self, newContents):
         """ Write scene data to yw7 project file """
-        if len(newContents) != len(self.sceneContents):
+        if len(newContents) != len(self.scenes):
             return('\nERROR: Scenes total mismatch - yWriter project not modified.')
 
         sceneCount = 0

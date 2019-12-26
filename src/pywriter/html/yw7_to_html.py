@@ -34,9 +34,9 @@ def yw7_to_html(yw7File, htmlFile):
         csvFile = htmlPath.split('.html')[0] + '.csv'
         with open(csvFile, 'w') as f:
             for chID in prj.chapterTitles:
-                for scID in prj.sceneLists[chID]:
+                for scID in prj.chapters[chID].scene:
                     f.write(scID + ',"')
-                    for line in prj.sceneDescriptions[scID]:
+                    for line in prj.scenes[scID].description:
                         f.write(line.replace('"', "'"))
                     f.write('"\n')
 
@@ -61,22 +61,22 @@ def yw7_to_html(yw7File, htmlFile):
 
     prj = PywProject(yw7File)
     htmlText = htmlHeader.replace('$bookTitle$', prj.projectTitle)
-    for chID in prj.chapterTitles:
+    for chID in prj.chapters:
         htmlText = htmlText + '<div id="ChID:' + chID + '">\n'
-        headingMarker = HEADING_MARKER[prj.chapterTypes[chID]]
+        headingMarker = HEADING_MARKER[prj.chapters[chID].type]
         htmlText = htmlText + '<' + headingMarker + '>' + \
             format_chapter_title(
-                prj.chapterTitles[chID]) + '</' + headingMarker + '>\n'
-        for scID in prj.sceneLists[chID]:
+                prj.chapters[chID].title) + '</' + headingMarker + '>\n'
+        for scID in prj.chapters[chID].scenes:
             htmlText = htmlText + '<h4>' + sceneDivider + '</h4>\n'
             htmlText = htmlText + '<div id="ScID:' + scID + '">\n'
             htmlText = htmlText + '<p class="textbody">'
             htmlText = htmlText + '<a name="ScID:' + scID + '" />'
             # Insert scene ID as anchor.
-            htmlText = htmlText + '<!-- ' + prj.sceneTitles[scID] + ' -->\n'
+            htmlText = htmlText + '<!-- ' + prj.scenes[scID].title + ' -->\n'
             # Insert scene title as comment.
             try:
-                htmlText = htmlText + format_yw7(prj.sceneContents[scID])
+                htmlText = htmlText + format_yw7(prj.scenes[scID].sceneContent)
             except(TypeError):
                 htmlText = htmlText + ' '
             htmlText = htmlText + '</p>\n'
@@ -97,7 +97,7 @@ def yw7_to_html(yw7File, htmlFile):
 
     #create_csv(prj, htmlFile)
 
-    return('\nSUCCESS: ' + str(len(prj.sceneContents)) + ' Scenes written to "' + htmlFile + '".')
+    return('\nSUCCESS: ' + str(len(prj.scenes)) + ' Scenes written to "' + htmlFile + '".')
 
 
 if __name__ == '__main__':
