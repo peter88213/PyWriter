@@ -111,6 +111,19 @@ class PywProject():
         sceneCount = 0
         root = self.tree.getroot()
 
+        for prj in root.iter('PROJECT'):
+            prj.find('Title').text = self.projectTitle
+
+        for chp in root.iter('CHAPTER'):
+            chID = chp.find('ID').text
+            chp.find('Title').text = self.chapters[chID].title
+            chp.find('Type').text = str(self.chapters[chID].type)
+            if chp.find('Scenes'):
+                i = 0
+                for scn in chp.find('Scenes').findall('ScID'):
+                    scn.text = self.chapters[chID].scenes[i]
+                    i = i + 1
+
         for scn in root.iter('SCENE'):
             scID = scn.find('ID').text
             try:
