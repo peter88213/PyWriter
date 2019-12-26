@@ -5,6 +5,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from html.parser import HTMLParser
+from pywriter.project import PywProject
 
 
 class PywHTMLParser(HTMLParser):
@@ -12,26 +13,32 @@ class PywHTMLParser(HTMLParser):
 
     sceneText = ''
     scID = 0
+    chID = 0
     inScene = False
-    sceneContents = {}
+    prj = PywProject()
 
-    def get_scene_contents(self):
+    def get_prj(self):
         """ Export scene content dictionary. """
-        return(self.sceneContents)
+        return(self.prj)
 
     def handle_starttag(self, tag, attrs):
         """ Get scene ID at scene start. """
         if tag == 'div':
             if attrs[0][0] == 'id':
                 if attrs[0][1].count('ScID'):
-                    self.inScene = True
                     self.scID = re.search('[0-9]+', attrs[0][1]).group()
+                    self.prj.scenes[self.scID] = PywProject.Scene()
+                    self.prj.chapters[self.chID].scenes.append(self.scID)
+                    self.inScene = True
+                elif attrs[0][1].count('ChID'):
+                    self.ChID = re.search('[0-9]+', attrs[0][1]).group()
+                    self.prj.chapters[self.chID] = PywProject.Chapter()
 
     def handle_endtag(self, tag):
         """ Save scene content in dictionary at scene end. """
         if tag == 'div':
             if self.inScene:
-                self.sceneContents[self.scID] = self.sceneText
+                self.prj.scenes[self.scID].sceneContent = self.sceneText
                 self.sceneText = ''
                 self.inScene = False
 

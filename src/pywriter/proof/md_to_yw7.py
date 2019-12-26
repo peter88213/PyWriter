@@ -35,33 +35,39 @@ def md_to_yw7(mdFile, yw7File):
         return('\nERROR: "' + mdFile + '" not found.')
 
     text = format_yw7(text)
-    newContents = {}
+
+    mdPrj = PywProject()
     sceneText = ''
     scID = ''
+    chID = ''
     inScene = False
+
     lines = text.split('\n')
     for line in lines:
-        if line.count('[ChID'):
-            pass
-        elif line.count('[ScID'):
+        if line.count('[ScID'):
             scID = re.search('[0-9]+', line).group()
+            mdPrj.scenes[scID] = PywProject.Scene()
+            mdPrj.chapters[chID].scenes.append(scID)
             inScene = True
-        elif line.count('[/ChID]'):
-            pass
         elif line.count('[/ScID]'):
-            newContents[scID] = sceneText
+            mdPrj.scenes[scID].sceneContent = sceneText
             sceneText = ''
             inScene = False
+        elif line.count('[ChID'):
+            chID = re.search('[0-9]+', line).group()
+            mdPrj.chapters[chID] = PywProject.Chapter()
+        elif line.count('[/ChID]'):
+            pass
         elif inScene:
             sceneText = sceneText + line + '\n'
 
-    prj = PywProject()
-    prj.read(yw7File)
+    ywPrj = PywProject()
+    ywPrj.read(yw7File)
 
-    for scID in newContents:
-        prj.scenes[scID].sceneContent = newContents[scID]
+    for scID in mdPrj.scenes:
+        ywPrj.scenes[scID].sceneContent = mdPrj.scenes[scID].sceneContent
 
-    return(prj.write(yw7File))
+    return(ywPrj.write(yw7File))
 
 
 if __name__ == '__main__':

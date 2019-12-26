@@ -39,15 +39,15 @@ def html_to_yw7(htmlFile, yw7File):
 
     parser = PywHTMLParser()
     parser.feed(text)
-    prj = PywProject()
-    prj.read(yw7File)
+    ywPrj = PywProject()
+    ywPrj.read(yw7File)
 
-    newContents = parser.get_scene_contents()
+    htmlPrj = parser.get_prj()
 
-    for scID in newContents:
-        prj.scenes[scID].sceneContent = newContents[scID]
+    for scID in htmlPrj.scenes:
+        ywPrj.scenes[scID].sceneContent = htmlPrj.scenes[scID].sceneContent
 
-    return(prj.write(yw7File))
+    return(ywPrj.write(yw7File))
 
 
 if __name__ == '__main__':
