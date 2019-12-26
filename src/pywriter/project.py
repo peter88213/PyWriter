@@ -42,15 +42,15 @@ class PywProject():
             self._letterCount = 0
             self._sceneContent = ''
 
-        def get_sceneContent(self):
+        @property
+        def sceneContent(self):
             return(self._sceneContent)
 
+        @sceneContent.setter
         def set_sceneContent(self, text):
             self._sceneContent = text
             self.count_words()
             self.count_letters()
-
-        sceneContent = property(get_sceneContent, set_sceneContent)
 
     def __init__(self, yw7File):
         """ Read data from yw7 project file """
@@ -107,7 +107,7 @@ class PywProject():
             self.scenes[scID].title = scn.find('Title').text
             if scn.find('Desc'):
                 self.scenes[scID].desc = scn.find('Desc').text
-            self.scenes[scID].set_sceneContent(scn.find('SceneContent').text)
+            self.scenes[scID]._sceneContent = scn.find('SceneContent').text
 
     def write_scene_contents(self, newContents):
         """ Write scene data to yw7 project file """

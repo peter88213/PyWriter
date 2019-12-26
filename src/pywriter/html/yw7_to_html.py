@@ -77,7 +77,7 @@ def yw7_to_html(yw7File, htmlFile):
             # Insert scene title as comment.
             try:
                 htmlText = htmlText + \
-                    format_yw7(prj.scenes[scID].get_sceneContent())
+                    format_yw7(prj.scenes[scID].sceneContent)
             except(TypeError):
                 htmlText = htmlText + ' '
             htmlText = htmlText + '</p>\n'
