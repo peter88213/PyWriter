@@ -8,12 +8,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 import zipfile
-from pywriter.proof.yw7_to_md import yw7_to_md
-from pywriter.proof.md_to_yw7 import md_to_yw7
-from pywriter.proof.md_to_docx import md_to_docx
-from pywriter.proof.docx_to_md import docx_to_md
-from pywriter.proof.md_to_odt import md_to_odt
-from pywriter.proof.odt_to_md import odt_to_md
+from pywriter.md.yw7_to_md import yw7_to_md
+from pywriter.md.md_to_yw7 import md_to_yw7
+from pywriter.md.md_to_docx import md_to_docx
+from pywriter.md.docx_to_md import docx_to_md
+from pywriter.md.md_to_odt import md_to_odt
+from pywriter.md.odt_to_md import odt_to_md
 
 TEST_PROJECT = 'yw7 Sample Project'
 

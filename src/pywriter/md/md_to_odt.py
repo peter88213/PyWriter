@@ -3,7 +3,7 @@
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.proof.pandoc import convert_file
+from pywriter.md.pandoc import convert_file
 
 
 def md_to_odt(mdFile, odtFile):

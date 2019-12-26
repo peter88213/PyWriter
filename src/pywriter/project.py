@@ -9,10 +9,10 @@ import xml.etree.ElementTree as ET
 
 
 class PywProject():
-    """ yWriter 7 project representation """
+    """ yWriter 7 project representation. """
 
     class Chapter():
-        """ yWriter 7 chapter representation """
+        """ yWriter 7 chapter representation. """
 
         def __init__(self):
             self.title = ''
@@ -20,7 +20,7 @@ class PywProject():
             self.scenes = []
 
     class Scene():
-        """ yWriter 7 scene representation """
+        """ yWriter 7 scene representation. """
 
         def __init__(self):
             self.title = ''
@@ -35,7 +35,7 @@ class PywProject():
 
         @sceneContent.setter
         def sceneContent(self, text):
-            """ set sceneContent updating word count and letter count """
+            """ set sceneContent updating word count and letter count. """
             self._sceneContent = text
 
             text = re.sub('\[.+?\]|\.|\,| -', '', self._sceneContent)
@@ -53,7 +53,7 @@ class PywProject():
             return(self.sceneContent == ' ')
 
     def __init__(self):
-        """ Read data from yw7 project file """
+        """ Read data from yw7 project file. """
         self.projectTitle = ''
         self.chapters = {}
         self.scenes = {}
@@ -61,7 +61,7 @@ class PywProject():
                           'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
 
     def read(self, yw7File):
-        """ Read data from yw7 project file """
+        """ Read data from yw7 project file. """
         try:
             # Empty scenes will crash the xml parser, so put a blank in them.
             with open(yw7File, 'r', encoding='utf-8') as f:
@@ -114,7 +114,7 @@ class PywProject():
             self.scenes[scID]._sceneContent = scn.find('SceneContent').text
 
     def write(self, yw7File):
-        """ Write attributes to yw7 project file """
+        """ Write attributes to yw7 project file. """
         sceneCount = 0
         root = self.tree.getroot()
 

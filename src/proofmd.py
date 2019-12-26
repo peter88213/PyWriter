@@ -7,8 +7,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import sys
 import os
-from pywriter.proof.yw7_to_md import yw7_to_md
-from pywriter.proof.md_to_yw7 import md_to_yw7
+from pywriter.md.yw7_to_md import yw7_to_md
+from pywriter.md.md_to_yw7 import md_to_yw7
 
 
 def confirm_overwrite(file):

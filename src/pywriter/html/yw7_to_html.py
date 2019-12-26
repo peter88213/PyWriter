@@ -6,6 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from pywriter.project import PywProject
 
 HEADING_MARKER = ("h2", "h1")
+SCENE_DIVIDER = '* * *'
 
 
 def yw7_to_html(yw7File, htmlFile):
@@ -28,19 +29,6 @@ def yw7_to_html(yw7File, htmlFile):
         except:
             pass
         return(text)
-
-    def create_csv(prj, htmlPath):
-        """ Create scenes link list """
-        csvFile = htmlPath.split('.html')[0] + '.csv'
-        with open(csvFile, 'w') as f:
-            for chID in prj.chapterTitles:
-                for scID in prj.chapters[chID].scene:
-                    f.write(scID + ',"')
-                    for line in prj.scenes[scID].desc:
-                        f.write(line.replace('"', "'"))
-                    f.write('"\n')
-
-    sceneDivider = '* * *'
 
     # Make the html file look good in a web browser.
     htmlHeader = '<html>\n' + '<head>\n' + \
@@ -69,7 +57,7 @@ def yw7_to_html(yw7File, htmlFile):
             format_chapter_title(
                 prj.chapters[chID].title) + '</' + headingMarker + '>\n'
         for scID in prj.chapters[chID].scenes:
-            htmlText = htmlText + '<h4>' + sceneDivider + '</h4>\n'
+            htmlText = htmlText + '<h4>' + SCENE_DIVIDER + '</h4>\n'
             htmlText = htmlText + '<div id="ScID:' + scID + '">\n'
             htmlText = htmlText + '<p class="textbody">'
             htmlText = htmlText + '<a name="ScID:' + scID + '" />'
@@ -86,9 +74,9 @@ def yw7_to_html(yw7File, htmlFile):
 
         htmlText = htmlText + '</div>\n'
     htmlText = htmlText.replace(
-        '</h1>\n<h4>' + sceneDivider + '</h4>', '</h1>')
+        '</h1>\n<h4>' + SCENE_DIVIDER + '</h4>', '</h1>')
     htmlText = htmlText.replace(
-        '</h2>\n<h4>' + sceneDivider + '</h4>', '</h2>')
+        '</h2>\n<h4>' + SCENE_DIVIDER + '</h4>', '</h2>')
     htmlText = htmlText + htmlFooter
 
     try:
@@ -96,8 +84,6 @@ def yw7_to_html(yw7File, htmlFile):
             f.write(htmlText)
     except(PermissionError):
         return('\nERROR: ' + htmlFile + '" is write protected.')
-
-    #create_csv(prj, htmlFile)
 
     return('\nSUCCESS: ' + str(len(prj.scenes)) + ' Scenes written to "' + htmlFile + '".')
 
