@@ -35,19 +35,16 @@ class PywProject():
 
         @sceneContent.setter
         def sceneContent(self, text):
+            """ set sceneContent updating word count and letter count """
             self._sceneContent = text
-            self.count_words()
-            self.count_letters()
 
-        def count_words(self):
             text = re.sub('\[.+?\]|\.|\,| -', '', self._sceneContent)
-            # Remove yw7 raw markup
+            # Remove yw7 raw markup for word count
             wordList = text.split()
             self._wordCount = len(wordList)
 
-        def count_letters(self):
             text = re.sub('\[.+?\]', '', self._sceneContent)
-            # Remove yw7 raw markup
+            # Remove yw7 raw markup for letter count
             text = text.replace('\n', '')
             text = text.replace('\r', '')
             self._letterCount = len(text)
