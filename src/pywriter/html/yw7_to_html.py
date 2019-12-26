@@ -59,7 +59,8 @@ def yw7_to_html(yw7File, htmlFile):
         '</head>\n' + '<body>\n'
     htmlFooter = '\n</body>\n</html>\n'
 
-    prj = PywProject(yw7File)
+    prj = PywProject()
+    prj.read(yw7File)
     htmlText = htmlHeader.replace('$bookTitle$', prj.projectTitle)
     for chID in prj.chapters:
         htmlText = htmlText + '<div id="ChID:' + chID + '">\n'

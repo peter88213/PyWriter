@@ -49,41 +49,45 @@ class PywProject():
             text = text.replace('\r', '')
             self._letterCount = len(text)
 
-    def __init__(self, yw7File):
+    def __init__(self):
         """ Read data from yw7 project file """
-        self.file = yw7File
         self.projectTitle = ''
-        self.cdataTags = []
         self.chapters = {}
         self.scenes = {}
+        self.cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc', 'FieldTitle1', 'FieldTitle2', 'FieldTitle3', 'FieldTitle4',
+                          'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
 
+    def read(self, yw7File):
+        """ Read data from yw7 project file """
         try:
             # Empty scenes will crash the xml parser, so put a blank in them.
-            with open(self.file, 'r', encoding='utf-8') as f:
+            with open(yw7File, 'r', encoding='utf-8') as f:
                 xmlData = f.read()
         except(FileNotFoundError):
-            sys.exit('\nERROR: "' + self.file + '" not found.')
+            sys.exit('\nERROR: "' + yw7File + '" not found.')
 
         if xmlData.count('<![CDATA[]]>'):
             xmlData = xmlData.replace('<![CDATA[]]>', '<![CDATA[ ]]>')
             try:
-                with open(self.file, 'w', encoding='utf-8') as f:
+                with open(yw7File, 'w', encoding='utf-8') as f:
                     f.write(xmlData)
             except(PermissionError):
-                sys.exit('\nERROR: "' + self.file + '" is write protected.')
+                sys.exit('\nERROR: "' + yw7File + '" is write protected.')
 
         lines = xmlData.split('\n')
 
         for line in lines:
+            # Complete list of tags requiring CDATA (if incomplete)
             tag = re.search('\<(.+?)\>\<\!\[CDATA', line)
             if tag:
                 if not (tag.group(1) in self.cdataTags):
                     self.cdataTags.append(tag.group(1))
+
         try:
-            self.tree = ET.parse(self.file)
+            self.tree = ET.parse(yw7File)
             root = self.tree.getroot()
         except:
-            sys.exit('\nERROR: Can not process "' + self.file + '".')
+            sys.exit('\nERROR: Can not process "' + yw7File + '".')
 
         for prj in root.iter('PROJECT'):
             self.projectTitle = prj.find('Title').text
@@ -106,7 +110,7 @@ class PywProject():
                 self.scenes[scID].desc = scn.find('Desc').text
             self.scenes[scID]._sceneContent = scn.find('SceneContent').text
 
-    def write(self):
+    def write(self, yw7File):
         """ Write attributes to yw7 project file """
         sceneCount = 0
         root = self.tree.getroot()
@@ -149,13 +153,13 @@ class PywProject():
             return('\nERROR: Scenes total mismatch - yWriter project not modified.')
 
         try:
-            self.tree.write(self.file, encoding='utf-8')
+            self.tree.write(yw7File, encoding='utf-8')
         except(PermissionError):
-            return('\nERROR: "' + self.file + '" is write protected.')
+            return('\nERROR: "' + yw7File + '" is write protected.')
 
         newXml = ['<?xml version="1.0" encoding="utf-8"?>\n']
         # try:
-        with open(self.file, 'r', encoding='utf-8') as f:
+        with open(yw7File, 'r', encoding='utf-8') as f:
             lines = f.readlines()
             for line in lines:
                 for tag in self.cdataTags:
@@ -165,11 +169,11 @@ class PywProject():
                                   ']]></' + tag + '>', line)
                 newXml.append(line)
         # except:
-        #    return('\nERROR: Can not read"' + self.file + '".')
+        #    return('\nERROR: Can not read"' + yw7File + '".')
         try:
-            with open(self.file, 'w', encoding='utf-8') as f:
+            with open(yw7File, 'w', encoding='utf-8') as f:
                 f.writelines(newXml)
         except:
-            return('\nERROR: Can not write"' + self.file + '".')
+            return('\nERROR: Can not write"' + yw7File + '".')
 
-        return('\nSUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self.file + '".')
+        return('\nSUCCESS: ' + str(sceneCount) + ' Scenes written to "' + yw7File + '".')

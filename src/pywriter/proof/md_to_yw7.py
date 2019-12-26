@@ -55,12 +55,13 @@ def md_to_yw7(mdFile, yw7File):
         elif inScene:
             sceneText = sceneText + line + '\n'
 
-    prj = PywProject(yw7File)
+    prj = PywProject()
+    prj.read(yw7File)
 
     for scID in newContents:
         prj.scenes[scID].sceneContent = newContents[scID]
 
-    return(prj.write())
+    return(prj.write(yw7File))
 
 
 if __name__ == '__main__':

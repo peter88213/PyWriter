@@ -27,7 +27,8 @@ def yw7_to_md(yw7File, mdFile):
         text = text.replace('[/b]', '**')
         return(text)
 
-    prj = PywProject(yw7File)
+    prj = PywProject()
+    prj.read(yw7File)
     prjText = ''
     for chID in prj.chapters:
         prjText = prjText + '\\[ChID:' + chID + '\\]\n'
