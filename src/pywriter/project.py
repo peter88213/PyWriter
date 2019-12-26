@@ -49,6 +49,9 @@ class PywProject():
             text = text.replace('\r', '')
             self._letterCount = len(text)
 
+        def isEmpty(self):
+            return(self.sceneContent == ' ')
+
     def __init__(self):
         """ Read data from yw7 project file """
         self.projectTitle = ''
@@ -131,7 +134,7 @@ class PywProject():
         for scn in root.iter('SCENE'):
             scID = scn.find('ID').text
             try:
-                if self.scenes[scID]._sceneContent == ' ':
+                if self.scenes[scID].isEmpty():
                     scn.find('SceneContent').text = ''
                     scn.find('WordCount').text = '0'
                     scn.find('LetterCount').text = '0'
