@@ -152,16 +152,15 @@ class PywHTMLParser(HTMLParser):
         """ Get scene ID at scene start. """
         if tag == 'div':
             if attrs[0][0] == 'id':
-                if attrs[0][1].count('ScID'):
+                if attrs[0][1].count('ChID'):
+                    self.chID = re.search('[0-9]+', attrs[0][1]).group()
+                    self.Project.chapters[self.chID] = self.Project.Chapter()
+                    self.Project.chapters[self.chID].scenes = []
+                elif attrs[0][1].count('ScID'):
                     self.scID = re.search('[0-9]+', attrs[0][1]).group()
-                    self.Project.scenes[self.scID] = PywProject.Scene()
-                    self.Project.chapters[self.chID].scenes.append(
-                        self.scID)
+                    self.Project.scenes[self.scID] = self.Project.Scene()
+                    self.Project.chapters[self.chID].scenes.append(self.scID)
                     self.inScene = True
-                elif attrs[0][1].count('ChID'):
-                    self.ChID = re.search('[0-9]+', attrs[0][1]).group()
-                    self.Project.chapters[self.chID] = PywProject.Chapter(
-                    )
 
     def handle_endtag(self, tag):
         """ Save scene content in dictionary at scene end. """

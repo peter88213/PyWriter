@@ -14,9 +14,12 @@ def md_to_yw7(mdFile, yw7File):
     YwPrj.read()
     MdPrj = MdProject(mdFile)
     MdPrj.read()
-    for scID in MdPrj.scenes:
-        YwPrj.scenes[scID].sceneContent = MdPrj.scenes[scID].sceneContent
-    return(YwPrj.write())
+    if MdPrj.getStructure() == YwPrj.getStructure():
+        for scID in MdPrj.scenes:
+            YwPrj.scenes[scID].sceneContent = MdPrj.scenes[scID].sceneContent
+        return(YwPrj.write())
+    else:
+        return('\nERROR: Structure mismatch - yWriter project not modified.')
 
 
 if __name__ == '__main__':

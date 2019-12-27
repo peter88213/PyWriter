@@ -79,3 +79,13 @@ class PywProject():
                     text = text + '\n'
         text = re.sub('\[.+?\]', '', text)
         return(text)
+
+    def getStructure(self):
+        """ Assemble a comparable structure tree. """
+
+        text = ''
+        for chID in self.chapters:
+            text = text + 'ChID:' + str(chID) + '\n'
+            for scID in self.chapters[chID].scenes:
+                text = text + '  ScID:' + str(scID) + '\n'
+        return(text)

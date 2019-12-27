@@ -14,9 +14,14 @@ def html_to_yw7(htmlFile, yw7File):
     YwPrj.read()
     HTMLPrj = HTMLProject(htmlFile)
     HTMLPrj.read()
-    for scID in HTMLPrj.scenes:
-        YwPrj.scenes[scID].sceneContent = HTMLPrj.scenes[scID].sceneContent
-    return(YwPrj.write())
+    htmlStruct = HTMLPrj.getStructure()
+    yw7Struct = YwPrj.getStructure()
+    if htmlStruct == yw7Struct:
+        for scID in HTMLPrj.scenes:
+            YwPrj.scenes[scID].sceneContent = HTMLPrj.scenes[scID].sceneContent
+        return(YwPrj.write())
+    else:
+        return('\nERROR: Structure mismatch - yWriter project not modified.')
 
 
 if __name__ == '__main__':
