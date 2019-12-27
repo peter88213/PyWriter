@@ -7,8 +7,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import sys
 import os
-from pywriter.html.html_to_yw7 import html_to_yw7
-from pywriter.html.yw7_to_html import yw7_to_html
+from pywriter.convert.yw7_to_html import yw7_to_html
+from pywriter.convert.html_to_yw7 import html_to_yw7
 
 
 def confirm_overwrite(file):
@@ -56,6 +56,7 @@ def run(sourcePath, silentMode=False):
 
         if os.path.isfile(yw7File):
             print(html_to_yw7(htmlFile, yw7File))
+
         else:
             print('\n"' + yw7File + '" not found.')
             print(

@@ -3,7 +3,7 @@
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pandoc.pypandoc import convert_file
+from pywriter.convert.pypandoc import convert_file
 
 
 def md_to_docx(mdFile, docxFile):

@@ -1,14 +1,16 @@
 """ Integration tests for the pyWriter project.
 
-Test the "export project" tasks.
+Test the "proof read" tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
 import unittest
-from pywriter.html.html_to_yw7 import html_to_yw7
-from pywriter.html.yw7_to_html import yw7_to_html
+import zipfile
+from pywriter.convert.yw7_to_md import yw7_to_md
+from pywriter.convert.md_to_yw7 import md_to_yw7
+
 
 TEST_PROJECT = 'yw7 Sample Project'
 
@@ -16,11 +18,11 @@ TEST_PATH = os.getcwd()
 TEST_EXEC_PATH = 'yw7/'
 TEST_DATA_PATH = 'data/'
 
-HTML_FILE = TEST_PROJECT + '.html'
-HTML_EXPORTED_FILE = 'exported/' + TEST_PROJECT + '.html'
+MD_FILE = TEST_PROJECT + '.md'
+MD_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.md'
 
 YW7_FILE = TEST_PROJECT + '.yw7'
-YW7_EXPORTED_FILE = 'exported/' + TEST_PROJECT + '.yw7'
+YW7_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.yw7'
 
 
 def read_file(inputFile):
@@ -38,7 +40,7 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_EXEC_PATH + HTML_FILE)
+        os.remove(TEST_EXEC_PATH + MD_FILE)
     except:
         pass
     try:
@@ -66,36 +68,34 @@ class NrmOpr(unittest.TestCase):
         # Initial test data must differ from the "proofed" test data.
         self.assertNotEqual(
             read_file(TEST_DATA_PATH + YW7_FILE),
-            read_file(TEST_DATA_PATH + YW7_EXPORTED_FILE))
+            read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + HTML_FILE),
-            read_file(TEST_DATA_PATH + HTML_EXPORTED_FILE))
+            read_file(TEST_DATA_PATH + MD_PROOFED_FILE),
+            read_file(TEST_DATA_PATH + MD_FILE))
 
     #@unittest.skip('development')
-    def test_exp_to_html(self):
-        """ Export yW7 scenes to html. """
-        yw7_to_html(
-            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
-        # Read .yw7 file and convert scenes to html.
-
-        self.assertEqual(read_file(TEST_EXEC_PATH + HTML_FILE),
-                         read_file(TEST_DATA_PATH + HTML_FILE))
-        # Verify the html file.
+    def test_exp_to_md(self):
+        """ Export yW7 scenes to markdown. """
+        yw7_to_md(
+            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
+        # Read .yw7 file and convert xml to markdown.
+        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
+                         read_file(TEST_DATA_PATH + MD_FILE))
 
     #@unittest.skip('development')
-    def test_imp_from_html(self):
-        """ Import proofed yw7 scenes from html . """
-        copy_file(TEST_DATA_PATH + HTML_EXPORTED_FILE,
-                  TEST_EXEC_PATH + HTML_FILE)
+    def test_imp_from_md(self):
+        """ Import proofed yw7 scenes from markdown . """
+        copy_file(TEST_DATA_PATH + MD_PROOFED_FILE,
+                  TEST_EXEC_PATH + MD_FILE)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        html_to_yw7(TEST_EXEC_PATH + HTML_FILE,
-                    TEST_EXEC_PATH + YW7_FILE)
-        # Convert document to xml and replace .yw7 file.
+        md_to_yw7(TEST_EXEC_PATH + MD_FILE,
+                  TEST_EXEC_PATH + YW7_FILE)
+        # Convert markdown to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
-                         read_file(TEST_DATA_PATH + YW7_EXPORTED_FILE))
+                         read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
         # Verify the yw7 project.
 
     #@unittest.skip('development')
