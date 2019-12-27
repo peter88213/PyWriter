@@ -20,7 +20,7 @@ def convert_file(srcFile, dstFormat, format='', outputfile='', extra_args=[]):
     else:
         dstFile = temporaryFile
 
-    argument1 = 'pandoc.exe'
+    argument1 = 'pandoc'
     argument2 = ' -w ' + dstFormat
     argument3 = ' -r ' + format
     argument4 = ' -o "' + dstFile + '"'
