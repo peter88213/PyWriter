@@ -11,12 +11,17 @@ HEADING_MARKER = ("h2", "h1")
 SCENE_DIVIDER = '* * *'
 
 
-class HTMLProject(PywProject):
+class HTMLProject(PywProject, HTMLParser):
     """ yWriter project linked to an html project file. """
 
     def __init__(self, fileName):
-        self.fileName = fileName
         PywProject.__init__(self)
+        HTMLParser.__init__(self)
+        self.fileName = fileName
+        self.sceneText = ''
+        self.scID = 0
+        self.chID = 0
+        self.inScene = False
 
     def read(self):
         """ Read data from html project file. """
@@ -46,14 +51,37 @@ class HTMLProject(PywProject):
                 return('\nERROR: "' + self.fileName + '" not found.')
 
         text = format_yw7(text)
-
-        parser = PywHTMLParser()
-        parser.feed(text)
-
-        self.chapters = parser.Project.chapters
-        self.scenes = parser.Project.scenes
-
+        self.feed(text)
+        # Invoke HTML parser.
         return('\nSUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self.fileName + '".')
+
+    def handle_starttag(self, tag, attrs):
+        """ HTML parser: Get scene ID at scene start. """
+        if tag == 'div':
+            if attrs[0][0] == 'id':
+                if attrs[0][1].count('ChID'):
+                    self.chID = re.search('[0-9]+', attrs[0][1]).group()
+                    self.chapters[self.chID] = self.Chapter()
+                    self.chapters[self.chID].scenes = []
+                elif attrs[0][1].count('ScID'):
+                    self.scID = re.search('[0-9]+', attrs[0][1]).group()
+                    self.scenes[self.scID] = self.Scene()
+                    self.chapters[self.chID].scenes.append(self.scID)
+                    self.inScene = True
+
+    def handle_endtag(self, tag):
+        """ HTML parser: Save scene content in dictionary at scene end. """
+        if tag == 'div':
+            if self.inScene:
+                self.scenes[self.scID].sceneContent = self.sceneText
+                self.sceneText = ''
+                self.inScene = False
+
+    def handle_data(self, data):
+        """ HTML parser: Collect paragraphs within scene. """
+        if self.inScene:
+            if data != ' ':
+                self.sceneText = self.sceneText + data + '\n'
 
     def getText(self):
         """ Write attributes to html project file. """
@@ -135,43 +163,3 @@ class HTMLProject(PywProject):
             return('\nERROR: ' + self.fileName + '" is write protected.')
 
         return('\nSUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self.fileName + '".')
-
-
-class PywHTMLParser(HTMLParser):
-    """ Collect scene contents in a dictionary. """
-
-    def __init__(self):
-        HTMLParser.__init__(self)
-        self.sceneText = ''
-        self.scID = 0
-        self.chID = 0
-        self.inScene = False
-        self.Project = PywProject()
-
-    def handle_starttag(self, tag, attrs):
-        """ Get scene ID at scene start. """
-        if tag == 'div':
-            if attrs[0][0] == 'id':
-                if attrs[0][1].count('ChID'):
-                    self.chID = re.search('[0-9]+', attrs[0][1]).group()
-                    self.Project.chapters[self.chID] = self.Project.Chapter()
-                    self.Project.chapters[self.chID].scenes = []
-                elif attrs[0][1].count('ScID'):
-                    self.scID = re.search('[0-9]+', attrs[0][1]).group()
-                    self.Project.scenes[self.scID] = self.Project.Scene()
-                    self.Project.chapters[self.chID].scenes.append(self.scID)
-                    self.inScene = True
-
-    def handle_endtag(self, tag):
-        """ Save scene content in dictionary at scene end. """
-        if tag == 'div':
-            if self.inScene:
-                self.Project.scenes[self.scID].sceneContent = self.sceneText
-                self.sceneText = ''
-                self.inScene = False
-
-    def handle_data(self, data):
-        """ Collect paragraphs within scene. """
-        if self.inScene:
-            if data != ' ':
-                self.sceneText = self.sceneText + data + '\n'
