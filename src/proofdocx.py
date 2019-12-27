@@ -9,8 +9,8 @@ import sys
 import os
 from pywriter.md.yw7_to_md import yw7_to_md
 from pywriter.md.md_to_yw7 import md_to_yw7
-from pywriter.md.md_to_docx import md_to_docx
-from pywriter.md.docx_to_md import docx_to_md
+from pandoc.md_to_docx import md_to_docx
+from pandoc.docx_to_md import docx_to_md
 
 
 def yw7_to_docx(yw7File, mdFile, docxFile):

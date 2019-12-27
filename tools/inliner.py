@@ -11,17 +11,16 @@ import os
 
 SRC = '../src/'
 BUILD = '../test/'
-PACKAGE = 'pywriter'
 
 
-def inline_module(file, text, processedModules):
+def inline_module(file, package, text, processedModules):
     with open(file, 'r') as f:
         print('Processing "' + file + '"...')
         lines = f.readlines()
         inSuppressedComment = False
         for line in lines:
             if line.count('"""') == 1:
-                if file.count(PACKAGE):
+                if file.count(package):
                     if inSuppressedComment:
                         inSuppressedComment = False
                     else:
@@ -29,7 +28,7 @@ def inline_module(file, text, processedModules):
                 else:
                     text = text + line
             elif not inSuppressedComment:
-                if file.count(PACKAGE):
+                if file.count(package):
                     if line.count('main()'):
                         return(text)
 
@@ -43,9 +42,9 @@ def inline_module(file, text, processedModules):
                             '\.', '\/', importModule.group(1))
                         if not (moduleName in processedModules):
                             processedModules.append(moduleName)
-                            if moduleName.count(PACKAGE):
+                            if moduleName.count(package):
                                 text = inline_module(
-                                    moduleName + '.py', text, processedModules)
+                                    moduleName + '.py', package, text, processedModules)
                             else:
                                 text = text + line
                     else:
@@ -58,23 +57,26 @@ def inline_module(file, text, processedModules):
         return(text)
 
 
-def run(sourceFile, targetFile):
+def run(sourceFile, targetFile, package):
     try:
-        os.remove(BUILD + targetFile)
+        os.remove(targetFile)
     except:
         pass
     text = ''
     processedModules = []
-    text = (inline_module(sourceFile, text, processedModules))
-    with open(BUILD + targetFile, 'w') as f:
-        print('Writing "' + BUILD + targetFile + '"...\n')
+    text = (inline_module(sourceFile, package, text, processedModules))
+    with open(targetFile, 'w') as f:
+        print('Writing "' + targetFile + '"...\n')
         f.write(text)
 
 
 def main():
     os.chdir(SRC)
-    run('proofdocx.py', 'yw_proof_docx.py')
-    run('proofodt.py', 'yw_proof_odt.py')
+    run('proofdocx.py', BUILD + 'temp.py', 'pywriter')
+    run(BUILD + 'temp.py', BUILD + 'yw_proof_docx.py', 'pandoc')
+    run('proofodt.py', BUILD + 'temp.py', 'pywriter')
+    run(BUILD + 'temp.py', BUILD + 'yw_proof_odt.py', 'pandoc')
+    os.remove(BUILD + 'temp.py')
     print('Done.')
 
 

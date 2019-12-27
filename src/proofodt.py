@@ -9,8 +9,8 @@ import sys
 import os
 from pywriter.md.yw7_to_md import yw7_to_md
 from pywriter.md.md_to_yw7 import md_to_yw7
-from pywriter.md.md_to_odt import md_to_odt
-from pywriter.md.odt_to_md import odt_to_md
+from pandoc.md_to_odt import md_to_odt
+from pandoc.odt_to_md import odt_to_md
 
 
 def yw7_to_odt(yw7File, mdFile, odtFile):
