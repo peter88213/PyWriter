@@ -48,7 +48,7 @@ class PywProject():
             self._letterCount = len(text)
 
         def isEmpty(self):
-            return(self.sceneContent == ' ')
+            return(self._sceneContent == ' ')
 
     def __init__(self):
         """ Read data from yw7 project file. """
