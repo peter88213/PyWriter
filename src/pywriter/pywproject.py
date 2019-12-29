@@ -8,7 +8,7 @@ from abc import ABC
 
 
 class PywProject(ABC):
-    """ yWriter project representation. """
+    """ Abstract yWriter project representation. """
 
     class Chapter():
         """ yWriter chapter representation. """

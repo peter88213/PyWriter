@@ -5,11 +5,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 from abc import abstractmethod
+from abc import ABC
 from pywriter.pywproject import PywProject
 
 
-class PywPrjFile(PywProject):
-    """ yWriter project file representation. """
+class PywPrjFile(PywProject, ABC):
+    """ Abstract yWriter project file representation. """
 
     _fileExtension = ''
 
