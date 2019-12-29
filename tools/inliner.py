@@ -37,16 +37,13 @@ def inline_module(file, package, text, processedModules):
 
                 if line.count('import'):
                     importModule = re.match('from (.+?) import.+', line)
-                    if importModule:
+                    if importModule and importModule.group(1).count(package):
                         moduleName = re.sub(
                             '\.', '\/', importModule.group(1))
                         if not (moduleName in processedModules):
                             processedModules.append(moduleName)
-                            if moduleName.count(package):
-                                text = inline_module(
-                                    moduleName + '.py', package, text, processedModules)
-                            else:
-                                text = text + line
+                            text = inline_module(
+                                moduleName + '.py', package, text, processedModules)
                     else:
                         moduleName = line.replace('import ', '').rstrip()
                         if not (moduleName in processedModules):

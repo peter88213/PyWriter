@@ -5,19 +5,45 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from html.parser import HTMLParser
-from pywriter.pywproject import PywProject
+from pywriter.pywprjfile import PywPrjFile
 
-HEADING_MARKER = ("h2", "h1")
-SCENE_DIVIDER = '* * *'
+HTML_HEADING_MARKERS = ("h2", "h1")
+# Index is yWriter's chapter type:
+# 0 is for an ordinary chapter
+# 1 is for a chapter beginning a section
+
+HTML_SCENE_DIVIDER = '* * *'
+# To be placed between invisible scene ending and beginning tags.
+
+STYLESHEET = '<style type="text/css">\n' + \
+    'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
+    'h1, h2, h3, h4 {text-align: center}\n' +\
+    'h1 {letter-spacing: 0.5em; font-style: italic}' + \
+    'h1, h2 {font-weight: bold}\n' + \
+    'h3 {font-style: italic}\n' + \
+    'p.textbody {margin-top:0; margin-bottom:0}\n' + \
+    'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
+    'strong {font-weight:normal; text-transform: uppercase}\n' + \
+    '</style>\n'
+# Make the generated html file look good in a web browser.
+
+HTML_HEADER = '<html>\n' + '<head>\n' + \
+    '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + \
+    STYLESHEET + \
+    '<title>$bookTitle$</title>\n' + \
+    '</head>\n' + '<body>\n'
+
+HTML_FOOTER = '\n</body>\n</html>\n'
 
 
-class HTMLProject(PywProject, HTMLParser):
+class HTMLProject(PywPrjFile, HTMLParser):
     """ yWriter project linked to an html project file. """
 
-    def __init__(self, fileName):
-        PywProject.__init__(self)
+    _fileExtension = 'html'
+
+    def __init__(self, filePath):
+        PywPrjFile.__init__(self, filePath)
         HTMLParser.__init__(self)
-        self.fileName = fileName
         self.sceneText = ''
         self.scID = 0
         self.chID = 0
@@ -41,19 +67,19 @@ class HTMLProject(PywProject, HTMLParser):
             return(text)
 
         try:
-            with open(self.fileName, 'r', encoding='utf-8') as f:
+            with open(self._filePath, 'r', encoding='utf-8') as f:
                 text = (f.read())
         except:
             try:
-                with open(self.fileName, 'r') as f:
+                with open(self._filePath, 'r') as f:
                     text = (f.read())
             except(FileNotFoundError):
-                return('\nERROR: "' + self.fileName + '" not found.')
+                return('\nERROR: "' + self._filePath + '" not found.')
 
         text = format_yw7(text)
         self.feed(text)
         # Invoke HTML parser.
-        return('\nSUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self.fileName + '".')
+        return('\nSUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
     def handle_starttag(self, tag, attrs):
         """ HTML parser: Get scene ID at scene start. """
@@ -83,7 +109,7 @@ class HTMLProject(PywProject, HTMLParser):
             if data != ' ':
                 self.sceneText = self.sceneText + data + '\n'
 
-    def getText(self):
+    def get_text(self):
         """ Write attributes to html project file. """
 
         def format_chapter_title(text):
@@ -104,32 +130,15 @@ class HTMLProject(PywProject, HTMLParser):
                 pass
             return(text)
 
-        # Make the html file look good in a web browser.
-        htmlHeader = '<html>\n' + '<head>\n' + \
-            '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + \
-            '<style type="text/css">\n' + \
-            'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
-            'h1, h2, h3, h4 {text-align: center}\n' +\
-            'h1 {letter-spacing: 0.5em; font-style: italic}' + \
-            'h1, h2 {font-weight: bold}\n' + \
-            'h3 {font-style: italic}\n' + \
-            'p.textbody {margin-top:0; margin-bottom:0}\n' + \
-            'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
-            'strong {font-weight:normal; text-transform: uppercase}\n' + \
-            '</style>\n' + \
-            '<title>$bookTitle$</title>\n' + \
-            '</head>\n' + '<body>\n'
-        htmlFooter = '\n</body>\n</html>\n'
-
-        text = htmlHeader.replace('$bookTitle$', self.title)
+        text = HTML_HEADER.replace('$bookTitle$', self.title)
         for chID in self.chapters:
             text = text + '<div id="ChID:' + chID + '">\n'
-            headingMarker = HEADING_MARKER[self.chapters[chID].type]
+            headingMarker = HTML_HEADING_MARKERS[self.chapters[chID].type]
             text = text + '<' + headingMarker + '>' + \
                 format_chapter_title(
                     self.chapters[chID].title) + '</' + headingMarker + '>\n'
             for scID in self.chapters[chID].scenes:
-                text = text + '<h4>' + SCENE_DIVIDER + '</h4>\n'
+                text = text + '<h4>' + HTML_SCENE_DIVIDER + '</h4>\n'
                 text = text + '<div id="ScID:' + scID + '">\n'
                 text = text + '<p class="textbody">'
                 text = text + '<a name="ScID:' + scID + '" />'
@@ -147,19 +156,19 @@ class HTMLProject(PywProject, HTMLParser):
 
             text = text + '</div>\n'
         text = text.replace(
-            '</h1>\n<h4>' + SCENE_DIVIDER + '</h4>', '</h1>')
+            '</h1>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>', '</h1>')
         text = text.replace(
-            '</h2>\n<h4>' + SCENE_DIVIDER + '</h4>', '</h2>')
-        text = text + htmlFooter
+            '</h2>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>', '</h2>')
+        text = text + HTML_FOOTER
         return(text)
 
     def write(self):
         """ Write attributes to html project file. """
 
         try:
-            with open(self.fileName, 'w', encoding='utf-8') as f:
-                f.write(self.getText())
+            with open(self._filePath, 'w', encoding='utf-8') as f:
+                f.write(self.get_text())
         except(PermissionError):
-            return('\nERROR: ' + self.fileName + '" is write protected.')
+            return('\nERROR: ' + self._filePath + '" is write protected.')
 
-        return('\nSUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self.fileName + '".')
+        return('\nSUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self._filePath + '".')

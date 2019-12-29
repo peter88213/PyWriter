@@ -6,32 +6,28 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 import re
 import xml.etree.ElementTree as ET
-from pywriter.pywproject import PywProject
+from pywriter.pywprjfile import PywPrjFile
 
 
-class Yw7Project(PywProject):
+class Yw7Project(PywPrjFile):
     """ yWriter project linked to an yw7 project file. """
-
-    def __init__(self, fileName):
-        PywProject.__init__(self)
-        self.fileName = fileName
 
     def read(self):
         """ Read data from yw7 project file. """
         try:
             # Empty scenes will crash the xml parser, so put a blank in them.
-            with open(self.fileName, 'r', encoding='utf-8') as f:
+            with open(self._filePath, 'r', encoding='utf-8') as f:
                 xmlData = f.read()
         except(FileNotFoundError):
-            sys.exit('\nERROR: "' + self.fileName + '" not found.')
+            sys.exit('\nERROR: "' + self._filePath + '" not found.')
 
         if xmlData.count('<![CDATA[]]>'):
             xmlData = xmlData.replace('<![CDATA[]]>', '<![CDATA[ ]]>')
             try:
-                with open(self.fileName, 'w', encoding='utf-8') as f:
+                with open(self._filePath, 'w', encoding='utf-8') as f:
                     f.write(xmlData)
             except(PermissionError):
-                sys.exit('\nERROR: "' + self.fileName +
+                sys.exit('\nERROR: "' + self._filePath +
                          '" is write protected.')
 
         lines = xmlData.split('\n')
@@ -44,10 +40,10 @@ class Yw7Project(PywProject):
                     self._cdataTags.append(tag.group(1))
 
         try:
-            self.tree = ET.parse(self.fileName)
+            self.tree = ET.parse(self._filePath)
             root = self.tree.getroot()
         except:
-            sys.exit('\nERROR: Can not process "' + self.fileName + '".')
+            sys.exit('\nERROR: Can not process "' + self._filePath + '".')
 
         for prj in root.iter('PROJECT'):
             self.title = prj.find('Title').text
@@ -113,13 +109,13 @@ class Yw7Project(PywProject):
             return('\nERROR: Scenes total mismatch - yWriter project not modified.')
 
         try:
-            self.tree.write(self.fileName, encoding='utf-8')
+            self.tree.write(self._filePath, encoding='utf-8')
         except(PermissionError):
-            return('\nERROR: "' + self.fileName + '" is write protected.')
+            return('\nERROR: "' + self._filePath + '" is write protected.')
 
         newXml = ['<?xml version="1.0" encoding="utf-8"?>\n']
         # try:
-        with open(self.fileName, 'r', encoding='utf-8') as f:
+        with open(self._filePath, 'r', encoding='utf-8') as f:
             lines = f.readlines()
             for line in lines:
                 for tag in self._cdataTags:
@@ -129,11 +125,11 @@ class Yw7Project(PywProject):
                                   ']]></' + tag + '>', line)
                 newXml.append(line)
         # except:
-        #    return('\nERROR: Can not read"' + self.fileName + '".')
+        #    return('\nERROR: Can not read"' + self._filePath + '".')
         try:
-            with open(self.fileName, 'w', encoding='utf-8') as f:
+            with open(self._filePath, 'w', encoding='utf-8') as f:
                 f.writelines(newXml)
         except:
-            return('\nERROR: Can not write"' + self.fileName + '".')
+            return('\nERROR: Can not write"' + self._filePath + '".')
 
-        return('\nSUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self.fileName + '".')
+        return('\nSUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".')

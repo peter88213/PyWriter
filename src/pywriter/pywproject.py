@@ -4,9 +4,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
+from abc import ABC
 
 
-class PywProject():
+class PywProject(ABC):
     """ yWriter project representation. """
 
     class Chapter():
@@ -58,15 +59,7 @@ class PywProject():
         self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc', 'FieldTitle1', 'FieldTitle2', 'FieldTitle3', 'FieldTitle4',
                            'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
 
-    def read(self):
-        """ Read yWriter project data from a file. """
-        pass
-
-    def write(self):
-        """ Write yWriter project data to a file. """
-        pass
-
-    def getText(self):
+    def get_text(self):
         """ Assemble all scenes in the right order as plain text. """
 
         text = ''
