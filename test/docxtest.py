@@ -1,23 +1,24 @@
-""" Integration tests for the pyWriter project.
+""" Integration tests for the PyWriter distributions.
 
-Test the "proof read" tasks.
+Test the .docx "proof read" tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
 import unittest
-from pywriter.mdconverter import MdConverter
-
+import zipfile
+from pywriter.docxconverter import DocxConverter
 
 TEST_PROJECT = 'yw7 Sample Project'
 
-TEST_PATH = os.getcwd()
-TEST_EXEC_PATH = 'yw7/'
-TEST_DATA_PATH = 'data/'
+TEST_PATH = '../test'
+TEST_EXEC_PATH = TEST_PATH + '/yw7/'
+TEST_DATA_PATH = TEST_PATH + '/data/'
 
-MD_FILE = TEST_PROJECT + '.md'
-MD_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.md'
+DOCX_FILE = TEST_PROJECT + '.docx'
+DOCX_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.docx'
+DOCX_CONTENT = 'word/document.xml'
 
 TOTAL_SCENES = 58
 
@@ -40,11 +41,15 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_EXEC_PATH + MD_FILE)
+        os.remove(TEST_EXEC_PATH + DOCX_FILE)
     except:
         pass
     try:
         os.remove(TEST_EXEC_PATH + YW7_FILE)
+    except:
+        pass
+    try:
+        os.remove(TEST_EXEC_PATH + DOCX_CONTENT)
     except:
         pass
 
@@ -69,41 +74,35 @@ class NrmOpr(unittest.TestCase):
         self.assertNotEqual(
             read_file(TEST_DATA_PATH + YW7_FILE),
             read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
-        self.assertNotEqual(
-            read_file(TEST_DATA_PATH + MD_PROOFED_FILE),
-            read_file(TEST_DATA_PATH + MD_FILE))
 
-    #@unittest.skip('development')
-    def test_exp_to_md(self):
-        """ Export yW7 scenes to markdown. """
-        myMdConverter = MdConverter(
-            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
-        self.assertEqual(myMdConverter.yw7_to_md(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + MD_FILE + '".')
+    def test_yw7_to_docx(self):
+        """ Convert markdown to docx. """
+        copy_file(TEST_DATA_PATH + YW7_FILE,
+                  TEST_EXEC_PATH + YW7_FILE)
+        myDocxConverter = DocxConverter(
+            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + DOCX_FILE)
+        self.assertEqual(myDocxConverter.yw7_to_docx(
+        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + DOCX_FILE + '".')
 
-        # Read .yw7 file and convert xml to markdown.
-        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
-                         read_file(TEST_DATA_PATH + MD_FILE))
+        with zipfile.ZipFile(TEST_EXEC_PATH + DOCX_FILE, 'r') as myzip:
+            myzip.extract(DOCX_CONTENT, TEST_EXEC_PATH)
+            myzip.close
 
-    #@unittest.skip('development')
-    def test_imp_from_md(self):
-        """ Import proofed yw7 scenes from markdown . """
-        copy_file(TEST_DATA_PATH + MD_PROOFED_FILE,
-                  TEST_EXEC_PATH + MD_FILE)
-        # This substitutes the proof reading process.
-        # Note: The yw7 project file is still unchanged.
+        self.assertEqual(read_file(TEST_EXEC_PATH + DOCX_CONTENT),
+                         read_file(TEST_DATA_PATH + DOCX_CONTENT))
 
-        myMdConverter = MdConverter(
-            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
-        self.assertEqual(myMdConverter.md_to_yw7(
+    def test_docx_to_yw7(self):
+        """ Convert docx to markdown. """
+        copy_file(TEST_DATA_PATH + DOCX_PROOFED_FILE,
+                  TEST_EXEC_PATH + DOCX_FILE)
+        myDocxConverter = DocxConverter(
+            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + DOCX_FILE)
+        self.assertEqual(myDocxConverter.docx_to_yw7(
         ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
-        # Convert markdown to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
                          read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
-        # Verify the yw7 project.
 
-    #@unittest.skip('development')
     def tearDown(self):
         remove_all_testfiles()
 

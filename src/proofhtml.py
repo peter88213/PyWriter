@@ -12,7 +12,8 @@ from pywriter.htmlconverter import HtmlConverter
 
 class MyHtmlConverter(HtmlConverter):
 
-    def __init__(self, silentMode):
+    def __init__(self, yw7File, htmlFile, silentMode=True):
+        HtmlConverter.__init__(self, yw7File, htmlFile)
         self.silentMode = silentMode
 
     def confirm_overwrite(self, file):
@@ -28,7 +29,6 @@ class MyHtmlConverter(HtmlConverter):
 
 def run(sourcePath, silentMode=True):
     """ File conversion for proofreading """
-    myConverter = MyHtmlConverter(silentMode)
     sourceFile = os.path.split(sourcePath)
     pathToSource = sourceFile[0]
     if pathToSource:
@@ -39,24 +39,25 @@ def run(sourcePath, silentMode=True):
 
         htmlFile = pathToSource + \
             sourceFile[1].split('.yw7')[0] + '.html'
+        myConverter = MyHtmlConverter(yw7File, htmlFile, silentMode)
         print('\n*** Export yWriter7 scenes to HTML ***')
         print('Project: "' + yw7File + '"')
-        print(myConverter.yw7_to_html(yw7File, htmlFile))
+        print(myConverter.yw7_to_html())
 
     elif sourceFile[1].count('.html'):
         htmlFile = pathToSource + sourceFile[1]
         yw7File = pathToSource + \
             sourceFile[1].split('.html')[0] + '.yw7'
+        myConverter = MyHtmlConverter(yw7File, htmlFile, silentMode)
         print('\n*** Import yWriter7 scenes from HTML ***')
         print('Proofed scenes in "' + htmlFile + '"')
-        print(myConverter.html_to_yw7(htmlFile, yw7File))
+        print(myConverter.html_to_yw7())
 
     else:
         print('Input file must be .yw7 or .html type.')
 
     if not silentMode:
         input('Press ENTER to continue ...')
-    sys.exit(0)
 
 
 if __name__ == '__main__':

@@ -9,58 +9,69 @@ from pywriter.yw7project import Yw7Project
 
 class HtmlConverter():
 
-    def confirm_overwrite(self, file):
-        return(True)
+    def __init__(self, yw7File, htmlFile):
+        self.yw7File = yw7File
+        self.yw7Prj = Yw7Project(self.yw7File)
+        self.htmlFile = htmlFile
+        self.htmlPrj = HTMLProject(self.htmlFile)
 
-    def html_to_yw7(self, htmlFile, yw7File):
+    def html_to_yw7(self):
         """ Convert html into yw7 newContents and modify .yw7 file. """
+        if not self.yw7Prj.filePath:
+            return('ERROR: "' + self.yw7File + '" is not an yWriter 7 project.')
 
-        YwPrj = Yw7Project(yw7File)
-        YwPrj.read()
-        if not YwPrj.filePath:
-            return('ERROR: "' + yw7File + '" is not an yWriter 7 project.')
-
-        if not YwPrj.file_is_present():
-            return('ERROR: Project "' + yw7File + '" not found.')
-
+        if not self.yw7Prj.file_is_present():
+            return('ERROR: Project "' + self.yw7File + '" not found.')
         else:
-            self.confirm_overwrite(yw7File)
+            self.confirm_overwrite(self.yw7File)
 
-        HtmlPrj = HTMLProject(htmlFile)
-        if not HtmlPrj.filePath:
-            return('ERROR: "' + htmlFile + '" is not a HTML file.')
+        message = self.yw7Prj.read()
+        if message.count('ERROR'):
+            return(message)
 
-        if not HtmlPrj.file_is_present():
-            return('ERROR: "' + htmlFile + '" not found.')
+        if not self.htmlPrj.filePath:
+            return('ERROR: "' + self.htmlFile + '" is not a HTML file.')
 
-        HtmlPrj.read()
-        prjStructure = HtmlPrj.getStructure()
+        if not self.htmlPrj.file_is_present():
+            return('ERROR: "' + self.htmlFile + '" not found.')
+
+        message = self.htmlPrj.read()
+        if message.count('ERROR'):
+            return(message)
+
+        prjStructure = self.htmlPrj.getStructure()
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
-        if prjStructure != YwPrj.getStructure():
+        if prjStructure != self.yw7Prj.getStructure():
             return('ERROR: Structure mismatch - yWriter project not modified.')
 
-        for scID in HtmlPrj.scenes:
-            YwPrj.scenes[scID].sceneContent = HtmlPrj.scenes[scID].sceneContent
-        return(YwPrj.write())
+        for scID in self.htmlPrj.scenes:
+            self.yw7Prj.scenes[scID].sceneContent = self.htmlPrj.scenes[scID].sceneContent
 
-    def yw7_to_html(self, yw7File, htmlFile):
+        return(self.yw7Prj.write())
+
+    def yw7_to_html(self):
         """ Read .yw7 file and convert sceneContents to html. """
+        if not self.yw7Prj.filePath:
+            return('ERROR: "' + self.yw7File + '" is not an yWriter 7 project.')
 
-        YwPrj = Yw7Project(yw7File)
-        if not YwPrj.filePath:
-            return('ERROR: "' + yw7File + '" is not an yWriter 7 project.')
+        if not self.yw7Prj.file_is_present():
+            return('ERROR: Project "' + self.yw7File + '" not found.')
+        else:
+            self.confirm_overwrite(self.yw7File)
 
-        if not YwPrj.file_is_present():
-            return('ERROR: Project "' + yw7File + '" not found.')
+        message = self.yw7Prj.read()
+        if message.count('ERROR'):
+            return(message)
 
-        YwPrj.read()
-        HtmlPrj = HTMLProject(htmlFile)
-        if HtmlPrj.file_is_present():
-            self.confirm_overwrite(htmlFile)
+        if self.htmlPrj.file_is_present():
+            self.confirm_overwrite(self.htmlFile)
 
-        HtmlPrj.title = YwPrj.title
-        HtmlPrj.scenes = YwPrj.scenes
-        HtmlPrj.chapters = YwPrj.chapters
-        return(HtmlPrj.write())
+        self.htmlPrj.title = self.yw7Prj.title
+        self.htmlPrj.scenes = self.yw7Prj.scenes
+        self.htmlPrj.chapters = self.yw7Prj.chapters
+        return(self.htmlPrj.write())
+
+    def confirm_overwrite(self, fileName):
+        pass

@@ -79,7 +79,7 @@ class HTMLProject(PywPrjFile, HTMLParser):
         text = format_yw7(text)
         self.feed(text)
         # Invoke HTML parser.
-        return('\nSUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
+        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
     def handle_starttag(self, tag, attrs):
         """ HTML parser: Get scene ID at scene start. """
@@ -169,6 +169,6 @@ class HTMLProject(PywPrjFile, HTMLParser):
             with open(self._filePath, 'w', encoding='utf-8') as f:
                 f.write(self.get_text())
         except(PermissionError):
-            return('\nERROR: ' + self._filePath + '" is write protected.')
+            return('ERROR: ' + self._filePath + '" is write protected.')
 
-        return('\nSUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self._filePath + '".')
+        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self._filePath + '".')

@@ -7,42 +7,46 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 from pywriter.mdconverter import MdConverter
-from pywriter.convert.pypandoc import convert_file
+from pywriter.pypandoc import convert_file
 
 
 class OdtConverter(MdConverter):
 
     mdFile = 'temp.md'
 
-    def yw7_to_odt(self, yw7File, odtFile):
+    def __init__(self, yw7File, odtFile):
+        MdConverter.__init__(self, yw7File, self.mdFile)
+        self.odtFile = odtFile
+
+    def yw7_to_odt(self):
         """ Export to odt """
-        message = self.yw7_to_md(yw7File, self.mdFile)
+        message = self.yw7_to_md()
         if message.count('ERROR'):
             return(message)
 
-        if os.path.isfile(odtFile):
-            self.confirm_overwrite(odtFile)
+        if os.path.isfile(self.odtFile):
+            self.confirm_overwrite(self.odtFile)
 
         try:
-            os.remove(odtFile)
+            os.remove(self.odtFile)
         except(FileNotFoundError):
             pass
         convert_file(self.mdFile, 'odt', format='markdown_strict',
-                     outputfile=odtFile)
+                     outputfile=self.odtFile)
         # Let pandoc convert markdown and write to .odt file.
         os.remove(self.mdFile)
-        if os.path.isfile(odtFile):
-            return(message.replace(self.mdFile, odtFile))
+        if os.path.isfile(self.odtFile):
+            return(message.replace(self.mdFile, self.odtFile))
 
         else:
-            return('ERROR: Could not create "' + odtFile + '".')
+            return('ERROR: Could not create "' + self.odtFile + '".')
 
-    def odt_to_yw7(self, odtFile, yw7File):
+    def odt_to_yw7(self):
         """ Import from yw7 """
-        convert_file(odtFile, 'markdown_strict', format='odt',
+        convert_file(self.odtFile, 'markdown_strict', format='odt',
                      outputfile=self.mdFile, extra_args=['--wrap=none'])
         # Let pandoc read .odt file and convert to markdown.
-        message = self.md_to_yw7(self.mdFile, yw7File)
+        message = self.md_to_yw7()
         try:
             os.remove(self.mdFile)
         except(FileNotFoundError):

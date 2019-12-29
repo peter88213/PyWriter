@@ -36,7 +36,7 @@ class MdProject(PywPrjFile):
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 text = (f.read())
         except(FileNotFoundError):
-            return('\nERROR: "' + self._filePath + '" not found.')
+            return('ERROR: "' + self._filePath + '" not found.')
 
         text = format_yw7(text)
 
@@ -63,6 +63,7 @@ class MdProject(PywPrjFile):
                 pass
             elif inScene:
                 sceneText = sceneText + line + '\n'
+        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
     def get_text(self):
         """ Format project text to markdown. """
@@ -106,4 +107,4 @@ class MdProject(PywPrjFile):
         with open(self._filePath, 'w', encoding='utf-8') as f:
             f.write(self.get_text())
 
-        return('\nSUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self._filePath + '".')
+        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self._filePath + '".')

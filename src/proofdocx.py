@@ -12,7 +12,8 @@ from pywriter.docxconverter import DocxConverter
 
 class MyDocxConverter(DocxConverter):
 
-    def __init__(self, silentMode):
+    def __init__(self, yw7File, docxFile, silentMode=True):
+        DocxConverter.__init__(self, yw7File, docxFile)
         self.silentMode = silentMode
 
     def confirm_overwrite(self, file):
@@ -28,7 +29,6 @@ class MyDocxConverter(DocxConverter):
 
 def run(sourcePath, silentMode=True):
     """ File conversion for proofreading """
-    myConverter = MyDocxConverter(silentMode)
     sourceFile = os.path.split(sourcePath)
     pathToSource = sourceFile[0]
     if pathToSource:
@@ -38,24 +38,25 @@ def run(sourcePath, silentMode=True):
         yw7File = pathToSource + sourceFile[1]
         docxFile = pathToSource + \
             sourceFile[1].split('.yw7')[0] + '.docx'
-        print('\n*** Export yWriter7 scenes to ODT ***')
+        myConverter = MyDocxConverter(yw7File, docxFile, silentMode)
+        print('\n*** Export yWriter7 scenes to .docx ***')
         print('Project: "' + yw7File + '"')
-        print(myConverter.yw7_to_docx(yw7File, docxFile))
+        print(myConverter.yw7_to_docx())
 
     elif sourceFile[1].count('.docx'):
         docxFile = pathToSource + sourceFile[1]
         yw7File = pathToSource + \
             sourceFile[1].split('.docx')[0] + '.yw7'
-        print('\n*** Import yWriter7 scenes from ODT ***')
+        myConverter = MyDocxConverter(yw7File, docxFile, silentMode)
+        print('\n*** Import yWriter7 scenes from .docx ***')
         print('Proofed scenes in "' + docxFile + '"')
-        print(myConverter.docx_to_yw7(docxFile, yw7File))
+        print(myConverter.docx_to_yw7())
 
     else:
         print('Input file must be .yw7 or .docx type.')
 
     if not silentMode:
         input('Press ENTER to continue ...')
-    sys.exit(0)
 
 
 if __name__ == '__main__':

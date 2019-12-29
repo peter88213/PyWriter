@@ -19,7 +19,7 @@ class Yw7Project(PywPrjFile):
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 xmlData = f.read()
         except(FileNotFoundError):
-            sys.exit('\nERROR: "' + self._filePath + '" not found.')
+            sys.exit('ERROR: "' + self._filePath + '" not found.')
 
         if xmlData.count('<![CDATA[]]>'):
             xmlData = xmlData.replace('<![CDATA[]]>', '<![CDATA[ ]]>')
@@ -27,7 +27,7 @@ class Yw7Project(PywPrjFile):
                 with open(self._filePath, 'w', encoding='utf-8') as f:
                     f.write(xmlData)
             except(PermissionError):
-                sys.exit('\nERROR: "' + self._filePath +
+                sys.exit('ERROR: "' + self._filePath +
                          '" is write protected.')
 
         lines = xmlData.split('\n')
@@ -43,7 +43,7 @@ class Yw7Project(PywPrjFile):
             self.tree = ET.parse(self._filePath)
             root = self.tree.getroot()
         except:
-            sys.exit('\nERROR: Can not process "' + self._filePath + '".')
+            sys.exit('ERROR: Can not process "' + self._filePath + '".')
 
         for prj in root.iter('PROJECT'):
             self.title = prj.find('Title').text
@@ -65,6 +65,8 @@ class Yw7Project(PywPrjFile):
             if scn.find('Desc'):
                 self.scenes[scID].desc = scn.find('Desc').text
             self.scenes[scID]._sceneContent = scn.find('SceneContent').text
+
+        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
     def write(self):
         """ Write attributes to yw7 project file. """
@@ -103,15 +105,15 @@ class Yw7Project(PywPrjFile):
                     scn.find('Desc').text = self.scenes[scID].desc
                 sceneCount = sceneCount + 1
             except(KeyError):
-                return('\nERROR: Scene with ID:' + scID + ' is missing in input file - yWriter project not modified.')
+                return('ERROR: Scene with ID:' + scID + ' is missing in input file - yWriter project not modified.')
 
         if sceneCount != len(self.scenes):
-            return('\nERROR: Scenes total mismatch - yWriter project not modified.')
+            return('ERROR: Scenes total mismatch - yWriter project not modified.')
 
         try:
             self.tree.write(self._filePath, encoding='utf-8')
         except(PermissionError):
-            return('\nERROR: "' + self._filePath + '" is write protected.')
+            return('ERROR: "' + self._filePath + '" is write protected.')
 
         newXml = ['<?xml version="1.0" encoding="utf-8"?>\n']
         # try:
@@ -125,11 +127,11 @@ class Yw7Project(PywPrjFile):
                                   ']]></' + tag + '>', line)
                 newXml.append(line)
         # except:
-        #    return('\nERROR: Can not read"' + self._filePath + '".')
+        #    return('ERROR: Can not read"' + self._filePath + '".')
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
                 f.writelines(newXml)
         except:
-            return('\nERROR: Can not write"' + self._filePath + '".')
+            return('ERROR: Can not write"' + self._filePath + '".')
 
-        return('\nSUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".')
+        return('SUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".')

@@ -9,55 +9,66 @@ from pywriter.yw7project import Yw7Project
 
 class MdConverter():
 
-    def confirm_overwrite(self, file):
-        pass
+    def __init__(self, yw7File, mdFile):
+        self.yw7File = yw7File
+        self.yw7Prj = Yw7Project(self.yw7File)
+        self.mdFile = mdFile
+        self.mdPrj = MdProject(self.mdFile)
 
-    def yw7_to_md(self, yw7File, mdFile):
+    def yw7_to_md(self):
         """ Read .yw7 file and convert xml to markdown. """
+        if not self.yw7Prj.filePath:
+            return('ERROR: "' + self.yw7File + '" is not an yWriter 7 project.')
 
-        YwPrj = Yw7Project(yw7File)
-        if not YwPrj.filePath:
-            return('ERROR: "' + yw7File + '" is not an yWriter 7 project.')
-
-        if not YwPrj.file_is_present():
-            return('ERROR: Project "' + yw7File + '" not found.')
-
-        YwPrj.read()
-        MdPrj = MdProject(mdFile)
-        MdPrj.title = YwPrj.title
-        MdPrj.scenes = YwPrj.scenes
-        MdPrj.chapters = YwPrj.chapters
-        return(MdPrj.write())
-
-    def md_to_yw7(self, mdFile, yw7File):
-        """ Convert markdown to xml and replace .yw7 file. """
-
-        YwPrj = Yw7Project(yw7File)
-        YwPrj.read()
-        if not YwPrj.filePath:
-            return('ERROR: "' + yw7File + '" is not an yWriter 7 project.')
-
-        if not YwPrj.file_is_present():
-            return('ERROR: Project "' + yw7File + '" not found.')
-
+        if not self.yw7Prj.file_is_present():
+            return('ERROR: Project "' + self.yw7File + '" not found.')
         else:
-            self.confirm_overwrite(yw7File)
+            self.confirm_overwrite(self.yw7File)
 
-        MdPrj = MdProject(mdFile)
-        if not MdPrj.filePath:
-            return('ERROR: "' + mdFile + '" is not a Markdown file.')
+        message = self.yw7Prj.read()
+        if message.count('ERROR'):
+            return(message)
 
-        if not MdPrj.file_is_present():
-            return('ERROR: "' + mdFile + '" not found.')
+        self.mdPrj.title = self.yw7Prj.title
+        self.mdPrj.scenes = self.yw7Prj.scenes
+        self.mdPrj.chapters = self.yw7Prj.chapters
+        return(self.mdPrj.write())
 
-        MdPrj.read()
-        prjStructure = MdPrj.getStructure()
+    def md_to_yw7(self):
+        """ Convert markdown to xml and replace .yw7 file. """
+        if not self.yw7Prj.filePath:
+            return('ERROR: "' + self.yw7File + '" is not an yWriter 7 project.')
+
+        if not self.yw7Prj.file_is_present():
+            return('ERROR: Project "' + self.yw7File + '" not found.')
+        else:
+            self.confirm_overwrite(self.yw7File)
+
+        message = self.yw7Prj.read()
+        if message.count('ERROR'):
+            return(message)
+
+        if not self.mdPrj.filePath:
+            return('ERROR: "' + self.mdFile + '" is not a Markdown file.')
+
+        if not self.mdPrj.file_is_present():
+            return('ERROR: "' + self.mdFile + '" not found.')
+
+        message = self.mdPrj.read()
+        if message.count('ERROR'):
+            return(message)
+
+        prjStructure = self.mdPrj.getStructure()
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
-        if prjStructure != YwPrj.getStructure():
+        if prjStructure != self.yw7Prj.getStructure():
             return('ERROR: Structure mismatch - yWriter project not modified.')
 
-        for scID in MdPrj.scenes:
-            YwPrj.scenes[scID].sceneContent = MdPrj.scenes[scID].sceneContent
-        return(YwPrj.write())
+        for scID in self.mdPrj.scenes:
+            self.yw7Prj.scenes[scID].sceneContent = self.mdPrj.scenes[scID].sceneContent
+
+        return(self.yw7Prj.write())
+
+    def confirm_overwrite(self, fileName):
+        pass
