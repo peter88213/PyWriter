@@ -19,10 +19,11 @@ TEST_DATA_PATH = 'data/'
 MD_FILE = TEST_PROJECT + '.md'
 MD_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.md'
 
-TOTAL_SCENES = 58
-
 YW7_FILE = TEST_PROJECT + '.yw7'
 YW7_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.yw7'
+
+with open(TEST_DATA_PATH + YW7_FILE, 'r') as f:
+    TOTAL_SCENES = f.read().count('<SCENE>')
 
 
 def read_file(inputFile):

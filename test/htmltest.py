@@ -19,10 +19,11 @@ TEST_DATA_PATH = 'data/'
 HTML_FILE = TEST_PROJECT + '.html'
 HTML_EXPORTED_FILE = 'exported/' + TEST_PROJECT + '.html'
 
-TOTAL_SCENES = 58
-
 YW7_FILE = TEST_PROJECT + '.yw7'
 YW7_EXPORTED_FILE = 'exported/' + TEST_PROJECT + '.yw7'
+
+with open(TEST_DATA_PATH + YW7_FILE, 'r') as f:
+    TOTAL_SCENES = f.read().count('<SCENE>')
 
 
 def read_file(inputFile):
