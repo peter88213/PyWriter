@@ -7,65 +7,56 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import sys
 import os
-from pywriter.convert.yw7_to_html import yw7_to_html
-from pywriter.convert.html_to_yw7 import html_to_yw7
+from pywriter.htmlconverter import HtmlConverter
 
 
-def confirm_overwrite(file):
-    if os.path.isfile(file):
-        print('\nWARNING: This will overwrite "' +
-              file + '"!')
-        userConfirmation = input('Continue (y/n)? ')
-        if not userConfirmation in ('y', 'Y'):
-            print('Program abort by user.\n')
-            input('Press ENTER to continue ...')
-            return(False)
-    return(True)
+class MyHtmlConverter(HtmlConverter):
+
+    def __init__(self, silentMode):
+        self.silentMode = silentMode
+
+    def confirm_overwrite(self, file):
+        if not self.silentMode:
+            print('\nWARNING: This will overwrite "' +
+                  file + '"!')
+            userConfirmation = input('Continue (y/n)? ')
+            if not userConfirmation in ('y', 'Y'):
+                print('Program abort by user.\n')
+                input('Press ENTER to continue ...')
+                sys.exit(1)
 
 
-def run(sourcePath, silentMode=False):
-    if not os.path.isfile(sourcePath):
-        print('\nERROR: File "' + sourcePath + '" not found.')
-        exit(1)
-
+def run(sourcePath, silentMode=True):
+    """ File conversion for proofreading """
+    myConverter = MyHtmlConverter(silentMode)
     sourceFile = os.path.split(sourcePath)
     pathToSource = sourceFile[0]
     if pathToSource:
         pathToSource = pathToSource + '/'
+
     if sourceFile[1].count('.yw7'):
         yw7File = pathToSource + sourceFile[1]
+
         htmlFile = pathToSource + \
             sourceFile[1].split('.yw7')[0] + '.html'
-        print('\n*** Export yw7 scenes to html ***')
+        print('\n*** Export yWriter7 scenes to HTML ***')
         print('Project: "' + yw7File + '"')
-        if not silentMode:
-            if not confirm_overwrite(htmlFile):
-                sys.exit(1)
-
-        print(yw7_to_html(yw7File, htmlFile))
+        print(myConverter.yw7_to_html(yw7File, htmlFile))
 
     elif sourceFile[1].count('.html'):
         htmlFile = pathToSource + sourceFile[1]
         yw7File = pathToSource + \
             sourceFile[1].split('.html')[0] + '.yw7'
-        print('\n*** Import yw7 scenes from html ***')
+        print('\n*** Import yWriter7 scenes from HTML ***')
         print('Proofed scenes in "' + htmlFile + '"')
-        if not silentMode:
-            if not confirm_overwrite(yw7File):
-                sys.exit(1)
+        print(myConverter.html_to_yw7(htmlFile, yw7File))
 
-        if os.path.isfile(yw7File):
-            print(html_to_yw7(htmlFile, yw7File))
-
-        else:
-            print('\n"' + yw7File + '" not found.')
-            print(
-                'Please make sure that your proofed file is in the same directory as your yWriter7 project.')
-            print('Program abort.')
     else:
-        print('Input file must be YW7 or html.')
+        print('Input file must be .yw7 or .html type.')
+
     if not silentMode:
         input('Press ENTER to continue ...')
+    sys.exit(0)
 
 
 if __name__ == '__main__':
@@ -73,6 +64,6 @@ if __name__ == '__main__':
         sourcePath = sys.argv[1]
     except:
         print(__doc__)
-        exit(1)
+        sys.exit(1)
 
-    run(sourcePath)
+    run(sourcePath, False)
