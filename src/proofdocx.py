@@ -68,7 +68,13 @@ def run(sourcePath, silentMode=False):
             if not confirm_overwrite(docxFile):
                 sys.exit(1)
 
-        print(yw7_to_docx(yw7File, mdFile, docxFile))
+        result = yw7_to_docx(yw7File, mdFile, docxFile)
+        if result.count('SUCCESS') and not silentMode:
+            os.startfile(docxFile)
+            sys.exit(0)
+
+        else:
+            print(result)
 
     elif sourceFile[1].count('.docx'):
         docxFile = pathToSource + sourceFile[1]
@@ -82,7 +88,13 @@ def run(sourcePath, silentMode=False):
                 sys.exit(1)
 
         if os.path.isfile(yw7File):
-            print(docx_to_yw7(docxFile, mdFile, yw7File))
+            result = docx_to_yw7(docxFile, mdFile, yw7File)
+            if result.count('SUCCESS') and not silentMode:
+                os.startfile(yw7File)
+                sys.exit(0)
+
+            else:
+                print(result)
         else:
             print('\n"' + yw7File + '" not found.')
             print(
