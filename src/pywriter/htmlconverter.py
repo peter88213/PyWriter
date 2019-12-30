@@ -15,6 +15,26 @@ class HtmlConverter():
         self.htmlFile = htmlFile
         self.htmlPrj = HTMLProject(self.htmlFile)
 
+    def yw7_to_html(self):
+        """ Read .yw7 file and convert sceneContents to html. """
+        if not self.yw7Prj.filePath:
+            return('ERROR: "' + self.yw7File + '" is not an yWriter 7 project.')
+
+        if not self.yw7Prj.file_is_present():
+            return('ERROR: Project "' + self.yw7File + '" not found.')
+
+        message = self.yw7Prj.read()
+        if message.count('ERROR'):
+            return(message)
+
+        if self.htmlPrj.file_is_present():
+            self.confirm_overwrite(self.htmlFile)
+
+        self.htmlPrj.title = self.yw7Prj.title
+        self.htmlPrj.scenes = self.yw7Prj.scenes
+        self.htmlPrj.chapters = self.yw7Prj.chapters
+        return(self.htmlPrj.write())
+
     def html_to_yw7(self):
         """ Convert html into yw7 newContents and modify .yw7 file. """
         if not self.yw7Prj.filePath:
@@ -50,28 +70,6 @@ class HtmlConverter():
             self.yw7Prj.scenes[scID].sceneContent = self.htmlPrj.scenes[scID].sceneContent
 
         return(self.yw7Prj.write())
-
-    def yw7_to_html(self):
-        """ Read .yw7 file and convert sceneContents to html. """
-        if not self.yw7Prj.filePath:
-            return('ERROR: "' + self.yw7File + '" is not an yWriter 7 project.')
-
-        if not self.yw7Prj.file_is_present():
-            return('ERROR: Project "' + self.yw7File + '" not found.')
-        else:
-            self.confirm_overwrite(self.yw7File)
-
-        message = self.yw7Prj.read()
-        if message.count('ERROR'):
-            return(message)
-
-        if self.htmlPrj.file_is_present():
-            self.confirm_overwrite(self.htmlFile)
-
-        self.htmlPrj.title = self.yw7Prj.title
-        self.htmlPrj.scenes = self.yw7Prj.scenes
-        self.htmlPrj.chapters = self.yw7Prj.chapters
-        return(self.htmlPrj.write())
 
     def confirm_overwrite(self, fileName):
         pass
