@@ -7,7 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import unittest
-from pywriter.mdconverter import MdConverter
+from pywriter.proof.mdconverter import MdConverter
 
 
 TEST_PROJECT = 'yw7 Sample Project'

@@ -6,8 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
-import os
-from pywriter.documentconverter import DocumentConverter
+from pywriter.proof.proofconsole import ProofConsole
 
 STYLESHEET = '<style type="text/css">\n' + \
     'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
@@ -31,64 +30,23 @@ HTML_HEADER = '<html>\n' + '<head>\n' + \
 HTML_FOOTER = '\n</body>\n</html>\n'
 
 
-class MyHtmlConverter(DocumentConverter):
+class MyHtmlConverter(ProofConsole):
 
-    def __init__(self, yw7File, htmlFile, silentMode=True):
-        DocumentConverter.__init__(self, yw7File, htmlFile)
-        self.silentMode = silentMode
-
-    def confirm_overwrite(self, file):
-        if not self.silentMode:
-            print('\nWARNING: This will overwrite "' +
-                  file + '"!')
-            userConfirmation = input('Continue (y/n)? ')
-            if not userConfirmation in ('y', 'Y'):
-                print('Program abort by user.\n')
-                input('Press ENTER to continue ...')
-                sys.exit(1)
-
-
-def run(sourcePath, silentMode=True):
-    """ File conversion for proofreading. """
-    sourceFile = os.path.split(sourcePath)
-    pathToSource = sourceFile[0]
-    if pathToSource:
-        pathToSource = pathToSource + '/'
-
-    if sourceFile[1].count('.yw7'):
-        yw7File = pathToSource + sourceFile[1]
-
-        htmlFile = pathToSource + \
-            sourceFile[1].split('.yw7')[0] + '.html'
-        myConverter = MyHtmlConverter(yw7File, htmlFile, silentMode)
-        print('\n*** Export yWriter7 scenes to HTML ***')
-        print('Project: "' + yw7File + '"')
-        print(myConverter.yw7_to_document())
-        with open(htmlFile, 'r') as f:
+    def postprocess(self):
+        with open(self.documentFile, 'r') as f:
             text = f.read()
             text = text.replace(
                 '<p>[', '<p class="tag">[')
             text = text.replace(']</p>\n<p>', ']</p>\n<p class="textbody">')
             text = text.replace('<p>', '<p class="firstlineindent">')
             text = HTML_HEADER.replace(
-                '$bookTitle$', myConverter.yw7Prj.title) + text + HTML_FOOTER
-        with open(htmlFile, 'w') as f:
+                '$bookTitle$', self.yw7Prj.title) + text + HTML_FOOTER
+        with open(self.documentFile, 'w') as f:
             f.write(text)
 
-    elif sourceFile[1].count('.html'):
-        htmlFile = pathToSource + sourceFile[1]
-        yw7File = pathToSource + \
-            sourceFile[1].split('.html')[0] + '.yw7'
-        myConverter = MyHtmlConverter(yw7File, htmlFile, silentMode)
-        print('\n*** Import yWriter7 scenes from HTML ***')
-        print('Proofed scenes in "' + htmlFile + '"')
-        print(myConverter.document_to_yw7())
 
-    else:
-        print('Input file must be .yw7 or .html type.')
-
-    if not silentMode:
-        input('Press ENTER to continue ...')
+def run(sourcePath, silentMode=True):
+    myConverter = MyHtmlConverter(sourcePath, 'html', silentMode)
 
 
 if __name__ == '__main__':

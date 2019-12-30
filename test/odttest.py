@@ -8,7 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 import zipfile
-from pywriter.documentconverter import DocumentConverter
+from pywriter.proof.documentconverter import DocumentConverter
 
 TEST_PROJECT = 'yw7 Sample Project'
 

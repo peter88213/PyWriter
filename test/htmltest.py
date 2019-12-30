@@ -8,7 +8,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 from pywriter.htmlconverter import HtmlConverter
-from proofhtml import MyHtmlConverter
 
 TEST_PROJECT = 'yw7 Sample Project'
 
