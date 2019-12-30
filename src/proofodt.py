@@ -7,13 +7,13 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import sys
 import os
-from pywriter.odtconverter import OdtConverter
+from pywriter.documentconverter import DocumentConverter
 
 
-class MyOdtConverter(OdtConverter):
+class MyOdtConverter(DocumentConverter):
 
     def __init__(self, yw7File, odtFile, silentMode=True):
-        OdtConverter.__init__(self, yw7File, odtFile)
+        DocumentConverter.__init__(self, yw7File, odtFile)
         self.silentMode = silentMode
 
     def confirm_overwrite(self, file):
@@ -41,7 +41,7 @@ def run(sourcePath, silentMode=True):
         myConverter = MyOdtConverter(yw7File, odtFile, silentMode)
         print('\n*** Export yWriter7 scenes to .odt ***')
         print('Project: "' + yw7File + '"')
-        print(myConverter.yw7_to_odt())
+        print(myConverter.yw7_to_document())
 
     elif sourceFile[1].count('.odt'):
         odtFile = pathToSource + sourceFile[1]
@@ -50,7 +50,7 @@ def run(sourcePath, silentMode=True):
         myConverter = MyOdtConverter(yw7File, odtFile, silentMode)
         print('\n*** Import yWriter7 scenes from .odt ***')
         print('Proofed scenes in "' + odtFile + '"')
-        print(myConverter.odt_to_yw7())
+        print(myConverter.document_to_yw7())
 
     else:
         print('Input file must be .yw7 or .odt type.')

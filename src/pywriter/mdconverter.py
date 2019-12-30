@@ -22,8 +22,6 @@ class MdConverter():
 
         if not self.yw7Prj.file_is_present():
             return('ERROR: Project "' + self.yw7File + '" not found.')
-        else:
-            self.confirm_overwrite(self.yw7File)
 
         message = self.yw7Prj.read()
         if message.count('ERROR'):

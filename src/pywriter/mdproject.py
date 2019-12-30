@@ -13,7 +13,7 @@ MD_HEADING_MARKERS = ("##", "#")
 
 
 class MdProject(PywPrjFile):
-    """ yWriter project linked to an yw7 project file. """
+    """ yWriter project linked to a markdown file. """
 
     _fileExtension = 'md'
 

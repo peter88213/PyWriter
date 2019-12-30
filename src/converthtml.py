@@ -1,19 +1,19 @@
-"""Import and export ywriter7 scenes for proofing.
+"""Import and export ywriter7 scenes for proofing. 
 
-Proof reading file format = DOCX (Office Open XML format)
+Proof reading file format = html with invisible chapter and scene tags
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
 import os
-from pywriter.documentconverter import DocumentConverter
+from pywriter.htmlconverter import HtmlConverter
 
 
-class MyDocxConverter(DocumentConverter):
+class MyHtmlConverter(HtmlConverter):
 
-    def __init__(self, yw7File, docxFile, silentMode=True):
-        DocumentConverter.__init__(self, yw7File, docxFile)
+    def __init__(self, yw7File, htmlFile, silentMode=True):
+        HtmlConverter.__init__(self, yw7File, htmlFile)
         self.silentMode = silentMode
 
     def confirm_overwrite(self, file):
@@ -36,24 +36,25 @@ def run(sourcePath, silentMode=True):
 
     if sourceFile[1].count('.yw7'):
         yw7File = pathToSource + sourceFile[1]
-        docxFile = pathToSource + \
-            sourceFile[1].split('.yw7')[0] + '.docx'
-        myConverter = MyDocxConverter(yw7File, docxFile, silentMode)
-        print('\n*** Export yWriter7 scenes to .docx ***')
-        print('Project: "' + yw7File + '"')
-        print(myConverter.yw7_to_document())
 
-    elif sourceFile[1].count('.docx'):
-        docxFile = pathToSource + sourceFile[1]
+        htmlFile = pathToSource + \
+            sourceFile[1].split('.yw7')[0] + '.html'
+        myConverter = MyHtmlConverter(yw7File, htmlFile, silentMode)
+        print('\n*** Export yWriter7 scenes to HTML ***')
+        print('Project: "' + yw7File + '"')
+        print(myConverter.yw7_to_html())
+
+    elif sourceFile[1].count('.html'):
+        htmlFile = pathToSource + sourceFile[1]
         yw7File = pathToSource + \
-            sourceFile[1].split('.docx')[0] + '.yw7'
-        myConverter = MyDocxConverter(yw7File, docxFile, silentMode)
-        print('\n*** Import yWriter7 scenes from .docx ***')
-        print('Proofed scenes in "' + docxFile + '"')
-        print(myConverter.document_to_yw7())
+            sourceFile[1].split('.html')[0] + '.yw7'
+        myConverter = MyHtmlConverter(yw7File, htmlFile, silentMode)
+        print('\n*** Import yWriter7 scenes from HTML ***')
+        print('Proofed scenes in "' + htmlFile + '"')
+        print(myConverter.html_to_yw7())
 
     else:
-        print('Input file must be .yw7 or .docx type.')
+        print('Input file must be .yw7 or .html type.')
 
     if not silentMode:
         input('Press ENTER to continue ...')

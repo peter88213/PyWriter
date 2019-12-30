@@ -37,7 +37,7 @@ HTML_FOOTER = '\n</body>\n</html>\n'
 
 
 class HTMLProject(PywPrjFile, HTMLParser):
-    """ yWriter project linked to an html project file. """
+    """ yWriter project linked to a html file. """
 
     _fileExtension = 'html'
 
