@@ -56,11 +56,11 @@ class MdConverter():
         if message.count('ERROR'):
             return(message)
 
-        prjStructure = self.mdPrj.getStructure()
+        prjStructure = self.mdPrj.get_structure()
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
-        if prjStructure != self.yw7Prj.getStructure():
+        if prjStructure != self.yw7Prj.get_structure():
             return('ERROR: Structure mismatch - yWriter project not modified.')
 
         for scID in self.mdPrj.scenes:

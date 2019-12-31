@@ -1,4 +1,34 @@
-""" PyWriter module
+"""PywProject - The PyWriter abstract base class
+
+This class represents the data strcture of an yWriter 7 project.
+
+# Properties
+
+The parts of yWriter's project structure mapped in the PywProject class: 
+
+PyWProject
+    |
+    +--title
+    +--chapters = {chID1:Chapter, chID2:Chapter, ... chIDm:Chapter} (ordered dictionary)
+    |                        |
+    |                        +--title (used for chapter headings)
+    |                        +--type (used as a selector for the chapter's level)
+    |                        +--scenes = [scID1, scID2, ... scIDn] (ordered list)
+    |
+    +--scenes = {scID1:Scene, scID2:Scene, scIDn:Scene} (dictionary; order doesn't matter)
+                        |
+                        +--title (used for html comments shown in Open/LibreOffice)
+                        +--desc (to be used for spreadsheet export)
+                        +--sceneContent (property with setter)
+                        +--_wordCount (to be updated by the sceneContent setter)
+                        +--_letterCount (to be updated by the sceneContent setter)
+# Methods 
+
+- get_text      parses the "chapters" tree and assembles all scene contents to a raw text.
+                This method is to be overwritten by file format specific subclasses.
+                
+- get_structure returns a string showing the order of chapters and scenes as a tree.
+                The result can be used to compare two PywProject objects.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -73,7 +103,7 @@ class PywProject(ABC):
         text = re.sub('\[.+?\]', '', text)
         return(text)
 
-    def getStructure(self):
+    def get_structure(self):
         """ Assemble a comparable structure tree. """
 
         text = ''

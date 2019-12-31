@@ -36,7 +36,7 @@ HTML_HEADER = '<html>\n' + '<head>\n' + \
 HTML_FOOTER = '\n</body>\n</html>\n'
 
 
-class HTMLProject(PywPrjFile, HTMLParser):
+class HtmlProject(PywPrjFile, HTMLParser):
     """ yWriter project linked to a html file. """
 
     _fileExtension = 'html'

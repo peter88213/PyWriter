@@ -3,7 +3,7 @@
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.htmlproject import HTMLProject
+from pywriter.htmlproject import HtmlProject
 from pywriter.yw7project import Yw7Project
 
 
@@ -13,7 +13,7 @@ class HtmlConverter():
         self.yw7File = yw7File
         self.yw7Prj = Yw7Project(self.yw7File)
         self.htmlFile = htmlFile
-        self.htmlPrj = HTMLProject(self.htmlFile)
+        self.htmlPrj = HtmlProject(self.htmlFile)
 
     def yw7_to_html(self):
         """ Read .yw7 file and convert sceneContents to html. """
@@ -59,11 +59,11 @@ class HtmlConverter():
         if message.count('ERROR'):
             return(message)
 
-        prjStructure = self.htmlPrj.getStructure()
+        prjStructure = self.htmlPrj.get_structure()
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
-        if prjStructure != self.yw7Prj.getStructure():
+        if prjStructure != self.yw7Prj.get_structure():
             return('ERROR: Structure mismatch - yWriter project not modified.')
 
         for scID in self.htmlPrj.scenes:
