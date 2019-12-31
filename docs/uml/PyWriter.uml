@@ -145,9 +145,6 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
       <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_8zhOMStrEeqgj_wxJ3Xgsg" value="true"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_HSXysCtsEeqgj_wxJ3Xgsg" name="yw7File">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_PJPoUCtsEeqgj_wxJ3Xgsg" name="documentFile">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
@@ -156,26 +153,12 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_ClRcUCtqEeqgj_wxJ3Xgsg" name="HtmlConverter">
     <generalization xmi:type="uml:Generalization" xmi:id="_ClRcUStqEeqgj_wxJ3Xgsg" general="_pnqhgCtkEeqgj_wxJ3Xgsg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_UpWFwCtqEeqgj_wxJ3Xgsg" name="yw7Prj" type="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_UpcMYCtqEeqgj_wxJ3Xgsg" name="yw7File">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_aU8WoitqEeqgj_wxJ3Xgsg" name="yw7Prj" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_aU7IgCtqEeqgj_wxJ3Xgsg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_obJcUCtqEeqgj_wxJ3Xgsg" name="mdFile">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_obOU0CtqEeqgj_wxJ3Xgsg" name="htmlPrj" type="_RkzFwCthEeqgj_wxJ3Xgsg"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_BXMqMitrEeqgj_wxJ3Xgsg" name="htmlPrj" type="_RkzFwCthEeqgj_wxJ3Xgsg" association="_BXLcECtrEeqgj_wxJ3Xgsg"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_ClRcUitqEeqgj_wxJ3Xgsg" name="confirm_overwrite"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_ClRcUytqEeqgj_wxJ3Xgsg" name="postprocess"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_KbXO0CtqEeqgj_wxJ3Xgsg" name="html_to_yw7"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_MWYKACtqEeqgj_wxJ3Xgsg" name="yw7_to_html"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_aU7IgCtqEeqgj_wxJ3Xgsg" memberEnd="_aU8WoitqEeqgj_wxJ3Xgsg _aU9kwStqEeqgj_wxJ3Xgsg">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aU8WoCtqEeqgj_wxJ3Xgsg" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aU8WoStqEeqgj_wxJ3Xgsg" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_aU9kwStqEeqgj_wxJ3Xgsg" name="htmlconverter" type="_ClRcUCtqEeqgj_wxJ3Xgsg" association="_aU7IgCtqEeqgj_wxJ3Xgsg"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_BXLcECtrEeqgj_wxJ3Xgsg" memberEnd="_BXMqMitrEeqgj_wxJ3Xgsg _BXNRQitrEeqgj_wxJ3Xgsg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BXMqMCtrEeqgj_wxJ3Xgsg" source="org.eclipse.papyrus">
