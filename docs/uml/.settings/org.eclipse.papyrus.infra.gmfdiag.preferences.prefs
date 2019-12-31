@@ -1,0 +1,4 @@
+PAPYRUS_EDITOR.color.gradient=RGB {255, 255, 255};RGB {255, 255, 255};0;0
+PAPYRUS_EDITOR.font=1|Segoe UI|9.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Segoe UI;
+PAPYRUS_EDITOR.rulergrid.viewgrid=false
+eclipse.preferences.version=1
