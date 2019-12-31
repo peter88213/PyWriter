@@ -161,14 +161,3 @@ class HtmlProject(PywPrjFile, HTMLParser):
             '</h2>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>', '</h2>')
         text = text + HTML_FOOTER
         return(text)
-
-    def write(self):
-        """ Write attributes to html project file. """
-
-        try:
-            with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.write(self.get_text())
-        except(PermissionError):
-            return('ERROR: ' + self._filePath + '" is write protected.')
-
-        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self._filePath + '".')

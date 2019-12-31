@@ -36,10 +36,16 @@ class PywPrjFile(PywProject, ABC):
         """ Read yWriter project data from a file. """
         pass
 
-    @abstractmethod
     def write(self):
         """ Write yWriter project data to a file. """
-        pass
+
+        try:
+            with open(self._filePath, 'w', encoding='utf-8') as f:
+                f.write(self.get_text())
+        except(PermissionError):
+            return('ERROR: ' + self._filePath + '" is write protected.')
+
+        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self._filePath + '".')
 
     def file_is_present(self):
         """ Check whether the file is present. """

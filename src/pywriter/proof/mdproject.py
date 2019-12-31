@@ -100,11 +100,3 @@ class MdProject(PywPrjFile):
             text = text + '\\[/ChID\\]\n'
         text = format_md(text)
         return(text)
-
-    def write(self):
-        """ Write attributes to markdown project file. """
-
-        with open(self._filePath, 'w', encoding='utf-8') as f:
-            f.write(self.get_text())
-
-        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self._filePath + '".')
