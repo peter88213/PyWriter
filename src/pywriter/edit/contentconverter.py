@@ -9,11 +9,11 @@ from pywriter.core.yw7file import Yw7File
 
 class ContentConverter():
 
-    def __init__(self, yw7Path, htmlFile):
+    def __init__(self, yw7Path, htmlPath):
         self.yw7Path = yw7Path
         self.yw7File = Yw7File(self.yw7Path)
-        self.htmlFile = htmlFile
-        self.htmlPrj = HtmlFile(self.htmlFile)
+        self.htmlPath = htmlPath
+        self.htmlFile = HtmlFile(self.htmlPath)
 
     def yw7_to_html(self):
         """ Read .yw7 file and convert sceneContents to html. """
@@ -27,13 +27,13 @@ class ContentConverter():
         if message.count('ERROR'):
             return(message)
 
-        if self.htmlPrj.file_is_present():
-            self.confirm_overwrite(self.htmlFile)
+        if self.htmlFile.file_is_present():
+            self.confirm_overwrite(self.htmlPath)
 
-        self.htmlPrj.title = self.yw7File.title
-        self.htmlPrj.scenes = self.yw7File.scenes
-        self.htmlPrj.chapters = self.yw7File.chapters
-        return(self.htmlPrj.write())
+        self.htmlFile.title = self.yw7File.title
+        self.htmlFile.scenes = self.yw7File.scenes
+        self.htmlFile.chapters = self.yw7File.chapters
+        return(self.htmlFile.write())
 
     def html_to_yw7(self):
         """ Convert html into yw7 newContents and modify .yw7 file. """
@@ -49,25 +49,25 @@ class ContentConverter():
         if message.count('ERROR'):
             return(message)
 
-        if not self.htmlPrj.filePath:
-            return('ERROR: "' + self.htmlFile + '" is not a HTML file.')
+        if not self.htmlFile.filePath:
+            return('ERROR: "' + self.htmlPath + '" is not a HTML file.')
 
-        if not self.htmlPrj.file_is_present():
-            return('ERROR: "' + self.htmlFile + '" not found.')
+        if not self.htmlFile.file_is_present():
+            return('ERROR: "' + self.htmlPath + '" not found.')
 
-        message = self.htmlPrj.read()
+        message = self.htmlFile.read()
         if message.count('ERROR'):
             return(message)
 
-        prjStructure = self.htmlPrj.get_structure()
+        prjStructure = self.htmlFile.get_structure()
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
         if prjStructure != self.yw7File.get_structure():
             return('ERROR: Structure mismatch - yWriter project not modified.')
 
-        for scID in self.htmlPrj.scenes:
-            self.yw7File.scenes[scID].sceneContent = self.htmlPrj.scenes[scID].sceneContent
+        for scID in self.htmlFile.scenes:
+            self.yw7File.scenes[scID].sceneContent = self.htmlFile.scenes[scID].sceneContent
 
         return(self.yw7File.write())
 

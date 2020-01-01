@@ -10,10 +10,10 @@ import os
 from pywriter.edit.contentconverter import ContentConverter
 
 
-class MyHtmlConverter(ContentConverter):
+class CntCnvRunner(ContentConverter):
 
-    def __init__(self, yw7Path, htmlFile, silentMode=True):
-        ContentConverter.__init__(self, yw7Path, htmlFile)
+    def __init__(self, yw7Path, htmlPath, silentMode=True):
+        ContentConverter.__init__(self, yw7Path, htmlPath)
         self.silentMode = silentMode
 
     def confirm_overwrite(self, file):
@@ -39,7 +39,7 @@ def run(sourcePath, silentMode=True):
 
         htmlFile = pathToSource + \
             sourceFile[1].split('.yw7')[0] + '.html'
-        myConverter = MyHtmlConverter(yw7File, htmlFile, silentMode)
+        myConverter = CntCnvRunner(yw7File, htmlFile, silentMode)
         print('\n*** Export yWriter7 scenes to HTML ***')
         print('Project: "' + yw7File + '"')
         print(myConverter.yw7_to_html())
@@ -48,7 +48,7 @@ def run(sourcePath, silentMode=True):
         htmlFile = pathToSource + sourceFile[1]
         yw7File = pathToSource + \
             sourceFile[1].split('.html')[0] + '.yw7'
-        myConverter = MyHtmlConverter(yw7File, htmlFile, silentMode)
+        myConverter = CntCnvRunner(yw7File, htmlFile, silentMode)
         print('\n*** Import yWriter7 scenes from HTML ***')
         print('Proofed scenes in "' + htmlFile + '"')
         print(myConverter.html_to_yw7())

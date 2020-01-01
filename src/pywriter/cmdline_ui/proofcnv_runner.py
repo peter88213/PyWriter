@@ -10,7 +10,7 @@ import os
 from pywriter.proof.documentconverter import DocumentConverter
 
 
-class ProofConsole(DocumentConverter):
+class ProofCnvRunner(DocumentConverter):
 
     def __init__(self, sourcePath, extension, silentMode=True):
         """ File conversion for proofreading """

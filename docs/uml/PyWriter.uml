@@ -218,33 +218,32 @@
       <ownedOperation xmi:type="uml:Operation" xmi:id="_FptXUCtiEeqgj_wxJ3Xgsg" name="handle_data" visibility="private"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_aE858CwGEequtbdKEmlZqQ" name="__init__"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_ClRcUCtqEeqgj_wxJ3Xgsg" name="HtmlConverter">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_obOU0CtqEeqgj_wxJ3Xgsg" name="htmlPrj" type="_RkzFwCthEeqgj_wxJ3Xgsg"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_BXMqMitrEeqgj_wxJ3Xgsg" name="htmlPrj" type="_RkzFwCthEeqgj_wxJ3Xgsg" association="_BXLcECtrEeqgj_wxJ3Xgsg"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_8p76gCwSEequtbdKEmlZqQ" name="yw7Prj" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_8p4QICwSEequtbdKEmlZqQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8p-WwCwSEequtbdKEmlZqQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8qD2UCwSEequtbdKEmlZqQ" value="1"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ClRcUCtqEeqgj_wxJ3Xgsg" name="ContentConverter">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_n9ysECyVEeqdSpNF8GdbXA" name="yw7Path">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_ClRcUitqEeqgj_wxJ3Xgsg" name="confirm_overwrite"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_ClRcUytqEeqgj_wxJ3Xgsg" name="postprocess"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_8p76gCwSEequtbdKEmlZqQ" name="yw7File" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_8p4QICwSEequtbdKEmlZqQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_obOU0CtqEeqgj_wxJ3Xgsg" name="htmlPath">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_BXMqMitrEeqgj_wxJ3Xgsg" name="htmlFile" type="_RkzFwCthEeqgj_wxJ3Xgsg" association="_BXLcECtrEeqgj_wxJ3Xgsg"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ClRcUytqEeqgj_wxJ3Xgsg" name="__-init__"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_KbXO0CtqEeqgj_wxJ3Xgsg" name="html_to_yw7"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ClRcUitqEeqgj_wxJ3Xgsg" name="confirm_overwrite"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_MWYKACtqEeqgj_wxJ3Xgsg" name="yw7_to_html"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_seuasCwTEequtbdKEmlZqQ" name="CommandlineUI">
-    <packagedElement xmi:type="uml:Class" xmi:id="_WAqBgCtrEeqgj_wxJ3Xgsg" name="MyHtmlConverter">
+  <packagedElement xmi:type="uml:Package" xmi:id="_seuasCwTEequtbdKEmlZqQ" name="cmdline_ui">
+    <packagedElement xmi:type="uml:Class" xmi:id="_WAqBgCtrEeqgj_wxJ3Xgsg" name="CntCnvRunner">
       <generalization xmi:type="uml:Generalization" xmi:id="_hlZQACtrEeqgj_wxJ3Xgsg" general="_ClRcUCtqEeqgj_wxJ3Xgsg"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_qmOXUCtrEeqgj_wxJ3Xgsg" name="silentMode">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_xTaBACtrEeqgj_wxJ3Xgsg" value="true"/>
       </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Rz_t8CyWEeqdSpNF8GdbXA" name="__init__"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_eF9UsCtrEeqgj_wxJ3Xgsg" name="confirm_overwrite"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_vuZ8oCtsEeqgj_wxJ3Xgsg" name="MyHtmlConverter">
-      <generalization xmi:type="uml:Generalization" xmi:id="_AzvF4CttEeqgj_wxJ3Xgsg" general="_eYH_kCtnEeqgj_wxJ3Xgsg"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_5RA7UCtsEeqgj_wxJ3Xgsg" name="postprocess"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_eYH_kCtnEeqgj_wxJ3Xgsg" name="ProofConsole">
+    <packagedElement xmi:type="uml:Class" xmi:id="_eYH_kCtnEeqgj_wxJ3Xgsg" name="ProofCnvRunner">
       <generalization xmi:type="uml:Generalization" xmi:id="_h-hegCtnEeqgj_wxJ3Xgsg" general="_pnqhgCtkEeqgj_wxJ3Xgsg"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_8zhOMCtrEeqgj_wxJ3Xgsg" name="silentMode">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
@@ -263,5 +262,9 @@
       <ownedOperation xmi:type="uml:Operation" xmi:id="_4lDOMCthEeqgj_wxJ3Xgsg" name="handle_endtag" visibility="private"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_6-Ce0CthEeqgj_wxJ3Xgsg" name="handle_data" visibility="private"/>
     </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_vuZ8oCtsEeqgj_wxJ3Xgsg" name="MyHtmlConverter">
+    <generalization xmi:type="uml:Generalization" xmi:id="_AzvF4CttEeqgj_wxJ3Xgsg" general="_eYH_kCtnEeqgj_wxJ3Xgsg"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_5RA7UCtsEeqgj_wxJ3Xgsg" name="postprocess"/>
   </packagedElement>
 </uml:Model>

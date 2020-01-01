@@ -6,7 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
-from pywriter.proof.proofconsole import ProofConsole
+from pywriter.proof.proofconsole import ProofCnvRunner
 
 STYLESHEET = '<style type="text/css">\n' + \
     'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
@@ -30,7 +30,7 @@ HTML_HEADER = '<html>\n' + '<head>\n' + \
 HTML_FOOTER = '\n</body>\n</html>\n'
 
 
-class MyHtmlConverter(ProofConsole):
+class CntCnvRunner(ProofCnvRunner):
 
     def postprocess(self):
         with open(self.documentPath, 'r') as f:
@@ -46,7 +46,7 @@ class MyHtmlConverter(ProofConsole):
 
 
 def run(sourcePath, silentMode=True):
-    myConverter = MyHtmlConverter(sourcePath, 'html', silentMode)
+    myConverter = CntCnvRunner(sourcePath, 'html', silentMode)
 
 
 if __name__ == '__main__':
