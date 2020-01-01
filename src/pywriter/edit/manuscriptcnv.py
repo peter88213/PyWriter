@@ -15,7 +15,7 @@ class ManuscriptCnv():
         self.htmlPath = htmlPath
         self.htmlFile = Manuscript(self.htmlPath)
 
-    def yw7_to_html(self):
+    def yw7_to_document(self):
         """ Read .yw7 file and convert sceneContents to html. """
         if not self.yw7File.filePath:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
@@ -35,7 +35,7 @@ class ManuscriptCnv():
         self.htmlFile.chapters = self.yw7File.chapters
         return(self.htmlFile.write())
 
-    def html_to_yw7(self):
+    def document_to_yw7(self):
         """ Convert html into yw7 newContents and modify .yw7 file. """
         if not self.yw7File.filePath:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')

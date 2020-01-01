@@ -30,7 +30,7 @@ class EditManuscript(ManuscriptCnv):
             ManuscriptCnv.__init__(self, yw7Path, htmlPath)
             print('\n*** Export yWriter7 scenes for Editing ***')
             print('Project: "' + yw7Path + '"')
-            print(myConverter.yw7_to_html())
+            print(self.yw7_to_document())
 
         elif sourceFile[1].count('.manuscript'):
             htmlPath = pathToSource + sourceFile[1]
@@ -39,7 +39,7 @@ class EditManuscript(ManuscriptCnv):
             ManuscriptCnv.__init__(self, yw7Path, htmlPath)
             print('\n*** Import yWriter7 scenes from HTML ***')
             print('Edited scenes in "' + htmlPath + '"')
-            print(myConverter.html_to_yw7())
+            print(self.document_to_yw7())
 
         else:
             print('Input file must be .yw7 or .manuscript type.')
