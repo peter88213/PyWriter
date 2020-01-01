@@ -60,6 +60,9 @@ class DocumentConverter(MdConverter):
 
     def document_to_yw7(self):
         """ Import from yw7 """
+        if not os.path.isfile(self.documentPath):
+            return('ERROR: "' + self.documentPath + '" not found.')
+
         convert_file(self.documentPath, 'markdown_strict', format=self._fileExtension,
                      outputfile=self.mdPath, extra_args=['--wrap=none'])
         # Let pandoc read the document file and convert to markdown.
