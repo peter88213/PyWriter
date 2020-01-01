@@ -12,13 +12,13 @@ from pywriter.proof.pypandoc import convert_file
 
 class DocumentConverter(MdConverter):
 
-    mdFile = 'temp.md'
     _fileExtensions = ['docx', 'html', 'odt']
 
-    def __init__(self, yw7File, documentFile):
-        MdConverter.__init__(self, yw7File, self.mdFile)
-        self.documentFile = documentFile
-        nameParts = self.documentFile.split('.')
+    def __init__(self, yw7Path, documentPath):
+        self.mdPath = 'temp.md'
+        MdConverter.__init__(self, yw7Path, self.mdPath)
+        self.documentPath = documentPath
+        nameParts = self.documentPath.split('.')
         self.fileExtension = nameParts[len(nameParts) - 1]
 
     @property
@@ -36,31 +36,31 @@ class DocumentConverter(MdConverter):
         if message.count('ERROR'):
             return(message)
 
-        if os.path.isfile(self.documentFile):
-            self.confirm_overwrite(self.documentFile)
+        if os.path.isfile(self.documentPath):
+            self.confirm_overwrite(self.documentPath)
 
         try:
-            os.remove(self.documentFile)
+            os.remove(self.documentPath)
         except(FileNotFoundError):
             pass
-        convert_file(self.mdFile, self.fileExtension, format='markdown_strict',
-                     outputfile=self.documentFile)
+        convert_file(self.mdPath, self.fileExtension, format='markdown_strict',
+                     outputfile=self.documentPath)
         # Let pandoc convert markdown and write to .document file.
-        os.remove(self.mdFile)
-        if os.path.isfile(self.documentFile):
-            return(message.replace(self.mdFile, self.documentFile))
+        os.remove(self.mdPath)
+        if os.path.isfile(self.documentPath):
+            return(message.replace(self.mdPath, self.documentPath))
 
         else:
-            return('ERROR: Could not create "' + self.documentFile + '".')
+            return('ERROR: Could not create "' + self.documentPath + '".')
 
     def document_to_yw7(self):
         """ Import from yw7 """
-        convert_file(self.documentFile, 'markdown_strict', format=self._fileExtension,
-                     outputfile=self.mdFile, extra_args=['--wrap=none'])
+        convert_file(self.documentPath, 'markdown_strict', format=self._fileExtension,
+                     outputfile=self.mdPath, extra_args=['--wrap=none'])
         # Let pandoc read the document file and convert to markdown.
         message = self.md_to_yw7()
         try:
-            os.remove(self.mdFile)
+            os.remove(self.mdPath)
         except(FileNotFoundError):
             pass
         return(message)

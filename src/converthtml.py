@@ -7,13 +7,13 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import sys
 import os
-from pywriter.htmlconverter import HtmlConverter
+from pywriter.edit.contentconverter import ContentConverter
 
 
-class MyHtmlConverter(HtmlConverter):
+class MyHtmlConverter(ContentConverter):
 
-    def __init__(self, yw7File, htmlFile, silentMode=True):
-        HtmlConverter.__init__(self, yw7File, htmlFile)
+    def __init__(self, yw7Path, htmlFile, silentMode=True):
+        ContentConverter.__init__(self, yw7Path, htmlFile)
         self.silentMode = silentMode
 
     def confirm_overwrite(self, file):

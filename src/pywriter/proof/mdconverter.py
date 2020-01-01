@@ -3,70 +3,70 @@
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.proof.mdproject import MdProject
-from pywriter.yw7project import Yw7Project
+from pywriter.proof.mdfile import MdFile
+from pywriter.core.yw7file import Yw7File
 
 
 class MdConverter():
 
-    def __init__(self, yw7File, mdFile):
-        self.yw7File = yw7File
-        self.yw7Prj = Yw7Project(self.yw7File)
-        self.mdFile = mdFile
-        self.mdPrj = MdProject(self.mdFile)
+    def __init__(self, yw7Path, mdPath):
+        self.yw7Path = yw7Path
+        self.yw7File = Yw7File(self.yw7Path)
+        self.mdPath = mdPath
+        self.mdFile = MdFile(self.mdPath)
 
     def yw7_to_md(self):
         """ Read .yw7 file and convert xml to markdown. """
-        if not self.yw7Prj.filePath:
-            return('ERROR: "' + self.yw7File + '" is not an yWriter 7 project.')
+        if not self.yw7File.filePath:
+            return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
-        if not self.yw7Prj.file_is_present():
-            return('ERROR: Project "' + self.yw7File + '" not found.')
+        if not self.yw7File.file_is_present():
+            return('ERROR: Project "' + self.yw7Path + '" not found.')
 
-        message = self.yw7Prj.read()
+        message = self.yw7File.read()
         if message.count('ERROR'):
             return(message)
 
-        self.mdPrj.title = self.yw7Prj.title
-        self.mdPrj.scenes = self.yw7Prj.scenes
-        self.mdPrj.chapters = self.yw7Prj.chapters
-        return(self.mdPrj.write())
+        self.mdFile.title = self.yw7File.title
+        self.mdFile.scenes = self.yw7File.scenes
+        self.mdFile.chapters = self.yw7File.chapters
+        return(self.mdFile.write())
 
     def md_to_yw7(self):
         """ Convert markdown to xml and replace .yw7 file. """
-        if not self.yw7Prj.filePath:
-            return('ERROR: "' + self.yw7File + '" is not an yWriter 7 project.')
+        if not self.yw7File.filePath:
+            return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
-        if not self.yw7Prj.file_is_present():
-            return('ERROR: Project "' + self.yw7File + '" not found.')
+        if not self.yw7File.file_is_present():
+            return('ERROR: Project "' + self.yw7Path + '" not found.')
         else:
-            self.confirm_overwrite(self.yw7File)
+            self.confirm_overwrite(self.yw7Path)
 
-        message = self.yw7Prj.read()
+        message = self.yw7File.read()
         if message.count('ERROR'):
             return(message)
 
-        if not self.mdPrj.filePath:
-            return('ERROR: "' + self.mdFile + '" is not a Markdown file.')
+        if not self.mdFile.filePath:
+            return('ERROR: "' + self.mdPath + '" is not a Markdown file.')
 
-        if not self.mdPrj.file_is_present():
-            return('ERROR: "' + self.mdFile + '" not found.')
+        if not self.mdFile.file_is_present():
+            return('ERROR: "' + self.mdPath + '" not found.')
 
-        message = self.mdPrj.read()
+        message = self.mdFile.read()
         if message.count('ERROR'):
             return(message)
 
-        prjStructure = self.mdPrj.get_structure()
+        prjStructure = self.mdFile.get_structure()
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
-        if prjStructure != self.yw7Prj.get_structure():
+        if prjStructure != self.yw7File.get_structure():
             return('ERROR: Structure mismatch - yWriter project not modified.')
 
-        for scID in self.mdPrj.scenes:
-            self.yw7Prj.scenes[scID].sceneContent = self.mdPrj.scenes[scID].sceneContent
+        for scID in self.mdFile.scenes:
+            self.yw7File.scenes[scID].sceneContent = self.mdFile.scenes[scID].sceneContent
 
-        return(self.yw7Prj.write())
+        return(self.yw7File.write())
 
     def confirm_overwrite(self, fileName):
         pass

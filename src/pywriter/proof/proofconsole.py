@@ -21,22 +21,22 @@ class ProofConsole(DocumentConverter):
             pathToSource = pathToSource + '/'
 
         if sourceFile[1].count('.yw7'):
-            self.yw7File = pathToSource + sourceFile[1]
-            self.documentFile = pathToSource + \
+            self.yw7Path = pathToSource + sourceFile[1]
+            self.documentPath = pathToSource + \
                 sourceFile[1].split('.yw7')[0] + '.' + extension
             print('\n*** Export yWriter7 scenes to .' + extension + ' ***')
-            print('Project: "' + self.yw7File + '"')
-            DocumentConverter.__init__(self, self.yw7File, self.documentFile)
+            print('Project: "' + self.yw7Path + '"')
+            DocumentConverter.__init__(self, self.yw7Path, self.documentPath)
             print(self.yw7_to_document())
             self.postprocess()
 
         elif sourceFile[1].count('.' + extension):
-            self.documentFile = pathToSource + sourceFile[1]
-            self.yw7File = pathToSource + \
+            self.documentPath = pathToSource + sourceFile[1]
+            self.yw7Path = pathToSource + \
                 sourceFile[1].split('.' + extension)[0] + '.yw7'
             print('\n*** Import yWriter7 scenes from .' + extension + ' ***')
-            print('Proofed scenes in "' + self.documentFile + '"')
-            DocumentConverter.__init__(self, self.yw7File, self.documentFile)
+            print('Proofed scenes in "' + self.documentPath + '"')
+            DocumentConverter.__init__(self, self.yw7Path, self.documentPath)
             print(self.document_to_yw7())
 
         else:

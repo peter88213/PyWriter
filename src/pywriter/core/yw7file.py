@@ -6,10 +6,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 import re
 import xml.etree.ElementTree as ET
-from pywriter.pywprjfile import PywPrjFile
+from pywriter.core.pywfile import PywFile
 
 
-class Yw7Project(PywPrjFile):
+class Yw7File(PywFile):
     """ yWriter project linked to an yw7 project file. """
 
     def read(self):

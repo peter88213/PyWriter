@@ -33,15 +33,15 @@ HTML_FOOTER = '\n</body>\n</html>\n'
 class MyHtmlConverter(ProofConsole):
 
     def postprocess(self):
-        with open(self.documentFile, 'r') as f:
+        with open(self.documentPath, 'r') as f:
             text = f.read()
             text = text.replace(
                 '<p>[', '<p class="tag">[')
             text = text.replace(']</p>\n<p>', ']</p>\n<p class="textbody">')
             text = text.replace('<p>', '<p class="firstlineindent">')
             text = HTML_HEADER.replace(
-                '$bookTitle$', self.yw7Prj.title) + text + HTML_FOOTER
-        with open(self.documentFile, 'w') as f:
+                '$bookTitle$', self.yw7File.title) + text + HTML_FOOTER
+        with open(self.documentPath, 'w') as f:
             f.write(text)
 
 

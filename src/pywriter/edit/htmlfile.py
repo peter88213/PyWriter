@@ -5,7 +5,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from html.parser import HTMLParser
-from pywriter.pywprjfile import PywPrjFile
+from pywriter.core.pywfile import PywFile
 
 HTML_HEADING_MARKERS = ("h2", "h1")
 # Index is yWriter's chapter type:
@@ -36,13 +36,13 @@ HTML_HEADER = '<html>\n' + '<head>\n' + \
 HTML_FOOTER = '\n</body>\n</html>\n'
 
 
-class HtmlProject(PywPrjFile, HTMLParser):
+class HtmlFile(PywFile, HTMLParser):
     """ yWriter project linked to a html file. """
 
     _fileExtension = 'html'
 
     def __init__(self, filePath):
-        PywPrjFile.__init__(self, filePath)
+        PywFile.__init__(self, filePath)
         HTMLParser.__init__(self)
         self.sceneText = ''
         self.scID = 0

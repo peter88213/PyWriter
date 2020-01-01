@@ -5,17 +5,16 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 from abc import abstractmethod
-from abc import ABC
-from pywriter.pywproject import PywProject
+from pywriter.core.pywnovel import PywNovel
 
 
-class PywPrjFile(PywProject, ABC):
+class PywFile(PywNovel):
     """ Abstract yWriter project file representation. """
 
     _fileExtension = ''
 
     def __init__(self, filePath):
-        PywProject.__init__(self)
+        PywNovel.__init__(self)
         self.filePath = filePath
 
     @property

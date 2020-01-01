@@ -1,10 +1,10 @@
-"""PywProject - The PyWriter abstract base class
+"""PywNovel - The PyWriter base class
 
 This class represents the data strcture of an yWriter 7 project.
 
 # Properties
 
-The parts of yWriter's project structure mapped in the PywProject class: 
+The parts of yWriter's project structure mapped in the PywNovel class: 
 
 PyWProject
     |
@@ -28,17 +28,16 @@ PyWProject
                 This method is to be overwritten by file format specific subclasses.
                 
 - get_structure returns a string showing the order of chapters and scenes as a tree.
-                The result can be used to compare two PywProject objects.
+                The result can be used to compare two PywNovel objects.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
-from abc import ABC
 
 
-class PywProject(ABC):
-    """ Abstract yWriter project representation. """
+class PywNovel():
+    """ yWriter project representation. """
 
     class Chapter():
         """ yWriter chapter representation. """

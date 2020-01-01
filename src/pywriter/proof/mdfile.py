@@ -4,7 +4,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
-from pywriter.pywprjfile import PywPrjFile
+from pywriter.core.pywfile import PywFile
 
 MD_HEADING_MARKERS = ("##", "#")
 # Index is yWriter's chapter type:
@@ -12,7 +12,7 @@ MD_HEADING_MARKERS = ("##", "#")
 # 1 is for a chapter beginning a section
 
 
-class MdProject(PywPrjFile):
+class MdFile(PywFile):
     """ yWriter project linked to a markdown file. """
 
     _fileExtension = 'md'
