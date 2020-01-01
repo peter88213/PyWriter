@@ -6,47 +6,11 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
-from pywriter.cmdline_ui.cnv_runner import CnvRunner
-
-STYLESHEET = '<style type="text/css">\n' + \
-    'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
-    'h1, h2, h3, h4 {text-align: center}\n' +\
-    'h1 {letter-spacing: 0.5em; font-style: italic}' + \
-    'h1, h2 {font-weight: bold}\n' + \
-    'h3 {font-style: italic}\n' + \
-    'p.tag {font-size:x-small}\n' + \
-    'p.textbody {margin-top:0; margin-bottom:0}\n' + \
-    'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
-    'strong {font-weight:normal; text-transform: uppercase}\n' + \
-    '</style>\n'
-# Make the generated html file look good in a web browser.
-
-HTML_HEADER = '<html>\n' + '<head>\n' + \
-    '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + \
-    STYLESHEET + \
-    '<title>$bookTitle$</title>\n' + \
-    '</head>\n' + '<body>\n'
-
-HTML_FOOTER = '\n</body>\n</html>\n'
-
-
-class HtmlConverter(CnvRunner):
-
-    def postprocess(self):
-        with open(self.pathToDoc, 'r') as f:
-            text = f.read()
-            text = text.replace(
-                '<p>[', '<p class="tag">[')
-            text = text.replace(']</p>\n<p>', ']</p>\n<p class="textbody">')
-            text = text.replace('<p>', '<p class="firstlineindent">')
-            text = HTML_HEADER.replace(
-                '$bookTitle$', self.yw7File.title) + text + HTML_FOOTER
-        with open(self.pathToDoc, 'w') as f:
-            f.write(text)
+from pywriter.cmdline_ui.hcnv_runner import HCnvRunner
 
 
 def run(sourcePath, silentMode=True):
-    myConverter = CnvRunner(sourcePath, 'html', silentMode)
+    myConverter = HCnvRunner(sourcePath, 'html', silentMode)
     myConverter.run()
 
 

@@ -7,11 +7,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import sys
 import os
-from pywriter.proof.documentconverter import DocumentConverter
-from pywriter.proof.htmlconverter import HtmlConverter
+from pywriter.edit.manuscriptcnv import ManuscriptCnv
 
 
-class CnvRunner():
+class MCnvRunner(ManuscriptCnv):
 
     def __init__(self, sourcePath, extension, silentMode=True):
         """ File conversion for proofreading """
@@ -28,27 +27,21 @@ class CnvRunner():
 
         if sourceFile[1].count('.yw7'):
             self.yw7Path = pathToSource + sourceFile[1]
-            self.pathToDoc = pathToSource + \
+            self.documentPath = pathToSource + \
                 sourceFile[1].split('.yw7')[0] + '.' + self.extension
             print('\n*** Export yWriter7 scenes to .' + self.extension + ' ***')
             print('Project: "' + self.yw7Path + '"')
-            if self.extension == 'html':
-                converter = HtmlConverter(self.yw7Path, self.pathToDoc)
-            else:
-                converter = DocumentConverter(self.yw7Path, self.pathToDoc)
-            print(converter.yw7_to_document())
+            ManuscriptCnv.__init__(self, self.yw7Path, self.documentPath)
+            print(self.yw7_to_document())
 
         elif sourceFile[1].count('.' + self.extension):
-            self.pathToDoc = pathToSource + sourceFile[1]
+            self.documentPath = pathToSource + sourceFile[1]
             self.yw7Path = pathToSource + \
                 sourceFile[1].split('.' + self.extension)[0] + '.yw7'
             print('\n*** Import yWriter7 scenes from .' + self.extension + ' ***')
-            print('Proofed scenes in "' + self.pathToDoc + '"')
-            if self.extension == 'html':
-                converter = HtmlConverter(self.yw7Path, self.pathToDoc)
-            else:
-                converter = DocumentConverter(self.yw7Path, self.pathToDoc)
-            print(converter.document_to_yw7())
+            print('Proofed scenes in "' + self.documentPath + '"')
+            ManuscriptCnv.__init__(self, self.yw7Path, self.documentPath)
+            print(self.document_to_yw7())
 
         else:
             print('Input file must be .yw7 or .' + self.extension + ' type.')

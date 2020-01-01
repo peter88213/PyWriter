@@ -39,7 +39,7 @@ HTML_FOOTER = '\n</body>\n</html>\n'
 class Manuscript(PywFile, HTMLParser):
     """ yWriter project linked to a html file. """
 
-    _fileExtension = 'manuscript'
+    _fileExtension = 'pywm'
 
     def __init__(self, filePath):
         PywFile.__init__(self, filePath)
