@@ -6,11 +6,12 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
-from pywriter.cmdline_ui.proofcnv_runner import ProofCnvRunner
+from pywriter.cmdline_ui.cnv_runner import CnvRunner
 
 
 def run(sourcePath, silentMode=True):
-    myConverter = ProofCnvRunner(sourcePath, 'docx', silentMode)
+    myConverter = CnvRunner(sourcePath, 'docx', silentMode)
+    myConverter.run()
 
 
 if __name__ == '__main__':

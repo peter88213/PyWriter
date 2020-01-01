@@ -12,23 +12,24 @@ from pywriter.proof.pypandoc import convert_file
 
 class DocumentConverter(MdConverter):
 
-    _fileExtensions = ['docx', 'html', 'odt']
+    _fileExtensions = ['docx', 'odt']
 
-    def __init__(self, yw7Path, documentPath):
+    def __init__(self, yw7Path, pathToDoc):
         self.mdPath = 'temp.md'
         MdConverter.__init__(self, yw7Path, self.mdPath)
-        self.documentPath = documentPath
-        nameParts = self.documentPath.split('.')
-        self.fileExtension = nameParts[len(nameParts) - 1]
+        self.documentPath = pathToDoc
 
     @property
-    def fileExtension(self):
-        return(self._fileExtension)
+    def documentPath(self):
+        return(self._documentPath)
 
-    @fileExtension.setter
-    def fileExtension(self, fileExt):
+    @documentPath.setter
+    def documentPath(self, pathToDoc):
+        nameParts = pathToDoc.split('.')
+        fileExt = nameParts[len(nameParts) - 1]
         if fileExt in self._fileExtensions:
             self._fileExtension = fileExt
+            self._documentPath = pathToDoc
 
     def yw7_to_document(self):
         """ Export to document """
@@ -43,15 +44,19 @@ class DocumentConverter(MdConverter):
             os.remove(self.documentPath)
         except(FileNotFoundError):
             pass
-        convert_file(self.mdPath, self.fileExtension, format='markdown_strict',
+        convert_file(self.mdPath, self._fileExtension, format='markdown_strict',
                      outputfile=self.documentPath)
         # Let pandoc convert markdown and write to .document file.
         os.remove(self.mdPath)
         if os.path.isfile(self.documentPath):
+            self.postprocess()
             return(message.replace(self.mdPath, self.documentPath))
 
         else:
             return('ERROR: Could not create "' + self.documentPath + '".')
+
+    def postprocess(self):
+        pass
 
     def document_to_yw7(self):
         """ Import from yw7 """

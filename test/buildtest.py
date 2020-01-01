@@ -18,15 +18,15 @@ TEST_EXEC_PATH = TEST_PATH + '/yw7/'
 TEST_DATA_PATH = TEST_PATH + '/data/'
 
 DOCX_FILE = TEST_PROJECT + '.docx'
-DOCX_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.docx'
+DOCX_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.docx'
 DOCX_CONTENT = 'word/document.xml'
 
 ODT_FILE = TEST_PROJECT + '.odt'
-ODT_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.odt'
+ODT_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.odt'
 ODT_CONTENT = 'content.xml'
 
 YW7_FILE = TEST_PROJECT + '.yw7'
-YW7_PROOFED_FILE = 'proofed/' + TEST_PROJECT + '.yw7'
+YW7_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.yw7'
 
 
 def read_file(inputFile):

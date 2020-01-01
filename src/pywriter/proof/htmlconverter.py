@@ -5,8 +5,7 @@ Proof reading file format = html with visible chapter and scene tags
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import sys
-from pywriter.cmdline_ui.cnv_runner import CnvRunner
+from pywriter.proof.documentconverter import DocumentConverter
 
 STYLESHEET = '<style type="text/css">\n' + \
     'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
@@ -30,10 +29,12 @@ HTML_HEADER = '<html>\n' + '<head>\n' + \
 HTML_FOOTER = '\n</body>\n</html>\n'
 
 
-class HtmlConverter(CnvRunner):
+class HtmlConverter(DocumentConverter):
+
+    _fileExtensions = ['html']
 
     def postprocess(self):
-        with open(self.pathToDoc, 'r') as f:
+        with open(self._documentPath, 'r') as f:
             text = f.read()
             text = text.replace(
                 '<p>[', '<p class="tag">[')
@@ -41,20 +42,5 @@ class HtmlConverter(CnvRunner):
             text = text.replace('<p>', '<p class="firstlineindent">')
             text = HTML_HEADER.replace(
                 '$bookTitle$', self.yw7File.title) + text + HTML_FOOTER
-        with open(self.pathToDoc, 'w') as f:
+        with open(self._documentPath, 'w') as f:
             f.write(text)
-
-
-def run(sourcePath, silentMode=True):
-    myConverter = CnvRunner(sourcePath, 'html', silentMode)
-    myConverter.run()
-
-
-if __name__ == '__main__':
-    try:
-        sourcePath = sys.argv[1]
-    except:
-        print(__doc__)
-        sys.exit(1)
-
-    run(sourcePath, False)

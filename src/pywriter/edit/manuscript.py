@@ -36,10 +36,10 @@ HTML_HEADER = '<html>\n' + '<head>\n' + \
 HTML_FOOTER = '\n</body>\n</html>\n'
 
 
-class HtmlFile(PywFile, HTMLParser):
+class Manuscript(PywFile, HTMLParser):
     """ yWriter project linked to a html file. """
 
-    _fileExtension = 'html'
+    _fileExtension = 'manuscript'
 
     def __init__(self, filePath):
         PywFile.__init__(self, filePath)

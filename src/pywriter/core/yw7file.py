@@ -52,6 +52,8 @@ class Yw7File(PywFile):
             chID = chp.find('ID').text
             self.chapters[chID] = self.Chapter()
             self.chapters[chID].title = chp.find('Title').text
+            if chp.find('Desc'):
+                self.chapters[chID].desc = chp.find('Desc').text
             self.chapters[chID].type = int(chp.find('Type').text)
             self.chapters[chID].scenes = []
             if chp.find('Scenes'):
@@ -79,6 +81,8 @@ class Yw7File(PywFile):
         for chp in root.iter('CHAPTER'):
             chID = chp.find('ID').text
             chp.find('Title').text = self.chapters[chID].title
+            if chp.find('Desc'):
+                chp.find('Desc').text = self.chapters[chID].desc
             chp.find('Type').text = str(self.chapters[chID].type)
             if chp.find('Scenes'):
                 i = 0

@@ -12,13 +12,14 @@ PyWProject
     +--chapters = {chID1:Chapter, chID2:Chapter, ... chIDm:Chapter} (ordered dictionary)
     |                        |
     |                        +--title (used for chapter headings)
+    |                        +--desc (to be used for synopsis)
     |                        +--type (used as a selector for the chapter's level)
     |                        +--scenes = [scID1, scID2, ... scIDn] (ordered list)
     |
     +--scenes = {scID1:Scene, scID2:Scene, scIDn:Scene} (dictionary; order doesn't matter)
                         |
                         +--title (used for html comments shown in Open/LibreOffice)
-                        +--desc (to be used for spreadsheet export)
+                        +--desc (to be used for synopsis)
                         +--sceneContent (property with setter)
                         +--_wordCount (to be updated by the sceneContent setter)
                         +--_letterCount (to be updated by the sceneContent setter)
@@ -44,6 +45,7 @@ class PywNovel():
 
         def __init__(self):
             self.title = ''
+            self.desc = ''
             self.type = ''
             self.scenes = []
 

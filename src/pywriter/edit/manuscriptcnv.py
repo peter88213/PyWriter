@@ -3,17 +3,17 @@
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.edit.htmlfile import HtmlFile
+from pywriter.edit.manuscript import Manuscript
 from pywriter.core.yw7file import Yw7File
 
 
-class ContentConverter():
+class ManuscriptCnv():
 
     def __init__(self, yw7Path, htmlPath):
         self.yw7Path = yw7Path
         self.yw7File = Yw7File(self.yw7Path)
         self.htmlPath = htmlPath
-        self.htmlFile = HtmlFile(self.htmlPath)
+        self.htmlFile = Manuscript(self.htmlPath)
 
     def yw7_to_html(self):
         """ Read .yw7 file and convert sceneContents to html. """
