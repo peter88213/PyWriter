@@ -5,6 +5,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from pywriter.core.pywfile import PywFile
+from pywriter.core.chapter import Chapter
+from pywriter.core.scene import Scene
 
 MD_HEADING_MARKERS = ("##", "#")
 # Index is yWriter's chapter type:
@@ -49,7 +51,7 @@ class MdFile(PywFile):
         for line in lines:
             if line.count('[ScID'):
                 scID = re.search('[0-9]+', line).group()
-                self.scenes[scID] = self.Scene()
+                self.scenes[scID] = Scene()
                 self.chapters[chID].scenes.append(scID)
                 inScene = True
             elif line.count('[/ScID]'):
@@ -58,7 +60,7 @@ class MdFile(PywFile):
                 inScene = False
             elif line.count('[ChID'):
                 chID = re.search('[0-9]+', line).group()
-                self.chapters[chID] = self.Chapter()
+                self.chapters[chID] = Chapter()
             elif line.count('[/ChID]'):
                 pass
             elif inScene:

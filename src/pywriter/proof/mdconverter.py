@@ -20,7 +20,7 @@ class MdConverter():
         if not self.yw7File.filePath:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
-        if not self.yw7File.file_is_present():
+        if not self.yw7File.file_exists():
             return('ERROR: Project "' + self.yw7Path + '" not found.')
 
         message = self.yw7File.read()
@@ -37,7 +37,7 @@ class MdConverter():
         if not self.yw7File.filePath:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
-        if not self.yw7File.file_is_present():
+        if not self.yw7File.file_exists():
             return('ERROR: Project "' + self.yw7Path + '" not found.')
         else:
             self.confirm_overwrite(self.yw7Path)
@@ -49,7 +49,7 @@ class MdConverter():
         if not self.mdFile.filePath:
             return('ERROR: "' + self.mdPath + '" is not a Markdown file.')
 
-        if not self.mdFile.file_is_present():
+        if not self.mdFile.file_exists():
             return('ERROR: "' + self.mdPath + '" not found.')
 
         message = self.mdFile.read()

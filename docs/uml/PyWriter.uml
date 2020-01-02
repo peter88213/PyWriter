@@ -340,7 +340,10 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_DBoUgC1UEeqtbohuTq_ZAA" name="xml.etree">
     <packagedElement xmi:type="uml:Class" xmi:id="_QoWo4C1UEeqtbohuTq_ZAA" name="ElementTree" visibility="public">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_dRh80C2JEeqtbohuTq_ZAA" name="root" type="_81JUkC2JEeqtbohuTq_ZAA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_dRh80C2JEeqtbohuTq_ZAA" name="element" type="_81JUkC2JEeqtbohuTq_ZAA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YOaHkC2REeqtbohuTq_ZAA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YOjRgC2REeqtbohuTq_ZAA" value="*"/>
+      </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_v1IQUC2IEeqtbohuTq_ZAA" name="parse"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_ARn38C2JEeqtbohuTq_ZAA" name="getroot"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_6lVqkC2IEeqtbohuTq_ZAA" name="write"/>

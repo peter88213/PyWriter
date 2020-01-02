@@ -1,11 +1,16 @@
-""" PyWriter module
+"""Manuscript - Class for html manuscript file operations and parsing.
 
+Part of the PyWriter project.
+Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import re
 from html.parser import HTMLParser
 from pywriter.core.pywfile import PywFile
+from pywriter.core.chapter import Chapter
+from pywriter.core.scene import Scene
 
 HTML_HEADING_MARKERS = ("h2", "h1")
 # Index is yWriter's chapter type:
@@ -37,7 +42,16 @@ HTML_FOOTER = '\n</body>\n</html>\n'
 
 
 class Manuscript(PywFile, HTMLParser):
-    """ yWriter project linked to a html file. """
+    """HTML file representation of an yWriter project's manuscript part.
+
+    Represents a html file with linkable chapter and scene sections 
+    to be read and written by Open/LibreOffice Writer.
+
+    # Attributes
+
+    # Methods
+
+    """
 
     _fileExtension = 'pywm'
 
@@ -50,10 +64,11 @@ class Manuscript(PywFile, HTMLParser):
         self.inScene = False
 
     def read(self):
-        """ Read data from html project file. """
+        """Read data from html project file. """
 
         def format_yw7(text):
-            """ Convert html markup to yw7 raw markup """
+            """Convert html markup to yw7 raw markup. """
+
             text = re.sub('<br.*?>|<BR.*?>', '', text)
             text = re.sub('<i.*?>|<I.*?>|<em.*?>|<EM.*?>', '[i]', text)
             text = re.sub('</i>|</I>|</em>|</EM>', '[/i]', text)
@@ -70,6 +85,7 @@ class Manuscript(PywFile, HTMLParser):
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 text = (f.read())
         except:
+            # HTML files exported by a word processor may be ANSI encoded.
             try:
                 with open(self._filePath, 'r') as f:
                     text = (f.read())
@@ -82,21 +98,23 @@ class Manuscript(PywFile, HTMLParser):
         return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
     def handle_starttag(self, tag, attrs):
-        """ HTML parser: Get scene ID at scene start. """
+        """HTML parser: Get scene ID at scene start. """
+
         if tag == 'div':
             if attrs[0][0] == 'id':
                 if attrs[0][1].count('ChID'):
                     self.chID = re.search('[0-9]+', attrs[0][1]).group()
-                    self.chapters[self.chID] = self.Chapter()
+                    self.chapters[self.chID] = Chapter()
                     self.chapters[self.chID].scenes = []
                 elif attrs[0][1].count('ScID'):
                     self.scID = re.search('[0-9]+', attrs[0][1]).group()
-                    self.scenes[self.scID] = self.Scene()
+                    self.scenes[self.scID] = Scene()
                     self.chapters[self.chID].scenes.append(self.scID)
                     self.inScene = True
 
     def handle_endtag(self, tag):
-        """ HTML parser: Save scene content in dictionary at scene end. """
+        """HTML parser: Save scene content in dictionary at scene end. """
+
         if tag == 'div':
             if self.inScene:
                 self.scenes[self.scID].sceneContent = self.sceneText
@@ -104,21 +122,23 @@ class Manuscript(PywFile, HTMLParser):
                 self.inScene = False
 
     def handle_data(self, data):
-        """ HTML parser: Collect paragraphs within scene. """
+        """HTML parser: Collect paragraphs within scene. """
+
         if self.inScene:
             if data != ' ':
                 self.sceneText = self.sceneText + data + '\n'
 
     def get_text(self):
-        """ Write attributes to html project file. """
+        """Write attributes to html project file. """
 
         def format_chapter_title(text):
-            """ Fix auto-chapter titles for non-English """
+            """Fix auto-chapter titles for non-English """
+
             text = text.replace('Chapter ', '')
             return(text)
 
         def format_yw7(text):
-            """ Convert yw7 raw markup """
+            """Convert yw7 raw markup """
             try:
                 text = text.replace('\n\n', '\n')
                 text = text.replace('\n', '</p>\n<p class="firstlineindent">')
