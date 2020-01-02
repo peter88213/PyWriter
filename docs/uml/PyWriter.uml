@@ -42,7 +42,7 @@
     </ownedComment>
     <ownedComment xmi:type="uml:Comment" xmi:id="_V3FDoC1sEeqtbohuTq_ZAA" annotatedElement="_JI8bgCuoEeqsNupfleJppQ">
       <body>Python list &#xD;
-(the order ot the elements corresponds to the chapter's order of the scenes)</body>
+(the order of the elements corresponds to the chapter's order of the scenes)</body>
     </ownedComment>
     <ownedComment xmi:type="uml:Comment" xmi:id="_lA9M0C1sEeqtbohuTq_ZAA" annotatedElement="_Cqx6sCunEeqsNupfleJppQ">
       <body>the order of the elements corresponds to the novel's order of the chapters</body>
