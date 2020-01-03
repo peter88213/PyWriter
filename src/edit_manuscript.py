@@ -10,7 +10,7 @@ from pywriter.cmdline_ui.mcnv_runner import MCnvRunner
 
 
 def run(sourcePath, silentMode=True):
-    myConverter = MCnvRunner(sourcePath, 'pywm', silentMode)
+    myConverter = MCnvRunner(sourcePath, 'html', silentMode)
     myConverter.run()
 
 

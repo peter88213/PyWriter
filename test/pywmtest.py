@@ -15,13 +15,15 @@ TEST_PATH = os.getcwd()
 TEST_EXEC_PATH = 'yw7/'
 TEST_DATA_PATH = 'data/'
 
-MANUSCRIPT = TEST_PROJECT + '.pywm'
-EDITED_MANUSCRIPT = 'edit/' + TEST_PROJECT + '.pywm'
+MANUSCRIPT = TEST_PATH + TEST_PROJECT + '.html'
+REFERENCE_MANUSCRIPT = TEST_DATA_PATH + TEST_PROJECT + '_edit.html'
+EDITED_MANUSCRIPT = TEST_DATA_PATH + 'edit/' + TEST_PROJECT + '.html'
 
-YW7_FILE = TEST_PROJECT + '.yw7'
-YW7_EDITED_FILE = 'edit/' + TEST_PROJECT + '.yw7'
+YW7_FILE = TEST_PATH + TEST_PROJECT + '.yw7'
+YW7_REFERENCE_FILE = TEST_DATA_PATH + TEST_PROJECT + '.yw7'
+YW7_EDITED_FILE = TEST_DATA_PATH + 'edit/' + TEST_PROJECT + '.yw7'
 
-with open(TEST_DATA_PATH + YW7_FILE, 'r') as f:
+with open(YW7_REFERENCE_FILE, 'r') as f:
     TOTAL_SCENES = f.read().count('<SCENE>')
 
 
@@ -40,11 +42,11 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_EXEC_PATH + MANUSCRIPT)
+        os.remove(MANUSCRIPT)
     except:
         pass
     try:
-        os.remove(TEST_EXEC_PATH + YW7_FILE)
+        os.remove(YW7_FILE)
     except:
         pass
 
@@ -60,48 +62,48 @@ class NrmOpr(unittest.TestCase):
 
     def setUp(self):
         remove_all_testfiles()
-        copy_file(TEST_DATA_PATH + YW7_FILE,
-                  TEST_EXEC_PATH + YW7_FILE)
+        copy_file(YW7_REFERENCE_FILE, YW7_FILE)
 
     def test_data(self):
         """ Verify test data integrity. """
+
         # Initial test data must differ from the "proofed" test data.
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + YW7_FILE),
-            read_file(TEST_DATA_PATH + YW7_EDITED_FILE))
+            read_file(YW7_REFERENCE_FILE),
+            read_file(YW7_EDITED_FILE))
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + MANUSCRIPT),
-            read_file(TEST_DATA_PATH + EDITED_MANUSCRIPT))
+            read_file(REFERENCE_MANUSCRIPT),
+            read_file(EDITED_MANUSCRIPT))
 
     #@unittest.skip('development')
     def test_exp_to_html(self):
         """ Export yW7 scenes to html. """
+
         converter = ManuscriptCnv(
-            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MANUSCRIPT)
+            YW7_FILE, MANUSCRIPT)
         self.assertEqual(converter.yw7_to_document(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + MANUSCRIPT + '".')
+        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + MANUSCRIPT + '".')
         # Read .yw7 file and convert scenes to html.
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + MANUSCRIPT),
-                         read_file(TEST_DATA_PATH + MANUSCRIPT))
+        self.assertEqual(read_file(MANUSCRIPT),
+                         read_file(REFERENCE_MANUSCRIPT))
         # Verify the html file.
 
     #@unittest.skip('development')
     def test_imp_from_html(self):
         """ Import proofed yw7 scenes from html. """
-        copy_file(TEST_DATA_PATH + EDITED_MANUSCRIPT,
-                  TEST_EXEC_PATH + MANUSCRIPT)
+
+        copy_file(EDITED_MANUSCRIPT, MANUSCRIPT)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        converter = ManuscriptCnv(
-            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MANUSCRIPT)
+        converter = ManuscriptCnv(YW7_FILE, MANUSCRIPT)
         self.assertEqual(converter.document_to_yw7(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
+        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + YW7_FILE + '".')
         # Convert document to xml and replace .yw7 file.
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
-                         read_file(TEST_DATA_PATH + YW7_EDITED_FILE))
+        self.assertEqual(read_file(YW7_FILE),
+                         read_file(YW7_EDITED_FILE))
         # Verify the yw7 project.
 
     #@unittest.skip('development')

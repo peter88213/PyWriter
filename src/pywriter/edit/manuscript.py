@@ -53,7 +53,7 @@ class Manuscript(PywFile, HTMLParser):
 
     """
 
-    _fileExtension = 'pywm'
+    _fileExtension = 'html'
 
     def __init__(self, filePath):
         PywFile.__init__(self, filePath)
