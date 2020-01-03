@@ -1,4 +1,4 @@
-""" PyWriter module
+"""PyWriter module
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -16,7 +16,8 @@ class MdConverter():
         self.mdFile = MdFile(self.mdPath)
 
     def yw7_to_md(self):
-        """ Read .yw7 file and convert xml to markdown. """
+        """Read .yw7 file and convert xml to markdown. """
+
         if not self.yw7File.filePath:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
@@ -33,7 +34,8 @@ class MdConverter():
         return(self.mdFile.write())
 
     def md_to_yw7(self):
-        """ Convert markdown to xml and replace .yw7 file. """
+        """Convert markdown to xml and replace .yw7 file. """
+
         if not self.yw7File.filePath:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 

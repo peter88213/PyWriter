@@ -5,6 +5,7 @@ Proof reading with console user interface.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import sys
 import os
 from pywriter.proof.documentconverter import DocumentConverter
@@ -13,13 +14,15 @@ from pywriter.proof.documentconverter import DocumentConverter
 class DCnvRunner(DocumentConverter):
 
     def __init__(self, sourcePath, extension, silentMode=True):
-        """ File conversion for proofreading """
+        """File conversion for proofreading """
+
         self.silentMode = silentMode
         self.extension = extension
         self.sourcePath = sourcePath
 
     def run(self):
-        """ File conversion for proofreading """
+        """File conversion for proofreading """
+
         sourceFile = os.path.split(self.sourcePath)
         pathToSource = sourceFile[0]
         if pathToSource:

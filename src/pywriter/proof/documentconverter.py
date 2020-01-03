@@ -32,7 +32,8 @@ class DocumentConverter(MdConverter):
             self._documentPath = pathToDoc
 
     def yw7_to_document(self):
-        """ Export to document """
+        """Export to document """
+
         message = self.yw7_to_md()
         if message.count('ERROR'):
             return(message)
@@ -59,7 +60,8 @@ class DocumentConverter(MdConverter):
         pass
 
     def document_to_yw7(self):
-        """ Import from yw7 """
+        """Import from yw7 """
+
         if not os.path.isfile(self.documentPath):
             return('ERROR: "' + self.documentPath + '" not found.')
 

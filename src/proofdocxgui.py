@@ -5,17 +5,15 @@ Proof reading file format = DOCX (Office Open XML format)
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import sys
 import os
-from pywriter.convert.yw7_to_md import yw7_to_md
-from pywriter.convert.md_to_yw7 import md_to_yw7
-from pywriter.convert.md_to_docx import md_to_docx
-from pywriter.convert.docx_to_md import docx_to_md
 from tkinter import *
 
 
 def yw7_to_docx(yw7File, mdFile, docxFile):
-    """ Export to docx """
+    """Export to docx """
+
     message = yw7_to_md(yw7File, mdFile)
     if message.count('ERROR'):
         return(message)
@@ -31,7 +29,8 @@ def yw7_to_docx(yw7File, mdFile, docxFile):
 
 
 def docx_to_yw7(docxFile, mdFile, yw7File):
-    """ Import from yw7 """
+    """Import from yw7 """
+
     docx_to_md(docxFile, mdFile)
     message = md_to_yw7(mdFile, yw7File)
     return(message)

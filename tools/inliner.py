@@ -18,12 +18,20 @@ def inline_module(file, package, text, processedModules):
         print('Processing "' + file + '"...')
         lines = f.readlines()
         inSuppressedComment = False
+        inHeader = True
+        # document parsing always starts in the header
         for line in lines:
-            if line.count('"""') == 1:
+            if (inHeader) and line.count('"""') == 1:
+                # Beginning or end of a docstring
                 if file.count(package):
+                    # This is not the root script
+                    # so suppress the module's docstring
                     if inSuppressedComment:
+                        # docstring ends
                         inSuppressedComment = False
+                        inHeader = False
                     else:
+                        # docstring begins
                         inSuppressedComment = True
                 else:
                     text = text + line

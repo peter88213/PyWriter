@@ -46,6 +46,7 @@ class Novel():
 
     def get_text(self) -> str:
         """Assemble all scenes in the right order as plain text. """
+
         # To be overwritten by file format specific subclasses.
         text = ''
         for chID in self.chapters:
@@ -60,6 +61,7 @@ class Novel():
 
     def get_structure(self) -> str:
         """Assemble a comparable structure tree. """
+
         text = ''
         for chID in self.chapters:
             text = text + 'ChID:' + str(chID) + '\n'

@@ -1,10 +1,11 @@
-""" Integration tests for the pyWriter project.
+"""Integration tests for the pyWriter project.
 
 Test the "export project" tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import os
 import unittest
 from pywriter.edit.manuscriptcnv import ManuscriptCnv
@@ -52,7 +53,7 @@ def remove_all_testfiles():
 
 
 class NrmOpr(unittest.TestCase):
-    """ Test case: Normal operation
+    """Test case: Normal operation
 
         Condition: yw7 file is present and read/writeable. 
         Expected result: During the whole process, the intermediate
@@ -65,7 +66,7 @@ class NrmOpr(unittest.TestCase):
         copy_file(YW7_REFERENCE_FILE, YW7_FILE)
 
     def test_data(self):
-        """ Verify test data integrity. """
+        """Verify test data integrity. """
 
         # Initial test data must differ from the "proofed" test data.
         self.assertNotEqual(
@@ -77,7 +78,7 @@ class NrmOpr(unittest.TestCase):
 
     #@unittest.skip('development')
     def test_exp_to_html(self):
-        """ Export yW7 scenes to html. """
+        """Export yW7 scenes to html. """
 
         converter = ManuscriptCnv(
             YW7_FILE, MANUSCRIPT)
@@ -91,7 +92,7 @@ class NrmOpr(unittest.TestCase):
 
     #@unittest.skip('development')
     def test_imp_from_html(self):
-        """ Import proofed yw7 scenes from html. """
+        """Import proofed yw7 scenes from html. """
 
         copy_file(EDITED_MANUSCRIPT, MANUSCRIPT)
         # This substitutes the proof reading process.

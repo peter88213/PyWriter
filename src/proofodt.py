@@ -5,6 +5,7 @@ Proof reading file format = ODT (OASIS Open Document format)
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import sys
 from pywriter.cmdline_ui.dcnv_runner import DCnvRunner
 

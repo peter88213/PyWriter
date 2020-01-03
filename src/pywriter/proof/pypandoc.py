@@ -1,4 +1,4 @@
-""" PyWriter module
+"""PyWriter module
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -7,7 +7,7 @@ import os
 
 
 def convert_file(srcFile, dstFormat, format='', outputfile='', extra_args=[]):
-    """ Pandoc wrapper emulating the pypandoc.convert_file functon. """
+    """Pandoc wrapper emulating the pypandoc.convert_file functon. """
 
     temporaryFile = 'temp.txt'
 

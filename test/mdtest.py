@@ -1,10 +1,11 @@
-""" Integration tests for the pyWriter project.
+"""Integration tests for the pyWriter project.
 
 Test the "proof read" tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import os
 import unittest
 from pywriter.proof.mdconverter import MdConverter
@@ -51,7 +52,7 @@ def remove_all_testfiles():
 
 
 class NrmOpr(unittest.TestCase):
-    """ Test case: Normal operation
+    """Test case: Normal operation
 
         Condition: yw7 file is present and read/writeable. 
         Expected result: During the whole process, the intermediate
@@ -65,7 +66,8 @@ class NrmOpr(unittest.TestCase):
                   TEST_EXEC_PATH + YW7_FILE)
 
     def test_data(self):
-        """ Verify test data integrity. """
+        """Verify test data integrity. """
+
         # Initial test data must differ from the "proofed" test data.
         self.assertNotEqual(
             read_file(TEST_DATA_PATH + YW7_FILE),
@@ -74,9 +76,9 @@ class NrmOpr(unittest.TestCase):
             read_file(TEST_DATA_PATH + MD_PROOFED_FILE),
             read_file(TEST_DATA_PATH + MD_FILE))
 
-    #@unittest.skip('development')
     def test_exp_to_md(self):
-        """ Export yW7 scenes to markdown. """
+        """Export yW7 scenes to markdown. """
+
         myMdConverter = MdConverter(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
         self.assertEqual(myMdConverter.yw7_to_md(
@@ -86,9 +88,9 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
                          read_file(TEST_DATA_PATH + MD_FILE))
 
-    #@unittest.skip('development')
     def test_imp_from_md(self):
-        """ Import proofed yw7 scenes from markdown . """
+        """Import proofed yw7 scenes from markdown . """
+
         copy_file(TEST_DATA_PATH + MD_PROOFED_FILE,
                   TEST_EXEC_PATH + MD_FILE)
         # This substitutes the proof reading process.
@@ -104,7 +106,6 @@ class NrmOpr(unittest.TestCase):
                          read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
         # Verify the yw7 project.
 
-    #@unittest.skip('development')
     def tearDown(self):
         remove_all_testfiles()
 

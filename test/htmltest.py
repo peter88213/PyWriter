@@ -1,10 +1,11 @@
-""" Integration tests for the pyWriter project.
+"""Integration tests for the pyWriter project.
 
 Test the "export project" tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import os
 import unittest
 from pywriter.proof.htmlconverter import HtmlConverter
@@ -50,7 +51,7 @@ def remove_all_testfiles():
 
 
 class NrmOpr(unittest.TestCase):
-    """ Test case: Normal operation
+    """Test case: Normal operation
 
         Condition: yw7 file is present and read/writeable. 
         Expected result: During the whole process, the intermediate
@@ -64,7 +65,8 @@ class NrmOpr(unittest.TestCase):
                   TEST_EXEC_PATH + YW7_FILE)
 
     def test_data(self):
-        """ Verify test data integrity. """
+        """Verify test data integrity. """
+
         # Initial test data must differ from the "proofed" test data.
         self.assertNotEqual(
             read_file(TEST_DATA_PATH + YW7_FILE),
@@ -73,9 +75,9 @@ class NrmOpr(unittest.TestCase):
             read_file(TEST_DATA_PATH + HTML_FILE),
             read_file(TEST_DATA_PATH + HTML_PROOFED_FILE))
 
-    #@unittest.skip('development')
     def test_yw7_to_html(self):
-        """ Export yW7 scenes to html. """
+        """Export yW7 scenes to html. """
+
         converter = HtmlConverter(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
         self.assertEqual(converter.yw7_to_document(
@@ -86,9 +88,9 @@ class NrmOpr(unittest.TestCase):
                          read_file(TEST_DATA_PATH + HTML_FILE))
         # Verify the html file.
 
-    #@unittest.skip('development')
     def test_html_to_yw7(self):
-        """ Import proofed yw7 scenes from html. """
+        """Import proofed yw7 scenes from html. """
+
         copy_file(TEST_DATA_PATH + HTML_PROOFED_FILE,
                   TEST_EXEC_PATH + HTML_FILE)
         # This substitutes the proof reading process.
@@ -104,7 +106,6 @@ class NrmOpr(unittest.TestCase):
                          read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
         # Verify the yw7 project.
 
-    @unittest.skip('development')
     def tearDown(self):
         remove_all_testfiles()
 

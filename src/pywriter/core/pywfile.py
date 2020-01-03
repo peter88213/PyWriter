@@ -47,6 +47,7 @@ class PywFile(Novel, ABC):
     @filePath.setter
     def filePath(self, filePath):
         """Accept only filenames with the right extension. """
+
         fileName = os.path.split(filePath)[1]
         fileName = fileName.lower()
         if fileName.count(self._fileExtension):
@@ -60,7 +61,7 @@ class PywFile(Novel, ABC):
         pass
 
     def write(self) -> str:
-        """ Write yWriter project data to a file. """
+        """Write yWriter project data to a file. """
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
@@ -73,7 +74,7 @@ class PywFile(Novel, ABC):
         return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self._filePath + '".')
 
     def file_exists(self) -> bool:
-        """ Check whether the file specified by _filePath exists. """
+        """Check whether the file specified by _filePath exists. """
 
         if os.path.isfile(self._filePath):
             return(True)

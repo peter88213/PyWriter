@@ -15,15 +15,16 @@ MD_HEADING_MARKERS = ("##", "#")
 
 
 class MdFile(PywFile):
-    """ yWriter project linked to a markdown file. """
+    """yWriter project linked to a markdown file. """
 
     _fileExtension = 'md'
 
     def read(self):
-        """ Read data from markdown project file. """
+        """Read data from markdown project file. """
 
         def format_yw7(text):
-            """ Convert markdown to yw7 raw markup. """
+            """Convert markdown to yw7 raw markup. """
+
             text = text.replace('\r', '\n')
             text = text.replace('\n\n', '\n')
             text = text.replace('\[', '[')
@@ -68,15 +69,17 @@ class MdFile(PywFile):
         return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
     def get_text(self):
-        """ Format project text to markdown. """
+        """Format project text to markdown. """
 
         def format_chapter_title(text):
-            """ Fix auto-chapter titles for non-English """
+            """Fix auto-chapter titles for non-English """
+
             text = text.replace('Chapter ', '')
             return(text)
 
         def format_md(text):
-            """ Convert yw7 specific markup """
+            """Convert yw7 specific markup """
+
             text = text.replace('\n\n', '\n')
             text = text.replace('\n', '\n\n')
             text = text.replace('*', '\*')

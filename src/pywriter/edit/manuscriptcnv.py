@@ -1,4 +1,4 @@
-""" PyWriter module
+"""PyWriter module
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.

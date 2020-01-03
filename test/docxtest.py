@@ -1,10 +1,11 @@
-""" Integration tests for the PyWriter distributions.
+"""Integration tests for the PyWriter distributions.
 
 Test the .docx "proof read" tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import os
 import unittest
 import zipfile
@@ -56,7 +57,7 @@ def remove_all_testfiles():
 
 
 class NrmOpr(unittest.TestCase):
-    """ Test case: Normal operation
+    """Test case: Normal operation
 
         Condition: yw7 file is present and read/writeable. 
         Expected result: During the whole process, the intermediate
@@ -70,14 +71,15 @@ class NrmOpr(unittest.TestCase):
                   TEST_EXEC_PATH + YW7_FILE)
 
     def test_data(self):
-        """ Verify test data integrity. """
+        """Verify test data integrity. """
         # Initial test data must differ from the "proofed" test data.
         self.assertNotEqual(
             read_file(TEST_DATA_PATH + YW7_FILE),
             read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
 
     def test_yw7_to_docx(self):
-        """ Convert markdown to docx. """
+        """Convert markdown to docx. """
+
         copy_file(TEST_DATA_PATH + YW7_FILE,
                   TEST_EXEC_PATH + YW7_FILE)
         myDocxConverter = DocumentConverter(
@@ -93,7 +95,8 @@ class NrmOpr(unittest.TestCase):
                          read_file(TEST_DATA_PATH + DOCX_CONTENT))
 
     def test_docx_to_yw7(self):
-        """ Convert docx to markdown. """
+        """Convert docx to markdown. """
+
         copy_file(TEST_DATA_PATH + DOCX_PROOFED_FILE,
                   TEST_EXEC_PATH + DOCX_FILE)
         myDocxConverter = DocumentConverter(
