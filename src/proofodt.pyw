@@ -19,7 +19,5 @@ if __name__ == '__main__':
     try:
         sourcePath = sys.argv[1]
     except:
-        print(__doc__)
-        sys.exit(1)
-
+        sourcePath = ''
     run(sourcePath, False)
