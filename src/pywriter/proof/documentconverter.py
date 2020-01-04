@@ -39,7 +39,12 @@ class DocumentConverter(MdConverter):
             return(message)
 
         if os.path.isfile(self.documentPath):
-            self.confirm_overwrite(self.documentPath)
+            if not self.confirm_overwrite(self.yw7Path):
+                try:
+                    os.remove(self.mdPath)
+                except:
+                    pass
+                return('Program abort by user.')
 
         try:
             os.remove(self.documentPath)

@@ -42,7 +42,8 @@ class MdConverter():
         if not self.yw7File.file_exists():
             return('ERROR: Project "' + self.yw7Path + '" not found.')
         else:
-            self.confirm_overwrite(self.yw7Path)
+            if not self.confirm_overwrite(self.yw7Path):
+                return('Program abort by user.')
 
         message = self.yw7File.read()
         if message.count('ERROR'):
@@ -71,4 +72,4 @@ class MdConverter():
         return(self.yw7File.write())
 
     def confirm_overwrite(self, fileName):
-        pass
+        return(True)
