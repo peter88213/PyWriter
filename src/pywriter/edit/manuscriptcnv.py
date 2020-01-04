@@ -38,7 +38,8 @@ class ManuscriptCnv():
             return(message)
 
         if self.htmlFile.file_exists():
-            self.confirm_overwrite(self.htmlPath)
+            if not self.confirm_overwrite(self.htmlPath):
+                return('Program abort by user.')
 
         self.htmlFile.title = self.yw7File.title
         self.htmlFile.scenes = self.yw7File.scenes
@@ -54,7 +55,7 @@ class ManuscriptCnv():
         if not self.yw7File.file_exists():
             return('ERROR: Project "' + self.yw7Path + '" not found.')
         else:
-            self.confirm_overwrite(self.yw7Path)
+            return('Program abort by user.')
 
         message = self.yw7File.read()
         if message.count('ERROR'):
@@ -83,4 +84,4 @@ class ManuscriptCnv():
         return(self.yw7File.write())
 
     def confirm_overwrite(self, fileName):
-        pass
+        return(True)

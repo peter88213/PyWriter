@@ -77,8 +77,8 @@ def run(sourceFile, targetFile, package):
 
 def main():
     os.chdir(SRC)
-    run('proofdocx.py', BUILD + 'yw_proof_docx.py', 'pywriter')
-    run('proofodt.py', BUILD + 'yw_proof_odt.py', 'pywriter')
+    run('proofdocx.pyw', BUILD + 'yw_proof_docx.pyw', 'pywriter')
+    run('proofodt.pyw', BUILD + 'yw_proof_odt.pyw', 'pywriter')
     print('Done.')
 
 

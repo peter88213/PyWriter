@@ -6,7 +6,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-import sys
 import os
 from tkinter import *
 from tkinter import messagebox
@@ -16,10 +15,24 @@ from pywriter.proof.documentconverter import DocumentConverter
 
 class DCnvRunner(DocumentConverter):
 
-    def __init__(self, sourcePath, extension):
+    def __init__(self, sourcePath, extension, silentMode=True):
         """File conversion for proofreading """
+        self.silentMode = silentMode
         self.extension = extension
         self.sourcePath = sourcePath
+        root = Tk()
+        self.label = Label(root, text='yWriter proofer')
+        self.label.pack(padx=10, pady=10)
+
+        message = ''
+
+        self.messagelabel = Label(root, text=message)
+        self.messagelabel.pack(padx=5, pady=5)
+        self.run()
+        if not self.silentMode:
+            root.quitButton = Button(text="OK", command=quit)
+            root.quitButton.pack(padx=5, pady=5)
+            root.mainloop()
 
     def run(self):
         """File conversion for proofreading """
@@ -32,59 +45,31 @@ class DCnvRunner(DocumentConverter):
             self.yw7Path = pathToSource + sourceFile[1]
             self.documentPath = pathToSource + \
                 sourceFile[1].split('.yw7')[0] + '.' + self.extension
-            label.config(
+            self.label.config(
                 text='Export yWriter7 scenes to .' + self.extension)
-            messagelabel.config(text='Project: "' + self.yw7Path + '"')
+            self.messagelabel.config(text='Project: "' + self.yw7Path + '"')
             DocumentConverter.__init__(self, self.yw7Path, self.documentPath)
-            messagelabel.config(text=self.yw7_to_document())
+            self.messagelabel.config(text=self.yw7_to_document())
 
         elif sourceFile[1].count('.' + self.extension):
             self.documentPath = pathToSource + sourceFile[1]
             self.yw7Path = pathToSource + \
                 sourceFile[1].split('.' + self.extension)[0] + '.yw7'
-            label.config(
+            self.label.config(
                 text='Import yWriter7 scenes from .' + self.extension)
-            messagelabel.config(
+            self.messagelabel.config(
                 text='Proofed scenes in "' + self.documentPath + '"')
             DocumentConverter.__init__(self, self.yw7Path, self.documentPath)
-            messagelabel.config(text=self.document_to_yw7())
+            self.messagelabel.config(text=self.document_to_yw7())
 
         else:
-            messagelabel.config(
+            self.messagelabel.config(
                 text='Input file must be .yw7 or .' + self.extension + ' type.')
 
     def confirm_overwrite(self, file):
         """ Invoked by subclass if file already exists. """
-        return messagebox.askyesno('WARNING', 'Overwrite existing file "' +
-                                   file + '"?')
-
-
-def run(sourcePath):
-    myConverter = DCnvRunner(sourcePath, 'docx')
-    myConverter.run()
-
-
-if __name__ == '__main__':
-    try:
-        projectPath = sys.argv[1]
-    except:
-        print(__doc__)
-        sys.exit(1)
-
-    root = Tk()
-    label = Label(root, text='yWriter proofer')
-    label.pack(padx=10, pady=10)
-
-    message = ''
-
-    messagelabel = Label(root, text=message)
-    messagelabel.pack(padx=5, pady=5)
-    '''
-    root.convertButton = Button(
-        text='convert', command=lambda: run(projectPath))
-    root.convertButton.pack(padx=5, pady=5)
-    '''
-    run(projectPath)
-    root.quitButton = Button(text="OK", command=quit)
-    root.quitButton.pack(padx=5, pady=5)
-    root.mainloop()
+        if self.silentMode:
+            return(True)
+        else:
+            return messagebox.askyesno('WARNING', 'Overwrite existing file "' +
+                                       file + '"?')

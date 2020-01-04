@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="proofyw7" basedir=".">
-	<property name="release" value="v1.0.0" />
+	<property name="release" value="v1.1.0" />
 	<property name="src" location="../src" />
 	<property name="build" location="../test" />
 	<property name="dist" location="../dist" />
@@ -10,8 +10,8 @@
 
 	<target name="build">
 		<delete dir="${dist}" />
-		<delete file="${build}/yw_proof_docx.py" />
-		<delete file="${build}/yw_proof_odt.py" />
+		<delete file="${build}/yw_proof_docx.pyw" />
+		<delete file="${build}/yw_proof_odt.pyw" />
 			<exec executable="python" failonerror="true">
 			    <arg value="inliner.py"/>
 			</exec>
@@ -24,19 +24,19 @@
 		<mkdir dir="${dist}" />
 		
 		<mkdir dir="${dist}/proofdocx_${release}" />
-   		<copy file="${build}/yw_proof_docx.py" todir="${dist}/proofdocx_${release}" />
+   		<copy file="${build}/yw_proof_docx.pyw" todir="${dist}/proofdocx_${release}" />
 		<copy file="../LICENSE" todir="${dist}/proofdocx_${release}" />
 		<copy file="${docs}/proofdocx/README.md" todir="${dist}/proofdocx_${release}" />
    		<zip destfile="${dist}/proofdocx_${release}.zip" basedir="${dist}/proofdocx_${release}" />
 		
    		<mkdir dir="${dist}/proofodt_${release}" />
-		<copy file="${build}/yw_proof_odt.py" todir="${dist}/proofodt_${release}" />
+		<copy file="${build}/yw_proof_odt.pyw" todir="${dist}/proofodt_${release}" />
 		<copy file="../LICENSE" todir="${dist}/proofodt_${release}" />
 		<copy file="${docs}/proofodt/README.md" todir="${dist}/proofodt_${release}" />
    		<zip destfile="${dist}/proofodt_${release}.zip" basedir="${dist}/proofodt_${release}" />
 
-		<delete file="${build}/yw_proof_docx.py" />
-		<delete file="${build}/yw_proof_odt.py" />
+		<delete file="${build}/yw_proof_docx.pyw" />
+		<delete file="${build}/yw_proof_odt.pyw" />
 	
 </target>
 

@@ -57,7 +57,7 @@ class DCnvRunner(DocumentConverter):
             print('\nWARNING: This will overwrite "' +
                   file + '"!')
             userConfirmation = input('Continue (y/n)? ')
-            if not userConfirmation in ('y', 'Y'):
-                print('Program abort by user.\n')
-                input('Press ENTER to continue ...')
-                sys.exit(1)
+            if userConfirmation in ('y', 'Y'):
+                return(True)
+            else:
+                return(False)
