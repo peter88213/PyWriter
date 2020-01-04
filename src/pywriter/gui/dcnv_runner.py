@@ -1,7 +1,8 @@
-"""Import and export ywriter7 scenes for proofing.
+"""Import and export ywriter7 scenes for proofing. 
 
-Proof reading file format = DOCX (Office Open XML format)
+Proof reading file with visible chapter and scene tags.
 
+Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -13,6 +14,9 @@ from tkinter import messagebox
 from pywriter.proof.documentconverter import DocumentConverter
 
 
+TITLE = 'PyWriter v1.1'
+
+
 class DCnvRunner(DocumentConverter):
 
     def __init__(self, sourcePath, extension, silentMode=True):
@@ -21,16 +25,18 @@ class DCnvRunner(DocumentConverter):
         self.extension = extension
         self.sourcePath = sourcePath
         root = Tk()
-        self.label = Label(root, text='yWriter proofer')
+        root.geometry("500x300")
+        root.title(TITLE)
+        self.header = Label(root, text=__doc__)
+        self.header.pack(padx=10, pady=10)
+        self.label = Label(root, text='')
         self.label.pack(padx=10, pady=10)
-
-        message = ''
-
-        self.messagelabel = Label(root, text=message)
+        self.messagelabel = Label(root, text='')
         self.messagelabel.pack(padx=5, pady=5)
         self.run()
         if not self.silentMode:
             root.quitButton = Button(text="OK", command=quit)
+            root.quitButton.config(height=1, width=10)
             root.quitButton.pack(padx=5, pady=5)
             root.mainloop()
 
@@ -64,7 +70,7 @@ class DCnvRunner(DocumentConverter):
 
         else:
             self.messagelabel.config(
-                text='Input file must be .yw7 or .' + self.extension + ' type.')
+                text='Argument missing (drag and drop error?)\nInput file must be .yw7 or .' + self.extension + ' type.')
 
     def confirm_overwrite(self, file):
         """ Invoked by subclass if file already exists. """

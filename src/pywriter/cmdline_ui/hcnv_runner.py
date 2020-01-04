@@ -6,7 +6,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-import sys
 import os
 from pywriter.proof.htmlconverter import HtmlConverter
 
@@ -53,7 +52,9 @@ class HCnvRunner(HtmlConverter):
             input('Press ENTER to continue ...')
 
     def confirm_overwrite(self, file):
-        if not self.silentMode:
+        if self.silentMode:
+            return(True)
+        else:
             print('\nWARNING: This will overwrite "' +
                   file + '"!')
             userConfirmation = input('Continue (y/n)? ')

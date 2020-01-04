@@ -1,7 +1,9 @@
 """Import and export ywriter7 scenes for proofing. 
 
 Proof reading file format = ODT (OASIS Open Document format)
+with visible chapter and scene tags.
 
+Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

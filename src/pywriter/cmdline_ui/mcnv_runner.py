@@ -53,7 +53,9 @@ class MCnvRunner(ManuscriptCnv):
             input('Press ENTER to continue ...')
 
     def confirm_overwrite(self, file):
-        if not self.silentMode:
+        if self.silentMode:
+            return(True)
+        else:
             print('\nWARNING: This will overwrite "' +
                   file + '"!')
             userConfirmation = input('Continue (y/n)? ')
