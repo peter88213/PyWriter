@@ -55,7 +55,8 @@ class ManuscriptCnv():
         if not self.yw7File.file_exists():
             return('ERROR: Project "' + self.yw7Path + '" not found.')
         else:
-            return('Program abort by user.')
+            if not self.confirm_overwrite(self.htmlPath):
+                return('Program abort by user.')
 
         message = self.yw7File.read()
         if message.count('ERROR'):
