@@ -25,7 +25,7 @@ class MCnvRunner(ManuscriptCnv):
         self.extension = extension
         self.sourcePath = sourcePath
         root = Tk()
-        root.geometry("500x300")
+        root.geometry("640x480")
         root.title(TITLE)
         self.header = Label(root, text=__doc__)
         self.header.pack(padx=10, pady=10)

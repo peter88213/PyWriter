@@ -1,7 +1,6 @@
 """Import and export ywriter7 scenes for proofing. 
 
-Proof reading file format = DOCX (Office Open XML format)
-with visible chapter and scene tags.
+Proof reading file format: DOCX (Office Open XML format) with visible chapter and scene tags.
 
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
