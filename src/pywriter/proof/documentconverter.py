@@ -39,7 +39,7 @@ class DocumentConverter(MdConverter):
             return(message)
 
         if os.path.isfile(self.documentPath):
-            if not self.confirm_overwrite(self.yw7Path):
+            if not self.confirm_overwrite(self.documentPath):
                 try:
                     os.remove(self.mdPath)
                 except:
