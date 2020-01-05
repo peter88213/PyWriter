@@ -4,11 +4,11 @@
 
 
 
-The PyWriter project started with a library for yWriter7 file operations such as export and import scenes. Based on this library, there are several applications to come, supporting the novelist's work with yWriter. 
+The PyWriter project started with a library for yWriter7 file operations such as export and import scenes. Based on this library, there are several applications to come, supporting the novelist's work with yWriter in combination with a powerful Office suite. 
 
 
     
-For more information, see the[Wiki](https://github.com/peter88213/PyWriter/wiki)
+For more information, see the [Wiki](https://github.com/peter88213/PyWriter/wiki)
 
 
 
