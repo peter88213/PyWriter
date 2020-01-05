@@ -4,27 +4,14 @@
 
 
 
-The PyWriter project started with a library for yWriter7 file operations such as export and import scenes. Based on this library, there are several applications to come, supporting the novelist's work with yWriter. Basically, it is for my own use, but feel free to try the programs and give me feedback in the yWriter discussion group. 
+The PyWriter project started with a library for yWriter7 file operations such as export and import scenes. Based on this library, there are several applications to come, supporting the novelist's work with yWriter. 
+
 
     
-
-## Applications: 
-
-### yw_proof_docx
-
-[Using DOCX for proofreading](https://github.com/peter88213/PyWriter/wiki/Using-DOCX-for-proofreading)
-
-### yw_proof_odt
-
-[Using ODT for proofreading](https://github.com/peter88213/PyWriter/wiki/Using-ODT-for-proofreading)
-
-### yw_export_html
-
-(to come ...)
+For more information, see the[Wiki](https://github.com/peter88213/PyWriter/wiki)
 
 
 
-## Recommended: 
-
-[OOTyW (OpenOffice typography tools for yWriter users)](https://github.com/peter88213/OOTyW)
-
+PyWriter is [Free Software](https://www.gnu.org/philosophy/free-sw.html).  
+You have the freedom to run, copy, distribute, study, change and improve the software.  
+PyWriter is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
