@@ -76,8 +76,8 @@ class ChapterDescCnv():
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
-        if prjStructure != self.yw7File.get_structure():
-            return('ERROR: Structure mismatch - yWriter project not modified.')
+        # if prjStructure != self.yw7File.get_structure():
+        # return('ERROR: Structure mismatch - yWriter project not modified.')
 
         for scID in self.htmlFile.scenes:
             self.yw7File.scenes[scID].desc = self.htmlFile.scenes[scID].desc
