@@ -9,13 +9,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from pywriter.edit.manuscript import Manuscript
 
 
-HTML_HEADING_MARKERS = ("h2", "h1")
+HTML_HEADING_MARKERS = ("h3", "h2")
 # Index is yWriter's chapter type:
 # 0 is for an ordinary chapter
 # 1 is for a chapter beginning a section
 
-HTML_SCENE_DIVIDER = '* * *'
-# To be placed between invisible scene ending and beginning tags.
 
 STYLESHEET = '<style type="text/css">\n' + \
     'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
@@ -78,6 +76,7 @@ class SceneDesc(Manuscript):
             return(text)
 
         text = HTML_HEADER.replace('$bookTitle$', self.title)
+        text = text + '<h1>' + self.title + '</h1>'
         for chID in self.chapters:
             text = text + '<div id="ChID:' + chID + '">\n'
             headingMarker = HTML_HEADING_MARKERS[self.chapters[chID].type]
@@ -85,13 +84,11 @@ class SceneDesc(Manuscript):
                 format_chapter_title(
                     self.chapters[chID].title) + '</' + headingMarker + '>\n'
             for scID in self.chapters[chID].scenes:
-                text = text + '<h4>' + HTML_SCENE_DIVIDER + '</h4>\n'
                 text = text + '<div id="ScID:' + scID + '">\n'
-                text = text + '<p class="textbody">'
+                text = text + '<p class="firstlineindent">'
                 text = text + '<a name="ScID:' + scID + '" />'
                 # Insert scene ID as anchor.
-                text = text + '<!-- ' + \
-                    self.scenes[scID].title + ' -->\n'
+                text = text + '<!-- ' + self.scenes[scID].title + ' -->\n'
                 # Insert scene title as comment.
                 try:
                     text = text + format_yw7(self.scenes[scID].desc)
@@ -101,9 +98,5 @@ class SceneDesc(Manuscript):
                 text = text + '</div>\n'
 
             text = text + '</div>\n'
-        text = text.replace(
-            '</h1>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>', '</h1>')
-        text = text.replace(
-            '</h2>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>', '</h2>')
         text = text + HTML_FOOTER
         return(text)

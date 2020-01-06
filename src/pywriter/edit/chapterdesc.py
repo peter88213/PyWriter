@@ -11,12 +11,6 @@ from pywriter.core.chapter import Chapter
 from pywriter.edit.manuscript import Manuscript
 
 
-HTML_HEADING_MARKERS = ("h2", "h1")
-# Index is yWriter's chapter type:
-# 0 is for an ordinary chapter
-# 1 is for a chapter beginning a section
-
-
 STYLESHEET = '<style type="text/css">\n' + \
     'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
     'h1, h2, h3, h4 {text-align: center}\n' +\
@@ -90,7 +84,7 @@ class ChapterDesc(Manuscript):
         text = text + '<h1>' + self.title + '</h1>'
         for chID in self.chapters:
             text = text + '<div id="ChID:' + chID + '">\n'
-            text = text + '<p class="textbody">'
+            text = text + '<p class="firstlineindent">'
             try:
                 entry = self.chapters[chID].desc
                 if entry == '':
