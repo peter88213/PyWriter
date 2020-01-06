@@ -6,6 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+import os
 import sys
 import re
 import xml.etree.ElementTree as ET
@@ -154,3 +155,9 @@ class Yw7File(PywFile):
             return('ERROR: Can not write"' + self._filePath + '".')
 
         return('SUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".')
+
+    def is_locked(self) -> bool:
+        if os.path.isfile(self._filePath + '.lock'):
+            return(True)
+        else:
+            return(False)

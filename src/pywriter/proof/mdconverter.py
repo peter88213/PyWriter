@@ -18,6 +18,9 @@ class MdConverter():
     def yw7_to_md(self):
         """Read .yw7 file and convert xml to markdown. """
 
+        if self.yw7File.is_locked():
+            return('ERROR: "' + self.yw7Path + '" seems to be locked. Please close yWriter 7.')
+
         if self.yw7File.filePath is None:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
@@ -35,6 +38,9 @@ class MdConverter():
 
     def md_to_yw7(self):
         """Convert markdown to xml and replace .yw7 file. """
+
+        if self.yw7File.is_locked():
+            return('ERROR: "' + self.yw7Path + '" seems to be locked. Please close yWriter 7.')
 
         if self.yw7File.filePath is None:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')

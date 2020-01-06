@@ -27,6 +27,9 @@ class ManuscriptCnv():
     def yw7_to_document(self):
         """Read .yw7 file and convert sceneContents to html. """
 
+        if self.yw7File.is_locked():
+            return('ERROR: "' + self.yw7Path + '" seems to be locked. Please close yWriter 7.')
+
         if self.yw7File.filePath is None:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
@@ -48,6 +51,9 @@ class ManuscriptCnv():
 
     def document_to_yw7(self):
         """Convert html into yw7 newContents and modify .yw7 file. """
+
+        if self.yw7File.is_locked():
+            return('ERROR: "' + self.yw7Path + '" seems to be locked. Please close yWriter 7.')
 
         if self.yw7File.filePath is None:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
