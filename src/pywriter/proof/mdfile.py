@@ -50,19 +50,19 @@ class MdFile(PywFile):
 
         lines = text.split('\n')
         for line in lines:
-            if line.count('[ScID'):
+            if line.startswith('[ScID'):
                 scID = re.search('[0-9]+', line).group()
                 self.scenes[scID] = Scene()
                 self.chapters[chID].scenes.append(scID)
                 inScene = True
-            elif line.count('[/ScID]'):
+            elif line.startswith('[/ScID]'):
                 self.scenes[scID].sceneContent = sceneText
                 sceneText = ''
                 inScene = False
-            elif line.count('[ChID'):
+            elif line.startswith('[ChID'):
                 chID = re.search('[0-9]+', line).group()
                 self.chapters[chID] = Chapter()
-            elif line.count('[/ChID]'):
+            elif line.startswith('[/ChID]'):
                 pass
             elif inScene:
                 sceneText = sceneText + line + '\n'

@@ -18,14 +18,14 @@ class MdConverter():
     def yw7_to_md(self):
         """Read .yw7 file and convert xml to markdown. """
 
-        if not self.yw7File.filePath:
+        if self.yw7File.filePath is None:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
         if not self.yw7File.file_exists():
             return('ERROR: Project "' + self.yw7Path + '" not found.')
 
         message = self.yw7File.read()
-        if message.count('ERROR'):
+        if message.startswith('ERROR'):
             return(message)
 
         self.mdFile.title = self.yw7File.title
@@ -36,7 +36,7 @@ class MdConverter():
     def md_to_yw7(self):
         """Convert markdown to xml and replace .yw7 file. """
 
-        if not self.yw7File.filePath:
+        if self.yw7File.filePath is None:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
         if not self.yw7File.file_exists():
@@ -46,17 +46,17 @@ class MdConverter():
                 return('Program abort by user.')
 
         message = self.yw7File.read()
-        if message.count('ERROR'):
+        if message.startswith('ERROR'):
             return(message)
 
-        if not self.mdFile.filePath:
+        if self.mdFile.filePath is None:
             return('ERROR: "' + self.mdPath + '" is not a Markdown file.')
 
         if not self.mdFile.file_exists():
             return('ERROR: "' + self.mdPath + '" not found.')
 
         message = self.mdFile.read()
-        if message.count('ERROR'):
+        if message.startswith('ERROR'):
             return(message)
 
         prjStructure = self.mdFile.get_structure()

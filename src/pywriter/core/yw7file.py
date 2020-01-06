@@ -38,7 +38,7 @@ class Yw7File(PywFile):
         except(FileNotFoundError):
             sys.exit('ERROR: "' + self._filePath + '" not found.')
 
-        if xmlData.count('<![CDATA[]]>'):
+        if '<![CDATA[]]>' in xmlData:
             # Empty scenes will crash the xml parser, so put a blank in them.
             xmlData = xmlData.replace('<![CDATA[]]>', '<![CDATA[ ]]>')
             try:
@@ -52,7 +52,7 @@ class Yw7File(PywFile):
         for line in lines:
             # Complete list of tags requiring CDATA (if incomplete).
             tag = re.search('\<(.+?)\>\<\!\[CDATA', line)
-            if tag:
+            if tag is not None:
                 if not (tag.group(1) in self._cdataTags):
                     self._cdataTags.append(tag.group(1))
 
@@ -70,11 +70,11 @@ class Yw7File(PywFile):
             chID = chp.find('ID').text
             self.chapters[chID] = Chapter()
             self.chapters[chID].title = chp.find('Title').text
-            if chp.find('Desc'):
+            if chp.find('Desc') is not None:
                 self.chapters[chID].desc = chp.find('Desc').text
             self.chapters[chID].type = int(chp.find('Type').text)
             self.chapters[chID].scenes = []
-            if chp.find('Scenes'):
+            if chp.find('Scenes') is not None:
                 for scn in chp.find('Scenes').findall('ScID'):
                     self.chapters[chID].scenes.append(scn.text)
 
@@ -82,7 +82,7 @@ class Yw7File(PywFile):
             scID = scn.find('ID').text
             self.scenes[scID] = Scene()
             self.scenes[scID].title = scn.find('Title').text
-            if scn.find('Desc'):
+            if scn.find('Desc') is not None:
                 self.scenes[scID].desc = scn.find('Desc').text
             self.scenes[scID]._sceneContent = scn.find('SceneContent').text
 
@@ -100,10 +100,10 @@ class Yw7File(PywFile):
         for chp in root.iter('CHAPTER'):
             chID = chp.find('ID').text
             chp.find('Title').text = self.chapters[chID].title
-            if chp.find('Desc'):
+            if chp.find('Desc') is not None:
                 chp.find('Desc').text = self.chapters[chID].desc
             chp.find('Type').text = str(self.chapters[chID].type)
-            if chp.find('Scenes'):
+            if chp.find('Scenes') is not None:
                 i = 0
                 for scn in chp.find('Scenes').findall('ScID'):
                     scn.text = self.chapters[chID].scenes[i]
@@ -124,7 +124,7 @@ class Yw7File(PywFile):
                     scn.find('LetterCount').text = str(
                         self.scenes[scID]._letterCount)
                 scn.find('Title').text = self.scenes[scID].title
-                if scn.find('Desc'):
+                if scn.find('Desc') is not None:
                     scn.find('Desc').text = self.scenes[scID].desc
                 sceneCount = sceneCount + 1
             except(KeyError):

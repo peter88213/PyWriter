@@ -12,7 +12,7 @@ from pywriter.gui.mcnv_runner import MCnvRunner
 
 
 def run(sourcePath, silentMode=True):
-    myConverter = MCnvRunner(sourcePath, 'html', silentMode)
+    myConverter = MCnvRunner(sourcePath, '_manuscript', silentMode)
     myConverter.run()
 
 

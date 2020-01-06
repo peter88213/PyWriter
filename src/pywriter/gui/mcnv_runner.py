@@ -44,23 +44,23 @@ class MCnvRunner(ManuscriptCnv):
         """File conversion for proofreading """
         sourceFile = os.path.split(self.sourcePath)
         pathToSource = sourceFile[0]
-        if pathToSource:
+        if pathToSource is not None:
             pathToSource = pathToSource + '/'
 
-        if sourceFile[1].count('.yw7'):
-            self.yw7Path = pathToSource + sourceFile[1]
+        if sourceFile[1].endswith('.yw7'):
+            self.yw7Path = self.sourcePath
             self.documentPath = pathToSource + \
-                sourceFile[1].split('.yw7')[0] + '.' + self.extension
+                sourceFile[1].split('.yw7')[0] + self.extension + '.html'
             self.label.config(
-                text='Export yWriter7 scenes to .' + self.extension)
+                text='Export yWriter7 scenes to manuscript')
             self.messagelabel.config(text='Project: "' + self.yw7Path + '"')
             ManuscriptCnv.__init__(self, self.yw7Path, self.documentPath)
             self.messagelabel.config(text=self.yw7_to_document())
 
-        elif sourceFile[1].count('.' + self.extension):
-            self.documentPath = pathToSource + sourceFile[1]
+        elif sourceFile[1].endswith(self.extension + '.html'):
+            self.documentPath = self.sourcePath
             self.yw7Path = pathToSource + \
-                sourceFile[1].split('.' + self.extension)[0] + '.yw7'
+                sourceFile[1].split(self.extension)[0] + '.yw7'
             self.label.config(
                 text='Import yWriter7 scenes from .' + self.extension)
             self.messagelabel.config(
@@ -70,7 +70,7 @@ class MCnvRunner(ManuscriptCnv):
 
         else:
             self.messagelabel.config(
-                text='Argument missing (drag and drop error?)\nInput file must be .yw7 or .' + self.extension + ' type.')
+                text='Argument missing (drag and drop error?)\nInput file must be .yw7 or manuscript.html type.')
 
     def confirm_overwrite(self, file):
         """ Invoked by subclass if file already exists. """

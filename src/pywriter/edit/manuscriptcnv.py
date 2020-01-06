@@ -27,14 +27,14 @@ class ManuscriptCnv():
     def yw7_to_document(self):
         """Read .yw7 file and convert sceneContents to html. """
 
-        if not self.yw7File.filePath:
+        if self.yw7File.filePath is None:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
         if not self.yw7File.file_exists():
             return('ERROR: Project "' + self.yw7Path + '" not found.')
 
         message = self.yw7File.read()
-        if message.count('ERROR'):
+        if message.startswith('ERROR'):
             return(message)
 
         if self.htmlFile.file_exists():
@@ -49,27 +49,27 @@ class ManuscriptCnv():
     def document_to_yw7(self):
         """Convert html into yw7 newContents and modify .yw7 file. """
 
-        if not self.yw7File.filePath:
+        if self.yw7File.filePath is None:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
 
         if not self.yw7File.file_exists():
             return('ERROR: Project "' + self.yw7Path + '" not found.')
         else:
-            if not self.confirm_overwrite(self.htmlPath):
+            if not self.confirm_overwrite(self.yw7Path):
                 return('Program abort by user.')
 
         message = self.yw7File.read()
-        if message.count('ERROR'):
+        if message.startswith('ERROR'):
             return(message)
 
-        if not self.htmlFile.filePath:
+        if self.htmlFile.filePath is None:
             return('ERROR: "' + self.htmlPath + '" is not a HTML file.')
 
         if not self.htmlFile.file_exists():
             return('ERROR: "' + self.htmlPath + '" not found.')
 
         message = self.htmlFile.read()
-        if message.count('ERROR'):
+        if message.startswith('ERROR'):
             return(message)
 
         prjStructure = self.htmlFile.get_structure()

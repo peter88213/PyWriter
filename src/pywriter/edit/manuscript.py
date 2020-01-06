@@ -102,11 +102,11 @@ class Manuscript(PywFile, HTMLParser):
 
         if tag == 'div':
             if attrs[0][0] == 'id':
-                if attrs[0][1].count('ChID'):
+                if attrs[0][1].startswith('ChID'):
                     self.chID = re.search('[0-9]+', attrs[0][1]).group()
                     self.chapters[self.chID] = Chapter()
                     self.chapters[self.chID].scenes = []
-                elif attrs[0][1].count('ScID'):
+                elif attrs[0][1].startswith('ScID'):
                     self.scID = re.search('[0-9]+', attrs[0][1]).group()
                     self.scenes[self.scID] = Scene()
                     self.chapters[self.chID].scenes.append(self.scID)

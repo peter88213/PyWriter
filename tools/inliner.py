@@ -23,7 +23,7 @@ def inline_module(file, package, text, processedModules):
         for line in lines:
             if (inHeader) and line.count('"""') == 1:
                 # Beginning or end of a docstring
-                if file.count(package):
+                if package in file:
                     # This is not the root script
                     # so suppress the module's docstring
                     if inSuppressedComment:
@@ -36,16 +36,16 @@ def inline_module(file, package, text, processedModules):
                 else:
                     text = text + line
             elif not inSuppressedComment:
-                if file.count(package):
-                    if line.count('main()'):
+                if package in file:
+                    if 'main()' in line:
                         return(text)
 
-                    if line.count('__main__'):
+                    if '__main__' in line:
                         return(text)
 
-                if line.count('import'):
+                if 'import' in line:
                     importModule = re.match('from (.+?) import.+', line)
-                    if importModule and importModule.group(1).count(package):
+                    if (importModule is not None) and (package in importModule.group(1)):
                         moduleName = re.sub(
                             '\.', '\/', importModule.group(1))
                         if not (moduleName in processedModules):

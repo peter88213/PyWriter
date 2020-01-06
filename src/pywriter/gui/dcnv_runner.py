@@ -44,10 +44,10 @@ class DCnvRunner(DocumentConverter):
         """File conversion for proofreading """
         sourceFile = os.path.split(self.sourcePath)
         pathToSource = sourceFile[0]
-        if pathToSource:
+        if pathToSource is not None:
             pathToSource = pathToSource + '/'
 
-        if sourceFile[1].count('.yw7'):
+        if sourceFile[1].endswith('.yw7'):
             self.yw7Path = pathToSource + sourceFile[1]
             self.documentPath = pathToSource + \
                 sourceFile[1].split('.yw7')[0] + '.' + self.extension
@@ -57,7 +57,7 @@ class DCnvRunner(DocumentConverter):
             DocumentConverter.__init__(self, self.yw7Path, self.documentPath)
             self.messagelabel.config(text=self.yw7_to_document())
 
-        elif sourceFile[1].count('.' + self.extension):
+        elif sourceFile[1].endswith('.' + self.extension):
             self.documentPath = pathToSource + sourceFile[1]
             self.yw7Path = pathToSource + \
                 sourceFile[1].split('.' + self.extension)[0] + '.yw7'

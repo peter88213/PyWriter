@@ -4,7 +4,6 @@ Created on 23.12.2019
 @author: Peter
 '''
 import re
-from test.test_linecache import TEST_PATH
 
 TEST_PROJECT = 'yw7 Sample Project'
 
@@ -23,7 +22,7 @@ cdataTags = []
 
 for line in lines:
     tag = re.search('\<(.+?)\>\<\!\[CDATA', line)
-    if tag:
+    if tag is not None:
         if not (tag.group(1) in cdataTags):
             cdataTags.append(tag.group(1))
 

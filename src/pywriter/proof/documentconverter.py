@@ -35,7 +35,7 @@ class DocumentConverter(MdConverter):
         """Export to document """
 
         message = self.yw7_to_md()
-        if message.count('ERROR'):
+        if message.startswith('ERROR'):
             return(message)
 
         if os.path.isfile(self.documentPath):
