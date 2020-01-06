@@ -11,13 +11,13 @@ import os
 from tkinter import *
 from tkinter import messagebox
 
-from pywriter.edit.scenedesccnv import SceneDescCnv
+from pywriter.edit.scnv import SCnv
 
 
 TITLE = 'PyWriter v1.1'
 
 
-class SCnvRunner(SceneDescCnv):
+class SCnvRunner(SCnv):
 
     def __init__(self, sourcePath, extension, silentMode=True):
         """File conversion for proofreading """
@@ -45,7 +45,8 @@ class SCnvRunner(SceneDescCnv):
         sourceFile = os.path.split(self.sourcePath)
         pathToSource = sourceFile[0]
         if pathToSource is not None:
-            pathToSource = pathToSource + '/'
+            if pathToSource != '':
+                pathToSource = pathToSource + '/'
 
         if sourceFile[1].endswith('.yw7'):
             self.yw7Path = self.sourcePath
@@ -54,7 +55,7 @@ class SCnvRunner(SceneDescCnv):
             self.label.config(
                 text='Export yWriter7 scene descriptions to html')
             self.messagelabel.config(text='Project: "' + self.yw7Path + '"')
-            SceneDescCnv.__init__(self, self.yw7Path, self.documentPath)
+            SCnv.__init__(self, self.yw7Path, self.documentPath)
             self.messagelabel.config(text=self.yw7_to_document())
 
         elif sourceFile[1].endswith(self.extension + '.html'):
@@ -65,7 +66,7 @@ class SCnvRunner(SceneDescCnv):
                 text='Import yWriter7 scene descriptions from html')
             self.messagelabel.config(
                 text='Proofed scenes in "' + self.documentPath + '"')
-            SceneDescCnv.__init__(self, self.yw7Path, self.documentPath)
+            SCnv.__init__(self, self.yw7Path, self.documentPath)
             self.messagelabel.config(text=self.document_to_yw7())
 
         else:

@@ -68,6 +68,15 @@ class SceneDesc(Manuscript):
             text = text.replace('Chapter ', '')
             return(text)
 
+        def format_yw7(text):
+            """Convert yw7 raw markup """
+            try:
+                text = text.replace('\n\n', '\n')
+                text = text.replace('\n', '</p>\n<p class="firstlineindent">')
+            except:
+                pass
+            return(text)
+
         text = HTML_HEADER.replace('$bookTitle$', self.title)
         for chID in self.chapters:
             text = text + '<div id="ChID:' + chID + '">\n'
@@ -85,7 +94,7 @@ class SceneDesc(Manuscript):
                     self.scenes[scID].title + ' -->\n'
                 # Insert scene title as comment.
                 try:
-                    text = text + (self.scenes[scID].desc)
+                    text = text + format_yw7(self.scenes[scID].desc)
                 except(TypeError):
                     text = text + ' '
                 text = text + '</p>\n'

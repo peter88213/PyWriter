@@ -45,7 +45,8 @@ class DCnvRunner(DocumentConverter):
         sourceFile = os.path.split(self.sourcePath)
         pathToSource = sourceFile[0]
         if pathToSource is not None:
-            pathToSource = pathToSource + '/'
+            if pathToSource != '':
+                pathToSource = pathToSource + '/'
 
         if sourceFile[1].endswith('.yw7'):
             self.yw7Path = pathToSource + sourceFile[1]

@@ -9,7 +9,7 @@ from pywriter.edit.scenedesc import SceneDesc
 from pywriter.core.yw7file import Yw7File
 
 
-class SceneDescCnv():
+class SCnv():
     """
 
     # Attributes

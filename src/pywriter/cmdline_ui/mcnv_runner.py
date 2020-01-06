@@ -8,10 +8,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 import os
-from pywriter.edit.manuscriptcnv import ManuscriptCnv
+from pywriter.edit.manuscriptcnv import MCnv
 
 
-class MCnvRunner(ManuscriptCnv):
+class MCnvRunner(MCnv):
 
     def __init__(self, sourcePath, extension, silentMode=True):
         """File conversion for proofreading """
@@ -34,7 +34,7 @@ class MCnvRunner(ManuscriptCnv):
                 sourceFile[1].split('.yw7')[0] + '.' + self.extension
             print('\n*** Export yWriter7 scenes to .' + self.extension + ' ***')
             print('Project: "' + self.yw7Path + '"')
-            ManuscriptCnv.__init__(self, self.yw7Path, self.documentPath)
+            MCnv.__init__(self, self.yw7Path, self.documentPath)
             print(self.yw7_to_document())
 
         elif sourceFile[1].count('.' + self.extension):
@@ -43,7 +43,7 @@ class MCnvRunner(ManuscriptCnv):
                 sourceFile[1].split('.' + self.extension)[0] + '.yw7'
             print('\n*** Import yWriter7 scenes from .' + self.extension + ' ***')
             print('Proofed scenes in "' + self.documentPath + '"')
-            ManuscriptCnv.__init__(self, self.yw7Path, self.documentPath)
+            MCnv.__init__(self, self.yw7Path, self.documentPath)
             print(self.document_to_yw7())
 
         else:

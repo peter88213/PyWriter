@@ -101,8 +101,14 @@ class Yw7File(PywFile):
         for chp in root.iter('CHAPTER'):
             chID = chp.find('ID').text
             chp.find('Title').text = self.chapters[chID].title
-            if chp.find('Desc') is not None:
-                chp.find('Desc').text = self.chapters[chID].desc
+
+            if self.chapters[chID].desc != '':
+                if chp.find('Desc') is None:
+                    newDesc = ET.SubElement(chp, 'Desc')
+                    newDesc.text = self.chapters[chID].desc
+                else:
+                    chp.find('Desc').text = self.chapters[chID].desc
+
             chp.find('Type').text = str(self.chapters[chID].type)
             if chp.find('Scenes') is not None:
                 i = 0
@@ -124,21 +130,30 @@ class Yw7File(PywFile):
                         self.scenes[scID]._wordCount)
                     scn.find('LetterCount').text = str(
                         self.scenes[scID]._letterCount)
+
                 scn.find('Title').text = self.scenes[scID].title
-                if scn.find('Desc') is not None:
-                    scn.find('Desc').text = self.scenes[scID].desc
+
+                if self.scenes[scID].desc != '':
+                    if scn.find('Desc') is None:
+                        newDesc = ET.SubElement(scn, 'Desc')
+                        newDesc.text = self.scenes[scID].desc
+                    else:
+                        scn.find('Desc').text = self.scenes[scID].desc
+
                 sceneCount = sceneCount + 1
             except(KeyError):
                 return('ERROR: Scene with ID:' + scID + ' is missing in input file - yWriter project not modified.')
-
+        '''
         if sceneCount != len(self.scenes):
             return('ERROR: Scenes total mismatch - yWriter project not modified.')
+        '''
 
         try:
             self.tree.write(self._filePath, encoding='utf-8')
         except(PermissionError):
             return('ERROR: "' + self._filePath + '" is write protected.')
-        newXml = ['<?xml version="1.0" encoding="utf-8"?>\n']
+
+        newXml = '<?xml version="1.0" encoding="utf-8"?>\n'
         with open(self._filePath, 'r', encoding='utf-8') as f:
             lines = f.readlines()
             for line in lines:
@@ -147,10 +162,13 @@ class Yw7File(PywFile):
                                   tag + '><![CDATA[', line)
                     line = re.sub('\<\/' + tag + '\>',
                                   ']]></' + tag + '>', line)
-                newXml.append(line)
+                newXml = newXml + line
+        newXml = newXml.replace('\n \n', '\n')
+        newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
+        newXml = newXml.replace('\n]]', ']]')
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.writelines(newXml)
+                f.write(newXml)
         except:
             return('ERROR: Can not write"' + self._filePath + '".')
 

@@ -5,11 +5,11 @@ Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.edit.manuscript import Manuscript
+from pywriter.edit.chapterdesc import ChapterDesc
 from pywriter.core.yw7file import Yw7File
 
 
-class ManuscriptCnv():
+class CCnv():
     """
 
     # Attributes
@@ -22,13 +22,10 @@ class ManuscriptCnv():
         self.yw7Path = yw7Path
         self.yw7File = Yw7File(self.yw7Path)
         self.htmlPath = htmlPath
-        self.htmlFile = Manuscript(self.htmlPath)
+        self.htmlFile = ChapterDesc(self.htmlPath)
 
     def yw7_to_document(self):
         """Read .yw7 file and convert sceneContents to html. """
-
-        if self.yw7File.is_locked():
-            return('ERROR: "' + self.yw7Path + '" seems to be locked. Please close yWriter 7.')
 
         if self.yw7File.filePath is None:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
@@ -45,15 +42,11 @@ class ManuscriptCnv():
                 return('Program abort by user.')
 
         self.htmlFile.title = self.yw7File.title
-        self.htmlFile.scenes = self.yw7File.scenes
         self.htmlFile.chapters = self.yw7File.chapters
         return(self.htmlFile.write())
 
     def document_to_yw7(self):
         """Convert html into yw7 newContents and modify .yw7 file. """
-
-        if self.yw7File.is_locked():
-            return('ERROR: "' + self.yw7Path + '" seems to be locked. Please close yWriter 7.')
 
         if self.yw7File.filePath is None:
             return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
@@ -82,11 +75,11 @@ class ManuscriptCnv():
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
-        if prjStructure != self.yw7File.get_structure():
-            return('ERROR: Structure mismatch - yWriter project not modified.')
+        # if prjStructure != self.yw7File.get_structure():
+        # return('ERROR: Structure mismatch - yWriter project not modified.')
 
-        for scID in self.htmlFile.scenes:
-            self.yw7File.scenes[scID].sceneContent = self.htmlFile.scenes[scID].sceneContent
+        for chID in self.htmlFile.chapters:
+            self.yw7File.chapters[chID].desc = self.htmlFile.chapters[chID].desc
 
         return(self.yw7File.write())
 

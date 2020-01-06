@@ -64,41 +64,42 @@ class ChapterDesc(Manuscript):
         """HTML parser: Save chapter description in dictionary at chapter end. """
 
         if tag == 'div':
-            if self.collectText:
-                self.chapters[self.chID].desc = self.text
-                self.text = ''
-                self.collectText = False
+            self.chapters[self.chID].desc = self.text
+            self.text = ''
+            self.collectText = False
 
     def handle_data(self, data):
         """HTML parser: Collect paragraphs within scene. """
 
         if self.collectText:
-            if data != ' ':
-                self.text = self.text + data + '\n'
+            self.text = self.text + data + '\n'
 
     def get_text(self):
         """Write attributes to html project file. """
 
-        def format_chapter_title(text):
-            """Fix auto-chapter titles for non-English """
-
-            text = text.replace('Chapter ', '')
+        def format_yw7(text):
+            """Convert yw7 raw markup """
+            try:
+                text = text.replace('\n\n', '\n')
+                text = text.replace('\n', '</p>\n<p class="firstlineindent">')
+            except:
+                pass
             return(text)
 
         text = HTML_HEADER.replace('$bookTitle$', self.title)
+        text = text + '<h1>' + self.title + '</h1>'
         for chID in self.chapters:
-            headingMarker = HTML_HEADING_MARKERS[self.chapters[chID].type]
-            text = text + '<' + headingMarker + '>' + \
-                format_chapter_title(
-                    self.chapters[chID].title) + '</' + headingMarker + '>\n'
             text = text + '<div id="ChID:' + chID + '">\n'
             text = text + '<p class="textbody">'
-            text = text + '<a name="ChID:' + chID + '" />'
-            # Insert chapter ID as anchor.
             try:
-                text = text + (self.chapters[chID].desc)
-            except(TypeError):
-                text = text + ' '
+                entry = self.chapters[chID].desc
+                if entry == '':
+                    entry = self.chapters[chID].title
+                else:
+                    entry = format_yw7(entry)
+                text = text + entry
+            except(KeyError):
+                pass
             text = text + '</p>\n'
             text = text + '</div>\n'
 

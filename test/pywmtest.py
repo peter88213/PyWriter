@@ -8,7 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 import unittest
-from pywriter.edit.manuscriptcnv import ManuscriptCnv
+from pywriter.edit.mcnv import MCnv
 
 TEST_PROJECT = 'yw7 Sample Project'
 
@@ -17,8 +17,8 @@ TEST_EXEC_PATH = 'yw7/'
 TEST_DATA_PATH = 'data/'
 
 MANUSCRIPT = TEST_PATH + TEST_PROJECT + '.html'
-REFERENCE_MANUSCRIPT = TEST_DATA_PATH + TEST_PROJECT + '_edit.html'
-EDITED_MANUSCRIPT = TEST_DATA_PATH + 'edit/' + TEST_PROJECT + '.html'
+REFERENCE_MANUSCRIPT = TEST_DATA_PATH + TEST_PROJECT + '_manuscript.html'
+EDITED_MANUSCRIPT = TEST_DATA_PATH + 'edit/' + TEST_PROJECT + '_manuscript.html'
 
 YW7_FILE = TEST_PATH + TEST_PROJECT + '.yw7'
 YW7_REFERENCE_FILE = TEST_DATA_PATH + TEST_PROJECT + '.yw7'
@@ -76,12 +76,10 @@ class NrmOpr(unittest.TestCase):
             read_file(REFERENCE_MANUSCRIPT),
             read_file(EDITED_MANUSCRIPT))
 
-    #@unittest.skip('development')
     def test_exp_to_html(self):
         """Export yW7 scenes to html. """
 
-        converter = ManuscriptCnv(
-            YW7_FILE, MANUSCRIPT)
+        converter = MCnv(YW7_FILE, MANUSCRIPT)
         self.assertEqual(converter.yw7_to_document(
         ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + MANUSCRIPT + '".')
         # Read .yw7 file and convert scenes to html.
@@ -90,7 +88,6 @@ class NrmOpr(unittest.TestCase):
                          read_file(REFERENCE_MANUSCRIPT))
         # Verify the html file.
 
-    #@unittest.skip('development')
     def test_imp_from_html(self):
         """Import proofed yw7 scenes from html. """
 
@@ -98,7 +95,7 @@ class NrmOpr(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        converter = ManuscriptCnv(YW7_FILE, MANUSCRIPT)
+        converter = MCnv(YW7_FILE, MANUSCRIPT)
         self.assertEqual(converter.document_to_yw7(
         ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + YW7_FILE + '".')
         # Convert document to xml and replace .yw7 file.
@@ -107,7 +104,6 @@ class NrmOpr(unittest.TestCase):
                          read_file(YW7_EDITED_FILE))
         # Verify the yw7 project.
 
-    #@unittest.skip('development')
     def tearDown(self):
         remove_all_testfiles()
 
