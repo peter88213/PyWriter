@@ -58,10 +58,10 @@ class Manuscript(PywFile, HTMLParser):
     def __init__(self, filePath):
         PywFile.__init__(self, filePath)
         HTMLParser.__init__(self)
-        self.sceneText = ''
+        self.text = ''
         self.scID = 0
         self.chID = 0
-        self.inScene = False
+        self.collectText = False
 
     def read(self):
         """Read data from html project file. """
@@ -110,23 +110,23 @@ class Manuscript(PywFile, HTMLParser):
                     self.scID = re.search('[0-9]+', attrs[0][1]).group()
                     self.scenes[self.scID] = Scene()
                     self.chapters[self.chID].scenes.append(self.scID)
-                    self.inScene = True
+                    self.collectText = True
 
     def handle_endtag(self, tag):
         """HTML parser: Save scene content in dictionary at scene end. """
 
         if tag == 'div':
-            if self.inScene:
-                self.scenes[self.scID].sceneContent = self.sceneText
-                self.sceneText = ''
-                self.inScene = False
+            if self.collectText:
+                self.scenes[self.scID].sceneContent = self.text
+                self.text = ''
+                self.collectText = False
 
     def handle_data(self, data):
         """HTML parser: Collect paragraphs within scene. """
 
-        if self.inScene:
+        if self.collectText:
             if data != ' ':
-                self.sceneText = self.sceneText + data + '\n'
+                self.text = self.text + data + '\n'
 
     def get_text(self):
         """Write attributes to html project file. """

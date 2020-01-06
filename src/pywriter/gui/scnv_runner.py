@@ -11,13 +11,13 @@ import os
 from tkinter import *
 from tkinter import messagebox
 
-from pywriter.edit.manuscriptcnv import ManuscriptCnv
+from pywriter.edit.scenedesccnv import SceneDescCnv
 
 
 TITLE = 'PyWriter v1.1'
 
 
-class MCnvRunner(ManuscriptCnv):
+class SCnvRunner(SceneDescCnv):
 
     def __init__(self, sourcePath, extension, silentMode=True):
         """File conversion for proofreading """
@@ -52,9 +52,9 @@ class MCnvRunner(ManuscriptCnv):
             self.documentPath = pathToSource + \
                 sourceFile[1].split('.yw7')[0] + self.extension + '.html'
             self.label.config(
-                text='Export yWriter7 scenes content to html')
+                text='Export yWriter7 scene descriptions to html')
             self.messagelabel.config(text='Project: "' + self.yw7Path + '"')
-            ManuscriptCnv.__init__(self, self.yw7Path, self.documentPath)
+            SceneDescCnv.__init__(self, self.yw7Path, self.documentPath)
             self.messagelabel.config(text=self.yw7_to_document())
 
         elif sourceFile[1].endswith(self.extension + '.html'):
@@ -62,15 +62,15 @@ class MCnvRunner(ManuscriptCnv):
             self.yw7Path = pathToSource + \
                 sourceFile[1].split(self.extension)[0] + '.yw7'
             self.label.config(
-                text='Import yWriter7 scenes content from html')
+                text='Import yWriter7 scene descriptions from html')
             self.messagelabel.config(
                 text='Proofed scenes in "' + self.documentPath + '"')
-            ManuscriptCnv.__init__(self, self.yw7Path, self.documentPath)
+            SceneDescCnv.__init__(self, self.yw7Path, self.documentPath)
             self.messagelabel.config(text=self.document_to_yw7())
 
         else:
             self.messagelabel.config(
-                text='Argument missing (drag and drop error?)\nInput file must be .yw7 or manuscript.html type.')
+                text='Argument missing (drag and drop error?)\nInput file must be .yw7 or scenedesc.html type.')
 
     def confirm_overwrite(self, file):
         """ Invoked by subclass if file already exists. """
