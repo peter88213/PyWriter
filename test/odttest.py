@@ -84,7 +84,7 @@ class NrmOpr(unittest.TestCase):
         myOdtConverter = DocumentConverter(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + ODT_FILE)
         self.assertEqual(myOdtConverter.yw7_to_document(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + ODT_FILE + '".')
+        ), 'SUCCESS: "' + TEST_EXEC_PATH + ODT_FILE + '" saved.')
 
         with zipfile.ZipFile(TEST_EXEC_PATH + ODT_FILE, 'r') as myzip:
             myzip.extract(ODT_CONTENT, TEST_EXEC_PATH)

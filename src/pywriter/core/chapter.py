@@ -26,5 +26,5 @@ class Chapter():
     def __init__(self):
         self.title = ''
         self.desc = ''
-        self.type = ''
+        self.type = None
         self.scenes = []

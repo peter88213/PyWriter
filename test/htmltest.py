@@ -81,7 +81,7 @@ class NrmOpr(unittest.TestCase):
         converter = HtmlConverter(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
         self.assertEqual(converter.yw7_to_document(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + HTML_FILE + '".')
+        ), 'SUCCESS: "' + TEST_EXEC_PATH + HTML_FILE + '" saved.')
         # Read .yw7 file and convert scenes to html.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + HTML_FILE),

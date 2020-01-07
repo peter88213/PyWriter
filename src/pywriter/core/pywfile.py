@@ -8,6 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 from abc import abstractmethod, ABC
+
 from pywriter.core.novel import Novel
 
 
@@ -25,10 +26,10 @@ class PywFile(Novel, ABC):
 
     # Methods
 
-    read()
-        Abstract method for opening and parsing the file.
-    write() : str
-        write selected contents to the file and return a message.
+    read(novel)
+        Abstract method for parsing the file and writing selected properties to the novel.
+    write(novel)
+        Abstract method for writing selected novel properties to the file.
     file_exists() : bool
         True means: the file specified by filePath exists. 
     """
@@ -47,31 +48,18 @@ class PywFile(Novel, ABC):
     @filePath.setter
     def filePath(self, filePath):
         """Accept only filenames with the right extension. """
-
-        fileName = os.path.split(filePath)[1]
-        fileName = fileName.lower()
-        if fileName.count(self._fileExtension):
+        if filePath.lower().endswith(self._fileExtension):
             self._filePath = filePath
 
     @abstractmethod
     def read(self):
-        """Read yWriter project data from a file and parse it. """
-
+        """Parse the file and store selected properties. """
         # To be overwritten by file format specific subclasses.
-        pass
 
-    def write(self) -> str:
-        """Write yWriter project data to a file. """
-
-        try:
-            with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.write(self.get_text())
-                # get_text() is to be overwritten
-                # by file format specific subclasses.
-        except(PermissionError):
-            return('ERROR: ' + self._filePath + '" is write protected.')
-
-        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes written to "' + self._filePath + '".')
+    @abstractmethod
+    def write(self, novel):
+        """Write selected novel properties to the file. """
+        # To be overwritten by file format specific subclasses.
 
     def file_exists(self) -> bool:
         """Check whether the file specified by _filePath exists. """

@@ -81,7 +81,7 @@ class NrmOpr(unittest.TestCase):
 
         converter = MCnv(YW7_FILE, MANUSCRIPT)
         self.assertEqual(converter.yw7_to_document(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + MANUSCRIPT + '".')
+        ), 'SUCCESS: "' + MANUSCRIPT + '" saved.')
         # Read .yw7 file and convert scenes to html.
 
         self.assertEqual(read_file(MANUSCRIPT),

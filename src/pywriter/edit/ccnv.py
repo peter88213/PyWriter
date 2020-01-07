@@ -34,16 +34,16 @@ class CCnv():
             return('ERROR: Project "' + self.yw7Path + '" not found.')
 
         message = self.yw7File.read()
+
         if message.startswith('ERROR'):
             return(message)
 
         if self.htmlFile.file_exists():
+
             if not self.confirm_overwrite(self.htmlPath):
                 return('Program abort by user.')
 
-        self.htmlFile.title = self.yw7File.title
-        self.htmlFile.chapters = self.yw7File.chapters
-        return(self.htmlFile.write())
+        return(self.htmlFile.write(self.yw7File))
 
     def document_to_yw7(self):
         """Convert html into yw7 newContents and modify .yw7 file. """
@@ -53,11 +53,12 @@ class CCnv():
 
         if not self.yw7File.file_exists():
             return('ERROR: Project "' + self.yw7Path + '" not found.')
-        else:
-            if not self.confirm_overwrite(self.yw7Path):
-                return('Program abort by user.')
+
+        elif not self.confirm_overwrite(self.yw7Path):
+            return('Program abort by user.')
 
         message = self.yw7File.read()
+
         if message.startswith('ERROR'):
             return(message)
 
@@ -68,20 +69,16 @@ class CCnv():
             return('ERROR: "' + self.htmlPath + '" not found.')
 
         message = self.htmlFile.read()
+
         if message.startswith('ERROR'):
             return(message)
 
         prjStructure = self.htmlFile.get_structure()
+
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
-        # if prjStructure != self.yw7File.get_structure():
-        # return('ERROR: Structure mismatch - yWriter project not modified.')
-
-        for chID in self.htmlFile.chapters:
-            self.yw7File.chapters[chID].desc = self.htmlFile.chapters[chID].desc
-
-        return(self.yw7File.write())
+        return(self.yw7File.write(self.htmlFile))
 
     def confirm_overwrite(self, fileName):
         return(True)

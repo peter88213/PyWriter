@@ -85,7 +85,7 @@ class NrmOpr(unittest.TestCase):
         myDocxConverter = DocumentConverter(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + DOCX_FILE)
         self.assertEqual(myDocxConverter.yw7_to_document(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + DOCX_FILE + '".')
+        ), 'SUCCESS: "' + TEST_EXEC_PATH + DOCX_FILE + '" saved.')
 
         with zipfile.ZipFile(TEST_EXEC_PATH + DOCX_FILE, 'r') as myzip:
             myzip.extract(DOCX_CONTENT, TEST_EXEC_PATH)

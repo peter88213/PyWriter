@@ -68,7 +68,7 @@ class MdFile(PywFile):
                 sceneText = sceneText + line + '\n'
         return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
-    def get_text(self):
+    def write(self, novel) -> str:
         """Format project text to markdown. """
 
         def format_chapter_title(text):
@@ -89,6 +89,16 @@ class MdFile(PywFile):
             text = text.replace('[/b]', '**')
             return(text)
 
+        if novel.title is not None:
+            if novel.title != '':
+                self.title = novel.title
+
+        if novel.scenes is not None:
+            self.scenes = novel.scenes
+
+        if novel.chapters is not None:
+            self.chapters = novel.chapters
+
         text = ''
         for chID in self.chapters:
             text = text + '\\[ChID:' + chID + '\\]\n'
@@ -104,4 +114,13 @@ class MdFile(PywFile):
                 text = text + '\\[/ScID\\]\n'
             text = text + '\\[/ChID\\]\n'
         text = format_md(text)
-        return(text)
+
+        try:
+            with open(self._filePath, 'w', encoding='utf-8') as f:
+                f.write(text)
+                # get_text() is to be overwritten
+                # by file format specific subclasses.
+        except(PermissionError):
+            return('ERROR: ' + self._filePath + '" is write protected.')
+
+        return('SUCCESS: "' + self._filePath + '" saved.')

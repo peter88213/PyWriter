@@ -82,7 +82,7 @@ class NrmOpr(unittest.TestCase):
         myMdConverter = MdConverter(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
         self.assertEqual(myMdConverter.yw7_to_md(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + MD_FILE + '".')
+        ), 'SUCCESS: "' + TEST_EXEC_PATH + MD_FILE + '" saved.')
 
         # Read .yw7 file and convert xml to markdown.
         self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),

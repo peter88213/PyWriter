@@ -128,7 +128,7 @@ class Manuscript(PywFile, HTMLParser):
             if data != ' ':
                 self.text = self.text + data + '\n'
 
-    def get_text(self):
+    def write(self, novel) -> str:
         """Write attributes to html project file. """
 
         def format_chapter_title(text):
@@ -149,6 +149,16 @@ class Manuscript(PywFile, HTMLParser):
             except:
                 pass
             return(text)
+
+        if novel.title is not None:
+            if novel.title != '':
+                self.title = novel.title
+
+        if novel.scenes is not None:
+            self.scenes = novel.scenes
+
+        if novel.chapters is not None:
+            self.chapters = novel.chapters
 
         text = HTML_HEADER.replace('$bookTitle$', self.title)
         for chID in self.chapters:
@@ -180,4 +190,13 @@ class Manuscript(PywFile, HTMLParser):
         text = text.replace(
             '</h2>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>', '</h2>')
         text = text + HTML_FOOTER
-        return(text)
+
+        try:
+            with open(self._filePath, 'w', encoding='utf-8') as f:
+                f.write(text)
+                # get_text() is to be overwritten
+                # by file format specific subclasses.
+        except(PermissionError):
+            return('ERROR: ' + self._filePath + '" is write protected.')
+
+        return('SUCCESS: "' + self._filePath + '" saved.')
