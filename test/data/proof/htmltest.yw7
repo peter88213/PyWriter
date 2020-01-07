@@ -217,7 +217,7 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
 		<Field4>3</Field4>
 		<Status>4</Status>
 		<WordCount>384</WordCount>
-		<LetterCount>2289</LetterCount>
+		<LetterCount>2307</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>10</CharID>
@@ -231,7 +231,7 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
 		<Items>
 		</Items>
 		<SceneContent><![CDATA[(You can download the complete text of Hal Spacejock, free, from http://www.spacejock.com.au/Hal1Download.html)
-  
+ 
 Hal Spacejock was sitting at the Black Gull’s flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he’d read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article’s claims. He didn’t feel any smarter and he couldn’t remember the last time he’d spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull’s onboard computer. Underpowered and outdated, it was still more than capable of running the ship’s accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.
 “Your turn,” said the Navcom, in a neutral female voice.
 “I’m thinking.”
@@ -267,7 +267,7 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
 		<Field4>2</Field4>
 		<Status>4</Status>
 		<WordCount>63</WordCount>
-		<LetterCount>385</LetterCount>
+		<LetterCount>388</LetterCount>
 		<Characters>
 			<CharID>2</CharID>
 			<CharID>7</CharID>
@@ -295,7 +295,7 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
 		<Field4>3</Field4>
 		<Status>4</Status>
 		<WordCount>85</WordCount>
-		<LetterCount>475</LetterCount>
+		<LetterCount>483</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>10</CharID>
@@ -329,7 +329,7 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>64</WordCount>
-		<LetterCount>375</LetterCount>
+		<LetterCount>380</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>3</CharID>
@@ -362,7 +362,7 @@ Hal drives off, oblivious to the flames starting to flicker around the fallen ro
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>172</WordCount>
-		<LetterCount>1042</LetterCount>
+		<LetterCount>1046</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -389,7 +389,7 @@ Sitting at the console, Clunk uses the Black Gull's simulation mode to practice 
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>122</WordCount>
-		<LetterCount>722</LetterCount>
+		<LetterCount>730</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 			<CharID>10</CharID>
@@ -422,7 +422,7 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>86</WordCount>
-		<LetterCount>532</LetterCount>
+		<LetterCount>536</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>12</CharID>
@@ -449,7 +449,7 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>71</WordCount>
-		<LetterCount>431</LetterCount>
+		<LetterCount>443</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 			<CharID>2</CharID>
@@ -487,7 +487,7 @@ Then the control tower calls to say the landing field is on fire around the Blac
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>152</WordCount>
-		<LetterCount>838</LetterCount>
+		<LetterCount>851</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>3</CharID>
@@ -525,7 +525,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>31</WordCount>
-		<LetterCount>187</LetterCount>
+		<LetterCount>193</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 			<CharID>10</CharID>
@@ -553,7 +553,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -561,7 +561,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -579,7 +579,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -587,7 +587,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -601,7 +601,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -609,7 +609,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -623,7 +623,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -631,7 +631,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -645,7 +645,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -653,7 +653,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -667,7 +667,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -675,7 +675,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -689,7 +689,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -697,7 +697,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -711,7 +711,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -719,7 +719,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -733,7 +733,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -741,7 +741,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -755,7 +755,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -763,7 +763,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -777,7 +777,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -785,7 +785,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -799,7 +799,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -807,7 +807,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -821,7 +821,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -829,7 +829,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -843,7 +843,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -851,7 +851,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -865,7 +865,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -873,7 +873,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -887,7 +887,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -895,7 +895,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -909,7 +909,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>6</CharID>
 		</Characters>
@@ -917,7 +917,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -931,7 +931,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -939,7 +939,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -953,7 +953,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -961,7 +961,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -975,7 +975,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -983,7 +983,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -997,7 +997,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1005,7 +1005,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1019,7 +1019,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1027,7 +1027,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1041,7 +1041,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1049,7 +1049,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1063,7 +1063,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1071,7 +1071,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1085,7 +1085,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1093,7 +1093,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1107,7 +1107,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1115,7 +1115,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1129,7 +1129,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1137,7 +1137,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1151,7 +1151,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1159,7 +1159,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1173,7 +1173,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1181,7 +1181,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1195,7 +1195,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1203,7 +1203,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1217,7 +1217,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1225,7 +1225,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1239,7 +1239,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1247,7 +1247,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1261,7 +1261,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1269,7 +1269,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1283,7 +1283,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1291,7 +1291,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1305,7 +1305,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1313,7 +1313,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1327,7 +1327,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -1335,7 +1335,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1349,7 +1349,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -1357,7 +1357,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1371,7 +1371,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1379,7 +1379,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1393,7 +1393,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1401,7 +1401,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1415,7 +1415,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1423,7 +1423,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1437,7 +1437,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1445,7 +1445,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1459,7 +1459,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1467,7 +1467,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1481,7 +1481,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1489,7 +1489,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1503,7 +1503,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1511,7 +1511,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1525,7 +1525,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1533,7 +1533,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1547,7 +1547,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -1555,7 +1555,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1569,14 +1569,14 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>1</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 		</Characters>
 		<Locations>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1590,7 +1590,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>1</Status>
 		<WordCount>23</WordCount>
-		<LetterCount>145</LetterCount>
+		<LetterCount>149</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>

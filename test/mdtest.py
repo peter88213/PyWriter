@@ -79,9 +79,9 @@ class NrmOpr(unittest.TestCase):
     def test_exp_to_md(self):
         """Export yW7 scenes to markdown. """
 
-        myMdConverter = MdConverter(
+        converter = MdConverter(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
-        self.assertEqual(myMdConverter.yw7_to_md(
+        self.assertEqual(converter.yw7_to_md(
         ), 'SUCCESS: "' + TEST_EXEC_PATH + MD_FILE + '" saved.')
 
         # Read .yw7 file and convert xml to markdown.

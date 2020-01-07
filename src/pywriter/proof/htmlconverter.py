@@ -1,46 +1,74 @@
-"""Import and export ywriter7 scenes for proofing. 
-
-Proof reading file format = html with visible chapter and scene tags
+"""PyWriter module
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.proof.documentconverter import DocumentConverter
-
-STYLESHEET = '<style type="text/css">\n' + \
-    'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
-    'h1, h2, h3, h4 {text-align: center}\n' +\
-    'h1 {letter-spacing: 0.5em; font-style: italic}' + \
-    'h1, h2 {font-weight: bold}\n' + \
-    'h3 {font-style: italic}\n' + \
-    'p.tag {font-size:x-small}\n' + \
-    'p.textbody {margin-top:0; margin-bottom:0}\n' + \
-    'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
-    'strong {font-weight:normal; text-transform: uppercase}\n' + \
-    '</style>\n'
-# Make the generated html file look good in a web browser.
-
-HTML_HEADER = '<html>\n' + '<head>\n' + \
-    '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + \
-    STYLESHEET + \
-    '<title>$bookTitle$</title>\n' + \
-    '</head>\n' + '<body>\n'
-
-HTML_FOOTER = '\n</body>\n</html>\n'
+from pywriter.proof.htmlfile import HtmlFile
+from pywriter.core.yw7file import Yw7File
+from pywriter.core.novel import Novel
 
 
-class HtmlConverter(DocumentConverter):
+class HtmlConverter():
 
-    _fileExtensions = ['html']
+    def __init__(self, yw7Path, htmlPath):
+        self.yw7Path = yw7Path
+        self.yw7File = Yw7File(self.yw7Path)
+        self.htmlPath = htmlPath
+        self.htmlFile = HtmlFile(self.htmlPath)
+        self.novel = Novel()
 
-    def postprocess(self):
-        with open(self._documentPath, 'r') as f:
-            text = f.read()
-            text = text.replace(
-                '<p>[', '<p class="tag">[')
-            text = text.replace(']</p>\n<p>', ']</p>\n<p class="textbody">')
-            text = text.replace('<p>', '<p class="firstlineindent">')
-            text = HTML_HEADER.replace(
-                '$bookTitle$', self.yw7File.title) + text + HTML_FOOTER
-        with open(self._documentPath, 'w') as f:
-            f.write(text)
+    def yw7_to_html(self):
+        """Read .yw7 file and convert xml to markdown. """
+
+        if self.yw7File.is_locked():
+            return('ERROR: "' + self.yw7Path + '" seems to be locked. Please close yWriter 7.')
+
+        if self.yw7File.filePath is None:
+            return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
+
+        message = self.yw7File.read()
+        if message.startswith('ERROR'):
+            return(message)
+
+        return(self.htmlFile.write(self.yw7File))
+
+    def html_to_yw7(self):
+        """Convert markdown to xml and replace .yw7 file. """
+
+        if self.yw7File.is_locked():
+            return('ERROR: "' + self.yw7Path + '" seems to be locked. Please close yWriter 7.')
+
+        if self.yw7File.filePath is None:
+            return('ERROR: "' + self.yw7Path + '" is not an yWriter 7 project.')
+
+        if not self.yw7File.file_exists():
+            return('ERROR: Project "' + self.yw7Path + '" not found.')
+        else:
+            if not self.confirm_overwrite(self.yw7Path):
+                return('Program abort by user.')
+
+        if self.htmlFile.filePath is None:
+            return('ERROR: "' + self.htmlPath + '" is not a HTML file.')
+
+        if not self.htmlFile.file_exists():
+            return('ERROR: "' + self.htmlPath + '" not found.')
+
+        message = self.htmlFile.read()
+        if message.startswith('ERROR'):
+            return(message)
+
+        prjStructure = self.htmlFile.get_structure()
+        if prjStructure == '':
+            return('ERROR: Source file contains no yWriter project structure information.')
+
+        message = self.yw7File.read()
+        if message.startswith('ERROR'):
+            return(message)
+
+        if prjStructure != self.yw7File.get_structure():
+            return('ERROR: Structure mismatch - yWriter project not modified.')
+
+        return(self.yw7File.write(self.htmlFile))
+
+    def confirm_overwrite(self, fileName):
+        return(True)

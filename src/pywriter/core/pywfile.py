@@ -39,6 +39,7 @@ class PywFile(Novel, ABC):
 
     def __init__(self, filePath):
         Novel.__init__(self)
+        self._filePath = None
         self.filePath = filePath
 
     @property
