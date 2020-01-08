@@ -8,7 +8,7 @@ from pywriter.core.yw7file import Yw7File
 from pywriter.core.novel import Novel
 
 
-class HtmlConverter():
+class HCnv():
 
     def __init__(self, yw7Path, htmlPath):
         self.yw7Path = yw7Path

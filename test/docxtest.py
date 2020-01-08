@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 import zipfile
-from pywriter.proof.documentconverter import DocumentConverter
+from pywriter.proof.dcnv import DCnv
 
 TEST_PROJECT = 'yw7 Sample Project'
 
@@ -82,9 +82,9 @@ class NrmOpr(unittest.TestCase):
 
         copy_file(TEST_DATA_PATH + YW7_FILE,
                   TEST_EXEC_PATH + YW7_FILE)
-        myDocxConverter = DocumentConverter(
+        converter = DCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + DOCX_FILE)
-        self.assertEqual(myDocxConverter.yw7_to_document(
+        self.assertEqual(converter.yw7_to_document(
         ), 'SUCCESS: "' + TEST_EXEC_PATH + DOCX_FILE + '" saved.')
 
         with zipfile.ZipFile(TEST_EXEC_PATH + DOCX_FILE, 'r') as myzip:
@@ -99,9 +99,9 @@ class NrmOpr(unittest.TestCase):
 
         copy_file(TEST_DATA_PATH + DOCX_PROOFED_FILE,
                   TEST_EXEC_PATH + DOCX_FILE)
-        myDocxConverter = DocumentConverter(
+        converter = DCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + DOCX_FILE)
-        self.assertEqual(myDocxConverter.document_to_yw7(
+        self.assertEqual(converter.document_to_yw7(
         ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),

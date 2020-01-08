@@ -8,7 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 import unittest
-from pywriter.proof.htmlconverter import HtmlConverter
+from pywriter.proof.hcnv import HCnv
 
 TEST_PROJECT = 'yw7 Sample Project'
 
@@ -78,7 +78,7 @@ class NrmOpr(unittest.TestCase):
     def test_yw7_to_html(self):
         """Export yW7 scenes to html. """
 
-        converter = HtmlConverter(
+        converter = HCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
         self.assertEqual(converter.yw7_to_html(
         ), 'SUCCESS: "' + TEST_EXEC_PATH + HTML_FILE + '" saved.')
@@ -96,7 +96,7 @@ class NrmOpr(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        converter = HtmlConverter(
+        converter = HCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
         self.assertEqual(converter.html_to_yw7(
         ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')

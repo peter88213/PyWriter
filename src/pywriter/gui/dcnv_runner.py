@@ -11,13 +11,13 @@ import os
 from tkinter import *
 from tkinter import messagebox
 
-from pywriter.proof.documentconverter import DocumentConverter
+from pywriter.proof.dcnv import DCnv
 
 
-TITLE = 'PyWriter v1.1'
+TITLE = 'PyWriter v1.2'
 
 
-class DCnvRunner(DocumentConverter):
+class DCnvRunner(DCnv):
 
     def __init__(self, sourcePath, extension, silentMode=True):
         """File conversion for proofreading """
@@ -55,7 +55,7 @@ class DCnvRunner(DocumentConverter):
             self.label.config(
                 text='Export yWriter7 scenes to .' + self.extension)
             self.messagelabel.config(text='Project: "' + self.yw7Path + '"')
-            DocumentConverter.__init__(self, self.yw7Path, self.documentPath)
+            DCnv.__init__(self, self.yw7Path, self.documentPath)
             self.messagelabel.config(text=self.yw7_to_document())
 
         elif sourceFile[1].endswith('.' + self.extension):
@@ -66,7 +66,7 @@ class DCnvRunner(DocumentConverter):
                 text='Import yWriter7 scenes from .' + self.extension)
             self.messagelabel.config(
                 text='Proofed scenes in "' + self.documentPath + '"')
-            DocumentConverter.__init__(self, self.yw7Path, self.documentPath)
+            DCnv.__init__(self, self.yw7Path, self.documentPath)
             self.messagelabel.config(text=self.document_to_yw7())
 
         else:

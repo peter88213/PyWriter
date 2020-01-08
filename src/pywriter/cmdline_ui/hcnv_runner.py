@@ -7,10 +7,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import os
-from pywriter.proof.htmlconverter import HtmlConverter
+from pywriter.proof.htmlconverter import HCnv
 
 
-class HCnvRunner(HtmlConverter):
+class HCnvRunner(HCnv):
 
     def __init__(self, sourcePath, extension, silentMode=True):
         """File conversion for proofreading """
@@ -33,7 +33,7 @@ class HCnvRunner(HtmlConverter):
                 sourceFile[1].split('.yw7')[0] + '.' + self.extension
             print('\n*** Export yWriter7 scenes to .' + self.extension + ' ***')
             print('Project: "' + self.yw7Path + '"')
-            HtmlConverter.__init__(self, self.yw7Path, self.documentPath)
+            HCnv.__init__(self, self.yw7Path, self.documentPath)
             print(self.yw7_to_document())
 
         elif sourceFile[1].count('.' + self.extension):
@@ -42,7 +42,7 @@ class HCnvRunner(HtmlConverter):
                 sourceFile[1].split('.' + self.extension)[0] + '.yw7'
             print('\n*** Import yWriter7 scenes from .' + self.extension + ' ***')
             print('Proofed scenes in "' + self.documentPath + '"')
-            HtmlConverter.__init__(self, self.yw7Path, self.documentPath)
+            HCnv.__init__(self, self.yw7Path, self.documentPath)
             print(self.document_to_yw7())
 
         else:

@@ -8,7 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 import zipfile
-from pywriter.proof.documentconverter import DocumentConverter
+from pywriter.proof.dcnv import DCnv
 
 TEST_PROJECT = 'yw7 Sample Project'
 
@@ -81,7 +81,7 @@ class NrmOpr(unittest.TestCase):
 
         copy_file(TEST_DATA_PATH + YW7_FILE,
                   TEST_EXEC_PATH + YW7_FILE)
-        myOdtConverter = DocumentConverter(
+        myOdtConverter = DCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + ODT_FILE)
         self.assertEqual(myOdtConverter.yw7_to_document(
         ), 'SUCCESS: "' + TEST_EXEC_PATH + ODT_FILE + '" saved.')
@@ -98,9 +98,9 @@ class NrmOpr(unittest.TestCase):
 
         copy_file(TEST_DATA_PATH + ODT_PROOFED_FILE,
                   TEST_EXEC_PATH + ODT_FILE)
-        myOdtConverter = DocumentConverter(
+        converter = DCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + ODT_FILE)
-        self.assertEqual(myOdtConverter.document_to_yw7(
+        self.assertEqual(converter.document_to_yw7(
         ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),

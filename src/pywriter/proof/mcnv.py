@@ -8,7 +8,7 @@ from pywriter.core.yw7file import Yw7File
 from pywriter.core.novel import Novel
 
 
-class MdConverter():
+class MCnv():
 
     def __init__(self, yw7Path, mdPath):
         self.yw7Path = yw7Path
