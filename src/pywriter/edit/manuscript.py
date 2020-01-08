@@ -73,7 +73,7 @@ class Manuscript(PywFile, HTMLParser):
             text = re.sub('<br.*?>|<BR.*?>', '', text)
             text = re.sub('<i.*?>|<I.*?>|<em.*?>|<EM.*?>', '[i]', text)
             text = re.sub('</i>|</I>|</em>|</EM>', '[/i]', text)
-            text = re.sub('<b.*?>|<B.*?>|<strong.*?>|<STRONG.*?>', '[b]', text)
+            text = re.sub('<b>|<B>|<strong.*?>|<STRONG.*?>', '[b]', text)
             text = re.sub('</b>|</B>|</strong><|</STRONG>', '[/b]', text)
             text = text.replace('\n', '')
             text = text.replace('\r', '')

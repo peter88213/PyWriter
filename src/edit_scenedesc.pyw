@@ -1,4 +1,4 @@
-"""PyWriter v1.x - Import and export ywriter7 scenes for proofing. 
+"""PyWriter v1.2 - Import and export ywriter7 scenes for editing. 
 
 Proof reading file format: html (with invisible chapter and scene tags)
 
@@ -8,12 +8,14 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import sys
-from pywriter.gui.scnv_runner import SCnvRunner
+from pywriter.gui.mcnv_runner import MCnvRunner
+
+from pywriter.edit.scenedesc import SceneDesc
 
 
 def run(sourcePath, silentMode=True):
-    myConverter = SCnvRunner(sourcePath, '_scenedesc', silentMode)
-    myConverter.run()
+    document = SceneDesc('')
+    converter = MCnvRunner(sourcePath, document, '_scenedesc', silentMode)
 
 
 if __name__ == '__main__':
