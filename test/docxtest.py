@@ -9,7 +9,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 import zipfile
-from pywriter.proof.dcnv import DCnv
+
+from pywriter.convert.yw7cnv import Yw7Cnv
+from pywriter.core.yw7file import Yw7File
+
+from pywriter.proof.officefile import OfficeFile
 
 TEST_PROJECT = 'yw7 Sample Project'
 
@@ -17,9 +21,9 @@ TEST_PATH = '../test'
 TEST_EXEC_PATH = TEST_PATH + '/yw7/'
 TEST_DATA_PATH = TEST_PATH + '/data/'
 
-DOCX_FILE = TEST_PROJECT + '.docx'
-DOCX_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.docx'
-DOCX_CONTENT = 'word/document.xml'
+DOCUMENT_FILE = TEST_PROJECT + '.docx'
+DOCUMENT_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.docx'
+DOCUMENT_CONTENT = 'word/document.xml'
 
 YW7_FILE = TEST_PROJECT + '.yw7'
 YW7_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.yw7'
@@ -43,7 +47,7 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_EXEC_PATH + DOCX_FILE)
+        os.remove(TEST_EXEC_PATH + DOCUMENT_FILE)
     except:
         pass
     try:
@@ -51,7 +55,7 @@ def remove_all_testfiles():
     except:
         pass
     try:
-        os.remove(TEST_EXEC_PATH + DOCX_CONTENT)
+        os.remove(TEST_EXEC_PATH + DOCUMENT_CONTENT)
     except:
         pass
 
@@ -82,27 +86,33 @@ class NrmOpr(unittest.TestCase):
 
         copy_file(TEST_DATA_PATH + YW7_FILE,
                   TEST_EXEC_PATH + YW7_FILE)
-        converter = DCnv(
-            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + DOCX_FILE)
-        self.assertEqual(converter.yw7_to_document(
-        ), 'SUCCESS: "' + TEST_EXEC_PATH + DOCX_FILE + '" saved.')
 
-        with zipfile.ZipFile(TEST_EXEC_PATH + DOCX_FILE, 'r') as myzip:
-            myzip.extract(DOCX_CONTENT, TEST_EXEC_PATH)
+        yw7File = Yw7File(TEST_EXEC_PATH + YW7_FILE)
+        documentFile = OfficeFile(TEST_EXEC_PATH + DOCUMENT_FILE)
+        converter = Yw7Cnv()
+
+        self.assertEqual(converter.yw7_to_document(
+            yw7File, documentFile), 'SUCCESS: "' + TEST_EXEC_PATH + DOCUMENT_FILE + '" saved.')
+
+        with zipfile.ZipFile(TEST_EXEC_PATH + DOCUMENT_FILE, 'r') as myzip:
+            myzip.extract(DOCUMENT_CONTENT, TEST_EXEC_PATH)
             myzip.close
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + DOCX_CONTENT),
-                         read_file(TEST_DATA_PATH + DOCX_CONTENT))
+        self.assertEqual(read_file(TEST_EXEC_PATH + DOCUMENT_CONTENT),
+                         read_file(TEST_DATA_PATH + DOCUMENT_CONTENT))
 
     def test_docx_to_yw7(self):
         """Convert docx to markdown. """
 
-        copy_file(TEST_DATA_PATH + DOCX_PROOFED_FILE,
-                  TEST_EXEC_PATH + DOCX_FILE)
-        converter = DCnv(
-            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + DOCX_FILE)
-        self.assertEqual(converter.document_to_yw7(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
+        copy_file(TEST_DATA_PATH + DOCUMENT_PROOFED_FILE,
+                  TEST_EXEC_PATH + DOCUMENT_FILE)
+
+        yw7File = Yw7File(TEST_EXEC_PATH + YW7_FILE)
+        documentFile = OfficeFile(TEST_EXEC_PATH + DOCUMENT_FILE)
+        converter = Yw7Cnv()
+
+        self.assertEqual(converter.document_to_yw7(documentFile, yw7File), 'SUCCESS: ' + str(
+            TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
                          read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))

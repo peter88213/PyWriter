@@ -1,4 +1,4 @@
-"""HtmlFile - Class for html HtmlFile file operations and parsing.
+"""OfficeFile - Class for html OfficeFile file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -44,7 +44,7 @@ HTML_FOOTER = '\n</body>\n</html>\n'
 
 
 class HtmlFile(PywFile, HTMLParser):
-    """HTML file representation of an yWriter project's HtmlFile part.
+    """HTML file representation of an yWriter project's OfficeFile part.
 
     Represents a html file visible chapter and scene tags 
     to be read and written by Open/LibreOffice Writer.

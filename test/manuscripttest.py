@@ -8,7 +8,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 import unittest
-from pywriter.edit.mcnv import MCnv
+
+from pywriter.convert.yw7cnv import Yw7Cnv
+from pywriter.core.yw7file import Yw7File
+
+from pywriter.edit.manuscript import Manuscript
 
 TEST_PROJECT = 'yw7 Sample Project'
 
@@ -76,28 +80,34 @@ class NrmOpr(unittest.TestCase):
             read_file(REFERENCE_MANUSCRIPT),
             read_file(EDITED_MANUSCRIPT))
 
-    def test_exp_to_html(self):
+    def test_yw7_to_html(self):
         """Export yW7 scenes to html. """
 
-        converter = MCnv(YW7_FILE, MANUSCRIPT)
+        yw7File = Yw7File(YW7_FILE)
+        documentFile = Manuscript(MANUSCRIPT)
+        converter = Yw7Cnv()
+
         self.assertEqual(converter.yw7_to_document(
-        ), 'SUCCESS: "' + MANUSCRIPT + '" saved.')
+            yw7File, documentFile), 'SUCCESS: "' + MANUSCRIPT + '" saved.')
         # Read .yw7 file and convert scenes to html.
 
         self.assertEqual(read_file(MANUSCRIPT),
                          read_file(REFERENCE_MANUSCRIPT))
         # Verify the html file.
 
-    def test_imp_from_html(self):
+    def test_html_to_yw7(self):
         """Import proofed yw7 scenes from html. """
 
         copy_file(EDITED_MANUSCRIPT, MANUSCRIPT)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        converter = MCnv(YW7_FILE, MANUSCRIPT)
-        self.assertEqual(converter.document_to_yw7(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + YW7_FILE + '".')
+        yw7File = Yw7File(YW7_FILE)
+        documentFile = Manuscript(MANUSCRIPT)
+        converter = Yw7Cnv()
+
+        self.assertEqual(converter.document_to_yw7(documentFile, yw7File),
+                         'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + YW7_FILE + '".')
         # Convert document to xml and replace .yw7 file.
 
         self.assertEqual(read_file(YW7_FILE),

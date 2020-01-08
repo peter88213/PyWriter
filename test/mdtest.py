@@ -8,7 +8,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 import unittest
-from pywriter.proof.mdcnv import MdCnv
+
+from pywriter.convert.yw7cnv import Yw7Cnv
+from pywriter.core.yw7file import Yw7File
+
+from pywriter.proof.mdfile import MdFile
 
 
 TEST_PROJECT = 'yw7 Sample Project'
@@ -17,8 +21,8 @@ TEST_PATH = os.getcwd()
 TEST_EXEC_PATH = 'yw7/'
 TEST_DATA_PATH = 'data/'
 
-MD_FILE = TEST_PROJECT + '.md'
-MD_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.md'
+DOCUMENT_FILE = TEST_PROJECT + '.md'
+DOCUMENT_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.md'
 
 YW7_FILE = TEST_PROJECT + '.yw7'
 YW7_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.yw7'
@@ -42,7 +46,7 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_EXEC_PATH + MD_FILE)
+        os.remove(TEST_EXEC_PATH + DOCUMENT_FILE)
     except:
         pass
     try:
@@ -73,33 +77,37 @@ class NrmOpr(unittest.TestCase):
             read_file(TEST_DATA_PATH + YW7_FILE),
             read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + MD_PROOFED_FILE),
-            read_file(TEST_DATA_PATH + MD_FILE))
+            read_file(TEST_DATA_PATH + DOCUMENT_PROOFED_FILE),
+            read_file(TEST_DATA_PATH + DOCUMENT_FILE))
 
-    def test_exp_to_md(self):
+    def test_yw7_to_md(self):
         """Export yW7 scenes to markdown. """
 
-        converter = MdCnv(
-            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
+        yw7File = Yw7File(TEST_EXEC_PATH + YW7_FILE)
+        documentFile = MdFile(TEST_EXEC_PATH + DOCUMENT_FILE)
+        converter = Yw7Cnv()
+
         self.assertEqual(converter.yw7_to_document(
-        ), 'SUCCESS: "' + TEST_EXEC_PATH + MD_FILE + '" saved.')
+            yw7File, documentFile), 'SUCCESS: "' + TEST_EXEC_PATH + DOCUMENT_FILE + '" saved.')
 
         # Read .yw7 file and convert xml to markdown.
-        self.assertEqual(read_file(TEST_EXEC_PATH + MD_FILE),
-                         read_file(TEST_DATA_PATH + MD_FILE))
+        self.assertEqual(read_file(TEST_EXEC_PATH + DOCUMENT_FILE),
+                         read_file(TEST_DATA_PATH + DOCUMENT_FILE))
 
-    def test_imp_from_md(self):
+    def test_md_to_yw7(self):
         """Import proofed yw7 scenes from markdown . """
 
-        copy_file(TEST_DATA_PATH + MD_PROOFED_FILE,
-                  TEST_EXEC_PATH + MD_FILE)
+        copy_file(TEST_DATA_PATH + DOCUMENT_PROOFED_FILE,
+                  TEST_EXEC_PATH + DOCUMENT_FILE)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        myMCnv = MdCnv(
-            TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
-        self.assertEqual(myMCnv.document_to_yw7(
-        ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
+        yw7File = Yw7File(TEST_EXEC_PATH + YW7_FILE)
+        documentFile = MdFile(TEST_EXEC_PATH + DOCUMENT_FILE)
+        converter = Yw7Cnv()
+
+        self.assertEqual(converter.document_to_yw7(documentFile, yw7File), 'SUCCESS: ' + str(
+            TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
         # Convert markdown to xml and replace .yw7 file.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),

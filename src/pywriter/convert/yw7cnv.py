@@ -8,10 +8,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 class Yw7Cnv():
 
     def yw7_to_document(self, yw7File, documentFile):
-        """Read .yw7 file and convert xml to markdown. """
+        """Read .yw7 file and convert xml to a document file. """
 
         if yw7File.is_locked():
-            return('ERROR: "' + yw7File.filePath + '" seems to be locked. Please close yWriter 7.')
+            return('ERROR: yWriter 7 seems to be open. Please close first.')
 
         if yw7File.filePath is None:
             return('ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.')
@@ -20,13 +20,18 @@ class Yw7Cnv():
         if message.startswith('ERROR'):
             return(message)
 
+        if documentFile.file_exists():
+
+            if not self.confirm_overwrite(documentFile.filePath):
+                return('Program abort by user.')
+
         return(documentFile.write(yw7File))
 
     def document_to_yw7(self, documentFile, yw7File):
-        """Convert markdown to xml and replace .yw7 file. """
+        """Read document file, convert its content to xml, and replace .yw7 file. """
 
         if yw7File.is_locked():
-            return('ERROR: "' + yw7File.filePath + '" seems to be locked. Please close yWriter 7.')
+            return('ERROR: yWriter 7 seems to be open. Please close first.')
 
         if yw7File.filePath is None:
             return('ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.')
@@ -38,7 +43,7 @@ class Yw7Cnv():
                 return('Program abort by user.')
 
         if documentFile.filePath is None:
-            return('ERROR: "' + documentFile.filePath + '" is not a Markdown file.')
+            return('ERROR: "' + documentFile.filePath + '" is not of the supported type.')
 
         if not documentFile.file_exists():
             return('ERROR: "' + documentFile.filePath + '" not found.')
@@ -55,8 +60,10 @@ class Yw7Cnv():
         if message.startswith('ERROR'):
             return(message)
 
+        '''
         if prjStructure != yw7File.get_structure():
             return('ERROR: Structure mismatch - yWriter project not modified.')
+        '''
 
         return(yw7File.write(documentFile))
 

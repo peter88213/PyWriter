@@ -3,7 +3,7 @@
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.proof.htmlfile import HtmlFile
+from pywriter.proof.htmlfile import OfficeFile
 from pywriter.core.yw7file import Yw7File
 from pywriter.core.novel import Novel
 
@@ -14,7 +14,7 @@ class HCnv():
         self.yw7Path = yw7Path
         self.yw7File = Yw7File(self.yw7Path)
         self.documentPath = htmlPath
-        self.documentFile = HtmlFile(self.documentPath)
+        self.documentFile = OfficeFile(self.documentPath)
         self.novel = Novel()
 
     def yw7_to_document(self):
