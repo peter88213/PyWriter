@@ -8,7 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 import unittest
-from pywriter.proof.mcnv import MCnv
+from pywriter.proof.mdcnv import MdCnv
 
 
 TEST_PROJECT = 'yw7 Sample Project'
@@ -79,7 +79,7 @@ class NrmOpr(unittest.TestCase):
     def test_exp_to_md(self):
         """Export yW7 scenes to markdown. """
 
-        converter = MCnv(
+        converter = MdCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
         self.assertEqual(converter.yw7_to_md(
         ), 'SUCCESS: "' + TEST_EXEC_PATH + MD_FILE + '" saved.')
@@ -96,7 +96,7 @@ class NrmOpr(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        myMCnv = MCnv(
+        myMCnv = MdCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
         self.assertEqual(myMCnv.md_to_yw7(
         ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
