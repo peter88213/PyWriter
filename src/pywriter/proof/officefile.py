@@ -16,32 +16,37 @@ class OfficeFile(MdFile):
 
     def __init__(self, filePath):
         MdFile.__init__(self, 'temp.md')
-        self._documentPath = None
-        self.documentPath = filePath
+        self._filePath = None
+        self.filePath = filePath
+        self._tempFile = 'temp.md'
 
     @property
-    def documentPath(self):
-        return(self._documentPath)
+    def filePath(self):
+        return(self._filePath)
 
-    @documentPath.setter
-    def documentPath(self, pathToDoc):
-        nameParts = pathToDoc.split('.')
+    @filePath.setter
+    def filePath(self, documentPath):
+        nameParts = documentPath.split('.')
         fileExt = nameParts[len(nameParts) - 1]
         if fileExt in self._fileExtensions:
             self._fileExtension = fileExt
-            self._documentPath = pathToDoc
+            self._filePath = documentPath
 
     def read(self):
         """Generate and read a temporary Markdown file. """
 
-        if not os.path.isfile(self.documentPath):
-            return('ERROR: "' + self.documentPath + '" not found.')
+        if not os.path.isfile(self.filePath):
+            return('ERROR: "' + self.filePath + '" not found.')
 
-        convert_file(self.documentPath, 'markdown_strict', format=self._fileExtension,
-                     outputfile=self.filePath, extra_args=['--wrap=none'])
+        convert_file(self.filePath, 'markdown_strict', format=self._fileExtension,
+                     outputfile=self._tempFile, extra_args=['--wrap=none'])
         # Let pandoc read the document file and convert to markdown.
 
+        documentPath = self._filePath
+        self._filePath = self._tempFile
         message = MdFile.read(self)
+        self._filePath = documentPath
+        os.remove(self._tempFile)
 
         if message.startswith('ERROR'):
             return(message)
@@ -51,33 +56,36 @@ class OfficeFile(MdFile):
     def write(self, novel) -> str:
         """Write to a temporary Markdown file and convert it into an office document. """
 
+        documentPath = self._filePath
+        self._filePath = self._tempFile
         message = MdFile.write(self, novel)
+        self._filePath = documentPath
 
         if message.startswith('ERROR'):
             return(message)
 
         try:
-            os.remove(self.documentPath)
+            os.remove(self.filePath)
 
         except(FileNotFoundError):
             pass
 
-        convert_file(self.filePath, self._fileExtension, format='markdown_strict',
-                     outputfile=self.documentPath)
+        convert_file(self._tempFile, self._fileExtension, format='markdown_strict',
+                     outputfile=self.filePath)
         # Let pandoc convert markdown and write to .document file.
 
-        os.remove(self.filePath)
+        os.remove(self._tempFile)
 
-        if os.path.isfile(self.documentPath):
-            return(message.replace(self.filePath, self.documentPath))
+        if os.path.isfile(self.filePath):
+            return(message.replace(self._tempFile, self.filePath))
 
         else:
-            return('ERROR: Could not create "' + self.documentPath + '".')
+            return('ERROR: Could not create "' + self.filePath + '".')
 
     def file_exists(self) -> bool:
         """Check whether the file specified by _filePath exists. """
 
-        if os.path.isfile(self.documentPath):
+        if os.path.isfile(self.filePath):
             return(True)
         else:
             return(False)

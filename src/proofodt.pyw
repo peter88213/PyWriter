@@ -8,12 +8,15 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import sys
-from pywriter.gui.dcnv_runner import DCnvRunner
+
+from pywriter.convert.cnv_runner import CnvRunner
+
+from pywriter.proof.officefile import OfficeFile
 
 
 def run(sourcePath, silentMode=True):
-    myConverter = DCnvRunner(sourcePath, 'odt', silentMode)
-    myConverter.run()
+    document = OfficeFile('')
+    converter = CnvRunner(sourcePath, document, 'odt', silentMode)
 
 
 if __name__ == '__main__':

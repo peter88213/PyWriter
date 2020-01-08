@@ -11,19 +11,17 @@ import os
 from tkinter import *
 from tkinter import messagebox
 
-from pywriter.proof.dcnv import DCnv
+from pywriter.convert.yw7cnv import Yw7Cnv
+from pywriter.core.yw7file import Yw7File
 
 
 TITLE = 'PyWriter v1.2'
 
 
-class DCnvRunner(DCnv):
+class CnvRunner(Yw7Cnv):
 
-    def __init__(self, sourcePath, extension, silentMode=True):
+    def __init__(self, sourcePath, document, extension, silentMode=True):
         """File conversion for proofreading """
-        self.silentMode = silentMode
-        self.extension = extension
-        self.sourcePath = sourcePath
         root = Tk()
         root.geometry("640x480")
         root.title(TITLE)
@@ -33,45 +31,55 @@ class DCnvRunner(DCnv):
         self.label.pack(padx=10, pady=10)
         self.messagelabel = Label(root, text='')
         self.messagelabel.pack(padx=5, pady=5)
-        self.run()
-        if not self.silentMode:
+
+        self.silentMode = silentMode
+
+        self.run(sourcePath, document, extension)
+
+        if not silentMode:
             root.quitButton = Button(text="OK", command=quit)
             root.quitButton.config(height=1, width=10)
             root.quitButton.pack(padx=5, pady=5)
             root.mainloop()
 
-    def run(self):
+    def run(self, sourcePath, document, extension):
         """File conversion for proofreading """
-        sourceFile = os.path.split(self.sourcePath)
+        sourceFile = os.path.split(sourcePath)
         pathToSource = sourceFile[0]
         if pathToSource is not None:
             if pathToSource != '':
                 pathToSource = pathToSource + '/'
 
         if sourceFile[1].endswith('.yw7'):
-            self.yw7Path = pathToSource + sourceFile[1]
-            self.documentPath = pathToSource + \
-                sourceFile[1].split('.yw7')[0] + '.' + self.extension
+            yw7Path = pathToSource + sourceFile[1]
+            document.filePath = pathToSource + \
+                sourceFile[1].split('.yw7')[0] + '.' + extension
             self.label.config(
-                text='Export yWriter7 scenes to .' + self.extension)
-            self.messagelabel.config(text='Project: "' + self.yw7Path + '"')
-            DCnv.__init__(self, self.yw7Path, self.documentPath)
-            self.messagelabel.config(text=self.yw7_to_document())
+                text='Export yWriter7 scenes to .' + extension)
+            self.messagelabel.config(text='Project: "' + yw7Path + '"')
 
-        elif sourceFile[1].endswith('.' + self.extension):
-            self.documentPath = pathToSource + sourceFile[1]
-            self.yw7Path = pathToSource + \
-                sourceFile[1].split('.' + self.extension)[0] + '.yw7'
-            self.label.config(
-                text='Import yWriter7 scenes from .' + self.extension)
+            yw7File = Yw7File(yw7Path)
+
             self.messagelabel.config(
-                text='Proofed scenes in "' + self.documentPath + '"')
-            DCnv.__init__(self, self.yw7Path, self.documentPath)
-            self.messagelabel.config(text=self.document_to_yw7())
+                text=self.yw7_to_document(yw7File, document))
+
+        elif sourceFile[1].endswith('.' + extension):
+            document.filePath = pathToSource + sourceFile[1]
+            yw7Path = pathToSource + \
+                sourceFile[1].split('.' + extension)[0] + '.yw7'
+            self.label.config(
+                text='Import yWriter7 scenes from .' + extension)
+            self.messagelabel.config(
+                text='Proofed scenes in "' + document.filePath + '"')
+
+            yw7File = Yw7File(yw7Path)
+
+            self.messagelabel.config(
+                text=self.document_to_yw7(document, yw7File))
 
         else:
             self.messagelabel.config(
-                text='Argument missing (drag and drop error?)\nInput file must be .yw7 or .' + self.extension + ' type.')
+                text='Argument missing (drag and drop error?)\nInput file must be .yw7 or .' + extension + ' type.')
 
     def confirm_overwrite(self, file):
         """ Invoked by subclass if file already exists. """

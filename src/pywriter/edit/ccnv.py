@@ -21,8 +21,8 @@ class CCnv():
     def __init__(self, yw7Path, htmlPath):
         self.yw7Path = yw7Path
         self.yw7File = Yw7File(self.yw7Path)
-        self.documentPath = htmlPath
-        self.documentFile = ChapterDesc(self.documentPath)
+        self.filePath = htmlPath
+        self.documentFile = ChapterDesc(self.filePath)
 
     def yw7_to_document(self):
         """Read .yw7 file and convert sceneContents to html. """
@@ -40,7 +40,7 @@ class CCnv():
 
         if self.documentFile.file_exists():
 
-            if not self.confirm_overwrite(self.documentPath):
+            if not self.confirm_overwrite(self.filePath):
                 return('Program abort by user.')
 
         return(self.documentFile.write(self.yw7File))
@@ -63,10 +63,10 @@ class CCnv():
             return(message)
 
         if self.documentFile.filePath is None:
-            return('ERROR: "' + self.documentPath + '" is not a HTML file.')
+            return('ERROR: "' + self.filePath + '" is not a HTML file.')
 
         if not self.documentFile.file_exists():
-            return('ERROR: "' + self.documentPath + '" not found.')
+            return('ERROR: "' + self.filePath + '" not found.')
 
         message = self.documentFile.read()
 
