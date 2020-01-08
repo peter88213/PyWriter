@@ -13,11 +13,11 @@ class HCnv():
     def __init__(self, yw7Path, htmlPath):
         self.yw7Path = yw7Path
         self.yw7File = Yw7File(self.yw7Path)
-        self.htmlPath = htmlPath
-        self.htmlFile = HtmlFile(self.htmlPath)
+        self.documentPath = htmlPath
+        self.documentFile = HtmlFile(self.documentPath)
         self.novel = Novel()
 
-    def yw7_to_html(self):
+    def yw7_to_document(self):
         """Read .yw7 file and convert xml to markdown. """
 
         if self.yw7File.is_locked():
@@ -30,9 +30,9 @@ class HCnv():
         if message.startswith('ERROR'):
             return(message)
 
-        return(self.htmlFile.write(self.yw7File))
+        return(self.documentFile.write(self.yw7File))
 
-    def html_to_yw7(self):
+    def document_to_yw7(self):
         """Convert markdown to xml and replace .yw7 file. """
 
         if self.yw7File.is_locked():
@@ -47,17 +47,17 @@ class HCnv():
             if not self.confirm_overwrite(self.yw7Path):
                 return('Program abort by user.')
 
-        if self.htmlFile.filePath is None:
-            return('ERROR: "' + self.htmlPath + '" is not a HTML file.')
+        if self.documentFile.filePath is None:
+            return('ERROR: "' + self.documentPath + '" is not a HTML file.')
 
-        if not self.htmlFile.file_exists():
-            return('ERROR: "' + self.htmlPath + '" not found.')
+        if not self.documentFile.file_exists():
+            return('ERROR: "' + self.documentPath + '" not found.')
 
-        message = self.htmlFile.read()
+        message = self.documentFile.read()
         if message.startswith('ERROR'):
             return(message)
 
-        prjStructure = self.htmlFile.get_structure()
+        prjStructure = self.documentFile.get_structure()
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
@@ -68,7 +68,7 @@ class HCnv():
         if prjStructure != self.yw7File.get_structure():
             return('ERROR: Structure mismatch - yWriter project not modified.')
 
-        return(self.yw7File.write(self.htmlFile))
+        return(self.yw7File.write(self.documentFile))
 
     def confirm_overwrite(self, fileName):
         return(True)

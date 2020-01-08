@@ -81,7 +81,7 @@ class NrmOpr(unittest.TestCase):
 
         converter = MdCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
-        self.assertEqual(converter.yw7_to_md(
+        self.assertEqual(converter.yw7_to_document(
         ), 'SUCCESS: "' + TEST_EXEC_PATH + MD_FILE + '" saved.')
 
         # Read .yw7 file and convert xml to markdown.
@@ -98,7 +98,7 @@ class NrmOpr(unittest.TestCase):
 
         myMCnv = MdCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + MD_FILE)
-        self.assertEqual(myMCnv.md_to_yw7(
+        self.assertEqual(myMCnv.document_to_yw7(
         ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
         # Convert markdown to xml and replace .yw7 file.
 

@@ -190,16 +190,16 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_zeGGACtiEeqgj_wxJ3Xgsg" name="MdCnv">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_68KaEStiEeqgj_wxJ3Xgsg" name="yw7File" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_68JL8CtiEeqgj_wxJ3Xgsg"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_8NffEStiEeqgj_wxJ3Xgsg" name="mdFile" type="_3IiCUCtgEeqgj_wxJ3Xgsg" association="_8NeQ8CtiEeqgj_wxJ3Xgsg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_8NffEStiEeqgj_wxJ3Xgsg" name="documentFile" visibility="public" type="_3IiCUCtgEeqgj_wxJ3Xgsg" association="_8NeQ8CtiEeqgj_wxJ3Xgsg"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_JqyYYCtoEeqgj_wxJ3Xgsg" name="yw7Path">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_MJYhwCtoEeqgj_wxJ3Xgsg" name="mdPath">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_MJYhwCtoEeqgj_wxJ3Xgsg" name="documentPath" visibility="public">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_2YibMCyREeqdSpNF8GdbXA" name="__init__"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_Xyco4CtjEeqgj_wxJ3Xgsg" name="yw7_to_md"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_aSEtACtjEeqgj_wxJ3Xgsg" name="md_to_yw7"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Xyco4CtjEeqgj_wxJ3Xgsg" name="yw7_to_document"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_aSEtACtjEeqgj_wxJ3Xgsg" name="document_to_yw7"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_d9q_kCtkEeqgj_wxJ3Xgsg" name="confirm_overwrite"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_pnqhgCtkEeqgj_wxJ3Xgsg" name="DCnv">
@@ -210,7 +210,7 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_obQaAjINEeqilJYfjdmi4Q" name="yw7File" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_obOk0DINEeqilJYfjdmi4Q"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_Q0fHkTIOEeqilJYfjdmi4Q" name="officeFile" type="_FoJAYDINEeqilJYfjdmi4Q" association="_Q0dSYDIOEeqilJYfjdmi4Q"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Q0fHkTIOEeqilJYfjdmi4Q" name="documentFile" visibility="public" type="_FoJAYDINEeqilJYfjdmi4Q" association="_Q0dSYDIOEeqilJYfjdmi4Q"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_8-qaoCyREeqdSpNF8GdbXA" name="__init__"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_UQwjcCtmEeqgj_wxJ3Xgsg" name="yw7_to_document"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_W49UwCtmEeqgj_wxJ3Xgsg" name="document_to_yw7"/>
@@ -232,14 +232,14 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_rLhNEzILEeqilJYfjdmi4Q" name="yw7Path">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_rLhNFDILEeqilJYfjdmi4Q" name="htmlPath">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_rLhNFDILEeqilJYfjdmi4Q" name="documentPath" visibility="public">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_77zTYDILEeqilJYfjdmi4Q" name="htmlFile" type="_Zo7VgDIKEeqilJYfjdmi4Q" association="_77r-oDILEeqilJYfjdmi4Q"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_77zTYDILEeqilJYfjdmi4Q" name="documentFile" visibility="public" type="_Zo7VgDIKEeqilJYfjdmi4Q" association="_77r-oDILEeqilJYfjdmi4Q"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_D-R8EDIMEeqilJYfjdmi4Q" name="yw7File" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_D-O4wDIMEeqilJYfjdmi4Q"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_rLhNFTILEeqilJYfjdmi4Q" name="__init__"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_rLhNFjILEeqilJYfjdmi4Q" name="yw7_to_html"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_rLhNFzILEeqilJYfjdmi4Q" name="html_to_yw7"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rLhNFjILEeqilJYfjdmi4Q" name="yw7_to_document"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rLhNFzILEeqilJYfjdmi4Q" name="document_to_yw7"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_rLhNGDILEeqilJYfjdmi4Q" name="confirm_overwrite"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_FoJAYDINEeqilJYfjdmi4Q" name="OfficeFile">
@@ -275,10 +275,10 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_8p76gCwSEequtbdKEmlZqQ" name="yw7File" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_8p4QICwSEequtbdKEmlZqQ"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_obOU0CtqEeqgj_wxJ3Xgsg" name="htmlPath">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_obOU0CtqEeqgj_wxJ3Xgsg" name="documentPath" visibility="public">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_BXMqMitrEeqgj_wxJ3Xgsg" name="htmlFile" type="_RkzFwCthEeqgj_wxJ3Xgsg" association="_BXLcECtrEeqgj_wxJ3Xgsg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_BXMqMitrEeqgj_wxJ3Xgsg" name="documentFile" visibility="public" type="_RkzFwCthEeqgj_wxJ3Xgsg" association="_BXLcECtrEeqgj_wxJ3Xgsg"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_ClRcUytqEeqgj_wxJ3Xgsg" name="__-init__"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_KbXO0CtqEeqgj_wxJ3Xgsg" name="document_to_yw7"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_ClRcUitqEeqgj_wxJ3Xgsg" name="confirm_overwrite"/>
@@ -290,10 +290,10 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_liJKATFsEeq5SLjbDFDS4A" name="yw7Path">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_liJKAzFsEeq5SLjbDFDS4A" name="htmlPath">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_liJKAzFsEeq5SLjbDFDS4A" name="documentPath" visibility="public">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_vlUCojFtEeq5SLjbDFDS4A" name="htmlFile" type="_xCJCcDFsEeq5SLjbDFDS4A" association="_vlRmYDFtEeq5SLjbDFDS4A"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_vlUCojFtEeq5SLjbDFDS4A" name="documentFile" visibility="public" type="_xCJCcDFsEeq5SLjbDFDS4A" association="_vlRmYDFtEeq5SLjbDFDS4A"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_ZwVd8jFuEeq5SLjbDFDS4A" name="yw7File" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_ZwTowDFuEeq5SLjbDFDS4A"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_liJKBTFsEeq5SLjbDFDS4A" name="__-init__"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_liJKBjFsEeq5SLjbDFDS4A" name="document_to_yw7"/>
@@ -304,10 +304,10 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_l-Wk4TFsEeq5SLjbDFDS4A" name="yw7Path">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_l-Wk4zFsEeq5SLjbDFDS4A" name="htmlPath">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_l-Wk4zFsEeq5SLjbDFDS4A" name="documentPath" visibility="public">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_utNV8DFtEeq5SLjbDFDS4A" name="htmlFile" type="_PFuK0DFtEeq5SLjbDFDS4A" association="_utHPUDFtEeq5SLjbDFDS4A"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_utNV8DFtEeq5SLjbDFDS4A" name="documentFile" visibility="public" type="_PFuK0DFtEeq5SLjbDFDS4A" association="_utHPUDFtEeq5SLjbDFDS4A"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_TV6YMTFuEeq5SLjbDFDS4A" name="yw7File" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_TV3U4DFuEeq5SLjbDFDS4A"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_l-Wk5TFsEeq5SLjbDFDS4A" name="__-init__"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_l-Wk5jFsEeq5SLjbDFDS4A" name="document_to_yw7"/>

@@ -21,8 +21,8 @@ class SCnv():
     def __init__(self, yw7Path, htmlPath):
         self.yw7Path = yw7Path
         self.yw7File = Yw7File(self.yw7Path)
-        self.htmlPath = htmlPath
-        self.htmlFile = SceneDesc(self.htmlPath)
+        self.documentPath = htmlPath
+        self.documentFile = SceneDesc(self.documentPath)
 
     def yw7_to_document(self):
         """Read .yw7 file and convert sceneContents to html. """
@@ -38,12 +38,12 @@ class SCnv():
         if message.startswith('ERROR'):
             return(message)
 
-        if self.htmlFile.file_exists():
+        if self.documentFile.file_exists():
 
-            if not self.confirm_overwrite(self.htmlPath):
+            if not self.confirm_overwrite(self.documentPath):
                 return('Program abort by user.')
 
-        return(self.htmlFile.write(self.yw7File))
+        return(self.documentFile.write(self.yw7File))
 
     def document_to_yw7(self):
         """Convert html into yw7 newContents and modify .yw7 file. """
@@ -57,18 +57,18 @@ class SCnv():
         elif not self.confirm_overwrite(self.yw7Path):
             return('Program abort by user.')
 
-        if self.htmlFile.filePath is None:
-            return('ERROR: "' + self.htmlPath + '" is not a HTML file.')
+        if self.documentFile.filePath is None:
+            return('ERROR: "' + self.documentPath + '" is not a HTML file.')
 
-        if not self.htmlFile.file_exists():
-            return('ERROR: "' + self.htmlPath + '" not found.')
+        if not self.documentFile.file_exists():
+            return('ERROR: "' + self.documentPath + '" not found.')
 
-        message = self.htmlFile.read()
+        message = self.documentFile.read()
 
         if message.startswith('ERROR'):
             return(message)
 
-        prjStructure = self.htmlFile.get_structure()
+        prjStructure = self.documentFile.get_structure()
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
@@ -80,7 +80,7 @@ class SCnv():
         if prjStructure != self.yw7File.get_structure():
             return('ERROR: Structure mismatch - yWriter project not modified.')
 
-        return(self.yw7File.write(self.htmlFile))
+        return(self.yw7File.write(self.documentFile))
 
     def confirm_overwrite(self, fileName):
         return(True)

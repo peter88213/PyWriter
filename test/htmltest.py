@@ -80,7 +80,7 @@ class NrmOpr(unittest.TestCase):
 
         converter = HCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
-        self.assertEqual(converter.yw7_to_html(
+        self.assertEqual(converter.yw7_to_document(
         ), 'SUCCESS: "' + TEST_EXEC_PATH + HTML_FILE + '" saved.')
         # Read .yw7 file and convert scenes to html.
 
@@ -98,7 +98,7 @@ class NrmOpr(unittest.TestCase):
 
         converter = HCnv(
             TEST_EXEC_PATH + YW7_FILE, TEST_EXEC_PATH + HTML_FILE)
-        self.assertEqual(converter.html_to_yw7(
+        self.assertEqual(converter.document_to_yw7(
         ), 'SUCCESS: ' + str(TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
         # Convert document to xml and replace .yw7 file.
 
