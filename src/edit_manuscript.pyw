@@ -8,14 +8,15 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import sys
-from pywriter.gui.mcnv_runner import MCnvRunner
+from pywriter.convert.cnv_runner import CnvRunner
 
 from pywriter.edit.manuscript import Manuscript
 
 
 def run(sourcePath, silentMode=True):
     document = Manuscript('')
-    converter = MCnvRunner(sourcePath, document, '_manuscript', silentMode)
+    converter = CnvRunner(sourcePath, document, 'html',
+                          silentMode, '_manuscript')
 
 
 if __name__ == '__main__':

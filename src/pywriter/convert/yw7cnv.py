@@ -1,5 +1,10 @@
-"""PyWriter module
+"""Import and export yWriter 7 data. 
 
+yWriter 7 standalone file converter with basic error handling 
+
+The tests below may be included in the 'XyFile' classes at a later date.
+
+Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -17,6 +22,7 @@ class Yw7Cnv():
             return('ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.')
 
         message = yw7File.read()
+
         if message.startswith('ERROR'):
             return(message)
 
@@ -38,7 +44,9 @@ class Yw7Cnv():
 
         if not yw7File.file_exists():
             return('ERROR: Project "' + yw7File.filePath + '" not found.')
+
         else:
+
             if not self.confirm_overwrite(yw7File.filePath):
                 return('Program abort by user.')
 
@@ -49,19 +57,23 @@ class Yw7Cnv():
             return('ERROR: "' + documentFile.filePath + '" not found.')
 
         message = documentFile.read()
+
         if message.startswith('ERROR'):
             return(message)
 
         prjStructure = documentFile.get_structure()
+
         if prjStructure == '':
             return('ERROR: Source file contains no yWriter project structure information.')
 
         message = yw7File.read()
+        # initialize yw7File data
+
         if message.startswith('ERROR'):
             return(message)
 
-        '''
-        if prjStructure != yw7File.get_structure():
+        ''' The structure test shown below does not work for ChapterDesc import
+       if prjStructure != yw7File.get_structure():
             return('ERROR: Structure mismatch - yWriter project not modified.')
         '''
 
