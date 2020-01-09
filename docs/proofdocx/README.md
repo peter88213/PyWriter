@@ -1,8 +1,8 @@
-# yw_proof_docx v1.1.0
+# yw_proof_docx v1.2.0
 
 Import and export ywriter7 scenes for proof reading.
 
-Proof reading file format =  __DOCX__  (Office Open XML format) for _Microsoft Word_.
+Proof reading file format:  __DOCX__  (Office Open XML format) for _Microsoft Word_.
 
 
 
@@ -26,9 +26,9 @@ Proof reading file format =  __DOCX__  (Office Open XML format) for _Microsoft W
 
 2. Open the folder containing your yWriter 7 project. Drag your project file's Icon and drop it on the `yw_proof_docx.pyw` Icon.
 
-3. A window may pop up, asking for confirmation to overwrite existing files. Hit  _yes_  in your language.
+3. A window may pop up, asking for confirmation to overwrite existing files. Click  _yes_  in your language.
 
-4. On success, a `docx` proof reading document appears in the folder. Close the converter's message and double click the proof reading document icon.
+4. On success, a `docx` proof reading document appears in the folder. Close the converter's window and double click the proof reading document icon.
 
 The proof reading document contains Chapter `[ChID:x]` and scene `[ScID:y]` markers according to yWriter 5 standard.  __Do not touch them__  if you want to be able to reimport the document into yWriter. 
 
@@ -46,7 +46,7 @@ __Warning:__  Due to  _Pandoc_  operation, the converter may  __remove blank lin
 
 2. Drag your proof read document's Icon and drop it on the `yw_proof_docx.pyw` Icon.
   
-3. A window pops up, asking for confirmation to overwrite the yw7 project. Hit  _yes_  in your language.
+3. A window pops up, asking for confirmation to overwrite the yw7 project. Click  _yes_  in your language.
 
 4. On success, the `yw7` project file is updated. Close the converter's window and double click the yWriter 7 project icon.
 

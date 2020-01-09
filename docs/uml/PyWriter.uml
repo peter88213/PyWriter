@@ -218,32 +218,27 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_seuasCwTEequtbdKEmlZqQ" name="convert">
     <ownedComment xmi:type="uml:Comment" xmi:id="_gL1uoC2FEeqtbohuTq_ZAA" annotatedElement="_WAqBgCtrEeqgj_wxJ3Xgsg">
-      <body>File conversion is to be started by any script instantiating an 'xCnvRunner' object and calling 'run()'. &#xD;
+      <body>File conversion is to be started by any script instantiating an 'XyFile' object of the desired type and an 'CnvRunner' object. &#xD;
 'silentMode' enables operation without user interaction.</body>
     </ownedComment>
     <ownedComment xmi:type="uml:Comment" xmi:id="_tX7EIDIUEeqilJYfjdmi4Q" annotatedElement="_WAqBgCtrEeqgj_wxJ3Xgsg">
-      <body>File conversion is to be started by any script instantiating an 'CnvRunner' object and a 'XyFile' object of the desired type, and calling CnvRunner's 'run()' method. &#xD;
+      <body>File conversion is to be started by any script instantiating an 'XyFile' object of the desired type and an 'CnvRunner' object. &#xD;
 </body>
     </ownedComment>
     <ownedComment xmi:type="uml:Comment" xmi:id="_pZZ08C2GEeqtbohuTq_ZAA" annotatedElement="_WAqBgCtrEeqgj_wxJ3Xgsg">
-      <body>File conversion is to be started by any script instantiating an 'xCnvRunner' object and calling 'run()'. &#xD;
-'silentMode' enables operation without user&#xD;
- interaction.</body>
+      <body>File conversion is to be started by any script instantiating an 'XyFile' object of the desired type and an 'CnvRunner' object. &#xD;
+'silentMode' enables operation without user interaction.</body>
     </ownedComment>
     <packagedElement xmi:type="uml:Class" xmi:id="_WAqBgCtrEeqgj_wxJ3Xgsg" name="CnvRunner">
-      <generalization xmi:type="uml:Generalization" xmi:id="_hlZQACtrEeqgj_wxJ3Xgsg" general="_ClRcUCtqEeqgj_wxJ3Xgsg"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_qmOXUCtrEeqgj_wxJ3Xgsg" name="silentMode">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_xTaBACtrEeqgj_wxJ3Xgsg" value="true"/>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_Rz_t8CyWEeqdSpNF8GdbXA" name="__init__"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_MFtjUC2EEeqtbohuTq_ZAA" name="run"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_eF9UsCtrEeqgj_wxJ3Xgsg" name="confirm_overwrite"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_ClRcUCtqEeqgj_wxJ3Xgsg" name="yW7Cnv">
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_KbXO0CtqEeqgj_wxJ3Xgsg" name="document_to_yw7"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_MWYKACtqEeqgj_wxJ3Xgsg" name="yw7_to_document"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_ClRcUitqEeqgj_wxJ3Xgsg" name="confirm_overwrite"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_KbXO0CtqEeqgj_wxJ3Xgsg" name="document_to_yw7"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_eF9UsCtrEeqgj_wxJ3Xgsg" name="confirm_overwrite"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_A4hzkDLyEeqxIbmpTiKmrw" client="_WAqBgCtrEeqgj_wxJ3Xgsg" supplier="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
     <packagedElement xmi:type="uml:Usage" xmi:id="_CoKlMDLyEeqxIbmpTiKmrw" client="_WAqBgCtrEeqgj_wxJ3Xgsg" supplier="_KfuycCtfEeqgj_wxJ3Xgsg"/>
