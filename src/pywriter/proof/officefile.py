@@ -6,7 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 
-from pywriter.proof.pypandoc import convert_file
+from pywriter.convert.pypandoc import convert_file
 from pywriter.proof.mdfile import MdFile
 
 

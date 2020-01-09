@@ -7,33 +7,13 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 from pywriter.edit.manuscript import Manuscript
+from pywriter.convert.hform import *
 
 
 HTML_HEADING_MARKERS = ("h3", "h2")
 # Index is yWriter's chapter type:
 # 0 is for an ordinary chapter
 # 1 is for a chapter beginning a section
-
-
-STYLESHEET = '<style type="text/css">\n' + \
-    'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
-    'h1, h2, h3, h4 {text-align: center}\n' +\
-    'h1 {letter-spacing: 0.5em; font-style: italic}' + \
-    'h1, h2 {font-weight: bold}\n' + \
-    'h3 {font-style: italic}\n' + \
-    'p.textbody {margin-top:0; margin-bottom:0}\n' + \
-    'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
-    'strong {font-weight:normal; text-transform: uppercase}\n' + \
-    '</style>\n'
-# Make the generated html file look good in a web browser.
-
-HTML_HEADER = '<html>\n' + '<head>\n' + \
-    '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + \
-    STYLESHEET + \
-    '<title>$bookTitle$</title>\n' + \
-    '</head>\n' + '<body>\n'
-
-HTML_FOOTER = '\n</body>\n</html>\n'
 
 
 class SceneDesc(Manuscript):
@@ -66,7 +46,7 @@ class SceneDesc(Manuscript):
             text = text.replace('Chapter ', '')
             return(text)
 
-        def format_yw7(text):
+        def to_html(text):
             """Convert yw7 raw markup """
             try:
                 text = text.replace('\n\n', '\n')
@@ -101,7 +81,7 @@ class SceneDesc(Manuscript):
                 text = text + '<!-- ' + self.scenes[scID].title + ' -->\n'
                 # Insert scene title as comment.
                 try:
-                    text = text + format_yw7(self.scenes[scID].desc)
+                    text = text + to_html(self.scenes[scID].desc)
                 except(TypeError):
                     text = text + ' '
                 text = text + '</p>\n'

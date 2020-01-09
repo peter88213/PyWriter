@@ -6,40 +6,17 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-import re
 from html.parser import HTMLParser
 
 from pywriter.core.pywfile import PywFile
 from pywriter.core.chapter import Chapter
 from pywriter.core.scene import Scene
+from pywriter.convert.hform import *
 
 HTML_HEADING_MARKERS = ("h2", "h1")
 # Index is yWriter's chapter type:
 # 0 is for an ordinary chapter
 # 1 is for a chapter beginning a section
-
-HTML_SCENE_DIVIDER = '* * *'
-# To be placed between invisible scene ending and beginning tags.
-
-STYLESHEET = '<style type="text/css">\n' + \
-    'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
-    'h1, h2, h3, h4 {text-align: center}\n' +\
-    'h1 {letter-spacing: 0.5em; font-style: italic}' + \
-    'h1, h2 {font-weight: bold}\n' + \
-    'h3 {font-style: italic}\n' + \
-    'p.textbody {margin-top:0; margin-bottom:0}\n' + \
-    'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
-    'strong {font-weight:normal; text-transform: uppercase}\n' + \
-    '</style>\n'
-# Make the generated html file look good in a web browser.
-
-HTML_HEADER = '<html>\n' + '<head>\n' + \
-    '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + \
-    STYLESHEET + \
-    '<title>$bookTitle$</title>\n' + \
-    '</head>\n' + '<body>\n'
-
-HTML_FOOTER = '\n</body>\n</html>\n'
 
 
 class Manuscript(PywFile, HTMLParser):
@@ -66,24 +43,6 @@ class Manuscript(PywFile, HTMLParser):
 
     def read(self):
         """Read data from html project file. """
-
-        def format_yw7(text):
-            """Convert html markup to yw7 raw markup. """
-
-            text = re.sub('<br.*?>|<BR.*?>', '', text)
-            text = re.sub('<i.*?>|<I.*?>|<em.*?>|<EM.*?>', '[i]', text)
-            text = re.sub('</i>|</I>|</em>|</EM>', '[/i]', text)
-            text = re.sub('<b>|<B>|<strong.*?>|<STRONG.*?>', '[b]', text)
-            text = re.sub('</b>|</B>|</strong><|</STRONG>', '[/b]', text)
-            text = text.replace('\n', '')
-            text = text.replace('\r', '')
-            text = text.replace('\t', ' ')
-
-            while '  ' in text:
-                text = text.replace('  ', ' ')
-
-            return(text)
-
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 text = (f.read())
@@ -95,7 +54,7 @@ class Manuscript(PywFile, HTMLParser):
             except(FileNotFoundError):
                 return('\nERROR: "' + self._filePath + '" not found.')
 
-        text = format_yw7(text)
+        text = to_yw7(text)
         self.feed(text)
         # Invoke HTML parser.
         return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
@@ -107,19 +66,6 @@ class Manuscript(PywFile, HTMLParser):
             """Fix auto-chapter titles for non-English """
 
             text = text.replace('Chapter ', '')
-            return(text)
-
-        def format_yw7(text):
-            """Convert yw7 raw markup """
-            try:
-                text = text.replace('\n\n', '\n')
-                text = text.replace('\n', '</p>\n<p class="firstlineindent">')
-                text = text.replace('[i]', '<em>')
-                text = text.replace('[/i]', '</em>')
-                text = text.replace('[b]', '<strong>')
-                text = text.replace('[/b]', '</strong>')
-            except:
-                pass
             return(text)
 
         if novel.title is not None:
@@ -150,7 +96,7 @@ class Manuscript(PywFile, HTMLParser):
                 # Insert scene title as comment.
                 try:
                     text = text + \
-                        format_yw7(self.scenes[scID].sceneContent)
+                        to_html(self.scenes[scID].sceneContent)
                 except(TypeError):
                     text = text + ' '
                 text = text + '</p>\n'

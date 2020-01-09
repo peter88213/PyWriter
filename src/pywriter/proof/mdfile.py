@@ -22,7 +22,7 @@ class MdFile(PywFile):
     def read(self):
         """Read data from markdown project file. """
 
-        def format_yw7(text):
+        def to_yw7(text):
             """Convert markdown to yw7 raw markup. """
 
             text = text.replace('\r', '\n')
@@ -41,7 +41,7 @@ class MdFile(PywFile):
         except(FileNotFoundError):
             return('ERROR: "' + self._filePath + '" not found.')
 
-        text = format_yw7(text)
+        text = to_yw7(text)
 
         sceneText = ''
         scID = ''
@@ -77,7 +77,7 @@ class MdFile(PywFile):
             text = text.replace('Chapter ', '')
             return(text)
 
-        def format_md(text):
+        def to_md(text):
             """Convert yw7 specific markup """
 
             text = text.replace('\n\n', '\n')
@@ -113,7 +113,7 @@ class MdFile(PywFile):
                     text = text + '\n'
                 text = text + '\\[/ScID\\]\n'
             text = text + '\\[/ChID\\]\n'
-        text = format_md(text)
+        text = to_md(text)
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
