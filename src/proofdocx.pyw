@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.convert.cnv_runner import CnvRunner
+from pywriter.converter.cnv_runner import CnvRunner
 
 from pywriter.model.officefile import OfficeFile
 

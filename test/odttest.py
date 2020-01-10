@@ -9,7 +9,7 @@ import os
 import unittest
 import zipfile
 
-from pywriter.convert.yw7cnv import Yw7Cnv
+from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
 from pywriter.model.officefile import OfficeFile

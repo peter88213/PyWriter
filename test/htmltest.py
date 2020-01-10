@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 
-from pywriter.convert.yw7cnv import Yw7Cnv
+from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
 from pywriter.model.htmlfile import HtmlFile
