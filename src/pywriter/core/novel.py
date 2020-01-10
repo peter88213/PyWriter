@@ -6,6 +6,9 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+from collections import OrderedDict
+# may be deprecated as of Python 3.6
+
 
 class Novel():
     """yWriter project representation. 
@@ -14,7 +17,7 @@ class Novel():
 
     title : str
         the novel's title.
-    chapters : dict 
+    chapters : OrderedDict 
         key = chapter ID, value = Chapter object.
         The order of the elements corresponds to the novel's order 
         of the chapters.
@@ -34,7 +37,10 @@ class Novel():
 
     def __init__(self):
         self.title = ''
-        self.chapters = {}
+        self.chapters = OrderedDict()
+        # may be deprecated as of Python 3.6
+        # self.chapters = {}
+        # Python 3.6+ keeps the insertion order of dictionary entries
         self.scenes = {}
 
     def get_structure(self) -> str:
