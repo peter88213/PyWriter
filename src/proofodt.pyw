@@ -11,7 +11,7 @@ import sys
 
 from pywriter.convert.cnv_runner import CnvRunner
 
-from pywriter.proof.officefile import OfficeFile
+from pywriter.model.officefile import OfficeFile
 
 
 def run(sourcePath, silentMode=True):

@@ -7,7 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 
 from pywriter.convert.pypandoc import convert_file
-from pywriter.proof.mdfile import MdFile
+from pywriter.model.mdfile import MdFile
 
 
 class OfficeFile(MdFile):

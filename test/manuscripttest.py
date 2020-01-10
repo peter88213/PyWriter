@@ -10,9 +10,9 @@ import os
 import unittest
 
 from pywriter.convert.yw7cnv import Yw7Cnv
-from pywriter.core.yw7file import Yw7File
+from pywriter.model.yw7file import Yw7File
 
-from pywriter.edit.manuscript import Manuscript
+from pywriter.model.manuscript import Manuscript
 
 TEST_PROJECT = 'yw7 Sample Project'
 

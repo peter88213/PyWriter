@@ -4,9 +4,9 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
-from pywriter.core.pywfile import PywFile
-from pywriter.core.chapter import Chapter
-from pywriter.core.scene import Scene
+from pywriter.model.pywfile import PywFile
+from pywriter.model.chapter import Chapter
+from pywriter.model.scene import Scene
 
 MD_HEADING_MARKERS = ("##", "#")
 # Index is yWriter's chapter type:

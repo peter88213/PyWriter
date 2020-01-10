@@ -10,9 +10,9 @@ import unittest
 import zipfile
 
 from pywriter.convert.yw7cnv import Yw7Cnv
-from pywriter.core.yw7file import Yw7File
+from pywriter.model.yw7file import Yw7File
 
-from pywriter.proof.officefile import OfficeFile
+from pywriter.model.officefile import OfficeFile
 
 TEST_PROJECT = 'yw7 Sample Project'
 

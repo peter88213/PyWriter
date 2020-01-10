@@ -11,7 +11,7 @@ import sys
 
 from pywriter.convert.cnv_runner import CnvRunner
 
-from pywriter.proof.htmlfile import HtmlFile
+from pywriter.model.htmlfile import HtmlFile
 
 
 def run(sourcePath, silentMode=True):

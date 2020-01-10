@@ -2,9 +2,7 @@
 /build/
 /src/__pycache__/
 /src/pywriter/__pycache__/
-/src/pywriter/core/__pycache__/
-/src/pywriter/edit/__pycache__/
-/src/pywriter/proof/__pycache__/
+/src/pywriter/model/__pycache__/
 /src/pywriter/convert/__pycache__/
 /test/__pycache__/
 /test/yw7/

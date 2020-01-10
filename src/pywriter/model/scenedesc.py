@@ -6,12 +6,17 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.core.chapter import Chapter
-from pywriter.edit.manuscript import Manuscript
-from pywriter.convert.hform import *
+from pywriter.model.manuscript import Manuscript
+from pywriter.model.hform import *
 
 
-class ChapterDesc(Manuscript):
+HTML_HEADING_MARKERS = ("h3", "h2")
+# Index is yWriter's chapter type:
+# 0 is for an ordinary chapter
+# 1 is for a chapter beginning a section
+
+
+class SceneDesc(Manuscript):
     """HTML file representation of an yWriter project's scene descriptions part.
 
     Represents a html file with linkable chapter and scene sections 
@@ -23,32 +28,23 @@ class ChapterDesc(Manuscript):
 
     """
 
-    def handle_starttag(self, tag, attrs):
-        """HTML parser: Get chapter ID at chapter start. """
-
-        if tag == 'div':
-            if attrs[0][0] == 'id':
-                if attrs[0][1].startswith('ChID'):
-                    self.chID = re.search('[0-9]+', attrs[0][1]).group()
-                    self.chapters[self.chID] = Chapter()
-                    self.collectText = True
-
     def handle_endtag(self, tag):
-        """HTML parser: Save chapter description in dictionary at chapter end. """
+        """HTML parser: Save scene content in dictionary at scene end. """
 
         if tag == 'div':
-            self.chapters[self.chID].desc = self.text
-            self.text = ''
-            self.collectText = False
-
-    def handle_data(self, data):
-        """HTML parser: Collect paragraphs within scene. """
-
-        if self.collectText:
-            self.text = self.text + data + '\n'
+            if self.collectText:
+                self.scenes[self.scID].desc = self.text
+                self.text = ''
+                self.collectText = False
 
     def write(self, novel) -> str:
         """Write attributes to html project file. """
+
+        def format_chapter_title(text):
+            """Fix auto-chapter titles for non-English """
+
+            text = text.replace('Chapter ', '')
+            return(text)
 
         def to_html(text):
             """Convert yw7 raw markup """
@@ -63,6 +59,9 @@ class ChapterDesc(Manuscript):
             if novel.title != '':
                 self.title = novel.title
 
+        if novel.scenes is not None:
+            self.scenes = novel.scenes
+
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
@@ -70,19 +69,25 @@ class ChapterDesc(Manuscript):
         text = text + '<h1>' + self.title + '</h1>'
         for chID in self.chapters:
             text = text + '<div id="ChID:' + chID + '">\n'
-            text = text + '<p class="firstlineindent">'
-            try:
-                entry = self.chapters[chID].desc
-                if entry == '':
-                    entry = self.chapters[chID].title
-                else:
-                    entry = to_html(entry)
-                text = text + entry
-            except(KeyError):
-                pass
-            text = text + '</p>\n'
-            text = text + '</div>\n'
+            headingMarker = HTML_HEADING_MARKERS[self.chapters[chID].type]
+            text = text + '<' + headingMarker + '>' + \
+                format_chapter_title(
+                    self.chapters[chID].title) + '</' + headingMarker + '>\n'
+            for scID in self.chapters[chID].scenes:
+                text = text + '<div id="ScID:' + scID + '">\n'
+                text = text + '<p class="firstlineindent">'
+                text = text + '<a name="ScID:' + scID + '" />'
+                # Insert scene ID as anchor.
+                text = text + '<!-- ' + self.scenes[scID].title + ' -->\n'
+                # Insert scene title as comment.
+                try:
+                    text = text + to_html(self.scenes[scID].desc)
+                except(TypeError):
+                    text = text + ' '
+                text = text + '</p>\n'
+                text = text + '</div>\n'
 
+            text = text + '</div>\n'
         text = text + HTML_FOOTER
 
         try:

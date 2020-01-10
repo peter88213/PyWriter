@@ -4,7 +4,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.core.novel import Novel
+from pywriter.model.novel import Novel
 
 
 def yw7_to_csv(yw7Path, csvPath):

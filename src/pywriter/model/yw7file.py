@@ -9,9 +9,9 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import re
 import xml.etree.ElementTree as ET
-from pywriter.core.pywfile import PywFile
-from pywriter.core.chapter import Chapter
-from pywriter.core.scene import Scene
+from pywriter.model.pywfile import PywFile
+from pywriter.model.chapter import Chapter
+from pywriter.model.scene import Scene
 
 
 class Yw7File(PywFile):

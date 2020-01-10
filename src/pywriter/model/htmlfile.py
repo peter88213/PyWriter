@@ -1,4 +1,4 @@
-"""Manuscript - Class for html manuscript file operations and parsing.
+"""HtmlFile - Class for html file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -8,10 +8,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 from html.parser import HTMLParser
 
-from pywriter.core.pywfile import PywFile
-from pywriter.core.chapter import Chapter
-from pywriter.core.scene import Scene
-from pywriter.convert.hform import *
+from pywriter.model.pywfile import PywFile
+from pywriter.model.chapter import Chapter
+from pywriter.model.scene import Scene
+from pywriter.model.hform import *
 
 HTML_HEADING_MARKERS = ("h2", "h1")
 # Index is yWriter's chapter type:
@@ -19,10 +19,10 @@ HTML_HEADING_MARKERS = ("h2", "h1")
 # 1 is for a chapter beginning a section
 
 
-class Manuscript(PywFile, HTMLParser):
-    """HTML file representation of an yWriter project's manuscript part.
+class HtmlFile(PywFile, HTMLParser):
+    """HTML file representation of an yWriter project's OfficeFile part.
 
-    Represents a html file with linkable chapter and scene sections 
+    Represents a html file visible chapter and scene tags 
     to be read and written by Open/LibreOffice Writer.
 
     # Attributes
@@ -37,12 +37,11 @@ class Manuscript(PywFile, HTMLParser):
         PywFile.__init__(self, filePath)
         HTMLParser.__init__(self)
         self.text = ''
-        self.scID = 0
-        self.chID = 0
         self.collectText = False
 
     def read(self):
         """Read data from html project file. """
+
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 text = (f.read())
@@ -56,7 +55,37 @@ class Manuscript(PywFile, HTMLParser):
 
         text = to_yw7(text)
         self.feed(text)
-        # Invoke HTML parser.
+        # Invoked HTML parser writes the html body as raw text to self.text.
+
+        sceneText = ''
+        scID = ''
+        chID = ''
+        inScene = False
+        lines = self.text.split('\n')
+
+        for line in lines:
+
+            if line.startswith('[ScID'):
+                scID = re.search('[0-9]+', line).group()
+                self.scenes[scID] = Scene()
+                self.chapters[chID].scenes.append(scID)
+                inScene = True
+
+            elif line.startswith('[/ScID]'):
+                self.scenes[scID].sceneContent = sceneText
+                sceneText = ''
+                inScene = False
+
+            elif line.startswith('[ChID'):
+                chID = re.search('[0-9]+', line).group()
+                self.chapters[chID] = Chapter()
+
+            elif line.startswith('[/ChID]'):
+                pass
+
+            elif inScene:
+                sceneText = sceneText + line + '\n'
+
         return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
     def write(self, novel) -> str:
@@ -80,29 +109,26 @@ class Manuscript(PywFile, HTMLParser):
 
         text = HTML_HEADER.replace('$bookTitle$', self.title)
         for chID in self.chapters:
-            text = text + '<div id="ChID:' + chID + '">\n'
+            text = text + \
+                '<p style="font-size:x-small">[ChID:' + chID + ']</p>\n'
             headingMarker = HTML_HEADING_MARKERS[self.chapters[chID].type]
             text = text + '<' + headingMarker + '>' + \
                 format_chapter_title(
                     self.chapters[chID].title) + '</' + headingMarker + '>\n'
             for scID in self.chapters[chID].scenes:
                 text = text + '<h4>' + HTML_SCENE_DIVIDER + '</h4>\n'
-                text = text + '<div id="ScID:' + scID + '">\n'
+                text = text + \
+                    '<p style="font-size:x-small">[ScID:' + scID + ']</p>\n'
                 text = text + '<p class="textbody">'
-                text = text + '<a name="ScID:' + scID + '" />'
-                # Insert scene ID as anchor.
-                text = text + '<!-- ' + \
-                    self.scenes[scID].title + ' -->\n'
-                # Insert scene title as comment.
                 try:
                     text = text + \
                         to_html(self.scenes[scID].sceneContent)
                 except(TypeError):
                     text = text + ' '
                 text = text + '</p>\n'
-                text = text + '</div>\n'
+                text = text + '<p style="font-size:x-small">[/ScID]</p>\n'
 
-            text = text + '</div>\n'
+            text = text + '<p style="font-size:x-small">[/ChID]</p>\n'
         text = text.replace(
             '</h1>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>', '</h1>')
         text = text.replace(
@@ -120,32 +146,19 @@ class Manuscript(PywFile, HTMLParser):
         return('SUCCESS: "' + self._filePath + '" saved.')
 
     def handle_starttag(self, tag, attrs):
-        """HTML parser: Get scene ID at scene start. """
+        """HTML parser: Get the html body. """
 
-        if tag == 'div':
-            if attrs[0][0] == 'id':
-                if attrs[0][1].startswith('ChID'):
-                    self.chID = re.search('[0-9]+', attrs[0][1]).group()
-                    self.chapters[self.chID] = Chapter()
-                    self.chapters[self.chID].scenes = []
-                elif attrs[0][1].startswith('ScID'):
-                    self.scID = re.search('[0-9]+', attrs[0][1]).group()
-                    self.scenes[self.scID] = Scene()
-                    self.chapters[self.chID].scenes.append(self.scID)
-                    self.collectText = True
+        if tag == 'body':
+            self.collectText = True
 
     def handle_endtag(self, tag):
         """HTML parser: Save scene content in dictionary at scene end. """
 
-        if tag == 'div':
-            if self.collectText:
-                self.scenes[self.scID].sceneContent = self.text
-                self.text = ''
-                self.collectText = False
+        if tag == 'body':
+            self.collectText = False
 
     def handle_data(self, data):
         """HTML parser: Collect paragraphs within scene. """
 
         if self.collectText:
-            if data != ' ':
-                self.text = self.text + data + '\n'
+            self.text = self.text + data + '\n'

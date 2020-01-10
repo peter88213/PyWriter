@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 from abc import abstractmethod, ABC
 
-from pywriter.core.novel import Novel
+from pywriter.model.novel import Novel
 
 
 class PywFile(Novel, ABC):

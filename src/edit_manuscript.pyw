@@ -10,7 +10,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 from pywriter.convert.cnv_runner import CnvRunner
 
-from pywriter.edit.manuscript import Manuscript
+from pywriter.model.manuscript import Manuscript
 
 
 def run(sourcePath, silentMode=True):
