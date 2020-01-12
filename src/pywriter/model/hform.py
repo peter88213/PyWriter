@@ -12,6 +12,8 @@ import re
 HTML_SCENE_DIVIDER = '* * *'
 # To be placed between scene ending and beginning tags.
 
+# Make the generated html file look good in a web browser.
+
 STYLESHEET = '<style type="text/css">\n' + \
     'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
     'h1, h2, h3, h4 {text-align: center}\n' +\
@@ -22,7 +24,6 @@ STYLESHEET = '<style type="text/css">\n' + \
     'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
     'strong {font-weight:normal; text-transform: uppercase}\n' + \
     '</style>\n'
-# Make the generated html file look good in a web browser.
 
 HTML_HEADER = '<html>\n' + '<head>\n' + \
     '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + STYLESHEET + \
@@ -33,7 +34,7 @@ HTML_FOOTER = '\n</body>\n</html>\n'
 
 
 def to_yw7(text):
-    """ convert html markup to yw7 raw markup. """
+    """ convert html tags to yw7 raw markup. """
     text = text.replace('<br>', '')
     text = text.replace('<BR>', '')
     text = text.replace('<i>', '[i]')
@@ -71,7 +72,8 @@ def to_yw7(text):
 
 
 def to_html(text):
-    """Convert yw7 raw markup """
+    """Convert yw7 raw markup to html. """
+
     try:
         text = text.replace('\n\n', '\n')
         text = text.replace('\n', '</p>\n<p class="firstlineindent">')

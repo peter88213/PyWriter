@@ -32,10 +32,10 @@ class SceneDesc(Manuscript):
         """HTML parser: Save scene content in dictionary at scene end. """
 
         if tag == 'div':
-            if self.collectText:
-                self.scenes[self.scID].desc = self.text
-                self.text = ''
-                self.collectText = False
+            if self._collectText:
+                self.scenes[self.scID].desc = self._text
+                self._text = ''
+                self._collectText = False
 
     def write(self, novel) -> str:
         """Write attributes to html project file. """

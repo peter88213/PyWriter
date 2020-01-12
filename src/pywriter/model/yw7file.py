@@ -19,9 +19,25 @@ class Yw7File(PywFile):
 
     # Attributes
 
+    _cdataTags : list of str
+        names of yw7 xml elements containing CDATA. 
+        ElementTree.write omits CDATA tags, so they have to be 
+        inserted afterwards. 
+
     # Methods
 
+    read : str
+        parse the yw7 xml file located at filePath, fetching the 
+        Novel attributes.
+        Return a message beginning with SUCCESS or ERROR. 
+    write : str
+        open the yw7 xml file located at filePath and replace a set 
+        of items by the Novel attributes not being None.
+        Return a message beginning with SUCCESS or ERROR.
+    is_locked : bool
+        tests whether a .lock file placed by yWriter exists.
     """
+
     _fileExtension = '.yw7'
 
     def __init__(self, filePath):
@@ -32,8 +48,10 @@ class Yw7File(PywFile):
     def read(self) -> str:
         """Parse yw7 xml project file and store selected attributes. """
 
+        # Preprocess the xml file:
+        # Empty scenes will crash the xml parser, so put a blank in them.
+
         try:
-            # Read the file for preprocessing.
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 xmlData = f.read()
 
@@ -41,7 +59,6 @@ class Yw7File(PywFile):
             return('ERROR: "' + self._filePath + '" not found.')
 
         if '<![CDATA[]]>' in xmlData:
-            # Empty scenes will crash the xml parser, so put a blank in them.
             xmlData = xmlData.replace('<![CDATA[]]>', '<![CDATA[ ]]>')
             try:
                 with open(self._filePath, 'w', encoding='utf-8') as f:
@@ -51,18 +68,20 @@ class Yw7File(PywFile):
                 return('ERROR: "' + self._filePath +
                        '" is write protected.')
 
+        # Complete list of tags requiring CDATA (if incomplete).
+
         lines = xmlData.split('\n')
         for line in lines:
-            # Complete list of tags requiring CDATA (if incomplete).
             tag = re.search('\<(.+?)\>\<\!\[CDATA', line)
             if tag is not None:
 
                 if not (tag.group(1) in self._cdataTags):
                     self._cdataTags.append(tag.group(1))
 
+        # Open the file again and let ElementTree parse its xml structure.
+
         try:
             self.tree = ET.parse(self._filePath)
-            # Open the file again and parse its xml structure.
             root = self.tree.getroot()
 
         except:
@@ -70,6 +89,7 @@ class Yw7File(PywFile):
 
         for prj in root.iter('PROJECT'):
             self.title = prj.find('Title').text
+            self.desc = prj.find('Desc').text
 
         for chp in root.iter('CHAPTER'):
             chID = chp.find('ID').text
@@ -200,6 +220,9 @@ class Yw7File(PywFile):
 
         except(PermissionError):
             return('ERROR: "' + self._filePath + '" is write protected.')
+
+        # Postprocess the xml file created by ElementTree:
+        # Put a header on top and insert the missing CDATA tags.
 
         newXml = '<?xml version="1.0" encoding="utf-8"?>\n'
         with open(self._filePath, 'r', encoding='utf-8') as f:

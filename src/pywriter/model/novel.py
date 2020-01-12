@@ -16,7 +16,9 @@ class Novel():
     # Attributes
 
     title : str
-        the novel's title.
+        the novel title.
+    desc : str
+        the novel summary.
     chapters : OrderedDict 
         key = chapter ID, value = Chapter object.
         The order of the elements corresponds to the novel's order 
@@ -37,10 +39,12 @@ class Novel():
 
     def __init__(self):
         self.title = ''
+        self.desc = ''
         self.chapters = OrderedDict()
         # may be deprecated as of Python 3.6
         # self.chapters = {}
         # Python 3.6+ keeps the insertion order of dictionary entries
+
         self.scenes = {}
 
     def get_structure(self) -> str:

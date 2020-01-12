@@ -17,7 +17,7 @@ class Scene():
     title : str
         the scene title.
     desc : str
-        scene description (summary).
+        scene summary.
     sceneContent : str (property with setter)
         scene text with raw markup.
     _wordCount : int 
@@ -49,11 +49,13 @@ class Scene():
         self._sceneContent = text
         text = re.sub('\[.+?\]|\.|\,| -', '', self._sceneContent)
         # Remove yw7 raw markup for word count
+
         wordList = text.split()
         self._wordCount = len(wordList)
 
         text = re.sub('\[.+?\]', '', self._sceneContent)
         # Remove yw7 raw markup for letter count
+
         text = text.replace('\n', '')
         text = text.replace('\r', '')
         self._letterCount = len(text)

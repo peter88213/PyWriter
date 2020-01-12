@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 
-from pywriter.converter.r.yw7cnv import Yw7Cnv
+from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
 from pywriter.model.mdfile import MdFile
@@ -59,9 +59,8 @@ class NrmOpr(unittest.TestCase):
     """Test case: Normal operation
 
         Condition: yw7 file is present and read/writeable. 
-        Expected result: During the whole process, the intermediate
-                    markdown file content matches 
-                    the corresponding reference string. 
+        Expected result: During the whole process, the markdown 
+            file's content matches the reference. 
     """
 
     def setUp(self):
@@ -73,6 +72,7 @@ class NrmOpr(unittest.TestCase):
         """Verify test data integrity. """
 
         # Initial test data must differ from the "proofed" test data.
+
         self.assertNotEqual(
             read_file(TEST_DATA_PATH + YW7_FILE),
             read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
@@ -87,10 +87,11 @@ class NrmOpr(unittest.TestCase):
         documentFile = MdFile(TEST_EXEC_PATH + DOCUMENT_FILE)
         converter = Yw7Cnv()
 
+        # Read .yw7 file and convert xml to markdown.
+
         self.assertEqual(converter.yw7_to_document(
             yw7File, documentFile), 'SUCCESS: "' + TEST_EXEC_PATH + DOCUMENT_FILE + '" saved.')
 
-        # Read .yw7 file and convert xml to markdown.
         self.assertEqual(read_file(TEST_EXEC_PATH + DOCUMENT_FILE),
                          read_file(TEST_DATA_PATH + DOCUMENT_FILE))
 
@@ -106,13 +107,15 @@ class NrmOpr(unittest.TestCase):
         documentFile = MdFile(TEST_EXEC_PATH + DOCUMENT_FILE)
         converter = Yw7Cnv()
 
+        # Convert markdown to xml and replace .yw7 file.
+
         self.assertEqual(converter.document_to_yw7(documentFile, yw7File), 'SUCCESS: ' + str(
             TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
-        # Convert markdown to xml and replace .yw7 file.
+
+        # Verify the yw7 project.
 
         self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
                          read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
-        # Verify the yw7 project.
 
     def tearDown(self):
         remove_all_testfiles()

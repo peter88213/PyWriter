@@ -31,21 +31,21 @@ class ChapterDesc(Manuscript):
                 if attrs[0][1].startswith('ChID'):
                     self.chID = re.search('[0-9]+', attrs[0][1]).group()
                     self.chapters[self.chID] = Chapter()
-                    self.collectText = True
+                    self._collectText = True
 
     def handle_endtag(self, tag):
         """HTML parser: Save chapter description in dictionary at chapter end. """
 
         if tag == 'div':
-            self.chapters[self.chID].desc = self.text
-            self.text = ''
-            self.collectText = False
+            self.chapters[self.chID].desc = self._text
+            self._text = ''
+            self._collectText = False
 
     def handle_data(self, data):
         """HTML parser: Collect paragraphs within scene. """
 
-        if self.collectText:
-            self.text = self.text + data + '\n'
+        if self._collectText:
+            self._text = self._text + data + '\n'
 
     def write(self, novel) -> str:
         """Write attributes to html project file. """

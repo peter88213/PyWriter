@@ -15,7 +15,7 @@ class Chapter():
     title : str
         the chapter title.
     desc : str
-        the chapter description (summary).
+        the chapter summary.
     type : int
         a selector for the chapter's level.
     scenes : list 

@@ -27,8 +27,32 @@ class HtmlFile(PywFile, HTMLParser):
 
     # Attributes
 
+    _text : str
+        contains the parsed data.
+    _collectText : bool
+        simple parsing state indicator. 
+        True means: the data returned by the html parser 
+        belongs to the body section. 
+
     # Methods
 
+    read : str
+        parse the htmml file located at filePath, fetching the Novel 
+        attributes.
+        Return a message beginning with SUCCESS or ERROR. 
+    write : str
+        open the html file located at filePath and replace a set of 
+        items by the Novel attributes not being None.
+        Return a message beginning with SUCCESS or ERROR.
+    handle_starttag
+        recognize the beginning ot the body section.
+        Overwrites HTMLparser.handle_starttag()
+    handle_endtag
+        recognize the end ot the body section.
+        Overwrites HTMLparser.handle_endtag()
+    handle_data
+        copy the body section.
+        Overwrites HTMLparser.handle_data()
     """
 
     _fileExtension = 'html'
@@ -36,8 +60,8 @@ class HtmlFile(PywFile, HTMLParser):
     def __init__(self, filePath):
         PywFile.__init__(self, filePath)
         HTMLParser.__init__(self)
-        self.text = ''
-        self.collectText = False
+        self._text = ''
+        self._collectText = False
 
     def read(self):
         """Read data from html project file. """
@@ -54,14 +78,17 @@ class HtmlFile(PywFile, HTMLParser):
                 return('\nERROR: "' + self._filePath + '" not found.')
 
         text = to_yw7(text)
+
+        # Invoke HTML parser to write the html body as raw text
+        # to self._text.
+
         self.feed(text)
-        # Invoked HTML parser writes the html body as raw text to self.text.
 
         sceneText = ''
         scID = ''
         chID = ''
         inScene = False
-        lines = self.text.split('\n')
+        lines = self._text.split('\n')
 
         for line in lines:
 
@@ -138,27 +165,27 @@ class HtmlFile(PywFile, HTMLParser):
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
-                # get_text() is to be overwritten
-                # by file format specific subclasses.
+
         except(PermissionError):
             return('ERROR: ' + self._filePath + '" is write protected.')
 
         return('SUCCESS: "' + self._filePath + '" saved.')
 
     def handle_starttag(self, tag, attrs):
-        """HTML parser: Get the html body. """
+        """Recognize the beginning ot the body section. """
 
         if tag == 'body':
-            self.collectText = True
+            self._collectText = True
 
     def handle_endtag(self, tag):
-        """HTML parser: Save scene content in dictionary at scene end. """
+        """Recognize the end ot the body section. """
 
         if tag == 'body':
-            self.collectText = False
+            self._collectText = False
 
     def handle_data(self, data):
-        """HTML parser: Collect paragraphs within scene. """
+        """Copy the body section. """
 
-        if self.collectText:
-            self.text = self.text + data + '\n'
+        if self._collectText:
+            self._text = self._text + data + '\n'
+            # Get the html body.
