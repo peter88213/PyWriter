@@ -82,7 +82,7 @@ class Manuscript(PywFile, HTMLParser):
         PywFile.__init__(self, filePath)
         HTMLParser.__init__(self)
         self._text = ''
-        self.scId = 0
+        self._scId = 0
         self._chId = 0
         self._collectText = False
 
@@ -95,10 +95,11 @@ class Manuscript(PywFile, HTMLParser):
                     self._chId = re.search('[0-9]+', attrs[0][1]).group()
                     self.chapters[self._chId] = Chapter()
                     self.chapters[self._chId].scenes = []
+                    self.srtChapters.append(self._chId)
                 elif attrs[0][1].startswith('ScID'):
-                    self.scId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.scenes[self.scId] = Scene()
-                    self.chapters[self._chId].scenes.append(self.scId)
+                    self._scId = re.search('[0-9]+', attrs[0][1]).group()
+                    self.scenes[self._scId] = Scene()
+                    self.chapters[self._chId].srtScenes.append(self._scId)
                     self._collectText = True
 
     def handle_endtag(self, tag):
@@ -107,7 +108,7 @@ class Manuscript(PywFile, HTMLParser):
         if tag == 'div':
 
             if self._collectText:
-                self.scenes[self.scId].sceneContent = self._text
+                self.scenes[self._scId].sceneContent = self._text
                 self._text = ''
                 self._collectText = False
 
@@ -154,6 +155,9 @@ class Manuscript(PywFile, HTMLParser):
             if novel.title != '':
                 self.title = novel.title
 
+        if novel.srtChapters != []:
+            self.srtChapters = novel.srtChapters
+
         if novel.scenes is not None:
             self.scenes = novel.scenes
 
@@ -162,14 +166,14 @@ class Manuscript(PywFile, HTMLParser):
 
         text = HTML_HEADER.replace('$bookTitle$', self.title)
 
-        for chId in self.chapters:
+        for chId in self.srtChapters:
             text = text + '<div id="ChID:' + chId + '">\n'
             headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].type]
             text = text + '<' + headingMarker + '>' + \
                 format_chapter_title(
                     self.chapters[chId].title) + '</' + headingMarker + '>\n'
 
-            for scId in self.chapters[chId].scenes:
+            for scId in self.chapters[chId].srtScenes:
                 text = text + '<h4>' + HTML_SCENE_DIVIDER + '</h4>\n'
                 text = text + '<div id="ScID:' + scId + '">\n'
                 text = text + '<p class="textbody">'

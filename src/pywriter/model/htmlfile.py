@@ -127,7 +127,7 @@ class HtmlFile(PywFile, HTMLParser):
             if line.startswith('[ScID'):
                 scId = re.search('[0-9]+', line).group()
                 self.scenes[scId] = Scene()
-                self.chapters[chId].scenes.append(scId)
+                self.chapters[chId].srtScenes.append(scId)
                 inScene = True
 
             elif line.startswith('[/ScID]'):
@@ -138,6 +138,7 @@ class HtmlFile(PywFile, HTMLParser):
             elif line.startswith('[ChID'):
                 chId = re.search('[0-9]+', line).group()
                 self.chapters[chId] = Chapter()
+                self.srtChapters.append(chId)
 
             elif line.startswith('[/ChID]'):
                 pass
@@ -160,6 +161,9 @@ class HtmlFile(PywFile, HTMLParser):
             if novel.title != '':
                 self.title = novel.title
 
+        if novel.srtChapters != []:
+            self.srtChapters = novel.srtChapters
+
         if novel.scenes is not None:
             self.scenes = novel.scenes
 
@@ -168,14 +172,14 @@ class HtmlFile(PywFile, HTMLParser):
 
         text = HTML_HEADER.replace('$bookTitle$', self.title)
 
-        for chId in self.chapters:
+        for chId in self.srtChapters:
             text = text + \
                 '<p style="font-size:x-small">[ChID:' + chId + ']</p>\n'
             headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].type]
             text = text + '<' + headingMarker + '>' + format_chapter_title(
                 self.chapters[chId].title) + '</' + headingMarker + '>\n'
 
-            for scId in self.chapters[chId].scenes:
+            for scId in self.chapters[chId].srtScenes:
                 text = text + '<h4>' + HTML_SCENE_DIVIDER + '</h4>\n'
                 text = text + \
                     '<p style="font-size:x-small">[ScID:' + scId + ']</p>\n'

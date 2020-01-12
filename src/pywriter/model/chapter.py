@@ -21,7 +21,7 @@ class Chapter():
     type : int
         a selector for the chapter's level.
 
-    scenes : list 
+    srtScenes : list 
         the chapter's scene IDs. The order of its elements 
         corresponds to the chapter's order of the scenes.
     """
@@ -30,4 +30,4 @@ class Chapter():
         self.title = ''
         self.desc = ''
         self.type = None
-        self.scenes = []
+        self.srtScenes = []

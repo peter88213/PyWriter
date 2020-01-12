@@ -6,9 +6,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from collections import OrderedDict
-# may be deprecated as of Python 3.6
-
 
 class Novel():
     """yWriter project representation. 
@@ -32,6 +29,10 @@ class Novel():
         order of the scenes is defined by the order of the chapters 
         and the order of the scenes within the chapters)
 
+    srtChapters : list 
+        the novel's chapter IDs. The order of its elements 
+        corresponds to the novel's order of the chapters.
+
     # Methods 
 
     get_structure : str
@@ -43,19 +44,16 @@ class Novel():
     def __init__(self):
         self.title = ''
         self.desc = ''
-        self.chapters = OrderedDict()
-        # may be deprecated as of Python 3.6
-        # self.chapters = {}
-        # Python 3.6+ keeps the insertion order of dictionary entries
-
+        self.chapters = {}
         self.scenes = {}
+        self.srtChapters = []
 
     def get_structure(self) -> str:
         """Assemble a comparable structure tree. """
 
         text = ''
-        for chId in self.chapters:
+        for chId in self.srtChapters:
             text = text + 'ChID:' + str(chId) + '\n'
-            for scId in self.chapters[chId].scenes:
+            for scId in self.chapters[chId].srtScenes:
                 text = text + '  ScID:' + str(scId) + '\n'
         return(text)

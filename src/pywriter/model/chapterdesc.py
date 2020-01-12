@@ -87,13 +87,16 @@ class ChapterDesc(Manuscript):
             if novel.title != '':
                 self.title = novel.title
 
+        if novel.srtChapters != []:
+            self.srtChapters = novel.srtChapters
+
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
         text = HTML_HEADER.replace('$bookTitle$', self.title)
         text = text + '<h1>' + self.title + '</h1>'
 
-        for chID in self.chapters:
+        for chID in self.srtChapters:
             text = text + '<div id="ChID:' + chID + '">\n'
             text = text + '<p class="firstlineindent">'
 

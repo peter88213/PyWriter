@@ -104,17 +104,19 @@ class Yw7File(PywFile):
             chId = chp.find('ID').text
             self.chapters[chId] = Chapter()
             self.chapters[chId].title = chp.find('Title').text
+            self.srtChapters.append(chId)
 
             if chp.find('Desc') is not None:
                 self.chapters[chId].desc = chp.find('Desc').text
 
             self.chapters[chId].type = int(chp.find('Type').text)
-            self.chapters[chId].scenes = []
+            self.chapters[chId].srtScenes = []
 
             if chp.find('Scenes') is not None:
 
                 for scn in chp.find('Scenes').findall('ScID'):
-                    self.chapters[chId].scenes.append(scn.text)
+                    scId = scn.text
+                    self.chapters[chId].srtScenes.append(scId)
 
         for scn in root.iter('SCENE'):
             scId = scn.find('ID').text
@@ -124,15 +126,20 @@ class Yw7File(PywFile):
             if scn.find('Desc') is not None:
                 self.scenes[scId].desc = scn.find('Desc').text
 
-            self.scenes[scId]._sceneContent = scn.find('SceneContent').text
+            self.scenes[scId].sceneContent = scn.find('SceneContent').text
 
         return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
     def write(self, novel) -> str:
         """Write novel's attributes to yw7 project file. """
 
+        # Copy the novel's attributes to write
+
         if novel.title != '':
             self.title = novel.title
+
+        if novel.srtChapters != []:
+            self.srtChapters = novel.srtChapters
 
         if novel.scenes is not None:
 
@@ -160,11 +167,8 @@ class Yw7File(PywFile):
                 if novel.chapters[chId].type is not None:
                     self.chapters[chId].type = novel.chapters[chId].type
 
-                if novel.chapters[chId].scenes != []:
-                    self.chapters[chId].scenes = []
-
-                    for scId in novel.chapters[chId].scenes:
-                        self.chapters[chId].scenes.append(scId)
+                if novel.chapters[chId].srtScenes != []:
+                    self.chapters[chId].srtScenes = novel.chapters[chId]
 
         sceneCount = 0
         root = self.tree.getroot()
@@ -185,12 +189,6 @@ class Yw7File(PywFile):
                     chp.find('Desc').text = self.chapters[chId].desc
 
             chp.find('Type').text = str(self.chapters[chId].type)
-
-            if chp.find('Scenes') is not None:
-                i = 0
-                for scn in chp.find('Scenes').findall('ScID'):
-                    scn.text = self.chapters[chId].scenes[i]
-                    i = i + 1
 
         for scn in root.iter('SCENE'):
 

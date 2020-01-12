@@ -81,8 +81,8 @@ class MdFile(PywFile):
         text = to_yw7(text)
 
         sceneText = ''
-        scID = ''
-        chID = ''
+        scId = ''
+        chId = ''
         inScene = False
 
         lines = text.split('\n')
@@ -90,19 +90,20 @@ class MdFile(PywFile):
         for line in lines:
 
             if line.startswith('[ScID'):
-                scID = re.search('[0-9]+', line).group()
-                self.scenes[scID] = Scene()
-                self.chapters[chID].scenes.append(scID)
+                scId = re.search('[0-9]+', line).group()
+                self.scenes[scId] = Scene()
+                self.chapters[chId].srtScenes.append(scId)
                 inScene = True
 
             elif line.startswith('[/ScID]'):
-                self.scenes[scID].sceneContent = sceneText
+                self.scenes[scId].sceneContent = sceneText
                 sceneText = ''
                 inScene = False
 
             elif line.startswith('[ChID'):
-                chID = re.search('[0-9]+', line).group()
-                self.chapters[chID] = Chapter()
+                chId = re.search('[0-9]+', line).group()
+                self.chapters[chId] = Chapter()
+                self.srtChapters.append(chId)
 
             elif line.startswith('[/ChID]'):
                 pass
@@ -133,10 +134,10 @@ class MdFile(PywFile):
             text = text.replace('[/b]', '**')
             return(text)
 
-        if novel.title is not None:
+        # Copy the novel's attributes to write
 
-            if novel.title != '':
-                self.title = novel.title
+        if novel.srtChapters != []:
+            self.srtChapters = novel.srtChapters
 
         if novel.scenes is not None:
             self.scenes = novel.scenes
@@ -146,13 +147,13 @@ class MdFile(PywFile):
 
         text = ''
 
-        for chID in self.chapters:
+        for chID in self.srtChapters:
             text = text + '\\[ChID:' + chID + '\\]\n'
             headingMarker = MD_HEADING_MARKERS[self.chapters[chID].type]
             text = text + headingMarker + \
                 format_chapter_title(self.chapters[chID].title) + '\n'
 
-            for scID in self.chapters[chID].scenes:
+            for scID in self.chapters[chID].srtScenes:
                 text = text + '\\[ScID:' + scID + '\\]\n'
 
                 try:
