@@ -14,10 +14,13 @@ class Chapter():
 
     title : str
         the chapter title.
+
     desc : str
         the chapter summary.
+
     type : int
         a selector for the chapter's level.
+
     scenes : list 
         the chapter's scene IDs. The order of its elements 
         corresponds to the chapter's order of the scenes.

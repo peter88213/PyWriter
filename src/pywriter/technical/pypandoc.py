@@ -1,8 +1,15 @@
-"""PyWriter module
+"""A lean Pypandoc substitute
 
+Relieves the unexperienced user from the need of 
+installing the Pypandoc wrapper. 
+See: https://pypi.org/project/pypandoc/
+
+Part of the PyWriter project.
+Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import os
 
 
@@ -31,9 +38,12 @@ def convert_file(srcFile, dstFormat, format='', outputfile='', extra_args=[]):
                        argument4 + argument5 + argument6)
 
     if status == 0:
+
         if outputfile == '':
+
             with open(temporaryFile, 'r', encoding='utf-8') as f:
                 result = f.read()
+
             os.remove(temporaryFile)
             return(result)
 

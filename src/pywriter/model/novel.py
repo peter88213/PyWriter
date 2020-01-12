@@ -17,12 +17,15 @@ class Novel():
 
     title : str
         the novel title.
+
     desc : str
         the novel summary.
+
     chapters : OrderedDict 
         key = chapter ID, value = Chapter object.
         The order of the elements corresponds to the novel's order 
         of the chapters.
+
     scenes : dict
         key = scene ID, value = Scene object.
         The order of the elements does not matter (the novel's 
@@ -51,8 +54,8 @@ class Novel():
         """Assemble a comparable structure tree. """
 
         text = ''
-        for chID in self.chapters:
-            text = text + 'ChID:' + str(chID) + '\n'
-            for scID in self.chapters[chID].scenes:
-                text = text + '  ScID:' + str(scID) + '\n'
+        for chId in self.chapters:
+            text = text + 'ChID:' + str(chId) + '\n'
+            for scId in self.chapters[chId].scenes:
+                text = text + '  ScID:' + str(scId) + '\n'
         return(text)

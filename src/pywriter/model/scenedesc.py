@@ -1,4 +1,4 @@
-"""SceneDesc - Class for html scenes file operations and parsing.
+"""SceneDesc - Class for scene desc. file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -19,30 +19,44 @@ HTML_HEADING_MARKERS = ("h3", "h2")
 class SceneDesc(Manuscript):
     """HTML file representation of an yWriter project's scene descriptions part.
 
-    Represents a html file with linkable chapter and scene sections 
-    to be read and written by Open/LibreOffice Writer.
-
-    # Attributes
+    Represents a html file with chapter and scene sections containing 
+    scene descriptions to be read and written by OpenOffice /LibreOffice 
+    Writer.
 
     # Methods
 
+    handle_endtag
+        recognize the end ot the scene section and save data.
+        Overwrites HTMLparser.handle_endtag()
+
+    write : str
+        Arguments 
+            novel : Novel
+                the data to be written. 
+        Generate a html file containing:
+        - chapter sections containing:
+            - chapter headings,
+            - scene sections containing:
+                - scene ID as anchor 
+                - scene title as comment
+                - scene description
+        Return a message beginning with SUCCESS or ERROR.
     """
 
     def handle_endtag(self, tag):
-        """HTML parser: Save scene content in dictionary at scene end. """
+        """HTML parser: Save scene description in dictionary at scene end. """
 
         if tag == 'div':
             if self._collectText:
-                self.scenes[self.scID].desc = self._text
+                self.scenes[self._scId].desc = self._text
                 self._text = ''
                 self._collectText = False
 
     def write(self, novel) -> str:
-        """Write attributes to html project file. """
+        """Write novel attributes to html file.  """
 
         def format_chapter_title(text):
             """Fix auto-chapter titles for non-English """
-
             text = text.replace('Chapter ', '')
             return(text)
 
@@ -56,6 +70,7 @@ class SceneDesc(Manuscript):
             return(text)
 
         if novel.title is not None:
+
             if novel.title != '':
                 self.title = novel.title
 
@@ -67,34 +82,42 @@ class SceneDesc(Manuscript):
 
         text = HTML_HEADER.replace('$bookTitle$', self.title)
         text = text + '<h1>' + self.title + '</h1>'
+
         for chID in self.chapters:
             text = text + '<div id="ChID:' + chID + '">\n'
             headingMarker = HTML_HEADING_MARKERS[self.chapters[chID].type]
-            text = text + '<' + headingMarker + '>' + \
-                format_chapter_title(
-                    self.chapters[chID].title) + '</' + headingMarker + '>\n'
+            text = text + '<' + headingMarker + '>' + format_chapter_title(
+                self.chapters[chID].title) + '</' + headingMarker + '>\n'
+
             for scID in self.chapters[chID].scenes:
                 text = text + '<div id="ScID:' + scID + '">\n'
                 text = text + '<p class="firstlineindent">'
-                text = text + '<a name="ScID:' + scID + '" />'
+
                 # Insert scene ID as anchor.
-                text = text + '<!-- ' + self.scenes[scID].title + ' -->\n'
+
+                text = text + '<a name="ScID:' + scID + '" />'
+
                 # Insert scene title as comment.
+
+                text = text + '<!-- ' + self.scenes[scID].title + ' -->\n'
+
                 try:
                     text = text + to_html(self.scenes[scID].desc)
+
                 except(TypeError):
                     text = text + ' '
+
                 text = text + '</p>\n'
                 text = text + '</div>\n'
 
             text = text + '</div>\n'
+
         text = text + HTML_FOOTER
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
-                # get_text() is to be overwritten
-                # by file format specific subclasses.
+
         except(PermissionError):
             return('ERROR: ' + self._filePath + '" is write protected.')
 

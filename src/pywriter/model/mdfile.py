@@ -1,8 +1,11 @@
-""" PyWriter module
+"""MdFile - Class for Markdown file operations and parsing.
 
+Part of the PyWriter project.
+Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import re
 from pywriter.model.pywfile import PywFile
 from pywriter.model.chapter import Chapter
@@ -15,12 +18,45 @@ MD_HEADING_MARKERS = ("##", "#")
 
 
 class MdFile(PywFile):
-    """yWriter project linked to a markdown file. """
+    """Markdown file representation of an yWriter project's OfficeFile part. 
+
+    Represents a Markdown file with visible chapter and scene tags 
+    to be converted by Pandoc.
+
+    # Attributes
+
+    _text : str
+        contains the parsed data.
+
+    _collectText : bool
+        simple parsing state indicator. 
+        True means: the data returned by the html parser 
+        belongs to the body section. 
+
+    # Methods
+
+    read : str
+        parse the Markdown file located at filePath, fetching 
+        the Novel attributes.
+        Return a message beginning with SUCCESS or ERROR. 
+
+    write : str
+        Arguments 
+            novel : Novel
+                the data to be written. 
+        Generate a Markdown file containing:
+        - chapter ID tags,
+        - chapter headings,
+        - scene ID tags, 
+        - scene content.
+        Return a message beginning with SUCCESS or ERROR.
+    """
 
     _fileExtension = 'md'
+    # overwrites PywFile._fileExtension
 
     def read(self):
-        """Read data from markdown project file. """
+        """Read data from markdown file with chapter and scene tags. """
 
         def to_yw7(text):
             """Convert markdown to yw7 raw markup. """
@@ -38,6 +74,7 @@ class MdFile(PywFile):
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 text = (f.read())
+
         except(FileNotFoundError):
             return('ERROR: "' + self._filePath + '" not found.')
 
@@ -49,36 +86,43 @@ class MdFile(PywFile):
         inScene = False
 
         lines = text.split('\n')
+
         for line in lines:
+
             if line.startswith('[ScID'):
                 scID = re.search('[0-9]+', line).group()
                 self.scenes[scID] = Scene()
                 self.chapters[chID].scenes.append(scID)
                 inScene = True
+
             elif line.startswith('[/ScID]'):
                 self.scenes[scID].sceneContent = sceneText
                 sceneText = ''
                 inScene = False
+
             elif line.startswith('[ChID'):
                 chID = re.search('[0-9]+', line).group()
                 self.chapters[chID] = Chapter()
+
             elif line.startswith('[/ChID]'):
                 pass
+
             elif inScene:
                 sceneText = sceneText + line + '\n'
+
         return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
     def write(self, novel) -> str:
-        """Format project text to markdown. """
+        """Write novel attributes to Markdown file. """
 
         def format_chapter_title(text):
-            """Fix auto-chapter titles for non-English """
+            """Fix auto-chapter titles for non-English. """
 
             text = text.replace('Chapter ', '')
             return(text)
 
         def to_md(text):
-            """Convert yw7 specific markup """
+            """Convert yw7 specific markup. """
 
             text = text.replace('\n\n', '\n')
             text = text.replace('\n', '\n\n')
@@ -90,6 +134,7 @@ class MdFile(PywFile):
             return(text)
 
         if novel.title is not None:
+
             if novel.title != '':
                 self.title = novel.title
 
@@ -100,26 +145,32 @@ class MdFile(PywFile):
             self.chapters = novel.chapters
 
         text = ''
+
         for chID in self.chapters:
             text = text + '\\[ChID:' + chID + '\\]\n'
             headingMarker = MD_HEADING_MARKERS[self.chapters[chID].type]
             text = text + headingMarker + \
                 format_chapter_title(self.chapters[chID].title) + '\n'
+
             for scID in self.chapters[chID].scenes:
                 text = text + '\\[ScID:' + scID + '\\]\n'
+
                 try:
                     text = text + self.scenes[scID].sceneContent + '\n'
+
                 except(TypeError):
                     text = text + '\n'
+
                 text = text + '\\[/ScID\\]\n'
+
             text = text + '\\[/ChID\\]\n'
+
         text = to_md(text)
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
-                # get_text() is to be overwritten
-                # by file format specific subclasses.
+
         except(PermissionError):
             return('ERROR: ' + self._filePath + '" is write protected.')
 

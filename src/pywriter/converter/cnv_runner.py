@@ -1,6 +1,6 @@
 """Import and export yWriter 7 data. 
 
-Standalone converter with a simple GUI
+Standalone yWriter 7 converter with a simple GUI
 
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
@@ -18,9 +18,52 @@ TITLE = 'PyWriter v1.2'
 
 
 class CnvRunner(Yw7Cnv):
+    """Standalone yWriter 7 converter with a simple GUI. 
+
+    # Arguments
+
+        sourcePath : str
+            a full or relative path to the file to be converted.
+            Either an .yw7 file or a file of any supported type. 
+            The file type determines the conversion's direction.    
+
+        document : PywFile
+            instance of any PywFile subclass representing the 
+            source or target document. 
+
+        extension : str
+            file extension determining the source or target 
+            document's file type. The extension is needed because 
+            there can be ambiguous PywFile subclasses 
+            (e.g. OfficeFile).
+            Examples: 
+            - md
+            - docx
+            - odt
+            - html
+
+        silentMode : bool
+            True by default. Intended for automated tests. 
+            If True, the GUI is not started and no further 
+            user interaction is required. Overwriting of existing
+            files is forced. 
+            Calling scripts shall set silentMode = False.
+
+        suffix : str
+            optional file name suffix used for ambiguous html files.
+            Examples:
+            - _manuscript for a html file containing scene contents.
+            - _scenedesc for a html file containing scene descriptions.
+            - _chapterdesc for a html file containing chapter descriptions.
+
+
+    """
 
     def __init__(self, sourcePath, document, extension, silentMode=True, suffix=''):
-        """File conversion for proofreading """
+        """Run the converter with a GUI. """
+
+        # Prepare the graphical user interface.
+
         root = Tk()
         root.geometry("800x300")
         root.title(TITLE)
@@ -33,9 +76,12 @@ class CnvRunner(Yw7Cnv):
         self.processInfo = Label(root, text='')
         self.processInfo.pack(padx=5, pady=5)
 
-        self.silentMode = silentMode
+        # Run the converter.
 
-        self.run(sourcePath, document, extension, suffix)
+        self.silentMode = silentMode
+        self.__run(sourcePath, document, extension, suffix)
+
+        # Show the result.
 
         if not self.silentMode:
             root.quitButton = Button(text="OK", command=quit)
@@ -43,32 +89,44 @@ class CnvRunner(Yw7Cnv):
             root.quitButton.pack(padx=5, pady=5)
             root.mainloop()
 
-    def run(self, sourcePath, document, extension, suffix):
-        """File conversion for editing """
+    def __run(self, sourcePath, document, extension, suffix):
+        """Determine the direction and invoke the converter. """
+
+        # The conversion's direction depends on the sourcePath argument.
 
         if sourcePath.endswith('.yw7'):
             yw7Path = sourcePath
+
+            # Generate the target file path.
+
             document.filePath = sourcePath.split(
                 '.yw7')[0] + suffix + '.' + extension
             self.appInfo.config(
                 text='Export yWriter7 scenes content to html')
             self.processInfo.config(text='Project: "' + yw7Path + '"')
 
-            yw7File = Yw7File(yw7Path)
+            # Instantiate an Yw7File object and pass it along with
+            # the document to the converter class.
 
+            yw7File = Yw7File(yw7Path)
             self.processInfo.config(
                 text=self.yw7_to_document(yw7File, document))
 
         elif sourcePath.endswith(suffix + '.' + extension):
             document.filePath = sourcePath
+
+            # Determine the project file path.
+
             yw7Path = sourcePath.split(suffix + '.' + extension)[0] + '.yw7'
             self.appInfo.config(
                 text='Import yWriter7 scenes content from html')
             self.processInfo.config(
                 text='Proofed scenes in "' + document.filePath + '"')
 
-            yw7File = Yw7File(yw7Path)
+            # Instantiate an Yw7File object and pass it along with
+            # the document to the converter class.
 
+            yw7File = Yw7File(yw7Path)
             self.processInfo.config(
                 text=self.document_to_yw7(document, yw7File))
 
@@ -77,6 +135,8 @@ class CnvRunner(Yw7Cnv):
                 text='Argument is wrong or missing (drag and drop error?)\nInput file must be .yw7 or ' + suffix + '.' + extension + ' type.')
             self.successInfo.config(bg='red')
 
+        # Visualize the outcome.
+
         if 'ERROR' in self.processInfo.cget('text'):
             self.successInfo.config(bg='red')
 
@@ -84,7 +144,7 @@ class CnvRunner(Yw7Cnv):
             self.successInfo.config(bg='green')
 
     def confirm_overwrite(self, file):
-        """ Invoked by subclass if file already exists. """
+        """ Invoked by the parent if a file already exists. """
 
         if self.silentMode:
             return(True)

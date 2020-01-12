@@ -1,8 +1,6 @@
 """Import and export yWriter 7 data. 
 
-yWriter 7 standalone file converter with basic error handling 
-
-The tests below may be included in the 'XyFile' classes at a later date.
+Standalone yWriter 7 file converter with basic error handling 
 
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
@@ -11,6 +9,36 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 
 class Yw7Cnv():
+    """Converter for yWriter 7 project files.
+
+    # Methods
+
+    yw7_to_document : str
+        Arguments
+            yw7File : Yw7File
+                an object representing the source file.
+            documentFile : PywFile
+                a PywFile subclass instance representing the target file.
+        read .yw7 file, parse xml and create a document file.
+        Return a message beginning with SUCCESS or ERROR.    
+
+    document_to_yw7 : str
+        Arguments
+            documentFile : PywFile
+                a PywFile subclass instance representing the source file.
+            yw7File : Yw7File
+                an object representing the target file.
+        read document file, convert its content to xml, and replace .yw7 file.
+        Return a message beginning with SUCCESS or ERROR.
+
+    confirm_overwrite : bool
+        Arguments
+            fileName : str
+                Path to the file to be overwritten
+        ask for permission to overwrite the target file.
+        Returns True by default.
+        This method is to be overwritten by subclasses with an user interface.
+    """
 
     def yw7_to_document(self, yw7File, documentFile):
         """Read .yw7 file and convert xml to a document file. """

@@ -1,4 +1,4 @@
-"""yW7File - Class for yWriter 7 file operations and parsing.
+"""yW7File - Class for yWriter 7 xml file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -30,15 +30,21 @@ class Yw7File(PywFile):
         parse the yw7 xml file located at filePath, fetching the 
         Novel attributes.
         Return a message beginning with SUCCESS or ERROR. 
+
     write : str
-        open the yw7 xml file located at filePath and replace a set 
-        of items by the Novel attributes not being None.
+        Arguments 
+            novel : Novel
+                the data to be written. 
+        Open the yw7 xml file located at filePath and replace a set 
+        of items by the novel attributes not being None.
         Return a message beginning with SUCCESS or ERROR.
+
     is_locked : bool
         tests whether a .lock file placed by yWriter exists.
     """
 
     _fileExtension = '.yw7'
+    # overwrites PywFile._fileExtension
 
     def __init__(self, filePath):
         PywFile.__init__(self, filePath)
@@ -60,6 +66,7 @@ class Yw7File(PywFile):
 
         if '<![CDATA[]]>' in xmlData:
             xmlData = xmlData.replace('<![CDATA[]]>', '<![CDATA[ ]]>')
+
             try:
                 with open(self._filePath, 'w', encoding='utf-8') as f:
                     f.write(xmlData)
@@ -71,8 +78,10 @@ class Yw7File(PywFile):
         # Complete list of tags requiring CDATA (if incomplete).
 
         lines = xmlData.split('\n')
+
         for line in lines:
             tag = re.search('\<(.+?)\>\<\!\[CDATA', line)
+
             if tag is not None:
 
                 if not (tag.group(1) in self._cdataTags):
@@ -92,30 +101,30 @@ class Yw7File(PywFile):
             self.desc = prj.find('Desc').text
 
         for chp in root.iter('CHAPTER'):
-            chID = chp.find('ID').text
-            self.chapters[chID] = Chapter()
-            self.chapters[chID].title = chp.find('Title').text
+            chId = chp.find('ID').text
+            self.chapters[chId] = Chapter()
+            self.chapters[chId].title = chp.find('Title').text
 
             if chp.find('Desc') is not None:
-                self.chapters[chID].desc = chp.find('Desc').text
+                self.chapters[chId].desc = chp.find('Desc').text
 
-            self.chapters[chID].type = int(chp.find('Type').text)
-            self.chapters[chID].scenes = []
+            self.chapters[chId].type = int(chp.find('Type').text)
+            self.chapters[chId].scenes = []
 
             if chp.find('Scenes') is not None:
 
                 for scn in chp.find('Scenes').findall('ScID'):
-                    self.chapters[chID].scenes.append(scn.text)
+                    self.chapters[chId].scenes.append(scn.text)
 
         for scn in root.iter('SCENE'):
-            scID = scn.find('ID').text
-            self.scenes[scID] = Scene()
-            self.scenes[scID].title = scn.find('Title').text
+            scId = scn.find('ID').text
+            self.scenes[scId] = Scene()
+            self.scenes[scId].title = scn.find('Title').text
 
             if scn.find('Desc') is not None:
-                self.scenes[scID].desc = scn.find('Desc').text
+                self.scenes[scId].desc = scn.find('Desc').text
 
-            self.scenes[scID]._sceneContent = scn.find('SceneContent').text
+            self.scenes[scId]._sceneContent = scn.find('SceneContent').text
 
         return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
@@ -127,35 +136,35 @@ class Yw7File(PywFile):
 
         if novel.scenes is not None:
 
-            for scID in novel.scenes:
+            for scId in novel.scenes:
 
-                if novel.scenes[scID].title != '':
-                    self.scenes[scID].title = novel.scenes[scID].title
+                if novel.scenes[scId].title != '':
+                    self.scenes[scId].title = novel.scenes[scId].title
 
-                if novel.scenes[scID].desc != '':
-                    self.scenes[scID].desc = novel.scenes[scID].desc
+                if novel.scenes[scId].desc != '':
+                    self.scenes[scId].desc = novel.scenes[scId].desc
 
-                if novel.scenes[scID].sceneContent != '':
-                    self.scenes[scID].sceneContent = novel.scenes[scID].sceneContent
+                if novel.scenes[scId].sceneContent != '':
+                    self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
 
         if novel.chapters is not None:
 
-            for chID in novel.chapters:
+            for chId in novel.chapters:
 
-                if novel.chapters[chID].title != '':
-                    self.chapters[chID].title = novel.chapters[chID].title
+                if novel.chapters[chId].title != '':
+                    self.chapters[chId].title = novel.chapters[chId].title
 
-                if novel.chapters[chID].desc != '':
-                    self.chapters[chID].desc = novel.chapters[chID].desc
+                if novel.chapters[chId].desc != '':
+                    self.chapters[chId].desc = novel.chapters[chId].desc
 
-                if novel.chapters[chID].type is not None:
-                    self.chapters[chID].type = novel.chapters[chID].type
+                if novel.chapters[chId].type is not None:
+                    self.chapters[chId].type = novel.chapters[chId].type
 
-                if novel.chapters[chID].scenes != []:
-                    self.chapters[chID].scenes = []
+                if novel.chapters[chId].scenes != []:
+                    self.chapters[chId].scenes = []
 
-                    for scID in novel.chapters[chID].scenes:
-                        self.chapters[chID].scenes.append(scID)
+                    for scId in novel.chapters[chId].scenes:
+                        self.chapters[chId].scenes.append(scId)
 
         sceneCount = 0
         root = self.tree.getroot()
@@ -164,56 +173,56 @@ class Yw7File(PywFile):
             prj.find('Title').text = self.title
 
         for chp in root.iter('CHAPTER'):
-            chID = chp.find('ID').text
-            chp.find('Title').text = self.chapters[chID].title
+            chId = chp.find('ID').text
+            chp.find('Title').text = self.chapters[chId].title
 
-            if self.chapters[chID].desc != '':
+            if self.chapters[chId].desc != '':
                 if chp.find('Desc') is None:
                     newDesc = ET.SubElement(chp, 'Desc')
-                    newDesc.text = self.chapters[chID].desc
+                    newDesc.text = self.chapters[chId].desc
 
                 else:
-                    chp.find('Desc').text = self.chapters[chID].desc
+                    chp.find('Desc').text = self.chapters[chId].desc
 
-            chp.find('Type').text = str(self.chapters[chID].type)
+            chp.find('Type').text = str(self.chapters[chId].type)
 
             if chp.find('Scenes') is not None:
                 i = 0
                 for scn in chp.find('Scenes').findall('ScID'):
-                    scn.text = self.chapters[chID].scenes[i]
+                    scn.text = self.chapters[chId].scenes[i]
                     i = i + 1
 
         for scn in root.iter('SCENE'):
 
-            scID = scn.find('ID').text
+            scId = scn.find('ID').text
             try:
-                if self.scenes[scID].isEmpty():
+                if self.scenes[scId].isEmpty():
                     scn.find('SceneContent').text = ''
                     scn.find('WordCount').text = '0'
                     scn.find('LetterCount').text = '0'
 
                 else:
                     scn.find(
-                        'SceneContent').text = self.scenes[scID]._sceneContent
+                        'SceneContent').text = self.scenes[scId]._sceneContent
                     scn.find('WordCount').text = str(
-                        self.scenes[scID]._wordCount)
+                        self.scenes[scId]._wordCount)
                     scn.find('LetterCount').text = str(
-                        self.scenes[scID]._letterCount)
+                        self.scenes[scId]._letterCount)
 
-                scn.find('Title').text = self.scenes[scID].title
+                scn.find('Title').text = self.scenes[scId].title
 
-                if self.scenes[scID].desc != '':
+                if self.scenes[scId].desc != '':
                     if scn.find('Desc') is None:
                         newDesc = ET.SubElement(scn, 'Desc')
-                        newDesc.text = self.scenes[scID].desc
+                        newDesc.text = self.scenes[scId].desc
 
                     else:
-                        scn.find('Desc').text = self.scenes[scID].desc
+                        scn.find('Desc').text = self.scenes[scId].desc
 
                 sceneCount = sceneCount + 1
 
             except(KeyError):
-                return('ERROR: Scene with ID:' + scID + ' is missing in input file - yWriter project not modified.')
+                return('ERROR: Scene with ID:' + scId + ' is missing in input file - yWriter project not modified.')
 
         try:
             self.tree.write(self._filePath, encoding='utf-8')
@@ -227,16 +236,21 @@ class Yw7File(PywFile):
         newXml = '<?xml version="1.0" encoding="utf-8"?>\n'
         with open(self._filePath, 'r', encoding='utf-8') as f:
             lines = f.readlines()
+
             for line in lines:
+
                 for tag in self._cdataTags:
                     line = re.sub('\<' + tag + '\>', '<' +
                                   tag + '><![CDATA[', line)
                     line = re.sub('\<\/' + tag + '\>',
                                   ']]></' + tag + '>', line)
+
                 newXml = newXml + line
+
         newXml = newXml.replace('\n \n', '\n')
         newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
         newXml = newXml.replace('\n]]', ']]')
+
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
                 f.write(newXml)

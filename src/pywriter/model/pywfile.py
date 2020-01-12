@@ -23,13 +23,21 @@ class PywFile(Novel, ABC):
 
     filePath : str (property with setter)
         Path to the file.
+        The setter only accepts files of a supported type as specified 
+        by _fileExtension. 
 
     # Methods
 
-    read(novel)
-        Abstract method for parsing the file and writing selected properties to the novel.
-    write(novel)
+    read : str
+        Abstract method for parsing the file and writing selected 
+        properties to the novel.
+
+    write : str
+        Arguments
+            novel : Novel
+                the data to be written. 
         Abstract method for writing selected novel properties to the file.
+
     file_exists() : bool
         True means: the file specified by filePath exists. 
     """
@@ -67,5 +75,6 @@ class PywFile(Novel, ABC):
 
         if os.path.isfile(self._filePath):
             return(True)
+
         else:
             return(False)

@@ -16,12 +16,16 @@ class Scene():
 
     title : str
         the scene title.
+
     desc : str
         scene summary.
+
     sceneContent : str (property with setter)
         scene text with raw markup.
+
     _wordCount : int 
         (to be updated by the sceneContent setter).
+
     _letterCount : int 
         (to be updated by the sceneContent setter).
 

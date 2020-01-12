@@ -1,5 +1,7 @@
-"""PyWriter module
+"""OfficeFile - Class for Office document conversion.
 
+Part of the PyWriter project.
+Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -11,6 +13,40 @@ from pywriter.model.mdfile import MdFile
 
 
 class OfficeFile(MdFile):
+    """Office file representation.
+
+    Represents an Office text document with visible chapter and scene tags 
+    to be converted by Pandoc.
+
+    # Properties
+
+    filePath : str (property with setter)
+        Path to the office document file for Pandoc operation.
+        The setter only accepts files of a supported type as listed
+        in _fileExtensions. 
+        For reading and writing the intermediate Markdown file,
+        this attribute is temporarily overwritten with the 
+        path to the intermediate file. 
+
+    # Methods
+
+    read : str
+        let pandoc read the document file and convert to markdown.
+        parse the Markdown file, fetching the Novel attributes.
+        Return a message beginning with SUCCESS or ERROR. 
+
+    write : str
+        Arguments
+            novel : Novel
+                the data to be written. 
+        Generate an intermediate Markdown file containing:
+        - chapter ID tags,
+        - chapter headings,
+        - scene ID tags, 
+        - scene content.
+        Let Pandoc convert this Markdown file into the target format.
+        Return a message beginning with SUCCESS or ERROR.
+    """
 
     _fileExtensions = ['docx', 'odt']
 
@@ -38,9 +74,10 @@ class OfficeFile(MdFile):
         if not os.path.isfile(self.filePath):
             return('ERROR: "' + self.filePath + '" not found.')
 
+        # Let pandoc read the document file and convert to markdown.
+
         convert_file(self.filePath, 'markdown_strict', format=self._fileExtension,
                      outputfile=self._tempFile, extra_args=['--wrap=none'])
-        # Let pandoc read the document file and convert to markdown.
 
         documentPath = self._filePath
         self._filePath = self._tempFile
@@ -70,9 +107,10 @@ class OfficeFile(MdFile):
         except(FileNotFoundError):
             pass
 
+        # Let pandoc convert markdown and write to the document.
+
         convert_file(self._tempFile, self._fileExtension, format='markdown_strict',
                      outputfile=self.filePath)
-        # Let pandoc convert markdown and write to .document file.
 
         os.remove(self._tempFile)
 
@@ -81,11 +119,3 @@ class OfficeFile(MdFile):
 
         else:
             return('ERROR: Could not create "' + self.filePath + '".')
-
-    def file_exists(self) -> bool:
-        """Check whether the file specified by _filePath exists. """
-
-        if os.path.isfile(self.filePath):
-            return(True)
-        else:
-            return(False)
