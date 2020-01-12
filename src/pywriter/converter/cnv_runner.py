@@ -55,8 +55,6 @@ class CnvRunner(Yw7Cnv):
             - _manuscript for a html file containing scene contents.
             - _scenedesc for a html file containing scene descriptions.
             - _chapterdesc for a html file containing chapter descriptions.
-
-
     """
 
     def __init__(self, sourcePath, document, extension, silentMode=True, suffix=''):
@@ -81,7 +79,7 @@ class CnvRunner(Yw7Cnv):
         self.silentMode = silentMode
         self.__run(sourcePath, document, extension, suffix)
 
-        # Show the result.
+        # Visualize the outcome.
 
         if not self.silentMode:
             root.quitButton = Button(text="OK", command=quit)
