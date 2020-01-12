@@ -52,6 +52,7 @@ class ChapterDesc(Manuscript):
                 if attrs[0][1].startswith('ChID'):
                     self._chId = re.search('[0-9]+', attrs[0][1]).group()
                     self.chapters[self._chId] = Chapter()
+                    self.srtChapters.append(self._chId)
                     self._collectText = True
 
     def handle_endtag(self, tag):
@@ -82,6 +83,8 @@ class ChapterDesc(Manuscript):
 
             return(text)
 
+        # Copy the novel's attributes to write
+
         if novel.title is not None:
 
             if novel.title != '':
@@ -94,7 +97,7 @@ class ChapterDesc(Manuscript):
             self.chapters = novel.chapters
 
         text = HTML_HEADER.replace('$bookTitle$', self.title)
-        text = text + '<h1>' + self.title + '</h1>'
+        text = text + '<h1>' + self.title + '</h1>\n'
 
         for chID in self.srtChapters:
             text = text + '<div id="ChID:' + chID + '">\n'

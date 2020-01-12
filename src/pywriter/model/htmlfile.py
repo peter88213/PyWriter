@@ -157,6 +157,8 @@ class HtmlFile(PywFile, HTMLParser):
             text = text.replace('Chapter ', '')
             return(text)
 
+        # Copy the novel's attributes to write
+
         if novel.title is not None:
             if novel.title != '':
                 self.title = novel.title

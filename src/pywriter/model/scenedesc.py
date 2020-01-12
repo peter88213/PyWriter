@@ -69,10 +69,15 @@ class SceneDesc(Manuscript):
                 pass
             return(text)
 
+        # Copy the novel's attributes to write
+
         if novel.title is not None:
 
             if novel.title != '':
                 self.title = novel.title
+
+        if novel.srtChapters != []:
+            self.srtChapters = novel.srtChapters
 
         if novel.scenes is not None:
             self.scenes = novel.scenes
@@ -83,13 +88,13 @@ class SceneDesc(Manuscript):
         text = HTML_HEADER.replace('$bookTitle$', self.title)
         text = text + '<h1>' + self.title + '</h1>'
 
-        for chID in self.chapters:
+        for chID in self.srtChapters:
             text = text + '<div id="ChID:' + chID + '">\n'
             headingMarker = HTML_HEADING_MARKERS[self.chapters[chID].type]
             text = text + '<' + headingMarker + '>' + format_chapter_title(
                 self.chapters[chID].title) + '</' + headingMarker + '>\n'
 
-            for scID in self.chapters[chID].scenes:
+            for scID in self.chapters[chID].srtScenes:
                 text = text + '<div id="ScID:' + scID + '">\n'
                 text = text + '<p class="firstlineindent">'
 
