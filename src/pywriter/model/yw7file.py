@@ -203,9 +203,9 @@ class Yw7File(PywFile):
                     scn.find(
                         'SceneContent').text = self.scenes[scId]._sceneContent
                     scn.find('WordCount').text = str(
-                        self.scenes[scId]._wordCount)
+                        self.scenes[scId].wordCount)
                     scn.find('LetterCount').text = str(
-                        self.scenes[scId]._letterCount)
+                        self.scenes[scId].letterCount)
 
                 scn.find('Title').text = self.scenes[scId].title
 

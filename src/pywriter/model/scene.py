@@ -23,10 +23,10 @@ class Scene():
     sceneContent : str (property with setter)
         scene text with raw markup.
 
-    _wordCount : int 
+    wordCount : int 
         (to be updated by the sceneContent setter).
 
-    _letterCount : int 
+    letterCount : int 
         (to be updated by the sceneContent setter).
 
     # Methods 
@@ -38,8 +38,8 @@ class Scene():
     def __init__(self):
         self.title = ''
         self.desc = ''
-        self._wordCount = 0
-        self._letterCount = 0
+        self.wordCount = 0
+        self.letterCount = 0
         self._sceneContent = ''
 
     @property
@@ -55,14 +55,14 @@ class Scene():
         # Remove yw7 raw markup for word count
 
         wordList = text.split()
-        self._wordCount = len(wordList)
+        self.wordCount = len(wordList)
 
         text = re.sub('\[.+?\]', '', self._sceneContent)
         # Remove yw7 raw markup for letter count
 
         text = text.replace('\n', '')
         text = text.replace('\r', '')
-        self._letterCount = len(text)
+        self.letterCount = len(text)
 
     def isEmpty(self) -> bool:
         """Check whether the scene has no content yet. """
