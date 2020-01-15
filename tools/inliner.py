@@ -79,6 +79,7 @@ def main():
     os.chdir(SRC)
     run('proofdocx.pyw', BUILD + 'yw_proof_docx.pyw', 'pywriter')
     run('proofodt.pyw', BUILD + 'yw_proof_odt.pyw', 'pywriter')
+    run('proofhtml.pyw', BUILD + 'yw_proof_html.pyw', 'pywriter')
     print('Done.')
 
 

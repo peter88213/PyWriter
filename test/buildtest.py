@@ -11,23 +11,29 @@ import unittest
 import zipfile
 import yw_proof_docx
 import yw_proof_odt
+import yw_proof_html
 
-TEST_PROJECT = 'yw7 Sample Project'
+TEST_PATH = '../test/'
+EXEC_PATH = TEST_PATH + 'yw7/'
+DATA_PATH = TEST_PATH + 'data/'
 
-TEST_PATH = '../test'
-TEST_EXEC_PATH = TEST_PATH + '/yw7/'
-TEST_DATA_PATH = TEST_PATH + '/data/'
-
-DOCX_FILE = TEST_PROJECT + '.docx'
-DOCX_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.docx'
+TEST_DOCX = EXEC_PATH + 'yw7 Sample Project.docx'
 DOCX_CONTENT = 'word/document.xml'
+PROOFED_DOCX = DATA_PATH + 'office/proofed.docx'
 
-ODT_FILE = TEST_PROJECT + '.odt'
-ODT_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.odt'
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project.odt'
 ODT_CONTENT = 'content.xml'
+PROOFED_ODT = DATA_PATH + 'office/proofed.odt'
 
-YW7_FILE = TEST_PROJECT + '.yw7'
-YW7_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.yw7'
+TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'
+REFERENCE_HTML = DATA_PATH + 'html/normal.html'
+PROOFED_HTML = DATA_PATH + 'html/proofed.html'
+
+TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
+OFFICE_REF_YW7 = DATA_PATH + 'office/normal.yw7'
+OFFICE_PROOFED_YW7 = DATA_PATH + 'office/proofed.yw7'
+HTML_REF_YW7 = DATA_PATH + 'html/normal.yw7'
+HTML_PROOFED_YW7 = DATA_PATH + 'html/proofed.yw7'
 
 
 def read_file(inputFile):
@@ -45,23 +51,27 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_EXEC_PATH + DOCX_FILE)
+        os.remove(TEST_DOCX)
     except:
         pass
     try:
-        os.remove(TEST_EXEC_PATH + ODT_FILE)
+        os.remove(TEST_ODT)
     except:
         pass
     try:
-        os.remove(TEST_EXEC_PATH + YW7_FILE)
+        os.remove(TEST_HTML)
     except:
         pass
     try:
-        os.remove(TEST_EXEC_PATH + DOCX_CONTENT)
+        os.remove(TEST_YW7)
     except:
         pass
     try:
-        os.remove(TEST_EXEC_PATH + ODT_CONTENT)
+        os.remove(EXEC_PATH + DOCX_CONTENT)
+    except:
+        pass
+    try:
+        os.remove(EXEC_PATH + ODT_CONTENT)
     except:
         pass
 
@@ -77,66 +87,74 @@ class NrmOpr(unittest.TestCase):
 
     def setUp(self):
         remove_all_testfiles()
-        copy_file(TEST_DATA_PATH + YW7_FILE,
-                  TEST_EXEC_PATH + YW7_FILE)
+        copy_file(OFFICE_REF_YW7, TEST_YW7)
 
     def test_data(self):
         """Verify test data integrity. """
 
         # Initial test data must differ from the "proofed" test data.
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + YW7_FILE),
-            read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+            read_file(OFFICE_REF_YW7),
+            read_file(OFFICE_PROOFED_YW7))
 
     def test_yw7_to_docx(self):
         """Convert markdown to docx. """
 
-        copy_file(TEST_DATA_PATH + YW7_FILE,
-                  TEST_EXEC_PATH + YW7_FILE)
-        yw_proof_docx.run(
-            TEST_EXEC_PATH + YW7_FILE, True)
+        yw_proof_docx.run(TEST_YW7, True)
 
-        with zipfile.ZipFile(TEST_EXEC_PATH + DOCX_FILE, 'r') as myzip:
-            myzip.extract(DOCX_CONTENT, TEST_EXEC_PATH)
+        with zipfile.ZipFile(TEST_DOCX, 'r') as myzip:
+            myzip.extract(DOCX_CONTENT, EXEC_PATH)
             myzip.close
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + DOCX_CONTENT),
-                         read_file(TEST_DATA_PATH + DOCX_CONTENT))
+        self.assertEqual(read_file(EXEC_PATH + DOCX_CONTENT),
+                         read_file(DATA_PATH + 'office/' + DOCX_CONTENT))
 
     def test_docx_to_yw7(self):
         """Convert docx to markdown. """
 
-        copy_file(TEST_DATA_PATH + DOCX_PROOFED_FILE,
-                  TEST_EXEC_PATH + DOCX_FILE)
-        yw_proof_docx.run(TEST_EXEC_PATH + DOCX_FILE, True)
+        copy_file(PROOFED_DOCX, TEST_DOCX)
+        yw_proof_docx.run(TEST_DOCX, True)
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
-                         read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+        self.assertEqual(read_file(TEST_YW7),
+                         read_file(OFFICE_PROOFED_YW7))
 
     def test_yw7_to_odt(self):
         """Convert markdown to odt. """
 
-        copy_file(TEST_DATA_PATH + YW7_FILE,
-                  TEST_EXEC_PATH + YW7_FILE)
-        yw_proof_odt.run(
-            TEST_EXEC_PATH + YW7_FILE, True)
+        yw_proof_odt.run(TEST_YW7, True)
 
-        with zipfile.ZipFile(TEST_EXEC_PATH + ODT_FILE, 'r') as myzip:
-            myzip.extract(ODT_CONTENT, TEST_EXEC_PATH)
+        with zipfile.ZipFile(TEST_ODT, 'r') as myzip:
+            myzip.extract(ODT_CONTENT, EXEC_PATH)
             myzip.close
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + ODT_CONTENT),
-                         read_file(TEST_DATA_PATH + ODT_CONTENT))
+        self.assertEqual(read_file(EXEC_PATH + ODT_CONTENT),
+                         read_file(DATA_PATH + 'office/' + ODT_CONTENT))
 
     def test_odt_to_yw7(self):
         """Convert odt to markdown. """
 
-        copy_file(TEST_DATA_PATH + ODT_PROOFED_FILE,
-                  TEST_EXEC_PATH + ODT_FILE)
-        yw_proof_odt.run(TEST_EXEC_PATH + ODT_FILE, True)
+        copy_file(PROOFED_ODT, TEST_ODT)
+        yw_proof_odt.run(TEST_ODT, True)
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
-                         read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+        self.assertEqual(read_file(TEST_YW7),
+                         read_file(OFFICE_PROOFED_YW7))
+
+    def test_yw7_to_html(self):
+        """Convert markdown to html. """
+
+        yw_proof_html.run(TEST_YW7, True)
+
+        self.assertEqual(read_file(TEST_HTML),
+                         read_file(REFERENCE_HTML))
+
+    def test_html_to_yw7(self):
+        """Convert html to markdown. """
+
+        copy_file(PROOFED_HTML, TEST_HTML)
+        yw_proof_html.run(TEST_HTML, True)
+
+        self.assertEqual(read_file(TEST_YW7),
+                         read_file(HTML_PROOFED_YW7))
 
     def tearDown(self):
         remove_all_testfiles()

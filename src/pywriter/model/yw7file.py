@@ -54,8 +54,7 @@ class Yw7File(PywFile):
     def read(self) -> str:
         """Parse yw7 xml project file and store selected attributes. """
 
-        # Preprocess the xml file:
-        # Empty scenes will crash the xml parser, so put a blank in them.
+        # Complete list of tags requiring CDATA (if incomplete).
 
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
@@ -63,19 +62,6 @@ class Yw7File(PywFile):
 
         except(FileNotFoundError):
             return('ERROR: "' + self._filePath + '" not found.')
-
-        if '<![CDATA[]]>' in xmlData:
-            xmlData = xmlData.replace('<![CDATA[]]>', '<![CDATA[ ]]>')
-
-            try:
-                with open(self._filePath, 'w', encoding='utf-8') as f:
-                    f.write(xmlData)
-
-            except(PermissionError):
-                return('ERROR: "' + self._filePath +
-                       '" is write protected.')
-
-        # Complete list of tags requiring CDATA (if incomplete).
 
         lines = xmlData.split('\n')
 
@@ -126,7 +112,10 @@ class Yw7File(PywFile):
             if scn.find('Desc') is not None:
                 self.scenes[scId].desc = scn.find('Desc').text
 
-            self.scenes[scId].sceneContent = scn.find('SceneContent').text
+            sceneContent = scn.find('SceneContent').text
+
+            if sceneContent is not None:
+                self.scenes[scId].sceneContent = sceneContent
 
         return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
 
