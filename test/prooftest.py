@@ -13,7 +13,6 @@ import proofdocx
 import proofodt
 import proofhtml
 
-TEST_PROJECT = 'yw7 Sample Project'
 
 TEST_PATH = '../test/'
 EXEC_PATH = TEST_PATH + 'yw7/'

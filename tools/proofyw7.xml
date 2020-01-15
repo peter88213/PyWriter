@@ -9,9 +9,11 @@
 	<property name="release-name" value="${project-name}_${release}" />
 
 	<target name="build">
+		
 		<delete dir="${dist}" />
 		<delete file="${build}/yw_proof_docx.pyw" />
 		<delete file="${build}/yw_proof_odt.pyw" />
+		<delete file="${build}/yw_proof_html.pyw" />
 			<exec executable="python" failonerror="true">
 			    <arg value="inliner.py"/>
 			</exec>
@@ -20,7 +22,8 @@
 			</exec>
 	</target>
 
-<target name="dist" description="generate the distribution">
+	<target name="dist" description="generate the distribution">
+		
 		<mkdir dir="${dist}" />
 		
 		<mkdir dir="${dist}/proofdocx_${release}" />
@@ -28,15 +31,21 @@
 		<copy file="../LICENSE" todir="${dist}/proofdocx_${release}" />
 		<copy file="${docs}/proofdocx/README.md" todir="${dist}/proofdocx_${release}" />
    		<zip destfile="${dist}/proofdocx_${release}.zip" basedir="${dist}/proofdocx_${release}" />
+		<delete file="${build}/yw_proof_docx.pyw" />
 		
-   		<mkdir dir="${dist}/proofodt_${release}" />
+		<mkdir dir="${dist}/proofodt_${release}" />
 		<copy file="${build}/yw_proof_odt.pyw" todir="${dist}/proofodt_${release}" />
 		<copy file="../LICENSE" todir="${dist}/proofodt_${release}" />
 		<copy file="${docs}/proofodt/README.md" todir="${dist}/proofodt_${release}" />
-   		<zip destfile="${dist}/proofodt_${release}.zip" basedir="${dist}/proofodt_${release}" />
-
-		<delete file="${build}/yw_proof_docx.pyw" />
+		<zip destfile="${dist}/proofodt_${release}.zip" basedir="${dist}/proofodt_${release}" />
 		<delete file="${build}/yw_proof_odt.pyw" />
+
+		<mkdir dir="${dist}/proofhtml_${release}" />
+		<copy file="${build}/yw_proof_html.pyw" todir="${dist}/proofhtml_${release}" />
+		<copy file="../LICENSE" todir="${dist}/proofhtml_${release}" />
+		<copy file="${docs}/proofhtml/README.md" todir="${dist}/proofhtml_${release}" />
+		<zip destfile="${dist}/proofhtml_${release}.zip" basedir="${dist}/proofhtml_${release}" />
+		<delete file="${build}/yw_proof_html.pyw" />
 	
 </target>
 
