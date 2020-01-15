@@ -1,6 +1,6 @@
 """Integration tests for the pyWriter project.
 
-Test the "proof read" tasks.
+Test the markdown conversion tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -15,19 +15,19 @@ from pywriter.model.yw7file import Yw7File
 from pywriter.model.mdfile import MdFile
 
 
-TEST_PROJECT = 'yw7 Sample Project'
-
 TEST_PATH = os.getcwd()
-TEST_EXEC_PATH = 'yw7/'
-TEST_DATA_PATH = 'data/'
+EXEC_PATH = 'yw7/'
+DATA_PATH = 'data/markdown/'
 
-DOCUMENT_FILE = TEST_PROJECT + '.md'
-DOCUMENT_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.md'
+TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project.md'
+REFERENCE_DOCUMENT = DATA_PATH + 'normal.md'
+PROOFED_DOCUMENT = DATA_PATH + 'proofed.md'
 
-YW7_FILE = TEST_PROJECT + '.yw7'
-YW7_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.yw7'
+TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
+REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
+PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
-with open(TEST_DATA_PATH + YW7_FILE, 'r') as f:
+with open(REFERENCE_YW7, 'r') as f:
     TOTAL_SCENES = f.read().count('<SCENE>')
 
 
@@ -46,11 +46,11 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_EXEC_PATH + DOCUMENT_FILE)
+        os.remove(TEST_DOCUMENT)
     except:
         pass
     try:
-        os.remove(TEST_EXEC_PATH + YW7_FILE)
+        os.remove(TEST_YW7)
     except:
         pass
 
@@ -65,8 +65,8 @@ class NrmOpr(unittest.TestCase):
 
     def setUp(self):
         remove_all_testfiles()
-        copy_file(TEST_DATA_PATH + YW7_FILE,
-                  TEST_EXEC_PATH + YW7_FILE)
+        copy_file(REFERENCE_YW7,
+                  TEST_YW7)
 
     def test_data(self):
         """Verify test data integrity. """
@@ -74,48 +74,48 @@ class NrmOpr(unittest.TestCase):
         # Initial test data must differ from the "proofed" test data.
 
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + YW7_FILE),
-            read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+            read_file(REFERENCE_YW7),
+            read_file(PROOFED_YW7))
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + DOCUMENT_PROOFED_FILE),
-            read_file(TEST_DATA_PATH + DOCUMENT_FILE))
+            read_file(REFERENCE_DOCUMENT),
+            read_file(PROOFED_DOCUMENT))
 
     def test_yw7_to_md(self):
         """Export yW7 scenes to markdown. """
 
-        yw7File = Yw7File(TEST_EXEC_PATH + YW7_FILE)
-        documentFile = MdFile(TEST_EXEC_PATH + DOCUMENT_FILE)
+        yw7File = Yw7File(TEST_YW7)
+        documentFile = MdFile(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Read .yw7 file and convert xml to markdown.
 
         self.assertEqual(converter.yw7_to_document(
-            yw7File, documentFile), 'SUCCESS: "' + TEST_EXEC_PATH + DOCUMENT_FILE + '" saved.')
+            yw7File, documentFile), 'SUCCESS: "' + TEST_DOCUMENT + '" saved.')
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + DOCUMENT_FILE),
-                         read_file(TEST_DATA_PATH + DOCUMENT_FILE))
+        self.assertEqual(read_file(TEST_DOCUMENT),
+                         read_file(REFERENCE_DOCUMENT))
 
     def test_md_to_yw7(self):
         """Import proofed yw7 scenes from markdown . """
 
-        copy_file(TEST_DATA_PATH + DOCUMENT_PROOFED_FILE,
-                  TEST_EXEC_PATH + DOCUMENT_FILE)
+        copy_file(PROOFED_DOCUMENT,
+                  TEST_DOCUMENT)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        yw7File = Yw7File(TEST_EXEC_PATH + YW7_FILE)
-        documentFile = MdFile(TEST_EXEC_PATH + DOCUMENT_FILE)
+        yw7File = Yw7File(TEST_YW7)
+        documentFile = MdFile(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Convert markdown to xml and replace .yw7 file.
 
         self.assertEqual(converter.document_to_yw7(documentFile, yw7File), 'SUCCESS: ' + str(
-            TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
+            TOTAL_SCENES) + ' Scenes written to "' + TEST_YW7 + '".')
 
         # Verify the yw7 project.
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
-                         read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+        self.assertEqual(read_file(TEST_YW7),
+                         read_file(PROOFED_YW7))
 
     def tearDown(self):
         remove_all_testfiles()

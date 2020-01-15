@@ -1,6 +1,6 @@
 """Integration tests for the pyWriter project.
 
-Test the "export project" tasks.
+Test the html conversion tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -15,19 +15,19 @@ from pywriter.model.yw7file import Yw7File
 from pywriter.model.htmlfile import HtmlFile
 
 
-TEST_PROJECT = 'yw7 Sample Project'
-
 TEST_PATH = os.getcwd()
-TEST_EXEC_PATH = 'yw7/'
-TEST_DATA_PATH = 'data/'
+EXEC_PATH = 'yw7/'
+DATA_PATH = 'data/html/'
 
-DOCUMENT_FILE = TEST_PROJECT + '.html'
-DOCUMENT_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.html'
+TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project.html'
+REFERENCE_DOCUMENT = DATA_PATH + 'normal.html'
+PROOFED_DOCUMENT = DATA_PATH + 'proofed.html'
 
-YW7_FILE = TEST_PROJECT + '.yw7'
-YW7_PROOFED_FILE = 'proof/htmltest.yw7'
+TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
+REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
+PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
-with open(TEST_DATA_PATH + YW7_FILE, 'r') as f:
+with open(REFERENCE_YW7, 'r') as f:
     TOTAL_SCENES = f.read().count('<SCENE>')
 
 
@@ -46,11 +46,11 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_EXEC_PATH + DOCUMENT_FILE)
+        os.remove(TEST_DOCUMENT)
     except:
         pass
     try:
-        os.remove(TEST_EXEC_PATH + YW7_FILE)
+        os.remove(TEST_YW7)
     except:
         pass
 
@@ -59,61 +59,63 @@ class NrmOpr(unittest.TestCase):
     """Test case: Normal operation
 
         Condition: yw7 file is present and read/writeable. 
-        Expected result: During the whole process, the intermediate
-                    markdown file content matches 
-                    the corresponding reference string. 
+        Expected result: During the whole process, the html 
+            file's content matches the reference. 
     """
 
     def setUp(self):
         remove_all_testfiles()
-        copy_file(TEST_DATA_PATH + YW7_FILE,
-                  TEST_EXEC_PATH + YW7_FILE)
+        copy_file(REFERENCE_YW7,
+                  TEST_YW7)
 
     def test_data(self):
         """Verify test data integrity. """
 
         # Initial test data must differ from the "proofed" test data.
+
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + YW7_FILE),
-            read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+            read_file(REFERENCE_YW7),
+            read_file(PROOFED_YW7))
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + DOCUMENT_FILE),
-            read_file(TEST_DATA_PATH + DOCUMENT_PROOFED_FILE))
+            read_file(REFERENCE_DOCUMENT),
+            read_file(PROOFED_DOCUMENT))
 
     def test_yw7_to_html(self):
         """Export yW7 scenes to html. """
 
-        yw7File = Yw7File(TEST_EXEC_PATH + YW7_FILE)
-        documentFile = HtmlFile(TEST_EXEC_PATH + DOCUMENT_FILE)
+        yw7File = Yw7File(TEST_YW7)
+        documentFile = HtmlFile(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
-        self.assertEqual(converter.yw7_to_document(
-            yw7File, documentFile), 'SUCCESS: "' + TEST_EXEC_PATH + DOCUMENT_FILE + '" saved.')
-        # Read .yw7 file and convert scenes to html.
+        # Read .yw7 file and convert xml to html.
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + DOCUMENT_FILE),
-                         read_file(TEST_DATA_PATH + DOCUMENT_FILE))
-        # Verify the html file.
+        self.assertEqual(converter.yw7_to_document(
+            yw7File, documentFile), 'SUCCESS: "' + TEST_DOCUMENT + '" saved.')
+
+        self.assertEqual(read_file(TEST_DOCUMENT),
+                         read_file(REFERENCE_DOCUMENT))
 
     def test_html_to_yw7(self):
-        """Import proofed yw7 scenes from html. """
+        """Import proofed yw7 scenes from html . """
 
-        copy_file(TEST_DATA_PATH + DOCUMENT_PROOFED_FILE,
-                  TEST_EXEC_PATH + DOCUMENT_FILE)
+        copy_file(PROOFED_DOCUMENT,
+                  TEST_DOCUMENT)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        yw7File = Yw7File(TEST_EXEC_PATH + YW7_FILE)
-        documentFile = HtmlFile(TEST_EXEC_PATH + DOCUMENT_FILE)
+        yw7File = Yw7File(TEST_YW7)
+        documentFile = HtmlFile(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
-        self.assertEqual(converter.document_to_yw7(documentFile, yw7File), 'SUCCESS: ' + str(
-            TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
-        # Convert document to xml and replace .yw7 file.
+        # Convert html to xml and replace .yw7 file.
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
-                         read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+        self.assertEqual(converter.document_to_yw7(documentFile, yw7File), 'SUCCESS: ' + str(
+            TOTAL_SCENES) + ' Scenes written to "' + TEST_YW7 + '".')
+
         # Verify the yw7 project.
+
+        self.assertEqual(read_file(TEST_YW7),
+                         read_file(PROOFED_YW7))
 
     def tearDown(self):
         remove_all_testfiles()

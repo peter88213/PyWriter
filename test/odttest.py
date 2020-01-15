@@ -14,20 +14,20 @@ from pywriter.model.yw7file import Yw7File
 
 from pywriter.model.officefile import OfficeFile
 
-TEST_PROJECT = 'yw7 Sample Project'
 
-TEST_PATH = '../test'
-TEST_EXEC_PATH = TEST_PATH + '/yw7/'
-TEST_DATA_PATH = TEST_PATH + '/data/'
+TEST_PATH = os.getcwd()
+EXEC_PATH = 'yw7/'
+DATA_PATH = 'data/office/'
 
-DOCUMENT_FILE = TEST_PROJECT + '.odt'
-DOCUMENT_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.odt'
+TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project.odt'
 DOCUMENT_CONTENT = 'content.xml'
+PROOFED_DOCUMENT = DATA_PATH + 'proofed.odt'
 
-YW7_FILE = TEST_PROJECT + '.yw7'
-YW7_PROOFED_FILE = 'proof/' + TEST_PROJECT + '.yw7'
+TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
+REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
+PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
-with open(TEST_DATA_PATH + YW7_FILE, 'r') as f:
+with open(REFERENCE_YW7, 'r') as f:
     TOTAL_SCENES = f.read().count('<SCENE>')
 
 
@@ -46,15 +46,15 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_EXEC_PATH + DOCUMENT_FILE)
+        os.remove(TEST_DOCUMENT)
     except:
         pass
     try:
-        os.remove(TEST_EXEC_PATH + YW7_FILE)
+        os.remove(TEST_YW7)
     except:
         pass
     try:
-        os.remove(TEST_EXEC_PATH + DOCUMENT_CONTENT)
+        os.remove(EXEC_PATH + DOCUMENT_CONTENT)
     except:
         pass
 
@@ -70,51 +70,45 @@ class NrmOpr(unittest.TestCase):
 
     def setUp(self):
         remove_all_testfiles()
-        copy_file(TEST_DATA_PATH + YW7_FILE,
-                  TEST_EXEC_PATH + YW7_FILE)
+        copy_file(REFERENCE_YW7, TEST_YW7)
 
     def test_data(self):
         """Verify test data integrity. """
-
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + YW7_FILE),
-            read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+            read_file(REFERENCE_YW7),
+            read_file(PROOFED_YW7))
 
     def test_yw7_to_odt(self):
         """Convert markdown to odt. """
 
-        copy_file(TEST_DATA_PATH + YW7_FILE,
-                  TEST_EXEC_PATH + YW7_FILE)
-
-        yw7File = Yw7File(TEST_EXEC_PATH + YW7_FILE)
-        documentFile = OfficeFile(TEST_EXEC_PATH + DOCUMENT_FILE)
+        yw7File = Yw7File(TEST_YW7)
+        documentFile = OfficeFile(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         self.assertEqual(converter.yw7_to_document(
-            yw7File, documentFile), 'SUCCESS: "' + TEST_EXEC_PATH + DOCUMENT_FILE + '" saved.')
+            yw7File, documentFile), 'SUCCESS: "' + TEST_DOCUMENT + '" saved.')
 
-        with zipfile.ZipFile(TEST_EXEC_PATH + DOCUMENT_FILE, 'r') as myzip:
-            myzip.extract(DOCUMENT_CONTENT, TEST_EXEC_PATH)
+        with zipfile.ZipFile(TEST_DOCUMENT, 'r') as myzip:
+            myzip.extract(DOCUMENT_CONTENT, EXEC_PATH)
             myzip.close
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + DOCUMENT_CONTENT),
-                         read_file(TEST_DATA_PATH + DOCUMENT_CONTENT))
+        self.assertEqual(read_file(EXEC_PATH + DOCUMENT_CONTENT),
+                         read_file(DATA_PATH + DOCUMENT_CONTENT))
 
     def test_odt_to_yw7(self):
         """Convert odt to markdown. """
 
-        copy_file(TEST_DATA_PATH + DOCUMENT_PROOFED_FILE,
-                  TEST_EXEC_PATH + DOCUMENT_FILE)
+        copy_file(PROOFED_DOCUMENT, TEST_DOCUMENT)
 
-        yw7File = Yw7File(TEST_EXEC_PATH + YW7_FILE)
-        documentFile = OfficeFile(TEST_EXEC_PATH + DOCUMENT_FILE)
+        yw7File = Yw7File(TEST_YW7)
+        documentFile = OfficeFile(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         self.assertEqual(converter.document_to_yw7(documentFile, yw7File), 'SUCCESS: ' + str(
-            TOTAL_SCENES) + ' Scenes written to "' + TEST_EXEC_PATH + YW7_FILE + '".')
+            TOTAL_SCENES) + ' Scenes written to "' + TEST_YW7 + '".')
 
-        self.assertEqual(read_file(TEST_EXEC_PATH + YW7_FILE),
-                         read_file(TEST_DATA_PATH + YW7_PROOFED_FILE))
+        self.assertEqual(read_file(TEST_YW7),
+                         read_file(PROOFED_YW7))
 
     def tearDown(self):
         remove_all_testfiles()
