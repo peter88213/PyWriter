@@ -18,10 +18,10 @@ class Novel():
     desc : str
         the novel summary.
 
-    chapters : OrderedDict 
+    chapters : dict 
         key = chapter ID, value = Chapter object.
-        The order of the elements corresponds to the novel's order 
-        of the chapters.
+        The order of the elements does not matter (the novel's 
+        order of the chapters is defined by srtChapters)
 
     scenes : dict
         key = scene ID, value = Scene object.
