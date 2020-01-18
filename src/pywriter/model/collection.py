@@ -117,6 +117,31 @@ class Collection():
     def write(self):
         """Write the collection's structure to the configuration file. """
 
+        def indent(elem, level=0):
+            """xml pretty printer
+
+            Special thanks to Fredrik Lundh. 
+            Source: http://effbot.org/zone/element-lib.htm#prettyprint
+            """
+            i = "\n" + level * "  "
+
+            if len(elem):
+                if not elem.text or not elem.text.strip():
+                    elem.text = i + "  "
+
+                if not elem.tail or not elem.tail.strip():
+                    elem.tail = i
+
+                for elem in elem:
+                    indent(elem, level + 1)
+
+                if not elem.tail or not elem.tail.strip():
+                    elem.tail = i
+
+            else:
+                if level and (not elem.tail or not elem.tail.strip()):
+                    elem.tail = i
+
         root = ET.Element('COLLECTION')
         bkSection = ET.SubElement(root, 'BOOKS')
 
@@ -149,6 +174,7 @@ class Collection():
                 bkId = ET.SubElement(serBooks, 'BkID')
                 bkId.text = bookId
 
+        indent(root)
         tree = ET.ElementTree(root)
 
         try:
@@ -178,7 +204,7 @@ class Collection():
         newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
         newXml = newXml.replace('\n]]', ']]')
 
-        newXml = newXml.replace('><', '>\n<')
+        #newXml = newXml.replace('><', '>\n<')
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
