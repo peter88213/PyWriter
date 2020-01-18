@@ -5,12 +5,12 @@
 		<Title><![CDATA[The refugee ship]]></Title>
 		<AuthorName><![CDATA[Monty Grubber]]></AuthorName>
 		<Bio><![CDATA[]]></Bio>
-		<Desc><![CDATA[A sample project you can modify. Or you can delete all the chapters, characters, etc, and start fresh.]]></Desc>
-		<FieldTitle1><![CDATA[]]></FieldTitle1>
-		<FieldTitle2><![CDATA[]]></FieldTitle2>
-		<FieldTitle3><![CDATA[]]></FieldTitle3>
-		<FieldTitle4><![CDATA[]]></FieldTitle4>
-		<LastFullBackup>2020-01-16</LastFullBackup>
+		<Desc><![CDATA[A giant alien spaceship appears in the border area of the United Solar Systems. On board: thousands of souls, persecuted for religious and political reasons, as they say. However, the mighty Star Empire calls them pirates and terrorists, and demands their return. It is said that a kidnapped princess is being held hostage on board. The Space Patrol cruiser Armadillo is to find out the truth, taking the alien ship over. Member of the boarding party: Rick Starlift, officer candidate, who must not attract negative attention from his superior once again ...]]></Desc>
+		<FieldTitle1><![CDATA[Relevance]]></FieldTitle1>
+		<FieldTitle2><![CDATA[Tension]]></FieldTitle2>
+		<FieldTitle3><![CDATA[Humour]]></FieldTitle3>
+		<FieldTitle4><![CDATA[Quality]]></FieldTitle4>
+		<LastFullBackup>2020-01-18</LastFullBackup>
 		<WordTarget>0</WordTarget>
 		<WordTargetStartDate>0001-01-01</WordTargetStartDate>
 		<WordTargetEndDate>0001-01-01</WordTargetEndDate>
@@ -22,8 +22,8 @@
 		<LatexSuppressChapterTitles>0</LatexSuppressChapterTitles>
 		<LatexSceneDivider></LatexSceneDivider>
 		<HtmlSceneDivider></HtmlSceneDivider>
-		<HtmlEncoding></HtmlEncoding>
-		<HtmlUnicode>0</HtmlUnicode>
+		<HtmlEncoding>utf8</HtmlEncoding>
+		<HtmlUnicode>-1</HtmlUnicode>
 		<LaTeXHeaderFile><![CDATA[]]></LaTeXHeaderFile>
 		<MRUSpecificDate>0001-01-01</MRUSpecificDate>
 		<MRUSpecificTime>00:00:00</MRUSpecificTime>
@@ -64,7 +64,7 @@
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
-		<Status>1</Status>
+		<Status>2</Status>
 		<WordCount>483</WordCount>
 		<LetterCount>2792</LetterCount>
 		<Characters>
@@ -114,6 +114,12 @@ The mechanic's small eyes flitted around. His mouth came close to Rick's ear.
 	<WCLog>
 	<WC>
 		<Date>2020-01-16</Date>
+		<Count>483</Count>
+		<TotalCount>483</TotalCount>
+	</WC>
+
+	<WC>
+		<Date>2020-01-18</Date>
 		<Count>483</Count>
 		<TotalCount>483</TotalCount>
 	</WC>
