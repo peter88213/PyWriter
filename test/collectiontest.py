@@ -12,6 +12,7 @@ import unittest
 from pywriter.model.collection import Collection
 
 from pywriter.model.mdfile import MdFile
+from distutils.tests.test_text_file import TEST_DATA
 
 
 TEST_PATH = os.getcwd()
@@ -19,7 +20,6 @@ EXEC_PATH = 'yw7/'
 DATA_PATH = 'data/collection/'
 
 TEST_FILE = EXEC_PATH + 'collection.pwc'
-REFERENCE_FILE = DATA_PATH + 'normal.xml'
 
 
 def read_file(inputFile):
@@ -44,29 +44,73 @@ def remove_all_testfiles():
 
 class NrmOpr(unittest.TestCase):
     """Test case: Normal operation
-
-        Condition: yw7 file is present and read/writeable. 
-        Expected result: During the whole process, the markdown 
-            file's content matches the reference. 
     """
 
     def setUp(self):
         remove_all_testfiles()
-        copy_file(REFERENCE_FILE,
-                  TEST_FILE)
 
-    def test_config_rw(self):
+        try:
+            os.mkdir('yw7/yWriter Projects')
+        except:
+            pass
+        try:
+            os.mkdir('yw7\yWriter Projects/The Gravity Monster.yw')
+        except:
+            pass
+        copy_file('data/yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7',
+                  'yw7/yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7')
+        try:
+            os.mkdir('yw7\yWriter Projects/The Refugee Ship.yw')
+        except:
+            pass
+        copy_file('data/yWriter Projects/The Refugee Ship.yw/The Refugee Ship.yw7',
+                  'yw7/yWriter Projects/The Refugee Ship.yw/The Refugee Ship.yw7')
+
+    def test_read_write_configuration(self):
         """Read and write the configuration file. """
+        copy_file('data/collection/read_write.xml', TEST_FILE)
+        myCollection = Collection(TEST_FILE)
+        myCollection.read()
+        os.remove(TEST_FILE)
+        myCollection.write()
+        self.assertEqual(read_file(TEST_FILE),
+                         read_file('data/collection/read_write.xml'))
 
+    def test_create_collection(self):
+        """Use Case: Create the collection."""
+        myCollection = Collection(TEST_FILE)
+        myCollection.write()
+        self.assertEqual(read_file(TEST_FILE),
+                         read_file('data/collection/create_collection.xml'))
+
+    def test_add_remove_book(self):
+        """Use Case: Create the collection."""
+
+        copy_file(DATA_PATH + 'create_collection.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
         myCollection.read()
 
-        os.remove(TEST_FILE)
-
+        myCollection.add_book(
+            'yw7\yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7')
         myCollection.write()
-
         self.assertEqual(read_file(TEST_FILE),
-                         read_file(REFERENCE_FILE))
+                         read_file('data/collection/add_first_book.xml'))
+
+        myCollection.add_book(
+            'yw7\yWriter Projects/The Refugee Ship.yw/The Refugee Ship.yw7')
+        myCollection.write()
+        self.assertEqual(read_file(TEST_FILE),
+                         read_file('data/collection/add_second_book.xml'))
+
+        myCollection.remove_book('1')
+        myCollection.write()
+        self.assertEqual(read_file(TEST_FILE),
+                         read_file('data/collection/remove_book.xml'))
+
+        myCollection.remove_book('2')
+        myCollection.write()
+        self.assertEqual(read_file(TEST_FILE),
+                         read_file('data/collection/empty_series.xml'))
 
 
 def main():

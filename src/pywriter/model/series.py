@@ -23,7 +23,7 @@ class Series():
         corresponds to the series' order of the books.
     """
 
-    def __init__(self):
-        self.title = ''
-        self.desc = ''
+    def __init__(self, title, desc=''):
+        self.title = title
+        self.desc = desc
         self.srtBooks = []

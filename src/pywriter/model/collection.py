@@ -84,8 +84,7 @@ class Collection():
             return('ERROR: Can not process "' + self._filePath + '".')
 
         for srs in root.iter('SERIES'):
-            newSeries = Series()
-            newSeries.title = srs.find('Title').text
+            newSeries = Series(srs.find('Title').text)
 
             if srs.find('Desc') is not None:
                 newSeries.desc = srs.find('Desc').text
@@ -102,7 +101,7 @@ class Collection():
 
         for boo in root.iter('BOOK'):
             bkId = boo.find('ID').text
-            self.books[bkId] = Book()
+            self.books[bkId] = Book(boo.find('Path').text)
             self.books[bkId].title = boo.find('Title').text
 
             if boo.find('Desc') is not None:
@@ -110,7 +109,6 @@ class Collection():
 
             self.books[bkId].wordCount = str(boo.find('WordCount').text)
             self.books[bkId].letterCount = str(boo.find('LetterCount').text)
-            self.books[bkId].filePath = boo.find('Path').text
 
         return('SUCCESS: ' + str(len(self.books)) + ' Books found in"' + self._filePath + '".')
 
@@ -204,8 +202,6 @@ class Collection():
         newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
         newXml = newXml.replace('\n]]', ']]')
 
-        #newXml = newXml.replace('><', '>\n<')
-
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
                 f.write(newXml)
@@ -223,3 +219,38 @@ class Collection():
 
         else:
             return(False)
+
+    def add_book(self, filePath, serTitle='Not in a series'):
+        """Add an existing book to the collection."""
+
+        i = 1
+
+        while str(i) in self.books:
+            i = i + 1
+
+        bkId = str(i)
+        self.books[bkId] = Book(filePath)
+
+        titleExists = False
+
+        for series in self.srtSeries:
+
+            if series.title == serTitle:
+                series.srtBooks.append(bkId)
+                titleExists = True
+
+        if not titleExists:
+            newSeries = Series(serTitle)
+            newSeries.srtBooks.append(bkId)
+            self.srtSeries.append(newSeries)
+
+    def remove_book(self, bkId):
+        del self.books[bkId]
+
+        for series in self.srtSeries:
+
+            try:
+                series.srtBooks.remove(bkId)
+
+            except:
+                pass
