@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLECTION>
+  <BOOKS>
+    <BOOK>
+      <ID>1</ID>
+      <Title><![CDATA[The Gravity Monster]]></Title>
+      <Desc><![CDATA[At the center of the galaxy, a strange force is at work. Having already thrown thousands of stars out into the void, it is now attracting the attention of all the tabloids of the United Solar Systems. The government must take action. Elections are coming up and time is running out. An expedition is being prepared. The commander-in-chief (and only member): Rick Starlift, youngest cadet of the glorious Space Patrol. The ship: The Arcada, a hastily converted robot freighter. The mission: Get the problem out of the picture, keep the costs down and--under any circumstances--cause no trouble with the Star Empire. Not too difficult a job for a highly motivated, ambitious officer candidate, you might think ...]]></Desc>
+      <WordCount>315</WordCount>
+      <LetterCount>1817</LetterCount>
+      <Path><![CDATA[yWriter Projects\The Gravity Monster.yw\The Gravity Monster.yw7]]></Path>
+    </BOOK>
+    <BOOK>
+      <ID>2</ID>
+      <Title><![CDATA[The Refugee Ship]]></Title>
+      <Desc><![CDATA[A giant alien spaceship appears in the border area of the United Solar Systems. On board: thousands of souls, persecuted for religious and political reasons, as they say. However, the mighty Star Empire calls them pirates and terrorists, and demands their return. It is said that a kidnapped princess is being held hostage on board. The Space Patrol cruiser Armadillo is to find out the truth, taking the alien ship over. Member of the boarding party: Rick Starlift, officer candidate, who must not attract negative attention from his superior once again ...]]></Desc>
+      <WordCount>315</WordCount>
+      <LetterCount>1817</LetterCount>
+      <Path><![CDATA[yWriter Projects\The Refugee Ship.yw\The Refugee Ship.yw7]]></Path>
+    </BOOK>
+  </BOOKS>
+  <SRT_SERIES>
+    <SERIES>
+      <Title><![CDATA[Rick Starlift]]></Title>
+      <Desc><![CDATA[The adventures of Rick Starlift, Space Patrol cadet.]]></Desc>
+      <Books>
+        <BkID>1</BkID>
+        <BkID>2</BkID>
+      </Books>
+    </SERIES>
+  </SRT_SERIES>
+</COLLECTION>

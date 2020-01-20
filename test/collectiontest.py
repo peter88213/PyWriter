@@ -11,6 +11,8 @@ import unittest
 
 from pywriter.model.collection import Collection
 
+from pywriter.model.bookdesc import BookDesc
+
 from pywriter.model.mdfile import MdFile
 from distutils.tests.test_text_file import TEST_DATA
 
@@ -166,6 +168,37 @@ class NrmOpr(unittest.TestCase):
         myCollection.write()
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/empty_series.xml'))
+
+    def test_write_descriptions(self):
+        """Use Case: edit a series description and book descriptions."""
+        copy_file(DATA_PATH + 'two_in_series.xml', TEST_FILE)
+        myCollection = Collection(TEST_FILE)
+        myCollection.read()
+
+        myBookdesc = BookDesc(EXEC_PATH + 'Rick Starlift_series.html')
+        for series in myCollection.srtSeries:
+            if series.title == 'Rick Starlift':
+                myBookdesc.write(series, myCollection)
+
+        self.assertEqual(read_file(EXEC_PATH + 'Rick Starlift_series.html'),
+                         read_file('data/collection/two_in_series.html'))
+
+    def test_read_descriptions(self):
+        """Use Case: edit a series description and book descriptions."""
+        copy_file(DATA_PATH + 'two_in_series.xml', TEST_FILE)
+        copy_file(DATA_PATH + 'add_descriptions.html',
+                  EXEC_PATH + 'Rick Starlift_series.html')
+        myCollection = Collection(TEST_FILE)
+        myCollection.read()
+
+        myBookdesc = BookDesc(EXEC_PATH + 'Rick Starlift_series.html')
+        for series in myCollection.srtSeries:
+            if series.title == 'Rick Starlift':
+                myBookdesc.read(series, myCollection)
+
+        myCollection.write()
+        self.assertEqual(read_file(TEST_FILE),
+                         read_file('data/collection/add_descriptions.xml'))
 
 
 def main():
