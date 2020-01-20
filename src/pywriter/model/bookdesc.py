@@ -16,9 +16,9 @@ from cgitb import text
 class BookDesc(HTMLParser):
     """HTML file representation of a series' book descriptions.
 
-    Represents a html file with book sections containing 
-    book descriptions to be read and written by OpenOffice /LibreOffice 
-    Writer.
+    Represents a html file with series and book sections containing 
+    a series description and the series' book descriptions 
+    to be read and written by OpenOffice /LibreOffice Writer.
 
     # Properties
 
@@ -42,8 +42,11 @@ class BookDesc(HTMLParser):
         Overwrites HTMLparser.handle_data()
 
     read : str
+        Arguments 
+            series : Series
+            collection : Collection
         parse the html file located at filePath, fetching the Series 
-        attributes.
+        and book descriptions.
         Return a message beginning with SUCCESS or ERROR. 
 
     write : str
