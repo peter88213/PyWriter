@@ -77,15 +77,14 @@ class NrmOpr(unittest.TestCase):
                          read_file('data/collection/read_write.xml'))
 
     def test_create_collection(self):
-        """Use Case: Create the collection."""
+        """Use Case: manage the collection/create the collection."""
         myCollection = Collection(TEST_FILE)
         myCollection.write()
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/create_collection.xml'))
 
-    def test_add_remove_book(self):
-        """Use Case: Create the collection."""
-
+    def test_add_book(self):
+        """Use Case: manage the collection/add a book to the collection."""
         copy_file(DATA_PATH + 'create_collection.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
         myCollection.read()
@@ -102,6 +101,12 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/add_second_book.xml'))
 
+    def test_remove_book(self):
+        """Use Case: manage the collection/remove a book from the collection."""
+        copy_file(DATA_PATH + 'add_second_book.xml', TEST_FILE)
+        myCollection = Collection(TEST_FILE)
+        myCollection.read()
+
         myCollection.remove_book('1')
         myCollection.write()
         self.assertEqual(read_file(TEST_FILE),
@@ -111,6 +116,56 @@ class NrmOpr(unittest.TestCase):
         myCollection.write()
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/create_collection.xml'))
+
+    def test_create_series(self):
+        """Use Case: manage book series/create a series."""
+        copy_file(DATA_PATH + 'add_first_book.xml', TEST_FILE)
+        myCollection = Collection(TEST_FILE)
+        myCollection.read()
+
+        myCollection.add_series('Rick Starlift')
+        myCollection.write()
+        self.assertEqual(read_file(TEST_FILE),
+                         read_file('data/collection/empty_series.xml'))
+
+    def test_remove_series(self):
+        """Use Case: manage book series/remove a series."""
+        copy_file(DATA_PATH + 'empty_series.xml', TEST_FILE)
+        myCollection = Collection(TEST_FILE)
+        myCollection.read()
+
+        myCollection.remove_series('Rick Starlift')
+        myCollection.write()
+        self.assertEqual(read_file(TEST_FILE),
+                         read_file('data/collection/add_first_book.xml'))
+
+    def test_add_book_to_series(self):
+        """Use Case: manage book series/add a book to a series."""
+        copy_file(DATA_PATH + 'empty_series.xml', TEST_FILE)
+        myCollection = Collection(TEST_FILE)
+        myCollection.read()
+        for series in myCollection.srtSeries:
+            if series.title == 'Rick Starlift':
+                series.add_book('1')
+                break
+
+        myCollection.write()
+        self.assertEqual(read_file(TEST_FILE),
+                         read_file('data/collection/add_book_to_series.xml'))
+
+    def test_remove_book_from_series(self):
+        """Use Case: manage book series/remove a book from a series."""
+        copy_file(DATA_PATH + 'add_book_to_series.xml', TEST_FILE)
+        myCollection = Collection(TEST_FILE)
+        myCollection.read()
+        for series in myCollection.srtSeries:
+            if series.title == 'Rick Starlift':
+                series.remove_book('1')
+                break
+
+        myCollection.write()
+        self.assertEqual(read_file(TEST_FILE),
+                         read_file('data/collection/empty_series.xml'))
 
 
 def main():

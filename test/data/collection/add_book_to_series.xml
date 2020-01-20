@@ -14,7 +14,9 @@
     <SERIES>
       <Title><![CDATA[Rick Starlift]]></Title>
       <Desc />
-      <Books />
+      <Books>
+        <BkID>1</BkID>
+      </Books>
     </SERIES>
   </SRT_SERIES>
 </COLLECTION>
