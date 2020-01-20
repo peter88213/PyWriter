@@ -10,13 +10,5 @@
       <Path><![CDATA[yw7\yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7]]></Path>
     </BOOK>
   </BOOKS>
-  <SRT_SERIES>
-    <SERIES>
-      <Title><![CDATA[Not in a series]]></Title>
-      <Desc />
-      <Books>
-        <BkID>1</BkID>
-      </Books>
-    </SERIES>
-  </SRT_SERIES>
+  <SRT_SERIES />
 </COLLECTION>

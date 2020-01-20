@@ -18,14 +18,5 @@
       <Path><![CDATA[yw7\yWriter Projects/The Refugee Ship.yw/The Refugee Ship.yw7]]></Path>
     </BOOK>
   </BOOKS>
-  <SRT_SERIES>
-    <SERIES>
-      <Title><![CDATA[Not in a series]]></Title>
-      <Desc />
-      <Books>
-        <BkID>1</BkID>
-        <BkID>2</BkID>
-      </Books>
-    </SERIES>
-  </SRT_SERIES>
+  <SRT_SERIES />
 </COLLECTION>

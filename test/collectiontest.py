@@ -1,6 +1,6 @@
 """Integration tests for the pyWriter project.
 
-Test the collection read and write tasks.
+Test the Use Cases "manage the collection".
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -110,7 +110,7 @@ class NrmOpr(unittest.TestCase):
         myCollection.remove_book('2')
         myCollection.write()
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/empty_series.xml'))
+                         read_file('data/collection/create_collection.xml'))
 
 
 def main():

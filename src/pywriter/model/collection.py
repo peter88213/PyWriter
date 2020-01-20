@@ -56,22 +56,22 @@ class Collection():
         Arguments
         filePath : str
             The book's location.
-        serTitle : str
-            The title of the series the book is assigned. 
-            Default is 'Not in a series'.
         Add an existing yWriter 7 project file as book to the 
-        collection and to a series. Determine a book ID, 
-        read the novel's title and description, and compute
-        word count and letter count.
+        collection. Determine a book ID, read the novel's title and 
+        description, and compute word count and letter count.
 
     remove_book
         Arguments
         bkId : str
             The book ID.
         Remove a book from the collection and from the series.
-    """
 
-    DEFAULT_SERIES = 'Not in a series'
+    add_series
+        Arguments
+        serTitle : str
+            The series title.
+        Instantiate a Series object and append it to the srtSeries list.
+    """
 
     _fileExtension = 'pwc'
 
@@ -139,7 +139,7 @@ class Collection():
         def indent(elem, level=0):
             """xml pretty printer
 
-            Special thanks to Fredrik Lundh. 
+            Kudos to to Fredrik Lundh. 
             Source: http://effbot.org/zone/element-lib.htm#prettyprint
             """
             i = "\n" + level * "  "
@@ -233,45 +233,39 @@ class Collection():
         return('SUCCESS: Collection written to "' + self._filePath + '".')
 
     def file_exists(self) -> bool:
-        """Check whether the file specified by _filePath exists. """
-
+        """Check whether the file specified by _filePath exists."""
         if os.path.isfile(self._filePath):
             return(True)
-
         else:
             return(False)
 
-    def add_book(self, filePath, serTitle=DEFAULT_SERIES):
+    def add_book(self, filePath):
         """Add an existing book to the collection."""
-
         i = 1
-
         while str(i) in self.books:
             i = i + 1
 
         bkId = str(i)
         self.books[bkId] = Book(filePath)
 
-        titleExists = False
-
-        for series in self.srtSeries:
-
-            if series.title == serTitle:
-                series.srtBooks.append(bkId)
-                titleExists = True
-
-        if not titleExists:
-            newSeries = Series(serTitle)
-            newSeries.srtBooks.append(bkId)
-            self.srtSeries.append(newSeries)
-
     def remove_book(self, bkId):
+        """Remove a book from the collection and from the series."""
         del self.books[bkId]
-
         for series in self.srtSeries:
+            series.remove_book(bkId)
 
-            try:
-                series.srtBooks.remove(bkId)
+    def add_series(self, serTitle):
+        """Instantiate a Series object and append it to the srtSeries list."""
+        for series in self.srtSeries:
+            if series.title == serTitle:
+                return
 
-            except:
-                pass
+        newSeries = Series(serTitle)
+        self.srtSeries.append(newSeries)
+
+    def remove_series(self, serTitle):
+        """Delete a Series object."""
+        for series in self.srtSeries:
+            if series.title == serTitle:
+                self.srtSeries.remove(series)
+                break
