@@ -15,20 +15,25 @@ class Book():
     # Attributes
 
     title : str
-        the scene title.
+        the book title.
 
     desc : str
-        scene summary.
+        the book summary.
 
     filePath : str
-        Location of the book project folder.
+        location of the book project folder.
 
     wordCount : int 
-        (to be updated by the sceneContent setter).
+        the book's scenes total word count.
 
     letterCount : int 
-        (to be updated by the sceneContent setter).
+        the book's scenes total letter count.
 
+    # Methods
+
+    update
+        Open the yw7 file, read title and description, 
+        and compute word count and letter count. 
     """
 
     def __init__(self, filePath):

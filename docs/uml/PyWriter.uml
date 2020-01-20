@@ -130,7 +130,6 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_S2CgoytgEeqgj_wxJ3Xgsg" name="read"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_S2CgpCtgEeqgj_wxJ3Xgsg" name="write"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_tSehgDFmEeq5SLjbDFDS4A" name="is_locked"/>
-        <nestedClassifier xmi:type="uml:Class" xmi:id="_6HsUUDXjEeqSIpxCmEaNZA" name="Class8"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_RkzFwCthEeqgj_wxJ3Xgsg" name="Manuscript">
         <generalization xmi:type="uml:Generalization" xmi:id="_RkzFwSthEeqgj_wxJ3Xgsg" general="_KfuycCtfEeqgj_wxJ3Xgsg"/>
@@ -204,6 +203,10 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_gleb4DQCEeqKbaMl5EbWAw" name="read" isAbstract="true"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_gljUYDQCEeqKbaMl5EbWAw" name="write" isAbstract="true"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_glm-wDQCEeqKbaMl5EbWAw" name="file_exists" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_HKnp8DuIEeqAYZm9mSJxjw" name="add_book"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Jb3T0DuIEeqAYZm9mSJxjw" name="remove_book"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_meKeADuLEeqAYZm9mSJxjw" name="add_series"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_n1xxMDuLEeqAYZm9mSJxjw" name="remove_series"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_FZtSUDP7EeqKbaMl5EbWAw" name="Series">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_AsdxADQEEeqKbaMl5EbWAw" name="title">
@@ -241,6 +244,7 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Gk6u8DQAEeqKbaMl5EbWAw"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Gk6u8TQAEeqKbaMl5EbWAw" value="1"/>
         </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_ckp3sDuKEeqAYZm9mSJxjw" name="update"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_HoodcDP6EeqKbaMl5EbWAw" memberEnd="_HoprkTP6EeqKbaMl5EbWAw _Hoq5sDP6EeqKbaMl5EbWAw">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HopEgDP6EeqKbaMl5EbWAw" source="org.eclipse.papyrus">
@@ -367,8 +371,6 @@
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_EiIfMDP9EeqKbaMl5EbWAw" name="append"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Jac5ADP9EeqKbaMl5EbWAw" name="remove"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q_61kDP9EeqKbaMl5EbWAw" name="moveUp"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Sd_9IDP9EeqKbaMl5EbWAw" name="moveDown"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_WUjfUDP6EeqKbaMl5EbWAw" name="ListOfSeries">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_kLHKAjP7EeqKbaMl5EbWAw" name="series" type="_FZtSUDP7EeqKbaMl5EbWAw" association="_kLF74DP7EeqKbaMl5EbWAw">
@@ -377,8 +379,6 @@
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Mavn8DQCEeqKbaMl5EbWAw" name="append"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_MazSUDQCEeqKbaMl5EbWAw" name="remove"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Ma1ukDQCEeqKbaMl5EbWAw" name="moveUp"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Ma4x4DQCEeqKbaMl5EbWAw" name="moveDown"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_yH7asDXeEeqSIpxCmEaNZA" name="ListOfChapters">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_uZpVoDXfEeqSIpxCmEaNZA" name="chId" visibility="public">

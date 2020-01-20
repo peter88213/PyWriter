@@ -23,11 +23,11 @@ class Collection():
         the novel summary.
 
     books : dict
-        key = scene ID, value = Book object.
+        key = book ID, value = Book object.
         The order of the elements does not matter.
 
     srtSeries : list 
-        the collection's series IDs.
+        list of the collection's Series objects.
 
     # Properties
 
@@ -44,13 +44,34 @@ class Collection():
         Return a message beginning with SUCCESS or ERROR. 
 
     write : str
-        Open the pwc xml file located at filePath and replace a set 
-        of items by the novel attributes not being None.
+        Write the collection's attributes to a pwc xml file 
+        located at filePath. Overwrite existing file without
+        confirmation.
         Return a message beginning with SUCCESS or ERROR.
 
     file_exists() : bool
         True means: the file specified by filePath exists. 
+
+    add_book
+        Arguments
+        filePath : str
+            The book's location.
+        serTitle : str
+            The title of the series the book is assigned. 
+            Default is 'Not in a series'.
+        Add an existing yWriter 7 project file as book to the 
+        collection and to a series. Determine a book ID, 
+        read the novel's title and description, and compute
+        word count and letter count.
+
+    remove_book
+        Arguments
+        bkId : str
+            The book ID.
+        Remove a book from the collection and from the series.
     """
+
+    DEFAULT_SERIES = 'Not in a series'
 
     _fileExtension = 'pwc'
 
@@ -220,7 +241,7 @@ class Collection():
         else:
             return(False)
 
-    def add_book(self, filePath, serTitle='Not in a series'):
+    def add_book(self, filePath, serTitle=DEFAULT_SERIES):
         """Add an existing book to the collection."""
 
         i = 1

@@ -3669,6 +3669,22 @@
               <element xmi:type="uml:Operation" href="PyWriter.uml#_glm-wDQCEeqKbaMl5EbWAw"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_iKhHEzQCEeqKbaMl5EbWAw"/>
             </children>
+            <children xmi:type="notation:Shape" xmi:id="_HhkKUDuIEeqAYZm9mSJxjw" type="Operation_ClassOperationLabel">
+              <element xmi:type="uml:Operation" href="PyWriter.uml#_HKnp8DuIEeqAYZm9mSJxjw"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_HhkKUTuIEeqAYZm9mSJxjw"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_JeS8wDuIEeqAYZm9mSJxjw" type="Operation_ClassOperationLabel">
+              <element xmi:type="uml:Operation" href="PyWriter.uml#_Jb3T0DuIEeqAYZm9mSJxjw"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_JeS8wTuIEeqAYZm9mSJxjw"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_mgA4IDuLEeqAYZm9mSJxjw" type="Operation_ClassOperationLabel">
+              <element xmi:type="uml:Operation" href="PyWriter.uml#_meKeADuLEeqAYZm9mSJxjw"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_mgA4ITuLEeqAYZm9mSJxjw"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_n3LfYDuLEeqAYZm9mSJxjw" type="Operation_ClassOperationLabel">
+              <element xmi:type="uml:Operation" href="PyWriter.uml#_n1xxMDuLEeqAYZm9mSJxjw"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_n3LfYTuLEeqAYZm9mSJxjw"/>
+            </children>
             <styles xmi:type="notation:TitleStyle" xmi:id="_6c6qETP5EeqKbaMl5EbWAw"/>
             <styles xmi:type="notation:SortingStyle" xmi:id="_6c6qEjP5EeqKbaMl5EbWAw"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_6c6qEzP5EeqKbaMl5EbWAw"/>
@@ -3716,14 +3732,6 @@
             <children xmi:type="notation:Shape" xmi:id="_N_oiIDQCEeqKbaMl5EbWAw" type="Operation_ClassOperationLabel">
               <element xmi:type="uml:Operation" href="PyWriter.uml#_MazSUDQCEeqKbaMl5EbWAw"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_N_oiITQCEeqKbaMl5EbWAw"/>
-            </children>
-            <children xmi:type="notation:Shape" xmi:id="_N_oiIjQCEeqKbaMl5EbWAw" type="Operation_ClassOperationLabel">
-              <element xmi:type="uml:Operation" href="PyWriter.uml#_Ma1ukDQCEeqKbaMl5EbWAw"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_N_oiIzQCEeqKbaMl5EbWAw"/>
-            </children>
-            <children xmi:type="notation:Shape" xmi:id="_N_pJMDQCEeqKbaMl5EbWAw" type="Operation_ClassOperationLabel">
-              <element xmi:type="uml:Operation" href="PyWriter.uml#_Ma4x4DQCEeqKbaMl5EbWAw"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_N_pJMTQCEeqKbaMl5EbWAw"/>
             </children>
             <styles xmi:type="notation:TitleStyle" xmi:id="_WUl7kTP6EeqKbaMl5EbWAw"/>
             <styles xmi:type="notation:SortingStyle" xmi:id="_WUl7kjP6EeqKbaMl5EbWAw"/>
@@ -3855,6 +3863,10 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mD0ipzP8EeqKbaMl5EbWAw"/>
           </children>
           <children xmi:type="notation:BasicCompartment" xmi:id="_mD0iqDP8EeqKbaMl5EbWAw" type="Class_OperationCompartment">
+            <children xmi:type="notation:Shape" xmi:id="_cmBwsDuKEeqAYZm9mSJxjw" type="Operation_ClassOperationLabel">
+              <element xmi:type="uml:Operation" href="PyWriter.uml#_ckp3sDuKEeqAYZm9mSJxjw"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_cmBwsTuKEeqAYZm9mSJxjw"/>
+            </children>
             <styles xmi:type="notation:TitleStyle" xmi:id="_mD0iqTP8EeqKbaMl5EbWAw"/>
             <styles xmi:type="notation:SortingStyle" xmi:id="_mD0iqjP8EeqKbaMl5EbWAw"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_mD0iqzP8EeqKbaMl5EbWAw"/>
@@ -3892,14 +3904,6 @@
             <children xmi:type="notation:Shape" xmi:id="_Jaq7cDP9EeqKbaMl5EbWAw" type="Operation_ClassOperationLabel">
               <element xmi:type="uml:Operation" href="PyWriter.uml#_Jac5ADP9EeqKbaMl5EbWAw"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_Jaq7cTP9EeqKbaMl5EbWAw"/>
-            </children>
-            <children xmi:type="notation:Shape" xmi:id="_RAI4ADP9EeqKbaMl5EbWAw" type="Operation_ClassOperationLabel">
-              <element xmi:type="uml:Operation" href="PyWriter.uml#_Q_61kDP9EeqKbaMl5EbWAw"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_RAI4ATP9EeqKbaMl5EbWAw"/>
-            </children>
-            <children xmi:type="notation:Shape" xmi:id="_SeN_kDP9EeqKbaMl5EbWAw" type="Operation_ClassOperationLabel">
-              <element xmi:type="uml:Operation" href="PyWriter.uml#_Sd_9IDP9EeqKbaMl5EbWAw"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_SeN_kTP9EeqKbaMl5EbWAw"/>
             </children>
             <styles xmi:type="notation:TitleStyle" xmi:id="_tSokozP6EeqKbaMl5EbWAw"/>
             <styles xmi:type="notation:SortingStyle" xmi:id="_tSokpDP6EeqKbaMl5EbWAw"/>
@@ -3957,10 +3961,6 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0JPvyTP9EeqKbaMl5EbWAw"/>
           </children>
           <children xmi:type="notation:BasicCompartment" xmi:id="_0JPvyjP9EeqKbaMl5EbWAw" type="Class_NestedClassifierCompartment_CN">
-            <children xmi:type="notation:Shape" xmi:id="_6I2x8DXjEeqSIpxCmEaNZA" type="Class_ClassNestedClassifierLabel">
-              <element xmi:type="uml:Class" href="PyWriter.uml#_6HsUUDXjEeqSIpxCmEaNZA"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_6I2x8TXjEeqSIpxCmEaNZA"/>
-            </children>
             <styles xmi:type="notation:TitleStyle" xmi:id="_0JPvyzP9EeqKbaMl5EbWAw"/>
             <styles xmi:type="notation:SortingStyle" xmi:id="_0JPvzDP9EeqKbaMl5EbWAw"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_0JPvzTP9EeqKbaMl5EbWAw"/>
