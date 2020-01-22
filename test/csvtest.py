@@ -87,7 +87,7 @@ class NrmOpr(unittest.TestCase):
         documentFile = CsvFile(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
-        # Read .yw7 file and convert xml to html.
+        # Read .yw7 file and convert xml to csv.
 
         self.assertEqual(converter.yw7_to_document(
             yw7File, documentFile), 'SUCCESS: "' + TEST_DOCUMENT + '" saved.')
@@ -107,7 +107,7 @@ class NrmOpr(unittest.TestCase):
         documentFile = CsvFile(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
-        # Convert html to xml and replace .yw7 file.
+        # Convert csv to xml and replace .yw7 file.
 
         self.assertEqual(converter.document_to_yw7(documentFile, yw7File), 'SUCCESS: ' + str(
             TOTAL_SCENES) + ' Scenes written to "' + TEST_YW7 + '".')
