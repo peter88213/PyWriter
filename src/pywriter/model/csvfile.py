@@ -1,4 +1,4 @@
-"""Manuscript - Class for csv scene list file operations and parsing.
+"""CsvFile - Class for csv scenes table.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -106,6 +106,8 @@ class CsvFile(PywFile):
         for chId in self.srtChapters:
 
             for scId in self.chapters[chId].srtScenes:
+
+                # Add a row for each scene
 
                 if self.scenes[scId].desc is not None:
                     sceneDesc = self.scenes[scId].desc.rstrip(
