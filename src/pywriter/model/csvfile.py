@@ -15,9 +15,9 @@ SEPARATOR = '|'
 
 
 class CsvFile(PywFile):
-    """csv file representation of an yWriter project's scene list. 
+    """csv file representation of an yWriter project's scenes table. 
 
-    Represents a csv file with a selection of scene attributes.
+    Represents a csv file with a row per scene.
 
     # Attributes
 
@@ -55,20 +55,21 @@ class CsvFile(PywFile):
 
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
-                csvData = (f.readlines())
+                table = (f.readlines())
 
         except(FileNotFoundError):
             return('ERROR: "' + self._filePath + '" not found.')
 
-        for line in csvData:
+        for row in table:
+            cell = row.split(SEPARATOR)
 
-            attributes = line.split(SEPARATOR)
-
-            if 'ScID:' in attributes[0]:
-                scId = re.search('ScID\:([0-9]+)', attributes[0]).group(1)
+            if 'ScID:' in cell[0]:
+                scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
                 self.scenes[scId] = Scene()
-                self.scenes[scId].title = attributes[1]
-                self.scenes[scId].desc = attributes[2].replace(' && ', '\n')
+                self.scenes[scId].title = cell[1]
+                self.scenes[scId].desc = cell[2].replace(' && ', '\n')
+                #self.scenes[scId].wordCount = int(cell[3])
+                #self.scenes[scId].letterCount = int(cell[4])
 
         return('SUCCESS: Data read from "' + self._filePath + '".')
 
@@ -88,16 +89,19 @@ class CsvFile(PywFile):
 
         odtPath = (os.getcwd().replace('\\', '/') + '/' +
                    self.filePath).replace(' ', '%20').replace('.csv', '_manuscript.odt')
-        csvData = ['Scene link'
-                   + SEPARATOR
-                   + 'Scene title'
-                   + SEPARATOR
-                   + 'Scene description'
-                   + SEPARATOR
-                   + 'Word count'
-                   + SEPARATOR
-                   + 'Letter count'
-                   + '\n']
+
+        # First row: column headings
+
+        table = ['Scene link'
+                 + SEPARATOR
+                 + 'Scene title'
+                 + SEPARATOR
+                 + 'Scene description'
+                 + SEPARATOR
+                 + 'Word count'
+                 + SEPARATOR
+                 + 'Letter count'
+                 + '\n']
 
         for chId in self.srtChapters:
 
@@ -110,21 +114,21 @@ class CsvFile(PywFile):
                 else:
                     sceneDesc = ''
 
-                csvData.append('=HYPERLINK("file:///'
-                               + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
-                               + SEPARATOR
-                               + self.scenes[scId].title
-                               + SEPARATOR
-                               + sceneDesc
-                               + SEPARATOR
-                               + str(self.scenes[scId].wordCount)
-                               + SEPARATOR
-                               + str(self.scenes[scId].letterCount)
-                               + '\n')
+                table.append('=HYPERLINK("file:///'
+                             + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
+                             + SEPARATOR
+                             + self.scenes[scId].title
+                             + SEPARATOR
+                             + sceneDesc
+                             + SEPARATOR
+                             + str(self.scenes[scId].wordCount)
+                             + SEPARATOR
+                             + str(self.scenes[scId].letterCount)
+                             + '\n')
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.writelines(csvData)
+                f.writelines(table)
 
         except(PermissionError):
             return('ERROR: ' + self._filePath + '" is write protected.')
