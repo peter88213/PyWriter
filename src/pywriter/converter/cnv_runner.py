@@ -100,7 +100,7 @@ class CnvRunner(Yw7Cnv):
             document.filePath = sourcePath.split(
                 '.yw7')[0] + suffix + '.' + extension
             self.appInfo.config(
-                text='Export yWriter7 scenes content to html')
+                text='Export yWriter7 scenes content to ' + extension)
             self.processInfo.config(text='Project: "' + yw7Path + '"')
 
             # Instantiate an Yw7File object and pass it along with
@@ -117,7 +117,7 @@ class CnvRunner(Yw7Cnv):
 
             yw7Path = sourcePath.split(suffix + '.' + extension)[0] + '.yw7'
             self.appInfo.config(
-                text='Import yWriter7 scenes content from html')
+                text='Import yWriter7 scenes content from ' + extension)
             self.processInfo.config(
                 text='Proofed scenes in "' + document.filePath + '"')
 

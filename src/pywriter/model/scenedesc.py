@@ -52,6 +52,9 @@ class SceneDesc(Manuscript):
                 self._text = ''
                 self._collectText = False
 
+        elif tag == 'p':
+            self._text = self._text + '\n'
+
     def write(self, novel) -> str:
         """Write novel attributes to html file.  """
 

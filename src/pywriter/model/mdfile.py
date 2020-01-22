@@ -61,6 +61,9 @@ class MdFile(PywFile):
         def to_yw7(text):
             """Convert markdown to yw7 raw markup. """
 
+            text = text.replace('<sub>', '')
+            text = text.replace('</sub>', '')
+            # html tags misplaced by Pandoc.
             text = text.replace('\r', '\n')
             text = text.replace('\n\n', '\n')
             text = text.replace('\[', '[')

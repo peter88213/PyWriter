@@ -113,13 +113,16 @@ class Manuscript(PywFile, HTMLParser):
                 self._text = ''
                 self._collectText = False
 
+        elif tag == 'p':
+            self._text = self._text + '\n'
+
     def handle_data(self, data):
         """HTML parser: Collect paragraphs within scene. """
 
         if self._collectText:
 
             if data != ' ':
-                self._text = self._text + data + '\n'
+                self._text = self._text + data
 
     def read(self):
         """Read data from html file with chapter and scene sections. """

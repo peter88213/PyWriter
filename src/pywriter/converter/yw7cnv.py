@@ -8,6 +8,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 
+UNSTRUCTURED = ['ChapterDesc', 'CsvFile']
+# File classes without a chapter/scene tree structure.
+
+
 class Yw7Cnv():
     """Converter for yWriter 7 project files.
 
@@ -91,19 +95,19 @@ class Yw7Cnv():
 
         prjStructure = documentFile.get_structure()
 
-        if prjStructure == '':
-            return('ERROR: Source file contains no yWriter project structure information.')
-
         message = yw7File.read()
         # initialize yw7File data
 
         if message.startswith('ERROR'):
             return(message)
 
-        ''' The structure test shown below does not work for ChapterDesc import
-       if prjStructure != yw7File.get_structure():
-            return('ERROR: Structure mismatch - yWriter project not modified.')
-        '''
+        if not documentFile.__class__.__name__ in UNSTRUCTURED:
+
+            if prjStructure == '':
+                return('ERROR: Source file contains no yWriter project structure information.')
+
+            if prjStructure != yw7File.get_structure():
+                return('ERROR: Structure mismatch - yWriter project not modified.')
 
         return(yw7File.write(documentFile))
 
