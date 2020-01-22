@@ -88,13 +88,20 @@ class CsvFile(PywFile):
 
         odtPath = (os.getcwd().replace('\\', '/') + '/' +
                    self.filePath).replace(' ', '%20').replace('.csv', '_manuscript.odt')
-        csvData = ['Scene link' + SEPARATOR +
-                   'Scene title' + SEPARATOR + 'Scene description\n']
+        csvData = ['Scene link'
+                   + SEPARATOR
+                   + 'Scene title'
+                   + SEPARATOR
+                   + 'Scene description'
+                   + SEPARATOR
+                   + 'Word count'
+                   + SEPARATOR
+                   + 'Letter count'
+                   + '\n']
 
         for chId in self.srtChapters:
 
             for scId in self.chapters[chId].srtScenes:
-                sceneTitle = self.scenes[scId].title.rstrip()
 
                 if self.scenes[scId].desc is not None:
                     sceneDesc = self.scenes[scId].desc.rstrip(
@@ -106,9 +113,13 @@ class CsvFile(PywFile):
                 csvData.append('=HYPERLINK("file:///'
                                + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
                                + SEPARATOR
-                               + sceneTitle
+                               + self.scenes[scId].title
                                + SEPARATOR
                                + sceneDesc
+                               + SEPARATOR
+                               + str(self.scenes[scId].wordCount)
+                               + SEPARATOR
+                               + str(self.scenes[scId].letterCount)
                                + '\n')
 
         try:

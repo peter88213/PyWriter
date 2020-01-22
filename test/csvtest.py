@@ -68,6 +68,7 @@ class NrmOpr(unittest.TestCase):
         copy_file(REFERENCE_YW7,
                   TEST_YW7)
 
+    @unittest.skip('l')
     def test_data(self):
         """Verify test data integrity. """
 
