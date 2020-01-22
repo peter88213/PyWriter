@@ -150,17 +150,17 @@ class MdFile(PywFile):
 
         text = ''
 
-        for chID in self.srtChapters:
-            text = text + '\\[ChID:' + chID + '\\]\n'
-            headingMarker = MD_HEADING_MARKERS[self.chapters[chID].type]
+        for chId in self.srtChapters:
+            text = text + '\\[ChID:' + chId + '\\]\n'
+            headingMarker = MD_HEADING_MARKERS[self.chapters[chId].type]
             text = text + headingMarker + \
-                format_chapter_title(self.chapters[chID].title) + '\n'
+                format_chapter_title(self.chapters[chId].title) + '\n'
 
-            for scID in self.chapters[chID].srtScenes:
-                text = text + '\\[ScID:' + scID + '\\]\n'
+            for scId in self.chapters[chId].srtScenes:
+                text = text + '\\[ScID:' + scId + '\\]\n'
 
                 try:
-                    text = text + self.scenes[scID].sceneContent + '\n'
+                    text = text + self.scenes[scId].sceneContent + '\n'
 
                 except(TypeError):
                     text = text + '\n'

@@ -11,12 +11,6 @@ import re
 from pywriter.model.pywfile import PywFile
 from pywriter.model.scene import Scene
 
-MD_HEADING_MARKERS = ("##", "#")
-# Index is yWriter's chapter type:
-# 0 is for an ordinary chapter
-# 1 is for a chapter beginning a section
-
-
 SEPARATOR = '|'
 
 
@@ -38,19 +32,18 @@ class CsvFile(PywFile):
     # Methods
 
     read : str
-        parse the Markdown file located at filePath, fetching 
-        the Novel attributes.
+        parse the csv file located at filePath, fetching 
+        the Scene attributes contained.
         Return a message beginning with SUCCESS or ERROR. 
 
     write : str
         Arguments 
             novel : Novel
                 the data to be written. 
-        Generate a Markdown file containing:
-        - chapter ID tags,
-        - chapter headings,
-        - scene ID tags, 
-        - scene content.
+        Generate a csv file containing per scene:
+        - manuscript scene hyperlink, 
+        - scene title,
+        - scene description.
         Return a message beginning with SUCCESS or ERROR.
     """
 

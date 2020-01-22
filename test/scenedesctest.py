@@ -1,6 +1,6 @@
 """Integration tests for the pyWriter project.
 
-Test the scene description conversion tasks.
+Test the csv scenes list conversion tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -12,16 +12,16 @@ import unittest
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
-from pywriter.model.scenedesc import SceneDesc
+from pywriter.model.csvfile import CsvFile
 
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/scenedesc/'
+DATA_PATH = 'data/scenelist/'
 
-TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project_scenedesc.html'
-REFERENCE_DOCUMENT = DATA_PATH + 'normal.html'
-PROOFED_DOCUMENT = DATA_PATH + 'proofed.html'
+TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project.csv'
+REFERENCE_DOCUMENT = DATA_PATH + 'normal.csv'
+PROOFED_DOCUMENT = DATA_PATH + 'proofed.csv'
 
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
@@ -80,11 +80,11 @@ class NrmOpr(unittest.TestCase):
             read_file(REFERENCE_DOCUMENT),
             read_file(PROOFED_DOCUMENT))
 
-    def test_yw7_to_scenedesc(self):
-        """Export yW7 scenes to html. """
+    def test_yw7_to_csv(self):
+        """Export yW7 scenes to csv. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = SceneDesc(TEST_DOCUMENT)
+        documentFile = CsvFile(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Read .yw7 file and convert xml to html.
@@ -95,8 +95,8 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_DOCUMENT),
                          read_file(REFERENCE_DOCUMENT))
 
-    def test_scenedesc_to_yw7(self):
-        """Import proofed yw7 scenes from html . """
+    def test_csv_to_yw7(self):
+        """Import proofed yw7 scenes from csv. """
 
         copy_file(PROOFED_DOCUMENT,
                   TEST_DOCUMENT)
@@ -104,7 +104,7 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = SceneDesc(TEST_DOCUMENT)
+        documentFile = CsvFile(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Convert html to xml and replace .yw7 file.
