@@ -12,6 +12,7 @@ from pywriter.model.pywfile import PywFile
 from pywriter.model.scene import Scene
 
 SEPARATOR = '|'
+LINEBREAK = '\t'
 
 
 class CsvFile(PywFile):
@@ -67,7 +68,7 @@ class CsvFile(PywFile):
                 scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
                 self.scenes[scId] = Scene()
                 self.scenes[scId].title = cell[1]
-                self.scenes[scId].desc = cell[2].replace(' && ', '\n')
+                self.scenes[scId].desc = cell[2].replace(LINEBREAK, '\n')
                 #self.scenes[scId].wordCount = int(cell[3])
                 #self.scenes[scId].letterCount = int(cell[4])
 
@@ -111,7 +112,7 @@ class CsvFile(PywFile):
 
                 if self.scenes[scId].desc is not None:
                     sceneDesc = self.scenes[scId].desc.rstrip(
-                    ).replace('\n', ' && ')
+                    ).replace('\n', LINEBREAK)
 
                 else:
                     sceneDesc = ''
