@@ -88,8 +88,8 @@ class CsvFile(PywFile):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        odtPath = (os.getcwd().replace('\\', '/') + '/' +
-                   self.filePath).replace(' ', '%20').replace('.csv', '_manuscript.odt')
+        odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
+            ' ', '%20').replace('.csv', '_manuscript.odt')
 
         # First row: column headings
 
