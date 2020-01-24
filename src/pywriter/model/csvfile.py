@@ -11,14 +11,16 @@ import re
 from pywriter.model.pywfile import PywFile
 from pywriter.model.scene import Scene
 
-SEPARATOR = '|'
-LINEBREAK = '\t'
+SEPARATOR = '|'     # delimits data fields within a record.
+LINEBREAK = '\t'    # substitutes embedded line breaks.
 
 
 class CsvFile(PywFile):
     """csv file representation of an yWriter project's scenes table. 
 
-    Represents a csv file with a row per scene.
+    Represents a csv file with a record per scene.
+    * Records are separated by line breaks.
+    * Data fields are delimited by the SEPARATOR character.
 
     # Attributes
 
@@ -61,16 +63,16 @@ class CsvFile(PywFile):
         except(FileNotFoundError):
             return('ERROR: "' + self._filePath + '" not found.')
 
-        for row in table:
-            cell = row.split(SEPARATOR)
+        for record in table:
+            field = record.split(SEPARATOR)
 
-            if 'ScID:' in cell[0]:
-                scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
+            if 'ScID:' in field[0]:
+                scId = re.search('ScID\:([0-9]+)', field[0]).group(1)
                 self.scenes[scId] = Scene()
-                self.scenes[scId].title = cell[1]
-                self.scenes[scId].desc = cell[2].replace(LINEBREAK, '\n')
-                #self.scenes[scId].wordCount = int(cell[3])
-                #self.scenes[scId].letterCount = int(cell[4])
+                self.scenes[scId].title = field[1]
+                self.scenes[scId].desc = field[2].replace(LINEBREAK, '\n')
+                #self.scenes[scId].wordCount = int(field[3])
+                #self.scenes[scId].letterCount = int(field[4])
 
         return('SUCCESS: Data read from "' + self._filePath + '".')
 
@@ -91,7 +93,7 @@ class CsvFile(PywFile):
         odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
             ' ', '%20').replace('.csv', '_manuscript.odt')
 
-        # First row: column headings
+        # first record: the table's column headings
 
         table = ['Scene link'
                  + SEPARATOR
@@ -108,7 +110,7 @@ class CsvFile(PywFile):
 
             for scId in self.chapters[chId].srtScenes:
 
-                # Add a row for each scene
+                # Add a record for each scene
 
                 if self.scenes[scId].desc is not None:
                     sceneDesc = self.scenes[scId].desc.rstrip(
