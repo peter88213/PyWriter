@@ -36,7 +36,7 @@ class Book():
         and compute word count and letter count. 
     """
 
-    def __init__(self, filePath):
+    def __init__(self, filePath: str) -> None:
         self.title = ''
         self.desc = ''
         self.wordCount = 0
@@ -44,7 +44,7 @@ class Book():
         self.filePath = filePath
         self.update()
 
-    def update(self):
+    def update(self) -> None:
         book = Yw7File(self.filePath)
         book.read()
         self.title = book.title

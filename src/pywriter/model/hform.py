@@ -33,7 +33,7 @@ HTML_HEADER = '<html>\n' + '<head>\n' + \
 HTML_FOOTER = '\n</body>\n</html>\n'
 
 
-def to_yw7(text):
+def to_yw7(text: str) -> str:
     """ convert html tags to yw7 raw markup. """
     text = text.replace('<br>', '')
     text = text.replace('<BR>', '')
@@ -68,10 +68,10 @@ def to_yw7(text):
     while '  ' in text:
         text = text.replace('  ', ' ')
 
-    return(text)
+    return text
 
 
-def to_html(text):
+def to_html(text: str) -> str:
     """Convert yw7 raw markup to html. """
 
     try:
@@ -85,7 +85,7 @@ def to_html(text):
     except:
         pass
 
-    return(text)
+    return text
 
 
 if __name__ == '__main__':

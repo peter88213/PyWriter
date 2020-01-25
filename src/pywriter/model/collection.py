@@ -73,9 +73,9 @@ class Collection():
         Instantiate a Series object and append it to the srtSeries list.
     """
 
-    _fileExtension = 'pwc'
+    _FILE_EXTENSION = 'pwc'
 
-    def __init__(self, filePath):
+    def __init__(self, filePath: str) -> None:
         self.books = {}
         self.srtSeries = []
         self._filePath = None
@@ -83,13 +83,13 @@ class Collection():
         self._cdataTags = ['Title', 'Desc', 'Path']
 
     @property
-    def filePath(self):
-        return(self._filePath)
+    def filePath(self) -> str:
+        return self._filePath
 
     @filePath.setter
-    def filePath(self, filePath):
+    def filePath(self, filePath: str) -> None:
         """Accept only filenames with the right extension. """
-        if filePath.lower().endswith(self._fileExtension):
+        if filePath.lower().endswith(self._FILE_EXTENSION):
             self._filePath = filePath
 
     def read(self) -> str:
@@ -102,7 +102,7 @@ class Collection():
             root = tree.getroot()
 
         except:
-            return('ERROR: Can not process "' + self._filePath + '".')
+            return 'ERROR: Can not process "' + self._filePath + '".'
 
         for srs in root.iter('SERIES'):
             newSeries = Series(srs.find('Title').text)
@@ -131,9 +131,9 @@ class Collection():
             self.books[bkId].wordCount = str(boo.find('WordCount').text)
             self.books[bkId].letterCount = str(boo.find('LetterCount').text)
 
-        return('SUCCESS: ' + str(len(self.books)) + ' Books found in"' + self._filePath + '".')
+        return 'SUCCESS: ' + str(len(self.books)) + ' Books found in"' + self._filePath + '".'
 
-    def write(self):
+    def write(self) -> None:
         """Write the collection's structure to the configuration file. """
 
         def indent(elem, level=0):
@@ -200,7 +200,7 @@ class Collection():
             tree.write(self._filePath, encoding='utf-8')
 
         except(PermissionError):
-            return('ERROR: "' + self._filePath + '" is write protected.')
+            return 'ERROR: "' + self._filePath + '" is write protected.'
 
         # Postprocess the xml file created by ElementTree:
         # Put a header on top and insert the missing CDATA tags.
@@ -228,18 +228,18 @@ class Collection():
                 f.write(newXml)
 
         except:
-            return('ERROR: Can not write"' + self._filePath + '".')
+            return 'ERROR: Can not write"' + self._filePath + '".'
 
-        return('SUCCESS: Collection written to "' + self._filePath + '".')
+        return 'SUCCESS: Collection written to "' + self._filePath + '".'
 
     def file_exists(self) -> bool:
         """Check whether the file specified by _filePath exists."""
         if os.path.isfile(self._filePath):
-            return(True)
+            return True
         else:
-            return(False)
+            return False
 
-    def add_book(self, filePath):
+    def add_book(self, filePath: str) -> None:
         """Add an existing book to the collection."""
         i = 1
         while str(i) in self.books:
@@ -248,13 +248,13 @@ class Collection():
         bkId = str(i)
         self.books[bkId] = Book(filePath)
 
-    def remove_book(self, bkId):
+    def remove_book(self, bkId: str) -> None:
         """Remove a book from the collection and from the series."""
         del self.books[bkId]
         for series in self.srtSeries:
             series.remove_book(bkId)
 
-    def add_series(self, serTitle):
+    def add_series(self, serTitle: str) -> None:
         """Instantiate a Series object and append it to the srtSeries list."""
         for series in self.srtSeries:
             if series.title == serTitle:
@@ -263,7 +263,7 @@ class Collection():
         newSeries = Series(serTitle)
         self.srtSeries.append(newSeries)
 
-    def remove_series(self, serTitle):
+    def remove_series(self, serTitle: str) -> None:
         """Delete a Series object."""
         for series in self.srtSeries:
             if series.title == serTitle:

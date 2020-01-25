@@ -24,7 +24,7 @@ class PywFile(Novel, ABC):
     filePath : str (property with setter)
         Path to the file.
         The setter only accepts files of a supported type as specified 
-        by _fileExtension. 
+        by _FILE_EXTENSION. 
 
     # Methods
 
@@ -42,31 +42,31 @@ class PywFile(Novel, ABC):
         True means: the file specified by filePath exists. 
     """
 
-    _fileExtension = ''
+    _FILE_EXTENSION = ''
     # To be extended by file format specific subclasses.
 
-    def __init__(self, filePath):
+    def __init__(self, filePath: str) -> None:
         Novel.__init__(self)
         self._filePath = None
         self.filePath = filePath
 
     @property
-    def filePath(self):
-        return(self._filePath)
+    def filePath(self) -> str:
+        return self._filePath
 
     @filePath.setter
-    def filePath(self, filePath):
+    def filePath(self, filePath: str) -> None:
         """Accept only filenames with the right extension. """
-        if filePath.lower().endswith(self._fileExtension):
+        if filePath.lower().endswith(self._FILE_EXTENSION):
             self._filePath = filePath
 
     @abstractmethod
-    def read(self):
+    def read(self) -> None:
         """Parse the file and store selected properties. """
         # To be overwritten by file format specific subclasses.
 
     @abstractmethod
-    def write(self, novel):
+    def write(self, novel: Novel):
         """Write selected novel properties to the file. """
         # To be overwritten by file format specific subclasses.
 
@@ -74,7 +74,7 @@ class PywFile(Novel, ABC):
         """Check whether the file specified by _filePath exists. """
 
         if os.path.isfile(self._filePath):
-            return(True)
+            return True
 
         else:
-            return(False)
+            return False

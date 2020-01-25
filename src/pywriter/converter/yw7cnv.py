@@ -6,6 +6,8 @@ Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.model.yw7file import Yw7File
+from pywriter.model.pywfile import PywFile
 
 
 UNSTRUCTURED = ['ChapterDesc', 'CsvFile']
@@ -44,54 +46,54 @@ class Yw7Cnv():
         This method is to be overwritten by subclasses with an user interface.
     """
 
-    def yw7_to_document(self, yw7File, documentFile):
+    def yw7_to_document(self, yw7File: Yw7File, documentFile: PywFile) -> str:
         """Read .yw7 file and convert xml to a document file. """
 
         if yw7File.is_locked():
-            return('ERROR: yWriter 7 seems to be open. Please close first.')
+            return 'ERROR: yWriter 7 seems to be open. Please close first.'
 
         if yw7File.filePath is None:
-            return('ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.')
+            return 'ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.'
 
         message = yw7File.read()
 
         if message.startswith('ERROR'):
-            return(message)
+            return message
 
         if documentFile.file_exists():
 
             if not self.confirm_overwrite(documentFile.filePath):
-                return('Program abort by user.')
+                return 'Program abort by user.'
 
-        return(documentFile.write(yw7File))
+        return documentFile.write(yw7File)
 
-    def document_to_yw7(self, documentFile, yw7File):
+    def document_to_yw7(self, documentFile: PywFile, yw7File: Yw7File) -> str:
         """Read document file, convert its content to xml, and replace .yw7 file. """
 
         if yw7File.is_locked():
-            return('ERROR: yWriter 7 seems to be open. Please close first.')
+            return 'ERROR: yWriter 7 seems to be open. Please close first.'
 
         if yw7File.filePath is None:
-            return('ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.')
+            return 'ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.'
 
         if not yw7File.file_exists():
-            return('ERROR: Project "' + yw7File.filePath + '" not found.')
+            return 'ERROR: Project "' + yw7File.filePath + '" not found.'
 
         else:
 
             if not self.confirm_overwrite(yw7File.filePath):
-                return('Program abort by user.')
+                return 'Program abort by user.'
 
         if documentFile.filePath is None:
-            return('ERROR: "' + documentFile.filePath + '" is not of the supported type.')
+            return 'ERROR: "' + documentFile.filePath + '" is not of the supported type.'
 
         if not documentFile.file_exists():
-            return('ERROR: "' + documentFile.filePath + '" not found.')
+            return 'ERROR: "' + documentFile.filePath + '" not found.'
 
         message = documentFile.read()
 
         if message.startswith('ERROR'):
-            return(message)
+            return message
 
         prjStructure = documentFile.get_structure()
 
@@ -99,17 +101,17 @@ class Yw7Cnv():
         # initialize yw7File data
 
         if message.startswith('ERROR'):
-            return(message)
+            return message
 
         if not documentFile.__class__.__name__ in UNSTRUCTURED:
 
             if prjStructure == '':
-                return('ERROR: Source file contains no yWriter project structure information.')
+                return 'ERROR: Source file contains no yWriter project structure information.'
 
             if prjStructure != yw7File.get_structure():
-                return('ERROR: Structure mismatch - yWriter project not modified.')
+                return 'ERROR: Structure mismatch - yWriter project not modified.'
 
-        return(yw7File.write(documentFile))
+        return yw7File.write(documentFile)
 
-    def confirm_overwrite(self, fileName):
-        return(True)
+    def confirm_overwrite(self, fileName: str) -> bool:
+        return True

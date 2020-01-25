@@ -8,6 +8,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 import re
+
+from pywriter.model.novel import Novel
 from pywriter.model.pywfile import PywFile
 from pywriter.model.scene import Scene
 
@@ -50,10 +52,10 @@ class CsvFile(PywFile):
         Return a message beginning with SUCCESS or ERROR.
     """
 
-    _fileExtension = 'csv'
-    # overwrites PywFile._fileExtension
+    _FILE_EXTENSION = 'csv'
+    # overwrites PywFile._FILE_EXTENSION
 
-    def read(self):
+    def read(self) -> str:
         """Read data from a csv file containing scene attributes. """
 
         try:
@@ -61,7 +63,7 @@ class CsvFile(PywFile):
                 table = (f.readlines())
 
         except(FileNotFoundError):
-            return('ERROR: "' + self._filePath + '" not found.')
+            return 'ERROR: "' + self._filePath + '" not found.'
 
         for record in table:
             field = record.split(SEPARATOR)
@@ -74,9 +76,9 @@ class CsvFile(PywFile):
                 #self.scenes[scId].wordCount = int(field[3])
                 #self.scenes[scId].letterCount = int(field[4])
 
-        return('SUCCESS: Data read from "' + self._filePath + '".')
+        return 'SUCCESS: Data read from "' + self._filePath + '".'
 
-    def write(self, novel) -> str:
+    def write(self, novel: Novel) -> str:
         """Write scene attributes to csv file. """
 
         # Copy the scene's attributes to write
@@ -136,6 +138,6 @@ class CsvFile(PywFile):
                 f.writelines(table)
 
         except(PermissionError):
-            return('ERROR: ' + self._filePath + '" is write protected.')
+            return 'ERROR: ' + self._filePath + '" is write protected.'
 
-        return('SUCCESS: "' + self._filePath + '" saved.')
+        return 'SUCCESS: "' + self._filePath + '" saved.'

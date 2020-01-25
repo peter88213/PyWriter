@@ -7,6 +7,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import re
+
+from pywriter.model.novel import Novel
 from pywriter.model.pywfile import PywFile
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
@@ -52,13 +54,13 @@ class MdFile(PywFile):
         Return a message beginning with SUCCESS or ERROR.
     """
 
-    _fileExtension = 'md'
-    # overwrites PywFile._fileExtension
+    _FILE_EXTENSION = 'md'
+    # overwrites PywFile._FILE_EXTENSION
 
-    def read(self):
+    def read(self) -> str:
         """Read data from markdown file with chapter and scene tags. """
 
-        def to_yw7(text):
+        def to_yw7(text: str) -> str:
             """Convert markdown to yw7 raw markup. """
 
             text = text.replace('<sub>', '')
@@ -72,18 +74,18 @@ class MdFile(PywFile):
             text = re.sub('\*\*(.+?)\*\*', '[b]\g<1>[/b]', text)
             text = re.sub('\*(.+?)\*', '[i]\g<1>[/i]', text)
             text = text.replace('_asterisk_', '*')
-            return(text)
+            return text
 
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 text = (f.read())
 
         except(FileNotFoundError):
-            return('ERROR: "' + self._filePath + '" not found.')
+            return 'ERROR: "' + self._filePath + '" not found.'
 
         text = to_yw7(text)
 
-        sceneText = ''
+        sceneText = []
         scId = ''
         chId = ''
         inScene = False
@@ -99,8 +101,8 @@ class MdFile(PywFile):
                 inScene = True
 
             elif line.startswith('[/ScID]'):
-                self.scenes[scId].sceneContent = sceneText
-                sceneText = ''
+                self.scenes[scId].sceneContent = ''.join(sceneText)
+                sceneText = []
                 inScene = False
 
             elif line.startswith('[ChID'):
@@ -112,20 +114,20 @@ class MdFile(PywFile):
                 pass
 
             elif inScene:
-                sceneText = sceneText + line + '\n'
+                sceneText.append(line + '\n')
 
-        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
+        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel) -> str:
+    def write(self, novel: Novel) -> str:
         """Write novel attributes to Markdown file. """
 
-        def format_chapter_title(text):
+        def format_chapter_title(text: str) -> str:
             """Fix auto-chapter titles for non-English. """
 
             text = text.replace('Chapter ', '')
-            return(text)
+            return text
 
-        def to_md(text):
+        def to_md(text: str) -> str:
             """Convert yw7 specific markup. """
 
             text = text.replace('\n\n', '\n')
@@ -135,7 +137,7 @@ class MdFile(PywFile):
             text = text.replace('[/i]', '*')
             text = text.replace('[b]', '**')
             text = text.replace('[/b]', '**')
-            return(text)
+            return text
 
         # Copy the novel's attributes to write
 
@@ -148,34 +150,34 @@ class MdFile(PywFile):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        text = ''
+        lines = []
 
         for chId in self.srtChapters:
-            text = text + '\\[ChID:' + chId + '\\]\n'
+            lines.append('\\[ChID:' + chId + '\\]\n')
             headingMarker = MD_HEADING_MARKERS[self.chapters[chId].type]
-            text = text + headingMarker + \
-                format_chapter_title(self.chapters[chId].title) + '\n'
+            lines.append(headingMarker +
+                         format_chapter_title(self.chapters[chId].title) + '\n')
 
             for scId in self.chapters[chId].srtScenes:
-                text = text + '\\[ScID:' + scId + '\\]\n'
+                lines.append('\\[ScID:' + scId + '\\]\n')
 
                 try:
-                    text = text + self.scenes[scId].sceneContent + '\n'
+                    lines.append(self.scenes[scId].sceneContent + '\n')
 
                 except(TypeError):
-                    text = text + '\n'
+                    lines.append('\n')
 
-                text = text + '\\[/ScID\\]\n'
+                lines.append('\\[/ScID\\]\n')
 
-            text = text + '\\[/ChID\\]\n'
+            lines.append('\\[/ChID\\]\n')
 
-        text = to_md(text)
+        text = to_md(''.join(lines))
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
 
         except(PermissionError):
-            return('ERROR: ' + self._filePath + '" is write protected.')
+            return 'ERROR: ' + self._filePath + '" is write protected.'
 
-        return('SUCCESS: "' + self._filePath + '" saved.')
+        return 'SUCCESS: "' + self._filePath + '" saved.'

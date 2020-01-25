@@ -37,17 +37,17 @@ class Series():
         Remove an existing book ID from the list.       
     """
 
-    def __init__(self, title, desc=''):
+    def __init__(self, title: str, desc: str = '') -> None:
         self.title = title
         self.desc = desc
         self.srtBooks = []
 
-    def add_book(self, bkId):
+    def add_book(self, bkId: str) -> None:
         """Add a new book ID to the list. Avoid multiple entries."""
         if not (bkId in self.srtBooks):
             self.srtBooks.append(bkId)
 
-    def remove_book(self, bkId):
+    def remove_book(self, bkId: str) -> None:
         """Remove an existing book ID from the list."""
         try:
             self.srtBooks.remove(bkId)

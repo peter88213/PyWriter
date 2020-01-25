@@ -10,8 +10,9 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from tkinter import *
 from tkinter import messagebox
 
-from pywriter.converter.yw7cnv import Yw7Cnv
+from pywriter.model.pywfile import PywFile
 from pywriter.model.yw7file import Yw7File
+from pywriter.converter.yw7cnv import Yw7Cnv
 
 
 TITLE = 'PyWriter v1.2'
@@ -57,7 +58,11 @@ class CnvRunner(Yw7Cnv):
             - _chapterdesc for a html file containing chapter descriptions.
     """
 
-    def __init__(self, sourcePath, document, extension, silentMode=True, suffix=''):
+    def __init__(self, sourcePath: str,
+                 document: PywFile,
+                 extension: str,
+                 silentMode: bool = True,
+                 suffix: str = '') -> None:
         """Run the converter with a GUI. """
 
         # Prepare the graphical user interface.
@@ -87,7 +92,10 @@ class CnvRunner(Yw7Cnv):
             root.quitButton.pack(padx=5, pady=5)
             root.mainloop()
 
-    def __run(self, sourcePath, document, extension, suffix):
+    def __run(self, sourcePath: str,
+              document: PywFile,
+              extension: str,
+              suffix: str) -> None:
         """Determine the direction and invoke the converter. """
 
         # The conversion's direction depends on the sourcePath argument.
@@ -141,11 +149,11 @@ class CnvRunner(Yw7Cnv):
         elif 'SUCCESS' in self.processInfo.cget('text'):
             self.successInfo.config(bg='green')
 
-    def confirm_overwrite(self, file):
+    def confirm_overwrite(self, filePath: str) -> bool:
         """ Invoked by the parent if a file already exists. """
 
         if self.silentMode:
-            return(True)
+            return True
 
         else:
-            return messagebox.askyesno('WARNING', 'Overwrite existing file "' + file + '"?')
+            return messagebox.askyesno('WARNING', 'Overwrite existing file "' + filePath + '"?')

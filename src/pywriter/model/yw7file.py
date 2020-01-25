@@ -9,6 +9,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import re
 import xml.etree.ElementTree as ET
+
+from pywriter.model.novel import Novel
 from pywriter.model.pywfile import PywFile
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
@@ -43,10 +45,10 @@ class Yw7File(PywFile):
         tests whether a .lock file placed by yWriter exists.
     """
 
-    _fileExtension = '.yw7'
-    # overwrites PywFile._fileExtension
+    _FILE_EXTENSION = '.yw7'
+    # overwrites PywFile._FILE_EXTENSION
 
-    def __init__(self, filePath):
+    def __init__(self, filePath: str) -> None:
         PywFile.__init__(self, filePath)
         self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc', 'FieldTitle1', 'FieldTitle2', 'FieldTitle3', 'FieldTitle4',
                            'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
@@ -61,7 +63,7 @@ class Yw7File(PywFile):
                 xmlData = f.read()
 
         except(FileNotFoundError):
-            return('ERROR: "' + self._filePath + '" not found.')
+            return 'ERROR: "' + self._filePath + '" not found.'
 
         lines = xmlData.split('\n')
 
@@ -80,7 +82,7 @@ class Yw7File(PywFile):
             root = self.tree.getroot()
 
         except:
-            return('ERROR: Can not process "' + self._filePath + '".')
+            return 'ERROR: Can not process "' + self._filePath + '".'
 
         for prj in root.iter('PROJECT'):
             self.title = prj.find('Title').text
@@ -117,9 +119,9 @@ class Yw7File(PywFile):
             if sceneContent is not None:
                 self.scenes[scId].sceneContent = sceneContent
 
-        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
+        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel) -> str:
+    def write(self, novel: Novel) -> str:
         """Write novel's attributes to yw7 project file. """
 
         # Copy the novel's attributes to write
@@ -209,13 +211,13 @@ class Yw7File(PywFile):
                 sceneCount = sceneCount + 1
 
             except(KeyError):
-                return('ERROR: Scene with ID:' + scId + ' is missing in input file - yWriter project not modified.')
+                return 'ERROR: Scene with ID:' + scId + ' is missing in input file - yWriter project not modified.'
 
         try:
             self.tree.write(self._filePath, encoding='utf-8')
 
         except(PermissionError):
-            return('ERROR: "' + self._filePath + '" is write protected.')
+            return 'ERROR: "' + self._filePath + '" is write protected.'
 
         # Postprocess the xml file created by ElementTree:
         # Put a header on top and insert the missing CDATA tags.
@@ -243,14 +245,14 @@ class Yw7File(PywFile):
                 f.write(newXml)
 
         except:
-            return('ERROR: Can not write"' + self._filePath + '".')
+            return 'ERROR: Can not write"' + self._filePath + '".'
 
-        return('SUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".')
+        return 'SUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".'
 
     def is_locked(self) -> bool:
 
         if os.path.isfile(self._filePath + '.lock'):
-            return(True)
+            return True
 
         else:
-            return(False)
+            return False

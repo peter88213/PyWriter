@@ -41,7 +41,7 @@ class Novel():
         by their structure.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.title = ''
         self.desc = ''
         self.chapters = {}
@@ -51,9 +51,9 @@ class Novel():
     def get_structure(self) -> str:
         """Assemble a comparable structure tree. """
 
-        text = ''
+        lines = []
         for chId in self.srtChapters:
-            text = text + 'ChID:' + str(chId) + '\n'
+            lines.append('ChID:' + str(chId) + '\n')
             for scId in self.chapters[chId].srtScenes:
-                text = text + '  ScID:' + str(scId) + '\n'
-        return(text)
+                lines.append('  ScID:' + str(scId) + '\n')
+        return ''.join(lines)

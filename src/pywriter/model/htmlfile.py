@@ -8,6 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 from html.parser import HTMLParser
 
+from pywriter.model.novel import Novel
 from pywriter.model.pywfile import PywFile
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
@@ -27,7 +28,7 @@ class HtmlFile(PywFile, HTMLParser):
 
     # Attributes
 
-    _text : str
+    _lines : str
         contains the parsed data.
 
     _collectText : bool
@@ -66,13 +67,13 @@ class HtmlFile(PywFile, HTMLParser):
         Return a message beginning with SUCCESS or ERROR.
     """
 
-    _fileExtension = 'html'
-    # overwrites PywFile._fileExtension
+    _FILE_EXTENSION = 'html'
+    # overwrites PywFile._FILE_EXTENSION
 
-    def __init__(self, filePath):
+    def __init__(self, filePath: str) -> None:
         PywFile.__init__(self, filePath)
         HTMLParser.__init__(self)
-        self._text = ''
+        self._lines = []
         self._collectText = False
 
     def handle_starttag(self, tag, attrs):
@@ -91,10 +92,10 @@ class HtmlFile(PywFile, HTMLParser):
         """Copy the body section. """
 
         if self._collectText:
-            self._text = self._text + data + '\n'
+            self._lines.extend(data.split('\n'))
             # Get the html body.
 
-    def read(self):
+    def read(self) -> str:
         """Read data from html file with chapter and scene tags. """
 
         try:
@@ -107,22 +108,23 @@ class HtmlFile(PywFile, HTMLParser):
                     text = (f.read())
 
             except(FileNotFoundError):
-                return('\nERROR: "' + self._filePath + '" not found.')
+                return '\nERROR: "' + self._filePath + '" not found.'
 
         text = to_yw7(text)
 
         # Invoke HTML parser to write the html body as raw text
-        # to self._text.
+        # to self._lines.
 
         self.feed(text)
 
-        sceneText = ''
+        # Parse the HTML body to identify chapters and scenes.
+
+        sceneText = []
         scId = ''
         chId = ''
         inScene = False
-        lines = self._text.split('\n')
 
-        for line in lines:
+        for line in self._lines:
 
             if line.startswith('[ScID'):
                 scId = re.search('[0-9]+', line).group()
@@ -131,8 +133,8 @@ class HtmlFile(PywFile, HTMLParser):
                 inScene = True
 
             elif line.startswith('[/ScID]'):
-                self.scenes[scId].sceneContent = sceneText
-                sceneText = ''
+                self.scenes[scId].sceneContent = ''.join(sceneText)
+                sceneText = []
                 inScene = False
 
             elif line.startswith('[ChID'):
@@ -144,18 +146,18 @@ class HtmlFile(PywFile, HTMLParser):
                 pass
 
             elif inScene:
-                sceneText = sceneText + line + '\n'
+                sceneText.append(line + '\n')
 
-        return('SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".')
+        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel) -> str:
+    def write(self, novel: Novel) -> str:
         """Write novel attributes to html file. """
 
         def format_chapter_title(text):
             """Fix auto-chapter titles for non-English """
 
             text = text.replace('Chapter ', '')
-            return(text)
+            return text
 
         # Copy the novel's attributes to write
 
@@ -172,46 +174,47 @@ class HtmlFile(PywFile, HTMLParser):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        text = HTML_HEADER.replace('$bookTitle$', self.title)
+        lines = [HTML_HEADER.replace('$bookTitle$', self.title)]
 
         for chId in self.srtChapters:
-            text = text + \
-                '<p style="font-size:x-small">[ChID:' + chId + ']</p>\n'
+            lines.append(
+                '<p style="font-size:x-small">[ChID:' + chId + ']</p>\n')
             headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].type]
-            text = text + '<' + headingMarker + '>' + format_chapter_title(
-                self.chapters[chId].title) + '</' + headingMarker + '>\n'
+            lines.append('<' + headingMarker + '>' + format_chapter_title(
+                self.chapters[chId].title) + '</' + headingMarker + '>\n')
 
             for scId in self.chapters[chId].srtScenes:
-                text = text + '<h4>' + HTML_SCENE_DIVIDER + '</h4>\n'
-                text = text + \
-                    '<p style="font-size:x-small">[ScID:' + scId + ']</p>\n'
-                text = text + '<p class="textbody">'
+                lines.append('<h4>' + HTML_SCENE_DIVIDER + '</h4>\n')
+                lines.append(
+                    '<p style="font-size:x-small">[ScID:' + scId + ']</p>\n')
+                lines.append('<p class="textbody">')
 
                 try:
-                    text = text + \
-                        to_html(self.scenes[scId].sceneContent)
+                    lines.append(to_html(self.scenes[scId].sceneContent))
 
                 except(TypeError):
-                    text = text + ' '
+                    lines.append(' ')
 
-                text = text + '</p>\n'
-                text = text + '<p style="font-size:x-small">[/ScID]</p>\n'
+                lines.append('</p>\n')
+                lines.append('<p style="font-size:x-small">[/ScID]</p>\n')
 
-            text = text + '<p style="font-size:x-small">[/ChID]</p>\n'
+            lines.append('<p style="font-size:x-small">[/ChID]</p>\n')
+
+        lines.append(HTML_FOOTER)
+        text = ''.join(lines)
 
         # Remove scene dividers from chapter's beginning
 
-        text = text.replace('</h1>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>',
-                            '</h1>')
-        text = text.replace('</h2>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>',
-                            '</h2>')
-        text = text + HTML_FOOTER
+        text = text.replace(
+            '</h1>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>', '</h1>')
+        text = text.replace(
+            '</h2>\n<h4>' + HTML_SCENE_DIVIDER + '</h4>', '</h2>')
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
 
         except(PermissionError):
-            return('ERROR: ' + self._filePath + '" is write protected.')
+            return 'ERROR: ' + self._filePath + '" is write protected.'
 
-        return('SUCCESS: "' + self._filePath + '" saved.')
+        return 'SUCCESS: "' + self._filePath + '" saved.'

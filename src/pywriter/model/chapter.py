@@ -26,7 +26,7 @@ class Chapter():
         corresponds to the chapter's order of the scenes.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.title = ''
         self.desc = ''
         self.type = None

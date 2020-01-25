@@ -6,6 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+from pywriter.model.novel import Novel
 from pywriter.model.manuscript import Manuscript
 from pywriter.model.hform import *
 
@@ -48,29 +49,29 @@ class SceneDesc(Manuscript):
 
         if tag == 'div':
             if self._collectText:
-                self.scenes[self._scId].desc = self._text
-                self._text = ''
+                self.scenes[self._scId].desc = ''.join(self._lines)
+                self._lines = []
                 self._collectText = False
 
         elif tag == 'p':
-            self._text = self._text + '\n'
+            self._lines.append('\n')
 
-    def write(self, novel) -> str:
+    def write(self, novel: Novel) -> str:
         """Write novel attributes to html file.  """
 
-        def format_chapter_title(text):
+        def format_chapter_title(text: str) -> str:
             """Fix auto-chapter titles for non-English """
             text = text.replace('Chapter ', '')
-            return(text)
+            return text
 
-        def to_html(text):
+        def to_html(text: str) -> str:
             """Convert yw7 raw markup """
             try:
                 text = text.replace('\n\n', '\n')
                 text = text.replace('\n', '</p>\n<p class="firstlineindent">')
             except:
                 pass
-            return(text)
+            return text
 
         # Copy the novel's attributes to write
 
@@ -88,45 +89,45 @@ class SceneDesc(Manuscript):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        text = HTML_HEADER.replace('$bookTitle$', self.title)
-        text = text + '<h1>' + self.title + '</h1>'
+        lines = [HTML_HEADER.replace('$bookTitle$', self.title)]
+        lines.append('<h1>' + self.title + '</h1>')
 
         for chID in self.srtChapters:
-            text = text + '<div id="ChID:' + chID + '">\n'
+            lines.append('<div id="ChID:' + chID + '">\n')
             headingMarker = HTML_HEADING_MARKERS[self.chapters[chID].type]
-            text = text + '<' + headingMarker + '>' + format_chapter_title(
-                self.chapters[chID].title) + '</' + headingMarker + '>\n'
+            lines.append('<' + headingMarker + '>' + format_chapter_title(
+                self.chapters[chID].title) + '</' + headingMarker + '>\n')
 
             for scID in self.chapters[chID].srtScenes:
-                text = text + '<div id="ScID:' + scID + '">\n'
-                text = text + '<p class="firstlineindent">'
+                lines.append('<div id="ScID:' + scID + '">\n')
+                lines.append('<p class="firstlineindent">')
 
                 # Insert scene ID as anchor.
 
-                text = text + '<a name="ScID:' + scID + '" />'
+                lines.append('<a name="ScID:' + scID + '" />')
 
                 # Insert scene title as comment.
 
-                text = text + '<!-- ' + self.scenes[scID].title + ' -->\n'
+                lines.append('<!-- ' + self.scenes[scID].title + ' -->\n')
 
                 try:
-                    text = text + to_html(self.scenes[scID].desc)
+                    lines.append(to_html(self.scenes[scID].desc))
 
                 except(TypeError):
-                    text = text + ' '
+                    lines.append(' ')
 
-                text = text + '</p>\n'
-                text = text + '</div>\n'
+                lines.append('</p>\n')
+                lines.append('</div>\n')
 
-            text = text + '</div>\n'
+            lines.append('</div>\n')
 
-        text = text + HTML_FOOTER
+        lines.append(HTML_FOOTER)
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.write(text)
+                f.writelines(lines)
 
         except(PermissionError):
-            return('ERROR: ' + self._filePath + '" is write protected.')
+            return 'ERROR: ' + self._filePath + '" is write protected.'
 
-        return('SUCCESS: "' + self._filePath + '" saved.')
+        return 'SUCCESS: "' + self._filePath + '" saved.'

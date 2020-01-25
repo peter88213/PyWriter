@@ -7,10 +7,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 from html.parser import HTMLParser
-from pywriter.model.hform import *
 
+from pywriter.model.hform import *
 from pywriter.model.book import Book
-from cgitb import text
+from pywriter.model.series import Series
+from pywriter.model.collection import Collection
 
 
 class BookDesc(HTMLParser):
@@ -63,12 +64,11 @@ class BookDesc(HTMLParser):
         Return a message beginning with SUCCESS or ERROR.
     """
 
-    _fileExtension = 'html'
-    # overwrites PywFile._fileExtension
+    _FILE_EXTENSION = 'html'
 
-    def __init__(self, filePath):
+    def __init__(self, filePath: str) -> None:
         HTMLParser.__init__(self)
-        self._text = ''
+        self._lines = []
         self._bkId = None
         self._desc = ''
         self._bookDesc = {}
@@ -77,13 +77,13 @@ class BookDesc(HTMLParser):
         self.filePath = filePath
 
     @property
-    def filePath(self):
-        return(self._filePath)
+    def filePath(self) -> str:
+        return self._filePath
 
     @filePath.setter
-    def filePath(self, filePath):
+    def filePath(self, filePath: str) -> None:
         """Accept only filenames with the right extension. """
-        if filePath.lower().endswith(self._fileExtension):
+        if filePath.lower().endswith(self._FILE_EXTENSION):
             self._filePath = filePath
 
     def handle_starttag(self, tag, attrs):
@@ -106,21 +106,21 @@ class BookDesc(HTMLParser):
         if tag == 'div' and self._collectText:
 
             if self._bkId is None:
-                self._desc = self._text
+                self._desc = ''.join(self._lines)
 
             else:
-                self._bookDesc[self._bkId] = self._text
+                self._bookDesc[self._bkId] = ''.join(self._lines)
 
-            self._text = ''
+            self._lines = []
             self._collectText = False
 
     def handle_data(self, data):
         """HTML parser: Collect paragraphs within chapter description. """
 
         if self._collectText:
-            self._text = self._text + data + '\n'
+            self._lines.append(data + '\n')
 
-    def read(self, series, collection) -> str:
+    def read(self, series: Series, collection: Collection) -> str:
         """Read series attributes from html file.  """
 
         try:
@@ -133,7 +133,7 @@ class BookDesc(HTMLParser):
                     text = (f.read())
 
             except(FileNotFoundError):
-                return('\nERROR: "' + self._filePath + '" not found.')
+                return '\nERROR: "' + self._filePath + '" not found.'
 
         text = to_yw7(text)
 
@@ -146,41 +146,41 @@ class BookDesc(HTMLParser):
         for bkId in self._bookDesc:
             collection.books[bkId].desc = self._bookDesc[bkId]
 
-        return('SUCCESS')
+        return 'SUCCESS'
 
-    def write(self, series, collection) -> str:
+    def write(self, series: Series, collection: Collection) -> str:
         """Write series attributes to html file.  """
 
-        def to_html(text):
+        def to_html(text: str) -> str:
             """Convert yw7 raw markup """
             try:
                 text = text.replace('\n\n', '\n')
                 text = text.replace('\n', '</p>\n<p class="firstlineindent">')
             except:
                 pass
-            return(text)
+            return text
 
-        text = HTML_HEADER.replace('$bookTitle$', series.title)
-        text = text + '<h1>' + series.title + '</h1>\n'
-        text = text + '<div id="SERIES">\n'
-        text = text + '<p class="textbody">' + series.desc + '</p>\n'
-        text = text + '</div>\n'
+        lines = [HTML_HEADER.replace('$bookTitle$', series.title)]
+        lines.append('<h1>' + series.title + '</h1>\n')
+        lines.append('<div id="SERIES">\n')
+        lines.append('<p class="textbody">' + series.desc + '</p>\n')
+        lines.append('</div>\n')
 
         for bkId in series.srtBooks:
-            text = text + '<h2>' + collection.books[bkId].title + '</h2>\n'
-            text = text + '<div id="BkID:' + bkId + '">\n'
-            text = text + '<p class="textbody">'
-            text = text + to_html(collection.books[bkId].desc)
-            text = text + '</p>\n'
-            text = text + '</div>\n'
+            lines.append('<h2>' + collection.books[bkId].title + '</h2>\n')
+            lines.append('<div id="BkID:' + bkId + '">\n')
+            lines.append('<p class="textbody">')
+            lines.append(to_html(collection.books[bkId].desc))
+            lines.append('</p>\n')
+            lines.append('</div>\n')
 
-        text = text + HTML_FOOTER
+        lines.append(HTML_FOOTER)
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.write(text)
+                f.writelines(lines)
 
         except(PermissionError):
-            return('ERROR: ' + self._filePath + '" is write protected.')
+            return 'ERROR: ' + self._filePath + '" is write protected.'
 
-        return('SUCCESS: "' + self._filePath + '" saved.')
+        return 'SUCCESS: "' + self._filePath + '" saved.'

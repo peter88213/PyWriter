@@ -9,12 +9,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
+from pywriter.model.officefile import OfficeFile
 from pywriter.converter.cnv_runner import CnvRunner
 
-from pywriter.model.officefile import OfficeFile
 
-
-def run(sourcePath, silentMode=True):
+def run(sourcePath: str, silentMode: bool = True) -> None:
     document = OfficeFile('')
     converter = CnvRunner(sourcePath, document, 'odt', silentMode)
 

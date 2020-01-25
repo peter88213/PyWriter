@@ -43,11 +43,11 @@ class Scene():
         self._sceneContent = ''
 
     @property
-    def sceneContent(self):
-        return(self._sceneContent)
+    def sceneContent(self) -> str:
+        return self._sceneContent
 
     @sceneContent.setter
-    def sceneContent(self, text):
+    def sceneContent(self, text: str) -> None:
         """Set sceneContent updating word count and letter count. """
 
         self._sceneContent = text
@@ -67,4 +67,4 @@ class Scene():
     def isEmpty(self) -> bool:
         """Check whether the scene has no content yet. """
 
-        return(self._sceneContent == ' ')
+        return self._sceneContent == ' '

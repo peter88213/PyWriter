@@ -13,7 +13,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 
 
-def convert_file(srcFile, dstFormat, format='', outputfile='', extra_args=[]):
+def convert_file(srcFile: str, dstFormat: str, format: str = '', outputfile: str = '', extra_args: list = []) -> str:
     """Pandoc wrapper emulating the pypandoc.convert_file functon. """
 
     temporaryFile = 'temp.txt'
@@ -45,7 +45,7 @@ def convert_file(srcFile, dstFormat, format='', outputfile='', extra_args=[]):
                 result = f.read()
 
             os.remove(temporaryFile)
-            return(result)
+            return result
 
 
 if __name__ == '__main__':

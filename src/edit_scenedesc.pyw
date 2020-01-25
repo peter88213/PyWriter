@@ -8,12 +8,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import sys
-from pywriter.converter.cnv_runner import CnvRunner
 
 from pywriter.model.scenedesc import SceneDesc
+from pywriter.converter.cnv_runner import CnvRunner
 
 
-def run(sourcePath, silentMode=True):
+def run(sourcePath: str, silentMode: bool = True) -> None:
     document = SceneDesc('')
     converter = CnvRunner(sourcePath, document, 'html',
                           silentMode, '_scenedesc')

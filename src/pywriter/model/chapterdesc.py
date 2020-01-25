@@ -6,6 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.manuscript import Manuscript
 from pywriter.model.hform import *
@@ -59,20 +60,20 @@ class ChapterDesc(Manuscript):
         """HTML parser: Save chapter description in dictionary at chapter end. """
 
         if tag == 'div':
-            self.chapters[self._chId].desc = self._text
-            self._text = ''
+            self.chapters[self._chId].desc = ''.join(self._lines)
+            self._lines = []
             self._collectText = False
 
     def handle_data(self, data):
         """HTML parser: Collect paragraphs within chapter description. """
 
         if self._collectText:
-            self._text = self._text + data + '\n'
+            self._lines.append(data + '\n')
 
-    def write(self, novel) -> str:
+    def write(self, novel: Novel) -> str:
         """Write novel attributes to html file. """
 
-        def to_html(text):
+        def to_html(text: str) -> str:
             """Convert yw7 raw markup """
             try:
                 text = text.replace('\n\n', '\n')
@@ -81,7 +82,7 @@ class ChapterDesc(Manuscript):
             except:
                 pass
 
-            return(text)
+            return text
 
         # Copy the novel's attributes to write
 
@@ -96,12 +97,12 @@ class ChapterDesc(Manuscript):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        text = HTML_HEADER.replace('$bookTitle$', self.title)
-        text = text + '<h1>' + self.title + '</h1>\n'
+        lines = [HTML_HEADER.replace('$bookTitle$', self.title)]
+        lines.append('<h1>' + self.title + '</h1>\n')
 
         for chID in self.srtChapters:
-            text = text + '<div id="ChID:' + chID + '">\n'
-            text = text + '<p class="firstlineindent">'
+            lines.append('<div id="ChID:' + chID + '">\n')
+            lines.append('<p class="firstlineindent">')
 
             try:
                 entry = self.chapters[chID].desc
@@ -112,21 +113,21 @@ class ChapterDesc(Manuscript):
                 else:
                     entry = to_html(entry)
 
-                text = text + entry
+                lines.append(entry)
 
             except(KeyError):
                 pass
 
-            text = text + '</p>\n'
-            text = text + '</div>\n'
+            lines.append('</p>\n')
+            lines.append('</div>\n')
 
-        text = text + HTML_FOOTER
+        lines.append(HTML_FOOTER)
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.write(text)
+                f.writelines(lines)
 
         except(PermissionError):
-            return('ERROR: ' + self._filePath + '" is write protected.')
+            return 'ERROR: ' + self._filePath + '" is write protected.'
 
-        return('SUCCESS: "' + self._filePath + '" saved.')
+        return 'SUCCESS: "' + self._filePath + '" saved.'

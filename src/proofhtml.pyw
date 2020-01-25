@@ -9,12 +9,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
+from pywriter.model.htmlfile import HtmlFile
 from pywriter.converter.cnv_runner import CnvRunner
 
-from pywriter.model.htmlfile import HtmlFile
 
-
-def run(sourcePath, silentMode=True):
+def run(sourcePath: str, silentMode: bool = True) -> None:
     document = HtmlFile('')
     converter = CnvRunner(sourcePath, document, 'html', silentMode)
 
