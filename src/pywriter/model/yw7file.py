@@ -97,7 +97,14 @@ class Yw7File(PywFile):
             if chp.find('Desc') is not None:
                 self.chapters[chId].desc = chp.find('Desc').text
 
-            self.chapters[chId].type = int(chp.find('Type').text)
+            if chp.find('SectionStart') is not None:
+                self.chapters[chId].chLevel = 1
+
+            if chp.find('Unused') is not None:
+                self.chapters[chId].isUnused = True
+
+            self.chapters[chId].chType = int(chp.find('Type').text)
+
             self.chapters[chId].srtScenes = []
 
             if chp.find('Scenes') is not None:
@@ -108,11 +115,15 @@ class Yw7File(PywFile):
 
         for scn in root.iter('SCENE'):
             scId = scn.find('ID').text
+
             self.scenes[scId] = Scene()
             self.scenes[scId].title = scn.find('Title').text
 
             if scn.find('Desc') is not None:
                 self.scenes[scId].desc = scn.find('Desc').text
+
+            if scn.find('Unused') is not None:
+                self.scenes[scId].isUnused = True
 
             sceneContent = scn.find('SceneContent').text
 
@@ -145,6 +156,11 @@ class Yw7File(PywFile):
                 if novel.scenes[scId].sceneContent != '':
                     self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
 
+                '''Do not modify these items yet:
+                if novel.scenes[scId].isUnused is not None:
+                    self.scenes[scId].isUnused = novel.chapters[chId].isUnused
+                '''
+
         if novel.chapters is not None:
 
             for chId in novel.chapters:
@@ -155,11 +171,19 @@ class Yw7File(PywFile):
                 if novel.chapters[chId].desc != '':
                     self.chapters[chId].desc = novel.chapters[chId].desc
 
-                if novel.chapters[chId].type is not None:
-                    self.chapters[chId].type = novel.chapters[chId].type
+                '''Do not modify these items yet:
+                if novel.chapters[chId].chLevel is not None:
+                    self.chapters[chId].chLevel = novel.chapters[chId].chLevel
+
+                if novel.chapters[chId].chType is not None:
+                    self.chapters[chId].chType = novel.chapters[chId].chType
+
+                if novel.chapters[chId].isUnused is not None:
+                    self.chapters[chId].isUnused = novel.chapters[chId].isUnused
 
                 if novel.chapters[chId].srtScenes != []:
-                    self.chapters[chId].srtScenes = novel.chapters[chId]
+                    self.chapters[chId].srtScenes = novel.chapters[chId].srtScenes
+                '''
 
         sceneCount = 0
         root = self.tree.getroot()
@@ -169,22 +193,43 @@ class Yw7File(PywFile):
 
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
-            chp.find('Title').text = self.chapters[chId].title
 
-            if self.chapters[chId].desc != '':
-                if chp.find('Desc') is None:
-                    newDesc = ET.SubElement(chp, 'Desc')
-                    newDesc.text = self.chapters[chId].desc
+            if chId in self.chapters:
+                chp.find('Title').text = self.chapters[chId].title
 
-                else:
-                    chp.find('Desc').text = self.chapters[chId].desc
+                if self.chapters[chId].desc != '':
 
-            chp.find('Type').text = str(self.chapters[chId].type)
+                    if chp.find('Desc') is None:
+                        newDesc = ET.SubElement(chp, 'Desc')
+                        newDesc.text = self.chapters[chId].desc
+
+                    else:
+                        chp.find('Desc').text = self.chapters[chId].desc
+
+                '''Do not modify these items yet:
+                chp.find('Type').text = str(self.chapters[chId].chType)
+                
+                levelInfo = chp.find('SectionStart')
+                
+                if levelInfo is not None:
+                    
+                    if self.chapters[chId].chLevel == 0:
+                         chp.remove(levelInfo)
+
+                unusedMarker = chp.find('Unused')
+                
+                if unused is not None:
+                    
+                    if not self.chapters[chId].isUnused:
+                         chp.remove(unusedMarker)
+                '''
 
         for scn in root.iter('SCENE'):
 
             scId = scn.find('ID').text
-            try:
+
+            if scId in self.scenes:
+
                 if self.scenes[scId].isEmpty():
                     scn.find('SceneContent').text = ''
                     scn.find('WordCount').text = '0'
@@ -208,10 +253,16 @@ class Yw7File(PywFile):
                     else:
                         scn.find('Desc').text = self.scenes[scId].desc
 
-                sceneCount = sceneCount + 1
+                '''Do not modify these items yet:
+                unusedMarker = scn.find('Unused')
+                
+                if unused is not None:
+                    
+                    if not self.scenes[scId].isUnused:
+                         scn.remove(unusedMarker)
+                '''
 
-            except(KeyError):
-                return 'ERROR: Scene with ID:' + scId + ' is missing in input file - yWriter project not modified.'
+                sceneCount = sceneCount + 1
 
         try:
             self.tree.write(self._filePath, encoding='utf-8')

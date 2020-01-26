@@ -29,6 +29,9 @@ class Scene():
     letterCount : int 
         (to be updated by the sceneContent setter).
 
+    isUnused : bool
+        the scene is marked "unused".
+
     # Methods 
 
     isEmpty : bool
@@ -40,6 +43,7 @@ class Scene():
         self.desc = ''
         self.wordCount = 0
         self.letterCount = 0
+        self.isUnused = False
         self._sceneContent = ''
 
     @property

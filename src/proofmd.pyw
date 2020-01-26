@@ -1,6 +1,6 @@
-"""PyWriter v1.2 - Import and export ywriter7 scenes for editing. 
+"""Import and export ywriter7 scenes for proofing. 
 
-Proof reading file format: html (with invisible chapter and scene tags)
+Proof reading file format = markdown with visible chapter and scene tags.
 
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
@@ -9,14 +9,13 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.model.scenedesc import SceneDesc
+from pywriter.model.mdfile import MdFile
 from pywriter.converter.cnv_runner import CnvRunner
 
 
 def run(sourcePath: str, silentMode: bool = True) -> None:
-    document = SceneDesc('')
-    converter = CnvRunner(sourcePath, document, 'html',
-                          silentMode, '_scenedesc')
+    document = MdFile('')
+    converter = CnvRunner(sourcePath, document, 'md', silentMode)
 
 
 if __name__ == '__main__':

@@ -18,7 +18,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<FieldTitle2><![CDATA[Tension]]></FieldTitle2>
 		<FieldTitle3><![CDATA[Humour]]></FieldTitle3>
 		<FieldTitle4><![CDATA[Quality]]></FieldTitle4>
-		<LastFullBackup>2019-12-20</LastFullBackup>
+		<LastFullBackup>2020-01-26</LastFullBackup>
 		<WordTarget>0</WordTarget>
 		<WordTargetStartDate>2007-07-28</WordTargetStartDate>
 		<WordTargetEndDate>2007-08-27</WordTargetEndDate>
@@ -35,7 +35,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<LaTeXHeaderFile><![CDATA[ ]]></LaTeXHeaderFile>
 		<MRUSpecificDate>1899-12-30</MRUSpecificDate>
 		<MRUSpecificTime>00:00:00</MRUSpecificTime>
-		<LastViewedScID>6</LastViewedScID>
+		<LastViewedScID>-1</LastViewedScID>
 		<DeadlineDate1>2004-09-01</DeadlineDate1>
 		<DeadlineDate2>2004-12-14</DeadlineDate2>
 		<DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -559,7 +559,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -585,7 +585,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -607,7 +607,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -629,7 +629,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -651,7 +651,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -673,7 +673,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -695,7 +695,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -717,7 +717,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -739,7 +739,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -761,7 +761,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -783,7 +783,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -805,7 +805,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -827,7 +827,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -849,7 +849,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -871,7 +871,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -893,7 +893,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -915,7 +915,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>6</CharID>
 		</Characters>
@@ -937,7 +937,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -959,7 +959,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -981,7 +981,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1003,7 +1003,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1025,7 +1025,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1047,7 +1047,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1069,7 +1069,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1091,7 +1091,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1113,7 +1113,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1135,7 +1135,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1157,7 +1157,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1179,7 +1179,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1201,7 +1201,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1223,7 +1223,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1245,7 +1245,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1267,7 +1267,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1289,7 +1289,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1311,7 +1311,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1333,7 +1333,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -1355,7 +1355,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -1377,7 +1377,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1399,7 +1399,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1421,7 +1421,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1443,7 +1443,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1465,7 +1465,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1487,7 +1487,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1509,7 +1509,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1531,7 +1531,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1553,7 +1553,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -1575,7 +1575,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field4>1</Field4>
 		<Status>1</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>0</LetterCount>
+		<LetterCount>1</LetterCount>
 		<Characters>
 		</Characters>
 		<Locations>
@@ -1626,9 +1626,22 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	</CHAPTER>
 
 	<CHAPTER>
+		<ID>34</ID>
+		<Title><![CDATA[Part 1]]></Title>
+		<SortOrder>2</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+		</Fields>
+
+		<SectionStart>-1</SectionStart>
+		<Type>0</Type>
+	</CHAPTER>
+
+	<CHAPTER>
 		<ID>1</ID>
 		<Title><![CDATA[Chapter 1]]></Title>
-		<SortOrder>2</SortOrder>
+		<SortOrder>3</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>1</ScID>
@@ -1638,7 +1651,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>2</ID>
 		<Title><![CDATA[Chapter 2]]></Title>
-		<SortOrder>3</SortOrder>
+		<SortOrder>4</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>2</ScID>
@@ -1649,7 +1662,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>3</ID>
 		<Title><![CDATA[Chapter 3]]></Title>
-		<SortOrder>4</SortOrder>
+		<SortOrder>5</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>4</ScID>
@@ -1659,7 +1672,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>4</ID>
 		<Title><![CDATA[Chapter 4]]></Title>
-		<SortOrder>5</SortOrder>
+		<SortOrder>6</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>5</ScID>
@@ -1672,7 +1685,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>5</ID>
 		<Title><![CDATA[Chapter 5]]></Title>
-		<SortOrder>6</SortOrder>
+		<SortOrder>7</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>9</ScID>
@@ -1683,7 +1696,12 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>6</ID>
 		<Title><![CDATA[Chapter 6]]></Title>
-		<SortOrder>7</SortOrder>
+		<SortOrder>8</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+		</Fields>
+
 		<Type>0</Type>
 		<Scenes>
 			<ScID>58</ScID>
@@ -1694,7 +1712,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>7</ID>
 		<Title><![CDATA[Chapter 7]]></Title>
-		<SortOrder>8</SortOrder>
+		<SortOrder>9</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>15</ScID>
@@ -1704,7 +1722,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>8</ID>
 		<Title><![CDATA[Chapter 8]]></Title>
-		<SortOrder>9</SortOrder>
+		<SortOrder>10</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>17</ScID>
@@ -1714,7 +1732,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>9</ID>
 		<Title><![CDATA[Chapter 9]]></Title>
-		<SortOrder>10</SortOrder>
+		<SortOrder>11</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>19</ScID>
@@ -1724,7 +1742,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>10</ID>
 		<Title><![CDATA[Chapter 10]]></Title>
-		<SortOrder>11</SortOrder>
+		<SortOrder>12</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>22</ScID>
@@ -1734,7 +1752,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>11</ID>
 		<Title><![CDATA[Chapter 11]]></Title>
-		<SortOrder>12</SortOrder>
+		<SortOrder>13</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>25</ScID>
@@ -1745,7 +1763,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>12</ID>
 		<Title><![CDATA[Chapter 12]]></Title>
-		<SortOrder>13</SortOrder>
+		<SortOrder>14</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>29</ScID>
@@ -1756,7 +1774,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>13</ID>
 		<Title><![CDATA[Chapter 13]]></Title>
-		<SortOrder>14</SortOrder>
+		<SortOrder>15</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>34</ScID>
@@ -1766,14 +1784,14 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>14</ID>
 		<Title><![CDATA[Chapter 14]]></Title>
-		<SortOrder>15</SortOrder>
+		<SortOrder>16</SortOrder>
 		<Type>0</Type>
 	</CHAPTER>
 
 	<CHAPTER>
 		<ID>15</ID>
 		<Title><![CDATA[Chapter 15]]></Title>
-		<SortOrder>16</SortOrder>
+		<SortOrder>17</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>38</ScID>
@@ -1784,7 +1802,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>16</ID>
 		<Title><![CDATA[Chapter 16]]></Title>
-		<SortOrder>17</SortOrder>
+		<SortOrder>18</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>43</ScID>
@@ -1795,7 +1813,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>17</ID>
 		<Title><![CDATA[Chapter 17]]></Title>
-		<SortOrder>18</SortOrder>
+		<SortOrder>19</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>47</ScID>
@@ -1804,9 +1822,22 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	</CHAPTER>
 
 	<CHAPTER>
+		<ID>35</ID>
+		<Title><![CDATA[Part 2]]></Title>
+		<SortOrder>20</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+		</Fields>
+
+		<SectionStart>-1</SectionStart>
+		<Type>0</Type>
+	</CHAPTER>
+
+	<CHAPTER>
 		<ID>18</ID>
 		<Title><![CDATA[Chapter 18]]></Title>
-		<SortOrder>19</SortOrder>
+		<SortOrder>21</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>51</ScID>
@@ -1817,7 +1848,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>19</ID>
 		<Title><![CDATA[Chapter 19]]></Title>
-		<SortOrder>20</SortOrder>
+		<SortOrder>22</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>55</ScID>
@@ -1828,7 +1859,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>20</ID>
 		<Title><![CDATA[Chapter 20]]></Title>
-		<SortOrder>21</SortOrder>
+		<SortOrder>23</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>60</ScID>
@@ -1840,7 +1871,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>21</ID>
 		<Title><![CDATA[Chapter 21]]></Title>
-		<SortOrder>22</SortOrder>
+		<SortOrder>24</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>66</ScID>
@@ -1851,7 +1882,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>22</ID>
 		<Title><![CDATA[Chapter 22]]></Title>
-		<SortOrder>23</SortOrder>
+		<SortOrder>25</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>71</ScID>
@@ -1861,7 +1892,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>23</ID>
 		<Title><![CDATA[Chapter 23]]></Title>
-		<SortOrder>24</SortOrder>
+		<SortOrder>26</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>74</ScID>
@@ -1871,7 +1902,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>24</ID>
 		<Title><![CDATA[Chapter 24]]></Title>
-		<SortOrder>25</SortOrder>
+		<SortOrder>27</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>77</ScID>
@@ -1883,7 +1914,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>25</ID>
 		<Title><![CDATA[Chapter 25]]></Title>
-		<SortOrder>26</SortOrder>
+		<SortOrder>28</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>84</ScID>
@@ -1894,7 +1925,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>26</ID>
 		<Title><![CDATA[Chapter 26]]></Title>
-		<SortOrder>27</SortOrder>
+		<SortOrder>29</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>89</ScID>
@@ -1904,7 +1935,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>27</ID>
 		<Title><![CDATA[Chapter 27]]></Title>
-		<SortOrder>28</SortOrder>
+		<SortOrder>30</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>92</ScID>
@@ -1915,7 +1946,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>28</ID>
 		<Title><![CDATA[Chapter 28]]></Title>
-		<SortOrder>29</SortOrder>
+		<SortOrder>31</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>96</ScID>
@@ -1926,7 +1957,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>29</ID>
 		<Title><![CDATA[Chapter 29]]></Title>
-		<SortOrder>30</SortOrder>
+		<SortOrder>32</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>101</ScID>
@@ -1938,7 +1969,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>30</ID>
 		<Title><![CDATA[Chapter 30]]></Title>
-		<SortOrder>31</SortOrder>
+		<SortOrder>33</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>108</ScID>
@@ -1950,7 +1981,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>31</ID>
 		<Title><![CDATA[Chapter 31]]></Title>
-		<SortOrder>32</SortOrder>
+		<SortOrder>34</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>114</ScID>
@@ -1961,7 +1992,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>32</ID>
 		<Title><![CDATA[Chapter 32]]></Title>
-		<SortOrder>33</SortOrder>
+		<SortOrder>35</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>119</ScID>
@@ -1990,6 +2021,12 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 
 	<WC>
 		<Date>2019-12-20</Date>
+		<Count>1266</Count>
+		<TotalCount>1330</TotalCount>
+	</WC>
+
+	<WC>
+		<Date>2020-01-26</Date>
 		<Count>1266</Count>
 		<TotalCount>1330</TotalCount>
 	</WC>

@@ -10,7 +10,7 @@ from pywriter.model.yw7file import Yw7File
 from pywriter.model.pywfile import PywFile
 
 
-UNSTRUCTURED = ['ChapterDesc', 'CsvFile']
+UNSTRUCTURED = ['ChapterDesc', 'PartDesc', 'CsvFile']
 # File classes without a chapter/scene tree structure.
 
 

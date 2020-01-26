@@ -12,7 +12,7 @@ from pywriter.model.hform import *
 
 
 HTML_HEADING_MARKERS = ("h3", "h2")
-# Index is yWriter's chapter type:
+# Index is yWriter's chapter chLevel:
 # 0 is for an ordinary chapter
 # 1 is for a chapter beginning a section
 
@@ -92,34 +92,39 @@ class SceneDesc(Manuscript):
         lines = [HTML_HEADER.replace('$bookTitle$', self.title)]
         lines.append('<h1>' + self.title + '</h1>')
 
-        for chID in self.srtChapters:
-            lines.append('<div id="ChID:' + chID + '">\n')
-            headingMarker = HTML_HEADING_MARKERS[self.chapters[chID].type]
-            lines.append('<' + headingMarker + '>' + format_chapter_title(
-                self.chapters[chID].title) + '</' + headingMarker + '>\n')
+        for chId in self.srtChapters:
 
-            for scID in self.chapters[chID].srtScenes:
-                lines.append('<div id="ScID:' + scID + '">\n')
-                lines.append('<p class="firstlineindent">')
+            if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
+                lines.append('<div id="ChID:' + chId + '">\n')
+                headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].chLevel]
+                lines.append('<' + headingMarker + '>' + format_chapter_title(
+                    self.chapters[chId].title) + '</' + headingMarker + '>\n')
 
-                # Insert scene ID as anchor.
+                for scId in self.chapters[chId].srtScenes:
 
-                lines.append('<a name="ScID:' + scID + '" />')
+                    if not self.scenes[scId].isUnused:
+                        lines.append('<div id="ScID:' + scId + '">\n')
+                        lines.append('<p class="firstlineindent">')
 
-                # Insert scene title as comment.
+                        # Insert scene ID as anchor.
 
-                lines.append('<!-- ' + self.scenes[scID].title + ' -->\n')
+                        lines.append('<a name="ScID:' + scId + '" />')
 
-                try:
-                    lines.append(to_html(self.scenes[scID].desc))
+                        # Insert scene title as comment.
 
-                except(TypeError):
-                    lines.append(' ')
+                        lines.append(
+                            '<!-- ' + self.scenes[scId].title + ' -->\n')
 
-                lines.append('</p>\n')
+                        try:
+                            lines.append(to_html(self.scenes[scId].desc))
+
+                        except(TypeError):
+                            lines.append(' ')
+
+                        lines.append('</p>\n')
+                        lines.append('</div>\n')
+
                 lines.append('</div>\n')
-
-            lines.append('</div>\n')
 
         lines.append(HTML_FOOTER)
 

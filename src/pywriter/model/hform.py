@@ -17,7 +17,7 @@ HTML_SCENE_DIVIDER = '* * *'
 STYLESHEET = '<style type="text/css">\n' + \
     'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
     'h1, h2, h3, h4 {text-align: center}\n' +\
-    'h1 {letter-spacing: 0.5em; font-style: italic}' + \
+    'h1 {letter-spacing: 0.2em; font-style: italic}' + \
     'h1, h2 {font-weight: bold}\n' + \
     'h3 {font-style: italic}\n' + \
     'p.textbody {margin-top:0; margin-bottom:0}\n' + \

@@ -15,7 +15,7 @@ from pywriter.model.scene import Scene
 from pywriter.model.hform import *
 
 HTML_HEADING_MARKERS = ("h2", "h1")
-# Index is yWriter's chapter type:
+# Index is yWriter's chapter chLevel:
 # 0 is for an ordinary chapter
 # 1 is for a chapter beginning a section
 
@@ -132,7 +132,7 @@ class HtmlFile(PywFile, HTMLParser):
                 self.chapters[chId].srtScenes.append(scId)
                 inScene = True
 
-            elif line.startswith('[/ScID]'):
+            elif line.startswith('[/ScID'):
                 self.scenes[scId].sceneContent = ''.join(sceneText)
                 sceneText = []
                 inScene = False
@@ -142,7 +142,7 @@ class HtmlFile(PywFile, HTMLParser):
                 self.chapters[chId] = Chapter()
                 self.srtChapters.append(chId)
 
-            elif line.startswith('[/ChID]'):
+            elif line.startswith('[/ChID'):
                 pass
 
             elif inScene:
@@ -177,16 +177,30 @@ class HtmlFile(PywFile, HTMLParser):
         lines = [HTML_HEADER.replace('$bookTitle$', self.title)]
 
         for chId in self.srtChapters:
-            lines.append(
-                '<p style="font-size:x-small">[ChID:' + chId + ']</p>\n')
-            headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].type]
+
+            if self.chapters[chId].isUnused:
+                lines.append(
+                    '<p style="font-size:x-small">[ChID:' + chId + ' (Unused)]</p>\n')
+
+            else:
+                lines.append(
+                    '<p style="font-size:x-small">[ChID:' + chId + ']</p>\n')
+
+            headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].chLevel]
             lines.append('<' + headingMarker + '>' + format_chapter_title(
                 self.chapters[chId].title) + '</' + headingMarker + '>\n')
 
             for scId in self.chapters[chId].srtScenes:
                 lines.append('<h4>' + HTML_SCENE_DIVIDER + '</h4>\n')
-                lines.append(
-                    '<p style="font-size:x-small">[ScID:' + scId + ']</p>\n')
+
+                if self.scenes[scId].isUnused:
+                    lines.append(
+                        '<p style="font-size:x-small">[ScID:' + scId + ' (Unused)]</p>\n')
+
+                else:
+                    lines.append(
+                        '<p style="font-size:x-small">[ScID:' + scId + ']</p>\n')
+
                 lines.append('<p class="textbody">')
 
                 try:
@@ -196,9 +210,20 @@ class HtmlFile(PywFile, HTMLParser):
                     lines.append(' ')
 
                 lines.append('</p>\n')
-                lines.append('<p style="font-size:x-small">[/ScID]</p>\n')
 
-            lines.append('<p style="font-size:x-small">[/ChID]</p>\n')
+                if self.scenes[scId].isUnused:
+                    lines.append(
+                        '<p style="font-size:x-small">[/ScID (Unused)]</p>\n')
+
+                else:
+                    lines.append('<p style="font-size:x-small">[/ScID]</p>\n')
+
+            if self.chapters[chId].isUnused:
+                lines.append(
+                    '<p style="font-size:x-small">[/ChID (Unused)]</p>\n')
+
+            else:
+                lines.append('<p style="font-size:x-small">[/ChID]</p>\n')
 
         lines.append(HTML_FOOTER)
         text = ''.join(lines)

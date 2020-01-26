@@ -15,7 +15,7 @@ from pywriter.model.scene import Scene
 from pywriter.model.hform import *
 
 HTML_HEADING_MARKERS = ("h2", "h1")
-# Index is yWriter's chapter type:
+# Index is yWriter's chapter chLevel:
 # 0 is for an ordinary chapter
 # 1 is for a chapter beginning a section
 
@@ -174,35 +174,40 @@ class Manuscript(PywFile, HTMLParser):
         lines = [HTML_HEADER.replace('$bookTitle$', self.title)]
 
         for chId in self.srtChapters:
-            lines.append('<div id="ChID:' + chId + '">\n')
-            headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].type]
-            lines.append('<' + headingMarker + '>' + format_chapter_title(
-                self.chapters[chId].title) + '</' + headingMarker + '>\n')
 
-            for scId in self.chapters[chId].srtScenes:
-                lines.append('<h4>' + HTML_SCENE_DIVIDER + '</h4>\n')
-                lines.append('<div id="ScID:' + scId + '">\n')
-                lines.append('<p class="textbody">')
+            if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
+                lines.append('<div id="ChID:' + chId + '">\n')
+                headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].chLevel]
+                lines.append('<' + headingMarker + '>' + format_chapter_title(
+                    self.chapters[chId].title) + '</' + headingMarker + '>\n')
 
-                # Insert scene ID as anchor.
+                for scId in self.chapters[chId].srtScenes:
 
-                lines.append('<a name="ScID:' + scId + '" />')
+                    if not self.scenes[scId].isUnused:
+                        lines.append('<h4>' + HTML_SCENE_DIVIDER + '</h4>\n')
+                        lines.append('<div id="ScID:' + scId + '">\n')
+                        lines.append('<p class="textbody">')
 
-                # Insert scene title as comment.
+                        # Insert scene ID as anchor.
 
-                lines.append('<!-- ' + self.scenes[scId].title + ' -->\n')
+                        lines.append('<a name="ScID:' + scId + '" />')
 
-                try:
-                    lines.append(
-                        to_html(self.scenes[scId].sceneContent))
+                        # Insert scene title as comment.
 
-                except(TypeError):
-                    lines.append(' ')
+                        lines.append(
+                            '<!-- ' + self.scenes[scId].title + ' -->\n')
 
-                lines.append('</p>\n')
+                        try:
+                            lines.append(
+                                to_html(self.scenes[scId].sceneContent))
+
+                        except(TypeError):
+                            lines.append(' ')
+
+                        lines.append('</p>\n')
+                        lines.append('</div>\n')
+
                 lines.append('</div>\n')
-
-            lines.append('</div>\n')
 
         lines.append(HTML_FOOTER)
         text = ''.join(lines)

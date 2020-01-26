@@ -14,7 +14,7 @@ from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 
 MD_HEADING_MARKERS = ("##", "#")
-# Index is yWriter's chapter type:
+# Index is yWriter's chapter chLevel:
 # 0 is for an ordinary chapter
 # 1 is for a chapter beginning a section
 
@@ -100,7 +100,7 @@ class MdFile(PywFile):
                 self.chapters[chId].srtScenes.append(scId)
                 inScene = True
 
-            elif line.startswith('[/ScID]'):
+            elif line.startswith('[/ScID'):
                 self.scenes[scId].sceneContent = ''.join(sceneText)
                 sceneText = []
                 inScene = False
@@ -110,7 +110,7 @@ class MdFile(PywFile):
                 self.chapters[chId] = Chapter()
                 self.srtChapters.append(chId)
 
-            elif line.startswith('[/ChID]'):
+            elif line.startswith('[/ChID'):
                 pass
 
             elif inScene:
@@ -153,13 +153,24 @@ class MdFile(PywFile):
         lines = []
 
         for chId in self.srtChapters:
-            lines.append('\\[ChID:' + chId + '\\]\n')
-            headingMarker = MD_HEADING_MARKERS[self.chapters[chId].type]
+
+            if self.chapters[chId].isUnused:
+                lines.append('\\[ChID:' + chId + ' (Unused)\\]\n')
+
+            else:
+                lines.append('\\[ChID:' + chId + '\\]\n')
+
+            headingMarker = MD_HEADING_MARKERS[self.chapters[chId].chLevel]
             lines.append(headingMarker +
                          format_chapter_title(self.chapters[chId].title) + '\n')
 
             for scId in self.chapters[chId].srtScenes:
-                lines.append('\\[ScID:' + scId + '\\]\n')
+
+                if self.scenes[scId].isUnused:
+                    lines.append('\\[ScID:' + scId + ' (Unused)\\]\n')
+
+                else:
+                    lines.append('\\[ScID:' + scId + '\\]\n')
 
                 try:
                     lines.append(self.scenes[scId].sceneContent + '\n')
@@ -167,9 +178,17 @@ class MdFile(PywFile):
                 except(TypeError):
                     lines.append('\n')
 
-                lines.append('\\[/ScID\\]\n')
+                if self.scenes[scId].isUnused:
+                    lines.append('\\[/ScID (Unused)\\]\n')
 
-            lines.append('\\[/ChID\\]\n')
+                else:
+                    lines.append('\\[/ScID\\]\n')
+
+            if self.chapters[chId].isUnused:
+                lines.append('\\[/ChID (Unused)\\]\n')
+
+            else:
+                lines.append('\\[/ChID\\]\n')
 
         text = to_md(''.join(lines))
 

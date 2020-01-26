@@ -18,8 +18,17 @@ class Chapter():
     desc : str
         the chapter summary.
 
-    type : int
-        a selector for the chapter's level.
+    chLevel : int
+        a selector for the heading.
+        0 = chapter level
+        1 = section level (marked "begins a section")
+
+    chType : int
+        0 = chapter type (marked "Ch")
+        1 = other type (marked "I")
+
+    isUnused : bool
+        the chapter is marked "unused".
 
     srtScenes : list 
         the chapter's scene IDs. The order of its elements 
@@ -29,5 +38,7 @@ class Chapter():
     def __init__(self) -> None:
         self.title = ''
         self.desc = ''
-        self.type = None
+        self.chLevel = 0
+        self.chType = None
+        self.isUnused = False
         self.srtScenes = []
