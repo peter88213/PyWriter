@@ -122,6 +122,9 @@ class Yw7File(PywFile):
             if scn.find('Desc') is not None:
                 self.scenes[scId].desc = scn.find('Desc').text
 
+            if scn.find('Notes') is not None:
+                self.scenes[scId].sceneNotes = scn.find('Notes').text
+
             if scn.find('Tags') is not None:
                 self.scenes[scId].tags.extend(scn.find('Tags').text.split(';'))
 
@@ -155,6 +158,9 @@ class Yw7File(PywFile):
 
                 if novel.scenes[scId].desc != '':
                     self.scenes[scId].desc = novel.scenes[scId].desc
+
+                if novel.scenes[scId].sceneNotes != '':
+                    self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
 
                 if novel.scenes[scId].tags != []:
                     self.scenes[scId].tags = novel.scenes[scId].tags
@@ -259,6 +265,15 @@ class Yw7File(PywFile):
 
                     else:
                         scn.find('Desc').text = self.scenes[scId].desc
+
+                if self.scenes[scId].sceneNotes != '':
+
+                    if chp.find('Notes') is None:
+                        newNotes = ET.SubElement(scn, 'Notes')
+                        newNotes.text = self.scenes[scId].sceneNotes
+
+                    else:
+                        chp.find('Notes').text = self.scenes[chId].sceneNotes
 
                 if self.scenes[scId].tags != []:
 

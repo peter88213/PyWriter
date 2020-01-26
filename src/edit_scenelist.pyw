@@ -9,13 +9,13 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.model.csvfile import CsvFile
+from pywriter.model.scenelist import SceneList
 from pywriter.converter.cnv_runner import CnvRunner
 
 
 def run(sourcePath: str, silentMode: bool = True) -> None:
-    document = CsvFile('')
-    converter = CnvRunner(sourcePath, document, 'csv', silentMode)
+    document = SceneList('')
+    converter = CnvRunner(sourcePath, document, 'csv', silentMode, '_scenes')
 
 
 if __name__ == '__main__':

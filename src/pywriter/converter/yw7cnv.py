@@ -10,10 +10,6 @@ from pywriter.model.yw7file import Yw7File
 from pywriter.model.pywfile import PywFile
 
 
-UNSTRUCTURED = ['ChapterDesc', 'PartDesc', 'CsvFile']
-# File classes without a chapter/scene tree structure.
-
-
 class Yw7Cnv():
     """Converter for yWriter 7 project files.
 
@@ -95,15 +91,15 @@ class Yw7Cnv():
         if message.startswith('ERROR'):
             return message
 
-        prjStructure = documentFile.get_structure()
-
         message = yw7File.read()
         # initialize yw7File data
 
         if message.startswith('ERROR'):
             return message
 
-        if not documentFile.__class__.__name__ in UNSTRUCTURED:
+        prjStructure = documentFile.get_structure()
+
+        if prjStructure is not None:
 
             if prjStructure == '':
                 return 'ERROR: Source file contains no yWriter project structure information.'

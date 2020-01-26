@@ -1,4 +1,4 @@
-"""CsvFile - Class for csv scenes table.
+"""PlotList - Class for csv plot structure table.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -11,13 +11,14 @@ import re
 
 from pywriter.model.novel import Novel
 from pywriter.model.pywfile import PywFile
+from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 
 SEPARATOR = '|'     # delimits data fields within a record.
 LINEBREAK = '\t'    # substitutes embedded line breaks.
 
 
-class CsvFile(PywFile):
+class PlotList(PywFile):
     """csv file representation of an yWriter project's scenes table. 
 
     Represents a csv file with a record per scene.
@@ -45,11 +46,11 @@ class CsvFile(PywFile):
         Arguments 
             novel : Novel
                 the data to be written. 
-        Generate a csv file containing per scene:
-        - manuscript scene hyperlink, 
-        - scene title,
-        - scene description.
+        Generate a csv file
         Return a message beginning with SUCCESS or ERROR.
+
+    get_structure : None
+        Return None to prevent structural comparison.
     """
 
     _FILE_EXTENSION = 'csv'
@@ -68,14 +69,18 @@ class CsvFile(PywFile):
         for record in table:
             field = record.split(SEPARATOR)
 
+            if 'ChID:' in field[0]:
+                chId = re.search('ChID\:([0-9]+)', field[0]).group(1)
+                self.chapters[chId] = Chapter()
+                self.chapters[chId].title = field[1]
+                self.chapters[chId].desc = field[4].replace(LINEBREAK, '\n')
+
             if 'ScID:' in field[0]:
                 scId = re.search('ScID\:([0-9]+)', field[0]).group(1)
                 self.scenes[scId] = Scene()
-                self.scenes[scId].title = field[1]
-                self.scenes[scId].desc = field[2].replace(LINEBREAK, '\n')
-                #self.scenes[scId].wordCount = int(field[3])
-                #self.scenes[scId].letterCount = int(field[4])
-                self.scenes[scId].tags = field[5].split(';')
+                self.scenes[scId].tags = field[2].split(';')
+                self.scenes[scId].title = field[3]
+                self.scenes[scId].desc = field[4].replace(LINEBREAK, '\n')
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
@@ -98,45 +103,63 @@ class CsvFile(PywFile):
 
         # first record: the table's column headings
 
-        table = ['Scene link'
+        table = ['ID'
                  + SEPARATOR
-                 + 'Scene title'
+                 + 'Plot section'
                  + SEPARATOR
-                 + 'Scene description'
+                 + 'Plot event'
                  + SEPARATOR
-                 + 'Word count'
+                 + 'Plot event title'
                  + SEPARATOR
-                 + 'Letter count'
-                 + SEPARATOR
-                 + 'Tags'
+                 + 'Details'
                  + '\n']
+
+        # Add a record for each used scene in a regular chapter
 
         for chId in self.srtChapters:
 
-            for scId in self.chapters[chId].srtScenes:
+            if (not self.chapters[chId].isUnused):
 
-                # Add a record for each scene
+                if self.chapters[chId].chType == 1:
 
-                if self.scenes[scId].desc is not None:
-                    sceneDesc = self.scenes[scId].desc.rstrip(
-                    ).replace('\n', LINEBREAK)
+                    if self.chapters[chId].desc is not None:
+                        chapterDesc = self.chapters[chId].desc.rstrip(
+                        ).replace('\n', LINEBREAK)
+
+                    else:
+                        chapterDesc = ''
+
+                    table.append('ChID:' + chId
+                                 + SEPARATOR
+                                 + self.chapters[chId].title
+                                 + SEPARATOR
+                                 + SEPARATOR
+                                 + SEPARATOR
+                                 + chapterDesc
+                                 + '\n')
 
                 else:
-                    sceneDesc = ''
+                    for scId in self.chapters[chId].srtScenes:
 
-                table.append('=HYPERLINK("file:///'
-                             + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
-                             + SEPARATOR
-                             + self.scenes[scId].title
-                             + SEPARATOR
-                             + sceneDesc
-                             + SEPARATOR
-                             + str(self.scenes[scId].wordCount)
-                             + SEPARATOR
-                             + str(self.scenes[scId].letterCount)
-                             + SEPARATOR
-                             + ';'.join(self.scenes[scId].tags)
-                             + '\n')
+                        if (not self.scenes[scId].isUnused) and (self.scenes[scId].tags != [] or self.scenes[scId].sceneNotes != ''):
+
+                            if self.scenes[scId].sceneNotes is not None:
+                                sceneNotes = self.scenes[scId].sceneNotes.rstrip(
+                                ).replace('\n', LINEBREAK)
+
+                            else:
+                                sceneNotes = ''
+
+                            table.append('=HYPERLINK("file:///'
+                                         + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
+                                         + SEPARATOR
+                                         + SEPARATOR
+                                         + ';'.join(self.scenes[scId].tags)
+                                         + SEPARATOR
+                                         + self.scenes[scId].title
+                                         + SEPARATOR
+                                         + sceneNotes
+                                         + '\n')
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
@@ -146,3 +169,6 @@ class CsvFile(PywFile):
             return 'ERROR: ' + self._filePath + '" is write protected.'
 
         return 'SUCCESS: "' + self._filePath + '" saved.'
+
+    def get_structure(self) -> None:
+        return None

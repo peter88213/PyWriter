@@ -29,6 +29,9 @@ class PartDesc(ChapterDesc):
         - chapter sections containing:
             - chapter description.
         Return a message beginning with SUCCESS or ERROR.
+
+    get_structure : None
+        Return None to prevent structural comparison.
     """
 
     def write(self, novel: Novel) -> str:
@@ -96,3 +99,6 @@ class PartDesc(ChapterDesc):
             return 'ERROR: ' + self._filePath + '" is write protected.'
 
         return 'SUCCESS: "' + self._filePath + '" saved.'
+
+    def get_structure(self) -> None:
+        return None
