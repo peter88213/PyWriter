@@ -75,6 +75,7 @@ class CsvFile(PywFile):
                 self.scenes[scId].desc = field[2].replace(LINEBREAK, '\n')
                 #self.scenes[scId].wordCount = int(field[3])
                 #self.scenes[scId].letterCount = int(field[4])
+                self.scenes[scId].tags = field[5].split(';')
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
@@ -106,6 +107,8 @@ class CsvFile(PywFile):
                  + 'Word count'
                  + SEPARATOR
                  + 'Letter count'
+                 + SEPARATOR
+                 + 'Tags'
                  + '\n']
 
         for chId in self.srtChapters:
@@ -131,6 +134,8 @@ class CsvFile(PywFile):
                              + str(self.scenes[scId].wordCount)
                              + SEPARATOR
                              + str(self.scenes[scId].letterCount)
+                             + SEPARATOR
+                             + ';'.join(self.scenes[scId].tags)
                              + '\n')
 
         try:

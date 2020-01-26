@@ -122,6 +122,9 @@ class Yw7File(PywFile):
             if scn.find('Desc') is not None:
                 self.scenes[scId].desc = scn.find('Desc').text
 
+            if scn.find('Tags') is not None:
+                self.scenes[scId].tags.extend(scn.find('Tags').text.split(';'))
+
             if scn.find('Unused') is not None:
                 self.scenes[scId].isUnused = True
 
@@ -152,6 +155,9 @@ class Yw7File(PywFile):
 
                 if novel.scenes[scId].desc != '':
                     self.scenes[scId].desc = novel.scenes[scId].desc
+
+                if novel.scenes[scId].tags != []:
+                    self.scenes[scId].tags = novel.scenes[scId].tags
 
                 if novel.scenes[scId].sceneContent != '':
                     self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
@@ -246,12 +252,23 @@ class Yw7File(PywFile):
                 scn.find('Title').text = self.scenes[scId].title
 
                 if self.scenes[scId].desc != '':
+
                     if scn.find('Desc') is None:
                         newDesc = ET.SubElement(scn, 'Desc')
                         newDesc.text = self.scenes[scId].desc
 
                     else:
                         scn.find('Desc').text = self.scenes[scId].desc
+
+                if self.scenes[scId].tags != []:
+
+                    if scn.find('Tags') is None:
+                        newTags = ET.SubElement(scn, 'Tags')
+                        newTags.text = ';'.join(self.scenes[scId].tags)
+
+                    else:
+                        scn.find('Tags').text = ';'.join(
+                            self.scenes[scId].tags)
 
                 '''Do not modify these items yet:
                 unusedMarker = scn.find('Unused')

@@ -32,6 +32,9 @@ class Scene():
     isUnused : bool
         the scene is marked "unused".
 
+    tags : list
+        list of scene tags.
+
     # Methods 
 
     isEmpty : bool
@@ -44,6 +47,7 @@ class Scene():
         self.wordCount = 0
         self.letterCount = 0
         self.isUnused = False
+        self.tags = []
         self._sceneContent = ''
 
     @property
