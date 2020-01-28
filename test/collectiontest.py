@@ -9,12 +9,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 
-from pywriter.model.collection import Collection
+from pywriter.collection.collection import Collection
 
-from pywriter.model.bookdesc import BookDesc
+from pywriter.collection.bookdesc import BookDesc
 
 from pywriter.model.mdfile import MdFile
-from distutils.tests.test_text_file import TEST_DATA
 
 
 TEST_PATH = os.getcwd()
@@ -56,7 +55,7 @@ class NrmOpr(unittest.TestCase):
         except:
             pass
         try:
-            os.mkdir('yw7\yWriter Projects/The Gravity Monster.yw')
+            os.mkdir('yw7/yWriter Projects/The Gravity Monster.yw')
         except:
             pass
         copy_file('data/yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7',

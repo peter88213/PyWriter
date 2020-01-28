@@ -10,8 +10,8 @@ import os
 import re
 import xml.etree.ElementTree as ET
 
-from pywriter.model.series import Series
-from pywriter.model.book import Book
+from pywriter.collection.series import Series
+from pywriter.collection.book import Book
 
 
 class Collection():

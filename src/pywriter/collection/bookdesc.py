@@ -9,9 +9,9 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from html.parser import HTMLParser
 
 from pywriter.model.hform import *
-from pywriter.model.book import Book
-from pywriter.model.series import Series
-from pywriter.model.collection import Collection
+from pywriter.collection.book import Book
+from pywriter.collection.series import Series
+from pywriter.collection.collection import Collection
 
 
 class BookDesc(HTMLParser):
@@ -19,7 +19,7 @@ class BookDesc(HTMLParser):
 
     Represents a html file with series and book sections containing 
     a series description and the series' book descriptions 
-    to be read and written by OpenOffice /LibreOffice Writer.
+    to be read and written by Ope.collection./Libr.collection.Writer.
 
     # Properties
 
