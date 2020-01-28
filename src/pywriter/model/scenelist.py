@@ -97,7 +97,7 @@ class SceneList(PywFile):
             self.chapters = novel.chapters
 
         odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace('.csv', '_manuscript.odt')
+            ' ', '%20').replace('_scenes.csv', '_manuscript.odt')
 
         # first record: the table's column headings
 

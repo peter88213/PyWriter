@@ -55,6 +55,7 @@ class PlotList(PywFile):
 
     _FILE_EXTENSION = 'csv'
     # overwrites PywFile._FILE_EXTENSION
+    _FILE_SUFFIX = '_plot'
 
     def read(self) -> str:
         """Read data from a csv file containing scene attributes. """
@@ -99,7 +100,7 @@ class PlotList(PywFile):
             self.chapters = novel.chapters
 
         odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace('.csv', '_manuscript.odt')
+            ' ', '%20').replace('_plot.csv', '_manuscript.odt')
 
         # first record: the table's column headings
 
