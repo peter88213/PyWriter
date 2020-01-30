@@ -55,7 +55,6 @@ def cdata(filePath: str, cdataTags: list) -> str:
         newlines.append(line)
 
     newXml = ''.join(newlines)
-    newXml = newXml.replace('\n \n', '\n')
     newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
     newXml = newXml.replace('\n]]', ']]')
 

@@ -121,9 +121,7 @@ class Manuscript(PywFile, HTMLParser):
         """HTML parser: Collect paragraphs within scene. """
 
         if self._collectText:
-
-            if data != ' ':
-                self._lines.append(data)
+            self._lines.append(data)
 
     def read(self) -> str:
         """Read data from html file with chapter and scene sections. """
@@ -197,13 +195,8 @@ class Manuscript(PywFile, HTMLParser):
                         lines.append(
                             '<!-- ' + self.scenes[scId].title + ' -->\n')
 
-                        try:
-                            lines.append(
-                                to_html(self.scenes[scId].sceneContent))
-
-                        except(TypeError):
-                            lines.append(' ')
-
+                        lines.append(
+                            to_html(self.scenes[scId].sceneContent))
                         lines.append('</p>\n')
                         lines.append('</div>\n')
 

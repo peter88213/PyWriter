@@ -10,7 +10,11 @@ Uninstalling yWriter5 will uninstall (delete) this sample project.
 
 Reinstalling yWriter5 will overwrite this sample project.
 
+
+
 Therefore, rather than modifying this project with your own content, **please create a new project for your own work**. (*Project - Create Empty Project*, or *Project - New Project Wizard*)
+
+
 
 Any new projects created with yWriter5 will not be deleted, overwritten or modified when you uninstall or reinstall the software.
 
@@ -60,6 +64,8 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 
 "Shall I add those titles to your basket?"
 
+
+
 . . .
 
 \[/ScID\]
@@ -92,6 +98,8 @@ Hal was pacing the Black Gull's flight deck, ready to put his fist through the n
 
 "You're only saying that because you're losing."
 
+
+
 . . .
 
 \[/ScID\]
@@ -110,6 +118,8 @@ Hal was pacing the Black Gull's flight deck, ready to put his fist through the n
 
 "No thanks. Vurdi's robot might be hanging around."
 
+
+
 . . .
 
 \[/ScID\]
@@ -125,6 +135,8 @@ Hal was pacing the Black Gull's flight deck, ready to put his fist through the n
 Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport's administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the 'A' list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.
 
 Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the *Black Gull* was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
+
+
 
 . . .
 
@@ -144,6 +156,8 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 
 "Humans tell lies about the most trivial matters."
 
+
+
 . . .
 
 \[/ScID\]
@@ -153,6 +167,8 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 Hal left the maintenance vehicle in the spaceport's outer carpark and walked to the admin block. An information kiosk directed him to an elevator, where he pressed the button marked 'Portmaster'.
 
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
+
+
 
 . . .
 
@@ -214,6 +230,8 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 
 "You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"
 
+
+
 . . .
 
 \[/ScID\]
@@ -227,6 +245,8 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 "What was that?"
 
 "The reel just fell off," said the Navcom.
+
+
 
 . . .
 
@@ -246,8 +266,6 @@ This bird is not dead ...
 
 \[ScID:12\]
 
- 
-
 \[/ScID\]
 
 \[/ChID\]
@@ -257,8 +275,6 @@ This bird is not dead ...
 ##7
 
 \[ScID:15\]
-
- 
 
 \[/ScID\]
 
@@ -270,8 +286,6 @@ This bird is not dead ...
 
 \[ScID:17\]
 
- 
-
 \[/ScID\]
 
 \[/ChID\]
@@ -281,8 +295,6 @@ This bird is not dead ...
 ##9
 
 \[ScID:19\]
-
- 
 
 \[/ScID\]
 
@@ -294,8 +306,6 @@ This bird is not dead ...
 
 \[ScID:22\]
 
- 
-
 \[/ScID\]
 
 \[/ChID\]
@@ -306,13 +316,9 @@ This bird is not dead ...
 
 \[ScID:25\]
 
- 
-
 \[/ScID\]
 
 \[ScID:27\]
-
- 
 
 \[/ScID\]
 
@@ -324,13 +330,9 @@ This bird is not dead ...
 
 \[ScID:29\]
 
- 
-
 \[/ScID\]
 
 \[ScID:31\]
-
- 
 
 \[/ScID\]
 
@@ -341,8 +343,6 @@ This bird is not dead ...
 ##13
 
 \[ScID:34\]
-
- 
 
 \[/ScID\]
 
@@ -360,13 +360,9 @@ This bird is not dead ...
 
 \[ScID:38\]
 
- 
-
 \[/ScID\]
 
 \[ScID:40\]
-
- 
 
 \[/ScID\]
 
@@ -378,13 +374,9 @@ This bird is not dead ...
 
 \[ScID:43\]
 
- 
-
 \[/ScID\]
 
 \[ScID:45\]
-
- 
 
 \[/ScID\]
 
@@ -396,13 +388,9 @@ This bird is not dead ...
 
 \[ScID:47\]
 
- 
-
 \[/ScID\]
 
 \[ScID:49\]
-
- 
 
 \[/ScID\]
 
@@ -420,13 +408,9 @@ This bird is not dead ...
 
 \[ScID:51\]
 
- 
-
 \[/ScID\]
 
 \[ScID:53\]
-
- 
 
 \[/ScID\]
 
@@ -438,13 +422,9 @@ This bird is not dead ...
 
 \[ScID:55\]
 
- 
-
 \[/ScID\]
 
 \[ScID:57\]
-
- 
 
 \[/ScID\]
 
@@ -456,19 +436,13 @@ This bird is not dead ...
 
 \[ScID:60\]
 
- 
-
 \[/ScID\]
 
 \[ScID:62\]
 
- 
-
 \[/ScID\]
 
 \[ScID:64\]
-
- 
 
 \[/ScID\]
 
@@ -480,13 +454,9 @@ This bird is not dead ...
 
 \[ScID:66\]
 
- 
-
 \[/ScID\]
 
 \[ScID:68\]
-
- 
 
 \[/ScID\]
 
@@ -498,8 +468,6 @@ This bird is not dead ...
 
 \[ScID:71\]
 
- 
-
 \[/ScID\]
 
 \[/ChID\]
@@ -509,8 +477,6 @@ This bird is not dead ...
 ##23
 
 \[ScID:74\]
-
- 
 
 \[/ScID\]
 
@@ -522,19 +488,13 @@ This bird is not dead ...
 
 \[ScID:77\]
 
- 
-
 \[/ScID\]
 
 \[ScID:79\]
 
- 
-
 \[/ScID\]
 
 \[ScID:81\]
-
- 
 
 \[/ScID\]
 
@@ -546,13 +506,9 @@ This bird is not dead ...
 
 \[ScID:84\]
 
- 
-
 \[/ScID\]
 
 \[ScID:86\]
-
- 
 
 \[/ScID\]
 
@@ -564,8 +520,6 @@ This bird is not dead ...
 
 \[ScID:89\]
 
- 
-
 \[/ScID\]
 
 \[/ChID\]
@@ -576,13 +530,9 @@ This bird is not dead ...
 
 \[ScID:92\]
 
- 
-
 \[/ScID\]
 
 \[ScID:94\]
-
- 
 
 \[/ScID\]
 
@@ -594,13 +544,9 @@ This bird is not dead ...
 
 \[ScID:96\]
 
- 
-
 \[/ScID\]
 
 \[ScID:98\]
-
- 
 
 \[/ScID\]
 
@@ -612,19 +558,13 @@ This bird is not dead ...
 
 \[ScID:101\]
 
- 
-
 \[/ScID\]
 
 \[ScID:103\]
 
- 
-
 \[/ScID\]
 
 \[ScID:105\]
-
- 
 
 \[/ScID\]
 
@@ -636,19 +576,13 @@ This bird is not dead ...
 
 \[ScID:108\]
 
- 
-
 \[/ScID\]
 
 \[ScID:110\]
 
- 
-
 \[/ScID\]
 
 \[ScID:112\]
-
- 
 
 \[/ScID\]
 
@@ -660,13 +594,9 @@ This bird is not dead ...
 
 \[ScID:114\]
 
- 
-
 \[/ScID\]
 
 \[ScID:116\]
-
- 
 
 \[/ScID\]
 
@@ -677,8 +607,6 @@ This bird is not dead ...
 ##32
 
 \[ScID:119\]
-
- 
 
 \[/ScID\]
 
@@ -695,4 +623,3 @@ This text is not needed.
 \[/ScID\]
 
 \[/ChID (Unused)\]
-

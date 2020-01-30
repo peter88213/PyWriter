@@ -37,22 +37,17 @@ class Scene():
 
     tags : list
         list of scene tags.
-
-    # Methods 
-
-    isEmpty : bool
-        True means: the scene is defined, but has no content.
     """
 
     def __init__(self):
-        self.title = ''
-        self.desc = ''
-        self.wordCount = 0
-        self.letterCount = 0
-        self.isUnused = False
-        self.tags = []
-        self.sceneNotes = ''
-        self._sceneContent = ''
+        self.title = None
+        self.desc = None
+        self.wordCount = None
+        self.letterCount = None
+        self.isUnused = None
+        self.tags = None
+        self.sceneNotes = None
+        self._sceneContent = None
 
     @property
     def sceneContent(self) -> str:
@@ -75,8 +70,3 @@ class Scene():
         text = text.replace('\n', '')
         text = text.replace('\r', '')
         self.letterCount = len(text)
-
-    def isEmpty(self) -> bool:
-        """Check whether the scene has no content yet. """
-
-        return self._sceneContent == ' '

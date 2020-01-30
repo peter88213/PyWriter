@@ -42,8 +42,8 @@ class Novel():
     """
 
     def __init__(self) -> None:
-        self.title = ''
-        self.desc = ''
+        self.title = None
+        self.desc = None
         self.chapters = {}
         self.scenes = {}
         self.srtChapters = []

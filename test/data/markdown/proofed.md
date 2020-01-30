@@ -54,6 +54,8 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 
 "Shall I add those titles to your basket?"
 
+
+
 . . .
 
 \[/ScID\]
@@ -67,6 +69,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 \[ScID:2\]
 
 On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
+
 
 . . .
 
@@ -86,6 +89,7 @@ Hal was pacing the Black Gull's flight deck, ready to put his fist through the n
 
 "You're only saying that because you're losing."
 
+
 . . .
 
 \[/ScID\]
@@ -104,6 +108,8 @@ Hal was pacing the Black Gull's flight deck, ready to put his fist through the n
 
 "No thanks. Vurdi's robot might be hanging around."
 
+
+
 . . .
 
 \[/ScID\]
@@ -119,6 +125,8 @@ Hal was pacing the Black Gull's flight deck, ready to put his fist through the n
 Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport's administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the 'A' list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.
 
 Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the *Black Gull* was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
+
+
 
 . . .
 
@@ -138,6 +146,8 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 
 "Humans tell lies about the most trivial matters."
 
+
+
 . . .
 
 \[/ScID\]
@@ -147,6 +157,8 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 Hal left the maintenance vehicle in the spaceport's outer carpark and walked to the admin block. An information kiosk directed him to an elevator, where he pressed the button marked 'Portmaster'.
 
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
+
+
 
 . . .
 
@@ -173,6 +185,8 @@ Clunk sat up straight. "Please open the connection."
 "Call Jerling and get me a loan. I need three hundred in cash for landing fees and fuel."
 
 "I don't think he'll lend you any money," said Clunk dubiously.
+
+
 
 . . .
 
@@ -208,6 +222,8 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 
 "You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"
 
+
+
 . . .
 
 \[/ScID\]
@@ -221,6 +237,8 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 "What was that?"
 
 "The reel just fell off," said the Navcom.
+
+
 
 . . .
 
@@ -239,8 +257,6 @@ This bird is not dead ...
 \[/ScID (Unused)\]
 
 \[ScID:12\]
-
- 
 
 \[/ScID\]
 

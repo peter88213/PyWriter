@@ -35,8 +35,6 @@ HTML_FOOTER = '\n</body>\n</html>\n'
 
 def to_yw7(text: str) -> str:
     """ convert html tags to yw7 raw markup. """
-    text = text.replace('<br>', '')
-    text = text.replace('<BR>', '')
     text = text.replace('<i>', '[i]')
     text = text.replace('<I>', '[i]')
     text = text.replace('<em>', '[i]')
@@ -55,8 +53,6 @@ def to_yw7(text: str) -> str:
     text = text.replace('\r', ' ')
     text = text.replace('\t', ' ')
 
-    text = re.sub('<br.+?>', '', text)
-    text = re.sub('<BR.+?>', '', text)
     text = re.sub('<em.+?>', '[i]', text)
     text = re.sub('<EM.+?>', '[i]', text)
     text = re.sub('<strong.+?>', '[b]', text)
@@ -75,12 +71,13 @@ def to_html(text: str) -> str:
     """Convert yw7 raw markup to html. """
 
     try:
-        text = text.replace('\n\n', '\n')
+        #text = text.replace('\n\n', '\n')
         text = text.replace('\n', '</p>\n<p class="firstlineindent">')
         text = text.replace('[i]', '<em>')
         text = text.replace('[/i]', '</em>')
         text = text.replace('[b]', '<strong>')
         text = text.replace('[/b]', '</strong>')
+        text = re.sub('\<p(.+?)\>\<\/p\>', '<p\g<1>><br></p>', text)
 
     except:
         pass

@@ -115,12 +115,7 @@ class SceneDesc(Manuscript):
                         lines.append(
                             '<!-- ' + self.scenes[scId].title + ' -->\n')
 
-                        try:
-                            lines.append(to_html(self.scenes[scId].desc))
-
-                        except(TypeError):
-                            lines.append(' ')
-
+                        lines.append(to_html(self.scenes[scId].desc))
                         lines.append('</p>\n')
                         lines.append('</div>\n')
 

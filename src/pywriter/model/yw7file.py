@@ -102,8 +102,14 @@ class Yw7File(PywFile):
             if chp.find('SectionStart') is not None:
                 self.chapters[chId].chLevel = 1
 
+            else:
+                self.chapters[chId].chLevel = 0
+
             if chp.find('Unused') is not None:
                 self.chapters[chId].isUnused = True
+
+            else:
+                self.chapters[chId].isUnused = False
 
             self.chapters[chId].chType = int(chp.find('Type').text)
 
@@ -145,32 +151,34 @@ class Yw7File(PywFile):
 
         # Copy the novel's attributes to write
 
-        if novel.title != '':
+        if novel.title is not None:
             self.title = novel.title
 
-        if novel.desc != '':
+        if novel.desc is not None:
             self.desc = novel.desc
 
+        '''Do not modify these items yet:
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
+        '''
 
         if novel.scenes is not None:
 
             for scId in novel.scenes:
 
-                if novel.scenes[scId].title != '':
+                if novel.scenes[scId].title is not None:
                     self.scenes[scId].title = novel.scenes[scId].title
 
-                if novel.scenes[scId].desc != '':
+                if novel.scenes[scId].desc is not None:
                     self.scenes[scId].desc = novel.scenes[scId].desc
 
-                if novel.scenes[scId].sceneNotes != '':
+                if novel.scenes[scId].sceneNotes is not None:
                     self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
 
-                if novel.scenes[scId].tags != []:
+                if novel.scenes[scId].tags is not None:
                     self.scenes[scId].tags = novel.scenes[scId].tags
 
-                if novel.scenes[scId].sceneContent != '':
+                if novel.scenes[scId].sceneContent is not None:
                     self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
 
                 '''Do not modify these items yet:
@@ -182,10 +190,10 @@ class Yw7File(PywFile):
 
             for chId in novel.chapters:
 
-                if novel.chapters[chId].title != '':
+                if novel.chapters[chId].title is not None:
                     self.chapters[chId].title = novel.chapters[chId].title
 
-                if novel.chapters[chId].desc != '':
+                if novel.chapters[chId].desc is not None:
                     self.chapters[chId].desc = novel.chapters[chId].desc
 
                 '''Do not modify these items yet:
@@ -208,12 +216,14 @@ class Yw7File(PywFile):
         for prj in root.iter('PROJECT'):
             prj.find('Title').text = self.title
 
-            if prj.find('Desc') is None:
-                newDesc = ET.SubElement(prj, 'Desc')
-                newDesc.text = self.desc
+            if self.desc is not None:
 
-            else:
-                prj.find('Desc').text = self.desc
+                if prj.find('Desc') is None:
+                    newDesc = ET.SubElement(prj, 'Desc')
+                    newDesc.text = self.desc
+
+                else:
+                    prj.find('Desc').text = self.desc
 
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
@@ -221,7 +231,7 @@ class Yw7File(PywFile):
             if chId in self.chapters:
                 chp.find('Title').text = self.chapters[chId].title
 
-                if self.chapters[chId].desc != '':
+                if self.chapters[chId].desc is not None:
 
                     if chp.find('Desc') is None:
                         newDesc = ET.SubElement(chp, 'Desc')
@@ -254,22 +264,10 @@ class Yw7File(PywFile):
 
             if scId in self.scenes:
 
-                if self.scenes[scId].isEmpty():
-                    scn.find('SceneContent').text = ''
-                    scn.find('WordCount').text = '0'
-                    scn.find('LetterCount').text = '0'
+                if self.scenes[scId].title is not None:
+                    scn.find('Title').text = self.scenes[scId].title
 
-                else:
-                    scn.find(
-                        'SceneContent').text = self.scenes[scId]._sceneContent
-                    scn.find('WordCount').text = str(
-                        self.scenes[scId].wordCount)
-                    scn.find('LetterCount').text = str(
-                        self.scenes[scId].letterCount)
-
-                scn.find('Title').text = self.scenes[scId].title
-
-                if self.scenes[scId].desc != '':
+                if self.scenes[scId].desc is not None:
 
                     if scn.find('Desc') is None:
                         newDesc = ET.SubElement(scn, 'Desc')
@@ -278,7 +276,15 @@ class Yw7File(PywFile):
                     else:
                         scn.find('Desc').text = self.scenes[scId].desc
 
-                if self.scenes[scId].sceneNotes != '':
+                if self.scenes[scId]._sceneContent is not None:
+                    scn.find(
+                        'SceneContent').text = self.scenes[scId]._sceneContent
+                    scn.find('WordCount').text = str(
+                        self.scenes[scId].wordCount)
+                    scn.find('LetterCount').text = str(
+                        self.scenes[scId].letterCount)
+
+                if self.scenes[scId].sceneNotes is not None:
 
                     if scn.find('Notes') is None:
                         newNotes = ET.SubElement(scn, 'Notes')
@@ -287,7 +293,7 @@ class Yw7File(PywFile):
                     else:
                         scn.find('Notes').text = self.scenes[scId].sceneNotes
 
-                if self.scenes[scId].tags != []:
+                if self.scenes[scId].tags is not None:
 
                     if scn.find('Tags') is None:
                         newTags = ET.SubElement(scn, 'Tags')

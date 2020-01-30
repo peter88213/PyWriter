@@ -79,21 +79,20 @@ class HtmlFile(PywFile, HTMLParser):
     def handle_starttag(self, tag, attrs):
         """Recognize the beginning ot the body section. """
 
-        if tag == 'body':
+        if tag == 'p':
             self._collectText = True
 
     def handle_endtag(self, tag):
         """Recognize the end ot the body section. """
 
-        if tag == 'body':
+        if tag == 'p':
             self._collectText = False
 
     def handle_data(self, data):
-        """Copy the body section. """
+        """Copy paragraphs. """
 
         if self._collectText:
-            self._lines.extend(data.split('\n'))
-            # Get the html body.
+            self._lines.append(data)
 
     def read(self) -> str:
         """Read data from html file with chapter and scene tags. """
@@ -133,7 +132,7 @@ class HtmlFile(PywFile, HTMLParser):
                 inScene = True
 
             elif line.startswith('[/ScID'):
-                self.scenes[scId].sceneContent = ''.join(sceneText)
+                self.scenes[scId].sceneContent = '\n'.join(sceneText)
                 sceneText = []
                 inScene = False
 
@@ -146,7 +145,7 @@ class HtmlFile(PywFile, HTMLParser):
                 pass
 
             elif inScene:
-                sceneText.append(line + '\n')
+                sceneText.append(line)
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
@@ -162,17 +161,15 @@ class HtmlFile(PywFile, HTMLParser):
         # Copy the novel's attributes to write
 
         if novel.title is not None:
-            if novel.title != '':
+
+            if novel.title is not None:
                 self.title = novel.title
 
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
 
-        if novel.scenes is not None:
-            self.scenes = novel.scenes
-
-        if novel.chapters is not None:
-            self.chapters = novel.chapters
+        self.scenes = novel.scenes
+        self.chapters = novel.chapters
 
         lines = [HTML_HEADER.replace('$bookTitle$', self.title)]
 
@@ -180,53 +177,47 @@ class HtmlFile(PywFile, HTMLParser):
 
             if self.chapters[chId].isUnused:
                 lines.append(
-                    '<p style="font-size:x-small">[ChID:' + chId + ' (Unused)]</p>\n')
+                    '<p style="font-size:x-small">[ChID:' + chId + ' (Unused)]</p>')
 
             else:
                 lines.append(
-                    '<p style="font-size:x-small">[ChID:' + chId + ']</p>\n')
+                    '<p style="font-size:x-small">[ChID:' + chId + ']</p>')
 
             headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].chLevel]
             lines.append('<' + headingMarker + '>' + format_chapter_title(
-                self.chapters[chId].title) + '</' + headingMarker + '>\n')
+                self.chapters[chId].title) + '</' + headingMarker + '>')
 
             for scId in self.chapters[chId].srtScenes:
-                lines.append('<h4>' + HTML_SCENE_DIVIDER + '</h4>\n')
+                lines.append('<h4>' + HTML_SCENE_DIVIDER + '</h4>')
 
                 if self.scenes[scId].isUnused:
                     lines.append(
-                        '<p style="font-size:x-small">[ScID:' + scId + ' (Unused)]</p>\n')
+                        '<p style="font-size:x-small">[ScID:' + scId + ' (Unused)]</p>')
 
                 else:
                     lines.append(
-                        '<p style="font-size:x-small">[ScID:' + scId + ']</p>\n')
+                        '<p style="font-size:x-small">[ScID:' + scId + ']</p>')
 
-                lines.append('<p class="textbody">')
-
-                try:
-                    lines.append(to_html(self.scenes[scId].sceneContent))
-
-                except(TypeError):
-                    lines.append(' ')
-
-                lines.append('</p>\n')
+                if self.scenes[scId].sceneContent is not None:
+                    lines.append('<p class="textbody">' +
+                                 to_html(self.scenes[scId].sceneContent) + '</p>')
 
                 if self.scenes[scId].isUnused:
                     lines.append(
-                        '<p style="font-size:x-small">[/ScID (Unused)]</p>\n')
+                        '<p style="font-size:x-small">[/ScID (Unused)]</p>')
 
                 else:
-                    lines.append('<p style="font-size:x-small">[/ScID]</p>\n')
+                    lines.append('<p style="font-size:x-small">[/ScID]</p>')
 
             if self.chapters[chId].isUnused:
                 lines.append(
-                    '<p style="font-size:x-small">[/ChID (Unused)]</p>\n')
+                    '<p style="font-size:x-small">[/ChID (Unused)]</p>')
 
             else:
-                lines.append('<p style="font-size:x-small">[/ChID]</p>\n')
+                lines.append('<p style="font-size:x-small">[/ChID]</p>')
 
         lines.append(HTML_FOOTER)
-        text = ''.join(lines)
+        text = '\n'.join(lines)
 
         # Remove scene dividers from chapter's beginning
 

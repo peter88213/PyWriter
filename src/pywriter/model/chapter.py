@@ -36,9 +36,9 @@ class Chapter():
     """
 
     def __init__(self) -> None:
-        self.title = ''
-        self.desc = ''
-        self.chLevel = 0
+        self.title = None
+        self.desc = None
+        self.chLevel = None
         self.chType = None
-        self.isUnused = False
+        self.isUnused = None
         self.srtScenes = []

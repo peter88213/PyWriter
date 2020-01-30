@@ -226,6 +226,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 "It's part of a popular series," said the Navcom.
 "What are the others? Interstellar navigation for nutters? Moon landings for morons?"
 "Shall I add those titles to your basket?"
+
 . . .]]></SceneContent>
     </SCENE>
     <SCENE>
@@ -257,6 +258,7 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
       <Items>
 		</Items>
       <SceneContent><![CDATA[On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
+
 . . .]]></SceneContent>
     </SCENE>
     <SCENE>
@@ -289,6 +291,7 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
 "Negative, we can't afford the search fees." The Navcom hesitated. "Incidentally, it's your move."
 "How can you think of a bloody chess game at a time like this?"
 "You're only saying that because you're losing."
+
 . . .]]></SceneContent>
     </SCENE>
     <SCENE>
@@ -319,6 +322,7 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
       <SceneContent><![CDATA["No sign of Jerling's pilot," said Hal, who was standing in the Black Gull's airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. "There could be an army out there and I wouldn't know it."
 "Why don't you open the door?" asked the Navcom.
 "No thanks. Vurdi's robot might be hanging around."
+
 . . .]]></SceneContent>
     </SCENE>
     <SCENE>
@@ -348,6 +352,7 @@ Hal drives off, oblivious to the flames starting to flicker around the fallen ro
 		</Items>
       <SceneContent><![CDATA[Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport's administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the 'A' list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.
 Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the [i]Black Gull[/i] was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
+
 . . .]]></SceneContent>
     </SCENE>
     <SCENE>
@@ -379,6 +384,7 @@ Sitting at the console, Clunk uses the Black Gull's simulation mode to practice 
 There was a brief pause. "Owned by Redge Muller. Incubots specialises in robot programming and advanced pilot training."
 Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I questioned him on the subject he was rather evasive."
 "Humans tell lies about the most trivial matters."
+
 . . .]]></SceneContent>
     </SCENE>
     <SCENE>
@@ -406,6 +412,7 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
 		</Items>
       <SceneContent><![CDATA[Hal left the maintenance vehicle in the spaceport's outer carpark and walked to the admin block. An information kiosk directed him to an elevator, where he pressed the button marked 'Portmaster'.
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
+
 . . .]]></SceneContent>
     </SCENE>
     <SCENE>
@@ -443,6 +450,7 @@ Clunk sat up straight. "Please open the connection."
 "Yes, sir?"
 "Call Jerling and get me a loan. I need three hundred in cash for landing fees and fuel."
 "I don't think he'll lend you any money," said Clunk dubiously.
+
 . . .]]></SceneContent>
     </SCENE>
     <SCENE>
@@ -479,6 +487,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 "Not yet, Mr Spacejock, but it soon will be. Would you like me to move it out of the way?"
 "You keep your hands off the controls. I'll be there in a tick."
 "You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"
+
 . . .]]></SceneContent>
     </SCENE>
     <SCENE>
@@ -508,6 +517,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 "Deploying." There was a whining sound outside the hull, which stopped with a sharp crack.
 "What was that?"
 "The reel just fell off," said the Navcom.
+
 . . .]]></SceneContent>
     </SCENE>
     <SCENE>
@@ -522,7 +532,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
       <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
-      <LetterCount>1</LetterCount>
+      <LetterCount>0</LetterCount>
       <Characters>
         <CharID>1</CharID>
       </Characters>
@@ -530,7 +540,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>15</ID>
@@ -555,7 +565,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>17</ID>
@@ -576,7 +586,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>19</ID>
@@ -597,7 +607,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>22</ID>
@@ -618,7 +628,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>25</ID>
@@ -639,7 +649,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>27</ID>
@@ -660,7 +670,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>29</ID>
@@ -681,7 +691,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>31</ID>
@@ -702,7 +712,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>34</ID>
@@ -723,7 +733,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>38</ID>
@@ -744,7 +754,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>40</ID>
@@ -765,7 +775,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>43</ID>
@@ -786,7 +796,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>45</ID>
@@ -807,7 +817,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>47</ID>
@@ -828,7 +838,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>49</ID>
@@ -849,7 +859,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>51</ID>
@@ -870,7 +880,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>53</ID>
@@ -891,7 +901,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>55</ID>
@@ -912,7 +922,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>57</ID>
@@ -933,7 +943,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>60</ID>
@@ -954,7 +964,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>62</ID>
@@ -975,7 +985,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>64</ID>
@@ -996,7 +1006,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>66</ID>
@@ -1017,7 +1027,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>68</ID>
@@ -1038,7 +1048,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>71</ID>
@@ -1059,7 +1069,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>74</ID>
@@ -1080,7 +1090,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>77</ID>
@@ -1101,7 +1111,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>79</ID>
@@ -1122,7 +1132,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>81</ID>
@@ -1143,7 +1153,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>84</ID>
@@ -1164,7 +1174,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>86</ID>
@@ -1185,7 +1195,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>89</ID>
@@ -1206,7 +1216,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>92</ID>
@@ -1227,7 +1237,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>94</ID>
@@ -1248,7 +1258,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>96</ID>
@@ -1269,7 +1279,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>98</ID>
@@ -1290,7 +1300,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>101</ID>
@@ -1311,7 +1321,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>103</ID>
@@ -1332,7 +1342,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>105</ID>
@@ -1353,7 +1363,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>108</ID>
@@ -1374,7 +1384,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>110</ID>
@@ -1395,7 +1405,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>112</ID>
@@ -1416,7 +1426,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>114</ID>
@@ -1437,7 +1447,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>116</ID>
@@ -1458,7 +1468,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>119</ID>
@@ -1479,7 +1489,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[]]></SceneContent>
+      <SceneContent><![CDATA[ ]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>58</ID>

@@ -101,7 +101,7 @@ class MdFile(PywFile):
                 inScene = True
 
             elif line.startswith('[/ScID'):
-                self.scenes[scId].sceneContent = ''.join(sceneText)
+                self.scenes[scId].sceneContent = '\n'.join(sceneText)
                 sceneText = []
                 inScene = False
 
@@ -114,7 +114,7 @@ class MdFile(PywFile):
                 pass
 
             elif inScene:
-                sceneText.append(line + '\n')
+                sceneText.append(line)
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
@@ -130,7 +130,6 @@ class MdFile(PywFile):
         def to_md(text: str) -> str:
             """Convert yw7 specific markup. """
 
-            text = text.replace('\n\n', '\n')
             text = text.replace('\n', '\n\n')
             text = text.replace('*', '\*')
             text = text.replace('[i]', '*')
@@ -155,42 +154,39 @@ class MdFile(PywFile):
         for chId in self.srtChapters:
 
             if self.chapters[chId].isUnused:
-                lines.append('\\[ChID:' + chId + ' (Unused)\\]\n')
+                lines.append('\\[ChID:' + chId + ' (Unused)\\]')
 
             else:
-                lines.append('\\[ChID:' + chId + '\\]\n')
+                lines.append('\\[ChID:' + chId + '\\]')
 
             headingMarker = MD_HEADING_MARKERS[self.chapters[chId].chLevel]
             lines.append(headingMarker +
-                         format_chapter_title(self.chapters[chId].title) + '\n')
+                         format_chapter_title(self.chapters[chId].title))
 
             for scId in self.chapters[chId].srtScenes:
 
                 if self.scenes[scId].isUnused:
-                    lines.append('\\[ScID:' + scId + ' (Unused)\\]\n')
+                    lines.append('\\[ScID:' + scId + ' (Unused)\\]')
 
                 else:
-                    lines.append('\\[ScID:' + scId + '\\]\n')
+                    lines.append('\\[ScID:' + scId + '\\]')
 
-                try:
-                    lines.append(self.scenes[scId].sceneContent + '\n')
-
-                except(TypeError):
-                    lines.append('\n')
+                if self.scenes[scId].sceneContent is not None:
+                    lines.append(self.scenes[scId].sceneContent)
 
                 if self.scenes[scId].isUnused:
-                    lines.append('\\[/ScID (Unused)\\]\n')
+                    lines.append('\\[/ScID (Unused)\\]')
 
                 else:
-                    lines.append('\\[/ScID\\]\n')
+                    lines.append('\\[/ScID\\]')
 
             if self.chapters[chId].isUnused:
-                lines.append('\\[/ChID (Unused)\\]\n')
+                lines.append('\\[/ChID (Unused)\\]')
 
             else:
-                lines.append('\\[/ChID\\]\n')
+                lines.append('\\[/ChID\\]')
 
-        text = to_md(''.join(lines))
+        text = to_md('\n'.join(lines))
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:
