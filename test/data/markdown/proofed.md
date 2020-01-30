@@ -1,3 +1,17 @@
+\[ChID:33\]
+
+##Info
+
+\[ScID:120\]
+
+\*\*\* NOT SO IMPORTANT \*\*\*
+
+And now for something completely different.
+
+\[/ScID\]
+
+\[/ChID\]
+
 \[ChID:34\]
 
 #Part 1
@@ -10,7 +24,7 @@
 
 \[ScID:1\]
 
-Hal Spacejock was sitting at the *Black Gull's* flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he'd read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article's claims. He didn't feel any smarter and he couldn't remember the last time he'd spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull's onboard computer. Underpowered and outdated, it was still more than capable of running the ship's accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.
+Hal Spacejock was sitting at the [i]Black Gull[/i]'s flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he'd read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article's claims. He didn't feel any smarter and he couldn't remember the last time he'd spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull's onboard computer. Underpowered and outdated, it was still more than capable of running the ship's accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.
 
 "Your turn," said the Navcom, in a neutral female voice.
 
@@ -20,8 +34,25 @@ Hal Spacejock was sitting at the *Black Gull's* flight console, his attention ri
 
 "What kind of offer?" asked Hal suspiciously.
 
-"*Planet books* have a chess title on sale."
+"Planet books have a chess title on sale."
 
+"Really? Put it on main."
+
+The wide viewscreen above the console turned red, and the word 'SaLE' appeared in vibrating yellow text. The letters grew legs and marched off the screen, bringing a wire basket on wheels into view.
+
+"I don't need all this crap," said Hal. "Just show me the deal."
+
+"Almost there," said the Navcom. "Keep watching."
+
+A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers which dropped to the ground and formed the words 'Special Offer'. a gust of wind blew the feathers away, and a book title flashed up on the screen.
+
+"Chess for the intellectually challenged?" said Hal, staring at the cover in disbelief. "Is this some kind of joke?"
+
+"It's part of a popular series," said the Navcom.
+
+"What are the others? Interstellar navigation for nutters? Moon landings for morons?"
+
+"Shall I add those titles to your basket?"
 
 . . .
 
@@ -163,6 +194,19 @@ The commset buzzed and Linten leant forward. "Yes?"
 
 There was a crackling sound. "Help! Fire!" said a voice over the noise.
 
+"Who is this? What are you talking about?"
+
+"The grass is burning," cried the voice. "There's a fire on the landing field!"
+
+"Which pad?"
+
+"Fifty-two," said Hal, smothering a grin. "That's Clunk." He leant towards the commset. "Clunk, is the ship in danger from this, er, fire?"
+
+"Not yet, Mr Spacejock, but it soon will be. Would you like me to move it out of the way?"
+
+"You keep your hands off the controls. I'll be there in a tick."
+
+"You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"
 
 . . .
 
@@ -188,11 +232,11 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 
 ##6
 
-\[ScID:58\]
+\[ScID:58 (Unused)\]
 
- 
+This bird is not dead ...
 
-\[/ScID\]
+\[/ScID (Unused)\]
 
 \[ScID:12\]
 
@@ -633,4 +677,16 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 \[/ScID\]
 
 \[/ChID\]
+
+\[ChID:36 (Unused)\]
+
+##33
+
+\[ScID:121\]
+
+This text is not funny.
+
+\[/ScID\]
+
+\[/ChID (Unused)\]
 

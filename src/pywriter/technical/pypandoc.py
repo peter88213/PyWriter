@@ -16,21 +16,14 @@ import os
 def convert_file(srcFile: str, dstFormat: str, format: str = '', outputfile: str = '', extra_args: list = []) -> str:
     """Pandoc wrapper emulating the pypandoc.convert_file functon. """
 
-    temporaryFile = 'temp.txt'
-
     extraArgs = ' '
     for extraArgument in extra_args:
         extraArgs = extraArgs + extraArgument + ' '
 
-    if outputfile != '':
-        dstFile = outputfile
-    else:
-        dstFile = temporaryFile
-
     argument1 = 'pandoc'
     argument2 = ' -w ' + dstFormat
     argument3 = ' -r ' + format
-    argument4 = ' -o "' + dstFile + '"'
+    argument4 = ' -o "' + outputfile + '"'
     argument5 = ' ' + extraArgs
     argument6 = ' "' + srcFile + '"'
 
@@ -39,13 +32,10 @@ def convert_file(srcFile: str, dstFormat: str, format: str = '', outputfile: str
 
     if status == 0:
 
-        if outputfile == '':
+        if os.path.isfile(outputfile):
+            return 'SUCCESS: Pandoc created "' + outputfile + '".'
 
-            with open(temporaryFile, 'r', encoding='utf-8') as f:
-                result = f.read()
-
-            os.remove(temporaryFile)
-            return result
+    return 'ERROR: No Pandoc result.'
 
 
 if __name__ == '__main__':

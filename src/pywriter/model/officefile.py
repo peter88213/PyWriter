@@ -77,14 +77,21 @@ class OfficeFile(MdFile):
 
         # Let pandoc read the document file and convert to markdown.
 
-        convert_file(self.filePath, 'markdown_strict', format=self._FILE_EXTENSION,
-                     outputfile=self._tempFile, extra_args=['--wrap=none'])
+        message = convert_file(self.filePath, 'markdown_strict', format=self._FILE_EXTENSION,
+                               outputfile=self._tempFile, extra_args=['--wrap=none'])
+
+        if message.startswith('ERROR'):
+            return message
 
         documentPath = self._filePath
         self._filePath = self._tempFile
         message = MdFile.read(self)
         self._filePath = documentPath
-        os.remove(self._tempFile)
+
+        try:
+            os.remove(self._tempFile)
+        except:
+            pass
 
         if message.startswith('ERROR'):
             return message

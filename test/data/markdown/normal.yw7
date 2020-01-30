@@ -18,7 +18,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<FieldTitle2><![CDATA[Tension]]></FieldTitle2>
 		<FieldTitle3><![CDATA[Humour]]></FieldTitle3>
 		<FieldTitle4><![CDATA[Quality]]></FieldTitle4>
-		<LastFullBackup>2020-01-26</LastFullBackup>
+		<LastFullBackup>2020-01-30</LastFullBackup>
 		<WordTarget>0</WordTarget>
 		<WordTargetStartDate>2007-07-28</WordTargetStartDate>
 		<WordTargetEndDate>2007-08-27</WordTargetEndDate>
@@ -35,7 +35,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<LaTeXHeaderFile><![CDATA[ ]]></LaTeXHeaderFile>
 		<MRUSpecificDate>1899-12-30</MRUSpecificDate>
 		<MRUSpecificTime>00:00:00</MRUSpecificTime>
-		<LastViewedScID>-1</LastViewedScID>
+		<LastViewedScID>0</LastViewedScID>
 		<DeadlineDate1>2004-09-01</DeadlineDate1>
 		<DeadlineDate2>2004-12-14</DeadlineDate2>
 		<DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -1567,6 +1567,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 	<SCENE>
 		<ID>58</ID>
 		<Title><![CDATA[New Scene]]></Title>
+		<Unused>-1</Unused>
 		<BelongsToChID>6</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00057.rtf]]></RTFFile>
 		<Field1>1</Field1>
@@ -1574,15 +1575,16 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>1</Status>
-		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<WordCount>6</WordCount>
+		<LetterCount>25</LetterCount>
 		<Characters>
+			<CharID>1</CharID>
 		</Characters>
 		<Locations>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent><![CDATA[ ]]></SceneContent>
+		<SceneContent><![CDATA[This bird is not dead ...]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1611,6 +1613,27 @@ Reinstalling yWriter5 will overwrite this sample project.
 Therefore, rather than modifying this project with your own content, [b]please create a new project for your own work[/b]. ([i]Project - Create Empty Project[/i], or [i]Project - New Project Wizard[/i])
 
 Any new projects created with yWriter5 will not be deleted, overwritten or modified when you uninstall or reinstall the software.]]></SceneContent>
+	</SCENE>
+
+	<SCENE>
+		<ID>121</ID>
+		<Title><![CDATA[New Scene]]></Title>
+		<BelongsToChID>36</BelongsToChID>
+		<Field1>1</Field1>
+		<Field2>1</Field2>
+		<Field3>1</Field3>
+		<Field4>1</Field4>
+		<Status>1</Status>
+		<WordCount>5</WordCount>
+		<LetterCount>24</LetterCount>
+		<Characters>
+			<CharID>1</CharID>
+		</Characters>
+		<Locations>
+		</Locations>
+		<Items>
+		</Items>
+		<SceneContent><![CDATA[This text is not needed.]]></SceneContent>
 	</SCENE>
 
 	</SCENES>
@@ -1999,6 +2022,22 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		</Scenes>
 	</CHAPTER>
 
+	<CHAPTER>
+		<ID>36</ID>
+		<Title><![CDATA[Chapter 33]]></Title>
+		<Desc><![CDATA[This is not a joke.]]></Desc>
+		<Unused>-1</Unused>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+		</Fields>
+
+		<Type>0</Type>
+		<Scenes>
+			<ScID>121</ScID>
+		</Scenes>
+	</CHAPTER>
+
 	</CHAPTERS>
 	<WCLog>
 	<WC>
@@ -2029,6 +2068,12 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Date>2020-01-26</Date>
 		<Count>1266</Count>
 		<TotalCount>1330</TotalCount>
+	</WC>
+
+	<WC>
+		<Date>2020-01-30</Date>
+		<Count>1266</Count>
+		<TotalCount>1341</TotalCount>
 	</WC>
 
 	</WCLog>

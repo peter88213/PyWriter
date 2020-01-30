@@ -1,6 +1,6 @@
 \[ChID:33\]
 
-#Info
+##Info
 
 \[ScID:120\]
 
@@ -15,6 +15,12 @@ Therefore, rather than modifying this project with your own content, **please cr
 Any new projects created with yWriter5 will not be deleted, overwritten or modified when you uninstall or reinstall the software.
 
 \[/ScID\]
+
+\[/ChID\]
+
+\[ChID:34\]
+
+#Part 1
 
 \[/ChID\]
 
@@ -232,11 +238,11 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 
 ##6
 
-\[ScID:58\]
+\[ScID:58 (Unused)\]
 
- 
+This bird is not dead ...
 
-\[/ScID\]
+\[/ScID (Unused)\]
 
 \[ScID:12\]
 
@@ -399,6 +405,12 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
  
 
 \[/ScID\]
+
+\[/ChID\]
+
+\[ChID:35\]
+
+#Part 2
 
 \[/ChID\]
 
@@ -671,4 +683,16 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 \[/ScID\]
 
 \[/ChID\]
+
+\[ChID:36 (Unused)\]
+
+##33
+
+\[ScID:121\]
+
+This text is not needed.
+
+\[/ScID\]
+
+\[/ChID (Unused)\]
 

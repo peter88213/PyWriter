@@ -280,12 +280,12 @@ class Yw7File(PywFile):
 
                 if self.scenes[scId].sceneNotes != '':
 
-                    if chp.find('Notes') is None:
+                    if scn.find('Notes') is None:
                         newNotes = ET.SubElement(scn, 'Notes')
                         newNotes.text = self.scenes[scId].sceneNotes
 
                     else:
-                        chp.find('Notes').text = self.scenes[chId].sceneNotes
+                        scn.find('Notes').text = self.scenes[scId].sceneNotes
 
                 if self.scenes[scId].tags != []:
 

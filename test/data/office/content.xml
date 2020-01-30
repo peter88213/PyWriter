@@ -12,7 +12,7 @@
 <office:body>
 <office:text>
 <text:p text:style-name="Text_20_body">[ChID:33]</text:p>
-<text:h text:style-name="Heading_20_1" text:outline-level="1">Info</text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Info</text:h>
 <text:p text:style-name="First_20_paragraph">[ScID:120]</text:p>
 <text:p text:style-name="Text_20_body">*** IMPORTANT ***</text:p>
 <text:p text:style-name="Text_20_body">Uninstalling yWriter5 will uninstall (delete) this sample project.</text:p>
@@ -21,6 +21,9 @@
 <text:p text:style-name="Text_20_body">Any new projects created with yWriter5 will not be deleted, overwritten or modified when you uninstall or reinstall the software.</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[/ChID]</text:p>
+<text:p text:style-name="Text_20_body">[ChID:34]</text:p>
+<text:h text:style-name="Heading_20_1" text:outline-level="1">Part 1</text:h>
+<text:p text:style-name="First_20_paragraph">[/ChID]</text:p>
 <text:p text:style-name="Text_20_body">[ChID:1]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">1</text:h>
 <text:p text:style-name="First_20_paragraph">[ScID:1]</text:p>
@@ -128,8 +131,9 @@
 <text:p text:style-name="Text_20_body">[/ChID]</text:p>
 <text:p text:style-name="Text_20_body">[ChID:6]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">6</text:h>
-<text:p text:style-name="First_20_paragraph">[ScID:58]</text:p>
-<text:p text:style-name="Text_20_body">[/ScID]</text:p>
+<text:p text:style-name="First_20_paragraph">[ScID:58 (Unused)]</text:p>
+<text:p text:style-name="Text_20_body">This bird is not dead ...</text:p>
+<text:p text:style-name="Text_20_body">[/ScID (Unused)]</text:p>
 <text:p text:style-name="Text_20_body">[ScID:12]</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[/ChID]</text:p>
@@ -196,6 +200,9 @@
 <text:p text:style-name="Text_20_body">[ScID:49]</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[/ChID]</text:p>
+<text:p text:style-name="Text_20_body">[ChID:35]</text:p>
+<text:h text:style-name="Heading_20_1" text:outline-level="1">Part 2</text:h>
+<text:p text:style-name="First_20_paragraph">[/ChID]</text:p>
 <text:p text:style-name="Text_20_body">[ChID:18]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">18</text:h>
 <text:p text:style-name="First_20_paragraph">[ScID:51]</text:p>
@@ -301,6 +308,12 @@
 <text:p text:style-name="First_20_paragraph">[ScID:119]</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[/ChID]</text:p>
+<text:p text:style-name="Text_20_body">[ChID:36 (Unused)]</text:p>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">33</text:h>
+<text:p text:style-name="First_20_paragraph">[ScID:121]</text:p>
+<text:p text:style-name="Text_20_body">This text is not needed.</text:p>
+<text:p text:style-name="Text_20_body">[/ScID]</text:p>
+<text:p text:style-name="Text_20_body">[/ChID (Unused)]</text:p>
 </office:text>
 </office:body>
 </office:document-content>
