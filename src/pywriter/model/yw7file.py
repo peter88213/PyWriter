@@ -14,6 +14,7 @@ from pywriter.model.novel import Novel
 from pywriter.model.pywfile import PywFile
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
+from pywriter.model.xform import *
 
 
 class Yw7File(PywFile):
@@ -86,7 +87,8 @@ class Yw7File(PywFile):
 
         for prj in root.iter('PROJECT'):
             self.title = prj.find('Title').text
-            self.desc = prj.find('Desc').text
+            if prj.find('Desc') is not None:
+                self.desc = prj.find('Desc').text
 
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
@@ -147,7 +149,7 @@ class Yw7File(PywFile):
             self.title = novel.title
 
         if novel.desc != '':
-            self.desc = novel.title
+            self.desc = novel.desc
 
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
@@ -205,7 +207,13 @@ class Yw7File(PywFile):
 
         for prj in root.iter('PROJECT'):
             prj.find('Title').text = self.title
-            prj.find('Desc').text = self.desc
+
+            if prj.find('Desc') is None:
+                newDesc = ET.SubElement(prj, 'Desc')
+                newDesc.text = self.desc
+
+            else:
+                prj.find('Desc').text = self.desc
 
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
@@ -300,39 +308,20 @@ class Yw7File(PywFile):
 
                 sceneCount = sceneCount + 1
 
+        indent(root)
+        tree = ET.ElementTree(root)
+
         try:
             self.tree.write(self._filePath, encoding='utf-8')
 
         except(PermissionError):
             return 'ERROR: "' + self._filePath + '" is write protected.'
 
-        # Postprocess the xml file created by ElementTree:
-        # Put a header on top and insert the missing CDATA tags.
+        # Postprocess the xml file created by ElementTree
+        message = cdata(self._filePath, self._cdataTags)
 
-        newXml = '<?xml version="1.0" encoding="utf-8"?>\n'
-        with open(self._filePath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-
-            for line in lines:
-
-                for tag in self._cdataTags:
-                    line = re.sub('\<' + tag + '\>', '<' +
-                                  tag + '><![CDATA[', line)
-                    line = re.sub('\<\/' + tag + '\>',
-                                  ']]></' + tag + '>', line)
-
-                newXml = newXml + line
-
-        newXml = newXml.replace('\n \n', '\n')
-        newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
-        newXml = newXml.replace('\n]]', ']]')
-
-        try:
-            with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.write(newXml)
-
-        except:
-            return 'ERROR: Can not write"' + self._filePath + '".'
+        if 'ERROR' in message:
+            return message
 
         return 'SUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".'
 

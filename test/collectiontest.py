@@ -218,7 +218,7 @@ class NrmOpr(unittest.TestCase):
                          read_file('data/collection/empty_series.xml'))
 
     def test_write_descriptions(self):
-        """Use Case: edit a series description and book descriptions."""
+        """Use Case: write series and book descriptions to a html file."""
         copy_file(DATA_PATH + 'two_in_series.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
 
@@ -236,7 +236,9 @@ class NrmOpr(unittest.TestCase):
                          read_file('data/collection/two_in_series.html'))
 
     def test_read_descriptions(self):
-        """Use Case: edit a series description and book descriptions."""
+        """Use Case: read descriptions from a html file and write them to collection and yWriter project."""
+        copy_file('data/collection/without_desc.yw7',
+                  'yw7/yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7')
         copy_file(DATA_PATH + 'two_in_series.xml', TEST_FILE)
         copy_file(DATA_PATH + 'add_descriptions.html',
                   EXEC_PATH + 'Rick Starlift_series.html')
@@ -257,6 +259,9 @@ class NrmOpr(unittest.TestCase):
 
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/add_descriptions.xml'))
+
+        self.assertEqual(read_file('yw7/yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7'),
+                         read_file('data/collection/with_desc.yw7'))
 
 
 def main():

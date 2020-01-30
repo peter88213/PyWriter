@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 
 from pywriter.collection.series import Series
 from pywriter.collection.book import Book
+from pywriter.model.xform import *
 
 
 class Collection():
@@ -147,35 +148,11 @@ class Collection():
     def write(self) -> str:
         """Write the collection's structure to the configuration file. """
 
-        def indent(elem, level=0):
-            """xml pretty printer
-
-            Kudos to to Fredrik Lundh. 
-            Source: http://effbot.org/zone/element-lib.htm#prettyprint
-            """
-            i = "\n" + level * "  "
-
-            if len(elem):
-                if not elem.text or not elem.text.strip():
-                    elem.text = i + "  "
-
-                if not elem.tail or not elem.tail.strip():
-                    elem.tail = i
-
-                for elem in elem:
-                    indent(elem, level + 1)
-
-                if not elem.tail or not elem.tail.strip():
-                    elem.tail = i
-
-            else:
-                if level and (not elem.tail or not elem.tail.strip()):
-                    elem.tail = i
-
         root = ET.Element('COLLECTION')
         bkSection = ET.SubElement(root, 'BOOKS')
 
         for bookId in self.books:
+            self.books[bookId].put_book_data()
             newBook = ET.SubElement(bkSection, 'BOOK')
             bkId = ET.SubElement(newBook, 'ID')
             bkId.text = bookId
@@ -215,33 +192,11 @@ class Collection():
         except(PermissionError):
             return 'ERROR: "' + self._filePath + '" is write protected.'
 
-        # Postprocess the xml file created by ElementTree:
-        # Put a header on top and insert the missing CDATA tags.
+        # Postprocess the xml file created by ElementTree
+        message = cdata(self._filePath, self._cdataTags)
 
-        newXml = '<?xml version="1.0" encoding="utf-8"?>\n'
-        with open(self._filePath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-
-            for line in lines:
-
-                for tag in self._cdataTags:
-                    line = re.sub('\<' + tag + '\>', '<' +
-                                  tag + '><![CDATA[', line)
-                    line = re.sub('\<\/' + tag + '\>',
-                                  ']]></' + tag + '>', line)
-
-                newXml = newXml + line
-
-        newXml = newXml.replace('\n \n', '\n')
-        newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
-        newXml = newXml.replace('\n]]', ']]')
-
-        try:
-            with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.write(newXml)
-
-        except:
-            return 'ERROR: Can not write"' + self._filePath + '".'
+        if 'ERROR' in message:
+            return message
 
         return 'SUCCESS: Collection written to "' + self._filePath + '".'
 

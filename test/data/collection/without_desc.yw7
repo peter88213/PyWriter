@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<YWRITER7>
+	<PROJECT>
+		<Ver>7</Ver>
+		<Title><![CDATA[The Gravity Monster]]></Title>
+		<AuthorName><![CDATA[Monty Grubber]]></AuthorName>
+		<Bio><![CDATA[]]></Bio>
+		<FieldTitle1><![CDATA[Relevance]]></FieldTitle1>
+		<FieldTitle2><![CDATA[Tension]]></FieldTitle2>
+		<FieldTitle3><![CDATA[Humour]]></FieldTitle3>
+		<FieldTitle4><![CDATA[Quality]]></FieldTitle4>
+		<LastFullBackup>2020-01-18</LastFullBackup>
+		<WordTarget>0</WordTarget>
+		<WordTargetStartDate>0001-01-01</WordTargetStartDate>
+		<WordTargetEndDate>0001-01-01</WordTargetEndDate>
+		<WordCountStart>0</WordCountStart>
+		<EndFrontMatterChID>0</EndFrontMatterChID>
+		<EndMiddleChID>0</EndMiddleChID>
+		<EndBeginningChID>0</EndBeginningChID>
+		<LatexSingleQuotes>0</LatexSingleQuotes>
+		<LatexSuppressChapterTitles>0</LatexSuppressChapterTitles>
+		<LatexSceneDivider></LatexSceneDivider>
+		<HtmlSceneDivider></HtmlSceneDivider>
+		<HtmlEncoding>utf8</HtmlEncoding>
+		<HtmlUnicode>-1</HtmlUnicode>
+		<LaTeXHeaderFile><![CDATA[]]></LaTeXHeaderFile>
+		<MRUSpecificDate>0001-01-01</MRUSpecificDate>
+		<MRUSpecificTime>00:00:00</MRUSpecificTime>
+		<LastViewedScID>1</LastViewedScID>
+		<DeadlineDate1>0001-01-01</DeadlineDate1>
+		<DeadlineDate2>0001-01-01</DeadlineDate2>
+		<DeadlineDate3>0001-01-01</DeadlineDate3>
+		<DeadlineDate4>0001-01-01</DeadlineDate4>
+		<DeadlineDate5>0001-01-01</DeadlineDate5>
+		<DeadlineStartDate1>0001-01-01</DeadlineStartDate1>
+		<DeadlineStartDate2>0001-01-01</DeadlineStartDate2>
+		<DeadlineStartDate3>0001-01-01</DeadlineStartDate3>
+		<DeadlineStartDate4>0001-01-01</DeadlineStartDate4>
+		<DeadlineStartDate5>0001-01-01</DeadlineStartDate5>
+		<Fields>
+		</Fields>
+
+	</PROJECT>
+
+	<LOCATIONS>
+	</LOCATIONS>
+	<ITEMS>
+	</ITEMS>
+	<CHARACTERS>
+	</CHARACTERS>
+	<PROJECTNOTES>
+	</PROJECTNOTES>
+	<PROJECTVARS>
+	</PROJECTVARS>
+	<PROJECTEXPS>
+	</PROJECTEXPS>
+	<SCENES>
+	<SCENE>
+		<ID>1</ID>
+		<Title><![CDATA[New Scene]]></Title>
+		<BelongsToChID>1</BelongsToChID>
+		<Field1>1</Field1>
+		<Field2>1</Field2>
+		<Field3>1</Field3>
+		<Field4>1</Field4>
+		<Status>2</Status>
+		<WordCount>315</WordCount>
+		<LetterCount>1817</LetterCount>
+		<Characters>
+		</Characters>
+		<Locations>
+		</Locations>
+		<Items>
+		</Items>
+		<SceneContent><![CDATA[Pilot of the Space Patrol! Steer a sleek cruiser through the Milky Way! Explore strange worlds, have adventures! That was the dream of all fans of the TV series [i]Captain Bold[/i]. Rick Starlift had made that dream come true. In fact, he was on his way to make it come true. He was still no more than a cadet, a candidate without pay or status. He still had to pass the probationary period, which meant: No unpleasant surprises. Shouldn't be too difficult, you might think. Or would it? Did something just go wrong? Damn it! His sweaty hands cramped around the control stick of the patrol cruiser [i]Armadillo[/i]. The critical eyes of his superiors pierced his back. In front of his widened eyes, a confusing ballet of colorful circles and squares danced, which seemed to chase each other, all striving, sometimes bigger, sometimes smaller, towards the center of the navigation screen. The center--that was the direction of travel of the Armadillo. And all the flashing, bouncing and spinning geometric shapes stood for obstacles: Satellite tugs, landing shuttles, robot freighters, courier ships--each one of which, in a collision, could turn the Armadillo into a cloud of shrapnel and burning oxygen in seconds. Where the hell did they all suddenly come from? A moment ago, the screen had been blank, and Rick had cheered the mighty engines up to full power. Now his left hand moved to the brake lever to slow the ship down with counter-thrust.
+"What are you doing, Mr. Starlift?" was the nasally voice of Sub-Lieutenant Froffman, the watchkeeping officer. "Why are you slowing down?"
+"Traffic has become heavier, sir. We must have reached the Lacania entry zone."
+"If so," said Froffman. "Are you piloting a school bus or a Space Patrol cruiser? You will prevail against that flock, Cadet. Are you a man or a mouse?"
+. . .]]></SceneContent>
+	</SCENE>
+
+	</SCENES>
+	<CHAPTERS>
+	<CHAPTER>
+		<ID>1</ID>
+		<Title><![CDATA[Chapter 1]]></Title>
+		<Desc><![CDATA[After having the]]></Desc>
+		<SortOrder>1</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+		</Fields>
+
+		<Type>0</Type>
+		<Scenes>
+			<ScID>1</ScID>
+		</Scenes>
+	</CHAPTER>
+
+	</CHAPTERS>
+	<WCLog>
+	<WC>
+		<Date>2020-01-16</Date>
+		<Count>315</Count>
+		<TotalCount>315</TotalCount>
+	</WC>
+
+	<WC>
+		<Date>2020-01-18</Date>
+		<Count>315</Count>
+		<TotalCount>315</TotalCount>
+	</WC>
+
+	</WCLog>
+</YWRITER7>
