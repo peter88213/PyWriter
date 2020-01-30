@@ -146,6 +146,9 @@ class Yw7File(PywFile):
         if novel.title != '':
             self.title = novel.title
 
+        if novel.desc != '':
+            self.desc = novel.title
+
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
 
@@ -202,6 +205,7 @@ class Yw7File(PywFile):
 
         for prj in root.iter('PROJECT'):
             prj.find('Title').text = self.title
+            prj.find('Desc').text = self.desc
 
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text

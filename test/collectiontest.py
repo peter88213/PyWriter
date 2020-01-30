@@ -71,16 +71,25 @@ class NrmOpr(unittest.TestCase):
         """Read and write the configuration file. """
         copy_file('data/collection/read_write.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
-        myCollection.read()
+
+        self.assertEqual(myCollection.read(),
+                         'SUCCESS: 2 Books found in "' + TEST_FILE + '".')
+
         os.remove(TEST_FILE)
-        myCollection.write()
+
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/read_write.xml'))
 
     def test_create_collection(self):
         """Use Case: manage the collection/create the collection."""
         myCollection = Collection(TEST_FILE)
-        myCollection.write()
+
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/create_collection.xml'))
 
@@ -88,17 +97,27 @@ class NrmOpr(unittest.TestCase):
         """Use Case: manage the collection/add a book to the collection."""
         copy_file(DATA_PATH + 'create_collection.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
-        myCollection.read()
 
-        myCollection.add_book(
-            'yw7\yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7')
-        myCollection.write()
+        self.assertEqual(myCollection.read(),
+                         'SUCCESS: 0 Books found in "' + TEST_FILE + '".')
+
+        self.assertEqual(myCollection.add_book(
+            'yw7\yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7'),
+            'SUCCESS: "The Gravity Monster" added to the collection.')
+
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/add_first_book.xml'))
 
-        myCollection.add_book(
-            'yw7\yWriter Projects/The Refugee Ship.yw/The Refugee Ship.yw7')
-        myCollection.write()
+        self.assertEqual(myCollection.add_book(
+            'yw7\yWriter Projects/The Refugee Ship.yw/The Refugee Ship.yw7'),
+            'SUCCESS: "The Refugee Ship" added to the collection.')
+
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/add_second_book.xml'))
 
@@ -106,15 +125,23 @@ class NrmOpr(unittest.TestCase):
         """Use Case: manage the collection/remove a book from the collection."""
         copy_file(DATA_PATH + 'add_second_book.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
-        myCollection.read()
+
+        self.assertEqual(myCollection.read(),
+                         'SUCCESS: 2 Books found in "' + TEST_FILE + '".')
 
         myCollection.remove_book('1')
-        myCollection.write()
+
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/remove_book.xml'))
 
         myCollection.remove_book('2')
-        myCollection.write()
+
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/create_collection.xml'))
 
@@ -122,10 +149,15 @@ class NrmOpr(unittest.TestCase):
         """Use Case: manage book series/create a series."""
         copy_file(DATA_PATH + 'add_first_book.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
-        myCollection.read()
+
+        self.assertEqual(myCollection.read(),
+                         'SUCCESS: 1 Books found in "' + TEST_FILE + '".')
 
         myCollection.add_series('Rick Starlift')
-        myCollection.write()
+
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/empty_series.xml'))
 
@@ -133,10 +165,15 @@ class NrmOpr(unittest.TestCase):
         """Use Case: manage book series/remove a series."""
         copy_file(DATA_PATH + 'empty_series.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
-        myCollection.read()
+
+        self.assertEqual(myCollection.read(),
+                         'SUCCESS: 1 Books found in "' + TEST_FILE + '".')
 
         myCollection.remove_series('Rick Starlift')
-        myCollection.write()
+
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/add_first_book.xml'))
 
@@ -144,13 +181,19 @@ class NrmOpr(unittest.TestCase):
         """Use Case: manage book series/add a book to a series."""
         copy_file(DATA_PATH + 'empty_series.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
-        myCollection.read()
+
+        self.assertEqual(myCollection.read(),
+                         'SUCCESS: 1 Books found in "' + TEST_FILE + '".')
+
         for series in myCollection.srtSeries:
+
             if series.title == 'Rick Starlift':
                 series.add_book('1')
                 break
 
-        myCollection.write()
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/add_book_to_series.xml'))
 
@@ -158,13 +201,19 @@ class NrmOpr(unittest.TestCase):
         """Use Case: manage book series/remove a book from a series."""
         copy_file(DATA_PATH + 'add_book_to_series.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
-        myCollection.read()
+
+        self.assertEqual(myCollection.read(),
+                         'SUCCESS: 1 Books found in "' + TEST_FILE + '".')
+
         for series in myCollection.srtSeries:
+
             if series.title == 'Rick Starlift':
                 series.remove_book('1')
                 break
 
-        myCollection.write()
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/empty_series.xml'))
 
@@ -172,10 +221,14 @@ class NrmOpr(unittest.TestCase):
         """Use Case: edit a series description and book descriptions."""
         copy_file(DATA_PATH + 'two_in_series.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
-        myCollection.read()
+
+        self.assertEqual(myCollection.read(),
+                         'SUCCESS: 2 Books found in "' + TEST_FILE + '".')
 
         myBookdesc = BookDesc(EXEC_PATH + 'Rick Starlift_series.html')
+
         for series in myCollection.srtSeries:
+
             if series.title == 'Rick Starlift':
                 myBookdesc.write(series, myCollection)
 
@@ -188,14 +241,20 @@ class NrmOpr(unittest.TestCase):
         copy_file(DATA_PATH + 'add_descriptions.html',
                   EXEC_PATH + 'Rick Starlift_series.html')
         myCollection = Collection(TEST_FILE)
-        myCollection.read()
+
+        self.assertEqual(myCollection.read(),
+                         'SUCCESS: 2 Books found in "' + TEST_FILE + '".')
 
         myBookdesc = BookDesc(EXEC_PATH + 'Rick Starlift_series.html')
+
         for series in myCollection.srtSeries:
+
             if series.title == 'Rick Starlift':
                 myBookdesc.read(series, myCollection)
 
-        myCollection.write()
+        self.assertEqual(myCollection.write(),
+                         'SUCCESS: Collection written to "' + TEST_FILE + '".')
+
         self.assertEqual(read_file(TEST_FILE),
                          read_file('data/collection/add_descriptions.xml'))
 

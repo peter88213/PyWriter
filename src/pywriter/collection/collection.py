@@ -59,6 +59,7 @@ class Collection():
         Add an existing yWriter 7 project file as book to the 
         collection. Determine a book ID, read the novel's title and 
         description, and compute word count and letter count.
+        Return a message beginning with SUCCESS or ERROR.
 
     remove_book
         Arguments
@@ -122,18 +123,28 @@ class Collection():
 
         for boo in root.iter('BOOK'):
             bkId = boo.find('ID').text
-            self.books[bkId] = Book(boo.find('Path').text)
+
+            bookPath = boo.find('Path').text
+
+            if os.path.isfile(bookPath):
+                self.books[bkId] = Book(os.path.realpath(bookPath))
+
+            else:
+                return 'ERROR: Book "' + bookPath + '" not found.'
+
+            '''
             self.books[bkId].title = boo.find('Title').text
 
             if boo.find('Desc') is not None:
                 self.books[bkId].desc = boo.find('Desc').text
-
+    
             self.books[bkId].wordCount = str(boo.find('WordCount').text)
             self.books[bkId].letterCount = str(boo.find('LetterCount').text)
+            '''
 
-        return 'SUCCESS: ' + str(len(self.books)) + ' Books found in"' + self._filePath + '".'
+        return 'SUCCESS: ' + str(len(self.books)) + ' Books found in "' + self._filePath + '".'
 
-    def write(self) -> None:
+    def write(self) -> str:
         """Write the collection's structure to the configuration file. """
 
         def indent(elem, level=0):
@@ -168,6 +179,7 @@ class Collection():
             newBook = ET.SubElement(bkSection, 'BOOK')
             bkId = ET.SubElement(newBook, 'ID')
             bkId.text = bookId
+            '''
             bkTitle = ET.SubElement(newBook, 'Title')
             bkTitle.text = self.books[bookId].title
             bkDesc = ET.SubElement(newBook, 'Desc')
@@ -176,6 +188,7 @@ class Collection():
             bkWc.text = str(self.books[bookId].wordCount)
             bkLc = ET.SubElement(newBook, 'LetterCount')
             bkLc.text = str(self.books[bookId].letterCount)
+            '''
             bkPath = ET.SubElement(newBook, 'Path')
             bkPath.text = self.books[bookId].filePath
 
@@ -239,14 +252,21 @@ class Collection():
         else:
             return False
 
-    def add_book(self, filePath: str) -> None:
+    def add_book(self, filePath: str) -> str:
         """Add an existing book to the collection."""
-        i = 1
-        while str(i) in self.books:
-            i = i + 1
 
-        bkId = str(i)
-        self.books[bkId] = Book(filePath)
+        if os.path.isfile(filePath):
+            filePath = os.path.realpath(filePath)
+            i = 1
+            while str(i) in self.books:
+                i = i + 1
+
+            bkId = str(i)
+            self.books[bkId] = Book(filePath)
+            return 'SUCCESS: "' + self.books[bkId].title + '" added to the collection.'
+
+        else:
+            return'ERROR: "' + os.path.realpath(filePath) + '" not found.'
 
     def remove_book(self, bkId: str) -> None:
         """Remove a book from the collection and from the series."""
