@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="proofyw7" basedir=".">
-	<property name="release" value="v1.2.5" />
+	<property name="release" value="v1.2.6" />
 	<property name="src" location="../src" />
 	<property name="build" location="../test" />
 	<property name="dist" location="../dist" />

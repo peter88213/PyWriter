@@ -54,7 +54,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 
 "Shall I add those titles to your basket?"
 
-
+&nbsp;
 
 . . .
 
@@ -70,6 +70,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 
 On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
 
+&nbsp;
 
 . . .
 
@@ -89,6 +90,7 @@ Hal was pacing the Black Gull's flight deck, ready to put his fist through the n
 
 "You're only saying that because you're losing."
 
+&nbsp;
 
 . . .
 
@@ -108,7 +110,7 @@ Hal was pacing the Black Gull's flight deck, ready to put his fist through the n
 
 "No thanks. Vurdi's robot might be hanging around."
 
-
+&nbsp;
 
 . . .
 
@@ -126,7 +128,7 @@ Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the 
 
 Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the *Black Gull* was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
 
-
+&nbsp;
 
 . . .
 
@@ -146,7 +148,7 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 
 "Humans tell lies about the most trivial matters."
 
-
+&nbsp;
 
 . . .
 
@@ -158,7 +160,7 @@ Hal left the maintenance vehicle in the spaceport's outer carpark and walked to 
 
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
 
-
+&nbsp;
 
 . . .
 
@@ -186,7 +188,7 @@ Clunk sat up straight. "Please open the connection."
 
 "I don't think he'll lend you any money," said Clunk dubiously.
 
-
+&nbsp;
 
 . . .
 
@@ -222,7 +224,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 
 "You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"
 
-
+&nbsp;
 
 . . .
 
@@ -238,7 +240,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 
 "The reel just fell off," said the Navcom.
 
-
+&nbsp;
 
 . . .
 
@@ -268,7 +270,7 @@ This bird is not dead ...
 
 \[ScID:15\]
 
- 
+&nbsp;
 
 \[/ScID\]
 
@@ -280,7 +282,7 @@ This bird is not dead ...
 
 \[ScID:17\]
 
- 
+&nbsp;
 
 \[/ScID\]
 
@@ -292,7 +294,7 @@ This bird is not dead ...
 
 \[ScID:19\]
 
- 
+&nbsp;
 
 \[/ScID\]
 
@@ -304,8 +306,6 @@ This bird is not dead ...
 
 \[ScID:22\]
 
- 
-
 \[/ScID\]
 
 \[/ChID\]
@@ -316,13 +316,9 @@ This bird is not dead ...
 
 \[ScID:25\]
 
- 
-
 \[/ScID\]
 
 \[ScID:27\]
-
- 
 
 \[/ScID\]
 
@@ -334,13 +330,9 @@ This bird is not dead ...
 
 \[ScID:29\]
 
- 
-
 \[/ScID\]
 
 \[ScID:31\]
-
- 
 
 \[/ScID\]
 
@@ -351,8 +343,6 @@ This bird is not dead ...
 ##13
 
 \[ScID:34\]
-
- 
 
 \[/ScID\]
 
@@ -370,13 +360,9 @@ This bird is not dead ...
 
 \[ScID:38\]
 
- 
-
 \[/ScID\]
 
 \[ScID:40\]
-
- 
 
 \[/ScID\]
 
@@ -388,13 +374,9 @@ This bird is not dead ...
 
 \[ScID:43\]
 
- 
-
 \[/ScID\]
 
 \[ScID:45\]
-
- 
 
 \[/ScID\]
 
@@ -406,13 +388,9 @@ This bird is not dead ...
 
 \[ScID:47\]
 
- 
-
 \[/ScID\]
 
 \[ScID:49\]
-
- 
 
 \[/ScID\]
 
@@ -430,13 +408,9 @@ This bird is not dead ...
 
 \[ScID:51\]
 
- 
-
 \[/ScID\]
 
 \[ScID:53\]
-
- 
 
 \[/ScID\]
 
@@ -448,13 +422,9 @@ This bird is not dead ...
 
 \[ScID:55\]
 
- 
-
 \[/ScID\]
 
 \[ScID:57\]
-
- 
 
 \[/ScID\]
 
@@ -466,19 +436,15 @@ This bird is not dead ...
 
 \[ScID:60\]
 
- 
-
 \[/ScID\]
 
 \[ScID:62\]
 
- 
+&nbsp;
 
 \[/ScID\]
 
 \[ScID:64\]
-
- 
 
 \[/ScID\]
 
@@ -490,13 +456,9 @@ This bird is not dead ...
 
 \[ScID:66\]
 
- 
-
 \[/ScID\]
 
 \[ScID:68\]
-
- 
 
 \[/ScID\]
 
@@ -508,8 +470,6 @@ This bird is not dead ...
 
 \[ScID:71\]
 
- 
-
 \[/ScID\]
 
 \[/ChID\]
@@ -519,8 +479,6 @@ This bird is not dead ...
 ##23
 
 \[ScID:74\]
-
- 
 
 \[/ScID\]
 
@@ -532,19 +490,13 @@ This bird is not dead ...
 
 \[ScID:77\]
 
- 
-
 \[/ScID\]
 
 \[ScID:79\]
 
- 
-
 \[/ScID\]
 
 \[ScID:81\]
-
- 
 
 \[/ScID\]
 
@@ -556,13 +508,9 @@ This bird is not dead ...
 
 \[ScID:84\]
 
- 
-
 \[/ScID\]
 
 \[ScID:86\]
-
- 
 
 \[/ScID\]
 
@@ -574,8 +522,6 @@ This bird is not dead ...
 
 \[ScID:89\]
 
- 
-
 \[/ScID\]
 
 \[/ChID\]
@@ -586,13 +532,9 @@ This bird is not dead ...
 
 \[ScID:92\]
 
- 
-
 \[/ScID\]
 
 \[ScID:94\]
-
- 
 
 \[/ScID\]
 
@@ -604,13 +546,9 @@ This bird is not dead ...
 
 \[ScID:96\]
 
- 
-
 \[/ScID\]
 
 \[ScID:98\]
-
- 
 
 \[/ScID\]
 
@@ -622,19 +560,13 @@ This bird is not dead ...
 
 \[ScID:101\]
 
- 
-
 \[/ScID\]
 
 \[ScID:103\]
 
- 
-
 \[/ScID\]
 
 \[ScID:105\]
-
- 
 
 \[/ScID\]
 
@@ -646,19 +578,13 @@ This bird is not dead ...
 
 \[ScID:108\]
 
- 
-
 \[/ScID\]
 
 \[ScID:110\]
 
- 
-
 \[/ScID\]
 
 \[ScID:112\]
-
- 
 
 \[/ScID\]
 
@@ -670,13 +596,9 @@ This bird is not dead ...
 
 \[ScID:114\]
 
- 
-
 \[/ScID\]
 
-\[ScID:116\]
-
- 
+\[ScID:116\
 
 \[/ScID\]
 
@@ -687,8 +609,6 @@ This bird is not dead ...
 ##32
 
 \[ScID:119\]
-
- 
 
 \[/ScID\]
 

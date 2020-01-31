@@ -17,7 +17,9 @@
 <text:p text:style-name="Text_20_body">*** IMPORTANT ***</text:p>
 <text:p text:style-name="Text_20_body">Uninstalling yWriter5 will uninstall (delete) this sample project.</text:p>
 <text:p text:style-name="Text_20_body">Reinstalling yWriter5 will overwrite this sample project.</text:p>
+<text:p text:style-name="Text_20_body"> </text:p>
 <text:p text:style-name="Text_20_body">Therefore, rather than modifying this project with your own content, <text:span text:style-name="T1">please create a new project for your own work</text:span>. (<text:span text:style-name="T2">Project - Create Empty Project</text:span>, or <text:span text:style-name="T2">Project - New Project Wizard</text:span>)</text:p>
+<text:p text:style-name="Text_20_body"> </text:p>
 <text:p text:style-name="Text_20_body">Any new projects created with yWriter5 will not be deleted, overwritten or modified when you uninstall or reinstall the software.</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[/ChID]</text:p>
@@ -42,6 +44,7 @@
 <text:p text:style-name="Text_20_body">&quot;It's part of a popular series,&quot; said the Navcom.</text:p>
 <text:p text:style-name="Text_20_body">&quot;What are the others? Interstellar navigation for nutters? Moon landings for morons?&quot;</text:p>
 <text:p text:style-name="Text_20_body">&quot;Shall I add those titles to your basket?&quot;</text:p>
+<text:p text:style-name="Text_20_body"> </text:p>
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[/ChID]</text:p>
@@ -58,6 +61,7 @@
 <text:p text:style-name="Text_20_body">&quot;Negative, we can't afford the search fees.&quot; The Navcom hesitated. &quot;Incidentally, it's your move.&quot;</text:p>
 <text:p text:style-name="Text_20_body">&quot;How can you think of a bloody chess game at a time like this?&quot;</text:p>
 <text:p text:style-name="Text_20_body">&quot;You're only saying that because you're losing.&quot;</text:p>
+<text:p text:style-name="Text_20_body"> </text:p>
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[/ChID]</text:p>
@@ -67,6 +71,7 @@
 <text:p text:style-name="Text_20_body">&quot;No sign of Jerling's pilot,&quot; said Hal, who was standing in the Black Gull's airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. &quot;There could be an army out there and I wouldn't know it.&quot;</text:p>
 <text:p text:style-name="Text_20_body">&quot;Why don't you open the door?&quot; asked the Navcom.</text:p>
 <text:p text:style-name="Text_20_body">&quot;No thanks. Vurdi's robot might be hanging around.&quot;</text:p>
+<text:p text:style-name="Text_20_body"> </text:p>
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[/ChID]</text:p>
@@ -75,6 +80,7 @@
 <text:p text:style-name="First_20_paragraph">[ScID:5]</text:p>
 <text:p text:style-name="Text_20_body">Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport's administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the 'A' list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.</text:p>
 <text:p text:style-name="Text_20_body">Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the <text:span text:style-name="T2">Black Gull</text:span> was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.</text:p>
+<text:p text:style-name="Text_20_body"> </text:p>
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[ScID:6]</text:p>
@@ -84,11 +90,13 @@
 <text:p text:style-name="Text_20_body">There was a brief pause. &quot;Owned by Redge Muller. Incubots specialises in robot programming and advanced pilot training.&quot;</text:p>
 <text:p text:style-name="Text_20_body">Clunk looked relieved. &quot;So that's what Mr. Jerling has in store for me. When I questioned him on the subject he was rather evasive.&quot;</text:p>
 <text:p text:style-name="Text_20_body">&quot;Humans tell lies about the most trivial matters.&quot;</text:p>
+<text:p text:style-name="Text_20_body"> </text:p>
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[ScID:7]</text:p>
 <text:p text:style-name="Text_20_body">Hal left the maintenance vehicle in the spaceport's outer carpark and walked to the admin block. An information kiosk directed him to an elevator, where he pressed the button marked 'Portmaster'.</text:p>
 <text:p text:style-name="Text_20_body">Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.</text:p>
+<text:p text:style-name="Text_20_body"> </text:p>
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[ScID:8]</text:p>
@@ -119,6 +127,7 @@
 <text:p text:style-name="Text_20_body">&quot;Not yet, Mr Spacejock, but it soon will be. Would you like me to move it out of the way?&quot;</text:p>
 <text:p text:style-name="Text_20_body">&quot;You keep your hands off the controls. I'll be there in a tick.&quot;</text:p>
 <text:p text:style-name="Text_20_body">&quot;You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--&quot;</text:p>
+<text:p text:style-name="Text_20_body"> </text:p>
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[ScID:10]</text:p>
@@ -126,6 +135,7 @@
 <text:p text:style-name="Text_20_body">&quot;Deploying.&quot; There was a whining sound outside the hull, which stopped with a sharp crack.</text:p>
 <text:p text:style-name="Text_20_body">&quot;What was that?&quot;</text:p>
 <text:p text:style-name="Text_20_body">&quot;The reel just fell off,&quot; said the Navcom.</text:p>
+<text:p text:style-name="Text_20_body"> </text:p>
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="Text_20_body">[/ScID]</text:p>
 <text:p text:style-name="Text_20_body">[/ChID]</text:p>

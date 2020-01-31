@@ -10,11 +10,11 @@ Uninstalling yWriter5 will uninstall (delete) this sample project.
 
 Reinstalling yWriter5 will overwrite this sample project.
 
-
+&nbsp;
 
 Therefore, rather than modifying this project with your own content, **please create a new project for your own work**. (*Project - Create Empty Project*, or *Project - New Project Wizard*)
 
-
+&nbsp;
 
 Any new projects created with yWriter5 will not be deleted, overwritten or modified when you uninstall or reinstall the software.
 
@@ -64,7 +64,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 
 "Shall I add those titles to your basket?"
 
-
+&nbsp;
 
 . . .
 
@@ -98,7 +98,7 @@ Hal was pacing the Black Gull's flight deck, ready to put his fist through the n
 
 "You're only saying that because you're losing."
 
-
+&nbsp;
 
 . . .
 
@@ -118,7 +118,7 @@ Hal was pacing the Black Gull's flight deck, ready to put his fist through the n
 
 "No thanks. Vurdi's robot might be hanging around."
 
-
+&nbsp;
 
 . . .
 
@@ -136,7 +136,7 @@ Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the 
 
 Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the *Black Gull* was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
 
-
+&nbsp;
 
 . . .
 
@@ -156,7 +156,7 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 
 "Humans tell lies about the most trivial matters."
 
-
+&nbsp;
 
 . . .
 
@@ -168,7 +168,7 @@ Hal left the maintenance vehicle in the spaceport's outer carpark and walked to 
 
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
 
-
+&nbsp;
 
 . . .
 
@@ -230,7 +230,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 
 "You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"
 
-
+&nbsp;
 
 . . .
 
@@ -246,7 +246,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 
 "The reel just fell off," said the Navcom.
 
-
+&nbsp;
 
 . . .
 

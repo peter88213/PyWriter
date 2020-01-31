@@ -66,6 +66,9 @@ class MdFile(PywFile):
             text = text.replace('<sub>', '')
             text = text.replace('</sub>', '')
             # html tags misplaced by Pandoc.
+            text = text.replace('\n&nbsp;\n', '\n\n')
+            text = text.replace('\n\xa0\n', '\n\n')
+            # a blank line in Markdown.
             text = text.replace('\r', '\n')
             text = text.replace('\n\n', '\n')
             text = text.replace('\[', '[')
@@ -130,6 +133,7 @@ class MdFile(PywFile):
         def to_md(text: str) -> str:
             """Convert yw7 specific markup. """
 
+            text = text.replace('\n\n', '\n&nbsp;\n')
             text = text.replace('\n', '\n\n')
             text = text.replace('*', '\*')
             text = text.replace('[i]', '*')
