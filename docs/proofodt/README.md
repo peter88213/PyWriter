@@ -36,7 +36,7 @@ The proof reading document contains chapter titles as formatted headings in orde
 
 Keep in mind that you must not modify your document's chapter and scene structure, if you want to reimport it into yWriter.
 
-__Warning:__  Due to  _Pandoc_  operation, the converter may  __remove blank lines__  within scenes.  __Inline HTML code__  as supported by yWriter may disappear.
+__Warning:__  In  _.odt_  files, blank lines within scenes must contain at least a non-breaking space.  __Inline HTML code__  as supported by yWriter  may disappear.
 
 
 
