@@ -57,6 +57,10 @@ def remove_all_testfiles():
         os.remove(EXEC_PATH + DOCUMENT_CONTENT)
     except:
         pass
+    try:
+        os.removedirs(EXEC_PATH + '/word')
+    except:
+        pass
 
 
 class NrmOpr(unittest.TestCase):

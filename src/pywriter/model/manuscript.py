@@ -121,7 +121,7 @@ class Manuscript(PywFile, HTMLParser):
         """HTML parser: Collect paragraphs within scene. """
 
         if self._collectText:
-            self._lines.append(data)
+            self._lines.append(data.rstrip().lstrip())
 
     def read(self) -> str:
         """Read data from html file with chapter and scene sections. """
@@ -174,16 +174,16 @@ class Manuscript(PywFile, HTMLParser):
         for chId in self.srtChapters:
 
             if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
-                lines.append('<div id="ChID:' + chId + '">\n')
+                lines.append('<div id="ChID:' + chId + '">')
                 headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].chLevel]
                 lines.append('<' + headingMarker + '>' + format_chapter_title(
-                    self.chapters[chId].title) + '</' + headingMarker + '>\n')
+                    self.chapters[chId].title) + '</' + headingMarker + '>')
 
                 for scId in self.chapters[chId].srtScenes:
 
                     if not self.scenes[scId].isUnused:
-                        lines.append('<h4>' + HTML_SCENE_DIVIDER + '</h4>\n')
-                        lines.append('<div id="ScID:' + scId + '">\n')
+                        lines.append('<h4>' + HTML_SCENE_DIVIDER + '</h4>')
+                        lines.append('<div id="ScID:' + scId + '">')
                         lines.append('<p class="textbody">')
 
                         # Insert scene ID as anchor.
@@ -193,17 +193,19 @@ class Manuscript(PywFile, HTMLParser):
                         # Insert scene title as comment.
 
                         lines.append(
-                            '<!-- ' + self.scenes[scId].title + ' -->\n')
+                            '<!-- ' + self.scenes[scId].title + ' -->')
 
-                        lines.append(
-                            to_html(self.scenes[scId].sceneContent))
-                        lines.append('</p>\n')
-                        lines.append('</div>\n')
+                        if self.scenes[scId].sceneContent is not None:
+                            lines.append(
+                                to_html(self.scenes[scId].sceneContent))
 
-                lines.append('</div>\n')
+                        lines.append('</p>')
+                        lines.append('</div>')
+
+                lines.append('</div>')
 
         lines.append(HTML_FOOTER)
-        text = ''.join(lines)
+        text = '\n'.join(lines)
 
         # Remove scene dividers from chapter's beginning
 
@@ -220,3 +222,6 @@ class Manuscript(PywFile, HTMLParser):
             return 'ERROR: ' + self._filePath + '" is write protected.'
 
         return 'SUCCESS: "' + self._filePath + '" saved.'
+
+    def get_structure(self) -> None:
+        return None

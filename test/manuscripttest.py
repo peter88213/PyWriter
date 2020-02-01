@@ -32,8 +32,13 @@ with open(REFERENCE_YW7, 'r') as f:
 
 
 def read_file(inputFile):
-    with open(inputFile, 'r', encoding='utf-8') as f:
-        return(f.read())
+    try:
+        with open(inputFile, 'r', encoding='utf-8') as f:
+            return f.read()
+    except:
+        # HTML files exported by a word processor may be ANSI encoded.
+        with open(inputFile, 'r') as f:
+            return f.read()
 
 
 def copy_file(inputFile, outputFile):
