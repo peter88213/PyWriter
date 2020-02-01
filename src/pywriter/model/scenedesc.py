@@ -47,14 +47,20 @@ class SceneDesc(Manuscript):
     def handle_endtag(self, tag):
         """HTML parser: Save scene description in dictionary at scene end. """
 
-        if tag == 'div':
-            if self._collectText:
+        if self._scId is not None:
+
+            if tag == 'div':
                 self.scenes[self._scId].desc = ''.join(self._lines)
                 self._lines = []
-                self._collectText = False
+                self._scId = None
 
-        elif tag == 'p':
-            self._lines.append('\n')
+            elif tag == 'p':
+                self._lines.append('\n')
+
+        elif self._chId is not None:
+
+            if tag == 'div':
+                self._chId = None
 
     def read(self) -> str:
         """Read data from html file with chapter and scene sections. """

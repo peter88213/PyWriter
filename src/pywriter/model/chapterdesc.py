@@ -28,6 +28,10 @@ class ChapterDesc(SceneDesc):
         recognize the end ot the chapter section and save data.
         Overwrites HTMLparser.handle_endtag()
 
+    handle_data
+        collect paragraphs within chapter description.
+        Overwrites HTMLparser.handle_data()
+
     write : str
         Arguments 
             novel : Novel
@@ -58,13 +62,21 @@ class ChapterDesc(SceneDesc):
     def handle_endtag(self, tag):
         """HTML parser: Save chapter description in dictionary at chapter end. """
 
-        if tag == 'div':
-            self.chapters[self._chId].desc = ''.join(self._lines)
-            self._lines = []
-            self._collectText = False
+        if self._chId is not None:
 
-        elif tag == 'p':
-            self._lines.append('\n')
+            if tag == 'div':
+                self.chapters[self._chId].desc = ''.join(self._lines)
+                self._lines = []
+                self._chId = None
+
+            elif tag == 'p':
+                self._lines.append('\n')
+
+    def handle_data(self, data):
+        """HTML parser: Collect paragraphs within chapter description. """
+
+        if self._chId is not None:
+            self._lines.append(data.rstrip().lstrip())
 
     def write(self, novel: Novel) -> str:
         """Write novel attributes to html file. """

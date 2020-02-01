@@ -54,7 +54,7 @@ class Manuscript(PywFile, HTMLParser):
         Overwrites HTMLparser.handle_endtag()
 
     handle_data
-        copy the body section.
+        collect paragraphs within scene.
         Overwrites HTMLparser.handle_data()
 
     read : str
@@ -83,9 +83,8 @@ class Manuscript(PywFile, HTMLParser):
         PywFile.__init__(self, filePath)
         HTMLParser.__init__(self)
         self._lines = []
-        self._scId = 0
-        self._chId = 0
-        self._collectText = False
+        self._scId = None
+        self._chId = None
 
     def handle_starttag(self, tag, attrs):
         """HTML parser: Get scene ID at scene start. """
@@ -102,25 +101,29 @@ class Manuscript(PywFile, HTMLParser):
                     self._scId = re.search('[0-9]+', attrs[0][1]).group()
                     self.scenes[self._scId] = Scene()
                     self.chapters[self._chId].srtScenes.append(self._scId)
-                    self._collectText = True
 
     def handle_endtag(self, tag):
         """HTML parser: Save scene content in dictionary at scene end. """
 
-        if tag == 'div':
+        if self._scId is not None:
 
-            if self._collectText:
+            if tag == 'div':
                 self.scenes[self._scId].sceneContent = ''.join(self._lines)
                 self._lines = []
-                self._collectText = False
+                self._scId = None
 
-        elif tag == 'p':
-            self._lines.append('\n')
+            elif tag == 'p':
+                self._lines.append('\n')
+
+        elif self._chId is not None:
+
+            if tag == 'div':
+                self._chId = None
 
     def handle_data(self, data):
         """HTML parser: Collect paragraphs within scene. """
 
-        if self._collectText:
+        if self._scId is not None:
             self._lines.append(data.rstrip().lstrip())
 
     def read(self) -> str:
