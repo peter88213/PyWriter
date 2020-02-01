@@ -20,10 +20,6 @@ class ChapterDesc(SceneDesc):
 
     # Methods
 
-    handle_starttag
-        recognize the beginning ot the chapter section.
-        Overwrites HTMLparser.handle_starttag()
-
     handle_endtag
         recognize the end ot the chapter section and save data.
         Overwrites HTMLparser.handle_endtag()
@@ -45,19 +41,6 @@ class ChapterDesc(SceneDesc):
     get_structure : None
         Return None to prevent structural comparison.     
     """
-
-    def handle_starttag(self, tag, attrs):
-        """HTML parser: Get chapter ID at chapter start. """
-
-        if tag == 'div':
-
-            if attrs[0][0] == 'id':
-
-                if attrs[0][1].startswith('ChID'):
-                    self._chId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.chapters[self._chId] = Chapter()
-                    self.srtChapters.append(self._chId)
-                    self._collectText = True
 
     def handle_endtag(self, tag):
         """HTML parser: Save chapter description in dictionary at chapter end. """

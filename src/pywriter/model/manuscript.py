@@ -90,7 +90,9 @@ class Manuscript(PywFile, HTMLParser):
         """HTML parser: Get scene ID at scene start. """
 
         if tag == 'div':
+
             if attrs[0][0] == 'id':
+
                 if attrs[0][1].startswith('ChID'):
                     self._chId = re.search('[0-9]+', attrs[0][1]).group()
                     self.chapters[self._chId] = Chapter()
