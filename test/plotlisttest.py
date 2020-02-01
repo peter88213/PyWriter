@@ -12,14 +12,14 @@ import unittest
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
-from pywriter.model.csvfile import CsvFile
+from pywriter.model.plotlist import PlotList
 
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/scenelist/'
+DATA_PATH = 'data/plotlist/'
 
-TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project.csv'
+TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project_plot.csv'
 REFERENCE_DOCUMENT = DATA_PATH + 'normal.csv'
 PROOFED_DOCUMENT = DATA_PATH + 'proofed.csv'
 
@@ -85,7 +85,7 @@ class NrmOpr(unittest.TestCase):
         """Export yW7 scenes to csv. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = CsvFile(TEST_DOCUMENT)
+        documentFile = PlotList(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Read .yw7 file and convert xml to csv.
@@ -105,7 +105,7 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = CsvFile(TEST_DOCUMENT)
+        documentFile = PlotList(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Convert csv to xml and replace .yw7 file.

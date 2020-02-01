@@ -17,6 +17,17 @@ from pywriter.model.scene import Scene
 SEPARATOR = '|'     # delimits data fields within a record.
 LINEBREAK = '\t'    # substitutes embedded line breaks.
 
+TABLE_HEADER = ('ID'
+                + SEPARATOR
+                + 'Plot section'
+                + SEPARATOR
+                + 'Plot event'
+                + SEPARATOR
+                + 'Plot event title'
+                + SEPARATOR
+                + 'Details'
+                + '\n')
+
 
 class PlotList(PywFile):
     """csv file representation of an yWriter project's scenes table. 
@@ -67,8 +78,14 @@ class PlotList(PywFile):
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
+        if table[0] != TABLE_HEADER:
+            return 'ERROR: Wrong table content.'
+
         for record in table:
             field = record.split(SEPARATOR)
+
+            if len(field) != 5:
+                return 'ERROR: Wrong field structure.'
 
             if 'ChID:' in field[0]:
                 chId = re.search('ChID\:([0-9]+)', field[0]).group(1)
@@ -81,7 +98,8 @@ class PlotList(PywFile):
                 self.scenes[scId] = Scene()
                 self.scenes[scId].tags = field[2].split(';')
                 self.scenes[scId].title = field[3]
-                self.scenes[scId].desc = field[4].replace(LINEBREAK, '\n')
+                self.scenes[scId].sceneNotes = field[4].replace(
+                    LINEBREAK, '\n')
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
@@ -104,16 +122,7 @@ class PlotList(PywFile):
 
         # first record: the table's column headings
 
-        table = ['ID'
-                 + SEPARATOR
-                 + 'Plot section'
-                 + SEPARATOR
-                 + 'Plot event'
-                 + SEPARATOR
-                 + 'Plot event title'
-                 + SEPARATOR
-                 + 'Details'
-                 + '\n']
+        table = [TABLE_HEADER]
 
         # Add a record for each used scene in a regular chapter
 
@@ -151,11 +160,16 @@ class PlotList(PywFile):
                             else:
                                 sceneNotes = ''
 
+                            sceneTags = self.scenes[scId].tags
+
+                            if sceneTags is None:
+                                sceneTags = ['']
+
                             table.append('=HYPERLINK("file:///'
                                          + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
                                          + SEPARATOR
                                          + SEPARATOR
-                                         + ';'.join(self.scenes[scId].tags)
+                                         + ';'.join(sceneTags)
                                          + SEPARATOR
                                          + self.scenes[scId].title
                                          + SEPARATOR

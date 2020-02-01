@@ -35,7 +35,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<LaTeXHeaderFile><![CDATA[ ]]></LaTeXHeaderFile>
 		<MRUSpecificDate>1899-12-30</MRUSpecificDate>
 		<MRUSpecificTime>00:00:00</MRUSpecificTime>
-		<LastViewedScID>19</LastViewedScID>
+		<LastViewedScID>1</LastViewedScID>
 		<DeadlineDate1>2004-09-01</DeadlineDate1>
 		<DeadlineDate2>2004-12-14</DeadlineDate2>
 		<DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -206,6 +206,7 @@ Always short of money, Hal has arranged an interview with his financial backers 
 Hal doesn't have any money, so Vurdi says he'll take an arm or leg instead, and sets Brutus on him.
 During the scuffle, Hal manages to tell Vurdi that he accepted a cargo job earlier in the day, and will use the proceeds to settle his debts. Vurdi is suspicious, but calls Brutus off and gives Hal 24 hours.
 After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer (the Navcom), reviewing the cargo jobs he's been offered. He chooses the one which sounds less risky than the others, a freight job offered by the Jerling corporation. The Navcom objects, reminding Hal that he turned it down earlier because he thought it involved stolen goods. Hal doesn't care - he can't afford to be choosy any more.]]></Desc>
+		<Tags><![CDATA[Exposition]]></Tags>
 		<ImageFile><![CDATA[Hal3Launch10.jpg]]></ImageFile>
 		<Notes><![CDATA[This is a note. Notice how the N icon shows up when there's a note attached to a scene.]]></Notes>
 		<BelongsToChID>1</BelongsToChID>
@@ -216,8 +217,8 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
 		<Field3>3</Field3>
 		<Field4>3</Field4>
 		<Status>4</Status>
-		<WordCount>388</WordCount>
-		<LetterCount>2325</LetterCount>
+		<WordCount>372</WordCount>
+		<LetterCount>2176</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>10</CharID>
@@ -265,8 +266,8 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
 		<Field3>2</Field3>
 		<Field4>2</Field4>
 		<Status>4</Status>
-		<WordCount>67</WordCount>
-		<LetterCount>387</LetterCount>
+		<WordCount>63</WordCount>
+		<LetterCount>385</LetterCount>
 		<Characters>
 			<CharID>2</CharID>
 			<CharID>7</CharID>
@@ -293,8 +294,8 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
 		<Field3>2</Field3>
 		<Field4>3</Field4>
 		<Status>4</Status>
-		<WordCount>88</WordCount>
-		<LetterCount>489</LetterCount>
+		<WordCount>85</WordCount>
+		<LetterCount>475</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>10</CharID>
@@ -328,8 +329,8 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
-		<WordCount>67</WordCount>
-		<LetterCount>383</LetterCount>
+		<WordCount>64</WordCount>
+		<LetterCount>375</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>3</CharID>
@@ -362,8 +363,8 @@ Hal drives off, oblivious to the flames starting to flicker around the fallen ro
 		<Field3>2</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
-		<WordCount>177</WordCount>
-		<LetterCount>1050</LetterCount>
+		<WordCount>172</WordCount>
+		<LetterCount>1042</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -390,8 +391,8 @@ Sitting at the console, Clunk uses the Black Gull's simulation mode to practice 
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
-		<WordCount>125</WordCount>
-		<LetterCount>736</LetterCount>
+		<WordCount>122</WordCount>
+		<LetterCount>722</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 			<CharID>10</CharID>
@@ -424,8 +425,8 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
 		<Field3>2</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
-		<WordCount>89</WordCount>
-		<LetterCount>538</LetterCount>
+		<WordCount>86</WordCount>
+		<LetterCount>532</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>12</CharID>
@@ -452,8 +453,8 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
 		<Field3>4</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
-		<WordCount>74</WordCount>
-		<LetterCount>451</LetterCount>
+		<WordCount>71</WordCount>
+		<LetterCount>431</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 			<CharID>2</CharID>
@@ -490,8 +491,8 @@ Then the control tower calls to say the landing field is on fire around the Blac
 		<Field3>2</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
-		<WordCount>157</WordCount>
-		<LetterCount>863</LetterCount>
+		<WordCount>152</WordCount>
+		<LetterCount>839</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>3</CharID>
@@ -522,6 +523,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 		<Desc><![CDATA[Aboard the Black Gull, Clunk wrenches panels off the walls looking for a fire extinguisher. Crunches the winch controls, lowering a hook to the ground and spooling all the cable out with it. Finally gets the extinguisher and heads outside.
 He finds the source of the fire - the maintenance robot which Hal disabled. Clunk drags it out of the area, then returns and uses the fire extinguisher on the flames.
 Clunk's battery starts to run low. He continues. As the fire extinguisher begins to run low, the fuel pipes explode near the back of the ship. A piece of debris hits Clunk in the head and he falls to the ground, stunned.]]></Desc>
+		<Tags><![CDATA[Pinch Point]]></Tags>
 		<BelongsToChID>5</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00010.rtf]]></RTFFile>
 		<Field1>1</Field1>
@@ -529,8 +531,8 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
-		<WordCount>34</WordCount>
-		<LetterCount>197</LetterCount>
+		<WordCount>31</WordCount>
+		<LetterCount>187</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 			<CharID>10</CharID>
@@ -599,6 +601,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 	<SCENE>
 		<ID>17</ID>
 		<Title><![CDATA[Climb up rope to safety. Back in ship for hyperspace.]]></Title>
+		<Desc><![CDATA[Spoiler ends here.]]></Desc>
 		<BelongsToChID>8</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00013.rtf]]></RTFFile>
 		<Field1>1</Field1>
@@ -775,6 +778,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 	<SCENE>
 		<ID>38</ID>
 		<Title><![CDATA[Karl waiting impatiently]]></Title>
+		<Tags><![CDATA[Plot Point]]></Tags>
 		<BelongsToChID>15</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00021.rtf]]></RTFFile>
 		<Field1>1</Field1>
@@ -1589,15 +1593,16 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 	<SCENE>
 		<ID>120</ID>
 		<Title><![CDATA[Information about the sample project]]></Title>
-		<BelongsToChID>33</BelongsToChID>
+		<Unused>-1</Unused>
+		<BelongsToChID>34</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00058.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>1</Status>
-		<WordCount>64</WordCount>
-		<LetterCount>458</LetterCount>
+		<WordCount>66</WordCount>
+		<LetterCount>450</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1618,12 +1623,15 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTERS>
 	<CHAPTER>
 		<ID>33</ID>
-		<Title><![CDATA[Info]]></Title>
+		<Title><![CDATA[Act 1]]></Title>
+		<Desc><![CDATA[The hero and his world.]]></Desc>
 		<SortOrder>1</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+		</Fields>
+
 		<Type>1</Type>
-		<Scenes>
-			<ScID>120</ScID>
-		</Scenes>
 	</CHAPTER>
 
 	<CHAPTER>
@@ -1713,9 +1721,27 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	</CHAPTER>
 
 	<CHAPTER>
+		<ID>35</ID>
+		<Title><![CDATA[Act 2]]></Title>
+		<Desc><![CDATA[Action!]]></Desc>
+		<SortOrder>10</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+		</Fields>
+
+		<Type>1</Type>
+	</CHAPTER>
+
+	<CHAPTER>
 		<ID>9</ID>
 		<Title><![CDATA[Chapter 9]]></Title>
-		<SortOrder>10</SortOrder>
+		<SortOrder>11</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+		</Fields>
+
 		<Type>0</Type>
 		<Scenes>
 			<ScID>19</ScID>
@@ -1725,7 +1751,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>10</ID>
 		<Title><![CDATA[Chapter 10]]></Title>
-		<SortOrder>11</SortOrder>
+		<SortOrder>12</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>22</ScID>
@@ -1735,7 +1761,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>11</ID>
 		<Title><![CDATA[Chapter 11]]></Title>
-		<SortOrder>12</SortOrder>
+		<SortOrder>13</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>25</ScID>
@@ -1746,7 +1772,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>12</ID>
 		<Title><![CDATA[Chapter 12]]></Title>
-		<SortOrder>13</SortOrder>
+		<SortOrder>14</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>29</ScID>
@@ -1757,7 +1783,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>13</ID>
 		<Title><![CDATA[Chapter 13]]></Title>
-		<SortOrder>14</SortOrder>
+		<SortOrder>15</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>34</ScID>
@@ -1767,14 +1793,14 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>14</ID>
 		<Title><![CDATA[Chapter 14]]></Title>
-		<SortOrder>15</SortOrder>
+		<SortOrder>16</SortOrder>
 		<Type>0</Type>
 	</CHAPTER>
 
 	<CHAPTER>
 		<ID>15</ID>
 		<Title><![CDATA[Chapter 15]]></Title>
-		<SortOrder>16</SortOrder>
+		<SortOrder>17</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>38</ScID>
@@ -1785,7 +1811,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>16</ID>
 		<Title><![CDATA[Chapter 16]]></Title>
-		<SortOrder>17</SortOrder>
+		<SortOrder>18</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>43</ScID>
@@ -1796,7 +1822,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>17</ID>
 		<Title><![CDATA[Chapter 17]]></Title>
-		<SortOrder>18</SortOrder>
+		<SortOrder>19</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>47</ScID>
@@ -1807,7 +1833,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>18</ID>
 		<Title><![CDATA[Chapter 18]]></Title>
-		<SortOrder>19</SortOrder>
+		<SortOrder>20</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>51</ScID>
@@ -1818,7 +1844,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>19</ID>
 		<Title><![CDATA[Chapter 19]]></Title>
-		<SortOrder>20</SortOrder>
+		<SortOrder>21</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>55</ScID>
@@ -1829,7 +1855,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>20</ID>
 		<Title><![CDATA[Chapter 20]]></Title>
-		<SortOrder>21</SortOrder>
+		<SortOrder>22</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>60</ScID>
@@ -1841,7 +1867,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>21</ID>
 		<Title><![CDATA[Chapter 21]]></Title>
-		<SortOrder>22</SortOrder>
+		<SortOrder>23</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>66</ScID>
@@ -1852,7 +1878,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>22</ID>
 		<Title><![CDATA[Chapter 22]]></Title>
-		<SortOrder>23</SortOrder>
+		<SortOrder>24</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>71</ScID>
@@ -1862,7 +1888,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>23</ID>
 		<Title><![CDATA[Chapter 23]]></Title>
-		<SortOrder>24</SortOrder>
+		<SortOrder>25</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>74</ScID>
@@ -1872,7 +1898,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>24</ID>
 		<Title><![CDATA[Chapter 24]]></Title>
-		<SortOrder>25</SortOrder>
+		<SortOrder>26</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>77</ScID>
@@ -1882,9 +1908,22 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	</CHAPTER>
 
 	<CHAPTER>
+		<ID>36</ID>
+		<Title><![CDATA[Act 3]]></Title>
+		<Desc><![CDATA[Solution.]]></Desc>
+		<SortOrder>27</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+		</Fields>
+
+		<Type>1</Type>
+	</CHAPTER>
+
+	<CHAPTER>
 		<ID>25</ID>
 		<Title><![CDATA[Chapter 25]]></Title>
-		<SortOrder>26</SortOrder>
+		<SortOrder>28</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>84</ScID>
@@ -1895,7 +1934,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>26</ID>
 		<Title><![CDATA[Chapter 26]]></Title>
-		<SortOrder>27</SortOrder>
+		<SortOrder>29</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>89</ScID>
@@ -1905,7 +1944,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>27</ID>
 		<Title><![CDATA[Chapter 27]]></Title>
-		<SortOrder>28</SortOrder>
+		<SortOrder>30</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>92</ScID>
@@ -1916,7 +1955,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>28</ID>
 		<Title><![CDATA[Chapter 28]]></Title>
-		<SortOrder>29</SortOrder>
+		<SortOrder>31</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>96</ScID>
@@ -1927,7 +1966,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>29</ID>
 		<Title><![CDATA[Chapter 29]]></Title>
-		<SortOrder>30</SortOrder>
+		<SortOrder>32</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>101</ScID>
@@ -1939,7 +1978,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>30</ID>
 		<Title><![CDATA[Chapter 30]]></Title>
-		<SortOrder>31</SortOrder>
+		<SortOrder>33</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>108</ScID>
@@ -1951,7 +1990,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>31</ID>
 		<Title><![CDATA[Chapter 31]]></Title>
-		<SortOrder>32</SortOrder>
+		<SortOrder>34</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>114</ScID>
@@ -1962,10 +2001,26 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>32</ID>
 		<Title><![CDATA[Chapter 32]]></Title>
-		<SortOrder>33</SortOrder>
+		<SortOrder>35</SortOrder>
 		<Type>0</Type>
 		<Scenes>
 			<ScID>119</ScID>
+		</Scenes>
+	</CHAPTER>
+
+	<CHAPTER>
+		<ID>34</ID>
+		<Title><![CDATA[Trash]]></Title>
+		<Desc><![CDATA[This chapter was created automatically to hold deleted scenes.]]></Desc>
+		<Unused>-1</Unused>
+		<SortOrder>36</SortOrder>
+		<Fields>
+			<Field_IsTrash>1</Field_IsTrash>
+		</Fields>
+
+		<Type>0</Type>
+		<Scenes>
+			<ScID>120</ScID>
 		</Scenes>
 	</CHAPTER>
 
@@ -1997,8 +2052,8 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 
 	<WC>
 		<Date>2020-02-01</Date>
-		<Count>1266</Count>
-		<TotalCount>1330</TotalCount>
+		<Count>1218</Count>
+		<TotalCount>1284</TotalCount>
 	</WC>
 
 	</WCLog>
