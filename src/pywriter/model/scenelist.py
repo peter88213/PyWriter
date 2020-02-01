@@ -16,6 +16,19 @@ from pywriter.model.scene import Scene
 SEPARATOR = '|'     # delimits data fields within a record.
 LINEBREAK = '\t'    # substitutes embedded line breaks.
 
+TABLE_HEADER = ('Scene link'
+                + SEPARATOR
+                + 'Scene title'
+                + SEPARATOR
+                + 'Scene description'
+                + SEPARATOR
+                + 'Word count'
+                + SEPARATOR
+                + 'Letter count'
+                + SEPARATOR
+                + 'Tags'
+                + '\n')
+
 
 class SceneList(PywFile):
     """csv file representation of an yWriter project's scenes table. 
@@ -68,8 +81,14 @@ class SceneList(PywFile):
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
+        if table[0] != TABLE_HEADER:
+            return 'ERROR: Wrong table content.'
+
         for record in table:
             field = record.split(SEPARATOR)
+
+            if len(field) != 6:
+                return 'ERROR: Wrong field structure.'
 
             if 'ScID:' in field[0]:
                 scId = re.search('ScID\:([0-9]+)', field[0]).group(1)
@@ -101,18 +120,7 @@ class SceneList(PywFile):
 
         # first record: the table's column headings
 
-        table = ['Scene link'
-                 + SEPARATOR
-                 + 'Scene title'
-                 + SEPARATOR
-                 + 'Scene description'
-                 + SEPARATOR
-                 + 'Word count'
-                 + SEPARATOR
-                 + 'Letter count'
-                 + SEPARATOR
-                 + 'Tags'
-                 + '\n']
+        table = [TABLE_HEADER]
 
         # Add a record for each used scene in a regular chapter
 
@@ -131,6 +139,11 @@ class SceneList(PywFile):
                         else:
                             sceneDesc = ''
 
+                        sceneTags = self.scenes[scId].tags
+
+                        if sceneTags is None:
+                            sceneTags = ['']
+
                         table.append('=HYPERLINK("file:///'
                                      + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
                                      + SEPARATOR
@@ -142,7 +155,7 @@ class SceneList(PywFile):
                                      + SEPARATOR
                                      + str(self.scenes[scId].letterCount)
                                      + SEPARATOR
-                                     + ';'.join(self.scenes[scId].tags)
+                                     + ';'.join(sceneTags)
                                      + '\n')
 
         try:
