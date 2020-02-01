@@ -67,12 +67,20 @@ class Collection():
         bkId : str
             The book ID.
         Remove a book from the collection and from the series.
+        Return a message beginning with SUCCESS or ERROR.
 
     add_series
         Arguments
         serTitle : str
             The series title.
         Instantiate a Series object and append it to the srtSeries list.
+
+    remove_series
+        Arguments
+        serTitle : str
+            The series title.
+        Delete a Series object and remove it from the srtSeries list.
+        Return a message beginning with SUCCESS or ERROR.
     """
 
     _FILE_EXTENSION = 'pwc'
@@ -195,7 +203,7 @@ class Collection():
         # Postprocess the xml file created by ElementTree
         message = cdata(self._filePath, self._cdataTags)
 
-        if 'ERROR' in message:
+        if message.startswith('ERROR'):
             return message
 
         return 'SUCCESS: Collection written to "' + self._filePath + '".'
@@ -223,11 +231,19 @@ class Collection():
         else:
             return'ERROR: "' + os.path.realpath(filePath) + '" not found.'
 
-    def remove_book(self, bkId: str) -> None:
+    def remove_book(self, bkId: str) -> str:
         """Remove a book from the collection and from the series."""
-        del self.books[bkId]
-        for series in self.srtSeries:
-            series.remove_book(bkId)
+
+        try:
+            del self.books[bkId]
+
+            for series in self.srtSeries:
+
+                if series.remove_book(bkId).startswith('SUCCESS'):
+                    return 'SUCCESS'
+
+        except:
+            return 'ERROR'
 
     def add_series(self, serTitle: str) -> None:
         """Instantiate a Series object and append it to the srtSeries list."""
@@ -238,9 +254,11 @@ class Collection():
         newSeries = Series(serTitle)
         self.srtSeries.append(newSeries)
 
-    def remove_series(self, serTitle: str) -> None:
+    def remove_series(self, serTitle: str) -> str:
         """Delete a Series object."""
         for series in self.srtSeries:
             if series.title == serTitle:
                 self.srtSeries.remove(series)
-                break
+                return 'SUCCESS'
+
+        return 'ERROR'

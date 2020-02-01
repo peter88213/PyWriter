@@ -208,7 +208,7 @@ class NrmOpr(unittest.TestCase):
         for series in myCollection.srtSeries:
 
             if series.title == 'Rick Starlift':
-                series.remove_book('1')
+                self.assertEqual(series.remove_book('1'), 'SUCCESS')
                 break
 
         self.assertEqual(myCollection.write(),
@@ -230,7 +230,8 @@ class NrmOpr(unittest.TestCase):
         for series in myCollection.srtSeries:
 
             if series.title == 'Rick Starlift':
-                myBookdesc.write(series, myCollection)
+                self.assertEqual(myBookdesc.write(
+                    series, myCollection), 'SUCCESS: "yw7/Rick Starlift_series.html" saved.')
 
         self.assertEqual(read_file(EXEC_PATH + 'Rick Starlift_series.html'),
                          read_file('data/collection/two_in_series.html'))
@@ -252,7 +253,8 @@ class NrmOpr(unittest.TestCase):
         for series in myCollection.srtSeries:
 
             if series.title == 'Rick Starlift':
-                myBookdesc.read(series, myCollection)
+                self.assertEqual(myBookdesc.read(
+                    series, myCollection), 'SUCCESS')
 
         self.assertEqual(myCollection.write(),
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
