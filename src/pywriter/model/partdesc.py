@@ -1,4 +1,4 @@
-"""PartDesc - Class for part desc. file operations and parsing.
+"""PartDesc - Class for part summary. file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -7,35 +7,24 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 from pywriter.model.novel import Novel
-from pywriter.model.chapter import Chapter
 from pywriter.model.chapterdesc import ChapterDesc
 from pywriter.model.hform import *
 
 
 class PartDesc(ChapterDesc):
-    """HTML file representation of an yWriter project's chapter descriptions part.
-
-    Represents a html file with chapter sections containing chapter 
-    descriptions to be read and written by Open/LibreOffice Writer.
-
-    # Methods
-
-    write : str
-        Arguments 
-            novel : Novel
-                the data to be written. 
-        Generate a html file containing:
-        - book title,
-        - chapter sections containing:
-            - chapter description.
-        Return a message beginning with SUCCESS or ERROR.
-
-    get_structure : None
-        Return None to prevent structural comparison.
+    """HTML file representation of an yWriter project's parts summaries. 
     """
 
     def write(self, novel: Novel) -> str:
-        """Write novel attributes to html file. """
+        """Write part summaries to a html file.
+
+        Parts are chapters marked  "Other".
+        Generate a html file containing:
+        - book title,
+        - part sections containing:
+            - part summary.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         def to_html(text: str) -> str:
             """Convert yw7 raw markup """
@@ -72,8 +61,8 @@ class PartDesc(ChapterDesc):
                     lines.append('<div id="ChID:' + chId + '">\n')
                     lines.append('<p class="firstlineindent">')
 
-                    if self.chapters[chId].desc is not None:
-                        lines.append(to_html(self.chapters[chId].desc))
+                    if self.chapters[chId].summary is not None:
+                        lines.append(to_html(self.chapters[chId].summary))
 
                     else:
                         lines.append(

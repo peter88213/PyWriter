@@ -8,48 +8,24 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 
 class Series():
-    """yWriter series representation.
-
-    # Attributes
-
-    title : str
-        the series title.
-
-    desc : str
-        the series description.
-
-    srtBooks : list 
-        the series' book IDs. The order of its elements 
-        corresponds to the series' order of the books.
-
-    # Methods
-
-    add_book
-        Attributes
-        bkId : string
-            the ID of the book to add.
-        Add a new book ID to the list. Avoid multiple entries.
-
-    remove_book
-        Attributes
-        bkId : string
-            the ID of the book to remove.
-        Remove an existing book ID from the list.       
-        Return a message beginning with SUCCESS or ERROR.
+    """yWriter book series representation.    
     """
 
     def __init__(self, title: str, desc: str = '') -> None:
         self.title = title
-        self.desc = desc
+        self.summary = desc
         self.srtBooks = []
 
     def add_book(self, bkId: str) -> None:
-        """Add a new book ID to the list. Avoid multiple entries."""
+        """Add a new book ID to the list. Avoid multiple entries.
+        """
         if not (bkId in self.srtBooks):
             self.srtBooks.append(bkId)
 
     def remove_book(self, bkId: str) -> str:
-        """Remove an existing book ID from the list."""
+        """Remove an existing book ID from the list.       
+        Return a message beginning with SUCCESS or ERROR.
+        """
         try:
             self.srtBooks.remove(bkId)
             return 'SUCCESS'

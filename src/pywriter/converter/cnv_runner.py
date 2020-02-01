@@ -33,7 +33,7 @@ class CnvRunner(Yw7Cnv):
             source or target document. 
 
         extension : str
-            file extension determining the source or target 
+            File extension determining the source or target 
             document's file type. The extension is needed because 
             there can be ambiguous PywFile subclasses 
             (e.g. OfficeFile).
@@ -51,7 +51,7 @@ class CnvRunner(Yw7Cnv):
             Calling scripts shall set silentMode = False.
 
         suffix : str
-            optional file name suffix used for ambiguous html files.
+            Optional file name suffix used for ambiguous html files.
             Examples:
             - _manuscript for a html file containing scene contents.
             - _scenedesc for a html file containing scene descriptions.

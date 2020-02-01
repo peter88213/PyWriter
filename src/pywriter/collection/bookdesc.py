@@ -1,4 +1,4 @@
-"""SceneDesc - Class for scene desc. file operations and parsing.
+"""SceneDesc - Class for scene summary. file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -15,53 +15,8 @@ from pywriter.collection.collection import Collection
 
 
 class BookDesc(HTMLParser):
-    """HTML file representation of a series' book descriptions.
-
-    Represents a html file with series and book sections containing 
+    """HTML file representation of a series containing
     a series description and the series' book descriptions 
-    to be read and written by Ope.collection./Libr.collection.Writer.
-
-    # Properties
-
-    filePath : str (property with setter)
-        Path to the file.
-        The setter only accepts files of a supported type as specified 
-        by _fileExtension. 
-
-    # Methods
-
-    handle_starttag
-        recognize the beginning ot the book section.
-        Overwrites HTMLparser.handle_starttag()
-
-    handle_endtag
-        recognize the end ot the book section and save data.
-        Overwrites HTMLparser.handle_endtag()
-
-    handle_data
-        copy the book description.
-        Overwrites HTMLparser.handle_data()
-
-    read : str
-        Arguments 
-            series : Series
-            collection : Collection
-        parse the html file located at filePath, fetching the Series 
-        and book descriptions.
-        Return a message beginning with SUCCESS or ERROR. 
-
-    write : str
-        Arguments 
-            series : Series
-            collection : Collection
-        Generate a html file containing:
-        - a series section containing:
-            - series title
-            - series description
-        - book sections containing:
-            - book title heading
-            - book description
-        Return a message beginning with SUCCESS or ERROR.
     """
 
     _FILE_EXTENSION = 'html'
@@ -71,7 +26,7 @@ class BookDesc(HTMLParser):
         self._lines = []
         self._bkId = None
         self._desc = ''
-        self._bookDesc = {}
+        self._bookSummary = {}
         self._collectText = False
         self._filePath = None
         self.filePath = filePath
@@ -87,8 +42,9 @@ class BookDesc(HTMLParser):
             self._filePath = filePath
 
     def handle_starttag(self, tag, attrs):
-        """HTML parser: Get book ID at book start. """
-
+        """Recognize the beginning of the book section.
+        Overwrites HTMLparser.handle_starttag()
+        """
         if tag == 'div':
 
             if attrs[0][0] == 'id':
@@ -101,15 +57,16 @@ class BookDesc(HTMLParser):
                     self._collectText = True
 
     def handle_endtag(self, tag):
-        """HTML parser: Save chapter description in dictionary at chapter end. """
-
+        """Recognize the end ot the book section and save data.
+        Overwrites HTMLparser.handle_endtag().
+        """
         if tag == 'div' and self._collectText:
 
             if self._bkId is None:
                 self._desc = ''.join(self._lines)
 
             else:
-                self._bookDesc[self._bkId] = ''.join(self._lines)
+                self._bookSummary[self._bkId] = ''.join(self._lines)
 
             self._lines = []
             self._collectText = False
@@ -118,13 +75,17 @@ class BookDesc(HTMLParser):
             self._lines.append('\n')
 
     def handle_data(self, data):
-        """HTML parser: Collect paragraphs within chapter description. """
-
+        """Cllect data within series and book sections.
+        Overwrites HTMLparser.handle_data(). 
+        """
         if self._collectText:
             self._lines.append(data.rstrip().lstrip())
 
     def read(self, series: Series, collection: Collection) -> str:
-        """Read series attributes from html file.  """
+        """Parse the html file located at filePath, 
+        fetching the Series and book descriptions.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
@@ -144,15 +105,23 @@ class BookDesc(HTMLParser):
 
         self.feed(text)
 
-        series.desc = self._desc
+        series.summary = self._desc
 
-        for bkId in self._bookDesc:
-            collection.books[bkId].desc = self._bookDesc[bkId]
+        for bkId in self._bookSummary:
+            collection.books[bkId].summary = self._bookSummary[bkId]
 
         return 'SUCCESS'
 
     def write(self, series: Series, collection: Collection) -> str:
-        """Write series attributes to html file.  """
+        """Generate a html file containing:
+        - A series sections containing:
+            - series title heading,
+            - series summary,
+            - book sections containing:
+                - book title heading,
+                - book summary.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         def to_html(text: str) -> str:
             """Convert yw7 raw markup """
@@ -166,14 +135,14 @@ class BookDesc(HTMLParser):
         lines = [HTML_HEADER.replace('$bookTitle$', series.title)]
         lines.append('<h1>' + series.title + '</h1>\n')
         lines.append('<div id="SERIES">\n')
-        lines.append('<p class="textbody">' + series.desc + '</p>\n')
+        lines.append('<p class="textbody">' + series.summary + '</p>\n')
         lines.append('</div>\n')
 
         for bkId in series.srtBooks:
             lines.append('<h2>' + collection.books[bkId].title + '</h2>\n')
             lines.append('<div id="BkID:' + bkId + '">\n')
             lines.append('<p class="textbody">')
-            lines.append(to_html(collection.books[bkId].desc))
+            lines.append(to_html(collection.books[bkId].summary))
             lines.append('</p>\n')
             lines.append('</div>\n')
 

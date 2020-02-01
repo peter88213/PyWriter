@@ -1,4 +1,4 @@
-"""SceneDesc - Class for scene desc. file operations and parsing.
+"""SceneDesc - Class for scene summary. file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -18,39 +18,17 @@ HTML_HEADING_MARKERS = ("h3", "h2")
 
 
 class SceneDesc(Manuscript):
-    """HTML file representation of an yWriter project's scene descriptions part.
-
-    Represents a html file with chapter and scene sections containing 
-    scene descriptions to be read and written by OpenOffice /LibreOffice 
-    Writer.
-
-    # Methods
-
-    handle_endtag
-        recognize the end ot the scene section and save data.
-        Overwrites HTMLparser.handle_endtag()
-
-    write : str
-        Arguments 
-            novel : Novel
-                the data to be written. 
-        Generate a html file containing:
-        - chapter sections containing:
-            - chapter headings,
-            - scene sections containing:
-                - scene ID as anchor 
-                - scene title as comment
-                - scene description
-        Return a message beginning with SUCCESS or ERROR.
+    """HTML file representation of an yWriter project's scene summaries.
     """
 
     def handle_endtag(self, tag):
-        """HTML parser: Save scene description in dictionary at scene end. """
-
+        """Recognize the end of the scene section and save data.
+        Overwrites HTMLparser.handle_endtag().
+        """
         if self._scId is not None:
 
             if tag == 'div':
-                self.scenes[self._scId].desc = ''.join(self._lines)
+                self.scenes[self._scId].summary = ''.join(self._lines)
                 self._lines = []
                 self._scId = None
 
@@ -63,8 +41,10 @@ class SceneDesc(Manuscript):
                 self._chId = None
 
     def read(self) -> str:
-        """Read data from html file with chapter and scene sections. """
-
+        """Read scene summaries from a html file 
+        with chapter and scene sections.
+        Return a message beginning with SUCCESS or ERROR. 
+        """
         result = read_html_file(self._filePath)
 
         if result[0].startswith('ERROR'):
@@ -78,7 +58,15 @@ class SceneDesc(Manuscript):
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def write(self, novel: Novel) -> str:
-        """Write novel attributes to html file.  """
+        """Generate a html file containing:
+        - chapter sections containing:
+            - chapter headings,
+            - scene sections containing:
+                - scene ID as anchor,
+                - scene title as comment,
+                - scene summary.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         def format_chapter_title(text: str) -> str:
             """Fix auto-chapter titles for non-English """
@@ -136,8 +124,8 @@ class SceneDesc(Manuscript):
                         lines.append(
                             '<!-- ' + self.scenes[scId].title + ' -->\n')
 
-                        if self.scenes[scId].desc is not None:
-                            lines.append(to_html(self.scenes[scId].desc))
+                        if self.scenes[scId].summary is not None:
+                            lines.append(to_html(self.scenes[scId].summary))
 
                         lines.append('</p>\n')
                         lines.append('</div>\n')

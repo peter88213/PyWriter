@@ -94,7 +94,7 @@ class SceneList(PywFile):
                 scId = re.search('ScID\:([0-9]+)', field[0]).group(1)
                 self.scenes[scId] = Scene()
                 self.scenes[scId].title = field[1]
-                self.scenes[scId].desc = field[2].replace(LINEBREAK, '\n')
+                self.scenes[scId].summary = field[2].replace(LINEBREAK, '\n')
                 #self.scenes[scId].wordCount = int(field[3])
                 #self.scenes[scId].letterCount = int(field[4])
                 self.scenes[scId].tags = field[5].split(';')
@@ -132,8 +132,8 @@ class SceneList(PywFile):
 
                     if not self.scenes[scId].isUnused:
 
-                        if self.scenes[scId].desc is not None:
-                            sceneDesc = self.scenes[scId].desc.rstrip(
+                        if self.scenes[scId].summary is not None:
+                            sceneDesc = self.scenes[scId].summary.rstrip(
                             ).replace('\n', LINEBREAK)
 
                         else:

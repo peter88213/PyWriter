@@ -19,31 +19,6 @@ from pywriter.model.xform import *
 
 class Yw7File(PywFile):
     """yWriter 7 xml project file representation.
-
-    # Attributes
-
-    _cdataTags : list of str
-        names of yw7 xml elements containing CDATA. 
-        ElementTree.write omits CDATA tags, so they have to be 
-        inserted afterwards. 
-
-    # Methods
-
-    read : str
-        parse the yw7 xml file located at filePath, fetching the 
-        Novel attributes.
-        Return a message beginning with SUCCESS or ERROR. 
-
-    write : str
-        Arguments 
-            novel : Novel
-                the data to be written. 
-        Open the yw7 xml file located at filePath and replace a set 
-        of items by the novel attributes not being None.
-        Return a message beginning with SUCCESS or ERROR.
-
-    is_locked : bool
-        tests whether a .lock file placed by yWriter exists.
     """
 
     _FILE_EXTENSION = '.yw7'
@@ -53,9 +28,14 @@ class Yw7File(PywFile):
         PywFile.__init__(self, filePath)
         self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc', 'FieldTitle1', 'FieldTitle2', 'FieldTitle3', 'FieldTitle4',
                            'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
+        # Names of yw7 xml elements containing CDATA.
+        # ElementTree.write omits CDATA tags, so they have to be inserted
+        # afterwards.
 
     def read(self) -> str:
-        """Parse yw7 xml project file and store selected attributes. """
+        """Parse the yw7 xml file located at filePath, fetching the Novel attributes.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         # Complete list of tags requiring CDATA (if incomplete).
 
@@ -88,7 +68,7 @@ class Yw7File(PywFile):
         for prj in root.iter('PROJECT'):
             self.title = prj.find('Title').text
             if prj.find('Desc') is not None:
-                self.desc = prj.find('Desc').text
+                self.summary = prj.find('Desc').text
 
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
@@ -97,7 +77,7 @@ class Yw7File(PywFile):
             self.srtChapters.append(chId)
 
             if chp.find('Desc') is not None:
-                self.chapters[chId].desc = chp.find('Desc').text
+                self.chapters[chId].summary = chp.find('Desc').text
 
             if chp.find('SectionStart') is not None:
                 self.chapters[chId].chLevel = 1
@@ -128,7 +108,7 @@ class Yw7File(PywFile):
             self.scenes[scId].title = scn.find('Title').text
 
             if scn.find('Desc') is not None:
-                self.scenes[scId].desc = scn.find('Desc').text
+                self.scenes[scId].summary = scn.find('Desc').text
 
             if scn.find('Notes') is not None:
                 self.scenes[scId].sceneNotes = scn.find('Notes').text
@@ -147,15 +127,18 @@ class Yw7File(PywFile):
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def write(self, novel: Novel) -> str:
-        """Write novel's attributes to yw7 project file. """
+        """Open the yw7 xml file located at filePath and replace a set 
+        of items by the novel attributes not being None.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         # Copy the novel's attributes to write
 
         if novel.title is not None:
             self.title = novel.title
 
-        if novel.desc is not None:
-            self.desc = novel.desc
+        if novel.summary is not None:
+            self.summary = novel.summary
 
         '''Do not modify these items yet:
         if novel.srtChapters != []:
@@ -169,8 +152,8 @@ class Yw7File(PywFile):
                 if novel.scenes[scId].title is not None:
                     self.scenes[scId].title = novel.scenes[scId].title
 
-                if novel.scenes[scId].desc is not None:
-                    self.scenes[scId].desc = novel.scenes[scId].desc
+                if novel.scenes[scId].summary is not None:
+                    self.scenes[scId].summary = novel.scenes[scId].summary
 
                 if novel.scenes[scId].sceneNotes is not None:
                     self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
@@ -193,8 +176,8 @@ class Yw7File(PywFile):
                 if novel.chapters[chId].title is not None:
                     self.chapters[chId].title = novel.chapters[chId].title
 
-                if novel.chapters[chId].desc is not None:
-                    self.chapters[chId].desc = novel.chapters[chId].desc
+                if novel.chapters[chId].summary is not None:
+                    self.chapters[chId].summary = novel.chapters[chId].summary
 
                 '''Do not modify these items yet:
                 if novel.chapters[chId].chLevel is not None:
@@ -216,14 +199,14 @@ class Yw7File(PywFile):
         for prj in root.iter('PROJECT'):
             prj.find('Title').text = self.title
 
-            if self.desc is not None:
+            if self.summary is not None:
 
                 if prj.find('Desc') is None:
                     newDesc = ET.SubElement(prj, 'Desc')
-                    newDesc.text = self.desc
+                    newDesc.text = self.summary
 
                 else:
-                    prj.find('Desc').text = self.desc
+                    prj.find('Desc').text = self.summary
 
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
@@ -231,14 +214,14 @@ class Yw7File(PywFile):
             if chId in self.chapters:
                 chp.find('Title').text = self.chapters[chId].title
 
-                if self.chapters[chId].desc is not None:
+                if self.chapters[chId].summary is not None:
 
                     if chp.find('Desc') is None:
                         newDesc = ET.SubElement(chp, 'Desc')
-                        newDesc.text = self.chapters[chId].desc
+                        newDesc.text = self.chapters[chId].summary
 
                     else:
-                        chp.find('Desc').text = self.chapters[chId].desc
+                        chp.find('Desc').text = self.chapters[chId].summary
 
                 '''Do not modify these items yet:
                 chp.find('Type').text = str(self.chapters[chId].chType)
@@ -267,14 +250,14 @@ class Yw7File(PywFile):
                 if self.scenes[scId].title is not None:
                     scn.find('Title').text = self.scenes[scId].title
 
-                if self.scenes[scId].desc is not None:
+                if self.scenes[scId].summary is not None:
 
                     if scn.find('Desc') is None:
                         newDesc = ET.SubElement(scn, 'Desc')
-                        newDesc.text = self.scenes[scId].desc
+                        newDesc.text = self.scenes[scId].summary
 
                     else:
-                        scn.find('Desc').text = self.scenes[scId].desc
+                        scn.find('Desc').text = self.scenes[scId].summary
 
                 if self.scenes[scId]._sceneContent is not None:
                     scn.find(
@@ -332,7 +315,8 @@ class Yw7File(PywFile):
         return 'SUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".'
 
     def is_locked(self) -> bool:
-
+        """Test whether a .lock file placed by yWriter exists.
+        """
         if os.path.isfile(self._filePath + '.lock'):
             return True
 

@@ -34,7 +34,9 @@ HTML_FOOTER = '\n</body>\n</html>\n'
 
 
 def to_yw7(text: str) -> str:
-    """ convert html tags to yw7 raw markup. """
+    """Convert html tags to yw7 raw markup.
+    Return a yw7 markup string.
+    """
     text = text.replace('<i>', '[i]')
     text = text.replace('<I>', '[i]')
     text = text.replace('<em>', '[i]')
@@ -68,8 +70,9 @@ def to_yw7(text: str) -> str:
 
 
 def to_html(text: str) -> str:
-    """Convert yw7 raw markup to html. """
-
+    """Convert yw7 raw markup to html.
+    Return a html string.
+    """
     try:
         text = text.replace('\n', '</p>\n<p class="firstlineindent">')
         text = text.replace('[i]', '<em>')
@@ -85,8 +88,9 @@ def to_html(text: str) -> str:
 
 
 def strip_markup(text: str) -> str:
-    """Strip yw7 raw markup. """
-
+    """Strip yw7 raw markup. 
+    Return a plain text string.
+    """
     try:
         text = text.replace('[i]', '')
         text = text.replace('[/i]', '')
@@ -100,7 +104,11 @@ def strip_markup(text: str) -> str:
 
 
 def read_html_file(filePath: str) -> tuple:
-
+    """Open a html file being encoded utf-8 or ANSI.
+    Return a tuple:
+    [0] = Message beginning with SUCCESS or ERROR.
+    [1] = The file content in a single string. 
+    """
     try:
         with open(filePath, 'r', encoding='utf-8') as f:
             text = (f.read())

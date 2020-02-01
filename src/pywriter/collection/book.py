@@ -11,45 +11,24 @@ from pywriter.model.yw7file import Yw7File
 
 
 class Book():
-    """yWriter scene representation.
-
-    # Attributes
-
-    title : str
-        the book title.
-
-    desc : str
-        the book summary.
-
-    filePath : str
-        location of the book project folder.
-
-    wordCount : int 
-        the book's scenes total word count.
-
-    letterCount : int 
-        the book's scenes total letter count.
-
-    # Methods
-
-    update
-        Open the yw7 file, read title and description, 
-        and compute word count and letter count. 
-    """
+    """yWriter scene representation."""
 
     def __init__(self, filePath: str) -> None:
         self.title = ''
-        self.desc = ''
+        self.summary = ''
         self.wordCount = 0
         self.letterCount = 0
         self.filePath = filePath
         self.retrieve_book_data()
 
     def retrieve_book_data(self) -> None:
+        """Open the yw7 file, read title and summary, 
+        and compute word count and letter count.
+        """
         book = Yw7File(self.filePath)
         book.read()
         self.title = book.title
-        self.desc = book.desc
+        self.summary = book.summary
 
         self.wordCount = 0
         self.letterCount = 0
@@ -61,6 +40,7 @@ class Book():
         del book
 
     def put_book_data(self) -> None:
+        """Open the yw7 file, write title and summary."""
         book = Yw7File(self.filePath)
         book.read()
         modified = False
@@ -69,8 +49,8 @@ class Book():
             book.title = self.title
             modified = True
 
-        if self.desc != book.desc:
-            book.desc = self.desc
+        if self.summary != book.summary:
+            book.summary = self.summary
             modified = True
 
         if modified:

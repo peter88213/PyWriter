@@ -16,71 +16,7 @@ from pywriter.model.xform import *
 
 
 class Collection():
-    """yWriter project representation. 
-
-    # Attributes
-
-    desc : str
-        the novel summary.
-
-    books : dict
-        key = book ID, value = Book object.
-        The order of the elements does not matter.
-
-    srtSeries : list 
-        list of the collection's Series objects.
-
-    # Properties
-
-    filePath : str (property with setter)
-        Path to the file.
-        The setter only accepts files of a supported type as specified 
-        by _fileExtension. 
-
-    # Methods 
-
-    read : str
-        parse the pwc xml file located at filePath, fetching the 
-        Collection attributes.
-        Return a message beginning with SUCCESS or ERROR. 
-
-    write : str
-        Write the collection's attributes to a pwc xml file 
-        located at filePath. Overwrite existing file without
-        confirmation.
-        Return a message beginning with SUCCESS or ERROR.
-
-    file_exists() : bool
-        True means: the file specified by filePath exists. 
-
-    add_book
-        Arguments
-        filePath : str
-            The book's location.
-        Add an existing yWriter 7 project file as book to the 
-        collection. Determine a book ID, read the novel's title and 
-        description, and compute word count and letter count.
-        Return a message beginning with SUCCESS or ERROR.
-
-    remove_book
-        Arguments
-        bkId : str
-            The book ID.
-        Remove a book from the collection and from the series.
-        Return a message beginning with SUCCESS or ERROR.
-
-    add_series
-        Arguments
-        serTitle : str
-            The series title.
-        Instantiate a Series object and append it to the srtSeries list.
-
-    remove_series
-        Arguments
-        serTitle : str
-            The series title.
-        Delete a Series object and remove it from the srtSeries list.
-        Return a message beginning with SUCCESS or ERROR.
+    """Represents collection of yWriter projects. 
     """
 
     _FILE_EXTENSION = 'pwc'
@@ -103,7 +39,10 @@ class Collection():
             self._filePath = filePath
 
     def read(self) -> str:
-        """Parse yw7 xml project file and store selected attributes. """
+        """Parse the pwc xml file located at filePath, 
+        fetching the Collection attributes.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         # Open the file and let ElementTree parse its xml structure.
 
@@ -118,7 +57,7 @@ class Collection():
             newSeries = Series(srs.find('Title').text)
 
             if srs.find('Desc') is not None:
-                newSeries.desc = srs.find('Desc').text
+                newSeries.summary = srs.find('Desc').text
 
             newSeries.srtBooks = []
 
@@ -145,7 +84,7 @@ class Collection():
             self.books[bkId].title = boo.find('Title').text
 
             if boo.find('Desc') is not None:
-                self.books[bkId].desc = boo.find('Desc').text
+                self.books[bkId].summary = boo.find('Desc').text
     
             self.books[bkId].wordCount = str(boo.find('WordCount').text)
             self.books[bkId].letterCount = str(boo.find('LetterCount').text)
@@ -154,8 +93,11 @@ class Collection():
         return 'SUCCESS: ' + str(len(self.books)) + ' Books found in "' + self._filePath + '".'
 
     def write(self) -> str:
-        """Write the collection's structure to the configuration file. """
-
+        """Write the collection's attributes to a pwc xml file 
+        located at filePath. Overwrite existing file without
+        confirmation.
+        Return a message beginning with SUCCESS or ERROR.
+        """
         root = ET.Element('COLLECTION')
         bkSection = ET.SubElement(root, 'BOOKS')
 
@@ -168,7 +110,7 @@ class Collection():
             bkTitle = ET.SubElement(newBook, 'Title')
             bkTitle.text = self.books[bookId].title
             bkDesc = ET.SubElement(newBook, 'Desc')
-            bkDesc.text = self.books[bookId].desc
+            bkDesc.text = self.books[bookId].summary
             bkWc = ET.SubElement(newBook, 'WordCount')
             bkWc.text = str(self.books[bookId].wordCount)
             bkLc = ET.SubElement(newBook, 'LetterCount')
@@ -184,7 +126,7 @@ class Collection():
             serTitle = ET.SubElement(newSeries, 'Title')
             serTitle.text = ser.title
             serDesc = ET.SubElement(newSeries, 'Desc')
-            serDesc.text = ser.desc
+            serDesc.text = ser.summary
             serBooks = ET.SubElement(newSeries, 'Books')
 
             for bookId in ser.srtBooks:
@@ -216,8 +158,11 @@ class Collection():
             return False
 
     def add_book(self, filePath: str) -> str:
-        """Add an existing book to the collection."""
-
+        """Add an existing yWriter 7 project file as book to the 
+        collection. Determine a book ID, read the novel's title and 
+        description, and compute word count and letter count.
+        Return a message beginning with SUCCESS or ERROR.
+        """
         if os.path.isfile(filePath):
             filePath = os.path.realpath(filePath)
             i = 1
@@ -232,8 +177,9 @@ class Collection():
             return'ERROR: "' + os.path.realpath(filePath) + '" not found.'
 
     def remove_book(self, bkId: str) -> str:
-        """Remove a book from the collection and from the series."""
-
+        """Remove a book from the collection and from the series.
+        Return a message beginning with SUCCESS or ERROR.
+        """
         try:
             del self.books[bkId]
 
@@ -246,7 +192,8 @@ class Collection():
             return 'ERROR'
 
     def add_series(self, serTitle: str) -> None:
-        """Instantiate a Series object and append it to the srtSeries list."""
+        """Instantiate a Series object and append it to the srtSeries list.
+        """
         for series in self.srtSeries:
             if series.title == serTitle:
                 return
@@ -255,7 +202,9 @@ class Collection():
         self.srtSeries.append(newSeries)
 
     def remove_series(self, serTitle: str) -> str:
-        """Delete a Series object."""
+        """Delete a Series object and remove it from the srtSeries list.
+        Return a message beginning with SUCCESS or ERROR.
+        """
         for series in self.srtSeries:
             if series.title == serTitle:
                 self.srtSeries.remove(series)

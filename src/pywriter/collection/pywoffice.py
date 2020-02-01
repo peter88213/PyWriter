@@ -17,7 +17,7 @@ class PywOffice():
     def showDesc(self, event):
         choice = self.listbox.curselection()[0]
         self.processInfo.config(
-            text=self.collection.books[self.booklist[choice]].desc)
+            text=self.collection.books[self.booklist[choice]].summary)
 
     def __init__(self, collection):
         """

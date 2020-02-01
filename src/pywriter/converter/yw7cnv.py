@@ -21,7 +21,7 @@ class Yw7Cnv():
                 an object representing the source file.
             documentFile : PywFile
                 a PywFile subclass instance representing the target file.
-        read .yw7 file, parse xml and create a document file.
+        Read .yw7 file, parse xml and create a document file.
         Return a message beginning with SUCCESS or ERROR.    
 
     document_to_yw7 : str
@@ -30,14 +30,14 @@ class Yw7Cnv():
                 a PywFile subclass instance representing the source file.
             yw7File : Yw7File
                 an object representing the target file.
-        read document file, convert its content to xml, and replace .yw7 file.
+        Read document file, convert its content to xml, and replace .yw7 file.
         Return a message beginning with SUCCESS or ERROR.
 
     confirm_overwrite : bool
         Arguments
             fileName : str
                 Path to the file to be overwritten
-        ask for permission to overwrite the target file.
+        Ask for permission to overwrite the target file.
         Returns True by default.
         This method is to be overwritten by subclasses with an user interface.
     """

@@ -15,7 +15,7 @@ class Novel():
     title : str
         the novel title.
 
-    desc : str
+    summary : str
         the novel summary.
 
     chapters : dict 
@@ -32,25 +32,20 @@ class Novel():
     srtChapters : list 
         the novel's chapter IDs. The order of its elements 
         corresponds to the novel's order of the chapters.
-
-    # Methods 
-
-    get_structure : str
-        returns a string showing the order of chapters and scenes as 
-        a tree. The result can be used to compare two Novel objects 
-        by their structure.
     """
 
     def __init__(self) -> None:
         self.title = None
-        self.desc = None
+        self.summary = None
         self.chapters = {}
         self.scenes = {}
         self.srtChapters = []
 
     def get_structure(self) -> str:
-        """Assemble a comparable structure tree. """
-
+        """returns a string showing the order of chapters and scenes 
+        as a tree. The result can be used to compare two Novel objects 
+        by their structure.
+        """
         lines = []
         for chId in self.srtChapters:
             lines.append('ChID:' + str(chId) + '\n')

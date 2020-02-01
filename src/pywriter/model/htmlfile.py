@@ -25,46 +25,6 @@ class HtmlFile(PywFile, HTMLParser):
 
     Represents a html file with visible chapter and scene tags 
     to be read and written by Open/LibreOffice Writer.
-
-    # Attributes
-
-    _lines : str
-        contains the parsed data.
-
-    _collectText : bool
-        simple parsing state indicator. 
-        True means: the data returned by the html parser 
-        belongs to the body section. 
-
-    # Methods
-
-    handle_starttag
-        recognize the beginning of the body section.
-        Overwrites HTMLparser.handle_starttag()
-
-    handle_endtag
-        recognize the end of the body section.
-        Overwrites HTMLparser.handle_endtag()
-
-    handle_data
-        copy the body section.
-        Overwrites HTMLparser.handle_data()
-
-    read : str
-        parse the html file located at filePath, fetching the Novel 
-        attributes.
-        Return a message beginning with SUCCESS or ERROR. 
-
-    write : str
-        Arguments 
-            novel : Novel
-                the data to be written. 
-        Generate a html file containing:
-        - chapter ID tags,
-        - chapter headings,
-        - scene ID tags, 
-        - scene content.
-        Return a message beginning with SUCCESS or ERROR.
     """
 
     _FILE_EXTENSION = 'html'
@@ -77,26 +37,31 @@ class HtmlFile(PywFile, HTMLParser):
         self._collectText = False
 
     def handle_starttag(self, tag, attrs):
-        """Recognize the beginning ot the body section. """
-
+        """Recognize the paragraph's beginning.
+        Overwrites HTMLparser.handle_endtag().
+        """
         if tag == 'p':
             self._collectText = True
 
     def handle_endtag(self, tag):
-        """Recognize the end ot the body section. """
-
+        """Recognize the paragraph's end.
+        Overwrites HTMLparser.handle_endtag().
+        """
         if tag == 'p':
             self._collectText = False
 
     def handle_data(self, data):
-        """Copy paragraphs. """
-
+        """Copy the scene paragraphs.
+        Overwrites HTMLparser.handle_data().
+        """
         if self._collectText:
             self._lines.append(data)
 
     def read(self) -> str:
-        """Read data from html file with chapter and scene tags. """
-
+        """Read scene content from a html file  
+        with visible chapter and scene tags.
+        Return a message beginning with SUCCESS or ERROR.
+        """
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 text = (f.read())
@@ -150,7 +115,13 @@ class HtmlFile(PywFile, HTMLParser):
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def write(self, novel: Novel) -> str:
-        """Write novel attributes to html file. """
+        """Generate a html file containing:
+        - chapter ID tags,
+        - chapter headings,
+        - scene ID tags, 
+        - scene content.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         def format_chapter_title(text):
             """Fix auto-chapter titles for non-English """

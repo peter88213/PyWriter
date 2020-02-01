@@ -22,24 +22,8 @@ class PywFile(Novel, ABC):
     # Properties
 
     filePath : str (property with setter)
-        Path to the file.
-        The setter only accepts files of a supported type as specified 
-        by _FILE_EXTENSION. 
-
-    # Methods
-
-    read : str
-        Abstract method for parsing the file and writing selected 
-        properties to the novel.
-
-    write : str
-        Arguments
-            novel : Novel
-                the data to be written. 
-        Abstract method for writing selected novel properties to the file.
-
-    file_exists() : bool
-        True means: the file specified by filePath exists. 
+        Path to the file. The setter only accepts files of a 
+        supported type as specified by _FILE_EXTENSION. 
     """
 
     _FILE_EXTENSION = ''
@@ -62,13 +46,15 @@ class PywFile(Novel, ABC):
 
     @abstractmethod
     def read(self) -> None:
-        """Parse the file and store selected properties. """
-        # To be overwritten by file format specific subclasses.
+        """Parse the file and store selected properties.
+        To be overwritten by file format specific subclasses.
+        """
 
     @abstractmethod
     def write(self, novel: Novel):
-        """Write selected novel properties to the file. """
-        # To be overwritten by file format specific subclasses.
+        """Write selected novel properties to the file.
+        To be overwritten by file format specific subclasses.
+        """
 
     def file_exists(self) -> bool:
         """Check whether the file specified by _filePath exists. """

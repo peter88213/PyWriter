@@ -28,25 +28,6 @@ class OfficeFile(MdFile):
         For reading and writing the intermediate Markdown file,
         this attribute is temporarily overwritten with the 
         path to the intermediate file. 
-
-    # Methods
-
-    read : str
-        let pandoc read the document file and convert to markdown.
-        parse the Markdown file, fetching the Novel attributes.
-        Return a message beginning with SUCCESS or ERROR. 
-
-    write : str
-        Arguments
-            novel : Novel
-                the data to be written. 
-        Generate an intermediate Markdown file containing:
-        - chapter ID tags,
-        - chapter headings,
-        - scene ID tags, 
-        - scene content.
-        Let Pandoc convert this Markdown file into the target format.
-        Return a message beginning with SUCCESS or ERROR.
     """
 
     _FILE_EXTENSIONS = ['docx', 'odt']
@@ -70,8 +51,10 @@ class OfficeFile(MdFile):
             self._filePath = documentPath
 
     def read(self) -> str:
-        """Generate and read a temporary Markdown file. """
-
+        """Let pandoc read the document file and convert to markdown.
+        Parse the Markdown file, fetching the Novel's attributes.
+        Return a message beginning with SUCCESS or ERROR. 
+        """
         if not os.path.isfile(self.filePath):
             return 'ERROR: "' + self.filePath + '" not found.'
 
@@ -99,8 +82,14 @@ class OfficeFile(MdFile):
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def write(self, novel: Novel) -> str:
-        """Write to a temporary Markdown file and convert it into an office document. """
-
+        """Generate an intermediate Markdown file containing:
+        - chapter ID tags,
+        - chapter headings,
+        - scene ID tags, 
+        - scene content.
+        Let Pandoc convert this Markdown file into the target format.
+        Return a message beginning with SUCCESS or ERROR.
+        """
         documentPath = self._filePath
         self._filePath = self._tempFile
         message = MdFile.write(self, novel)

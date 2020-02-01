@@ -1,4 +1,4 @@
-"""ChapterDesc - Class for chapter desc. file operations and parsing.
+"""ChapterDesc - Class for chapter summary. file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -7,48 +7,22 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 from pywriter.model.novel import Novel
-from pywriter.model.chapter import Chapter
 from pywriter.model.scenedesc import SceneDesc
 from pywriter.model.hform import *
 
 
 class ChapterDesc(SceneDesc):
-    """HTML file representation of an yWriter project's chapter descriptions part.
-
-    Represents a html file with chapter sections containing chapter 
-    descriptions to be read and written by Open/LibreOffice Writer.
-
-    # Methods
-
-    handle_endtag
-        recognize the end ot the chapter section and save data.
-        Overwrites HTMLparser.handle_endtag()
-
-    handle_data
-        collect paragraphs within chapter description.
-        Overwrites HTMLparser.handle_data()
-
-    write : str
-        Arguments 
-            novel : Novel
-                the data to be written. 
-        Generate a html file containing:
-        - book title,
-        - chapter sections containing:
-            - chapter description.
-        Return a message beginning with SUCCESS or ERROR.
-
-    get_structure : None
-        Return None to prevent structural comparison.     
+    """HTML file representation of an yWriter project's chapters summaries.
     """
 
     def handle_endtag(self, tag):
-        """HTML parser: Save chapter description in dictionary at chapter end. """
-
+        """Recognize the end of the chapter section and save data.
+        Overwrites HTMLparser.handle_endtag().
+        """
         if self._chId is not None:
 
             if tag == 'div':
-                self.chapters[self._chId].desc = ''.join(self._lines)
+                self.chapters[self._chId].summary = ''.join(self._lines)
                 self._lines = []
                 self._chId = None
 
@@ -56,13 +30,22 @@ class ChapterDesc(SceneDesc):
                 self._lines.append('\n')
 
     def handle_data(self, data):
-        """HTML parser: Collect paragraphs within chapter description. """
-
+        """collect data within chapter sections.
+        Overwrites HTMLparser.handle_data().
+        """
         if self._chId is not None:
             self._lines.append(data.rstrip().lstrip())
 
     def write(self, novel: Novel) -> str:
-        """Write novel attributes to html file. """
+        """Write chapter summaries to a html file.
+
+        Chapters are chapters marked "Chapter".
+        Generate a html file containing:
+        - book title,
+        - chapter sections containing:
+            - chapter summary.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         def to_html(text: str) -> str:
             """Convert yw7 raw markup """
@@ -103,8 +86,8 @@ class ChapterDesc(SceneDesc):
                     lines.append('<div id="ChID:' + chId + '">\n')
                     lines.append('<p class="firstlineindent">')
 
-                    if self.chapters[chId].desc is not None:
-                        lines.append(to_html(self.chapters[chId].desc))
+                    if self.chapters[chId].summary is not None:
+                        lines.append(to_html(self.chapters[chId].summary))
 
                     else:
                         lines.append(

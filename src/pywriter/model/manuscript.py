@@ -23,57 +23,9 @@ HTML_HEADING_MARKERS = ("h2", "h1")
 class Manuscript(PywFile, HTMLParser):
     """HTML file representation of an yWriter project's manuscript part.
 
-    Represents a html file with chapter and scene sections containing
-    scene contents to be read and written by OpenOffice/LibreOffice 
-    Writer.
-
-    # Attributes
-
-    _lines : str
-        contains the parsed data.
-
-    _scId : str
-        hands the Novel.scenes key over to the html parser
-
-    _chId : str
-        hands the Novel.chapters key over to the html parser
-
-    _collectText : bool
-        simple parsing state indicator. 
-        True means: the data returned by the html parser 
-        belongs to a scene section. 
-
-    # Methods
-
-    handle_starttag
-        recognize the beginning ot the body section.
-        Overwrites HTMLparser.handle_starttag()
-
-    handle_endtag
-        recognize the end ot the scene section and save data.
-        Overwrites HTMLparser.handle_endtag()
-
-    handle_data
-        collect paragraphs within scene.
-        Overwrites HTMLparser.handle_data()
-
-    read : str
-        parse the html file located at filePath, fetching the Novel 
-        attributes.
-        Return a message beginning with SUCCESS or ERROR. 
-
-    write : str
-        Arguments 
-            novel : Novel
-                the data to be written. 
-        Generate a html file containing:
-        - chapter sections containing:
-            - chapter heading,
-            - scene sections containing:
-                - scene ID as anchor 
-                - scene title as comment
-                - scene content
-        Return a message beginning with SUCCESS or ERROR.
+    Represents a html file with chapter and scene sections 
+    containing scene contents to be read and written by 
+    OpenOffice/LibreOffice Writer.
     """
 
     _FILE_EXTENSION = 'html'
@@ -87,8 +39,9 @@ class Manuscript(PywFile, HTMLParser):
         self._chId = None
 
     def handle_starttag(self, tag, attrs):
-        """HTML parser: Get scene ID at scene start. """
-
+        """Recognize the beginning ot the body section.
+        Overwrites HTMLparser.handle_starttag()
+        """
         if tag == 'div':
 
             if attrs[0][0] == 'id':
@@ -105,8 +58,9 @@ class Manuscript(PywFile, HTMLParser):
                     self.chapters[self._chId].srtScenes.append(self._scId)
 
     def handle_endtag(self, tag):
-        """HTML parser: Save scene content in dictionary at scene end. """
-
+        """Recognize the end of the scene section and save data.
+        Overwrites HTMLparser.handle_endtag().
+        """
         if self._scId is not None:
 
             if tag == 'div':
@@ -123,13 +77,17 @@ class Manuscript(PywFile, HTMLParser):
                 self._chId = None
 
     def handle_data(self, data):
-        """HTML parser: Collect paragraphs within scene. """
-
+        """Collect data within scene sections.
+        Overwrites HTMLparser.handle_data().
+        """
         if self._scId is not None:
             self._lines.append(data.rstrip().lstrip())
 
     def read(self) -> str:
-        """Read data from html file with chapter and scene sections. """
+        """Read scene content from a html file 
+        with chapter and scene sections.
+        Return a message beginning with SUCCESS or ERROR. 
+        """
 
         result = read_html_file(self._filePath)
 
@@ -144,7 +102,15 @@ class Manuscript(PywFile, HTMLParser):
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def write(self, novel: Novel) -> str:
-        """Write novel attributes to html file. """
+        """Generate a html file containing:
+        - chapter sections containing:
+            - chapter headings,
+            - scene sections containing:
+                - scene ID as anchor, 
+                - scene title as comment,
+                - scene content.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         def format_chapter_title(text: str) -> str:
             """Fix auto-chapter titles for non-English """
@@ -222,4 +188,5 @@ class Manuscript(PywFile, HTMLParser):
         return 'SUCCESS: "' + self._filePath + '" saved.'
 
     def get_structure(self) -> None:
+        """This file format has no comparable structure."""
         return None

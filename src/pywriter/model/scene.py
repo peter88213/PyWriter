@@ -15,13 +15,13 @@ class Scene():
     # Attributes
 
     title : str
-        the scene title.
+        The scene title.
 
-    desc : str
-        scene summary.
+    summary : str
+        The scene summary.
 
     sceneContent : str (property with setter)
-        scene text with raw markup.
+        Scene text with raw markup.
 
     wordCount : int 
         (to be updated by the sceneContent setter).
@@ -30,18 +30,18 @@ class Scene():
         (to be updated by the sceneContent setter).
 
     isUnused : bool
-        the scene is marked "unused".
+        The scene is marked "unused".
 
     sceneNotes : str
-        scene notes.
+        Scene notes.
 
     tags : list
-        list of scene tags.
+        List of scene tags.
     """
 
     def __init__(self):
         self.title = None
-        self.desc = None
+        self.summary = None
         self.wordCount = None
         self.letterCount = None
         self.isUnused = None

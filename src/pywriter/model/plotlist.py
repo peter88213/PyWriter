@@ -35,33 +35,6 @@ class PlotList(PywFile):
     Represents a csv file with a record per scene.
     * Records are separated by line breaks.
     * Data fields are delimited by the SEPARATOR character.
-
-    # Attributes
-
-    _text : str
-        contains the parsed data.
-
-    _collectText : bool
-        simple parsing state indicator. 
-        True means: the data returned by the html parser 
-        belongs to the body section. 
-
-    # Methods
-
-    read : str
-        parse the csv file located at filePath, fetching 
-        the Scene attributes contained.
-        Return a message beginning with SUCCESS or ERROR. 
-
-    write : str
-        Arguments 
-            novel : Novel
-                the data to be written. 
-        Generate a csv file
-        Return a message beginning with SUCCESS or ERROR.
-
-    get_structure : None
-        Return None to prevent structural comparison.
     """
 
     _FILE_EXTENSION = 'csv'
@@ -69,8 +42,10 @@ class PlotList(PywFile):
     _FILE_SUFFIX = '_plot'
 
     def read(self) -> str:
-        """Read data from a csv file containing scene attributes. """
-
+        """Parse the csv file located at filePath, fetching 
+        the Scene attributes contained.
+        Return a message beginning with SUCCESS or ERROR.
+        """
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 table = (f.readlines())
@@ -91,7 +66,7 @@ class PlotList(PywFile):
                 chId = re.search('ChID\:([0-9]+)', field[0]).group(1)
                 self.chapters[chId] = Chapter()
                 self.chapters[chId].title = field[1]
-                self.chapters[chId].desc = field[4].replace(LINEBREAK, '\n')
+                self.chapters[chId].summary = field[4].replace(LINEBREAK, '\n')
 
             if 'ScID:' in field[0]:
                 scId = re.search('ScID\:([0-9]+)', field[0]).group(1)
@@ -104,7 +79,9 @@ class PlotList(PywFile):
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
     def write(self, novel: Novel) -> str:
-        """Write scene attributes to csv file. """
+        """Generate a csv file showing the novel's plot structure.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         # Copy the scene's attributes to write
 
@@ -132,8 +109,8 @@ class PlotList(PywFile):
 
                 if self.chapters[chId].chType == 1:
 
-                    if self.chapters[chId].desc is not None:
-                        chapterDesc = self.chapters[chId].desc.rstrip(
+                    if self.chapters[chId].summary is not None:
+                        chapterDesc = self.chapters[chId].summary.rstrip(
                         ).replace('\n', LINEBREAK)
 
                     else:

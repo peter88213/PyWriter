@@ -24,41 +24,16 @@ class MdFile(PywFile):
 
     Represents a Markdown file with visible chapter and scene tags 
     to be converted by Pandoc.
-
-    # Attributes
-
-    _text : str
-        contains the parsed data.
-
-    _collectText : bool
-        simple parsing state indicator. 
-        True means: the data returned by the html parser 
-        belongs to the body section. 
-
-    # Methods
-
-    read : str
-        parse the Markdown file located at filePath, fetching 
-        the Novel attributes.
-        Return a message beginning with SUCCESS or ERROR. 
-
-    write : str
-        Arguments 
-            novel : Novel
-                the data to be written. 
-        Generate a Markdown file containing:
-        - chapter ID tags,
-        - chapter headings,
-        - scene ID tags, 
-        - scene content.
-        Return a message beginning with SUCCESS or ERROR.
     """
 
     _FILE_EXTENSION = 'md'
     # overwrites PywFile._FILE_EXTENSION
 
     def read(self) -> str:
-        """Read data from markdown file with chapter and scene tags. """
+        """Parse the Markdown file located at filePath, 
+        fetching the scene content.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         def to_yw7(text: str) -> str:
             """Convert markdown to yw7 raw markup. """
@@ -122,7 +97,13 @@ class MdFile(PywFile):
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def write(self, novel: Novel) -> str:
-        """Write novel attributes to Markdown file. """
+        """Generate a Markdown file containing:
+        - chapter ID tags,
+        - chapter headings,
+        - scene ID tags, 
+        - scene content.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         def format_chapter_title(text: str) -> str:
             """Fix auto-chapter titles for non-English. """
