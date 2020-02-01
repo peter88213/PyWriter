@@ -54,8 +54,8 @@ class CnvRunner(Yw7Cnv):
             Optional file name suffix used for ambiguous html files.
             Examples:
             - _manuscript for a html file containing scene contents.
-            - _scenedesc for a html file containing scene descriptions.
-            - _chapterdesc for a html file containing chapter descriptions.
+            - _scenes for a html file containing scene summaries.
+            - _chapters for a html file containing chapter summaries.
     """
 
     def __init__(self, sourcePath: str,

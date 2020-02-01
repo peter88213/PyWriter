@@ -12,8 +12,7 @@ from pywriter.model.hform import *
 
 
 class PartDesc(ChapterDesc):
-    """HTML file representation of an yWriter project's parts summaries. 
-    """
+    """HTML file representation of an yWriter project's parts summaries."""
 
     def write(self, novel: Novel) -> str:
         """Write part summaries to a html file.

@@ -11,7 +11,7 @@ from pywriter.model.yw7file import Yw7File
 
 
 class Book():
-    """yWriter scene representation."""
+    """yWriter book representation."""
 
     def __init__(self, filePath: str) -> None:
         self.title = ''

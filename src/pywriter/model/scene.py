@@ -10,44 +10,35 @@ import re
 
 
 class Scene():
-    """yWriter scene representation.
-
-    # Attributes
-
-    title : str
-        The scene title.
-
-    summary : str
-        The scene summary.
-
-    sceneContent : str (property with setter)
-        Scene text with raw markup.
-
-    wordCount : int 
-        (to be updated by the sceneContent setter).
-
-    letterCount : int 
-        (to be updated by the sceneContent setter).
-
-    isUnused : bool
-        The scene is marked "unused".
-
-    sceneNotes : str
-        Scene notes.
-
-    tags : list
-        List of scene tags.
-    """
+    """yWriter scene representation."""
 
     def __init__(self):
         self.title = None
+        # str
+
         self.summary = None
+        # str
+
         self.wordCount = None
+        # int
+        # To be updated by the sceneContent setter
+
         self.letterCount = None
+        # int
+        # To be updated by the sceneContent setter
+
         self.isUnused = None
+        # bool
+
         self.tags = None
+        # list of str
+
         self.sceneNotes = None
+        # str
+
         self._sceneContent = None
+        # str
+        # Scene text with yW7 raw markup.
 
     @property
     def sceneContent(self) -> str:
@@ -55,8 +46,7 @@ class Scene():
 
     @sceneContent.setter
     def sceneContent(self, text: str) -> None:
-        """Set sceneContent updating word count and letter count. """
-
+        """Set sceneContent updating word count and letter count."""
         self._sceneContent = text
         text = re.sub('\[.+?\]|\.|\,| -', '', self._sceneContent)
         # Remove yw7 raw markup for word count

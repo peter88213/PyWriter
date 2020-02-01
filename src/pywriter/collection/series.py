@@ -11,14 +11,13 @@ class Series():
     """yWriter book series representation.    
     """
 
-    def __init__(self, title: str, desc: str = '') -> None:
+    def __init__(self, title: str, summary: str = '') -> None:
         self.title = title
-        self.summary = desc
+        self.summary = summary
         self.srtBooks = []
 
     def add_book(self, bkId: str) -> None:
-        """Add a new book ID to the list. Avoid multiple entries.
-        """
+        """Add a new book ID to the list. Avoid multiple entries."""
         if not (bkId in self.srtBooks):
             self.srtBooks.append(bkId)
 

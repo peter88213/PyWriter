@@ -88,7 +88,6 @@ class Manuscript(PywFile, HTMLParser):
         with chapter and scene sections.
         Return a message beginning with SUCCESS or ERROR. 
         """
-
         result = read_html_file(self._filePath)
 
         if result[0].startswith('ERROR'):
@@ -114,7 +113,6 @@ class Manuscript(PywFile, HTMLParser):
 
         def format_chapter_title(text: str) -> str:
             """Fix auto-chapter titles for non-English """
-
             text = text.replace('Chapter ', '')
             return text
 

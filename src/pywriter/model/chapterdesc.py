@@ -12,8 +12,7 @@ from pywriter.model.hform import *
 
 
 class ChapterDesc(SceneDesc):
-    """HTML file representation of an yWriter project's chapters summaries.
-    """
+    """HTML file representation of an yWriter project's chapters summaries."""
 
     def handle_endtag(self, tag):
         """Recognize the end of the chapter section and save data.

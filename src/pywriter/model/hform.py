@@ -12,7 +12,7 @@ import re
 HTML_SCENE_DIVIDER = '* * *'
 # To be placed between scene ending and beginning tags.
 
-# Make the generated html file look good in a web browser.
+# Make the generated html file look good in a web browser:
 
 STYLESHEET = '<style type="text/css">\n' + \
     'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
@@ -34,9 +34,7 @@ HTML_FOOTER = '\n</body>\n</html>\n'
 
 
 def to_yw7(text: str) -> str:
-    """Convert html tags to yw7 raw markup.
-    Return a yw7 markup string.
-    """
+    """Convert html tags to yw7 raw markup. Return a yw7 markup string."""
     text = text.replace('<i>', '[i]')
     text = text.replace('<I>', '[i]')
     text = text.replace('<em>', '[i]')
@@ -70,9 +68,7 @@ def to_yw7(text: str) -> str:
 
 
 def to_html(text: str) -> str:
-    """Convert yw7 raw markup to html.
-    Return a html string.
-    """
+    """Convert yw7 raw markup to html. Return a html string."""
     try:
         text = text.replace('\n', '</p>\n<p class="firstlineindent">')
         text = text.replace('[i]', '<em>')
@@ -88,9 +84,7 @@ def to_html(text: str) -> str:
 
 
 def strip_markup(text: str) -> str:
-    """Strip yw7 raw markup. 
-    Return a plain text string.
-    """
+    """Strip yw7 raw markup. Return a plain text string."""
     try:
         text = text.replace('[i]', '')
         text = text.replace('[/i]', '')

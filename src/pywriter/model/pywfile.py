@@ -18,12 +18,6 @@ class PywFile(Novel, ABC):
     This class represents a file containing a novel with additional 
     attributes and structural information (a full set or a subset
     of the information included in an yWriter project file).
-
-    # Properties
-
-    filePath : str (property with setter)
-        Path to the file. The setter only accepts files of a 
-        supported type as specified by _FILE_EXTENSION. 
     """
 
     _FILE_EXTENSION = ''
@@ -31,7 +25,12 @@ class PywFile(Novel, ABC):
 
     def __init__(self, filePath: str) -> None:
         Novel.__init__(self)
+
         self._filePath = None
+        # str
+        # Path to the file. The setter only accepts files of a
+        # supported type as specified by _FILE_EXTENSION.
+
         self.filePath = filePath
 
     @property
@@ -58,7 +57,6 @@ class PywFile(Novel, ABC):
 
     def file_exists(self) -> bool:
         """Check whether the file specified by _filePath exists. """
-
         if os.path.isfile(self._filePath):
             return True
 

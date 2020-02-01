@@ -125,7 +125,6 @@ class HtmlFile(PywFile, HTMLParser):
 
         def format_chapter_title(text):
             """Fix auto-chapter titles for non-English """
-
             text = text.replace('Chapter ', '')
             return text
 
@@ -141,7 +140,6 @@ class HtmlFile(PywFile, HTMLParser):
 
         self.scenes = novel.scenes
         self.chapters = novel.chapters
-
         lines = [HTML_HEADER.replace('$bookTitle$', self.title)]
 
         for chId in self.srtChapters:

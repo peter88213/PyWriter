@@ -16,27 +16,26 @@ from pywriter.model.mdfile import MdFile
 class OfficeFile(MdFile):
     """Office file representation.
 
-    Represents an Office text document with visible chapter and scene tags 
+    Represents an Office text document with visible chapter and scene tags, 
     to be converted by Pandoc.
-
-    # Properties
-
-    filePath : str (property with setter)
-        Path to the office document file for Pandoc operation.
-        The setter only accepts files of a supported type as listed
-        in _FILE_EXTENSIONS. 
-        For reading and writing the intermediate Markdown file,
-        this attribute is temporarily overwritten with the 
-        path to the intermediate file. 
     """
 
     _FILE_EXTENSIONS = ['docx', 'odt']
+    _TEMP_FILE = 'temp.md'
 
     def __init__(self, filePath: str) -> None:
         MdFile.__init__(self, 'temp.md')
+
         self._filePath = None
+        # str
+        # Path to the office document file for Pandoc operation.
+        # The setter only accepts files of a supported type as listed
+        # in _FILE_EXTENSIONS.
+        # For reading and writing the intermediate Markdown file,
+        # this attribute is temporarily overwritten with the
+        # path to the intermediate file.
+
         self.filePath = filePath
-        self._tempFile = 'temp.md'
 
     @property
     def filePath(self) -> str:
@@ -61,18 +60,18 @@ class OfficeFile(MdFile):
         # Let pandoc read the document file and convert to markdown.
 
         message = convert_file(self.filePath, 'markdown_strict', format=self._FILE_EXTENSION,
-                               outputfile=self._tempFile, extra_args=['--wrap=none'])
+                               outputfile=self._TEMP_FILE, extra_args=['--wrap=none'])
 
         if message.startswith('ERROR'):
             return message
 
         documentPath = self._filePath
-        self._filePath = self._tempFile
+        self._filePath = self._TEMP_FILE
         message = MdFile.read(self)
         self._filePath = documentPath
 
         try:
-            os.remove(self._tempFile)
+            os.remove(self._TEMP_FILE)
         except:
             pass
 
@@ -91,7 +90,7 @@ class OfficeFile(MdFile):
         Return a message beginning with SUCCESS or ERROR.
         """
         documentPath = self._filePath
-        self._filePath = self._tempFile
+        self._filePath = self._TEMP_FILE
         message = MdFile.write(self, novel)
         self._filePath = documentPath
 
@@ -106,13 +105,12 @@ class OfficeFile(MdFile):
 
         # Let pandoc convert markdown and write to the document.
 
-        convert_file(self._tempFile, self._FILE_EXTENSION, format='markdown_strict',
+        convert_file(self._TEMP_FILE, self._FILE_EXTENSION, format='markdown_strict',
                      outputfile=self.filePath)
-
-        os.remove(self._tempFile)
+        os.remove(self._TEMP_FILE)
 
         if os.path.isfile(self.filePath):
-            return message.replace(self._tempFile, self.filePath)
+            return message.replace(self._TEMP_FILE, self.filePath)
 
         else:
             return 'ERROR: Could not create "' + self.filePath + '".'

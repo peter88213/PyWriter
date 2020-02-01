@@ -18,8 +18,7 @@ from pywriter.model.xform import *
 
 
 class Yw7File(PywFile):
-    """yWriter 7 xml project file representation.
-    """
+    """yWriter 7 xml project file representation."""
 
     _FILE_EXTENSION = '.yw7'
     # overwrites PywFile._FILE_EXTENSION

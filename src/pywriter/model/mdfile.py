@@ -62,12 +62,10 @@ class MdFile(PywFile):
             return 'ERROR: "' + self._filePath + '" not found.'
 
         text = to_yw7(text)
-
         sceneText = []
         scId = ''
         chId = ''
         inScene = False
-
         lines = text.split('\n')
 
         for line in lines:

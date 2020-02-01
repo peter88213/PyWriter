@@ -36,44 +36,16 @@ class SceneList(PywFile):
     Represents a csv file with a record per scene.
     * Records are separated by line breaks.
     * Data fields are delimited by the SEPARATOR character.
-
-    # Attributes
-
-    _text : str
-        contains the parsed data.
-
-    _collectText : bool
-        simple parsing state indicator. 
-        True means: the data returned by the html parser 
-        belongs to the body section. 
-
-    # Methods
-
-    read : str
-        parse the csv file located at filePath, fetching 
-        the Scene attributes contained.
-        Return a message beginning with SUCCESS or ERROR. 
-
-    write : str
-        Arguments 
-            novel : Novel
-                the data to be written. 
-        Generate a csv file containing per scene:
-        - manuscript scene hyperlink, 
-        - scene title,
-        - scene description.
-        Return a message beginning with SUCCESS or ERROR.
-
-    get_structure : None
-        Return None to prevent structural comparison.
     """
 
     _FILE_EXTENSION = 'csv'
     # overwrites PywFile._FILE_EXTENSION
 
     def read(self) -> str:
-        """Read data from a csv file containing scene attributes. """
-
+        """Parse the csv file located at filePath, 
+        fetching the Scene attributes contained.
+        Return a message beginning with SUCCESS or ERROR.
+        """
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
                 table = (f.readlines())
@@ -102,7 +74,15 @@ class SceneList(PywFile):
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
     def write(self, novel: Novel) -> str:
-        """Write scene attributes to csv file. """
+        """Generate a csv file containing per scene:
+        - A manuscript scene hyperlink, 
+        - scene title,
+        - scene summary, 
+        - scene word count, 
+        - scene letter count,
+        - scene tags.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         # Copy the scene's attributes to write
 
@@ -133,11 +113,11 @@ class SceneList(PywFile):
                     if not self.scenes[scId].isUnused:
 
                         if self.scenes[scId].summary is not None:
-                            sceneDesc = self.scenes[scId].summary.rstrip(
+                            sceneSummary = self.scenes[scId].summary.rstrip(
                             ).replace('\n', LINEBREAK)
 
                         else:
-                            sceneDesc = ''
+                            sceneSummary = ''
 
                         sceneTags = self.scenes[scId].tags
 
@@ -149,7 +129,7 @@ class SceneList(PywFile):
                                      + SEPARATOR
                                      + self.scenes[scId].title
                                      + SEPARATOR
-                                     + sceneDesc
+                                     + sceneSummary
                                      + SEPARATOR
                                      + str(self.scenes[scId].wordCount)
                                      + SEPARATOR
@@ -168,4 +148,5 @@ class SceneList(PywFile):
         return 'SUCCESS: "' + self._filePath + '" saved.'
 
     def get_structure(self) -> None:
+        """This file format has no comparable structure."""
         return None

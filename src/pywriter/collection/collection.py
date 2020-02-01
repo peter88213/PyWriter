@@ -16,8 +16,7 @@ from pywriter.model.xform import *
 
 
 class Collection():
-    """Represents collection of yWriter projects. 
-    """
+    """Represents collection of yWriter projects. """
 
     _FILE_EXTENSION = 'pwc'
 
@@ -192,8 +191,7 @@ class Collection():
             return 'ERROR'
 
     def add_series(self, serTitle: str) -> None:
-        """Instantiate a Series object and append it to the srtSeries list.
-        """
+        """Instantiate a Series object and append it to the srtSeries list."""
         for series in self.srtSeries:
             if series.title == serTitle:
                 return

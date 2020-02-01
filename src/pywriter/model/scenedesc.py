@@ -18,8 +18,7 @@ HTML_HEADING_MARKERS = ("h3", "h2")
 
 
 class SceneDesc(Manuscript):
-    """HTML file representation of an yWriter project's scene summaries.
-    """
+    """HTML file representation of an yWriter project's scene summaries."""
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
