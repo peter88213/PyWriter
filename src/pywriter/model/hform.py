@@ -71,7 +71,6 @@ def to_html(text: str) -> str:
     """Convert yw7 raw markup to html. """
 
     try:
-        #text = text.replace('\n\n', '\n')
         text = text.replace('\n', '</p>\n<p class="firstlineindent">')
         text = text.replace('[i]', '<em>')
         text = text.replace('[/i]', '</em>')
@@ -83,6 +82,38 @@ def to_html(text: str) -> str:
         pass
 
     return text
+
+
+def strip_markup(text: str) -> str:
+    """Strip yw7 raw markup. """
+
+    try:
+        text = text.replace('[i]', '')
+        text = text.replace('[/i]', '')
+        text = text.replace('[b]', '')
+        text = text.replace('[/b]', '')
+
+    except:
+        pass
+
+    return text
+
+
+def read_html_file(filePath: str) -> tuple:
+
+    try:
+        with open(filePath, 'r', encoding='utf-8') as f:
+            text = (f.read())
+    except:
+        # HTML files exported by a word processor may be ANSI encoded.
+        try:
+            with open(filePath, 'r') as f:
+                text = (f.read())
+
+        except(FileNotFoundError):
+            return ('ERROR: "' + filePath + '" not found.', None)
+
+    return ('SUCCESS', text)
 
 
 if __name__ == '__main__':

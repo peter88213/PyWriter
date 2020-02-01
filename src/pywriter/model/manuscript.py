@@ -126,19 +126,12 @@ class Manuscript(PywFile, HTMLParser):
     def read(self) -> str:
         """Read data from html file with chapter and scene sections. """
 
-        try:
-            with open(self._filePath, 'r', encoding='utf-8') as f:
-                text = (f.read())
-        except:
-            # HTML files exported by a word processor may be ANSI encoded.
-            try:
-                with open(self._filePath, 'r') as f:
-                    text = (f.read())
+        result = read_html_file(self._filePath)
 
-            except(FileNotFoundError):
-                return '\nERROR: "' + self._filePath + '" not found.'
+        if result[0].startswith('ERROR'):
+            return (result[0])
 
-        text = to_yw7(text)
+        text = to_yw7(result[1])
 
         # Invoke HTML parser.
 

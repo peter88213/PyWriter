@@ -56,6 +56,21 @@ class SceneDesc(Manuscript):
         elif tag == 'p':
             self._lines.append('\n')
 
+    def read(self) -> str:
+        """Read data from html file with chapter and scene sections. """
+
+        result = read_html_file(self._filePath)
+
+        if result[0].startswith('ERROR'):
+            return (result[0])
+
+        text = strip_markup(to_yw7(result[1]))
+
+        # Invoke HTML parser.
+
+        self.feed(text)
+        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
+
     def write(self, novel: Novel) -> str:
         """Write novel attributes to html file.  """
 
@@ -115,7 +130,9 @@ class SceneDesc(Manuscript):
                         lines.append(
                             '<!-- ' + self.scenes[scId].title + ' -->\n')
 
-                        lines.append(to_html(self.scenes[scId].desc))
+                        if self.scenes[scId].desc is not None:
+                            lines.append(to_html(self.scenes[scId].desc))
+
                         lines.append('</p>\n')
                         lines.append('</div>\n')
 
