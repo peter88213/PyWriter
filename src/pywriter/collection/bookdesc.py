@@ -114,11 +114,14 @@ class BookDesc(HTMLParser):
             self._lines = []
             self._collectText = False
 
+        elif tag == 'p':
+            self._lines.append('\n')
+
     def handle_data(self, data):
         """HTML parser: Collect paragraphs within chapter description. """
 
         if self._collectText:
-            self._lines.append(data + '\n')
+            self._lines.append(data.rstrip().lstrip())
 
     def read(self, series: Series, collection: Collection) -> str:
         """Read series attributes from html file.  """

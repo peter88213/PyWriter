@@ -72,19 +72,12 @@ class PartDesc(ChapterDesc):
                     lines.append('<div id="ChID:' + chId + '">\n')
                     lines.append('<p class="firstlineindent">')
 
-                    try:
-                        entry = self.chapters[chId].desc
+                    if self.chapters[chId].desc is not None:
+                        lines.append(to_html(self.chapters[chId].desc))
 
-                        if entry == '':
-                            entry = self.chapters[chId].title
-
-                        else:
-                            entry = to_html(entry)
-
-                        lines.append(entry)
-
-                    except(KeyError):
-                        pass
+                    else:
+                        lines.append(
+                            '<!-- ' + self.chapters[chId].title + ' -->')
 
                     lines.append('</p>\n')
                     lines.append('</div>\n')
@@ -99,6 +92,3 @@ class PartDesc(ChapterDesc):
             return 'ERROR: ' + self._filePath + '" is write protected.'
 
         return 'SUCCESS: "' + self._filePath + '" saved.'
-
-    def get_structure(self) -> None:
-        return None

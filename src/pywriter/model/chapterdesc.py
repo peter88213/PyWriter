@@ -8,11 +8,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
-from pywriter.model.manuscript import Manuscript
+from pywriter.model.scenedesc import SceneDesc
 from pywriter.model.hform import *
 
 
-class ChapterDesc(Manuscript):
+class ChapterDesc(SceneDesc):
     """HTML file representation of an yWriter project's chapter descriptions part.
 
     Represents a html file with chapter sections containing chapter 
@@ -27,10 +27,6 @@ class ChapterDesc(Manuscript):
     handle_endtag
         recognize the end ot the chapter section and save data.
         Overwrites HTMLparser.handle_endtag()
-
-    handle_data
-        copy the chapter description.
-        Overwrites HTMLparser.handle_data()
 
     write : str
         Arguments 
@@ -67,11 +63,8 @@ class ChapterDesc(Manuscript):
             self._lines = []
             self._collectText = False
 
-    def handle_data(self, data):
-        """HTML parser: Collect paragraphs within chapter description. """
-
-        if self._collectText:
-            self._lines.append(data + '\n')
+        elif tag == 'p':
+            self._lines.append('\n')
 
     def write(self, novel: Novel) -> str:
         """Write novel attributes to html file. """
@@ -115,19 +108,12 @@ class ChapterDesc(Manuscript):
                     lines.append('<div id="ChID:' + chId + '">\n')
                     lines.append('<p class="firstlineindent">')
 
-                    try:
-                        entry = self.chapters[chId].desc
+                    if self.chapters[chId].desc is not None:
+                        lines.append(to_html(self.chapters[chId].desc))
 
-                        if entry == '':
-                            entry = self.chapters[chId].title
-
-                        else:
-                            entry = to_html(entry)
-
-                        lines.append(entry)
-
-                    except(KeyError):
-                        pass
+                    else:
+                        lines.append(
+                            '<!-- ' + self.chapters[chId].title + ' -->')
 
                     lines.append('</p>\n')
                     lines.append('</div>\n')
@@ -142,6 +128,3 @@ class ChapterDesc(Manuscript):
             return 'ERROR: ' + self._filePath + '" is write protected.'
 
         return 'SUCCESS: "' + self._filePath + '" saved.'
-
-    def get_structure(self) -> None:
-        return None
