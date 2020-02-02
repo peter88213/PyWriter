@@ -1,4 +1,4 @@
-"""SceneDesc - Class for scene summary. file operations and parsing.
+"""BookDesc - Class for book summary. file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -9,24 +9,23 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from html.parser import HTMLParser
 
 from pywriter.model.hform import *
-from pywriter.collection.book import Book
 from pywriter.collection.series import Series
 from pywriter.collection.collection import Collection
 
 
 class BookDesc(HTMLParser):
-    """HTML file representation of a series containing
-    a series description and the series' book descriptions 
+    """HTML file representation of a book series containing
+    a series summary and the series' book summaries 
     """
 
     _FILE_EXTENSION = 'html'
 
     def __init__(self, filePath: str) -> None:
         HTMLParser.__init__(self)
+        self._seriesSummary = ''
+        self._bookSummary = {}
         self._lines = []
         self._bkId = None
-        self._desc = ''
-        self._bookSummary = {}
         self._collectText = False
         self._filePath = None
         self.filePath = filePath
@@ -57,13 +56,13 @@ class BookDesc(HTMLParser):
                     self._collectText = True
 
     def handle_endtag(self, tag):
-        """Recognize the end ot the book section and save data.
+        """Recognize the end ot the series or book section and save data.
         Overwrites HTMLparser.handle_endtag().
         """
         if tag == 'div' and self._collectText:
 
             if self._bkId is None:
-                self._desc = ''.join(self._lines)
+                self._seriesSummary = ''.join(self._lines)
 
             else:
                 self._bookSummary[self._bkId] = ''.join(self._lines)
@@ -86,26 +85,18 @@ class BookDesc(HTMLParser):
         fetching the Series and book descriptions.
         Return a message beginning with SUCCESS or ERROR.
         """
+        result = read_html_file(self._filePath)
 
-        try:
-            with open(self._filePath, 'r', encoding='utf-8') as f:
-                text = (f.read())
-        except:
-            # HTML files exported by a word processor may be ANSI encoded.
-            try:
-                with open(self._filePath, 'r') as f:
-                    text = (f.read())
+        if result[0].startswith('ERROR'):
+            return (result[0])
 
-            except(FileNotFoundError):
-                return '\nERROR: "' + self._filePath + '" not found.'
-
-        text = to_yw7(text)
+        text = strip_markup(to_yw7(result[1]))
 
         # Invoke HTML parser.
 
         self.feed(text)
 
-        series.summary = self._desc
+        series.summary = self._seriesSummary
 
         for bkId in self._bookSummary:
             collection.books[bkId].summary = self._bookSummary[bkId]

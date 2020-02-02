@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.model.plotlist import PlotList
+from pywriter.plot.plotlist import PlotList
 from pywriter.converter.cnv_runner import CnvRunner
 
 

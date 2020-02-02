@@ -12,7 +12,7 @@ import unittest
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
-from pywriter.model.plotlist import PlotList
+from pywriter.plot.plotlist import PlotList
 
 
 TEST_PATH = os.getcwd()

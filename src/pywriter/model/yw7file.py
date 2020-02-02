@@ -58,8 +58,8 @@ class Yw7File(PywFile):
         # Open the file again and let ElementTree parse its xml structure.
 
         try:
-            self.tree = ET.parse(self._filePath)
-            root = self.tree.getroot()
+            self._tree = ET.parse(self._filePath)
+            root = self._tree.getroot()
 
         except:
             return 'ERROR: Can not process "' + self._filePath + '".'
@@ -193,7 +193,7 @@ class Yw7File(PywFile):
                 '''
 
         sceneCount = 0
-        root = self.tree.getroot()
+        root = self._tree.getroot()
 
         for prj in root.iter('PROJECT'):
             prj.find('Title').text = self.title
@@ -300,7 +300,7 @@ class Yw7File(PywFile):
         tree = ET.ElementTree(root)
 
         try:
-            self.tree.write(self._filePath, encoding='utf-8')
+            self._tree.write(self._filePath, encoding='utf-8')
 
         except(PermissionError):
             return 'ERROR: "' + self._filePath + '" is write protected.'
