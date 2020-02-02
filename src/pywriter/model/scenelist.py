@@ -27,6 +27,8 @@ TABLE_HEADER = ('Scene link'
                 + 'Letter count'
                 + SEPARATOR
                 + 'Tags'
+                + SEPARATOR
+                + 'Scene notes'
                 + '\n')
 
 
@@ -56,10 +58,12 @@ class SceneList(PywFile):
         if table[0] != TABLE_HEADER:
             return 'ERROR: Wrong table content.'
 
+        fieldsInRecord = len(TABLE_HEADER.split(SEPARATOR))
+
         for record in table:
             field = record.split(SEPARATOR)
 
-            if len(field) != 6:
+            if len(field) != fieldsInRecord:
                 return 'ERROR: Wrong field structure.'
 
             if 'ScID:' in field[0]:
@@ -70,6 +74,8 @@ class SceneList(PywFile):
                 #self.scenes[scId].wordCount = int(field[3])
                 #self.scenes[scId].letterCount = int(field[4])
                 self.scenes[scId].tags = field[5].split(';')
+                self.scenes[scId].sceneNotes = field[6].replace(
+                    LINEBREAK, '\n')
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
@@ -124,6 +130,13 @@ class SceneList(PywFile):
                         if sceneTags is None:
                             sceneTags = ['']
 
+                        if self.scenes[scId].sceneNotes is not None:
+                            sceneNotes = self.scenes[scId].sceneNotes.rstrip(
+                            ).replace('\n', LINEBREAK)
+
+                        else:
+                            sceneNotes = ''
+
                         table.append('=HYPERLINK("file:///'
                                      + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
                                      + SEPARATOR
@@ -136,6 +149,8 @@ class SceneList(PywFile):
                                      + str(self.scenes[scId].letterCount)
                                      + SEPARATOR
                                      + ';'.join(sceneTags)
+                                     + SEPARATOR
+                                     + sceneNotes
                                      + '\n')
 
         try:

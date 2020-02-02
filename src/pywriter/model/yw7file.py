@@ -113,7 +113,9 @@ class Yw7File(PywFile):
                 self.scenes[scId].sceneNotes = scn.find('Notes').text
 
             if scn.find('Tags') is not None:
-                self.scenes[scId].tags = scn.find('Tags').text.split(';')
+
+                if scn.find('Tags').text is not None:
+                    self.scenes[scId].tags = scn.find('Tags').text.split(';')
 
             if scn.find('Unused') is not None:
                 self.scenes[scId].isUnused = True

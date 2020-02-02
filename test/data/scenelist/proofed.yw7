@@ -35,7 +35,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <LaTeXHeaderFile><![CDATA[ ]]></LaTeXHeaderFile>
     <MRUSpecificDate>1899-12-30</MRUSpecificDate>
     <MRUSpecificTime>00:00:00</MRUSpecificTime>
-    <LastViewedScID>19</LastViewedScID>
+    <LastViewedScID>1</LastViewedScID>
     <DeadlineDate1>2004-09-01</DeadlineDate1>
     <DeadlineDate2>2004-12-14</DeadlineDate2>
     <DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -187,6 +187,7 @@ Always short of money, Hal has arranged an interview with his financial backers 
 Hal doesn't have any money, so Vurdi says he'll take an arm or leg instead, and sets Brutus on him.
 During the scuffle, Hal manages to tell Vurdi that he accepted a cargo job earlier in the day, and will use the proceeds to settle his debts. Vurdi is suspicious, but calls Brutus off and gives Hal 24 hours.
 After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer (the Navcom), reviewing the cargo jobs he's been offered. He chooses the one which sounds less risky than the others, a freight job offered by the Jerling corporation. The Navcom objects, reminding Hal that he turned it down earlier because he thought it involved stolen goods. Hal doesn't care - he can't afford to be choosy any more.]]></Desc>
+      <Tags><![CDATA[Exposition]]></Tags>
       <ImageFile><![CDATA[Hal3Launch10.jpg]]></ImageFile>
       <Notes><![CDATA[This is a note. Notice how the N icon shows up when there's a note attached to a scene.]]></Notes>
       <BelongsToChID>1</BelongsToChID>
@@ -228,7 +229,6 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 "Shall I add those titles to your basket?"
 
 . . .]]></SceneContent>
-      <Tags><![CDATA[Exposition]]></Tags>
     </SCENE>
     <SCENE>
       <ID>2</ID>
@@ -260,7 +260,8 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
 		</Items>
       <SceneContent><![CDATA[On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
 . . .]]></SceneContent>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[This is the catalyst that sets the protagonist’s adventure in motion. The inciting incident is a crucial beat in the three-act story structure: without it, the story in question wouldn’t exist. The inciting incident proposes a journey to the protagonist — one that could help them change their situation and achieve their goal.]]></Notes>
+      <Tags><![CDATA[Inciting Incident]]></Tags>
     </SCENE>
     <SCENE>
       <ID>3</ID>
@@ -294,7 +295,8 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
 "You're only saying that because you're losing."
 
 . . .]]></SceneContent>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>4</ID>
@@ -326,7 +328,8 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
 "No thanks. Vurdi's robot might be hanging around."
 
 . . .]]></SceneContent>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>5</ID>
@@ -357,7 +360,8 @@ Hal drives off, oblivious to the flames starting to flicker around the fallen ro
 Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the [i]Black Gull[/i] was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
 
 . . .]]></SceneContent>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>6</ID>
@@ -390,7 +394,8 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 "Humans tell lies about the most trivial matters."
 
 . . .]]></SceneContent>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>7</ID>
@@ -419,7 +424,8 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
 
 . . .]]></SceneContent>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[It’s full speed ahead now! No more hemming and hawing for your character: the First Plot Point represents the protagonist’s decision to engage with whatever action the inciting incident has sent their way.]]></Notes>
+      <Tags><![CDATA[Plot Point One]]></Tags>
     </SCENE>
     <SCENE>
       <ID>8</ID>
@@ -457,7 +463,8 @@ Clunk sat up straight. "Please open the connection."
 "Call Jerling and get me a loan. I need three hundred in cash for landing fees and fuel."
 "I don't think he'll lend you any money," said Clunk dubiously.
 . . .]]></SceneContent>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>9</ID>
@@ -495,7 +502,8 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 "You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"
 
 . . .]]></SceneContent>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>10</ID>
@@ -503,6 +511,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
       <Desc><![CDATA[Aboard the Black Gull, Clunk wrenches panels off the walls looking for a fire extinguisher. Crunches the winch controls, lowering a hook to the ground and spooling all the cable out with it. Finally gets the extinguisher and heads outside.
 He finds the source of the fire - the maintenance robot which Hal disabled. Clunk drags it out of the area, then returns and uses the fire extinguisher on the flames.
 Clunk's battery starts to run low. He continues. As the fire extinguisher begins to run low, the fuel pipes explode near the back of the ship. A piece of debris hits Clunk in the head and he falls to the ground, stunned.]]></Desc>
+      <Tags><![CDATA[Pinch Point]]></Tags>
       <BelongsToChID>5</BelongsToChID>
       <RTFFile><![CDATA[RTF_00010.rtf]]></RTFFile>
       <Field1>1</Field1>
@@ -526,7 +535,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 "The reel just fell off," said the Navcom.
 
 . . .]]></SceneContent>
-      <Tags><![CDATA[Pinch Point;undecided]]></Tags>
+      <Notes><![CDATA[]]></Notes>
     </SCENE>
     <SCENE>
       <ID>12</ID>
@@ -549,7 +558,8 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
       <Items>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>15</ID>
@@ -575,11 +585,13 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>17</ID>
       <Title><![CDATA[Climb up rope to safety. Back in ship for hyperspace.]]></Title>
+      <Desc><![CDATA[Spoiler ends here.]]></Desc>
       <BelongsToChID>8</BelongsToChID>
       <RTFFile><![CDATA[RTF_00013.rtf]]></RTFFile>
       <Field1>1</Field1>
@@ -597,8 +609,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
-      <Desc><![CDATA[Spoiler ends here.]]></Desc>
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>19</ID>
@@ -621,7 +633,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>22</ID>
@@ -644,7 +657,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>25</ID>
@@ -667,7 +681,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>27</ID>
@@ -690,7 +705,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>29</ID>
@@ -713,7 +729,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>31</ID>
@@ -736,7 +753,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>34</ID>
@@ -759,11 +777,13 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>38</ID>
       <Title><![CDATA[Karl waiting impatiently]]></Title>
+      <Tags />
       <BelongsToChID>15</BelongsToChID>
       <RTFFile><![CDATA[RTF_00021.rtf]]></RTFFile>
       <Field1>1</Field1>
@@ -782,7 +802,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[Plot Point]]></Tags>
+      <Notes><![CDATA[]]></Notes>
     </SCENE>
     <SCENE>
       <ID>40</ID>
@@ -805,7 +825,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>43</ID>
@@ -828,7 +849,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>45</ID>
@@ -851,7 +873,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>47</ID>
@@ -874,7 +897,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>49</ID>
@@ -897,7 +921,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>51</ID>
@@ -920,7 +945,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[Return to the protagonist’s main goal to establish what this Midpoint event should be. What would have to happen for them to feel that their goal is being directly threatened? What could make the character even more acutely aware of the stakes at hand?]]></Notes>
+      <Tags><![CDATA[Midpoint]]></Tags>
     </SCENE>
     <SCENE>
       <ID>53</ID>
@@ -943,7 +969,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>55</ID>
@@ -966,7 +993,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>57</ID>
@@ -989,7 +1017,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>60</ID>
@@ -1012,7 +1041,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>62</ID>
@@ -1035,7 +1065,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>64</ID>
@@ -1058,7 +1089,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>66</ID>
@@ -1081,7 +1113,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>68</ID>
@@ -1104,7 +1137,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[Our poor protagonist has fallen on hard times. They thought they were making headway on their goal and then the Midpoint came and threw them off their rhythm.]]></Notes>
+      <Tags><![CDATA[Plot Point Two]]></Tags>
     </SCENE>
     <SCENE>
       <ID>71</ID>
@@ -1127,7 +1161,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>74</ID>
@@ -1150,7 +1185,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>77</ID>
@@ -1173,7 +1209,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>79</ID>
@@ -1196,7 +1233,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>81</ID>
@@ -1219,7 +1257,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>84</ID>
@@ -1242,7 +1281,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>86</ID>
@@ -1265,7 +1305,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>89</ID>
@@ -1288,7 +1329,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>92</ID>
@@ -1311,7 +1353,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>94</ID>
@@ -1334,7 +1377,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>96</ID>
@@ -1357,7 +1401,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>98</ID>
@@ -1380,7 +1425,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>101</ID>
@@ -1403,7 +1449,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[Also called “The Dark Night of the Soul,” Act Three starts with the final clash between the protagonist and the antagonist. We’ve experienced the entire journey with the main character — but this is where we get our first glimpse of the antagonist’s true strength, and it usually catches the main character off guard. Even though most readers are aware that the protagonist typically wins the day, we should have some doubt here about how the last act will play out, and if the main character will be okay.]]></Notes>
+      <Tags><![CDATA[Pre Climax]]></Tags>
     </SCENE>
     <SCENE>
       <ID>103</ID>
@@ -1426,7 +1473,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>105</ID>
@@ -1449,7 +1497,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>108</ID>
@@ -1472,7 +1521,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>110</ID>
@@ -1495,7 +1545,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>112</ID>
@@ -1518,7 +1569,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>114</ID>
@@ -1541,7 +1593,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[]]></Notes>
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>116</ID>
@@ -1564,7 +1617,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[The climax signifies the final moments of the story’s overarching conflict. Since the antagonist has just hit the protagonist where it hurts in the previous beat, the protagonist has to lick their wounds. Then they face-off one more time and the main character lays the conflict to rest.]]></Notes>
+      <Tags><![CDATA[Climax]]></Tags>
     </SCENE>
     <SCENE>
       <ID>119</ID>
@@ -1587,7 +1641,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Tags><![CDATA[]]></Tags>
+      <Notes><![CDATA[Finally, the dust settles. If the protagonist’s goal is not immediately obtained during the Climax, the denouement is where this should be achieved (or redefined, if their goal changed during Act Three).]]></Notes>
+      <Tags><![CDATA[Denouement]]></Tags>
     </SCENE>
     <SCENE>
       <ID>58</ID>
@@ -1613,7 +1668,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
     <SCENE>
       <ID>120</ID>
       <Title><![CDATA[Information about the sample project]]></Title>
-      <BelongsToChID>33</BelongsToChID>
+      <Unused>-1</Unused>
+      <BelongsToChID>34</BelongsToChID>
       <RTFFile><![CDATA[RTF_00058.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
@@ -1641,12 +1697,14 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
   <CHAPTERS>
     <CHAPTER>
       <ID>33</ID>
-      <Title><![CDATA[Info]]></Title>
+      <Title><![CDATA[Act 1]]></Title>
+      <Desc><![CDATA[The hero and his world.]]></Desc>
       <SortOrder>1</SortOrder>
+      <Fields>
+        <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+        <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+      </Fields>
       <Type>1</Type>
-      <Scenes>
-        <ScID>120</ScID>
-      </Scenes>
     </CHAPTER>
     <CHAPTER>
       <ID>1</ID>
@@ -1727,9 +1785,24 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       </Scenes>
     </CHAPTER>
     <CHAPTER>
+      <ID>35</ID>
+      <Title><![CDATA[Act 2]]></Title>
+      <Desc><![CDATA[Action!]]></Desc>
+      <SortOrder>10</SortOrder>
+      <Fields>
+        <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+        <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+      </Fields>
+      <Type>1</Type>
+    </CHAPTER>
+    <CHAPTER>
       <ID>9</ID>
       <Title><![CDATA[Chapter 9]]></Title>
-      <SortOrder>10</SortOrder>
+      <SortOrder>11</SortOrder>
+      <Fields>
+        <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+        <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+      </Fields>
       <Type>0</Type>
       <Scenes>
         <ScID>19</ScID>
@@ -1738,7 +1811,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>10</ID>
       <Title><![CDATA[Chapter 10]]></Title>
-      <SortOrder>11</SortOrder>
+      <SortOrder>12</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>22</ScID>
@@ -1747,7 +1820,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>11</ID>
       <Title><![CDATA[Chapter 11]]></Title>
-      <SortOrder>12</SortOrder>
+      <SortOrder>13</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>25</ScID>
@@ -1757,7 +1830,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>12</ID>
       <Title><![CDATA[Chapter 12]]></Title>
-      <SortOrder>13</SortOrder>
+      <SortOrder>14</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>29</ScID>
@@ -1767,7 +1840,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>13</ID>
       <Title><![CDATA[Chapter 13]]></Title>
-      <SortOrder>14</SortOrder>
+      <SortOrder>15</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>34</ScID>
@@ -1776,13 +1849,13 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>14</ID>
       <Title><![CDATA[Chapter 14]]></Title>
-      <SortOrder>15</SortOrder>
+      <SortOrder>16</SortOrder>
       <Type>0</Type>
     </CHAPTER>
     <CHAPTER>
       <ID>15</ID>
       <Title><![CDATA[Chapter 15]]></Title>
-      <SortOrder>16</SortOrder>
+      <SortOrder>17</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>38</ScID>
@@ -1792,7 +1865,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>16</ID>
       <Title><![CDATA[Chapter 16]]></Title>
-      <SortOrder>17</SortOrder>
+      <SortOrder>18</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>43</ScID>
@@ -1802,7 +1875,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>17</ID>
       <Title><![CDATA[Chapter 17]]></Title>
-      <SortOrder>18</SortOrder>
+      <SortOrder>19</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>47</ScID>
@@ -1812,7 +1885,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>18</ID>
       <Title><![CDATA[Chapter 18]]></Title>
-      <SortOrder>19</SortOrder>
+      <SortOrder>20</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>51</ScID>
@@ -1822,7 +1895,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>19</ID>
       <Title><![CDATA[Chapter 19]]></Title>
-      <SortOrder>20</SortOrder>
+      <SortOrder>21</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>55</ScID>
@@ -1832,7 +1905,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>20</ID>
       <Title><![CDATA[Chapter 20]]></Title>
-      <SortOrder>21</SortOrder>
+      <SortOrder>22</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>60</ScID>
@@ -1843,7 +1916,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>21</ID>
       <Title><![CDATA[Chapter 21]]></Title>
-      <SortOrder>22</SortOrder>
+      <SortOrder>23</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>66</ScID>
@@ -1853,7 +1926,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>22</ID>
       <Title><![CDATA[Chapter 22]]></Title>
-      <SortOrder>23</SortOrder>
+      <SortOrder>24</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>71</ScID>
@@ -1862,7 +1935,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>23</ID>
       <Title><![CDATA[Chapter 23]]></Title>
-      <SortOrder>24</SortOrder>
+      <SortOrder>25</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>74</ScID>
@@ -1871,7 +1944,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>24</ID>
       <Title><![CDATA[Chapter 24]]></Title>
-      <SortOrder>25</SortOrder>
+      <SortOrder>26</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>77</ScID>
@@ -1880,9 +1953,20 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       </Scenes>
     </CHAPTER>
     <CHAPTER>
+      <ID>36</ID>
+      <Title><![CDATA[Act 3]]></Title>
+      <Desc><![CDATA[Solution.]]></Desc>
+      <SortOrder>27</SortOrder>
+      <Fields>
+        <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+        <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+      </Fields>
+      <Type>1</Type>
+    </CHAPTER>
+    <CHAPTER>
       <ID>25</ID>
       <Title><![CDATA[Chapter 25]]></Title>
-      <SortOrder>26</SortOrder>
+      <SortOrder>28</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>84</ScID>
@@ -1892,7 +1976,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>26</ID>
       <Title><![CDATA[Chapter 26]]></Title>
-      <SortOrder>27</SortOrder>
+      <SortOrder>29</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>89</ScID>
@@ -1901,7 +1985,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>27</ID>
       <Title><![CDATA[Chapter 27]]></Title>
-      <SortOrder>28</SortOrder>
+      <SortOrder>30</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>92</ScID>
@@ -1911,7 +1995,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>28</ID>
       <Title><![CDATA[Chapter 28]]></Title>
-      <SortOrder>29</SortOrder>
+      <SortOrder>31</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>96</ScID>
@@ -1921,7 +2005,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>29</ID>
       <Title><![CDATA[Chapter 29]]></Title>
-      <SortOrder>30</SortOrder>
+      <SortOrder>32</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>101</ScID>
@@ -1932,7 +2016,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>30</ID>
       <Title><![CDATA[Chapter 30]]></Title>
-      <SortOrder>31</SortOrder>
+      <SortOrder>33</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>108</ScID>
@@ -1943,7 +2027,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>31</ID>
       <Title><![CDATA[Chapter 31]]></Title>
-      <SortOrder>32</SortOrder>
+      <SortOrder>34</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>114</ScID>
@@ -1953,10 +2037,24 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>32</ID>
       <Title><![CDATA[Chapter 32]]></Title>
-      <SortOrder>33</SortOrder>
+      <SortOrder>35</SortOrder>
       <Type>0</Type>
       <Scenes>
         <ScID>119</ScID>
+      </Scenes>
+    </CHAPTER>
+    <CHAPTER>
+      <ID>34</ID>
+      <Title><![CDATA[Trash]]></Title>
+      <Desc><![CDATA[This chapter was created automatically to hold deleted scenes.]]></Desc>
+      <Unused>-1</Unused>
+      <SortOrder>36</SortOrder>
+      <Fields>
+        <Field_IsTrash>1</Field_IsTrash>
+      </Fields>
+      <Type>0</Type>
+      <Scenes>
+        <ScID>120</ScID>
       </Scenes>
     </CHAPTER>
   </CHAPTERS>
@@ -1983,8 +2081,8 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     </WC>
     <WC>
       <Date>2020-02-01</Date>
-      <Count>1266</Count>
-      <TotalCount>1330</TotalCount>
+      <Count>1218</Count>
+      <TotalCount>1284</TotalCount>
     </WC>
   </WCLog>
 </YWRITER7>

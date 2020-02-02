@@ -119,7 +119,7 @@ class NrmOpr(unittest.TestCase):
                          read_file(PROOFED_YW7))
 
     def tearDown(self):
-        remove_all_testfiles()
+        '''remove_all_testfiles()'''
 
 
 def main():
