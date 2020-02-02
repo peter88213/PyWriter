@@ -3,6 +3,7 @@
 /src/__pycache__/
 /src/pywriter/__pycache__/
 /src/pywriter/model/__pycache__/
+/src/pywriter/plot/__pycache__/
 /src/pywriter/converter/__pycache__/
 /src/pywriter/collection/__pycache__/
 /src/pywriter/technical/__pycache__/
