@@ -19,6 +19,10 @@ class Scene():
         self.summary = None
         # str
 
+        self._sceneContent = None
+        # str
+        # Scene text with yW7 raw markup.
+
         self.wordCount = None
         # int
         # To be updated by the sceneContent setter
@@ -36,9 +40,17 @@ class Scene():
         self.sceneNotes = None
         # str
 
-        self._sceneContent = None
+        self.field1 = None
         # str
-        # Scene text with yW7 raw markup.
+
+        self.field2 = None
+        # str
+
+        self.field3 = None
+        # str
+
+        self.field4 = None
+        # str
 
     @property
     def sceneContent(self) -> str:

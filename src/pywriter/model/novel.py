@@ -17,6 +17,18 @@ class Novel():
         self.summary = None
         # str
 
+        self.fieldTitle1 = None
+        # str
+
+        self.fieldTitle2 = None
+        # str
+
+        self.fieldTitle3 = None
+        # str
+
+        self.fieldTitle4 = None
+        # str
+
         self.chapters = {}
         # key = chapter ID, value = Chapter object.
         # The order of the elements does not matter (the novel's

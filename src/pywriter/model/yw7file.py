@@ -64,10 +64,16 @@ class Yw7File(PywFile):
         except:
             return 'ERROR: Can not process "' + self._filePath + '".'
 
-        for prj in root.iter('PROJECT'):
-            self.title = prj.find('Title').text
-            if prj.find('Desc') is not None:
-                self.summary = prj.find('Desc').text
+        prj = root.find('PROJECT')
+        self.title = prj.find('Title').text
+
+        if prj.find('Desc') is not None:
+            self.summary = prj.find('Desc').text
+
+        self.fieldTitle1 = prj.find('FieldTitle1').text
+        self.fieldTitle2 = prj.find('FieldTitle2').text
+        self.fieldTitle3 = prj.find('FieldTitle3').text
+        self.fieldTitle4 = prj.find('FieldTitle4').text
 
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
@@ -112,6 +118,18 @@ class Yw7File(PywFile):
             if scn.find('Notes') is not None:
                 self.scenes[scId].sceneNotes = scn.find('Notes').text
 
+            if scn.find('Field1') is not None:
+                self.scenes[scId].field1 = scn.find('Field1').text
+
+            if scn.find('Field2') is not None:
+                self.scenes[scId].field2 = scn.find('Field2').text
+
+            if scn.find('Field3') is not None:
+                self.scenes[scId].field3 = scn.find('Field3').text
+
+            if scn.find('Field4') is not None:
+                self.scenes[scId].field4 = scn.find('Field4').text
+
             if scn.find('Tags') is not None:
 
                 if scn.find('Tags').text is not None:
@@ -141,6 +159,18 @@ class Yw7File(PywFile):
         if novel.summary is not None:
             self.summary = novel.summary
 
+        if novel.fieldTitle1 is not None:
+            self.fieldTitle1 = novel.fieldTitle1
+
+        if novel.fieldTitle2 is not None:
+            self.fieldTitle2 = novel.fieldTitle2
+
+        if novel.fieldTitle3 is not None:
+            self.fieldTitle3 = novel.fieldTitle3
+
+        if novel.fieldTitle4 is not None:
+            self.fieldTitle4 = novel.fieldTitle4
+
         '''Do not modify these items yet:
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
@@ -156,14 +186,26 @@ class Yw7File(PywFile):
                 if novel.scenes[scId].summary is not None:
                     self.scenes[scId].summary = novel.scenes[scId].summary
 
+                if novel.scenes[scId].sceneContent is not None:
+                    self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
+
                 if novel.scenes[scId].sceneNotes is not None:
                     self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
 
+                if novel.scenes[scId].field1 is not None:
+                    self.scenes[scId].field1 = novel.scenes[scId].field1
+
+                if novel.scenes[scId].field2 is not None:
+                    self.scenes[scId].field2 = novel.scenes[scId].field2
+
+                if novel.scenes[scId].field3 is not None:
+                    self.scenes[scId].field3 = novel.scenes[scId].field3
+
+                if novel.scenes[scId].field4 is not None:
+                    self.scenes[scId].field4 = novel.scenes[scId].field4
+
                 if novel.scenes[scId].tags is not None:
                     self.scenes[scId].tags = novel.scenes[scId].tags
-
-                if novel.scenes[scId].sceneContent is not None:
-                    self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
 
                 '''Do not modify these items yet:
                 if novel.scenes[scId].isUnused is not None:
@@ -196,18 +238,21 @@ class Yw7File(PywFile):
 
         sceneCount = 0
         root = self._tree.getroot()
+        prj = root.find('PROJECT')
+        prj.find('Title').text = self.title
+        prj.find('FieldTitle1').text = self.fieldTitle1
+        prj.find('FieldTitle2').text = self.fieldTitle2
+        prj.find('FieldTitle3').text = self.fieldTitle3
+        prj.find('FieldTitle4').text = self.fieldTitle4
 
-        for prj in root.iter('PROJECT'):
-            prj.find('Title').text = self.title
+        if self.summary is not None:
 
-            if self.summary is not None:
+            if prj.find('Desc') is None:
+                newDesc = ET.SubElement(prj, 'Desc')
+                newDesc.text = self.summary
 
-                if prj.find('Desc') is None:
-                    newDesc = ET.SubElement(prj, 'Desc')
-                    newDesc.text = self.summary
-
-                else:
-                    prj.find('Desc').text = self.summary
+            else:
+                prj.find('Desc').text = self.summary
 
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
@@ -276,6 +321,42 @@ class Yw7File(PywFile):
 
                     else:
                         scn.find('Notes').text = self.scenes[scId].sceneNotes
+
+                if self.scenes[scId].field1 is not None:
+
+                    if scn.find('Field1') is None:
+                        newField = ET.SubElement(scn, 'Field1')
+                        newField.text = self.scenes[scId].field1
+
+                    else:
+                        scn.find('Field1').text = self.scenes[scId].field1
+
+                if self.scenes[scId].field2 is not None:
+
+                    if scn.find('Field2') is None:
+                        newField = ET.SubElement(scn, 'Field2')
+                        newField.text = self.scenes[scId].field2
+
+                    else:
+                        scn.find('Field2').text = self.scenes[scId].field2
+
+                if self.scenes[scId].field3 is not None:
+
+                    if scn.find('Field3') is None:
+                        newField = ET.SubElement(scn, 'Field3')
+                        newField.text = self.scenes[scId].field3
+
+                    else:
+                        scn.find('Field3').text = self.scenes[scId].field3
+
+                if self.scenes[scId].field4 is not None:
+
+                    if scn.find('Field4') is None:
+                        newField = ET.SubElement(scn, 'Field4')
+                        newField.text = self.scenes[scId].field4
+
+                    else:
+                        scn.find('Field4').text = self.scenes[scId].field4
 
                 if self.scenes[scId].tags is not None:
 
