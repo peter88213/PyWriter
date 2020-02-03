@@ -56,10 +56,12 @@ class PlotList(PywFile):
         if table[0] != TABLE_HEADER:
             return 'ERROR: Wrong table content.'
 
+        fieldsInRecord = len(TABLE_HEADER.split(SEPARATOR))
+
         for record in table:
             field = record.split(SEPARATOR)
 
-            if len(field) != 5:
+            if len(field) != fieldsInRecord:
                 return 'ERROR: Wrong field structure.'
 
             if 'ChID:' in field[0]:

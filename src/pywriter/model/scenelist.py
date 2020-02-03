@@ -29,6 +29,14 @@ TABLE_HEADER = ('Scene link'
                 + 'Tags'
                 + SEPARATOR
                 + 'Scene notes'
+                + SEPARATOR
+                + 'Field 1'
+                + SEPARATOR
+                + 'Field 2'
+                + SEPARATOR
+                + 'Field 3'
+                + SEPARATOR
+                + 'Field 4'
                 + '\n')
 
 
@@ -55,8 +63,10 @@ class SceneList(PywFile):
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
+        '''
         if table[0] != TABLE_HEADER:
             return 'ERROR: Wrong table content.'
+        '''
 
         fieldsInRecord = len(TABLE_HEADER.split(SEPARATOR))
 
@@ -101,12 +111,40 @@ class SceneList(PywFile):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
+        if novel.fieldTitle1 is not None:
+            self.fieldTitle1 = novel.fieldTitle1
+
+        else:
+            self.fieldTitle1 = 'Field 1'
+
+        if novel.fieldTitle2 is not None:
+            self.fieldTitle2 = novel.fieldTitle2
+
+        else:
+            self.fieldTitle2 = 'Field 2'
+
+        if novel.fieldTitle3 is not None:
+            self.fieldTitle3 = novel.fieldTitle3
+
+        else:
+            self.fieldTitle3 = 'Field 3'
+
+        if novel.fieldTitle4 is not None:
+            self.fieldTitle4 = novel.fieldTitle4
+
+        else:
+            self.fieldTitle4 = 'Field 4'
+
         odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
             ' ', '%20').replace('_scenes.csv', '_manuscript.odt')
 
         # first record: the table's column headings
 
-        table = [TABLE_HEADER]
+        table = [TABLE_HEADER.replace(
+            'Field 1', self.fieldTitle1).replace(
+            'Field 2', self.fieldTitle2).replace(
+            'Field 3', self.fieldTitle3).replace(
+            'Field 4', self.fieldTitle4)]
 
         # Add a record for each used scene in a regular chapter
 
@@ -137,6 +175,18 @@ class SceneList(PywFile):
                         else:
                             sceneNotes = ''
 
+                        if self.scenes[scId].field1 is None:
+                            self.scenes[scId].field1 = ''
+
+                        if self.scenes[scId].field2 is None:
+                            self.scenes[scId].field2 = ''
+
+                        if self.scenes[scId].field3 is None:
+                            self.scenes[scId].field3 = ''
+
+                        if self.scenes[scId].field4 is None:
+                            self.scenes[scId].field4 = ''
+
                         table.append('=HYPERLINK("file:///'
                                      + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
                                      + SEPARATOR
@@ -151,6 +201,14 @@ class SceneList(PywFile):
                                      + ';'.join(sceneTags)
                                      + SEPARATOR
                                      + sceneNotes
+                                     + SEPARATOR
+                                     + self.scenes[scId].field1
+                                     + SEPARATOR
+                                     + self.scenes[scId].field2
+                                     + SEPARATOR
+                                     + self.scenes[scId].field3
+                                     + SEPARATOR
+                                     + self.scenes[scId].field4
                                      + '\n')
 
         try:
