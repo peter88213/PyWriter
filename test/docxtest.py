@@ -58,7 +58,7 @@ def remove_all_testfiles():
     except:
         pass
     try:
-        os.removedirs(EXEC_PATH + '/word')
+        os.rmdir(EXEC_PATH + '/word')
     except:
         pass
 
