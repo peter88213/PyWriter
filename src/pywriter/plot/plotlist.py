@@ -111,12 +111,8 @@ class PlotList(PywFile):
 
                 if self.chapters[chId].chType == 1:
 
-                    if self.chapters[chId].summary is not None:
-                        chapterDesc = self.chapters[chId].summary.rstrip(
-                        ).replace('\n', LINEBREAK)
-
-                    else:
-                        chapterDesc = ''
+                    if self.chapters[chId].summary is None:
+                        self.chapters[chId].summary = ''
 
                     table.append('ChID:' + chId
                                  + SEPARATOR
@@ -124,7 +120,7 @@ class PlotList(PywFile):
                                  + SEPARATOR
                                  + SEPARATOR
                                  + SEPARATOR
-                                 + chapterDesc
+                                 + self.chapters[chId].summary.rstrip().replace('\n', LINEBREAK)
                                  + '\n')
 
                 else:
@@ -132,27 +128,21 @@ class PlotList(PywFile):
 
                         if (not self.scenes[scId].isUnused) and (self.scenes[scId].tags != [] or self.scenes[scId].sceneNotes != ''):
 
-                            if self.scenes[scId].sceneNotes is not None:
-                                sceneNotes = self.scenes[scId].sceneNotes.rstrip(
-                                ).replace('\n', LINEBREAK)
+                            if self.scenes[scId].sceneNotes is None:
+                                self.scenes[scId].sceneNotes = ''
 
-                            else:
-                                sceneNotes = ''
-
-                            sceneTags = self.scenes[scId].tags
-
-                            if sceneTags is None:
-                                sceneTags = ['']
+                            if self.scenes[scId].tags is None:
+                                self.scenes[scId].tags = ['']
 
                             table.append('=HYPERLINK("file:///'
                                          + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
                                          + SEPARATOR
                                          + SEPARATOR
-                                         + ';'.join(sceneTags)
+                                         + ';'.join(self.scenes[scId].tags)
                                          + SEPARATOR
                                          + self.scenes[scId].title
                                          + SEPARATOR
-                                         + sceneNotes
+                                         + self.scenes[scId].sceneNotes.rstrip().replace('\n', LINEBREAK)
                                          + '\n')
 
         try:

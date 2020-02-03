@@ -156,24 +156,14 @@ class SceneList(PywFile):
 
                     if not self.scenes[scId].isUnused:
 
-                        if self.scenes[scId].summary is not None:
-                            sceneSummary = self.scenes[scId].summary.rstrip(
-                            ).replace('\n', LINEBREAK)
+                        if self.scenes[scId].summary is None:
+                            self.scenes[scId].summary = ''
 
-                        else:
-                            sceneSummary = ''
+                        if self.scenes[scId].tags is None:
+                            self.scenes[scId].tags = ['']
 
-                        sceneTags = self.scenes[scId].tags
-
-                        if sceneTags is None:
-                            sceneTags = ['']
-
-                        if self.scenes[scId].sceneNotes is not None:
-                            sceneNotes = self.scenes[scId].sceneNotes.rstrip(
-                            ).replace('\n', LINEBREAK)
-
-                        else:
-                            sceneNotes = ''
+                        if self.scenes[scId].sceneNotes is None:
+                            self.scenes[scId].sceneNotes = ''
 
                         if self.scenes[scId].field1 is None:
                             self.scenes[scId].field1 = ''
@@ -192,15 +182,15 @@ class SceneList(PywFile):
                                      + SEPARATOR
                                      + self.scenes[scId].title
                                      + SEPARATOR
-                                     + sceneSummary
+                                     + self.scenes[scId].summary.rstrip().replace('\n', LINEBREAK)
                                      + SEPARATOR
                                      + str(self.scenes[scId].wordCount)
                                      + SEPARATOR
                                      + str(self.scenes[scId].letterCount)
                                      + SEPARATOR
-                                     + ';'.join(sceneTags)
+                                     + ';'.join(self.scenes[scId].tags)
                                      + SEPARATOR
-                                     + sceneNotes
+                                     + self.scenes[scId].sceneNotes.rstrip().replace('\n', LINEBREAK)
                                      + SEPARATOR
                                      + self.scenes[scId].field1
                                      + SEPARATOR
