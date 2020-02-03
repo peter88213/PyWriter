@@ -516,7 +516,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
       <RTFFile><![CDATA[RTF_00010.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
-      <Field3>1</Field3>
+      <Field3>4</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>31</WordCount>
@@ -545,7 +545,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
       <RTFFile><![CDATA[RTF_00011.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
-      <Field3>1</Field3>
+      <Field3>6</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
@@ -572,7 +572,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <RTFFile><![CDATA[RTF_00012.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
-      <Field3>1</Field3>
+      <Field3>7</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
@@ -596,7 +596,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <RTFFile><![CDATA[RTF_00013.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
-      <Field3>1</Field3>
+      <Field3>9</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
@@ -620,7 +620,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
-      <Field4>1</Field4>
+      <Field4>3</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
       <LetterCount>1</LetterCount>
@@ -644,7 +644,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
-      <Field4>1</Field4>
+      <Field4>3</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
       <LetterCount>1</LetterCount>
@@ -713,7 +713,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Title><![CDATA[Hal depressed. No escape from here.]]></Title>
       <BelongsToChID>12</BelongsToChID>
       <RTFFile><![CDATA[RTF_00018.rtf]]></RTFFile>
-      <Field1>1</Field1>
+      <Field1>6</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
       <Field4>1</Field4>
@@ -737,7 +737,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Title><![CDATA[Lighten the ship. Preparing for liftoff.]]></Title>
       <BelongsToChID>12</BelongsToChID>
       <RTFFile><![CDATA[RTF_00019.rtf]]></RTFFile>
-      <Field1>1</Field1>
+      <Field1>6</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
       <Field4>1</Field4>

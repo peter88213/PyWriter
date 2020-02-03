@@ -58,34 +58,38 @@ class SceneList(PywFile):
         """
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
-                table = (f.readlines())
+                lines = (f.readlines())
 
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
         '''
-        if table[0] != TABLE_HEADER:
-            return 'ERROR: Wrong table content.'
+        if lines[0] != TABLE_HEADER:
+            return 'ERROR: Wrong lines content.'
         '''
 
-        fieldsInRecord = len(TABLE_HEADER.split(SEPARATOR))
+        cellsInLine = len(TABLE_HEADER.split(SEPARATOR))
 
-        for record in table:
-            field = record.split(SEPARATOR)
+        for line in lines:
+            cell = line.rstrip().split(SEPARATOR)
 
-            if len(field) != fieldsInRecord:
-                return 'ERROR: Wrong field structure.'
+            if len(cell) != cellsInLine:
+                return 'ERROR: Wrong cell structure.'
 
-            if 'ScID:' in field[0]:
-                scId = re.search('ScID\:([0-9]+)', field[0]).group(1)
+            if 'ScID:' in cell[0]:
+                scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
                 self.scenes[scId] = Scene()
-                self.scenes[scId].title = field[1]
-                self.scenes[scId].summary = field[2].replace(LINEBREAK, '\n')
-                #self.scenes[scId].wordCount = int(field[3])
-                #self.scenes[scId].letterCount = int(field[4])
-                self.scenes[scId].tags = field[5].split(';')
-                self.scenes[scId].sceneNotes = field[6].replace(
+                self.scenes[scId].title = cell[1]
+                self.scenes[scId].summary = cell[2].replace(LINEBREAK, '\n')
+                #self.scenes[scId].wordCount = int(cell[3])
+                #self.scenes[scId].letterCount = int(cell[4])
+                self.scenes[scId].tags = cell[5].split(';')
+                self.scenes[scId].sceneNotes = cell[6].replace(
                     LINEBREAK, '\n')
+                self.scenes[scId].field1 = cell[7]
+                self.scenes[scId].field2 = cell[8]
+                self.scenes[scId].field3 = cell[9]
+                self.scenes[scId].field4 = cell[10]
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 

@@ -48,34 +48,34 @@ class PlotList(PywFile):
         """
         try:
             with open(self._filePath, 'r', encoding='utf-8') as f:
-                table = (f.readlines())
+                lines = (f.readlines())
 
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
-        if table[0] != TABLE_HEADER:
-            return 'ERROR: Wrong table content.'
+        if lines[0] != TABLE_HEADER:
+            return 'ERROR: Wrong lines content.'
 
-        fieldsInRecord = len(TABLE_HEADER.split(SEPARATOR))
+        cellsInLine = len(TABLE_HEADER.split(SEPARATOR))
 
-        for record in table:
-            field = record.split(SEPARATOR)
+        for line in lines:
+            cell = line.rstrip().split(SEPARATOR)
 
-            if len(field) != fieldsInRecord:
-                return 'ERROR: Wrong field structure.'
+            if len(cell) != cellsInLine:
+                return 'ERROR: Wrong cell structure.'
 
-            if 'ChID:' in field[0]:
-                chId = re.search('ChID\:([0-9]+)', field[0]).group(1)
+            if 'ChID:' in cell[0]:
+                chId = re.search('ChID\:([0-9]+)', cell[0]).group(1)
                 self.chapters[chId] = Chapter()
-                self.chapters[chId].title = field[1]
-                self.chapters[chId].summary = field[4].replace(LINEBREAK, '\n')
+                self.chapters[chId].title = cell[1]
+                self.chapters[chId].summary = cell[4].replace(LINEBREAK, '\n')
 
-            if 'ScID:' in field[0]:
-                scId = re.search('ScID\:([0-9]+)', field[0]).group(1)
+            if 'ScID:' in cell[0]:
+                scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
                 self.scenes[scId] = Scene()
-                self.scenes[scId].tags = field[2].split(';')
-                self.scenes[scId].title = field[3]
-                self.scenes[scId].sceneNotes = field[4].replace(
+                self.scenes[scId].tags = cell[2].split(';')
+                self.scenes[scId].title = cell[3]
+                self.scenes[scId].sceneNotes = cell[4].replace(
                     LINEBREAK, '\n')
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
