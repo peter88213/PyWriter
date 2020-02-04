@@ -7,7 +7,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.model.yw7file import Yw7File
-from pywriter.model.pywfile import PywFile
+from pywriter.model.novel import Novel
 
 
 class Yw7Cnv():
@@ -19,15 +19,15 @@ class Yw7Cnv():
         Arguments
             yw7File : Yw7File
                 an object representing the source file.
-            documentFile : PywFile
-                a PywFile subclass instance representing the target file.
+            documentFile : Novel
+                a Novel subclass instance representing the target file.
         Read .yw7 file, parse xml and create a document file.
         Return a message beginning with SUCCESS or ERROR.    
 
     document_to_yw7 : str
         Arguments
-            documentFile : PywFile
-                a PywFile subclass instance representing the source file.
+            documentFile : Novel
+                a Novel subclass instance representing the source file.
             yw7File : Yw7File
                 an object representing the target file.
         Read document file, convert its content to xml, and replace .yw7 file.
@@ -42,7 +42,7 @@ class Yw7Cnv():
         This method is to be overwritten by subclasses with an user interface.
     """
 
-    def yw7_to_document(self, yw7File: Yw7File, documentFile: PywFile) -> str:
+    def yw7_to_document(self, yw7File: Yw7File, documentFile: Novel) -> str:
         """Read .yw7 file and convert xml to a document file."""
         if yw7File.is_locked():
             return 'ERROR: yWriter 7 seems to be open. Please close first.'
@@ -62,7 +62,7 @@ class Yw7Cnv():
 
         return documentFile.write(yw7File)
 
-    def document_to_yw7(self, documentFile: PywFile, yw7File: Yw7File) -> str:
+    def document_to_yw7(self, documentFile: Novel, yw7File: Yw7File) -> str:
         """Read document file, convert its content to xml, and replace .yw7 file."""
         if yw7File.is_locked():
             return 'ERROR: yWriter 7 seems to be open. Please close first.'

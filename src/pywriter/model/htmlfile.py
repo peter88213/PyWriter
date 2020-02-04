@@ -9,7 +9,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from html.parser import HTMLParser
 
 from pywriter.model.novel import Novel
-from pywriter.model.pywfile import PywFile
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.hform import *
@@ -20,7 +19,7 @@ HTML_HEADING_MARKERS = ("h2", "h1")
 # 1 is for a chapter beginning a section
 
 
-class HtmlFile(PywFile, HTMLParser):
+class HtmlFile(Novel, HTMLParser):
     """HTML file representation of an yWriter project's OfficeFile part.
 
     Represents a html file with visible chapter and scene tags 
@@ -28,10 +27,10 @@ class HtmlFile(PywFile, HTMLParser):
     """
 
     _FILE_EXTENSION = 'html'
-    # overwrites PywFile._FILE_EXTENSION
+    # overwrites Novel._FILE_EXTENSION
 
     def __init__(self, filePath: str) -> None:
-        PywFile.__init__(self, filePath)
+        Novel.__init__(self, filePath)
         HTMLParser.__init__(self)
         self._lines = []
         self._collectText = False

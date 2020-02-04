@@ -9,7 +9,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 
 from pywriter.model.novel import Novel
-from pywriter.model.pywfile import PywFile
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 
@@ -19,7 +18,7 @@ MD_HEADING_MARKERS = ("##", "#")
 # 1 is for a chapter beginning a section
 
 
-class MdFile(PywFile):
+class MdFile(Novel):
     """Markdown file representation of an yWriter project's OfficeFile part. 
 
     Represents a Markdown file with visible chapter and scene tags 
@@ -27,7 +26,7 @@ class MdFile(PywFile):
     """
 
     _FILE_EXTENSION = 'md'
-    # overwrites PywFile._FILE_EXTENSION
+    # overwrites Novel._FILE_EXTENSION
 
     def read(self) -> str:
         """Parse the Markdown file located at filePath, 

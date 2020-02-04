@@ -10,7 +10,6 @@ import os
 import re
 
 from pywriter.model.novel import Novel
-from pywriter.model.pywfile import PywFile
 from pywriter.model.scene import Scene
 
 SEPARATOR = '|'     # delimits data fields within a record.
@@ -40,7 +39,7 @@ TABLE_HEADER = ('Scene link'
                 + '\n')
 
 
-class SceneList(PywFile):
+class SceneList(Novel):
     """csv file representation of an yWriter project's scenes table. 
 
     Represents a csv file with a record per scene.
@@ -49,7 +48,7 @@ class SceneList(PywFile):
     """
 
     _FILE_EXTENSION = 'csv'
-    # overwrites PywFile._FILE_EXTENSION
+    # overwrites Novel._FILE_EXTENSION
 
     def read(self) -> str:
         """Parse the csv file located at filePath, 

@@ -11,20 +11,19 @@ import re
 import xml.etree.ElementTree as ET
 
 from pywriter.model.novel import Novel
-from pywriter.model.pywfile import PywFile
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.xform import *
 
 
-class Yw7File(PywFile):
+class Yw7File(Novel):
     """yWriter 7 xml project file representation."""
 
     _FILE_EXTENSION = '.yw7'
     # overwrites PywFile._FILE_EXTENSION
 
     def __init__(self, filePath: str) -> None:
-        PywFile.__init__(self, filePath)
+        Novel.__init__(self, filePath)
         self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc', 'FieldTitle1', 'FieldTitle2', 'FieldTitle3', 'FieldTitle4',
                            'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
         # Names of yw7 xml elements containing CDATA.

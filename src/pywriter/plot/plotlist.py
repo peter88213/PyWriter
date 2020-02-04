@@ -10,7 +10,6 @@ import os
 import re
 
 from pywriter.model.novel import Novel
-from pywriter.model.pywfile import PywFile
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 
@@ -29,7 +28,7 @@ TABLE_HEADER = ('ID'
                 + '\n')
 
 
-class PlotList(PywFile):
+class PlotList(Novel):
     """csv file representation of an yWriter project's scenes table. 
 
     Represents a csv file with a record per scene.
@@ -38,7 +37,7 @@ class PlotList(PywFile):
     """
 
     _FILE_EXTENSION = 'csv'
-    # overwrites PywFile._FILE_EXTENSION
+    # overwrites Novel._FILE_EXTENSION
     _FILE_SUFFIX = '_plot'
 
     def read(self) -> str:

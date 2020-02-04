@@ -10,7 +10,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from tkinter import *
 from tkinter import messagebox
 
-from pywriter.model.pywfile import PywFile
+from pywriter.model.novel import Novel
 from pywriter.model.yw7file import Yw7File
 from pywriter.converter.yw7cnv import Yw7Cnv
 
@@ -28,14 +28,14 @@ class CnvRunner(Yw7Cnv):
             Either an .yw7 file or a file of any supported type. 
             The file type determines the conversion's direction.    
 
-        document : PywFile
-            instance of any PywFile subclass representing the 
+        document : Novel
+            instance of any Novel subclass representing the 
             source or target document. 
 
         extension : str
             File extension determining the source or target 
             document's file type. The extension is needed because 
-            there can be ambiguous PywFile subclasses 
+            there can be ambiguous Novel subclasses 
             (e.g. OfficeFile).
             Examples: 
             - md
@@ -59,7 +59,7 @@ class CnvRunner(Yw7Cnv):
     """
 
     def __init__(self, sourcePath: str,
-                 document: PywFile,
+                 document: Novel,
                  extension: str,
                  silentMode: bool = True,
                  suffix: str = '') -> None:
@@ -93,7 +93,7 @@ class CnvRunner(Yw7Cnv):
             root.mainloop()
 
     def __run(self, sourcePath: str,
-              document: PywFile,
+              document: Novel,
               extension: str,
               suffix: str) -> None:
         """Determine the direction and invoke the converter. """
