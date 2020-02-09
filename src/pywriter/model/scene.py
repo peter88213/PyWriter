@@ -53,11 +53,11 @@ class Scene():
         # str
 
     @property
-    def sceneContent(self) -> str:
+    def sceneContent(self):
         return self._sceneContent
 
     @sceneContent.setter
-    def sceneContent(self, text: str) -> None:
+    def sceneContent(self, text):
         """Set sceneContent updating word count and letter count."""
         self._sceneContent = text
         text = re.sub('\[.+?\]|\.|\,| -', '', self._sceneContent)

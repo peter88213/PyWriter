@@ -13,7 +13,7 @@ from pywriter.model.scenedesc import SceneDesc
 from pywriter.converter.cnv_runner import CnvRunner
 
 
-def run(sourcePath: str, silentMode: bool = True) -> None:
+def run(sourcePath, silentMode = True):
     document = SceneDesc('')
     converter = CnvRunner(sourcePath, document, 'html',
                           silentMode, '_scenes')

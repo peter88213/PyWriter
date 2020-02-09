@@ -13,7 +13,7 @@ from pywriter.model.scenelist import SceneList
 from pywriter.converter.cnv_runner import CnvRunner
 
 
-def run(sourcePath: str, silentMode: bool = True) -> None:
+def run(sourcePath, silentMode = True):
     document = SceneList('')
     converter = CnvRunner(sourcePath, document, 'csv', silentMode, '_scenes')
 

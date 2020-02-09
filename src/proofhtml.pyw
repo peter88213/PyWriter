@@ -13,7 +13,7 @@ from pywriter.model.htmlfile import HtmlFile
 from pywriter.converter.cnv_runner import CnvRunner
 
 
-def run(sourcePath: str, silentMode: bool = True) -> None:
+def run(sourcePath, silentMode = True):
     document = HtmlFile('')
     converter = CnvRunner(sourcePath, document, 'html', silentMode)
 

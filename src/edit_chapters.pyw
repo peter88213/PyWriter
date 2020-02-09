@@ -13,7 +13,7 @@ from pywriter.model.chapterdesc import ChapterDesc
 from pywriter.converter.cnv_runner import CnvRunner
 
 
-def run(sourcePath: str, silentMode: bool = True) -> None:
+def run(sourcePath, silentMode = True):
     document = ChapterDesc('')
     converter = CnvRunner(sourcePath, document, 'html',
                           silentMode, '_chapters')

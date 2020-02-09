@@ -42,7 +42,7 @@ class Yw7Cnv():
         This method is to be overwritten by subclasses with an user interface.
     """
 
-    def yw7_to_document(self, yw7File: Yw7File, documentFile: Novel) -> str:
+    def yw7_to_document(self, yw7File: Yw7File, documentFile):
         """Read .yw7 file and convert xml to a document file."""
         if yw7File.is_locked():
             return 'ERROR: yWriter 7 seems to be open. Please close first.'
@@ -62,7 +62,7 @@ class Yw7Cnv():
 
         return documentFile.write(yw7File)
 
-    def document_to_yw7(self, documentFile: Novel, yw7File: Yw7File) -> str:
+    def document_to_yw7(self, documentFile, yw7File):
         """Read document file, convert its content to xml, and replace .yw7 file."""
         if yw7File.is_locked():
             return 'ERROR: yWriter 7 seems to be open. Please close first.'
@@ -105,6 +105,6 @@ class Yw7Cnv():
 
         return yw7File.write(documentFile)
 
-    def confirm_overwrite(self, fileName: str) -> bool:
+    def confirm_overwrite(self, fileName):
         """To be overwritten by subclasses with UI."""
         return True

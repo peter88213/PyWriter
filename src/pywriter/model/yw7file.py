@@ -22,7 +22,7 @@ class Yw7File(Novel):
     _FILE_EXTENSION = '.yw7'
     # overwrites PywFile._FILE_EXTENSION
 
-    def __init__(self, filePath: str) -> None:
+    def __init__(self, filePath):
         Novel.__init__(self, filePath)
         self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc', 'FieldTitle1', 'FieldTitle2', 'FieldTitle3', 'FieldTitle4',
                            'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
@@ -30,7 +30,7 @@ class Yw7File(Novel):
         # ElementTree.write omits CDATA tags, so they have to be inserted
         # afterwards.
 
-    def read(self) -> str:
+    def read(self):
         """Parse the yw7 xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
@@ -144,7 +144,7 @@ class Yw7File(Novel):
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel: Novel) -> str:
+    def write(self, novel):
         """Open the yw7 xml file located at filePath and replace a set 
         of items by the novel attributes not being None.
         Return a message beginning with SUCCESS or ERROR.
@@ -395,7 +395,7 @@ class Yw7File(Novel):
 
         return 'SUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".'
 
-    def is_locked(self) -> bool:
+    def is_locked(self):
         """Test whether a .lock file placed by yWriter exists.
         """
         if os.path.isfile(self._filePath + '.lock'):

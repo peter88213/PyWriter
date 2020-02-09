@@ -14,7 +14,7 @@ from pywriter.model.hform import *
 class PartDesc(ChapterDesc):
     """HTML file representation of an yWriter project's parts summaries."""
 
-    def write(self, novel: Novel) -> str:
+    def write(self, novel):
         """Write part summaries to a html file.
 
         Parts are chapters marked  "Other".
@@ -25,7 +25,7 @@ class PartDesc(ChapterDesc):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def to_html(text: str) -> str:
+        def to_html(text):
             """Convert yw7 raw markup """
             try:
                 text = text.replace('\n\n', '\n')

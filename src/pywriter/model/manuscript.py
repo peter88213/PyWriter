@@ -30,7 +30,7 @@ class Manuscript(Novel, HTMLParser):
     _FILE_EXTENSION = 'html'
     # overwrites Novel._FILE_EXTENSION
 
-    def __init__(self, filePath: str) -> None:
+    def __init__(self, filePath):
         Novel.__init__(self, filePath)
         HTMLParser.__init__(self)
         self._lines = []
@@ -82,7 +82,7 @@ class Manuscript(Novel, HTMLParser):
         if self._scId is not None:
             self._lines.append(data.rstrip().lstrip())
 
-    def read(self) -> str:
+    def read(self):
         """Read scene content from a html file 
         with chapter and scene sections.
         Return a message beginning with SUCCESS or ERROR. 
@@ -99,7 +99,7 @@ class Manuscript(Novel, HTMLParser):
         self.feed(text)
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel: Novel) -> str:
+    def write(self, novel):
         """Generate a html file containing:
         - chapter sections containing:
             - chapter headings,
@@ -110,7 +110,7 @@ class Manuscript(Novel, HTMLParser):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def format_chapter_title(text: str) -> str:
+        def format_chapter_title(text):
             """Fix auto-chapter titles for non-English """
             text = text.replace('Chapter ', '')
             return text
@@ -184,6 +184,6 @@ class Manuscript(Novel, HTMLParser):
 
         return 'SUCCESS: "' + self._filePath + '" saved.'
 
-    def get_structure(self) -> None:
+    def get_structure(self):
         """This file format has no comparable structure."""
         return None

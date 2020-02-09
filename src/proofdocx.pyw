@@ -13,7 +13,7 @@ from pywriter.model.officefile import OfficeFile
 from pywriter.converter.cnv_runner import CnvRunner
 
 
-def run(sourcePath: str, silentMode: bool = True) -> None:
+def run(sourcePath, silentMode = True):
     document = OfficeFile('')
     converter = CnvRunner(sourcePath, document, 'docx', silentMode)
 

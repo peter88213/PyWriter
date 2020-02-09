@@ -13,7 +13,7 @@ from pywriter.model.yw7file import Yw7File
 class Book():
     """yWriter book representation."""
 
-    def __init__(self, filePath: str) -> None:
+    def __init__(self, filePath):
         self.title = ''
         self.summary = ''
         self.wordCount = 0
@@ -21,7 +21,7 @@ class Book():
         self.filePath = filePath
         self.retrieve_book_data()
 
-    def retrieve_book_data(self) -> None:
+    def retrieve_book_data(self):
         """Open the yw7 file, read title and summary, 
         and compute word count and letter count.
         """
@@ -39,7 +39,7 @@ class Book():
 
         del book
 
-    def put_book_data(self) -> None:
+    def put_book_data(self):
         """Open the yw7 file, write title and summary."""
         book = Yw7File(self.filePath)
         book.read()

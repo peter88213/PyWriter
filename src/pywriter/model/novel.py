@@ -20,7 +20,7 @@ class Novel():
     _FILE_EXTENSION = ''
     # To be extended by file format specific subclasses.
 
-    def __init__(self, filePath: str) -> None:
+    def __init__(self, filePath):
         self.title = None
         # str
 
@@ -63,28 +63,28 @@ class Novel():
         self.filePath = filePath
 
     @property
-    def filePath(self) -> str:
+    def filePath(self):
         return self._filePath
 
     @filePath.setter
-    def filePath(self, filePath: str) -> None:
+    def filePath(self, filePath):
         """Accept only filenames with the right extension. """
         if filePath.lower().endswith(self._FILE_EXTENSION):
             self._filePath = filePath
 
     @abstractmethod
-    def read(self) -> None:
+    def read(self):
         """Parse the file and store selected properties.
         To be overwritten by file format specific subclasses.
         """
 
     @abstractmethod
-    def write(self, novel: object) -> None:
+    def write(self, novel):
         """Write selected novel properties to the file.
         To be overwritten by file format specific subclasses.
         """
 
-    def file_exists(self) -> bool:
+    def file_exists(self):
         """Check whether the file specified by _filePath exists. """
         if os.path.isfile(self._filePath):
             return True
@@ -92,7 +92,7 @@ class Novel():
         else:
             return False
 
-    def get_structure(self) -> str:
+    def get_structure(self):
         """returns a string showing the order of chapters and scenes 
         as a tree. The result can be used to compare two Novel objects 
         by their structure.

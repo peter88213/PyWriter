@@ -13,7 +13,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 
 
-def convert_file(srcFile: str, dstFormat: str, format: str = '', outputfile: str = '', extra_args: list = []) -> str:
+def convert_file(srcFile, dstFormat, format = '', outputfile = '', extra_args: list = []):
     """Pandoc wrapper emulating the pypandoc.convert_file functon. """
 
     extraArgs = ' '

@@ -23,7 +23,7 @@ class OfficeFile(MdFile):
     _FILE_EXTENSIONS = ['docx', 'odt']
     _TEMP_FILE = 'temp.md'
 
-    def __init__(self, filePath: str) -> None:
+    def __init__(self, filePath):
         MdFile.__init__(self, 'temp.md')
 
         self._filePath = None
@@ -38,18 +38,18 @@ class OfficeFile(MdFile):
         self.filePath = filePath
 
     @property
-    def filePath(self) -> str:
+    def filePath(self):
         return self._filePath
 
     @filePath.setter
-    def filePath(self, documentPath: str) -> None:
+    def filePath(self, documentPath):
         nameParts = documentPath.split('.')
         fileExt = nameParts[len(nameParts) - 1]
         if fileExt in self._FILE_EXTENSIONS:
             self._FILE_EXTENSION = fileExt
             self._filePath = documentPath
 
-    def read(self) -> str:
+    def read(self):
         """Let pandoc read the document file and convert to markdown.
         Parse the Markdown file, fetching the Novel's attributes.
         Return a message beginning with SUCCESS or ERROR. 
@@ -80,7 +80,7 @@ class OfficeFile(MdFile):
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel: Novel) -> str:
+    def write(self, novel):
         """Generate an intermediate Markdown file containing:
         - chapter ID tags,
         - chapter headings,

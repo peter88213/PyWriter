@@ -28,13 +28,13 @@ class MdFile(Novel):
     _FILE_EXTENSION = 'md'
     # overwrites Novel._FILE_EXTENSION
 
-    def read(self) -> str:
+    def read(self):
         """Parse the Markdown file located at filePath, 
         fetching the scene content.
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def to_yw7(text: str) -> str:
+        def to_yw7(text):
             """Convert markdown to yw7 raw markup. """
 
             text = text.replace('<sub>', '')
@@ -93,7 +93,7 @@ class MdFile(Novel):
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel: Novel) -> str:
+    def write(self, novel):
         """Generate a Markdown file containing:
         - chapter ID tags,
         - chapter headings,
@@ -102,13 +102,13 @@ class MdFile(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def format_chapter_title(text: str) -> str:
+        def format_chapter_title(text):
             """Fix auto-chapter titles for non-English. """
 
             text = text.replace('Chapter ', '')
             return text
 
-        def to_md(text: str) -> str:
+        def to_md(text):
             """Convert yw7 specific markup. """
 
             text = text.replace('\n\n', '\n&nbsp;\n')

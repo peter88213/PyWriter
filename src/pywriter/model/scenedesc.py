@@ -39,7 +39,7 @@ class SceneDesc(Manuscript):
             if tag == 'div':
                 self._chId = None
 
-    def read(self) -> str:
+    def read(self):
         """Read scene summaries from a html file 
         with chapter and scene sections.
         Return a message beginning with SUCCESS or ERROR. 
@@ -56,7 +56,7 @@ class SceneDesc(Manuscript):
         self.feed(text)
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel: Novel) -> str:
+    def write(self, novel):
         """Generate a html file containing:
         - chapter sections containing:
             - chapter headings,
@@ -67,12 +67,12 @@ class SceneDesc(Manuscript):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def format_chapter_title(text: str) -> str:
+        def format_chapter_title(text):
             """Fix auto-chapter titles for non-English """
             text = text.replace('Chapter ', '')
             return text
 
-        def to_html(text: str) -> str:
+        def to_html(text):
             """Convert yw7 raw markup """
             try:
                 text = text.replace('\n\n', '\n')

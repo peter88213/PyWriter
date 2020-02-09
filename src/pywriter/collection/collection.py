@@ -20,7 +20,7 @@ class Collection():
 
     _FILE_EXTENSION = 'pwc'
 
-    def __init__(self, filePath: str) -> None:
+    def __init__(self, filePath):
         self.books = {}
         self.srtSeries = []
         self._filePath = None
@@ -28,16 +28,16 @@ class Collection():
         self._cdataTags = ['Title', 'Desc', 'Path']
 
     @property
-    def filePath(self) -> str:
+    def filePath(self):
         return self._filePath
 
     @filePath.setter
-    def filePath(self, filePath: str) -> None:
+    def filePath(self, filePath):
         """Accept only filenames with the right extension. """
         if filePath.lower().endswith(self._FILE_EXTENSION):
             self._filePath = filePath
 
-    def read(self) -> str:
+    def read(self):
         """Parse the pwc xml file located at filePath, 
         fetching the Collection attributes.
         Return a message beginning with SUCCESS or ERROR.
@@ -91,7 +91,7 @@ class Collection():
 
         return 'SUCCESS: ' + str(len(self.books)) + ' Books found in "' + self._filePath + '".'
 
-    def write(self) -> str:
+    def write(self):
         """Write the collection's attributes to a pwc xml file 
         located at filePath. Overwrite existing file without
         confirmation.
@@ -149,14 +149,14 @@ class Collection():
 
         return 'SUCCESS: Collection written to "' + self._filePath + '".'
 
-    def file_exists(self) -> bool:
+    def file_exists(self):
         """Check whether the file specified by _filePath exists."""
         if os.path.isfile(self._filePath):
             return True
         else:
             return False
 
-    def add_book(self, filePath: str) -> str:
+    def add_book(self, filePath):
         """Add an existing yWriter 7 project file as book to the 
         collection. Determine a book ID, read the novel's title and 
         description, and compute word count and letter count.
@@ -175,7 +175,7 @@ class Collection():
         else:
             return'ERROR: "' + os.path.realpath(filePath) + '" not found.'
 
-    def remove_book(self, bkId: str) -> str:
+    def remove_book(self, bkId):
         """Remove a book from the collection and from the series.
         Return a message beginning with SUCCESS or ERROR.
         """
@@ -190,7 +190,7 @@ class Collection():
         except:
             return 'ERROR'
 
-    def add_series(self, serTitle: str) -> None:
+    def add_series(self, serTitle):
         """Instantiate a Series object and append it to the srtSeries list."""
         for series in self.srtSeries:
             if series.title == serTitle:
@@ -199,7 +199,7 @@ class Collection():
         newSeries = Series(serTitle)
         self.srtSeries.append(newSeries)
 
-    def remove_series(self, serTitle: str) -> str:
+    def remove_series(self, serTitle):
         """Delete a Series object and remove it from the srtSeries list.
         Return a message beginning with SUCCESS or ERROR.
         """

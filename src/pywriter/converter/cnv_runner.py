@@ -58,11 +58,11 @@ class CnvRunner(Yw7Cnv):
             - _chapters for a html file containing chapter summaries.
     """
 
-    def __init__(self, sourcePath: str,
-                 document: Novel,
-                 extension: str,
-                 silentMode: bool = True,
-                 suffix: str = '') -> None:
+    def __init__(self, sourcePath,
+                 document,
+                 extension,
+                 silentMode = True,
+                 suffix = ''):
         """Run the converter with a GUI. """
 
         # Prepare the graphical user interface.
@@ -92,10 +92,10 @@ class CnvRunner(Yw7Cnv):
             root.quitButton.pack(padx=5, pady=5)
             root.mainloop()
 
-    def __run(self, sourcePath: str,
-              document: Novel,
-              extension: str,
-              suffix: str) -> None:
+    def __run(self, sourcePath,
+              document,
+              extension,
+              suffix):
         """Determine the direction and invoke the converter. """
 
         # The conversion's direction depends on the sourcePath argument.
@@ -149,7 +149,7 @@ class CnvRunner(Yw7Cnv):
         elif 'SUCCESS' in self.processInfo.cget('text'):
             self.successInfo.config(bg='green')
 
-    def confirm_overwrite(self, filePath: str) -> bool:
+    def confirm_overwrite(self, filePath):
         """ Invoked by the parent if a file already exists. """
 
         if self.silentMode:

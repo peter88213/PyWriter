@@ -10,7 +10,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 class Chapter():
     """yWriter chapter representation."""
 
-    def __init__(self) -> None:
+    def __init__(self):
         self.title = None
         # str
 

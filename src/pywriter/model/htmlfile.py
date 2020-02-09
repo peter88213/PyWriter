@@ -29,7 +29,7 @@ class HtmlFile(Novel, HTMLParser):
     _FILE_EXTENSION = 'html'
     # overwrites Novel._FILE_EXTENSION
 
-    def __init__(self, filePath: str) -> None:
+    def __init__(self, filePath):
         Novel.__init__(self, filePath)
         HTMLParser.__init__(self)
         self._lines = []
@@ -56,7 +56,7 @@ class HtmlFile(Novel, HTMLParser):
         if self._collectText:
             self._lines.append(data)
 
-    def read(self) -> str:
+    def read(self):
         """Read scene content from a html file  
         with visible chapter and scene tags.
         Return a message beginning with SUCCESS or ERROR.
@@ -113,7 +113,7 @@ class HtmlFile(Novel, HTMLParser):
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel: Novel) -> str:
+    def write(self, novel):
         """Generate a html file containing:
         - chapter ID tags,
         - chapter headings,

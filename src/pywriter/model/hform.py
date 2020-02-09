@@ -33,7 +33,7 @@ HTML_HEADER = '<html>\n' + '<head>\n' + \
 HTML_FOOTER = '\n</body>\n</html>\n'
 
 
-def to_yw7(text: str) -> str:
+def to_yw7(text):
     """Convert html tags to yw7 raw markup. Return a yw7 markup string."""
     text = text.replace('<i>', '[i]')
     text = text.replace('<I>', '[i]')
@@ -67,7 +67,7 @@ def to_yw7(text: str) -> str:
     return text
 
 
-def to_html(text: str) -> str:
+def to_html(text):
     """Convert yw7 raw markup to html. Return a html string."""
     try:
         text = text.replace('\n', '</p>\n<p class="firstlineindent">')
@@ -83,7 +83,7 @@ def to_html(text: str) -> str:
     return text
 
 
-def strip_markup(text: str) -> str:
+def strip_markup(text):
     """Strip yw7 raw markup. Return a plain text string."""
     try:
         text = text.replace('[i]', '')
@@ -97,7 +97,7 @@ def strip_markup(text: str) -> str:
     return text
 
 
-def read_html_file(filePath: str) -> tuple:
+def read_html_file(filePath):
     """Open a html file being encoded utf-8 or ANSI.
     Return a tuple:
     [0] = Message beginning with SUCCESS or ERROR.

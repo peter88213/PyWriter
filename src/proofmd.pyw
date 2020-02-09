@@ -13,7 +13,7 @@ from pywriter.model.mdfile import MdFile
 from pywriter.converter.cnv_runner import CnvRunner
 
 
-def run(sourcePath: str, silentMode: bool = True) -> None:
+def run(sourcePath, silentMode = True):
     document = MdFile('')
     converter = CnvRunner(sourcePath, document, 'md', silentMode)
 

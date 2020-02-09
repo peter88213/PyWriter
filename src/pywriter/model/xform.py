@@ -35,7 +35,7 @@ def indent(elem, level=0):
             elem.tail = i
 
 
-def cdata(filePath: str, cdataTags: list) -> str:
+def cdata(filePath, cdataTags: list):
     '''Postprocess the xml file created by ElementTree:
        Put a header on top and insert the missing CDATA tags.
     '''

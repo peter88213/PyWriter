@@ -50,7 +50,7 @@ class SceneList(Novel):
     _FILE_EXTENSION = 'csv'
     # overwrites Novel._FILE_EXTENSION
 
-    def read(self) -> str:
+    def read(self):
         """Parse the csv file located at filePath, 
         fetching the Scene attributes contained.
         Return a message beginning with SUCCESS or ERROR.
@@ -92,7 +92,7 @@ class SceneList(Novel):
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
-    def write(self, novel: Novel) -> str:
+    def write(self, novel):
         """Generate a csv file containing per scene:
         - A manuscript scene hyperlink, 
         - scene title,
@@ -213,6 +213,6 @@ class SceneList(Novel):
 
         return 'SUCCESS: "' + self._filePath + '" saved.'
 
-    def get_structure(self) -> None:
+    def get_structure(self):
         """This file format has no comparable structure."""
         return None

@@ -20,7 +20,7 @@ class BookDesc(HTMLParser):
 
     _FILE_EXTENSION = 'html'
 
-    def __init__(self, filePath: str) -> None:
+    def __init__(self, filePath):
         HTMLParser.__init__(self)
         self._seriesSummary = ''
         self._bookSummary = {}
@@ -31,11 +31,11 @@ class BookDesc(HTMLParser):
         self.filePath = filePath
 
     @property
-    def filePath(self) -> str:
+    def filePath(self):
         return self._filePath
 
     @filePath.setter
-    def filePath(self, filePath: str) -> None:
+    def filePath(self, filePath):
         """Accept only filenames with the right extension. """
         if filePath.lower().endswith(self._FILE_EXTENSION):
             self._filePath = filePath
@@ -80,7 +80,7 @@ class BookDesc(HTMLParser):
         if self._collectText:
             self._lines.append(data.rstrip().lstrip())
 
-    def read(self, series: Series, collection: Collection) -> str:
+    def read(self, series: Series, collection):
         """Parse the html file located at filePath, 
         fetching the Series and book descriptions.
         Return a message beginning with SUCCESS or ERROR.
@@ -103,7 +103,7 @@ class BookDesc(HTMLParser):
 
         return 'SUCCESS'
 
-    def write(self, series: Series, collection: Collection) -> str:
+    def write(self, series: Series, collection):
         """Generate a html file containing:
         - A series sections containing:
             - series title heading,
@@ -114,7 +114,7 @@ class BookDesc(HTMLParser):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def to_html(text: str) -> str:
+        def to_html(text):
             """Convert yw7 raw markup """
             try:
                 text = text.replace('\n\n', '\n')

@@ -11,17 +11,17 @@ class Series():
     """yWriter book series representation.    
     """
 
-    def __init__(self, title: str, summary: str = '') -> None:
+    def __init__(self, title, summary = ''):
         self.title = title
         self.summary = summary
         self.srtBooks = []
 
-    def add_book(self, bkId: str) -> None:
+    def add_book(self, bkId):
         """Add a new book ID to the list. Avoid multiple entries."""
         if not (bkId in self.srtBooks):
             self.srtBooks.append(bkId)
 
-    def remove_book(self, bkId: str) -> str:
+    def remove_book(self, bkId):
         """Remove an existing book ID from the list.       
         Return a message beginning with SUCCESS or ERROR.
         """

@@ -35,7 +35,7 @@ class ChapterDesc(SceneDesc):
         if self._chId is not None:
             self._lines.append(data.rstrip().lstrip())
 
-    def write(self, novel: Novel) -> str:
+    def write(self, novel):
         """Write chapter summaries to a html file.
 
         Chapters are chapters marked "Chapter".
@@ -46,7 +46,7 @@ class ChapterDesc(SceneDesc):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def to_html(text: str) -> str:
+        def to_html(text):
             """Convert yw7 raw markup """
             try:
                 text = text.replace('\n\n', '\n')
