@@ -42,9 +42,12 @@ ODT_FOOTER = '''  </office:text>
  </office:body>
 </office:document-content>
 '''
+
+ODT_HEADING_MARKERS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
+                       '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
 '''
 <text:h text:style-name="Heading_20_1" text:outline-level="1"></text:h>
-text:h text:style-name="Heading_20_2" text:outline-level="2"></text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2"></text:h>
 <text:p text:style-name="Heading_20_4"></text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
@@ -73,12 +76,13 @@ def to_yw7(text):
 def to_odt(text):
     """Convert yw7 raw markup to html. Return a html string."""
     try:
-        text = text.replace('\n', '</p>\n<p class="firstlineindent">')
-        text = text.replace('[i]', '<em>')
-        text = text.replace('[/i]', '</em>')
-        text = text.replace('[b]', '<strong>')
-        text = text.replace('[/b]', '</strong>')
-        text = re.sub('\<p(.+?)\>\<\/p\>', '<p\g<1>><br></p>', text)
+        text = text.replace(
+            '\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">')
+        text = text.replace('[i]', '<text:span text:style-name="Emphasis">')
+        text = text.replace('[/i]', '</text:span>')
+        text = text.replace(
+            '[b]', '<text:span text:style-name="Strong_20_Emphasis">')
+        text = text.replace('[/b]', '</text:span>')
 
     except:
         pass
@@ -100,8 +104,8 @@ def strip_markup(text):
     return text
 
 
-def read_html_file(filePath):
-    """Open a html file being encoded utf-8 or ANSI.
+def read_xml_file(filePath):
+    """Open a xml file being encoded utf-8.
     Return a tuple:
     [0] = Message beginning with SUCCESS or ERROR.
     [1] = The file content in a single string. 
@@ -109,14 +113,8 @@ def read_html_file(filePath):
     try:
         with open(filePath, 'r', encoding='utf-8') as f:
             text = (f.read())
-    except:
-        # HTML files exported by a word processor may be ANSI encoded.
-        try:
-            with open(filePath, 'r') as f:
-                text = (f.read())
-
-        except(FileNotFoundError):
-            return ('ERROR: "' + filePath + '" not found.', None)
+    except(FileNotFoundError):
+        return ('ERROR: "' + filePath + '" not found.', None)
 
     return ('SUCCESS', text)
 

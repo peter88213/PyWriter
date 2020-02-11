@@ -20,7 +20,7 @@ from pywriter.model.odtform import *
 class OdtFile(Novel):
     """OpenDocument xml project file representation."""
 
-    _FILE_EXTENSION = '.odt'
+    _FILE_EXTENSION = '.xml'
     # overwrites PywFile._FILE_EXTENSION
 
     def __init__(self, filePath):
@@ -32,7 +32,7 @@ class OdtFile(Novel):
         # afterwards.
 
     def read(self):
-        """Parse the yw7 xml file located at filePath, fetching the Novel attributes.
+        """Parse the odt content.xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
 
@@ -146,261 +146,70 @@ class OdtFile(Novel):
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def write(self, novel):
-        """Open the yw7 xml file located at filePath and replace a set 
-        of items by the novel attributes not being None.
+        """Generate a html file containing:
+        - chapter sections containing:
+            - chapter headings,
+            - scene sections containing:
+                - scene ID as anchor, 
+                - scene title as comment,
+                - scene content.
         Return a message beginning with SUCCESS or ERROR.
         """
+
+        def format_chapter_title(text):
+            """Fix auto-chapter titles for non-English """
+            text = text.replace('Chapter ', '')
+            return text
 
         # Copy the novel's attributes to write
 
         if novel.title is not None:
-            self.title = novel.title
+            if novel.title != '':
+                self.title = novel.title
 
-        if novel.summary is not None:
-            self.summary = novel.summary
-
-        if novel.fieldTitle1 is not None:
-            self.fieldTitle1 = novel.fieldTitle1
-
-        if novel.fieldTitle2 is not None:
-            self.fieldTitle2 = novel.fieldTitle2
-
-        if novel.fieldTitle3 is not None:
-            self.fieldTitle3 = novel.fieldTitle3
-
-        if novel.fieldTitle4 is not None:
-            self.fieldTitle4 = novel.fieldTitle4
-
-        '''Do not modify these items yet:
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
-        '''
 
         if novel.scenes is not None:
-
-            for scId in novel.scenes:
-
-                if novel.scenes[scId].title is not None:
-                    self.scenes[scId].title = novel.scenes[scId].title
-
-                if novel.scenes[scId].summary is not None:
-                    self.scenes[scId].summary = novel.scenes[scId].summary
-
-                if novel.scenes[scId].sceneContent is not None:
-                    self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
-
-                if novel.scenes[scId].sceneNotes is not None:
-                    self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
-
-                if novel.scenes[scId].field1 is not None:
-                    self.scenes[scId].field1 = novel.scenes[scId].field1
-
-                if novel.scenes[scId].field2 is not None:
-                    self.scenes[scId].field2 = novel.scenes[scId].field2
-
-                if novel.scenes[scId].field3 is not None:
-                    self.scenes[scId].field3 = novel.scenes[scId].field3
-
-                if novel.scenes[scId].field4 is not None:
-                    self.scenes[scId].field4 = novel.scenes[scId].field4
-
-                if novel.scenes[scId].tags is not None:
-                    self.scenes[scId].tags = novel.scenes[scId].tags
-
-                '''Do not modify these items yet:
-                if novel.scenes[scId].isUnused is not None:
-                    self.scenes[scId].isUnused = novel.chapters[chId].isUnused
-                '''
+            self.scenes = novel.scenes
 
         if novel.chapters is not None:
+            self.chapters = novel.chapters
 
-            for chId in novel.chapters:
+        lines = [ODT_HEADER]
 
-                if novel.chapters[chId].title is not None:
-                    self.chapters[chId].title = novel.chapters[chId].title
+        for chId in self.srtChapters:
 
-                if novel.chapters[chId].summary is not None:
-                    self.chapters[chId].summary = novel.chapters[chId].summary
+            if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
+                headingMarker = ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
+                lines.append(headingMarker + format_chapter_title(
+                    self.chapters[chId].title) + '</text:h>')
 
-                '''Do not modify these items yet:
-                if novel.chapters[chId].chLevel is not None:
-                    self.chapters[chId].chLevel = novel.chapters[chId].chLevel
+                firstSceneInChapter = True
+                for scId in self.chapters[chId].srtScenes:
 
-                if novel.chapters[chId].chType is not None:
-                    self.chapters[chId].chType = novel.chapters[chId].chType
-
-                if novel.chapters[chId].isUnused is not None:
-                    self.chapters[chId].isUnused = novel.chapters[chId].isUnused
-
-                if novel.chapters[chId].srtScenes != []:
-                    self.chapters[chId].srtScenes = novel.chapters[chId].srtScenes
-                '''
-
-        sceneCount = 0
-        root = self._tree.getroot()
-        prj = root.find('PROJECT')
-        prj.find('Title').text = self.title
-        prj.find('FieldTitle1').text = self.fieldTitle1
-        prj.find('FieldTitle2').text = self.fieldTitle2
-        prj.find('FieldTitle3').text = self.fieldTitle3
-        prj.find('FieldTitle4').text = self.fieldTitle4
-
-        if self.summary is not None:
-
-            if prj.find('Desc') is None:
-                newDesc = ET.SubElement(prj, 'Desc')
-                newDesc.text = self.summary
-
-            else:
-                prj.find('Desc').text = self.summary
-
-        for chp in root.iter('CHAPTER'):
-            chId = chp.find('ID').text
-
-            if chId in self.chapters:
-                chp.find('Title').text = self.chapters[chId].title
-
-                if self.chapters[chId].summary is not None:
-
-                    if chp.find('Desc') is None:
-                        newDesc = ET.SubElement(chp, 'Desc')
-                        newDesc.text = self.chapters[chId].summary
-
-                    else:
-                        chp.find('Desc').text = self.chapters[chId].summary
-
-                '''Do not modify these items yet:
-                chp.find('Type').text = str(self.chapters[chId].chType)
-                
-                levelInfo = chp.find('SectionStart')
-                
-                if levelInfo is not None:
-                    
-                    if self.chapters[chId].chLevel == 0:
-                         chp.remove(levelInfo)
-
-                unusedMarker = chp.find('Unused')
-                
-                if unused is not None:
-                    
-                    if not self.chapters[chId].isUnused:
-                         chp.remove(unusedMarker)
-                '''
-
-        for scn in root.iter('SCENE'):
-
-            scId = scn.find('ID').text
-
-            if scId in self.scenes:
-
-                if self.scenes[scId].title is not None:
-                    scn.find('Title').text = self.scenes[scId].title
-
-                if self.scenes[scId].summary is not None:
-
-                    if scn.find('Desc') is None:
-                        newDesc = ET.SubElement(scn, 'Desc')
-                        newDesc.text = self.scenes[scId].summary
-
-                    else:
-                        scn.find('Desc').text = self.scenes[scId].summary
-
-                if self.scenes[scId]._sceneContent is not None:
-                    scn.find(
-                        'SceneContent').text = self.scenes[scId]._sceneContent
-                    scn.find('WordCount').text = str(
-                        self.scenes[scId].wordCount)
-                    scn.find('LetterCount').text = str(
-                        self.scenes[scId].letterCount)
-
-                if self.scenes[scId].sceneNotes is not None:
-
-                    if scn.find('Notes') is None:
-                        newNotes = ET.SubElement(scn, 'Notes')
-                        newNotes.text = self.scenes[scId].sceneNotes
-
-                    else:
-                        scn.find('Notes').text = self.scenes[scId].sceneNotes
-
-                if self.scenes[scId].field1 is not None:
-
-                    if scn.find('Field1') is None:
-                        newField = ET.SubElement(scn, 'Field1')
-                        newField.text = self.scenes[scId].field1
-
-                    else:
-                        scn.find('Field1').text = self.scenes[scId].field1
-
-                if self.scenes[scId].field2 is not None:
-
-                    if scn.find('Field2') is None:
-                        newField = ET.SubElement(scn, 'Field2')
-                        newField.text = self.scenes[scId].field2
-
-                    else:
-                        scn.find('Field2').text = self.scenes[scId].field2
-
-                if self.scenes[scId].field3 is not None:
-
-                    if scn.find('Field3') is None:
-                        newField = ET.SubElement(scn, 'Field3')
-                        newField.text = self.scenes[scId].field3
-
-                    else:
-                        scn.find('Field3').text = self.scenes[scId].field3
-
-                if self.scenes[scId].field4 is not None:
-
-                    if scn.find('Field4') is None:
-                        newField = ET.SubElement(scn, 'Field4')
-                        newField.text = self.scenes[scId].field4
-
-                    else:
-                        scn.find('Field4').text = self.scenes[scId].field4
-
-                if self.scenes[scId].tags is not None:
-
-                    if scn.find('Tags') is None:
-                        newTags = ET.SubElement(scn, 'Tags')
-                        newTags.text = ';'.join(self.scenes[scId].tags)
-
-                    else:
-                        scn.find('Tags').text = ';'.join(
-                            self.scenes[scId].tags)
-
-                '''Do not modify these items yet:
-                unusedMarker = scn.find('Unused')
-                
-                if unused is not None:
-                    
                     if not self.scenes[scId].isUnused:
-                         scn.remove(unusedMarker)
-                '''
 
-                sceneCount = sceneCount + 1
+                        if not firstSceneInChapter:
+                            lines.append(
+                                '<text:p text:style-name="Heading_20_4">' + SCENE_DIVIDER + '</text:p>')
+                        lines.append('<text:p text:style-name="Text_20_body">')
 
-        indent(root)
-        tree = ET.ElementTree(root)
+                        if self.scenes[scId].sceneContent is not None:
+                            lines.append(
+                                to_odt(self.scenes[scId].sceneContent))
+
+                        lines.append('</text:p>')
+                        firstSceneInChapter = False
+
+        lines.append(ODT_FOOTER)
+        text = '\n'.join(lines)
 
         try:
-            self._tree.write(self._filePath, encoding='utf-8')
+            with open(self._filePath, 'w', encoding='utf-8') as f:
+                f.write(text)
 
         except(PermissionError):
-            return 'ERROR: "' + self._filePath + '" is write protected.'
+            return 'ERROR: ' + self._filePath + '" is write protected.'
 
-        # Postprocess the xml file created by ElementTree
-        message = cdata(self._filePath, self._cdataTags)
-
-        if 'ERROR' in message:
-            return message
-
-        return 'SUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".'
-
-    def is_locked(self):
-        """Test whether a .lock file placed by yWriter exists.
-        """
-        if os.path.isfile(self._filePath + '.lock'):
-            return True
-
-        else:
-            return False
+        return 'SUCCESS: "' + self._filePath + '" saved.'
