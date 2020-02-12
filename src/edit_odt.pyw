@@ -15,6 +15,7 @@ from pywriter.converter.cnv_runner import CnvRunner
 
 def run(sourcePath, silentMode=True):
     document = OdtFile('')
+    document.comments = True
     converter = CnvRunner(sourcePath, document, 'odt',
                           silentMode, '')
 

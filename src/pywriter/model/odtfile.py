@@ -31,11 +31,11 @@ class OdtFile(Novel):
 
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
-        self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc', 'FieldTitle1', 'FieldTitle2', 'FieldTitle3', 'FieldTitle4',
-                           'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
-        # Names of yw7 xml elements containing CDATA.
-        # ElementTree.write omits CDATA tags, so they have to be inserted
-        # afterwards.
+
+        self.sections = False
+        self.proofread = False
+        self.bookmarks = False
+        self.comments = False
 
     def read(self):
         """Parse the odt content.xml file located at filePath, fetching the Novel attributes.
@@ -151,7 +151,7 @@ class OdtFile(Novel):
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel, comments=False, sections=False, proofread=True, bookmarks=False):
+    def write(self, novel):
         """Generate a html file containing:
         - chapter sections containing:
             - chapter headings,
@@ -208,11 +208,11 @@ class OdtFile(Novel):
 
             for chId in self.srtChapters:
 
-                if sections and self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
+                if self.sections and self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
                     lines.append(
                         '<text:section text:style-name="Sect1" text:name="ChID:' + chId + '">')
 
-                if proofread:
+                if self.proofread:
                     if self.chapters[chId].isUnused:
                         lines.append(
                             '<text:p text:style-name="yWriter_20_mark_20_unused">[ChID:' + chId + ' (Unused)]</text:p>')
@@ -225,7 +225,7 @@ class OdtFile(Novel):
                         lines.append(
                             '<text:p text:style-name="yWriter_20_mark">[ChID:' + chId + ']</text:p>')
 
-                if proofread or ((not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0):
+                if self.proofread or ((not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0):
                     headingMarker = ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
                     lines.append(headingMarker + format_chapter_title(
                         self.chapters[chId].title) + '</text:h>')
@@ -234,17 +234,17 @@ class OdtFile(Novel):
 
                     for scId in self.chapters[chId].srtScenes:
 
-                        if proofread or not self.scenes[scId].isUnused:
+                        if self.proofread or not self.scenes[scId].isUnused:
 
                             if not firstSceneInChapter:
                                 lines.append(
                                     '<text:p text:style-name="Heading_20_4">' + SCENE_DIVIDER + '</text:p>')
 
-                            if sections:
+                            if self.sections:
                                 lines.append(
                                     '<text:section text:style-name="Sect1" text:name="ScID:' + scId + '">')
 
-                            if proofread:
+                            if self.proofread:
 
                                 if self.scenes[scId].isUnused or self.chapters[chId].isUnused:
                                     lines.append(
@@ -260,10 +260,10 @@ class OdtFile(Novel):
 
                             scenePrefix = '<text:p text:style-name="Text_20_body">'
 
-                            if bookmarks:
+                            if self.bookmarks:
                                 scenePrefix += '<text:bookmark text:name="ScID:' + scId + '"/>'
 
-                            if comments:
+                            if self.comments:
                                 scenePrefix += ('<office:annotation>\n' +
                                                 '<dc:creator>scene title</dc:creator>\n' +
                                                 '<text:p>' + self.scenes[scId].title + '</text:p>\n' +
@@ -278,7 +278,7 @@ class OdtFile(Novel):
 
                             firstSceneInChapter = False
 
-                            if proofread:
+                            if self.proofread:
 
                                 if self.scenes[scId].isUnused or self.chapters[chId].isUnused:
                                     lines.append(
@@ -292,10 +292,10 @@ class OdtFile(Novel):
                                     lines.append(
                                         '<text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>')
 
-                            if sections:
+                            if self.sections:
                                 lines.append('</text:section>')
 
-                if proofread:
+                if self.proofread:
 
                     if self.chapters[chId].isUnused:
                         lines.append(
@@ -309,7 +309,7 @@ class OdtFile(Novel):
                         lines.append(
                             '<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>')
 
-                if sections and self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
+                if self.sections and self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
                     lines.append('</text:section>')
 
             lines.append(ODT_FOOTER)
