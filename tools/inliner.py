@@ -9,9 +9,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 import os
 
-SRC = '../src/'
-BUILD = '../test/'
-
 
 def inline_module(file, package, text, processedModules):
     with open(file, 'r') as f:
@@ -75,13 +72,5 @@ def run(sourceFile, targetFile, package):
         f.write(text)
 
 
-def main():
-    os.chdir(SRC)
-    run('proofdocx.pyw', BUILD + 'yw_proof_docx.pyw', 'pywriter')
-    run('proofodt.pyw', BUILD + 'yw_proof_odt.pyw', 'pywriter')
-    run('proofhtml.pyw', BUILD + 'yw_proof_html.pyw', 'pywriter')
-    print('Done.')
-
-
 if __name__ == '__main__':
-    main()
+    pass

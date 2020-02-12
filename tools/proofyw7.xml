@@ -15,7 +15,7 @@
 		<delete file="${build}/yw_proof_odt.pyw" />
 		<delete file="${build}/yw_proof_html.pyw" />
 			<exec executable="python" failonerror="true">
-			    <arg value="inliner.py"/>
+			    <arg value="build_proof.py"/>
 			</exec>
 			<exec executable="python" failonerror="true">
 			    <arg value="../test/buildtest.py"/>

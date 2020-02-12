@@ -69,13 +69,15 @@ class OdtFile(Novel):
 </office:document-meta>
 '''
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, templatePath):
         Novel.__init__(self, filePath)
 
         self.sections = False
         self.proofread = False
         self.bookmarks = False
         self.comments = False
+
+        self._templatePath = templatePath
 
     def tear_down(self):
         try:
@@ -84,16 +86,16 @@ class OdtFile(Novel):
         except:
             pass
 
-    def write(self, novel, templatePath=''):
+    def write(self, novel):
         """Generate an odt file from a template.
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def set_up(templatePath):
+        def set_up():
             self.tear_down()
             os.mkdir(self._TEMPDIR)
 
-            with zipfile.ZipFile(templatePath, 'r') as odtTemplate:
+            with zipfile.ZipFile(self._templatePath, 'r') as odtTemplate:
                 odtTemplate.extractall(self._TEMPDIR)
 
         def format_chapter_title(text):
@@ -311,7 +313,7 @@ class OdtFile(Novel):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        set_up(templatePath)
+        set_up()
 
         message = write_content()
 
