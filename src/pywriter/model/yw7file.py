@@ -66,6 +66,9 @@ class Yw7File(Novel):
         prj = root.find('PROJECT')
         self.title = prj.find('Title').text
 
+        if prj.find('AuthorName') is not None:
+            self.author = prj.find('AuthorName').text
+
         if prj.find('Desc') is not None:
             self.summary = prj.find('Desc').text
 
@@ -157,6 +160,9 @@ class Yw7File(Novel):
 
         if novel.summary is not None:
             self.summary = novel.summary
+
+        if novel.author is not None:
+            self.author = novel.author
 
         if novel.fieldTitle1 is not None:
             self.fieldTitle1 = novel.fieldTitle1
@@ -252,6 +258,15 @@ class Yw7File(Novel):
 
             else:
                 prj.find('Desc').text = self.summary
+
+        if self.author is not None:
+
+            if prj.find('AuthorName') is None:
+                newAuth = ET.SubElement(prj, 'AuthorName')
+                newAuth.text = self.author
+
+            else:
+                prj.find('AuthorName').text = self.author
 
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text

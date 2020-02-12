@@ -27,6 +27,9 @@ class Novel():
         self.summary = None
         # str
 
+        self.author = None
+        # str
+
         self.fieldTitle1 = None
         # str
 
