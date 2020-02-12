@@ -151,7 +151,7 @@ class OdtFile(Novel):
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel):
+    def write(self, novel, comments=True, sections=True, proofread=False, bookmarks=True):
         """Generate a html file containing:
         - chapter sections containing:
             - chapter headings,
@@ -208,28 +208,93 @@ class OdtFile(Novel):
 
             for chId in self.srtChapters:
 
-                if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
+                if sections and self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
+                    lines.append(
+                        '<text:section text:style-name="Sect1" text:name="ChID:' + chId + '">')
+
+                if proofread:
+                    if self.chapters[chId].isUnused:
+                        lines.append(
+                            '<text:p text:style-name="Text_20_body">[ChID:' + chId + ' (Unused)]</text:p>')
+
+                    else:
+                        lines.append(
+                            '<text:p text:style-name="Text_20_body">[ChID:' + chId + ']</text:p>')
+
+                if proofread or ((not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0):
                     headingMarker = ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
                     lines.append(headingMarker + format_chapter_title(
                         self.chapters[chId].title) + '</text:h>')
 
                     firstSceneInChapter = True
+
                     for scId in self.chapters[chId].srtScenes:
 
-                        if not self.scenes[scId].isUnused:
+                        if proofread or not self.scenes[scId].isUnused:
 
                             if not firstSceneInChapter:
                                 lines.append(
                                     '<text:p text:style-name="Heading_20_4">' + SCENE_DIVIDER + '</text:p>')
-                            lines.append(
-                                '<text:p text:style-name="Text_20_body">')
+
+                            if sections:
+                                lines.append(
+                                    '<text:section text:style-name="Sect1" text:name="ScID:' + scId + '">')
+
+                            if proofread:
+
+                                if self.scenes[scId].isUnused:
+                                    lines.append(
+                                        '<text:p text:style-name="Text_20_body">[ScID:' + scId + ' (Unused)]</text:p>')
+
+                                else:
+                                    lines.append(
+                                        '<text:p text:style-name="Text_20_body">[ScID:' + scId + ']</text:p>')
+
+                            scenePrefix = '<text:p text:style-name="Text_20_body">'
+
+                            if bookmarks:
+                                scenePrefix += '<text:bookmark text:name="ScID:' + scId + '"/>'
+
+                            if comments:
+                                scenePrefix += ('<office:annotation>\n' +
+                                                '<dc:creator>scene title</dc:creator>\n' +
+                                                '<text:p>' + self.scenes[scId].title + '</text:p>\n' +
+                                                '</office:annotation>')
 
                             if self.scenes[scId].sceneContent is not None:
-                                lines.append(
-                                    to_odt(self.scenes[scId].sceneContent))
+                                lines.append(scenePrefix +
+                                             to_odt(self.scenes[scId].sceneContent) + '</text:p>')
 
-                            lines.append('</text:p>')
+                            else:
+                                lines.append(scenePrefix + '</text:p>')
+
                             firstSceneInChapter = False
+
+                            if proofread:
+
+                                if self.scenes[scId].isUnused:
+                                    lines.append(
+                                        '<text:p text:style-name="Text_20_body">[/ScID (Unused)]</text:p>')
+
+                                else:
+                                    lines.append(
+                                        '<text:p text:style-name="Text_20_body">[/ScID]</text:p>')
+
+                            if sections:
+                                lines.append('</text:section>')
+
+                if proofread:
+
+                    if self.chapters[chId].isUnused:
+                        lines.append(
+                            '<text:p text:style-name="Text_20_body">[/ChID (Unused)]</text:p>')
+
+                    else:
+                        lines.append(
+                            '<text:p text:style-name="Text_20_body">[/ChID]</text:p>')
+
+                if sections and self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
+                    lines.append('</text:section>')
 
             lines.append(ODT_FOOTER)
             text = '\n'.join(lines)
