@@ -151,7 +151,7 @@ class OdtFile(Novel):
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel, comments=True, sections=True, proofread=False, bookmarks=True):
+    def write(self, novel, comments=False, sections=False, proofread=True, bookmarks=False):
         """Generate a html file containing:
         - chapter sections containing:
             - chapter headings,
@@ -215,11 +215,15 @@ class OdtFile(Novel):
                 if proofread:
                     if self.chapters[chId].isUnused:
                         lines.append(
-                            '<text:p text:style-name="Text_20_body">[ChID:' + chId + ' (Unused)]</text:p>')
+                            '<text:p text:style-name="yWriter_20_mark_20_unused">[ChID:' + chId + ' (Unused)]</text:p>')
+
+                    elif self.chapters[chId].chType != 0:
+                        lines.append(
+                            '<text:p text:style-name="yWriter_20_mark_20_info">[ChID:' + chId + ' (Info)]</text:p>')
 
                     else:
                         lines.append(
-                            '<text:p text:style-name="Text_20_body">[ChID:' + chId + ']</text:p>')
+                            '<text:p text:style-name="yWriter_20_mark">[ChID:' + chId + ']</text:p>')
 
                 if proofread or ((not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0):
                     headingMarker = ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
@@ -242,13 +246,17 @@ class OdtFile(Novel):
 
                             if proofread:
 
-                                if self.scenes[scId].isUnused:
+                                if self.scenes[scId].isUnused or self.chapters[chId].isUnused:
                                     lines.append(
-                                        '<text:p text:style-name="Text_20_body">[ScID:' + scId + ' (Unused)]</text:p>')
+                                        '<text:p text:style-name="yWriter_20_mark_20_unused">[ScID:' + scId + ' (Unused)]</text:p>')
+
+                                elif self.chapters[chId].chType != 0:
+                                    lines.append(
+                                        '<text:p text:style-name="yWriter_20_mark_20_info">[ScID:' + scId + ' (Info)]</text:p>')
 
                                 else:
                                     lines.append(
-                                        '<text:p text:style-name="Text_20_body">[ScID:' + scId + ']</text:p>')
+                                        '<text:p text:style-name="yWriter_20_mark">[ScID:' + scId + ']</text:p>')
 
                             scenePrefix = '<text:p text:style-name="Text_20_body">'
 
@@ -272,13 +280,17 @@ class OdtFile(Novel):
 
                             if proofread:
 
-                                if self.scenes[scId].isUnused:
+                                if self.scenes[scId].isUnused or self.chapters[chId].isUnused:
                                     lines.append(
-                                        '<text:p text:style-name="Text_20_body">[/ScID (Unused)]</text:p>')
+                                        '<text:p text:style-name="yWriter_20_mark_20_unused">[/ScID (Unused)]</text:p>')
+
+                                elif self.chapters[chId].chType != 0:
+                                    lines.append(
+                                        '<text:p text:style-name="yWriter_20_mark_20_info">[/ScID (Info)]</text:p>')
 
                                 else:
                                     lines.append(
-                                        '<text:p text:style-name="Text_20_body">[/ScID]</text:p>')
+                                        '<text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>')
 
                             if sections:
                                 lines.append('</text:section>')
@@ -287,11 +299,15 @@ class OdtFile(Novel):
 
                     if self.chapters[chId].isUnused:
                         lines.append(
-                            '<text:p text:style-name="Text_20_body">[/ChID (Unused)]</text:p>')
+                            '<text:p text:style-name="yWriter_20_mark_20_unused">[/ChID (Unused)]</text:p>')
+
+                    elif self.chapters[chId].chType != 0:
+                        lines.append(
+                            '<text:p text:style-name="yWriter_20_mark_20_info">[/ChID (Info)]</text:p>')
 
                     else:
                         lines.append(
-                            '<text:p text:style-name="Text_20_body">[/ChID]</text:p>')
+                            '<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>')
 
                 if sections and self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
                     lines.append('</text:section>')
