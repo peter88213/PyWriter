@@ -8,7 +8,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 import re
+import zipfile
+import locale
 import xml.etree.ElementTree as ET
+from shutil import rmtree
 
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
@@ -20,8 +23,11 @@ from pywriter.model.odtform import *
 class OdtFile(Novel):
     """OpenDocument xml project file representation."""
 
-    _FILE_EXTENSION = '.xml'
-    # overwrites PywFile._FILE_EXTENSION
+    _FILE_EXTENSION = '.odt'
+    _TEMPDIR = 'odt'
+    _TEMPLATE_FILE = 'template.zip'
+    _ODT_COMPONENTS = ['Configurations2', 'manifest.rdf', 'META-INF', 'content.xml', 'meta.xml', 'mimetype', 'settings.xml', 'styles.xml', 'Thumbnails', 'Configurations2/accelerator', 'Configurations2/floater', 'Configurations2/images', 'Configurations2/menubar',
+                       'Configurations2/popupmenu', 'Configurations2/progressbar', 'Configurations2/statusbar', 'Configurations2/toolbar', 'Configurations2/toolpanel', 'Configurations2/accelerator/current.xml', 'Configurations2/images/Bitmaps', 'META-INF/manifest.xml', 'Thumbnails/thumbnail.png']
 
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
@@ -156,10 +162,86 @@ class OdtFile(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
+        def setup_odt():
+            try:
+                rmtree(self._TEMPDIR)
+
+            except:
+                pass
+
+            os.mkdir(self._TEMPDIR)
+
+            with zipfile.ZipFile(self._TEMPLATE_FILE, 'r') as odtTemplate:
+                odtTemplate.extractall(self._TEMPDIR)
+
         def format_chapter_title(text):
             """Fix auto-chapter titles for non-English """
             text = text.replace('Chapter ', '')
             return text
+
+        def set_locale():
+            localeCodes = locale.getdefaultlocale()[0].split('_')
+            languageCode = localeCodes[0]
+            countryCode = localeCodes[1]
+            try:
+                with open(self._TEMPDIR + '/styles.xml', 'r', encoding='utf-8') as f:
+                    text = f.read()
+
+            except:
+                return 'ERROR: cannot read "styles.xml"'
+
+            text = re.sub('fo\:language\=\"..',
+                          'fo:language="' + languageCode, text)
+            text = re.sub('fo\:country\=\"..',
+                          'fo:country="' + countryCode, text)
+            try:
+                with open(self._TEMPDIR + '/styles.xml', 'w', encoding='utf-8') as f:
+                    f.write(text)
+
+            except:
+                return 'ERROR: Cannot write "styles.xml"'
+
+            return 'SUCCESS: Locale set to "' + locale.getdefaultlocale()[0] + '".'
+
+        def write_content():
+            lines = [ODT_HEADER]
+
+            for chId in self.srtChapters:
+
+                if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
+                    headingMarker = ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
+                    lines.append(headingMarker + format_chapter_title(
+                        self.chapters[chId].title) + '</text:h>')
+
+                    firstSceneInChapter = True
+                    for scId in self.chapters[chId].srtScenes:
+
+                        if not self.scenes[scId].isUnused:
+
+                            if not firstSceneInChapter:
+                                lines.append(
+                                    '<text:p text:style-name="Heading_20_4">' + SCENE_DIVIDER + '</text:p>')
+                            lines.append(
+                                '<text:p text:style-name="Text_20_body">')
+
+                            if self.scenes[scId].sceneContent is not None:
+                                lines.append(
+                                    to_odt(self.scenes[scId].sceneContent))
+
+                            lines.append('</text:p>')
+                            firstSceneInChapter = False
+
+            lines.append(ODT_FOOTER)
+            text = '\n'.join(lines)
+
+            try:
+                with open(self._TEMPDIR + '/content.xml', 'w', encoding='utf-8') as f:
+                    f.write(text)
+
+            except:
+                return 'ERROR: Cannot write "content.xml".'
+
+            return 'SUCCESS: Content written to "content.xml"'
 
         # Copy the novel's attributes to write
 
@@ -176,40 +258,28 @@ class OdtFile(Novel):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        lines = [ODT_HEADER]
+        setup_odt()
 
-        for chId in self.srtChapters:
+        message = write_content()
 
-            if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
-                headingMarker = ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
-                lines.append(headingMarker + format_chapter_title(
-                    self.chapters[chId].title) + '</text:h>')
+        if message.startswith('ERROR'):
+            return message
 
-                firstSceneInChapter = True
-                for scId in self.chapters[chId].srtScenes:
+        message = set_locale()
 
-                    if not self.scenes[scId].isUnused:
-
-                        if not firstSceneInChapter:
-                            lines.append(
-                                '<text:p text:style-name="Heading_20_4">' + SCENE_DIVIDER + '</text:p>')
-                        lines.append('<text:p text:style-name="Text_20_body">')
-
-                        if self.scenes[scId].sceneContent is not None:
-                            lines.append(
-                                to_odt(self.scenes[scId].sceneContent))
-
-                        lines.append('</text:p>')
-                        firstSceneInChapter = False
-
-        lines.append(ODT_FOOTER)
-        text = '\n'.join(lines)
+        if message.startswith('ERROR'):
+            return message
 
         try:
-            with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.write(text)
+            with zipfile.ZipFile(self.filePath, 'w') as odtTarget:
+                workdir = os.getcwd()
+                os.chdir(self._TEMPDIR)
+                for file in self._ODT_COMPONENTS:
+                    odtTarget.write(file)
+        except:
+            os.chdir(workdir)
+            return 'ERROR: Cannot generate "' + self._filePath + '".'
 
-        except(PermissionError):
-            return 'ERROR: ' + self._filePath + '" is write protected.'
+        os.chdir(workdir)
 
         return 'SUCCESS: "' + self._filePath + '" saved.'

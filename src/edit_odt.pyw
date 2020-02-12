@@ -15,7 +15,7 @@ from pywriter.converter.cnv_runner import CnvRunner
 
 def run(sourcePath, silentMode=True):
     document = OdtFile('')
-    converter = CnvRunner(sourcePath, document, 'xml',
+    converter = CnvRunner(sourcePath, document, 'odt',
                           silentMode, '')
 
 

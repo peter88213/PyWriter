@@ -28,14 +28,6 @@ ODT_HEADER = '''<?xml version="1.0" encoding="UTF-8"?>
  </office:automatic-styles>
  <office:body>
   <office:text text:use-soft-page-breaks="true">
-   <office:forms form:automatic-focus="false" form:apply-design-mode="false"/>
-   <text:sequence-decls>
-    <text:sequence-decl text:display-outline-level="0" text:name="Illustration"/>
-    <text:sequence-decl text:display-outline-level="0" text:name="Table"/>
-    <text:sequence-decl text:display-outline-level="0" text:name="Text"/>
-    <text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
-    <text:sequence-decl text:display-outline-level="0" text:name="Figure"/>
-   </text:sequence-decls>
 '''
 
 ODT_FOOTER = '''  </office:text>
