@@ -7,22 +7,72 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-import sys
+import os
+import subprocess
 
 from pywriter.model.odtfile import OdtFile
-from pywriter.converter.cnv_runner import CnvRunner
+from pywriter.model.yw7file import Yw7File
 
 
-def run(sourcePath, silentMode=True):
-    document = OdtFile('')
-    document.proofread = True
-    converter = CnvRunner(sourcePath, document, 'odt',
-                          silentMode, '')
+TITLE = 'yW2OO v2.1'
+
+LIBREOFFICE = ['c:/Program Files/LibreOffice/program/swriter.exe',
+               'c:/Program Files (x86)/LibreOffice/program/swriter.exe',
+               'c:/Program Files/LibreOffice 5/program/swriter.exe',
+               'c:/Program Files (x86)/LibreOffice 5/program/swriter.exe']
+
+
+SUFFIX = ''
+# File name suffix for the exported html file.
+# Example:
+# foo.yw7 --> foo_exp.html
+
+
+def main():
+    sourcePath = None
+    files = os.listdir('.')
+
+    for file in files:
+
+        if '.yw7' in file:
+            sourcePath = file
+            break
+
+    if sourcePath is None:
+        return 'ERROR: No yWriter 7 project found.'
+
+    print('Export yWriter7 scenes content to odt')
+    print('Project: "' + sourcePath + '"')
+    yw7File = Yw7File(sourcePath)
+
+    if yw7File.is_locked():
+        return 'ERROR: yWriter 7 seems to be open. Please close first.'
+
+    message = yw7File.read()
+
+    if message.startswith('ERROR'):
+        return (message)
+
+    document = OdtFile(sourcePath.split('.yw7')[0] + SUFFIX + '.odt')
+    document.comments = True
+    message = document.write(yw7File, 'template.zip')
+
+    if message.startswith('ERROR'):
+        return (message)
+
+    if startWriter:
+
+        for lo in LIBREOFFICE:
+
+            if os.path.isfile(lo):
+                cmd = [os.path.normpath(lo)]
+                cmd.append('macro:///yW2OO.Convert.main')
+                cmd.append(document.filePath)
+                subprocess.call(cmd)
+
+    return (message)
 
 
 if __name__ == '__main__':
-    try:
-        sourcePath = sys.argv[1]
-    except:
-        sourcePath = ''
-    run(sourcePath, False)
+    startWriter = False
+    print(main())

@@ -7,21 +7,20 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import os
+import re
 import zipfile
 import locale
 from shutil import rmtree
 from datetime import datetime
 
 from pywriter.model.novel import Novel
-from pywriter.model.odtform import *
 
 
 class OdtFile(Novel):
     """OpenDocument xml project file representation."""
 
     _FILE_EXTENSION = '.odt'
-    _TEMPDIR = 'odt'
-    _TEMPLATE_FILE = 'template.zip'
+    _TEMPDIR = 'temp_odt'
     _ODT_COMPONENTS = ['Configurations2', 'manifest.rdf', 'META-INF', 'content.xml', 'meta.xml', 'mimetype', 'settings.xml', 'styles.xml', 'Configurations2/accelerator', 'Configurations2/floater', 'Configurations2/images', 'Configurations2/menubar',
                        'Configurations2/popupmenu', 'Configurations2/progressbar', 'Configurations2/statusbar', 'Configurations2/toolbar', 'Configurations2/toolpanel', 'Configurations2/accelerator/current.xml', 'Configurations2/images/Bitmaps', 'META-INF/manifest.xml']
 
@@ -85,22 +84,16 @@ class OdtFile(Novel):
         except:
             pass
 
-    def write(self, novel):
-        """Generate a html file containing:
-        - chapter sections containing:
-            - chapter headings,
-            - scene sections containing:
-                - scene ID as anchor, 
-                - scene title as comment,
-                - scene content.
+    def write(self, novel, templatePath=''):
+        """Generate an odt file from a template.
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def set_up():
+        def set_up(templatePath):
             self.tear_down()
             os.mkdir(self._TEMPDIR)
 
-            with zipfile.ZipFile(self._TEMPLATE_FILE, 'r') as odtTemplate:
+            with zipfile.ZipFile(templatePath, 'r') as odtTemplate:
                 odtTemplate.extractall(self._TEMPDIR)
 
         def format_chapter_title(text):
@@ -318,7 +311,7 @@ class OdtFile(Novel):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        set_up()
+        set_up(templatePath)
 
         message = write_content()
 
