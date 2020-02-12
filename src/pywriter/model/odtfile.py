@@ -7,17 +7,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import os
-import re
 import zipfile
 import locale
-import xml.etree.ElementTree as ET
 from shutil import rmtree
 from datetime import datetime
 
 from pywriter.model.novel import Novel
-from pywriter.model.chapter import Chapter
-from pywriter.model.scene import Scene
-from pywriter.model.xform import *
 from pywriter.model.odtform import *
 
 
@@ -30,6 +25,51 @@ class OdtFile(Novel):
     _ODT_COMPONENTS = ['Configurations2', 'manifest.rdf', 'META-INF', 'content.xml', 'meta.xml', 'mimetype', 'settings.xml', 'styles.xml', 'Configurations2/accelerator', 'Configurations2/floater', 'Configurations2/images', 'Configurations2/menubar',
                        'Configurations2/popupmenu', 'Configurations2/progressbar', 'Configurations2/statusbar', 'Configurations2/toolbar', 'Configurations2/toolpanel', 'Configurations2/accelerator/current.xml', 'Configurations2/images/Bitmaps', 'META-INF/manifest.xml']
 
+    _SCENE_DIVIDER = '* * *'
+    # To be placed between scene ending and beginning tags.
+
+    _ODT_HEADER = '''<?xml version="1.0" encoding="UTF-8"?>
+
+<office:document-content xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:officeooo="http://openoffice.org/2009/office" office:version="1.2">
+ <office:scripts/>
+ <office:font-face-decls>
+  <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
+ </office:font-face-decls>
+ <office:automatic-styles>
+  <style:style style:name="Sect1" style:family="section">
+   <style:section-properties style:editable="false">
+    <style:columns fo:column-count="1" fo:column-gap="0cm"/>
+   </style:section-properties>
+  </style:style>
+ </office:automatic-styles>
+ <office:body>
+  <office:text text:use-soft-page-breaks="true">
+'''
+
+    _ODT_FOOTER = '''  </office:text>
+ </office:body>
+</office:document-content>
+'''
+
+    _ODT_HEADING_MARKERS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
+                            '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
+
+    _ODT_META = '''<?xml version="1.0" encoding="utf-8"?>
+<office:document-meta xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:grddl="http://www.w3.org/2003/g/data-view#" office:version="1.2">
+  <office:meta>
+    <meta:generator>PyWriter</meta:generator>
+    <dc:title>%title%</dc:title>
+    <dc:description>%summary%</dc:description>
+    <dc:subject></dc:subject>
+    <meta:keyword></meta:keyword>
+    <meta:initial-creator>%author%</meta:initial-creator>
+    <dc:creator></dc:creator>
+    <meta:creation-date>%date%T%time%Z</meta:creation-date>
+    <dc:date></dc:date>
+  </office:meta>
+</office:document-meta>
+'''
+
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
 
@@ -38,119 +78,12 @@ class OdtFile(Novel):
         self.bookmarks = False
         self.comments = False
 
-    def read(self):
-        """Parse the odt content.xml file located at filePath, fetching the Novel attributes.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-
-        # Complete list of tags requiring CDATA (if incomplete).
-
+    def tear_down(self):
         try:
-            with open(self._filePath, 'r', encoding='utf-8') as f:
-                xmlData = f.read()
-
-        except(FileNotFoundError):
-            return 'ERROR: "' + self._filePath + '" not found.'
-
-        lines = xmlData.split('\n')
-
-        for line in lines:
-            tag = re.search('\<(.+?)\>\<\!\[CDATA', line)
-
-            if tag is not None:
-
-                if not (tag.group(1) in self._cdataTags):
-                    self._cdataTags.append(tag.group(1))
-
-        # Open the file again and let ElementTree parse its xml structure.
-
-        try:
-            self._tree = ET.parse(self._filePath)
-            root = self._tree.getroot()
+            rmtree(self._TEMPDIR)
 
         except:
-            return 'ERROR: Can not process "' + self._filePath + '".'
-
-        prj = root.find('PROJECT')
-        self.title = prj.find('Title').text
-
-        if prj.find('Desc') is not None:
-            self.summary = prj.find('Desc').text
-
-        self.fieldTitle1 = prj.find('FieldTitle1').text
-        self.fieldTitle2 = prj.find('FieldTitle2').text
-        self.fieldTitle3 = prj.find('FieldTitle3').text
-        self.fieldTitle4 = prj.find('FieldTitle4').text
-
-        for chp in root.iter('CHAPTER'):
-            chId = chp.find('ID').text
-            self.chapters[chId] = Chapter()
-            self.chapters[chId].title = chp.find('Title').text
-            self.srtChapters.append(chId)
-
-            if chp.find('Desc') is not None:
-                self.chapters[chId].summary = chp.find('Desc').text
-
-            if chp.find('SectionStart') is not None:
-                self.chapters[chId].chLevel = 1
-
-            else:
-                self.chapters[chId].chLevel = 0
-
-            if chp.find('Unused') is not None:
-                self.chapters[chId].isUnused = True
-
-            else:
-                self.chapters[chId].isUnused = False
-
-            self.chapters[chId].chType = int(chp.find('Type').text)
-
-            self.chapters[chId].srtScenes = []
-
-            if chp.find('Scenes') is not None:
-
-                for scn in chp.find('Scenes').findall('ScID'):
-                    scId = scn.text
-                    self.chapters[chId].srtScenes.append(scId)
-
-        for scn in root.iter('SCENE'):
-            scId = scn.find('ID').text
-
-            self.scenes[scId] = Scene()
-            self.scenes[scId].title = scn.find('Title').text
-
-            if scn.find('Desc') is not None:
-                self.scenes[scId].summary = scn.find('Desc').text
-
-            if scn.find('Notes') is not None:
-                self.scenes[scId].sceneNotes = scn.find('Notes').text
-
-            if scn.find('Field1') is not None:
-                self.scenes[scId].field1 = scn.find('Field1').text
-
-            if scn.find('Field2') is not None:
-                self.scenes[scId].field2 = scn.find('Field2').text
-
-            if scn.find('Field3') is not None:
-                self.scenes[scId].field3 = scn.find('Field3').text
-
-            if scn.find('Field4') is not None:
-                self.scenes[scId].field4 = scn.find('Field4').text
-
-            if scn.find('Tags') is not None:
-
-                if scn.find('Tags').text is not None:
-                    self.scenes[scId].tags = scn.find('Tags').text.split(';')
-
-            if scn.find('Unused') is not None:
-                self.scenes[scId].isUnused = True
-
-            sceneContent = scn.find('SceneContent').text
-
-            if sceneContent is not None:
-                self.scenes[scId].sceneContent = sceneContent
-
-        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
+            pass
 
     def write(self, novel):
         """Generate a html file containing:
@@ -163,13 +96,8 @@ class OdtFile(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def setup_odt():
-            try:
-                rmtree(self._TEMPDIR)
-
-            except:
-                pass
-
+        def set_up():
+            self.tear_down()
             os.mkdir(self._TEMPDIR)
 
             with zipfile.ZipFile(self._TEMPLATE_FILE, 'r') as odtTemplate:
@@ -178,6 +106,23 @@ class OdtFile(Novel):
         def format_chapter_title(text):
             """Fix auto-chapter titles for non-English """
             text = text.replace('Chapter ', '')
+            return text
+
+        def to_odt(text):
+            """Convert yw7 raw markup to html. Return a html string."""
+            try:
+                text = text.replace(
+                    '\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">')
+                text = text.replace(
+                    '[i]', '<text:span text:style-name="Emphasis">')
+                text = text.replace('[/i]', '</text:span>')
+                text = text.replace(
+                    '[b]', '<text:span text:style-name="Strong_20_Emphasis">')
+                text = text.replace('[/b]', '</text:span>')
+
+            except:
+                pass
+
             return text
 
         def set_locale():
@@ -211,7 +156,7 @@ class OdtFile(Novel):
             time = str(dt.hour).rjust(2, '0') + ':' + \
                 str(dt.minute).rjust(2, '0') + ':' + \
                 str(dt.second).rjust(2, '0')
-            text = ODT_META.replace('%author%', self.author).replace('%title%', self.title).replace(
+            text = self._ODT_META.replace('%author%', self.author).replace('%title%', self.title).replace(
                 '%summary%', '<![CDATA[' + self.summary + ']]>').replace('%date%', date).replace('%time%', time)
 
             try:
@@ -224,7 +169,7 @@ class OdtFile(Novel):
             return 'SUCCESS: Metadata written to "meta.xml"'
 
         def write_content():
-            lines = [ODT_HEADER]
+            lines = [self._ODT_HEADER]
 
             for chId in self.srtChapters:
 
@@ -246,7 +191,7 @@ class OdtFile(Novel):
                             '<text:p text:style-name="yWriter_20_mark">[ChID:' + chId + ']</text:p>')
 
                 if self.proofread or ((not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0):
-                    headingMarker = ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
+                    headingMarker = self._ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
                     lines.append(headingMarker + format_chapter_title(
                         self.chapters[chId].title) + '</text:h>')
 
@@ -258,7 +203,7 @@ class OdtFile(Novel):
 
                             if not firstSceneInChapter:
                                 lines.append(
-                                    '<text:p text:style-name="Heading_20_4">' + SCENE_DIVIDER + '</text:p>')
+                                    '<text:p text:style-name="Heading_20_4">' + self._SCENE_DIVIDER + '</text:p>')
 
                             if self.sections:
                                 lines.append(
@@ -332,7 +277,7 @@ class OdtFile(Novel):
                 if self.sections and self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
                     lines.append('</text:section>')
 
-            lines.append(ODT_FOOTER)
+            lines.append(self._ODT_FOOTER)
             text = '\n'.join(lines)
 
             try:
@@ -373,7 +318,7 @@ class OdtFile(Novel):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        setup_odt()
+        set_up()
 
         message = write_content()
 
@@ -401,5 +346,5 @@ class OdtFile(Novel):
             return 'ERROR: Cannot generate "' + self._filePath + '".'
 
         os.chdir(workdir)
-
+        self.tear_down()
         return 'SUCCESS: "' + self._filePath + '" saved.'
