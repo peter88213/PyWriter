@@ -12,6 +12,7 @@ import zipfile
 import locale
 import xml.etree.ElementTree as ET
 from shutil import rmtree
+from datetime import datetime
 
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
@@ -26,8 +27,8 @@ class OdtFile(Novel):
     _FILE_EXTENSION = '.odt'
     _TEMPDIR = 'odt'
     _TEMPLATE_FILE = 'template.zip'
-    _ODT_COMPONENTS = ['Configurations2', 'manifest.rdf', 'META-INF', 'content.xml', 'meta.xml', 'mimetype', 'settings.xml', 'styles.xml', 'Thumbnails', 'Configurations2/accelerator', 'Configurations2/floater', 'Configurations2/images', 'Configurations2/menubar',
-                       'Configurations2/popupmenu', 'Configurations2/progressbar', 'Configurations2/statusbar', 'Configurations2/toolbar', 'Configurations2/toolpanel', 'Configurations2/accelerator/current.xml', 'Configurations2/images/Bitmaps', 'META-INF/manifest.xml', 'Thumbnails/thumbnail.png']
+    _ODT_COMPONENTS = ['Configurations2', 'manifest.rdf', 'META-INF', 'content.xml', 'meta.xml', 'mimetype', 'settings.xml', 'styles.xml', 'Configurations2/accelerator', 'Configurations2/floater', 'Configurations2/images', 'Configurations2/menubar',
+                       'Configurations2/popupmenu', 'Configurations2/progressbar', 'Configurations2/statusbar', 'Configurations2/toolbar', 'Configurations2/toolpanel', 'Configurations2/accelerator/current.xml', 'Configurations2/images/Bitmaps', 'META-INF/manifest.xml']
 
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
@@ -203,6 +204,25 @@ class OdtFile(Novel):
 
             return 'SUCCESS: Locale set to "' + locale.getdefaultlocale()[0] + '".'
 
+        def write_metadata():
+            dt = datetime.today()
+            date = str(dt.year) + '-' + str(dt.month).rjust(2, '0') + '-' + \
+                str(dt.day).rjust(2, '0')
+            time = str(dt.hour).rjust(2, '0') + ':' + \
+                str(dt.minute).rjust(2, '0') + ':' + \
+                str(dt.second).rjust(2, '0')
+            text = ODT_META.replace('%author%', self.author).replace('%title%', self.title).replace(
+                '%summary%', '<![CDATA[' + self.summary + ']]>').replace('%date%', date).replace('%time%', time)
+
+            try:
+                with open(self._TEMPDIR + '/meta.xml', 'w', encoding='utf-8') as f:
+                    f.write(text)
+
+            except:
+                return 'ERROR: Cannot write "meta.xml".'
+
+            return 'SUCCESS: Metadata written to "meta.xml"'
+
         def write_content():
             lines = [ODT_HEADER]
 
@@ -326,9 +346,23 @@ class OdtFile(Novel):
 
         # Copy the novel's attributes to write
 
-        if novel.title is not None:
-            if novel.title != '':
-                self.title = novel.title
+        if novel.title is None:
+            self.title = ''
+
+        else:
+            self.title = novel.title
+
+        if novel.summary is None:
+            self.summary = ''
+
+        else:
+            self.summary = novel.summary
+
+        if novel.author is None:
+            self.author = ''
+
+        else:
+            self.author = novel.author
 
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
@@ -342,6 +376,11 @@ class OdtFile(Novel):
         setup_odt()
 
         message = write_content()
+
+        if message.startswith('ERROR'):
+            return message
+
+        message = write_metadata()
 
         if message.startswith('ERROR'):
             return message

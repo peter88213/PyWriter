@@ -37,12 +37,22 @@ ODT_FOOTER = '''  </office:text>
 
 ODT_HEADING_MARKERS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
                        '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
-'''
-<text:h text:style-name="Heading_20_1" text:outline-level="1"></text:h>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"></text:h>
-<text:p text:style-name="Heading_20_4"></text:p>
-<text:p text:style-name="Text_20_body"></text:p>
-<text:p text:style-name="First_20_line_20_indent"></text:p>
+
+
+ODT_META = '''<?xml version="1.0" encoding="utf-8"?>
+<office:document-meta xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:grddl="http://www.w3.org/2003/g/data-view#" office:version="1.2">
+  <office:meta>
+    <meta:generator>PyWriter</meta:generator>
+    <dc:title>%title%</dc:title>
+    <dc:description>%summary%</dc:description>
+    <dc:subject></dc:subject>
+    <meta:keyword></meta:keyword>
+    <meta:initial-creator>%author%</meta:initial-creator>
+    <dc:creator></dc:creator>
+    <meta:creation-date>%date%T%time%Z</meta:creation-date>
+    <dc:date></dc:date>
+  </office:meta>
+</office:document-meta>
 '''
 
 
