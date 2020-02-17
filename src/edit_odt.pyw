@@ -10,14 +10,18 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 
 from pywriter.model.odtfile import OdtFile
-from pywriter.converter.cnv_runner import CnvRunner
+from pywriter.model.manuscript import Manuscript
+from pywriter.converter.hybrid_cnv import HybridCnv
 
 
 def run(sourcePath, silentMode=True):
-    document = OdtFile('', 'template.zip')
-    document.comments = True
-    converter = CnvRunner(sourcePath, document, 'odt',
-                          silentMode, '')
+    sourceDoc = Manuscript('')
+    targetDoc = OdtFile('')
+    targetDoc.comments = True
+    targetDoc.sections = True
+    targetDoc.bookmarks = True
+    converter = HybridCnv(sourcePath, targetDoc, sourceDoc,
+                          silentMode, '_manuscript')
 
 
 if __name__ == '__main__':
