@@ -31,12 +31,6 @@ SUFFIX = '_exp'
 def main():
     sourcePath = None
 
-    templatePath = os.environ['USERPROFILE'] + \
-        '/AppData/Roaming/LibreOffice/4/user/yW2OO/template.zip'
-
-    if not os.path.isfile(templatePath):
-        return 'ERROR: "' + templatePath + '" not found.'
-
     files = os.listdir('.')
 
     for file in files:
@@ -60,8 +54,7 @@ def main():
     if message.startswith('ERROR'):
         return (message)
 
-    document = OdtFile(sourcePath.split('.yw7')[
-                       0] + SUFFIX + '.odt', templatePath)
+    document = OdtFile(sourcePath.split('.yw7')[0] + SUFFIX + '.odt')
     document.comments = True
     message = document.write(yw7File)
 

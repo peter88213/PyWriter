@@ -12,12 +12,6 @@ from pywriter.model.odtform import *
 class OdtManuscript(OdtFile):
     """OpenDocument xml manuscript file representation."""
 
-    _ODT_HEADING_MARKERS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
-                            '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
-
-    _SCENE_DIVIDER = '* * *'
-    # To be placed between scene ending and beginning tags.
-
     def write_content_xml(self):
         """Write scene content to "content.xml".
 
