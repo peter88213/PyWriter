@@ -9,15 +9,14 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.model.odtfile import OdtFile
-from pywriter.model.htmlfile import HtmlFile
+from pywriter.model.odt_proof import OdtProof
+from pywriter.model.html_proof import HtmlProof
 from pywriter.converter.hybrid_cnv import HybridCnv
 
 
 def run(sourcePath, silentMode=True):
-    sourceDoc = HtmlFile('')
-    targetDoc = OdtFile('')
-    targetDoc.proofread = True
+    sourceDoc = HtmlProof('')
+    targetDoc = OdtProof('')
     converter = HybridCnv(sourcePath, targetDoc, sourceDoc,
                           silentMode, '_proof')
 

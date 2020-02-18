@@ -1,4 +1,4 @@
-"""PartDesc - Class for part summary. file operations and parsing.
+"""HtmlPartDesc - Class for part summary. file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -6,12 +6,11 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.model.novel import Novel
-from pywriter.model.chapterdesc import ChapterDesc
+from pywriter.model.html_chapterdesc import HtmlChapterDesc
 from pywriter.model.hform import *
 
 
-class PartDesc(ChapterDesc):
+class HtmlPartDesc(HtmlChapterDesc):
     """HTML file representation of an yWriter project's parts summaries."""
 
     def write(self, novel):

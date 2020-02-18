@@ -1,4 +1,4 @@
-"""ChapterDesc - Class for chapter summary. file operations and parsing.
+"""HtmlChapterDesc - Class for chapter summary. file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -6,12 +6,11 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.model.novel import Novel
-from pywriter.model.scenedesc import SceneDesc
+from pywriter.model.html_scenedesc import HtmlSceneDesc
 from pywriter.model.hform import *
 
 
-class ChapterDesc(SceneDesc):
+class HtmlChapterDesc(HtmlSceneDesc):
     """HTML file representation of an yWriter project's chapters summaries."""
 
     def handle_endtag(self, tag):
@@ -77,18 +76,28 @@ class ChapterDesc(SceneDesc):
 
             if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
 
-                if self.chapters[chId].chLevel != 0:
+                if self.chapters[chId].chLevel == 1:
+
+                    # Write part heading.
+
                     lines.append(
                         '<h2>' + self.chapters[chId].title + '</h2>\n')
 
                 else:
+                    # Write invisible "start chapter" tag.
+
                     lines.append('<div id="ChID:' + chId + '">\n')
                     lines.append('<p class="firstlineindent">')
 
                     if self.chapters[chId].summary is not None:
+
+                        # Write chapter summary.
+
                         lines.append(to_html(self.chapters[chId].summary))
 
                     else:
+                        # Write chapter title as comment.
+
                         lines.append(
                             '<!-- ' + self.chapters[chId].title + ' -->')
 

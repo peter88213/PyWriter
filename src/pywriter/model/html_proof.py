@@ -1,4 +1,4 @@
-"""HtmlFile - Class for html file operations and parsing.
+"""HtmlProof - Class for html file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -19,7 +19,7 @@ HTML_HEADING_MARKERS = ("h2", "h1")
 # 1 is for a chapter beginning a section
 
 
-class HtmlFile(Novel, HTMLParser):
+class HtmlProof(Novel, HTMLParser):
     """HTML file representation of an yWriter project's OfficeFile part.
 
     Represents a html file with visible chapter and scene tags 

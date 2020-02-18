@@ -9,12 +9,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.model.htmlfile import HtmlFile
+from pywriter.model.html_proof import HtmlProof
 from pywriter.converter.cnv_runner import CnvRunner
 
 
-def run(sourcePath, silentMode = True):
-    document = HtmlFile('')
+def run(sourcePath, silentMode=True):
+    document = HtmlProof('')
     converter = CnvRunner(sourcePath, document, 'html', silentMode)
 
 

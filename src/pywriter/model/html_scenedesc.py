@@ -1,4 +1,4 @@
-"""SceneDesc - Class for scene summary. file operations and parsing.
+"""HtmlSceneDesc - Class for scene summary. file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -6,8 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.model.novel import Novel
-from pywriter.model.manuscript import Manuscript
+from pywriter.model.html_manuscript import HtmlManuscript
 from pywriter.model.hform import *
 
 
@@ -17,7 +16,7 @@ HTML_HEADING_MARKERS = ("h3", "h2")
 # 1 is for a chapter beginning a section
 
 
-class SceneDesc(Manuscript):
+class HtmlSceneDesc(HtmlManuscript):
     """HTML file representation of an yWriter project's scene summaries."""
 
     def handle_endtag(self, tag):

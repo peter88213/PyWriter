@@ -1,4 +1,4 @@
-"""Manuscript - Class for html manuscript file operations and parsing.
+"""HtmlManuscript - Class for html manuscript file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -19,7 +19,7 @@ HTML_HEADING_MARKERS = ("h2", "h1")
 # 1 is for a chapter beginning a section
 
 
-class Manuscript(Novel, HTMLParser):
+class HtmlManuscript(Novel, HTMLParser):
     """HTML file representation of an yWriter project's manuscript part.
 
     Represents a html file with chapter and scene sections 

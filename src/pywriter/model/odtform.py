@@ -14,7 +14,7 @@ def format_chapter_title(text):
 
 
 def to_odt(text):
-    """Convert yw7 raw markup to html. Return a html string."""
+    """Convert yw7 raw markup to odt. Return an xml string."""
     try:
         text = text.replace(
             '\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">')
