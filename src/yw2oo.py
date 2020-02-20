@@ -1,6 +1,6 @@
-"""PyWriter v1.2 - Import and export ywriter7 scenes for editing. 
+"""PyWriter v1.3 - Export ywriter7 scenes. 
 
-Proof reading file format: html (with invisible chapter and scene tags)
+File format: odt (without chapter and scene tags)
 
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
@@ -8,13 +8,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import os
-import subprocess
 
 from pywriter.model.odtfile import OdtFile
 from pywriter.model.yw7file import Yw7File
 
 
-TITLE = 'yW2OO v2.1'
+TITLE = 'yW2OO v2.2'
 
 LIBREOFFICE = ['c:/Program Files/LibreOffice/program/swriter.exe',
                'c:/Program Files (x86)/LibreOffice/program/swriter.exe',
@@ -23,9 +22,9 @@ LIBREOFFICE = ['c:/Program Files/LibreOffice/program/swriter.exe',
 
 
 SUFFIX = '_exp'
-# File name suffix for the exported html file.
+# File name suffix for the exported odt file.
 # Example:
-# foo.yw7 --> foo_exp.html
+# foo.yw7 --> foo_exp.odt
 
 
 def main():
@@ -52,27 +51,14 @@ def main():
     message = yw7File.read()
 
     if message.startswith('ERROR'):
-        return (message)
+        return message
 
     document = OdtFile(sourcePath.split('.yw7')[0] + SUFFIX + '.odt')
     document.comments = True
     message = document.write(yw7File)
-
-    if message.startswith('ERROR'):
-        return (message)
-
-    if startWriter:
-
-        for lo in LIBREOFFICE:
-
-            if os.path.isfile(lo):
-                cmd = [os.path.normpath(lo)]
-                cmd.append(document.filePath)
-                subprocess.call(cmd)
-
-    return (message)
+    return message
 
 
 if __name__ == '__main__':
-    startWriter = False
-    print(main())
+    message = main()
+    print(message)
