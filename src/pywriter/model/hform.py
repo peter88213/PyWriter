@@ -73,7 +73,7 @@ def to_html(text):
         text = text.replace('[/i]', '</em>')
         text = text.replace('[b]', '<strong>')
         text = text.replace('[/b]', '</strong>')
-        text = re.sub('\<p(.+?)\>\<\/p\>', '<p\g<1>><br></p>', text)
+        text = re.sub('\<p(.*?)\> *\<\/p\>', '<p\g<1>><br>\n</p>', text)
 
     except:
         pass

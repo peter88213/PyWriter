@@ -110,8 +110,8 @@ class NrmOpr(unittest.TestCase):
 
         # Convert csv to xml and replace .yw7 file.
 
-        self.assertEqual(converter.document_to_yw7(documentFile, yw7File), 'SUCCESS: ' + str(
-            TOTAL_SCENES) + ' Scenes written to "' + TEST_YW7 + '".')
+        self.assertEqual(converter.document_to_yw7(
+            documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
 
         # Verify the yw7 project.
 

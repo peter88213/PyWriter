@@ -181,7 +181,9 @@ class Yw7File(Novel):
             self.srtChapters = novel.srtChapters
         '''
 
-        if novel.scenes is not None:
+        sceneCount = 0
+
+        if novel.scenes != {}:
 
             for scId in novel.scenes:
 
@@ -193,6 +195,7 @@ class Yw7File(Novel):
 
                 if novel.scenes[scId].sceneContent is not None:
                     self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
+                    sceneCount += 1
 
                 if novel.scenes[scId].sceneNotes is not None:
                     self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
@@ -217,7 +220,7 @@ class Yw7File(Novel):
                     self.scenes[scId].isUnused = novel.chapters[chId].isUnused
                 '''
 
-        if novel.chapters is not None:
+        if novel.chapters != {}:
 
             for chId in novel.chapters:
 
@@ -241,7 +244,6 @@ class Yw7File(Novel):
                     self.chapters[chId].srtScenes = novel.chapters[chId].srtScenes
                 '''
 
-        sceneCount = 0
         root = self._tree.getroot()
         prj = root.find('PROJECT')
         prj.find('Title').text = self.title
@@ -391,8 +393,6 @@ class Yw7File(Novel):
                          scn.remove(unusedMarker)
                 '''
 
-                sceneCount = sceneCount + 1
-
         indent(root)
         tree = ET.ElementTree(root)
 
@@ -405,10 +405,16 @@ class Yw7File(Novel):
         # Postprocess the xml file created by ElementTree
         message = cdata(self._filePath, self._cdataTags)
 
-        if 'ERROR' in message:
+        if message.startswith('ERROR'):
             return message
 
-        return 'SUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".'
+        if sceneCount > 0:
+            info = str(sceneCount) + ' Scenes'
+
+        else:
+            info = 'project data'
+
+        return 'SUCCESS: ' + info + ' written to "' + self._filePath + '".'
 
     def is_locked(self):
         """Test whether a .lock file placed by yWriter exists.

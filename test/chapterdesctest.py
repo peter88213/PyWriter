@@ -12,7 +12,7 @@ import unittest
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
-from pywriter.model.chapterdesc import ChapterDesc
+from pywriter.model.html_chapterdesc import HtmlChapterDesc
 
 
 TEST_PATH = os.getcwd()
@@ -89,7 +89,7 @@ class NrmOpr(unittest.TestCase):
         """Export yW7 chapters to html. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = ChapterDesc(TEST_DOCUMENT)
+        documentFile = HtmlChapterDesc(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Read .yw7 file and convert xml to html.
@@ -109,13 +109,13 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = ChapterDesc(TEST_DOCUMENT)
+        documentFile = HtmlChapterDesc(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Convert html to xml and replace .yw7 file.
 
-        self.assertTrue('SUCCESS' in converter.document_to_yw7(
-            documentFile, yw7File))
+        self.assertEqual(converter.document_to_yw7(
+            documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
 
         # Verify the yw7 project.
 

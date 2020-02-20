@@ -22,9 +22,9 @@ TEST_DOCX = EXEC_PATH + 'yw7 Sample Project.docx'
 DOCX_CONTENT = 'word/document.xml'
 PROOFED_DOCX = DATA_PATH + 'office/proofed.docx'
 
-TEST_ODT = EXEC_PATH + 'yw7 Sample Project.odt'
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project_proof.odt'
 ODT_CONTENT = 'content.xml'
-PROOFED_ODT = DATA_PATH + 'office/proofed.odt'
+PROOFED_ODT = DATA_PATH + 'office/proofed.html'
 
 TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'
 REFERENCE_HTML = DATA_PATH + 'html/normal.html'

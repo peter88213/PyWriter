@@ -12,12 +12,11 @@ import zipfile
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
-from pywriter.model.odtfile import OdtFile
-
+from pywriter.model.odt_proof import OdtProof
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/odt/'
+DATA_PATH = 'data/odtproof/'
 
 TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project.odt'
 DOCUMENT_CONTENT = 'content.xml'
@@ -74,7 +73,7 @@ class NrmOpr(unittest.TestCase):
         """Convert markdown to odt. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = OdtFile(TEST_DOCUMENT)
+        documentFile = OdtProof(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         self.assertEqual(converter.yw7_to_document(

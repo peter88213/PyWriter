@@ -12,7 +12,7 @@ import unittest
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
-from pywriter.model.manuscript import Manuscript
+from pywriter.model.html_manuscript import HtmlManuscript
 
 
 TEST_PATH = os.getcwd()
@@ -27,8 +27,7 @@ TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
 PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
-with open(REFERENCE_YW7, 'r') as f:
-    TOTAL_SCENES = f.read().count('<SCENE>')
+TOTAL_SCENES = 56
 
 
 def read_file(inputFile):
@@ -89,7 +88,7 @@ class NrmOpr(unittest.TestCase):
         """Export yW7 scenes to html. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = Manuscript(TEST_DOCUMENT)
+        documentFile = HtmlManuscript(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Read .yw7 file and convert xml to html.
@@ -109,7 +108,7 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = Manuscript(TEST_DOCUMENT)
+        documentFile = HtmlManuscript(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Convert html to xml and replace .yw7 file.

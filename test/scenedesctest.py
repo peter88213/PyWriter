@@ -12,7 +12,7 @@ import unittest
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
-from pywriter.model.scenedesc import SceneDesc
+from pywriter.model.html_scenedesc import HtmlSceneDesc
 
 
 TEST_PATH = os.getcwd()
@@ -26,9 +26,6 @@ PROOFED_DOCUMENT = DATA_PATH + 'proofed.html'
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
 PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
-
-with open(REFERENCE_YW7, 'r') as f:
-    TOTAL_SCENES = f.read().count('<SCENE>')
 
 
 def read_file(inputFile):
@@ -89,7 +86,7 @@ class NrmOpr(unittest.TestCase):
         """Export yW7 scenes to html. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = SceneDesc(TEST_DOCUMENT)
+        documentFile = HtmlSceneDesc(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Read .yw7 file and convert xml to html.
@@ -109,13 +106,13 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = SceneDesc(TEST_DOCUMENT)
+        documentFile = HtmlSceneDesc(TEST_DOCUMENT)
         converter = Yw7Cnv()
 
         # Convert html to xml and replace .yw7 file.
 
-        self.assertEqual(converter.document_to_yw7(documentFile, yw7File), 'SUCCESS: ' + str(
-            TOTAL_SCENES) + ' Scenes written to "' + TEST_YW7 + '".')
+        self.assertEqual(converter.document_to_yw7(
+            documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
 
         # Verify the yw7 project.
 
