@@ -21,7 +21,7 @@ LIBREOFFICE = ['c:/Program Files/LibreOffice/program/swriter.exe',
                'c:/Program Files (x86)/LibreOffice 5/program/swriter.exe']
 
 
-SUFFIX = '_exp'
+SUFFIX = ''
 # File name suffix for the exported odt file.
 # Example:
 # foo.yw7 --> foo_exp.odt

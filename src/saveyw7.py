@@ -18,42 +18,44 @@ from pywriter.model.yw7file import Yw7File
 from pywriter.converter.yw7cnv import Yw7Cnv
 
 
+def delete_tempfile(filePath):
+    if filePath.endswith('.html'):
+        try:
+            os.remove(filePath)
+        except:
+            pass
+
+
 def run(sourcePath):
-    sourcePath = sourcePath.replace('file:///', '').replace('%20', ' ')
+    sourcePath = sourcePath.lower().replace('file:///', '').replace('%20', ' ')
 
     if sourcePath.endswith('_proof.html'):
-        yw7Path = sourcePath.split('_proof.html')[0] + '.yw7'
+        yw7File = Yw7File(sourcePath.split('_proof.html')[0] + '.yw7')
         sourceDoc = HtmlProof(sourcePath)
 
     elif sourcePath.endswith('_manuscript.html'):
-        yw7Path = sourcePath.split('_manuscript.html')[0] + '.yw7'
+        yw7File = Yw7File(sourcePath.split('_manuscript.html')[0] + '.yw7')
         sourceDoc = HtmlManuscript(sourcePath)
 
     elif sourcePath.endswith('_scenes.html'):
-        yw7Path = sourcePath.split('_scenes.html')[0] + '.yw7'
+        yw7File = Yw7File(sourcePath.split('_scenes.html')[0] + '.yw7')
         sourceDoc = HtmlSceneDesc(sourcePath)
 
     elif sourcePath.endswith('_chapters.html'):
-        yw7Path = sourcePath.split('_chapters.html')[0] + '.yw7'
+        yw7File = Yw7File(sourcePath.split('_chapters.html')[0] + '.yw7')
         sourceDoc = HtmlChapterDesc(sourcePath)
 
     elif sourcePath.endswith('_parts.html'):
-        yw7Path = sourcePath.split('_parts.html')[0] + '.yw7'
+        yw7File = Yw7File(sourcePath.split('_parts.html')[0] + '.yw7')
         sourceDoc = HtmlPartDesc(sourcePath)
 
     else:
-        return 'ERROR: No yWriter project content.'
+        delete_tempfile(sourcePath)
+        return 'ERROR: File format not supported.'
 
-    yw7File = Yw7File(yw7Path)
     converter = Yw7Cnv()
-
     message = converter.document_to_yw7(sourceDoc, yw7File)
-
-    try:
-        os.remove(sourcePath)
-    except:
-        pass
-
+    delete_tempfile(sourcePath)
     return message
 
 
