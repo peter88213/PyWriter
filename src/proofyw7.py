@@ -53,6 +53,18 @@ def run(sourcePath):
 if __name__ == '__main__':
     try:
         sourcePath = sys.argv[1]
+
     except:
-        sourcePath = ''
+        files = os.listdir('.')
+
+        for file in files:
+
+            if '.yw7' in file:
+                sourcePath = file
+                break
+
+        if sourcePath is None:
+            print('ERROR: No yWriter 7 project found.')
+            exit(1)
+
     print(run(sourcePath))
