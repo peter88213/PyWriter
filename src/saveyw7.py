@@ -16,14 +16,27 @@ from pywriter.model.html_chapterdesc import HtmlChapterDesc
 from pywriter.model.html_partdesc import HtmlPartDesc
 from pywriter.model.yw7file import Yw7File
 from pywriter.converter.yw7cnv import Yw7Cnv
+from pywriter.model.scenelist import SceneList
+from pywriter.plot.plotlist import PlotList
 
 
 def delete_tempfile(filePath):
+
     if filePath.endswith('.html'):
-        try:
-            os.remove(filePath)
-        except:
-            pass
+
+        if os.path.isfile(filePath.split('.html')[0] + '.odt'):
+            try:
+                os.remove(filePath)
+            except:
+                pass
+
+    elif filePath.endswith('.csv'):
+
+        if os.path.isfile(filePath.split('.csv')[0] + '.ods'):
+            try:
+                os.remove(filePath)
+            except:
+                pass
 
 
 def run(sourcePath):
@@ -49,13 +62,23 @@ def run(sourcePath):
         yw7File = Yw7File(sourcePath.split('_parts.html')[0] + '.yw7')
         sourceDoc = HtmlPartDesc(sourcePath)
 
+    elif sourcePath.endswith('_scenes.csv'):
+        yw7File = Yw7File(sourcePath.split('_scenes.csv')[0] + '.yw7')
+        sourceDoc = SceneList(sourcePath)
+
+    elif sourcePath.endswith('_plot.csv'):
+        yw7File = Yw7File(sourcePath.split('_plot.csv')[0] + '.yw7')
+        sourceDoc = PlotList(sourcePath)
+
     else:
-        delete_tempfile(sourcePath)
         return 'ERROR: File format not supported.'
 
     converter = Yw7Cnv()
     message = converter.document_to_yw7(sourceDoc, yw7File)
-    delete_tempfile(sourcePath)
+
+    if not message.startswith('ERROR'):
+        delete_tempfile(sourcePath)
+
     return message
 
 
