@@ -26,7 +26,7 @@ TEST_ODT = EXEC_PATH + 'yw7 Sample Project_proof.odt'
 ODT_CONTENT = 'content.xml'
 PROOFED_ODT = DATA_PATH + 'office/proofed.html'
 
-TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'
+TEST_HTML = EXEC_PATH + 'yw7 Sample Project_proof.html'
 REFERENCE_HTML = DATA_PATH + 'html/normal.html'
 PROOFED_HTML = DATA_PATH + 'html/proofed.html'
 

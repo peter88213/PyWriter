@@ -16,6 +16,32 @@ def format_chapter_title(text):
 def to_odt(text):
     """Convert yw7 raw markup to odt. Return an xml string."""
     try:
+        # process italics and bold markup reaching across linebreaks
+
+        italics = False
+        bold = False
+        newlines = []
+        lines = text.split('\n')
+        for line in lines:
+            if italics:
+                line = '[i]' + line
+                italics = False
+
+            if line.count('[i]') > line.count('[/i]'):
+                line += '[/i]'
+                italics = True
+
+            if bold:
+                line = '[b]' + line
+                bold = False
+
+            if line.count('[b]') > line.count('[/b]'):
+                line += '[/b]'
+                bold = True
+
+            newlines.append(line)
+
+        text = '\n'.join(newlines)
         text = text.replace(
             '\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">')
         text = text.replace(

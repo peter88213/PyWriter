@@ -15,7 +15,7 @@ from pywriter.converter.cnv_runner import CnvRunner
 
 def run(sourcePath, silentMode=True):
     document = HtmlProof('')
-    converter = CnvRunner(sourcePath, document, 'html', silentMode)
+    converter = CnvRunner(sourcePath, document, 'html', silentMode, '_proof')
 
 
 if __name__ == '__main__':
