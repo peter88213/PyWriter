@@ -26,7 +26,7 @@ def delete_tempfile(filePath):
 
 
 def run(sourcePath):
-    sourcePath = sourcePath.lower().replace('file:///', '').replace('%20', ' ')
+    sourcePath = sourcePath.replace('file:///', '').replace('%20', ' ')
     converter = Yw7Cnv()
 
     # The conversion's direction depends on the sourcePath argument.
