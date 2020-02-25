@@ -12,14 +12,14 @@ from pywriter.model.odtform import *
 class OdtScenes(OdtFile):
     """OpenDocument xml scene summaries file representation."""
 
-    _ODT_HEADING_MARKERS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
-                            '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
-
     _SCENE_DIVIDER = '* * *'
     # To be placed between scene ending and beginning tags.
 
     def write_content_xml(self):
         lines = [self._CONTENT_XML_HEADER]
+        lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
+        lines.append(self._ODT_SUBTITLE_START +
+                     self.author + self._ODT_PARA_END)
 
         for chId in self.srtChapters:
 
@@ -41,10 +41,11 @@ class OdtScenes(OdtFile):
                         '<text:p text:style-name="yWriter_20_mark">[ChID:' + chId + ']</text:p>')
 
             if self.proofread or ((not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0):
-                headingMarker = self._ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
-                lines.append(headingMarker + format_chapter_title(
-                    self.chapters[chId].title) + '</text:h>')
 
+                # Write chapter heading.
+
+                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] + format_chapter_title(
+                    self.chapters[chId].title) + self._ODT_HEADING_END)
                 firstSceneInChapter = True
 
                 for scId in self.chapters[chId].srtScenes:
@@ -53,7 +54,7 @@ class OdtScenes(OdtFile):
 
                         if not firstSceneInChapter:
                             lines.append(
-                                '<text:p text:style-name="Heading_20_4">' + self._SCENE_DIVIDER + '</text:p>')
+                                self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
 
                         if self.sections:
                             lines.append(
@@ -73,7 +74,7 @@ class OdtScenes(OdtFile):
                                 lines.append(
                                     '<text:p text:style-name="yWriter_20_mark">[ScID:' + scId + ']</text:p>')
 
-                        scenePrefix = '<text:p text:style-name="Text_20_body">'
+                        scenePrefix = self._ODT_FIRST_PARA_START
 
                         if self.bookmarks:
                             scenePrefix += '<text:bookmark text:name="ScID:' + scId + '"/>'
@@ -87,18 +88,18 @@ class OdtScenes(OdtFile):
                         if self.sceneSummaries:
                             if self.scenes[scId].sceneSummary is not None:
                                 lines.append(scenePrefix +
-                                             to_odt(self.scenes[scId].sceneSummary) + '</text:p>')
+                                             to_odt(self.scenes[scId].sceneSummary) + self._ODT_PARA_END)
 
                             else:
-                                lines.append(scenePrefix + '</text:p>')
+                                lines.append(scenePrefix + self._ODT_PARA_END)
 
                         if self.sceneContents:
                             if self.scenes[scId].sceneContent is not None:
                                 lines.append(scenePrefix +
-                                             to_odt(self.scenes[scId].sceneContent) + '</text:p>')
+                                             to_odt(self.scenes[scId].sceneContent) + self._ODT_PARA_END)
 
                             else:
-                                lines.append(scenePrefix + '</text:p>')
+                                lines.append(scenePrefix + self._ODT_PARA_END)
 
                         firstSceneInChapter = False
 

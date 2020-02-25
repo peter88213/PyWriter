@@ -88,7 +88,7 @@ class NrmOpr(unittest.TestCase):
                          read_file(DATA_PATH + DOCUMENT_CONTENT))
 
     def tearDown(self):
-        '''remove_all_testfiles()'''
+        remove_all_testfiles()
 
 
 def main():

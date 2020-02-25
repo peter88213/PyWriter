@@ -20,9 +20,13 @@
 
 <text:p text:style-name="Title">Hal Spacejock book one - Sample yWriter Project</text:p>
 <text:p text:style-name="Subtitle">Simon Haynes</text:p>
+<text:section text:style-name="Sect1" text:name="ChID:34">
 <text:h text:style-name="Heading_20_1" text:outline-level="1">Part 1</text:h>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:1">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">1</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:1">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:1"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Meet Hal, threatened by Vurdi</text:p>
 </office:annotation>Hal Spacejock was sitting at the Black Gull's flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he'd read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article's claims. He didn't feel any smarter and he couldn't remember the last time he'd spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull's onboard computer. Underpowered and outdated, it was still more than capable of running the ship's accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.</text:p>
@@ -42,14 +46,20 @@
 <text:p text:style-name="First_20_line_20_indent">"Shall I add those titles to your basket?"</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:2">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">2</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:2">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:2"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Jerling buys team. Discusses Seraph.</text:p>
 </office:annotation>On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.</text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:3">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:3"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal takes a call from Jerling</text:p>
 </office:annotation>Hal was pacing the Black Gull's flight deck, ready to put his fist through the nearest wall. "What do you mean, you can't call Jerling back? What do you mean you didn't save his details?"</text:p>
@@ -60,8 +70,12 @@
 <text:p text:style-name="First_20_line_20_indent">"You're only saying that because you're losing."</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:3">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">3</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:4">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:4"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk arrives</text:p>
 </office:annotation>"No sign of Jerling's pilot," said Hal, who was standing in the Black Gull's airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. "There could be an army out there and I wouldn't know it."</text:p>
@@ -69,16 +83,22 @@
 <text:p text:style-name="First_20_line_20_indent">"No thanks. Vurdi's robot might be hanging around."</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:4">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">4</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:5">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:5"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal going to port control</text:p>
 </office:annotation>Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport's administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the 'A' list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.</text:p>
 <text:p text:style-name="First_20_line_20_indent">Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the <text:span text:style-name="Emphasis">Black Gull</text:span> was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:6">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:6"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk checking computer for Incubots.</text:p>
 </office:annotation>Clunk dropped the last chess piece into the small wooden box and looked around the flight deck. Despite his best efforts with the mop, it didn't look particularly clean, but compared to its previous state it was as sterile as a hospital ward. After a moment's hesitation, he sat in the pilot's chair. "Navcom, do you have a business directory?"</text:p>
@@ -89,16 +109,20 @@
 <text:p text:style-name="First_20_line_20_indent">"Humans tell lies about the most trivial matters."</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:7">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:7"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal talking to the Portmaster</text:p>
 </office:annotation>Hal left the maintenance vehicle in the spaceport's outer carpark and walked to the admin block. An information kiosk directed him to an elevator, where he pressed the button marked 'Portmaster'.</text:p>
 <text:p text:style-name="First_20_line_20_indent">Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:8">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:8"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk takes call from Hal. Calls Jerling. Fire.</text:p>
 </office:annotation>"Simulation suspended, incoming message."</text:p>
@@ -112,8 +136,12 @@
 <text:p text:style-name="First_20_line_20_indent">"Call Jerling and get me a loan. I need three hundred in cash for landing fees and fuel."</text:p>
 <text:p text:style-name="First_20_line_20_indent">"I don't think he'll lend you any money," said Clunk dubiously.</text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:5">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">5</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:9">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:9"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk calls, the landing field is on fire. Hal tells him to sit tight.</text:p>
 </office:annotation>Portmaster Linten studied Hal across the desk, eyes narrowed. "Are you telling me this Jerling character will pay your bill?"</text:p>
@@ -129,8 +157,10 @@
 <text:p text:style-name="First_20_line_20_indent">"You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:10">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:10"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk fighting the fire, ends up face-down</text:p>
 </office:annotation>"Deploy fire hose!" shouted Clunk.</text:p>
@@ -139,238 +169,388 @@
 <text:p text:style-name="First_20_line_20_indent">"The reel just fell off," said the Navcom.</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:6">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">6</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:12">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:12"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal gets to the ship and lifts off.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:7">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">7</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:15">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:15"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal finds Clunk on rope, falls out after him.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:8">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">8</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:17">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:17"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Climb up rope to safety. Back in ship for hyperspace.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:9">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">9</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:19">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:19"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>In his office. Gordon OKs the deal</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:10">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">10</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:22">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:22"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Exits the ship to meet Bevan</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:11">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">11</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:25">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:25"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Getting food out. Frozen puddings.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:27">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:27"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Says goodbye to Clunk</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:12">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">12</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:29">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:29"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal depressed. No escape from here.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:31">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:31"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Lighten the ship. Preparing for liftoff.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:13">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">13</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:34">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:34"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Karl and Terry awaiting Hal. They take a call from their spy, intercept is at the orbiter.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:14">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">14</text:h>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:15">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">15</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:38">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:38"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Karl waiting impatiently</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:40">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:40"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Karl and Terry confused about 'Chunk'</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:16">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">16</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:43">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:43"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk slips out the back.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:45">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:45"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Karl and Terry waiting.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:17">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">17</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:47">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:47"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk in orbit</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:49">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:49"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk uses cylinder</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:35">
 <text:h text:style-name="Heading_20_1" text:outline-level="1">Part 2</text:h>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:18">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">18</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:51">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:51"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Terry places the 'bomb'</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:53">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:53"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal buys food</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:19">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">19</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:55">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:55"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Karl leaves a note, takes Clunk.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:57">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:57"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal about to hyperspace.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:20">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">20</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:60">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:60"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal gets real Jerling's call. Has to get cargo and robot back.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:62">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:62"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal sets course for Forg.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:64">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:64"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Land on Forg, in rubbish.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:21">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">21</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:66">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:66"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal rents a car in Jerling's name and heads towards Forgberg and the Casino.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:68">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:68"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal after almost running Clunk down. Picks him up.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:22">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">22</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:71">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:71"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Find car, go to find clothes.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:23">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">23</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:74">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:74"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal sells Clunk</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:24">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">24</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:77">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:77"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal annoyed at Clunk for buying only the best.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:79">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:79"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk gambling. Fight with human couple.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:81">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:81"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Sitting on the steps, battered and bruised. Limo arrives for Karl.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:25">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">25</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:84">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:84"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk travelling on the back of Karl's limo</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:86">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:86"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk sees Hal catching up again. Limo stops.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:26">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">26</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:89">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:89"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk uploads the Navcom into the ship.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:27">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">27</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:92">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:92"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>The shop robots want Clunk to escape with them. Mention Hal's capture.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:94">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:94"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk steals armoured car, drives it into the house.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:28">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">28</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:96">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:96"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Karl and Terry take the limo</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:98">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:98"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Karl and Terry overtake and head for Spaceport. Looking for Volante.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:29">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">29</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:101">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:101"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal and Clunk fleeing in Gull</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:103">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:103"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk wants to throw stuff at the flyer</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:105">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:105"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal fetches the puddings.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:30">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">30</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:108">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:108"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal yells at Jerling, then cargo arrives on truck.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:110">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:110"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Clunk outside, depressed.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:112">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:112"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Karl bursts in, armed.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:31">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">31</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:114">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:114"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Terry ties Hal in hold, leaves back doors open.</text:p>
 </office:annotation></text:p>
+</text:section>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:116">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:116"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Hal dodges Brutus, escapes the hold.</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
+<text:section text:style-name="Sect1" text:name="ChID:32">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">32</text:h>
-<text:p text:style-name="Text_20_body"><office:annotation>
+<text:section text:style-name="Sect1" text:name="ScID:119">
+<text:p text:style-name="Text_20_body"><text:bookmark text:name="ScID:119"/><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>Black Gull hyperspaces to oblivion</text:p>
 </office:annotation></text:p>
+</text:section>
+</text:section>
   </office:text>
  </office:body>
 </office:document-content>

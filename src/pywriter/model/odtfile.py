@@ -18,9 +18,6 @@ class OdtFile(Novel, OdtTemplate):
     """OpenDocument xml project file representation."""
     _FILE_EXTENSION = '.odt'
 
-    _ODT_HEADING_MARKERS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
-                            '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
-
     _SCENE_DIVIDER = '* * *'
     # To be placed between scene ending and beginning tags.
 
@@ -36,6 +33,9 @@ class OdtFile(Novel, OdtTemplate):
         Return a message beginning with SUCCESS or ERROR.
         """
         lines = [self._CONTENT_XML_HEADER]
+        lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
+        lines.append(self._ODT_SUBTITLE_START +
+                     self.author + self._ODT_PARA_END)
 
         for chId in self.srtChapters:
 
@@ -43,10 +43,8 @@ class OdtFile(Novel, OdtTemplate):
 
                 # Write chapter heading.
 
-                headingMarker = self._ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
-                lines.append(headingMarker + format_chapter_title(
-                    self.chapters[chId].title) + '</text:h>')
-
+                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] + format_chapter_title(
+                    self.chapters[chId].title) + self._ODT_HEADING_END)
                 firstSceneInChapter = True
 
                 for scId in self.chapters[chId].srtScenes:
@@ -57,9 +55,9 @@ class OdtFile(Novel, OdtTemplate):
 
                         if not firstSceneInChapter:
                             lines.append(
-                                '<text:p text:style-name="Heading_20_4">' + self._SCENE_DIVIDER + '</text:p>')
+                                self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
 
-                        scenePrefix = '<text:p text:style-name="Text_20_body">'
+                        scenePrefix = self._ODT_FIRST_PARA_START
 
                         # Write scene title as comment.
 
@@ -72,10 +70,10 @@ class OdtFile(Novel, OdtTemplate):
 
                         if self.scenes[scId].sceneContent is not None:
                             lines.append(scenePrefix +
-                                         to_odt(self.scenes[scId].sceneContent) + '</text:p>')
+                                         to_odt(self.scenes[scId].sceneContent) + self._ODT_PARA_END)
 
                         else:
-                            lines.append(scenePrefix + '</text:p>')
+                            lines.append(scenePrefix + self._ODT_PARA_END)
 
                         firstSceneInChapter = False
 

@@ -2,7 +2,7 @@
 
 Import and export ywriter7 scenes for proof reading. 
 
-Proof reading file format:  __ODT__  (OASIS Open Document format) for _LibreOffice Writer_ and _OpenOffice Writer_.
+Proof reading file format:  _ODT__  (OASIS Open Document format) for _LibreOffice Writer_ and _OpenOffice Writer_.
 
 
 

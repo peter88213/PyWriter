@@ -12,9 +12,6 @@ from pywriter.model.odtform import *
 class OdtProof(OdtFile):
     """OpenDocument xml proof reading file representation."""
 
-    _ODT_HEADING_MARKERS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
-                            '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
-
     _SCENE_DIVIDER = '* * *'
     # To be placed between scene ending and beginning tags.
 
@@ -31,6 +28,9 @@ class OdtProof(OdtFile):
         Return a message beginning with SUCCESS or ERROR.
         """
         lines = [self._CONTENT_XML_HEADER]
+        lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
+        lines.append(self._ODT_SUBTITLE_START +
+                     self.author + self._ODT_PARA_END)
 
         for chId in self.srtChapters:
 
@@ -50,10 +50,8 @@ class OdtProof(OdtFile):
 
             # Write chapter heading.
 
-            headingMarker = self._ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
-            lines.append(headingMarker + format_chapter_title(
-                self.chapters[chId].title) + '</text:h>')
-
+            lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] + format_chapter_title(
+                self.chapters[chId].title) + self._ODT_HEADING_END)
             firstSceneInChapter = True
 
             for scId in self.chapters[chId].srtScenes:
@@ -62,7 +60,7 @@ class OdtProof(OdtFile):
 
                 if not firstSceneInChapter:
                     lines.append(
-                        '<text:p text:style-name="Heading_20_4">' + self._SCENE_DIVIDER + '</text:p>')
+                        self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
 
                 # Write visible "start scene" tag.
 
@@ -80,14 +78,14 @@ class OdtProof(OdtFile):
 
                 # Write scene content.
 
-                scenePrefix = '<text:p text:style-name="Text_20_body">'
+                scenePrefix = self._ODT_FIRST_PARA_START
 
                 if self.scenes[scId].sceneContent is not None:
                     lines.append(scenePrefix +
-                                 to_odt(self.scenes[scId].sceneContent) + '</text:p>')
+                                 to_odt(self.scenes[scId].sceneContent) + self._ODT_PARA_END)
 
                 else:
-                    lines.append(scenePrefix + '</text:p>')
+                    lines.append(scenePrefix + self._ODT_PARA_END)
 
                 firstSceneInChapter = False
 

@@ -12,10 +12,6 @@ from pywriter.model.odtform import *
 class OdtPartDesc(OdtFile):
     """OpenDocument xml manuscript file representation."""
 
-    _ODT_HEADING_MARKERS = ['<text:h text:style-name="Heading_20_3" text:outline-level="3">',
-                            '<text:h text:style-name="Heading_20_2" text:outline-level="2">',
-                            '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
-
     _SCENE_DIVIDER = '* * *'
     # To be placed between scene ending and beginning tags.
 
@@ -31,10 +27,9 @@ class OdtPartDesc(OdtFile):
         Return a message beginning with SUCCESS or ERROR.
         """
         lines = [self._CONTENT_XML_HEADER]
-
-        # Write book title as heading.
-
-        lines.append(self._ODT_HEADING_MARKERS[2] + self.title + '</text:h>')
+        lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
+        lines.append(self._ODT_SUBTITLE_START +
+                     self.author + self._ODT_PARA_END)
 
         for chId in self.srtChapters:
 
@@ -44,25 +39,25 @@ class OdtPartDesc(OdtFile):
 
                     # Write heading.
 
-                    lines.append(self._ODT_HEADING_MARKERS[self.chapters[chId].chLevel] + format_chapter_title(
-                        self.chapters[chId].title) + '</text:h>')
+                    lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] + format_chapter_title(
+                        self.chapters[chId].title) + self._ODT_HEADING_END)
 
                     # Write invisible "start chapter" tag.
 
                     lines.append(
                         '<text:section text:style-name="Sect1" text:name="ChID:' + chId + '">')
 
-                    chapterPrefix = '<text:p text:style-name="Text_20_body">'
+                    chapterPrefix = self._ODT_FIRST_PARA_START
 
                     if self.chapters[chId].summary is not None:
 
                         # Write chapter summary.
 
                         lines.append(chapterPrefix +
-                                     to_odt(self.chapters[chId].summary) + '</text:p>')
+                                     to_odt(self.chapters[chId].summary) + self._ODT_PARA_END)
 
                     else:
-                        lines.append(chapterPrefix + '</text:p>')
+                        lines.append(chapterPrefix + self._ODT_PARA_END)
 
                     # Write invisible "end chapter" tag.
 
