@@ -18,6 +18,7 @@ from pywriter.model.yw7file import Yw7File
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.scenelist import SceneList
 from pywriter.plot.plotlist import PlotList
+from pywriter.model.odt_proof import OdtFile
 
 
 def run(sourcePath, suffix):
@@ -53,7 +54,8 @@ def run(sourcePath, suffix):
         targetDoc = PlotList(sourcePath.split('.yw7')[0] + suffix + '.csv')
 
     else:
-        return 'ERROR: Target file format not supported.'
+        yw7File = Yw7File(sourcePath)
+        targetDoc = OdtFile(sourcePath.split('.yw7')[0] + '.odt')
 
     converter = Yw7Cnv()
     message = converter.yw7_to_document(yw7File, targetDoc)
