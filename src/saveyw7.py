@@ -40,7 +40,7 @@ def delete_tempfile(filePath):
 
 
 def run(sourcePath):
-    sourcePath = sourcePath.lower().replace('file:///', '').replace('%20', ' ')
+    sourcePath = sourcePath.replace('file:///', '').replace('%20', ' ')
 
     if sourcePath.endswith('_proof.html'):
         yw7File = Yw7File(sourcePath.split('_proof.html')[0] + '.yw7')
@@ -62,11 +62,11 @@ def run(sourcePath):
         yw7File = Yw7File(sourcePath.split('_parts.html')[0] + '.yw7')
         sourceDoc = HtmlPartDesc(sourcePath)
 
-    elif sourcePath.endswith('_scenes.csv'):
+    elif sourcePath.endswith('_scenelist.csv'):
         yw7File = Yw7File(sourcePath.split('_scenes.csv')[0] + '.yw7')
         sourceDoc = SceneList(sourcePath)
 
-    elif sourcePath.endswith('_plot.csv'):
+    elif sourcePath.endswith('_plotlist.csv'):
         yw7File = Yw7File(sourcePath.split('_plot.csv')[0] + '.yw7')
         sourceDoc = PlotList(sourcePath)
 

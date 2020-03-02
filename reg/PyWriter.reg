@@ -1,0 +1,53 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7]
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell]
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter]
+"MUIVerb"="PyWriter Tools"
+"subcommands"=""
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell]
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\0proof]
+@="Proof reading"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\0proof\command]
+@="\"c:\\Program Files\\LibreOffice\\program\\python.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\LibreOffice\\4\\user\\Scripts\\python\\openyw7.py\" \"%1\" _proof"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\1manuscript]
+@="Manuscript"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\1manuscript\command]
+@="\"c:\\Program Files\\LibreOffice\\program\\python.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\LibreOffice\\4\\user\\Scripts\\python\\openyw7.py\" \"%1\" _manuscript"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\2scenedesc]
+@="Scene Descriptions"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\2scenedesc\command]
+@="\"c:\\Program Files\\LibreOffice\\program\\python.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\LibreOffice\\4\\user\\Scripts\\python\\openyw7.py\" \"%1\" _scenes"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\3chapterdesc]
+@="Chapter Descriptions"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\3chapterdesc\command]
+@="\"c:\\Program Files\\LibreOffice\\program\\python.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\LibreOffice\\4\\user\\Scripts\\python\\openyw7.py\" \"%1\" _chapters"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\4partdesc]
+@="Part Descriptions"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\4partdesc\command]
+@="\"c:\\Program Files\\LibreOffice\\program\\python.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\LibreOffice\\4\\user\\Scripts\\python\\openyw7.py\" \"%1\" _parts"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\5scenelist]
+@="Scene List"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\5scenelist\command]
+@="\"c:\\Program Files\\LibreOffice\\program\\python.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\LibreOffice\\4\\user\\Scripts\\python\\openyw7.py\" \"%1\" _scenelist"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\6plotlist]
+@="Plot List"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.yw7\shell\pywriter\shell\6plotlist\command]
+@="\"c:\\Program Files\\LibreOffice\\program\\python.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\LibreOffice\\4\\user\\Scripts\\python\\openyw7.py\" \"%1\" _plotlist"
