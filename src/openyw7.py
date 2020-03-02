@@ -1,4 +1,4 @@
-"""PyWriter v1.3 - Convert yw7 to odt. 
+"""PyWriter v1.4 - Convert yw7 to odt. 
 
 Input file format: yw7
 Output file format: odt (with visible or invisible chapter and scene tags) or csv.
@@ -18,7 +18,7 @@ from pywriter.model.yw7file import Yw7File
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.scenelist import SceneList
 from pywriter.plot.plotlist import PlotList
-from pywriter.model.odtfile_writer import OdtFileWriter
+from pywriter.model.odt_file_writer import OdtFileWriter
 
 
 def run(sourcePath, suffix):

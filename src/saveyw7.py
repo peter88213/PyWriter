@@ -1,4 +1,4 @@
-"""PyWriter v1.3 - Convert html to yw7. 
+"""PyWriter v1.4 - Convert html to yw7. 
 
 Input file format: html (with visible or invisible chapter and scene tags).
 

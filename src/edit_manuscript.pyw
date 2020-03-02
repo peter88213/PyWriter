@@ -1,4 +1,4 @@
-"""PyWriter v1.3 - Import and export ywriter7 scenes for editing. 
+"""PyWriter v1.4 - Import and export ywriter7 scenes for editing. 
 
 Convert yw7 to odt with invisible chapter and scene tags.
 Convert html with invisible chapter and scene tags to yw7.
@@ -10,14 +10,14 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.model.odt_manuscript import OdtManuscript
-from pywriter.model.html_manuscript import HtmlManuscript
+from pywriter.model.odt_manuscript_writer import OdtManuscriptWriter
+from pywriter.model.html_manuscript_reader import HtmlManuscriptReader
 from pywriter.converter.hybrid_cnv import HybridCnv
 
 
 def run(sourcePath, silentMode=True):
-    sourceDoc = HtmlManuscript('')
-    targetDoc = OdtManuscript('')
+    sourceDoc = HtmlManuscriptReader('')
+    targetDoc = OdtManuscriptWriter('')
     converter = HybridCnv(sourcePath, targetDoc, sourceDoc,
                           silentMode, '_manuscript')
 

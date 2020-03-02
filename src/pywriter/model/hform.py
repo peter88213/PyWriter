@@ -9,30 +9,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 
 
-HTML_SCENE_DIVIDER = '* * *'
-# To be placed between scene ending and beginning tags.
-
-# Make the generated html file look good in a web browser:
-
-STYLESHEET = '<style type="text/css">\n' + \
-    'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
-    'h1, h2, h3, h4 {text-align: center}\n' +\
-    'h1 {letter-spacing: 0.2em; font-style: italic}' + \
-    'h1, h2 {font-weight: bold}\n' + \
-    'h3 {font-style: italic}\n' + \
-    'p.textbody {margin-top:0; margin-bottom:0}\n' + \
-    'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
-    'strong {font-weight:normal; text-transform: uppercase}\n' + \
-    '</style>\n'
-
-HTML_HEADER = '<html>\n' + '<head>\n' + \
-    '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + STYLESHEET + \
-    '<title>$bookTitle$</title>\n' + \
-    '</head>\n' + '<body>\n'
-
-HTML_FOOTER = '\n</body>\n</html>\n'
-
-
 def to_yw7(text):
     """Convert html tags to yw7 raw markup. Return a yw7 markup string."""
     text = text.replace('<i>', '[i]')
@@ -61,22 +37,6 @@ def to_yw7(text):
 
     while '  ' in text:
         text = text.replace('  ', ' ')
-
-    return text
-
-
-def to_html(text):
-    """Convert yw7 raw markup to html. Return a html string."""
-    try:
-        text = text.replace('\n', '</p>\n<p class="firstlineindent">')
-        text = text.replace('[i]', '<em>')
-        text = text.replace('[/i]', '</em>')
-        text = text.replace('[b]', '<strong>')
-        text = text.replace('[/b]', '</strong>')
-        text = re.sub('\<p(.*?)\> *\<\/p\>', '<p\g<1>><br>\n</p>', text)
-
-    except:
-        pass
 
     return text
 

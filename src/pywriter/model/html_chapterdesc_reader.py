@@ -7,7 +7,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 from pywriter.model.html_scenedesc_reader import HtmlSceneDescReader
-from pywriter.model.hform import *
 
 
 class HtmlChapterDescReader(HtmlSceneDescReader):

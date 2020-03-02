@@ -1,4 +1,4 @@
-"""PyWriter v1.3 - Export ywriter7 scenes. 
+"""PyWriter v1.4 - Export ywriter7 scenes. 
 
 File format: odt (without chapter and scene tags)
 
@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 
-from pywriter.model.odtfile_writer import OdtFileWriter
+from pywriter.model.odt_file_writer import OdtFileWriter
 from pywriter.model.yw7file import Yw7File
 
 
