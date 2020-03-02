@@ -1,15 +1,15 @@
-"""OdtManuscript - Class for OpenDocument xml file operations and parsing.
+"""OdtManuscriptWriter - Class for OpenDocument xml file generation.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.model.odtfile import OdtFile
+from pywriter.model.odtfile_writer import OdtFileWriter
 from pywriter.model.odtform import *
 
 
-class OdtManuscript(OdtFile):
+class OdtManuscriptWriter(OdtFileWriter):
     """OpenDocument xml manuscript file representation."""
 
     def write_content_xml(self):

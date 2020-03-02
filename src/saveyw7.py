@@ -9,11 +9,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 import os
 
-from pywriter.model.html_proof import HtmlProof
-from pywriter.model.html_manuscript import HtmlManuscript
-from pywriter.model.html_scenedesc import HtmlSceneDesc
-from pywriter.model.html_chapterdesc import HtmlChapterDesc
-from pywriter.model.html_partdesc import HtmlPartDesc
+from pywriter.model.html_proof_reader import HtmlProofReader
+from pywriter.model.html_manuscript_reader import HtmlManuscriptReader
+from pywriter.model.html_scenedesc_reader import HtmlSceneDescReader
+from pywriter.model.html_chapterdesc_reader import HtmlChapterDescReader
 from pywriter.model.yw7file import Yw7File
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.scenelist import SceneList
@@ -44,23 +43,23 @@ def run(sourcePath):
 
     if sourcePath.endswith('_proof.html'):
         yw7File = Yw7File(sourcePath.split('_proof.html')[0] + '.yw7')
-        sourceDoc = HtmlProof(sourcePath)
+        sourceDoc = HtmlProofReader(sourcePath)
 
     elif sourcePath.endswith('_manuscript.html'):
         yw7File = Yw7File(sourcePath.split('_manuscript.html')[0] + '.yw7')
-        sourceDoc = HtmlManuscript(sourcePath)
+        sourceDoc = HtmlManuscriptReader(sourcePath)
 
     elif sourcePath.endswith('_scenes.html'):
         yw7File = Yw7File(sourcePath.split('_scenes.html')[0] + '.yw7')
-        sourceDoc = HtmlSceneDesc(sourcePath)
+        sourceDoc = HtmlSceneDescReader(sourcePath)
 
     elif sourcePath.endswith('_chapters.html'):
         yw7File = Yw7File(sourcePath.split('_chapters.html')[0] + '.yw7')
-        sourceDoc = HtmlChapterDesc(sourcePath)
+        sourceDoc = HtmlChapterDescReader(sourcePath)
 
     elif sourcePath.endswith('_parts.html'):
         yw7File = Yw7File(sourcePath.split('_parts.html')[0] + '.yw7')
-        sourceDoc = HtmlPartDesc(sourcePath)
+        sourceDoc = HtmlChapterDescReader(sourcePath)
 
     elif sourcePath.endswith('_scenelist.csv'):
         yw7File = Yw7File(sourcePath.split('_scenes.csv')[0] + '.yw7')

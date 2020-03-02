@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 
-from pywriter.model.odtfile import OdtFile
+from pywriter.model.odtfile_writer import OdtFileWriter
 from pywriter.model.yw7file import Yw7File
 
 
@@ -53,7 +53,7 @@ def main():
     if message.startswith('ERROR'):
         return message
 
-    document = OdtFile(sourcePath.split('.yw7')[0] + SUFFIX + '.odt')
+    document = OdtFileWriter(sourcePath.split('.yw7')[0] + SUFFIX + '.odt')
     document.comments = True
     message = document.write(yw7File)
     return message

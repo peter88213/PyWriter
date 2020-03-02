@@ -1,4 +1,4 @@
-"""HtmlPartDesc - Class for part summary. file operations and parsing.
+"""HtmlChapterDescWriter - Class for html chapter summary file generation.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -6,21 +6,24 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.model.html_chapterdesc import HtmlChapterDesc
+from pywriter.model.novel import Novel
 from pywriter.model.hform import *
 
 
-class HtmlPartDesc(HtmlChapterDesc):
-    """HTML file representation of an yWriter project's parts summaries."""
+class HtmlChapterDescWriter(Novel):
+    """HTML file representation of an yWriter project's chapters summaries."""
+
+    _FILE_EXTENSION = 'html'
+    # overwrites Novel._FILE_EXTENSION
 
     def write(self, novel):
-        """Write part summaries to a html file.
+        """Write chapter summaries to a html file.
 
-        Parts are chapters marked  "Other".
+        Chapters are chapters marked "Chapter".
         Generate a html file containing:
         - book title,
-        - part sections containing:
-            - part summary.
+        - chapter sections containing:
+            - chapter summary.
         Return a message beginning with SUCCESS or ERROR.
         """
 
@@ -55,14 +58,28 @@ class HtmlPartDesc(HtmlChapterDesc):
 
             if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
 
-                if self.chapters[chId].chLevel != 0:
+                if self.chapters[chId].chLevel == 1:
+
+                    # Write part heading.
+
+                    lines.append(
+                        '<h2>' + self.chapters[chId].title + '</h2>\n')
+
+                else:
+                    # Write invisible "start chapter" tag.
+
                     lines.append('<div id="ChID:' + chId + '">\n')
                     lines.append('<p class="firstlineindent">')
 
                     if self.chapters[chId].summary is not None:
+
+                        # Write chapter summary.
+
                         lines.append(to_html(self.chapters[chId].summary))
 
                     else:
+                        # Write chapter title as comment.
+
                         lines.append(
                             '<!-- ' + self.chapters[chId].title + ' -->')
 

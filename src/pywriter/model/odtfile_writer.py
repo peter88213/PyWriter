@@ -1,4 +1,4 @@
-"""OdtFile - Class for OpenDocument xml file operations and parsing.
+"""OdtFileWriter - Class for OpenDocument xml file generation.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -14,7 +14,7 @@ from pywriter.model.novel import Novel
 from pywriter.model.odtform import *
 
 
-class OdtFile(Novel, OdtTemplate):
+class OdtFileWriter(Novel, OdtTemplate):
     """OpenDocument xml project file representation."""
     _FILE_EXTENSION = '.odt'
 
