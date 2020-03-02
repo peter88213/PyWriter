@@ -12,31 +12,8 @@ import re
 from pywriter.model.novel import Novel
 from pywriter.model.scene import Scene
 
-SEPARATOR = '|'     # delimits data fields within a record.
-LINEBREAK = '\t'    # substitutes embedded line breaks.
-
-TABLE_HEADER = ('Scene link'
-                + SEPARATOR
-                + 'Scene title'
-                + SEPARATOR
-                + 'Scene description'
-                + SEPARATOR
-                + 'Word count'
-                + SEPARATOR
-                + 'Letter count'
-                + SEPARATOR
-                + 'Tags'
-                + SEPARATOR
-                + 'Scene notes'
-                + SEPARATOR
-                + 'Field 1'
-                + SEPARATOR
-                + 'Field 2'
-                + SEPARATOR
-                + 'Field 3'
-                + SEPARATOR
-                + 'Field 4'
-                + '\n')
+SCENELIST_SUFFIX = '_scenelist.csv'
+MANUSCRIPT_SUFFIX = '_manuscript.odt'
 
 
 class SceneList(Novel):
@@ -44,11 +21,37 @@ class SceneList(Novel):
 
     Represents a csv file with a record per scene.
     * Records are separated by line breaks.
-    * Data fields are delimited by the SEPARATOR character.
+    * Data fields are delimited by the _SEPARATOR character.
     """
 
     _FILE_EXTENSION = 'csv'
     # overwrites Novel._FILE_EXTENSION
+
+    _SEPARATOR = '|'     # delimits data fields within a record.
+    _LINEBREAK = '\t'    # substitutes embedded line breaks.
+
+    _TABLE_HEADER = ('Scene link'
+                     + _SEPARATOR
+                     + 'Scene title'
+                     + _SEPARATOR
+                     + 'Scene description'
+                     + _SEPARATOR
+                     + 'Word count'
+                     + _SEPARATOR
+                     + 'Letter count'
+                     + _SEPARATOR
+                     + 'Tags'
+                     + _SEPARATOR
+                     + 'Scene notes'
+                     + _SEPARATOR
+                     + 'Field 1'
+                     + _SEPARATOR
+                     + 'Field 2'
+                     + _SEPARATOR
+                     + 'Field 3'
+                     + _SEPARATOR
+                     + 'Field 4'
+                     + '\n')
 
     def read(self):
         """Parse the csv file located at filePath, 
@@ -63,14 +66,14 @@ class SceneList(Novel):
             return 'ERROR: "' + self._filePath + '" not found.'
 
         '''
-        if lines[0] != TABLE_HEADER:
+        if lines[0] != _TABLE_HEADER:
             return 'ERROR: Wrong lines content.'
         '''
 
-        cellsInLine = len(TABLE_HEADER.split(SEPARATOR))
+        cellsInLine = len(self._TABLE_HEADER.split(self._SEPARATOR))
 
         for line in lines:
-            cell = line.rstrip().split(SEPARATOR)
+            cell = line.rstrip().split(self._SEPARATOR)
 
             if len(cell) != cellsInLine:
                 return 'ERROR: Wrong cell structure.'
@@ -79,12 +82,13 @@ class SceneList(Novel):
                 scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
                 self.scenes[scId] = Scene()
                 self.scenes[scId].title = cell[1]
-                self.scenes[scId].summary = cell[2].replace(LINEBREAK, '\n')
+                self.scenes[scId].summary = cell[2].replace(
+                    self._LINEBREAK, '\n')
                 #self.scenes[scId].wordCount = int(cell[3])
                 #self.scenes[scId].letterCount = int(cell[4])
                 self.scenes[scId].tags = cell[5].split(';')
                 self.scenes[scId].sceneNotes = cell[6].replace(
-                    LINEBREAK, '\n')
+                    self._LINEBREAK, '\n')
                 self.scenes[scId].field1 = cell[7]
                 self.scenes[scId].field2 = cell[8]
                 self.scenes[scId].field3 = cell[9]
@@ -139,11 +143,11 @@ class SceneList(Novel):
             self.fieldTitle4 = 'Field 4'
 
         odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace('_scenes.csv', '_manuscript.odt')
+            ' ', '%20').replace(SCENELIST_SUFFIX, MANUSCRIPT_SUFFIX)
 
         # first record: the table's column headings
 
-        table = [TABLE_HEADER.replace(
+        table = [self._TABLE_HEADER.replace(
             'Field 1', self.fieldTitle1).replace(
             'Field 2', self.fieldTitle2).replace(
             'Field 3', self.fieldTitle3).replace(
@@ -182,25 +186,25 @@ class SceneList(Novel):
 
                         table.append('=HYPERLINK("file:///'
                                      + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
-                                     + SEPARATOR
+                                     + self._SEPARATOR
                                      + self.scenes[scId].title
-                                     + SEPARATOR
-                                     + self.scenes[scId].summary.rstrip().replace('\n', LINEBREAK)
-                                     + SEPARATOR
+                                     + self._SEPARATOR
+                                     + self.scenes[scId].summary.rstrip().replace('\n', self._LINEBREAK)
+                                     + self._SEPARATOR
                                      + str(self.scenes[scId].wordCount)
-                                     + SEPARATOR
+                                     + self._SEPARATOR
                                      + str(self.scenes[scId].letterCount)
-                                     + SEPARATOR
+                                     + self._SEPARATOR
                                      + ';'.join(self.scenes[scId].tags)
-                                     + SEPARATOR
-                                     + self.scenes[scId].sceneNotes.rstrip().replace('\n', LINEBREAK)
-                                     + SEPARATOR
+                                     + self._SEPARATOR
+                                     + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
+                                     + self._SEPARATOR
                                      + self.scenes[scId].field1
-                                     + SEPARATOR
+                                     + self._SEPARATOR
                                      + self.scenes[scId].field2
-                                     + SEPARATOR
+                                     + self._SEPARATOR
                                      + self.scenes[scId].field3
-                                     + SEPARATOR
+                                     + self._SEPARATOR
                                      + self.scenes[scId].field4
                                      + '\n')
 

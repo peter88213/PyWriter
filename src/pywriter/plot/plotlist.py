@@ -13,19 +13,8 @@ from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 
-SEPARATOR = '|'     # delimits data fields within a record.
-LINEBREAK = '\t'    # substitutes embedded line breaks.
-
-TABLE_HEADER = ('ID'
-                + SEPARATOR
-                + 'Plot section'
-                + SEPARATOR
-                + 'Plot event'
-                + SEPARATOR
-                + 'Plot event title'
-                + SEPARATOR
-                + 'Details'
-                + '\n')
+PLOTLIST_SUFFIX = '_plotlist.csv'
+MANUSCRIPT_SUFFIX = '_manuscript.odt'
 
 
 class PlotList(Novel):
@@ -33,12 +22,26 @@ class PlotList(Novel):
 
     Represents a csv file with a record per scene.
     * Records are separated by line breaks.
-    * Data fields are delimited by the SEPARATOR character.
+    * Data fields are delimited by the _SEPARATOR character.
     """
 
     _FILE_EXTENSION = 'csv'
     # overwrites Novel._FILE_EXTENSION
     _FILE_SUFFIX = '_plot'
+
+    _SEPARATOR = '|'     # delimits data fields within a record.
+    _LINEBREAK = '\t'    # substitutes embedded line breaks.
+
+    _TABLE_HEADER = ('ID'
+                     + _SEPARATOR
+                     + 'Plot section'
+                     + _SEPARATOR
+                     + 'Plot event'
+                     + _SEPARATOR
+                     + 'Plot event title'
+                     + _SEPARATOR
+                     + 'Details'
+                     + '\n')
 
     def read(self):
         """Parse the csv file located at filePath, fetching 
@@ -52,13 +55,13 @@ class PlotList(Novel):
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
-        if lines[0] != TABLE_HEADER:
+        if lines[0] != self._TABLE_HEADER:
             return 'ERROR: Wrong lines content.'
 
-        cellsInLine = len(TABLE_HEADER.split(SEPARATOR))
+        cellsInLine = len(self._TABLE_HEADER.split(self._SEPARATOR))
 
         for line in lines:
-            cell = line.rstrip().split(SEPARATOR)
+            cell = line.rstrip().split(self._SEPARATOR)
 
             if len(cell) != cellsInLine:
                 return 'ERROR: Wrong cell structure.'
@@ -67,7 +70,8 @@ class PlotList(Novel):
                 chId = re.search('ChID\:([0-9]+)', cell[0]).group(1)
                 self.chapters[chId] = Chapter()
                 self.chapters[chId].title = cell[1]
-                self.chapters[chId].summary = cell[4].replace(LINEBREAK, '\n')
+                self.chapters[chId].summary = cell[4].replace(
+                    self._LINEBREAK, '\n')
 
             if 'ScID:' in cell[0]:
                 scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
@@ -75,7 +79,7 @@ class PlotList(Novel):
                 self.scenes[scId].tags = cell[2].split(';')
                 self.scenes[scId].title = cell[3]
                 self.scenes[scId].sceneNotes = cell[4].replace(
-                    LINEBREAK, '\n')
+                    self._LINEBREAK, '\n')
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
@@ -96,11 +100,11 @@ class PlotList(Novel):
             self.chapters = novel.chapters
 
         odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace('_plot.csv', '_manuscript.odt')
+            ' ', '%20').replace(PLOTLIST_SUFFIX, MANUSCRIPT_SUFFIX)
 
         # first record: the table's column headings
 
-        table = [TABLE_HEADER]
+        table = [self._TABLE_HEADER]
 
         # Add a record for each used scene in a regular chapter
 
@@ -114,12 +118,12 @@ class PlotList(Novel):
                         self.chapters[chId].summary = ''
 
                     table.append('ChID:' + chId
-                                 + SEPARATOR
+                                 + self._SEPARATOR
                                  + self.chapters[chId].title
-                                 + SEPARATOR
-                                 + SEPARATOR
-                                 + SEPARATOR
-                                 + self.chapters[chId].summary.rstrip().replace('\n', LINEBREAK)
+                                 + self._SEPARATOR
+                                 + self._SEPARATOR
+                                 + self._SEPARATOR
+                                 + self.chapters[chId].summary.rstrip().replace('\n', self._LINEBREAK)
                                  + '\n')
 
                 else:
@@ -135,13 +139,13 @@ class PlotList(Novel):
 
                             table.append('=HYPERLINK("file:///'
                                          + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
-                                         + SEPARATOR
-                                         + SEPARATOR
+                                         + self._SEPARATOR
+                                         + self._SEPARATOR
                                          + ';'.join(self.scenes[scId].tags)
-                                         + SEPARATOR
+                                         + self._SEPARATOR
                                          + self.scenes[scId].title
-                                         + SEPARATOR
-                                         + self.scenes[scId].sceneNotes.rstrip().replace('\n', LINEBREAK)
+                                         + self._SEPARATOR
+                                         + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
                                          + '\n')
 
         try:
