@@ -1,9 +1,7 @@
-"""PyWriter v1.4 - Export ywriter7 scenes. 
-
-File format: odt (without chapter and scene tags)
+"""yW2OO - Export ywriter7 scenes to odt. 
 
 Copyright (c) 2020 Peter Triesberger.
-For further information see https://github.com/peter88213/PyWriter
+For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
@@ -11,14 +9,6 @@ import os
 
 from pywriter.model.odt_file_writer import OdtFileWriter
 from pywriter.model.yw7file import Yw7File
-
-
-TITLE = 'yW2OO v2.2'
-
-LIBREOFFICE = ['c:/Program Files/LibreOffice/program/swriter.exe',
-               'c:/Program Files (x86)/LibreOffice/program/swriter.exe',
-               'c:/Program Files/LibreOffice 5/program/swriter.exe',
-               'c:/Program Files (x86)/LibreOffice 5/program/swriter.exe']
 
 
 SUFFIX = ''

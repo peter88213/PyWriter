@@ -1,11 +1,11 @@
-"""PyWriter v1.4 - Import and export ywriter7 scenes for proofing. 
+"""ProofYw7 - Import and export ywriter7 scenes for proofing. 
 
 Proof reading file format: ODT (OASIS Open Document format) 
 with visible chapter and scene tags.
 Proofed file format: HTML with visible chapter and scene tags.
 
 Copyright (c) 2020 Peter Triesberger.
-For further information see https://github.com/peter88213/PyWriter
+For further information see https://github.com/peter88213/ProofYw7
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
