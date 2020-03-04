@@ -43,7 +43,7 @@ def inline_module(file, package, text, processedModules):
                 if 'import' in line:
                     importModule = re.match('from (.+?) import.+', line)
                     if (importModule is not None) and (package in importModule.group(1)):
-                        moduleName = re.sub(
+                        moduleName = '../../PyWriter/src/' + re.sub(
                             '\.', '\/', importModule.group(1))
                         if not (moduleName in processedModules):
                             processedModules.append(moduleName)
