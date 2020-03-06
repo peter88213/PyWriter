@@ -45,8 +45,8 @@ class OdtSceneDescWriter(OdtFileWriter):
 
                 # Write chapter heading.
 
-                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] + format_chapter_title(
-                    self.chapters[chId].title) + self._ODT_HEADING_END)
+                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
+                             self.chapters[chId].get_title() + self._ODT_HEADING_END)
                 firstSceneInChapter = True
 
                 for scId in self.chapters[chId].srtScenes:

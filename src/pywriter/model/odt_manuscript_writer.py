@@ -19,8 +19,8 @@ class OdtManuscriptWriter(OdtFileWriter):
         chapters not marked  "Other" or "Unused" or "Info".
 
         Generate "content.xml" containing:
-        - chapter sections containing:
-            - scene sections containing
+        - chapter s containing:
+            - scene s containing
                 - a navigable bookmark,
                 - the scene title as comment,
                 - the scene content.
@@ -43,8 +43,8 @@ class OdtManuscriptWriter(OdtFileWriter):
 
                 # Write chapter heading.
 
-                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] + format_chapter_title(
-                    self.chapters[chId].title) + self._ODT_HEADING_END)
+                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
+                             self.chapters[chId].get_title() + self._ODT_HEADING_END)
                 firstSceneInChapter = True
 
                 for scId in self.chapters[chId].srtScenes:
@@ -53,7 +53,7 @@ class OdtManuscriptWriter(OdtFileWriter):
 
                         # Write Scene divider.
 
-                        if not firstSceneInChapter:
+                        if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
                             lines.append(
                                 self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
 
@@ -62,7 +62,11 @@ class OdtManuscriptWriter(OdtFileWriter):
                         lines.append(
                             '<text:section text:style-name="Sect1" text:name="ScID:' + scId + '">')
 
-                        scenePrefix = self._ODT_FIRST_PARA_START
+                        if self.scenes[scId].appendToPrev:
+                            scenePrefix = self._ODT_PARA_START
+
+                        else:
+                            scenePrefix = self._ODT_FIRST_PARA_START
 
                         # Write navigable bookmark.
 

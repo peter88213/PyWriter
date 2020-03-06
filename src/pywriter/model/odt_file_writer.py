@@ -43,8 +43,8 @@ class OdtFileWriter(Novel, OdtTemplate):
 
                 # Write chapter heading.
 
-                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] + format_chapter_title(
-                    self.chapters[chId].title) + self._ODT_HEADING_END)
+                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
+                             self.chapters[chId].get_title() + self._ODT_HEADING_END)
                 firstSceneInChapter = True
 
                 for scId in self.chapters[chId].srtScenes:
@@ -53,11 +53,15 @@ class OdtFileWriter(Novel, OdtTemplate):
 
                         # Write Scene divider.
 
-                        if not firstSceneInChapter:
+                        if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
                             lines.append(
                                 self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
 
-                        scenePrefix = self._ODT_FIRST_PARA_START
+                        if self.scenes[scId].appendToPrev:
+                            scenePrefix = self._ODT_PARA_START
+
+                        else:
+                            scenePrefix = self._ODT_FIRST_PARA_START
 
                         # Write scene title as comment.
 
@@ -133,9 +137,10 @@ class OdtFileWriter(Novel, OdtTemplate):
         if message.startswith('ERROR'):
             return message
 
+        workdir = os.getcwd()
+
         try:
             with zipfile.ZipFile(self.filePath, 'w') as odtTarget:
-                workdir = os.getcwd()
                 os.chdir(self._TEMPDIR)
 
                 for file in self._ODT_COMPONENTS:

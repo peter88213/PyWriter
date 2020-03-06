@@ -30,7 +30,21 @@ class Chapter():
         self.isUnused = None
         # bool
 
+        self.suppressChapterTitle = None
+        # bool
+        # True: Remove 'Chapter ' from the chapter title upon import.
+        # False: Do not modify the chapter title.
+
         self.srtScenes = []
         # list of str
         # The chapter's scene IDs. The order of its elements
         # corresponds to the chapter's order of the scenes.
+
+    def get_title(self):
+        """Fix auto-chapter titles for non-English """
+        text = self.title
+
+        if self.suppressChapterTitle:
+            text = text.replace('Chapter ', '')
+
+        return text

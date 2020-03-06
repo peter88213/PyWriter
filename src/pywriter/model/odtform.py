@@ -7,12 +7,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 
-def format_chapter_title(text):
-    """Fix auto-chapter titles for non-English """
-    text = text.replace('Chapter ', '')
-    return text
-
-
 def to_odt(text):
     """Convert yw7 raw markup to odt. Return an xml string."""
     try:
@@ -42,7 +36,7 @@ def to_odt(text):
             newlines.append(line)
 
         text = '\n'.join(newlines)
-        text = text.replace(
+        text = text.rstrip().replace(
             '\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">')
         text = text.replace(
             '[i]', '<text:span text:style-name="Emphasis">')

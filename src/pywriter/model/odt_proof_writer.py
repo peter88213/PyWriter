@@ -50,15 +50,15 @@ class OdtProofWriter(OdtFileWriter):
 
             # Write chapter heading.
 
-            lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] + format_chapter_title(
-                self.chapters[chId].title) + self._ODT_HEADING_END)
+            lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
+                         self.chapters[chId].get_title() + self._ODT_HEADING_END)
             firstSceneInChapter = True
 
             for scId in self.chapters[chId].srtScenes:
 
                 # Write Scene divider.
 
-                if not firstSceneInChapter:
+                if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
                     lines.append(
                         self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
 
@@ -78,7 +78,11 @@ class OdtProofWriter(OdtFileWriter):
 
                 # Write scene content.
 
-                scenePrefix = self._ODT_FIRST_PARA_START
+                if self.scenes[scId].appendToPrev:
+                    scenePrefix = self._ODT_PARA_START
+
+                else:
+                    scenePrefix = self._ODT_FIRST_PARA_START
 
                 if self.scenes[scId].sceneContent is not None:
                     lines.append(scenePrefix +

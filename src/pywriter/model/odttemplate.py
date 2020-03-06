@@ -22,6 +22,7 @@ class OdtTemplate():
     _ODT_SUBTITLE_START = '<text:p text:style-name="Subtitle">'
 
     _ODT_FIRST_PARA_START = '<text:p text:style-name="Text_20_body">'
+    _ODT_PARA_START = '<text:p text:style-name="First_20_line_20_indent">'
     _ODT_SCENEDIV_START = '<text:p text:style-name="Heading_20_4">'
     _ODT_PARA_END = '</text:p>'
 
@@ -261,7 +262,7 @@ class OdtTemplate():
    <style:text-properties fo:font-style="italic"/>
   </style:style>
   <style:style style:name="Heading_20_4" style:display-name="Heading 4" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:default-outline-level="" style:list-style-name="" style:class="text" style:master-page-name="">
-   <style:paragraph-properties style:page-number="auto"/>
+   <style:paragraph-properties fo:margin-top="0.73cm" fo:margin-bottom="0.73cm" style:page-number="auto"/>
   </style:style>
   <style:style style:name="Heading_20_5" style:display-name="Heading 5" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:default-outline-level="5" style:list-style-name="" style:class="text"/>
   <style:style style:name="Heading_20_6" style:display-name="Heading 6" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:default-outline-level="6" style:list-style-name="" style:class="text"/>

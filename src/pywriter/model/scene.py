@@ -52,6 +52,9 @@ class Scene():
         self.field4 = None
         # str
 
+        self.appendToPrev = None
+        # bool
+
     @property
     def sceneContent(self):
         return self._sceneContent

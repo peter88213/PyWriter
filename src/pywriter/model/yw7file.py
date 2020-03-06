@@ -7,7 +7,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import os
-import re
 import xml.etree.ElementTree as ET
 
 from pywriter.model.novel import Novel
@@ -83,6 +82,16 @@ class Yw7File(Novel):
             self.chapters[chId].title = chp.find('Title').text
             self.srtChapters.append(chId)
 
+            for fields in chp.iter('Fields'):
+
+                if fields.find('Field_SuppressChapterTitle') is not None:
+
+                    if fields.find('Field_SuppressChapterTitle').text == '1':
+                        self.chapters[chId].suppressChapterTitle = True
+
+                    else:
+                        self.chapters[chId].suppressChapterTitle = False
+
             if chp.find('Desc') is not None:
                 self.chapters[chId].summary = chp.find('Desc').text
 
@@ -131,6 +140,9 @@ class Yw7File(Novel):
 
             if scn.find('Field4') is not None:
                 self.scenes[scId].field4 = scn.find('Field4').text
+
+            if scn.find('AppendToPrev') is not None:
+                self.scenes[scId].appendToPrev = True
 
             if scn.find('Tags') is not None:
 

@@ -37,8 +37,8 @@ class OdtChapterDescWriter(OdtFileWriter):
 
                 # Write heading.
 
-                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] + format_chapter_title(
-                    self.chapters[chId].title) + self._ODT_HEADING_END)
+                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
+                             self.chapters[chId].get_title() + self._ODT_HEADING_END)
 
                 if self.chapters[chId].chLevel == 0:
 
