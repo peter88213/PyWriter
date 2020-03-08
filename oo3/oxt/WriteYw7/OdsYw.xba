@@ -19,11 +19,13 @@ Sub Main
 	CsvPath = REPLACE(OdsPath,&quot;.ods&quot;,&quot;.csv&quot;)
 	&apos; Use path and name of input file -- just change file extension
 	
-	dim args1(1) as new com.sun.star.beans.PropertyValue
+	dim args1(2) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;URL&quot;
 	args1(0).Value = CsvPath
 	args1(1).Name = &quot;FilterName&quot;
 	args1(1).Value = &quot;Text - txt - csv (StarCalc)&quot;
+	args1(2).Name = &quot;FilterOptions&quot;
+	args1(2).Value = &quot;124,34,76,1,,0,false,true,true&quot;
 	dispatcher.executeDispatch(document, &quot;.uno:SaveAs&quot;, &quot;&quot;, 0, args1())
 	
 	&apos; ----------------------------------------------------------------------
