@@ -16,7 +16,7 @@ def run(sourcePath):
         return 'SUCCESS: Data written back to yw7.'
 
     else:
-        return 'ERROR occurred during ececution of ' + cmd
+        return 'ERROR occurred during execution of ' + cmd
 
 
 if __name__ == '__main__':

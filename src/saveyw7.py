@@ -62,11 +62,11 @@ def run(sourcePath):
         sourceDoc = HtmlChapterDescReader(sourcePath)
 
     elif sourcePath.endswith('_scenelist.csv'):
-        yw7File = Yw7File(sourcePath.split('_scenes.csv')[0] + '.yw7')
+        yw7File = Yw7File(sourcePath.split('_scenelist.csv')[0] + '.yw7')
         sourceDoc = SceneList(sourcePath)
 
     elif sourcePath.endswith('_plotlist.csv'):
-        yw7File = Yw7File(sourcePath.split('_plot.csv')[0] + '.yw7')
+        yw7File = Yw7File(sourcePath.split('_plotlist.csv')[0] + '.yw7')
         sourceDoc = PlotList(sourcePath)
 
     else:
