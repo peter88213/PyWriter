@@ -50,7 +50,7 @@ Sub Main
     MasterScriptProvider = MasterScriptProviderFactory.createScriptProvider(&quot;&quot;)
     Script = MasterScriptProvider.getScript(Url)
     PythonResult = Script.invoke(aParams(), aOutParamIndex(), aOutParam())
-    MsgBox(PythonResult)
+    &apos;MsgBox(PythonResult)
 
 DontSave:
 

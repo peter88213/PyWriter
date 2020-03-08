@@ -16,6 +16,7 @@ Sub Main
 	document   = ThisComponent.CurrentController.Frame
 	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 	OdsPath = ThisComponent.getURL()
+	OdsPath = REPLACE(OdsPath,&quot;.csv&quot;,&quot;.ods&quot;)
 	CsvPath = REPLACE(OdsPath,&quot;.ods&quot;,&quot;.csv&quot;)
 	&apos; Use path and name of input file -- just change file extension
 	
@@ -52,7 +53,7 @@ Sub Main
     MasterScriptProvider = MasterScriptProviderFactory.createScriptProvider(&quot;&quot;)
     Script = MasterScriptProvider.getScript(Url)
     PythonResult = Script.invoke(aParams(), aOutParamIndex(), aOutParam())
-    MsgBox(PythonResult)
+    &apos;MsgBox(PythonResult)
 
 DontSave:
 
