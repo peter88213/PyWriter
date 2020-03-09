@@ -18,23 +18,34 @@ from pywriter.plot.plotlist import PlotList
 from pywriter.converter.cnv_runner import CnvRunner
 
 
-def delete_tempfile(filePath):
+class Converter(CnvRunner):
+    """Deletes temporary html or csv file after conversion. """
 
-    if filePath.endswith('.html'):
+    def convert(self, sourcePath,
+                document,
+                extension,
+                suffix):
 
-        if os.path.isfile(filePath.split('.html')[0] + '.odt'):
-            try:
-                os.remove(filePath)
-            except:
-                pass
+        CnvRunner.convert(self, sourcePath,
+                          document,
+                          extension,
+                          suffix)
 
-    elif filePath.endswith('.csv'):
+        if sourcePath.endswith('.html'):
 
-        if os.path.isfile(filePath.split('.csv')[0] + '.ods'):
-            try:
-                os.remove(filePath)
-            except:
-                pass
+            if os.path.isfile(sourcePath.split('.html')[0] + '.odt'):
+                try:
+                    os.remove(sourcePath)
+                except:
+                    pass
+
+        elif sourcePath.endswith('.csv'):
+
+            if os.path.isfile(sourcePath.split('.csv')[0] + '.ods'):
+                try:
+                    os.remove(sourcePath)
+                except:
+                    pass
 
 
 def run(sourcePath):
@@ -76,9 +87,11 @@ def run(sourcePath):
         sourceDoc = PlotList(sourcePath)
 
     else:
-        return 'ERROR: File format not supported.'
+        suffix = ''
+        extension = ''
+        sourceDoc = None
 
-    converter = CnvRunner(sourcePath, sourceDoc,
+    converter = Converter(sourcePath, sourceDoc,
                           extension, False, suffix)
 
 

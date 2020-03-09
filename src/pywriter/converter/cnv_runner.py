@@ -6,7 +6,7 @@ Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
+import os
 from tkinter import *
 from tkinter import messagebox
 
@@ -15,7 +15,7 @@ from pywriter.model.yw7file import Yw7File
 from pywriter.converter.yw7cnv import Yw7Cnv
 
 
-TITLE = 'PyWriter v1.2'
+TITLE = 'PyWriter v1.4'
 
 
 class CnvRunner(Yw7Cnv):
@@ -61,8 +61,8 @@ class CnvRunner(Yw7Cnv):
     def __init__(self, sourcePath,
                  document,
                  extension,
-                 silentMode = True,
-                 suffix = ''):
+                 silentMode=True,
+                 suffix=''):
         """Run the converter with a GUI. """
 
         # Prepare the graphical user interface.
@@ -82,7 +82,7 @@ class CnvRunner(Yw7Cnv):
         # Run the converter.
 
         self.silentMode = silentMode
-        self.__run(sourcePath, document, extension, suffix)
+        self.convert(sourcePath, document, extension, suffix)
 
         # Visualize the outcome.
 
@@ -92,15 +92,18 @@ class CnvRunner(Yw7Cnv):
             root.quitButton.pack(padx=5, pady=5)
             root.mainloop()
 
-    def __run(self, sourcePath,
-              document,
-              extension,
-              suffix):
+    def convert(self, sourcePath,
+                document,
+                extension,
+                suffix):
         """Determine the direction and invoke the converter. """
 
         # The conversion's direction depends on the sourcePath argument.
 
-        if sourcePath.endswith('.yw7'):
+        if not os.path.isfile(sourcePath):
+            self.processInfo.config(text='ERROR: File not found.')
+
+        elif sourcePath.endswith('.yw7'):
             yw7Path = sourcePath
 
             # Generate the target file path.
@@ -138,16 +141,15 @@ class CnvRunner(Yw7Cnv):
 
         else:
             self.processInfo.config(
-                text='Argument is wrong or missing (drag and drop error?)\nInput file must be .yw7 or ' + suffix + '.' + extension + ' type.')
-            self.successInfo.config(bg='red')
+                text='ERROR: File type is not supported.')
 
         # Visualize the outcome.
 
-        if 'ERROR' in self.processInfo.cget('text'):
-            self.successInfo.config(bg='red')
-
-        elif 'SUCCESS' in self.processInfo.cget('text'):
+        if self.processInfo.cget('text').startswith('SUCCESS'):
             self.successInfo.config(bg='green')
+
+        else:
+            self.successInfo.config(bg='red')
 
     def confirm_overwrite(self, filePath):
         """ Invoked by the parent if a file already exists. """
