@@ -37,23 +37,13 @@ Sub Main
 	dispatcher.executeDispatch(document, &quot;.uno:SaveAs&quot;, &quot;&quot;, 0, args1())
 	
 	&apos; ----------------------------------------------------------------------
-	&apos; Run Python script to convert to yw7
+	&apos; Run batch script to convert to yw7
 	&apos; ----------------------------------------------------------------------
-    Dim aParams(0), aOutParamIndex(), aOutParam()
-    aParams(0) = CsvPath
-    
-	Dim MasterScriptProviderFactory as Object
-    Dim MasterScriptProvider as Object
-    Dim Script as Object
-    Dim Url as String
-    Dim PythonResult as String
-    
-    Url = &quot;vnd.sun.star.script:writeyw7.py$run?language=Python&amp;location=user&quot;
-    MasterScriptProviderFactory = createUnoService(&quot;com.sun.star.script.provider.MasterScriptProviderFactory&quot;)
-    MasterScriptProvider = MasterScriptProviderFactory.createScriptProvider(&quot;&quot;)
-    Script = MasterScriptProvider.getScript(Url)
-    PythonResult = Script.invoke(aParams(), aOutParamIndex(), aOutParam())
-    &apos;MsgBox(PythonResult)
+	
+	Dim ScriptPath as String
+	ScriptPath = ConvertToURL(Environ(&quot;USERPROFILE&quot;)+&quot;\AppData\Roaming\OpenOffice.org\3\user\Scripts\python\saveyw7.bat&quot;)
+	
+	shell(ScriptPath, 2, CsvPath, false)
 
 DontSave:
 
