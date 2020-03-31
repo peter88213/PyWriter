@@ -10,47 +10,47 @@ Windows Registry Editor Version 5.00
 @="Proof reading"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\0proof\command]
-@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\OpenOffice.org\\3\\user\\Scripts\\python\\openyw7.pyw\" \"%1\" _proof"
+@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\pywriter\\openyw7.pyw\" \"%1\" _proof"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\1manuscript]
 @="Manuscript"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\1manuscript\command]
-@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\OpenOffice.org\\3\\user\\Scripts\\python\\openyw7.pyw\" \"%1\" _manuscript"
+@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\pywriter\\openyw7.pyw\" \"%1\" _manuscript"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\2scenedesc]
 @="Scene Descriptions"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\2scenedesc\command]
-@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\OpenOffice.org\\3\\user\\Scripts\\python\\openyw7.pyw\" \"%1\" _scenes"
+@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\pywriter\\openyw7.pyw\" \"%1\" _scenes"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\3chapterdesc]
 @="Chapter Descriptions"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\3chapterdesc\command]
-@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\OpenOffice.org\\3\\user\\Scripts\\python\\openyw7.pyw\" \"%1\" _chapters"
+@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\pywriter\\openyw7.pyw\" \"%1\" _chapters"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\4partdesc]
 @="Part Descriptions"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\4partdesc\command]
-@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\OpenOffice.org\\3\\user\\Scripts\\python\\openyw7.pyw\" \"%1\" _parts"
+@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\pywriter\\openyw7.pyw\" \"%1\" _parts"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\5scenelist]
 @="Scene List"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\5scenelist\command]
-@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\OpenOffice.org\\3\\user\\Scripts\\python\\openyw7.pyw\" \"%1\" _scenelist"
+@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\pywriter\\openyw7.pyw\" \"%1\" _scenelist"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\6plotlist]
 @="Plot List"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\6plotlist\command]
-@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\OpenOffice.org\\3\\user\\Scripts\\python\\openyw7.pyw\" \"%1\" _plotlist"
+@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\pywriter\\openyw7.pyw\" \"%1\" _plotlist"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\7export]
 @="Export to odt"
 
 [HKEY_CLASSES_ROOT\yWriter7\shell\pywriter\shell\7export\command]
-@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\Users\\Peter\\AppData\\Roaming\\OpenOffice.org\\3\\user\\Scripts\\python\\openyw7.pyw\" \"%1\""
+@="\"C:\\Program Files (x86)\\Python38-32\\pythonw.exe\" \"C:\\pywriter\\openyw7.pyw\" \"%1\""
 
