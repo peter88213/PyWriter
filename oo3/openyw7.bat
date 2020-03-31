@@ -1,0 +1,1 @@
+%USERPROFILE%\AppData\Roaming\OpenOffice.org\3\user\Scripts\python\openyw7.pyw %1 %2

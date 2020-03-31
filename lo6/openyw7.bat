@@ -1,0 +1,1 @@
+c:\Program Files\LibreOffice\program\python.exe %USERPROFILE%\AppData\Roaming\LibreOffice\4\user\Scripts\python\openyw7.py %1 %2
