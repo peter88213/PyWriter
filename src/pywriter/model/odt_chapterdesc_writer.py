@@ -17,9 +17,6 @@ class OdtChapterDescWriter(OdtFileWriter):
     _SCENE_DIVIDER = '* * *'
     # To be placed between scene ending and beginning tags.
 
-    _CHAPTERDESC_SUFFIX = '_chapters.odt'
-    _MANUSCRIPT_SUFFIX = '_manuscript.odt'
-
     def write_content_xml(self):
         """Write chapter summaries to "content.xml".
 
@@ -33,6 +30,9 @@ class OdtChapterDescWriter(OdtFileWriter):
         """
         manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
             ' ', '%20').replace(self._CHAPTERDESC_SUFFIX, self._MANUSCRIPT_SUFFIX)
+        partDescPath = manuscriptPath.replace(
+            self._MANUSCRIPT_SUFFIX, self._PARTDESC_SUFFIX)
+        linkPath = [manuscriptPath, partDescPath]
 
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
@@ -49,7 +49,8 @@ class OdtChapterDescWriter(OdtFileWriter):
                 lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
                              '<text:bookmark text:name="ChID:' + chId + '"/>' +
                              '<text:a xlink:href="' +
-                             manuscriptPath + '#ChID:' + chId + '">' +
+                             linkPath[self.chapters[chId].chLevel] +
+                             '#ChID:' + chId + '">' +
                              self.chapters[chId].get_title() +
                              '</text:a>' +
                              self._ODT_HEADING_END)

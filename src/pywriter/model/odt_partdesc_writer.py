@@ -5,6 +5,8 @@ Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import os
+
 from pywriter.model.odt_file_writer import OdtFileWriter
 from pywriter.model.odtform import *
 
@@ -26,6 +28,9 @@ class OdtPartDescWriter(OdtFileWriter):
             - the "part" (i.e. chapter) summary.
         Return a message beginning with SUCCESS or ERROR.
         """
+        manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
+            ' ', '%20').replace(self._PARTDESC_SUFFIX, self._MANUSCRIPT_SUFFIX)
+
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
         lines.append(self._ODT_SUBTITLE_START +
@@ -37,10 +42,16 @@ class OdtPartDescWriter(OdtFileWriter):
 
                 if self.chapters[chId].chLevel == 1:
 
-                    # Write heading.
+                    # Write chapter heading with navigable bookmark
+                    # and hyperlink to manuscript.
 
                     lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                                 self.chapters[chId].get_title() + self._ODT_HEADING_END)
+                                 '<text:bookmark text:name="ChID:' + chId + '"/>' +
+                                 '<text:a xlink:href="' +
+                                 manuscriptPath + '#ChID:' + chId + '">' +
+                                 self.chapters[chId].get_title() +
+                                 '</text:a>' +
+                                 self._ODT_HEADING_END)
 
                     # Write invisible "start chapter" tag.
 

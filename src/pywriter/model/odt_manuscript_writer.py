@@ -14,10 +14,6 @@ from pywriter.model.odtform import *
 class OdtManuscriptWriter(OdtFileWriter):
     """OpenDocument xml manuscript file representation."""
 
-    _CHAPTERDESC_SUFFIX = '_chapters.odt'
-    _SCENEDESC_SUFFIX = '_scenes.odt'
-    _MANUSCRIPT_SUFFIX = '_manuscript.odt'
-
     def write_content_xml(self):
         """Write scene content to "content.xml".
 
@@ -34,8 +30,8 @@ class OdtManuscriptWriter(OdtFileWriter):
         """
         sceneDescPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
             ' ', '%20').replace(self._MANUSCRIPT_SUFFIX, self._SCENEDESC_SUFFIX)
-        chapterDescPath = sceneDescPath.replace(
-            self._SCENEDESC_SUFFIX, self._CHAPTERDESC_SUFFIX)
+        chapterDescPath = [sceneDescPath.replace(self._SCENEDESC_SUFFIX, self._CHAPTERDESC_SUFFIX),
+                           sceneDescPath.replace(self._SCENEDESC_SUFFIX, self._PARTDESC_SUFFIX)]
 
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
@@ -58,7 +54,8 @@ class OdtManuscriptWriter(OdtFileWriter):
                 lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
                              '<text:bookmark text:name="ChID:' + chId + '"/>' +
                              '<text:a xlink:href="' +
-                             chapterDescPath + '#ChID:' + chId + '">' +
+                             chapterDescPath[self.chapters[chId].chLevel] +
+                             '#ChID:' + chId + '">' +
                              self.chapters[chId].get_title() +
                              '</text:a>' +
                              self._ODT_HEADING_END)

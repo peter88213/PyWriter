@@ -14,6 +14,11 @@ from datetime import datetime
 
 class OdtTemplate():
 
+    _PARTDESC_SUFFIX = '_parts.odt'
+    _CHAPTERDESC_SUFFIX = '_chapters.odt'
+    _SCENEDESC_SUFFIX = '_scenes.odt'
+    _MANUSCRIPT_SUFFIX = '_manuscript.odt'
+
     _ODT_HEADING_STARTS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
                            '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
     _ODT_HEADING_END = '</text:h>'
