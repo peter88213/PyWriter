@@ -88,7 +88,7 @@ class OdtSceneDescWriter(OdtFileWriter):
                                         '<text:p/>\n' +
                                         '<text:p><text:a xlink:href="' +
                                         manuscriptPath + '#ScID:' +
-                                        scId + '%7Cregion">Manuscript</text:a></text:p>\n' +
+                                        scId + '%7Cregion">→Manuscript</text:a></text:p>\n' +
                                         '</office:annotation>')
 
                         # Write scene summary.
