@@ -42,13 +42,12 @@ class OdtPartDescWriter(OdtFileWriter):
 
                 if self.chapters[chId].chLevel == 1:
 
-                    # Write chapter heading with navigable bookmark
-                    # and hyperlink to manuscript.
+                    # Write chapter heading
+                    # with hyperlink to manuscript.
 
                     lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                                 '<text:bookmark text:name="ChID:' + chId + '"/>' +
                                  '<text:a xlink:href="' +
-                                 manuscriptPath + '#ChID:' + chId + '">' +
+                                 manuscriptPath + '#ChID:' + chId + '%7Cregion">' +
                                  self.chapters[chId].get_title() +
                                  '</text:a>' +
                                  self._ODT_HEADING_END)

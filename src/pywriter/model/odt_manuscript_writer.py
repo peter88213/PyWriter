@@ -23,7 +23,6 @@ class OdtManuscriptWriter(OdtFileWriter):
         Generate "content.xml" containing:
         - chapter s containing:
             - scene s containing
-                - a navigable bookmark,
                 - the scene title as comment,
                 - the scene content.
         Return a message beginning with SUCCESS or ERROR.
@@ -48,14 +47,13 @@ class OdtManuscriptWriter(OdtFileWriter):
 
             if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
 
-                # Write chapter heading with with navigable bookmark
-                # and hyperlink to chapter description.
+                # Write chapter heading
+                # with hyperlink to chapter or part description.
 
                 lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                             '<text:bookmark text:name="ChID:' + chId + '"/>' +
                              '<text:a xlink:href="' +
                              chapterDescPath[self.chapters[chId].chLevel] +
-                             '#ChID:' + chId + '">' +
+                             '#ChID:' + chId + '%7Cregion">' +
                              self.chapters[chId].get_title() +
                              '</text:a>' +
                              self._ODT_HEADING_END)
@@ -83,10 +81,6 @@ class OdtManuscriptWriter(OdtFileWriter):
                         else:
                             scenePrefix = self._ODT_FIRST_PARA_START
 
-                        # Write navigable bookmark.
-
-                        scenePrefix += '<text:bookmark text:name="ScID:' + scId + '"/>'
-
                         # Write scene title as comment.
 
                         scenePrefix += ('<office:annotation>\n' +
@@ -95,7 +89,7 @@ class OdtManuscriptWriter(OdtFileWriter):
                                         '<text:p/>\n' +
                                         '<text:p><text:a xlink:href="' +
                                         sceneDescPath + '#ScID:' +
-                                        scId + '">Scene description</text:a></text:p>\n' +
+                                        scId + '%7Cregion">Scene description</text:a></text:p>\n' +
                                         '</office:annotation>')
 
                         # Write scene content.

@@ -185,7 +185,7 @@ class SceneList(Novel):
                             self.scenes[scId].field4 = ''
 
                         table.append('=HYPERLINK("file:///'
-                                     + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
+                                     + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
                                      + self._SEPARATOR
                                      + self.scenes[scId].title
                                      + self._SEPARATOR

@@ -50,13 +50,13 @@ class OdtSceneDescWriter(OdtFileWriter):
 
             if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
 
-                # Write chapter heading with with
-                # hyperlink to chapter description.
+                # Write chapter heading
+                # with hyperlink to chapter or part description.
 
                 lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
                              '<text:a xlink:href="' +
                              chapterDescPath[self.chapters[chId].chLevel] +
-                             '#ChID:' + chId + '">' +
+                             '#ChID:' + chId + '%7Cregion">' +
                              self.chapters[chId].get_title() +
                              '</text:a>' +
                              self._ODT_HEADING_END)
@@ -80,10 +80,6 @@ class OdtSceneDescWriter(OdtFileWriter):
 
                         scenePrefix = self._ODT_FIRST_PARA_START
 
-                        # Write navigable bookmark.
-
-                        scenePrefix += '<text:bookmark text:name="ScID:' + scId + '"/>'
-
                         # Write scene title as comment.
 
                         scenePrefix += ('<office:annotation>\n' +
@@ -92,7 +88,7 @@ class OdtSceneDescWriter(OdtFileWriter):
                                         '<text:p/>\n' +
                                         '<text:p><text:a xlink:href="' +
                                         manuscriptPath + '#ScID:' +
-                                        scId + '">Manuscript</text:a></text:p>\n' +
+                                        scId + '%7Cregion">Manuscript</text:a></text:p>\n' +
                                         '</office:annotation>')
 
                         # Write scene summary.

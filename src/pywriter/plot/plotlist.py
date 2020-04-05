@@ -138,7 +138,7 @@ class PlotList(Novel):
                                 self.scenes[scId].tags = ['']
 
                             table.append('=HYPERLINK("file:///'
-                                         + odtPath + '#ScID:' + scId + '";"ScID:' + scId + '")'
+                                         + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
                                          + self._SEPARATOR
                                          + self._SEPARATOR
                                          + ';'.join(self.scenes[scId].tags)
