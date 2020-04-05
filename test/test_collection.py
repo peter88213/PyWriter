@@ -13,7 +13,7 @@ from pywriter.collection.collection import Collection
 
 from pywriter.collection.bookdesc import BookDesc
 
-from pywriter.model.mdfile import MdFile
+#from pywriter.model.mdfile import MdFile
 
 
 TEST_PATH = os.getcwd()

@@ -1,22 +1,28 @@
-"""OdtManuscriptWriter - Class for OpenDocument xml file generation.
+"""OdtBookDescWriter - Class for OpenDocument xml file generation.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import os
+import zipfile
 
-from pywriter.model.odt_file_writer import OdtFileWriter
+from pywriter.model.odttemplate import OdtTemplate
 from pywriter.model.odtform import *
+from pywriter.collection.series import Series
+from pywriter.collection.collection import Collection
 
 
-class OdtManuscriptWriter(OdtFileWriter):
-    """OpenDocument xml manuscript file representation."""
+class OdtBookDescWriter(OdtTemplate):
+    """OpenDocument xml file representation of a book series containing
+    a series summary and the series' book summaries 
+    """
+    _FILE_EXTENSION = '.odt'
 
-    _CHAPTERDESC_SUFFIX = '_chapters.odt'
-    _SCENEDESC_SUFFIX = '_scenes.odt'
-    _MANUSCRIPT_SUFFIX = '_manuscript.odt'
+    _SCENE_DIVIDER = '* * *'
+    # To be placed between scene ending and beginning tags.
 
     def write_content_xml(self):
         """Write scene content to "content.xml".
@@ -25,18 +31,10 @@ class OdtManuscriptWriter(OdtFileWriter):
         chapters not marked  "Other" or "Unused" or "Info".
 
         Generate "content.xml" containing:
-        - chapter s containing:
-            - scene s containing
-                - a navigable bookmark,
-                - the scene title as comment,
-                - the scene content.
+        - the scene titles as comments,
+        - the scene contents.
         Return a message beginning with SUCCESS or ERROR.
         """
-        sceneDescPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(self._MANUSCRIPT_SUFFIX, self._SCENEDESC_SUFFIX)
-        chapterDescPath = sceneDescPath.replace(
-            self._SCENEDESC_SUFFIX, self._CHAPTERDESC_SUFFIX)
-
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
         lines.append(self._ODT_SUBTITLE_START +
@@ -44,25 +42,12 @@ class OdtManuscriptWriter(OdtFileWriter):
 
         for chId in self.srtChapters:
 
-            # Write invisible "start chapter" tag.
-
-            if self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
-                lines.append(
-                    '<text:section text:style-name="Sect1" text:name="ChID:' + chId + '">')
-
             if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
 
-                # Write chapter heading with with navigable bookmark
-                # and hyperlink to chapter description.
+                # Write chapter heading.
 
                 lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                             '<text:bookmark text:name="ChID:' + chId + '"/>' +
-                             '<text:a xlink:href="' +
-                             chapterDescPath + '#ChID:' + chId + '">' +
-                             self.chapters[chId].get_title() +
-                             '</text:a>' +
-                             self._ODT_HEADING_END)
-
+                             self.chapters[chId].get_title() + self._ODT_HEADING_END)
                 firstSceneInChapter = True
 
                 for scId in self.chapters[chId].srtScenes:
@@ -75,30 +60,17 @@ class OdtManuscriptWriter(OdtFileWriter):
                             lines.append(
                                 self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
 
-                        # Write invisible "start scene" tag.
-
-                        lines.append(
-                            '<text:section text:style-name="Sect1" text:name="ScID:' + scId + '">')
-
                         if self.scenes[scId].appendToPrev:
                             scenePrefix = self._ODT_PARA_START
 
                         else:
                             scenePrefix = self._ODT_FIRST_PARA_START
 
-                        # Write navigable bookmark.
-
-                        scenePrefix += '<text:bookmark text:name="ScID:' + scId + '"/>'
-
                         # Write scene title as comment.
 
                         scenePrefix += ('<office:annotation>\n' +
                                         '<dc:creator>scene title</dc:creator>\n' +
                                         '<text:p>' + self.scenes[scId].title + '</text:p>\n' +
-                                        '<text:p/>\n' +
-                                        '<text:p><text:a xlink:href="' +
-                                        sceneDescPath + '#ScID:' +
-                                        scId + '">Scene description</text:a></text:p>\n' +
                                         '</office:annotation>')
 
                         # Write scene content.
@@ -112,16 +84,6 @@ class OdtManuscriptWriter(OdtFileWriter):
 
                         firstSceneInChapter = False
 
-                        # Write invisible "end scene" tag.
-
-                        lines.append('</text:section>')
-
-            if self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
-
-                # Write invisible "end chapter" tag.
-
-                lines.append('</text:section>')
-
         lines.append(self._CONTENT_XML_FOOTER)
         text = '\n'.join(lines)
 
@@ -133,3 +95,40 @@ class OdtManuscriptWriter(OdtFileWriter):
             return 'ERROR: Cannot write "content.xml".'
 
         return 'SUCCESS: Content written to "content.xml"'
+
+    def write(self, series: Series, collection):
+        """Generate an odt file containing:
+        - A series sections containing:
+            - series title heading,
+            - series summary,
+            - book sections containing:
+                - book title heading,
+                - book summary.
+        Return a message beginning with SUCCESS or ERROR.
+        """
+
+        message = self.set_up()
+
+        if message.startswith('ERROR'):
+            return message
+
+        message = self.write_content_xml()
+
+        if message.startswith('ERROR'):
+            return message
+
+        workdir = os.getcwd()
+
+        try:
+            with zipfile.ZipFile(self.filePath, 'w') as odtTarget:
+                os.chdir(self._TEMPDIR)
+
+                for file in self._ODT_COMPONENTS:
+                    odtTarget.write(file)
+        except:
+            os.chdir(workdir)
+            return 'ERROR: Cannot generate "' + self._filePath + '".'
+
+        os.chdir(workdir)
+        self.tear_down()
+        return 'SUCCESS: "' + self._filePath + '" saved.'

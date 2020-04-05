@@ -5,6 +5,8 @@ Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import os
+
 from pywriter.model.odt_file_writer import OdtFileWriter
 from pywriter.model.odtform import *
 
@@ -14,6 +16,10 @@ class OdtSceneDescWriter(OdtFileWriter):
 
     _SCENE_DIVIDER = '* * *'
     # To be placed between scene ending and beginning tags.
+
+    _CHAPTERDESC_SUFFIX = '_chapters.odt'
+    _SCENEDESC_SUFFIX = '_scenes.odt'
+    _MANUSCRIPT_SUFFIX = '_manuscript.odt'
 
     def write_content_xml(self):
         """Write scene summaries to "content.xml".
@@ -28,6 +34,11 @@ class OdtSceneDescWriter(OdtFileWriter):
                 - the scene summary.
         Return a message beginning with SUCCESS or ERROR.
         """
+        manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
+            ' ', '%20').replace(self._SCENEDESC_SUFFIX, self._MANUSCRIPT_SUFFIX)
+        chapterDescPath = manuscriptPath.replace(
+            self._MANUSCRIPT_SUFFIX, self._CHAPTERDESC_SUFFIX)
+
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
         lines.append(self._ODT_SUBTITLE_START +
@@ -43,10 +54,16 @@ class OdtSceneDescWriter(OdtFileWriter):
 
             if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
 
-                # Write chapter heading.
+                # Write chapter heading with with
+                # hyperlink to chapter description.
 
                 lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                             self.chapters[chId].get_title() + self._ODT_HEADING_END)
+                             '<text:a xlink:href="' +
+                             chapterDescPath + '#ChID:' + chId + '">' +
+                             self.chapters[chId].get_title() +
+                             '</text:a>' +
+                             self._ODT_HEADING_END)
+
                 firstSceneInChapter = True
 
                 for scId in self.chapters[chId].srtScenes:
@@ -66,11 +83,19 @@ class OdtSceneDescWriter(OdtFileWriter):
 
                         scenePrefix = self._ODT_FIRST_PARA_START
 
+                        # Write navigable bookmark.
+
+                        scenePrefix += '<text:bookmark text:name="ScID:' + scId + '"/>'
+
                         # Write scene title as comment.
 
                         scenePrefix += ('<office:annotation>\n' +
                                         '<dc:creator>scene title</dc:creator>\n' +
                                         '<text:p>' + self.scenes[scId].title + '</text:p>\n' +
+                                        '<text:p/>\n' +
+                                        '<text:p><text:a xlink:href="' +
+                                        manuscriptPath + '#ScID:' +
+                                        scId + '">Manuscript</text:a></text:p>\n' +
                                         '</office:annotation>')
 
                         # Write scene summary.
