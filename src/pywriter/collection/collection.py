@@ -142,7 +142,7 @@ class Collection():
             return 'ERROR: "' + self._filePath + '" is write protected.'
 
         # Postprocess the xml file created by ElementTree
-        message = cdata(self._filePath, self._cdataTags)
+        message = xml_postprocess(self._filePath, self._cdataTags)
 
         if message.startswith('ERROR'):
             return message

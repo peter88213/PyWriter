@@ -44,6 +44,7 @@ def to_odt(text):
         text = text.replace(
             '[b]', '<text:span text:style-name="Strong_20_Emphasis">')
         text = text.replace('[/b]', '</text:span>')
+        text = text.replace('&', '&amp;')
 
     except:
         pass

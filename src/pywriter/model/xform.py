@@ -35,9 +35,10 @@ def indent(elem, level=0):
             elem.tail = i
 
 
-def cdata(filePath, cdataTags: list):
+def xml_postprocess(filePath, cdataTags: list):
     '''Postprocess the xml file created by ElementTree:
-       Put a header on top and insert the missing CDATA tags.
+       Put a header on top, insert the missing CDATA tags,
+       and replace "ampersand" xml entity by plain text.
     '''
     with open(filePath, 'r', encoding='utf-8') as f:
         lines = f.readlines()
@@ -57,6 +58,7 @@ def cdata(filePath, cdataTags: list):
     newXml = ''.join(newlines)
     newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
     newXml = newXml.replace('\n]]', ']]')
+    newXml = newXml.replace('&amp;', '&')
 
     try:
         with open(filePath, 'w', encoding='utf-8') as f:
