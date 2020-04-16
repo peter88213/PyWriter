@@ -10,12 +10,12 @@ import os
 import inliner
 
 SRC = '../src/'
-BUILD = '../build/'
+BUILD = '../test/'
 
 
 def main():
     os.chdir(SRC)
-    inliner.run('openyw7.pyw', BUILD + 'openyw7.pyw', 'pywriter')
+    inliner.run('openyw7_.pyw', BUILD + 'openyw7.pyw', 'pywriter')
     print('Done.')
 
 
