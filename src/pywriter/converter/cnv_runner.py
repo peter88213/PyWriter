@@ -68,7 +68,7 @@ class CnvRunner(Yw7Cnv):
         # Prepare the graphical user interface.
 
         root = Tk()
-        root.geometry("800x300")
+        root.geometry("800x360")
         root.title(TITLE)
         self.header = Label(root, text=__doc__)
         self.header.pack(padx=5, pady=5)
@@ -79,6 +79,9 @@ class CnvRunner(Yw7Cnv):
         self.processInfo = Label(root, text='')
         self.processInfo.pack(padx=5, pady=5)
 
+        self._success = False
+        self._newFile = None
+
         # Run the converter.
 
         self.silentMode = silentMode
@@ -87,7 +90,18 @@ class CnvRunner(Yw7Cnv):
         # Visualize the outcome.
 
         if not self.silentMode:
-            root.quitButton = Button(text="OK", command=quit)
+
+            if self._success and self._newFile is not None:
+                self.successInfo.config(bg='green')
+                root.editButton = Button(
+                    text="Edit", command=self.edit)
+                root.editButton.config(height=1, width=10)
+                root.editButton.pack(padx=5, pady=5)
+
+            else:
+                self.successInfo.config(bg='red')
+
+            root.quitButton = Button(text="Quit", command=quit)
             root.quitButton.config(height=1, width=10)
             root.quitButton.pack(padx=5, pady=5)
             root.mainloop()
@@ -120,6 +134,7 @@ class CnvRunner(Yw7Cnv):
             yw7File = Yw7File(yw7Path)
             self.processInfo.config(
                 text=self.yw7_to_document(yw7File, document))
+            self._newFile = document.filePath
 
         elif sourcePath.endswith(suffix + '.' + extension):
             document.filePath = sourcePath
@@ -146,10 +161,7 @@ class CnvRunner(Yw7Cnv):
         # Visualize the outcome.
 
         if self.processInfo.cget('text').startswith('SUCCESS'):
-            self.successInfo.config(bg='green')
-
-        else:
-            self.successInfo.config(bg='red')
+            self._success = True
 
     def confirm_overwrite(self, filePath):
         """ Invoked by the parent if a file already exists. """
@@ -159,3 +171,6 @@ class CnvRunner(Yw7Cnv):
 
         else:
             return messagebox.askyesno('WARNING', 'Overwrite existing file "' + filePath + '"?')
+
+    def edit(self):
+        pass
