@@ -13,13 +13,10 @@ from pywriter.collection.collection import Collection
 
 from pywriter.collection.bookdesc import BookDesc
 
-from pywriter.model.mdfile import MdFile
-from distutils.tests.test_text_file import TEST_DATA
-
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/collection/'
+DATA_PATH = 'data/_collection/'
 
 TEST_FILE = EXEC_PATH + 'collection.pwc'
 
@@ -54,7 +51,7 @@ class devel(unittest.TestCase):
 
         myCollection.write()
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/add_descriptions.xml'))
+                         read_file(DATA_PATH + '/add_descriptions.xml'))
 
 
 def main():

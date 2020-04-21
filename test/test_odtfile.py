@@ -12,15 +12,15 @@ import zipfile
 from pywriter.converter.yw7cnv import Yw7Cnv
 from pywriter.model.yw7file import Yw7File
 
-from pywriter.model.odtfile import OdtFile
+from pywriter.model.odt_file_writer import OdtFileWriter
 
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/odt/'
+DATA_PATH = 'data/_odt/'
 
-TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project.odt'
-DOCUMENT_CONTENT = 'content.xml'
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project.odt'
+ODT_CONTENT = 'content.xml'
 
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
@@ -44,7 +44,7 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_DOCUMENT)
+        os.remove(TEST_ODT)
     except:
         pass
     try:
@@ -52,7 +52,7 @@ def remove_all_testfiles():
     except:
         pass
     try:
-        os.remove(EXEC_PATH + DOCUMENT_CONTENT)
+        os.remove(EXEC_PATH + ODT_CONTENT)
     except:
         pass
 
@@ -74,21 +74,21 @@ class NrmOpr(unittest.TestCase):
         """Convert markdown to odt. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = OdtFile(TEST_DOCUMENT)
+        documentFile = OdtFileWriter(TEST_ODT)
         converter = Yw7Cnv()
 
         self.assertEqual(converter.yw7_to_document(
-            yw7File, documentFile), 'SUCCESS: "' + TEST_DOCUMENT + '" saved.')
+            yw7File, documentFile), 'SUCCESS: "' + TEST_ODT + '" saved.')
 
-        with zipfile.ZipFile(TEST_DOCUMENT, 'r') as myzip:
-            myzip.extract(DOCUMENT_CONTENT, EXEC_PATH)
+        with zipfile.ZipFile(TEST_ODT, 'r') as myzip:
+            myzip.extract(ODT_CONTENT, EXEC_PATH)
             myzip.close
 
-        self.assertEqual(read_file(EXEC_PATH + DOCUMENT_CONTENT),
-                         read_file(DATA_PATH + DOCUMENT_CONTENT))
+        self.assertEqual(read_file(EXEC_PATH + ODT_CONTENT),
+                         read_file(DATA_PATH + ODT_CONTENT))
 
     def tearDown(self):
-        remove_all_testfiles()
+        pass  # remove_all_testfiles()
 
 
 def main():

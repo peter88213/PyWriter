@@ -14,14 +14,15 @@ from pywriter.model.yw7file import Yw7File
 
 from pywriter.plot.plotlist import PlotList
 
+SUFFIX = '_plotlist'
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/plotlist/'
+DATA_PATH = 'data/' + SUFFIX + '/'
 
-TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project_plotlist.csv'
-REFERENCE_DOCUMENT = DATA_PATH + 'normal.csv'
-PROOFED_DOCUMENT = DATA_PATH + 'proofed.csv'
+TEST_CSV = EXEC_PATH + 'yw7 Sample Project' + SUFFIX + '.csv'
+REFERENCE_CSV = DATA_PATH + 'normal.csv'
+PROOFED_CSV = DATA_PATH + 'proofed.csv'
 
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
@@ -46,7 +47,7 @@ def copy_file(inputFile, outputFile):
 
 def remove_all_testfiles():
     try:
-        os.remove(TEST_DOCUMENT)
+        os.remove(TEST_CSV)
     except:
         pass
     try:
@@ -78,34 +79,34 @@ class NrmOpr(unittest.TestCase):
             read_file(REFERENCE_YW7),
             read_file(PROOFED_YW7))
         self.assertNotEqual(
-            read_file(REFERENCE_DOCUMENT),
-            read_file(PROOFED_DOCUMENT))
+            read_file(REFERENCE_CSV),
+            read_file(PROOFED_CSV))
 
     def test_yw7_to_csv(self):
         """Export yW7 scenes to csv. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = PlotList(TEST_DOCUMENT)
+        documentFile = PlotList(TEST_CSV)
         converter = Yw7Cnv()
 
         # Read .yw7 file and convert xml to csv.
 
         self.assertEqual(converter.yw7_to_document(
-            yw7File, documentFile), 'SUCCESS: "' + TEST_DOCUMENT + '" saved.')
+            yw7File, documentFile), 'SUCCESS: "' + TEST_CSV + '" saved.')
 
-        self.assertEqual(read_file(TEST_DOCUMENT),
-                         read_file(REFERENCE_DOCUMENT))
+        self.assertEqual(read_file(TEST_CSV),
+                         read_file(REFERENCE_CSV))
 
     def test_csv_to_yw7(self):
         """Import proofed yw7 scenes from csv. """
 
-        copy_file(PROOFED_DOCUMENT,
-                  TEST_DOCUMENT)
+        copy_file(PROOFED_CSV,
+                  TEST_CSV)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = PlotList(TEST_DOCUMENT)
+        documentFile = PlotList(TEST_CSV)
         converter = Yw7Cnv()
 
         # Convert csv to xml and replace .yw7 file.

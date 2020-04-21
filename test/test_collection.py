@@ -13,12 +13,10 @@ from pywriter.collection.collection import Collection
 
 from pywriter.collection.bookdesc import BookDesc
 
-#from pywriter.model.mdfile import MdFile
-
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/collection/'
+DATA_PATH = 'data/_collection/'
 
 TEST_FILE = EXEC_PATH + 'collection.pwc'
 
@@ -69,7 +67,7 @@ class NrmOpr(unittest.TestCase):
 
     def test_read_write_configuration(self):
         """Read and write the configuration file. """
-        copy_file('data/collection/read_write.xml', TEST_FILE)
+        copy_file(DATA_PATH + '/read_write.xml', TEST_FILE)
         myCollection = Collection(TEST_FILE)
 
         self.assertEqual(myCollection.read(),
@@ -81,7 +79,7 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/read_write.xml'))
+                         read_file(DATA_PATH + '/read_write.xml'))
 
     def test_create_collection(self):
         """Use Case: manage the collection/create the collection."""
@@ -91,7 +89,7 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/create_collection.xml'))
+                         read_file(DATA_PATH + '/create_collection.xml'))
 
     def test_add_book(self):
         """Use Case: manage the collection/add a book to the collection."""
@@ -109,7 +107,7 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/add_first_book.xml'))
+                         read_file(DATA_PATH + '/add_first_book.xml'))
 
         self.assertEqual(myCollection.add_book(
             'yw7\yWriter Projects/The Refugee Ship.yw/The Refugee Ship.yw7'),
@@ -119,7 +117,7 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/add_second_book.xml'))
+                         read_file(DATA_PATH + '/add_second_book.xml'))
 
     def test_remove_book(self):
         """Use Case: manage the collection/remove a book from the collection."""
@@ -135,7 +133,7 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/remove_book.xml'))
+                         read_file(DATA_PATH + '/remove_book.xml'))
 
         myCollection.remove_book('2')
 
@@ -143,7 +141,7 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/create_collection.xml'))
+                         read_file(DATA_PATH + '/create_collection.xml'))
 
     def test_create_series(self):
         """Use Case: manage book series/create a series."""
@@ -159,7 +157,7 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/empty_series.xml'))
+                         read_file(DATA_PATH + '/empty_series.xml'))
 
     def test_remove_series(self):
         """Use Case: manage book series/remove a series."""
@@ -175,7 +173,7 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/add_first_book.xml'))
+                         read_file(DATA_PATH + '/add_first_book.xml'))
 
     def test_add_book_to_series(self):
         """Use Case: manage book series/add a book to a series."""
@@ -195,7 +193,7 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/add_book_to_series.xml'))
+                         read_file(DATA_PATH + '/add_book_to_series.xml'))
 
     def test_remove_book_from_series(self):
         """Use Case: manage book series/remove a book from a series."""
@@ -215,7 +213,7 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/empty_series.xml'))
+                         read_file(DATA_PATH + '/empty_series.xml'))
 
     def test_write_descriptions(self):
         """Use Case: write series and book descriptions to a html file."""
@@ -234,11 +232,11 @@ class NrmOpr(unittest.TestCase):
                     series, myCollection), 'SUCCESS: "yw7/Rick Starlift_series.html" saved.')
 
         self.assertEqual(read_file(EXEC_PATH + 'Rick Starlift_series.html'),
-                         read_file('data/collection/two_in_series.html'))
+                         read_file(DATA_PATH + '/two_in_series.html'))
 
     def test_read_descriptions(self):
         """Use Case: read descriptions from a html file and write them to collection and yWriter project."""
-        copy_file('data/collection/without_desc.yw7',
+        copy_file(DATA_PATH + '/without_desc.yw7',
                   'yw7/yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7')
         copy_file(DATA_PATH + 'two_in_series.xml', TEST_FILE)
         copy_file(DATA_PATH + 'add_descriptions.html',
@@ -260,10 +258,10 @@ class NrmOpr(unittest.TestCase):
                          'SUCCESS: Collection written to "' + TEST_FILE + '".')
 
         self.assertEqual(read_file(TEST_FILE),
-                         read_file('data/collection/add_descriptions.xml'))
+                         read_file(DATA_PATH + '/add_descriptions.xml'))
 
         self.assertEqual(read_file('yw7/yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7'),
-                         read_file('data/collection/with_desc.yw7'))
+                         read_file(DATA_PATH + '/with_desc.yw7'))
 
 
 def main():
