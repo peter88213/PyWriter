@@ -34,7 +34,34 @@ def copy_file(inputFile, outputFile):
     return()
 
 
+def remove_all_testfiles():
+    try:
+        os.remove(TEST_FILE)
+    except:
+        pass
+
+
 class devel(unittest.TestCase):
+
+    def setUp(self):
+        remove_all_testfiles()
+
+        try:
+            os.mkdir('yw7/yWriter Projects')
+        except:
+            pass
+        try:
+            os.mkdir('yw7/yWriter Projects/The Gravity Monster.yw')
+        except:
+            pass
+        copy_file('data/yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7',
+                  'yw7/yWriter Projects/The Gravity Monster.yw/The Gravity Monster.yw7')
+        try:
+            os.mkdir('yw7\yWriter Projects/The Refugee Ship.yw')
+        except:
+            pass
+        copy_file('data/yWriter Projects/The Refugee Ship.yw/The Refugee Ship.yw7',
+                  'yw7/yWriter Projects/The Refugee Ship.yw/The Refugee Ship.yw7')
 
     def test_read_descriptions(self):
         """Use Case: edit a series description and book descriptions."""
