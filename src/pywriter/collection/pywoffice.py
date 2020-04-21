@@ -26,7 +26,7 @@ class PywOffice():
         self.collection = collection
 
         root = Tk()
-        root.geometry("800x300")
+        root.geometry("800x500")
         root.title(TITLE)
         self.header = Label(root, text=__doc__)
         self.header.pack(padx=5, pady=5)
