@@ -19,7 +19,7 @@ TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
 DATA_PATH = 'data/scenelist/'
 
-TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project_scenes.csv'
+TEST_DOCUMENT = EXEC_PATH + 'yw7 Sample Project_scenelist.csv'
 REFERENCE_DOCUMENT = DATA_PATH + 'normal.csv'
 PROOFED_DOCUMENT = DATA_PATH + 'proofed.csv'
 
