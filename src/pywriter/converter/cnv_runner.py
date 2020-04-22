@@ -15,7 +15,7 @@ from pywriter.model.yw7file import Yw7File
 from pywriter.converter.yw7cnv import Yw7Cnv
 
 
-TITLE = 'PyWriter v1.4'
+TITLE = 'PyWriter v1.5'
 
 
 class CnvRunner(Yw7Cnv):
@@ -67,20 +67,19 @@ class CnvRunner(Yw7Cnv):
 
         # Prepare the graphical user interface.
 
-        root = Tk()
-        root.geometry("800x360")
-        root.title(TITLE)
-        self.header = Label(root, text=__doc__)
+        self.root = Tk()
+        self.root.geometry("800x360")
+        self.root.title(TITLE)
+        self.header = Label(self.root, text=__doc__)
         self.header.pack(padx=5, pady=5)
-        self.appInfo = Label(root, text='')
+        self.appInfo = Label(self.root, text='')
         self.appInfo.pack(padx=5, pady=5)
-        self.successInfo = Label(root)
+        self.successInfo = Label(self.root)
         self.successInfo.pack(fill=X, expand=1, padx=50, pady=5)
-        self.processInfo = Label(root, text='')
+        self.processInfo = Label(self.root, text='')
         self.processInfo.pack(padx=5, pady=5)
 
         self._success = False
-        self._newFile = None
 
         # Run the converter.
 
@@ -94,20 +93,13 @@ class CnvRunner(Yw7Cnv):
             if self._success:
                 self.successInfo.config(bg='green')
 
-                if self._newFile is not None:
-                    # A subclass generated an editable file
-                    root.editButton = Button(
-                        text="Edit", command=self.edit)
-                    root.editButton.config(height=1, width=10)
-                    root.editButton.pack(padx=5, pady=5)
-
             else:
                 self.successInfo.config(bg='red')
 
-            root.quitButton = Button(text="Quit", command=quit)
-            root.quitButton.config(height=1, width=10)
-            root.quitButton.pack(padx=5, pady=5)
-            root.mainloop()
+            self.root.quitButton = Button(text="Quit", command=quit)
+            self.root.quitButton.config(height=1, width=10)
+            self.root.quitButton.pack(padx=5, pady=5)
+            self.root.mainloop()
 
     def convert(self, sourcePath,
                 document,
