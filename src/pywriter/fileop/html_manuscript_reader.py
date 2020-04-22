@@ -11,7 +11,7 @@ from html.parser import HTMLParser
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.model.hform import *
+from pywriter.fileop.hform import *
 
 
 class HtmlManuscriptReader(Novel, HTMLParser):

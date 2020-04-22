@@ -7,8 +7,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 
-from pywriter.model.odt_file_writer import OdtFileWriter
-from pywriter.model.odtform import *
+from pywriter.fileop.odt_file_writer import OdtFileWriter
+from pywriter.fileop.odtform import *
 
 
 class OdtSceneDescWriter(OdtFileWriter):

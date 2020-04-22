@@ -12,7 +12,7 @@ import xml.etree.ElementTree as ET
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.model.xform import *
+from pywriter.fileop.xform import *
 
 
 class Yw7File(Novel):

@@ -11,10 +11,10 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.model.yw7file import Yw7File
+from pywriter.fileop.yw7file import Yw7File
 
-from pywriter.model.html_proof_reader import HtmlProofReader
-from pywriter.model.odt_proof_writer import OdtProofWriter
+from pywriter.fileop.html_proof_reader import HtmlProofReader
+from pywriter.fileop.odt_proof_writer import OdtProofWriter
 
 SUFFIX = '_proof'
 

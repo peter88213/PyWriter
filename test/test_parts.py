@@ -11,10 +11,10 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.model.yw7file import Yw7File
+from pywriter.fileop.yw7file import Yw7File
 
-from pywriter.model.html_chapterdesc_reader import HtmlChapterDescReader
-from pywriter.model.odt_partdesc_writer import OdtPartDescWriter
+from pywriter.fileop.html_chapterdesc_reader import HtmlChapterDescReader
+from pywriter.fileop.odt_partdesc_writer import OdtPartDescWriter
 
 SUFFIX = '_parts'
 

@@ -6,8 +6,8 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.model.html_manuscript_reader import HtmlManuscriptReader
-from pywriter.model.hform import *
+from pywriter.fileop.html_manuscript_reader import HtmlManuscriptReader
+from pywriter.fileop.hform import *
 
 
 class HtmlSceneDescReader(HtmlManuscriptReader):

@@ -10,9 +10,9 @@ import os
 import unittest
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.model.yw7file import Yw7File
+from pywriter.fileop.yw7file import Yw7File
 
-from pywriter.model.scenelist import SceneList
+from pywriter.fileop.scenelist import SceneList
 
 SUFFIX = '_scenelist'
 

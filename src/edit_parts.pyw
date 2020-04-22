@@ -1,6 +1,6 @@
-"""PyWriter v1.4 - Import and export ywriter7 chapter descriptions for editing. 
+"""Import and export ywriter7 part descriptions for editing. 
 
-Convert yw7 scene descriptions to odt with invisible chapter and scene tags.
+Convert yw7 part descriptions to odt with invisible chapter and scene tags.
 Convert html with invisible chapter and scene tags to yw7.
 
 Copyright (c) 2020 Peter Triesberger.
@@ -10,8 +10,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.model.odt_partdesc_writer import OdtPartDescWriter
-from pywriter.model.html_chapterdesc_reader import HtmlChapterDescReader
+from pywriter.fileop.odt_partdesc_writer import OdtPartDescWriter
+from pywriter.fileop.html_chapterdesc_reader import HtmlChapterDescReader
 from pywriter.converter.cnv_runner import CnvRunner
 
 

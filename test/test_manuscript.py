@@ -11,10 +11,10 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.model.yw7file import Yw7File
+from pywriter.fileop.yw7file import Yw7File
 
-from pywriter.model.html_manuscript_reader import HtmlManuscriptReader
-from pywriter.model.odt_manuscript_writer import OdtManuscriptWriter
+from pywriter.fileop.html_manuscript_reader import HtmlManuscriptReader
+from pywriter.fileop.odt_manuscript_writer import OdtManuscriptWriter
 
 SUFFIX = '_manuscript'
 

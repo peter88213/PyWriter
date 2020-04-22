@@ -11,10 +11,10 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.model.yw7file import Yw7File
+from pywriter.fileop.yw7file import Yw7File
 
-from pywriter.model.html_scenedesc_reader import HtmlSceneDescReader
-from pywriter.model.odt_scenedesc_writer import OdtSceneDescWriter
+from pywriter.fileop.html_scenedesc_reader import HtmlSceneDescReader
+from pywriter.fileop.odt_scenedesc_writer import OdtSceneDescWriter
 
 SUFFIX = '_scenes'
 

@@ -13,7 +13,7 @@ from pywriter.plot.plotlist import PlotList
 from pywriter.converter.cnv_runner import CnvRunner
 
 
-def run(sourcePath, silentMode = True):
+def run(sourcePath, silentMode=True):
     document = PlotList('')
     converter = CnvRunner(sourcePath, document, 'csv', silentMode, '_plot')
 

@@ -10,9 +10,9 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.model.yw7file import Yw7File
+from pywriter.fileop.yw7file import Yw7File
 
-from pywriter.model.odt_file_writer import OdtFileWriter
+from pywriter.fileop.odt_file_writer import OdtFileWriter
 
 
 TEST_PATH = os.getcwd()
