@@ -12,14 +12,24 @@ import sys
 
 from pywriter.model.odt_manuscript_writer import OdtManuscriptWriter
 from pywriter.model.html_manuscript_reader import HtmlManuscriptReader
-from pywriter.converter.hybrid_cnv import HybridCnv
+from pywriter.converter.cnv_runner import CnvRunner
 
 
 def run(sourcePath, silentMode=True):
-    sourceDoc = HtmlManuscriptReader('')
-    targetDoc = OdtManuscriptWriter('')
-    converter = HybridCnv(sourcePath, targetDoc, sourceDoc,
-                          silentMode, '_manuscript')
+
+    if sourcePath.endswith('.yw7'):
+        document = OdtManuscriptWriter('')
+        extension = 'odt'
+
+    elif sourcePath.endswith('.html'):
+        document = HtmlManuscriptReader('')
+        extension = 'html'
+
+    else:
+        sys.exit('ERROR: File type is not supported.')
+
+    converter = CnvRunner(sourcePath, document,
+                          extension, silentMode, '_manuscript')
 
 
 if __name__ == '__main__':

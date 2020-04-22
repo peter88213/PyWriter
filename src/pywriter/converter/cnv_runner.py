@@ -91,12 +91,15 @@ class CnvRunner(Yw7Cnv):
 
         if not self.silentMode:
 
-            if self._success and self._newFile is not None:
+            if self._success:
                 self.successInfo.config(bg='green')
-                root.editButton = Button(
-                    text="Edit", command=self.edit)
-                root.editButton.config(height=1, width=10)
-                root.editButton.pack(padx=5, pady=5)
+
+                if self._newFile is not None:
+                    # A subclass generated an editable file
+                    root.editButton = Button(
+                        text="Edit", command=self.edit)
+                    root.editButton.config(height=1, width=10)
+                    root.editButton.pack(padx=5, pady=5)
 
             else:
                 self.successInfo.config(bg='red')
@@ -134,7 +137,6 @@ class CnvRunner(Yw7Cnv):
             yw7File = Yw7File(yw7Path)
             self.processInfo.config(
                 text=self.yw7_to_document(yw7File, document))
-            self._newFile = document.filePath
 
         elif sourcePath.endswith(suffix + '.' + extension):
             document.filePath = sourcePath

@@ -12,14 +12,24 @@ import sys
 
 from pywriter.model.odt_scenedesc_writer import OdtSceneDescWriter
 from pywriter.model.html_scenedesc_reader import HtmlSceneDescReader
-from pywriter.converter.hybrid_cnv import HybridCnv
+from pywriter.converter.cnv_runner import CnvRunner
 
 
 def run(sourcePath, silentMode=True):
-    sourceDoc = HtmlSceneDescReader('')
-    targetDoc = OdtSceneDescWriter('')
-    converter = HybridCnv(sourcePath, targetDoc, sourceDoc,
-                          silentMode, '_scenes')
+
+    if sourcePath.endswith('.yw7'):
+        document = OdtSceneDescWriter('')
+        extension = 'odt'
+
+    elif sourcePath.endswith('.html'):
+        document = HtmlSceneDescReader('')
+        extension = 'html'
+
+    else:
+        sys.exit('ERROR: File type is not supported.')
+
+    converter = CnvRunner(sourcePath, document,
+                          extension, silentMode, '_scenes')
 
 
 if __name__ == '__main__':

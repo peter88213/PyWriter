@@ -12,14 +12,24 @@ import sys
 
 from pywriter.model.odt_chapterdesc_writer import OdtChapterDescWriter
 from pywriter.model.html_chapterdesc_reader import HtmlChapterDescReader
-from pywriter.converter.hybrid_cnv import HybridCnv
+from pywriter.converter.cnv_runner import CnvRunner
 
 
 def run(sourcePath, silentMode=True):
-    sourceDoc = HtmlChapterDescReader('')
-    targetDoc = OdtChapterDescWriter('')
-    converter = HybridCnv(sourcePath, targetDoc, sourceDoc,
-                          silentMode, '_chapters')
+
+    if sourcePath.endswith('.yw7'):
+        document = OdtChapterDescWriter('')
+        extension = 'odt'
+
+    elif sourcePath.endswith('.html'):
+        document = HtmlChapterDescReader('')
+        extension = 'html'
+
+    else:
+        sys.exit('ERROR: File type is not supported.')
+
+    converter = CnvRunner(sourcePath, document,
+                          extension, silentMode, '_chapters')
 
 
 if __name__ == '__main__':
