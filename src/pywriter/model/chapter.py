@@ -24,7 +24,7 @@ class Chapter():
 
         self.chType = None
         # int
-        # 0 = chapter type (marked "Chpter")
+        # 0 = chapter type (marked "Chapter")
         # 1 = other type (marked "Other")
 
         self.isUnused = None
