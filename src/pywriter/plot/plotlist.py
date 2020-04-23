@@ -1,9 +1,9 @@
 """PlotList - Class for csv plot structure table.
 
 Convention: 
-* Used chapters marked "other" are precede and describe plot sections (e.g. acts, steps).
+* Used chapters marked "other" precede and describe plot sections (e.g. acts, steps).
 * Tagged scenes contain plot events (e.g. inciting event, plot point, climax).
-* Scene notes contain plot relevant informations.
+* Scene notes give plot relevant informations.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
