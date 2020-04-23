@@ -1,5 +1,10 @@
 """PlotList - Class for csv plot structure table.
 
+Convention: 
+* Used chapters marked "other" are precede and describe plot sections (e.g. acts, steps).
+* Tagged scenes contain plot events (e.g. inciting event, plot point, climax).
+* Scene notes contain plot relevant informations.
+
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
@@ -88,7 +93,7 @@ class PlotList(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        # Copy the scene's attributes to write
+        # Copy the chapter/scene's attributes to write
 
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
@@ -107,12 +112,15 @@ class PlotList(Novel):
         table = [self._TABLE_HEADER]
 
         # Add a record for each used scene in a regular chapter
+        # and for each chapter marked "Other".
 
         for chId in self.srtChapters:
 
-            if (not self.chapters[chId].isUnused):
+            if not self.chapters[chId].isUnused:
 
                 if self.chapters[chId].chType == 1:
+                    # Chapter marked "Other" precedes and describes a Plot section.
+                    # Put chapter description to "details".
 
                     if self.chapters[chId].summary is None:
                         self.chapters[chId].summary = ''
@@ -130,6 +138,9 @@ class PlotList(Novel):
                     for scId in self.chapters[chId].srtScenes:
 
                         if (not self.scenes[scId].isUnused) and (self.scenes[scId].tags != [] or self.scenes[scId].sceneNotes != ''):
+                            # Scene contains plot information:
+                            # a tag marks the plot event (e.g. inciting event, plot point, climax).
+                            # Put scene note text to "details".
 
                             if self.scenes[scId].sceneNotes is None:
                                 self.scenes[scId].sceneNotes = ''
