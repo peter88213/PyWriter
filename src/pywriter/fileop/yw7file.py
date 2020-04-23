@@ -167,7 +167,8 @@ class Yw7File(Novel):
 
         # Copy the novel's attributes to write
 
-        if novel.title is not None:
+        if novel.title:
+            # avoids deleting the title, if it is empty by accident
             self.title = novel.title
 
         if novel.summary is not None:
@@ -199,7 +200,8 @@ class Yw7File(Novel):
 
             for scId in novel.scenes:
 
-                if novel.scenes[scId].title is not None:
+                if novel.scenes[scId].title:
+                    # avoids deleting the title, if it is empty by accident
                     self.scenes[scId].title = novel.scenes[scId].title
 
                 if novel.scenes[scId].summary is not None:
@@ -236,7 +238,8 @@ class Yw7File(Novel):
 
             for chId in novel.chapters:
 
-                if novel.chapters[chId].title is not None:
+                if novel.chapters[chId].title:
+                    # avoids deleting the title, if it is empty by accident
                     self.chapters[chId].title = novel.chapters[chId].title
 
                 if novel.chapters[chId].summary is not None:
