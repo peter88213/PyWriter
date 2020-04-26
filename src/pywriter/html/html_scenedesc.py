@@ -1,4 +1,4 @@
-"""HtmlSceneDescReader - Class for html scene summary file parsing.
+"""HtmlSceneDesc - Class for html scene summary file parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -6,11 +6,11 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.fileop.html_manuscript_reader import HtmlManuscriptReader
-from pywriter.fileop.hform import *
+from pywriter.html.html_manuscript import HtmlManuscript
+from pywriter.html.html_form import *
 
 
-class HtmlSceneDescReader(HtmlManuscriptReader):
+class HtmlSceneDesc(HtmlManuscript):
     """HTML file representation of an yWriter project's scene summaries."""
 
     def handle_endtag(self, tag):

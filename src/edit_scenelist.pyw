@@ -9,12 +9,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.fileop.scenelist import SceneList
+from pywriter.csv.csv_scenelist import CsvSceneList
 from pywriter.converter.cnv_runner import CnvRunner
 
 
 def run(sourcePath, silentMode=True):
-    document = SceneList('')
+    document = CsvSceneList('')
     converter = CnvRunner(sourcePath, document, 'csv', silentMode, '_scenes')
 
 

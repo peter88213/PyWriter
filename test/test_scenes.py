@@ -11,10 +11,10 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.fileop.yw7file import Yw7File
+from pywriter.yw7.yw7_file import Yw7File
 
-from pywriter.fileop.html_scenedesc_reader import HtmlSceneDescReader
-from pywriter.fileop.odt_scenedesc_writer import OdtSceneDescWriter
+from pywriter.html.html_scenedesc import HtmlSceneDesc
+from pywriter.odt.odt_scenedesc import OdtSceneDesc
 
 SUFFIX = '_scenes'
 
@@ -102,7 +102,7 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = HtmlSceneDescReader(TEST_HTML)
+        documentFile = HtmlSceneDesc(TEST_HTML)
         converter = Yw7Cnv()
 
         # Convert html to xml and replace .yw7 file.
@@ -118,7 +118,7 @@ class NrmOpr(unittest.TestCase):
     def test_yw7_to_odt(self):
         """Convert markdown to odt. """
         yw7File = Yw7File(TEST_YW7)
-        documentFile = OdtSceneDescWriter(TEST_ODT)
+        documentFile = OdtSceneDesc(TEST_ODT)
         converter = Yw7Cnv()
 
         self.assertEqual(converter.yw7_to_document(

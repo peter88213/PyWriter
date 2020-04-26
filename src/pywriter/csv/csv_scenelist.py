@@ -1,4 +1,4 @@
-"""SceneList - Class for csv scenes table.
+"""CsvSceneList - Class for csv scenes table.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -16,7 +16,7 @@ SCENELIST_SUFFIX = '_scenelist.csv'
 MANUSCRIPT_SUFFIX = '_manuscript.odt'
 
 
-class SceneList(Novel):
+class CsvSceneList(Novel):
     """csv file representation of an yWriter project's scenes table. 
 
     Represents a csv file with a record per scene.

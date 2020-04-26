@@ -10,9 +10,9 @@ import os
 import unittest
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.fileop.yw7file import Yw7File
+from pywriter.yw7.yw7_file import Yw7File
 
-from pywriter.fileop.scenelist import SceneList
+from pywriter.csv.csv_scenelist import CsvSceneList
 
 SUFFIX = '_scenelist'
 
@@ -86,7 +86,7 @@ class NrmOpr(unittest.TestCase):
         """Export yW7 scenes to csv. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = SceneList(TEST_CSV)
+        documentFile = CsvSceneList(TEST_CSV)
         converter = Yw7Cnv()
 
         # Read .yw7 file and convert xml to csv.
@@ -106,7 +106,7 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = SceneList(TEST_CSV)
+        documentFile = CsvSceneList(TEST_CSV)
         converter = Yw7Cnv()
 
         # Convert csv to xml and replace .yw7 file.

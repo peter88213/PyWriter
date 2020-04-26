@@ -1,4 +1,4 @@
-"""HtmlProofReader - Class for html proof reading file parsing.
+"""HtmlProof - Class for html proof reading file parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -11,10 +11,10 @@ from html.parser import HTMLParser
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.fileop.hform import *
+from pywriter.html.html_form import *
 
 
-class HtmlProofReader(Novel, HTMLParser):
+class HtmlProof(Novel, HTMLParser):
     """HTML file representation of an yWriter project's OfficeFile part.
 
     Represents a html file with visible chapter and scene tags 

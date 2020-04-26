@@ -1,4 +1,4 @@
-"""HtmlChapterDescReader - Class for html chapter summary file parsing.
+"""HtmlChapterDesc - Class for html chapter summary file parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -6,10 +6,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.fileop.html_scenedesc_reader import HtmlSceneDescReader
+from pywriter.html.html_scenedesc import HtmlSceneDesc
 
 
-class HtmlChapterDescReader(HtmlSceneDescReader):
+class HtmlChapterDesc(HtmlSceneDesc):
     """HTML file representation of an yWriter project's chapters summaries."""
 
     def handle_endtag(self, tag):

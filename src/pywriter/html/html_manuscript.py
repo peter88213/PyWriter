@@ -1,4 +1,4 @@
-"""HtmlManuscriptReader - Class for html manuscript file parsing.
+"""HtmlManuscript - Class for html manuscript file parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -11,10 +11,10 @@ from html.parser import HTMLParser
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.fileop.hform import *
+from pywriter.html.html_form import *
 
 
-class HtmlManuscriptReader(Novel, HTMLParser):
+class HtmlManuscript(Novel, HTMLParser):
     """HTML file representation of an yWriter project's manuscript part.
 
     Represents a html file with chapter and scene sections 

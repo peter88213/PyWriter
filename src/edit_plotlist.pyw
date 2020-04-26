@@ -9,12 +9,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.plot.plotlist import PlotList
+from pywriter.csv.csv_plotlist import CsvPlotList
 from pywriter.converter.cnv_runner import CnvRunner
 
 
 def run(sourcePath, silentMode=True):
-    document = PlotList('')
+    document = CsvPlotList('')
     converter = CnvRunner(sourcePath, document, 'csv', silentMode, '_plot')
 
 

@@ -10,19 +10,19 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.fileop.odt_manuscript_writer import OdtManuscriptWriter
-from pywriter.fileop.html_manuscript_reader import HtmlManuscriptReader
+from pywriter.odt.odt_manuscript import OdtManuscript
+from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.converter.cnv_runner import CnvRunner
 
 
 def run(sourcePath, silentMode=True):
 
     if sourcePath.endswith('.yw7'):
-        document = OdtManuscriptWriter('')
+        document = OdtManuscript('')
         extension = 'odt'
 
     elif sourcePath.endswith('.html'):
-        document = HtmlManuscriptReader('')
+        document = HtmlManuscript('')
         extension = 'html'
 
     else:

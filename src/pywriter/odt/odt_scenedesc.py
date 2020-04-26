@@ -1,4 +1,4 @@
-"""OdtSceneDescWriter - Class for OpenDocument xml file generation.
+"""OdtSceneDesc - Class for OpenDocument xml file generation.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -7,11 +7,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 
-from pywriter.fileop.odt_file_writer import OdtFileWriter
-from pywriter.fileop.odtform import *
+from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_form import *
 
 
-class OdtSceneDescWriter(OdtFileWriter):
+class OdtSceneDesc(OdtFile):
     """OpenDocument xml scene summaries file representation."""
 
     _SCENE_DIVIDER = '* * *'

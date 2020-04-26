@@ -1,15 +1,15 @@
-"""OdtProofWriter - Class for OpenDocument xml file generation.
+"""OdtProof - Class for OpenDocument xml file generation.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.fileop.odt_file_writer import OdtFileWriter
-from pywriter.fileop.odtform import *
+from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_form import *
 
 
-class OdtProofWriter(OdtFileWriter):
+class OdtProof(OdtFile):
     """OpenDocument xml proof reading file representation."""
 
     _SCENE_DIVIDER = '* * *'

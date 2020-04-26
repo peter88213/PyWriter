@@ -10,19 +10,19 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.fileop.odt_scenedesc_writer import OdtSceneDescWriter
-from pywriter.fileop.html_scenedesc_reader import HtmlSceneDescReader
+from pywriter.odt.odt_scenedesc import OdtSceneDesc
+from pywriter.html.html_scenedesc import HtmlSceneDesc
 from pywriter.converter.cnv_runner import CnvRunner
 
 
 def run(sourcePath, silentMode=True):
 
     if sourcePath.endswith('.yw7'):
-        document = OdtSceneDescWriter('')
+        document = OdtSceneDesc('')
         extension = 'odt'
 
     elif sourcePath.endswith('.html'):
-        document = HtmlSceneDescReader('')
+        document = HtmlSceneDesc('')
         extension = 'html'
 
     else:

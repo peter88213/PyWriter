@@ -1,4 +1,4 @@
-"""Support XML formatting.
+"""Support yWriter 7 XML formatting.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.

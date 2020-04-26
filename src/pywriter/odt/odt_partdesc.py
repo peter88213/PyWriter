@@ -1,4 +1,4 @@
-"""OdtChapterDescWriter - Class for OpenDocument xml file generation.
+"""OdtPartDesc - Class for OpenDocument xml file generation.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -7,32 +7,29 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 
-from pywriter.fileop.odt_file_writer import OdtFileWriter
-from pywriter.fileop.odtform import *
+from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_form import *
 
 
-class OdtChapterDescWriter(OdtFileWriter):
+class OdtPartDesc(OdtFile):
     """OpenDocument xml manuscript file representation."""
 
     _SCENE_DIVIDER = '* * *'
     # To be placed between scene ending and beginning tags.
 
     def write_content_xml(self):
-        """Write chapter summaries to "content.xml".
+        """Write part summaries to "content.xml".
 
-        Considered are chapters not marked  "Other" or "Unused" or "Info".
+        Parts are chapters marked  "Other" and not "Unused" and not "Info".
 
         Generate "content.xml" containing:
         - book title,
-        - chapter sections containing:
-            - the chapter summary.
+        - part sections containing:
+            - the "part" (i.e. chapter) summary.
         Return a message beginning with SUCCESS or ERROR.
         """
         manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(self._CHAPTERDESC_SUFFIX, self._MANUSCRIPT_SUFFIX)
-        partDescPath = manuscriptPath.replace(
-            self._MANUSCRIPT_SUFFIX, self._PARTDESC_SUFFIX)
-        linkPath = [manuscriptPath, partDescPath]
+            ' ', '%20').replace(self._PARTDESC_SUFFIX, self._MANUSCRIPT_SUFFIX)
 
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
@@ -43,18 +40,17 @@ class OdtChapterDescWriter(OdtFileWriter):
 
             if self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
 
-                # Write chapter heading
-                # with hyperlink to manuscript or part description.
+                if self.chapters[chId].chLevel == 1:
 
-                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                             '<text:a xlink:href="' +
-                             linkPath[self.chapters[chId].chLevel] +
-                             '#ChID:' + chId + '%7Cregion">' +
-                             self.chapters[chId].get_title() +
-                             '</text:a>' +
-                             self._ODT_HEADING_END)
+                    # Write chapter heading
+                    # with hyperlink to manuscript.
 
-                if self.chapters[chId].chLevel == 0:
+                    lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
+                                 '<text:a xlink:href="' +
+                                 manuscriptPath + '#ChID:' + chId + '%7Cregion">' +
+                                 self.chapters[chId].get_title() +
+                                 '</text:a>' +
+                                 self._ODT_HEADING_END)
 
                     # Write invisible "start chapter" tag.
 

@@ -11,10 +11,10 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.fileop.yw7file import Yw7File
+from pywriter.yw7.yw7_file import Yw7File
 
-from pywriter.fileop.html_manuscript_reader import HtmlManuscriptReader
-from pywriter.fileop.odt_manuscript_writer import OdtManuscriptWriter
+from pywriter.html.html_manuscript import HtmlManuscript
+from pywriter.odt.odt_manuscript import OdtManuscript
 
 SUFFIX = '_manuscript'
 
@@ -102,7 +102,7 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = HtmlManuscriptReader(TEST_HTML)
+        documentFile = HtmlManuscript(TEST_HTML)
         converter = Yw7Cnv()
 
         # Convert html to xml and replace .yw7 file.
@@ -118,7 +118,7 @@ class NrmOpr(unittest.TestCase):
     def test_yw7_to_odt(self):
         """Convert markdown to odt. """
         yw7File = Yw7File(TEST_YW7)
-        documentFile = OdtManuscriptWriter(TEST_ODT)
+        documentFile = OdtManuscript(TEST_ODT)
         converter = Yw7Cnv()
 
         self.assertEqual(converter.yw7_to_document(

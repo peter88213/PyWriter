@@ -1,4 +1,4 @@
-"""OdtFileWriter - Class for OpenDocument xml file generation.
+"""OdtFile - Class for OpenDocument xml file generation.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -9,12 +9,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import zipfile
 
-from pywriter.fileop.odttemplate import OdtTemplate
+from pywriter.odt.odt_template import OdtTemplate
 from pywriter.model.novel import Novel
-from pywriter.fileop.odtform import *
+from pywriter.odt.odt_form import *
 
 
-class OdtFileWriter(Novel, OdtTemplate):
+class OdtFile(Novel, OdtTemplate):
     """OpenDocument xml project file representation."""
     _FILE_EXTENSION = '.odt'
 

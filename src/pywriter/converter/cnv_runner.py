@@ -10,7 +10,7 @@ import os
 from tkinter import *
 from tkinter import messagebox
 
-from pywriter.fileop.yw7file import Yw7File
+from pywriter.yw7.yw7_file import Yw7File
 from pywriter.converter.yw7cnv import Yw7Cnv
 
 

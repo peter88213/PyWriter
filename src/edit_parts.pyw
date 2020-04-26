@@ -10,19 +10,19 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.fileop.odt_partdesc_writer import OdtPartDescWriter
-from pywriter.fileop.html_chapterdesc_reader import HtmlChapterDescReader
+from pywriter.odt.odt_partdesc import OdtPartDesc
+from pywriter.html.html_chapterdesc import HtmlChapterDesc
 from pywriter.converter.cnv_runner import CnvRunner
 
 
 def run(sourcePath, silentMode=True):
 
     if sourcePath.endswith('.yw7'):
-        document = OdtPartDescWriter('')
+        document = OdtPartDesc('')
         extension = 'odt'
 
     elif sourcePath.endswith('.html'):
-        document = HtmlChapterDescReader('')
+        document = HtmlChapterDesc('')
         extension = 'html'
 
     else:

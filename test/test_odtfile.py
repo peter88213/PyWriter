@@ -10,9 +10,9 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.fileop.yw7file import Yw7File
+from pywriter.yw7.yw7_file import Yw7File
 
-from pywriter.fileop.odt_file_writer import OdtFileWriter
+from pywriter.odt.odt_file import OdtFile
 
 
 TEST_PATH = os.getcwd()
@@ -74,7 +74,7 @@ class NrmOpr(unittest.TestCase):
         """Convert markdown to odt. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = OdtFileWriter(TEST_ODT)
+        documentFile = OdtFile(TEST_ODT)
         converter = Yw7Cnv()
 
         self.assertEqual(converter.yw7_to_document(

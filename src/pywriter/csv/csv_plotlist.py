@@ -1,4 +1,4 @@
-"""PlotList - Class for csv plot structure table.
+"""CsvPlotList - Class for csv plot structure table.
 
 Convention: 
 * Used chapters marked "other" precede and describe plot sections (e.g. acts, steps).
@@ -22,7 +22,7 @@ PLOTLIST_SUFFIX = '_plotlist.csv'
 MANUSCRIPT_SUFFIX = '_manuscript.odt'
 
 
-class PlotList(Novel):
+class CsvPlotList(Novel):
     """csv file representation of an yWriter project's scenes table. 
 
     Represents a csv file with a record per scene.

@@ -11,10 +11,10 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.fileop.yw7file import Yw7File
+from pywriter.yw7.yw7_file import Yw7File
 
-from pywriter.fileop.html_chapterdesc_reader import HtmlChapterDescReader
-from pywriter.fileop.odt_chapterdesc_writer import OdtChapterDescWriter
+from pywriter.html.html_chapterdesc import HtmlChapterDesc
+from pywriter.odt.odt_chapterdesc import OdtChapterDesc
 
 SUFFIX = '_chapters'
 
@@ -102,7 +102,7 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = HtmlChapterDescReader(TEST_HTML)
+        documentFile = HtmlChapterDesc(TEST_HTML)
         converter = Yw7Cnv()
 
         # Convert html to xml and replace .yw7 file.
@@ -118,7 +118,7 @@ class NrmOpr(unittest.TestCase):
     def test_yw7_to_odt(self):
         """Convert markdown to odt. """
         yw7File = Yw7File(TEST_YW7)
-        documentFile = OdtChapterDescWriter(TEST_ODT)
+        documentFile = OdtChapterDesc(TEST_ODT)
         converter = Yw7Cnv()
 
         self.assertEqual(converter.yw7_to_document(
