@@ -6,8 +6,6 @@ Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.fileop.yw7file import Yw7File
-from pywriter.model.novel import Novel
 
 
 class Yw7Cnv():
@@ -42,7 +40,7 @@ class Yw7Cnv():
         This method is to be overwritten by subclasses with an user interface.
     """
 
-    def yw7_to_document(self, yw7File: Yw7File, documentFile):
+    def yw7_to_document(self, yw7File, documentFile):
         """Read .yw7 file and convert xml to a document file."""
         if yw7File.is_locked():
             return 'ERROR: yWriter 7 seems to be open. Please close first.'
