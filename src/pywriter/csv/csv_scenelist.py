@@ -82,7 +82,7 @@ class CsvSceneList(Novel):
                 scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
                 self.scenes[scId] = Scene()
                 self.scenes[scId].title = cell[1]
-                self.scenes[scId].summary = cell[2].replace(
+                self.scenes[scId].desc = cell[2].replace(
                     self._LINEBREAK, '\n')
                 #self.scenes[scId].wordCount = int(cell[3])
                 #self.scenes[scId].letterCount = int(cell[4])
@@ -163,8 +163,8 @@ class CsvSceneList(Novel):
 
                     if not self.scenes[scId].isUnused:
 
-                        if self.scenes[scId].summary is None:
-                            self.scenes[scId].summary = ''
+                        if self.scenes[scId].desc is None:
+                            self.scenes[scId].desc = ''
 
                         if self.scenes[scId].tags is None:
                             self.scenes[scId].tags = ['']
@@ -189,7 +189,7 @@ class CsvSceneList(Novel):
                                      + self._SEPARATOR
                                      + self.scenes[scId].title
                                      + self._SEPARATOR
-                                     + self.scenes[scId].summary.rstrip().replace('\n', self._LINEBREAK)
+                                     + self.scenes[scId].desc.rstrip().replace('\n', self._LINEBREAK)
                                      + self._SEPARATOR
                                      + str(self.scenes[scId].wordCount)
                                      + self._SEPARATOR

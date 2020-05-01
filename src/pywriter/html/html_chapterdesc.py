@@ -19,7 +19,7 @@ class HtmlChapterDesc(HtmlSceneDesc):
         if self._chId is not None:
 
             if tag == 'div':
-                self.chapters[self._chId].summary = ''.join(self._lines)
+                self.chapters[self._chId].desc = ''.join(self._lines)
                 self._lines = []
                 self._chId = None
 

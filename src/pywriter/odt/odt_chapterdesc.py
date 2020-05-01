@@ -63,12 +63,12 @@ class OdtChapterDesc(OdtFile):
 
                     chapterPrefix = self._ODT_FIRST_PARA_START
 
-                    if self.chapters[chId].summary is not None:
+                    if self.chapters[chId].desc is not None:
 
                         # Write chapter summary.
 
                         lines.append(chapterPrefix +
-                                     to_odt(self.chapters[chId].summary) + self._ODT_PARA_END)
+                                     to_odt(self.chapters[chId].desc) + self._ODT_PARA_END)
 
                     else:
                         lines.append(chapterPrefix + self._ODT_PARA_END)

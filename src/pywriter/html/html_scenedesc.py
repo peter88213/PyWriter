@@ -20,7 +20,7 @@ class HtmlSceneDesc(HtmlManuscript):
         if self._scId is not None:
 
             if tag == 'div':
-                self.scenes[self._scId].summary = ''.join(self._lines)
+                self.scenes[self._scId].desc = ''.join(self._lines)
                 self._lines = []
                 self._scId = None
 

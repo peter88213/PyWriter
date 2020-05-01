@@ -1412,7 +1412,7 @@ class OdtTemplate():
             str(dt.minute).rjust(2, '0') + ':' + \
             str(dt.second).rjust(2, '0')
         text = self._META_XML.replace('%author%', self.author).replace('%title%', self.title).replace(
-            '%summary%', '<![CDATA[' + self.summary + ']]>').replace('%date%', date).replace('%time%', time)
+            '%summary%', '<![CDATA[' + self.desc + ']]>').replace('%date%', date).replace('%time%', time)
 
         try:
             with open(self._TEMPDIR + '/meta.xml', 'w', encoding='utf-8') as f:

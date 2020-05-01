@@ -93,9 +93,9 @@ class OdtSceneDesc(OdtFile):
 
                         # Write scene summary.
 
-                        if self.scenes[scId].summary is not None:
+                        if self.scenes[scId].desc is not None:
                             lines.append(scenePrefix +
-                                         to_odt(self.scenes[scId].summary) + self._ODT_PARA_END)
+                                         to_odt(self.scenes[scId].desc) + self._ODT_PARA_END)
 
                         else:
                             lines.append(scenePrefix + self._ODT_PARA_END)

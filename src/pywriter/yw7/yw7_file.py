@@ -69,7 +69,7 @@ class Yw7File(Novel):
             self.author = prj.find('AuthorName').text
 
         if prj.find('Desc') is not None:
-            self.summary = prj.find('Desc').text
+            self.desc = prj.find('Desc').text
 
         self.fieldTitle1 = prj.find('FieldTitle1').text
         self.fieldTitle2 = prj.find('FieldTitle2').text
@@ -93,7 +93,7 @@ class Yw7File(Novel):
                         self.chapters[chId].suppressChapterTitle = False
 
             if chp.find('Desc') is not None:
-                self.chapters[chId].summary = chp.find('Desc').text
+                self.chapters[chId].desc = chp.find('Desc').text
 
             if chp.find('SectionStart') is not None:
                 self.chapters[chId].chLevel = 1
@@ -124,7 +124,7 @@ class Yw7File(Novel):
             self.scenes[scId].title = scn.find('Title').text
 
             if scn.find('Desc') is not None:
-                self.scenes[scId].summary = scn.find('Desc').text
+                self.scenes[scId].desc = scn.find('Desc').text
 
             if scn.find('Notes') is not None:
                 self.scenes[scId].sceneNotes = scn.find('Notes').text
@@ -171,8 +171,8 @@ class Yw7File(Novel):
             # avoids deleting the title, if it is empty by accident
             self.title = novel.title
 
-        if novel.summary is not None:
-            self.summary = novel.summary
+        if novel.desc is not None:
+            self.desc = novel.desc
 
         if novel.author is not None:
             self.author = novel.author
@@ -204,8 +204,8 @@ class Yw7File(Novel):
                     # avoids deleting the title, if it is empty by accident
                     self.scenes[scId].title = novel.scenes[scId].title
 
-                if novel.scenes[scId].summary is not None:
-                    self.scenes[scId].summary = novel.scenes[scId].summary
+                if novel.scenes[scId].desc is not None:
+                    self.scenes[scId].desc = novel.scenes[scId].desc
 
                 if novel.scenes[scId].sceneContent is not None:
                     self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
@@ -242,8 +242,8 @@ class Yw7File(Novel):
                     # avoids deleting the title, if it is empty by accident
                     self.chapters[chId].title = novel.chapters[chId].title
 
-                if novel.chapters[chId].summary is not None:
-                    self.chapters[chId].summary = novel.chapters[chId].summary
+                if novel.chapters[chId].desc is not None:
+                    self.chapters[chId].desc = novel.chapters[chId].desc
 
                 '''Do not modify these items yet:
                 if novel.chapters[chId].chLevel is not None:
@@ -267,14 +267,14 @@ class Yw7File(Novel):
         prj.find('FieldTitle3').text = self.fieldTitle3
         prj.find('FieldTitle4').text = self.fieldTitle4
 
-        if self.summary is not None:
+        if self.desc is not None:
 
             if prj.find('Desc') is None:
                 newDesc = ET.SubElement(prj, 'Desc')
-                newDesc.text = self.summary
+                newDesc.text = self.desc
 
             else:
-                prj.find('Desc').text = self.summary
+                prj.find('Desc').text = self.desc
 
         if self.author is not None:
 
@@ -291,14 +291,14 @@ class Yw7File(Novel):
             if chId in self.chapters:
                 chp.find('Title').text = self.chapters[chId].title
 
-                if self.chapters[chId].summary is not None:
+                if self.chapters[chId].desc is not None:
 
                     if chp.find('Desc') is None:
                         newDesc = ET.SubElement(chp, 'Desc')
-                        newDesc.text = self.chapters[chId].summary
+                        newDesc.text = self.chapters[chId].desc
 
                     else:
-                        chp.find('Desc').text = self.chapters[chId].summary
+                        chp.find('Desc').text = self.chapters[chId].desc
 
                 '''Do not modify these items yet:
                 chp.find('Type').text = str(self.chapters[chId].chType)
@@ -327,14 +327,14 @@ class Yw7File(Novel):
                 if self.scenes[scId].title is not None:
                     scn.find('Title').text = self.scenes[scId].title
 
-                if self.scenes[scId].summary is not None:
+                if self.scenes[scId].desc is not None:
 
                     if scn.find('Desc') is None:
                         newDesc = ET.SubElement(scn, 'Desc')
-                        newDesc.text = self.scenes[scId].summary
+                        newDesc.text = self.scenes[scId].desc
 
                     else:
-                        scn.find('Desc').text = self.scenes[scId].summary
+                        scn.find('Desc').text = self.scenes[scId].desc
 
                 if self.scenes[scId]._sceneContent is not None:
                     scn.find(

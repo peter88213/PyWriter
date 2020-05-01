@@ -106,11 +106,11 @@ class OdtFile(Novel, OdtTemplate):
         else:
             self.title = novel.title
 
-        if novel.summary is None:
-            self.summary = ''
+        if novel.desc is None:
+            self.desc = ''
 
         else:
-            self.summary = novel.summary
+            self.desc = novel.desc
 
         if novel.author is None:
             self.author = ''

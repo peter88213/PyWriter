@@ -75,7 +75,7 @@ class CsvPlotList(Novel):
                 chId = re.search('ChID\:([0-9]+)', cell[0]).group(1)
                 self.chapters[chId] = Chapter()
                 self.chapters[chId].title = cell[1]
-                self.chapters[chId].summary = cell[4].replace(
+                self.chapters[chId].desc = cell[4].replace(
                     self._LINEBREAK, '\n')
 
             if 'ScID:' in cell[0]:
@@ -122,8 +122,8 @@ class CsvPlotList(Novel):
                     # Chapter marked "Other" precedes and describes a Plot section.
                     # Put chapter description to "details".
 
-                    if self.chapters[chId].summary is None:
-                        self.chapters[chId].summary = ''
+                    if self.chapters[chId].desc is None:
+                        self.chapters[chId].desc = ''
 
                     table.append('ChID:' + chId
                                  + self._SEPARATOR
@@ -131,7 +131,7 @@ class CsvPlotList(Novel):
                                  + self._SEPARATOR
                                  + self._SEPARATOR
                                  + self._SEPARATOR
-                                 + self.chapters[chId].summary.rstrip().replace('\n', self._LINEBREAK)
+                                 + self.chapters[chId].desc.rstrip().replace('\n', self._LINEBREAK)
                                  + '\n')
 
                 else:

@@ -16,7 +16,7 @@ class Scene():
         self.title = None
         # str
 
-        self.summary = None
+        self.desc = None
         # str
 
         self._sceneContent = None
