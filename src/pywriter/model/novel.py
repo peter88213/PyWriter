@@ -58,6 +58,18 @@ class Novel():
         # The novel's chapter IDs. The order of its elements
         # corresponds to the novel's order of the chapters.
 
+        self.characters = {}
+        # key = character ID, value = Character object.
+        # The order of the elements does not matter.
+
+        self.locations = {}
+        # key = location ID, value = Object.
+        # The order of the elements does not matter.
+
+        self.items = {}
+        # key = item ID, value = Object.
+        # The order of the elements does not matter.
+
         self._filePath = None
         # str
         # Path to the file. The setter only accepts files of a

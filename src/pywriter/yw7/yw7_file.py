@@ -53,7 +53,7 @@ class Yw7File(Novel):
                 if not (tag.group(1) in self._cdataTags):
                     self._cdataTags.append(tag.group(1))
 
-        # Open the file again and let ElementTree parse its xml structure.
+        # Open the file again in order let ElementTree parse its xml structure.
 
         try:
             self._tree = ET.parse(self._filePath)
@@ -61,6 +61,8 @@ class Yw7File(Novel):
 
         except:
             return 'ERROR: Can not process "' + self._filePath + '".'
+
+        # Retrieve the XML element tree items.
 
         prj = root.find('PROJECT')
         self.title = prj.find('Title').text
@@ -165,7 +167,7 @@ class Yw7File(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        # Copy the novel's attributes to write
+        # Copy the novel's attributes to write.
 
         if novel.title:
             # avoids deleting the title, if it is empty by accident
@@ -258,6 +260,8 @@ class Yw7File(Novel):
                 if novel.chapters[chId].srtScenes != []:
                     self.chapters[chId].srtScenes = novel.chapters[chId].srtScenes
                 '''
+
+        # Overwrite the XML element tree items.
 
         root = self._tree.getroot()
         prj = root.find('PROJECT')
@@ -409,7 +413,7 @@ class Yw7File(Novel):
                 '''
 
         indent(root)
-        tree = ET.ElementTree(root)
+        self._tree = ET.ElementTree(root)
 
         try:
             self._tree.write(self._filePath, encoding='utf-8')
@@ -417,7 +421,8 @@ class Yw7File(Novel):
         except(PermissionError):
             return 'ERROR: "' + self._filePath + '" is write protected.'
 
-        # Postprocess the xml file created by ElementTree
+        # Postprocess the xml file created by ElementTree.
+
         message = xml_postprocess(self._filePath, self._cdataTags)
 
         if message.startswith('ERROR'):
