@@ -103,7 +103,14 @@ class YwCnvGui(YwCnv):
     def yw_to_document(self, ywFile, documentFile):
         """Read yWriter file and convert xml to a document file."""
 
-        if not os.path.isfile(ywFile.filePath):
+        if not ywFile:
+            self.processInfo.config(text='ERROR: No yWriter project found.')
+
+        elif not documentFile:
+            self.processInfo.config(
+                text='ERROR: File type is not supported.')
+
+        elif not os.path.isfile(ywFile.filePath):
             self.processInfo.config(text='ERROR: File not found.')
 
         else:
@@ -121,7 +128,14 @@ class YwCnvGui(YwCnv):
     def document_to_yw(self, documentFile, ywFile):
         """Read document file, convert its content to xml, and replace yWriter file."""
 
-        if not os.path.isfile(documentFile.filePath):
+        if not ywFile:
+            self.processInfo.config(text='ERROR: No yWriter project found.')
+
+        elif not documentFile:
+            self.processInfo.config(
+                text='ERROR: File type is not supported.')
+
+        elif not os.path.isfile(documentFile.filePath):
             self.processInfo.config(text='ERROR: File not found.')
 
         else:
@@ -173,8 +187,6 @@ class YwCnvGui(YwCnv):
 
                     if not os.path.isfile(ywPath):
                         ywPath = None
-                        self.processInfo.config(
-                            text='ERROR: No yWriter project found.')
 
             if ywPath:
 
@@ -183,10 +195,6 @@ class YwCnvGui(YwCnv):
 
                 ywFile = YwFile(ywPath)
                 self.document_to_yw(document, ywFile)
-
-        else:
-            self.processInfo.config(
-                text='ERROR: File type is not supported.')
 
     def confirm_overwrite(self, filePath):
         """ Invoked by the parent if a file already exists. """
