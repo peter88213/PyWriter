@@ -111,14 +111,15 @@ class YwCnvGui(YwCnv):
                 text='ERROR: File type is not supported.')
 
         elif not os.path.isfile(ywFile.filePath):
-            self.processInfo.config(text='ERROR: File not found.')
+            self.processInfo.config(
+                text='ERROR: File ' + ywFile.filePath + ' not found.')
 
         else:
             self.appInfo.config(
-                text='Export yWriter scenes content to ' + documentFile._FILE_EXTENSION)
+                text='Export yWriter data to ' + documentFile.filePath)
             self.processInfo.config(text='Project: "' + ywFile.filePath + '"')
             self.processInfo.config(
-                text=YwCnv.yw_to_document(ywFile, documentFile))
+                text=YwCnv.yw_to_document(self, ywFile, documentFile))
 
         # Visualize the outcome.
 
@@ -136,14 +137,15 @@ class YwCnvGui(YwCnv):
                 text='ERROR: File type is not supported.')
 
         elif not os.path.isfile(documentFile.filePath):
-            self.processInfo.config(text='ERROR: File not found.')
+            self.processInfo.config(
+                text='ERROR: File ' + documentFile.filePath + ' not found.')
 
         else:
             self.appInfo.config(
-                text='Import yWriter scenes content from ' + documentFile._FILE_EXTENSION)
+                text='Import yWriter data from ' + documentFile.filePath)
             self.processInfo.config(text='Project: "' + ywFile.filePath + '"')
             self.processInfo.config(
-                text=YwCnv.document_to_yw(documentFile, ywFile))
+                text=YwCnv.document_to_yw(self, documentFile, ywFile))
 
         # Visualize the outcome.
 
