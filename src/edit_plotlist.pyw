@@ -1,4 +1,4 @@
-"""Import and export ywriter7 plot structure. 
+"""Import and export yWriter plot structure. 
 
 File format: csv (intended for spreadsheet conversion).
 
@@ -10,12 +10,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 
 from pywriter.csv.csv_plotlist import CsvPlotList
-from pywriter.converter.cnv_runner import CnvRunner
+from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 
 def run(sourcePath, silentMode=True):
     document = CsvPlotList('')
-    converter = CnvRunner(sourcePath, document, 'csv', silentMode, '_plot')
+    converter = YwCnvGui(sourcePath, document, 'csv', silentMode, '_plot')
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-"""yW5File - Class for yWriter 5 xml file operations and parsing.
+"""yWFile - Class for yWriter xml file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -12,32 +12,51 @@ import xml.etree.ElementTree as ET
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.yw5.yw5_form import *
+from pywriter.yw.yw_form import *
 
 
-class Yw5File(Novel):
-    """yWriter 5 xml project file representation."""
-
-    _FILE_EXTENSION = '.yw5'
-    # overwrites PywFile._FILE_EXTENSION
+class YwFile(Novel):
+    """yWriter xml project file representation."""
 
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
         self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc', 'FieldTitle1', 'FieldTitle2', 'FieldTitle3', 'FieldTitle4',
                            'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
-        # Names of yw7 xml elements containing CDATA.
+        # Names of yWriter xml elements containing CDATA.
         # ElementTree.write omits CDATA tags, so they have to be inserted
         # afterwards.
 
+    @property
+    def filePath(self):
+        return self._filePath
+
+    @filePath.setter
+    def filePath(self, filePath):
+        """Accept only filenames with the right extension. """
+        if filePath.lower().endswith('.yw7'):
+            self._FILE_EXTENSION = '.yw7'
+            self._ENCODING = 'utf-8'
+            self._filePath = filePath
+
+        if filePath.lower().endswith('.yw6'):
+            self._FILE_EXTENSION = '.yw6'
+            self._ENCODING = 'utf-8'
+            self._filePath = filePath
+
+        elif filePath.lower().endswith('.yw5'):
+            self._FILE_EXTENSION = '.yw5'
+            self._ENCODING = 'iso-8859-1'
+            self._filePath = filePath
+
     def read(self):
-        """Parse the yw7 xml file located at filePath, fetching the Novel attributes.
+        """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
 
         # Complete list of tags requiring CDATA (if incomplete).
 
         try:
-            with open(self._filePath, 'r') as f:
+            with open(self._filePath, 'r', encoding=self._ENCODING) as f:
                 xmlData = f.read()
 
         except(FileNotFoundError):
@@ -153,16 +172,17 @@ class Yw5File(Novel):
 
             if scn.find('Unused') is not None:
                 self.scenes[scId].isUnused = True
-            '''
-            sceneContent = scn.find('SceneContent').text
 
-            if sceneContent is not None:
-                self.scenes[scId].sceneContent = sceneContent
-            '''
+            if scn.find('SceneContent') is not None:
+                sceneContent = scn.find('SceneContent').text
+
+                if sceneContent is not None:
+                    self.scenes[scId].sceneContent = sceneContent
+
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def write(self, novel):
-        """Open the yw7 xml file located at filePath and replace a set 
+        """Open the yWriter xml file located at filePath and replace a set 
         of items by the novel attributes not being None.
         Return a message beginning with SUCCESS or ERROR.
         """
@@ -208,11 +228,11 @@ class Yw5File(Novel):
 
                 if novel.scenes[scId].desc is not None:
                     self.scenes[scId].desc = novel.scenes[scId].desc
-                '''
+
                 if novel.scenes[scId].sceneContent is not None:
                     self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
                     sceneCount += 1
-                '''
+
                 if novel.scenes[scId].sceneNotes is not None:
                     self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
 
@@ -339,7 +359,7 @@ class Yw5File(Novel):
 
                     else:
                         scn.find('Desc').text = self.scenes[scId].desc
-                '''
+
                 if self.scenes[scId]._sceneContent is not None:
                     scn.find(
                         'SceneContent').text = self.scenes[scId]._sceneContent
@@ -347,7 +367,7 @@ class Yw5File(Novel):
                         self.scenes[scId].wordCount)
                     scn.find('LetterCount').text = str(
                         self.scenes[scId].letterCount)
-                '''
+
                 if self.scenes[scId].sceneNotes is not None:
 
                     if scn.find('Notes') is None:
@@ -416,14 +436,16 @@ class Yw5File(Novel):
         self._tree = ET.ElementTree(root)
 
         try:
-            self._tree.write(self._filePath)
+            self._tree.write(
+                self._filePath, xml_declaration=False, encoding=self._ENCODING)
 
         except(PermissionError):
             return 'ERROR: "' + self._filePath + '" is write protected.'
 
         # Postprocess the xml file created by ElementTree.
 
-        message = xml_postprocess(self._filePath, self._cdataTags)
+        message = xml_postprocess(
+            self._filePath, self._ENCODING, self._cdataTags)
 
         if message.startswith('ERROR'):
             return message

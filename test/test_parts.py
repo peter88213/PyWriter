@@ -10,8 +10,8 @@ import os
 import unittest
 import zipfile
 
-from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.yw7.yw7_file import Yw7File
+from pywriter.converter.yw_cnv import YwCnv
+from pywriter.yw.yw_file import YwFile
 
 from pywriter.html.html_chapterdesc import HtmlChapterDesc
 from pywriter.odt.odt_partdesc import OdtPartDesc
@@ -101,13 +101,13 @@ class NrmOpr(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        yw7File = Yw7File(TEST_YW7)
+        yw7File = YwFile(TEST_YW7)
         documentFile = HtmlChapterDesc(TEST_HTML)
-        converter = Yw7Cnv()
+        converter = YwCnv()
 
         # Convert html to xml and replace .yw7 file.
 
-        self.assertEqual(converter.document_to_yw7(
+        self.assertEqual(converter.document_to_yw(
             documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
 
         # Verify the yw7 project.
@@ -117,11 +117,11 @@ class NrmOpr(unittest.TestCase):
 
     def test_yw7_to_odt(self):
         """Convert markdown to odt. """
-        yw7File = Yw7File(TEST_YW7)
+        yw7File = YwFile(TEST_YW7)
         documentFile = OdtPartDesc(TEST_ODT)
-        converter = Yw7Cnv()
+        converter = YwCnv()
 
-        self.assertEqual(converter.yw7_to_document(
+        self.assertEqual(converter.yw_to_document(
             yw7File, documentFile), 'SUCCESS: "' + TEST_ODT + '" saved.')
 
         with zipfile.ZipFile(TEST_ODT, 'r') as myzip:

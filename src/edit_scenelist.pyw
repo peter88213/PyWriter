@@ -1,4 +1,4 @@
-"""Import and export ywriter7 scene list. 
+"""Import and export yWriter scene list. 
 
 File format: csv (intended for spreadsheet conversion).
 
@@ -10,12 +10,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 
 from pywriter.csv.csv_scenelist import CsvSceneList
-from pywriter.converter.cnv_runner import CnvRunner
+from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 
 def run(sourcePath, silentMode=True):
     document = CsvSceneList('')
-    converter = CnvRunner(sourcePath, document, 'csv', silentMode, '_scenes')
+    converter = YwCnvGui(sourcePath, document, 'csv', silentMode, '_scenes')
 
 
 if __name__ == '__main__':

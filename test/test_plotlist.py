@@ -9,8 +9,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import unittest
 
-from pywriter.converter.yw7cnv import Yw7Cnv
-from pywriter.yw7.yw7_file import Yw7File
+from pywriter.converter.yw_cnv import YwCnv
+from pywriter.yw.yw_file import YwFile
 
 from pywriter.csv.csv_plotlist import CsvPlotList
 
@@ -85,13 +85,13 @@ class NrmOpr(unittest.TestCase):
     def test_yw7_to_csv(self):
         """Export yW7 scenes to csv. """
 
-        yw7File = Yw7File(TEST_YW7)
+        yw7File = YwFile(TEST_YW7)
         documentFile = CsvPlotList(TEST_CSV)
-        converter = Yw7Cnv()
+        converter = YwCnv()
 
         # Read .yw7 file and convert xml to csv.
 
-        self.assertEqual(converter.yw7_to_document(
+        self.assertEqual(converter.yw_to_document(
             yw7File, documentFile), 'SUCCESS: "' + TEST_CSV + '" saved.')
 
         self.assertEqual(read_file(TEST_CSV),
@@ -105,13 +105,13 @@ class NrmOpr(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        yw7File = Yw7File(TEST_YW7)
+        yw7File = YwFile(TEST_YW7)
         documentFile = CsvPlotList(TEST_CSV)
-        converter = Yw7Cnv()
+        converter = YwCnv()
 
         # Convert csv to xml and replace .yw7 file.
 
-        self.assertEqual(converter.document_to_yw7(
+        self.assertEqual(converter.document_to_yw(
             documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
 
         # Verify the yw7 project.

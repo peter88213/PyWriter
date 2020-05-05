@@ -1,6 +1,6 @@
-"""Import and export yWriter 7 data. 
+"""Import and export yWriter data. 
 
-Standalone yWriter 7 converter with a simple GUI
+Standalone yWriter converter with a simple GUI
 
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/PyWriter
@@ -10,21 +10,21 @@ import os
 from tkinter import *
 from tkinter import messagebox
 
-from pywriter.yw7.yw7_file import Yw7File
-from pywriter.converter.yw7cnv import Yw7Cnv
+from pywriter.yw.yw_file import YwFile
+from pywriter.converter.yw_cnv import YwCnv
 
 
-TITLE = 'PyWriter v1.5'
+TITLE = 'PyWriter v1.6'
 
 
-class CnvRunner(Yw7Cnv):
-    """Standalone yWriter 7 converter with a simple GUI. 
+class YwCnvGui(YwCnv):
+    """Standalone yWriter converter with a simple GUI. 
 
     # Arguments
 
         sourcePath : str
             a full or relative path to the file to be converted.
-            Either an .yw7 file or a file of any supported type. 
+            Either an yWriter file or a file of any supported type. 
             The file type determines the conversion's direction.    
 
         document : Novel
@@ -111,50 +111,64 @@ class CnvRunner(Yw7Cnv):
         if not os.path.isfile(sourcePath):
             self.processInfo.config(text='ERROR: File not found.')
 
-        elif sourcePath.endswith('.yw7'):
-            yw7Path = sourcePath
-
-            # Generate the target file path.
-
-            document.filePath = sourcePath.split(
-                '.yw7')[0] + suffix + '.' + extension
-            self.appInfo.config(
-                text='Export yWriter7 scenes content to ' + extension)
-            self.processInfo.config(text='Project: "' + yw7Path + '"')
-
-            # Instantiate an Yw7File object and pass it along with
-            # the document to the converter class.
-
-            yw7File = Yw7File(yw7Path)
-            self.processInfo.config(
-                text=self.yw7_to_document(yw7File, document))
-
-        elif sourcePath.endswith(suffix + '.' + extension):
-            document.filePath = sourcePath
-
-            # Determine the project file path.
-
-            yw7Path = sourcePath.split(suffix + '.' + extension)[0] + '.yw7'
-            self.appInfo.config(
-                text='Import yWriter7 scenes content from ' + extension)
-            self.processInfo.config(
-                text='Proofed scenes in "' + document.filePath + '"')
-
-            # Instantiate an Yw7File object and pass it along with
-            # the document to the converter class.
-
-            yw7File = Yw7File(yw7Path)
-            self.processInfo.config(
-                text=self.document_to_yw7(document, yw7File))
-
         else:
-            self.processInfo.config(
-                text='ERROR: File type is not supported.')
+            fileName, FileExtension = os.path.splitext(sourcePath)
 
-        # Visualize the outcome.
+            if FileExtension in ['.yw5', '.yw6', 'yw7']:
 
-        if self.processInfo.cget('text').startswith('SUCCESS'):
-            self._success = True
+                # Generate the target file path.
+
+                document.filePath = fileName + suffix + '.' + extension
+                self.appInfo.config(
+                    text='Export yWriter scenes content to ' + extension)
+                self.processInfo.config(text='Project: "' + sourcePath + '"')
+
+                # Instantiate an YwFile object and pass it along with
+                # the document to the converter class.
+
+                ywFile = YwFile(sourcePath)
+                self.processInfo.config(
+                    text=self.yw_to_document(ywFile, document))
+
+            elif sourcePath.endswith(suffix + '.' + extension):
+                document.filePath = sourcePath
+
+                # Determine the project file path.
+
+                ywPath = sourcePath.split(suffix)[0] + '.yw5'
+
+                if not os.path.isfile(ywPath):
+                    ywPath = sourcePath.split(suffix)[0] + '.yw6'
+
+                    if not os.path.isfile(ywPath):
+                        ywPath = sourcePath.split(suffix)[0] + '.yw7'
+
+                        if not os.path.isfile(ywPath):
+                            ywPath = None
+                            self.processInfo.config(
+                                text='ERROR: No yWriter project found.')
+
+                if ywPath:
+                    self.appInfo.config(
+                        text='Import yWriter scenes content from ' + extension)
+                    self.processInfo.config(
+                        text='Project: "' + ywPath + '"')
+
+                    # Instantiate an YwFile object and pass it along with
+                    # the document to the converter class.
+
+                    ywFile = YwFile(ywPath)
+                    self.processInfo.config(
+                        text=self.document_to_yw(document, ywFile))
+
+            else:
+                self.processInfo.config(
+                    text='ERROR: File type is not supported.')
+
+            # Visualize the outcome.
+
+            if self.processInfo.cget('text').startswith('SUCCESS'):
+                self._success = True
 
     def confirm_overwrite(self, filePath):
         """ Invoked by the parent if a file already exists. """

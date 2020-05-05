@@ -1,4 +1,4 @@
-"""Support yWriter 7 XML formatting.
+"""Support yWriter XML formatting.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger.
@@ -6,6 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
+import html
 
 
 def indent(elem, level=0):
@@ -35,15 +36,15 @@ def indent(elem, level=0):
             elem.tail = i
 
 
-def xml_postprocess(filePath, cdataTags: list):
+def xml_postprocess(filePath, fileEncoding, cdataTags: list):
     '''Postprocess the xml file created by ElementTree:
        Put a header on top, insert the missing CDATA tags,
        and replace "ampersand" xml entity by plain text.
     '''
-    with open(filePath, 'r', encoding='utf-8') as f:
+    with open(filePath, 'r', encoding=fileEncoding) as f:
         lines = f.readlines()
 
-    newlines = ['<?xml version="1.0" encoding="utf-8"?>\n']
+    newlines = ['<?xml version="1.0" encoding="' + fileEncoding + '"?>\n']
 
     for line in lines:
 
@@ -59,9 +60,10 @@ def xml_postprocess(filePath, cdataTags: list):
     newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
     newXml = newXml.replace('\n]]', ']]')
     newXml = newXml.replace('&amp;', '&')
+    newXml = html.unescape(newXml)
 
     try:
-        with open(filePath, 'w', encoding='utf-8') as f:
+        with open(filePath, 'w', encoding=fileEncoding) as f:
             f.write(newXml)
 
     except:
