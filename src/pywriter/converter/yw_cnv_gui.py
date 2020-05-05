@@ -114,7 +114,7 @@ class YwCnvGui(YwCnv):
         else:
             fileName, FileExtension = os.path.splitext(sourcePath)
 
-            if FileExtension in ['.yw5', '.yw6', 'yw7']:
+            if FileExtension in ['.yw5', '.yw6', '.yw7']:
 
                 # Generate the target file path.
 
