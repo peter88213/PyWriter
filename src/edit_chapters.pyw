@@ -20,7 +20,7 @@ def run(sourcePath, silentMode=True):
 
     fileName, FileExtension = os.path.splitext(sourcePath)
 
-    if FileExtension in ['.yw5', '.yw6', 'yw7']:
+    if FileExtension in ['.yw5', '.yw6', '.yw7']:
         document = OdtChapterDesc('')
         extension = 'odt'
 

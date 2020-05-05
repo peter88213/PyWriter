@@ -135,13 +135,13 @@ class YwCnvGui(YwCnv):
 
                 # Determine the project file path.
 
-                ywPath = sourcePath.split(suffix)[0] + '.yw5'
+                ywPath = sourcePath.split(suffix)[0] + '.yw7'
 
                 if not os.path.isfile(ywPath):
                     ywPath = sourcePath.split(suffix)[0] + '.yw6'
 
                     if not os.path.isfile(ywPath):
-                        ywPath = sourcePath.split(suffix)[0] + '.yw7'
+                        ywPath = sourcePath.split(suffix)[0] + '.yw5'
 
                         if not os.path.isfile(ywPath):
                             ywPath = None
