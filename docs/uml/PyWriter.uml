@@ -306,7 +306,7 @@
 'silentMode' enables operation without user interaction.</body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_tX7EIDIUEeqilJYfjdmi4Q" annotatedElement="_WAqBgCtrEeqgj_wxJ3Xgsg">
-        <body>File conversion is to be started by any script instantiating an 'XyFile' object of the desired type and an 'CnvRunner' object. &#xD;
+        <body>File conversion is to be started by any script instantiating an 'XyFile' object of the desired type and an 'YwCnvGui' object. &#xD;
 </body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_pZZ08C2GEeqtbohuTq_ZAA" annotatedElement="_WAqBgCtrEeqgj_wxJ3Xgsg">
