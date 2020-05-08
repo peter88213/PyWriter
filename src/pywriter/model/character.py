@@ -15,7 +15,7 @@ class Character(Object):
     def __init__(self):
         object.__init__(self)
 
-        self.Notes = None
+        self.notes = None
         # str
 
         self.bio = None
