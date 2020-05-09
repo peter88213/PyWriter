@@ -3,7 +3,7 @@
 Convert yWriter scene descriptions to odt with invisible chapter and scene tags.
 Convert html with invisible chapter and scene tags to yWriter format.
 
-Copyright (c) 2020 Peter Triesberger.
+Copyright (c) 2019, peter88213
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
