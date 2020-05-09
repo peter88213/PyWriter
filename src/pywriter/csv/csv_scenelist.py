@@ -100,7 +100,9 @@ class CsvSceneList(Novel):
                     self.scenes[scId].status = Scene.STATUS.index(cell[11])
 
                 except ValueError:
-                    self.scenes[scId].status = None
+                    pass
+                    # Scene status remains None and will be ignored when
+                    # writing back.
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
