@@ -260,8 +260,8 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
 		</Items>
       <SceneContent><![CDATA[On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
 . . .]]></SceneContent>
-      <Notes><![CDATA[This is the catalyst that sets the protagonist’s adventure in motion. The inciting incident is a crucial beat in the three-act story structure: without it, the story in question wouldn’t exist. The inciting incident proposes a journey to the protagonist — one that could help them change their situation and achieve their goal.]]></Notes>
-      <Tags><![CDATA[Inciting Incident]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>3</ID>
@@ -424,8 +424,8 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
 
 . . .]]></SceneContent>
-      <Notes><![CDATA[It’s full speed ahead now! No more hemming and hawing for your character: the First Plot Point represents the protagonist’s decision to engage with whatever action the inciting incident has sent their way.]]></Notes>
-      <Tags><![CDATA[Plot Point One]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>8</ID>
@@ -516,7 +516,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
       <RTFFile><![CDATA[RTF_00010.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
-      <Field3>4</Field3>
+      <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>31</WordCount>
@@ -545,7 +545,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
       <RTFFile><![CDATA[RTF_00011.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
-      <Field3>6</Field3>
+      <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
@@ -572,7 +572,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <RTFFile><![CDATA[RTF_00012.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
-      <Field3>7</Field3>
+      <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
@@ -596,7 +596,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <RTFFile><![CDATA[RTF_00013.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
-      <Field3>9</Field3>
+      <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
@@ -620,7 +620,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
-      <Field4>3</Field4>
+      <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
       <LetterCount>1</LetterCount>
@@ -644,7 +644,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
-      <Field4>3</Field4>
+      <Field4>1</Field4>
       <Status>4</Status>
       <WordCount>0</WordCount>
       <LetterCount>1</LetterCount>
@@ -713,7 +713,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Title><![CDATA[Hal depressed. No escape from here.]]></Title>
       <BelongsToChID>12</BelongsToChID>
       <RTFFile><![CDATA[RTF_00018.rtf]]></RTFFile>
-      <Field1>6</Field1>
+      <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
       <Field4>1</Field4>
@@ -737,7 +737,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Title><![CDATA[Lighten the ship. Preparing for liftoff.]]></Title>
       <BelongsToChID>12</BelongsToChID>
       <RTFFile><![CDATA[RTF_00019.rtf]]></RTFFile>
-      <Field1>6</Field1>
+      <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
       <Field4>1</Field4>
@@ -783,7 +783,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
     <SCENE>
       <ID>38</ID>
       <Title><![CDATA[Karl waiting impatiently]]></Title>
-      <Tags />
+      <Tags><![CDATA[Plot Point]]></Tags>
       <BelongsToChID>15</BelongsToChID>
       <RTFFile><![CDATA[RTF_00021.rtf]]></RTFFile>
       <Field1>1</Field1>
@@ -945,8 +945,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Notes><![CDATA[Return to the protagonist’s main goal to establish what this Midpoint event should be. What would have to happen for them to feel that their goal is being directly threatened? What could make the character even more acutely aware of the stakes at hand?]]></Notes>
-      <Tags><![CDATA[Midpoint]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>53</ID>
@@ -1137,8 +1137,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Notes><![CDATA[Our poor protagonist has fallen on hard times. They thought they were making headway on their goal and then the Midpoint came and threw them off their rhythm.]]></Notes>
-      <Tags><![CDATA[Plot Point Two]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>71</ID>
@@ -1449,8 +1449,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Notes><![CDATA[Also called “The Dark Night of the Soul,” Act Three starts with the final clash between the protagonist and the antagonist. We’ve experienced the entire journey with the main character — but this is where we get our first glimpse of the antagonist’s true strength, and it usually catches the main character off guard. Even though most readers are aware that the protagonist typically wins the day, we should have some doubt here about how the last act will play out, and if the main character will be okay.]]></Notes>
-      <Tags><![CDATA[Pre Climax]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>103</ID>
@@ -1617,8 +1617,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Notes><![CDATA[The climax signifies the final moments of the story’s overarching conflict. Since the antagonist has just hit the protagonist where it hurts in the previous beat, the protagonist has to lick their wounds. Then they face-off one more time and the main character lays the conflict to rest.]]></Notes>
-      <Tags><![CDATA[Climax]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>119</ID>
@@ -1641,8 +1641,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
       <Desc />
-      <Notes><![CDATA[Finally, the dust settles. If the protagonist’s goal is not immediately obtained during the Climax, the denouement is where this should be achieved (or redefined, if their goal changed during Act Three).]]></Notes>
-      <Tags><![CDATA[Denouement]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>58</ID>
