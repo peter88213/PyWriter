@@ -1,7 +1,7 @@
 """Character - represents the basic structure of a character in yWriter.
 
 Part of the PyWriter project.
-Copyright (c) 2019, peter88213
+Copyright (c) 2020, peter88213
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
