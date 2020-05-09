@@ -14,11 +14,7 @@ class Scene():
 
     # Emulate an enumeration for the scene status
 
-    OUTLINE = '1'
-    DRAFT = '2'
-    FIRST_EDIT = '3'
-    SECOND_EDIT = '4'
-    DONE = '5'
+    STATUS = [None, 'Outline', 'Draft', '1st Edit', '2nd Edit', 'Done']
 
     def __init__(self):
         self.title = None
@@ -43,7 +39,7 @@ class Scene():
         # bool
 
         self.status = None
-        # str
+        # int
 
         self.tags = None
         # list of str

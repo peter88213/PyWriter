@@ -51,6 +51,8 @@ class CsvSceneList(Novel):
                      + 'Field 3'
                      + _SEPARATOR
                      + 'Field 4'
+                     + _SEPARATOR
+                     + 'Status'
                      + '\n')
 
     def read(self):
@@ -93,6 +95,12 @@ class CsvSceneList(Novel):
                 self.scenes[scId].field2 = cell[8]
                 self.scenes[scId].field3 = cell[9]
                 self.scenes[scId].field4 = cell[10]
+
+                try:
+                    self.scenes[scId].status = Scene.STATUS.index(cell[11])
+
+                except ValueError:
+                    self.scenes[scId].status = None
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
@@ -206,6 +214,8 @@ class CsvSceneList(Novel):
                                      + self.scenes[scId].field3
                                      + self._SEPARATOR
                                      + self.scenes[scId].field4
+                                     + self._SEPARATOR
+                                     + Scene.STATUS[self.scenes[scId].status]
                                      + '\n')
 
         try:

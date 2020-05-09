@@ -173,6 +173,9 @@ class YwFile(Novel):
             if scn.find('Unused') is not None:
                 self.scenes[scId].isUnused = True
 
+            if scn.find('Status') is not None:
+                self.scenes[scId].status = int(scn.find('Status').text)
+
             if scn.find('SceneContent') is not None:
                 sceneContent = scn.find('SceneContent').text
 
@@ -232,6 +235,9 @@ class YwFile(Novel):
                 if novel.scenes[scId].sceneContent is not None:
                     self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
                     sceneCount += 1
+
+                if novel.scenes[scId].status is not None:
+                    self.scenes[scId].status = novel.scenes[scId].status
 
                 if novel.scenes[scId].sceneNotes is not None:
                     self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
@@ -367,6 +373,9 @@ class YwFile(Novel):
                         self.scenes[scId].wordCount)
                     scn.find('LetterCount').text = str(
                         self.scenes[scId].letterCount)
+
+                if self.scenes[scId].status is not None:
+                    scn.find('Status').text = str(self.scenes[scId].status)
 
                 if self.scenes[scId].sceneNotes is not None:
 
