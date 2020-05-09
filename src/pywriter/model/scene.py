@@ -12,6 +12,14 @@ import re
 class Scene():
     """yWriter scene representation."""
 
+    # Emulate an enumeration for the scene status
+
+    OUTLINE = '1'
+    DRAFT = '2'
+    FIRST_EDIT = '3'
+    SECOND_EDIT = '4'
+    DONE = '5'
+
     def __init__(self):
         self.title = None
         # str
@@ -33,6 +41,9 @@ class Scene():
 
         self.isUnused = None
         # bool
+
+        self.status = None
+        # str
 
         self.tags = None
         # list of str
