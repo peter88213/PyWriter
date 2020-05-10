@@ -13,7 +13,7 @@ class Character(Object):
     """yWriter character representation."""
 
     def __init__(self):
-        object.__init__(self)
+        Object.__init__(self)
 
         self.notes = None
         # str

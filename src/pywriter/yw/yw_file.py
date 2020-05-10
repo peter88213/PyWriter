@@ -12,6 +12,8 @@ import xml.etree.ElementTree as ET
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
+from pywriter.model.character import Character
+from pywriter.model.object import Object
 from pywriter.yw.yw_form import *
 
 
@@ -182,6 +184,74 @@ class YwFile(Novel):
                 if sceneContent is not None:
                     self.scenes[scId].sceneContent = sceneContent
 
+        for crt in root.iter('CHARACTER'):
+            crId = crt.find('ID').text
+
+            self.characters[crId] = Character()
+            self.characters[crId].title = crt.find('Title').text
+
+            if crt.find('Desc') is not None:
+                self.characters[crId].desc = crt.find('Desc').text
+
+            if crt.find('AKA') is not None:
+                self.characters[crId].aka = crt.find('AKA').text
+
+            if crt.find('Tags') is not None:
+
+                if crt.find('Tags').text is not None:
+                    self.characters[crId].tags = crt.find(
+                        'Tags').text.split(';')
+
+            if crt.find('Notes') is not None:
+                self.characters[crId].notes = crt.find('Notes').text
+
+            if crt.find('Bio') is not None:
+                self.characters[crId].bio = crt.find('Bio').text
+
+            if crt.find('Goals') is not None:
+                self.characters[crId].goals = crt.find('Goals').text
+
+            if crt.find('FullName') is not None:
+                self.characters[crId].fullName = crt.find('FullName').text
+
+            if crt.find('Major') is not None:
+                self.characters[crId].isMajor = True
+
+        for loc in root.iter('LOCATION'):
+            lcId = loc.find('ID').text
+
+            self.locations[lcId] = Object()
+            self.locations[lcId].title = loc.find('Title').text
+
+            if loc.find('Desc') is not None:
+                self.locations[lcId].desc = loc.find('Desc').text
+
+            if loc.find('AKA') is not None:
+                self.locations[lcId].aka = loc.find('AKA').text
+
+            if loc.find('Tags') is not None:
+
+                if loc.find('Tags').text is not None:
+                    self.locations[lcId].tags = loc.find(
+                        'Tags').text.split(';')
+
+        for itm in root.iter('ITEM'):
+            itId = itm.find('ID').text
+
+            self.items[itId] = Object()
+            self.items[itId].title = itm.find('Title').text
+
+            if itm.find('Desc') is not None:
+                self.items[itId].desc = itm.find('Desc').text
+
+            if itm.find('AKA') is not None:
+                self.items[itId].aka = itm.find('AKA').text
+
+            if itm.find('Tags') is not None:
+
+                if itm.find('Tags').text is not None:
+                    self.items[itId].tags = itm.find('Tags').text.split(';')
+
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def write(self, novel):
@@ -287,6 +357,72 @@ class YwFile(Novel):
                     self.chapters[chId].srtScenes = novel.chapters[chId].srtScenes
                 '''
 
+        if novel.characters != {}:
+
+            for crId in novel.characters:
+
+                if novel.characters[crId].title:
+                    # avoids deleting the title, if it is empty by accident
+                    self.characters[crId].title = novel.characters[crId].title
+
+                if novel.characters[crId].desc is not None:
+                    self.characters[crId].desc = novel.characters[crId].desc
+
+                if novel.characters[crId].aka is not None:
+                    self.characters[crId].aka = novel.characters[crId].aka
+
+                if novel.characters[crId].tags is not None:
+                    self.characters[crId].tags = novel.characters[crId].tags
+
+                if novel.characters[crId].notes is not None:
+                    self.characters[crId].notes = novel.characters[crId].notes
+
+                if novel.characters[crId].bio is not None:
+                    self.characters[crId].bio = novel.characters[crId].bio
+
+                if novel.characters[crId].goals is not None:
+                    self.characters[crId].goals = novel.characters[crId].goals
+
+                if novel.characters[crId].fullName is not None:
+                    self.characters[crId].fullName = novel.characters[crId].fullName
+
+                if novel.characters[crId].isMajor is not None:
+                    self.characters[crId].isMajor = novel.characters[crId].isMajor
+
+        if novel.locations != {}:
+
+            for lcId in novel.locations:
+
+                if novel.locations[lcId].title:
+                    # avoids deleting the title, if it is empty by accident
+                    self.locations[lcId].title = novel.locations[lcId].title
+
+                if novel.locations[lcId].desc is not None:
+                    self.locations[lcId].desc = novel.locations[lcId].desc
+
+                if novel.locations[lcId].aka is not None:
+                    self.locations[lcId].aka = novel.locations[lcId].aka
+
+                if novel.locations[lcId].tags is not None:
+                    self.locations[lcId].tags = novel.locations[lcId].tags
+
+        if novel.items != {}:
+
+            for itId in novel.items:
+
+                if novel.items[itId].title:
+                    # avoids deleting the title, if it is empty by accident
+                    self.items[itId].title = novel.items[itId].title
+
+                if novel.items[itId].desc is not None:
+                    self.items[itId].desc = novel.items[itId].desc
+
+                if novel.items[itId].aka is not None:
+                    self.items[itId].aka = novel.items[itId].aka
+
+                if novel.items[itId].tags is not None:
+                    self.items[itId].tags = novel.items[itId].tags
+
         # Overwrite the XML element tree items.
 
         root = self._tree.getroot()
@@ -342,7 +478,7 @@ class YwFile(Novel):
 
                 unusedMarker = chp.find('Unused')
                 
-                if unused is not None:
+                if unusedMarker is not None:
                     
                     if not self.chapters[chId].isUnused:
                          chp.remove(unusedMarker)
@@ -440,6 +576,166 @@ class YwFile(Novel):
                     if not self.scenes[scId].isUnused:
                          scn.remove(unusedMarker)
                 '''
+
+        for crt in root.iter('CHARACTER'):
+
+            crId = crt.find('ID').text
+
+            if crId in self.characters:
+
+                if self.characters[crId].title is not None:
+                    crt.find('Title').text = self.characters[crId].title
+
+                if self.characters[crId].desc is not None:
+
+                    if crt.find('Desc') is None:
+                        newDesc = ET.SubElement(crt, 'Desc')
+                        newDesc.text = self.characters[crId].desc
+
+                    else:
+                        crt.find('Desc').text = self.characters[crId].desc
+
+                if self.characters[crId].aka is not None:
+
+                    if crt.find('AKA') is None:
+                        newAka = ET.SubElement(crt, 'AKA')
+                        newAka.text = self.characters[crId].aka
+
+                    else:
+                        crt.find('AKA').text = self.characters[crId].aka
+
+                if self.characters[crId].tags is not None:
+
+                    if crt.find('Tags') is None:
+                        newTags = ET.SubElement(crt, 'Tags')
+                        newTags.text = ';'.join(self.characters[crId].tags)
+
+                    else:
+                        crt.find('Tags').text = ';'.join(
+                            self.characters[crId].tags)
+
+                if self.characters[crId].notes is not None:
+
+                    if crt.find('Notes') is None:
+                        newNotes = ET.SubElement(crt, 'Notes')
+                        newNotes.text = self.characters[crId].notes
+
+                    else:
+                        crt.find('Notes').text = self.characters[crId].notes
+
+                if self.characters[crId].bio is not None:
+
+                    if crt.find('Bio') is None:
+                        newBio = ET.SubElement(crt, 'Bio')
+                        newBio.text = self.characters[crId].bio
+
+                    else:
+                        crt.find('Bio').text = self.characters[crId].bio
+
+                if self.characters[crId].goals is not None:
+
+                    if crt.find('Goals') is None:
+                        newGoals = ET.SubElement(crt, 'Goals')
+                        newGoals.text = self.characters[crId].goals
+
+                    else:
+                        crt.find('Goals').text = self.characters[crId].goals
+
+                if self.characters[crId].fullName is not None:
+
+                    if crt.find('FullName') is None:
+                        newFullName = ET.SubElement(crt, 'FullName')
+                        newFullName.text = self.characters[crId].fullName
+
+                    else:
+                        crt.find(
+                            'FullName').text = self.characters[crId].fullName
+
+                majorMarker = crt.find('Major')
+
+                if majorMarker is not None:
+
+                    if not self.characters[crId].isMajor:
+                        crt.remove(majorMarker)
+
+                else:
+                    if self.characters[crId].isMajor:
+                        newMajor = ET.SubElement(crt, 'Major')
+                        newMajor.text = '-1'
+
+        for loc in root.iter('LOCATION'):
+
+            lcId = loc.find('ID').text
+
+            if lcId in self.locations:
+
+                if self.locations[lcId].title is not None:
+                    loc.find('Title').text = self.locations[lcId].title
+
+                if self.locations[lcId].desc is not None:
+
+                    if loc.find('Desc') is None:
+                        newDesc = ET.SubElement(loc, 'Desc')
+                        newDesc.text = self.locations[lcId].desc
+
+                    else:
+                        loc.find('Desc').text = self.locations[lcId].desc
+
+                if self.locations[lcId].aka is not None:
+
+                    if loc.find('AKA') is None:
+                        newAka = ET.SubElement(loc, 'AKA')
+                        newAka.text = self.locations[lcId].aka
+
+                    else:
+                        loc.find('AKA').text = self.locations[lcId].aka
+
+                if self.locations[lcId].tags is not None:
+
+                    if loc.find('Tags') is None:
+                        newTags = ET.SubElement(loc, 'Tags')
+                        newTags.text = ';'.join(self.locations[lcId].tags)
+
+                    else:
+                        loc.find('Tags').text = ';'.join(
+                            self.locations[lcId].tags)
+
+        for itm in root.iter('ITEM'):
+
+            itId = itm.find('ID').text
+
+            if itId in self.items:
+
+                if self.items[itId].title is not None:
+                    itm.find('Title').text = self.items[itId].title
+
+                if self.items[itId].desc is not None:
+
+                    if itm.find('Desc') is None:
+                        newDesc = ET.SubElement(itm, 'Desc')
+                        newDesc.text = self.items[itId].desc
+
+                    else:
+                        itm.find('Desc').text = self.items[itId].desc
+
+                if self.items[itId].aka is not None:
+
+                    if itm.find('AKA') is None:
+                        newAka = ET.SubElement(itm, 'AKA')
+                        newAka.text = self.items[itId].aka
+
+                    else:
+                        itm.find('AKA').text = self.items[itId].aka
+
+                if self.items[itId].tags is not None:
+
+                    if itm.find('Tags') is None:
+                        newTags = ET.SubElement(itm, 'Tags')
+                        newTags.text = ';'.join(self.items[itId].tags)
+
+                    else:
+                        itm.find('Tags').text = ';'.join(
+                            self.items[itId].tags)
 
         indent(root)
         self._tree = ET.ElementTree(root)
