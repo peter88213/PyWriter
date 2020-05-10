@@ -61,10 +61,8 @@ class CsvCharList(Novel):
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
-        '''
-        if lines[0] != _TABLE_HEADER:
+        if lines[0] != self._TABLE_HEADER:
             return 'ERROR: Wrong lines content.'
-        '''
 
         cellsInLine = len(self._TABLE_HEADER.split(self._SEPARATOR))
 

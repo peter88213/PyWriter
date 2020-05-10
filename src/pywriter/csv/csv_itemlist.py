@@ -1,4 +1,4 @@
-"""CsvLocList - Class for csv locations table.
+"""CsvItemList - Class for csv items table.
 
 Part of the PyWriter project.
 Copyright (c) 2020, peter88213
@@ -11,15 +11,15 @@ import re
 from pywriter.model.novel import Novel
 from pywriter.model.object import Object
 
-LOCLIST_SUFFIX = '_loclist.csv'
+ITEMLIST_SUFFIX = '_itemlist.csv'
 
 
-class CsvLocList(Novel):
-    """csv file representation of an yWriter project's locations table. 
+class CsvItemList(Novel):
+    """csv file representation of an yWriter project's items table. 
 
-    Represents a csv file with a record per location.
+    Represents a csv file with a record per item.
     * Records are separated by line breaks.
-    * Data fields are delimited by the _SEPARATOR location.
+    * Data fields are delimited by the _SEPARATOR item.
     """
 
     _FILE_EXTENSION = 'csv'
@@ -62,58 +62,59 @@ class CsvLocList(Novel):
             if len(cell) != cellsInLine:
                 return 'ERROR: Wrong cell structure.'
 
-            if 'LcID:' in cell[0]:
-                lcId = re.search('LcID\:([0-9]+)', cell[0]).group(1)
-                self.locations[lcId] = Object()
-                self.locations[lcId].title = cell[1]
-                self.locations[lcId].desc = cell[2].replace(
+            if 'ItID:' in cell[0]:
+                itId = re.search('ItID\:([0-9]+)', cell[0]).group(1)
+                self.items[itId] = Object()
+                self.items[itId].title = cell[1]
+                self.items[itId].desc = cell[2].replace(
                     self._LINEBREAK, '\n')
-                self.locations[lcId].aka = cell[3]
-                self.locations[lcId].tags = cell[4].split(';')
+                self.items[itId].aka = cell[3]
+                self.items[itId].tags = cell[4].split(';')
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
     def write(self, novel):
-        """Generate a csv file containing per location:
-        - location ID, 
-        - location title,
-        - location description, 
-        - location alternative name, 
-        - location tags.
+        """Generate a csv file containing per item:
+        - item ID, 
+        - item title,
+        - item description, 
+        - item alternative name, 
+        - item tags.
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        # Copy the location's attributes to write
+        # Copy the item's attributes to write
 
-        if novel.locations is not None:
-            self.locations = novel.locations
+        if novel.items is not None:
+            self.items = novel.items
 
         # first record: the table's column headings
 
         table = [self._TABLE_HEADER]
 
-        # Add a record for each location
+        # Add a record for each item
 
-        for lcId in self.locations:
+        for itId in self.items:
 
-            if self.locations[lcId].desc is None:
-                self.locations[lcId].desc = ''
+            if self.items[itId].desc is None:
+                self.items[itId].desc = ''
 
-            if self.locations[lcId].aka is None:
-                self.locations[lcId].aka = ''
+            if self.items[itId].aka is None:
+                self.items[itId].aka = ''
 
-            if self.locations[lcId].tags is None:
-                self.locations[lcId].tags = ['']
+            if self.items[itId].tags is None:
+                self.items[itId].tags = ['']
 
-            table.append('LcID:' + str(lcId)
+            table.append('ItID:' + str(itId)
                          + self._SEPARATOR
-                         + self.locations[lcId].title
+                         + self.items[itId].title
                          + self._SEPARATOR
-                         + self.locations[lcId].desc.rstrip().replace('\n', self._LINEBREAK)
+                         + self.items[itId].desc.rstrip().replace('\n',
+                                                                  self._LINEBREAK)
                          + self._SEPARATOR
-                         + self.locations[lcId].aka
+                         + self.items[itId].aka
                          + self._SEPARATOR
-                         + ';'.join(self.locations[lcId].tags)
+                         + ';'.join(self.items[itId].tags)
                          + '\n')
 
         try:
