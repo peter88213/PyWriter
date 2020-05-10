@@ -12,7 +12,6 @@ from pywriter.model.novel import Novel
 from pywriter.model.character import Character
 
 CHARLIST_SUFFIX = '_charlist.csv'
-MANUSCRIPT_SUFFIX = '_manuscript.odt'
 
 
 class CsvCharList(Novel):
@@ -99,7 +98,7 @@ class CsvCharList(Novel):
 
     def write(self, novel):
         """Generate a csv file containing per character:
-        - charcter ID, 
+        - character ID, 
         - character title,
         - character description, 
         - character alternative name, 

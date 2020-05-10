@@ -114,6 +114,9 @@ class CsvSceneList(Novel):
         - scene word count, 
         - scene letter count,
         - scene tags.
+        - scene notes.
+        - scene fields.
+        - scene status.
         Return a message beginning with SUCCESS or ERROR.
         """
 
