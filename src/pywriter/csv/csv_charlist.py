@@ -32,21 +32,21 @@ class CsvCharList(Novel):
                      + _SEPARATOR
                      + 'Name'
                      + _SEPARATOR
-                     + 'Description'
+                     + 'Full name'
                      + _SEPARATOR
                      + 'Aka'
                      + _SEPARATOR
-                     + 'Tags'
-                     + _SEPARATOR
-                     + 'Notes'
+                     + 'Description'
                      + _SEPARATOR
                      + 'Bio'
                      + _SEPARATOR
                      + 'Goals'
                      + _SEPARATOR
-                     + 'Full name'
+                     + 'Importance'
                      + _SEPARATOR
-                     + 'Major character'
+                     + 'Tags'
+                     + _SEPARATOR
+                     + 'Notes'
                      + '\n')
 
     def read(self):
@@ -76,40 +76,41 @@ class CsvCharList(Novel):
                 crId = re.search('CrID\:([0-9]+)', cell[0]).group(1)
                 self.characters[crId] = Character()
                 self.characters[crId].title = cell[1]
-                self.characters[crId].desc = cell[2].replace(
-                    self._LINEBREAK, '\n')
+                self.characters[crId].fullName = cell[2]
                 self.characters[crId].aka = cell[3]
-                self.characters[crId].tags = cell[4].split(';')
-                self.characters[crId].notes = cell[5].replace(
+                self.characters[crId].desc = cell[4].replace(
                     self._LINEBREAK, '\n')
-                self.characters[crId].bio = cell[6]
-                self.characters[crId].goals = cell[7]
-                self.characters[crId].fullName = cell[8]
+                self.characters[crId].bio = cell[5]
+                self.characters[crId].goals = cell[6]
 
-                if 'Major' in cell[9]:
+                if 'Major' in cell[7]:
                     self.characters[crId].isMajor = True
 
                 else:
                     self.characters[crId].isMajor = False
+
+                self.characters[crId].tags = cell[8].split(';')
+                self.characters[crId].notes = cell[9].replace(
+                    self._LINEBREAK, '\n')
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
     def write(self, novel):
         """Generate a csv file containing per character:
         - character ID, 
-        - character title,
-        - character description, 
+        - character name,
+        - character full name,
         - character alternative name, 
+        - character description, 
+        - character bio,
+        - character goals,
+        - character importance,
         - character tags,
         - character notes.
-        - character bio.
-        - character gols.
-        - character full name.
-        - character is major.
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def showMajor(isMajor):
+        def importance(isMajor):
 
             if isMajor:
                 return 'Major'
@@ -130,17 +131,14 @@ class CsvCharList(Novel):
 
         for crId in self.characters:
 
-            if self.characters[crId].desc is None:
-                self.characters[crId].desc = ''
+            if self.characters[crId].fullName is None:
+                self.characters[crId].fullName = ''
 
             if self.characters[crId].aka is None:
                 self.characters[crId].aka = ''
 
-            if self.characters[crId].tags is None:
-                self.characters[crId].tags = ['']
-
-            if self.characters[crId].notes is None:
-                self.characters[crId].notes = ''
+            if self.characters[crId].desc is None:
+                self.characters[crId].desc = ''
 
             if self.characters[crId].bio is None:
                 self.characters[crId].bio = ''
@@ -148,31 +146,34 @@ class CsvCharList(Novel):
             if self.characters[crId].goals is None:
                 self.characters[crId].goals = ''
 
-            if self.characters[crId].fullName is None:
-                self.characters[crId].fullName = ''
-
             if self.characters[crId].isMajor is None:
                 self.characters[crId].isMajor = False
+
+            if self.characters[crId].tags is None:
+                self.characters[crId].tags = ['']
+
+            if self.characters[crId].notes is None:
+                self.characters[crId].notes = ''
 
             table.append('CrID:' + str(crId)
                          + self._SEPARATOR
                          + self.characters[crId].title
                          + self._SEPARATOR
-                         + self.characters[crId].desc.rstrip().replace('\n', self._LINEBREAK)
+                         + self.characters[crId].fullName
                          + self._SEPARATOR
                          + self.characters[crId].aka
                          + self._SEPARATOR
-                         + ';'.join(self.characters[crId].tags)
-                         + self._SEPARATOR
-                         + self.characters[crId].notes.rstrip().replace('\n', self._LINEBREAK)
+                         + self.characters[crId].desc.rstrip().replace('\n', self._LINEBREAK)
                          + self._SEPARATOR
                          + self.characters[crId].bio
                          + self._SEPARATOR
                          + self.characters[crId].goals
                          + self._SEPARATOR
-                         + self.characters[crId].fullName
+                         + importance(self.characters[crId].isMajor)
                          + self._SEPARATOR
-                         + showMajor(self.characters[crId].isMajor)
+                         + ';'.join(self.characters[crId].tags)
+                         + self._SEPARATOR
+                         + self.characters[crId].notes.rstrip().replace('\n', self._LINEBREAK)
                          + '\n')
 
         try:
