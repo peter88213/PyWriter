@@ -127,6 +127,15 @@ class OdtFile(Novel, OdtTemplate):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
+        if novel.characters is not None:
+            self.characters = novel.characters
+
+        if novel.locations is not None:
+            self.locations = novel.locations
+
+        if novel.items is not None:
+            self.items = novel.items
+
         message = self.set_up()
 
         if message.startswith('ERROR'):
