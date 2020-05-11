@@ -54,19 +54,18 @@ class OdtLocations(OdtFile):
             lines.append(
                 '<text:section text:style-name="Sect1" text:name="LcID:' + lcId + '">')
 
-            chapterPrefix = self._ODT_FIRST_PARA_START
 
             if self.locations[lcId].desc is not None:
 
-                # Write chapter summary.
+                # Write location description.
 
-                lines.append(chapterPrefix +
+                lines.append(self._ODT_FIRST_PARA_START +
                              to_odt(self.locations[lcId].desc) + self._ODT_PARA_END)
 
             else:
-                lines.append(chapterPrefix + self._ODT_PARA_END)
+                lines.append(self._ODT_FIRST_PARA_START + self._ODT_PARA_END)
 
-            # Write invisible "end chapter" tag.
+            # Write invisible "end location" tag.
 
             lines.append('</text:section>')
 

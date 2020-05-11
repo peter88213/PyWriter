@@ -54,19 +54,18 @@ class OdtItems(OdtFile):
             lines.append(
                 '<text:section text:style-name="Sect1" text:name="ItID:' + itId + '">')
 
-            chapterPrefix = self._ODT_FIRST_PARA_START
 
             if self.items[itId].desc is not None:
 
-                # Write chapter summary.
+                # Write item description.
 
-                lines.append(chapterPrefix +
+                lines.append(self._ODT_FIRST_PARA_START +
                              to_odt(self.items[itId].desc) + self._ODT_PARA_END)
 
             else:
-                lines.append(chapterPrefix + self._ODT_PARA_END)
+                lines.append(self._ODT_FIRST_PARA_START + self._ODT_PARA_END)
 
-            # Write invisible "end chapter" tag.
+            # Write invisible "end item" tag.
 
             lines.append('</text:section>')
 

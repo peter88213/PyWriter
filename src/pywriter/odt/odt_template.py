@@ -20,7 +20,8 @@ class OdtTemplate():
     _MANUSCRIPT_SUFFIX = '_manuscript.odt'
 
     _ODT_HEADING_STARTS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
-                           '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
+                           '<text:h text:style-name="Heading_20_1" text:outline-level="1">',
+                           '<text:h text:style-name="Heading_20_3" text:outline-level="3">']
     _ODT_HEADING_END = '</text:h>'
 
     _ODT_TITLE_START = '<text:p text:style-name="Title">'

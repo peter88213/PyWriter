@@ -57,17 +57,16 @@ class OdtPartDesc(OdtFile):
                     lines.append(
                         '<text:section text:style-name="Sect1" text:name="ChID:' + chId + '">')
 
-                    chapterPrefix = self._ODT_FIRST_PARA_START
 
                     if self.chapters[chId].desc is not None:
 
                         # Write chapter summary.
 
-                        lines.append(chapterPrefix +
+                        lines.append(self._ODT_FIRST_PARA_START +
                                      to_odt(self.chapters[chId].desc) + self._ODT_PARA_END)
 
                     else:
-                        lines.append(chapterPrefix + self._ODT_PARA_END)
+                        lines.append(self._ODT_FIRST_PARA_START + self._ODT_PARA_END)
 
                     # Write invisible "end chapter" tag.
 
