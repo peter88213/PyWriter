@@ -1,4 +1,4 @@
-"""OdtLocations - Class for OpenDocument xml file generation.
+"""OdtItems - Class for OpenDocument xml file generation.
 
 Part of the PyWriter project.
 Copyright (c) 2020, peter88213
@@ -11,17 +11,17 @@ from pywriter.odt.odt_file import OdtFile
 from pywriter.odt.odt_form import *
 
 
-class OdtLocations(OdtFile):
-    """OpenDocument xml location descriptions file representation."""
+class OdtItems(OdtFile):
+    """OpenDocument xml item descriptions file representation."""
 
     def write_content_xml(self):
-        """Write location descriptions to "content.xml".
+        """Write item descriptions to "content.xml".
 
 
         Generate "content.xml" containing:
         - book title,
-        - location sections containing:
-            - the location description.
+        - item sections containing:
+            - the item description.
         Return a message beginning with SUCCESS or ERROR.
         """
         manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
@@ -34,34 +34,34 @@ class OdtLocations(OdtFile):
         lines.append(self._ODT_TITLE_START + self.title +
                      self._ODT_PARA_END)
         lines.append(self._ODT_SUBTITLE_START +
-                     'Locations' + self._ODT_PARA_END)
+                     'Items' + self._ODT_PARA_END)
 
-        for lcId in self.locations:
+        for itId in self.items:
 
-            # Write location title as heading
+            # Write item title as heading
 
-            if self.locations[lcId].aka:
-                aka = ' ("' + self.locations[lcId].aka + '")'
+            if self.items[itId].aka:
+                aka = ' ("' + self.items[itId].aka + '")'
 
             else:
                 aka = ''
 
             lines.append(
-                self._ODT_HEADING_STARTS[0] + self.locations[lcId].title + aka + self._ODT_HEADING_END)
+                self._ODT_HEADING_STARTS[0] + self.items[itId].title + aka + self._ODT_HEADING_END)
 
-            # Write invisible "start location" tag.
+            # Write invisible "start item" tag.
 
             lines.append(
-                '<text:section text:style-name="Sect1" text:name="LcID:' + lcId + '">')
+                '<text:section text:style-name="Sect1" text:name="ItID:' + itId + '">')
 
             chapterPrefix = self._ODT_FIRST_PARA_START
 
-            if self.locations[lcId].desc is not None:
+            if self.items[itId].desc is not None:
 
                 # Write chapter summary.
 
                 lines.append(chapterPrefix +
-                             to_odt(self.locations[lcId].desc) + self._ODT_PARA_END)
+                             to_odt(self.items[itId].desc) + self._ODT_PARA_END)
 
             else:
                 lines.append(chapterPrefix + self._ODT_PARA_END)
