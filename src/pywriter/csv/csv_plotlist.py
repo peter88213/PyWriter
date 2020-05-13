@@ -137,8 +137,8 @@ class CsvPlotList(Novel):
                 else:
                     for scId in self.chapters[chId].srtScenes:
 
-                        if (not self.scenes[scId].isUnused) and (self.scenes[scId].tags != [] or self.scenes[scId].sceneNotes != ''):
-                            # Scene contains plot information:
+                        if not self.scenes[scId].isUnused:
+                            # If the scene contains plot information:
                             # a tag marks the plot event (e.g. inciting event, plot point, climax).
                             # Put scene note text to "details".
 

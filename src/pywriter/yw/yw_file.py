@@ -167,6 +167,9 @@ class YwFile(Novel):
             if scn.find('AppendToPrev') is not None:
                 self.scenes[scId].appendToPrev = True
 
+            else:
+                self.scenes[scId].appendToPrev = False
+
             if scn.find('Tags') is not None:
 
                 if scn.find('Tags').text is not None:
@@ -174,6 +177,9 @@ class YwFile(Novel):
 
             if scn.find('Unused') is not None:
                 self.scenes[scId].isUnused = True
+
+            else:
+                self.scenes[scId].isUnused = False
 
             if scn.find('Status') is not None:
                 self.scenes[scId].status = int(scn.find('Status').text)
@@ -216,6 +222,9 @@ class YwFile(Novel):
 
             if crt.find('Major') is not None:
                 self.characters[crId].isMajor = True
+
+            else:
+                self.characters[crId].isMajor = False
 
         for loc in root.iter('LOCATION'):
             lcId = loc.find('ID').text
