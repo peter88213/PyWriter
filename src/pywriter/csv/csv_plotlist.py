@@ -25,6 +25,9 @@ STORYLINE_MARKER = 'line'
 # Field names containing this string (case insensitive)
 # are associated to storylines
 
+SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
+# '1' is assigned N/A (empty table cell).
+
 
 class CsvPlotList(Novel):
     """csv file representation of an yWriter project's scenes table. 
@@ -104,28 +107,28 @@ class CsvPlotList(Novel):
 
                 # Transfer scene ratings; set to 1 if deleted
 
-                if cell[7]:
+                if cell[7] in SCENE_RATINGS:
                     self.scenes[scId].field1 = cell[7]
 
-                elif cell[7] == '':
+                else:
                     self.scenes[scId].field1 = '1'
 
-                if cell[8]:
+                if cell[8] in SCENE_RATINGS:
                     self.scenes[scId].field2 = cell[8]
 
-                elif cell[8] == '':
+                else:
                     self.scenes[scId].field2 = '1'
 
-                if cell[9]:
+                if cell[9] in SCENE_RATINGS:
                     self.scenes[scId].field3 = cell[9]
 
-                elif cell[9] == '':
+                else:
                     self.scenes[scId].field3 = '1'
 
-                if cell[10]:
+                if cell[10] in SCENE_RATINGS:
                     self.scenes[scId].field4 = cell[10]
 
-                elif cell[10] == '':
+                else:
                     self.scenes[scId].field4 = '1'
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
