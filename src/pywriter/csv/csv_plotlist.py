@@ -102,17 +102,31 @@ class CsvPlotList(Novel):
                 self.scenes[scId].sceneNotes = cell[4].replace(
                     self._LINEBREAK, '\n')
 
+                # Transfer scene ratings; set to 1 if deleted
+
                 if cell[7]:
                     self.scenes[scId].field1 = cell[7]
+
+                elif cell[7] == '':
+                    self.scenes[scId].field1 = '1'
 
                 if cell[8]:
                     self.scenes[scId].field2 = cell[8]
 
+                elif cell[8] == '':
+                    self.scenes[scId].field2 = '1'
+
                 if cell[9]:
                     self.scenes[scId].field3 = cell[9]
 
+                elif cell[9] == '':
+                    self.scenes[scId].field3 = '1'
+
                 if cell[10]:
                     self.scenes[scId].field4 = cell[10]
+
+                elif cell[10] == '':
+                    self.scenes[scId].field4 = '1'
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
@@ -139,7 +153,7 @@ class CsvPlotList(Novel):
 
         table = [self._TABLE_HEADER]
 
-        # Identify storylines
+        # Identify storyline arcs
 
         charList = []
 
@@ -220,6 +234,8 @@ class CsvPlotList(Novel):
                             # If the scene contains plot information:
                             # a tag marks the plot event (e.g. inciting event, plot point, climax).
                             # Put scene note text to "details".
+                            # Transfer scene ratings > 1 to storyline arc
+                            # states.
 
                             if self.scenes[scId].sceneNotes is None:
                                 self.scenes[scId].sceneNotes = ''
