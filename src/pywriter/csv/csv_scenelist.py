@@ -67,11 +67,6 @@ class CsvSceneList(Novel):
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
-        '''
-        if lines[0] != _TABLE_HEADER:
-            return 'ERROR: Wrong lines content.'
-        '''
-
         cellsInLine = len(self._TABLE_HEADER.split(self._SEPARATOR))
 
         for line in lines:
@@ -120,6 +115,9 @@ class CsvSceneList(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
+        odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
+            ' ', '%20').replace(SCENELIST_SUFFIX, MANUSCRIPT_SUFFIX)
+
         # Copy the scene's attributes to write
 
         if novel.srtChapters != []:
@@ -155,9 +153,6 @@ class CsvSceneList(Novel):
         else:
             self.fieldTitle4 = 'Field 4'
 
-        odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(SCENELIST_SUFFIX, MANUSCRIPT_SUFFIX)
-
         # first record: the table's column headings
 
         table = [self._TABLE_HEADER.replace(
@@ -168,6 +163,9 @@ class CsvSceneList(Novel):
 
         # Add a record for each used scene in a regular chapter
 
+        sceneCount = 0
+        wordCount = 0
+
         for chId in self.srtChapters:
 
             if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
@@ -175,6 +173,8 @@ class CsvSceneList(Novel):
                 for scId in self.chapters[chId].srtScenes:
 
                     if not self.scenes[scId].isUnused:
+                        sceneCount += 1
+                        wordCount += self.scenes[scId].wordCount
 
                         if self.scenes[scId].desc is None:
                             self.scenes[scId].desc = ''

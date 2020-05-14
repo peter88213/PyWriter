@@ -46,7 +46,22 @@ class CsvPlotList(Novel):
                      + 'Plot event title'
                      + _SEPARATOR
                      + 'Details'
+                     + _SEPARATOR
+                     + 'Scene'
+                     + _SEPARATOR
+                     + 'Word count'
+                     + _SEPARATOR
+                     + 'Field 1'
+                     + _SEPARATOR
+                     + 'Field 2'
+                     + _SEPARATOR
+                     + 'Field 3'
+                     + _SEPARATOR
+                     + 'Field 4'
                      + '\n')
+
+    CHAR_STATE = ['', 'N/A', 'unhappy', 'dissatisfied',
+                  'vague', 'satisfied', 'happy', '', '', '', '']
 
     def read(self):
         """Parse the csv file located at filePath, fetching 
@@ -59,9 +74,6 @@ class CsvPlotList(Novel):
 
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
-
-        if lines[0] != self._TABLE_HEADER:
-            return 'ERROR: Wrong lines content.'
 
         cellsInLine = len(self._TABLE_HEADER.split(self._SEPARATOR))
 
@@ -86,12 +98,27 @@ class CsvPlotList(Novel):
                 self.scenes[scId].sceneNotes = cell[4].replace(
                     self._LINEBREAK, '\n')
 
+                if cell[7]:
+                    self.scenes[scId].field1 = cell[7]
+
+                if cell[8]:
+                    self.scenes[scId].field2 = cell[8]
+
+                if cell[9]:
+                    self.scenes[scId].field3 = cell[9]
+
+                if cell[10]:
+                    self.scenes[scId].field4 = cell[10]
+
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
     def write(self, novel):
         """Generate a csv file showing the novel's plot structure.
         Return a message beginning with SUCCESS or ERROR.
         """
+
+        odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
+            ' ', '%20').replace(PLOTLIST_SUFFIX, MANUSCRIPT_SUFFIX)
 
         # Copy the chapter/scene's attributes to write
 
@@ -104,15 +131,54 @@ class CsvPlotList(Novel):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(PLOTLIST_SUFFIX, MANUSCRIPT_SUFFIX)
-
         # first record: the table's column headings
 
         table = [self._TABLE_HEADER]
 
+        # Identify storylines
+
+        charList = []
+
+        for crId in novel.characters:
+            charList.append(novel.characters[crId].title)
+
+        if novel.fieldTitle1 in charList:
+            table[0] = table[0].replace('Field 1', novel.fieldTitle1)
+            arc1 = True
+
+        else:
+            table[0] = table[0].replace('Field 1', 'N/A')
+            arc1 = False
+
+        if novel.fieldTitle2 in charList:
+            table[0] = table[0].replace('Field 2', novel.fieldTitle2)
+            arc2 = True
+
+        else:
+            table[0] = table[0].replace('Field 2', 'N/A')
+            arc2 = False
+
+        if novel.fieldTitle3 in charList:
+            table[0] = table[0].replace('Field 3', novel.fieldTitle3)
+            arc3 = True
+
+        else:
+            table[0] = table[0].replace('Field 3', 'N/A')
+            arc3 = False
+
+        if novel.fieldTitle4 in charList:
+            table[0] = table[0].replace('Field 4', novel.fieldTitle4)
+            arc4 = True
+
+        else:
+            table[0] = table[0].replace('Field 4', 'N/A')
+            arc4 = False
+
         # Add a record for each used scene in a regular chapter
         # and for each chapter marked "Other".
+
+        sceneCount = 0
+        wordCount = 0
 
         for chId in self.srtChapters:
 
@@ -132,12 +198,21 @@ class CsvPlotList(Novel):
                                  + self._SEPARATOR
                                  + self._SEPARATOR
                                  + self.chapters[chId].desc.rstrip().replace('\n', self._LINEBREAK)
+                                 + self._SEPARATOR
+                                 + self._SEPARATOR
+                                 + self._SEPARATOR
+                                 + self._SEPARATOR
+                                 + self._SEPARATOR
+                                 + self._SEPARATOR
                                  + '\n')
 
                 else:
                     for scId in self.chapters[chId].srtScenes:
 
                         if not self.scenes[scId].isUnused:
+                            sceneCount += 1
+                            wordCount += self.scenes[scId].wordCount
+
                             # If the scene contains plot information:
                             # a tag marks the plot event (e.g. inciting event, plot point, climax).
                             # Put scene note text to "details".
@@ -148,6 +223,22 @@ class CsvPlotList(Novel):
                             if self.scenes[scId].tags is None:
                                 self.scenes[scId].tags = ['']
 
+                            arcState1 = ''
+                            if arc1 and self.scenes[scId].field1 != '1':
+                                arcState1 = self.scenes[scId].field1
+
+                            arcState2 = ''
+                            if arc2 and self.scenes[scId].field2 != '1':
+                                arcState2 = self.scenes[scId].field2
+
+                            arcState3 = ''
+                            if arc3 and self.scenes[scId].field3 != '1':
+                                arcState3 = self.scenes[scId].field3
+
+                            arcState4 = ''
+                            if arc4 and self.scenes[scId].field4 != '1':
+                                arcState4 = self.scenes[scId].field4
+
                             table.append('=HYPERLINK("file:///'
                                          + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
                                          + self._SEPARATOR
@@ -157,6 +248,18 @@ class CsvPlotList(Novel):
                                          + self.scenes[scId].title
                                          + self._SEPARATOR
                                          + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
+                                         + self._SEPARATOR
+                                         + str(sceneCount)
+                                         + self._SEPARATOR
+                                         + str(wordCount)
+                                         + self._SEPARATOR
+                                         + arcState1
+                                         + self._SEPARATOR
+                                         + arcState2
+                                         + self._SEPARATOR
+                                         + arcState3
+                                         + self._SEPARATOR
+                                         + arcState4
                                          + '\n')
 
         try:
