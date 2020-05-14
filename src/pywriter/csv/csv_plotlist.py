@@ -28,6 +28,9 @@ STORYLINE_MARKER = 'line'
 SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
 # '1' is assigned N/A (empty table cell).
 
+NOT_APPLICABLE = 'N/A'
+# Scene field column header for fields not being assigned to a storyline
+
 
 class CsvPlotList(Novel):
     """csv file representation of an yWriter project's scenes table. 
@@ -39,7 +42,6 @@ class CsvPlotList(Novel):
 
     _FILE_EXTENSION = 'csv'
     # overwrites Novel._FILE_EXTENSION
-    _FILE_SUFFIX = '_plot'
 
     _SEPARATOR = '|'     # delimits data fields within a record.
     _LINEBREAK = '\t'    # substitutes embedded line breaks.
@@ -84,6 +86,8 @@ class CsvPlotList(Novel):
 
         cellsInLine = len(self._TABLE_HEADER.split(self._SEPARATOR))
 
+        tableHeader = lines[0].rstrip().split(self._SEPARATOR)
+
         for line in lines:
             cell = line.rstrip().split(self._SEPARATOR)
 
@@ -110,25 +114,25 @@ class CsvPlotList(Novel):
                 if cell[7] in SCENE_RATINGS:
                     self.scenes[scId].field1 = cell[7]
 
-                else:
+                elif tableHeader[7] != NOT_APPLICABLE:
                     self.scenes[scId].field1 = '1'
 
                 if cell[8] in SCENE_RATINGS:
                     self.scenes[scId].field2 = cell[8]
 
-                else:
+                elif tableHeader[8] != NOT_APPLICABLE:
                     self.scenes[scId].field2 = '1'
 
                 if cell[9] in SCENE_RATINGS:
                     self.scenes[scId].field3 = cell[9]
 
-                else:
+                elif tableHeader[9] != NOT_APPLICABLE:
                     self.scenes[scId].field3 = '1'
 
                 if cell[10] in SCENE_RATINGS:
                     self.scenes[scId].field4 = cell[10]
 
-                else:
+                elif tableHeader[10] != NOT_APPLICABLE:
                     self.scenes[scId].field4 = '1'
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
@@ -168,7 +172,7 @@ class CsvPlotList(Novel):
             arc1 = True
 
         else:
-            table[0] = table[0].replace('Field 1', 'N/A')
+            table[0] = table[0].replace('Field 1', NOT_APPLICABLE)
             arc1 = False
 
         if novel.fieldTitle2 in charList or STORYLINE_MARKER in novel.fieldTitle2.lower():
@@ -176,7 +180,7 @@ class CsvPlotList(Novel):
             arc2 = True
 
         else:
-            table[0] = table[0].replace('Field 2', 'N/A')
+            table[0] = table[0].replace('Field 2', NOT_APPLICABLE)
             arc2 = False
 
         if novel.fieldTitle3 in charList or STORYLINE_MARKER in novel.fieldTitle3.lower():
@@ -184,7 +188,7 @@ class CsvPlotList(Novel):
             arc3 = True
 
         else:
-            table[0] = table[0].replace('Field 3', 'N/A')
+            table[0] = table[0].replace('Field 3', NOT_APPLICABLE)
             arc3 = False
 
         if novel.fieldTitle4 in charList or STORYLINE_MARKER in novel.fieldTitle4.lower():
@@ -192,7 +196,7 @@ class CsvPlotList(Novel):
             arc4 = True
 
         else:
-            table[0] = table[0].replace('Field 4', 'N/A')
+            table[0] = table[0].replace('Field 4', NOT_APPLICABLE)
             arc4 = False
 
         # Add a record for each used scene in a regular chapter
