@@ -21,6 +21,10 @@ from pywriter.model.scene import Scene
 PLOTLIST_SUFFIX = '_plotlist.csv'
 MANUSCRIPT_SUFFIX = '_manuscript.odt'
 
+STORYLINE_MARKER = 'line'
+# Field names containing this string (case insensitive)
+# are associated to storylines
+
 
 class CsvPlotList(Novel):
     """csv file representation of an yWriter project's scenes table. 
@@ -142,7 +146,7 @@ class CsvPlotList(Novel):
         for crId in novel.characters:
             charList.append(novel.characters[crId].title)
 
-        if novel.fieldTitle1 in charList:
+        if novel.fieldTitle1 in charList or STORYLINE_MARKER in novel.fieldTitle1.lower():
             table[0] = table[0].replace('Field 1', novel.fieldTitle1)
             arc1 = True
 
@@ -150,7 +154,7 @@ class CsvPlotList(Novel):
             table[0] = table[0].replace('Field 1', 'N/A')
             arc1 = False
 
-        if novel.fieldTitle2 in charList:
+        if novel.fieldTitle2 in charList or STORYLINE_MARKER in novel.fieldTitle2.lower():
             table[0] = table[0].replace('Field 2', novel.fieldTitle2)
             arc2 = True
 
@@ -158,7 +162,7 @@ class CsvPlotList(Novel):
             table[0] = table[0].replace('Field 2', 'N/A')
             arc2 = False
 
-        if novel.fieldTitle3 in charList:
+        if novel.fieldTitle3 in charList or STORYLINE_MARKER in novel.fieldTitle3.lower():
             table[0] = table[0].replace('Field 3', novel.fieldTitle3)
             arc3 = True
 
@@ -166,7 +170,7 @@ class CsvPlotList(Novel):
             table[0] = table[0].replace('Field 3', 'N/A')
             arc3 = False
 
-        if novel.fieldTitle4 in charList:
+        if novel.fieldTitle4 in charList or STORYLINE_MARKER in novel.fieldTitle4.lower():
             table[0] = table[0].replace('Field 4', novel.fieldTitle4)
             arc4 = True
 
