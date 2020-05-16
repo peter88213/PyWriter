@@ -11,8 +11,6 @@ import re
 from pywriter.model.novel import Novel
 from pywriter.model.object import Object
 
-ITEMLIST_SUFFIX = '_itemlist.csv'
-
 
 class CsvItemList(Novel):
     """csv file representation of an yWriter project's items table. 

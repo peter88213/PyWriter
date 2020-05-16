@@ -21,7 +21,7 @@ from pywriter.model.scene import Scene
 PLOTLIST_SUFFIX = '_plotlist.csv'
 MANUSCRIPT_SUFFIX = '_manuscript.odt'
 
-STORYLINE_MARKER = 'line'
+STORYLINE_MARKER = 'story'
 # Field names containing this string (case insensitive)
 # are associated to storylines
 

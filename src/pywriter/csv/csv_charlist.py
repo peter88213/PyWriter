@@ -11,8 +11,6 @@ import re
 from pywriter.model.novel import Novel
 from pywriter.model.character import Character
 
-CHARLIST_SUFFIX = '_charlist.csv'
-
 
 class CsvCharList(Novel):
     """csv file representation of an yWriter project's characters table. 

@@ -11,8 +11,6 @@ import re
 from pywriter.model.novel import Novel
 from pywriter.model.object import Object
 
-LOCLIST_SUFFIX = '_loclist.csv'
-
 
 class CsvLocList(Novel):
     """csv file representation of an yWriter project's locations table. 

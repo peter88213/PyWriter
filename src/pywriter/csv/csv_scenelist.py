@@ -44,6 +44,10 @@ class CsvSceneList(Novel):
                      + _SEPARATOR
                      + 'Scene notes'
                      + _SEPARATOR
+                     + 'Scene'
+                     + _SEPARATOR
+                     + 'Word count'
+                     + _SEPARATOR
                      + 'Field 1'
                      + _SEPARATOR
                      + 'Field 2'
@@ -86,10 +90,10 @@ class CsvSceneList(Novel):
                 self.scenes[scId].tags = cell[5].split(';')
                 self.scenes[scId].sceneNotes = cell[6].replace(
                     self._LINEBREAK, '\n')
-                self.scenes[scId].field1 = cell[7]
-                self.scenes[scId].field2 = cell[8]
-                self.scenes[scId].field3 = cell[9]
-                self.scenes[scId].field4 = cell[10]
+                self.scenes[scId].field1 = cell[9]
+                self.scenes[scId].field2 = cell[10]
+                self.scenes[scId].field3 = cell[11]
+                self.scenes[scId].field4 = cell[12]
 
                 try:
                     self.scenes[scId].status = Scene.STATUS.index(cell[11])
@@ -211,6 +215,10 @@ class CsvSceneList(Novel):
                                      + ';'.join(self.scenes[scId].tags)
                                      + self._SEPARATOR
                                      + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
+                                     + self._SEPARATOR
+                                     + str(sceneCount)
+                                     + self._SEPARATOR
+                                     + str(wordCount)
                                      + self._SEPARATOR
                                      + self.scenes[scId].field1
                                      + self._SEPARATOR
