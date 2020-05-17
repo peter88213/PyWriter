@@ -247,6 +247,22 @@ class CsvSceneList(Novel):
                         if self.scenes[scId].field4 is None:
                             self.scenes[scId].field4 = ''
 
+                        rating1 = ''
+                        if self.scenes[scId].field1 != '1':
+                            rating1 = self.scenes[scId].field1
+
+                        rating2 = ''
+                        if self.scenes[scId].field2 != '1':
+                            rating2 = self.scenes[scId].field2
+
+                        rating3 = ''
+                        if self.scenes[scId].field3 != '1':
+                            rating3 = self.scenes[scId].field3
+
+                        rating4 = ''
+                        if self.scenes[scId].field4 != '1':
+                            rating4 = self.scenes[scId].field4
+
                         table.append('=HYPERLINK("file:///'
                                      + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
                                      + self._SEPARATOR
@@ -262,13 +278,13 @@ class CsvSceneList(Novel):
                                      + self._SEPARATOR
                                      + str(wordCount)
                                      + self._SEPARATOR
-                                     + self.scenes[scId].field1
+                                     + rating1
                                      + self._SEPARATOR
-                                     + self.scenes[scId].field2
+                                     + rating2
                                      + self._SEPARATOR
-                                     + self.scenes[scId].field3
+                                     + rating3
                                      + self._SEPARATOR
-                                     + self.scenes[scId].field4
+                                     + rating4
                                      + self._SEPARATOR
                                      + str(self.scenes[scId].wordCount)
                                      + self._SEPARATOR
