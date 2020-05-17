@@ -109,30 +109,42 @@ class CsvPlotList(Novel):
                 self.scenes[scId].sceneNotes = cell[4].replace(
                     self._LINEBREAK, '\n')
 
+                i = 5
+                # Don't write back sceneCount
+                i += 1
+                # Don't write back wordCount
+                i += 1
+
                 # Transfer scene ratings; set to 1 if deleted
 
-                if cell[7] in SCENE_RATINGS:
-                    self.scenes[scId].field1 = cell[7]
+                if cell[i] in SCENE_RATINGS:
+                    self.scenes[scId].field1 = cell[i]
 
-                elif tableHeader[7] != NOT_APPLICABLE:
+                elif tableHeader[i] != NOT_APPLICABLE:
                     self.scenes[scId].field1 = '1'
 
-                if cell[8] in SCENE_RATINGS:
-                    self.scenes[scId].field2 = cell[8]
+                i += 1
 
-                elif tableHeader[8] != NOT_APPLICABLE:
+                if cell[i] in SCENE_RATINGS:
+                    self.scenes[scId].field2 = cell[i]
+
+                elif tableHeader[i] != NOT_APPLICABLE:
                     self.scenes[scId].field2 = '1'
 
-                if cell[9] in SCENE_RATINGS:
-                    self.scenes[scId].field3 = cell[9]
+                i += 1
 
-                elif tableHeader[9] != NOT_APPLICABLE:
+                if cell[i] in SCENE_RATINGS:
+                    self.scenes[scId].field3 = cell[i]
+
+                elif tableHeader[i] != NOT_APPLICABLE:
                     self.scenes[scId].field3 = '1'
 
-                if cell[10] in SCENE_RATINGS:
-                    self.scenes[scId].field4 = cell[10]
+                i += 1
 
-                elif tableHeader[10] != NOT_APPLICABLE:
+                if cell[i] in SCENE_RATINGS:
+                    self.scenes[scId].field4 = cell[i]
+
+                elif tableHeader[i] != NOT_APPLICABLE:
                     self.scenes[scId].field4 = '1'
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'

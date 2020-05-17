@@ -15,7 +15,7 @@ from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 def run(sourcePath, silentMode=True):
     document = CsvSceneList('')
-    converter = YwCnvGui(sourcePath, document, 'csv', silentMode, '_scenes')
+    converter = YwCnvGui(sourcePath, document, 'csv', silentMode, '_scenelist')
 
 
 if __name__ == '__main__':

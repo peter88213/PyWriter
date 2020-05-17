@@ -193,8 +193,8 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
       <BelongsToChID>1</BelongsToChID>
       <Day>1</Day>
       <RTFFile><![CDATA[RTF_00001.rtf]]></RTFFile>
-      <Field1>5</Field1>
-      <Field2>3</Field2>
+      <Field1>2</Field1>
+      <Field2>5</Field2>
       <Field3>3</Field3>
       <Field4>3</Field4>
       <Status>4</Status>
@@ -241,8 +241,8 @@ Carina explains that they can't risk their own ships, they wouldn't be covered b
 Jerling asks Carina to call the idiot, the one who thought it was stolen goods. Before the assistant makes the call, she discovers that there's a message from the 'idiot' already - he wants the job. Carina tries to pursuade Jerling that others can deal with the issue but Jerling's fired up and won't let go, it's his pet project.]]></Desc>
       <BelongsToChID>2</BelongsToChID>
       <RTFFile><![CDATA[RTF_00002.rtf]]></RTFFile>
-      <Field1>4</Field1>
-      <Field2>1</Field2>
+      <Field1>3</Field1>
+      <Field2>3</Field2>
       <Field3>2</Field3>
       <Field4>2</Field4>
       <Status>4</Status>
@@ -260,8 +260,8 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
 		</Items>
       <SceneContent><![CDATA[On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
 . . .]]></SceneContent>
-      <Notes><![CDATA[This is the catalyst that sets the protagonist’s adventure in motion. The inciting incident is a crucial beat in the three-act story structure: without it, the story in question wouldn’t exist. The inciting incident proposes a journey to the protagonist — one that could help them change their situation and achieve their goal.]]></Notes>
-      <Tags><![CDATA[Inciting Incident]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>3</ID>
@@ -270,7 +270,7 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
 Hal says he doesn't need help, Jerling explains that the landing is at night, with no guidance. This makes Hal suspicious about the job again, but he decides that nothing could be worse than another session with Brutus. Jerling reassures him that the pilot can handle everything and reminds him that delivery is to his premises on Forg. Hal agrees to the job, starts to ask for an advance but Jerling disconnects.]]></Desc>
       <BelongsToChID>2</BelongsToChID>
       <RTFFile><![CDATA[RTF_00003.rtf]]></RTFFile>
-      <Field1>1</Field1>
+      <Field1>4</Field1>
       <Field2>1</Field2>
       <Field3>2</Field3>
       <Field4>3</Field4>
@@ -307,7 +307,7 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
       <BelongsToChID>3</BelongsToChID>
       <RTFFile><![CDATA[RTF_00004.rtf]]></RTFFile>
       <Field1>1</Field1>
-      <Field2>1</Field2>
+      <Field2>2</Field2>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
@@ -341,7 +341,7 @@ While the robot is busy mending the pipes, Hal leaps into the vehicle and starts
 Hal drives off, oblivious to the flames starting to flicker around the fallen robot.]]></Desc>
       <BelongsToChID>4</BelongsToChID>
       <RTFFile><![CDATA[RTF_00005.rtf]]></RTFFile>
-      <Field1>1</Field1>
+      <Field1>2</Field1>
       <Field2>1</Field2>
       <Field3>2</Field3>
       <Field4>1</Field4>
@@ -424,8 +424,8 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
 
 . . .]]></SceneContent>
-      <Notes><![CDATA[It’s full speed ahead now! No more hemming and hawing for your character: the First Plot Point represents the protagonist’s decision to engage with whatever action the inciting incident has sent their way.]]></Notes>
-      <Tags><![CDATA[Plot Point One]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>8</ID>
@@ -776,7 +776,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
     <SCENE>
       <ID>38</ID>
       <Title><![CDATA[Karl waiting impatiently]]></Title>
-      <Tags />
+      <Tags><![CDATA[Plot Point]]></Tags>
       <BelongsToChID>15</BelongsToChID>
       <RTFFile><![CDATA[RTF_00021.rtf]]></RTFFile>
       <Field1>1</Field1>
@@ -931,8 +931,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
-      <Notes><![CDATA[Return to the protagonist’s main goal to establish what this Midpoint event should be. What would have to happen for them to feel that their goal is being directly threatened? What could make the character even more acutely aware of the stakes at hand?]]></Notes>
-      <Tags><![CDATA[Midpoint]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>53</ID>
@@ -1115,8 +1115,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
-      <Notes><![CDATA[Our poor protagonist has fallen on hard times. They thought they were making headway on their goal and then the Midpoint came and threw them off their rhythm.]]></Notes>
-      <Tags><![CDATA[Plot Point Two]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>71</ID>
@@ -1414,8 +1414,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
-      <Notes><![CDATA[Also called “The Dark Night of the Soul,” Act Three starts with the final clash between the protagonist and the antagonist. We’ve experienced the entire journey with the main character — but this is where we get our first glimpse of the antagonist’s true strength, and it usually catches the main character off guard. Even though most readers are aware that the protagonist typically wins the day, we should have some doubt here about how the last act will play out, and if the main character will be okay.]]></Notes>
-      <Tags><![CDATA[Pre Climax]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>103</ID>
@@ -1575,8 +1575,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
-      <Notes><![CDATA[The climax signifies the final moments of the story’s overarching conflict. Since the antagonist has just hit the protagonist where it hurts in the previous beat, the protagonist has to lick their wounds. Then they face-off one more time and the main character lays the conflict to rest.]]></Notes>
-      <Tags><![CDATA[Climax]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>119</ID>
@@ -1598,8 +1598,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
-      <Notes><![CDATA[Finally, the dust settles. If the protagonist’s goal is not immediately obtained during the Climax, the denouement is where this should be achieved (or redefined, if their goal changed during Act Three).]]></Notes>
-      <Tags><![CDATA[Denouement]]></Tags>
+      <Notes />
+      <Tags />
     </SCENE>
     <SCENE>
       <ID>58</ID>
@@ -1654,8 +1654,8 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
   <CHAPTERS>
     <CHAPTER>
       <ID>33</ID>
-      <Title><![CDATA[Act I – Setup]]></Title>
-      <Desc><![CDATA[Act One is all about setting the stage: readers should get an idea of who your protagonist is, what their everyday life is like, and what’s important to them. Of course, nobody’s life is perfect, and the exposition should give readers a sense of the current challenges facing the main character. Their desire to overcome these challenges will inform their overarching character goal.]]></Desc>
+      <Title><![CDATA[Act 1]]></Title>
+      <Desc><![CDATA[The hero and his world.]]></Desc>
       <SortOrder>1</SortOrder>
       <Fields>
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
@@ -1743,8 +1743,8 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     </CHAPTER>
     <CHAPTER>
       <ID>35</ID>
-      <Title><![CDATA[Act II – Confrontation]]></Title>
-      <Desc><![CDATA[Typically the longest of all three sections: Act Two usually comprises the second and third quarters of the story.]]></Desc>
+      <Title><![CDATA[Act 2]]></Title>
+      <Desc><![CDATA[Action!]]></Desc>
       <SortOrder>10</SortOrder>
       <Fields>
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
@@ -1911,8 +1911,8 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     </CHAPTER>
     <CHAPTER>
       <ID>36</ID>
-      <Title><![CDATA[Act III – Resolution]]></Title>
-      <Desc><![CDATA[The final act typically takes up a quarter of the story — sometimes less.]]></Desc>
+      <Title><![CDATA[Act 3]]></Title>
+      <Desc><![CDATA[Solution.]]></Desc>
       <SortOrder>27</SortOrder>
       <Fields>
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>

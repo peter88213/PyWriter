@@ -15,6 +15,9 @@ from pywriter.model.scene import Scene
 SCENELIST_SUFFIX = '_scenelist.csv'
 MANUSCRIPT_SUFFIX = '_manuscript.odt'
 
+SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
+# '1' is assigned N/A (empty table cell).
+
 
 class CsvSceneList(Novel):
     """csv file representation of an yWriter project's scenes table. 
@@ -36,17 +39,13 @@ class CsvSceneList(Novel):
                      + _SEPARATOR
                      + 'Scene description'
                      + _SEPARATOR
-                     + 'Word count'
-                     + _SEPARATOR
-                     + 'Letter count'
-                     + _SEPARATOR
                      + 'Tags'
                      + _SEPARATOR
                      + 'Scene notes'
                      + _SEPARATOR
                      + 'Scene'
                      + _SEPARATOR
-                     + 'Word count'
+                     + 'Words total'
                      + _SEPARATOR
                      + 'Field 1'
                      + _SEPARATOR
@@ -55,6 +54,10 @@ class CsvSceneList(Novel):
                      + 'Field 3'
                      + _SEPARATOR
                      + 'Field 4'
+                     + _SEPARATOR
+                     + 'Word count'
+                     + _SEPARATOR
+                     + 'Letter count'
                      + _SEPARATOR
                      + 'Status'
                      + '\n')
@@ -79,24 +82,67 @@ class CsvSceneList(Novel):
             if len(cell) != cellsInLine:
                 return 'ERROR: Wrong cell structure.'
 
-            if 'ScID:' in cell[0]:
+            i = 0
+
+            if 'ScID:' in cell[i]:
                 scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
                 self.scenes[scId] = Scene()
-                self.scenes[scId].title = cell[1]
-                self.scenes[scId].desc = cell[2].replace(
+                i += 1
+                self.scenes[scId].title = cell[i]
+                i += 1
+                self.scenes[scId].desc = cell[i].replace(
                     self._LINEBREAK, '\n')
-                #self.scenes[scId].wordCount = int(cell[3])
-                #self.scenes[scId].letterCount = int(cell[4])
-                self.scenes[scId].tags = cell[5].split(';')
-                self.scenes[scId].sceneNotes = cell[6].replace(
+                i += 1
+                self.scenes[scId].tags = cell[i].split(';')
+                i += 1
+                self.scenes[scId].sceneNotes = cell[i].replace(
                     self._LINEBREAK, '\n')
-                self.scenes[scId].field1 = cell[9]
-                self.scenes[scId].field2 = cell[10]
-                self.scenes[scId].field3 = cell[11]
-                self.scenes[scId].field4 = cell[12]
+                i += 1
+                # Don't write back sceneCount
+                i += 1
+                # Don't write back wordCount
+                i += 1
+
+                # Transfer scene ratings; set to 1 if deleted
+
+                if cell[i] in SCENE_RATINGS:
+                    self.scenes[scId].field1 = cell[i]
+
+                else:
+                    self.scenes[scId].field1 = '1'
+
+                i += 1
+
+                if cell[i] in SCENE_RATINGS:
+                    self.scenes[scId].field2 = cell[i]
+
+                else:
+                    self.scenes[scId].field2 = '1'
+
+                i += 1
+
+                if cell[i] in SCENE_RATINGS:
+                    self.scenes[scId].field3 = cell[i]
+
+                else:
+                    self.scenes[scId].field3 = '1'
+
+                i += 1
+
+                if cell[i] in SCENE_RATINGS:
+                    self.scenes[scId].field4 = cell[i]
+
+                else:
+                    self.scenes[scId].field4 = '1'
+
+                i += 1
+                # Don't write back scene words total
+                i += 1
+                # Don't write back scene letters total
+                i += 1
 
                 try:
-                    self.scenes[scId].status = Scene.STATUS.index(cell[11])
+                    self.scenes[scId].status = Scene.STATUS.index(cell[i])
 
                 except ValueError:
                     pass
@@ -208,10 +254,6 @@ class CsvSceneList(Novel):
                                      + self._SEPARATOR
                                      + self.scenes[scId].desc.rstrip().replace('\n', self._LINEBREAK)
                                      + self._SEPARATOR
-                                     + str(self.scenes[scId].wordCount)
-                                     + self._SEPARATOR
-                                     + str(self.scenes[scId].letterCount)
-                                     + self._SEPARATOR
                                      + ';'.join(self.scenes[scId].tags)
                                      + self._SEPARATOR
                                      + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
@@ -227,6 +269,10 @@ class CsvSceneList(Novel):
                                      + self.scenes[scId].field3
                                      + self._SEPARATOR
                                      + self.scenes[scId].field4
+                                     + self._SEPARATOR
+                                     + str(self.scenes[scId].wordCount)
+                                     + self._SEPARATOR
+                                     + str(self.scenes[scId].letterCount)
                                      + self._SEPARATOR
                                      + Scene.STATUS[self.scenes[scId].status]
                                      + '\n')
