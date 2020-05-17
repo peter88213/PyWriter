@@ -58,7 +58,7 @@ class CsvPlotList(Novel):
                      + _SEPARATOR
                      + 'Scene'
                      + _SEPARATOR
-                     + 'Word count'
+                     + 'Words total'
                      + _SEPARATOR
                      + 'Field 1'
                      + _SEPARATOR
