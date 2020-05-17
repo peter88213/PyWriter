@@ -18,6 +18,9 @@ MANUSCRIPT_SUFFIX = '_manuscript.odt'
 SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
 # '1' is assigned N/A (empty table cell).
 
+ACTION_MARKER = 'Action'
+REACTION_MARKER = 'Reaction'
+
 
 class CsvSceneList(Novel):
     """csv file representation of an yWriter project's scenes table. 
@@ -42,6 +45,14 @@ class CsvSceneList(Novel):
                      + 'Tags'
                      + _SEPARATOR
                      + 'Scene notes'
+                     + _SEPARATOR
+                     + 'A/R'
+                     + _SEPARATOR
+                     + 'Goal'
+                     + _SEPARATOR
+                     + 'Conflict'
+                     + _SEPARATOR
+                     + 'Outcome'
                      + _SEPARATOR
                      + 'Scene'
                      + _SEPARATOR
@@ -98,6 +109,23 @@ class CsvSceneList(Novel):
                 self.scenes[scId].sceneNotes = cell[i].replace(
                     self._LINEBREAK, '\n')
                 i += 1
+
+                if REACTION_MARKER.lower() in cell[i].lower():
+                    self.scenes[scId].isReactionScene = True
+
+                else:
+                    self.scenes[scId].isReactionScene = False
+
+                i += 1
+                self.scenes[scId].goal = cell[i].replace(
+                    self._LINEBREAK, ' ')
+                i += 1
+                self.scenes[scId].conflict = cell[i].replace(
+                    self._LINEBREAK, ' ')
+                i += 1
+                self.scenes[scId].outcome = cell[i].replace(
+                    self._LINEBREAK, ' ')
+                i += 1
                 # Don't write back sceneCount
                 i += 1
                 # Don't write back wordCount
@@ -152,16 +180,7 @@ class CsvSceneList(Novel):
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
     def write(self, novel):
-        """Generate a csv file containing per scene:
-        - A manuscript scene hyperlink, 
-        - scene title,
-        - scene summary, 
-        - scene word count, 
-        - scene letter count,
-        - scene tags.
-        - scene notes.
-        - scene fields.
-        - scene status.
+        """Generate a csv file containing a row per scene
         Return a message beginning with SUCCESS or ERROR.
         """
 
@@ -223,6 +242,13 @@ class CsvSceneList(Novel):
                 for scId in self.chapters[chId].srtScenes:
 
                     if not self.scenes[scId].isUnused:
+
+                        if self.scenes[scId].isReactionScene:
+                            pacingType = REACTION_MARKER
+
+                        else:
+                            pacingType = ACTION_MARKER
+
                         sceneCount += 1
                         wordCount += self.scenes[scId].wordCount
 
@@ -234,6 +260,18 @@ class CsvSceneList(Novel):
 
                         if self.scenes[scId].sceneNotes is None:
                             self.scenes[scId].sceneNotes = ''
+
+                        if self.scenes[scId].isReactionScene is None:
+                            self.scenes[scId].isReactionScene = False
+
+                        if self.scenes[scId].goal is None:
+                            self.scenes[scId].goal = ''
+
+                        if self.scenes[scId].conflict is None:
+                            self.scenes[scId].conflict = ''
+
+                        if self.scenes[scId].outcome is None:
+                            self.scenes[scId].outcome = ''
 
                         if self.scenes[scId].field1 is None:
                             self.scenes[scId].field1 = ''
@@ -273,6 +311,14 @@ class CsvSceneList(Novel):
                                      + ';'.join(self.scenes[scId].tags)
                                      + self._SEPARATOR
                                      + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
+                                     + self._SEPARATOR
+                                     + pacingType
+                                     + self._SEPARATOR
+                                     + self.scenes[scId].goal
+                                     + self._SEPARATOR
+                                     + self.scenes[scId].conflict
+                                     + self._SEPARATOR
+                                     + self.scenes[scId].outcome
                                      + self._SEPARATOR
                                      + str(sceneCount)
                                      + self._SEPARATOR

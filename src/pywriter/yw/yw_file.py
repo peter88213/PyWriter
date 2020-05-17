@@ -176,6 +176,18 @@ class YwFile(Novel):
             else:
                 self.scenes[scId].isReactionScene = False
 
+            if scn.find('Goal') is not None:
+                self.scenes[scId].goal = scn.find('Goal').text
+
+            if scn.find('Conflict') is not None:
+                self.scenes[scId].conflict = scn.find('Conflict').text
+
+            if scn.find('Outcome') is not None:
+                self.scenes[scId].outcome = scn.find('Outcome').text
+
+            if scn.find('Field4') is not None:
+                self.scenes[scId].field4 = scn.find('Field4').text
+
             if scn.find('Tags') is not None:
 
                 if scn.find('Tags').text is not None:
