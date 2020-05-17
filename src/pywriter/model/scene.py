@@ -62,6 +62,18 @@ class Scene():
         self.appendToPrev = None
         # bool
 
+        self.isReactionScene = None
+        # bool
+
+        self.goal = None
+        # str
+
+        self.conflict = None
+        # str
+
+        self.outcome = None
+        # str
+
     @property
     def sceneContent(self):
         return self._sceneContent

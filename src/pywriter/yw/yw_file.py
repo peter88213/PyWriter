@@ -170,6 +170,12 @@ class YwFile(Novel):
             else:
                 self.scenes[scId].appendToPrev = False
 
+            if scn.find('ReactionScene') is not None:
+                self.scenes[scId].isReactionScene = True
+
+            else:
+                self.scenes[scId].isReactionScene = False
+
             if scn.find('Tags') is not None:
 
                 if scn.find('Tags').text is not None:
@@ -336,9 +342,21 @@ class YwFile(Novel):
                 if novel.scenes[scId].tags is not None:
                     self.scenes[scId].tags = novel.scenes[scId].tags
 
+                if novel.scenes[scId].isReactionScene is not None:
+                    self.scenes[scId].isReactionScene = novel.scenes[scId].isReactionScene
+
+                if novel.scenes[scId].goal is not None:
+                    self.scenes[scId].goal = novel.scenes[scId].goal
+
+                if novel.scenes[scId].conflict is not None:
+                    self.scenes[scId].conflict = novel.scenes[scId].conflict
+
+                if novel.scenes[scId].outcome is not None:
+                    self.scenes[scId].outcome = novel.scenes[scId].outcome
+
                 '''Do not modify these items yet:
                 if novel.scenes[scId].isUnused is not None:
-                    self.scenes[scId].isUnused = novel.chapters[chId].isUnused
+                    self.scenes[scId].isUnused = novel.scenes[scId].isUnused
                 '''
 
         if novel.chapters != {}:
@@ -476,6 +494,7 @@ class YwFile(Novel):
                         chp.find('Desc').text = self.chapters[chId].desc
 
                 '''Do not modify these items yet:
+                
                 chp.find('Type').text = str(self.chapters[chId].chType)
                 
                 levelInfo = chp.find('SectionStart')
@@ -485,12 +504,6 @@ class YwFile(Novel):
                     if self.chapters[chId].chLevel == 0:
                          chp.remove(levelInfo)
 
-                unusedMarker = chp.find('Unused')
-                
-                if unusedMarker is not None:
-                    
-                    if not self.chapters[chId].isUnused:
-                         chp.remove(unusedMarker)
                 '''
 
         for scn in root.iter('SCENE'):
@@ -577,13 +590,53 @@ class YwFile(Novel):
                         scn.find('Tags').text = ';'.join(
                             self.scenes[scId].tags)
 
+                if self.scenes[scId].isReactionScene:
+
+                    if scn.find('ReactionScene') is None:
+                        newReactionScene = ET.SubElement(scn, 'ReactionScene')
+                        newReactionScene.text = '-1'
+
+                elif scn.find('ReactionScene') is not None:
+                    scn.remove(scn.find('ReactionScene'))
+
+                if self.scenes[scId].goal is not None:
+
+                    if scn.find('Goal') is None:
+                        newGoal = ET.SubElement(scn, 'Goal')
+                        newGoal.text = self.scenes[scId].goal
+
+                    else:
+                        scn.find('Goal').text = self.scenes[scId].goal
+
+                if self.scenes[scId].conflict is not None:
+
+                    if scn.find('Conflict') is None:
+                        newConflict = ET.SubElement(scn, 'Conflict')
+                        newConflict.text = self.scenes[scId].conflict
+
+                    else:
+                        scn.find('Conflict').text = self.scenes[scId].conflict
+
+                if self.scenes[scId].outcome is not None:
+
+                    if scn.find('Outcome') is None:
+                        newOutcome = ET.SubElement(scn, 'Outcome')
+                        newOutcome.text = self.scenes[scId].outcome
+
+                    else:
+                        scn.find('Outcome').text = self.scenes[scId].outcome
+
                 '''Do not modify these items yet:
-                unusedMarker = scn.find('Unused')
-                
-                if unused is not None:
-                    
-                    if not self.scenes[scId].isUnused:
-                         scn.remove(unusedMarker)
+
+                if self.scenes[scId].isUnused:
+
+                    if scn.find('Unused') is None:
+                        newUnused = ET.SubElement(scn, 'Unused')
+                        newUnused.text = '-1'
+
+                elif scn.find('Unused') is not None:
+                    scn.remove(scn.find('Unused'))
+
                 '''
 
         for crt in root.iter('CHARACTER'):
