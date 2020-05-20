@@ -74,6 +74,15 @@ class Scene():
         self.outcome = None
         # str
 
+        self.characters = None
+        # list of str
+
+        self.locations = None
+        # list of str
+
+        self.items = None
+        # list of str
+
     @property
     def sceneContent(self):
         return self._sceneContent
