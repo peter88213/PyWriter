@@ -360,10 +360,6 @@ class YwFile(Novel):
         def writeProjectLevel():
             prj = root.find('PROJECT')
             prj.find('Title').text = self.title
-            prj.find('FieldTitle1').text = self.fieldTitle1
-            prj.find('FieldTitle2').text = self.fieldTitle2
-            prj.find('FieldTitle3').text = self.fieldTitle3
-            prj.find('FieldTitle4').text = self.fieldTitle4
 
             if self.desc is not None:
 
@@ -382,6 +378,11 @@ class YwFile(Novel):
 
                 else:
                     prj.find('AuthorName').text = self.author
+
+            prj.find('FieldTitle1').text = self.fieldTitle1
+            prj.find('FieldTitle2').text = self.fieldTitle2
+            prj.find('FieldTitle3').text = self.fieldTitle3
+            prj.find('FieldTitle4').text = self.fieldTitle4
 
         def copyChapterLevel():
 
