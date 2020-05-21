@@ -8,17 +8,23 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 
 class Object():
-    """yWriter character representation."""
+    """yWriter object representation.
+    # xml: <LOCATIONS><LOCATION> or # xml: <ITEMS><ITEM>
+    """
 
     def __init__(self):
         self.title = None
         # str
+        # xml: <Title>
 
         self.desc = None
         # str
+        # xml: <Desc>
 
         self.tags = None
         # list of str
+        # xml: <Tags>
 
         self.aka = None
         # str
+        # xml: <AKA>

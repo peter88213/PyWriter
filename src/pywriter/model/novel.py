@@ -23,31 +23,42 @@ class Novel():
     def __init__(self, filePath):
         self.title = None
         # str
+        # xml: <PROJECT><Title>
 
         self.desc = None
         # str
+        # xml: <PROJECT><Desc>
 
         self.author = None
         # str
+        # xml: <PROJECT><AuthorName>
 
         self.fieldTitle1 = None
         # str
+        # xml: <PROJECT><FieldTitle1>
 
         self.fieldTitle2 = None
         # str
+        # xml: <PROJECT><FieldTitle2>
 
         self.fieldTitle3 = None
         # str
+        # xml: <PROJECT><FieldTitle3>
 
         self.fieldTitle4 = None
         # str
+        # xml: <PROJECT><FieldTitle4>
 
         self.chapters = {}
+        # dict
+        # xml: <CHAPTERS><CHAPTER><ID>
         # key = chapter ID, value = Chapter object.
         # The order of the elements does not matter (the novel's
         # order of the chapters is defined by srtChapters)
 
         self.scenes = {}
+        # dict
+        # xml: <SCENES><SCENE><ID>
         # key = scene ID, value = Scene object.
         # The order of the elements does not matter (the novel's
         # order of the scenes is defined by the order of the chapters
@@ -58,16 +69,22 @@ class Novel():
         # The novel's chapter IDs. The order of its elements
         # corresponds to the novel's order of the chapters.
 
-        self.characters = {}
-        # key = character ID, value = Character object.
-        # The order of the elements does not matter.
-
         self.locations = {}
+        # dict
+        # xml: <LOCATIONS>
         # key = location ID, value = Object.
         # The order of the elements does not matter.
 
         self.items = {}
+        # dict
+        # xml: <ITEMS>
         # key = item ID, value = Object.
+        # The order of the elements does not matter.
+
+        self.characters = {}
+        # dict
+        # xml: <CHARACTERS>
+        # key = character ID, value = Character object.
         # The order of the elements does not matter.
 
         self._filePath = None

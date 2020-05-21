@@ -10,7 +10,9 @@ import re
 
 
 class Scene():
-    """yWriter scene representation."""
+    """yWriter scene representation.
+    # xml: <SCENES><SCENE>
+    """
 
     # Emulate an enumeration for the scene status
 
@@ -19,69 +21,99 @@ class Scene():
     def __init__(self):
         self.title = None
         # str
+        # xml: <Title>
 
         self.desc = None
         # str
+        # xml: <Desc>
 
         self._sceneContent = None
         # str
+        # xml: <SceneContent>
         # Scene text with yW7 raw markup.
 
         self.wordCount = None
-        # int
+        # int # xml: <WordCount>
         # To be updated by the sceneContent setter
 
         self.letterCount = None
         # int
+        # xml: <LetterCount>
         # To be updated by the sceneContent setter
 
         self.isUnused = None
         # bool
+        # xml: <Unused>
 
         self.status = None
-        # int
+        # int # xml: <Status>
 
         self.sceneNotes = None
         # str
+        # xml: <Notes>
 
         self.tags = None
         # list of str
+        # xml: <Tags>
 
         self.field1 = None
         # str
+        # xml: <Field1>
 
         self.field2 = None
         # str
+        # xml: <Field2>
 
         self.field3 = None
         # str
+        # xml: <Field3>
 
         self.field4 = None
         # str
+        # xml: <Field4>
 
         self.appendToPrev = None
         # bool
+        # xml: <AppendToPrev>
 
         self.isReactionScene = None
         # bool
+        # xml: <ReactionScene>
 
         self.goal = None
         # str
+        # xml: <Goal>
 
         self.conflict = None
         # str
+        # xml: <Conflict>
 
         self.outcome = None
         # str
+        # xml: <Outcome>
 
         self.characters = None
         # list of str
+        # xml: <Characters><CharID>
 
         self.locations = None
         # list of str
+        # xml: <Locations><LocID>
 
         self.items = None
         # list of str
+        # xml: <Items><ItemID>
+
+        # xml: <SpecificDateMode>-1</SpecificDateMode>
+        # xml: <SpecificDateTime>1900-06-01 20:38:00</SpecificDateTime>
+
+        # xml: <Minute>
+        # xml: <Hour>
+        # xml: <Day>
+
+        # xml: <LastsMinutes>
+        # xml: <LastsHours>
+        # xml: <LastsDays>
 
     @property
     def sceneContent(self):

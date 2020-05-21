@@ -10,22 +10,29 @@ from pywriter.model.object import Object
 
 
 class Character(Object):
-    """yWriter character representation."""
+    """yWriter character representation.
+    # xml: <CHARACTERS><CHARACTER>
+    """
 
     def __init__(self):
         Object.__init__(self)
 
         self.notes = None
         # str
+        # xml: <Notes>
 
         self.bio = None
         # str
+        # xml: <Bio>
 
         self.goals = None
         # str
+        # xml: <Goals>
 
         self.fullName = None
         # str
+        # xml: <FullName>
 
         self.isMajor = None
         # bool
+        # xml: <Major>
