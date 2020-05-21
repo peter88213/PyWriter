@@ -79,16 +79,6 @@ class YwFile(Novel):
                 self.chapters[chId].title = chp.find('Title').text
                 self.srtChapters.append(chId)
 
-                for fields in chp.iter('Fields'):
-
-                    if fields.find('Field_SuppressChapterTitle') is not None:
-
-                        if fields.find('Field_SuppressChapterTitle').text == '1':
-                            self.chapters[chId].suppressChapterTitle = True
-
-                        else:
-                            self.chapters[chId].suppressChapterTitle = False
-
                 if chp.find('Desc') is not None:
                     self.chapters[chId].desc = chp.find('Desc').text
 
@@ -98,13 +88,23 @@ class YwFile(Novel):
                 else:
                     self.chapters[chId].chLevel = 0
 
+                self.chapters[chId].chType = int(chp.find('Type').text)
+
                 if chp.find('Unused') is not None:
                     self.chapters[chId].isUnused = True
 
                 else:
                     self.chapters[chId].isUnused = False
 
-                self.chapters[chId].chType = int(chp.find('Type').text)
+                for fields in chp.findall('Fields'):
+
+                    if fields.find('Field_SuppressChapterTitle') is not None:
+
+                        if fields.find('Field_SuppressChapterTitle').text == '1':
+                            self.chapters[chId].suppressChapterTitle = True
+
+                        else:
+                            self.chapters[chId].suppressChapterTitle = False
 
                 self.chapters[chId].srtScenes = []
 
@@ -125,8 +125,29 @@ class YwFile(Novel):
                 if scn.find('Desc') is not None:
                     self.scenes[scId].desc = scn.find('Desc').text
 
+                if scn.find('SceneContent') is not None:
+                    sceneContent = scn.find('SceneContent').text
+
+                    if sceneContent is not None:
+                        self.scenes[scId].sceneContent = sceneContent
+
+                if scn.find('Unused') is not None:
+                    self.scenes[scId].isUnused = True
+
+                else:
+                    self.scenes[scId].isUnused = False
+
+                if scn.find('Status') is not None:
+                    self.scenes[scId].status = int(scn.find('Status').text)
+
                 if scn.find('Notes') is not None:
                     self.scenes[scId].sceneNotes = scn.find('Notes').text
+
+                if scn.find('Tags') is not None:
+
+                    if scn.find('Tags').text is not None:
+                        self.scenes[scId].tags = scn.find(
+                            'Tags').text.split(';')
 
                 if scn.find('Field1') is not None:
                     self.scenes[scId].field1 = scn.find('Field1').text
@@ -160,27 +181,6 @@ class YwFile(Novel):
 
                 if scn.find('Outcome') is not None:
                     self.scenes[scId].outcome = scn.find('Outcome').text
-
-                if scn.find('Tags') is not None:
-
-                    if scn.find('Tags').text is not None:
-                        self.scenes[scId].tags = scn.find(
-                            'Tags').text.split(';')
-
-                if scn.find('Unused') is not None:
-                    self.scenes[scId].isUnused = True
-
-                else:
-                    self.scenes[scId].isUnused = False
-
-                if scn.find('Status') is not None:
-                    self.scenes[scId].status = int(scn.find('Status').text)
-
-                if scn.find('SceneContent') is not None:
-                    sceneContent = scn.find('SceneContent').text
-
-                    if sceneContent is not None:
-                        self.scenes[scId].sceneContent = sceneContent
 
                 for crId in scn.find('Characters').iter('CharID'):
 
@@ -311,12 +311,12 @@ class YwFile(Novel):
 
         # Retrieve the XML element tree items.
 
-        readProjectLevel()
-        readChapterLevel()
-        readSceneLevel()
         readCharacters()
         readLocations()
         readItems()
+        readProjectLevel()
+        readChapterLevel()
+        readSceneLevel()
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
@@ -396,20 +396,23 @@ class YwFile(Novel):
                     if novel.chapters[chId].desc is not None:
                         self.chapters[chId].desc = novel.chapters[chId].desc
 
-                    '''Do not modify these items yet:
-                    
                     if novel.chapters[chId].chLevel is not None:
                         self.chapters[chId].chLevel = novel.chapters[chId].chLevel
-    
+
                     if novel.chapters[chId].chType is not None:
                         self.chapters[chId].chType = novel.chapters[chId].chType
-    
+
                     if novel.chapters[chId].isUnused is not None:
                         self.chapters[chId].isUnused = novel.chapters[chId].isUnused
-    
+
+                    if novel.chapters[chId].suppressChapterTitle is not None:
+                        self.chapters[chId].suppressChapterTitle = novel.chapters[chId].suppressChapterTitle
+
+                    '''Do not modify these items yet:
+                    
                     if novel.chapters[chId].srtScenes != []:
                         self.chapters[chId].srtScenes = novel.chapters[chId].srtScenes
-                        
+
                     '''
 
         def writeChapterLevel():
@@ -429,18 +432,23 @@ class YwFile(Novel):
                         else:
                             chp.find('Desc').text = self.chapters[chId].desc
 
-                    '''Do not modify these items yet:
-                    
-                    chp.find('Type').text = str(self.chapters[chId].chType)
-                    
                     levelInfo = chp.find('SectionStart')
-                    
+
                     if levelInfo is not None:
-                        
+
                         if self.chapters[chId].chLevel == 0:
-                             chp.remove(levelInfo)
-    
-                    '''
+                            chp.remove(levelInfo)
+
+                    chp.find('Type').text = str(self.chapters[chId].chType)
+
+                    if self.chapters[chId].isUnused:
+
+                        if chp.find('Unused') is None:
+                            newUnused = ET.SubElement(chp, 'Unused')
+                            newUnused.text = '-1'
+
+                    elif chp.find('Unused') is not None:
+                        chp.remove(chp.find('Unused'))
 
         def copySceneLevel():
             sceneCount = 0
@@ -460,11 +468,17 @@ class YwFile(Novel):
                         self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
                         sceneCount += 1
 
+                    if novel.scenes[scId].isUnused is not None:
+                        self.scenes[scId].isUnused = novel.scenes[scId].isUnused
+
                     if novel.scenes[scId].status is not None:
                         self.scenes[scId].status = novel.scenes[scId].status
 
                     if novel.scenes[scId].sceneNotes is not None:
                         self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
+
+                    if novel.scenes[scId].tags is not None:
+                        self.scenes[scId].tags = novel.scenes[scId].tags
 
                     if novel.scenes[scId].field1 is not None:
                         self.scenes[scId].field1 = novel.scenes[scId].field1
@@ -478,8 +492,8 @@ class YwFile(Novel):
                     if novel.scenes[scId].field4 is not None:
                         self.scenes[scId].field4 = novel.scenes[scId].field4
 
-                    if novel.scenes[scId].tags is not None:
-                        self.scenes[scId].tags = novel.scenes[scId].tags
+                    if novel.scenes[scId].appendToPrev is not None:
+                        self.scenes[scId].appendToPrev = novel.scenes[scId].appendToPrev
 
                     if novel.scenes[scId].isReactionScene is not None:
                         self.scenes[scId].isReactionScene = novel.scenes[scId].isReactionScene
@@ -494,20 +508,28 @@ class YwFile(Novel):
                         self.scenes[scId].outcome = novel.scenes[scId].outcome
 
                     if novel.scenes[scId].characters is not None:
-                        self.scenes[scId].characters = novel.scenes[scId].characters
+                        self.scenes[scId].characters = []
+
+                        for crId in novel.scenes[scId].characters:
+
+                            if crId in self.characters:
+                                self.scenes[scId].characters.append(crId)
 
                     if novel.scenes[scId].locations is not None:
-                        self.scenes[scId].locations = novel.scenes[scId].locations
+                        self.scenes[scId].locations = []
+
+                        for lcId in novel.scenes[scId].locations:
+
+                            if lcId in self.locations:
+                                self.scenes[scId].locations.append(lcId)
 
                     if novel.scenes[scId].items is not None:
-                        self.scenes[scId].items = novel.scenes[scId].items
+                        self.scenes[scId].items = []
 
-                    '''Do not modify these items yet:
-                    
-                    if novel.scenes[scId].isUnused is not None:
-                        self.scenes[scId].isUnused = novel.scenes[scId].isUnused
-                        
-                    '''
+                        for itId in novel.scenes[scId].items:
+
+                            if itId in self.items:
+                                self.scenes[scId].append(crId)
 
                 return sceneCount
 
@@ -538,6 +560,15 @@ class YwFile(Novel):
                         scn.find('LetterCount').text = str(
                             self.scenes[scId].letterCount)
 
+                    if self.scenes[scId].isUnused:
+
+                        if scn.find('Unused') is None:
+                            newUnused = ET.SubElement(scn, 'Unused')
+                            newUnused.text = '-1'
+
+                    elif scn.find('Unused') is not None:
+                        scn.remove(scn.find('Unused'))
+
                     if self.scenes[scId].status is not None:
                         scn.find('Status').text = str(self.scenes[scId].status)
 
@@ -550,6 +581,16 @@ class YwFile(Novel):
                         else:
                             scn.find(
                                 'Notes').text = self.scenes[scId].sceneNotes
+
+                    if self.scenes[scId].tags is not None:
+
+                        if scn.find('Tags') is None:
+                            newTags = ET.SubElement(scn, 'Tags')
+                            newTags.text = ';'.join(self.scenes[scId].tags)
+
+                        else:
+                            scn.find('Tags').text = ';'.join(
+                                self.scenes[scId].tags)
 
                     if self.scenes[scId].field1 is not None:
 
@@ -587,15 +628,15 @@ class YwFile(Novel):
                         else:
                             scn.find('Field4').text = self.scenes[scId].field4
 
-                    if self.scenes[scId].tags is not None:
+                    if self.scenes[scId].appendToPrev:
 
-                        if scn.find('Tags') is None:
-                            newTags = ET.SubElement(scn, 'Tags')
-                            newTags.text = ';'.join(self.scenes[scId].tags)
+                        if scn.find('AppendToPrev') is None:
+                            newAppendToPrev = ET.SubElement(
+                                scn, 'AppendToPrev')
+                            newAppendToPrev.text = '-1'
 
-                        else:
-                            scn.find('Tags').text = ';'.join(
-                                self.scenes[scId].tags)
+                    elif scn.find('AppendToPrev') is not None:
+                        scn.remove(scn.find('AppendToPrev'))
 
                     if self.scenes[scId].isReactionScene:
 
@@ -665,19 +706,6 @@ class YwFile(Novel):
                         for itId in self.scenes[scId].items:
                             newItId = ET.SubElement(items, 'ItemID')
                             newItId.text = itId
-
-                    '''Do not modify these items yet:
-    
-                    if self.scenes[scId].isUnused:
-    
-                        if scn.find('Unused') is None:
-                            newUnused = ET.SubElement(scn, 'Unused')
-                            newUnused.text = '-1'
-    
-                    elif scn.find('Unused') is not None:
-                        scn.remove(scn.find('Unused'))
-    
-                    '''
 
         def copyCharacters():
 
@@ -918,23 +946,23 @@ class YwFile(Novel):
 
         # Copy the novel's attributes to write.
 
-        copyProjectLevel()
-        copyChapterLevel()
-        scenesTotal = copySceneLevel()
         copyCharacters()
         copyLocations()
         copyItems()
+        copyProjectLevel()
+        copyChapterLevel()
+        scenesTotal = copySceneLevel()
 
         # Overwrite the XML element tree items.
 
         root = self._tree.getroot()
 
-        writeProjectLevel()
-        writeChapterLevel()
-        writeSceneLevel()
         writeCharacters()
         writeLocations()
         writeItems()
+        writeProjectLevel()
+        writeChapterLevel()
+        writeSceneLevel()
 
         indent(root)
 

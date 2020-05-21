@@ -41,11 +41,11 @@ class Scene():
         self.status = None
         # int
 
-        self.tags = None
-        # list of str
-
         self.sceneNotes = None
         # str
+
+        self.tags = None
+        # list of str
 
         self.field1 = None
         # str
