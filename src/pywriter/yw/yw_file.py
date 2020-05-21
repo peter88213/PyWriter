@@ -636,32 +636,35 @@ class YwFile(Novel):
                             scn.find(
                                 'Outcome').text = self.scenes[scId].outcome
 
-                    ''' Commented out until test data update:
-                    
                     if self.scenes[scId].characters is not None:
-                        scn.remove(scn.find('Characters'))
-                        newCharacters = ET.SubElement(scn, 'Characters')
-    
+                        characters = scn.find('Characters')
+
+                        for oldCrId in characters.findall('CharID'):
+                            characters.remove(oldCrId)
+
                         for crId in self.scenes[scId].characters:
-                            NewCrId = ET.SubElement(newCharacters, 'CharID')
-                            NewCrId.text = crId
-    
+                            newCrId = ET.SubElement(characters, 'CharID')
+                            newCrId.text = crId
+
                     if self.scenes[scId].locations is not None:
-                        scn.remove(scn.find('Locations'))
-                        newLocations = ET.SubElement(scn, 'Locations')
-    
+                        locations = scn.find('Locations')
+
+                        for oldLcId in locations.findall('LocID'):
+                            locations.remove(oldLcId)
+
                         for lcId in self.scenes[scId].locations:
-                            NewCrId = ET.SubElement(newLocations, 'LocID')
-                            NewCrId.text = lcId
-    
+                            newLcId = ET.SubElement(locations, 'LocID')
+                            newLcId.text = lcId
+
                     if self.scenes[scId].items is not None:
-                        scn.remove(scn.find('Items'))
-                        newItems = ET.SubElement(scn, 'Items')
-    
+                        items = scn.find('Items')
+
+                        for oldItId in items.findall('ItemID'):
+                            items.remove(oldItId)
+
                         for itId in self.scenes[scId].items:
-                            NewCrId = ET.SubElement(newItems, 'ItemID')
-                            NewCrId.text = itId
-                    '''
+                            newItId = ET.SubElement(items, 'ItemID')
+                            newItId.text = itId
 
                     '''Do not modify these items yet:
     
