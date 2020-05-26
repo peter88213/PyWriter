@@ -82,7 +82,6 @@ class NrmOpr(unittest.TestCase):
             read_file(REFERENCE_CSV),
             read_file(PROOFED_CSV))
 
-    @unittest.skip('')
     def test_yw7_to_csv(self):
         """Export yW7 scenes to csv. """
 
@@ -121,7 +120,7 @@ class NrmOpr(unittest.TestCase):
                          read_file(PROOFED_YW7))
 
     def tearDown(self):
-        '''remove_all_testfiles()'''
+        remove_all_testfiles()
 
 
 def main():

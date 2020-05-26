@@ -71,6 +71,12 @@ class CsvSceneList(Novel):
                      + 'Letter count'
                      + _SEPARATOR
                      + 'Status'
+                     + _SEPARATOR
+                     + 'Characters'
+                     + _SEPARATOR
+                     + 'Locations'
+                     + _SEPARATOR
+                     + 'Items'
                      + '\n')
 
     def read(self):
@@ -177,6 +183,43 @@ class CsvSceneList(Novel):
                     # Scene status remains None and will be ignored when
                     # writing back.
 
+                i += 1
+                ''' Cannot write back character IDs, because self.characters is None
+                charaNames = cell[i].split(';')
+                self.scenes[scId].characters = []
+
+                for charaName in charaNames:
+
+                    for id, name in self.characters.items():
+
+                        if name == charaName:
+                            self.scenes[scId].characters.append(id)
+                '''
+                i += 1
+                ''' Cannot write back location IDs, because self.locations is None
+                locaNames = cell[i].split(';')
+                self.scenes[scId].locations = []
+
+                for locaName in locaNames:
+
+                    for id, name in self.locations.items():
+
+                        if name == locaName:
+                            self.scenes[scId].locations.append(id)
+                '''
+                i += 1
+                ''' Cannot write back item IDs, because self.items is None
+                itemNames = cell[i].split(';')
+                self.scenes[scId].items = []
+
+                for itemName in itemNames:
+
+                    for id, name in self.items.items():
+
+                        if name == itemName:
+                            self.scenes[scId].items.append(id)
+                '''
+
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
     def write(self, novel):
@@ -221,6 +264,10 @@ class CsvSceneList(Novel):
 
         else:
             self.fieldTitle4 = 'Field 4'
+
+        self.characters = novel.characters
+        self.locations = novel.locations
+        self.items = novel.items
 
         # first record: the table's column headings
 
@@ -301,6 +348,39 @@ class CsvSceneList(Novel):
                         if self.scenes[scId].field4 != '1':
                             rating4 = self.scenes[scId].field4
 
+                        charas = ''
+
+                        if self.scenes[scId].characters is not None:
+
+                            for crId in self.scenes[scId].characters:
+
+                                if charas != '':
+                                    charas += '; '
+
+                                charas += self.characters[crId].title
+
+                        locas = ''
+
+                        if self.scenes[scId].locations is not None:
+
+                            for lcId in self.scenes[scId].locations:
+
+                                if locas != '':
+                                    locas += '; '
+
+                                locas += self.locations[lcId].title
+
+                        items = ''
+
+                        if self.scenes[scId].items is not None:
+
+                            for itId in self.scenes[scId].items:
+
+                                if items != '':
+                                    items += '; '
+
+                                items += self.items[itId].title
+
                         table.append('=HYPERLINK("file:///'
                                      + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
                                      + self._SEPARATOR
@@ -337,6 +417,12 @@ class CsvSceneList(Novel):
                                      + str(self.scenes[scId].letterCount)
                                      + self._SEPARATOR
                                      + Scene.STATUS[self.scenes[scId].status]
+                                     + self._SEPARATOR
+                                     + charas
+                                     + self._SEPARATOR
+                                     + locas
+                                     + self._SEPARATOR
+                                     + items
                                      + '\n')
 
         try:
