@@ -22,8 +22,12 @@ class YwFile(Novel):
 
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
-        self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc', 'FieldTitle1', 'FieldTitle2', 'FieldTitle3', 'FieldTitle4',
-                           'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
+        self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc',
+                           'FieldTitle1', 'FieldTitle2', 'FieldTitle3',
+                           'FieldTitle4', 'LaTeXHeaderFile', 'Tags',
+                           'AKA', 'ImageFile', 'FullName', 'Goals',
+                           'Notes', 'RTFFile', 'SceneContent',
+                           'Outcome', 'Goal', 'Conflict']
         # Names of yWriter xml elements containing CDATA.
         # ElementTree.write omits CDATA tags, so they have to be inserted
         # afterwards.
@@ -34,7 +38,7 @@ class YwFile(Novel):
 
     @filePath.setter
     def filePath(self, filePath):
-        """Accept only filenames with the right extension. """
+        """Accept only filenames with the correct extension. """
 
         if filePath.lower().endswith('.yw7'):
             self._FILE_EXTENSION = '.yw7'
@@ -75,7 +79,7 @@ class YwFile(Novel):
                 if not (tag.group(1) in self._cdataTags):
                     self._cdataTags.append(tag.group(1))
 
-        # Open the file again in order let ElementTree parse its xml structure.
+        # Open the file again to let ElementTree parse its xml structure.
 
         try:
             self._tree = ET.parse(self._filePath)
