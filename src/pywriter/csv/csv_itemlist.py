@@ -71,7 +71,14 @@ class CsvItemList(Novel):
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
-    def write(self, novel):
+    def merge(self, novel):
+        """Copy selected novel attributes.
+        """
+
+        if novel.items is not None:
+            self.items = novel.items
+
+    def write(self):
         """Generate a csv file containing per item:
         - item ID, 
         - item title,
@@ -80,11 +87,6 @@ class CsvItemList(Novel):
         - item tags.
         Return a message beginning with SUCCESS or ERROR.
         """
-
-        # Copy the item's attributes to write
-
-        if novel.items is not None:
-            self.items = novel.items
 
         # first record: the table's column headings
 

@@ -93,7 +93,14 @@ class CsvCharList(Novel):
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
-    def write(self, novel):
+    def merge(self, novel):
+        """Copy selected novel attributes.
+        """
+
+        if novel.characters is not None:
+            self.characters = novel.characters
+
+    def write(self):
         """Generate a csv file containing per character:
         - character ID, 
         - character name,
@@ -115,11 +122,6 @@ class CsvCharList(Novel):
 
             else:
                 return 'Minor'
-
-        # Copy the character's attributes to write
-
-        if novel.characters is not None:
-            self.characters = novel.characters
 
         # first record: the table's column headings
 

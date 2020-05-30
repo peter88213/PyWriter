@@ -71,7 +71,14 @@ class CsvLocList(Novel):
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
-    def write(self, novel):
+    def merge(self, novel):
+        """Copy selected novel attributes.
+        """
+
+        if novel.locations is not None:
+            self.locations = novel.locations
+
+    def write(self):
         """Generate a csv file containing per location:
         - location ID, 
         - location title,
@@ -80,11 +87,6 @@ class CsvLocList(Novel):
         - location tags.
         Return a message beginning with SUCCESS or ERROR.
         """
-
-        # Copy the location's attributes to write
-
-        if novel.locations is not None:
-            self.locations = novel.locations
 
         # first record: the table's column headings
 

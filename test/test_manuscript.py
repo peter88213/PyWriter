@@ -15,14 +15,14 @@ from pywriter.yw.yw_file import YwFile
 
 from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.odt.odt_manuscript import OdtManuscript
-from pywriter.globals import MANUSCRIPT_SUFFIX, MANUSCRIPT_ODT
+from pywriter.globals import MANUSCRIPT_SUFFIX
 
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
 DATA_PATH = 'data/' + MANUSCRIPT_SUFFIX + '/'
 
-TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + MANUSCRIPT_ODT
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + MANUSCRIPT_SUFFIX + '.odt'
 ODT_CONTENT = 'content.xml'
 
 TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'

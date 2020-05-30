@@ -17,7 +17,7 @@ import re
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.globals import (MANUSCRIPT_ODT, PLOTLIST_CSV)
+from pywriter.globals import *
 
 
 class CsvPlotList(Novel):
@@ -194,7 +194,7 @@ class CsvPlotList(Novel):
         """
 
         odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(PLOTLIST_CSV, MANUSCRIPT_ODT)
+            ' ', '%20').replace(PLOTLIST_SUFFIX + '.csv', MANUSCRIPT_SUFFIX + '.odt')
 
         # first record: the table's column headings
 

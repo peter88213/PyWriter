@@ -32,11 +32,11 @@ class Scene():
         # xml: <SceneContent>
         # Scene text with yW7 raw markup.
 
-        self.wordCount = None
+        self.wordCount = 0
         # int # xml: <WordCount>
         # To be updated by the sceneContent setter
 
-        self.letterCount = None
+        self.letterCount = 0
         # int
         # xml: <LetterCount>
         # To be updated by the sceneContent setter

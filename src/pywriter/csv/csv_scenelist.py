@@ -11,7 +11,7 @@ import re
 
 from pywriter.model.novel import Novel
 from pywriter.model.scene import Scene
-from pywriter.globals import (MANUSCRIPT_ODT, SCENELIST_CSV)
+from pywriter.globals import *
 
 
 class CsvSceneList(Novel):
@@ -266,7 +266,7 @@ class CsvSceneList(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
         odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(SCENELIST_CSV, MANUSCRIPT_ODT)
+            ' ', '%20').replace(SCENELIST_SUFFIX + '.csv', MANUSCRIPT_SUFFIX + '.odt')
 
         # first record: the table's column headings
 

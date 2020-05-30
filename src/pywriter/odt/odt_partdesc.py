@@ -9,7 +9,7 @@ import os
 
 from pywriter.odt.odt_file import OdtFile
 from pywriter.odt.odt_form import *
-from pywriter.globals import (MANUSCRIPT_ODT, PARTDESC_ODT)
+from pywriter.globals import *
 
 
 class OdtPartDesc(OdtFile):
@@ -30,7 +30,7 @@ class OdtPartDesc(OdtFile):
         Return a message beginning with SUCCESS or ERROR.
         """
         manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(PARTDESC_ODT, MANUSCRIPT_ODT)
+            ' ', '%20').replace(PARTDESC_SUFFIX, MANUSCRIPT_SUFFIX)
 
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
