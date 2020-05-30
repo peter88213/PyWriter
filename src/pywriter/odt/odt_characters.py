@@ -24,18 +24,12 @@ class OdtCharacters(OdtFile):
             - the character description.
         Return a message beginning with SUCCESS or ERROR.
         """
-        manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(self._CHAPTERDESC_SUFFIX, self._MANUSCRIPT_SUFFIX)
-        partDescPath = manuscriptPath.replace(
-            self._MANUSCRIPT_SUFFIX, self._PARTDESC_SUFFIX)
-        linkPath = [manuscriptPath, partDescPath]
 
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title +
                      self._ODT_PARA_END)
         lines.append(self._ODT_SUBTITLE_START +
                      'Characters' + self._ODT_PARA_END)
-
 
         for crId in self.characters:
 

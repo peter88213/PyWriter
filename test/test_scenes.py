@@ -15,14 +15,13 @@ from pywriter.yw.yw_file import YwFile
 
 from pywriter.html.html_scenedesc import HtmlSceneDesc
 from pywriter.odt.odt_scenedesc import OdtSceneDesc
-
-SUFFIX = '_scenes'
+from pywriter.globals import SCENEDESC_ODT, SCENEDESC_SUFFIX
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + SUFFIX + '/'
+DATA_PATH = 'data/' + SCENEDESC_SUFFIX + '/'
 
-TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + SUFFIX + '.odt'
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + SCENEDESC_ODT
 ODT_CONTENT = 'content.xml'
 
 TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'
@@ -32,8 +31,6 @@ PROOFED_HTML = DATA_PATH + 'proofed.html'
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
 PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
-
-TOTAL_SCENES = 56
 
 
 def read_file(inputFile):

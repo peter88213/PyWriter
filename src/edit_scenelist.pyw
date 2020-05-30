@@ -11,11 +11,13 @@ import sys
 
 from pywriter.csv.csv_scenelist import CsvSceneList
 from pywriter.converter.yw_cnv_gui import YwCnvGui
+from pywriter.globals import SCENELIST_SUFFIX
 
 
 def run(sourcePath, silentMode=True):
     document = CsvSceneList('')
-    converter = YwCnvGui(sourcePath, document, 'csv', silentMode, '_scenelist')
+    converter = YwCnvGui(sourcePath, document, 'csv',
+                         silentMode, SCENELIST_SUFFIX)
 
 
 if __name__ == '__main__':

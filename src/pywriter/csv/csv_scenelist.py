@@ -11,15 +11,7 @@ import re
 
 from pywriter.model.novel import Novel
 from pywriter.model.scene import Scene
-
-SCENELIST_SUFFIX = '_scenelist.csv'
-MANUSCRIPT_SUFFIX = '_manuscript.odt'
-
-SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
-# '1' is assigned N/A (empty table cell).
-
-ACTION_MARKER = 'Action'
-REACTION_MARKER = 'Reaction'
+from pywriter.globals import (MANUSCRIPT_ODT, SCENELIST_CSV)
 
 
 class CsvSceneList(Novel):
@@ -35,6 +27,12 @@ class CsvSceneList(Novel):
 
     _SEPARATOR = '|'     # delimits data fields within a record.
     _LINEBREAK = '\t'    # substitutes embedded line breaks.
+
+    _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
+    # '1' is assigned N/A (empty table cell).
+
+    _ACTION_MARKER = 'Action'
+    _REACTION_MARKER = 'Reaction'
 
     _TABLE_HEADER = ('Scene link'
                      + _SEPARATOR
@@ -116,7 +114,7 @@ class CsvSceneList(Novel):
                     self._LINEBREAK, '\n')
                 i += 1
 
-                if REACTION_MARKER.lower() in cell[i].lower():
+                if self._REACTION_MARKER.lower() in cell[i].lower():
                     self.scenes[scId].isReactionScene = True
 
                 else:
@@ -139,7 +137,7 @@ class CsvSceneList(Novel):
 
                 # Transfer scene ratings; set to 1 if deleted
 
-                if cell[i] in SCENE_RATINGS:
+                if cell[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field1 = cell[i]
 
                 else:
@@ -147,7 +145,7 @@ class CsvSceneList(Novel):
 
                 i += 1
 
-                if cell[i] in SCENE_RATINGS:
+                if cell[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field2 = cell[i]
 
                 else:
@@ -155,7 +153,7 @@ class CsvSceneList(Novel):
 
                 i += 1
 
-                if cell[i] in SCENE_RATINGS:
+                if cell[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field3 = cell[i]
 
                 else:
@@ -163,7 +161,7 @@ class CsvSceneList(Novel):
 
                 i += 1
 
-                if cell[i] in SCENE_RATINGS:
+                if cell[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field4 = cell[i]
 
                 else:
@@ -222,15 +220,9 @@ class CsvSceneList(Novel):
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
-    def write(self, novel):
-        """Generate a csv file containing a row per scene
-        Return a message beginning with SUCCESS or ERROR.
+    def merge(self, novel):
+        """Copy selected novel attributes.
         """
-
-        odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(SCENELIST_SUFFIX, MANUSCRIPT_SUFFIX)
-
-        # Copy the scene's attributes to write
 
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
@@ -269,6 +261,13 @@ class CsvSceneList(Novel):
         self.locations = novel.locations
         self.items = novel.items
 
+    def write(self):
+        """Generate a csv file containing a row per scene
+        Return a message beginning with SUCCESS or ERROR.
+        """
+        odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
+            ' ', '%20').replace(SCENELIST_CSV, MANUSCRIPT_ODT)
+
         # first record: the table's column headings
 
         table = [self._TABLE_HEADER.replace(
@@ -291,10 +290,10 @@ class CsvSceneList(Novel):
                     if not self.scenes[scId].isUnused:
 
                         if self.scenes[scId].isReactionScene:
-                            pacingType = REACTION_MARKER
+                            pacingType = self._REACTION_MARKER
 
                         else:
-                            pacingType = ACTION_MARKER
+                            pacingType = self._ACTION_MARKER
 
                         sceneCount += 1
                         wordCount += self.scenes[scId].wordCount

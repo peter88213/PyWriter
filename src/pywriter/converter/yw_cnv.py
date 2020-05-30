@@ -58,7 +58,8 @@ class YwCnv():
             if not self.confirm_overwrite(documentFile.filePath):
                 return 'Program abort by user.'
 
-        return documentFile.write(ywFile)
+        documentFile.merge(ywFile)
+        return documentFile.write()
 
     def document_to_yw(self, documentFile, ywFile):
         """Read document file, convert its content to xml, and replace yWriter file."""
@@ -101,7 +102,8 @@ class YwCnv():
             if prjStructure != ywFile.get_structure():
                 return 'ERROR: Structure mismatch - yWriter project not modified.'
 
-        return ywFile.write(documentFile)
+        ywFile.merge(documentFile)
+        return ywFile.write()
 
     def confirm_overwrite(self, fileName):
         """To be overwritten by subclasses with UI."""

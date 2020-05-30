@@ -15,14 +15,14 @@ from pywriter.yw.yw_file import YwFile
 
 from pywriter.html.html_chapterdesc import HtmlChapterDesc
 from pywriter.odt.odt_chapterdesc import OdtChapterDesc
+from pywriter.globals import CHAPTERDESC_ODT, CHAPTERDESC_SUFFIX
 
-SUFFIX = '_chapters'
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + SUFFIX + '/'
+DATA_PATH = 'data/' + CHAPTERDESC_SUFFIX + '/'
 
-TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + SUFFIX + '.odt'
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + CHAPTERDESC_ODT
 ODT_CONTENT = 'content.xml'
 
 TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'

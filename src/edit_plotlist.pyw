@@ -11,11 +11,13 @@ import sys
 
 from pywriter.csv.csv_plotlist import CsvPlotList
 from pywriter.converter.yw_cnv_gui import YwCnvGui
+from pywriter.globals import PLOTLIST_SUFFIX
 
 
 def run(sourcePath, silentMode=True):
     document = CsvPlotList('')
-    converter = YwCnvGui(sourcePath, document, 'csv', silentMode, '_plotlist')
+    converter = YwCnvGui(sourcePath, document, 'csv',
+                         silentMode, PLOTLIST_SUFFIX)
 
 
 if __name__ == '__main__':

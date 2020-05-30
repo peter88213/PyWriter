@@ -111,8 +111,14 @@ class Novel():
         """
 
     @abstractmethod
-    def write(self, novel):
-        """Write selected novel properties to the file.
+    def merge(self, novel):
+        """Merge selected novel properties.
+        To be overwritten by file format specific subclasses.
+        """
+
+    @abstractmethod
+    def write(self):
+        """Write selected properties to the file.
         To be overwritten by file format specific subclasses.
         """
 

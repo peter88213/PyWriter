@@ -15,14 +15,14 @@ from pywriter.yw.yw_file import YwFile
 
 from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.odt.odt_manuscript import OdtManuscript
+from pywriter.globals import MANUSCRIPT_SUFFIX, MANUSCRIPT_ODT
 
-SUFFIX = '_manuscript'
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + SUFFIX + '/'
+DATA_PATH = 'data/' + MANUSCRIPT_SUFFIX + '/'
 
-TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + SUFFIX + '.odt'
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + MANUSCRIPT_ODT
 ODT_CONTENT = 'content.xml'
 
 TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'
@@ -107,8 +107,8 @@ class NrmOpr(unittest.TestCase):
 
         # Convert html to xml and replace .yw7 file.
 
-        self.assertEqual(converter.document_to_yw(documentFile, yw7File), 'SUCCESS: ' + str(
-            TOTAL_SCENES) + ' Scenes written to "' + TEST_YW7 + '".')
+        self.assertEqual(converter.document_to_yw(
+            documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
 
         # Verify the yw7 project.
 

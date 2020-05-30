@@ -9,6 +9,7 @@ import os
 
 from pywriter.odt.odt_file import OdtFile
 from pywriter.odt.odt_form import *
+from pywriter.globals import (MANUSCRIPT_ODT, CHAPTERDESC_ODT, PARTDESC_ODT)
 
 
 class OdtChapterDesc(OdtFile):
@@ -29,9 +30,9 @@ class OdtChapterDesc(OdtFile):
         Return a message beginning with SUCCESS or ERROR.
         """
         manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(self._CHAPTERDESC_SUFFIX, self._MANUSCRIPT_SUFFIX)
+            ' ', '%20').replace(CHAPTERDESC_ODT, MANUSCRIPT_ODT)
         partDescPath = manuscriptPath.replace(
-            self._MANUSCRIPT_SUFFIX, self._PARTDESC_SUFFIX)
+            MANUSCRIPT_ODT, PARTDESC_ODT)
         linkPath = [manuscriptPath, partDescPath]
 
         lines = [self._CONTENT_XML_HEADER]
@@ -61,7 +62,6 @@ class OdtChapterDesc(OdtFile):
                     lines.append(
                         '<text:section text:style-name="Sect1" text:name="ChID:' + chId + '">')
 
-
                     if self.chapters[chId].desc is not None:
 
                         # Write chapter summary.
@@ -70,7 +70,8 @@ class OdtChapterDesc(OdtFile):
                                      to_odt(self.chapters[chId].desc) + self._ODT_PARA_END)
 
                     else:
-                        lines.append(self._ODT_FIRST_PARA_START + self._ODT_PARA_END)
+                        lines.append(self._ODT_FIRST_PARA_START +
+                                     self._ODT_PARA_END)
 
                     # Write invisible "end chapter" tag.
 

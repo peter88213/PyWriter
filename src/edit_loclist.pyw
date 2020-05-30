@@ -11,11 +11,13 @@ import sys
 
 from pywriter.csv.csv_loclist import CsvLocList
 from pywriter.converter.yw_cnv_gui import YwCnvGui
+from pywriter.globals import LOCLIST_SUFFIX
 
 
 def run(sourcePath, silentMode=True):
     document = CsvLocList('')
-    converter = YwCnvGui(sourcePath, document, 'csv', silentMode, '_loclist')
+    converter = YwCnvGui(sourcePath, document, 'csv',
+                         silentMode, LOCLIST_SUFFIX)
 
 
 if __name__ == '__main__':

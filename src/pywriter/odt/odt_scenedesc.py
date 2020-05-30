@@ -9,6 +9,8 @@ import os
 
 from pywriter.odt.odt_file import OdtFile
 from pywriter.odt.odt_form import *
+from pywriter.globals import (
+    MANUSCRIPT_ODT, SCENEDESC_ODT, CHAPTERDESC_ODT, PARTDESC_ODT)
 
 
 class OdtSceneDesc(OdtFile):
@@ -31,9 +33,9 @@ class OdtSceneDesc(OdtFile):
         Return a message beginning with SUCCESS or ERROR.
         """
         manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(self._SCENEDESC_SUFFIX, self._MANUSCRIPT_SUFFIX)
-        chapterDescPath = [manuscriptPath.replace(self._MANUSCRIPT_SUFFIX, self._CHAPTERDESC_SUFFIX),
-                           manuscriptPath.replace(self._MANUSCRIPT_SUFFIX, self._PARTDESC_SUFFIX)]
+            ' ', '%20').replace(SCENEDESC_ODT, MANUSCRIPT_ODT)
+        chapterDescPath = [manuscriptPath.replace(MANUSCRIPT_ODT, CHAPTERDESC_ODT),
+                           manuscriptPath.replace(MANUSCRIPT_ODT, PARTDESC_ODT)]
 
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)

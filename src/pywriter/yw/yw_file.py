@@ -320,13 +320,11 @@ class YwFile(Novel):
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel):
-        """Open the yWriter xml file located at filePath and replace a set 
-        of items by the novel attributes not being None.
-        Return a message beginning with SUCCESS or ERROR.
+    def merge(self, novel):
+        """Copy selected novel attributes.
         """
 
-        def copyLocations():
+        def mergeLocations():
 
             if novel.locations != {}:
 
@@ -344,6 +342,214 @@ class YwFile(Novel):
 
                     if novel.locations[lcId].tags is not None:
                         self.locations[lcId].tags = novel.locations[lcId].tags
+
+        def mergeItems():
+
+            if novel.items != {}:
+
+                for itId in novel.items:
+
+                    if novel.items[itId].title:
+                        # avoids deleting the title, if it is empty by accident
+                        self.items[itId].title = novel.items[itId].title
+
+                    if novel.items[itId].desc is not None:
+                        self.items[itId].desc = novel.items[itId].desc
+
+                    if novel.items[itId].aka is not None:
+                        self.items[itId].aka = novel.items[itId].aka
+
+                    if novel.items[itId].tags is not None:
+                        self.items[itId].tags = novel.items[itId].tags
+
+        def mergeCharacters():
+
+            if novel.characters != {}:
+
+                for crId in novel.characters:
+
+                    if novel.characters[crId].title:
+                        # avoids deleting the title, if it is empty by accident
+                        self.characters[crId].title = novel.characters[crId].title
+
+                    if novel.characters[crId].desc is not None:
+                        self.characters[crId].desc = novel.characters[crId].desc
+
+                    if novel.characters[crId].aka is not None:
+                        self.characters[crId].aka = novel.characters[crId].aka
+
+                    if novel.characters[crId].tags is not None:
+                        self.characters[crId].tags = novel.characters[crId].tags
+
+                    if novel.characters[crId].notes is not None:
+                        self.characters[crId].notes = novel.characters[crId].notes
+
+                    if novel.characters[crId].bio is not None:
+                        self.characters[crId].bio = novel.characters[crId].bio
+
+                    if novel.characters[crId].goals is not None:
+                        self.characters[crId].goals = novel.characters[crId].goals
+
+                    if novel.characters[crId].fullName is not None:
+                        self.characters[crId].fullName = novel.characters[crId].fullName
+
+                    if novel.characters[crId].isMajor is not None:
+                        self.characters[crId].isMajor = novel.characters[crId].isMajor
+
+        def mergeNovelLevel():
+
+            if novel.title:
+                # avoids deleting the title, if it is empty by accident
+                self.title = novel.title
+
+            if novel.desc is not None:
+                self.desc = novel.desc
+
+            if novel.author is not None:
+                self.author = novel.author
+
+            if novel.fieldTitle1 is not None:
+                self.fieldTitle1 = novel.fieldTitle1
+
+            if novel.fieldTitle2 is not None:
+                self.fieldTitle2 = novel.fieldTitle2
+
+            if novel.fieldTitle3 is not None:
+                self.fieldTitle3 = novel.fieldTitle3
+
+            if novel.fieldTitle4 is not None:
+                self.fieldTitle4 = novel.fieldTitle4
+
+            '''Do not modify these items yet:
+            
+            if novel.srtChapters != []:
+                self.srtChapters = novel.srtChapters
+                
+            '''
+
+        def mergeChapterLevel():
+
+            if novel.chapters != {}:
+
+                for chId in novel.chapters:
+
+                    if novel.chapters[chId].title:
+                        # avoids deleting the title, if it is empty by accident
+                        self.chapters[chId].title = novel.chapters[chId].title
+
+                    if novel.chapters[chId].desc is not None:
+                        self.chapters[chId].desc = novel.chapters[chId].desc
+
+                    if novel.chapters[chId].chLevel is not None:
+                        self.chapters[chId].chLevel = novel.chapters[chId].chLevel
+
+                    if novel.chapters[chId].chType is not None:
+                        self.chapters[chId].chType = novel.chapters[chId].chType
+
+                    if novel.chapters[chId].isUnused is not None:
+                        self.chapters[chId].isUnused = novel.chapters[chId].isUnused
+
+                    if novel.chapters[chId].suppressChapterTitle is not None:
+                        self.chapters[chId].suppressChapterTitle = novel.chapters[chId].suppressChapterTitle
+
+                    '''Do not modify these items yet:
+                    
+                    if novel.chapters[chId].srtScenes != []:
+                        self.chapters[chId].srtScenes = novel.chapters[chId].srtScenes
+
+                    '''
+
+        def mergeSceneLevel():
+
+            if novel.scenes != {}:
+
+                for scId in novel.scenes:
+
+                    if novel.scenes[scId].title:
+                        # avoids deleting the title, if it is empty by accident
+                        self.scenes[scId].title = novel.scenes[scId].title
+
+                    if novel.scenes[scId].desc is not None:
+                        self.scenes[scId].desc = novel.scenes[scId].desc
+
+                    if novel.scenes[scId].sceneContent is not None:
+                        self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
+
+                    if novel.scenes[scId].isUnused is not None:
+                        self.scenes[scId].isUnused = novel.scenes[scId].isUnused
+
+                    if novel.scenes[scId].status is not None:
+                        self.scenes[scId].status = novel.scenes[scId].status
+
+                    if novel.scenes[scId].sceneNotes is not None:
+                        self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
+
+                    if novel.scenes[scId].tags is not None:
+                        self.scenes[scId].tags = novel.scenes[scId].tags
+
+                    if novel.scenes[scId].field1 is not None:
+                        self.scenes[scId].field1 = novel.scenes[scId].field1
+
+                    if novel.scenes[scId].field2 is not None:
+                        self.scenes[scId].field2 = novel.scenes[scId].field2
+
+                    if novel.scenes[scId].field3 is not None:
+                        self.scenes[scId].field3 = novel.scenes[scId].field3
+
+                    if novel.scenes[scId].field4 is not None:
+                        self.scenes[scId].field4 = novel.scenes[scId].field4
+
+                    if novel.scenes[scId].appendToPrev is not None:
+                        self.scenes[scId].appendToPrev = novel.scenes[scId].appendToPrev
+
+                    if novel.scenes[scId].isReactionScene is not None:
+                        self.scenes[scId].isReactionScene = novel.scenes[scId].isReactionScene
+
+                    if novel.scenes[scId].goal is not None:
+                        self.scenes[scId].goal = novel.scenes[scId].goal
+
+                    if novel.scenes[scId].conflict is not None:
+                        self.scenes[scId].conflict = novel.scenes[scId].conflict
+
+                    if novel.scenes[scId].outcome is not None:
+                        self.scenes[scId].outcome = novel.scenes[scId].outcome
+
+                    if novel.scenes[scId].characters is not None:
+                        self.scenes[scId].characters = []
+
+                        for crId in novel.scenes[scId].characters:
+
+                            if crId in self.characters:
+                                self.scenes[scId].characters.append(crId)
+
+                    if novel.scenes[scId].locations is not None:
+                        self.scenes[scId].locations = []
+
+                        for lcId in novel.scenes[scId].locations:
+
+                            if lcId in self.locations:
+                                self.scenes[scId].locations.append(lcId)
+
+                    if novel.scenes[scId].items is not None:
+                        self.scenes[scId].items = []
+
+                        for itId in novel.scenes[scId].items:
+
+                            if itId in self.items:
+                                self.scenes[scId].append(crId)
+
+        mergeLocations()
+        mergeItems()
+        mergeCharacters()
+        mergeNovelLevel()
+        mergeChapterLevel()
+        mergeSceneLevel()
+
+    def write(self):
+        """Open the yWriter xml file located at filePath and 
+        replace a set of attributes not being None.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         def writeLocations():
 
@@ -383,25 +589,6 @@ class YwFile(Novel):
                             loc.find('Tags').text = ';'.join(
                                 self.locations[lcId].tags)
 
-        def copyItems():
-
-            if novel.items != {}:
-
-                for itId in novel.items:
-
-                    if novel.items[itId].title:
-                        # avoids deleting the title, if it is empty by accident
-                        self.items[itId].title = novel.items[itId].title
-
-                    if novel.items[itId].desc is not None:
-                        self.items[itId].desc = novel.items[itId].desc
-
-                    if novel.items[itId].aka is not None:
-                        self.items[itId].aka = novel.items[itId].aka
-
-                    if novel.items[itId].tags is not None:
-                        self.items[itId].tags = novel.items[itId].tags
-
         def writeItems():
 
             for itm in root.iter('ITEM'):
@@ -439,40 +626,6 @@ class YwFile(Novel):
                         else:
                             itm.find('Tags').text = ';'.join(
                                 self.items[itId].tags)
-
-        def copyCharacters():
-
-            if novel.characters != {}:
-
-                for crId in novel.characters:
-
-                    if novel.characters[crId].title:
-                        # avoids deleting the title, if it is empty by accident
-                        self.characters[crId].title = novel.characters[crId].title
-
-                    if novel.characters[crId].desc is not None:
-                        self.characters[crId].desc = novel.characters[crId].desc
-
-                    if novel.characters[crId].aka is not None:
-                        self.characters[crId].aka = novel.characters[crId].aka
-
-                    if novel.characters[crId].tags is not None:
-                        self.characters[crId].tags = novel.characters[crId].tags
-
-                    if novel.characters[crId].notes is not None:
-                        self.characters[crId].notes = novel.characters[crId].notes
-
-                    if novel.characters[crId].bio is not None:
-                        self.characters[crId].bio = novel.characters[crId].bio
-
-                    if novel.characters[crId].goals is not None:
-                        self.characters[crId].goals = novel.characters[crId].goals
-
-                    if novel.characters[crId].fullName is not None:
-                        self.characters[crId].fullName = novel.characters[crId].fullName
-
-                    if novel.characters[crId].isMajor is not None:
-                        self.characters[crId].isMajor = novel.characters[crId].isMajor
 
         def writeCharacters():
 
@@ -563,37 +716,6 @@ class YwFile(Novel):
                             newMajor = ET.SubElement(crt, 'Major')
                             newMajor.text = '-1'
 
-        def copyNovelLevel():
-
-            if novel.title:
-                # avoids deleting the title, if it is empty by accident
-                self.title = novel.title
-
-            if novel.desc is not None:
-                self.desc = novel.desc
-
-            if novel.author is not None:
-                self.author = novel.author
-
-            if novel.fieldTitle1 is not None:
-                self.fieldTitle1 = novel.fieldTitle1
-
-            if novel.fieldTitle2 is not None:
-                self.fieldTitle2 = novel.fieldTitle2
-
-            if novel.fieldTitle3 is not None:
-                self.fieldTitle3 = novel.fieldTitle3
-
-            if novel.fieldTitle4 is not None:
-                self.fieldTitle4 = novel.fieldTitle4
-
-            '''Do not modify these items yet:
-            
-            if novel.srtChapters != []:
-                self.srtChapters = novel.srtChapters
-                
-            '''
-
         def writeNovelLevel():
             prj = root.find('PROJECT')
             prj.find('Title').text = self.title
@@ -620,38 +742,6 @@ class YwFile(Novel):
             prj.find('FieldTitle2').text = self.fieldTitle2
             prj.find('FieldTitle3').text = self.fieldTitle3
             prj.find('FieldTitle4').text = self.fieldTitle4
-
-        def copyChapterLevel():
-
-            if novel.chapters != {}:
-
-                for chId in novel.chapters:
-
-                    if novel.chapters[chId].title:
-                        # avoids deleting the title, if it is empty by accident
-                        self.chapters[chId].title = novel.chapters[chId].title
-
-                    if novel.chapters[chId].desc is not None:
-                        self.chapters[chId].desc = novel.chapters[chId].desc
-
-                    if novel.chapters[chId].chLevel is not None:
-                        self.chapters[chId].chLevel = novel.chapters[chId].chLevel
-
-                    if novel.chapters[chId].chType is not None:
-                        self.chapters[chId].chType = novel.chapters[chId].chType
-
-                    if novel.chapters[chId].isUnused is not None:
-                        self.chapters[chId].isUnused = novel.chapters[chId].isUnused
-
-                    if novel.chapters[chId].suppressChapterTitle is not None:
-                        self.chapters[chId].suppressChapterTitle = novel.chapters[chId].suppressChapterTitle
-
-                    '''Do not modify these items yet:
-                    
-                    if novel.chapters[chId].srtScenes != []:
-                        self.chapters[chId].srtScenes = novel.chapters[chId].srtScenes
-
-                    '''
 
         def writeChapterLevel():
 
@@ -687,89 +777,6 @@ class YwFile(Novel):
 
                     elif chp.find('Unused') is not None:
                         chp.remove(chp.find('Unused'))
-
-        def copySceneLevel():
-            sceneCount = 0
-
-            if novel.scenes != {}:
-
-                for scId in novel.scenes:
-
-                    if novel.scenes[scId].title:
-                        # avoids deleting the title, if it is empty by accident
-                        self.scenes[scId].title = novel.scenes[scId].title
-
-                    if novel.scenes[scId].desc is not None:
-                        self.scenes[scId].desc = novel.scenes[scId].desc
-
-                    if novel.scenes[scId].sceneContent is not None:
-                        self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
-                        sceneCount += 1
-
-                    if novel.scenes[scId].isUnused is not None:
-                        self.scenes[scId].isUnused = novel.scenes[scId].isUnused
-
-                    if novel.scenes[scId].status is not None:
-                        self.scenes[scId].status = novel.scenes[scId].status
-
-                    if novel.scenes[scId].sceneNotes is not None:
-                        self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
-
-                    if novel.scenes[scId].tags is not None:
-                        self.scenes[scId].tags = novel.scenes[scId].tags
-
-                    if novel.scenes[scId].field1 is not None:
-                        self.scenes[scId].field1 = novel.scenes[scId].field1
-
-                    if novel.scenes[scId].field2 is not None:
-                        self.scenes[scId].field2 = novel.scenes[scId].field2
-
-                    if novel.scenes[scId].field3 is not None:
-                        self.scenes[scId].field3 = novel.scenes[scId].field3
-
-                    if novel.scenes[scId].field4 is not None:
-                        self.scenes[scId].field4 = novel.scenes[scId].field4
-
-                    if novel.scenes[scId].appendToPrev is not None:
-                        self.scenes[scId].appendToPrev = novel.scenes[scId].appendToPrev
-
-                    if novel.scenes[scId].isReactionScene is not None:
-                        self.scenes[scId].isReactionScene = novel.scenes[scId].isReactionScene
-
-                    if novel.scenes[scId].goal is not None:
-                        self.scenes[scId].goal = novel.scenes[scId].goal
-
-                    if novel.scenes[scId].conflict is not None:
-                        self.scenes[scId].conflict = novel.scenes[scId].conflict
-
-                    if novel.scenes[scId].outcome is not None:
-                        self.scenes[scId].outcome = novel.scenes[scId].outcome
-
-                    if novel.scenes[scId].characters is not None:
-                        self.scenes[scId].characters = []
-
-                        for crId in novel.scenes[scId].characters:
-
-                            if crId in self.characters:
-                                self.scenes[scId].characters.append(crId)
-
-                    if novel.scenes[scId].locations is not None:
-                        self.scenes[scId].locations = []
-
-                        for lcId in novel.scenes[scId].locations:
-
-                            if lcId in self.locations:
-                                self.scenes[scId].locations.append(lcId)
-
-                    if novel.scenes[scId].items is not None:
-                        self.scenes[scId].items = []
-
-                        for itId in novel.scenes[scId].items:
-
-                            if itId in self.items:
-                                self.scenes[scId].append(crId)
-
-                return sceneCount
 
         def writeSceneLevel():
 
@@ -945,15 +952,6 @@ class YwFile(Novel):
                             newItId = ET.SubElement(items, 'ItemID')
                             newItId.text = itId
 
-        # Copy the novel's attributes to write.
-
-        copyLocations()
-        copyItems()
-        copyCharacters()
-        copyNovelLevel()
-        copyChapterLevel()
-        scenesTotal = copySceneLevel()
-
         # Overwrite the XML element tree items.
 
         root = self._tree.getroot()
@@ -984,13 +982,7 @@ class YwFile(Novel):
         if message.startswith('ERROR'):
             return message
 
-        if scenesTotal:
-            info = str(scenesTotal) + ' Scenes'
-
-        else:
-            info = 'project data'
-
-        return 'SUCCESS: ' + info + ' written to "' + self._filePath + '".'
+        return 'SUCCESS: project data written to "' + self._filePath + '".'
 
     def is_locked(self):
         """Test whether a .lock file placed by yWriter exists.

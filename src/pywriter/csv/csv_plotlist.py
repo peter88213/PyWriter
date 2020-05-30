@@ -17,19 +17,7 @@ import re
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-
-PLOTLIST_SUFFIX = '_plotlist.csv'
-MANUSCRIPT_SUFFIX = '_manuscript.odt'
-
-STORYLINE_MARKER = 'story'
-# Field names containing this string (case insensitive)
-# are associated to storylines
-
-SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
-# '1' is assigned N/A (empty table cell).
-
-NOT_APPLICABLE = 'N/A'
-# Scene field column header for fields not being assigned to a storyline
+from pywriter.globals import (MANUSCRIPT_ODT, PLOTLIST_CSV)
 
 
 class CsvPlotList(Novel):
@@ -46,6 +34,16 @@ class CsvPlotList(Novel):
     _SEPARATOR = '|'     # delimits data fields within a record.
     _LINEBREAK = '\t'    # substitutes embedded line breaks.
 
+    _STORYLINE_MARKER = 'story'
+    # Field names containing this string (case insensitive)
+    # are associated to storylines
+
+    _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
+    # '1' is assigned N/A (empty table cell).
+
+    _NOT_APPLICABLE = 'N/A'
+    # Scene field column header for fields not being assigned to a storyline
+
     _TABLE_HEADER = ('ID'
                      + _SEPARATOR
                      + 'Plot section'
@@ -60,17 +58,17 @@ class CsvPlotList(Novel):
                      + _SEPARATOR
                      + 'Words total'
                      + _SEPARATOR
-                     + 'Field 1'
+                     + _NOT_APPLICABLE
                      + _SEPARATOR
-                     + 'Field 2'
+                     + _NOT_APPLICABLE
                      + _SEPARATOR
-                     + 'Field 3'
+                     + _NOT_APPLICABLE
                      + _SEPARATOR
-                     + 'Field 4'
+                     + _NOT_APPLICABLE
                      + '\n')
 
-    CHAR_STATE = ['', 'N/A', 'unhappy', 'dissatisfied',
-                  'vague', 'satisfied', 'happy', '', '', '', '']
+    _CHAR_STATE = ['', 'N/A', 'unhappy', 'dissatisfied',
+                   'vague', 'satisfied', 'happy', '', '', '', '']
 
     def read(self):
         """Parse the csv file located at filePath, fetching 
@@ -117,47 +115,41 @@ class CsvPlotList(Novel):
 
                 # Transfer scene ratings; set to 1 if deleted
 
-                if cell[i] in SCENE_RATINGS:
+                if cell[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field1 = cell[i]
 
-                elif tableHeader[i] != NOT_APPLICABLE:
+                elif tableHeader[i] != self._NOT_APPLICABLE:
                     self.scenes[scId].field1 = '1'
 
                 i += 1
 
-                if cell[i] in SCENE_RATINGS:
+                if cell[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field2 = cell[i]
 
-                elif tableHeader[i] != NOT_APPLICABLE:
+                elif tableHeader[i] != self._NOT_APPLICABLE:
                     self.scenes[scId].field2 = '1'
 
                 i += 1
 
-                if cell[i] in SCENE_RATINGS:
+                if cell[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field3 = cell[i]
 
-                elif tableHeader[i] != NOT_APPLICABLE:
+                elif tableHeader[i] != self._NOT_APPLICABLE:
                     self.scenes[scId].field3 = '1'
 
                 i += 1
 
-                if cell[i] in SCENE_RATINGS:
+                if cell[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field4 = cell[i]
 
-                elif tableHeader[i] != NOT_APPLICABLE:
+                elif tableHeader[i] != self._NOT_APPLICABLE:
                     self.scenes[scId].field4 = '1'
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
-    def write(self, novel):
-        """Generate a csv file showing the novel's plot structure.
-        Return a message beginning with SUCCESS or ERROR.
+    def merge(self, novel):
+        """Copy selected novel attributes.
         """
-
-        odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(PLOTLIST_SUFFIX, MANUSCRIPT_SUFFIX)
-
-        # Copy the chapter/scene's attributes to write
 
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
@@ -168,6 +160,42 @@ class CsvPlotList(Novel):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
+        if novel.fieldTitle1 is not None:
+            self.fieldTitle1 = novel.fieldTitle1
+
+        else:
+            self.fieldTitle1 = self._NOT_APPLICABLE
+
+        if novel.fieldTitle2 is not None:
+            self.fieldTitle2 = novel.fieldTitle2
+
+        else:
+            self.fieldTitle2 = self._NOT_APPLICABLE
+
+        if novel.fieldTitle3 is not None:
+            self.fieldTitle3 = novel.fieldTitle3
+
+        else:
+            self.fieldTitle3 = self._NOT_APPLICABLE
+
+        if novel.fieldTitle4 is not None:
+            self.fieldTitle4 = novel.fieldTitle4
+
+        else:
+            self.fieldTitle4 = self._NOT_APPLICABLE
+
+        self.characters = novel.characters
+        self.locations = novel.locations
+        self.items = novel.items
+
+    def write(self):
+        """Generate a csv file showing the novel's plot structure.
+        Return a message beginning with SUCCESS or ERROR.
+        """
+
+        odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
+            ' ', '%20').replace(PLOTLIST_CSV, MANUSCRIPT_ODT)
+
         # first record: the table's column headings
 
         table = [self._TABLE_HEADER]
@@ -176,39 +204,35 @@ class CsvPlotList(Novel):
 
         charList = []
 
-        for crId in novel.characters:
-            charList.append(novel.characters[crId].title)
+        for crId in self.characters:
+            charList.append(self.characters[crId].title)
 
-        if novel.fieldTitle1 in charList or STORYLINE_MARKER in novel.fieldTitle1.lower():
-            table[0] = table[0].replace('Field 1', novel.fieldTitle1)
+        if self.fieldTitle1 in charList or self._STORYLINE_MARKER in self.fieldTitle1.lower():
+            table[0] = table[0].replace(self._NOT_APPLICABLE, self.fieldTitle1)
             arc1 = True
 
         else:
-            table[0] = table[0].replace('Field 1', NOT_APPLICABLE)
             arc1 = False
 
-        if novel.fieldTitle2 in charList or STORYLINE_MARKER in novel.fieldTitle2.lower():
-            table[0] = table[0].replace('Field 2', novel.fieldTitle2)
+        if self.fieldTitle2 in charList or self._STORYLINE_MARKER in self.fieldTitle2.lower():
+            table[0] = table[0].replace(self._NOT_APPLICABLE, self.fieldTitle2)
             arc2 = True
 
         else:
-            table[0] = table[0].replace('Field 2', NOT_APPLICABLE)
             arc2 = False
 
-        if novel.fieldTitle3 in charList or STORYLINE_MARKER in novel.fieldTitle3.lower():
-            table[0] = table[0].replace('Field 3', novel.fieldTitle3)
+        if self.fieldTitle3 in charList or self._STORYLINE_MARKER in self.fieldTitle3.lower():
+            table[0] = table[0].replace(self._NOT_APPLICABLE, self.fieldTitle3)
             arc3 = True
 
         else:
-            table[0] = table[0].replace('Field 3', NOT_APPLICABLE)
             arc3 = False
 
-        if novel.fieldTitle4 in charList or STORYLINE_MARKER in novel.fieldTitle4.lower():
-            table[0] = table[0].replace('Field 4', novel.fieldTitle4)
+        if self.fieldTitle4 in charList or self._STORYLINE_MARKER in self.fieldTitle4.lower():
+            table[0] = table[0].replace(self._NOT_APPLICABLE, self.fieldTitle4)
             arc4 = True
 
         else:
-            table[0] = table[0].replace('Field 4', NOT_APPLICABLE)
             arc4 = False
 
         # Add a record for each used scene in a regular chapter

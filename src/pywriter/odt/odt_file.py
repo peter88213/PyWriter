@@ -93,12 +93,9 @@ class OdtFile(Novel, OdtTemplate):
 
         return 'SUCCESS: Content written to "content.xml"'
 
-    def write(self, novel):
-        """Generate an odt file from a template.
-        Return a message beginning with SUCCESS or ERROR.
+    def merge(self, novel):
+        """Copy selected novel attributes.
         """
-
-        # Copy the novel's attributes to write
 
         if novel.title is None:
             self.title = ''
@@ -135,6 +132,11 @@ class OdtFile(Novel, OdtTemplate):
 
         if novel.items is not None:
             self.items = novel.items
+
+    def write(self):
+        """Generate an odt file from a template.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         message = self.set_up()
 

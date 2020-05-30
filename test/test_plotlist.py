@@ -11,16 +11,14 @@ import unittest
 
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw_file import YwFile
-
 from pywriter.csv.csv_plotlist import CsvPlotList
-
-SUFFIX = '_plotlist'
+from pywriter.globals import PLOTLIST_CSV, PLOTLIST_SUFFIX
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + SUFFIX + '/'
+DATA_PATH = 'data/' + PLOTLIST_SUFFIX + '/'
 
-TEST_CSV = EXEC_PATH + 'yw7 Sample Project' + SUFFIX + '.csv'
+TEST_CSV = EXEC_PATH + 'yw7 Sample Project' + PLOTLIST_CSV
 REFERENCE_CSV = DATA_PATH + 'normal.csv'
 PROOFED_CSV = DATA_PATH + 'proofed.csv'
 

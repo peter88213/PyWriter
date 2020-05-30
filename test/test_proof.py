@@ -12,29 +12,24 @@ import zipfile
 
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw_file import YwFile
-
 from pywriter.html.html_proof import HtmlProof
 from pywriter.odt.odt_proof import OdtProof
-
-SUFFIX = '_proof'
+from pywriter.globals import PROOF_HTML, PROOF_ODT, PROOF_SUFFIX
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + SUFFIX + '/'
+DATA_PATH = 'data/' + PROOF_SUFFIX + '/'
 
-TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + SUFFIX + '.odt'
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + PROOF_ODT
 ODT_CONTENT = 'content.xml'
 
-TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'
+TEST_HTML = EXEC_PATH + 'yw7 Sample Project' + PROOF_HTML
 REFERENCE_HTML = DATA_PATH + 'normal.html'
 PROOFED_HTML = DATA_PATH + 'proofed.html'
 
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
 PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
-
-with open(REFERENCE_YW7, 'r') as f:
-    TOTAL_SCENES = f.read().count('<SCENE>')
 
 
 def read_file(inputFile):
@@ -108,8 +103,8 @@ class NrmOpr(unittest.TestCase):
 
         # Convert html to xml and replace .yw7 file.
 
-        self.assertEqual(converter.document_to_yw(documentFile, yw7File), 'SUCCESS: ' + str(
-            TOTAL_SCENES) + ' Scenes written to "' + TEST_YW7 + '".')
+        self.assertEqual(converter.document_to_yw(
+            documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
 
         # Verify the yw7 project.
 

@@ -24,12 +24,6 @@ class OdtLocations(OdtFile):
             - the location description.
         Return a message beginning with SUCCESS or ERROR.
         """
-        manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(self._CHAPTERDESC_SUFFIX, self._MANUSCRIPT_SUFFIX)
-        partDescPath = manuscriptPath.replace(
-            self._MANUSCRIPT_SUFFIX, self._PARTDESC_SUFFIX)
-        linkPath = [manuscriptPath, partDescPath]
-
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title +
                      self._ODT_PARA_END)
@@ -53,7 +47,6 @@ class OdtLocations(OdtFile):
 
             lines.append(
                 '<text:section text:style-name="Sect1" text:name="LcID:' + lcId + '">')
-
 
             if self.locations[lcId].desc is not None:
 
