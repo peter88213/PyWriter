@@ -1340,13 +1340,18 @@ class OdtTemplate():
     _MIMETYPE = 'application/vnd.oasis.opendocument.text'
 
     def tear_down(self):
+        """Delete the temporary directory 
+        containing the unpacked ODT directory structure.
+        """
         try:
             rmtree(self._TEMPDIR)
         except:
             pass
 
     def set_up(self):
-        '''Generate the internal directory structure of an ODT file except "content.xml".'''
+        """Create a temporary directory containing the internal 
+        structure of an ODT file except 'content.xml'.
+        """
         self.tear_down()
         os.mkdir(self._TEMPDIR)
         os.mkdir(self._TEMPDIR + '/META-INF')

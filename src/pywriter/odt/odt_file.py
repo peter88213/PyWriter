@@ -138,15 +138,23 @@ class OdtFile(Novel, OdtTemplate):
         Return a message beginning with SUCCESS or ERROR.
         """
 
+        # Create a temporary directory containing the internal
+        # structure of an ODT file except "content.xml".
+
         message = self.set_up()
 
         if message.startswith('ERROR'):
             return message
 
+        # Add "content.xml" to the temporary directory.
+
         message = self.write_content_xml()
 
         if message.startswith('ERROR'):
             return message
+
+        # Pack the contents of the temporary directory
+        # into the ODT file.
 
         workdir = os.getcwd()
 
@@ -159,6 +167,8 @@ class OdtFile(Novel, OdtTemplate):
         except:
             os.chdir(workdir)
             return 'ERROR: Cannot generate "' + self._filePath + '".'
+
+        # Remove temporary data.
 
         os.chdir(workdir)
         self.tear_down()
