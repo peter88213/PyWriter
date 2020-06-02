@@ -32,11 +32,8 @@ def to_yw7(text):
     text = re.sub('<strong.*?>', '[b]', text)
     text = re.sub('<STRONG.*?>', '[b]', text)
 
-    text = re.sub('</*font.*?>', ' ', text)
-    text = re.sub('</*span.*?>', ' ', text)
-
-    text = re.sub('</*FONT.*?>', ' ', text)
-    text = re.sub('</*SPAN.*?>', ' ', text)
+    text = re.sub('</*font.*?>', '', text)
+    text = re.sub('</*span.*?>', '', text)
 
     text = text.replace('[/b][b]', '')
     text = text.replace('[/i][i]', '')
