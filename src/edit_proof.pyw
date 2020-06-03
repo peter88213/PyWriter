@@ -1,7 +1,7 @@
 """Import and export yWriter scenes for editing. 
 
-Convert yWriter to odt with invisible chapter and scene tags.
-Convert html with invisible chapter and scene tags to yWriter format.
+Convert yWriter to odt with visible chapter and scene tags.
+Convert html with visible chapter and scene tags to yWriter format.
 
 Copyright (c) 2020, peter88213
 For further information see https://github.com/peter88213/PyWriter
@@ -11,10 +11,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 import os
 
-from pywriter.odt.odt_manuscript import OdtManuscript
-from pywriter.html.html_manuscript import HtmlManuscript
+from pywriter.odt.odt_proof import OdtProof
+from pywriter.html.html_proof import HtmlProof
 from pywriter.converter.yw_cnv_gui import YwCnvGui
-from pywriter.globals import MANUSCRIPT_SUFFIX
+from pywriter.globals import PROOF_SUFFIX
 
 
 def run(sourcePath, silentMode=True):
@@ -22,18 +22,18 @@ def run(sourcePath, silentMode=True):
     fileName, FileExtension = os.path.splitext(sourcePath)
 
     if FileExtension in ['.yw6', '.yw7']:
-        document = OdtManuscript('')
+        document = OdtProof('')
         extension = 'odt'
 
     elif FileExtension == '.html':
-        document = HtmlManuscript('')
+        document = HtmlProof('')
         extension = 'html'
 
     else:
         sys.exit('ERROR: File type is not supported.')
 
     converter = YwCnvGui(sourcePath, document,
-                         extension, silentMode, MANUSCRIPT_SUFFIX)
+                         extension, silentMode, PROOF_SUFFIX)
 
 
 if __name__ == '__main__':
