@@ -80,6 +80,10 @@ class Scene():
         # bool
         # xml: <ReactionScene>
 
+        self.isSubPlot = None
+        # bool
+        # xml: <SubPlot>
+
         self.goal = None
         # str
         # xml: <Goal>

@@ -284,6 +284,12 @@ class YwFile(Novel):
             else:
                 self.scenes[scId].isReactionScene = False
 
+            if scn.find('SubPlot') is not None:
+                self.scenes[scId].isSubPlot = True
+
+            else:
+                self.scenes[scId].isSubPlot = False
+
             if scn.find('Goal') is not None:
                 self.scenes[scId].goal = scn.find('Goal').text
 
@@ -500,6 +506,9 @@ class YwFile(Novel):
 
                 if novel.scenes[scId].isReactionScene is not None:
                     self.scenes[scId].isReactionScene = novel.scenes[scId].isReactionScene
+
+                if novel.scenes[scId].isSubPlot is not None:
+                    self.scenes[scId].isSubPlot = novel.scenes[scId].isSubPlot
 
                 if novel.scenes[scId].goal is not None:
                     self.scenes[scId].goal = novel.scenes[scId].goal
@@ -884,6 +893,16 @@ class YwFile(Novel):
 
                 elif scn.find('ReactionScene') is not None:
                     scn.remove(scn.find('ReactionScene'))
+
+                if self.scenes[scId].isSubPlot:
+
+                    if scn.find('SubPlot') is None:
+                        newSubPlot = ET.SubElement(
+                            scn, 'SubPlot')
+                        newSubPlot.text = '-1'
+
+                elif scn.find('SubPlot') is not None:
+                    scn.remove(scn.find('SubPlot'))
 
                 if self.scenes[scId].goal is not None:
 

@@ -22,9 +22,9 @@ TEST_CSV = EXEC_PATH + 'yw7 Sample Project' + SCENELIST_SUFFIX + '.csv'
 REFERENCE_CSV = DATA_PATH + 'normal.csv'
 PROOFED_CSV = DATA_PATH + 'proofed.csv'
 
-TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw6'
-REFERENCE_YW7 = DATA_PATH + 'normal.yw6'
-PROOFED_YW7 = DATA_PATH + 'proofed.yw6'
+TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
+REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
+PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
 with open(REFERENCE_YW7, 'r') as f:
     TOTAL_SCENES = f.read().count('<SCENE>')

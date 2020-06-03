@@ -77,23 +77,23 @@ class HtmlProof(Novel, HTMLParser):
 
         for line in self._lines:
 
-            if line.startswith('[ScID'):
+            if '[ScID' in line:
                 scId = re.search('[0-9]+', line).group()
                 self.scenes[scId] = Scene()
                 self.chapters[chId].srtScenes.append(scId)
                 inScene = True
 
-            elif line.startswith('[/ScID'):
+            elif '[/ScID' in line:
                 self.scenes[scId].sceneContent = '\n'.join(sceneText)
                 sceneText = []
                 inScene = False
 
-            elif line.startswith('[ChID'):
+            elif '[ChID' in line:
                 chId = re.search('[0-9]+', line).group()
                 self.chapters[chId] = Chapter()
                 self.srtChapters.append(chId)
 
-            elif line.startswith('[/ChID'):
+            elif '[/ChID' in line:
                 pass
 
             elif inScene:
