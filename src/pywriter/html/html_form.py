@@ -10,7 +10,28 @@ import re
 
 
 def to_yw7(text):
-    """Convert html tags to yw7 raw markup. Return a yw7 markup string."""
+    """Convert html tags to yWriter 6/7 raw markup. 
+    Return a yw6/7 markup string.
+    """
+
+    # Clean up polluted HTML code.
+
+    text = re.sub('</*font.*?>', '', text)
+    text = re.sub('</*span.*?>', '', text)
+    text = re.sub('</*FONT.*?>', '', text)
+    text = re.sub('</*SPAN.*?>', '', text)
+
+    # Put everything in one line.
+
+    text = text.replace('\n', ' ')
+    text = text.replace('\r', ' ')
+    text = text.replace('\t', ' ')
+
+    while '  ' in text:
+        text = text.replace('  ', ' ').rstrip().lstrip()
+
+    # Replace HTML tags by yWriter markup.
+
     text = text.replace('<i>', '[i]')
     text = text.replace('<I>', '[i]')
     text = text.replace('</i>', '[/i]')
@@ -23,31 +44,22 @@ def to_yw7(text):
     text = text.replace('</B>', '[/b]')
     text = text.replace('</strong>', '[/b]')
     text = text.replace('</STRONG>', '[/b]')
-    text = text.replace('\n', ' ')
-    text = text.replace('\r', ' ')
-    text = text.replace('\t', ' ')
-
     text = re.sub('<em.*?>', '[i]', text)
     text = re.sub('<EM.*?>', '[i]', text)
     text = re.sub('<strong.*?>', '[b]', text)
     text = re.sub('<STRONG.*?>', '[b]', text)
 
-    text = re.sub('</*font.*?>', '', text)
-    text = re.sub('</*span.*?>', '', text)
-    text = re.sub('</*FONT.*?>', '', text)
-    text = re.sub('</*SPAN.*?>', '', text)
+    # Remove orphaned tags.
 
     text = text.replace('[/b][b]', '')
     text = text.replace('[/i][i]', '')
-
-    while '  ' in text:
-        text = text.replace('  ', ' ')
+    text = text.replace('[/b][b]', '')
 
     return text
 
 
 def strip_markup(text):
-    """Strip yw7 raw markup. Return a plain text string."""
+    """Strip yWriter 6/7 raw markup. Return a plain text string."""
     try:
         text = text.replace('[i]', '')
         text = text.replace('[/i]', '')

@@ -585,7 +585,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent />
-      <Desc><![CDATA[And now for somethingcompletelydifferent.]]></Desc>
+      <Desc><![CDATA[And now for something completely different.]]></Desc>
     </SCENE>
     <SCENE>
       <ID>19</ID>
@@ -629,7 +629,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent />
-      <Desc><![CDATA[This isnota joke.]]></Desc>
+      <Desc><![CDATA[This is not a joke.]]></Desc>
     </SCENE>
     <SCENE>
       <ID>25</ID>
