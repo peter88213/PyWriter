@@ -217,13 +217,23 @@ class YwFile(Novel):
                     else:
                         self.chapters[chId].suppressChapterTitle = False
 
+                if fields.find('Field_IsTrash') is not None:
+
+                    if fields.find('Field_IsTrash').text == '1':
+                        self.chapters[chId].isTrash = True
+
+                    else:
+                        self.chapters[chId].isTrash = False
+
             self.chapters[chId].srtScenes = []
 
             if chp.find('Scenes') is not None:
 
-                for scn in chp.find('Scenes').findall('ScID'):
-                    scId = scn.text
-                    self.chapters[chId].srtScenes.append(scId)
+                if not self.chapters[chId].isTrash:
+
+                    for scn in chp.find('Scenes').findall('ScID'):
+                        scId = scn.text
+                        self.chapters[chId].srtScenes.append(scId)
 
         # Read attributes at scene level from the xml element tree.
 
@@ -453,6 +463,9 @@ class YwFile(Novel):
 
                 if novel.chapters[chId].suppressChapterTitle is not None:
                     self.chapters[chId].suppressChapterTitle = novel.chapters[chId].suppressChapterTitle
+
+                if novel.chapters[chId].isTrash is not None:
+                    self.chapters[chId].isTrash = novel.chapters[chId].isTrash
 
                 '''Do not modify these items yet:
                 

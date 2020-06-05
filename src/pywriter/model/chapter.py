@@ -43,6 +43,12 @@ class Chapter():
         # True: Remove 'Chapter ' from the chapter title upon import.
         # False: Do not modify the chapter title.
 
+        self.isTrash = None
+        # bool
+        # xml: <Fields><Field_IsTrash>
+        # True: This chapter is the yw7 project's "trash bin".
+        # False: This chapter is not a "trash bin".
+
         self.srtScenes = []
         # list of str
         # xml: <Scenes><ScID>
