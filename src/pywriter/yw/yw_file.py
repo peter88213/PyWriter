@@ -813,7 +813,7 @@ class YwFile(Novel):
 
                 if self.scenes[scId]._sceneContent is not None:
                     scn.find(
-                        'SceneContent').text = self.scenes[scId]._sceneContent
+                        'SceneContent').text = replace_unsafe_glyphs(self.scenes[scId]._sceneContent)
                     scn.find('WordCount').text = str(
                         self.scenes[scId].wordCount)
                     scn.find('LetterCount').text = str(

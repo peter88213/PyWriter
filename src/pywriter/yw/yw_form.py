@@ -8,6 +8,15 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 import html
 
+EM_DASH = '—'
+EN_DASH = '–'
+SAFE_DASH = '--'
+
+
+def replace_unsafe_glyphs(text):
+    """Replace glyphs being corrupted by yWriter with safe substitutes. """
+    return text.replace(EN_DASH, SAFE_DASH).replace(EM_DASH, SAFE_DASH)
+
 
 def indent(elem, level=0):
     """xml pretty printer
