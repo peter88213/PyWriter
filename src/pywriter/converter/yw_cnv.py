@@ -69,14 +69,11 @@ class YwCnv():
         if ywFile.filePath is None:
             return 'ERROR: "' + ywFile.filePath + '" is not an yWriter project.'
 
-        if not ywFile.file_exists():
-            return 'ERROR: Project "' + ywFile.filePath + '" not found.'
-
-        if not self.confirm_overwrite(ywFile.filePath):
+        if ywFile.file_exists() and not self.confirm_overwrite(ywFile.filePath):
             return 'Program abort by user.'
 
         if documentFile.filePath is None:
-            return 'ERROR: "' + documentFile.filePath + '" is not of the supported type.'
+            return 'ERROR: Document is not of the supported type.'
 
         if not documentFile.file_exists():
             return 'ERROR: "' + documentFile.filePath + '" not found.'
@@ -86,11 +83,12 @@ class YwCnv():
         if message.startswith('ERROR'):
             return message
 
-        message = ywFile.read()
-        # initialize ywFile data
+        if ywFile.file_exists():
+            message = ywFile.read()
+            # initialize ywFile data
 
-        if message.startswith('ERROR'):
-            return message
+            if message.startswith('ERROR'):
+                return message
 
         prjStructure = documentFile.get_structure()
 

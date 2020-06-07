@@ -45,7 +45,7 @@ class YwFile(Novel):
             self._ENCODING = 'utf-8'
             self._filePath = filePath
 
-        if filePath.lower().endswith('.yw6'):
+        elif filePath.lower().endswith('.yw6'):
             self._FILE_EXTENSION = '.yw6'
             self._ENCODING = 'utf-8'
             self._filePath = filePath
@@ -577,8 +577,7 @@ class YwFile(Novel):
                 if self.locations[lcId].desc is not None:
 
                     if loc.find('Desc') is None:
-                        newDesc = ET.SubElement(loc, 'Desc')
-                        newDesc.text = self.locations[lcId].desc
+                        ET.SubElement(loc, 'Desc').text = self.locations[lcId].desc
 
                     else:
                         loc.find('Desc').text = self.locations[lcId].desc
@@ -586,8 +585,8 @@ class YwFile(Novel):
                 if self.locations[lcId].aka is not None:
 
                     if loc.find('AKA') is None:
-                        newAka = ET.SubElement(loc, 'AKA')
-                        newAka.text = self.locations[lcId].aka
+                        ET.SubElement(
+                            loc, 'AKA').text = self.locations[lcId].aka
 
                     else:
                         loc.find('AKA').text = self.locations[lcId].aka
@@ -595,8 +594,8 @@ class YwFile(Novel):
                 if self.locations[lcId].tags is not None:
 
                     if loc.find('Tags') is None:
-                        newTags = ET.SubElement(loc, 'Tags')
-                        newTags.text = ';'.join(self.locations[lcId].tags)
+                        ET.SubElement(loc, 'Tags').text = ';'.join(
+                            self.locations[lcId].tags)
 
                     else:
                         loc.find('Tags').text = ';'.join(
@@ -615,8 +614,7 @@ class YwFile(Novel):
                 if self.items[itId].desc is not None:
 
                     if itm.find('Desc') is None:
-                        newDesc = ET.SubElement(itm, 'Desc')
-                        newDesc.text = self.items[itId].desc
+                        ET.SubElement(itm, 'Desc').text = self.items[itId].desc
 
                     else:
                         itm.find('Desc').text = self.items[itId].desc
@@ -624,8 +622,7 @@ class YwFile(Novel):
                 if self.items[itId].aka is not None:
 
                     if itm.find('AKA') is None:
-                        newAka = ET.SubElement(itm, 'AKA')
-                        newAka.text = self.items[itId].aka
+                        ET.SubElement(itm, 'AKA').text = self.items[itId].aka
 
                     else:
                         itm.find('AKA').text = self.items[itId].aka
@@ -633,8 +630,8 @@ class YwFile(Novel):
                 if self.items[itId].tags is not None:
 
                     if itm.find('Tags') is None:
-                        newTags = ET.SubElement(itm, 'Tags')
-                        newTags.text = ';'.join(self.items[itId].tags)
+                        ET.SubElement(itm, 'Tags').text = ';'.join(
+                            self.items[itId].tags)
 
                     else:
                         itm.find('Tags').text = ';'.join(
@@ -653,8 +650,8 @@ class YwFile(Novel):
                 if self.characters[crId].desc is not None:
 
                     if crt.find('Desc') is None:
-                        newDesc = ET.SubElement(crt, 'Desc')
-                        newDesc.text = self.characters[crId].desc
+                        ET.SubElement(
+                            crt, 'Desc').text = self.characters[crId].desc
 
                     else:
                         crt.find('Desc').text = self.characters[crId].desc
@@ -662,8 +659,8 @@ class YwFile(Novel):
                 if self.characters[crId].aka is not None:
 
                     if crt.find('AKA') is None:
-                        newAka = ET.SubElement(crt, 'AKA')
-                        newAka.text = self.characters[crId].aka
+                        ET.SubElement(
+                            crt, 'AKA').text = self.characters[crId].aka
 
                     else:
                         crt.find('AKA').text = self.characters[crId].aka
@@ -671,8 +668,8 @@ class YwFile(Novel):
                 if self.characters[crId].tags is not None:
 
                     if crt.find('Tags') is None:
-                        newTags = ET.SubElement(crt, 'Tags')
-                        newTags.text = ';'.join(self.characters[crId].tags)
+                        ET.SubElement(crt, 'Tags').text = ';'.join(
+                            self.characters[crId].tags)
 
                     else:
                         crt.find('Tags').text = ';'.join(
@@ -681,8 +678,8 @@ class YwFile(Novel):
                 if self.characters[crId].notes is not None:
 
                     if crt.find('Notes') is None:
-                        newNotes = ET.SubElement(crt, 'Notes')
-                        newNotes.text = self.characters[crId].notes
+                        ET.SubElement(
+                            crt, 'Notes').text = self.characters[crId].notes
 
                     else:
                         crt.find(
@@ -691,8 +688,8 @@ class YwFile(Novel):
                 if self.characters[crId].bio is not None:
 
                     if crt.find('Bio') is None:
-                        newBio = ET.SubElement(crt, 'Bio')
-                        newBio.text = self.characters[crId].bio
+                        ET.SubElement(
+                            crt, 'Bio').text = self.characters[crId].bio
 
                     else:
                         crt.find('Bio').text = self.characters[crId].bio
@@ -700,8 +697,8 @@ class YwFile(Novel):
                 if self.characters[crId].goals is not None:
 
                     if crt.find('Goals') is None:
-                        newGoals = ET.SubElement(crt, 'Goals')
-                        newGoals.text = self.characters[crId].goals
+                        ET.SubElement(
+                            crt, 'Goals').text = self.characters[crId].goals
 
                     else:
                         crt.find(
@@ -710,8 +707,8 @@ class YwFile(Novel):
                 if self.characters[crId].fullName is not None:
 
                     if crt.find('FullName') is None:
-                        newFullName = ET.SubElement(crt, 'FullName')
-                        newFullName.text = self.characters[crId].fullName
+                        ET.SubElement(
+                            crt, 'FullName').text = self.characters[crId].fullName
 
                     else:
                         crt.find(
@@ -726,8 +723,7 @@ class YwFile(Novel):
 
                 else:
                     if self.characters[crId].isMajor:
-                        newMajor = ET.SubElement(crt, 'Major')
-                        newMajor.text = '-1'
+                        ET.SubElement(crt, 'Major').text = '-1'
 
         # Write attributes at novel level to the xml element tree.
 
@@ -737,8 +733,7 @@ class YwFile(Novel):
         if self.desc is not None:
 
             if prj.find('Desc') is None:
-                newDesc = ET.SubElement(prj, 'Desc')
-                newDesc.text = self.desc
+                ET.SubElement(prj, 'Desc').text = self.desc
 
             else:
                 prj.find('Desc').text = self.desc
@@ -746,8 +741,7 @@ class YwFile(Novel):
         if self.author is not None:
 
             if prj.find('AuthorName') is None:
-                newAuth = ET.SubElement(prj, 'AuthorName')
-                newAuth.text = self.author
+                ET.SubElement(prj, 'AuthorName').text = self.author
 
             else:
                 prj.find('AuthorName').text = self.author
@@ -768,8 +762,8 @@ class YwFile(Novel):
                 if self.chapters[chId].desc is not None:
 
                     if chp.find('Desc') is None:
-                        newDesc = ET.SubElement(chp, 'Desc')
-                        newDesc.text = self.chapters[chId].desc
+                        ET.SubElement(
+                            chp, 'Desc').text = self.chapters[chId].desc
 
                     else:
                         chp.find('Desc').text = self.chapters[chId].desc
@@ -786,8 +780,7 @@ class YwFile(Novel):
                 if self.chapters[chId].isUnused:
 
                     if chp.find('Unused') is None:
-                        newUnused = ET.SubElement(chp, 'Unused')
-                        newUnused.text = '-1'
+                        ET.SubElement(chp, 'Unused').text = '-1'
 
                 elif chp.find('Unused') is not None:
                     chp.remove(chp.find('Unused'))
@@ -805,8 +798,8 @@ class YwFile(Novel):
                 if self.scenes[scId].desc is not None:
 
                     if scn.find('Desc') is None:
-                        newDesc = ET.SubElement(scn, 'Desc')
-                        newDesc.text = self.scenes[scId].desc
+                        ET.SubElement(
+                            scn, 'Desc').text = self.scenes[scId].desc
 
                     else:
                         scn.find('Desc').text = self.scenes[scId].desc
@@ -822,8 +815,7 @@ class YwFile(Novel):
                 if self.scenes[scId].isUnused:
 
                     if scn.find('Unused') is None:
-                        newUnused = ET.SubElement(scn, 'Unused')
-                        newUnused.text = '-1'
+                        ET.SubElement(scn, 'Unused').text = '-1'
 
                 elif scn.find('Unused') is not None:
                     scn.remove(scn.find('Unused'))
@@ -834,8 +826,8 @@ class YwFile(Novel):
                 if self.scenes[scId].sceneNotes is not None:
 
                     if scn.find('Notes') is None:
-                        newNotes = ET.SubElement(scn, 'Notes')
-                        newNotes.text = self.scenes[scId].sceneNotes
+                        ET.SubElement(
+                            scn, 'Notes').text = self.scenes[scId].sceneNotes
 
                     else:
                         scn.find(
@@ -844,8 +836,8 @@ class YwFile(Novel):
                 if self.scenes[scId].tags is not None:
 
                     if scn.find('Tags') is None:
-                        newTags = ET.SubElement(scn, 'Tags')
-                        newTags.text = ';'.join(self.scenes[scId].tags)
+                        ET.SubElement(scn, 'Tags').text = ';'.join(
+                            self.scenes[scId].tags)
 
                     else:
                         scn.find('Tags').text = ';'.join(
@@ -854,8 +846,8 @@ class YwFile(Novel):
                 if self.scenes[scId].field1 is not None:
 
                     if scn.find('Field1') is None:
-                        newField = ET.SubElement(scn, 'Field1')
-                        newField.text = self.scenes[scId].field1
+                        ET.SubElement(
+                            scn, 'Field1').text = self.scenes[scId].field1
 
                     else:
                         scn.find('Field1').text = self.scenes[scId].field1
@@ -863,8 +855,8 @@ class YwFile(Novel):
                 if self.scenes[scId].field2 is not None:
 
                     if scn.find('Field2') is None:
-                        newField = ET.SubElement(scn, 'Field2')
-                        newField.text = self.scenes[scId].field2
+                        ET.SubElement(
+                            scn, 'Field2').text = self.scenes[scId].field2
 
                     else:
                         scn.find('Field2').text = self.scenes[scId].field2
@@ -872,8 +864,8 @@ class YwFile(Novel):
                 if self.scenes[scId].field3 is not None:
 
                     if scn.find('Field3') is None:
-                        newField = ET.SubElement(scn, 'Field3')
-                        newField.text = self.scenes[scId].field3
+                        ET.SubElement(
+                            scn, 'Field3').text = self.scenes[scId].field3
 
                     else:
                         scn.find('Field3').text = self.scenes[scId].field3
@@ -881,8 +873,8 @@ class YwFile(Novel):
                 if self.scenes[scId].field4 is not None:
 
                     if scn.find('Field4') is None:
-                        newField = ET.SubElement(scn, 'Field4')
-                        newField.text = self.scenes[scId].field4
+                        ET.SubElement(
+                            scn, 'Field4').text = self.scenes[scId].field4
 
                     else:
                         scn.find('Field4').text = self.scenes[scId].field4
@@ -890,9 +882,7 @@ class YwFile(Novel):
                 if self.scenes[scId].appendToPrev:
 
                     if scn.find('AppendToPrev') is None:
-                        newAppendToPrev = ET.SubElement(
-                            scn, 'AppendToPrev')
-                        newAppendToPrev.text = '-1'
+                        ET.SubElement(scn, 'AppendToPrev').text = '-1'
 
                 elif scn.find('AppendToPrev') is not None:
                     scn.remove(scn.find('AppendToPrev'))
@@ -900,9 +890,7 @@ class YwFile(Novel):
                 if self.scenes[scId].isReactionScene:
 
                     if scn.find('ReactionScene') is None:
-                        newReactionScene = ET.SubElement(
-                            scn, 'ReactionScene')
-                        newReactionScene.text = '-1'
+                        ET.SubElement(scn, 'ReactionScene').text = '-1'
 
                 elif scn.find('ReactionScene') is not None:
                     scn.remove(scn.find('ReactionScene'))
@@ -910,9 +898,7 @@ class YwFile(Novel):
                 if self.scenes[scId].isSubPlot:
 
                     if scn.find('SubPlot') is None:
-                        newSubPlot = ET.SubElement(
-                            scn, 'SubPlot')
-                        newSubPlot.text = '-1'
+                        ET.SubElement(scn, 'SubPlot').text = '-1'
 
                 elif scn.find('SubPlot') is not None:
                     scn.remove(scn.find('SubPlot'))
@@ -920,8 +906,8 @@ class YwFile(Novel):
                 if self.scenes[scId].goal is not None:
 
                     if scn.find('Goal') is None:
-                        newGoal = ET.SubElement(scn, 'Goal')
-                        newGoal.text = self.scenes[scId].goal
+                        ET.SubElement(
+                            scn, 'Goal').text = self.scenes[scId].goal
 
                     else:
                         scn.find('Goal').text = self.scenes[scId].goal
@@ -929,8 +915,8 @@ class YwFile(Novel):
                 if self.scenes[scId].conflict is not None:
 
                     if scn.find('Conflict') is None:
-                        newConflict = ET.SubElement(scn, 'Conflict')
-                        newConflict.text = self.scenes[scId].conflict
+                        ET.SubElement(
+                            scn, 'Conflict').text = self.scenes[scId].conflict
 
                     else:
                         scn.find(
@@ -939,8 +925,8 @@ class YwFile(Novel):
                 if self.scenes[scId].outcome is not None:
 
                     if scn.find('Outcome') is None:
-                        newOutcome = ET.SubElement(scn, 'Outcome')
-                        newOutcome.text = self.scenes[scId].outcome
+                        ET.SubElement(
+                            scn, 'Outcome').text = self.scenes[scId].outcome
 
                     else:
                         scn.find(
@@ -953,8 +939,7 @@ class YwFile(Novel):
                         characters.remove(oldCrId)
 
                     for crId in self.scenes[scId].characters:
-                        newCrId = ET.SubElement(characters, 'CharID')
-                        newCrId.text = crId
+                        ET.SubElement(characters, 'CharID').text = crId
 
                 if self.scenes[scId].locations is not None:
                     locations = scn.find('Locations')
@@ -963,8 +948,7 @@ class YwFile(Novel):
                         locations.remove(oldLcId)
 
                     for lcId in self.scenes[scId].locations:
-                        newLcId = ET.SubElement(locations, 'LocID')
-                        newLcId.text = lcId
+                        ET.SubElement(locations, 'LocID').text = lcId
 
                 if self.scenes[scId].items is not None:
                     items = scn.find('Items')
@@ -973,8 +957,7 @@ class YwFile(Novel):
                         items.remove(oldItId)
 
                     for itId in self.scenes[scId].items:
-                        newItId = ET.SubElement(items, 'ItemID')
-                        newItId.text = itId
+                        ET.SubElement(items, 'ItemID').text = itId
 
         # Pretty print the xml tree.
 

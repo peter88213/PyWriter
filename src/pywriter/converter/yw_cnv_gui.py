@@ -11,10 +11,11 @@ from tkinter import *
 from tkinter import messagebox
 
 from pywriter.yw.yw_file import YwFile
+from pywriter.yw.yw_new_file import YwNewFile
 from pywriter.converter.yw_cnv import YwCnv
 
 
-TITLE = 'PyWriter v1.6'
+TITLE = 'PyWriter v1.9'
 
 
 class YwCnvGui(YwCnv):
@@ -129,6 +130,23 @@ class YwCnvGui(YwCnv):
                 ywFile = YwFile(sourcePath)
                 self.processInfo.config(
                     text=self.yw_to_document(ywFile, document))
+
+            elif (suffix == '') and (extension == 'html'):
+                document.filePath = sourcePath
+                ywPath = sourcePath.split('.html')[0] + '.yw7'
+                ywFile = YwNewFile(ywPath)
+
+                if ywFile.file_exists():
+                    self.processInfo.config(
+                        text='ERROR: yWriter project already exists.')
+
+                else:
+                    self.appInfo.config(
+                        text='Create a yWriter project file')
+                    self.processInfo.config(
+                        text='New project: "' + ywPath + '"')
+                    self.processInfo.config(
+                        text=self.document_to_yw(document, ywFile))
 
             elif sourcePath.endswith(suffix + '.' + extension):
                 document.filePath = sourcePath

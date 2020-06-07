@@ -31,6 +31,7 @@ class HtmlManuscript(Novel, HTMLParser):
         self._lines = []
         self._scId = None
         self._chId = None
+        self._isTitle = False
 
     def handle_starttag(self, tag, attrs):
         """Recognize the beginning ot the body section.
@@ -50,6 +51,17 @@ class HtmlManuscript(Novel, HTMLParser):
                     self._scId = re.search('[0-9]+', attrs[0][1]).group()
                     self.scenes[self._scId] = Scene()
                     self.chapters[self._chId].srtScenes.append(self._scId)
+
+        elif tag == 'meta':
+
+            if attrs[0][1].lower() == 'author':
+                self.author = attrs[1][1]
+
+            if attrs[0][1].lower() == 'description':
+                self.desc = attrs[1][1]
+
+        elif tag == "title":
+            self._isTitle = True
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
@@ -76,6 +88,10 @@ class HtmlManuscript(Novel, HTMLParser):
         """
         if self._scId is not None:
             self._lines.append(data.rstrip().lstrip())
+
+        if self._isTitle:
+            self.title = data
+            self._isTitle = False
 
     def read(self):
         """Read scene content from a html file 
