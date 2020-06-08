@@ -15,7 +15,7 @@ from pywriter.yw.yw_new_file import YwNewFile
 from pywriter.converter.yw_cnv import YwCnv
 
 
-TITLE = 'PyWriter v1.9'
+TITLE = 'yWriter import/export'
 
 
 class YwCnvGui(YwCnv):
