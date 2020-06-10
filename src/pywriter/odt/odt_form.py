@@ -21,21 +21,36 @@ def to_odt(text):
                 line = '[i]' + line
                 italics = False
 
-            if line.count('[i]') > line.count('[/i]'):
+            while line.count('[i]') > line.count('[/i]'):
                 line += '[/i]'
                 italics = True
+
+            while line.count('[/i]') > line.count('[i]'):
+                line = '[i]' + line
+
+            line = line.replace('[i][/i]', '')
 
             if bold:
                 line = '[b]' + line
                 bold = False
 
-            if line.count('[b]') > line.count('[/b]'):
+            while line.count('[b]') > line.count('[/b]'):
                 line += '[/b]'
                 bold = True
+
+            while line.count('[/b]') > line.count('[b]'):
+                line = '[b]' + line
+
+            line = line.replace('[b][/b]', '')
 
             newlines.append(line)
 
         text = '\n'.join(newlines)
+
+        text = text.replace('&', '&amp;')
+        text = text.replace('>', '&gt;')
+        text = text.replace('<', '&lt;')
+
         text = text.rstrip().replace(
             '\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">')
         text = text.replace(
@@ -44,7 +59,6 @@ def to_odt(text):
         text = text.replace(
             '[b]', '<text:span text:style-name="Strong_20_Emphasis">')
         text = text.replace('[/b]', '</text:span>')
-        text = text.replace('&', '&amp;')
 
     except:
         pass
