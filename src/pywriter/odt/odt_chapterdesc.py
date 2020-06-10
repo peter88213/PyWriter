@@ -42,40 +42,45 @@ class OdtChapterDesc(OdtFile):
 
         for chId in self.srtChapters:
 
-            if self.chapters[chId].chType == 0 and not self.chapters[chId].isUnused:
+            if self.chapters[chId].isUnused:
+                continue
 
-                # Write chapter heading
-                # with hyperlink to manuscript or part description.
+            if self.chapters[chId].chType != 0:
+                continue
 
-                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                             '<text:a xlink:href="' +
-                             linkPath[self.chapters[chId].chLevel] +
-                             '#ChID:' + chId + '%7Cregion">' +
-                             self.chapters[chId].get_title() +
-                             '</text:a>' +
-                             self._ODT_HEADING_END)
+            # Write chapter heading
+            # with hyperlink to manuscript or part description.
 
-                if self.chapters[chId].chLevel == 0:
+            lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
+                         '<text:a xlink:href="' +
+                         linkPath[self.chapters[chId].chLevel] +
+                         '#ChID:' + chId + '%7Cregion">' +
+                         self.chapters[chId].get_title() +
+                         '</text:a>' +
+                         self._ODT_HEADING_END)
 
-                    # Write invisible "start chapter" tag.
+            if self.chapters[chId].chLevel != 0:
+                continue
 
-                    lines.append(
-                        '<text:section text:style-name="Sect1" text:name="ChID:' + chId + '">')
+            # Write invisible "start chapter" tag.
 
-                    if self.chapters[chId].desc is not None:
+            lines.append(
+                '<text:section text:style-name="Sect1" text:name="ChID:' + chId + '">')
 
-                        # Write chapter summary.
+            if self.chapters[chId].desc is not None:
 
-                        lines.append(self._ODT_FIRST_PARA_START +
-                                     to_odt(self.chapters[chId].desc) + self._ODT_PARA_END)
+                # Write chapter summary.
 
-                    else:
-                        lines.append(self._ODT_FIRST_PARA_START +
-                                     self._ODT_PARA_END)
+                lines.append(self._ODT_FIRST_PARA_START +
+                             to_odt(self.chapters[chId].desc) + self._ODT_PARA_END)
 
-                    # Write invisible "end chapter" tag.
+            else:
+                lines.append(self._ODT_FIRST_PARA_START +
+                             self._ODT_PARA_END)
 
-                    lines.append('</text:section>')
+            # Write invisible "end chapter" tag.
+
+            lines.append('</text:section>')
 
         lines.append(self._CONTENT_XML_FOOTER)
         text = '\n'.join(lines)

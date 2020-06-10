@@ -39,47 +39,55 @@ class OdtFile(Novel, OdtTemplate):
 
         for chId in self.srtChapters:
 
-            if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
+            if self.chapters[chId].isUnused:
+                continue
 
-                # Write chapter heading.
+            if self.chapters[chId].chType != 0:
+                continue
 
-                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                             self.chapters[chId].get_title() + self._ODT_HEADING_END)
-                firstSceneInChapter = True
+            # Write chapter heading.
 
-                for scId in self.chapters[chId].srtScenes:
+            lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
+                         self.chapters[chId].get_title() + self._ODT_HEADING_END)
+            firstSceneInChapter = True
 
-                    if not self.scenes[scId].isUnused:
+            for scId in self.chapters[chId].srtScenes:
 
-                        # Write Scene divider.
+                if self.scenes[scId].isUnused:
+                    continue
 
-                        if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
-                            lines.append(
-                                self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
+                if self.scenes[scId].doNotExport:
+                    continue
 
-                        if self.scenes[scId].appendToPrev:
-                            scenePrefix = self._ODT_PARA_START
+                # Write Scene divider.
 
-                        else:
-                            scenePrefix = self._ODT_FIRST_PARA_START
+                if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
+                    lines.append(
+                        self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
 
-                        # Write scene title as comment.
+                if self.scenes[scId].appendToPrev:
+                    scenePrefix = self._ODT_PARA_START
 
-                        scenePrefix += ('<office:annotation>\n' +
-                                        '<dc:creator>scene title</dc:creator>\n' +
-                                        '<text:p>' + self.scenes[scId].title + '</text:p>\n' +
-                                        '</office:annotation>')
+                else:
+                    scenePrefix = self._ODT_FIRST_PARA_START
 
-                        # Write scene content.
+                # Write scene title as comment.
 
-                        if self.scenes[scId].sceneContent is not None:
-                            lines.append(scenePrefix +
-                                         to_odt(self.scenes[scId].sceneContent) + self._ODT_PARA_END)
+                scenePrefix += ('<office:annotation>\n' +
+                                '<dc:creator>scene title</dc:creator>\n' +
+                                '<text:p>' + self.scenes[scId].title + '</text:p>\n' +
+                                '</office:annotation>')
 
-                        else:
-                            lines.append(scenePrefix + self._ODT_PARA_END)
+                # Write scene content.
 
-                        firstSceneInChapter = False
+                if self.scenes[scId].sceneContent is not None:
+                    lines.append(scenePrefix +
+                                 to_odt(self.scenes[scId].sceneContent) + self._ODT_PARA_END)
+
+                else:
+                    lines.append(scenePrefix + self._ODT_PARA_END)
+
+                firstSceneInChapter = False
 
         lines.append(self._CONTENT_XML_FOOTER)
         text = '\n'.join(lines)

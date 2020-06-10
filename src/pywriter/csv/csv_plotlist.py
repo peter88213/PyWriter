@@ -243,87 +243,93 @@ class CsvPlotList(Novel):
 
         for chId in self.srtChapters:
 
-            if not self.chapters[chId].isUnused:
+            if self.chapters[chId].isUnused:
+                continue
 
-                if self.chapters[chId].chType == 1:
-                    # Chapter marked "Other" precedes and describes a Plot section.
-                    # Put chapter description to "details".
+            if self.chapters[chId].chType == 1:
+                # Chapter marked "Other" precedes and describes a Plot section.
+                # Put chapter description to "details".
 
-                    if self.chapters[chId].desc is None:
-                        self.chapters[chId].desc = ''
+                if self.chapters[chId].desc is None:
+                    self.chapters[chId].desc = ''
 
-                    table.append('ChID:' + chId
+                table.append('ChID:' + chId
+                             + self._SEPARATOR
+                             + self.chapters[chId].title
+                             + self._SEPARATOR
+                             + self._SEPARATOR
+                             + self._SEPARATOR
+                             + self.chapters[chId].desc.rstrip().replace('\n', self._LINEBREAK)
+                             + self._SEPARATOR
+                             + self._SEPARATOR
+                             + self._SEPARATOR
+                             + self._SEPARATOR
+                             + self._SEPARATOR
+                             + self._SEPARATOR
+                             + '\n')
+
+            else:
+                for scId in self.chapters[chId].srtScenes:
+
+                    if self.scenes[scId].isUnused:
+                        continue
+
+                    if self.scenes[scId].doNotExport:
+                        continue
+
+                    sceneCount += 1
+                    wordCount += self.scenes[scId].wordCount
+
+                    # If the scene contains plot information:
+                    # a tag marks the plot event (e.g. inciting event, plot point, climax).
+                    # Put scene note text to "details".
+                    # Transfer scene ratings > 1 to storyline arc
+                    # states.
+
+                    if self.scenes[scId].sceneNotes is None:
+                        self.scenes[scId].sceneNotes = ''
+
+                    if self.scenes[scId].tags is None:
+                        self.scenes[scId].tags = ['']
+
+                    arcState1 = ''
+                    if arc1 and self.scenes[scId].field1 != '1':
+                        arcState1 = self.scenes[scId].field1
+
+                    arcState2 = ''
+                    if arc2 and self.scenes[scId].field2 != '1':
+                        arcState2 = self.scenes[scId].field2
+
+                    arcState3 = ''
+                    if arc3 and self.scenes[scId].field3 != '1':
+                        arcState3 = self.scenes[scId].field3
+
+                    arcState4 = ''
+                    if arc4 and self.scenes[scId].field4 != '1':
+                        arcState4 = self.scenes[scId].field4
+
+                    table.append('=HYPERLINK("file:///'
+                                 + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
                                  + self._SEPARATOR
-                                 + self.chapters[chId].title
                                  + self._SEPARATOR
+                                 + ';'.join(self.scenes[scId].tags)
                                  + self._SEPARATOR
+                                 + self.scenes[scId].title
                                  + self._SEPARATOR
-                                 + self.chapters[chId].desc.rstrip().replace('\n', self._LINEBREAK)
+                                 + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
                                  + self._SEPARATOR
+                                 + str(sceneCount)
                                  + self._SEPARATOR
+                                 + str(wordCount)
                                  + self._SEPARATOR
+                                 + arcState1
                                  + self._SEPARATOR
+                                 + arcState2
                                  + self._SEPARATOR
+                                 + arcState3
                                  + self._SEPARATOR
+                                 + arcState4
                                  + '\n')
-
-                else:
-                    for scId in self.chapters[chId].srtScenes:
-
-                        if not self.scenes[scId].isUnused:
-                            sceneCount += 1
-                            wordCount += self.scenes[scId].wordCount
-
-                            # If the scene contains plot information:
-                            # a tag marks the plot event (e.g. inciting event, plot point, climax).
-                            # Put scene note text to "details".
-                            # Transfer scene ratings > 1 to storyline arc
-                            # states.
-
-                            if self.scenes[scId].sceneNotes is None:
-                                self.scenes[scId].sceneNotes = ''
-
-                            if self.scenes[scId].tags is None:
-                                self.scenes[scId].tags = ['']
-
-                            arcState1 = ''
-                            if arc1 and self.scenes[scId].field1 != '1':
-                                arcState1 = self.scenes[scId].field1
-
-                            arcState2 = ''
-                            if arc2 and self.scenes[scId].field2 != '1':
-                                arcState2 = self.scenes[scId].field2
-
-                            arcState3 = ''
-                            if arc3 and self.scenes[scId].field3 != '1':
-                                arcState3 = self.scenes[scId].field3
-
-                            arcState4 = ''
-                            if arc4 and self.scenes[scId].field4 != '1':
-                                arcState4 = self.scenes[scId].field4
-
-                            table.append('=HYPERLINK("file:///'
-                                         + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
-                                         + self._SEPARATOR
-                                         + self._SEPARATOR
-                                         + ';'.join(self.scenes[scId].tags)
-                                         + self._SEPARATOR
-                                         + self.scenes[scId].title
-                                         + self._SEPARATOR
-                                         + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
-                                         + self._SEPARATOR
-                                         + str(sceneCount)
-                                         + self._SEPARATOR
-                                         + str(wordCount)
-                                         + self._SEPARATOR
-                                         + arcState1
-                                         + self._SEPARATOR
-                                         + arcState2
-                                         + self._SEPARATOR
-                                         + arcState3
-                                         + self._SEPARATOR
-                                         + arcState4
-                                         + '\n')
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:

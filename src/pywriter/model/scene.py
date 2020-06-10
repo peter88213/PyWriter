@@ -43,7 +43,7 @@ class Scene():
 
         self.isUnused = None
         # bool
-        # xml: <Unused>
+        # xml: <Unused> -1
 
         self.status = None
         # int # xml: <Status>
@@ -74,15 +74,15 @@ class Scene():
 
         self.appendToPrev = None
         # bool
-        # xml: <AppendToPrev>
+        # xml: <AppendToPrev> -1
 
         self.isReactionScene = None
         # bool
-        # xml: <ReactionScene>
+        # xml: <ReactionScene> -1
 
         self.isSubPlot = None
         # bool
-        # xml: <SubPlot>
+        # xml: <SubPlot> -1
 
         self.goal = None
         # str

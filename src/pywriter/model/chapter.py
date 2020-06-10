@@ -35,19 +35,23 @@ class Chapter():
 
         self.isUnused = None
         # bool
-        # xml: <Unused>
+        # xml: <Unused> -1
 
         self.suppressChapterTitle = None
         # bool
-        # xml: <Fields><Field_SuppressChapterTitle>
+        # xml: <Fields><Field_SuppressChapterTitle> 1
         # True: Remove 'Chapter ' from the chapter title upon import.
         # False: Do not modify the chapter title.
 
         self.isTrash = None
         # bool
-        # xml: <Fields><Field_IsTrash>
+        # xml: <Fields><Field_IsTrash> 1
         # True: This chapter is the yw7 project's "trash bin".
         # False: This chapter is not a "trash bin".
+
+        self.doNotExport = None
+        # bool
+        # xml: <<Fields>Field_SuppressChapterBreak> 0
 
         self.srtScenes = []
         # list of str

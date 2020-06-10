@@ -225,6 +225,17 @@ class YwFile(Novel):
                     else:
                         self.chapters[chId].isTrash = False
 
+                if fields.find('Field_SuppressChapterBreak') is not None:
+
+                    if fields.find('Field_SuppressChapterTitle').text == '0':
+                        self.chapters[chId].doNotExport = True
+
+                    else:
+                        self.chapters[chId].doNotExport = False
+
+                else:
+                    self.chapters[chId].doNotExport = False
+
             self.chapters[chId].srtScenes = []
 
             if chp.find('Scenes') is not None:
@@ -239,7 +250,6 @@ class YwFile(Novel):
 
         for scn in root.iter('SCENE'):
             scId = scn.find('ID').text
-
             self.scenes[scId] = Scene()
             self.scenes[scId].title = scn.find('Title').text
 
@@ -257,6 +267,15 @@ class YwFile(Novel):
 
             else:
                 self.scenes[scId].isUnused = False
+
+            if scn.find('ExportCondSpecific') is None:
+                self.scenes[scId].doNotExport = False
+
+            elif scn.find('ExportWhenRTF') is not None:
+                self.scenes[scId].doNotExport = False
+
+            else:
+                self.scenes[scId].doNotExport = True
 
             if scn.find('Status') is not None:
                 self.scenes[scId].status = int(scn.find('Status').text)
@@ -577,7 +596,8 @@ class YwFile(Novel):
                 if self.locations[lcId].desc is not None:
 
                     if loc.find('Desc') is None:
-                        ET.SubElement(loc, 'Desc').text = self.locations[lcId].desc
+                        ET.SubElement(
+                            loc, 'Desc').text = self.locations[lcId].desc
 
                     else:
                         loc.find('Desc').text = self.locations[lcId].desc

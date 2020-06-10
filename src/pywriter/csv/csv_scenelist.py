@@ -283,146 +283,154 @@ class CsvSceneList(Novel):
 
         for chId in self.srtChapters:
 
-            if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
+            if self.chapters[chId].isUnused:
+                continue
 
-                for scId in self.chapters[chId].srtScenes:
+            if self.chapters[chId].chType != 0:
+                continue
 
-                    if not self.scenes[scId].isUnused:
+            for scId in self.chapters[chId].srtScenes:
 
-                        if self.scenes[scId].isReactionScene:
-                            pacingType = self._REACTION_MARKER
+                if self.scenes[scId].isUnused:
+                    continue
 
-                        else:
-                            pacingType = self._ACTION_MARKER
+                if self.scenes[scId].doNotExport:
+                    continue
 
-                        sceneCount += 1
-                        wordCount += self.scenes[scId].wordCount
+                if self.scenes[scId].isReactionScene:
+                    pacingType = self._REACTION_MARKER
 
-                        if self.scenes[scId].desc is None:
-                            self.scenes[scId].desc = ''
+                else:
+                    pacingType = self._ACTION_MARKER
 
-                        if self.scenes[scId].tags is None:
-                            self.scenes[scId].tags = ['']
+                sceneCount += 1
+                wordCount += self.scenes[scId].wordCount
 
-                        if self.scenes[scId].sceneNotes is None:
-                            self.scenes[scId].sceneNotes = ''
+                if self.scenes[scId].desc is None:
+                    self.scenes[scId].desc = ''
 
-                        if self.scenes[scId].isReactionScene is None:
-                            self.scenes[scId].isReactionScene = False
+                if self.scenes[scId].tags is None:
+                    self.scenes[scId].tags = ['']
 
-                        if self.scenes[scId].goal is None:
-                            self.scenes[scId].goal = ''
+                if self.scenes[scId].sceneNotes is None:
+                    self.scenes[scId].sceneNotes = ''
 
-                        if self.scenes[scId].conflict is None:
-                            self.scenes[scId].conflict = ''
+                if self.scenes[scId].isReactionScene is None:
+                    self.scenes[scId].isReactionScene = False
 
-                        if self.scenes[scId].outcome is None:
-                            self.scenes[scId].outcome = ''
+                if self.scenes[scId].goal is None:
+                    self.scenes[scId].goal = ''
 
-                        if self.scenes[scId].field1 is None:
-                            self.scenes[scId].field1 = ''
+                if self.scenes[scId].conflict is None:
+                    self.scenes[scId].conflict = ''
 
-                        if self.scenes[scId].field2 is None:
-                            self.scenes[scId].field2 = ''
+                if self.scenes[scId].outcome is None:
+                    self.scenes[scId].outcome = ''
 
-                        if self.scenes[scId].field3 is None:
-                            self.scenes[scId].field3 = ''
+                if self.scenes[scId].field1 is None:
+                    self.scenes[scId].field1 = ''
 
-                        if self.scenes[scId].field4 is None:
-                            self.scenes[scId].field4 = ''
+                if self.scenes[scId].field2 is None:
+                    self.scenes[scId].field2 = ''
 
-                        rating1 = ''
-                        if self.scenes[scId].field1 != '1':
-                            rating1 = self.scenes[scId].field1
+                if self.scenes[scId].field3 is None:
+                    self.scenes[scId].field3 = ''
 
-                        rating2 = ''
-                        if self.scenes[scId].field2 != '1':
-                            rating2 = self.scenes[scId].field2
+                if self.scenes[scId].field4 is None:
+                    self.scenes[scId].field4 = ''
 
-                        rating3 = ''
-                        if self.scenes[scId].field3 != '1':
-                            rating3 = self.scenes[scId].field3
+                rating1 = ''
+                if self.scenes[scId].field1 != '1':
+                    rating1 = self.scenes[scId].field1
 
-                        rating4 = ''
-                        if self.scenes[scId].field4 != '1':
-                            rating4 = self.scenes[scId].field4
+                rating2 = ''
+                if self.scenes[scId].field2 != '1':
+                    rating2 = self.scenes[scId].field2
 
-                        charas = ''
+                rating3 = ''
+                if self.scenes[scId].field3 != '1':
+                    rating3 = self.scenes[scId].field3
 
-                        if self.scenes[scId].characters is not None:
+                rating4 = ''
+                if self.scenes[scId].field4 != '1':
+                    rating4 = self.scenes[scId].field4
 
-                            for crId in self.scenes[scId].characters:
+                charas = ''
 
-                                if charas != '':
-                                    charas += '; '
+                if self.scenes[scId].characters is not None:
 
-                                charas += self.characters[crId].title
+                    for crId in self.scenes[scId].characters:
 
-                        locas = ''
+                        if charas != '':
+                            charas += '; '
 
-                        if self.scenes[scId].locations is not None:
+                        charas += self.characters[crId].title
 
-                            for lcId in self.scenes[scId].locations:
+                locas = ''
 
-                                if locas != '':
-                                    locas += '; '
+                if self.scenes[scId].locations is not None:
 
-                                locas += self.locations[lcId].title
+                    for lcId in self.scenes[scId].locations:
 
-                        items = ''
+                        if locas != '':
+                            locas += '; '
 
-                        if self.scenes[scId].items is not None:
+                        locas += self.locations[lcId].title
 
-                            for itId in self.scenes[scId].items:
+                items = ''
 
-                                if items != '':
-                                    items += '; '
+                if self.scenes[scId].items is not None:
 
-                                items += self.items[itId].title
+                    for itId in self.scenes[scId].items:
 
-                        table.append('=HYPERLINK("file:///'
-                                     + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
-                                     + self._SEPARATOR
-                                     + self.scenes[scId].title
-                                     + self._SEPARATOR
-                                     + self.scenes[scId].desc.rstrip().replace('\n', self._LINEBREAK)
-                                     + self._SEPARATOR
-                                     + ';'.join(self.scenes[scId].tags)
-                                     + self._SEPARATOR
-                                     + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
-                                     + self._SEPARATOR
-                                     + pacingType
-                                     + self._SEPARATOR
-                                     + self.scenes[scId].goal
-                                     + self._SEPARATOR
-                                     + self.scenes[scId].conflict
-                                     + self._SEPARATOR
-                                     + self.scenes[scId].outcome
-                                     + self._SEPARATOR
-                                     + str(sceneCount)
-                                     + self._SEPARATOR
-                                     + str(wordCount)
-                                     + self._SEPARATOR
-                                     + rating1
-                                     + self._SEPARATOR
-                                     + rating2
-                                     + self._SEPARATOR
-                                     + rating3
-                                     + self._SEPARATOR
-                                     + rating4
-                                     + self._SEPARATOR
-                                     + str(self.scenes[scId].wordCount)
-                                     + self._SEPARATOR
-                                     + str(self.scenes[scId].letterCount)
-                                     + self._SEPARATOR
-                                     + Scene.STATUS[self.scenes[scId].status]
-                                     + self._SEPARATOR
-                                     + charas
-                                     + self._SEPARATOR
-                                     + locas
-                                     + self._SEPARATOR
-                                     + items
-                                     + '\n')
+                        if items != '':
+                            items += '; '
+
+                        items += self.items[itId].title
+
+                table.append('=HYPERLINK("file:///'
+                             + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
+                             + self._SEPARATOR
+                             + self.scenes[scId].title
+                             + self._SEPARATOR
+                             + self.scenes[scId].desc.rstrip().replace('\n', self._LINEBREAK)
+                             + self._SEPARATOR
+                             + ';'.join(self.scenes[scId].tags)
+                             + self._SEPARATOR
+                             + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
+                             + self._SEPARATOR
+                             + pacingType
+                             + self._SEPARATOR
+                             + self.scenes[scId].goal
+                             + self._SEPARATOR
+                             + self.scenes[scId].conflict
+                             + self._SEPARATOR
+                             + self.scenes[scId].outcome
+                             + self._SEPARATOR
+                             + str(sceneCount)
+                             + self._SEPARATOR
+                             + str(wordCount)
+                             + self._SEPARATOR
+                             + rating1
+                             + self._SEPARATOR
+                             + rating2
+                             + self._SEPARATOR
+                             + rating3
+                             + self._SEPARATOR
+                             + rating4
+                             + self._SEPARATOR
+                             + str(self.scenes[scId].wordCount)
+                             + self._SEPARATOR
+                             + str(self.scenes[scId].letterCount)
+                             + self._SEPARATOR
+                             + Scene.STATUS[self.scenes[scId].status]
+                             + self._SEPARATOR
+                             + charas
+                             + self._SEPARATOR
+                             + locas
+                             + self._SEPARATOR
+                             + items
+                             + '\n')
 
         try:
             with open(self._filePath, 'w', encoding='utf-8') as f:

@@ -56,6 +56,9 @@ class OdtProof(OdtFile):
 
             for scId in self.chapters[chId].srtScenes:
 
+                if self.scenes[scId].doNotExport:
+                    continue
+
                 # Write Scene divider.
 
                 if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
