@@ -6,7 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
-import html
+from html import unescape
 
 EM_DASH = '—'
 EN_DASH = '–'
@@ -68,8 +68,7 @@ def xml_postprocess(filePath, fileEncoding, cdataTags: list):
     newXml = ''.join(newlines)
     newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
     newXml = newXml.replace('\n]]', ']]')
-    newXml = newXml.replace('&amp;', '&')
-    newXml = html.unescape(newXml)
+    newXml = unescape(newXml)
 
     try:
         with open(filePath, 'w', encoding=fileEncoding) as f:

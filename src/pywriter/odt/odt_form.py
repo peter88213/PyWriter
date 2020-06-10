@@ -5,6 +5,7 @@ Copyright (c) 2020, peter88213
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from html import escape
 
 
 def to_odt(text):
@@ -46,11 +47,7 @@ def to_odt(text):
             newlines.append(line)
 
         text = '\n'.join(newlines)
-
-        text = text.replace('&', '&amp;')
-        text = text.replace('>', '&gt;')
-        text = text.replace('<', '&lt;')
-
+        text = escape(text)
         text = text.rstrip().replace(
             '\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">')
         text = text.replace(
