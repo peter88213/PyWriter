@@ -32,8 +32,7 @@ class HtmlImport(HtmlManuscript):
         _SC_DESC_CLOSE = '_}'
         _CH_DESC_OPEN = '{#'
         _CH_DESC_CLOSE = '#}'
-        _OUTLINE_OPEN = '{outline}'
-        _OUTLINE_CLOSE = '{/outline}'
+        _OUTLINE_MODE = '{outline}'
 
         result = read_html_file(self._filePath)
 
@@ -75,11 +74,9 @@ class HtmlImport(HtmlManuscript):
             line = line.rstrip().lstrip()
             scan = line.lower()
 
-            if _OUTLINE_OPEN in scan:
-                outlineMode = True
-
-            elif _OUTLINE_CLOSE in scan:
-                outlineMode = False
+            if _OUTLINE_MODE in scan:
+                if not inBody:
+                    outlineMode = True
 
             elif '<h1' in scan or '<h2' in scan:
                 inBody = True
