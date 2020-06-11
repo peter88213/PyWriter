@@ -21,10 +21,12 @@ EXEC_PATH = 'yw7/'
 DATA_PATH = 'data/_import/'
 
 TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'
-REFERENCE_HTML = DATA_PATH + 'normal.html'
+WIP_HTML = DATA_PATH + 'normal.html'
+OUTLINE_HTML = DATA_PATH + 'outline.html'
 
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
-REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
+WIP_YW7 = DATA_PATH + 'normal.yw7'
+OUTLINE_YW7 = DATA_PATH + 'outline.yw7'
 
 
 def read_file(inputFile):
@@ -67,12 +69,11 @@ class NrmOpr(unittest.TestCase):
 
     def setUp(self):
         remove_all_testfiles()
-        copy_file(REFERENCE_HTML, TEST_HTML)
 
-    def test_html_to_yw7(self):
+    def test_wip(self):
         """Import proofed yw7 scenes from html . """
 
-        copy_file(REFERENCE_HTML, TEST_HTML)
+        copy_file(WIP_HTML, TEST_HTML)
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
@@ -88,7 +89,28 @@ class NrmOpr(unittest.TestCase):
         # Verify the yw7 project.
 
         self.assertEqual(read_file(TEST_YW7),
-                         read_file(REFERENCE_YW7))
+                         read_file(WIP_YW7))
+
+    def test_outline(self):
+        """Import proofed yw7 scenes from html . """
+
+        copy_file(OUTLINE_HTML, TEST_HTML)
+        # This substitutes the proof reading process.
+        # Note: The yw7 project file is still unchanged.
+
+        yw7File = YwNewFile(TEST_YW7)
+        documentFile = HtmlImport(TEST_HTML)
+        converter = YwCnv()
+
+        # Convert html to xml and replace .yw7 file.
+
+        self.assertEqual(converter.document_to_yw(
+            documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
+
+        # Verify the yw7 project.
+
+        self.assertEqual(read_file(TEST_YW7),
+                         read_file(OUTLINE_YW7))
 
     def tearDown(self):
         return

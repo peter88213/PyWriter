@@ -32,6 +32,8 @@ class HtmlImport(HtmlManuscript):
         _SC_DESC_CLOSE = '_}'
         _CH_DESC_OPEN = '{#'
         _CH_DESC_CLOSE = '#}'
+        _OUTLINE_OPEN = '{outline}'
+        _OUTLINE_CLOSE = '{/outline}'
 
         result = read_html_file(self._filePath)
 
@@ -44,6 +46,11 @@ class HtmlImport(HtmlManuscript):
         newlines = []
         chCount = 0     # overall chapter count
         scCount = 0     # overall scene count
+
+        lastChDone = 0
+        lastScDone = 0
+
+        outlineMode = False
         inBody = False
         contentFinished = False
         inSceneSection = False
@@ -57,7 +64,8 @@ class HtmlImport(HtmlManuscript):
         chapterLevels = {}
 
         tagRegEx = re.compile(r'(<!--.*?-->|<[^>]*>)')
-        desc = ''
+        scDesc = ''
+        chDesc = ''
 
         for line in lines:
 
@@ -67,12 +75,46 @@ class HtmlImport(HtmlManuscript):
             line = line.rstrip().lstrip()
             scan = line.lower()
 
-            if '<h1' in scan or '<h2' in scan:
+            if _OUTLINE_OPEN in scan:
+                outlineMode = True
+
+            elif _OUTLINE_CLOSE in scan:
+                outlineMode = False
+
+            elif '<h1' in scan or '<h2' in scan:
+                inBody = True
 
                 if inSceneDescription or inChapterDescription:
                     return 'ERROR: Wrong description tags in Chapter #' + str(chCount)
 
-                inBody = True
+                if inSceneSection:
+
+                    # Close the previous scene section.
+
+                    newlines.append('</DIV>')
+
+                    if outlineMode:
+
+                        # Write back scene description.
+
+                        sceneDescs[str(scCount)] = scDesc
+                        scDesc = ''
+
+                    inSceneSection = False
+
+                if chCount > 0:
+
+                    # Close the previous chapter section.
+
+                    newlines.append('</DIV>')
+
+                    if outlineMode:
+
+                        # Write back previous chapter description.
+
+                        chapterDescs[str(chCount)] = chDesc
+                        chDesc = ''
+
                 chCount += 1
 
                 if '<h1' in scan:
@@ -83,14 +125,7 @@ class HtmlImport(HtmlManuscript):
                     # line contains the start of a chapter heading
                     chapterLevels[str(chCount)] = 0
 
-                if inSceneSection:
-                    newlines.append('</DIV>')
-                    # close the leading scene section
-                    inSceneSection = False
-
-                if chCount > 0:
-                    newlines.append('</DIV>')
-                    # close the leading chapter section
+                # Get part/chapter title.
 
                 m = re.match('.+?>(.+?)</[h,H][1,2]>', line)
 
@@ -100,19 +135,33 @@ class HtmlImport(HtmlManuscript):
                 else:
                     chapterTitles[str(chCount)] = 'Chapter' + str(chCount)
 
+                # Open the next chapter section.
+
                 newlines.append('<DIV ID="ChID:' + str(chCount) + '">')
-                # open the next chapter section
 
             elif _SCENE_DIVIDER in scan or '<h3' in scan:
+                # a new scene begins
 
                 if inSceneDescription or inChapterDescription:
                     return 'ERROR: Wrong description tags in Chapter #' + str(chCount)
 
                 if inSceneSection:
+
+                    # Close the previous scene section.
+
                     newlines.append('</DIV>')
-                    # close the leading scene section
+
+                    if outlineMode:
+
+                        # write back previous scene description.
+
+                        sceneDescs[str(scCount)] = scDesc
+                        scDesc = ''
 
                 scCount += 1
+
+                # Get scene title.
+
                 m = re.match('.+?>(.+?)</[h,H]3>', line)
 
                 if m is not None:
@@ -121,23 +170,28 @@ class HtmlImport(HtmlManuscript):
                 else:
                     sceneTitles[str(scCount)] = 'Scene ' + str(scCount)
 
+                # Open the next scene section.
+
                 newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
-                # open the next scene section
                 inSceneSection = True
 
             elif inBody and '<p' in scan:
 
+                # Process a new paragraph.
+
                 if inChapterDescription or _CH_DESC_OPEN in scan:
 
-                    if desc != '':
-                        desc += '\n'
+                    # Add a tagged chapter description.
 
-                    desc += unescape(tagRegEx.sub('', line).replace(
+                    if chDesc != '':
+                        chDesc += '\n'
+
+                    chDesc += unescape(tagRegEx.sub('', line).replace(
                         _CH_DESC_OPEN, '').replace(_CH_DESC_CLOSE, ''))
 
                     if _CH_DESC_CLOSE in scan:
-                        chapterDescs[str(chCount)] = desc
-                        desc = ''
+                        chapterDescs[str(chCount)] = chDesc
+                        chDesc = ''
                         inChapterDescription = False
 
                     else:
@@ -145,83 +199,147 @@ class HtmlImport(HtmlManuscript):
 
                 elif chCount > 0 and not inSceneSection:
                     scCount += 1
+
+                    # Generate scene title.
+
                     sceneTitles[str(scCount)] = 'Scene ' + str(scCount)
+
+                    # Open a scene section without heading.
+
                     newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
-                    # open the chapter's first scene section
                     inSceneSection = True
 
                     if _SC_DESC_OPEN in scan:
 
-                        desc += unescape(tagRegEx.sub('', line).replace(
+                        scDesc += unescape(tagRegEx.sub('', line).replace(
                             _SC_DESC_OPEN, '').replace(_SC_DESC_CLOSE, ''))
 
                         if _SC_DESC_CLOSE in scan:
-                            sceneDescs[str(scCount)] = desc
-                            desc = ''
+                            sceneDescs[str(scCount)] = scDesc
+                            scDesc = ''
 
                         else:
                             inSceneDescription = True
+
+                    elif outlineMode:
+
+                        # Begin a new paragraph in the chapter description.
+
+                        if chDesc != '':
+                            chDesc += '\n'
+
+                        chDesc += unescape(tagRegEx.sub('', line))
 
                     else:
                         newlines.append(line)
 
                 elif inSceneDescription or _SC_DESC_OPEN in scan:
 
-                    if desc != '':
-                        desc += '\n'
+                    # Add a tagged scene description.
 
-                    desc += unescape(tagRegEx.sub('', line).replace(
+                    if scDesc != '':
+                        scDesc += '\n'
+
+                    scDesc += unescape(tagRegEx.sub('', line).replace(
                         _SC_DESC_OPEN, '').replace(_SC_DESC_CLOSE, ''))
 
                     if _SC_DESC_CLOSE in scan:
-                        sceneDescs[str(scCount)] = desc
-                        desc = ''
+                        sceneDescs[str(scCount)] = scDesc
+                        scDesc = ''
                         inSceneDescription = False
 
                     else:
                         inSceneDescription = True
 
+                elif outlineMode:
+
+                    if str(scCount) in sceneTitles:
+
+                        # Begin a new paragraph in the scene description.
+
+                        if scDesc != '':
+                            scDesc += '\n'
+
+                        scDesc += unescape(tagRegEx.sub('', line))
+
+                    else:
+
+                        # Begin a new paragraph in the chapter description.
+
+                        if chDesc != '':
+                            chDesc += '\n'
+
+                        chDesc += unescape(tagRegEx.sub('', line))
+
                 else:
                     newlines.append(line)
 
             elif inChapterDescription:
-                desc += '\n' + unescape(tagRegEx.sub('', line).replace(
-                        _CH_DESC_OPEN, '').replace(_CH_DESC_CLOSE, ''))
+                chDesc += '\n' + unescape(tagRegEx.sub('', line).replace(
+                    _CH_DESC_OPEN, '').replace(_CH_DESC_CLOSE, ''))
 
                 if _CH_DESC_CLOSE in scan:
-                    chapterDescs[str(chCount)] = desc
-                    desc = ''
+                    chapterDescs[str(chCount)] = chDesc
+                    chDesc = ''
                     inChapterDescription = False
 
             elif inSceneDescription:
-                desc += '\n' + unescape(tagRegEx.sub('', line).replace(
-                        _SC_DESC_OPEN, '').replace(_SC_DESC_CLOSE, ''))
+                scDesc += '\n' + unescape(tagRegEx.sub('', line).replace(
+                    _SC_DESC_OPEN, '').replace(_SC_DESC_CLOSE, ''))
 
                 if _SC_DESC_CLOSE in scan:
-                    sceneDescs[str(scCount)] = desc
-                    desc = ''
+                    sceneDescs[str(scCount)] = scDesc
+                    scDesc = ''
                     inSceneDescription = False
 
             else:
                 for marker in _TEXT_END_TAGS:
 
                     if marker in scan:
-                        # line contains the content closing marker
+
+                        # Finish content processing.
+
+                        if outlineMode:
+
+                            # Write back last descriptions.
+
+                            chapterDescs[str(chCount)] = chDesc
+                            sceneDescs[str(scCount)] = scDesc
 
                         if inSceneSection:
+
+                            # Close the last scene section.
+
                             newlines.append('</DIV>')
-                            # close the last scene section
                             inSceneSection = False
 
                         if chCount > 0:
+
+                            # Close the last chapter section.
+
                             newlines.append('</DIV>')
-                            # close the last chapter section
 
                         contentFinished = True
                         break
 
                 if not contentFinished:
-                    newlines.append(line)
+
+                    if outlineMode:
+
+                        if str(scCount) in sceneTitles:
+
+                            # Add line to the scene description.
+
+                            scDesc += unescape(tagRegEx.sub('', line))
+
+                        else:
+
+                            # Add line to the chapter description.
+
+                            chDesc += unescape(tagRegEx.sub('', line))
+
+                    else:
+                        newlines.append(line)
 
         text = '\n'.join(newlines)
         text = to_yw7(text)
