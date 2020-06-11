@@ -5,6 +5,8 @@ Copyright (c) 2020, peter88213
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import re
+from html import unescape
 
 from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.html.html_form import *
@@ -39,10 +41,16 @@ class HtmlImport(HtmlManuscript):
         scCount = 0     # overall scene count
         contentFinished = False
         inSceneSection = False
+        inDescription = False
 
         chapterTitles = {}
         sceneTitles = {}
+        chapterDescs = {}
+        sceneDescs = {}
         chapterLevels = {}
+
+        tagRegEx = re.compile(r'(<!--.*?-->|<[^>]*>)')
+        desc = ''
 
         for line in lines:
 
@@ -52,7 +60,7 @@ class HtmlImport(HtmlManuscript):
             line = line.rstrip().lstrip()
             scan = line.lower()
 
-            if ('<h1' in scan) or ('<h2' in scan):
+            if '<h1' in scan or '<h2' in scan:
                 chCount += 1
 
                 if '<h1' in scan:
@@ -98,19 +106,44 @@ class HtmlImport(HtmlManuscript):
                 else:
                     sceneTitles[str(scCount)] = 'Scene ' + str(scCount)
 
-                line = '<DIV ID="ScID:' + str(scCount) + '">'
+                newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
                 # open the next scene section
                 inSceneSection = True
 
-            elif chCount > 0 and not inSceneSection and '<p' in scan:
+            elif chCount > 0 and not inSceneSection and '<p' in scan and not '{{' in scan:
                 scCount += 1
                 sceneTitles[str(scCount)] = 'Scene ' + str(scCount)
                 newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
                 # open the chapter's first scene section
                 inSceneSection = True
+                newlines.append(line)
 
             elif '<p' in scan:
-                pass
+
+                if inDescription or '{{' in scan:
+
+                    if desc != '':
+                        desc += '\n'
+
+                    desc += unescape(tagRegEx.sub('', line).replace(
+                        '{{', '').replace('}}', ''))
+
+                    if '}}' in scan:
+
+                        if inSceneSection and str(scCount) in sceneTitles:
+                            sceneDescs[str(scCount)] = desc
+
+                        elif str(chCount) in chapterTitles:
+                            chapterDescs[str(chCount)] = desc
+
+                        desc = ''
+                        inDescription = False
+
+                    else:
+                        inDescription = True
+
+                else:
+                    newlines.append(line)
 
             else:
                 for marker in _TEXT_END_TAGS:
@@ -130,7 +163,8 @@ class HtmlImport(HtmlManuscript):
                         contentFinished = True
                         break
 
-            newlines.append(line)
+                if not contentFinished:
+                    newlines.append(line)
 
         text = '\n'.join(newlines)
         text = to_yw7(text)
@@ -141,6 +175,9 @@ class HtmlImport(HtmlManuscript):
 
         for scId in self.scenes:
             self.scenes[scId].title = sceneTitles[scId]
+
+            if scId in sceneDescs:
+                self.scenes[scId].desc = sceneDescs[scId]
 
             if self.scenes[scId].wordCount < _LOW_WORDCOUNT:
                 self.scenes[scId].status = 1
@@ -153,5 +190,8 @@ class HtmlImport(HtmlManuscript):
             self.chapters[chId].chLevel = chapterLevels[chId]
             self.chapters[chId].type = 0
             self.chapters[chId].suppressChapterTitle = True
+
+            if chId in chapterDescs:
+                self.chapters[chId].desc = chapterDescs[chId]
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'

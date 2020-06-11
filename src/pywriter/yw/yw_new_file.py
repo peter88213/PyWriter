@@ -388,6 +388,12 @@ class YwNewFile(Novel):
             if self.scenes[scId].title is not None:
                 ET.SubElement(scn, 'Title').text = self.scenes[scId].title
 
+            for chId in self.chapters:
+
+                if scId in self.chapters[chId].srtScenes:
+                    ET.SubElement(scn, 'BelongsToChID').text = chId
+                    break
+
             if self.scenes[scId].desc is not None:
                 ET.SubElement(scn, 'Desc').text = self.scenes[scId].desc
 
@@ -466,9 +472,13 @@ class YwNewFile(Novel):
 
         chapters = ET.SubElement(root, 'CHAPTERS')
 
+        sortOrder = 0
+
         for chId in self.srtChapters:
+            sortOrder += 1
             chp = ET.SubElement(chapters, 'CHAPTER')
             ET.SubElement(chp, 'ID').text = chId
+            ET.SubElement(chp, 'SortOrder').text = str(sortOrder)
 
             if self.chapters[chId].title is not None:
                 ET.SubElement(chp, 'Title').text = self.chapters[chId].title
