@@ -41,6 +41,7 @@ class HtmlImport(HtmlManuscript):
         inSceneSection = False
 
         chapterTitles = {}
+        sceneTitles = {}
         chapterLevels = {}
 
         for line in lines:
@@ -82,19 +83,28 @@ class HtmlImport(HtmlManuscript):
                 newlines.append('<DIV ID="ChID:' + str(chCount) + '">')
                 # open the next chapter section
 
-            elif _SCENE_DIVIDER in scan:
+            elif _SCENE_DIVIDER in scan or '<h3' in scan:
 
                 if inSceneSection:
                     newlines.append('</DIV>')
                     # close the leading scene section
 
                 scCount += 1
+                m = re.match('.+?>(.+?)</[h,H]3>', line)
+
+                if m is not None:
+                    sceneTitles[str(scCount)] = m.group(1)
+
+                else:
+                    sceneTitles[str(scCount)] = 'Scene ' + str(scCount)
+
                 line = '<DIV ID="ScID:' + str(scCount) + '">'
                 # open the next scene section
                 inSceneSection = True
 
             elif chCount > 0 and not inSceneSection and '<p' in scan:
                 scCount += 1
+                sceneTitles[str(scCount)] = 'Scene ' + str(scCount)
                 newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
                 # open the chapter's first scene section
                 inSceneSection = True
@@ -130,7 +140,7 @@ class HtmlImport(HtmlManuscript):
         self.feed(text)
 
         for scId in self.scenes:
-            self.scenes[scId].title = 'Scene ' + scId
+            self.scenes[scId].title = sceneTitles[scId]
 
             if self.scenes[scId].wordCount < _LOW_WORDCOUNT:
                 self.scenes[scId].status = 1
