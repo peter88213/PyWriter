@@ -194,7 +194,7 @@ class HtmlImport(HtmlManuscript):
                     else:
                         inChapterDescription = True
 
-                elif chCount > 0 and not inSceneSection:
+                elif chCount > 0 and not outlineMode and not inSceneSection:
                     scCount += 1
 
                     # Generate scene title.
@@ -327,13 +327,13 @@ class HtmlImport(HtmlManuscript):
 
                             # Add line to the scene description.
 
-                            scDesc += unescape(tagRegEx.sub('', line))
+                            scDesc += ' ' + unescape(tagRegEx.sub('', line))
 
                         else:
 
                             # Add line to the chapter description.
 
-                            chDesc += unescape(tagRegEx.sub('', line))
+                            chDesc += ' ' + unescape(tagRegEx.sub('', line))
 
                     else:
                         newlines.append(line)
@@ -360,7 +360,7 @@ class HtmlImport(HtmlManuscript):
         for chId in self.chapters:
             self.chapters[chId].title = chapterTitles[chId]
             self.chapters[chId].chLevel = chapterLevels[chId]
-            self.chapters[chId].type = 0
+            self.chapters[chId].chType = 0
             self.chapters[chId].suppressChapterTitle = True
 
             if chId in chapterDescs:
