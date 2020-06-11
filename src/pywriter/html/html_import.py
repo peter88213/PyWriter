@@ -37,13 +37,16 @@ class HtmlImport(HtmlManuscript):
         newlines = []
         chCount = 0     # overall chapter count
         scCount = 0     # overall scene count
-        LocScCount = 0  # chapter local scene count
-        finished = False
+        contentFinished = False
+        inSceneSection = False
 
         chapterTitles = {}
         chapterLevels = {}
 
         for line in lines:
+
+            if contentFinished:
+                break
 
             line = line.rstrip().lstrip()
             scan = line.lower()
@@ -59,10 +62,10 @@ class HtmlImport(HtmlManuscript):
                     # line contains the start of a chapter heading
                     chapterLevels[str(chCount)] = 0
 
-                if LocScCount > 0:
+                if inSceneSection:
                     newlines.append('</DIV>')
                     # close the leading scene section
-                    LocScCount = 0
+                    inSceneSection = False
 
                 if chCount > 0:
                     newlines.append('</DIV>')
@@ -81,39 +84,40 @@ class HtmlImport(HtmlManuscript):
 
             elif _SCENE_DIVIDER in scan:
 
-                if LocScCount > 0:
+                if inSceneSection:
                     newlines.append('</DIV>')
                     # close the leading scene section
 
-                LocScCount += 1
                 scCount += 1
                 line = '<DIV ID="ScID:' + str(scCount) + '">'
                 # open the next scene section
+                inSceneSection = True
 
-            elif (chCount > 0) and (LocScCount == 0) and ('<p' in scan):
-                LocScCount += 1
+            elif chCount > 0 and not inSceneSection and '<p' in scan:
                 scCount += 1
                 newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
                 # open the chapter's first scene section
+                inSceneSection = True
 
-            elif not finished and '<p' in scan:
+            elif '<p' in scan:
                 pass
 
             else:
                 for marker in _TEXT_END_TAGS:
 
-                    if not finished and (marker in scan):
-                        # line contains the start of a chapter heading
+                    if marker in scan:
+                        # line contains the content closing marker
 
-                        if LocScCount > 0:
+                        if inSceneSection:
                             newlines.append('</DIV>')
                             # close the last scene section
+                            inSceneSection = False
 
                         if chCount > 0:
                             newlines.append('</DIV>')
                             # close the last chapter section
 
-                        finished = True
+                        contentFinished = True
                         break
 
             newlines.append(line)
