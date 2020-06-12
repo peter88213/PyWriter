@@ -12,6 +12,11 @@ class Chapter():
     # xml: <CHAPTERS><CHAPTER>
     """
 
+    stripChapterFromTitle = False
+    # bool
+    # True: Remove 'Chapter ' from the chapter title upon import.
+    # False: Do not modify the chapter title.
+
     def __init__(self):
         self.title = None
         # str
@@ -43,12 +48,6 @@ class Chapter():
         # True: Chapter heading not to be displayed in written document.
         # False: Chapter heading to be displayed in written document.
 
-        self.modifyChapterTitle = False
-        # bool
-        # Not defined in the yw7 file format.
-        # True: Remove 'Chapter ' from the chapter title upon import.
-        # False: Do not modify the chapter title.
-
         self.isTrash = None
         # bool
         # xml: <Fields><Field_IsTrash> 1
@@ -69,7 +68,7 @@ class Chapter():
         """Fix auto-chapter titles for non-English """
         text = self.title
 
-        if self.modifyChapterTitle:
+        if self.stripChapterFromTitle:
             text = text.replace('Chapter ', '')
 
         return text

@@ -13,12 +13,14 @@ import os
 
 from pywriter.odt.odt_manuscript import OdtManuscript
 from pywriter.html.html_manuscript import HtmlManuscript
+from pywriter.model.chapter import Chapter
 from pywriter.converter.yw_cnv_gui import YwCnvGui
 from pywriter.globals import MANUSCRIPT_SUFFIX
 
 
-def run(sourcePath, silentMode=True):
+def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
 
+    Chapter.stripChapterFromTitle = stripChapterFromTitle
     fileName, FileExtension = os.path.splitext(sourcePath)
 
     if FileExtension in ['.yw6', '.yw7']:
@@ -41,4 +43,4 @@ if __name__ == '__main__':
         sourcePath = sys.argv[1]
     except:
         sourcePath = ''
-    run(sourcePath, False)
+    run(sourcePath, False, True)
