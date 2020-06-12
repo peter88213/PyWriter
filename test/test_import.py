@@ -91,7 +91,6 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_YW7),
                          read_file(WIP_YW7))
 
-    @unittest.skip('')
     def test_outline(self):
         """Import proofed yw7 scenes from html . """
 

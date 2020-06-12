@@ -39,8 +39,6 @@ class OdtTemplate():
  <office:font-face-decls>
   <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
   <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
-  <style:font-face style:name="Courier Prime" svg:font-family="&apos;Courier Prime&apos;, &apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
-  <style:font-face style:name="Courier New1" svg:font-family="&apos;Courier New&apos;" style:font-family-generic="roman" style:font-pitch="fixed"/>
    </office:font-face-decls>
  <office:automatic-styles>
   <style:style style:name="Sect1" style:family="section">
@@ -761,7 +759,7 @@ class OdtTemplate():
    <style:text-properties style:font-name="Courier New" fo:font-size="8pt"/>
   </style:style>
   <style:style style:name="Page_20_Number" style:display-name="Page Number" style:family="text">
-   <style:text-properties style:font-name="ITC Officina Sans Book" fo:font-size="7pt" fo:letter-spacing="0.071cm" fo:font-weight="bold"/>
+   <style:text-properties style:font-name="Courier New" fo:font-size="8pt"/>
   </style:style>
   <style:style style:name="Caption_20_characters" style:display-name="Caption characters" style:family="text"/>
   <style:style style:name="Drop_20_Caps" style:display-name="Drop Caps" style:family="text"/>
