@@ -361,7 +361,7 @@ class HtmlImport(HtmlManuscript):
             self.chapters[chId].title = chapterTitles[chId]
             self.chapters[chId].chLevel = chapterLevels[chId]
             self.chapters[chId].chType = 0
-            self.chapters[chId].suppressChapterTitle = True
+            self.chapters[chId].suppressChapterTitle = False
 
             if chId in chapterDescs:
                 self.chapters[chId].desc = chapterDescs[chId]

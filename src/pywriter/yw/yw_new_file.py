@@ -503,6 +503,9 @@ class YwNewFile(Novel):
 
             chFields = ET.SubElement(chp, 'Fields')
 
+            if self.chapters[chId].title.startswith('@'):
+                self.chapters[chId].suppressChapterTitle = True
+
             if self.chapters[chId].suppressChapterTitle:
                 ET.SubElement(
                     chFields, 'Field_SuppressChapterTitle').text = '1'

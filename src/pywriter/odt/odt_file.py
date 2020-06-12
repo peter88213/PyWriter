@@ -45,10 +45,13 @@ class OdtFile(Novel, OdtTemplate):
             if self.chapters[chId].chType != 0:
                 continue
 
-            # Write chapter heading.
+            if not self.chapters[chId].suppressChapterTitle:
 
-            lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                         self.chapters[chId].get_title() + self._ODT_HEADING_END)
+                # Write chapter heading.
+
+                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
+                             self.chapters[chId].get_title() + self._ODT_HEADING_END)
+
             firstSceneInChapter = True
 
             for scId in self.chapters[chId].srtScenes:

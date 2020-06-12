@@ -40,6 +40,12 @@ class Chapter():
         self.suppressChapterTitle = None
         # bool
         # xml: <Fields><Field_SuppressChapterTitle> 1
+        # True: Chapter heading not to be displayed in written document.
+        # False: Chapter heading to be displayed in written document.
+
+        self.modifyChapterTitle = False
+        # bool
+        # Not defined in the yw7 file format.
         # True: Remove 'Chapter ' from the chapter title upon import.
         # False: Do not modify the chapter title.
 
@@ -63,7 +69,7 @@ class Chapter():
         """Fix auto-chapter titles for non-English """
         text = self.title
 
-        if self.suppressChapterTitle:
+        if self.modifyChapterTitle:
             text = text.replace('Chapter ', '')
 
         return text

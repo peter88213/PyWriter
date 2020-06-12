@@ -219,7 +219,8 @@ class YwFile(Novel):
 
                 if fields.find('Field_SuppressChapterTitle') is not None:
 
-                    if fields.find('Field_SuppressChapterTitle').text == '1':
+                    if (fields.find('Field_SuppressChapterTitle').text == '1'
+                            or self.chapters[chId].title.startswith('@')):
                         self.chapters[chId].suppressChapterTitle = True
 
                     else:
