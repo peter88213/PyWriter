@@ -3,7 +3,7 @@
 Convert yWriter item descriptions to odt with invisible item tags.
 Convert html with invisible item tags to yWriter format.
 
-Copyright (c) 2020, peter88213
+Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
