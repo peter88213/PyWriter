@@ -90,7 +90,6 @@ class NrmOpr(unittest.TestCase):
                          read_file(REFERENCE_YW7))
 
     def tearDown(self):
-        return
         remove_all_testfiles()
 
 
