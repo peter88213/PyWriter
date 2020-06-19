@@ -48,6 +48,8 @@ class HtmlOutline(HtmlManuscript):
         sceneDescs = {}
         chapterLevels = {}
 
+        headingLine = ''
+
         tagRegEx = re.compile(r'(<!--.*?-->|<[^>]*>)')
         scDesc = ''
         chDesc = ''
@@ -60,7 +62,10 @@ class HtmlOutline(HtmlManuscript):
             line = line.rstrip().lstrip()
             scan = line.lower()
 
-            if '<h1' in scan or '<h2' in scan:
+            if '</h1' in scan or '</h2' in scan:
+                line = headingLine + line
+                scan = line.lower()
+                headingLine = ''
                 inChapterSection = True
 
                 if inSceneSection:
@@ -98,19 +103,26 @@ class HtmlOutline(HtmlManuscript):
 
                 # Get part/chapter title.
 
-                m = re.match('.+?>(.+?)</[h,H][1,2]>', line)
+                m = re.search('.+?>(.+?)</[h,H][1,2]>', line)
 
                 if m is not None:
                     chapterTitles[str(chCount)] = m.group(1)
 
                 else:
-                    chapterTitles[str(chCount)] = 'Chapter' + str(chCount)
+                    chapterTitles[str(chCount)] = 'Chapter ' + str(chCount)
 
                 # Open the next chapter section.
 
                 newlines.append('<DIV ID="ChID:' + str(chCount) + '">')
 
-            elif '<h3' in scan:
+            elif '<h1' in scan or '<h2' in scan:
+                headingLine = line
+
+            elif '</h3' in scan:
+                line = headingLine + line
+                scan = line.lower()
+                headingLine = ''
+
                 # a new scene begins
 
                 if inSceneSection:
@@ -128,7 +140,7 @@ class HtmlOutline(HtmlManuscript):
 
                 # Get scene title.
 
-                m = re.match('.+?>(.+?)</[h,H]3>', line)
+                m = re.search('.+?>(.+?)</[h,H]3>', line)
 
                 if m is not None:
                     sceneTitles[str(scCount)] = m.group(1)
@@ -140,6 +152,9 @@ class HtmlOutline(HtmlManuscript):
 
                 newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
                 inSceneSection = True
+
+            elif '<h3' in scan:
+                headingLine = line
 
             elif inChapterSection:
 

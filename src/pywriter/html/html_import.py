@@ -50,6 +50,8 @@ class HtmlImport(HtmlManuscript):
         sceneDescs = {}
         chapterLevels = {}
 
+        headingLine = ''
+
         for line in lines:
 
             if contentFinished:
@@ -58,7 +60,10 @@ class HtmlImport(HtmlManuscript):
             line = line.rstrip().lstrip()
             scan = line.lower()
 
-            if '<h1' in scan or '<h2' in scan:
+            if '</h1' in scan or '</h2' in scan or '</h3' in scan:
+                line = headingLine + line
+                scan = line.lower()
+                headingLine = ''
                 inBody = True
 
                 if inSceneDescription or inChapterDescription:
@@ -89,17 +94,20 @@ class HtmlImport(HtmlManuscript):
 
                 # Get part/chapter title.
 
-                m = re.match('.+?>(.+?)</[h,H][1,2]>', line)
+                m = re.search('.+?>(.+?)</[h,H][1,2]>', line)
 
                 if m is not None:
                     chapterTitles[str(chCount)] = m.group(1)
 
                 else:
-                    chapterTitles[str(chCount)] = 'Chapter' + str(chCount)
+                    chapterTitles[str(chCount)] = 'Chapter ' + str(chCount)
 
                 # Open the next chapter section.
 
                 newlines.append('<DIV ID="ChID:' + str(chCount) + '">')
+
+            elif '<h1' in scan or '<h2' in scan:
+                headingLine = line
 
             elif _SCENE_DIVIDER in scan or '<h3' in scan:
                 # a new scene begins
@@ -117,7 +125,7 @@ class HtmlImport(HtmlManuscript):
 
                 # Get scene title.
 
-                m = re.match('.+?>(.+?)</[h,H]3>', line)
+                m = re.search('.+?>(.+?)</[h,H]3>', line)
 
                 if m is not None:
                     sceneTitles[str(scCount)] = m.group(1)

@@ -117,7 +117,7 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
       <ID>1</ID>
       <SortOrder>1</SortOrder>
       <Title><![CDATA[Part 1]]></Title>
-      <Desc><![CDATA[The first part of thenovel.]]></Desc>
+      <Desc><![CDATA[The first part of the novel.]]></Desc>
       <SectionStart>-1</SectionStart>
       <Type>0</Type>
       <Scenes />
@@ -127,7 +127,7 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
       <ID>2</ID>
       <SortOrder>2</SortOrder>
       <Title><![CDATA[Chapter 1]]></Title>
-      <Desc><![CDATA[The first chapter ofthe novel.]]></Desc>
+      <Desc><![CDATA[The first chapter of the novel.]]></Desc>
       <Type>0</Type>
       <Scenes>
         <ScID>1</ScID>
@@ -138,7 +138,7 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
       <ID>3</ID>
       <SortOrder>3</SortOrder>
       <Title><![CDATA[Chapter 2]]></Title>
-      <Desc><![CDATA[The second chapter ofthe novel.]]></Desc>
+      <Desc><![CDATA[The second chapter of the novel.]]></Desc>
       <Type>0</Type>
       <Scenes>
         <ScID>2</ScID>
