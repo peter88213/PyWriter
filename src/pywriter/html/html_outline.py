@@ -103,7 +103,7 @@ class HtmlOutline(HtmlManuscript):
 
                 # Get part/chapter title.
 
-                m = re.search('.+?>(.+?)</[h,H][1,2]>', line)
+                m = re.search('<[h,H][1,2].*?>(.+?)</[h,H][1,2]>', line)
 
                 if m is not None:
                     chapterTitles[str(chCount)] = m.group(1)
@@ -140,7 +140,7 @@ class HtmlOutline(HtmlManuscript):
 
                 # Get scene title.
 
-                m = re.search('.+?>(.+?)</[h,H]3>', line)
+                m = re.search('<[h,H]3.*?>(.+?)</[h,H]3>', line)
 
                 if m is not None:
                     sceneTitles[str(scCount)] = m.group(1)

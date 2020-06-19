@@ -109,11 +109,7 @@ class HtmlImport(HtmlManuscript):
             elif '<h1' in scan or '<h2' in scan:
                 headingLine = line
 
-            elif _SCENE_DIVIDER in scan or '<h3' in scan:
-                # a new scene begins
-
-                if inSceneDescription or inChapterDescription:
-                    return 'ERROR: Wrong description tags in Chapter #' + str(chCount)
+            elif _SCENE_DIVIDER in scan:
 
                 if inSceneSection:
 
@@ -121,38 +117,23 @@ class HtmlImport(HtmlManuscript):
 
                     newlines.append('</DIV>')
 
-                scCount += 1
-
-                # Get scene title.
-
-                m = re.search('<[h,H]3.*?>(.+?)</[h,H]3>', line)
-
-                if m is not None:
-                    sceneTitles[str(scCount)] = m.group(1)
-
-                else:
-                    sceneTitles[str(scCount)] = 'Scene ' + str(scCount)
-
                 # Open the next scene section.
 
-                newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
+                scCount += 1
+                sceneTitles[str(scCount)] = 'Scene ' + str(scCount)
                 inSceneSection = True
+                newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
 
             elif inBody and '<p' in scan:
 
-                # Process a new paragraph.
-
                 if chCount > 0 and not inSceneSection:
+
+                    # Open the next scene section.
+
                     scCount += 1
-
-                    # Generate scene title.
-
                     sceneTitles[str(scCount)] = 'Scene ' + str(scCount)
-
-                    # Open a scene section without heading.
-
-                    newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
                     inSceneSection = True
+                    newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
                     newlines.append(line)
 
                 else:
