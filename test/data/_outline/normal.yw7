@@ -28,7 +28,7 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
       <ID>2</ID>
       <Title><![CDATA[Jerling buys team. Discusses Seraph.]]></Title>
       <BelongsToChID>3</BelongsToChID>
-      <Desc><![CDATA[Walter Jerling is a businessman on Forg, a planet in the same star system as Lamira. He owns several enterprises - real estate, factories, etc. We meet him at the grand opening of a new sky hockey stadium, puffing on his cigar and finishing off the ceremony without much enthusiasm. After a smattering of polite applause from the small crowd, he departs in his limo. 
+      <Desc><![CDATA[Walter Jerling is a businessman on Forg, a planet in the same star system as Lamira. He owns several enterprises - real estate, factories, etc. We meet him at the grand opening of a new sky hockey stadium, puffing on his cigar and finishing off the ceremony without much enthusiasm. After a smattering of polite applause from the small crowd, he departs in his limo.
 In the car he complains that he's little more than a figurehead, hopping from one PR exercise to the next. He recalls the early days, when he was personally involved in everything. His assistant, Carina, reminds him that he was running himself ragged before he mastered the art of delegating. Jerling replies that delegating can lead to people ripping him off or revealing company secrets to the Hinchfigs (competitors). Moans that the Hinchfigs get bigger crowds at their openings, Carina points out that they pay the crowds more to turn up.
 Jerling catches up on a few minor business matters. He reluctantly approves the recycling of older company equipment (including several robots), then digs until Carina gives him something more interesting to think about. He discovers there's a freight job which is going wrong, and as the limo draws into the head office carpark Jerling decides to handle it himself.
 He examines the Seraph file. There's a shipment of robot parts ordered and paid for, but the source planet (Seraph IV) is in the middle of war games and the massed ships of the Seraph Space Corps have already shot down three unarmed freighters by mistake. The parts are needed urgently by Jerling's assembly line, they're putting together a last-minute order of robots for the Emperor's summer palace. Late delivery isn't an option.
@@ -104,8 +104,7 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
       <Title><![CDATA[Clunk takes call from Hal. Calls Jerling. Fire.]]></Title>
       <BelongsToChID>5</BelongsToChID>
       <Desc><![CDATA[Clunk tells Hal that Jerling won't advance any money, but Hal tells him to ask anyway. Clunk calls Jerling, who won't advance any money. Clunk mentions that he's found out what Incubots is all about, Jerling hangs up quickly.
-Clunk notices smoke in the air. He runs to the airlock and discovers the landing field is on fire.
- ]]></Desc>
+Clunk notices smoke in the air. He runs to the airlock and discovers the landing field is on fire.]]></Desc>
       <SceneContent />
       <WordCount>0</WordCount>
       <LetterCount>0</LetterCount>
@@ -150,7 +149,6 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
       <ID>4</ID>
       <SortOrder>4</SortOrder>
       <Title><![CDATA[Chapter 3]]></Title>
-      <Desc />
       <Type>0</Type>
       <Scenes>
         <ScID>4</ScID>
@@ -161,7 +159,6 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
       <ID>5</ID>
       <SortOrder>5</SortOrder>
       <Title><![CDATA[Chapter 4]]></Title>
-      <Desc />
       <Type>0</Type>
       <Scenes>
         <ScID>5</ScID>
