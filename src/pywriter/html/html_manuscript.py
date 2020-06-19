@@ -60,7 +60,7 @@ class HtmlManuscript(Novel, HTMLParser):
             if attrs[0][1].lower() == 'description':
                 self.desc = attrs[1][1]
 
-        elif tag == "title":
+        elif tag == 'title':
             self._isTitle = True
 
     def handle_endtag(self, tag):

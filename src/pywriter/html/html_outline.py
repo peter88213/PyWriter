@@ -6,10 +6,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from html import unescape
-
 from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.html.html_form import *
+from pywriter.model.chapter import Chapter
+from pywriter.model.scene import Scene
 
 
 class HtmlOutline(HtmlManuscript):
@@ -19,216 +19,94 @@ class HtmlOutline(HtmlManuscript):
     to be written by Open/LibreOffice Writer.
     """
 
+    def __init__(self, filePath):
+        HtmlManuscript.__init__(self, filePath)
+        self._chCount = 0
+        self._scCount = 0
+
+    def handle_starttag(self, tag, attrs):
+
+        if tag in ('h1', 'h2'):
+            self._scId = None
+            self._lines = []
+            self._chCount += 1
+            self._chId = str(self._chCount)
+            self.chapters[self._chId] = Chapter()
+            self.chapters[self._chId].srtScenes = []
+            self.srtChapters.append(self._chId)
+            self.chapters[self._chId].chType = '0'
+
+            if tag == 'h1':
+                self.chapters[self._chId].chLevel = 1
+
+            else:
+                self.chapters[self._chId].chLevel = 0
+
+        elif tag == 'h3':
+            self._lines = []
+            self._scCount += 1
+            self._scId = str(self._scCount)
+            self.scenes[self._scId] = Scene()
+            self.chapters[self._chId].srtScenes.append(self._scId)
+            self.scenes[self._scId].sceneContent = ''
+            self.scenes[self._scId].status = '1'
+
+        elif tag == 'div':
+            self._scId = None
+            self._chId = None
+
+        elif tag == 'meta':
+
+            if attrs[0][1].lower() == 'author':
+                self.author = attrs[1][1]
+
+            if attrs[0][1].lower() == 'description':
+                self.desc = attrs[1][1]
+
+        elif tag == 'title':
+            self._lines = []
+
+    def handle_endtag(self, tag):
+
+        if tag == 'p':
+            self._lines.append('\n')
+
+            if self._scId is not None:
+                self.scenes[self._scId].desc = ''.join(self._lines)
+
+            elif self._chId is not None:
+                self.chapters[self._chId].desc = ''.join(self._lines)
+
+        elif tag in ('h1', 'h2'):
+            self.chapters[self._chId].title = ''.join(self._lines)
+            self._lines = []
+
+        elif tag == 'h3':
+            self.scenes[self._scId].title = ''.join(self._lines)
+            self._lines = []
+
+        elif tag == 'title':
+            self.title = ''.join(self._lines)
+
+    def handle_data(self, data):
+        """Collect data within scene sections.
+        Overwrites HTMLparser.handle_data().
+        """
+        self._lines.append(data.rstrip().lstrip())
+
     def read(self):
-        """Parse a HTML file and insert chapter and scene sections.
-        Insert chapter and scene descriptions.
+        """Read chapter and scene titles and 
+        summaries from a html file. 
         Return a message beginning with SUCCESS or ERROR. 
         """
-        _TEXT_END_TAGS = ['<div type=footer>', '/body']
-
         result = read_html_file(self._filePath)
 
         if result[0].startswith('ERROR'):
             return (result[0])
 
-        # Insert chapter and scene markers in html text.
-
-        lines = result[1].split('\n')
-        newlines = []
-        chCount = 0     # overall chapter count
-        scCount = 0     # overall scene count
-
-        contentFinished = False
-        inSceneSection = False
-        inChapterSection = False
-
-        chapterTitles = {}
-        sceneTitles = {}
-        chapterDescs = {}
-        sceneDescs = {}
-        chapterLevels = {}
-
-        headingLine = ''
-
-        tagRegEx = re.compile(r'(<!--.*?-->|<[^>]*>)')
-        scDesc = ''
-        chDesc = ''
-
-        for line in lines:
-
-            if contentFinished:
-                break
-
-            line = line.rstrip().lstrip()
-            scan = line.lower()
-
-            if '</h1' in scan or '</h2' in scan:
-                line = headingLine + line
-                scan = line.lower()
-                headingLine = ''
-                inChapterSection = True
-
-                if inSceneSection:
-
-                    # Close the previous scene section.
-
-                    newlines.append('</DIV>')
-
-                    # Write back scene description.
-
-                    sceneDescs[str(scCount)] = scDesc
-                    scDesc = ''
-                    inSceneSection = False
-
-                if chCount > 0:
-
-                    # Close the previous chapter section.
-
-                    newlines.append('</DIV>')
-
-                    # Write back previous chapter description.
-
-                    chapterDescs[str(chCount)] = chDesc
-                    chDesc = ''
-
-                chCount += 1
-
-                if '<h1' in scan:
-                    # line contains the start of a part heading
-                    chapterLevels[str(chCount)] = 1
-
-                else:
-                    # line contains the start of a chapter heading
-                    chapterLevels[str(chCount)] = 0
-
-                # Get part/chapter title.
-
-                m = re.search('<[h,H][1,2].*?>(.+?)</[h,H][1,2]>', line)
-
-                if m is not None:
-                    chapterTitles[str(chCount)] = m.group(1)
-
-                else:
-                    chapterTitles[str(chCount)] = 'Chapter ' + str(chCount)
-
-                # Open the next chapter section.
-
-                newlines.append('<DIV ID="ChID:' + str(chCount) + '">')
-
-            elif '<h1' in scan or '<h2' in scan:
-                headingLine = line
-
-            elif '</h3' in scan:
-                line = headingLine + line
-                scan = line.lower()
-                headingLine = ''
-
-                # a new scene begins
-
-                if inSceneSection:
-
-                    # Close the previous scene section.
-
-                    newlines.append('</DIV>')
-
-                    # Write back previous scene description.
-
-                    sceneDescs[str(scCount)] = scDesc
-                    scDesc = ''
-
-                scCount += 1
-
-                # Get scene title.
-
-                m = re.search('<[h,H]3.*?>(.+?)</[h,H]3>', line)
-
-                if m is not None:
-                    sceneTitles[str(scCount)] = m.group(1)
-
-                else:
-                    sceneTitles[str(scCount)] = 'Scene ' + str(scCount)
-
-                # Open the next scene section.
-
-                newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
-                inSceneSection = True
-
-            elif '<h3' in scan:
-                headingLine = line
-
-            elif inChapterSection:
-
-                for marker in _TEXT_END_TAGS:
-
-                    if marker in scan:
-
-                        # Write back last descriptions.
-
-                        chapterDescs[str(chCount)] = chDesc
-                        sceneDescs[str(scCount)] = scDesc
-
-                        if inSceneSection:
-
-                            # Close the last scene section.
-
-                            newlines.append('</DIV>')
-                            inSceneSection = False
-
-                        if chCount > 0:
-
-                            # Close the last chapter section.
-
-                            newlines.append('</DIV>')
-                            inChapterSection = False
-
-                        contentFinished = True
-                        break
-
-                if inSceneSection:
-
-                    if scDesc != '' and '<p' in scan:
-                        scDesc += '\n'
-
-                    elif scDesc != '':
-                        scDesc += ' '
-
-                    scDesc += unescape(tagRegEx.sub('', line))
-
-                elif inChapterSection:
-
-                    if chDesc != '' and '<p' in scan:
-                        chDesc += '\n'
-
-                    elif chDesc != '':
-                        chDesc += ' '
-
-                    chDesc += unescape(tagRegEx.sub('', line))
-
-            else:
-                newlines.append(line)
-
-        text = '\n'.join(newlines)
-        text = to_yw7(text)
+        text = strip_markup(to_yw7(result[1]))
 
         # Invoke HTML parser.
 
         self.feed(text)
-
-        for scId in self.scenes:
-            self.scenes[scId].title = sceneTitles[scId]
-
-            if scId in sceneDescs:
-                self.scenes[scId].desc = sceneDescs[scId]
-
-            self.scenes[scId].status = 1
-
-        for chId in self.chapters:
-            self.chapters[chId].title = chapterTitles[chId]
-            self.chapters[chId].chLevel = chapterLevels[chId]
-            self.chapters[chId].chType = 0
-            self.chapters[chId].suppressChapterTitle = False
-
-            if chId in chapterDescs:
-                self.chapters[chId].desc = chapterDescs[chId]
-
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
