@@ -1,6 +1,6 @@
 """Integration tests for the pyWriter project.
 
-Test the html import tasks.
+Test the html outline tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -13,13 +13,12 @@ import zipfile
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw_new_file import YwNewFile
 
-from pywriter.html.html_import import HtmlImport
 from pywriter.html.html_outline import HtmlOutline
 
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/_import/'
+DATA_PATH = 'data/_outline/'
 
 TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'
 REFERENCE_HTML = DATA_PATH + 'normal.html'
@@ -69,7 +68,7 @@ class NrmOpr(unittest.TestCase):
     def setUp(self):
         remove_all_testfiles()
 
-    def test_wip(self):
+    def test_outline(self):
         """Import proofed yw7 scenes from html . """
 
         copy_file(REFERENCE_HTML, TEST_HTML)
@@ -77,7 +76,7 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = YwNewFile(TEST_YW7)
-        documentFile = HtmlImport(TEST_HTML)
+        documentFile = HtmlOutline(TEST_HTML)
         converter = YwCnv()
 
         # Convert html to xml and replace .yw7 file.

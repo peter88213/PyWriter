@@ -1,6 +1,6 @@
-"""Import a work in progress. 
+"""Import an outline. 
 
-Convert html with chapter headings and scene dividers to yWriter format.
+Convert html with chapter and scene headings/descriptions to yWriter format.
 
 Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -10,7 +10,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 import os
 
-from pywriter.html.html_import import HtmlImport
+from pywriter.html.html_outline import HtmlOutline
 from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 
@@ -19,7 +19,7 @@ def run(sourcePath, silentMode=True):
     fileName, FileExtension = os.path.splitext(sourcePath)
 
     if FileExtension == '.html':
-        document = HtmlImport('')
+        document = HtmlOutline('')
         extension = 'html'
 
     else:

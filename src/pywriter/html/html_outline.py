@@ -1,16 +1,18 @@
-"""HtmlImport - Class for html import file parsing.
+"""HtmlOutline - Class for html outline file parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import re
+from html import unescape
 
 from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.html.html_form import *
 
 
-class HtmlImport(HtmlManuscript):
+class HtmlOutline(HtmlManuscript):
     """HTML file representation of an yWriter project's OfficeFile part.
 
     Represents a html file without chapter and scene tags 
@@ -26,6 +28,8 @@ class HtmlImport(HtmlManuscript):
         _SCENE_DIVIDER = '* * *'
         _LOW_WORDCOUNT = 10
 
+        _OUTLINE_MODE = '{outline}'
+
         result = read_html_file(self._filePath)
 
         if result[0].startswith('ERROR'):
@@ -38,6 +42,7 @@ class HtmlImport(HtmlManuscript):
         chCount = 0     # overall chapter count
         scCount = 0     # overall scene count
 
+        outlineMode = False
         inBody = False
         contentFinished = False
         inSceneSection = False
@@ -50,6 +55,10 @@ class HtmlImport(HtmlManuscript):
         sceneDescs = {}
         chapterLevels = {}
 
+        tagRegEx = re.compile(r'(<!--.*?-->|<[^>]*>)')
+        scDesc = ''
+        chDesc = ''
+
         for line in lines:
 
             if contentFinished:
@@ -58,7 +67,10 @@ class HtmlImport(HtmlManuscript):
             line = line.rstrip().lstrip()
             scan = line.lower()
 
-            if '<h1' in scan or '<h2' in scan:
+            if '<body' in scan:
+                outlineMode = True
+
+            elif '<h1' in scan or '<h2' in scan:
                 inBody = True
 
                 if inSceneDescription or inChapterDescription:
@@ -69,6 +81,14 @@ class HtmlImport(HtmlManuscript):
                     # Close the previous scene section.
 
                     newlines.append('</DIV>')
+
+                    if outlineMode:
+
+                        # Write back scene description.
+
+                        sceneDescs[str(scCount)] = scDesc
+                        scDesc = ''
+
                     inSceneSection = False
 
                 if chCount > 0:
@@ -76,6 +96,13 @@ class HtmlImport(HtmlManuscript):
                     # Close the previous chapter section.
 
                     newlines.append('</DIV>')
+
+                    if outlineMode:
+
+                        # Write back previous chapter description.
+
+                        chapterDescs[str(chCount)] = chDesc
+                        chDesc = ''
 
                 chCount += 1
 
@@ -113,6 +140,13 @@ class HtmlImport(HtmlManuscript):
 
                     newlines.append('</DIV>')
 
+                    if outlineMode:
+
+                        # write back previous scene description.
+
+                        sceneDescs[str(scCount)] = scDesc
+                        scDesc = ''
+
                 scCount += 1
 
                 # Get scene title.
@@ -134,7 +168,17 @@ class HtmlImport(HtmlManuscript):
 
                 # Process a new paragraph.
 
-                if chCount > 0 and not inSceneSection:
+                if inChapterDescription:
+
+                    # Add a tagged chapter description.
+
+                    if chDesc != '':
+                        chDesc += '\n'
+
+                    chDesc += unescape(tagRegEx.sub('', line))
+                    inChapterDescription = True
+
+                elif chCount > 0 and not outlineMode and not inSceneSection:
                     scCount += 1
 
                     # Generate scene title.
@@ -145,10 +189,57 @@ class HtmlImport(HtmlManuscript):
 
                     newlines.append('<DIV ID="ScID:' + str(scCount) + '">')
                     inSceneSection = True
-                    newlines.append(line)
+
+                    if outlineMode:
+
+                        # Begin a new paragraph in the chapter description.
+
+                        if chDesc != '':
+                            chDesc += '\n'
+
+                        chDesc += unescape(tagRegEx.sub('', line))
+
+                    else:
+                        newlines.append(line)
+
+                elif inSceneDescription:
+
+                    # Add a tagged scene description.
+
+                    if scDesc != '':
+                        scDesc += '\n'
+
+                    scDesc += unescape(tagRegEx.sub('', line))
+                    inSceneDescription = True
+
+                elif outlineMode:
+
+                    if str(scCount) in sceneTitles:
+
+                        # Begin a new paragraph in the scene description.
+
+                        if scDesc != '':
+                            scDesc += '\n'
+
+                        scDesc += unescape(tagRegEx.sub('', line))
+
+                    else:
+
+                        # Begin a new paragraph in the chapter description.
+
+                        if chDesc != '':
+                            chDesc += '\n'
+
+                        chDesc += unescape(tagRegEx.sub('', line))
 
                 else:
                     newlines.append(line)
+
+            elif inChapterDescription:
+                chDesc += '\n' + unescape(tagRegEx.sub('', line))
+
+            elif inSceneDescription:
+                scDesc += '\n' + unescape(tagRegEx.sub('', line))
 
             else:
                 for marker in _TEXT_END_TAGS:
@@ -156,6 +247,13 @@ class HtmlImport(HtmlManuscript):
                     if marker in scan:
 
                         # Finish content processing.
+
+                        if outlineMode:
+
+                            # Write back last descriptions.
+
+                            chapterDescs[str(chCount)] = chDesc
+                            sceneDescs[str(scCount)] = scDesc
 
                         if inSceneSection:
 
@@ -174,7 +272,23 @@ class HtmlImport(HtmlManuscript):
                         break
 
                 if not contentFinished:
-                    newlines.append(line)
+
+                    if outlineMode:
+
+                        if str(scCount) in sceneTitles:
+
+                            # Add line to the scene description.
+
+                            scDesc += ' ' + unescape(tagRegEx.sub('', line))
+
+                        else:
+
+                            # Add line to the chapter description.
+
+                            chDesc += ' ' + unescape(tagRegEx.sub('', line))
+
+                    else:
+                        newlines.append(line)
 
         text = '\n'.join(newlines)
         text = to_yw7(text)
