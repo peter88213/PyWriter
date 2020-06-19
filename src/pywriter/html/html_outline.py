@@ -184,7 +184,7 @@ class HtmlOutline(HtmlManuscript):
                     if chDesc != '' and '<p' in scan:
                         chDesc += '\n'
 
-                    elif scDesc != '':
+                    elif chDesc != '':
                         chDesc += ' '
 
                     chDesc += unescape(tagRegEx.sub('', line))
