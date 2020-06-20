@@ -7,6 +7,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 
+from urllib.parse import quote
+
 from pywriter.odt.odt_file import OdtFile
 from pywriter.odt.odt_form import *
 from pywriter.globals import *
@@ -28,8 +30,8 @@ class OdtManuscript(OdtFile):
                 - the scene content.
         Return a message beginning with SUCCESS or ERROR.
         """
-        sceneDescPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(MANUSCRIPT_SUFFIX, SCENEDESC_SUFFIX)
+        sceneDescPath = '../' + quote(os.path.basename(self.filePath).replace(
+            '\\', '/'), '/:').replace(MANUSCRIPT_SUFFIX, SCENEDESC_SUFFIX)
         chapterDescPath = [sceneDescPath.replace(SCENEDESC_SUFFIX, CHAPTERDESC_SUFFIX),
                            sceneDescPath.replace(SCENEDESC_SUFFIX, PARTDESC_SUFFIX)]
 

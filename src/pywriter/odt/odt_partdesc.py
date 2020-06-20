@@ -7,6 +7,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 
+from urllib.parse import quote
+
 from pywriter.odt.odt_file import OdtFile
 from pywriter.odt.odt_form import *
 from pywriter.globals import *
@@ -29,8 +31,8 @@ class OdtPartDesc(OdtFile):
             - the "part" (i.e. chapter) summary.
         Return a message beginning with SUCCESS or ERROR.
         """
-        manuscriptPath = '../' + os.path.basename(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(PARTDESC_SUFFIX, MANUSCRIPT_SUFFIX)
+        manuscriptPath = '../' + quote(os.path.basename(self.filePath).replace(
+            '\\', '/'), '/:').replace(PARTDESC_SUFFIX, MANUSCRIPT_SUFFIX)
 
         lines = [self._CONTENT_XML_HEADER]
         lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)

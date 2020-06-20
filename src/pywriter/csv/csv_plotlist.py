@@ -14,6 +14,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import re
 
+from urllib.parse import quote
+
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
@@ -193,8 +195,8 @@ class CsvPlotList(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        odtPath = os.path.realpath(self.filePath).replace('\\', '/').replace(
-            ' ', '%20').replace(PLOTLIST_SUFFIX + '.csv', MANUSCRIPT_SUFFIX + '.odt')
+        odtPath = quote(os.path.realpath(self.filePath).replace(
+            '\\', '/'), '/:').replace(PLOTLIST_SUFFIX + '.csv', MANUSCRIPT_SUFFIX + '.odt')
 
         # first record: the table's column headings
 
