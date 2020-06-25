@@ -10,9 +10,16 @@ MANUSCRIPT_SUFFIX = '_manuscript'
 PARTDESC_SUFFIX = '_parts'
 CHAPTERDESC_SUFFIX = '_chapters'
 SCENEDESC_SUFFIX = '_scenes'
+
+CHARDESC_SUFFIX = '_characters'
+LOCDESC_SUFFIX = '_locations'
+ITEMDESC_SUFFIX = '_items'
+
 PROOF_SUFFIX = '_proof'
+
 SCENELIST_SUFFIX = '_scenelist'
 PLOTLIST_SUFFIX = '_plotlist'
+
 CHARLIST_SUFFIX = '_charlist'
 LOCLIST_SUFFIX = '_loclist'
 ITEMLIST_SUFFIX = '_itemlist'
