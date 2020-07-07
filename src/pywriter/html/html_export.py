@@ -191,7 +191,7 @@ class HtmlExport(Novel):
                 # Prepare data for substitution.
 
                 if self.scenes[scId].tags is not None:
-                    sceneTags = ','.join(self.scenes[scId].tags)
+                    sceneTags = ', '.join(self.scenes[scId].tags)
 
                 else:
                     sceneTags = ''
@@ -202,7 +202,7 @@ class HtmlExport(Novel):
                     for chId in self.scenes[scId].characters:
                         sChList.append(self.characters[chId].title)
 
-                    sceneChars = ','.join(sChList)
+                    sceneChars = ', '.join(sChList)
 
                     viewpointChar = sChList[0]
 
@@ -216,7 +216,7 @@ class HtmlExport(Novel):
                     for lcId in self.scenes[scId].locations:
                         sLcList.append(self.locations[lcId].title)
 
-                    sceneLocs = ','.join(sLcList)
+                    sceneLocs = ', '.join(sLcList)
 
                 else:
                     sceneLocs = ''
@@ -227,7 +227,7 @@ class HtmlExport(Novel):
                     for itId in self.scenes[scId].items:
                         sItList.append(self.items[itId].title)
 
-                    sceneItems = ','.join(sItList)
+                    sceneItems = ', '.join(sItList)
 
                 else:
                     sceneItems = ''
