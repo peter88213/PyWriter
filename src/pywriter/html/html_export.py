@@ -5,8 +5,9 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
+from html import escape
 from string import Template
+
 from pywriter.model.novel import Novel
 from pywriter.model.scene import Scene
 from pywriter.html.html_form import read_html_file
@@ -71,6 +72,7 @@ class HtmlExport(Novel):
             """Convert yw7 markup to html."""
 
             if text is not None:
+                text = escape(text)
                 text = text.replace('\n', '</p>\n<p>')
                 text = text.replace('[i]', '<em>')
                 text = text.replace('[/i]', '</em>')
@@ -145,7 +147,11 @@ class HtmlExport(Novel):
         htmlHeaderSubst = dict(
             Title=self.title,
             Desc=to_html(self.desc),
-            AuthorName=self.author
+            AuthorName=self.author,
+            FieldTitle1=self.fieldTitle1,
+            FieldTitle2=self.fieldTitle2,
+            FieldTitle3=self.fieldTitle3,
+            FieldTitle4=self.fieldTitle4,
         )
 
         htmlTemplate = Template(htmlHeader)
@@ -163,7 +169,7 @@ class HtmlExport(Novel):
 
             chapterSubst = dict(
                 Title=self.chapters[chId].title,
-                Desc=to_html(self.chapters[chId].desc)
+                Desc=to_html(self.chapters[chId].desc),
             )
 
             htmlTemplate = Template(chapterTemplate)
@@ -182,6 +188,56 @@ class HtmlExport(Novel):
                 if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
                     lines.append(sceneDivider)
 
+                # Prepare data for substitution.
+
+                if self.scenes[scId].tags is not None:
+                    sceneTags = ','.join(self.scenes[scId].tags)
+
+                else:
+                    sceneTags = ''
+
+                if self.scenes[scId].characters is not None:
+                    sChList = []
+
+                    for chId in self.scenes[scId].characters:
+                        sChList.append(self.characters[chId].title)
+
+                    sceneChars = ','.join(sChList)
+
+                    viewpointChar = sChList[0]
+
+                else:
+                    sceneChars = ''
+                    viewpointChar = ''
+
+                if self.scenes[scId].locations is not None:
+                    sLcList = []
+
+                    for lcId in self.scenes[scId].locations:
+                        sLcList.append(self.locations[lcId].title)
+
+                    sceneLocs = ','.join(sLcList)
+
+                else:
+                    sceneLocs = ''
+
+                if self.scenes[scId].items is not None:
+                    sItList = []
+
+                    for itId in self.scenes[scId].items:
+                        sItList.append(self.items[itId].title)
+
+                    sceneItems = ','.join(sItList)
+
+                else:
+                    sceneItems = ''
+
+                if self.scenes[scId].isReactionScene:
+                    reactionScene = 'R'
+
+                else:
+                    reactionScene = 'A'
+
                 # Append scene template and fill in.
 
                 sceneSubst = dict(
@@ -190,7 +246,25 @@ class HtmlExport(Novel):
                     WordCount=str(self.scenes[scId].wordCount),
                     LetterCount=str(self.scenes[scId].letterCount),
                     Status=Scene.STATUS[self.scenes[scId].status],
-                    SceneContent=to_html(self.scenes[scId].sceneContent)
+                    SceneContent=to_html(self.scenes[scId].sceneContent),
+                    FieldTitle1=self.fieldTitle1,
+                    FieldTitle2=self.fieldTitle2,
+                    FieldTitle3=self.fieldTitle3,
+                    FieldTitle4=self.fieldTitle4,
+                    Field1=self.scenes[scId].field1,
+                    Field2=self.scenes[scId].field2,
+                    Field3=self.scenes[scId].field3,
+                    Field4=self.scenes[scId].field4,
+                    ReactionScene=reactionScene,
+                    Goal=to_html(self.scenes[scId].goal),
+                    Conflict=to_html(self.scenes[scId].conflict),
+                    Outcome=to_html(self.scenes[scId].outcome),
+                    Tags=sceneTags,
+                    Characters=sceneChars,
+                    Viewpoint=viewpointChar,
+                    Locations=sceneLocs,
+                    Items=sceneItems,
+                    Notes=to_html(self.scenes[scId].sceneNotes),
                 )
 
                 htmlTemplate = Template(sceneTemplate)
