@@ -14,17 +14,20 @@ from pywriter.html.html_form import read_html_file
 
 # Template files
 
-HTML_HEADER = 'html_header.html'
-HTML_FOOTER = 'html_footer.html'
-CHAPTER_TEMPLATE = 'chapter_template.html'
-SCENE_TEMPLATE = 'scene_template.html'
-SCENE_DIVIDER = 'scene_divider.html'
-
 
 class HtmlExport(Novel):
-
     _FILE_EXTENSION = 'html'
     # overwrites Novel._FILE_EXTENSION
+
+    _HTML_HEADER = '/html_header.html'
+    _HTML_FOOTER = '/html_footer.html'
+    _CHAPTER_TEMPLATE = '/chapter_template.html'
+    _SCENE_TEMPLATE = '/scene_template.html'
+    _SCENE_DIVIDER = '/scene_divider.html'
+
+    def __init__(self, filePath, templatePath='.'):
+        Novel.__init__(self, filePath)
+        self.templatePath = templatePath
 
     def merge(self, novel):
         """Copy selected novel attributes.
@@ -111,61 +114,49 @@ class HtmlExport(Novel):
 
         # Initialize templates.
 
-        result = read_html_file(HTML_HEADER)
+        result = read_html_file(self.templatePath + self._HTML_HEADER)
 
         if result[1] is not None:
             htmlHeader = result[1]
 
         else:
-            htmlHeader = '''<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>$Title</title>
-</head>
-<body>
-'''
+            htmlHeader = ''
 
-        result = read_html_file(CHAPTER_TEMPLATE)
+        result = read_html_file(self.templatePath + self._CHAPTER_TEMPLATE)
 
         if result[1] is not None:
             chapterTemplate = result[1]
 
         else:
-            chapterTemplate = '''<h2>$Title</h2>
-'''
+            chapterTemplate = ''
 
-        result = read_html_file(SCENE_TEMPLATE)
+        result = read_html_file(self.templatePath + self._SCENE_TEMPLATE)
 
         if result[1] is not None:
             sceneTemplate = result[1]
 
         else:
-            sceneTemplate = '''
-<p>$SceneContent</p>
-'''
+            sceneTemplate = ''
 
-        result = read_html_file(SCENE_DIVIDER)
+        result = read_html_file(self.templatePath + self._SCENE_DIVIDER)
 
         if result[1] is not None:
             sceneDivider = result[1]
 
         else:
-            sceneDivider = '''
-<h4>* * *</h4>
-'''
+            sceneDivider = ''
 
-        result = read_html_file(HTML_FOOTER)
+        result = read_html_file(self.templatePath + self._HTML_FOOTER)
 
         if result[1] is not None:
             htmlFooter = result[1]
 
         else:
-            htmlFooter = '''</body>
-</html>
-'''
+            htmlFooter = ''
 
         lines = []
         wordsTotal = 0
+        lettersTotal = 0
 
         # Append html header template and fill in.
 
@@ -204,6 +195,7 @@ class HtmlExport(Novel):
 
             for scId in self.chapters[chId].srtScenes:
                 wordsTotal += self.scenes[scId].wordCount
+                lettersTotal += self.scenes[scId].letterCount
 
                 if self.scenes[scId].isUnused:
                     continue
@@ -272,6 +264,7 @@ class HtmlExport(Novel):
                     WordCount=str(self.scenes[scId].wordCount),
                     WordsTotal=wordsTotal,
                     LetterCount=str(self.scenes[scId].letterCount),
+                    LettersTotal=lettersTotal,
                     Status=Scene.STATUS[self.scenes[scId].status],
                     SceneContent=to_html(self.scenes[scId].sceneContent),
                     FieldTitle1=self.fieldTitle1,
