@@ -48,6 +48,30 @@ class HtmlExport(Novel):
         else:
             self.author = novel.author
 
+        if novel.fieldTitle1 is not None:
+            self.fieldTitle1 = novel.fieldTitle1
+
+        else:
+            self.fieldTitle1 = 'Field 1'
+
+        if novel.fieldTitle2 is not None:
+            self.fieldTitle2 = novel.fieldTitle2
+
+        else:
+            self.fieldTitle2 = 'Field 2'
+
+        if novel.fieldTitle3 is not None:
+            self.fieldTitle3 = novel.fieldTitle3
+
+        else:
+            self.fieldTitle3 = 'Field 3'
+
+        if novel.fieldTitle4 is not None:
+            self.fieldTitle4 = novel.fieldTitle4
+
+        else:
+            self.fieldTitle4 = 'Field 4'
+
         if novel.srtChapters != []:
             self.srtChapters = novel.srtChapters
 
@@ -141,6 +165,7 @@ class HtmlExport(Novel):
 '''
 
         lines = []
+        wordsTotal = 0
 
         # Append html header template and fill in.
 
@@ -178,6 +203,7 @@ class HtmlExport(Novel):
             firstSceneInChapter = True
 
             for scId in self.chapters[chId].srtScenes:
+                wordsTotal += self.scenes[scId].wordCount
 
                 if self.scenes[scId].isUnused:
                     continue
@@ -244,6 +270,7 @@ class HtmlExport(Novel):
                     Title=self.scenes[scId].title,
                     Desc=to_html(self.scenes[scId].desc),
                     WordCount=str(self.scenes[scId].wordCount),
+                    WordsTotal=wordsTotal,
                     LetterCount=str(self.scenes[scId].letterCount),
                     Status=Scene.STATUS[self.scenes[scId].status],
                     SceneContent=to_html(self.scenes[scId].sceneContent),
@@ -275,7 +302,7 @@ class HtmlExport(Novel):
         # Append html footer and fill in.
 
         lines.append(htmlFooter)
-        text = '\n'.join(lines)
+        text = ''.join(lines)
 
         try:
             with open(self.filePath, 'w', encoding='utf-8') as f:
