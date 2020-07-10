@@ -225,43 +225,19 @@ class CsvSceneList(Novel):
     def merge(self, novel):
         """Copy selected novel attributes.
         """
+        Novel.merge(self, novel)
 
-        if novel.srtChapters != []:
-            self.srtChapters = novel.srtChapters
-
-        if novel.scenes is not None:
-            self.scenes = novel.scenes
-
-        if novel.chapters is not None:
-            self.chapters = novel.chapters
-
-        if novel.fieldTitle1 is not None:
-            self.fieldTitle1 = novel.fieldTitle1
-
-        else:
+        if novel.fieldTitle1 is None:
             self.fieldTitle1 = 'Field 1'
 
-        if novel.fieldTitle2 is not None:
-            self.fieldTitle2 = novel.fieldTitle2
-
-        else:
+        if novel.fieldTitle2 is None:
             self.fieldTitle2 = 'Field 2'
 
-        if novel.fieldTitle3 is not None:
-            self.fieldTitle3 = novel.fieldTitle3
-
-        else:
+        if novel.fieldTitle3 is None:
             self.fieldTitle3 = 'Field 3'
 
-        if novel.fieldTitle4 is not None:
-            self.fieldTitle4 = novel.fieldTitle4
-
-        else:
+        if novel.fieldTitle4 is None:
             self.fieldTitle4 = 'Field 4'
-
-        self.characters = novel.characters
-        self.locations = novel.locations
-        self.items = novel.items
 
     def write(self):
         """Generate a csv file containing a row per scene

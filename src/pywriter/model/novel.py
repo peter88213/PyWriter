@@ -110,11 +110,48 @@ class Novel():
         To be overwritten by file format specific subclasses.
         """
 
-    @abstractmethod
     def merge(self, novel):
-        """Merge selected novel properties.
-        To be overwritten by file format specific subclasses.
+        """Merge novel properties.
         """
+        if novel.title:
+            # avoids deleting the title, if it is empty by accident
+            self.title = novel.title
+
+        if novel.desc is not None:
+            self.desc = novel.desc
+
+        if novel.author is not None:
+            self.author = novel.author
+
+        if novel.fieldTitle1 is not None:
+            self.fieldTitle1 = novel.fieldTitle1
+
+        if novel.fieldTitle2 is not None:
+            self.fieldTitle2 = novel.fieldTitle2
+
+        if novel.fieldTitle3 is not None:
+            self.fieldTitle3 = novel.fieldTitle3
+
+        if novel.fieldTitle4 is not None:
+            self.fieldTitle4 = novel.fieldTitle4
+
+        if novel.srtChapters != []:
+            self.srtChapters = novel.srtChapters
+
+        if novel.scenes != {}:
+            self.scenes = novel.scenes
+
+        if novel.chapters != {}:
+            self.chapters = novel.chapters
+
+        if novel.characters != {}:
+            self.characters = novel.characters
+
+        if novel.locations != {}:
+            self.locations = novel.locations
+
+        if novel.items != {}:
+            self.items = novel.items
 
     @abstractmethod
     def write(self):

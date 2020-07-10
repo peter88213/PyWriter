@@ -96,9 +96,7 @@ class CsvCharList(Novel):
     def merge(self, novel):
         """Copy selected novel attributes.
         """
-
-        if novel.characters is not None:
-            self.characters = novel.characters
+        self.characters = novel.characters
 
     def write(self):
         """Generate a csv file containing per character:

@@ -74,9 +74,7 @@ class CsvItemList(Novel):
     def merge(self, novel):
         """Copy selected novel attributes.
         """
-
-        if novel.items is not None:
-            self.items = novel.items
+        self.items = novel.items
 
     def write(self):
         """Generate a csv file containing per item:
