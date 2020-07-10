@@ -398,68 +398,17 @@ class YwFile(Novel):
         # Merge locations.
 
         for lcId in novel.locations:
-
-            if novel.locations[lcId].title:
-                # avoids deleting the title, if it is empty by accident
-                self.locations[lcId].title = novel.locations[lcId].title
-
-            if novel.locations[lcId].desc is not None:
-                self.locations[lcId].desc = novel.locations[lcId].desc
-
-            if novel.locations[lcId].aka is not None:
-                self.locations[lcId].aka = novel.locations[lcId].aka
-
-            if novel.locations[lcId].tags is not None:
-                self.locations[lcId].tags = novel.locations[lcId].tags
+            self.locations[lcId].merge(novel.locations[lcId])
 
         # Merge items.
 
         for itId in novel.items:
-
-            if novel.items[itId].title:
-                # avoids deleting the title, if it is empty by accident
-                self.items[itId].title = novel.items[itId].title
-
-            if novel.items[itId].desc is not None:
-                self.items[itId].desc = novel.items[itId].desc
-
-            if novel.items[itId].aka is not None:
-                self.items[itId].aka = novel.items[itId].aka
-
-            if novel.items[itId].tags is not None:
-                self.items[itId].tags = novel.items[itId].tags
+            self.items[itId].merge(novel.items[itId])
 
         # Merge characters.
 
         for crId in novel.characters:
-
-            if novel.characters[crId].title:
-                # avoids deleting the title, if it is empty by accident
-                self.characters[crId].title = novel.characters[crId].title
-
-            if novel.characters[crId].desc is not None:
-                self.characters[crId].desc = novel.characters[crId].desc
-
-            if novel.characters[crId].aka is not None:
-                self.characters[crId].aka = novel.characters[crId].aka
-
-            if novel.characters[crId].tags is not None:
-                self.characters[crId].tags = novel.characters[crId].tags
-
-            if novel.characters[crId].notes is not None:
-                self.characters[crId].notes = novel.characters[crId].notes
-
-            if novel.characters[crId].bio is not None:
-                self.characters[crId].bio = novel.characters[crId].bio
-
-            if novel.characters[crId].goals is not None:
-                self.characters[crId].goals = novel.characters[crId].goals
-
-            if novel.characters[crId].fullName is not None:
-                self.characters[crId].fullName = novel.characters[crId].fullName
-
-            if novel.characters[crId].isMajor is not None:
-                self.characters[crId].isMajor = novel.characters[crId].isMajor
+            self.characters[crId].merge(novel.characters[crId])
 
         # Merge attributes at novel level.
 
@@ -495,28 +444,7 @@ class YwFile(Novel):
         # Merge attributes at chapter level.
 
         for chId in novel.chapters:
-
-            if novel.chapters[chId].title:
-                # avoids deleting the title, if it is empty by accident
-                self.chapters[chId].title = novel.chapters[chId].title
-
-            if novel.chapters[chId].desc is not None:
-                self.chapters[chId].desc = novel.chapters[chId].desc
-
-            if novel.chapters[chId].chLevel is not None:
-                self.chapters[chId].chLevel = novel.chapters[chId].chLevel
-
-            if novel.chapters[chId].chType is not None:
-                self.chapters[chId].chType = novel.chapters[chId].chType
-
-            if novel.chapters[chId].isUnused is not None:
-                self.chapters[chId].isUnused = novel.chapters[chId].isUnused
-
-            if novel.chapters[chId].suppressChapterTitle is not None:
-                self.chapters[chId].suppressChapterTitle = novel.chapters[chId].suppressChapterTitle
-
-            if novel.chapters[chId].isTrash is not None:
-                self.chapters[chId].isTrash = novel.chapters[chId].isTrash
+            self.chapters[chId].merge(novel.chapters[chId])
 
             '''Do not modify these items yet:
             
@@ -528,82 +456,7 @@ class YwFile(Novel):
         # Merge attributes at scene level.
 
         for scId in novel.scenes:
-
-            if novel.scenes[scId].title:
-                # avoids deleting the title, if it is empty by accident
-                self.scenes[scId].title = novel.scenes[scId].title
-
-            if novel.scenes[scId].desc is not None:
-                self.scenes[scId].desc = novel.scenes[scId].desc
-
-            if novel.scenes[scId].sceneContent is not None:
-                self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
-
-            if novel.scenes[scId].isUnused is not None:
-                self.scenes[scId].isUnused = novel.scenes[scId].isUnused
-
-            if novel.scenes[scId].status is not None:
-                self.scenes[scId].status = novel.scenes[scId].status
-
-            if novel.scenes[scId].sceneNotes is not None:
-                self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
-
-            if novel.scenes[scId].tags is not None:
-                self.scenes[scId].tags = novel.scenes[scId].tags
-
-            if novel.scenes[scId].field1 is not None:
-                self.scenes[scId].field1 = novel.scenes[scId].field1
-
-            if novel.scenes[scId].field2 is not None:
-                self.scenes[scId].field2 = novel.scenes[scId].field2
-
-            if novel.scenes[scId].field3 is not None:
-                self.scenes[scId].field3 = novel.scenes[scId].field3
-
-            if novel.scenes[scId].field4 is not None:
-                self.scenes[scId].field4 = novel.scenes[scId].field4
-
-            if novel.scenes[scId].appendToPrev is not None:
-                self.scenes[scId].appendToPrev = novel.scenes[scId].appendToPrev
-
-            if novel.scenes[scId].date is not None:
-                self.scenes[scId].date = novel.scenes[scId].date
-
-            if novel.scenes[scId].time is not None:
-                self.scenes[scId].time = novel.scenes[scId].time
-
-            if novel.scenes[scId].minute is not None:
-                self.scenes[scId].minute = novel.scenes[scId].minute
-
-            if novel.scenes[scId].hour is not None:
-                self.scenes[scId].hour = novel.scenes[scId].hour
-
-            if novel.scenes[scId].day is not None:
-                self.scenes[scId].day = novel.scenes[scId].day
-
-            if novel.scenes[scId].lastsMinutes is not None:
-                self.scenes[scId].lastsMinutes = novel.scenes[scId].lastsMinutes
-
-            if novel.scenes[scId].lastsHours is not None:
-                self.scenes[scId].lastsHours = novel.scenes[scId].lastsHours
-
-            if novel.scenes[scId].lastsDays is not None:
-                self.scenes[scId].lastsDays = novel.scenes[scId].lastsDays
-
-            if novel.scenes[scId].isReactionScene is not None:
-                self.scenes[scId].isReactionScene = novel.scenes[scId].isReactionScene
-
-            if novel.scenes[scId].isSubPlot is not None:
-                self.scenes[scId].isSubPlot = novel.scenes[scId].isSubPlot
-
-            if novel.scenes[scId].goal is not None:
-                self.scenes[scId].goal = novel.scenes[scId].goal
-
-            if novel.scenes[scId].conflict is not None:
-                self.scenes[scId].conflict = novel.scenes[scId].conflict
-
-            if novel.scenes[scId].outcome is not None:
-                self.scenes[scId].outcome = novel.scenes[scId].outcome
+            self.scenes[scId].merge(novel.scenes[scId])
 
             if novel.scenes[scId].characters is not None:
                 self.scenes[scId].characters = []

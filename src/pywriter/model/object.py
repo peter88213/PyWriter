@@ -28,3 +28,20 @@ class Object():
         self.aka = None
         # str
         # xml: <AKA>
+
+    def merge(self, obj):
+        """Merge attributes.
+        """
+
+        if obj.title:
+            # avoids deleting the title, if it is empty by accident
+            self.title = obj.title
+
+        if obj.desc is not None:
+            self.desc = obj.desc
+
+        if obj.aka is not None:
+            self.aka = obj.aka
+
+        if obj.tags is not None:
+            self.tags = obj.tags

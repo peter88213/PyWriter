@@ -8,6 +8,9 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from abc import abstractmethod
 import os
 
+from pywriter.model.character import Character
+from pywriter.model.object import Object
+
 
 class Novel():
     """Abstract yWriter project file representation.
@@ -111,8 +114,37 @@ class Novel():
         """
 
     def merge(self, novel):
-        """Merge novel properties.
+        """Merge attributes.
         """
+        # Merge locations.
+
+        for lcId in novel.locations:
+
+            if not lcId in self.locations:
+                self.locations[lcId] = Object()
+
+            self.locations[lcId].merge(novel.locations[lcId])
+
+        # Merge items.
+
+        for itId in novel.items:
+
+            if not itId in self.items:
+                self.items[itId] = Object()
+
+            self.items[itId].merge(novel.items[itId])
+
+        # Merge characters.
+
+        for crId in novel.characters:
+
+            if not crId in self.characters:
+                self.characters[crId] = Character()
+
+            self.characters[crId].merge(novel.characters[crId])
+
+        # Merge attributes at novel level.
+
         if novel.title:
             # avoids deleting the title, if it is empty by accident
             self.title = novel.title
@@ -143,15 +175,6 @@ class Novel():
 
         if novel.chapters != {}:
             self.chapters = novel.chapters
-
-        if novel.characters != {}:
-            self.characters = novel.characters
-
-        if novel.locations != {}:
-            self.locations = novel.locations
-
-        if novel.items != {}:
-            self.items = novel.items
 
     @abstractmethod
     def write(self):

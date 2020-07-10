@@ -72,3 +72,29 @@ class Chapter():
             text = text.replace('Chapter ', '')
 
         return text
+
+    def merge(self, chapter):
+        """Merge attributes.
+        """
+
+        if chapter.title:
+            # avoids deleting the title, if it is empty by accident
+            self.title = chapter.title
+
+        if chapter.desc is not None:
+            self.desc = chapter.desc
+
+        if chapter.chLevel is not None:
+            self.chLevel = chapter.chLevel
+
+        if chapter.chType is not None:
+            self.chType = chapter.chType
+
+        if chapter.isUnused is not None:
+            self.isUnused = chapter.isUnused
+
+        if chapter.suppressChapterTitle is not None:
+            self.suppressChapterTitle = chapter.suppressChapterTitle
+
+        if chapter.isTrash is not None:
+            self.isTrash = chapter.isTrash
