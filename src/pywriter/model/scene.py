@@ -108,15 +108,38 @@ class Scene():
         # list of str
         # xml: <Items><ItemID>
 
-        # xml: <SpecificDateMode>-1</SpecificDateMode>
-        # xml: <SpecificDateTime>1900-06-01 20:38:00</SpecificDateTime>
+        self.date = None
+        # str
+        # xml: <SpecificDateMode>-1
+        # xml: <SpecificDateTime>1900-06-01 20:38:00
 
+        self.time = None
+        # str
+        # xml: <SpecificDateMode>-1
+        # xml: <SpecificDateTime>1900-06-01 20:38:00
+
+        self.minute = None
+        # str
         # xml: <Minute>
+
+        self.hour = None
+        # str
         # xml: <Hour>
+
+        self.day = None
+        # str
         # xml: <Day>
 
+        self.lastsMinutes = None
+        # str
         # xml: <LastsMinutes>
+
+        self.lastsHours = None
+        # str
         # xml: <LastsHours>
+
+        self.lastsDays = None
+        # str
         # xml: <LastsDays>
 
     @property
