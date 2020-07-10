@@ -217,6 +217,40 @@ class YwNewFile(Novel):
             if self.scenes[scId].appendToPrev:
                 ET.SubElement(scn, 'AppendToPrev').text = '-1'
 
+            # Date/time information
+
+            if (self.scenes[scId].date is not None) and (self.scenes[scId].time is not None):
+                dateTime = ' '.join(
+                    self.scenes[scId].date, self.scenes[scId].time)
+                ET.SubElement(scn, 'SpecificDateTime').text = dateTime
+                ET.SubElement(scn, 'SpecificDateMode').text = '-1'
+
+            elif (self.scenes[scId].day is not None) or (self.scenes[scId].hour is not None) or (self.scenes[scId].minute is not None):
+
+                if self.scenes[scId].day is not None:
+                    ET.SubElement(scn, 'Day').text = self.scenes[scId].day
+
+                if self.scenes[scId].hour is not None:
+                    ET.SubElement(scn, 'Hour').text = self.scenes[scId].hour
+
+                if self.scenes[scId].minute is not None:
+                    ET.SubElement(
+                        scn, 'Minute').text = self.scenes[scId].minute
+
+            if self.scenes[scId].lastsDays is not None:
+                ET.SubElement(
+                    scn, 'LastsDays').text = self.scenes[scId].lastsDays
+
+            if self.scenes[scId].lastsHours is not None:
+                ET.SubElement(
+                    scn, 'LastsHours').text = self.scenes[scId].lastsHours
+
+            if self.scenes[scId].lastsMinutes is not None:
+                ET.SubElement(
+                    scn, 'LastsMinutes').text = self.scenes[scId].lastsMinutes
+
+            # Plot related information
+
             if self.scenes[scId].isReactionScene:
                 ET.SubElement(scn, 'ReactionScene').text = '-1'
 
