@@ -45,6 +45,10 @@ class Scene():
         # bool
         # xml: <Unused> -1
 
+        self.doNotExport = None
+        # bool
+        # xml: <ExportCondSpecific><ExportWhenRTF>
+
         self.status = None
         # int # xml: <Status>
 
@@ -179,6 +183,9 @@ class Scene():
 
         if scene.isUnused is not None:
             self.isUnused = scene.isUnused
+
+        if scene.doNotExport is not None:
+            self.doNotExport = scene.doNotExport
 
         if scene.status is not None:
             self.status = scene.status

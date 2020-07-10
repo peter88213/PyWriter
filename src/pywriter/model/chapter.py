@@ -56,7 +56,7 @@ class Chapter():
 
         self.doNotExport = None
         # bool
-        # xml: <<Fields>Field_SuppressChapterBreak> 0
+        # xml: <Fields><Field_SuppressChapterBreak> 0
 
         self.srtScenes = []
         # list of str

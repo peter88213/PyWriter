@@ -10,6 +10,8 @@ import os
 
 from pywriter.model.character import Character
 from pywriter.model.object import Object
+from pywriter.model.scene import Scene
+from pywriter.model.chapter import Chapter
 
 
 class Novel():
@@ -143,6 +145,59 @@ class Novel():
 
             self.characters[crId].merge(novel.characters[crId])
 
+        # Merge scenes.
+
+        for scId in novel.scenes:
+
+            if not scId in self.scenes:
+                self.scenes[scId] = Scene()
+
+            self.scenes[scId].merge(novel.scenes[scId])
+
+            if novel.scenes[scId].characters is not None:
+                self.scenes[scId].characters = []
+
+                for crId in novel.scenes[scId].characters:
+
+                    if crId in self.characters:
+                        self.scenes[scId].characters.append(crId)
+
+            if novel.scenes[scId].locations is not None:
+                self.scenes[scId].locations = []
+
+                for lcId in novel.scenes[scId].locations:
+
+                    if lcId in self.locations:
+                        self.scenes[scId].locations.append(lcId)
+
+            if novel.scenes[scId].items is not None:
+                self.scenes[scId].items = []
+
+                for itId in novel.scenes[scId].items:
+
+                    if itId in self.items:
+                        self.scenes[scId].append(itId)
+
+        # Merge chapters.
+
+        scenesAssigned = []
+
+        for chId in novel.chapters:
+
+            if not chId in self.chapters:
+                self.chapters[chId] = Chapter()
+
+            self.chapters[chId].merge(novel.chapters[chId])
+
+            if novel.chapters[chId].srtScenes is not None:
+                self.chapters[chId].srtScenes = []
+
+                for scId in novel.chapters[chId].srtScenes:
+
+                    if (scId in self.scenes) and not (scId in scenesAssigned):
+                        self.chapters[chId].srtScenes.append(scId)
+                        scenesAssigned.append(scId)
+
         # Merge attributes at novel level.
 
         if novel.title:
@@ -168,13 +223,12 @@ class Novel():
             self.fieldTitle4 = novel.fieldTitle4
 
         if novel.srtChapters != []:
-            self.srtChapters = novel.srtChapters
+            self.srtChapters = []
 
-        if novel.scenes != {}:
-            self.scenes = novel.scenes
+            for chId in novel.srtChapters:
 
-        if novel.chapters != {}:
-            self.chapters = novel.chapters
+                if chId in self.chapters:
+                    self.srtChapters.append(chId)
 
     @abstractmethod
     def write(self):
