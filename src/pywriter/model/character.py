@@ -14,6 +14,9 @@ class Character(Object):
     # xml: <CHARACTERS><CHARACTER>
     """
 
+    MAJOR_MARKER = 'Major'
+    MINOR_MARKER = 'Minor'
+
     def __init__(self):
         Object.__init__(self)
 

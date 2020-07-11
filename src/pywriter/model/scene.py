@@ -17,6 +17,8 @@ class Scene():
     # Emulate an enumeration for the scene status
 
     STATUS = [None, 'Outline', 'Draft', '1st Edit', '2nd Edit', 'Done']
+    ACTION_MARKER = 'A'
+    REACTION_MARKER = 'R'
 
     def __init__(self):
         self.title = None
