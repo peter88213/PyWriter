@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" office:version="1.2">
+ <office:scripts/>
+ <office:font-face-decls>
+  <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
+  <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
+   </office:font-face-decls>
+ <office:automatic-styles>
+  <style:style style:name="Sect1" style:family="section">
+   <style:section-properties style:editable="false">
+    <style:columns fo:column-count="1" fo:column-gap="0cm"/>
+   </style:section-properties>
+  </style:style>
+ </office:automatic-styles>
+ <office:body>
+  <office:text text:use-soft-page-breaks="true">
+
+<text:p text:style-name="Title">Hal Spacejock book one - Sample yWriter Project</text:p>
+<text:p text:style-name="Subtitle">Characters</text:p>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Hal/Hal Spacejock ("Spacejock")</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:1">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:1">
+<text:p text:style-name="Text_20_body">Somehow, Hal Spacejock ended up in the cargo game. With a loan from a dodgy operator and a ship from the wrong side of the nearest junkyard he works the back reaches of the galaxy. A couple of important things about Hal - he's determined to stay on the right side of the law, and he has a strong sense of justice.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:1">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Jerling/Walter Jerling ("Walter")</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:2">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:2">
+<text:p text:style-name="Text_20_body">Walter Jerling runs a conglomerate spanning several planets. Ruthless and wealthy, he's never forgotten his more modest roots and watches his money carefully.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:2">
+<text:p text:style-name="Text_20_body">One of his companies needs an urgent shipment of parts to complete a set of new robots for the Emperor.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Clunk/Clunk XG99 ("XG99")</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:3">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:3">
+<text:p text:style-name="Text_20_body">Aging humanoid robot owned by Walter Jerling's company, Clunk is being shipped off for reprogramming and advanced pilot training.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:3">
+<text:p text:style-name="Text_20_body">Undergo a refit and advanced pilot training, making him even more useful to his owner.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Vurdi/Vurdi Makalukar</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:4">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:4">
+<text:p text:style-name="Text_20_body">A freelance debt collector looking for that one big client to shake down. Has his sights on Hal and Farrell.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:4">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Farrell/Farrell Hinchfig</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:5">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:5">
+<text:p text:style-name="Text_20_body">Younger brother of Gordon Hinchfig, Farrell is a wastrel playboy whose money has been cut off.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:5">
+<text:p text:style-name="Text_20_body">Pay off his gambling debts</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Terry</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:6">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:6">
+<text:p text:style-name="Text_20_body">Farrell's driver, bodyguard and dirty tricks man. Rough and tough, not someone to cross.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:6">
+<text:p text:style-name="Text_20_body">Whatever Farrell wants.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Carina/Carina Rinoret</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:7">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:7">
+<text:p text:style-name="Text_20_body">Walter Jerling's private assistant</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:7">
+<text:p text:style-name="Text_20_body">Bit player</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Mike</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:8">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:8">
+<text:p text:style-name="Text_20_body">Computer expert at Hinchfig Enterprises.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:8">
+<text:p text:style-name="Text_20_body">Bit player</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Gordon/Gordon Hinchfig</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:9">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:9">
+<text:p text:style-name="Text_20_body">Owner of Hinchfig Enterprises, which he inherited from his parents. His father had business acumen and a flair for new products. Gordon has none, and so he slavishly follows his late father's methods with little of his success. His lack of business nous is the reason the company is in trouble, and the reason Farrell Hinchfig no longer has cash to throw around.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:9">
+<text:p text:style-name="Text_20_body">Revitalise the company</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Navcom</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:10">
+<text:p text:style-name="Text_20_body">The Black Gull's flight computer</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:10">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:10">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Brutus</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:11">
+<text:p text:style-name="Text_20_body">Vurdi's enforcer robot.</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:11">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:11">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Portmaster/Portmaster Linten</text:h>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:12">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:12">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:12">
+<text:p text:style-name="Text_20_body"></text:p>
+</text:section>
+  </office:text>
+ </office:body>
+</office:document-content>
