@@ -726,8 +726,8 @@ class YwFile(Novel):
                 # Date/time information
 
                 if (self.scenes[scId].date is not None) and (self.scenes[scId].time is not None):
-                    dateTime = ' '.join(
-                        [self.scenes[scId].date, self.scenes[scId].time])
+                    dateTime = self.scenes[scId].date + \
+                        ' ' + self.scenes[scId].time
 
                     if scn.find('SpecificDateTime') is not None:
                         scn.find('SpecificDateTime').text = dateTime
