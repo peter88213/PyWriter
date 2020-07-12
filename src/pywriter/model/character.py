@@ -39,23 +39,3 @@ class Character(Object):
         self.isMajor = None
         # bool
         # xml: <Major>
-
-    def merge(self, character):
-        """Merge attributes.
-        """
-        Object.merge(self, character)
-
-        if character.notes is not None:
-            self.notes = character.notes
-
-        if character.bio is not None:
-            self.bio = character.bio
-
-        if character.goals is not None:
-            self.goals = character.goals
-
-        if character.fullName is not None:
-            self.fullName = character.fullName
-
-        if character.isMajor is not None:
-            self.isMajor = character.isMajor

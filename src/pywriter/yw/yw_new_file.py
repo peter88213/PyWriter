@@ -6,42 +6,14 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-import os
 import xml.etree.ElementTree as ET
 
-from pywriter.model.novel import Novel
-from pywriter.model.chapter import Chapter
-from pywriter.model.scene import Scene
+from pywriter.yw.yw_file import YwFile
 from pywriter.yw.yw_form import *
 
 
-class YwNewFile(Novel):
+class YwNewFile(YwFile):
     """yWriter xml project file representation."""
-
-    def __init__(self, filePath):
-        Novel.__init__(self, filePath)
-        self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc',
-                           'FieldTitle1', 'FieldTitle2', 'FieldTitle3',
-                           'FieldTitle4', 'LaTeXHeaderFile', 'Tags',
-                           'AKA', 'ImageFile', 'FullName', 'Goals',
-                           'Notes', 'RTFFile', 'SceneContent',
-                           'Outcome', 'Goal', 'Conflict']
-        # Names of yWriter xml elements containing CDATA.
-        # ElementTree.write omits CDATA tags, so they have to be inserted
-        # afterwards.
-
-    @property
-    def filePath(self):
-        return self._filePath
-
-    @filePath.setter
-    def filePath(self, filePath):
-        """Accept only filenames with the correct extension. """
-
-        if filePath.lower().endswith('.yw7'):
-            self._FILE_EXTENSION = '.yw7'
-            self._ENCODING = 'utf-8'
-            self._filePath = filePath
 
     def write(self):
         """Open the yWriter xml file located at filePath and 
@@ -351,12 +323,3 @@ class YwNewFile(Novel):
             return message
 
         return 'SUCCESS: project data written to "' + self._filePath + '".'
-
-    def is_locked(self):
-        """Test whether a .lock file placed by yWriter exists.
-        """
-        if os.path.isfile(self._filePath + '.lock'):
-            return True
-
-        else:
-            return False

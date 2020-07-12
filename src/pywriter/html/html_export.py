@@ -48,6 +48,46 @@ class HtmlExport(Novel):
 
         return(text)
 
+    def merge(self, novel):
+        """Copy selected novel attributes.
+        """
+
+        if novel.title is None:
+            self.title = ''
+
+        else:
+            self.title = novel.title
+
+        if novel.desc is None:
+            self.desc = ''
+
+        else:
+            self.desc = novel.desc
+
+        if novel.author is None:
+            self.author = ''
+
+        else:
+            self.author = novel.author
+
+        if novel.srtChapters != []:
+            self.srtChapters = novel.srtChapters
+
+        if novel.scenes is not None:
+            self.scenes = novel.scenes
+
+        if novel.chapters is not None:
+            self.chapters = novel.chapters
+
+        if novel.characters is not None:
+            self.characters = novel.characters
+
+        if novel.locations is not None:
+            self.locations = novel.locations
+
+        if novel.items is not None:
+            self.items = novel.items
+
     def write(self):
 
         # Initialize templates.

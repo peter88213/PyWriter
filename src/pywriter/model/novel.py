@@ -124,121 +124,6 @@ class Novel():
         To be overwritten by file format specific subclasses.
         """
 
-    def merge(self, novel):
-        """Merge attributes.
-        """
-        # Merge locations.
-
-        for lcId in novel.locations:
-
-            if not lcId in self.locations:
-                self.locations[lcId] = Object()
-
-            self.locations[lcId].merge(novel.locations[lcId])
-
-        # Merge items.
-
-        for itId in novel.items:
-
-            if not itId in self.items:
-                self.items[itId] = Object()
-
-            self.items[itId].merge(novel.items[itId])
-
-        # Merge characters.
-
-        for crId in novel.characters:
-
-            if not crId in self.characters:
-                self.characters[crId] = Character()
-
-            self.characters[crId].merge(novel.characters[crId])
-
-        # Merge scenes.
-
-        for scId in novel.scenes:
-
-            if not scId in self.scenes:
-                self.scenes[scId] = Scene()
-
-            self.scenes[scId].merge(novel.scenes[scId])
-
-            if novel.scenes[scId].characters is not None:
-                self.scenes[scId].characters = []
-
-                for crId in novel.scenes[scId].characters:
-
-                    if crId in self.characters:
-                        self.scenes[scId].characters.append(crId)
-
-            if novel.scenes[scId].locations is not None:
-                self.scenes[scId].locations = []
-
-                for lcId in novel.scenes[scId].locations:
-
-                    if lcId in self.locations:
-                        self.scenes[scId].locations.append(lcId)
-
-            if novel.scenes[scId].items is not None:
-                self.scenes[scId].items = []
-
-                for itId in novel.scenes[scId].items:
-
-                    if itId in self.items:
-                        self.scenes[scId].append(itId)
-
-        # Merge chapters.
-
-        scenesAssigned = []
-
-        for chId in novel.chapters:
-
-            if not chId in self.chapters:
-                self.chapters[chId] = Chapter()
-
-            self.chapters[chId].merge(novel.chapters[chId])
-
-            if novel.chapters[chId].srtScenes is not None:
-                self.chapters[chId].srtScenes = []
-
-                for scId in novel.chapters[chId].srtScenes:
-
-                    if (scId in self.scenes) and not (scId in scenesAssigned):
-                        self.chapters[chId].srtScenes.append(scId)
-                        scenesAssigned.append(scId)
-
-        # Merge attributes at novel level.
-
-        if novel.title:
-            # avoids deleting the title, if it is empty by accident
-            self.title = novel.title
-
-        if novel.desc is not None:
-            self.desc = novel.desc
-
-        if novel.author is not None:
-            self.author = novel.author
-
-        if novel.fieldTitle1 is not None:
-            self.fieldTitle1 = novel.fieldTitle1
-
-        if novel.fieldTitle2 is not None:
-            self.fieldTitle2 = novel.fieldTitle2
-
-        if novel.fieldTitle3 is not None:
-            self.fieldTitle3 = novel.fieldTitle3
-
-        if novel.fieldTitle4 is not None:
-            self.fieldTitle4 = novel.fieldTitle4
-
-        if novel.srtChapters != []:
-            self.srtChapters = []
-
-            for chId in novel.srtChapters:
-
-                if chId in self.chapters:
-                    self.srtChapters.append(chId)
-
     def convert_markup(self, text):
         """Convert yw7 markup to target format.
         To be overwritten by file format specific subclasses.
@@ -248,6 +133,12 @@ class Novel():
             text = ''
 
         return(text)
+
+    @abstractmethod
+    def merge(self, novel):
+        """Merge selected novel properties.
+        To be overwritten by file format specific subclasses.
+        """
 
     def write(self):
         lines = []
