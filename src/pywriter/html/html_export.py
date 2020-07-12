@@ -31,7 +31,7 @@ class HtmlExport(FileExport):
     def convert_markup(self, text):
         """Convert yw7 markup to target format."""
 
-        if text is not None:
+        try:
             text = text.replace('\n', '</p>\n<p>')
             text = text.replace('[i]', '<em>')
             text = text.replace('[/i]', '</em>')
@@ -39,7 +39,7 @@ class HtmlExport(FileExport):
             text = text.replace('[/b]', '</strong>')
             text = text.replace('<p></p>', '<p><br /></p>')
 
-        else:
+        except AttributeError:
             text = ''
 
         return(text)

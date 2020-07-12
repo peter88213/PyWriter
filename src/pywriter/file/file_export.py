@@ -17,6 +17,7 @@ class FileExport(Novel):
     """
 
     fileHeader = ''
+    partTemplate = ''
     chapterTemplate = ''
     sceneTemplate = ''
     sceneDivider = ''
@@ -140,7 +141,12 @@ class FileExport(Novel):
                 Desc=self.convert_markup(self.chapters[chId].desc),
             )
 
-            template = Template(self.chapterTemplate)
+            if self.chapters[chId].chLevel == 1 and self.partTemplate != '':
+                template = Template(self.partTemplate)
+
+            else:
+                template = Template(self.chapterTemplate)
+
             lines.append(template.safe_substitute(chapterSubst))
 
             firstSceneInChapter = True
@@ -251,7 +257,6 @@ class FileExport(Novel):
                     Items=sceneItems,
                     Notes=self.convert_markup(self.scenes[scId].sceneNotes),
                 )
-
                 template = Template(self.sceneTemplate)
                 lines.append(template.safe_substitute(sceneSubst))
 
