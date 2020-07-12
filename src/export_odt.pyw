@@ -10,7 +10,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 import os
 
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_export import OdtExport
 from pywriter.converter.yw_cnv_gui import YwCnvGui
 from pywriter.model.chapter import Chapter
 
@@ -21,7 +21,7 @@ def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
     fileName, FileExtension = os.path.splitext(sourcePath)
 
     if FileExtension in ['.yw6', '.yw7']:
-        document = OdtFile('')
+        document = OdtExport('')
         extension = 'odt'
 
     else:
