@@ -11,7 +11,6 @@ import zipfile
 
 from pywriter.odt.odt_template import OdtTemplate
 from pywriter.file.file_export import FileExport
-from pywriter.odt.odt_form import *
 
 
 class OdtFile(FileExport, OdtTemplate):
@@ -103,7 +102,7 @@ class OdtFile(FileExport, OdtTemplate):
 
         filePath = self._filePath
 
-        self._filePath = self._TEMPDIR + '/content.xml'
+        self._filePath = self.TEMPDIR + '/content.xml'
 
         message = FileExport.write(self)
 
@@ -119,9 +118,9 @@ class OdtFile(FileExport, OdtTemplate):
 
         try:
             with zipfile.ZipFile(self.filePath, 'w') as odtTarget:
-                os.chdir(self._TEMPDIR)
+                os.chdir(self.TEMPDIR)
 
-                for file in self._ODT_COMPONENTS:
+                for file in self.ODT_COMPONENTS:
                     odtTarget.write(file)
         except:
             os.chdir(workdir)

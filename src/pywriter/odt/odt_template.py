@@ -14,10 +14,35 @@ from datetime import datetime
 
 class OdtTemplate():
 
-    _TEMPDIR = 'temp_odt'
+    TEMPDIR = 'temp_odt'
 
-    _ODT_COMPONENTS = ['manifest.rdf', 'META-INF', 'content.xml', 'meta.xml', 'mimetype',
+    ODT_COMPONENTS = ['manifest.rdf', 'META-INF', 'content.xml', 'meta.xml', 'mimetype',
                        'settings.xml', 'styles.xml', 'META-INF/manifest.xml']
+
+    CONTENT_XML_HEADER = '''<?xml version="1.0" encoding="UTF-8"?>
+
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" office:version="1.2">
+ <office:scripts/>
+ <office:font-face-decls>
+  <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
+  <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
+   </office:font-face-decls>
+ <office:automatic-styles>
+  <style:style style:name="Sect1" style:family="section">
+   <style:section-properties style:editable="false">
+    <style:columns fo:column-count="1" fo:column-gap="0cm"/>
+   </style:section-properties>
+  </style:style>
+ </office:automatic-styles>
+ <office:body>
+  <office:text text:use-soft-page-breaks="true">
+
+'''
+
+    CONTENT_XML_FOOTER = '''  </office:text>
+ </office:body>
+</office:document-content>
+'''
 
     _META_XML = '''<?xml version="1.0" encoding="utf-8"?>
 <office:document-meta xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:grddl="http://www.w3.org/2003/g/data-view#" office:version="1.2">
@@ -1303,7 +1328,7 @@ class OdtTemplate():
         containing the unpacked ODT directory structure.
         """
         try:
-            rmtree(self._TEMPDIR)
+            rmtree(self.TEMPDIR)
         except:
             pass
 
@@ -1312,13 +1337,13 @@ class OdtTemplate():
         structure of an ODT file except 'content.xml'.
         """
         self.tear_down()
-        os.mkdir(self._TEMPDIR)
-        os.mkdir(self._TEMPDIR + '/META-INF')
+        os.mkdir(self.TEMPDIR)
+        os.mkdir(self.TEMPDIR + '/META-INF')
 
         # Generate mimetype
 
         try:
-            with open(self._TEMPDIR + '/mimetype', 'w', encoding='utf-8') as f:
+            with open(self.TEMPDIR + '/mimetype', 'w', encoding='utf-8') as f:
                 f.write(self._MIMETYPE)
         except:
             return 'ERROR: Cannot write "mimetype"'
@@ -1326,7 +1351,7 @@ class OdtTemplate():
         # Generate manifest.rdf
 
         try:
-            with open(self._TEMPDIR + '/manifest.rdf', 'w', encoding='utf-8') as f:
+            with open(self.TEMPDIR + '/manifest.rdf', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_RDF)
         except:
             return 'ERROR: Cannot write "manifest.rdf"'
@@ -1334,7 +1359,7 @@ class OdtTemplate():
         # Generate settings.xml
 
         try:
-            with open(self._TEMPDIR + '/settings.xml', 'w', encoding='utf-8') as f:
+            with open(self.TEMPDIR + '/settings.xml', 'w', encoding='utf-8') as f:
                 f.write(self._SETTINGS_XML)
         except:
             return 'ERROR: Cannot write "settings.xml"'
@@ -1342,7 +1367,7 @@ class OdtTemplate():
         # Generate META-INF\manifest.xml
 
         try:
-            with open(self._TEMPDIR + '/META-INF/manifest.xml', 'w', encoding='utf-8') as f:
+            with open(self.TEMPDIR + '/META-INF/manifest.xml', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_XML)
         except:
             return 'ERROR: Cannot write "manifest.xml"'
@@ -1358,7 +1383,7 @@ class OdtTemplate():
         text = re.sub('fo\:country\=\"..',
                       'fo:country="' + countryCode, text)
         try:
-            with open(self._TEMPDIR + '/styles.xml', 'w', encoding='utf-8') as f:
+            with open(self.TEMPDIR + '/styles.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
             return 'ERROR: Cannot write "styles.xml"'
@@ -1375,7 +1400,7 @@ class OdtTemplate():
             '%summary%', '<![CDATA[' + self.desc + ']]>').replace('%date%', date).replace('%time%', time)
 
         try:
-            with open(self._TEMPDIR + '/meta.xml', 'w', encoding='utf-8') as f:
+            with open(self.TEMPDIR + '/meta.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
             return 'ERROR: Cannot write "meta.xml".'

@@ -67,7 +67,7 @@ class OdtItems(OdtFile):
         text = '\n'.join(lines)
 
         try:
-            with open(self._TEMPDIR + '/content.xml', 'w', encoding='utf-8') as f:
+            with open(self.TEMPDIR + '/content.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
 
         except:
