@@ -19,9 +19,15 @@ class FileExport(Novel):
     fileHeader = ''
     partTemplate = ''
     chapterTemplate = ''
+    unusedChapterTemplate = ''
+    infoChapterTemplate = ''
     sceneTemplate = ''
+    unusedSceneTemplate = ''
+    infoSceneTemplate = ''
     sceneDivider = ''
     chapterEndTemplate = ''
+    unusedChapterEndTemplate = ''
+    infoChapterEndTemplate = ''
     characterTemplate = ''
     locationTemplate = ''
     itemTemplate = ''
@@ -135,7 +141,6 @@ class FileExport(Novel):
                 sChList.append(self.characters[chId].title)
 
             sceneChars = ', '.join(sChList)
-
             viewpointChar = sChList[0]
 
         else:
@@ -283,18 +288,27 @@ class FileExport(Novel):
         for chId in self.srtChapters:
 
             if self.chapters[chId].isUnused:
-                continue
 
-            if self.chapters[chId].chType != 0:
-                continue
+                if self.unusedChapterTemplate != '':
+                    template = Template(self.unusedChapterTemplate)
 
-            chapterNumber += 1
+                else:
+                    continue
 
-            if self.chapters[chId].chLevel == 1 and self.partTemplate != '':
+            elif self.chapters[chId].chType != 0:
+
+                if self.infoChapterTemplate != '':
+                    template = Template(self.infoChapterTemplate)
+
+                else:
+                    continue
+
+            elif self.chapters[chId].chLevel == 1 and self.partTemplate != '':
                 template = Template(self.partTemplate)
 
             else:
                 template = Template(self.chapterTemplate)
+                chapterNumber += 1
 
             lines.append(template.safe_substitute(
                 self.get_chapterSubst(chId, chapterNumber)))
@@ -304,31 +318,52 @@ class FileExport(Novel):
                 wordsTotal += self.scenes[scId].wordCount
                 lettersTotal += self.scenes[scId].letterCount
 
-                if self.scenes[scId].isUnused:
-                    continue
+                if self.scenes[scId].isUnused or self.chapters[chId].isUnused or self.scenes[scId].doNotExport:
 
-                if self.scenes[scId].doNotExport:
-                    continue
+                    if self.unusedSceneTemplate != '':
+                        template = Template(self.unusedSceneTemplate)
+
+                    else:
+                        continue
+
+                elif self.chapters[chId].chType != 0:
+
+                    if self.infoSceneTemplate != '':
+                        template = Template(self.infoSceneTemplate)
+
+                    else:
+                        continue
+
+                else:
+                    sceneNumber += 1
+                    template = Template(self.sceneTemplate)
 
                 if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
                     lines.append(self.sceneDivider)
 
-                sceneNumber += 1
-                template = Template(self.sceneTemplate)
                 lines.append(template.safe_substitute(self.get_sceneSubst(
                     scId, sceneNumber, wordsTotal, lettersTotal)))
 
                 firstSceneInChapter = False
 
-            lines.append(self.chapterEndTemplate)
+            if self.chapters[chId].isUnused and self.unusedChapterEndTemplate != '':
+                lines.append(self.unusedChapterEndTemplate)
+
+            elif self.chapters[chId].chType != 0 and self.infoChapterEndTemplate != '':
+                lines.append(self.infoChapterEndTemplate)
+
+            else:
+                lines.append(self.chapterEndTemplate)
 
         for crId in self.characters:
             template = Template(self.characterTemplate)
-            lines.append(template.safe_substitute(self.get_characterSubst(crId)))
+            lines.append(template.safe_substitute(
+                self.get_characterSubst(crId)))
 
         for lcId in self.locations:
             template = Template(self.locationTemplate)
-            lines.append(template.safe_substitute(self.get_locationSubst(lcId)))
+            lines.append(template.safe_substitute(
+                self.get_locationSubst(lcId)))
 
         for itId in self.items:
             template = Template(self.itemTemplate)

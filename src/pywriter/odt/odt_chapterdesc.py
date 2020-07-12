@@ -5,7 +5,6 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 from pywriter.odt.odt_template import OdtTemplate
 from pywriter.odt.odt_file import OdtFile
 
@@ -25,17 +24,5 @@ class OdtChapterDesc(OdtFile):
 <text:p text:style-name="Text_20_body">$Desc</text:p>
 </text:section>
 '''
-
-    sceneTemplate = ''
-
-    sceneDivider = ''
-
-    chapterEndTemplate = ''
-
-    characterTemplate = ''
-
-    locationTemplate = ''
-
-    itemTemplate = ''
 
     fileFooter = OdtTemplate.CONTENT_XML_FOOTER

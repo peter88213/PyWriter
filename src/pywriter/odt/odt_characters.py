@@ -5,125 +5,43 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import os
-
+from pywriter.odt.odt_template import OdtTemplate
 from pywriter.odt.odt_file import OdtFile
-from pywriter.odt.odt_form import *
 
 
 class OdtCharacters(OdtFile):
     """OpenDocument xml character descriptions file representation."""
 
-    def write_content_xml(self):
-        """Write character descriptions to "content.xml".
+    def get_characterSubst(self, crId):
+        characterSubst = OdtFile.get_characterSubst(self, crId)
 
+        if self.characters[crId].aka:
+            characterSubst['AKA'] = ' ("' + self.characters[crId].aka + '")'
 
-        Generate "content.xml" containing:
-        - book title,
-        - character sections containing:
-            - the character description.
-        Return a message beginning with SUCCESS or ERROR.
-        """
+        if self.characters[crId].fullName:
+            characterSubst['FullName'] = '/' + self.characters[crId].fullName
 
-        lines = [self._CONTENT_XML_HEADER]
-        lines.append(self._ODT_TITLE_START + self.title +
-                     self._ODT_PARA_END)
-        lines.append(self._ODT_SUBTITLE_START +
-                     'Characters' + self._ODT_PARA_END)
+        return characterSubst
 
-        for crId in self.characters:
+    fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
+<text:p text:style-name="Subtitle">$AuthorName</text:p>
+'''
 
-            # Write character title as heading
+    characterTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title$FullName$AKA</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:$ID">
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_desc:$ID">
+<text:p text:style-name="Text_20_body">$Desc</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Bio</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_bio:$ID">
+<text:p text:style-name="Text_20_body">$Bio</text:p>
+</text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_goals:$ID">
+<text:p text:style-name="Text_20_body">$Goals</text:p>
+</text:section>
+</text:section>
+'''
 
-            if self.characters[crId].aka:
-                aka = ' ("' + self.characters[crId].aka + '")'
-
-            else:
-                aka = ''
-
-            if self.characters[crId].fullName:
-                fullName = '/' + self.characters[crId].fullName
-
-            else:
-                fullName = ''
-
-            lines.append(
-                self._ODT_HEADING_STARTS[0] + self.characters[crId].title + fullName + aka + self._ODT_HEADING_END)
-
-            lines.append(
-                self._ODT_HEADING_STARTS[2] + 'Description' + self._ODT_HEADING_END)
-
-            # Write invisible "start character description" tag.
-
-            lines.append(
-                '<text:section text:style-name="Sect1" text:name="CrID_desc:' + crId + '">')
-
-            if self.characters[crId].desc is not None:
-
-                # Write character description.
-
-                lines.append(self._ODT_FIRST_PARA_START +
-                             to_odt(self.characters[crId].desc) + self._ODT_PARA_END)
-
-            else:
-                lines.append(self._ODT_FIRST_PARA_START + self._ODT_PARA_END)
-
-            # Write invisible "end character description" tag.
-
-            lines.append('</text:section>')
-
-            lines.append(
-                self._ODT_HEADING_STARTS[2] + 'Bio' + self._ODT_HEADING_END)
-
-            # Write invisible "start character bio" tag.
-
-            lines.append(
-                '<text:section text:style-name="Sect1" text:name="CrID_bio:' + crId + '">')
-
-            if self.characters[crId].bio is not None:
-
-                # Write character bio.
-
-                lines.append(self._ODT_FIRST_PARA_START +
-                             to_odt(self.characters[crId].bio) + self._ODT_PARA_END)
-
-            else:
-                lines.append(self._ODT_FIRST_PARA_START + self._ODT_PARA_END)
-
-            # Write invisible "end character bio" tag.
-
-            lines.append('</text:section>')
-
-            lines.append(
-                self._ODT_HEADING_STARTS[2] + 'Goals' + self._ODT_HEADING_END)
-
-            # Write invisible "start character goals" tag.
-
-            lines.append(
-                '<text:section text:style-name="Sect1" text:name="CrID_goals:' + crId + '">')
-
-            if self.characters[crId].goals is not None:
-
-                # Write character goals.
-
-                lines.append(self._ODT_FIRST_PARA_START +
-                             to_odt(self.characters[crId].goals) + self._ODT_PARA_END)
-
-            else:
-                lines.append(self._ODT_FIRST_PARA_START + self._ODT_PARA_END)
-
-            # Write invisible "end character goals" tag.
-
-            lines.append('</text:section>')
-
-        lines.append(self._CONTENT_XML_FOOTER)
-        text = '\n'.join(lines)
-
-        try:
-            with open(self.TEMPDIR + '/content.xml', 'w', encoding='utf-8') as f:
-                f.write(text)
-
-        except:
-            return 'ERROR: Cannot write "content.xml".'
-
-        return 'SUCCESS: Content written to "content.xml"'
+    fileFooter = OdtTemplate.CONTENT_XML_FOOTER

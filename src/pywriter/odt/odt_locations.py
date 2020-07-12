@@ -5,71 +5,29 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import os
-
+from pywriter.odt.odt_template import OdtTemplate
 from pywriter.odt.odt_file import OdtFile
-from pywriter.odt.odt_form import *
 
 
 class OdtLocations(OdtFile):
     """OpenDocument xml location descriptions file representation."""
 
-    def write_content_xml(self):
-        """Write location descriptions to "content.xml".
+    def get_locationSubst(self, lcId):
+        locationSubst = OdtFile.get_locationSubst(self, lcId)
 
+        if self.locations[lcId].aka:
+            locationSubst['AKA'] = ' ("' + self.locations[lcId].aka + '")'
 
-        Generate "content.xml" containing:
-        - book title,
-        - location sections containing:
-            - the location description.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-        lines = [self._CONTENT_XML_HEADER]
-        lines.append(self._ODT_TITLE_START + self.title +
-                     self._ODT_PARA_END)
-        lines.append(self._ODT_SUBTITLE_START +
-                     'Locations' + self._ODT_PARA_END)
+        return locationSubst
 
-        for lcId in self.locations:
+    fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
+<text:p text:style-name="Subtitle">$AuthorName</text:p>
+'''
 
-            # Write location title as heading
+    locationTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title$AKA</text:h>
+<text:section text:style-name="Sect1" text:name="ItID:$ID">
+<text:p text:style-name="Text_20_body">$Desc</text:p>
+</text:section>
+'''
 
-            if self.locations[lcId].aka:
-                aka = ' ("' + self.locations[lcId].aka + '")'
-
-            else:
-                aka = ''
-
-            lines.append(
-                self._ODT_HEADING_STARTS[0] + self.locations[lcId].title + aka + self._ODT_HEADING_END)
-
-            # Write invisible "start location" tag.
-
-            lines.append(
-                '<text:section text:style-name="Sect1" text:name="LcID:' + lcId + '">')
-
-            if self.locations[lcId].desc is not None:
-
-                # Write location description.
-
-                lines.append(self._ODT_FIRST_PARA_START +
-                             to_odt(self.locations[lcId].desc) + self._ODT_PARA_END)
-
-            else:
-                lines.append(self._ODT_FIRST_PARA_START + self._ODT_PARA_END)
-
-            # Write invisible "end location" tag.
-
-            lines.append('</text:section>')
-
-        lines.append(self._CONTENT_XML_FOOTER)
-        text = '\n'.join(lines)
-
-        try:
-            with open(self.TEMPDIR + '/content.xml', 'w', encoding='utf-8') as f:
-                f.write(text)
-
-        except:
-            return 'ERROR: Cannot write "content.xml".'
-
-        return 'SUCCESS: Content written to "content.xml"'
+    fileFooter = OdtTemplate.CONTENT_XML_FOOTER

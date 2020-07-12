@@ -5,7 +5,6 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 from pywriter.odt.odt_template import OdtTemplate
 from pywriter.odt.odt_file import OdtFile
 
@@ -32,13 +31,5 @@ class OdtExport(OdtFile):
 
     sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
 '''
-
-    chapterEndTemplate = ''
-
-    characterTemplate = ''
-
-    locationTemplate = ''
-
-    itemTemplate = ''
 
     fileFooter = OdtTemplate.CONTENT_XML_FOOTER

@@ -5,133 +5,58 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.odt.odt_template import OdtTemplate
 from pywriter.odt.odt_file import OdtFile
-from pywriter.odt.odt_form import *
 
 
 class OdtProof(OdtFile):
     """OpenDocument xml proof reading file representation."""
 
-    _SCENE_DIVIDER = '* * *'
-    # To be placed between scene ending and beginning tags.
+    fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
+<text:p text:style-name="Subtitle">$AuthorName</text:p>
+'''
 
-    def write_content_xml(self):
-        """Write scene content to "content.xml".
+    partTemplate = '''<text:p text:style-name="yWriter_20_mark">[ChID:$ID]</text:p>
+<text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
+'''
 
-        Considered are all scenes no matter
-        whether "used" or "unused".
+    chapterTemplate = '''<text:p text:style-name="yWriter_20_mark">[ChID:$ID]</text:p>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
+'''
 
-        Generate "content.xml" containing:
-        - visibly marked chapter sections containing:
-            - visibly marked scene sections containing
-                - the scene content.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-        lines = [self._CONTENT_XML_HEADER]
-        lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
-        lines.append(self._ODT_SUBTITLE_START +
-                     self.author + self._ODT_PARA_END)
+    unusedChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">[ChID:$ID (Unused)]</text:p>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
+'''
 
-        for chId in self.srtChapters:
+    infoChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_info">[ChID:$ID (Info)]</text:p>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
+'''
 
-            # Write visible "start chapter" tag.
+    sceneTemplate = '''<text:p text:style-name="yWriter_20_mark">[ScID:$ID]</text:p>
+<text:p text:style-name="Text_20_body">$SceneContent</text:p>
+<text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
+'''
 
-            if self.chapters[chId].isUnused:
-                lines.append(
-                    '<text:p text:style-name="yWriter_20_mark_20_unused">[ChID:' + chId + ' (Unused)]</text:p>')
+    unusedSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">[ScID:$ID (Unused)]</text:p>
+<text:p text:style-name="Text_20_body">$SceneContent</text:p>
+<text:p text:style-name="yWriter_20_mark_20_unused">[/ScID (Unused)]</text:p>
+'''
 
-            elif self.chapters[chId].chType != 0:
-                lines.append(
-                    '<text:p text:style-name="yWriter_20_mark_20_info">[ChID:' + chId + ' (Info)]</text:p>')
+    infoSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_info">[ScID:$ID (Info)]</text:p>
+<text:p text:style-name="Text_20_body">$SceneContent</text:p>
+<text:p text:style-name="yWriter_20_mark_20_info">[/ScID (Info)]</text:p>
+'''
 
-            else:
-                lines.append(
-                    '<text:p text:style-name="yWriter_20_mark">[ChID:' + chId + ']</text:p>')
+    sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
+'''
 
-            # Write chapter heading.
+    chapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
+'''
 
-            lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                         self.chapters[chId].get_title() + self._ODT_HEADING_END)
-            firstSceneInChapter = True
+    unusedChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">[/ChID (Unused)]</text:p>
+'''
 
-            for scId in self.chapters[chId].srtScenes:
+    infoChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_info">[/ChID (Info)]</text:p>
+'''
 
-                if self.scenes[scId].doNotExport:
-                    continue
-
-                # Write Scene divider.
-
-                if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
-                    lines.append(
-                        self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
-
-                # Write visible "start scene" tag.
-
-                if self.scenes[scId].isUnused or self.chapters[chId].isUnused:
-                    lines.append(
-                        '<text:p text:style-name="yWriter_20_mark_20_unused">[ScID:' + scId + ' (Unused)]</text:p>')
-
-                elif self.chapters[chId].chType != 0:
-                    lines.append(
-                        '<text:p text:style-name="yWriter_20_mark_20_info">[ScID:' + scId + ' (Info)]</text:p>')
-
-                else:
-                    lines.append(
-                        '<text:p text:style-name="yWriter_20_mark">[ScID:' + scId + ']</text:p>')
-
-                # Write scene content.
-
-                if self.scenes[scId].appendToPrev:
-                    scenePrefix = self._ODT_PARA_START
-
-                else:
-                    scenePrefix = self._ODT_FIRST_PARA_START
-
-                if self.scenes[scId].sceneContent is not None:
-                    lines.append(scenePrefix +
-                                 to_odt(self.scenes[scId].sceneContent) + self._ODT_PARA_END)
-
-                else:
-                    lines.append(scenePrefix + self._ODT_PARA_END)
-
-                firstSceneInChapter = False
-
-                # Write visible "end scene" tag.
-
-                if self.scenes[scId].isUnused or self.chapters[chId].isUnused:
-                    lines.append(
-                        '<text:p text:style-name="yWriter_20_mark_20_unused">[/ScID (Unused)]</text:p>')
-
-                elif self.chapters[chId].chType != 0:
-                    lines.append(
-                        '<text:p text:style-name="yWriter_20_mark_20_info">[/ScID (Info)]</text:p>')
-
-                else:
-                    lines.append(
-                        '<text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>')
-
-            # Write visible "end chapter" tag.
-
-            if self.chapters[chId].isUnused:
-                lines.append(
-                    '<text:p text:style-name="yWriter_20_mark_20_unused">[/ChID (Unused)]</text:p>')
-
-            elif self.chapters[chId].chType != 0:
-                lines.append(
-                    '<text:p text:style-name="yWriter_20_mark_20_info">[/ChID (Info)]</text:p>')
-
-            else:
-                lines.append(
-                    '<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>')
-
-        lines.append(self._CONTENT_XML_FOOTER)
-        text = '\n'.join(lines)
-
-        try:
-            with open(self.TEMPDIR + '/content.xml', 'w', encoding='utf-8') as f:
-                f.write(text)
-
-        except:
-            return 'ERROR: Cannot write "content.xml".'
-
-        return 'SUCCESS: Content written to "content.xml"'
+    fileFooter = OdtTemplate.CONTENT_XML_FOOTER

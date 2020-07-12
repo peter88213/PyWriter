@@ -26,28 +26,10 @@ class HtmlExport(FileExport):
 
     def __init__(self, filePath, templatePath='.'):
         FileExport.__init__(self, filePath)
-        self.templatePath = templatePath
-
-    def convert_markup(self, text):
-        """Convert yw7 markup to target format."""
-
-        try:
-            text = text.replace('\n', '</p>\n<p>')
-            text = text.replace('[i]', '<em>')
-            text = text.replace('[/i]', '</em>')
-            text = text.replace('[b]', '<strong>')
-            text = text.replace('[/b]', '</strong>')
-            text = text.replace('<p></p>', '<p><br /></p>')
-
-        except AttributeError:
-            text = ''
-
-        return(text)
-
-    def write(self):
 
         # Initialize templates.
 
+        self.templatePath = templatePath
         result = read_html_file(self.templatePath + self._HTML_HEADER)
 
         if result[1] is not None:
@@ -88,4 +70,18 @@ class HtmlExport(FileExport):
         if result[1] is not None:
             self.fileFooter = result[1]
 
-        return FileExport.write(self)
+    def convert_markup(self, text):
+        """Convert yw7 markup to target format."""
+
+        try:
+            text = text.replace('\n', '</p>\n<p>')
+            text = text.replace('[i]', '<em>')
+            text = text.replace('[/i]', '</em>')
+            text = text.replace('[b]', '<strong>')
+            text = text.replace('[/b]', '</strong>')
+            text = text.replace('<p></p>', '<p><br /></p>')
+
+        except AttributeError:
+            text = ''
+
+        return(text)
