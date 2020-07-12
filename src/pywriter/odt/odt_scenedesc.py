@@ -5,129 +5,66 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import os
-
-from urllib.parse import quote
 
 from pywriter.odt.odt_file import OdtFile
-from pywriter.odt.odt_form import *
-from pywriter.globals import *
 
 
 class OdtSceneDesc(OdtFile):
     """OpenDocument xml scene summaries file representation."""
 
-    _SCENE_DIVIDER = '* * *'
-    # To be placed between scene ending and beginning tags.
+    fileHeader = '''<?xml version="1.0" encoding="UTF-8"?>
 
-    def write_content_xml(self):
-        """Write scene summaries to "content.xml".
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" office:version="1.2">
+ <office:scripts/>
+ <office:font-face-decls>
+  <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
+  <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
+   </office:font-face-decls>
+ <office:automatic-styles>
+  <style:style style:name="Sect1" style:family="section">
+   <style:section-properties style:editable="false">
+    <style:columns fo:column-count="1" fo:column-gap="0cm"/>
+   </style:section-properties>
+  </style:style>
+ </office:automatic-styles>
+ <office:body>
+  <office:text text:use-soft-page-breaks="true">
 
-        Considered are "used" scenes within
-        chapters not marked  "Other" or "Unused" or "Info".
+<text:p text:style-name="Title">$Title</text:p>
+<text:p text:style-name="Subtitle">$AuthorName</text:p>
+'''
 
-        Generate "content.xml" containing:
-        - book title,
-        - chapter sections containing:
-            - scene sections containing
-                - the scene summary.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-        manuscriptPath = '../' + quote(os.path.basename(self.filePath).replace(
-            '\\', '/'), '/:').replace(SCENEDESC_SUFFIX, MANUSCRIPT_SUFFIX)
-        chapterDescPath = [manuscriptPath.replace(MANUSCRIPT_SUFFIX, CHAPTERDESC_SUFFIX),
-                           manuscriptPath.replace(MANUSCRIPT_SUFFIX, PARTDESC_SUFFIX)]
+    partTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
+<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../yw7%20Sample%20Project_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+'''
 
-        lines = [self._CONTENT_XML_HEADER]
-        lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
-        lines.append(self._ODT_SUBTITLE_START +
-                     self.author + self._ODT_PARA_END)
+    chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+'''
 
-        for chId in self.srtChapters:
+    sceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
+<text:p text:style-name="Text_20_body"><office:annotation>
+<dc:creator>scene title</dc:creator>
+<text:p>$Title</text:p>
+<text:p/>
+<text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:$ID%7Cregion">→Manuscript</text:a></text:p>
+</office:annotation>$Desc</text:p>
+</text:section>
+'''
 
-            if self.chapters[chId].isUnused:
-                continue
+    sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
+'''
 
-            if self.chapters[chId].chType != 0:
-                continue
+    chapterEndTemplate = '''</text:section>
+'''
 
-            # Write invisible "start chapter" tag.
+    characterTemplate = ''
 
-            lines.append(
-                '<text:section text:style-name="Sect1" text:name="ChID:' + chId + '">')
+    locationTemplate = ''
 
-            # Write chapter heading
-            # with hyperlink to chapter or part description.
+    itemTemplate = ''
 
-            lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] +
-                         '<text:a xlink:href="' +
-                         chapterDescPath[self.chapters[chId].chLevel] +
-                         '#ChID:' + chId + '%7Cregion">' +
-                         self.chapters[chId].get_title() +
-                         '</text:a>' +
-                         self._ODT_HEADING_END)
-
-            firstSceneInChapter = True
-
-            for scId in self.chapters[chId].srtScenes:
-
-                if self.scenes[scId].isUnused:
-                    continue
-
-                if self.scenes[scId].doNotExport:
-                    continue
-
-                # Write Scene divider.
-
-                if not firstSceneInChapter:
-                    lines.append(
-                        self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
-
-                # Write invisible "start scene" tag.
-
-                lines.append(
-                    '<text:section text:style-name="Sect1" text:name="ScID:' + scId + '">')
-
-                scenePrefix = self._ODT_FIRST_PARA_START
-
-                # Write scene title as comment.
-
-                scenePrefix += ('<office:annotation>\n' +
-                                '<dc:creator>scene title</dc:creator>\n' +
-                                '<text:p>' + self.scenes[scId].title + '</text:p>\n' +
-                                '<text:p/>\n' +
-                                '<text:p><text:a xlink:href="' +
-                                manuscriptPath + '#ScID:' +
-                                scId + '%7Cregion">→Manuscript</text:a></text:p>\n' +
-                                '</office:annotation>')
-
-                # Write scene summary.
-
-                if self.scenes[scId].desc is not None:
-                    lines.append(scenePrefix +
-                                 to_odt(self.scenes[scId].desc) + self._ODT_PARA_END)
-
-                else:
-                    lines.append(scenePrefix + self._ODT_PARA_END)
-
-                firstSceneInChapter = False
-
-                # Write invisible "end scene" tag.
-
-                lines.append('</text:section>')
-
-            # Write invisible "end chapter" tag.
-
-            lines.append('</text:section>')
-
-        lines.append(self._CONTENT_XML_FOOTER)
-        text = '\n'.join(lines)
-
-        try:
-            with open(self._TEMPDIR + '/content.xml', 'w', encoding='utf-8') as f:
-                f.write(text)
-
-        except:
-            return 'ERROR: Cannot write "content.xml".'
-
-        return 'SUCCESS: Content written to "content.xml"'
+    fileFooter = '''  </office:text>
+ </office:body>
+</office:document-content>
+'''

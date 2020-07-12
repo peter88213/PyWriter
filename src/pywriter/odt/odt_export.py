@@ -6,130 +6,58 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-import os
-import zipfile
-
-from pywriter.odt.odt_template import OdtTemplate
-from pywriter.file.file_export import FileExport
-from pywriter.odt.odt_form import *
-from pywriter.odt.template_export import *
+from pywriter.odt.odt_file import OdtFile
 
 
-class OdtExport(FileExport, OdtTemplate):
+class OdtExport(OdtFile):
     """OpenDocument xml project file representation."""
-    _FILE_EXTENSION = '.odt'
 
-    fileHeader = FILE_HEADER
-    partTemplate = PART_TEMPLATE
-    chapterTemplate = CHAPTER_TEMPLATE
-    sceneTemplate = SCENE_TEMPLATE
-    sceneDivider = SCENE_DIVIDER
+    fileHeader = '''<?xml version="1.0" encoding="UTF-8"?>
+
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" office:version="1.2">
+ <office:scripts/>
+ <office:font-face-decls>
+  <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
+  <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
+   </office:font-face-decls>
+ <office:automatic-styles>
+  <style:style style:name="Sect1" style:family="section">
+   <style:section-properties style:editable="false">
+    <style:columns fo:column-count="1" fo:column-gap="0cm"/>
+   </style:section-properties>
+  </style:style>
+ </office:automatic-styles>
+ <office:body>
+  <office:text text:use-soft-page-breaks="true">
+
+<text:p text:style-name="Title">$Title</text:p>
+<text:p text:style-name="Subtitle">$AuthorName</text:p>
+'''
+
+    partTemplate = '''<text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
+'''
+
+    chapterTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
+'''
+
+    sceneTemplate = '''<text:p text:style-name="Text_20_body"><office:annotation>
+<dc:creator>scene title</dc:creator>
+<text:p>$Title</text:p>
+</office:annotation>$SceneContent</text:p>
+'''
+
+    sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
+'''
+
+    chapterEndTemplate = ''
+
     characterTemplate = ''
+
     locationTemplate = ''
+
     itemTemplate = ''
-    fileFooter = FILE_FOOTER
 
-    def convert_markup(self, text):
-        """Convert yw7 raw markup to odt. Return an xml string."""
-
-        try:
-
-            # process italics and bold markup reaching across linebreaks
-
-            italics = False
-            bold = False
-            newlines = []
-            lines = text.split('\n')
-            for line in lines:
-                if italics:
-                    line = '[i]' + line
-                    italics = False
-
-                while line.count('[i]') > line.count('[/i]'):
-                    line += '[/i]'
-                    italics = True
-
-                while line.count('[/i]') > line.count('[i]'):
-                    line = '[i]' + line
-
-                line = line.replace('[i][/i]', '')
-
-                if bold:
-                    line = '[b]' + line
-                    bold = False
-
-                while line.count('[b]') > line.count('[/b]'):
-                    line += '[/b]'
-                    bold = True
-
-                while line.count('[/b]') > line.count('[b]'):
-                    line = '[b]' + line
-
-                line = line.replace('[b][/b]', '')
-
-                newlines.append(line)
-
-            text = '\n'.join(newlines)
-            text = text.replace('&', '&amp;')
-            text = text.replace('>', '&gt;')
-            text = text.replace('<', '&lt;')
-            text = text.rstrip().replace(
-                '\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">')
-            text = text.replace(
-                '[i]', '<text:span text:style-name="Emphasis">')
-            text = text.replace('[/i]', '</text:span>')
-            text = text.replace(
-                '[b]', '<text:span text:style-name="Strong_20_Emphasis">')
-            text = text.replace('[/b]', '</text:span>')
-
-        except AttributeError:
-            text = ''
-
-        return text
-
-    def write(self):
-        """Generate an odt file from a template.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-
-        # Create a temporary directory containing the internal
-        # structure of an ODT file except "content.xml".
-
-        message = self.set_up()
-
-        if message.startswith('ERROR'):
-            return message
-
-        # Add "content.xml" to the temporary directory.
-
-        filePath = self._filePath
-
-        self._filePath = self._TEMPDIR + '/content.xml'
-
-        message = FileExport.write(self)
-
-        self._filePath = filePath
-
-        if message.startswith('ERROR'):
-            return message
-
-        # Pack the contents of the temporary directory
-        # into the ODT file.
-
-        workdir = os.getcwd()
-
-        try:
-            with zipfile.ZipFile(self.filePath, 'w') as odtTarget:
-                os.chdir(self._TEMPDIR)
-
-                for file in self._ODT_COMPONENTS:
-                    odtTarget.write(file)
-        except:
-            os.chdir(workdir)
-            return 'ERROR: Cannot generate "' + self._filePath + '".'
-
-        # Remove temporary data.
-
-        os.chdir(workdir)
-        self.tear_down()
-        return 'SUCCESS: "' + self._filePath + '" saved.'
+    fileFooter = '''  </office:text>
+ </office:body>
+</office:document-content>
+'''

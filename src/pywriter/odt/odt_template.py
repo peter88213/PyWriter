@@ -14,46 +14,11 @@ from datetime import datetime
 
 class OdtTemplate():
 
-    _ODT_HEADING_STARTS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
-                           '<text:h text:style-name="Heading_20_1" text:outline-level="1">',
-                           '<text:h text:style-name="Heading_20_3" text:outline-level="3">']
-    _ODT_HEADING_END = '</text:h>'
-
-    _ODT_TITLE_START = '<text:p text:style-name="Title">'
-    _ODT_SUBTITLE_START = '<text:p text:style-name="Subtitle">'
-
-    _ODT_FIRST_PARA_START = '<text:p text:style-name="Text_20_body">'
-    _ODT_PARA_START = '<text:p text:style-name="First_20_line_20_indent">'
-    _ODT_SCENEDIV_START = '<text:p text:style-name="Heading_20_4">'
-    _ODT_PARA_END = '</text:p>'
-
     _TEMPDIR = 'temp_odt'
 
     _ODT_COMPONENTS = ['manifest.rdf', 'META-INF', 'content.xml', 'meta.xml', 'mimetype',
                        'settings.xml', 'styles.xml', 'META-INF/manifest.xml']
 
-    _CONTENT_XML_HEADER = '''<?xml version="1.0" encoding="UTF-8"?>
-
-<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" office:version="1.2">
- <office:scripts/>
- <office:font-face-decls>
-  <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
-  <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
-   </office:font-face-decls>
- <office:automatic-styles>
-  <style:style style:name="Sect1" style:family="section">
-   <style:section-properties style:editable="false">
-    <style:columns fo:column-count="1" fo:column-gap="0cm"/>
-   </style:section-properties>
-  </style:style>
- </office:automatic-styles>
- <office:body>
-  <office:text text:use-soft-page-breaks="true">
-'''
-    _CONTENT_XML_FOOTER = '''  </office:text>
- </office:body>
-</office:document-content>
-'''
     _META_XML = '''<?xml version="1.0" encoding="utf-8"?>
 <office:document-meta xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:grddl="http://www.w3.org/2003/g/data-view#" office:version="1.2">
   <office:meta>

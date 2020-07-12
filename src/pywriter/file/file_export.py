@@ -21,6 +21,7 @@ class FileExport(Novel):
     chapterTemplate = ''
     sceneTemplate = ''
     sceneDivider = ''
+    chapterEndTemplate = ''
     characterTemplate = ''
     locationTemplate = ''
     itemTemplate = ''
@@ -261,6 +262,8 @@ class FileExport(Novel):
                 lines.append(template.safe_substitute(sceneSubst))
 
                 firstSceneInChapter = False
+
+            lines.append(self.chapterEndTemplate)
 
         for crId in self.characters:
 
