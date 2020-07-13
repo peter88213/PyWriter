@@ -8,11 +8,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import re
 
-from pywriter.model.novel import Novel
+from pywriter.csv.csv_file import CsvFile
 from pywriter.model.object import Object
 
 
-class CsvItemList(Novel):
+class CsvItemList(CsvFile):
     """csv file representation of an yWriter project's items table. 
 
     Represents a csv file with a record per item.
@@ -20,22 +20,11 @@ class CsvItemList(Novel):
     * Data fields are delimited by the _SEPARATOR item.
     """
 
-    _FILE_EXTENSION = 'csv'
-    # overwrites Novel._FILE_EXTENSION
+    fileHeader = '''ID|Name|Description|Aka|Tags
+'''
 
-    _SEPARATOR = '|'     # delimits data fields within a record.
-    _LINEBREAK = '\t'    # substitutes embedded line breaks.
-
-    _TABLE_HEADER = ('ID'
-                     + _SEPARATOR
-                     + 'Name'
-                     + _SEPARATOR
-                     + 'Description'
-                     + _SEPARATOR
-                     + 'Aka'
-                     + _SEPARATOR
-                     + 'Tags'
-                     + '\n')
+    itemTemplate = '''ItID:$ID|$Title|$Desc|$AKA|$Tags
+'''
 
     def read(self):
         """Parse the csv file located at filePath, 
@@ -49,10 +38,10 @@ class CsvItemList(Novel):
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
-        if lines[0] != self._TABLE_HEADER:
+        if lines[0] != self.fileHeader:
             return 'ERROR: Wrong lines content.'
 
-        cellsInLine = len(self._TABLE_HEADER.split(self._SEPARATOR))
+        cellsInLine = len(self.fileHeader.split(self._SEPARATOR))
 
         for line in lines:
             cell = line.rstrip().split(self._SEPARATOR)
@@ -75,55 +64,3 @@ class CsvItemList(Novel):
         """Copy selected novel attributes.
         """
         self.items = novel.items
-
-    def write(self):
-        """Generate a csv file containing per item:
-        - item ID, 
-        - item title,
-        - item description, 
-        - item alternative name, 
-        - item tags.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-
-        # first record: the table's column headings
-
-        table = [self._TABLE_HEADER]
-
-        # Add a record for each item
-
-        for itId in self.items:
-
-            if self.items[itId].desc is None:
-                self.items[itId].desc = ''
-
-            if self.items[itId].aka is None:
-                self.items[itId].aka = ''
-
-            if self.items[itId].tags is None:
-                self.items[itId].tags = ['']
-
-            table.append('ItID:' + str(itId)
-                         + self._SEPARATOR
-                         + self.items[itId].title
-                         + self._SEPARATOR
-                         + self.items[itId].desc.rstrip().replace('\n',
-                                                                  self._LINEBREAK)
-                         + self._SEPARATOR
-                         + self.items[itId].aka
-                         + self._SEPARATOR
-                         + ';'.join(self.items[itId].tags)
-                         + '\n')
-
-        try:
-            with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.writelines(table)
-
-        except(PermissionError):
-            return 'ERROR: ' + self._filePath + '" is write protected.'
-
-        return 'SUCCESS: "' + self._filePath + '" saved.'
-
-    def get_structure(self):
-        """This file format has no comparable structure."""
-        return None

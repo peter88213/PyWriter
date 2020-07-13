@@ -11,12 +11,12 @@ import re
 
 from urllib.parse import quote
 
-from pywriter.model.novel import Novel
+from pywriter.csv.csv_file import CsvFile
 from pywriter.model.scene import Scene
 from pywriter.globals import *
 
 
-class CsvSceneList(Novel):
+class CsvSceneList(CsvFile):
     """csv file representation of an yWriter project's scenes table. 
 
     Represents a csv file with a record per scene.
@@ -24,60 +24,18 @@ class CsvSceneList(Novel):
     * Data fields are delimited by the _SEPARATOR character.
     """
 
-    _FILE_EXTENSION = 'csv'
-    # overwrites Novel._FILE_EXTENSION
-
-    _SEPARATOR = '|'     # delimits data fields within a record.
-    _LINEBREAK = '\t'    # substitutes embedded line breaks.
-
     _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
     # '1' is assigned N/A (empty table cell).
 
     _ACTION_MARKER = 'Action'
     _REACTION_MARKER = 'Reaction'
 
-    _TABLE_HEADER = ('Scene link'
-                     + _SEPARATOR
-                     + 'Scene title'
-                     + _SEPARATOR
-                     + 'Scene description'
-                     + _SEPARATOR
-                     + 'Tags'
-                     + _SEPARATOR
-                     + 'Scene notes'
-                     + _SEPARATOR
-                     + 'A/R'
-                     + _SEPARATOR
-                     + 'Goal'
-                     + _SEPARATOR
-                     + 'Conflict'
-                     + _SEPARATOR
-                     + 'Outcome'
-                     + _SEPARATOR
-                     + 'Scene'
-                     + _SEPARATOR
-                     + 'Words total'
-                     + _SEPARATOR
-                     + 'Field 1'
-                     + _SEPARATOR
-                     + 'Field 2'
-                     + _SEPARATOR
-                     + 'Field 3'
-                     + _SEPARATOR
-                     + 'Field 4'
-                     + _SEPARATOR
-                     + 'Word count'
-                     + _SEPARATOR
-                     + 'Letter count'
-                     + _SEPARATOR
-                     + 'Status'
-                     + _SEPARATOR
-                     + 'Characters'
-                     + _SEPARATOR
-                     + 'Locations'
-                     + _SEPARATOR
-                     + 'Items'
-                     + '\n')
+    fileHeader = '''Scene link|Scene title|Scene description|Tags|Scene notes|''' +\
+        '''A/R|Goal|Conflict|Outcome|''' +\
+        '''Scene|Words total|Field 1|Field 2|Field 3|Field 4|''' +\
+        '''Word count|Letter count|Status|''' +\
+        '''Characters|Locations|Items
+'''
 
     def read(self):
         """Parse the csv file located at filePath, 
@@ -91,7 +49,7 @@ class CsvSceneList(Novel):
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
-        cellsInLine = len(self._TABLE_HEADER.split(self._SEPARATOR))
+        cellsInLine = len(self.fileHeader.split(self._SEPARATOR))
 
         for line in lines:
             cell = line.rstrip().split(self._SEPARATOR)
@@ -222,57 +180,20 @@ class CsvSceneList(Novel):
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
-    def merge(self, novel):
-        """Copy selected novel attributes.
-        """
-
-        if novel.srtChapters != []:
-            self.srtChapters = novel.srtChapters
-
-        if novel.scenes is not None:
-            self.scenes = novel.scenes
-
-        if novel.chapters is not None:
-            self.chapters = novel.chapters
-
-        if novel.fieldTitle1 is not None:
-            self.fieldTitle1 = novel.fieldTitle1
-
-        else:
-            self.fieldTitle1 = 'Field 1'
-
-        if novel.fieldTitle2 is not None:
-            self.fieldTitle2 = novel.fieldTitle2
-
-        else:
-            self.fieldTitle2 = 'Field 2'
-
-        if novel.fieldTitle3 is not None:
-            self.fieldTitle3 = novel.fieldTitle3
-
-        else:
-            self.fieldTitle3 = 'Field 3'
-
-        if novel.fieldTitle4 is not None:
-            self.fieldTitle4 = novel.fieldTitle4
-
-        else:
-            self.fieldTitle4 = 'Field 4'
-
-        self.characters = novel.characters
-        self.locations = novel.locations
-        self.items = novel.items
-
     def write(self):
         """Generate a csv file containing a row per scene
         Return a message beginning with SUCCESS or ERROR.
         """
+
+        self.projectPath = quote(os.path.realpath(self.filePath).replace(
+            '\\', '/'), '/:').replace(SCENELIST_SUFFIX + '.csv', '')
+
         odtPath = quote(os.path.realpath(self.filePath).replace(
             '\\', '/'), '/:').replace(SCENELIST_SUFFIX + '.csv', MANUSCRIPT_SUFFIX + '.odt')
 
         # first record: the table's column headings
 
-        table = [self._TABLE_HEADER.replace(
+        table = [self.fileHeader.replace(
             'Field 1', self.fieldTitle1).replace(
             'Field 2', self.fieldTitle2).replace(
             'Field 3', self.fieldTitle3).replace(
@@ -442,7 +363,3 @@ class CsvSceneList(Novel):
             return 'ERROR: ' + self._filePath + '" is write protected.'
 
         return 'SUCCESS: "' + self._filePath + '" saved.'
-
-    def get_structure(self):
-        """This file format has no comparable structure."""
-        return None

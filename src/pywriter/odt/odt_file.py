@@ -14,17 +14,9 @@ from pywriter.file.file_export import FileExport
 
 class OdtFile(FileExport, OdtTemplate):
     """OpenDocument xml project file representation."""
-    _FILE_EXTENSION = '.odt'
 
-    fileHeader = ''
-    partTemplate = ''
-    chapterTemplate = ''
-    sceneTemplate = ''
-    sceneDivider = ''
-    characterTemplate = ''
-    locationTemplate = ''
-    itemTemplate = ''
-    fileFooter = ''
+    _FILE_EXTENSION = '.odt'
+    # overwrites Novel._FILE_EXTENSION
 
     def convert_markup(self, text):
         """Convert yw7 raw markup to odt. Return an xml string."""

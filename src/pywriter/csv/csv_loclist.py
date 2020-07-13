@@ -8,11 +8,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import re
 
-from pywriter.model.novel import Novel
+from pywriter.csv.csv_file import CsvFile
 from pywriter.model.object import Object
 
 
-class CsvLocList(Novel):
+class CsvLocList(CsvFile):
     """csv file representation of an yWriter project's locations table. 
 
     Represents a csv file with a record per location.
@@ -20,22 +20,11 @@ class CsvLocList(Novel):
     * Data fields are delimited by the _SEPARATOR location.
     """
 
-    _FILE_EXTENSION = 'csv'
-    # overwrites Novel._FILE_EXTENSION
+    fileHeader = '''ID|Name|Description|Aka|Tags
+'''
 
-    _SEPARATOR = '|'     # delimits data fields within a record.
-    _LINEBREAK = '\t'    # substitutes embedded line breaks.
-
-    _TABLE_HEADER = ('ID'
-                     + _SEPARATOR
-                     + 'Name'
-                     + _SEPARATOR
-                     + 'Description'
-                     + _SEPARATOR
-                     + 'Aka'
-                     + _SEPARATOR
-                     + 'Tags'
-                     + '\n')
+    locationTemplate = '''LcID:$ID|$Title|$Desc|$AKA|$Tags
+'''
 
     def read(self):
         """Parse the csv file located at filePath, 
@@ -49,10 +38,10 @@ class CsvLocList(Novel):
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
-        if lines[0] != self._TABLE_HEADER:
+        if lines[0] != self.fileHeader:
             return 'ERROR: Wrong lines content.'
 
-        cellsInLine = len(self._TABLE_HEADER.split(self._SEPARATOR))
+        cellsInLine = len(self.fileHeader.split(self._SEPARATOR))
 
         for line in lines:
             cell = line.rstrip().split(self._SEPARATOR)
@@ -75,54 +64,3 @@ class CsvLocList(Novel):
         """Copy selected novel attributes.
         """
         self.locations = novel.locations
-
-    def write(self):
-        """Generate a csv file containing per location:
-        - location ID, 
-        - location title,
-        - location description, 
-        - location alternative name, 
-        - location tags.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-
-        # first record: the table's column headings
-
-        table = [self._TABLE_HEADER]
-
-        # Add a record for each location
-
-        for lcId in self.locations:
-
-            if self.locations[lcId].desc is None:
-                self.locations[lcId].desc = ''
-
-            if self.locations[lcId].aka is None:
-                self.locations[lcId].aka = ''
-
-            if self.locations[lcId].tags is None:
-                self.locations[lcId].tags = ['']
-
-            table.append('LcID:' + str(lcId)
-                         + self._SEPARATOR
-                         + self.locations[lcId].title
-                         + self._SEPARATOR
-                         + self.locations[lcId].desc.rstrip().replace('\n', self._LINEBREAK)
-                         + self._SEPARATOR
-                         + self.locations[lcId].aka
-                         + self._SEPARATOR
-                         + ';'.join(self.locations[lcId].tags)
-                         + '\n')
-
-        try:
-            with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.writelines(table)
-
-        except(PermissionError):
-            return 'ERROR: ' + self._filePath + '" is write protected.'
-
-        return 'SUCCESS: "' + self._filePath + '" saved.'
-
-    def get_structure(self):
-        """This file format has no comparable structure."""
-        return None

@@ -17,11 +17,11 @@ class OdtSceneDesc(OdtFile):
 '''
 
     partTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
-<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../yw7%20Sample%20Project_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../$ProjectName_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 '''
 
     chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../$ProjectName_chapters.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 '''
 
     sceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
@@ -29,7 +29,7 @@ class OdtSceneDesc(OdtFile):
 <dc:creator>scene title</dc:creator>
 <text:p>$Title</text:p>
 <text:p/>
-<text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:$ID%7Cregion">→Manuscript</text:a></text:p>
+<text:p><text:a xlink:href="../$ProjectName_manuscript.odt#ScID:$ID%7Cregion">→Manuscript</text:a></text:p>
 </office:annotation>$Desc</text:p>
 </text:section>
 '''

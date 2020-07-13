@@ -124,6 +124,8 @@ class FileExport(Novel):
             ChapterNumber=chapterNumber,
             Title=self.chapters[chId].title,
             Desc=self.convert_markup(self.chapters[chId].desc),
+            ProjectName=self.projectName,
+            ProjectPath=self.projectPath,
         )
 
     def get_sceneSubst(self, scId, sceneNumber, wordsTotal, lettersTotal):
@@ -213,6 +215,8 @@ class FileExport(Novel):
             Locations=sceneLocs,
             Items=sceneItems,
             Notes=self.convert_markup(self.scenes[scId].sceneNotes),
+            ProjectName=self.projectName,
+            ProjectPath=self.projectPath,
         )
 
     def get_characterSubst(self, crId):
