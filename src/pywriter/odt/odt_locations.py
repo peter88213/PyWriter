@@ -12,6 +12,8 @@ from pywriter.odt.odt_file import OdtFile
 class OdtLocations(OdtFile):
     """OpenDocument xml location descriptions file representation."""
 
+    SUFFIX = '_locations'
+
     def get_locationSubst(self, lcId):
         locationSubst = OdtFile.get_locationSubst(self, lcId)
 

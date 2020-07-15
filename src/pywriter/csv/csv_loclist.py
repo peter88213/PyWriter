@@ -20,6 +20,8 @@ class CsvLocList(CsvFile):
     * Data fields are delimited by the _SEPARATOR location.
     """
 
+    SUFFIX = '_loclist'
+
     fileHeader = '''ID|Name|Description|Aka|Tags
 '''
 

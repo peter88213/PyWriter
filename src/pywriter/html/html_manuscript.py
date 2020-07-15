@@ -22,8 +22,8 @@ class HtmlManuscript(Novel, HTMLParser):
     OpenOffice/LibreOffice Writer.
     """
 
-    _FILE_EXTENSION = 'html'
-    # overwrites Novel._FILE_EXTENSION
+    EXTENSION = 'html'
+    SUFFIX = '_manuscript'
 
     def __init__(self, filePath):
         Novel.__init__(self, filePath)

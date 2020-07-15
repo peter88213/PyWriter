@@ -15,16 +15,18 @@ from pywriter.yw.yw_file import YwFile
 
 from pywriter.html.html_scenedesc import HtmlSceneDesc
 from pywriter.odt.odt_scenedesc import OdtSceneDesc
-from pywriter.globals import SCENEDESC_SUFFIX
+
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + SCENEDESC_SUFFIX + '/'
+DATA_PATH = 'data/' + OdtSceneDesc.SUFFIX + '/'
 
-TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + SCENEDESC_SUFFIX + '.odt'
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + \
+    OdtSceneDesc.SUFFIX + OdtSceneDesc.EXTENSION
 ODT_CONTENT = 'content.xml'
 
-TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'
+TEST_HTML = EXEC_PATH + 'yw7 Sample Project' + \
+    HtmlSceneDesc.SUFFIX + HtmlSceneDesc.EXTENSION
 REFERENCE_HTML = DATA_PATH + 'normal.html'
 PROOFED_HTML = DATA_PATH + 'proofed.html'
 

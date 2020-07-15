@@ -14,16 +14,18 @@ from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw_file import YwFile
 from pywriter.html.html_proof import HtmlProof
 from pywriter.odt.odt_proof import OdtProof
-from pywriter.globals import PROOF_SUFFIX
+
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + PROOF_SUFFIX + '/'
+DATA_PATH = 'data/' + OdtProof.SUFFIX + '/'
 
-TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + PROOF_SUFFIX + '.odt'
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + \
+    OdtProof.SUFFIX + OdtProof.EXTENSION
 ODT_CONTENT = 'content.xml'
 
-TEST_HTML = EXEC_PATH + 'yw7 Sample Project' + PROOF_SUFFIX + '.html'
+TEST_HTML = EXEC_PATH + 'yw7 Sample Project' + \
+    HtmlProof.SUFFIX + HtmlProof.EXTENSION
 REFERENCE_HTML = DATA_PATH + 'normal.html'
 PROOFED_HTML = DATA_PATH + 'proofed.html'
 

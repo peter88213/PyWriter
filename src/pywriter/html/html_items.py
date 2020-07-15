@@ -17,6 +17,8 @@ from pywriter.model.object import Object
 class HtmlItems(HtmlManuscript):
     """HTML file representation of an yWriter project's item descriptions."""
 
+    SUFFIX = '_items'
+
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
         HTMLParser.__init__(self)

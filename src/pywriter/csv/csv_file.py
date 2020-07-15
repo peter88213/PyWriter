@@ -14,7 +14,7 @@ class CsvFile(FileExport):
     * Data fields are delimited by the _SEPARATOR character.
     """
 
-    _FILE_EXTENSION = 'csv'
+    EXTENSION = '.csv'
     # overwrites Novel._FILE_EXTENSION
 
     _SEPARATOR = '|'     # delimits data fields within a record.

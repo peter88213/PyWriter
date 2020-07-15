@@ -15,7 +15,6 @@ from pywriter.odt.odt_manuscript import OdtManuscript
 from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.model.chapter import Chapter
 from pywriter.converter.yw_cnv_gui import YwCnvGui
-from pywriter.globals import MANUSCRIPT_SUFFIX
 
 
 def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
@@ -35,7 +34,7 @@ def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
         sys.exit('ERROR: File type is not supported.')
 
     converter = YwCnvGui(sourcePath, document,
-                         extension, silentMode, MANUSCRIPT_SUFFIX)
+                         extension, silentMode, HtmlManuscript.SUFFIX)
 
 
 if __name__ == '__main__':

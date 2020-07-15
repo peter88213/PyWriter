@@ -17,6 +17,8 @@ from pywriter.model.object import Object
 class HtmlLocations(HtmlManuscript):
     """HTML file representation of an yWriter project's location descriptions."""
 
+    SUFFIX = '_locations'
+
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
         HTMLParser.__init__(self)

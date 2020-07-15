@@ -14,7 +14,6 @@ import os
 from pywriter.odt.odt_proof import OdtProof
 from pywriter.html.html_proof import HtmlProof
 from pywriter.converter.yw_cnv_gui import YwCnvGui
-from pywriter.globals import PROOF_SUFFIX
 
 
 def run(sourcePath, silentMode=True):
@@ -33,7 +32,7 @@ def run(sourcePath, silentMode=True):
         sys.exit('ERROR: File type is not supported.')
 
     converter = YwCnvGui(sourcePath, document,
-                         extension, silentMode, PROOF_SUFFIX)
+                         extension, silentMode, HtmlProof.SUFFIX)
 
 
 if __name__ == '__main__':

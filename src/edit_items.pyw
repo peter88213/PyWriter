@@ -14,7 +14,6 @@ import os
 from pywriter.odt.odt_items import OdtItems
 from pywriter.html.html_items import HtmlItems
 from pywriter.converter.yw_cnv_gui import YwCnvGui
-from pywriter.globals import ITEMDESC_SUFFIX
 
 
 def run(sourcePath, silentMode=True):
@@ -33,7 +32,7 @@ def run(sourcePath, silentMode=True):
         sys.exit('ERROR: File type is not supported.')
 
     converter = YwCnvGui(sourcePath, document,
-                         extension, silentMode, ITEMDESC_SUFFIX)
+                         extension, silentMode, HtmlItems.SUFFIX)
 
 
 if __name__ == '__main__':

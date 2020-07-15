@@ -41,17 +41,17 @@ class YwFile(Novel):
         """Accept only filenames with the correct extension. """
 
         if filePath.lower().endswith('.yw7'):
-            self._FILE_EXTENSION = '.yw7'
+            self.EXTENSION = '.yw7'
             self._ENCODING = 'utf-8'
             self._filePath = filePath
 
         elif filePath.lower().endswith('.yw6'):
-            self._FILE_EXTENSION = '.yw6'
+            self.EXTENSION = '.yw6'
             self._ENCODING = 'utf-8'
             self._filePath = filePath
 
         elif filePath.lower().endswith('.yw5'):
-            self._FILE_EXTENSION = '.yw5'
+            self.EXTENSION = '.yw5'
             self._ENCODING = 'iso-8859-1'
             self._filePath = filePath
 

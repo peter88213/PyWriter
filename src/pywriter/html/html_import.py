@@ -19,6 +19,8 @@ class HtmlImport(HtmlManuscript):
     to be written by Open/LibreOffice Writer.
     """
 
+    SUFFIX = ''
+
     _SCENE_DIVIDER = '* * *'
     _LOW_WORDCOUNT = 10
 

@@ -19,6 +19,8 @@ class HtmlOutline(HtmlManuscript):
     to be written by Open/LibreOffice Writer.
     """
 
+    SUFFIX = ''
+
     def __init__(self, filePath):
         HtmlManuscript.__init__(self, filePath)
         self._chCount = 0

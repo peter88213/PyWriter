@@ -6,6 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from abc import abstractmethod
+from urllib.parse import quote
 import os
 
 
@@ -17,7 +18,8 @@ class Novel():
     of the information included in an yWriter project file).
     """
 
-    _FILE_EXTENSION = ''
+    EXTENSION = ''
+    SUFFIX = ''
     # To be extended by file format specific subclasses.
 
     def __init__(self, filePath):
@@ -92,6 +94,14 @@ class Novel():
         # Path to the file. The setter only accepts files of a
         # supported type as specified by _FILE_EXTENSION.
 
+        self._projectName = None
+        # str
+        # URL-coded file name without suffix and extension.
+
+        self._projectPath = None
+        # str
+        # URL-coded path to the project directory.
+
         self.filePath = filePath
 
     @property
@@ -101,8 +111,12 @@ class Novel():
     @filePath.setter
     def filePath(self, filePath):
         """Accept only filenames with the right extension. """
-        if filePath.lower().endswith(self._FILE_EXTENSION):
+        if filePath.lower().endswith(self.SUFFIX + self.EXTENSION):
             self._filePath = filePath
+            head, tail = os.path.split(os.path.realpath(filePath))
+            self.projectPath = quote(head.replace('\\', '/'), '/:')
+            self.projectName = quote(tail.replace(
+                self.SUFFIX + self.EXTENSION, ''))
 
     @abstractmethod
     def read(self):

@@ -12,16 +12,18 @@ from pywriter.odt.odt_file import OdtFile
 class OdtManuscript(OdtFile):
     """OpenDocument xml manuscript file representation."""
 
+    SUFFIX = '_manuscript'
+
     fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
     partTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
-<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../$ProjectName_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../${ProjectName}_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 '''
 
     chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../$ProjectName_chapters.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../${ProjectName}_chapters.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 '''
 
     sceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
@@ -29,7 +31,7 @@ class OdtManuscript(OdtFile):
 <dc:creator>scene title</dc:creator>
 <text:p>$Title</text:p>
 <text:p/>
-<text:p><text:a xlink:href="../$ProjectName_scenes.odt#ScID:$ID%7Cregion">→Summary</text:a></text:p>
+<text:p><text:a xlink:href="../${ProjectName}_scenes.odt#ScID:$ID%7Cregion">→Summary</text:a></text:p>
 </office:annotation>$SceneContent</text:p>
 </text:section>
 '''

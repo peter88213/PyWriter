@@ -17,6 +17,8 @@ from pywriter.model.character import Character
 class HtmlCharacters(HtmlManuscript):
     """HTML file representation of an yWriter project's character descriptions."""
 
+    SUFFIX = '_characters'
+
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
         HTMLParser.__init__(self)

@@ -20,6 +20,8 @@ class CsvItemList(CsvFile):
     * Data fields are delimited by the _SEPARATOR item.
     """
 
+    SUFFIX = '_itemlist'
+
     fileHeader = '''ID|Name|Description|Aka|Tags
 '''
 

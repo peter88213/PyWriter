@@ -14,7 +14,6 @@ import os
 from pywriter.odt.odt_scenedesc import OdtSceneDesc
 from pywriter.html.html_scenedesc import HtmlSceneDesc
 from pywriter.converter.yw_cnv_gui import YwCnvGui
-from pywriter.globals import SCENEDESC_SUFFIX
 
 
 def run(sourcePath, silentMode=True):
@@ -33,7 +32,7 @@ def run(sourcePath, silentMode=True):
         sys.exit('ERROR: File type is not supported.')
 
     converter = YwCnvGui(sourcePath, document,
-                         extension, silentMode, SCENEDESC_SUFFIX)
+                         extension, silentMode, HtmlSceneDesc.SUFFIX)
 
 
 if __name__ == '__main__':

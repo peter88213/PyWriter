@@ -20,6 +20,8 @@ class CsvCharList(CsvFile):
     * Data fields are delimited by the _SEPARATOR character.
     """
 
+    SUFFIX = '_charlist'
+
     fileHeader = '''ID|Name|Full name|Aka|Description|Bio|Goals|Importance|Tags|Notes
 '''
 

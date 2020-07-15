@@ -12,6 +12,8 @@ from pywriter.html.html_scenedesc import HtmlSceneDesc
 class HtmlChapterDesc(HtmlSceneDesc):
     """HTML file representation of an yWriter project's chapters summaries."""
 
+    SUFFIX = '_chapters'
+
     def handle_endtag(self, tag):
         """Recognize the end of the chapter section and save data.
         Overwrites HTMLparser.handle_endtag().

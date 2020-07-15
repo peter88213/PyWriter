@@ -14,7 +14,6 @@ import os
 from pywriter.odt.odt_locations import OdtLocations
 from pywriter.html.html_locations import HtmlLocations
 from pywriter.converter.yw_cnv_gui import YwCnvGui
-from pywriter.globals import LOCDESC_SUFFIX
 
 
 def run(sourcePath, silentMode=True):
@@ -33,7 +32,7 @@ def run(sourcePath, silentMode=True):
         sys.exit('ERROR: File type is not supported.')
 
     converter = YwCnvGui(sourcePath, document,
-                         extension, silentMode, LOCDESC_SUFFIX)
+                         extension, silentMode, HtmlLocations.SUFFIX)
 
 
 if __name__ == '__main__':

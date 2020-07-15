@@ -13,6 +13,8 @@ from pywriter.html.html_form import *
 class HtmlSceneDesc(HtmlManuscript):
     """HTML file representation of an yWriter project's scene summaries."""
 
+    SUFFIX = '_scenes'
+
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
         Overwrites HTMLparser.handle_endtag().

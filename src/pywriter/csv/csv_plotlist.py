@@ -19,7 +19,6 @@ from urllib.parse import quote
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.globals import *
 
 
 class CsvPlotList(Novel):
@@ -30,8 +29,8 @@ class CsvPlotList(Novel):
     * Data fields are delimited by the _SEPARATOR character.
     """
 
-    _FILE_EXTENSION = 'csv'
-    # overwrites Novel._FILE_EXTENSION
+    EXTENSION = '.csv'
+    SUFFIX = '_plotlist'
 
     _SEPARATOR = '|'     # delimits data fields within a record.
     _LINEBREAK = '\t'    # substitutes embedded line breaks.
@@ -196,7 +195,7 @@ class CsvPlotList(Novel):
         """
 
         odtPath = quote(os.path.realpath(self.filePath).replace(
-            '\\', '/'), '/:').replace(PLOTLIST_SUFFIX + '.csv', MANUSCRIPT_SUFFIX + '.odt')
+            '\\', '/'), '/:').replace('_plotlist.csv', '_manuscript.odt')
 
         # first record: the table's column headings
 

@@ -12,6 +12,8 @@ from pywriter.odt.odt_file import OdtFile
 class OdtProof(OdtFile):
     """OpenDocument xml proof reading file representation."""
 
+    SUFFIX = '_proof'
+
     fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''

@@ -13,7 +13,6 @@ from urllib.parse import quote
 
 from pywriter.csv.csv_file import CsvFile
 from pywriter.model.scene import Scene
-from pywriter.globals import *
 
 
 class CsvSceneList(CsvFile):
@@ -24,17 +23,28 @@ class CsvSceneList(CsvFile):
     * Data fields are delimited by the _SEPARATOR character.
     """
 
+    SUFFIX = '_scenelist'
+
     _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
     # '1' is assigned N/A (empty table cell).
 
     _ACTION_MARKER = 'Action'
     _REACTION_MARKER = 'Reaction'
 
-    fileHeader = '''Scene link|Scene title|Scene description|Tags|Scene notes|''' +\
+    fileHeader = '''Scene link|''' +\
+        '''Scene title|Scene description|Tags|Scene notes|''' +\
         '''A/R|Goal|Conflict|Outcome|''' +\
-        '''Scene|Words total|Field 1|Field 2|Field 3|Field 4|''' +\
+        '''Scene|Words total|$FieldTitle1|$FieldTitle2|$FieldTitle3|$FieldTitle4|''' +\
         '''Word count|Letter count|Status|''' +\
         '''Characters|Locations|Items
+'''
+
+    sceneTemplate = '''=HYPERLINK("file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion";"ScID:$ID")|''' +\
+        '''$Title|$Desc|$Tags|$Notes|''' +\
+        '''$ReactionScene|$Goal|$Conflict|$Outcome|''' +\
+        '''$SceneNumber|$WordsTotal|$Field1|$Field2|$Field3|$Field4|''' +\
+        '''$WordCount|$LetterCount|$Status|''' +\
+        '''$Characters|$Locations|$Items
 '''
 
     def read(self):
@@ -179,187 +189,3 @@ class CsvSceneList(CsvFile):
                 '''
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
-
-    def write(self):
-        """Generate a csv file containing a row per scene
-        Return a message beginning with SUCCESS or ERROR.
-        """
-
-        self.projectPath = quote(os.path.realpath(self.filePath).replace(
-            '\\', '/'), '/:').replace(SCENELIST_SUFFIX + '.csv', '')
-
-        odtPath = quote(os.path.realpath(self.filePath).replace(
-            '\\', '/'), '/:').replace(SCENELIST_SUFFIX + '.csv', MANUSCRIPT_SUFFIX + '.odt')
-
-        # first record: the table's column headings
-
-        table = [self.fileHeader.replace(
-            'Field 1', self.fieldTitle1).replace(
-            'Field 2', self.fieldTitle2).replace(
-            'Field 3', self.fieldTitle3).replace(
-            'Field 4', self.fieldTitle4)]
-
-        # Add a record for each used scene in a regular chapter
-
-        sceneCount = 0
-        wordCount = 0
-
-        for chId in self.srtChapters:
-
-            if self.chapters[chId].isUnused:
-                continue
-
-            if self.chapters[chId].chType != 0:
-                continue
-
-            for scId in self.chapters[chId].srtScenes:
-
-                if self.scenes[scId].isUnused:
-                    continue
-
-                if self.scenes[scId].doNotExport:
-                    continue
-
-                if self.scenes[scId].isReactionScene:
-                    pacingType = self._REACTION_MARKER
-
-                else:
-                    pacingType = self._ACTION_MARKER
-
-                sceneCount += 1
-                wordCount += self.scenes[scId].wordCount
-
-                if self.scenes[scId].desc is None:
-                    self.scenes[scId].desc = ''
-
-                if self.scenes[scId].tags is None:
-                    self.scenes[scId].tags = ['']
-
-                if self.scenes[scId].sceneNotes is None:
-                    self.scenes[scId].sceneNotes = ''
-
-                if self.scenes[scId].isReactionScene is None:
-                    self.scenes[scId].isReactionScene = False
-
-                if self.scenes[scId].goal is None:
-                    self.scenes[scId].goal = ''
-
-                if self.scenes[scId].conflict is None:
-                    self.scenes[scId].conflict = ''
-
-                if self.scenes[scId].outcome is None:
-                    self.scenes[scId].outcome = ''
-
-                if self.scenes[scId].field1 is None:
-                    self.scenes[scId].field1 = ''
-
-                if self.scenes[scId].field2 is None:
-                    self.scenes[scId].field2 = ''
-
-                if self.scenes[scId].field3 is None:
-                    self.scenes[scId].field3 = ''
-
-                if self.scenes[scId].field4 is None:
-                    self.scenes[scId].field4 = ''
-
-                rating1 = ''
-                if self.scenes[scId].field1 != '1':
-                    rating1 = self.scenes[scId].field1
-
-                rating2 = ''
-                if self.scenes[scId].field2 != '1':
-                    rating2 = self.scenes[scId].field2
-
-                rating3 = ''
-                if self.scenes[scId].field3 != '1':
-                    rating3 = self.scenes[scId].field3
-
-                rating4 = ''
-                if self.scenes[scId].field4 != '1':
-                    rating4 = self.scenes[scId].field4
-
-                charas = ''
-
-                if self.scenes[scId].characters is not None:
-
-                    for crId in self.scenes[scId].characters:
-
-                        if charas != '':
-                            charas += '; '
-
-                        charas += self.characters[crId].title
-
-                locas = ''
-
-                if self.scenes[scId].locations is not None:
-
-                    for lcId in self.scenes[scId].locations:
-
-                        if locas != '':
-                            locas += '; '
-
-                        locas += self.locations[lcId].title
-
-                items = ''
-
-                if self.scenes[scId].items is not None:
-
-                    for itId in self.scenes[scId].items:
-
-                        if items != '':
-                            items += '; '
-
-                        items += self.items[itId].title
-
-                table.append('=HYPERLINK("file:///'
-                             + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
-                             + self._SEPARATOR
-                             + self.scenes[scId].title
-                             + self._SEPARATOR
-                             + self.scenes[scId].desc.rstrip().replace('\n', self._LINEBREAK)
-                             + self._SEPARATOR
-                             + ';'.join(self.scenes[scId].tags)
-                             + self._SEPARATOR
-                             + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
-                             + self._SEPARATOR
-                             + pacingType
-                             + self._SEPARATOR
-                             + self.scenes[scId].goal
-                             + self._SEPARATOR
-                             + self.scenes[scId].conflict
-                             + self._SEPARATOR
-                             + self.scenes[scId].outcome
-                             + self._SEPARATOR
-                             + str(sceneCount)
-                             + self._SEPARATOR
-                             + str(wordCount)
-                             + self._SEPARATOR
-                             + rating1
-                             + self._SEPARATOR
-                             + rating2
-                             + self._SEPARATOR
-                             + rating3
-                             + self._SEPARATOR
-                             + rating4
-                             + self._SEPARATOR
-                             + str(self.scenes[scId].wordCount)
-                             + self._SEPARATOR
-                             + str(self.scenes[scId].letterCount)
-                             + self._SEPARATOR
-                             + Scene.STATUS[self.scenes[scId].status]
-                             + self._SEPARATOR
-                             + charas
-                             + self._SEPARATOR
-                             + locas
-                             + self._SEPARATOR
-                             + items
-                             + '\n')
-
-        try:
-            with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.writelines(table)
-
-        except(PermissionError):
-            return 'ERROR: ' + self._filePath + '" is write protected.'
-
-        return 'SUCCESS: "' + self._filePath + '" saved.'

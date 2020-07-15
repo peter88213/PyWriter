@@ -15,7 +15,7 @@ from pywriter.file.file_export import FileExport
 class OdtFile(FileExport, OdtTemplate):
     """OpenDocument xml project file representation."""
 
-    _FILE_EXTENSION = '.odt'
+    EXTENSION = '.odt'
     # overwrites Novel._FILE_EXTENSION
 
     def convert_markup(self, text):

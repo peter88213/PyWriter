@@ -12,6 +12,8 @@ from pywriter.odt.odt_file import OdtFile
 class OdtItems(OdtFile):
     """OpenDocument xml item descriptions file representation."""
 
+    SUFFIX = '_items'
+
     def get_itemSubst(self, itId):
         itemSubst = OdtFile.get_itemSubst(self, itId)
 

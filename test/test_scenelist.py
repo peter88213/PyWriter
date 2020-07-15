@@ -12,13 +12,14 @@ import unittest
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw_file import YwFile
 from pywriter.csv.csv_scenelist import CsvSceneList
-from pywriter.globals import SCENELIST_SUFFIX
+
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + SCENELIST_SUFFIX + '/'
+DATA_PATH = 'data/' + CsvSceneList.SUFFIX + '/'
 
-TEST_CSV = EXEC_PATH + 'yw7 Sample Project' + SCENELIST_SUFFIX + '.csv'
+TEST_CSV = EXEC_PATH + 'yw7 Sample Project' + \
+    CsvSceneList.SUFFIX + CsvSceneList.EXTENSION
 REFERENCE_CSV = DATA_PATH + 'normal.csv'
 PROOFED_CSV = DATA_PATH + 'proofed.csv'
 
@@ -89,7 +90,7 @@ class NrmOpr(unittest.TestCase):
         # Read .yw7 file and convert xml to csv.
 
         self.assertEqual(converter.yw_to_document(
-            yw7File, documentFile), 'SUCCESS: "' + TEST_CSV + '" saved.')
+            yw7File, documentFile), 'SUCCESS: Content written to "' + TEST_CSV + '".')
 
         self.assertEqual(read_file(TEST_CSV),
                          read_file(REFERENCE_CSV))
@@ -116,6 +117,7 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_YW7),
                          read_file(PROOFED_YW7))
 
+    @unittest.skip('')
     def tearDown(self):
         remove_all_testfiles()
 

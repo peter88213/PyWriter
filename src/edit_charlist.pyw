@@ -11,13 +11,12 @@ import sys
 
 from pywriter.csv.csv_charlist import CsvCharList
 from pywriter.converter.yw_cnv_gui import YwCnvGui
-from pywriter.globals import CHARLIST_SUFFIX
 
 
 def run(sourcePath, silentMode=True):
     document = CsvCharList('')
     converter = YwCnvGui(sourcePath, document, 'csv',
-                         silentMode, CHARLIST_SUFFIX)
+                         silentMode, CsvCharList.SUFFIX)
 
 
 if __name__ == '__main__':

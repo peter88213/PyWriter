@@ -21,8 +21,8 @@ class HtmlProof(Novel, HTMLParser):
     to be read and written by Open/LibreOffice Writer.
     """
 
-    _FILE_EXTENSION = 'html'
-    # overwrites Novel._FILE_EXTENSION
+    EXTENSION = 'html'
+    SUFFIX = '_proof'
 
     def __init__(self, filePath):
         Novel.__init__(self, filePath)

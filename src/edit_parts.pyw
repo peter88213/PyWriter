@@ -12,9 +12,8 @@ import sys
 import os
 
 from pywriter.odt.odt_partdesc import OdtPartDesc
-from pywriter.html.html_chapterdesc import HtmlChapterDesc
+from pywriter.html.html_partdesc import HtmlPartDesc
 from pywriter.converter.yw_cnv_gui import YwCnvGui
-from pywriter.globals import PARTDESC_SUFFIX
 
 
 def run(sourcePath, silentMode=True):
@@ -26,14 +25,14 @@ def run(sourcePath, silentMode=True):
         extension = 'odt'
 
     elif FileExtension == '.html':
-        document = HtmlChapterDesc('')
+        document = HtmlPartDesc('')
         extension = 'html'
 
     else:
         sys.exit('ERROR: File type is not supported.')
 
     converter = YwCnvGui(sourcePath, document,
-                         extension, silentMode, PARTDESC_SUFFIX)
+                         extension, silentMode, HtmlPartDesc.SUFFIX)
 
 
 if __name__ == '__main__':

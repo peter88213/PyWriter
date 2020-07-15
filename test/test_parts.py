@@ -13,19 +13,20 @@ import zipfile
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw_file import YwFile
 
-from pywriter.html.html_chapterdesc import HtmlChapterDesc
+from pywriter.html.html_partdesc import HtmlPartDesc
 from pywriter.odt.odt_partdesc import OdtPartDesc
-from pywriter.globals import PARTDESC_SUFFIX
 
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + PARTDESC_SUFFIX + '/'
+DATA_PATH = 'data/' + OdtPartDesc.SUFFIX + '/'
 
-TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + PARTDESC_SUFFIX + '.odt'
+TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + \
+    OdtPartDesc.SUFFIX + OdtPartDesc.EXTENSION
 ODT_CONTENT = 'content.xml'
 
-TEST_HTML = EXEC_PATH + 'yw7 Sample Project.html'
+TEST_HTML = EXEC_PATH + 'yw7 Sample Project' + \
+    HtmlPartDesc.SUFFIX + HtmlPartDesc.EXTENSION
 REFERENCE_HTML = DATA_PATH + 'normal.html'
 PROOFED_HTML = DATA_PATH + 'proofed.html'
 
@@ -102,7 +103,7 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = YwFile(TEST_YW7)
-        documentFile = HtmlChapterDesc(TEST_HTML)
+        documentFile = HtmlPartDesc(TEST_HTML)
         converter = YwCnv()
 
         # Convert html to xml and replace .yw7 file.
