@@ -7,26 +7,22 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import re
-from html.parser import HTMLParser
 
-from pywriter.model.novel import Novel
-from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.model.object import Object
+from pywriter.html.html_file import HtmlFile
 
 
-class HtmlLocations(HtmlManuscript):
+class HtmlLocations(HtmlFile):
     """HTML file representation of an yWriter project's location descriptions."""
 
     SUFFIX = '_locations'
 
     def __init__(self, filePath):
-        Novel.__init__(self, filePath)
-        HTMLParser.__init__(self)
-        self._lines = []
+        HtmlFile.__init__(self, filePath)
         self._lcId = None
 
     def handle_starttag(self, tag, attrs):
-        """Recognize the beginning ot the body section.
+        """Identify locations.
         Overwrites HTMLparser.handle_starttag()
         """
         if tag == 'div':
@@ -57,3 +53,6 @@ class HtmlLocations(HtmlManuscript):
         """
         if self._lcId is not None:
             self._lines.append(data.rstrip().lstrip())
+
+    def get_structure(self):
+        """This file format has no comparable structure."""

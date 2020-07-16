@@ -6,10 +6,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.html.html_scenedesc import HtmlSceneDesc
+from pywriter.html.html_file import HtmlFile
 
 
-class HtmlChapterDesc(HtmlSceneDesc):
+class HtmlChapterDesc(HtmlFile):
     """HTML file representation of an yWriter project's chapters summaries."""
 
     SUFFIX = '_chapters'
@@ -34,3 +34,6 @@ class HtmlChapterDesc(HtmlSceneDesc):
         """
         if self._chId is not None:
             self._lines.append(data.rstrip().lstrip())
+
+    def get_structure(self):
+        """This file format has no comparable structure."""

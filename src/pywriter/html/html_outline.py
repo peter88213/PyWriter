@@ -6,13 +6,13 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.html.html_manuscript import HtmlManuscript
+from pywriter.html.html_file import HtmlFile
 from pywriter.html.html_form import *
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 
 
-class HtmlOutline(HtmlManuscript):
+class HtmlOutline(HtmlFile):
     """HTML file representation of an yWriter project's OfficeFile part.
 
     Represents a html file without chapter and scene tags 
@@ -22,7 +22,7 @@ class HtmlOutline(HtmlManuscript):
     SUFFIX = ''
 
     def __init__(self, filePath):
-        HtmlManuscript.__init__(self, filePath)
+        HtmlFile.__init__(self, filePath)
         self._chCount = 0
         self._scCount = 0
 
@@ -96,19 +96,5 @@ class HtmlOutline(HtmlManuscript):
         """
         self._lines.append(data.rstrip().lstrip())
 
-    def read(self):
-        """Read chapter and scene titles and 
-        summaries from a html file. 
-        Return a message beginning with SUCCESS or ERROR. 
-        """
-        result = read_html_file(self._filePath)
-
-        if result[0].startswith('ERROR'):
-            return (result[0])
-
-        text = strip_markup(to_yw7(result[1]))
-
-        # Invoke HTML parser.
-
-        self.feed(text)
-        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
+    def get_structure(self):
+        """This file format has no comparable structure."""

@@ -6,13 +6,13 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.html.html_manuscript import HtmlManuscript
+from pywriter.html.html_file import HtmlFile
 from pywriter.html.html_form import *
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 
 
-class HtmlImport(HtmlManuscript):
+class HtmlImport(HtmlFile):
     """HTML file representation of an yWriter project's OfficeFile part.
 
     Represents a html file without chapter and scene tags 
@@ -25,9 +25,14 @@ class HtmlImport(HtmlManuscript):
     _LOW_WORDCOUNT = 10
 
     def __init__(self, filePath):
-        HtmlManuscript.__init__(self, filePath)
+        HtmlFile.__init__(self, filePath)
         self._chCount = 0
         self._scCount = 0
+
+    def preprocess(self, text):
+        """Process the html text before parsing.
+        """
+        return to_yw7(text)
 
     def handle_starttag(self, tag, attrs):
 
@@ -103,3 +108,6 @@ class HtmlImport(HtmlManuscript):
 
         else:
             self._lines.append(data.rstrip().lstrip())
+
+    def get_structure(self):
+        """This file format has no comparable structure."""

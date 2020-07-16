@@ -6,70 +6,34 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from html.parser import HTMLParser
+from pywriter.html.html_file import HtmlFile
 
-from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.html.html_form import *
 
 
-class HtmlProof(Novel, HTMLParser):
+class HtmlProof(HtmlFile):
     """HTML file representation of an yWriter project's OfficeFile part.
 
     Represents a html file with visible chapter and scene tags 
     to be read and written by Open/LibreOffice Writer.
     """
 
-    EXTENSION = 'html'
     SUFFIX = '_proof'
 
     def __init__(self, filePath):
-        Novel.__init__(self, filePath)
-        HTMLParser.__init__(self)
-        self._lines = []
+        HtmlFile.__init__(self, filePath)
         self._collectText = False
 
-    def handle_starttag(self, tag, attrs):
-        """Recognize the paragraph's beginning.
-        Overwrites HTMLparser.handle_endtag().
+    def preprocess(self, text):
+        """Process the html text before parsing.
         """
-        if tag == 'p':
-            self._collectText = True
+        return to_yw7(text)
 
-    def handle_endtag(self, tag):
-        """Recognize the paragraph's end.
-        Overwrites HTMLparser.handle_endtag().
+    def postprocess(self):
+        """Parse the converted text to identify chapters and scenes.
         """
-        if tag == 'p':
-            self._collectText = False
-
-    def handle_data(self, data):
-        """Copy the scene paragraphs.
-        Overwrites HTMLparser.handle_data().
-        """
-        if self._collectText:
-            self._lines.append(data)
-
-    def read(self):
-        """Read scene content from a html file  
-        with visible chapter and scene tags.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-        result = read_html_file(self._filePath)
-
-        if result[0].startswith('ERROR'):
-            return (result[0])
-
-        text = to_yw7(result[1])
-
-        # Invoke HTML parser to write the html body as raw text
-        # to self._lines.
-
-        self.feed(text)
-
-        # Parse the HTML body to identify chapters and scenes.
-
         sceneText = []
         scId = ''
         chId = ''
@@ -99,4 +63,23 @@ class HtmlProof(Novel, HTMLParser):
             elif inScene:
                 sceneText.append(line)
 
-        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
+    def handle_starttag(self, tag, attrs):
+        """Recognize the paragraph's beginning.
+        Overwrites HTMLparser.handle_endtag().
+        """
+        if tag == 'p':
+            self._collectText = True
+
+    def handle_endtag(self, tag):
+        """Recognize the paragraph's end.
+        Overwrites HTMLparser.handle_endtag().
+        """
+        if tag == 'p':
+            self._collectText = False
+
+    def handle_data(self, data):
+        """Copy the scene paragraphs.
+        Overwrites HTMLparser.handle_data().
+        """
+        if self._collectText:
+            self._lines.append(data)

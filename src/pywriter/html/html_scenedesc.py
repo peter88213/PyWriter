@@ -6,12 +6,12 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.html.html_manuscript import HtmlManuscript
-from pywriter.html.html_form import *
+from pywriter.html.html_file import HtmlFile
 
 
-class HtmlSceneDesc(HtmlManuscript):
-    """HTML file representation of an yWriter project's scene summaries."""
+class HtmlSceneDesc(HtmlFile):
+    """HTML file representation of an yWriter project's scene summaries.
+    """
 
     SUFFIX = '_scenes'
 
@@ -34,19 +34,12 @@ class HtmlSceneDesc(HtmlManuscript):
             if tag == 'div':
                 self._chId = None
 
-    def read(self):
-        """Read scene summaries from a html file 
-        with chapter and scene sections.
-        Return a message beginning with SUCCESS or ERROR. 
+    def handle_data(self, data):
+        """Collect data within scene sections.
+        Overwrites HTMLparser.handle_data().
         """
-        result = read_html_file(self._filePath)
+        if self._scId is not None:
+            self._lines.append(data.rstrip().lstrip())
 
-        if result[0].startswith('ERROR'):
-            return (result[0])
-
-        text = strip_markup(to_yw7(result[1]))
-
-        # Invoke HTML parser.
-
-        self.feed(text)
-        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
+    def get_structure(self):
+        """This file format has no comparable structure."""
