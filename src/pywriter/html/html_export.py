@@ -80,6 +80,8 @@ class HtmlExport(FileExport):
             text = text.replace('[b]', '<strong>')
             text = text.replace('[/b]', '</strong>')
             text = text.replace('<p></p>', '<p><br /></p>')
+            text = text.replace('/*', '<!-- ')
+            text = text.replace('*/', ' -->')
 
         except AttributeError:
             text = ''
