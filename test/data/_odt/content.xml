@@ -30,7 +30,7 @@
 <text:p text:style-name="First_20_line_20_indent">"What kind of offer?" asked Hal suspiciously.</text:p>
 <text:p text:style-name="First_20_line_20_indent">"Planet books have a chess title on sale."</text:p>
 <text:p text:style-name="First_20_line_20_indent">"Really? Put it on main."</text:p>
-<text:p text:style-name="First_20_line_20_indent">The wide viewscreen above the console turned red, and the word 'SaLE' appeared in vibrating yellow text. The letters grew legs and marched off the screen, bringing a wire basket on wheels into view.</text:p>
+<text:p text:style-name="First_20_line_20_indent">The wide viewscreen above the console turned red, and the word 'SaLE' appeared in vibrating yellow text. <office:annotation><dc:creator>Simon Haynes</dc:creator><text:p>--  this is the author's first note </text:p></office:annotation>The letters grew legs and marched off the screen, bringing a wire basket on wheels into view.</text:p>
 <text:p text:style-name="First_20_line_20_indent">"I don't need all this crap," said Hal. "Just show me the deal."</text:p>
 <text:p text:style-name="First_20_line_20_indent">"Almost there," said the Navcom. "Keep watching."</text:p>
 <text:p text:style-name="First_20_line_20_indent">A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers which dropped to the ground and formed the words 'Special Offer'. a gust of wind blew the feathers away, and a book title flashed up on the screen.</text:p>
@@ -119,7 +119,7 @@
 <text:p text:style-name="First_20_line_20_indent">The commset buzzed and Linten leant forward. "Yes?"</text:p>
 <text:p text:style-name="First_20_line_20_indent">There was a crackling sound. "Help! Fire!" said a voice over the noise.</text:p>
 <text:p text:style-name="First_20_line_20_indent">"Who is this? What are you talking about?"</text:p>
-<text:p text:style-name="First_20_line_20_indent">"The grass is burning," cried the voice. "There's a fire on the landing field!"</text:p>
+<text:p text:style-name="First_20_line_20_indent">"The grass is burning," cried the voice. <office:annotation><dc:creator>Simon Haynes</dc:creator><text:p>--  the author's second note ...</text:p></office:annotation> "There's a fire on the landing field!"</text:p>
 <text:p text:style-name="First_20_line_20_indent">"Which pad?"</text:p>
 <text:p text:style-name="First_20_line_20_indent">"Fifty-two," said Hal, smothering a grin. "That's Clunk." He leant towards the commset. "Clunk, is the ship in danger from this, er, fire?"</text:p>
 <text:p text:style-name="First_20_line_20_indent">"Not yet, Mr Spacejock, but it soon will be. Would you like me to move it out of the way?"</text:p>

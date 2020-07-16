@@ -70,6 +70,9 @@ class OdtFile(FileExport, OdtTemplate):
             text = text.replace(
                 '[b]', '<text:span text:style-name="Strong_20_Emphasis">')
             text = text.replace('[/b]', '</text:span>')
+            text = text.replace(
+                '/*', '<office:annotation><dc:creator>' + self.author + '</dc:creator><text:p>-- ')
+            text = text.replace('*/', '</text:p></office:annotation>')
 
         except AttributeError:
             text = ''

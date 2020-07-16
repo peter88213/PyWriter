@@ -18,7 +18,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<FieldTitle2><![CDATA[Tension]]></FieldTitle2>
 		<FieldTitle3><![CDATA[Humour]]></FieldTitle3>
 		<FieldTitle4><![CDATA[Quality]]></FieldTitle4>
-		<LastFullBackup>2020-02-12</LastFullBackup>
+		<LastFullBackup>2020-07-16</LastFullBackup>
 		<WordTarget>0</WordTarget>
 		<WordTargetStartDate>2007-07-28</WordTargetStartDate>
 		<WordTargetEndDate>2007-08-27</WordTargetEndDate>
@@ -35,7 +35,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<LaTeXHeaderFile><![CDATA[ ]]></LaTeXHeaderFile>
 		<MRUSpecificDate>1899-12-30</MRUSpecificDate>
 		<MRUSpecificTime>00:00:00</MRUSpecificTime>
-		<LastViewedScID>120</LastViewedScID>
+		<LastViewedScID>9</LastViewedScID>
 		<DeadlineDate1>2004-09-01</DeadlineDate1>
 		<DeadlineDate2>2004-12-14</DeadlineDate2>
 		<DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -216,8 +216,8 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
 		<Field3>3</Field3>
 		<Field4>3</Field4>
 		<Status>4</Status>
-		<WordCount>388</WordCount>
-		<LetterCount>2325</LetterCount>
+		<WordCount>376</WordCount>
+		<LetterCount>2245</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>10</CharID>
@@ -237,7 +237,7 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
 "What kind of offer?" asked Hal suspiciously.
 "Planet books have a chess title on sale."
 "Really? Put it on main."
-The wide viewscreen above the console turned red, and the word 'SaLE' appeared in vibrating yellow text. The letters grew legs and marched off the screen, bringing a wire basket on wheels into view.
+The wide viewscreen above the console turned red, and the word 'SaLE' appeared in vibrating yellow text. /* this is the author's first note */The letters grew legs and marched off the screen, bringing a wire basket on wheels into view.
 "I don't need all this crap," said Hal. "Just show me the deal."
 "Almost there," said the Navcom. "Keep watching."
 A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers which dropped to the ground and formed the words 'Special Offer'. a gust of wind blew the feathers away, and a book title flashed up on the screen.
@@ -491,7 +491,7 @@ Then the control tower calls to say the landing field is on fire around the Blac
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>157</WordCount>
-		<LetterCount>863</LetterCount>
+		<LetterCount>897</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>3</CharID>
@@ -506,7 +506,7 @@ Then the control tower calls to say the landing field is on fire around the Blac
 The commset buzzed and Linten leant forward. "Yes?"
 There was a crackling sound. "Help! Fire!" said a voice over the noise.
 "Who is this? What are you talking about?"
-"The grass is burning," cried the voice. "There's a fire on the landing field!"
+"The grass is burning," cried the voice. /* the author's second note ...*/ "There's a fire on the landing field!"
 "Which pad?"
 "Fifty-two," said Hal, smothering a grin. "That's Clunk." He leant towards the commset. "Clunk, is the ship in danger from this, er, fire?"
 "Not yet, Mr Spacejock, but it soon will be. Would you like me to move it out of the way?"
@@ -1665,6 +1665,11 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<ID>1</ID>
 		<Title><![CDATA[Chapter 1]]></Title>
 		<SortOrder>3</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+		</Fields>
+
 		<Type>0</Type>
 		<Scenes>
 			<ScID>1</ScID>
@@ -2078,9 +2083,9 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	</WC>
 
 	<WC>
-		<Date>2020-02-12</Date>
-		<Count>1266</Count>
-		<TotalCount>1341</TotalCount>
+		<Date>2020-07-16</Date>
+		<Count>1254</Count>
+		<TotalCount>1329</TotalCount>
 	</WC>
 
 	</WCLog>
