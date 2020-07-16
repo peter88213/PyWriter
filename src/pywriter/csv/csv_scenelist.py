@@ -28,8 +28,7 @@ class CsvSceneList(CsvFile):
     _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
     # '1' is assigned N/A (empty table cell).
 
-    _ACTION_MARKER = 'Action'
-    _REACTION_MARKER = 'Reaction'
+    _LIST_SEPARATOR = ','
 
     fileHeader = '''Scene link|''' +\
         '''Scene title|Scene description|Tags|Scene notes|''' +\
@@ -39,13 +38,31 @@ class CsvSceneList(CsvFile):
         '''Characters|Locations|Items
 '''
 
-    sceneTemplate = '''=HYPERLINK("file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion";"ScID:$ID")|''' +\
+    sceneTemplate = '''"=HYPERLINK(""file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion"";""ScID:$ID"")"|''' +\
         '''$Title|$Desc|$Tags|$Notes|''' +\
         '''$ReactionScene|$Goal|$Conflict|$Outcome|''' +\
         '''$SceneNumber|$WordsTotal|$Field1|$Field2|$Field3|$Field4|''' +\
         '''$WordCount|$LetterCount|$Status|''' +\
         '''$Characters|$Locations|$Items
 '''
+
+    def get_sceneSubst(self, scId, sceneNumber, wordsTotal, lettersTotal):
+        sceneSubst = CsvFile.get_sceneSubst(
+            self, scId, sceneNumber, wordsTotal, lettersTotal)
+
+        if self.scenes[scId].field1 == '1':
+            sceneSubst['Field1'] = ''
+
+        if self.scenes[scId].field2 == '1':
+            sceneSubst['Field2'] = ''
+
+        if self.scenes[scId].field3 == '1':
+            sceneSubst['Field3'] = ''
+
+        if self.scenes[scId].field4 == '1':
+            sceneSubst['Field4'] = ''
+
+        return sceneSubst
 
     def read(self):
         """Parse the csv file located at filePath, 
@@ -78,13 +95,13 @@ class CsvSceneList(CsvFile):
                 self.scenes[scId].desc = cell[i].replace(
                     self._LINEBREAK, '\n')
                 i += 1
-                self.scenes[scId].tags = cell[i].split(';')
+                self.scenes[scId].tags = cell[i].split(self._LIST_SEPARATOR)
                 i += 1
                 self.scenes[scId].sceneNotes = cell[i].replace(
                     self._LINEBREAK, '\n')
                 i += 1
 
-                if self._REACTION_MARKER.lower() in cell[i].lower():
+                if Scene.REACTION_MARKER.lower() in cell[i].lower():
                     self.scenes[scId].isReactionScene = True
 
                 else:
@@ -153,7 +170,7 @@ class CsvSceneList(CsvFile):
 
                 i += 1
                 ''' Cannot write back character IDs, because self.characters is None
-                charaNames = cell[i].split(';')
+                charaNames = cell[i].split(self._LIST_SEPARATOR)
                 self.scenes[scId].characters = []
 
                 for charaName in charaNames:
@@ -165,7 +182,7 @@ class CsvSceneList(CsvFile):
                 '''
                 i += 1
                 ''' Cannot write back location IDs, because self.locations is None
-                locaNames = cell[i].split(';')
+                locaNames = cell[i].split(self._LIST_SEPARATOR)
                 self.scenes[scId].locations = []
 
                 for locaName in locaNames:
@@ -177,7 +194,7 @@ class CsvSceneList(CsvFile):
                 '''
                 i += 1
                 ''' Cannot write back item IDs, because self.items is None
-                itemNames = cell[i].split(';')
+                itemNames = cell[i].split(self._LIST_SEPARATOR)
                 self.scenes[scId].items = []
 
                 for itemName in itemNames:
