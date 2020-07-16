@@ -18,7 +18,7 @@ class HtmlFile(Novel, HTMLParser):
     """HTML file representation of an yWriter project's part.
     """
 
-    EXTENSION = 'html'
+    EXTENSION = '.html'
 
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
