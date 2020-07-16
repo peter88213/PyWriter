@@ -141,7 +141,7 @@ class YwCnvGui(YwCnv):
                     self.processInfo.config(
                         text=self.document_to_yw(document, ywFile))
 
-            elif sourcePath.endswith(document.SUFFIX + document.EXTENSIION):
+            elif sourcePath.endswith(document.SUFFIX + document.EXTENSION):
                 document.filePath = sourcePath
 
                 # Determine the project file path.
