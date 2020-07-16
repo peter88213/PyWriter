@@ -20,13 +20,11 @@ def run(sourcePath, silentMode=True):
 
     if FileExtension == '.html':
         document = HtmlOutline('')
-        extension = 'html'
 
     else:
         sys.exit('ERROR: File type is not supported.')
 
-    converter = YwCnvGui(sourcePath, document,
-                         extension, silentMode, '')
+    converter = YwCnvGui(sourcePath, document, silentMode)
 
 
 if __name__ == '__main__':

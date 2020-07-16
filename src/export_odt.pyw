@@ -22,13 +22,11 @@ def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
 
     if FileExtension in ['.yw6', '.yw7']:
         document = OdtExport('')
-        extension = 'odt'
 
     else:
         sys.exit('ERROR: File type is not supported.')
 
-    converter = YwCnvGui(sourcePath, document,
-                         extension, silentMode, '')
+    converter = YwCnvGui(sourcePath, document, silentMode)
 
 
 if __name__ == '__main__':

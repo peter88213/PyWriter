@@ -22,17 +22,14 @@ def run(sourcePath, silentMode=True):
 
     if FileExtension in ['.yw6', '.yw7']:
         document = OdtProof('')
-        extension = 'odt'
 
     elif FileExtension == '.html':
         document = HtmlProof('')
-        extension = 'html'
 
     else:
         sys.exit('ERROR: File type is not supported.')
 
-    converter = YwCnvGui(sourcePath, document,
-                         extension, silentMode, HtmlProof.SUFFIX)
+    converter = YwCnvGui(sourcePath, document, silentMode)
 
 
 if __name__ == '__main__':

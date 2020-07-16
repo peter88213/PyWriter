@@ -58,11 +58,7 @@ class YwCnvGui(YwCnv):
             - _chapters for a html file containing chapter summaries.
     """
 
-    def __init__(self, sourcePath,
-                 document,
-                 extension,
-                 silentMode=True,
-                 suffix=''):
+    def __init__(self, sourcePath, document, silentMode=True):
         """Run the converter with a GUI. """
 
         # Prepare the graphical user interface.
@@ -84,7 +80,7 @@ class YwCnvGui(YwCnv):
         # Run the converter.
 
         self.silentMode = silentMode
-        self.convert(sourcePath, document, extension, suffix)
+        self.convert(sourcePath, document)
 
         # Visualize the outcome.
 
@@ -101,10 +97,7 @@ class YwCnvGui(YwCnv):
             self.root.quitButton.pack(padx=5, pady=5)
             self.root.mainloop()
 
-    def convert(self, sourcePath,
-                document,
-                extension,
-                suffix):
+    def convert(self, sourcePath, document):
         """Determine the direction and invoke the converter. """
 
         # The conversion's direction depends on the sourcePath argument.
@@ -119,9 +112,9 @@ class YwCnvGui(YwCnv):
 
                 # Generate the target file path.
 
-                document.filePath = fileName + suffix + '.' + extension
+                document.filePath = fileName + document.SUFFIX + document.EXTENSION
                 self.appInfo.config(
-                    text='Export yWriter scenes content to ' + extension)
+                    text='Export yWriter scenes content to ' + document.EXTENSION)
                 self.processInfo.config(text='Project: "' + sourcePath + '"')
 
                 # Instantiate an YwFile object and pass it along with
@@ -131,7 +124,7 @@ class YwCnvGui(YwCnv):
                 self.processInfo.config(
                     text=self.yw_to_document(ywFile, document))
 
-            elif (suffix == '') and (extension == 'html'):
+            elif (document.SUFFIX == '') and (document.EXTENSIION == '.html'):
                 document.filePath = sourcePath
                 ywPath = sourcePath.split('.html')[0] + '.yw7'
                 ywFile = YwNewFile(ywPath)
@@ -148,18 +141,18 @@ class YwCnvGui(YwCnv):
                     self.processInfo.config(
                         text=self.document_to_yw(document, ywFile))
 
-            elif sourcePath.endswith(suffix + '.' + extension):
+            elif sourcePath.endswith(document.SUFFIX + document.EXTENSIION):
                 document.filePath = sourcePath
 
                 # Determine the project file path.
 
-                ywPath = sourcePath.split(suffix)[0] + '.yw7'
+                ywPath = sourcePath.split(document.SUFFIX)[0] + '.yw7'
 
                 if not os.path.isfile(ywPath):
-                    ywPath = sourcePath.split(suffix)[0] + '.yw6'
+                    ywPath = sourcePath.split(document.SUFFIX)[0] + '.yw6'
 
                     if not os.path.isfile(ywPath):
-                        ywPath = sourcePath.split(suffix)[0] + '.yw5'
+                        ywPath = sourcePath.split(document.SUFFIX)[0] + '.yw5'
 
                         if not os.path.isfile(ywPath):
                             ywPath = None
@@ -168,7 +161,7 @@ class YwCnvGui(YwCnv):
 
                 if ywPath:
                     self.appInfo.config(
-                        text='Import yWriter scenes content from ' + extension)
+                        text='Import yWriter scenes content from ' + document.EXTENSION)
                     self.processInfo.config(
                         text='Project: "' + ywPath + '"')
 
