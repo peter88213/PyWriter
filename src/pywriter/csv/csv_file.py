@@ -17,8 +17,14 @@ class CsvFile(FileExport):
     EXTENSION = '.csv'
     # overwrites Novel._FILE_EXTENSION
 
-    _SEPARATOR = '|'     # delimits data fields within a record.
-    _LINEBREAK = '\t'    # substitutes embedded line breaks.
+    _SEPARATOR = '|'
+    # delimits data fields within a record.
+
+    _LINEBREAK = '\t'
+    # substitutes embedded line breaks.
+
+    _LIST_SEPARATOR = ','
+    # delimits items listed within a data field
 
     def convert_markup(self, text):
         """Convert yw7 raw markup to odt. Return an xml string."""

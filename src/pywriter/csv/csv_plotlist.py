@@ -11,17 +11,14 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-import os
 import re
 
-from urllib.parse import quote
-
-from pywriter.model.novel import Novel
+from pywriter.csv.csv_file import CsvFile
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 
 
-class CsvPlotList(Novel):
+class CsvPlotList(CsvFile):
     """csv file representation of an yWriter project's scenes table. 
 
     Represents a csv file with a record per scene.
@@ -45,31 +42,77 @@ class CsvPlotList(Novel):
     _NOT_APPLICABLE = 'N/A'
     # Scene field column header for fields not being assigned to a storyline
 
-    _TABLE_HEADER = ('ID'
-                     + _SEPARATOR
-                     + 'Plot section'
-                     + _SEPARATOR
-                     + 'Plot event'
-                     + _SEPARATOR
-                     + 'Plot event title'
-                     + _SEPARATOR
-                     + 'Details'
-                     + _SEPARATOR
-                     + 'Scene'
-                     + _SEPARATOR
-                     + 'Words total'
-                     + _SEPARATOR
-                     + _NOT_APPLICABLE
-                     + _SEPARATOR
-                     + _NOT_APPLICABLE
-                     + _SEPARATOR
-                     + _NOT_APPLICABLE
-                     + _SEPARATOR
-                     + _NOT_APPLICABLE
-                     + '\n')
-
     _CHAR_STATE = ['', 'N/A', 'unhappy', 'dissatisfied',
                    'vague', 'satisfied', 'happy', '', '', '', '']
+
+    fileHeader = '''ID|''' +\
+        '''Plot section|Plot event|Plot event title|Details|''' +\
+        '''Scene|Words total|$FieldTitle1|$FieldTitle2|$FieldTitle3|$FieldTitle4
+'''
+
+    infoChapterTemplate = '''ChID:$ID|$Title|||$Desc||||||
+'''
+
+    sceneTemplate = '''=HYPERLINK("file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion";"ScID:$ID")|''' +\
+        '''|$Tags|$Title|$Notes|''' +\
+        '''$SceneNumber|$WordsTotal|$Field1|$Field2|$Field3|$Field4
+'''
+
+    def get_projectTemplateSubst(self):
+        projectTemplateSubst = CsvFile.get_projectTemplateSubst(self)
+
+        charList = []
+
+        for crId in self.characters:
+            charList.append(self.characters[crId].title)
+
+        if self.fieldTitle1 in charList or self._STORYLINE_MARKER in self.fieldTitle1.lower():
+            self.arc1 = True
+
+        else:
+            self.arc1 = False
+            projectTemplateSubst['FieldTitle1'] = self._NOT_APPLICABLE
+
+        if self.fieldTitle2 in charList or self._STORYLINE_MARKER in self.fieldTitle2.lower():
+            self.arc2 = True
+
+        else:
+            self.arc2 = False
+            projectTemplateSubst['FieldTitle2'] = self._NOT_APPLICABLE
+
+        if self.fieldTitle3 in charList or self._STORYLINE_MARKER in self.fieldTitle3.lower():
+            self.arc3 = True
+
+        else:
+            self.arc3 = False
+            projectTemplateSubst['FieldTitle3'] = self._NOT_APPLICABLE
+
+        if self.fieldTitle4 in charList or self._STORYLINE_MARKER in self.fieldTitle4.lower():
+            self.arc4 = True
+
+        else:
+            self.arc4 = False
+            projectTemplateSubst['FieldTitle4'] = self._NOT_APPLICABLE
+
+        return projectTemplateSubst
+
+    def get_sceneSubst(self, scId, sceneNumber, wordsTotal, lettersTotal):
+        sceneSubst = CsvFile.get_sceneSubst(
+            self, scId, sceneNumber, wordsTotal, lettersTotal)
+
+        if self.scenes[scId].field1 == '1' or not self.arc1:
+            sceneSubst['Field1'] = ''
+
+        if self.scenes[scId].field2 == '1' or not self.arc1:
+            sceneSubst['Field2'] = ''
+
+        if self.scenes[scId].field3 == '1' or not self.arc3:
+            sceneSubst['Field3'] = ''
+
+        if self.scenes[scId].field4 == '1' or not self.arc4:
+            sceneSubst['Field4'] = ''
+
+        return sceneSubst
 
     def read(self):
         """Parse the csv file located at filePath, fetching 
@@ -83,7 +126,7 @@ class CsvPlotList(Novel):
         except(FileNotFoundError):
             return 'ERROR: "' + self._filePath + '" not found.'
 
-        cellsInLine = len(self._TABLE_HEADER.split(self._SEPARATOR))
+        cellsInLine = len(self.fileHeader.split(self._SEPARATOR))
 
         tableHeader = lines[0].rstrip().split(self._SEPARATOR)
 
@@ -103,7 +146,7 @@ class CsvPlotList(Novel):
             if 'ScID:' in cell[0]:
                 scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
                 self.scenes[scId] = Scene()
-                self.scenes[scId].tags = cell[2].split(';')
+                self.scenes[scId].tags = cell[2].split(self._LIST_SEPARATOR)
                 self.scenes[scId].title = cell[3]
                 self.scenes[scId].sceneNotes = cell[4].replace(
                     self._LINEBREAK, '\n')
@@ -147,199 +190,3 @@ class CsvPlotList(Novel):
                     self.scenes[scId].field4 = '1'
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
-
-    def merge(self, novel):
-        """Copy selected novel attributes.
-        """
-
-        if novel.srtChapters != []:
-            self.srtChapters = novel.srtChapters
-
-        if novel.scenes is not None:
-            self.scenes = novel.scenes
-
-        if novel.chapters is not None:
-            self.chapters = novel.chapters
-
-        if novel.fieldTitle1 is not None:
-            self.fieldTitle1 = novel.fieldTitle1
-
-        else:
-            self.fieldTitle1 = self._NOT_APPLICABLE
-
-        if novel.fieldTitle2 is not None:
-            self.fieldTitle2 = novel.fieldTitle2
-
-        else:
-            self.fieldTitle2 = self._NOT_APPLICABLE
-
-        if novel.fieldTitle3 is not None:
-            self.fieldTitle3 = novel.fieldTitle3
-
-        else:
-            self.fieldTitle3 = self._NOT_APPLICABLE
-
-        if novel.fieldTitle4 is not None:
-            self.fieldTitle4 = novel.fieldTitle4
-
-        else:
-            self.fieldTitle4 = self._NOT_APPLICABLE
-
-        self.characters = novel.characters
-        self.locations = novel.locations
-        self.items = novel.items
-
-    def write(self):
-        """Generate a csv file showing the novel's plot structure.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-
-        odtPath = quote(os.path.realpath(self.filePath).replace(
-            '\\', '/'), '/:').replace('_plotlist.csv', '_manuscript.odt')
-
-        # first record: the table's column headings
-
-        table = [self._TABLE_HEADER]
-
-        # Identify storyline arcs
-
-        charList = []
-
-        for crId in self.characters:
-            charList.append(self.characters[crId].title)
-
-        if self.fieldTitle1 in charList or self._STORYLINE_MARKER in self.fieldTitle1.lower():
-            table[0] = table[0].replace(self._NOT_APPLICABLE, self.fieldTitle1)
-            arc1 = True
-
-        else:
-            arc1 = False
-
-        if self.fieldTitle2 in charList or self._STORYLINE_MARKER in self.fieldTitle2.lower():
-            table[0] = table[0].replace(self._NOT_APPLICABLE, self.fieldTitle2)
-            arc2 = True
-
-        else:
-            arc2 = False
-
-        if self.fieldTitle3 in charList or self._STORYLINE_MARKER in self.fieldTitle3.lower():
-            table[0] = table[0].replace(self._NOT_APPLICABLE, self.fieldTitle3)
-            arc3 = True
-
-        else:
-            arc3 = False
-
-        if self.fieldTitle4 in charList or self._STORYLINE_MARKER in self.fieldTitle4.lower():
-            table[0] = table[0].replace(self._NOT_APPLICABLE, self.fieldTitle4)
-            arc4 = True
-
-        else:
-            arc4 = False
-
-        # Add a record for each used scene in a regular chapter
-        # and for each chapter marked "Other".
-
-        sceneCount = 0
-        wordCount = 0
-
-        for chId in self.srtChapters:
-
-            if self.chapters[chId].isUnused:
-                continue
-
-            if self.chapters[chId].chType == 1:
-                # Chapter marked "Other" precedes and describes a Plot section.
-                # Put chapter description to "details".
-
-                if self.chapters[chId].desc is None:
-                    self.chapters[chId].desc = ''
-
-                table.append('ChID:' + chId
-                             + self._SEPARATOR
-                             + self.chapters[chId].title
-                             + self._SEPARATOR
-                             + self._SEPARATOR
-                             + self._SEPARATOR
-                             + self.chapters[chId].desc.rstrip().replace('\n', self._LINEBREAK)
-                             + self._SEPARATOR
-                             + self._SEPARATOR
-                             + self._SEPARATOR
-                             + self._SEPARATOR
-                             + self._SEPARATOR
-                             + self._SEPARATOR
-                             + '\n')
-
-            else:
-                for scId in self.chapters[chId].srtScenes:
-
-                    if self.scenes[scId].isUnused:
-                        continue
-
-                    if self.scenes[scId].doNotExport:
-                        continue
-
-                    sceneCount += 1
-                    wordCount += self.scenes[scId].wordCount
-
-                    # If the scene contains plot information:
-                    # a tag marks the plot event (e.g. inciting event, plot point, climax).
-                    # Put scene note text to "details".
-                    # Transfer scene ratings > 1 to storyline arc
-                    # states.
-
-                    if self.scenes[scId].sceneNotes is None:
-                        self.scenes[scId].sceneNotes = ''
-
-                    if self.scenes[scId].tags is None:
-                        self.scenes[scId].tags = ['']
-
-                    arcState1 = ''
-                    if arc1 and self.scenes[scId].field1 != '1':
-                        arcState1 = self.scenes[scId].field1
-
-                    arcState2 = ''
-                    if arc2 and self.scenes[scId].field2 != '1':
-                        arcState2 = self.scenes[scId].field2
-
-                    arcState3 = ''
-                    if arc3 and self.scenes[scId].field3 != '1':
-                        arcState3 = self.scenes[scId].field3
-
-                    arcState4 = ''
-                    if arc4 and self.scenes[scId].field4 != '1':
-                        arcState4 = self.scenes[scId].field4
-
-                    table.append('=HYPERLINK("file:///'
-                                 + odtPath + '#ScID:' + scId + '%7Cregion";"ScID:' + scId + '")'
-                                 + self._SEPARATOR
-                                 + self._SEPARATOR
-                                 + ';'.join(self.scenes[scId].tags)
-                                 + self._SEPARATOR
-                                 + self.scenes[scId].title
-                                 + self._SEPARATOR
-                                 + self.scenes[scId].sceneNotes.rstrip().replace('\n', self._LINEBREAK)
-                                 + self._SEPARATOR
-                                 + str(sceneCount)
-                                 + self._SEPARATOR
-                                 + str(wordCount)
-                                 + self._SEPARATOR
-                                 + arcState1
-                                 + self._SEPARATOR
-                                 + arcState2
-                                 + self._SEPARATOR
-                                 + arcState3
-                                 + self._SEPARATOR
-                                 + arcState4
-                                 + '\n')
-
-        try:
-            with open(self._filePath, 'w', encoding='utf-8') as f:
-                f.writelines(table)
-
-        except(PermissionError):
-            return 'ERROR: ' + self._filePath + '" is write protected.'
-
-        return 'SUCCESS: "' + self._filePath + '" saved.'
-
-    def get_structure(self):
-        return None

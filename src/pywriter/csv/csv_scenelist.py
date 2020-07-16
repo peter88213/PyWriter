@@ -6,10 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-import os
 import re
-
-from urllib.parse import quote
 
 from pywriter.csv.csv_file import CsvFile
 from pywriter.model.scene import Scene
@@ -28,8 +25,6 @@ class CsvSceneList(CsvFile):
     _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
     # '1' is assigned N/A (empty table cell).
 
-    _LIST_SEPARATOR = ','
-
     fileHeader = '''Scene link|''' +\
         '''Scene title|Scene description|Tags|Scene notes|''' +\
         '''A/R|Goal|Conflict|Outcome|''' +\
@@ -38,7 +33,7 @@ class CsvSceneList(CsvFile):
         '''Characters|Locations|Items
 '''
 
-    sceneTemplate = '''"=HYPERLINK(""file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion"";""ScID:$ID"")"|''' +\
+    sceneTemplate = '''=HYPERLINK("file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion";"ScID:$ID")|''' +\
         '''$Title|$Desc|$Tags|$Notes|''' +\
         '''$ReactionScene|$Goal|$Conflict|$Outcome|''' +\
         '''$SceneNumber|$WordsTotal|$Field1|$Field2|$Field3|$Field4|''' +\

@@ -89,7 +89,7 @@ class NrmOpr(unittest.TestCase):
         # Read .yw7 file and convert xml to csv.
 
         self.assertEqual(converter.yw_to_document(
-            yw7File, documentFile), 'SUCCESS: "' + TEST_CSV + '" saved.')
+            yw7File, documentFile), 'SUCCESS: Content written to "' + TEST_CSV + '".')
 
         self.assertEqual(read_file(TEST_CSV),
                          read_file(REFERENCE_CSV))
@@ -116,6 +116,7 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_YW7),
                          read_file(PROOFED_YW7))
 
+    @unittest.skip('')
     def tearDown(self):
         remove_all_testfiles()
 
