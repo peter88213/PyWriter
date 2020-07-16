@@ -12,7 +12,7 @@ from pywriter.html.html_form import read_html_file
 
 
 class HtmlExport(FileExport):
-    EXTENSION = 'html'
+    EXTENSION = '.html'
     # overwrites Novel._FILE_EXTENSION
 
     _HTML_HEADER = '/html_header.html'
