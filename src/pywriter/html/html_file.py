@@ -74,6 +74,15 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('[/i][i]', '')
         text = text.replace('[/b][b]', '')
 
+        # Remove scene title annotations.
+
+        text = re.sub('\<\!-- - .*? - -->', '', text)
+
+        # Convert author's comments
+
+        text = text.replace('<!--', '/*')
+        text = text.replace('-->', '*/')
+
         return text
 
     def preprocess(self, text):

@@ -116,7 +116,6 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_YW7),
                          read_file(PROOFED_YW7))
 
-    @unittest.skip('')
     def tearDown(self):
         remove_all_testfiles()
 

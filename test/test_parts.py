@@ -132,7 +132,6 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(EXEC_PATH + ODT_CONTENT),
                          read_file(DATA_PATH + ODT_CONTENT))
 
-    @unittest.skip('')
     def tearDown(self):
         remove_all_testfiles()
 
