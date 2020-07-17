@@ -140,16 +140,14 @@ class CsvPlotList(CsvFile):
                 chId = re.search('ChID\:([0-9]+)', cell[0]).group(1)
                 self.chapters[chId] = Chapter()
                 self.chapters[chId].title = cell[1]
-                self.chapters[chId].desc = cell[4].replace(
-                    self._LINEBREAK, '\n')
+                self.chapters[chId].desc = self.convert_to_yw(cell[4])
 
             if 'ScID:' in cell[0]:
                 scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
                 self.scenes[scId] = Scene()
                 self.scenes[scId].tags = cell[2].split(self._LIST_SEPARATOR)
                 self.scenes[scId].title = cell[3]
-                self.scenes[scId].sceneNotes = cell[4].replace(
-                    self._LINEBREAK, '\n')
+                self.scenes[scId].sceneNotes = self.convert_to_yw(cell[4])
 
                 i = 5
                 # Don't write back sceneCount

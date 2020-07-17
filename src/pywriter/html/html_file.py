@@ -6,12 +6,13 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+import re
 from html.parser import HTMLParser
 
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.html.html_form import *
+from pywriter.html.html_fop import read_html_file
 
 
 class HtmlFile(Novel, HTMLParser):
@@ -27,10 +28,63 @@ class HtmlFile(Novel, HTMLParser):
         self._scId = None
         self._chId = None
 
-    def preprocess(self, text):
-        """Process the html text before parsing.
+    def convert_to_yw(self, text):
+        """Convert html tags to yWriter 6/7 raw markup. 
+        Return a yw6/7 markup string.
         """
-        return strip_markup(to_yw7(text))
+
+        # Clean up polluted HTML code.
+
+        text = re.sub('</*font.*?>', '', text)
+        text = re.sub('</*span.*?>', '', text)
+        text = re.sub('</*FONT.*?>', '', text)
+        text = re.sub('</*SPAN.*?>', '', text)
+
+        # Put everything in one line.
+
+        text = text.replace('\n', ' ')
+        text = text.replace('\r', ' ')
+        text = text.replace('\t', ' ')
+
+        while '  ' in text:
+            text = text.replace('  ', ' ').rstrip().lstrip()
+
+        # Replace HTML tags by yWriter markup.
+
+        text = text.replace('<i>', '[i]')
+        text = text.replace('<I>', '[i]')
+        text = text.replace('</i>', '[/i]')
+        text = text.replace('</I>', '[/i]')
+        text = text.replace('</em>', '[/i]')
+        text = text.replace('</EM>', '[/i]')
+        text = text.replace('<b>', '[b]')
+        text = text.replace('<B>', '[b]')
+        text = text.replace('</b>', '[/b]')
+        text = text.replace('</B>', '[/b]')
+        text = text.replace('</strong>', '[/b]')
+        text = text.replace('</STRONG>', '[/b]')
+        text = re.sub('<em.*?>', '[i]', text)
+        text = re.sub('<EM.*?>', '[i]', text)
+        text = re.sub('<strong.*?>', '[b]', text)
+        text = re.sub('<STRONG.*?>', '[b]', text)
+
+        # Remove orphaned tags.
+
+        text = text.replace('[/b][b]', '')
+        text = text.replace('[/i][i]', '')
+        text = text.replace('[/b][b]', '')
+
+        return text
+
+    def preprocess(self, text):
+        """Strip yWriter 6/7 raw markup. Return a plain text string."""
+
+        text = self.convert_to_yw(text)
+        text = text.replace('[i]', '')
+        text = text.replace('[/i]', '')
+        text = text.replace('[b]', '')
+        text = text.replace('[/b]', '')
+        return text
 
     def postprocess(self):
         """Process the plain text after parsing.

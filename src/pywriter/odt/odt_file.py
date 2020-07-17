@@ -18,7 +18,7 @@ class OdtFile(FileExport, OdtTemplate):
     EXTENSION = '.odt'
     # overwrites Novel._FILE_EXTENSION
 
-    def convert_markup(self, text):
+    def convert_from_yw(self, text):
         """Convert yw7 raw markup to odt. Return an xml string."""
 
         try:

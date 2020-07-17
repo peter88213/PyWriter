@@ -87,13 +87,11 @@ class CsvSceneList(CsvFile):
                 i += 1
                 self.scenes[scId].title = cell[i]
                 i += 1
-                self.scenes[scId].desc = cell[i].replace(
-                    self._LINEBREAK, '\n')
+                self.scenes[scId].desc = self.convert_to_yw(cell[i])
                 i += 1
                 self.scenes[scId].tags = cell[i].split(self._LIST_SEPARATOR)
                 i += 1
-                self.scenes[scId].sceneNotes = cell[i].replace(
-                    self._LINEBREAK, '\n')
+                self.scenes[scId].sceneNotes = self.convert_to_yw(cell[i])
                 i += 1
 
                 if Scene.REACTION_MARKER.lower() in cell[i].lower():
@@ -103,14 +101,11 @@ class CsvSceneList(CsvFile):
                     self.scenes[scId].isReactionScene = False
 
                 i += 1
-                self.scenes[scId].goal = cell[i].replace(
-                    self._LINEBREAK, ' ')
+                self.scenes[scId].goal = cell[i]
                 i += 1
-                self.scenes[scId].conflict = cell[i].replace(
-                    self._LINEBREAK, ' ')
+                self.scenes[scId].conflict = cell[i]
                 i += 1
-                self.scenes[scId].outcome = cell[i].replace(
-                    self._LINEBREAK, ' ')
+                self.scenes[scId].outcome = cell[i]
                 i += 1
                 # Don't write back sceneCount
                 i += 1

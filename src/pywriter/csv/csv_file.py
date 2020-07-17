@@ -26,11 +26,22 @@ class CsvFile(FileExport):
     _LIST_SEPARATOR = ','
     # delimits items listed within a data field
 
-    def convert_markup(self, text):
-        """Convert yw7 raw markup to odt. Return an xml string."""
+    def convert_from_yw(self, text):
+        """Convert line breaks."""
 
         try:
             text = text.rstrip().replace('\n', self._LINEBREAK)
+
+        except AttributeError:
+            text = ''
+
+        return text
+
+    def convert_to_yw(self, text):
+        """Convert line breaks."""
+
+        try:
+            text = text.replace(self._LINEBREAK, '\n')
 
         except AttributeError:
             text = ''

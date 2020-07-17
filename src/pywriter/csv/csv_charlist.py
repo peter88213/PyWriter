@@ -57,8 +57,7 @@ class CsvCharList(CsvFile):
                 self.characters[crId].title = cell[1]
                 self.characters[crId].fullName = cell[2]
                 self.characters[crId].aka = cell[3]
-                self.characters[crId].desc = cell[4].replace(
-                    self._LINEBREAK, '\n')
+                self.characters[crId].desc = self.convert_to_yw(cell[4])
                 self.characters[crId].bio = cell[5]
                 self.characters[crId].goals = cell[6]
 
@@ -69,8 +68,7 @@ class CsvCharList(CsvFile):
                     self.characters[crId].isMajor = False
 
                 self.characters[crId].tags = cell[8].split(';')
-                self.characters[crId].notes = cell[9].replace(
-                    self._LINEBREAK, '\n')
+                self.characters[crId].notes = self.convert_to_yw(cell[9])
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 

@@ -7,7 +7,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 from pywriter.html.html_file import HtmlFile
-from pywriter.html.html_form import *
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 
@@ -32,7 +31,7 @@ class HtmlImport(HtmlFile):
     def preprocess(self, text):
         """Process the html text before parsing.
         """
-        return to_yw7(text)
+        return self.convert_to_yw(text)
 
     def handle_starttag(self, tag, attrs):
 

@@ -55,8 +55,7 @@ class CsvLocList(CsvFile):
                 lcId = re.search('LcID\:([0-9]+)', cell[0]).group(1)
                 self.locations[lcId] = Object()
                 self.locations[lcId].title = cell[1]
-                self.locations[lcId].desc = cell[2].replace(
-                    self._LINEBREAK, '\n')
+                self.locations[lcId].desc = self.convert_to_yw(cell[2])
                 self.locations[lcId].aka = cell[3]
                 self.locations[lcId].tags = cell[4].split(';')
 

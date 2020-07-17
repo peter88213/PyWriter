@@ -7,7 +7,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 from pywriter.html.html_file import HtmlFile
-from pywriter.html.html_form import *
 
 
 class HtmlManuscript(HtmlFile):
@@ -23,7 +22,7 @@ class HtmlManuscript(HtmlFile):
     def preprocess(self, text):
         """Process the html text before parsing.
         """
-        return to_yw7(text)
+        return self.convert_to_yw(text)
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.

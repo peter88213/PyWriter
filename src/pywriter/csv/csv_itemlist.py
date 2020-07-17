@@ -55,8 +55,7 @@ class CsvItemList(CsvFile):
                 itId = re.search('ItID\:([0-9]+)', cell[0]).group(1)
                 self.items[itId] = Object()
                 self.items[itId].title = cell[1]
-                self.items[itId].desc = cell[2].replace(
-                    self._LINEBREAK, '\n')
+                self.items[itId].desc = self.convert_to_yw(cell[2])
                 self.items[itId].aka = cell[3]
                 self.items[itId].tags = cell[4].split(';')
 

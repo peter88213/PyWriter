@@ -33,7 +33,7 @@ class FileExport(Novel):
     itemTemplate = ''
     fileFooter = ''
 
-    def convert_markup(self, text):
+    def convert_from_yw(self, text):
         """Convert yw7 markup to target format.
         To be overwritten by file format specific subclasses.
         """
@@ -110,7 +110,7 @@ class FileExport(Novel):
     def get_projectTemplateSubst(self):
         return dict(
             Title=self.title,
-            Desc=self.convert_markup(self.desc),
+            Desc=self.convert_from_yw(self.desc),
             AuthorName=self.author,
             FieldTitle1=self.fieldTitle1,
             FieldTitle2=self.fieldTitle2,
@@ -123,7 +123,7 @@ class FileExport(Novel):
             ID=chId,
             ChapterNumber=chapterNumber,
             Title=self.chapters[chId].title,
-            Desc=self.convert_markup(self.chapters[chId].desc),
+            Desc=self.convert_from_yw(self.chapters[chId].desc),
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
@@ -181,13 +181,13 @@ class FileExport(Novel):
             ID=scId,
             SceneNumber=sceneNumber,
             Title=self.scenes[scId].title,
-            Desc=self.convert_markup(self.scenes[scId].desc),
+            Desc=self.convert_from_yw(self.scenes[scId].desc),
             WordCount=str(self.scenes[scId].wordCount),
             WordsTotal=wordsTotal,
             LetterCount=str(self.scenes[scId].letterCount),
             LettersTotal=lettersTotal,
             Status=Scene.STATUS[self.scenes[scId].status],
-            SceneContent=self.convert_markup(
+            SceneContent=self.convert_from_yw(
                 self.scenes[scId].sceneContent),
             FieldTitle1=self.fieldTitle1,
             FieldTitle2=self.fieldTitle2,
@@ -206,15 +206,15 @@ class FileExport(Novel):
             LastsHours=self.scenes[scId].lastsHours,
             LastsMinutes=self.scenes[scId].lastsMinutes,
             ReactionScene=reactionScene,
-            Goal=self.convert_markup(self.scenes[scId].goal),
-            Conflict=self.convert_markup(self.scenes[scId].conflict),
-            Outcome=self.convert_markup(self.scenes[scId].outcome),
+            Goal=self.convert_from_yw(self.scenes[scId].goal),
+            Conflict=self.convert_from_yw(self.scenes[scId].conflict),
+            Outcome=self.convert_from_yw(self.scenes[scId].outcome),
             Tags=tags,
             Characters=sceneChars,
             Viewpoint=viewpointChar,
             Locations=sceneLocs,
             Items=sceneItems,
-            Notes=self.convert_markup(self.scenes[scId].sceneNotes),
+            Notes=self.convert_from_yw(self.scenes[scId].sceneNotes),
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
@@ -236,13 +236,13 @@ class FileExport(Novel):
         return dict(
             ID=crId,
             Title=self.characters[crId].title,
-            Desc=self.convert_markup(self.characters[crId].desc),
+            Desc=self.convert_from_yw(self.characters[crId].desc),
             Tags=tags,
-            AKA=FileExport.convert_markup(self, self.characters[crId].aka),
-            Notes=self.convert_markup(self.characters[crId].notes),
-            Bio=self.convert_markup(self.characters[crId].bio),
-            Goals=self.convert_markup(self.characters[crId].goals),
-            FullName=FileExport.convert_markup(
+            AKA=FileExport.convert_from_yw(self, self.characters[crId].aka),
+            Notes=self.convert_from_yw(self.characters[crId].notes),
+            Bio=self.convert_from_yw(self.characters[crId].bio),
+            Goals=self.convert_from_yw(self.characters[crId].goals),
+            FullName=FileExport.convert_from_yw(
                 self, self.characters[crId].fullName),
             Status=characterStatus,
         )
@@ -258,9 +258,9 @@ class FileExport(Novel):
         return dict(
             ID=lcId,
             Title=self.locations[lcId].title,
-            Desc=self.convert_markup(self.locations[lcId].desc),
+            Desc=self.convert_from_yw(self.locations[lcId].desc),
             Tags=tags,
-            AKA=FileExport.convert_markup(self, self.locations[lcId].aka),
+            AKA=FileExport.convert_from_yw(self, self.locations[lcId].aka),
         )
 
     def get_itemSubst(self, itId):
@@ -274,9 +274,9 @@ class FileExport(Novel):
         return dict(
             ID=itId,
             Title=self.items[itId].title,
-            Desc=self.convert_markup(self.items[itId].desc),
+            Desc=self.convert_from_yw(self.items[itId].desc),
             Tags=tags,
-            AKA=FileExport.convert_markup(self, self.items[itId].aka),
+            AKA=FileExport.convert_from_yw(self, self.items[itId].aka),
         )
 
     def write(self):

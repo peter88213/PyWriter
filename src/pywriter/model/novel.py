@@ -136,6 +136,18 @@ class Novel():
         To be overwritten by file format specific subclasses.
         """
 
+    @abstractmethod
+    def convert_to_yw(self, text):
+        """Convert source format to yw7 markup.
+        To be overwritten by file format specific subclasses.
+        """
+
+    @abstractmethod
+    def convert_from_yw(self, text):
+        """Convert yw7 markup to target format.
+        To be overwritten by file format specific subclasses.
+        """
+
     def file_exists(self):
         """Check whether the file specified by _filePath exists. """
         if os.path.isfile(self._filePath):

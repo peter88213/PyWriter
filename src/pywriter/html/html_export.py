@@ -6,7 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.file.file_export import FileExport
-from pywriter.html.html_form import read_html_file
+from pywriter.html.html_fop import read_html_file
 
 # Template files
 
@@ -70,7 +70,7 @@ class HtmlExport(FileExport):
         if result[1] is not None:
             self.fileFooter = result[1]
 
-    def convert_markup(self, text):
+    def convert_from_yw(self, text):
         """Convert yw7 markup to target format."""
 
         try:
