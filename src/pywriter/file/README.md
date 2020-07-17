@@ -1,124 +1,140 @@
 # Template-based file export
 
+## List of templates
+
+### Project level
+
+* __fileHeader__  
+* __partTemplate__  (chapter header; applied to chapters marked "section beginning")
+
+* __characterTemplate__  (applied to characters)
+* __locationTemplate__  (applied to locations)
+* __itemTemplate__  (applied to items)
+
+* __fileFooter__ 
+
+### Chapter level
+
+* __chapterTemplate__  (chapter header; applied to all "used" and "normal" chapters unless a "part template" exists)
+* __unusedChapterTemplate__  (chapter header; applied to chapters marked "unused" or "do not export")
+* __infoChapterTemplate__  (chapter header; applied to chapters marked "other")
+
+* __chapterEndTemplate__  (chapter footer; applied to all "used" and "normal" chapters unless a "part template" exists)
+* __unusedChapterEndTemplate__  (chapter footer; applied to chapters marked "unused" or "do not export")
+* __infoChapterEndTemplate__  (chapter footer; applied to chapters marked "other")
+
+
+### Scene level
+
+* __sceneTemplate__  (applied to "used" scenes within "normal" chapters)
+* __unusedSceneTemplate__  (applied to "unused" scenes)
+* __infoSceneTemplate__  (applied to scenes within chapters marked "other")
+* __sceneDivider__  (lead scenes, beginning from the second in chapter)
+
+
 ## List of placeholders
 
 ### "HTML header" placeholders
 
-* $Title - Project title
-* $Desc - Project description, html-formatted
-* $AuthorName - Author's name
+*  __$Title__  - Project title
+*  __$Desc__  - Project description, html-formatted
+*  __$AuthorName__  - Author's name
 
 
-* $FieldTitle1 - Rating names: field 1
-* $FieldTitle2 - Rating names: field 2
-* $FieldTitle3 - Rating names: field 3
-* $FieldTitle4 - Rating names: field 4
+*  __$FieldTitle1__  - Rating names: field 1
+*  __$FieldTitle2__  - Rating names: field 2
+*  __$FieldTitle3__  - Rating names: field 3
+*  __$FieldTitle4__  - Rating names: field 4
 
 ### "Chapter template" placeholders
 
-* $ID - Chapter ID,
-* $ChapterNumber - Chapter number (in sort order),
+*  __$ID__  - Chapter ID,
+*  __$ChapterNumber__  - Chapter number (in sort order),
 
-
-* $Title - Chapter title
-* $Desc - Chapter description, html-formatted
+*  __$Title__  - Chapter title
+*  __$Desc__  - Chapter description, html-formatted
 
 ### "Scene template" placeholders
 
-* $ID - Scene ID,
-* $SceneNumber - Scene number (in sort order),
+*  __$ID__  - Scene ID,
+*  __$SceneNumber__  - Scene number (in sort order),
 
+*  __$Title__  - Scene title
+*  __$Desc__  - Scene description, html-formatted
 
-* $Title - Scene title
-* $Desc - Scene description, html-formatted
+*  __$WordCount__  - Scene word count
+*  __$WordsTotal__  - Accumulated word count including the current scene
+*  __$LetterCount__  - Scene letter count
+*  __$LettersTotal__  - Accumulated letter count including the current scene
 
+*  __$Status__  - Scene status (Outline, Draft etc.)
+*  __$SceneContent__  - Scene content, html-formatted
 
-* $WordCount - Scene word count
-* $WordsTotal - Accumulated word count including the current scene
-* $LetterCount - Scene letter count
-* $LettersTotal - Accumulated letter count including the current scene
+*  __$FieldTitle1__  - Rating names: field 1
+*  __$FieldTitle2__  - Rating names: field 2
+*  __$FieldTitle3__  - Rating names: field 3
+*  __$FieldTitle4__  - Rating names: field 4
+*  __$Field1__  - Scene rating: field 1
+*  __$Field2__  - Scene rating: field 2
+*  __$Field3__  - Scene rating: field 3
+*  __$Field4__  - Scene rating: field 4
 
+*  __$Date__  - Specific scene date ("None" if not set)
+*  __$Time__  - Specific scene time ("None" if not set)
+*  __$Day__  - Time scene begins: day ("None" if not set)
+*  __$Hour__  - Time scene begins: hour ("None" if not set)
+*  __$Minute__  - Time scene begins: minute ("None" if not set)
+*  __$LastsDays__  - Amount of time scene lasts: days ("None" if not set)
+*  __$LastsHours__  - Amount of time scene lasts: hours ("None" if not set)
+*  __$LastsMinutes__  - Amount of time scene lasts: minutes ("None" if not set)
 
-* $Status - Scene status (Outline, Draft etc.)
-* $SceneContent - Scene content, html-formatted
+*  __$ReactionScene__  - A(ction) or R(eaction)
+*  __$Goal__  - The scene protagonist's goal, html-formatted
+*  __$Conflict__  - The scene conflict, html-formatted
+*  __$Outcome__  - The scene outcome, html-formatted
+*  __$Tags__  - Comma-separated list of scene tags
 
+*  __$Characters__  - Comma-separated list of characters assigned to the scene
+*  __$Viewpoint__  - Viewpoint character
+*  __$Locations__  - Comma-separated list of locations assigned to the scene
+*  __$Items__  - Comma-separated list of items assigned to the scene
 
-* $FieldTitle1 - Rating names: field 1
-* $FieldTitle2 - Rating names: field 2
-* $FieldTitle3 - Rating names: field 3
-* $FieldTitle4 - Rating names: field 4
-* $Field1 - Scene rating: field 1
-* $Field2 - Scene rating: field 2
-* $Field3 - Scene rating: field 3
-* $Field4 - Scene rating: field 4
-
-
-* $Date - Specific scene date ("None" if not set)
-* $Time - Specific scene time ("None" if not set)
-* $Day - Time scene begins: day ("None" if not set)
-* $Hour - Time scene begins: hour ("None" if not set)
-* $Minute - Time scene begins: minute ("None" if not set)
-* $LastsDays - Amount of time scene lasts: days ("None" if not set)
-* $LastsHours - Amount of time scene lasts: hours ("None" if not set)
-* $LastsMinutes - Amount of time scene lasts: minutes ("None" if not set)
-
-
-* $ReactionScene - A(ction) or R(eaction)
-* $Goal - The scene protagonist's goal, html-formatted
-* $Conflict - The scene conflict, html-formatted
-* $Outcome - The scene outcome, html-formatted
-* $Tags - Comma-separated list of scene tags
-
-
-* $Characters - Comma-separated list of characters assigned to the scene
-* $Viewpoint - Viewpoint character
-* $Locations - Comma-separated list of locations assigned to the scene
-* $Items - Comma-separated list of items assigned to the scene
-
-
-* $Notes - Scene notes, html-formatted
+*  __$Notes__  - Scene notes, html-formatted
 
 
 ### "Character template" placeholders
 
-* $ID - Character ID
+*  __$ID__  - Character ID
 
+*  __$Title__  - Character's name
+*  __$FullName__  - Character's full name)
+*  __$AKA__  - Alternative name
 
-* $Title - Character's name
-* $FullName - Character's full name)
-* $AKA - Alternative name
+*  __$Status__  - Major/minor character
+*  __$Tags__  - Character tags
 
-
-* $Status - Major/minor character
-* $Tags - Character tags
-
-
-* $Desc - Character description
-* $Bio - The character's biography
-* $Goals - The character's goals in the story
-* $Notes - Character notes)
+*  __$Desc__  - Character description
+*  __$Bio__  - The character's biography
+*  __$Goals__  - The character's goals in the story
+*  __$Notes__  - Character notes)
 
 
 ### "Location template" placeholders
 
-* $ID - Location ID
+*  __$ID__  - Location ID
 
-
-* $Title - Location's name
-* $AKA - Alternative name
-* $Desc - Location description
-* $Tags - Location tags
+*  __$Title__  - Location's name
+*  __$AKA__  - Alternative name
+*  __$Desc__  - Location description
+*  __$Tags__  - Location tags
 
 
 ### "Item template" placeholders
 
-* $ID - Item ID
+*  __$ID__  - Item ID
 
-
-* $Title - Item's name
-* $AKA - Alternative name
-* $Desc - Item description
-* $Tags - Item tags
-
-
+*  __$Title__  - Item's name
+*  __$AKA__  - Alternative name
+*  __$Desc__  - Item description
+*  __$Tags__  - Item tags
 
