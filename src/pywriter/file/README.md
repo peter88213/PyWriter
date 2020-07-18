@@ -2,7 +2,7 @@
 
 ## List of templates
 
-### Project level
+### Project level templates
 
 * __fileHeader__  
 * __partTemplate__  (chapter header; applied to chapters marked "section beginning")
@@ -13,7 +13,7 @@
 
 * __fileFooter__ 
 
-### Chapter level
+### Chapter level templates
 
 * __chapterTemplate__  (chapter header; applied to all "used" and "normal" chapters unless a "part template" exists)
 * __unusedChapterTemplate__  (chapter header; applied to chapters marked "unused" or "do not export")
@@ -24,7 +24,7 @@
 * __infoChapterEndTemplate__  (chapter footer; applied to chapters marked "other")
 
 
-### Scene level
+### Scene level templates
 
 * __sceneTemplate__  (applied to "used" scenes within "normal" chapters)
 * __unusedSceneTemplate__  (applied to "unused" scenes)
@@ -32,7 +32,15 @@
 * __sceneDivider__  (lead scenes, beginning from the second in chapter)
 
 
-## List of placeholders
+## Placeholders
+
+### Syntax
+
+There are two options:
+
+1. $Placeholder
+2. ${Placeholder}
+
 
 ### "HTML header" placeholders
 
