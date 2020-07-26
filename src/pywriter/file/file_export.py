@@ -108,7 +108,7 @@ class FileExport(Novel):
             self.items = novel.items
 
     def get_projectTemplateSubst(self):
-        return dict(
+        projectTemplateSubst = dict(
             Title=self.title,
             Desc=self.convert_from_yw(self.desc),
             AuthorName=self.author,
@@ -118,8 +118,14 @@ class FileExport(Novel):
             FieldTitle4=self.fieldTitle4,
         )
 
+        for key in projectTemplateSubst:
+            if projectTemplateSubst[key] is None:
+                projectTemplateSubst[key] = ''
+
+        return projectTemplateSubst
+
     def get_chapterSubst(self, chId, chapterNumber):
-        return dict(
+        chapterSubst = dict(
             ID=chId,
             ChapterNumber=chapterNumber,
             Title=self.chapters[chId].title,
@@ -127,6 +133,12 @@ class FileExport(Novel):
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
+
+        for key in chapterSubst:
+            if chapterSubst[key] is None:
+                chapterSubst[key] = ''
+
+        return chapterSubst
 
     def get_sceneSubst(self, scId, sceneNumber, wordsTotal, lettersTotal):
 
@@ -177,7 +189,7 @@ class FileExport(Novel):
         else:
             reactionScene = Scene.ACTION_MARKER
 
-        return dict(
+        sceneSubst = dict(
             ID=scId,
             SceneNumber=sceneNumber,
             Title=self.scenes[scId].title,
@@ -219,6 +231,12 @@ class FileExport(Novel):
             ProjectPath=self.projectPath,
         )
 
+        for key in sceneSubst:
+            if sceneSubst[key] is None:
+                sceneSubst[key] = ''
+
+        return sceneSubst
+
     def get_characterSubst(self, crId):
 
         if self.characters[crId].tags is not None:
@@ -233,7 +251,7 @@ class FileExport(Novel):
         else:
             characterStatus = Character.MINOR_MARKER
 
-        return dict(
+        characterSubst = dict(
             ID=crId,
             Title=self.characters[crId].title,
             Desc=self.convert_from_yw(self.characters[crId].desc),
@@ -247,6 +265,12 @@ class FileExport(Novel):
             Status=characterStatus,
         )
 
+        for key in characterSubst:
+            if characterSubst[key] is None:
+                characterSubst[key] = ''
+
+        return characterSubst
+
     def get_locationSubst(self, lcId):
 
         if self.locations[lcId].tags is not None:
@@ -255,13 +279,19 @@ class FileExport(Novel):
         else:
             tags = ''
 
-        return dict(
+        locationSubst = dict(
             ID=lcId,
             Title=self.locations[lcId].title,
             Desc=self.convert_from_yw(self.locations[lcId].desc),
             Tags=tags,
             AKA=FileExport.convert_from_yw(self, self.locations[lcId].aka),
         )
+
+        for key in locationSubst:
+            if locationSubst[key] is None:
+                locationSubst[key] = ''
+
+        return locationSubst
 
     def get_itemSubst(self, itId):
 
@@ -271,13 +301,19 @@ class FileExport(Novel):
         else:
             tags = ''
 
-        return dict(
+        itemSubst = dict(
             ID=itId,
             Title=self.items[itId].title,
             Desc=self.convert_from_yw(self.items[itId].desc),
             Tags=tags,
             AKA=FileExport.convert_from_yw(self, self.items[itId].aka),
         )
+
+        for key in itemSubst:
+            if itemSubst[key] is None:
+                itemSubst[key] = ''
+
+        return itemSubst
 
     def write(self):
         lines = []
