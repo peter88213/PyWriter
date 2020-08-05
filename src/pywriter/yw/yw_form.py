@@ -15,7 +15,7 @@ SAFE_DASH = '--'
 
 def replace_unsafe_glyphs(text):
     """Replace glyphs being corrupted by yWriter with safe substitutes. """
-    return text.replace(EN_DASH, SAFE_DASH).replace(EM_DASH, SAFE_DASH)
+    return text  # .replace(EN_DASH, SAFE_DASH).replace(EM_DASH, SAFE_DASH)
 
 
 def indent(elem, level=0):
