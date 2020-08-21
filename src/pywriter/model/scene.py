@@ -47,6 +47,14 @@ class Scene():
         # bool
         # xml: <Unused> -1
 
+        self.isNoteScene = None
+        # bool
+        # xml: <Fields><Field_SceneType> 1
+
+        self.isTodoScene = None
+        # bool
+        # xml: <Fields><Field_SceneType> 2
+
         self.doNotExport = None
         # bool
         # xml: <ExportCondSpecific><ExportWhenRTF>

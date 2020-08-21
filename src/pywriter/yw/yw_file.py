@@ -222,24 +222,24 @@ class YwFile(Novel):
             else:
                 self.chapters[chId].isUnused = False
 
-            for fields in chp.findall('Fields'):
+            for chFields in chp.findall('Fields'):
 
-                if fields.find('Field_SuppressChapterTitle') is not None:
+                if chFields.find('Field_SuppressChapterTitle') is not None:
 
-                    if fields.find('Field_SuppressChapterTitle').text == '1':
+                    if chFields.find('Field_SuppressChapterTitle').text == '1':
                         self.chapters[chId].suppressChapterTitle = True
 
-                if fields.find('Field_IsTrash') is not None:
+                if chFields.find('Field_IsTrash') is not None:
 
-                    if fields.find('Field_IsTrash').text == '1':
+                    if chFields.find('Field_IsTrash').text == '1':
                         self.chapters[chId].isTrash = True
 
                     else:
                         self.chapters[chId].isTrash = False
 
-                if fields.find('Field_SuppressChapterBreak') is not None:
+                if chFields.find('Field_SuppressChapterBreak') is not None:
 
-                    if fields.find('Field_SuppressChapterTitle').text == '0':
+                    if chFields.find('Field_SuppressChapterTitle').text == '0':
                         self.chapters[chId].doNotExport = True
 
                     else:
@@ -280,6 +280,16 @@ class YwFile(Novel):
 
             else:
                 self.scenes[scId].isUnused = False
+
+            for scFields in scn.findall('Fields'):
+
+                if scFields.find('Field_SceneType') is not None:
+
+                    if scFields.find('Field_SceneType').text == '1':
+                        self.scenes[scId].isNoteScene = True
+
+                    if scFields.find('Field_SceneType').text == '2':
+                        self.scenes[scId].isTodoScene = True
 
             if scn.find('ExportCondSpecific') is None:
                 self.scenes[scId].doNotExport = False
@@ -494,6 +504,12 @@ class YwFile(Novel):
 
             if novel.scenes[scId].isUnused is not None:
                 self.scenes[scId].isUnused = novel.scenes[scId].isUnused
+
+            if novel.scenes[scId].isNoteScene is not None:
+                self.scenes[scId].isNoteScene = novel.scenes[scId].isNoteScene
+
+            if novel.scenes[scId].isTodoScene is not None:
+                self.scenes[scId].isTodoScene = novel.scenes[scId].isTodoScene
 
             if novel.scenes[scId].status is not None:
                 self.scenes[scId].status = novel.scenes[scId].status
@@ -918,6 +934,44 @@ class YwFile(Novel):
 
                 elif scn.find('Unused') is not None:
                     scn.remove(scn.find('Unused'))
+
+                if self.scenes[scId].isNoteScene:
+
+                    if scn.find('Fields') is None:
+                        scFields = ET.SubElement(scn, 'Fields')
+
+                    else:
+                        scFields = scn.find('Fields')
+
+                    if scFields.find('Field_SceneType') is None:
+                        ET.SubElement(scFields, 'Field_SceneType').text = '1'
+
+                elif scn.find('Fields') is not None:
+                    scFields = scn.find('Fields')
+
+                    if scFields.find('Field_SceneType') is not None:
+
+                        if scFields.find('Field_SceneType').text == '1':
+                            scFields.remove(scFields.find('Field_SceneType'))
+
+                if self.scenes[scId].isTodoScene:
+
+                    if scn.find('Fields') is None:
+                        scFields = ET.SubElement(scn, 'Fields')
+
+                    else:
+                        scFields = scn.find('Fields')
+
+                    if scFields.find('Field_SceneType') is None:
+                        ET.SubElement(scFields, 'Field_SceneType').text = '2'
+
+                elif scn.find('Fields') is not None:
+                    scFields = scn.find('Fields')
+
+                    if scFields.find('Field_SceneType') is not None:
+
+                        if scFields.find('Field_SceneType').text == '2':
+                            scFields.remove(scFields.find('Field_SceneType'))
 
                 if self.scenes[scId].status is not None:
                     scn.find('Status').text = str(self.scenes[scId].status)

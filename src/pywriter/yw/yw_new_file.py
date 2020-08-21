@@ -163,6 +163,14 @@ class YwNewFile(YwFile):
             if self.scenes[scId].isUnused:
                 ET.SubElement(scn, 'Unused').text = '-1'
 
+            scFields = ET.SubElement(scn, 'Fields')
+
+            if self.scenes[scId].isNoteScene:
+                ET.SubElement(scFields, 'Field_SceneType').text = '1'
+
+            elif self.scenes[scId].isTodoScene:
+                ET.SubElement(scFields, 'Field_SceneType').text = '2'
+
             if self.scenes[scId].status is not None:
                 ET.SubElement(scn, 'Status').text = str(
                     self.scenes[scId].status)
