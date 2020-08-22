@@ -38,6 +38,13 @@ class Chapter():
         # 0 = chapter type (marked "Chapter")
         # 1 = other type (marked "Other")
 
+        self.chapterType = None
+        # int
+        # xml: <ChapterType>
+        # 0 = Normal
+        # 1 = Notes
+        # 2 = Todo
+
         self.isUnused = None
         # bool
         # xml: <Unused> -1

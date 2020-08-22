@@ -216,6 +216,10 @@ class YwFile(Novel):
             if chp.find('Type') is not None:
                 self.chapters[chId].chType = int(chp.find('Type').text)
 
+            if chp.find('ChapterType') is not None:
+                self.chapters[chId].chapterType = int(
+                    chp.find('ChapterType').text)
+
             if chp.find('Unused') is not None:
                 self.chapters[chId].isUnused = True
 
@@ -620,6 +624,9 @@ class YwFile(Novel):
             if novel.chapters[chId].chType is not None:
                 self.chapters[chId].chType = novel.chapters[chId].chType
 
+            if novel.chapters[chId].chapterType is not None:
+                self.chapters[chId].chapterType = novel.chapters[chId].chapterType
+
             if novel.chapters[chId].isUnused is not None:
                 self.chapters[chId].isUnused = novel.chapters[chId].isUnused
 
@@ -891,6 +898,15 @@ class YwFile(Novel):
                         chp.remove(levelInfo)
 
                 chp.find('Type').text = str(self.chapters[chId].chType)
+
+                if self.chapters[chId].chapterType is not None:
+
+                    if chp.find('ChapterType') is not None:
+                        chp.find('ChapterType').text = str(
+                            self.chapters[chId].chapterType)
+                    else:
+                        ET.SubElement(chp, 'ChapterType').text = str(
+                            self.chapters[chId].chapterType)
 
                 if self.chapters[chId].isUnused:
 
