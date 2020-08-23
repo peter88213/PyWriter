@@ -22,6 +22,7 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
       <SceneContent />
       <WordCount>0</WordCount>
       <LetterCount>0</LetterCount>
+      <Fields />
       <Status>1</Status>
     </SCENE>
     <SCENE>
@@ -37,6 +38,7 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
       <SceneContent />
       <WordCount>0</WordCount>
       <LetterCount>0</LetterCount>
+      <Fields />
       <Status>1</Status>
     </SCENE>
     <SCENE>
@@ -48,6 +50,7 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
       <SceneContent />
       <WordCount>0</WordCount>
       <LetterCount>0</LetterCount>
+      <Fields />
       <Status>1</Status>
     </SCENE>
     <SCENE>
@@ -60,6 +63,7 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
       <SceneContent />
       <WordCount>0</WordCount>
       <LetterCount>0</LetterCount>
+      <Fields />
       <Status>1</Status>
     </SCENE>
     <SCENE>
@@ -74,6 +78,7 @@ Hal drives off, oblivious to the flames starting to flicker around the fallen ro
       <SceneContent />
       <WordCount>0</WordCount>
       <LetterCount>0</LetterCount>
+      <Fields />
       <Status>1</Status>
     </SCENE>
     <SCENE>
@@ -85,6 +90,7 @@ Sitting at the console, Clunk uses the Black Gull's simulation mode to practice 
       <SceneContent />
       <WordCount>0</WordCount>
       <LetterCount>0</LetterCount>
+      <Fields />
       <Status>1</Status>
     </SCENE>
     <SCENE>
@@ -97,6 +103,7 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
       <SceneContent />
       <WordCount>0</WordCount>
       <LetterCount>0</LetterCount>
+      <Fields />
       <Status>1</Status>
     </SCENE>
     <SCENE>
@@ -108,6 +115,7 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
       <SceneContent />
       <WordCount>0</WordCount>
       <LetterCount>0</LetterCount>
+      <Fields />
       <Status>1</Status>
     </SCENE>
   </SCENES>

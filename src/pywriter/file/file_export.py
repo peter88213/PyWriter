@@ -19,12 +19,14 @@ class FileExport(Novel):
     fileHeader = ''
     partTemplate = ''
     chapterTemplate = ''
+    noteChapterTemplate = ''
+    todoChapterTemplate = ''
     unusedChapterTemplate = ''
-    infoChapterTemplate = ''
     sceneTemplate = ''
     appendedSceneTemplate = ''
+    noteSceneTemplate = ''
+    todoSceneTemplate = ''
     unusedSceneTemplate = ''
-    infoSceneTemplate = ''
     sceneDivider = ''
     chapterEndTemplate = ''
     unusedChapterEndTemplate = ''
@@ -328,18 +330,31 @@ class FileExport(Novel):
 
         for chId in self.srtChapters:
 
-            if self.chapters[chId].isUnused:
+            # The order counts; be aware that "Todo" and "Notes" chapters are
+            # always unused.
 
-                if self.unusedChapterTemplate != '':
-                    template = Template(self.unusedChapterTemplate)
+            if self.chapters[chId].chType == 2:
+
+                if self.todoChapterTemplate != '':
+                    template = Template(self.todoChapterTemplate)
 
                 else:
                     continue
 
-            elif self.chapters[chId].chType != 0:
+            elif self.chapters[chId].chType == 1 or self.chapters[chId].oldType == 1:
+                # Chapter is "Notes" (new file format) or "Info" (old file
+                # format) chapter.
 
-                if self.infoChapterTemplate != '':
-                    template = Template(self.infoChapterTemplate)
+                if self.noteChapterTemplate != '':
+                    template = Template(self.noteChapterTemplate)
+
+                else:
+                    continue
+
+            elif self.chapters[chId].isUnused:
+
+                if self.unusedChapterTemplate != '':
+                    template = Template(self.unusedChapterTemplate)
 
                 else:
                     continue
@@ -359,18 +374,31 @@ class FileExport(Novel):
                 wordsTotal += self.scenes[scId].wordCount
                 lettersTotal += self.scenes[scId].letterCount
 
-                if self.scenes[scId].isUnused or self.chapters[chId].isUnused or self.scenes[scId].doNotExport:
+                # The order counts; be aware that "Todo" and "Notes" scenes are
+                # always unused.
 
-                    if self.unusedSceneTemplate != '':
-                        template = Template(self.unusedSceneTemplate)
+                if self.scenes[scId].isTodoScene:
+
+                    if self.todoSceneTemplate != '':
+                        template = Template(self.todoSceneTemplate)
 
                     else:
                         continue
 
-                elif self.chapters[chId].chType != 0:
+                elif self.scenes[scId].isNoteScene or self.chapters[chId].oldType == 1:
+                    # Scene is "Notes" (new file format) or "Info" (old file
+                    # format) scene.
 
-                    if self.infoSceneTemplate != '':
-                        template = Template(self.infoSceneTemplate)
+                    if self.noteSceneTemplate != '':
+                        template = Template(self.noteSceneTemplate)
+
+                    else:
+                        continue
+
+                elif self.scenes[scId].isUnused or self.chapters[chId].isUnused or self.scenes[scId].doNotExport:
+
+                    if self.unusedSceneTemplate != '':
+                        template = Template(self.unusedSceneTemplate)
 
                     else:
                         continue
@@ -394,7 +422,7 @@ class FileExport(Novel):
             if self.chapters[chId].isUnused and self.unusedChapterEndTemplate != '':
                 lines.append(self.unusedChapterEndTemplate)
 
-            elif self.chapters[chId].chType != 0 and self.infoChapterEndTemplate != '':
+            elif self.chapters[chId].oldType != 0 and self.infoChapterEndTemplate != '':
                 lines.append(self.infoChapterEndTemplate)
 
             else:

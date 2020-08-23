@@ -286,13 +286,13 @@ class YwNewFile(YwFile):
             if self.chapters[chId].chLevel == 1:
                 ET.SubElement(chp, 'SectionStart').text = '-1'
 
-            if self.chapters[chId].chType is not None:
+            if self.chapters[chId].oldType is not None:
                 ET.SubElement(chp, 'Type').text = str(
-                    self.chapters[chId].chType)
+                    self.chapters[chId].oldType)
 
-            if self.chapters[chId].chapterType is not None:
+            if self.chapters[chId].chType is not None:
                 ET.SubElement(chp, 'ChapterType').text = str(
-                    self.chapters[chId].chapterType)
+                    self.chapters[chId].chType)
 
             if self.chapters[chId].isUnused:
                 ET.SubElement(chp, 'Unused').text = '-1'

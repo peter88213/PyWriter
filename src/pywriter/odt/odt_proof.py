@@ -30,7 +30,7 @@ class OdtProof(OdtFile):
 <text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
-    infoChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_info">[ChID:$ID (Info)]</text:p>
+    noteChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_info">[ChID:$ID (Info)]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
@@ -44,7 +44,7 @@ class OdtProof(OdtFile):
 <text:p text:style-name="yWriter_20_mark_20_unused">[/ScID (Unused)]</text:p>
 '''
 
-    infoSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_info">[ScID:$ID (Info)]</text:p>
+    noteSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_info">[ScID:$ID (Info)]</text:p>
 <text:p text:style-name="Text_20_body">$SceneContent</text:p>
 <text:p text:style-name="yWriter_20_mark_20_info">[/ScID (Info)]</text:p>
 '''

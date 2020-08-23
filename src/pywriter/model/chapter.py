@@ -32,13 +32,13 @@ class Chapter():
         # 0 = chapter level
         # 1 = section level ("this chapter begins a section")
 
-        self.chType = None
+        self.oldType = None
         # int
         # xml: <Type>
         # 0 = chapter type (marked "Chapter")
         # 1 = other type (marked "Other")
 
-        self.chapterType = None
+        self.chType = None
         # int
         # xml: <ChapterType>
         # 0 = Normal

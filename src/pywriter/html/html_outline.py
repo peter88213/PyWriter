@@ -35,7 +35,7 @@ class HtmlOutline(HtmlFile):
             self.chapters[self._chId] = Chapter()
             self.chapters[self._chId].srtScenes = []
             self.srtChapters.append(self._chId)
-            self.chapters[self._chId].chType = '0'
+            self.chapters[self._chId].oldType = '0'
 
             if tag == 'h1':
                 self.chapters[self._chId].chLevel = 1
