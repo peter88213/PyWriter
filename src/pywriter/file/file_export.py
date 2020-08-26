@@ -30,7 +30,7 @@ class FileExport(Novel):
     sceneDivider = ''
     chapterEndTemplate = ''
     unusedChapterEndTemplate = ''
-    infoChapterEndTemplate = ''
+    noteChapterEndTemplate = ''
     characterTemplate = ''
     locationTemplate = ''
     itemTemplate = ''
@@ -419,11 +419,24 @@ class FileExport(Novel):
 
                 firstSceneInChapter = False
 
-            if self.chapters[chId].isUnused and self.unusedChapterEndTemplate != '':
-                lines.append(self.unusedChapterEndTemplate)
+            if self.chapters[chId].chType == 2:
 
-            elif self.chapters[chId].oldType != 0 and self.infoChapterEndTemplate != '':
-                lines.append(self.infoChapterEndTemplate)
+                if self.todoChapterEndTemplate != '':
+                    lines.append(self.todoChapterEndTemplate)
+
+                else:
+                    continue
+
+            elif self.chapters[chId].chType == 1 or self.chapters[chId].oldType == 1:
+
+                if self.noteChapterEndTemplate != '':
+                    lines.append(self.noteChapterEndTemplate)
+
+                else:
+                    continue
+
+            elif self.chapters[chId].isUnused and self.unusedChapterEndTemplate != '':
+                lines.append(self.unusedChapterEndTemplate)
 
             else:
                 lines.append(self.chapterEndTemplate)

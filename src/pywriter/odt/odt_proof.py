@@ -30,7 +30,11 @@ class OdtProof(OdtFile):
 <text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
-    noteChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_info">[ChID:$ID (Info)]</text:p>
+    noteChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">[ChID:$ID (Notes)]</text:p>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
+'''
+
+    todoChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[ChID:$ID (ToDo)]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
@@ -44,9 +48,14 @@ class OdtProof(OdtFile):
 <text:p text:style-name="yWriter_20_mark_20_unused">[/ScID (Unused)]</text:p>
 '''
 
-    noteSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_info">[ScID:$ID (Info)]</text:p>
+    noteSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">[ScID:$ID (Notes)]</text:p>
 <text:p text:style-name="Text_20_body">$SceneContent</text:p>
-<text:p text:style-name="yWriter_20_mark_20_info">[/ScID (Info)]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_notes">[/ScID (Notes)]</text:p>
+'''
+
+    todoSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[ScID:$ID (ToDo)]</text:p>
+<text:p text:style-name="Text_20_body">$SceneContent</text:p>
+<text:p text:style-name="yWriter_20_mark_20_todo">[/ScID (ToDo)]</text:p>
 '''
 
     sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
@@ -58,7 +67,10 @@ class OdtProof(OdtFile):
     unusedChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">[/ChID (Unused)]</text:p>
 '''
 
-    infoChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_info">[/ChID (Info)]</text:p>
+    noteChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">[/ChID (Notes)]</text:p>
+'''
+
+    todoChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[/ChID (ToDo)]</text:p>
 '''
 
     fileFooter = OdtTemplate.CONTENT_XML_FOOTER

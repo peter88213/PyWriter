@@ -18,7 +18,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<FieldTitle2><![CDATA[Tension]]></FieldTitle2>
 		<FieldTitle3><![CDATA[Humour]]></FieldTitle3>
 		<FieldTitle4><![CDATA[Quality]]></FieldTitle4>
-		<LastFullBackup>2020-02-12</LastFullBackup>
+		<LastFullBackup>2020-08-26</LastFullBackup>
 		<WordTarget>0</WordTarget>
 		<WordTargetStartDate>2007-07-28</WordTargetStartDate>
 		<WordTargetEndDate>2007-08-27</WordTargetEndDate>
@@ -35,7 +35,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<LaTeXHeaderFile><![CDATA[ ]]></LaTeXHeaderFile>
 		<MRUSpecificDate>1899-12-30</MRUSpecificDate>
 		<MRUSpecificTime>00:00:00</MRUSpecificTime>
-		<LastViewedScID>120</LastViewedScID>
+		<LastViewedScID>4</LastViewedScID>
 		<DeadlineDate1>2004-09-01</DeadlineDate1>
 		<DeadlineDate2>2004-12-14</DeadlineDate2>
 		<DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -321,6 +321,11 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
 		<Desc><![CDATA[The Navcom tells Hal someone is waiting outside the ship. Hal assumes it's the new pilot and goes to the airlock to admit them. Instead of a human, there's a robot outside, and for a moment Hal thinks Brutus has returned. It isn't though, it's a run-down, obsolete robot with mismatched legs and a squashy, furrowed face. The geriatric robot smiles at Hal and explains politely that it's Jerling's pilot.
 Hal closes the airlock in its face, runs to the flight deck and calls Jerling. He protests that an old robot like that can't possibly land his valuable ship. Jerling explains that the robot is an experienced pilot. After some discussion, Hal accepts the situation. He goes back to the airlock, lets Clunk in but sends him to the cargo hold.
 Hal prepares the ship for takeoff, but ground control won't let him leave. The Port Commander wants to see him in person. Hal leaves the ship, putting Clunk in charge.]]></Desc>
+		<Unused>-1</Unused>
+		<Fields>
+			<Field_SceneType>1</Field_SceneType>
+		</Fields>
+
 		<BelongsToChID>3</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00004.rtf]]></RTFFile>
 		<Field1>1</Field1>
@@ -483,6 +488,11 @@ Clunk sat up straight. "Please open the connection."
 		<Title><![CDATA[Clunk calls, the landing field is on fire. Hal tells him to sit tight.]]></Title>
 		<Desc><![CDATA[Hal is sitting with the Portmaster, waiting for a call from Clunk to say he's got the advance from Jerling. Instead, Clunk calls to say that raging flames are threatening the ship. Hal tells him to sit tight, and leaps up to go to the rescue. The Portmaster stops him - you're not fooling me, sonny, I've heard every excuse in the book. Hal protests, but the Portmaster is firm. He says the maintenance robot working near the Black Gull would have called in if anything was wrong.
 Then the control tower calls to say the landing field is on fire around the Black Gull.]]></Desc>
+		<Unused>-1</Unused>
+		<Fields>
+			<Field_SceneType>2</Field_SceneType>
+		</Fields>
+
 		<BelongsToChID>5</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00009.rtf]]></RTFFile>
 		<Field1>1</Field1>
@@ -551,6 +561,11 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 		<ID>12</ID>
 		<Title><![CDATA[Hal gets to the ship and lifts off.]]></Title>
 		<Desc><![CDATA[Arriving at the Black Gull, Hal sees the prone robot in the burnt-out grass. (It's Clunk, but he assumes it's the one he disabled)  Goes aboard, seals the ship and gets the engines going. Discovers the winch has been lowered, presses the button to raise it. Prepares ship for takeoff and takes his seat.]]></Desc>
+		<Unused>-1</Unused>
+		<Fields>
+			<Field_SceneType>2</Field_SceneType>
+		</Fields>
+
 		<BelongsToChID>6</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00011.rtf]]></RTFFile>
 		<Field1>1</Field1>
@@ -1568,6 +1583,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<ID>58</ID>
 		<Title><![CDATA[New Scene]]></Title>
 		<Unused>-1</Unused>
+		<Fields>
+			<Field_SceneType>2</Field_SceneType>
+		</Fields>
+
 		<BelongsToChID>6</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00057.rtf]]></RTFFile>
 		<Field1>1</Field1>
@@ -1590,6 +1609,11 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 	<SCENE>
 		<ID>120</ID>
 		<Title><![CDATA[Information about the sample project]]></Title>
+		<Unused>-1</Unused>
+		<Fields>
+			<Field_SceneType>1</Field_SceneType>
+		</Fields>
+
 		<BelongsToChID>33</BelongsToChID>
 		<RTFFile><![CDATA[RTF_00058.rtf]]></RTFFile>
 		<Field1>1</Field1>
@@ -1641,8 +1665,10 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>33</ID>
 		<Title><![CDATA[Info]]></Title>
+		<Unused>-1</Unused>
 		<SortOrder>1</SortOrder>
 		<Type>1</Type>
+		<ChapterType>1</ChapterType>
 		<Scenes>
 			<ScID>120</ScID>
 		</Scenes>
@@ -1659,6 +1685,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 
 		<SectionStart>-1</SectionStart>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 	</CHAPTER>
 
 	<CHAPTER>
@@ -1666,6 +1693,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 1]]></Title>
 		<SortOrder>3</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>1</ScID>
 		</Scenes>
@@ -1676,6 +1704,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 2]]></Title>
 		<SortOrder>4</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>2</ScID>
 			<ScID>3</ScID>
@@ -1685,8 +1714,10 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>3</ID>
 		<Title><![CDATA[Chapter 3]]></Title>
+		<Unused>-1</Unused>
 		<SortOrder>5</SortOrder>
-		<Type>0</Type>
+		<Type>1</Type>
+		<ChapterType>1</ChapterType>
 		<Scenes>
 			<ScID>4</ScID>
 		</Scenes>
@@ -1697,6 +1728,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 4]]></Title>
 		<SortOrder>6</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>5</ScID>
 			<ScID>6</ScID>
@@ -1710,6 +1742,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 5]]></Title>
 		<SortOrder>7</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>9</ScID>
 			<ScID>10</ScID>
@@ -1719,13 +1752,15 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>6</ID>
 		<Title><![CDATA[Chapter 6]]></Title>
+		<Unused>-1</Unused>
 		<SortOrder>8</SortOrder>
 		<Fields>
 			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
 			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
 		</Fields>
 
-		<Type>0</Type>
+		<Type>1</Type>
+		<ChapterType>2</ChapterType>
 		<Scenes>
 			<ScID>58</ScID>
 			<ScID>12</ScID>
@@ -1737,6 +1772,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 7]]></Title>
 		<SortOrder>9</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>15</ScID>
 		</Scenes>
@@ -1747,6 +1783,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 8]]></Title>
 		<SortOrder>10</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>17</ScID>
 		</Scenes>
@@ -1757,6 +1794,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 9]]></Title>
 		<SortOrder>11</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>19</ScID>
 		</Scenes>
@@ -1767,6 +1805,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 10]]></Title>
 		<SortOrder>12</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>22</ScID>
 		</Scenes>
@@ -1777,6 +1816,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 11]]></Title>
 		<SortOrder>13</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>25</ScID>
 			<ScID>27</ScID>
@@ -1788,6 +1828,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 12]]></Title>
 		<SortOrder>14</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>29</ScID>
 			<ScID>31</ScID>
@@ -1799,6 +1840,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 13]]></Title>
 		<SortOrder>15</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>34</ScID>
 		</Scenes>
@@ -1809,6 +1851,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 14]]></Title>
 		<SortOrder>16</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 	</CHAPTER>
 
 	<CHAPTER>
@@ -1816,6 +1859,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 15]]></Title>
 		<SortOrder>17</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>38</ScID>
 			<ScID>40</ScID>
@@ -1827,6 +1871,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 16]]></Title>
 		<SortOrder>18</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>43</ScID>
 			<ScID>45</ScID>
@@ -1838,6 +1883,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 17]]></Title>
 		<SortOrder>19</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>47</ScID>
 			<ScID>49</ScID>
@@ -1855,6 +1901,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 
 		<SectionStart>-1</SectionStart>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 	</CHAPTER>
 
 	<CHAPTER>
@@ -1862,6 +1909,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 18]]></Title>
 		<SortOrder>21</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>51</ScID>
 			<ScID>53</ScID>
@@ -1873,6 +1921,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 19]]></Title>
 		<SortOrder>22</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>55</ScID>
 			<ScID>57</ScID>
@@ -1884,6 +1933,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 20]]></Title>
 		<SortOrder>23</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>60</ScID>
 			<ScID>62</ScID>
@@ -1896,6 +1946,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 21]]></Title>
 		<SortOrder>24</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>66</ScID>
 			<ScID>68</ScID>
@@ -1907,6 +1958,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 22]]></Title>
 		<SortOrder>25</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>71</ScID>
 		</Scenes>
@@ -1917,6 +1969,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 23]]></Title>
 		<SortOrder>26</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>74</ScID>
 		</Scenes>
@@ -1927,6 +1980,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 24]]></Title>
 		<SortOrder>27</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>77</ScID>
 			<ScID>79</ScID>
@@ -1939,6 +1993,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 25]]></Title>
 		<SortOrder>28</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>84</ScID>
 			<ScID>86</ScID>
@@ -1950,6 +2005,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 26]]></Title>
 		<SortOrder>29</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>89</ScID>
 		</Scenes>
@@ -1960,6 +2016,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 27]]></Title>
 		<SortOrder>30</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>92</ScID>
 			<ScID>94</ScID>
@@ -1971,6 +2028,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 28]]></Title>
 		<SortOrder>31</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>96</ScID>
 			<ScID>98</ScID>
@@ -1982,6 +2040,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 29]]></Title>
 		<SortOrder>32</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>101</ScID>
 			<ScID>103</ScID>
@@ -1994,6 +2053,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 30]]></Title>
 		<SortOrder>33</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>108</ScID>
 			<ScID>110</ScID>
@@ -2006,6 +2066,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 31]]></Title>
 		<SortOrder>34</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>114</ScID>
 			<ScID>116</ScID>
@@ -2017,6 +2078,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 32]]></Title>
 		<SortOrder>35</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>119</ScID>
 		</Scenes>
@@ -2034,6 +2096,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		</Fields>
 
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>121</ScID>
 		</Scenes>
@@ -2080,6 +2143,12 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<WC>
 		<Date>2020-02-12</Date>
 		<Count>1266</Count>
+		<TotalCount>1341</TotalCount>
+	</WC>
+
+	<WC>
+		<Date>2020-08-26</Date>
+		<Count>1042</Count>
 		<TotalCount>1341</TotalCount>
 	</WC>
 

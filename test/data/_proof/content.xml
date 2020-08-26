@@ -18,9 +18,9 @@
 
 <text:p text:style-name="Title">Hal Spacejock book one - Sample yWriter Project</text:p>
 <text:p text:style-name="Subtitle">Simon Haynes</text:p>
-<text:p text:style-name="yWriter_20_mark_20_info">[ChID:33 (Info)]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_notes">[ChID:33 (Notes)]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Info</text:h>
-<text:p text:style-name="yWriter_20_mark_20_info">[ScID:120 (Info)]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_notes">[ScID:120 (Notes)]</text:p>
 <text:p text:style-name="Text_20_body">*** IMPORTANT ***</text:p>
 <text:p text:style-name="First_20_line_20_indent">Uninstalling yWriter5 will uninstall (delete) this sample project.</text:p>
 <text:p text:style-name="First_20_line_20_indent">Reinstalling yWriter5 will overwrite this sample project.</text:p>
@@ -28,8 +28,8 @@
 <text:p text:style-name="First_20_line_20_indent">Therefore, rather than modifying this project with your own content, <text:span text:style-name="Strong_20_Emphasis">please create a new project for your own work</text:span>. (<text:span text:style-name="Emphasis">Project - Create Empty Project</text:span>, or <text:span text:style-name="Emphasis">Project - New Project Wizard</text:span>)</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">Any new projects created with yWriter5 will not be deleted, overwritten or modified when you uninstall or reinstall the software.</text:p>
-<text:p text:style-name="yWriter_20_mark_20_info">[/ScID (Info)]</text:p>
-<text:p text:style-name="yWriter_20_mark_20_info">[/ChID (Info)]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_notes">[/ScID (Notes)]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_notes">[/ChID (Notes)]</text:p>
 <text:p text:style-name="yWriter_20_mark">[ChID:34]</text:p>
 <text:h text:style-name="Heading_20_1" text:outline-level="1">Part 1</text:h>
 <text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
@@ -73,16 +73,16 @@
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
 <text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:3]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_notes">[ChID:3 (Notes)]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 3</text:h>
-<text:p text:style-name="yWriter_20_mark">[ScID:4]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_notes">[ScID:4 (Notes)]</text:p>
 <text:p text:style-name="Text_20_body">"No sign of Jerling's pilot," said Hal, who was standing in the Black Gull's airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. "There could be an army out there and I wouldn't know it."</text:p>
 <text:p text:style-name="First_20_line_20_indent">"Why don't you open the door?" asked the Navcom.</text:p>
 <text:p text:style-name="First_20_line_20_indent">"No thanks. Vurdi's robot might be hanging around."</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_notes">[/ScID (Notes)]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_notes">[/ChID (Notes)]</text:p>
 <text:p text:style-name="yWriter_20_mark">[ChID:4]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 4</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:5]</text:p>
@@ -126,7 +126,7 @@
 <text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
 <text:p text:style-name="yWriter_20_mark">[ChID:5]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 5</text:h>
-<text:p text:style-name="yWriter_20_mark">[ScID:9]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_todo">[ScID:9 (ToDo)]</text:p>
 <text:p text:style-name="Text_20_body">Portmaster Linten studied Hal across the desk, eyes narrowed. "Are you telling me this Jerling character will pay your bill?"</text:p>
 <text:p text:style-name="First_20_line_20_indent">"He has to. I can't deliver his cargo if the Gull is stuck here, can I?"</text:p>
 <text:p text:style-name="First_20_line_20_indent">The commset buzzed and Linten leant forward. "Yes?"</text:p>
@@ -140,7 +140,7 @@
 <text:p text:style-name="First_20_line_20_indent">"You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"</text:p>
 <text:p text:style-name="First_20_line_20_indent"></text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_todo">[/ScID (ToDo)]</text:p>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:p text:style-name="yWriter_20_mark">[ScID:10]</text:p>
 <text:p text:style-name="Text_20_body">"Deploy fire hose!" shouted Clunk.</text:p>
@@ -151,16 +151,16 @@
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
 <text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:6]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_todo">[ChID:6 (ToDo)]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 6</text:h>
-<text:p text:style-name="yWriter_20_mark_20_unused">[ScID:58 (Unused)]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_todo">[ScID:58 (ToDo)]</text:p>
 <text:p text:style-name="Text_20_body">This bird is not dead ...</text:p>
-<text:p text:style-name="yWriter_20_mark_20_unused">[/ScID (Unused)]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_todo">[/ScID (ToDo)]</text:p>
 <text:p text:style-name="Heading_20_4">* * *</text:p>
-<text:p text:style-name="yWriter_20_mark">[ScID:12]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_todo">[ScID:12 (ToDo)]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
-<text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_todo">[/ScID (ToDo)]</text:p>
+<text:p text:style-name="yWriter_20_mark_20_todo">[/ChID (ToDo)]</text:p>
 <text:p text:style-name="yWriter_20_mark">[ChID:7]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 7</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:15]</text:p>

@@ -17,7 +17,7 @@ class OdtTemplate():
     TEMPDIR = 'temp_odt'
 
     ODT_COMPONENTS = ['manifest.rdf', 'META-INF', 'content.xml', 'meta.xml', 'mimetype',
-                       'settings.xml', 'styles.xml', 'META-INF/manifest.xml']
+                      'settings.xml', 'styles.xml', 'META-INF/manifest.xml']
 
     CONTENT_XML_HEADER = '''<?xml version="1.0" encoding="UTF-8"?>
 
@@ -713,13 +713,16 @@ class OdtTemplate():
    <style:paragraph-properties fo:margin="100%" fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:text-indent="0cm" style:auto-text-indent="false"/>
   </style:style>
   <style:style style:name="yWriter_20_mark" style:display-name="yWriter mark" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Standard" style:class="text">
-   <style:text-properties fo:color="#0000ff" fo:font-size="10pt"/>
+   <style:text-properties fo:color="#006600" fo:font-size="10pt"/>
   </style:style>
   <style:style style:name="yWriter_20_mark_20_unused" style:display-name="yWriter mark unused" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Standard" style:class="text">
-   <style:text-properties fo:color="#ff0000" fo:font-size="10pt"/>
+   <style:text-properties fo:color="#999999" fo:font-size="10pt"/>
   </style:style>
-  <style:style style:name="yWriter_20_mark_20_info" style:display-name="yWriter mark info" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Standard" style:class="text">
-   <style:text-properties fo:color="#800000" fo:font-size="10pt"/>
+  <style:style style:name="yWriter_20_mark_20_notes" style:display-name="yWriter mark notes" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Standard" style:class="text">
+   <style:text-properties fo:color="#0099FF" fo:font-size="10pt"/>
+  </style:style>
+  <style:style style:name="yWriter_20_mark_20_todo" style:display-name="yWriter mark todo" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Standard" style:class="text">
+   <style:text-properties fo:color="#993300" fo:font-size="10pt"/>
   </style:style>
   <style:style style:name="Numbering_20_Symbols" style:display-name="Numbering Symbols" style:family="text"/>
   <style:style style:name="Bullet_20_Symbols" style:display-name="Bullet Symbols" style:family="text">
