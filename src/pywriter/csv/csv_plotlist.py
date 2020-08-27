@@ -50,7 +50,7 @@ class CsvPlotList(CsvFile):
         '''Scene|Words total|$FieldTitle1|$FieldTitle2|$FieldTitle3|$FieldTitle4
 '''
 
-    noteChapterTemplate = '''ChID:$ID|$Title|||$Desc||||||
+    notesChapterTemplate = '''ChID:$ID|$Title|||$Desc||||||
 '''
 
     sceneTemplate = '''=HYPERLINK("file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion";"ScID:$ID")|''' +\

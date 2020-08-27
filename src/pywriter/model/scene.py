@@ -47,7 +47,7 @@ class Scene():
         # bool
         # xml: <Unused> -1
 
-        self.isNoteScene = None
+        self.isNotesScene = None
         # bool
         # xml: <Fields><Field_SceneType> 1
 

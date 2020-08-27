@@ -289,7 +289,7 @@ class YwFile(Novel):
                 if scFields.find('Field_SceneType') is not None:
 
                     if scFields.find('Field_SceneType').text == '1':
-                        self.scenes[scId].isNoteScene = True
+                        self.scenes[scId].isNotesScene = True
 
                     if scFields.find('Field_SceneType').text == '2':
                         self.scenes[scId].isTodoScene = True
@@ -508,8 +508,8 @@ class YwFile(Novel):
             if novel.scenes[scId].isUnused is not None:
                 self.scenes[scId].isUnused = novel.scenes[scId].isUnused
 
-            if novel.scenes[scId].isNoteScene is not None:
-                self.scenes[scId].isNoteScene = novel.scenes[scId].isNoteScene
+            if novel.scenes[scId].isNotesScene is not None:
+                self.scenes[scId].isNotesScene = novel.scenes[scId].isNotesScene
 
             if novel.scenes[scId].isTodoScene is not None:
                 self.scenes[scId].isTodoScene = novel.scenes[scId].isTodoScene
@@ -950,7 +950,7 @@ class YwFile(Novel):
                 elif scn.find('Unused') is not None:
                     scn.remove(scn.find('Unused'))
 
-                if self.scenes[scId].isNoteScene:
+                if self.scenes[scId].isNotesScene:
 
                     if scn.find('Fields') is None:
                         scFields = ET.SubElement(scn, 'Fields')

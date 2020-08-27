@@ -19,18 +19,18 @@ class FileExport(Novel):
     fileHeader = ''
     partTemplate = ''
     chapterTemplate = ''
-    noteChapterTemplate = ''
+    notesChapterTemplate = ''
     todoChapterTemplate = ''
     unusedChapterTemplate = ''
     sceneTemplate = ''
     appendedSceneTemplate = ''
-    noteSceneTemplate = ''
+    notesSceneTemplate = ''
     todoSceneTemplate = ''
     unusedSceneTemplate = ''
     sceneDivider = ''
     chapterEndTemplate = ''
     unusedChapterEndTemplate = ''
-    noteChapterEndTemplate = ''
+    notesChapterEndTemplate = ''
     characterTemplate = ''
     locationTemplate = ''
     itemTemplate = ''
@@ -345,8 +345,8 @@ class FileExport(Novel):
                 # Chapter is "Notes" (new file format) or "Info" (old file
                 # format) chapter.
 
-                if self.noteChapterTemplate != '':
-                    template = Template(self.noteChapterTemplate)
+                if self.notesChapterTemplate != '':
+                    template = Template(self.notesChapterTemplate)
 
                 else:
                     continue
@@ -385,12 +385,12 @@ class FileExport(Novel):
                     else:
                         continue
 
-                elif self.scenes[scId].isNoteScene or self.chapters[chId].oldType == 1:
+                elif self.scenes[scId].isNotesScene or self.chapters[chId].oldType == 1:
                     # Scene is "Notes" (new file format) or "Info" (old file
                     # format) scene.
 
-                    if self.noteSceneTemplate != '':
-                        template = Template(self.noteSceneTemplate)
+                    if self.notesSceneTemplate != '':
+                        template = Template(self.notesSceneTemplate)
 
                     else:
                         continue
@@ -429,8 +429,8 @@ class FileExport(Novel):
 
             elif self.chapters[chId].chType == 1 or self.chapters[chId].oldType == 1:
 
-                if self.noteChapterEndTemplate != '':
-                    lines.append(self.noteChapterEndTemplate)
+                if self.notesChapterEndTemplate != '':
+                    lines.append(self.notesChapterEndTemplate)
 
                 else:
                     continue

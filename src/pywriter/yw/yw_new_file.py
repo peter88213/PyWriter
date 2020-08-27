@@ -165,7 +165,7 @@ class YwNewFile(YwFile):
 
             scFields = ET.SubElement(scn, 'Fields')
 
-            if self.scenes[scId].isNoteScene:
+            if self.scenes[scId].isNotesScene:
                 ET.SubElement(scFields, 'Field_SceneType').text = '1'
 
             elif self.scenes[scId].isTodoScene:
