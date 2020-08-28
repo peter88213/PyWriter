@@ -39,3 +39,11 @@ class OdtExport(OdtFile):
 '''
 
     fileFooter = OdtTemplate.CONTENT_XML_FOOTER
+
+    def get_chapterSubst(self, chId, chapterNumber):
+        chapterSubst = OdtFile.get_chapterSubst(self, chId, chapterNumber)
+
+        if self.chapters[chId].suppressChapterTitle:
+            chapterSubst['Title'] = ''
+
+        return chapterSubst
