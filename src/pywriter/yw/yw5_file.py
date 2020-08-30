@@ -62,7 +62,7 @@ class Yw5File(YwFile):
         #  Write yw5 file.
 
         try:
-            with open(self.filePath, 'w', encoding=self._ENCODING) as f:
+            with open(self.filePath, 'w') as f:
                 f.write(xmlText)
         except:
             return 'ERROR: Can not write project file "' + self.filePath + '".'
@@ -94,7 +94,7 @@ class Yw5File(YwFile):
             rtfPath = rtfDir + '/' + self.scenes[scId].rtfFile
             rtfScene = self.convert_to_rtf(self.scenes[scId].sceneContent)
 
-            with open(rtfPath, 'w', encoding=self._ENCODING) as f:
+            with open(rtfPath, 'w') as f:
                 f.write(rtfScene)
 
         # Modify xml tree.
