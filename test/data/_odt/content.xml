@@ -364,11 +364,11 @@
 <dc:creator>scene title</dc:creator>
 <text:p>- Hal dodges Brutus, escapes the hold.</text:p>
 </office:annotation></text:p>
-<text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 32</text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2"></text:h>
 <text:p text:style-name="Text_20_body"><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>- Black Gull hyperspaces to oblivion</text:p>
-</office:annotation></text:p>
+</office:annotation>This is the end.</text:p>
   </office:text>
  </office:body>
 </office:document-content>

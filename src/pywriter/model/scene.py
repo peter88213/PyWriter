@@ -34,6 +34,11 @@ class Scene():
         # xml: <SceneContent>
         # Scene text with yW7 raw markup.
 
+        self.rtfFile = None
+        # str
+        # xml: <RTFFile>
+        # Name of the file containing the scene in yWriter 5.
+
         self.wordCount = 0
         # int # xml: <WordCount>
         # To be updated by the sceneContent setter

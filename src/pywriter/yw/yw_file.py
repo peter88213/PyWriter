@@ -41,16 +41,19 @@ class YwFile(Novel):
         """Accept only filenames with the correct extension. """
 
         if filePath.lower().endswith('.yw7'):
+            self._VERSION = 7
             self.EXTENSION = '.yw7'
             self._ENCODING = 'utf-8'
             self._filePath = filePath
 
         elif filePath.lower().endswith('.yw6'):
+            self._VERSION = 6
             self.EXTENSION = '.yw6'
             self._ENCODING = 'utf-8'
             self._filePath = filePath
 
         elif filePath.lower().endswith('.yw5'):
+            self._VERSION = 5
             self.EXTENSION = '.yw5'
             self._ENCODING = 'iso-8859-1'
             self._filePath = filePath
@@ -505,6 +508,9 @@ class YwFile(Novel):
             if novel.scenes[scId].sceneContent is not None:
                 self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
 
+            if novel.scenes[scId].rtfFile is not None:
+                self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
+
             if novel.scenes[scId].isUnused is not None:
                 self.scenes[scId].isUnused = novel.scenes[scId].isUnused
 
@@ -627,7 +633,12 @@ class YwFile(Novel):
                 self.chapters[chId].chType = novel.chapters[chId].chType
 
             if novel.chapters[chId].isUnused is not None:
-                self.chapters[chId].isUnused = novel.chapters[chId].isUnused
+
+                if self._VERSION > 5:
+                    self.chapters[chId].isUnused = novel.chapters[chId].isUnused
+
+                elif novel.chapters[chId].oldType == 1:
+                    self.chapters[chId].isUnused = False
 
             if novel.chapters[chId].suppressChapterTitle is not None:
                 self.chapters[chId].suppressChapterTitle = novel.chapters[chId].suppressChapterTitle
@@ -934,13 +945,39 @@ class YwFile(Novel):
                     else:
                         scn.find('Desc').text = self.scenes[scId].desc
 
-                if self.scenes[scId]._sceneContent is not None:
-                    scn.find(
-                        'SceneContent').text = replace_unsafe_glyphs(self.scenes[scId]._sceneContent)
-                    scn.find('WordCount').text = str(
-                        self.scenes[scId].wordCount)
-                    scn.find('LetterCount').text = str(
-                        self.scenes[scId].letterCount)
+                # Write scene content.
+
+                if self._VERSION > 5:
+
+                    if self.scenes[scId].sceneContent is not None:
+                        scn.find('SceneContent').text = replace_unsafe_glyphs(
+                            self.scenes[scId].sceneContent)
+                    '''
+                    try:
+                        scn.remove(scn.find('RTFFile'))
+                    except:
+                        pass
+                    '''
+                else:
+
+                    try:
+                        scn.remove(scn.find('SceneContent'))
+                    except:
+                        pass
+
+                    if scn.find('RTFFile') is None:
+                        ET.SubElement(scn, 'RTFFile')
+
+                    try:
+                        scn.find(
+                            'RTFFile').text = self.scenes[scId].rtfFile
+                    except:
+                        return 'ERROR: yWriter 5 RTF file not generated.'
+
+                scn.find('WordCount').text = str(
+                    self.scenes[scId].wordCount)
+                scn.find('LetterCount').text = str(
+                    self.scenes[scId].letterCount)
 
                 if self.scenes[scId].isUnused:
 
