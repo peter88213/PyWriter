@@ -329,7 +329,7 @@ class YwNewFile(YwFile):
         # Postprocess the xml file created by ElementTree.
 
         message = xml_postprocess(
-            self._filePath, self._ENCODING, self._cdataTags)
+            self._filePath, self._ENCODING, self._VERSION, self._cdataTags)
 
         if message.startswith('ERROR'):
             return message

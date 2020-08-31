@@ -36,24 +36,21 @@ def indent(elem, level=0):
             elem.tail = i
 
 
-def xml_postprocess(filePath, fileEncoding, cdataTags: list):
+def xml_postprocess(filePath, fileEncoding, version, cdataTags: list):
     '''Postprocess the xml file created by ElementTree:
        Put a header on top, insert the missing CDATA tags,
        and replace xml entities by plain text.
     '''
 
-    unicode = False
-
-    try:
-
-        with open(filePath, 'r') as f:
-            lines = f.readlines()
-
-    except UnicodeDecodeError:
+    if version > 5:
 
         with open(filePath, 'r', encoding='utf-8') as f:
             lines = f.readlines()
-            unicode = True
+
+    else:
+
+        with open(filePath, 'r') as f:
+            lines = f.readlines()
 
     newlines = ['<?xml version="1.0" encoding="' + fileEncoding + '"?>\n']
 
@@ -73,7 +70,7 @@ def xml_postprocess(filePath, fileEncoding, cdataTags: list):
     newXml = unescape(newXml)
 
     try:
-        if unicode:
+        if version > 5:
 
             with open(filePath, 'w', encoding='utf-8') as f:
                 f.write(newXml)

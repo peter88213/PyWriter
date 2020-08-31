@@ -63,12 +63,36 @@ class YwFile(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        try:
-            self._tree = ET.parse(self._filePath)
-            root = self._tree.getroot()
+        _TEMPFILE = '._tempfile.xml'
 
-        except:
-            return 'ERROR: Can not process "' + self._filePath + '".'
+        if self._VERSION == 5:
+
+            try:
+
+                with open(self.filePath, 'r') as f:
+                    project = f.readlines()
+
+                project[0] = project[0].replace('<?xml version="1.0" encoding="iso-8859-1"?>',
+                                                '<?xml version="1.0" encoding="cp1252"?>')
+
+                with open(_TEMPFILE, 'w') as f:
+                    f.writelines(project)
+
+                self._tree = ET.parse(_TEMPFILE)
+                root = self._tree.getroot()
+                os.remove(_TEMPFILE)
+
+            except:
+                return 'ERROR: Can not process "' + self._filePath + '".'
+
+        else:
+
+            try:
+                self._tree = ET.parse(self._filePath)
+                root = self._tree.getroot()
+
+            except:
+                return 'ERROR: Can not process "' + self._filePath + '".'
 
         # Read locations from the xml element tree.
 
@@ -253,6 +277,9 @@ class YwFile(Novel):
 
             if scn.find('Desc') is not None:
                 self.scenes[scId].desc = scn.find('Desc').text
+
+            if scn.find('RTFFile') is not None:
+                self.scenes[scId].rtfFile = scn.find('RTFFile').text
 
             if scn.find('SceneContent') is not None:
                 sceneContent = scn.find('SceneContent').text
@@ -1275,7 +1302,7 @@ class YwFile(Novel):
         # Postprocess the xml file created by ElementTree.
 
         message = xml_postprocess(
-            self._filePath, self._ENCODING, self._cdataTags)
+            self._filePath, self._ENCODING, self._VERSION, self._cdataTags)
 
         if message.startswith('ERROR'):
             return message
