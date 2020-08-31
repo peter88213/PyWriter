@@ -154,7 +154,7 @@ class YwNewFile(YwFile):
 
             if self.scenes[scId].sceneContent is not None:
                 ET.SubElement(scn,
-                              'SceneContent').text = replace_unsafe_glyphs(self.scenes[scId].sceneContent)
+                              'SceneContent').text = self.scenes[scId].sceneContent
                 ET.SubElement(scn, 'WordCount').text = str(
                     self.scenes[scId].wordCount)
                 ET.SubElement(scn, 'LetterCount').text = str(

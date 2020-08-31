@@ -27,8 +27,9 @@ class Yw5File(YwFile):
         RTF_HEADER = '{\\rtf1\\ansi\\deff0\\nouicompat{\\fonttbl{\\f0\\fnil\\fcharset0 Courier New;}}{\\*\\generator PyWriter}\\viewkind4\\uc1 \\pard\\sa0\\sl240\\slmult1\\f0\\fs24\\lang9 '
         RTF_FOOTER = ' }'
 
-        if text is None:
-            text = ''
+        EM_DASH = '—'
+        EN_DASH = '–'
+        SAFE_DASH = '--'
 
         text = text.replace('\n\n', '\\line\\par ').replace(
             '\n', '\\par ') + RTF_FOOTER
@@ -36,6 +37,8 @@ class Yw5File(YwFile):
         text = text.replace('[/i]', '}')
         text = text.replace('[b]', '{\\b ')
         text = text.replace('[/b]', '}')
+        text = text.replace(EN_DASH, SAFE_DASH).replace(EM_DASH, SAFE_DASH)
+        # Replace glyphs being corrupted by yWriter 5 with safe substitutes.
         return RTF_HEADER + text
 
     def write(self):
@@ -56,13 +59,16 @@ class Yw5File(YwFile):
 
         # Modify xml header and root structure.
 
-        xmlText = xmlText.replace('encoding="utf-8"', 'encoding="' + self._ENCODING + '"').replace(
-            'YWRITER7>', 'YWRITER5>').replace('<Ver>7</Ver>', '<Ver>5</Ver>')
+        # xmlText = xmlText.replace('encoding="utf-8"', 'encoding="iso-8859-1').replace(
+        #    'YWRITER7>', 'YWRITER5>').replace('<Ver>7</Ver>', '<Ver>5</Ver>')
+
+        xmlText = xmlText.replace('YWRITER7>', 'YWRITER5>').replace(
+            '<Ver>7</Ver>', '<Ver>5</Ver>')
 
         #  Write yw5 file.
 
         try:
-            with open(self.filePath, 'w') as f:
+            with open(self.filePath, 'w', encoding='utf-8') as f:
                 f.write(xmlText)
         except:
             return 'ERROR: Can not write project file "' + self.filePath + '".'

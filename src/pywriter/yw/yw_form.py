@@ -8,15 +8,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 from html import unescape
 
-EM_DASH = '—'
-EN_DASH = '–'
-SAFE_DASH = '--'
-
-
-def replace_unsafe_glyphs(text):
-    """Replace glyphs being corrupted by yWriter with safe substitutes. """
-    return text  # .replace(EN_DASH, SAFE_DASH).replace(EM_DASH, SAFE_DASH)
-
 
 def indent(elem, level=0):
     """xml pretty printer
@@ -50,8 +41,19 @@ def xml_postprocess(filePath, fileEncoding, cdataTags: list):
        Put a header on top, insert the missing CDATA tags,
        and replace xml entities by plain text.
     '''
-    with open(filePath, 'r', encoding=fileEncoding) as f:
-        lines = f.readlines()
+
+    unicode = False
+
+    try:
+
+        with open(filePath, 'r') as f:
+            lines = f.readlines()
+
+    except UnicodeDecodeError:
+
+        with open(filePath, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+            unicode = True
 
     newlines = ['<?xml version="1.0" encoding="' + fileEncoding + '"?>\n']
 
@@ -71,11 +73,18 @@ def xml_postprocess(filePath, fileEncoding, cdataTags: list):
     newXml = unescape(newXml)
 
     try:
-        with open(filePath, 'w', encoding=fileEncoding) as f:
-            f.write(newXml)
+        if unicode:
+
+            with open(filePath, 'w', encoding='utf-8') as f:
+                f.write(newXml)
+
+        else:
+
+            with open(filePath, 'w') as f:
+                f.write(newXml)
 
     except:
-        return 'ERROR: Can not write"' + filePath + '".'
+        return 'ERROR: Can not write "' + filePath + '".'
 
     return 'SUCCESS: "' + filePath + '" written.'
 

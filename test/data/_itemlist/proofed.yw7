@@ -213,7 +213,6 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
       <LastsMinutes>45</LastsMinutes>
       <LastsHours>1</LastsHours>
       <LastsDays>2</LastsDays>
-      <RTFFile><![CDATA[RTF_00001.rtf]]></RTFFile>
       <Field1>5</Field1>
       <Field2>3</Field2>
       <Field3>3</Field3>
@@ -265,7 +264,6 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
       <SpecificDateTime>2424-12-30 14:15:00</SpecificDateTime>
       <LastsMinutes>4</LastsMinutes>
       <LastsHours>3</LastsHours>
-      <RTFFile><![CDATA[RTF_00002.rtf]]></RTFFile>
       <Field1>4</Field1>
       <Field2>1</Field2>
       <Field3>2</Field3>
@@ -294,7 +292,6 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
       <BelongsToChID>2</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 17:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00003.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>2</Field3>
@@ -330,7 +327,6 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
       <BelongsToChID>3</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 14:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00004.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -365,7 +361,6 @@ Hal drives off, oblivious to the flames starting to flicker around the fallen ro
       <BelongsToChID>4</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 17:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00005.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>2</Field3>
@@ -394,7 +389,6 @@ Sitting at the console, Clunk uses the Black Gull's simulation mode to practice 
       <BelongsToChID>4</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 14:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00006.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -429,7 +423,6 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
       <BelongsToChID>4</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 17:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00007.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>2</Field3>
@@ -458,7 +451,6 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
       <BelongsToChID>4</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 14:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00008.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>4</Field3>
@@ -497,7 +489,6 @@ Then the control tower calls to say the landing field is on fire around the Blac
       <BelongsToChID>5</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 17:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00009.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>2</Field3>
@@ -537,7 +528,6 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
       <BelongsToChID>5</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 14:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00010.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -567,7 +557,6 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
       <BelongsToChID>6</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 14:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00011.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -594,7 +583,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <BelongsToChID>7</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 17:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00012.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -617,7 +605,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <BelongsToChID>8</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 14:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00013.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -638,7 +625,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>19</ID>
       <Title><![CDATA[In his office. Gordon OKs the deal]]></Title>
       <BelongsToChID>9</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00014.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -659,7 +645,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>22</ID>
       <Title><![CDATA[Exits the ship to meet Bevan]]></Title>
       <BelongsToChID>10</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00015.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -680,7 +665,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>25</ID>
       <Title><![CDATA[Getting food out. Frozen puddings.]]></Title>
       <BelongsToChID>11</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00016.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -701,7 +685,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>27</ID>
       <Title><![CDATA[Says goodbye to Clunk]]></Title>
       <BelongsToChID>11</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00017.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -722,7 +705,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>29</ID>
       <Title><![CDATA[Hal depressed. No escape from here.]]></Title>
       <BelongsToChID>12</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00018.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -743,7 +725,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>31</ID>
       <Title><![CDATA[Lighten the ship. Preparing for liftoff.]]></Title>
       <BelongsToChID>12</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00019.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -764,7 +745,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>34</ID>
       <Title><![CDATA[Karl and Terry awaiting Hal. They take a call from their spy, intercept is at the orbiter.]]></Title>
       <BelongsToChID>13</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00020.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -785,7 +765,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>38</ID>
       <Title><![CDATA[Karl waiting impatiently]]></Title>
       <BelongsToChID>15</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00021.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -806,7 +785,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>40</ID>
       <Title><![CDATA[Karl and Terry confused about 'Chunk']]></Title>
       <BelongsToChID>15</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00022.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -827,7 +805,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>43</ID>
       <Title><![CDATA[Clunk slips out the back.]]></Title>
       <BelongsToChID>16</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00023.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -848,7 +825,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>45</ID>
       <Title><![CDATA[Karl and Terry waiting.]]></Title>
       <BelongsToChID>16</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00024.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -869,7 +845,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>47</ID>
       <Title><![CDATA[Clunk in orbit]]></Title>
       <BelongsToChID>17</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00025.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -890,7 +865,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>49</ID>
       <Title><![CDATA[Clunk uses cylinder]]></Title>
       <BelongsToChID>17</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00026.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -911,7 +885,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>51</ID>
       <Title><![CDATA[Terry places the 'bomb']]></Title>
       <BelongsToChID>18</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00027.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -932,7 +905,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>53</ID>
       <Title><![CDATA[Hal buys food]]></Title>
       <BelongsToChID>18</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00028.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -953,7 +925,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>55</ID>
       <Title><![CDATA[Karl leaves a note, takes Clunk.]]></Title>
       <BelongsToChID>19</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00029.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -974,7 +945,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>57</ID>
       <Title><![CDATA[Hal about to hyperspace.]]></Title>
       <BelongsToChID>19</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00030.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -995,7 +965,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>60</ID>
       <Title><![CDATA[Hal gets real Jerling's call. Has to get cargo and robot back.]]></Title>
       <BelongsToChID>20</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00031.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1016,7 +985,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>62</ID>
       <Title><![CDATA[Hal sets course for Forg.]]></Title>
       <BelongsToChID>20</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00032.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1037,7 +1005,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>64</ID>
       <Title><![CDATA[Land on Forg, in rubbish.]]></Title>
       <BelongsToChID>20</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00033.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1058,7 +1025,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>66</ID>
       <Title><![CDATA[Hal rents a car in Jerling's name and heads towards Forgberg and the Casino.]]></Title>
       <BelongsToChID>21</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00034.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1079,7 +1045,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>68</ID>
       <Title><![CDATA[Hal after almost running Clunk down. Picks him up.]]></Title>
       <BelongsToChID>21</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00035.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1100,7 +1065,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>71</ID>
       <Title><![CDATA[Find car, go to find clothes.]]></Title>
       <BelongsToChID>22</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00036.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1121,7 +1085,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>74</ID>
       <Title><![CDATA[Hal sells Clunk]]></Title>
       <BelongsToChID>23</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00037.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1142,7 +1105,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>77</ID>
       <Title><![CDATA[Hal annoyed at Clunk for buying only the best.]]></Title>
       <BelongsToChID>24</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00038.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1163,7 +1125,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>79</ID>
       <Title><![CDATA[Clunk gambling. Fight with human couple.]]></Title>
       <BelongsToChID>24</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00039.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1184,7 +1145,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>81</ID>
       <Title><![CDATA[Sitting on the steps, battered and bruised. Limo arrives for Karl.]]></Title>
       <BelongsToChID>24</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00040.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1205,7 +1165,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>84</ID>
       <Title><![CDATA[Clunk travelling on the back of Karl's limo]]></Title>
       <BelongsToChID>25</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00041.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1226,7 +1185,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>86</ID>
       <Title><![CDATA[Clunk sees Hal catching up again. Limo stops.]]></Title>
       <BelongsToChID>25</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00042.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1247,7 +1205,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>89</ID>
       <Title><![CDATA[Clunk uploads the Navcom into the ship.]]></Title>
       <BelongsToChID>26</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00043.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1268,7 +1225,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>92</ID>
       <Title><![CDATA[The shop robots want Clunk to escape with them. Mention Hal's capture.]]></Title>
       <BelongsToChID>27</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00044.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1289,7 +1245,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>94</ID>
       <Title><![CDATA[Clunk steals armoured car, drives it into the house.]]></Title>
       <BelongsToChID>27</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00045.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1310,7 +1265,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>96</ID>
       <Title><![CDATA[Karl and Terry take the limo]]></Title>
       <BelongsToChID>28</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00046.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1331,7 +1285,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>98</ID>
       <Title><![CDATA[Karl and Terry overtake and head for Spaceport. Looking for Volante.]]></Title>
       <BelongsToChID>28</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00047.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1352,7 +1305,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>101</ID>
       <Title><![CDATA[Hal and Clunk fleeing in Gull]]></Title>
       <BelongsToChID>29</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00048.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1373,7 +1325,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>103</ID>
       <Title><![CDATA[Clunk wants to throw stuff at the flyer]]></Title>
       <BelongsToChID>29</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00049.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1394,7 +1345,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>105</ID>
       <Title><![CDATA[Hal fetches the puddings.]]></Title>
       <BelongsToChID>29</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00050.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1415,7 +1365,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>108</ID>
       <Title><![CDATA[Hal yells at Jerling, then cargo arrives on truck.]]></Title>
       <BelongsToChID>30</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00051.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1436,7 +1385,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>110</ID>
       <Title><![CDATA[Clunk outside, depressed.]]></Title>
       <BelongsToChID>30</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00052.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1457,7 +1405,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>112</ID>
       <Title><![CDATA[Karl bursts in, armed.]]></Title>
       <BelongsToChID>30</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00053.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1478,7 +1425,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>114</ID>
       <Title><![CDATA[Terry ties Hal in hold, leaves back doors open.]]></Title>
       <BelongsToChID>31</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00054.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1499,7 +1445,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>116</ID>
       <Title><![CDATA[Hal dodges Brutus, escapes the hold.]]></Title>
       <BelongsToChID>31</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00055.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1520,7 +1465,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>119</ID>
       <Title><![CDATA[Black Gull hyperspaces to oblivion]]></Title>
       <BelongsToChID>32</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00056.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1544,7 +1488,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <BelongsToChID>6</BelongsToChID>
       <SpecificDateMode>-1</SpecificDateMode>
       <SpecificDateTime>2424-12-30 17:15:00</SpecificDateTime>
-      <RTFFile><![CDATA[RTF_00057.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>
@@ -1565,7 +1508,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <ID>120</ID>
       <Title><![CDATA[Information about the sample project]]></Title>
       <BelongsToChID>33</BelongsToChID>
-      <RTFFile><![CDATA[RTF_00058.rtf]]></RTFFile>
       <Field1>1</Field1>
       <Field2>1</Field2>
       <Field3>1</Field3>

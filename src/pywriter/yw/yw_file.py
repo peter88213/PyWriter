@@ -66,7 +66,7 @@ class YwFile(Novel):
         # Complete the list of tags requiring CDATA (if incomplete).
 
         try:
-            with open(self._filePath, 'r', encoding=self._ENCODING) as f:
+            with open(self._filePath, 'r') as f:
                 xmlData = f.read()
 
         except(FileNotFoundError):
@@ -280,6 +280,16 @@ class YwFile(Novel):
 
                 if sceneContent is not None:
                     self.scenes[scId].sceneContent = sceneContent
+
+            elif self._VERSION == 5:
+
+                if scn.find('WordCount') is not None:
+                    self.scenes[scId].wordCount = int(
+                        scn.find('WordCount').text)
+
+                if scn.find('LetterCount') is not None:
+                    self.scenes[scId].letterCount = int(
+                        scn.find('LetterCount').text)
 
             if scn.find('Unused') is not None:
                 self.scenes[scId].isUnused = True
@@ -950,18 +960,24 @@ class YwFile(Novel):
                 if self._VERSION > 5:
 
                     if self.scenes[scId].sceneContent is not None:
-                        scn.find('SceneContent').text = replace_unsafe_glyphs(
-                            self.scenes[scId].sceneContent)
-                    '''
+                        scn.find(
+                            'SceneContent').text = self.scenes[scId].sceneContent
+                        scn.find('WordCount').text = str(
+                            self.scenes[scId].wordCount)
+                        scn.find('LetterCount').text = str(
+                            self.scenes[scId].letterCount)
+
                     try:
                         scn.remove(scn.find('RTFFile'))
+
                     except:
                         pass
-                    '''
+
                 else:
 
                     try:
                         scn.remove(scn.find('SceneContent'))
+
                     except:
                         pass
 
@@ -974,10 +990,10 @@ class YwFile(Novel):
                     except:
                         return 'ERROR: yWriter 5 RTF file not generated.'
 
-                scn.find('WordCount').text = str(
-                    self.scenes[scId].wordCount)
-                scn.find('LetterCount').text = str(
-                    self.scenes[scId].letterCount)
+                    scn.find('WordCount').text = str(
+                        self.scenes[scId].wordCount)
+                    scn.find('LetterCount').text = str(
+                        self.scenes[scId].letterCount)
 
                 if self.scenes[scId].isUnused:
 
