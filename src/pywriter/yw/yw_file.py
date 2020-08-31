@@ -63,10 +63,15 @@ class YwFile(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
+        '''
         # Complete the list of tags requiring CDATA (if incomplete).
 
         try:
             with open(self._filePath, 'r') as f:
+                xmlData = f.read()
+
+        except UnicodeDecodeError:
+            with open(self._filePath, 'r', encoding='utf-8') as f:
                 xmlData = f.read()
 
         except(FileNotFoundError):
@@ -83,6 +88,7 @@ class YwFile(Novel):
                     self._cdataTags.append(tag.group(1))
 
         # Open the file again to let ElementTree parse its xml structure.
+        '''
 
         try:
             self._tree = ET.parse(self._filePath)

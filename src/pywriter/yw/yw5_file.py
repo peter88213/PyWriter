@@ -1,5 +1,7 @@
 """yW5File - Class for yWriter xml file operations and parsing.
 
+Rewrite a yw7 project as yw5. Create rtf scene files.
+
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -36,6 +38,17 @@ class Yw5File(YwFile):
             ['[/b]', '}'],
             ['–', '--'],
             ['—', '--'],
+            ['„', '\\u8222?'],
+            ['‚', '\\u8218?'],
+            ['‘', '\\lquote '],
+            ['’', '\\rquote '],
+            ['“', '\\ldblquote '],
+            ['”', '\\rdblquote '],
+            ['\u202f', '\\~'],
+            ['»', '\\u0187?'],
+            ['«', '\\u0171?'],
+            ['›', '\\u8250?'],
+            ['‹', '\\u8249?'],
         ]
 
         try:
