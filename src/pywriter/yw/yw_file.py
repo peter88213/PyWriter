@@ -872,6 +872,12 @@ class YwFile(Novel):
         prj = root.find('PROJECT')
         prj.find('Title').text = self.title
 
+        if self._VERSION > 6:
+            prj.find('Ver').text = str(self._VERSION)
+
+        else:
+            prj.find('Ver').text = '5'
+
         if self.desc is not None:
 
             if prj.find('Desc') is None:
@@ -1268,6 +1274,9 @@ class YwFile(Novel):
 
                     for itId in self.scenes[scId].items:
                         ET.SubElement(items, 'ItemID').text = itId
+
+        if self._VERSION == 5:
+            root.tag = 'YWRITER5'
 
         # Pretty print the xml tree.
 

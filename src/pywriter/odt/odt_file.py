@@ -21,6 +21,20 @@ class OdtFile(FileExport, OdtTemplate):
     def convert_from_yw(self, text):
         """Convert yw7 raw markup to odt. Return an xml string."""
 
+        ODT_REPLACEMENTS = [
+            ['&', '&amp;'],
+            ['>', '&gt;'],
+            ['<', '&lt;'],
+            ['\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">'],
+            ['[i]', '<text:span text:style-name="Emphasis">'],
+            ['[/i]', '</text:span>'],
+            ['[b]', '<text:span text:style-name="Strong_20_Emphasis">'],
+            ['[/b]', '</text:span>'],
+            ['/*', '<office:annotation><dc:creator>' +
+                self.author + '</dc:creator><text:p>'],
+            ['*/', '</text:p></office:annotation>'],
+        ]
+
         try:
 
             # process italics and bold markup reaching across linebreaks
@@ -58,21 +72,10 @@ class OdtFile(FileExport, OdtTemplate):
 
                 newlines.append(line)
 
-            text = '\n'.join(newlines)
-            text = text.replace('&', '&amp;')
-            text = text.replace('>', '&gt;')
-            text = text.replace('<', '&lt;')
-            text = text.rstrip().replace(
-                '\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">')
-            text = text.replace(
-                '[i]', '<text:span text:style-name="Emphasis">')
-            text = text.replace('[/i]', '</text:span>')
-            text = text.replace(
-                '[b]', '<text:span text:style-name="Strong_20_Emphasis">')
-            text = text.replace('[/b]', '</text:span>')
-            text = text.replace(
-                '/*', '<office:annotation><dc:creator>' + self.author + '</dc:creator><text:p>')
-            text = text.replace('*/', '</text:p></office:annotation>')
+            text = '\n'.join(newlines).rstrip()
+
+            for r in ODT_REPLACEMENTS:
+                text = text.replace(r[0], r[1])
 
         except AttributeError:
             text = ''

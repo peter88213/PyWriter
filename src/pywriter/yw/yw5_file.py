@@ -1,4 +1,4 @@
-"""yWFile - Class for yWriter xml file operations and parsing.
+"""yW5File - Class for yWriter xml file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
@@ -27,19 +27,26 @@ class Yw5File(YwFile):
         RTF_HEADER = '{\\rtf1\\ansi\\deff0\\nouicompat{\\fonttbl{\\f0\\fnil\\fcharset0 Courier New;}}{\\*\\generator PyWriter}\\viewkind4\\uc1 \\pard\\sa0\\sl240\\slmult1\\f0\\fs24\\lang9 '
         RTF_FOOTER = ' }'
 
-        EM_DASH = '—'
-        EN_DASH = '–'
-        SAFE_DASH = '--'
+        RTF_REPLACEMENTS = [
+            ['\n\n', '\\line\\par '],
+            ['\n', '\\par '],
+            ['[i]', '{\\i '],
+            ['[/i]', '}'],
+            ['[b]', '{\\b '],
+            ['[/b]', '}'],
+            ['–', '--'],
+            ['—', '--'],
+        ]
 
-        text = text.replace('\n\n', '\\line\\par ').replace(
-            '\n', '\\par ') + RTF_FOOTER
-        text = text.replace('[i]', '{\\i ')
-        text = text.replace('[/i]', '}')
-        text = text.replace('[b]', '{\\b ')
-        text = text.replace('[/b]', '}')
-        text = text.replace(EN_DASH, SAFE_DASH).replace(EM_DASH, SAFE_DASH)
-        # Replace glyphs being corrupted by yWriter 5 with safe substitutes.
-        return RTF_HEADER + text
+        try:
+
+            for r in RTF_REPLACEMENTS:
+                text = text.replace(r[0], r[1])
+
+        except AttributeError:
+            text = ''
+
+        return RTF_HEADER + text + RTF_FOOTER
 
     def write(self):
         """Copy and modify a yWriter 7 xml file to 
@@ -47,31 +54,19 @@ class Yw5File(YwFile):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        # Read yw7 file.
+        # Copy yw7 file.
 
         yw7File = os.path.splitext(self.filePath)[0] + '.yw7'
 
         try:
-            with open(yw7File, 'r', encoding='utf-8-sig') as f:
-                xmlText = f.read()
+            with open(yw7File, 'rb') as f:
+                project = f.read()
+
+            with open(self.filePath, 'wb') as f:
+                f.write(project)
+
         except:
-            return 'ERROR: Can not read"' + yw7File + '".'
-
-        # Modify xml header and root structure.
-
-        # xmlText = xmlText.replace('encoding="utf-8"', 'encoding="iso-8859-1').replace(
-        #    'YWRITER7>', 'YWRITER5>').replace('<Ver>7</Ver>', '<Ver>5</Ver>')
-
-        xmlText = xmlText.replace('YWRITER7>', 'YWRITER5>').replace(
-            '<Ver>7</Ver>', '<Ver>5</Ver>')
-
-        #  Write yw5 file.
-
-        try:
-            with open(self.filePath, 'w', encoding='utf-8') as f:
-                f.write(xmlText)
-        except:
-            return 'ERROR: Can not write project file "' + self.filePath + '".'
+            return 'ERROR: Can not copy "' + yw7File + ' to ' + self.filePath + '".'
 
         # Create RTF5 directory.
 
@@ -79,13 +74,13 @@ class Yw5File(YwFile):
 
         try:
             rmtree(rtfDir)
+
         except:
             pass
 
         try:
             os.mkdir(rtfDir)
-        except OSError:
-            pass
+
         except:
             return 'ERROR: cannot create scene dir "' + rtfDir + '".'
 
@@ -107,9 +102,9 @@ class Yw5File(YwFile):
 
         try:
             self._tree = ET.parse(self._filePath)
-            root = self._tree.getroot()
+
         except:
-            return 'ERROR: Can not process "' + self._filePath + '".'
+            return 'ERROR: Can not read xml file "' + self._filePath + '".'
 
         message = YwFile.write(self)
         return message

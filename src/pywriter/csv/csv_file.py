@@ -26,11 +26,18 @@ class CsvFile(FileExport):
     _LIST_SEPARATOR = ','
     # delimits items listed within a data field
 
+    CSV_REPLACEMENTS = [
+        ['\n', _LINEBREAK],
+    ]
+
     def convert_from_yw(self, text):
         """Convert line breaks."""
 
         try:
-            text = text.rstrip().replace('\n', self._LINEBREAK)
+            text = text.rstrip()
+
+            for r in self.CSV_REPLACEMENTS:
+                text = text.replace(r[0], r[1])
 
         except AttributeError:
             text = ''
@@ -41,7 +48,9 @@ class CsvFile(FileExport):
         """Convert line breaks."""
 
         try:
-            text = text.replace(self._LINEBREAK, '\n')
+
+            for r in self.CSV_REPLACEMENTS:
+                text = text.replace(r[1], r[0])
 
         except AttributeError:
             text = ''

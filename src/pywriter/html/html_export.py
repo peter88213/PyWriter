@@ -15,15 +15,21 @@ class HtmlExport(FileExport):
     def convert_from_yw(self, text):
         """Convert yw7 markup to target format."""
 
+        HTML_REPLACEMENTS = [
+            ['\n', '</p>\n<p>'],
+            ['[i]', '<em>'],
+            ['[/i]', '</em>'],
+            ['[b]', '<strong>'],
+            ['[/b]', '</strong>'],
+            ['<p></p>', '<p><br /></p>'],
+            ['/*', '<!--'],
+            ['*/', '-->'],
+        ]
+
         try:
-            text = text.replace('\n', '</p>\n<p>')
-            text = text.replace('[i]', '<em>')
-            text = text.replace('[/i]', '</em>')
-            text = text.replace('[b]', '<strong>')
-            text = text.replace('[/b]', '</strong>')
-            text = text.replace('<p></p>', '<p><br /></p>')
-            text = text.replace('/*', '<!--')
-            text = text.replace('*/', '-->')
+
+            for r in HTML_REPLACEMENTS:
+                text = text.replace(r[0], r[1])
 
         except AttributeError:
             text = ''
