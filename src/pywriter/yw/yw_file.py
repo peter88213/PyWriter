@@ -60,56 +60,6 @@ class YwFile(Novel):
             self._ENCODING = 'iso-8859-1'
             self._filePath = filePath
 
-    def xml_postprocess(self):
-        '''Postprocess the xml file created by ElementTree:
-           Put a header on top, insert the missing CDATA tags,
-           and replace xml entities by plain text.
-        '''
-
-        if self._VERSION > 5:
-
-            with open(self.filePath, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-
-        else:
-
-            with open(self.filePath, 'r') as f:
-                lines = f.readlines()
-
-        newlines = ['<?xml version="1.0" encoding="' +
-                    self._ENCODING + '"?>\n']
-
-        for line in lines:
-
-            for tag in self._cdataTags:
-                line = re.sub('\<' + tag + '\>', '<' +
-                              tag + '><![CDATA[', line)
-                line = re.sub('\<\/' + tag + '\>',
-                              ']]></' + tag + '>', line)
-
-            newlines.append(line)
-
-        newXml = ''.join(newlines)
-        newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
-        newXml = newXml.replace('\n]]', ']]')
-        newXml = unescape(newXml)
-
-        try:
-            if self._VERSION > 5:
-
-                with open(self.filePath, 'w', encoding='utf-8') as f:
-                    f.write(newXml)
-
-            else:
-
-                with open(self.filePath, 'w') as f:
-                    f.write(newXml)
-
-        except:
-            return 'ERROR: Can not write "' + self.filePath + '".'
-
-        return 'SUCCESS: "' + self.filePath + '" written.'
-
     def read(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
@@ -701,12 +651,7 @@ class YwFile(Novel):
                 self.chapters[chId].chType = novel.chapters[chId].chType
 
             if novel.chapters[chId].isUnused is not None:
-
-                if self._VERSION > 5:
-                    self.chapters[chId].isUnused = novel.chapters[chId].isUnused
-
-                elif novel.chapters[chId].oldType == 1:
-                    self.chapters[chId].isUnused = False
+                self.chapters[chId].isUnused = novel.chapters[chId].isUnused
 
             if novel.chapters[chId].suppressChapterTitle is not None:
                 self.chapters[chId].suppressChapterTitle = novel.chapters[chId].suppressChapterTitle
@@ -991,6 +936,11 @@ class YwFile(Novel):
                     else:
                         ET.SubElement(chp, 'ChapterType').text = str(
                             self.chapters[chId].chType)
+
+                if self._VERSION == 5:
+
+                    if self.chapters[chId].oldType == 1:
+                        self.chapters[chId].isUnused = False
 
                 if self.chapters[chId].isUnused:
 
@@ -1359,6 +1309,56 @@ class YwFile(Novel):
             return message
 
         return 'SUCCESS: project data written to "' + self._filePath + '".'
+
+    def xml_postprocess(self):
+        '''Postprocess the xml file created by ElementTree:
+           Put a header on top, insert the missing CDATA tags,
+           and replace xml entities by plain text.
+        '''
+
+        if self._VERSION > 5:
+
+            with open(self.filePath, 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+
+        else:
+
+            with open(self.filePath, 'r') as f:
+                lines = f.readlines()
+
+        newlines = ['<?xml version="1.0" encoding="' +
+                    self._ENCODING + '"?>\n']
+
+        for line in lines:
+
+            for tag in self._cdataTags:
+                line = re.sub('\<' + tag + '\>', '<' +
+                              tag + '><![CDATA[', line)
+                line = re.sub('\<\/' + tag + '\>',
+                              ']]></' + tag + '>', line)
+
+            newlines.append(line)
+
+        newXml = ''.join(newlines)
+        newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
+        newXml = newXml.replace('\n]]', ']]')
+        newXml = unescape(newXml)
+
+        try:
+            if self._VERSION > 5:
+
+                with open(self.filePath, 'w', encoding='utf-8') as f:
+                    f.write(newXml)
+
+            else:
+
+                with open(self.filePath, 'w') as f:
+                    f.write(newXml)
+
+        except:
+            return 'ERROR: Can not write "' + self.filePath + '".'
+
+        return 'SUCCESS: "' + self.filePath + '" written.'
 
     def is_locked(self):
         """Test whether a .lock file placed by yWriter exists.
