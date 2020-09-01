@@ -7,6 +7,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import os
+import re
+from html import unescape
 import xml.etree.ElementTree as ET
 
 from pywriter.model.novel import Novel
@@ -14,7 +16,7 @@ from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.character import Character
 from pywriter.model.object import Object
-from pywriter.yw.yw_form import *
+from pywriter.yw.yw_form import indent
 
 
 class YwFile(Novel):
@@ -57,6 +59,56 @@ class YwFile(Novel):
             self.EXTENSION = '.yw5'
             self._ENCODING = 'iso-8859-1'
             self._filePath = filePath
+
+    def xml_postprocess(self):
+        '''Postprocess the xml file created by ElementTree:
+           Put a header on top, insert the missing CDATA tags,
+           and replace xml entities by plain text.
+        '''
+
+        if self._VERSION > 5:
+
+            with open(self.filePath, 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+
+        else:
+
+            with open(self.filePath, 'r') as f:
+                lines = f.readlines()
+
+        newlines = ['<?xml version="1.0" encoding="' +
+                    self._ENCODING + '"?>\n']
+
+        for line in lines:
+
+            for tag in self._cdataTags:
+                line = re.sub('\<' + tag + '\>', '<' +
+                              tag + '><![CDATA[', line)
+                line = re.sub('\<\/' + tag + '\>',
+                              ']]></' + tag + '>', line)
+
+            newlines.append(line)
+
+        newXml = ''.join(newlines)
+        newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
+        newXml = newXml.replace('\n]]', ']]')
+        newXml = unescape(newXml)
+
+        try:
+            if self._VERSION > 5:
+
+                with open(self.filePath, 'w', encoding='utf-8') as f:
+                    f.write(newXml)
+
+            else:
+
+                with open(self.filePath, 'w') as f:
+                    f.write(newXml)
+
+        except:
+            return 'ERROR: Can not write "' + self.filePath + '".'
+
+        return 'SUCCESS: "' + self.filePath + '" written.'
 
     def read(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
@@ -1301,8 +1353,7 @@ class YwFile(Novel):
 
         # Postprocess the xml file created by ElementTree.
 
-        message = xml_postprocess(
-            self._filePath, self._ENCODING, self._VERSION, self._cdataTags)
+        message = self.xml_postprocess()
 
         if message.startswith('ERROR'):
             return message

@@ -5,8 +5,6 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import re
-from html import unescape
 
 
 def indent(elem, level=0):
@@ -34,56 +32,6 @@ def indent(elem, level=0):
     else:
         if level and (not elem.tail or not elem.tail.strip()):
             elem.tail = i
-
-
-def xml_postprocess(filePath, fileEncoding, version, cdataTags: list):
-    '''Postprocess the xml file created by ElementTree:
-       Put a header on top, insert the missing CDATA tags,
-       and replace xml entities by plain text.
-    '''
-
-    if version > 5:
-
-        with open(filePath, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-
-    else:
-
-        with open(filePath, 'r') as f:
-            lines = f.readlines()
-
-    newlines = ['<?xml version="1.0" encoding="' + fileEncoding + '"?>\n']
-
-    for line in lines:
-
-        for tag in cdataTags:
-            line = re.sub('\<' + tag + '\>', '<' +
-                          tag + '><![CDATA[', line)
-            line = re.sub('\<\/' + tag + '\>',
-                          ']]></' + tag + '>', line)
-
-        newlines.append(line)
-
-    newXml = ''.join(newlines)
-    newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
-    newXml = newXml.replace('\n]]', ']]')
-    newXml = unescape(newXml)
-
-    try:
-        if version > 5:
-
-            with open(filePath, 'w', encoding='utf-8') as f:
-                f.write(newXml)
-
-        else:
-
-            with open(filePath, 'w') as f:
-                f.write(newXml)
-
-    except:
-        return 'ERROR: Can not write "' + filePath + '".'
-
-    return 'SUCCESS: "' + filePath + '" written.'
 
 
 if __name__ == '__main__':
