@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import xml.etree.ElementTree as ET
 
 from pywriter.yw.yw_file import YwFile
-from pywriter.yw.yw_form import indent
+from pywriter.yw.yw_form import *
 
 
 class YwNewFile(YwFile):
@@ -313,7 +313,7 @@ class YwNewFile(YwFile):
 
         # Pretty print the xml tree.
 
-        indent(root)
+        indent_xml(root)
 
         # Save the xml tree in a file.
 
@@ -328,7 +328,7 @@ class YwNewFile(YwFile):
 
         # Postprocess the xml file created by ElementTree.
 
-        message = self.xml_postprocess()
+        message = self.postprocess_xml_file()
 
         if message.startswith('ERROR'):
             return message

@@ -7,8 +7,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import os
-import re
-from html import unescape
 import xml.etree.ElementTree as ET
 
 from pywriter.model.novel import Novel
@@ -16,23 +14,17 @@ from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.character import Character
 from pywriter.model.object import Object
-from pywriter.yw.yw_form import indent
+from pywriter.yw.yw_form import *
 
 
 class YwFile(Novel):
     """yWriter xml project file representation."""
 
+    EXTENSION = '.yw7'
+    # overwrites Novel._FILE_EXTENSION
+
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
-        self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc',
-                           'FieldTitle1', 'FieldTitle2', 'FieldTitle3',
-                           'FieldTitle4', 'LaTeXHeaderFile', 'Tags',
-                           'AKA', 'ImageFile', 'FullName', 'Goals',
-                           'Notes', 'RTFFile', 'SceneContent',
-                           'Outcome', 'Goal', 'Conflict']
-        # Names of yWriter xml elements containing CDATA.
-        # ElementTree.write omits CDATA tags, so they have to be inserted
-        # afterwards.
 
     @property
     def filePath(self):
@@ -60,41 +52,30 @@ class YwFile(Novel):
             self._ENCODING = 'iso-8859-1'
             self._filePath = filePath
 
+    def get_element_tree(self):
+        """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
+        Return a message beginning with SUCCESS or ERROR.
+        """
+
+        try:
+            self._tree = ET.parse(self._filePath)
+
+        except:
+            return 'ERROR: Can not process "' + self._filePath + '".'
+
+        return 'SUCCESS: XML element tree read in.'
+
     def read(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        _TEMPFILE = '._tempfile.xml'
+        message = self.get_element_tree()
 
-        if self._VERSION == 5:
+        if message.startswith('ERROR'):
+            return message
 
-            try:
-
-                with open(self.filePath, 'r') as f:
-                    project = f.readlines()
-
-                project[0] = project[0].replace('<?xml version="1.0" encoding="iso-8859-1"?>',
-                                                '<?xml version="1.0" encoding="cp1252"?>')
-
-                with open(_TEMPFILE, 'w') as f:
-                    f.writelines(project)
-
-                self._tree = ET.parse(_TEMPFILE)
-                root = self._tree.getroot()
-                os.remove(_TEMPFILE)
-
-            except:
-                return 'ERROR: Can not process "' + self._filePath + '".'
-
-        else:
-
-            try:
-                self._tree = ET.parse(self._filePath)
-                root = self._tree.getroot()
-
-            except:
-                return 'ERROR: Can not process "' + self._filePath + '".'
+        root = self._tree.getroot()
 
         # Read locations from the xml element tree.
 
@@ -1288,7 +1269,7 @@ class YwFile(Novel):
 
         # Pretty print the xml tree.
 
-        indent(root)
+        indent_xml(root)
 
         # Save the xml tree in a file.
 
@@ -1303,57 +1284,29 @@ class YwFile(Novel):
 
         # Postprocess the xml file created by ElementTree.
 
-        message = self.xml_postprocess()
+        message = self.postprocess_xml_file()
 
         if message.startswith('ERROR'):
             return message
 
         return 'SUCCESS: project data written to "' + self._filePath + '".'
 
-    def xml_postprocess(self):
+    def postprocess_xml_file(self):
         '''Postprocess the xml file created by ElementTree:
            Put a header on top, insert the missing CDATA tags,
            and replace xml entities by plain text.
         '''
 
-        if self._VERSION > 5:
+        with open(self.filePath, 'r', encoding='utf-8') as f:
+            text = f.read()
 
-            with open(self.filePath, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-
-        else:
-
-            with open(self.filePath, 'r') as f:
-                lines = f.readlines()
-
-        newlines = ['<?xml version="1.0" encoding="' +
-                    self._ENCODING + '"?>\n']
-
-        for line in lines:
-
-            for tag in self._cdataTags:
-                line = re.sub('\<' + tag + '\>', '<' +
-                              tag + '><![CDATA[', line)
-                line = re.sub('\<\/' + tag + '\>',
-                              ']]></' + tag + '>', line)
-
-            newlines.append(line)
-
-        newXml = ''.join(newlines)
-        newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
-        newXml = newXml.replace('\n]]', ']]')
-        newXml = unescape(newXml)
+        text = format_xml(text)
+        text = '<?xml version="1.0" encoding="utf-8"?>\n' + text
 
         try:
-            if self._VERSION > 5:
 
-                with open(self.filePath, 'w', encoding='utf-8') as f:
-                    f.write(newXml)
-
-            else:
-
-                with open(self.filePath, 'w') as f:
-                    f.write(newXml)
+            with open(self.filePath, 'w', encoding='utf-8') as f:
+                f.write(text)
 
         except:
             return 'ERROR: Can not write "' + self.filePath + '".'

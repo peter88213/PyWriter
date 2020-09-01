@@ -13,6 +13,7 @@ from shutil import rmtree
 import xml.etree.ElementTree as ET
 
 from pywriter.yw.yw_file import YwFile
+from pywriter.yw.yw_form import *
 
 
 class Yw5File(YwFile):
@@ -20,6 +21,32 @@ class Yw5File(YwFile):
 
     EXTENSION = '.yw5'
     # overwrites Novel._FILE_EXTENSION
+
+    def get_element_tree(self):
+        """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
+        Return a message beginning with SUCCESS or ERROR.
+        """
+
+        _TEMPFILE = '._tempfile.xml'
+
+        try:
+
+            with open(self.filePath, 'r') as f:
+                project = f.readlines()
+
+            project[0] = project[0].replace('<?xml version="1.0" encoding="iso-8859-1"?>',
+                                            '<?xml version="1.0" encoding="cp1252"?>')
+
+            with open(_TEMPFILE, 'w') as f:
+                f.writelines(project)
+
+            self._tree = ET.parse(_TEMPFILE)
+            os.remove(_TEMPFILE)
+
+        except:
+            return 'ERROR: Can not process "' + self._filePath + '".'
+
+        return 'SUCCESS: XML element tree read in.'
 
     def convert_to_rtf(self, text):
         """Convert yw6/7 raw markup to rtf. 
@@ -122,3 +149,25 @@ class Yw5File(YwFile):
 
         message = YwFile.write(self)
         return message
+
+    def postprocess_xml_file(self):
+        '''Postprocess the xml file created by ElementTree:
+           Put a header on top, insert the missing CDATA tags,
+           and replace xml entities by plain text.
+        '''
+
+        with open(self.filePath, 'r') as f:
+            text = f.read()
+
+        text = format_xml(text)
+        text = '<?xml version="1.0" encoding="iso-8859-1"?>\n' + text
+
+        try:
+
+            with open(self.filePath, 'w') as f:
+                f.write(text)
+
+        except:
+            return 'ERROR: Can not write "' + self.filePath + '".'
+
+        return 'SUCCESS: "' + self.filePath + '" written.'
