@@ -21,8 +21,20 @@ class Yw5File(YwFile):
 
     EXTENSION = '.yw5'
     # overwrites Novel._FILE_EXTENSION
+    _VERSION = 5
 
-    def get_element_tree(self):
+    @property
+    def filePath(self):
+        return self._filePath
+
+    @filePath.setter
+    def filePath(self, filePath):
+        """Accept only filenames with the correct extension. """
+
+        if filePath.lower().endswith('.yw5'):
+            self._filePath = filePath
+
+    def read_element_tree(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
@@ -150,10 +162,28 @@ class Yw5File(YwFile):
         message = YwFile.write(self)
         return message
 
+    def write_element_tree(self, root):
+        """Write back the xml element tree to a yWriter xml file located at filePath.
+        Return a message beginning with SUCCESS or ERROR.
+        """
+
+        root.tag = 'YWRITER5'
+        self._tree = ET.ElementTree(root)
+
+        try:
+            self._tree.write(
+                self._filePath, xml_declaration=False, encoding='iso-8859-1')
+
+        except(PermissionError):
+            return 'ERROR: "' + self._filePath + '" is write protected.'
+
+        return 'SUCCESS'
+
     def postprocess_xml_file(self):
         '''Postprocess the xml file created by ElementTree:
-           Put a header on top, insert the missing CDATA tags,
-           and replace xml entities by plain text.
+        Put a header on top, insert the missing CDATA tags,
+        and replace xml entities by plain text.
+        Return a message beginning with SUCCESS or ERROR.
         '''
 
         with open(self.filePath, 'r') as f:
@@ -170,4 +200,4 @@ class Yw5File(YwFile):
         except:
             return 'ERROR: Can not write "' + self.filePath + '".'
 
-        return 'SUCCESS: "' + self.filePath + '" written.'
+        return 'SUCCESS'

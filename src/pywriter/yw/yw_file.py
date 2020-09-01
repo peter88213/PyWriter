@@ -1,4 +1,4 @@
-"""yWFile - Class for yWriter xml file operations and parsing.
+"""yWFile - Class for yWriter 7 xml file operations and parsing.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
@@ -22,9 +22,7 @@ class YwFile(Novel):
 
     EXTENSION = '.yw7'
     # overwrites Novel._FILE_EXTENSION
-
-    def __init__(self, filePath):
-        Novel.__init__(self, filePath)
+    _VERSION = 7
 
     @property
     def filePath(self):
@@ -35,24 +33,9 @@ class YwFile(Novel):
         """Accept only filenames with the correct extension. """
 
         if filePath.lower().endswith('.yw7'):
-            self._VERSION = 7
-            self.EXTENSION = '.yw7'
-            self._ENCODING = 'utf-8'
             self._filePath = filePath
 
-        elif filePath.lower().endswith('.yw6'):
-            self._VERSION = 6
-            self.EXTENSION = '.yw6'
-            self._ENCODING = 'utf-8'
-            self._filePath = filePath
-
-        elif filePath.lower().endswith('.yw5'):
-            self._VERSION = 5
-            self.EXTENSION = '.yw5'
-            self._ENCODING = 'iso-8859-1'
-            self._filePath = filePath
-
-    def get_element_tree(self):
+    def read_element_tree(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
@@ -70,7 +53,7 @@ class YwFile(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        message = self.get_element_tree()
+        message = self.read_element_tree()
 
         if message.startswith('ERROR'):
             return message
@@ -1264,25 +1247,11 @@ class YwFile(Novel):
                     for itId in self.scenes[scId].items:
                         ET.SubElement(items, 'ItemID').text = itId
 
-        if self._VERSION == 5:
-            root.tag = 'YWRITER5'
-
-        # Pretty print the xml tree.
-
         indent_xml(root)
+        message = self.write_element_tree(root)
 
-        # Save the xml tree in a file.
-
-        self._tree = ET.ElementTree(root)
-
-        try:
-            self._tree.write(
-                self._filePath, xml_declaration=False, encoding=self._ENCODING)
-
-        except(PermissionError):
-            return 'ERROR: "' + self._filePath + '" is write protected.'
-
-        # Postprocess the xml file created by ElementTree.
+        if message.startswith('ERROR'):
+            return message
 
         message = self.postprocess_xml_file()
 
@@ -1291,10 +1260,28 @@ class YwFile(Novel):
 
         return 'SUCCESS: project data written to "' + self._filePath + '".'
 
+    def write_element_tree(self, root):
+        """Write back the xml element tree to a yWriter xml file located at filePath.
+        Return a message beginning with SUCCESS or ERROR.
+        """
+
+        root.tag = 'YWRITER7'
+        self._tree = ET.ElementTree(root)
+
+        try:
+            self._tree.write(
+                self._filePath, xml_declaration=False, encoding='utf-8')
+
+        except(PermissionError):
+            return 'ERROR: "' + self._filePath + '" is write protected.'
+
+        return 'SUCCESS'
+
     def postprocess_xml_file(self):
         '''Postprocess the xml file created by ElementTree:
-           Put a header on top, insert the missing CDATA tags,
-           and replace xml entities by plain text.
+        Put a header on top, insert the missing CDATA tags,
+        and replace xml entities by plain text.
+        Return a message beginning with SUCCESS or ERROR.
         '''
 
         with open(self.filePath, 'r', encoding='utf-8') as f:
@@ -1311,7 +1298,7 @@ class YwFile(Novel):
         except:
             return 'ERROR: Can not write "' + self.filePath + '".'
 
-        return 'SUCCESS: "' + self.filePath + '" written.'
+        return 'SUCCESS'
 
     def is_locked(self):
         """Test whether a .lock file placed by yWriter exists.

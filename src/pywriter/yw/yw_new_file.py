@@ -321,7 +321,7 @@ class YwNewFile(YwFile):
 
         try:
             self._tree.write(
-                self._filePath, xml_declaration=False, encoding=self._ENCODING)
+                self._filePath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
             return 'ERROR: "' + self._filePath + '" is write protected.'
