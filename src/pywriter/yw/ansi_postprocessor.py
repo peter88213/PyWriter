@@ -12,14 +12,14 @@ from pywriter.yw.yw_postprocessor import YwPostprocessor
 class AnsiPostprocessor(YwPostprocessor):
     """Postprocess ANSI encoded yWriter project."""
 
-    def postprocess_xml_file(self, ywFile):
+    def postprocess_xml_file(self, filePath):
         '''Postprocess the xml file created by ElementTree:
         Put a header on top, insert the missing CDATA tags,
         and replace xml entities by plain text.
         Return a message beginning with SUCCESS or ERROR.
         '''
 
-        with open(ywFile.filePath, 'r') as f:
+        with open(filePath, 'r') as f:
             text = f.read()
 
         text = self.format_xml(text)
@@ -27,10 +27,10 @@ class AnsiPostprocessor(YwPostprocessor):
 
         try:
 
-            with open(ywFile.filePath, 'w') as f:
+            with open(filePath, 'w') as f:
                 f.write(text)
 
         except:
-            return 'ERROR: Can not write "' + ywFile.filePath + '".'
+            return 'ERROR: Can not write "' + filePath + '".'
 
         return 'SUCCESS'

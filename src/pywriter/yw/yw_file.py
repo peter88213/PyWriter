@@ -690,7 +690,7 @@ class YwFile(Novel):
         if message.startswith('ERROR'):
             return message
 
-        message = self.ywPostprocessor.postprocess_xml_file(self)
+        message = self.ywPostprocessor.postprocess_xml_file(self.filePath)
 
         if message.startswith('ERROR'):
             return message

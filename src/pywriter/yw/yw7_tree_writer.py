@@ -13,22 +13,22 @@ from pywriter.yw.yw_tree_writer import YwTreeWriter
 class Yw7TreeWriter(YwTreeWriter):
     """Write yWriter 7 xml project file."""
 
-    def write_element_tree(self, ywFile):
+    def write_element_tree(self, ywProject):
         """Write back the xml element tree to a yWriter xml file located at filePath.
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        root = ywFile._tree.getroot()
+        root = ywProject._tree.getroot()
         root.tag = 'YWRITER7'
         root.find('PROJECT').find('Ver').text = '7'
         self.indent_xml(root)
-        ywFile._tree = ET.ElementTree(root)
+        ywProject._tree = ET.ElementTree(root)
 
         try:
-            ywFile._tree.write(
-                ywFile._filePath, xml_declaration=False, encoding='utf-8')
+            ywProject._tree.write(
+                ywProject._filePath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return 'ERROR: "' + ywFile._filePath + '" is write protected.'
+            return 'ERROR: "' + ywProject._filePath + '" is write protected.'
 
         return 'SUCCESS'

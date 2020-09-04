@@ -314,12 +314,12 @@ class YwNewFile(YwFile):
 
         self._tree = ET.ElementTree(root)
 
-        message = self.ywTreeWriter.write_element_tree(self, root)
+        message = self.ywTreeWriter.write_element_tree(self)
 
         if message.startswith('ERROR'):
             return message
 
-        message = self.ywPostprocessor.postprocess_xml_file(self)
+        message = self.ywPostprocessor.postprocess_xml_file(self.filePath)
 
         if message.startswith('ERROR'):
             return message

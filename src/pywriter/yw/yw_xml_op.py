@@ -30,21 +30,21 @@ class XmlTreeReader():
 class XmlTreeWriter():
     """Write yWriter xml project file."""
 
-    def write_element_tree(self, ywFile, root):
+    def write_element_tree(self, ywProject, root):
         """Write back the xml element tree to a yWriter xml file located at filePath.
         Return a message beginning with SUCCESS or ERROR.
         """
 
         root.tag = 'YWRITER7'
         root.find('PROJECT').find('Ver').text = '7'
-        ywFile._tree = ET.ElementTree(root)
+        ywProject._tree = ET.ElementTree(root)
 
         try:
-            ywFile._tree.write(
-                ywFile._filePath, xml_declaration=False, encoding='utf-8')
+            ywProject._tree.write(
+                ywProject._filePath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return 'ERROR: "' + ywFile._filePath + '" is write protected.'
+            return 'ERROR: "' + ywProject._filePath + '" is write protected.'
 
         return 'SUCCESS'
 
