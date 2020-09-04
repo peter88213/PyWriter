@@ -15,14 +15,15 @@ from pywriter.model.scene import Scene
 from pywriter.model.character import Character
 from pywriter.model.object import Object
 from pywriter.yw.yw_form import *
+from pywriter.yw.xml_tree_reader_utf8 import Utf8TreeReader
+from pywriter.yw.xml_tree_reader_ansi import AnsiTreeReader
+from pywriter.yw.yw7_tree_writer import Yw7TreeWriter
+from pywriter.yw.yw6_tree_writer import Yw6TreeWriter
+from pywriter.yw.yw5_tree_writer import Yw5TreeWriter
 
 
 class YwFile(Novel):
     """yWriter xml project file representation."""
-
-    EXTENSION = '.yw7'
-    # overwrites Novel._FILE_EXTENSION
-    _VERSION = 7
 
     @property
     def filePath(self):
@@ -33,27 +34,32 @@ class YwFile(Novel):
         """Accept only filenames with the correct extension. """
 
         if filePath.lower().endswith('.yw7'):
+            self._VERSION = 7
+            self.EXTENSION = '.yw7'
             self._filePath = filePath
+            self.ywTreeReader = Utf8TreeReader()
+            self.ywTreeWriter = Yw7TreeWriter()
 
-    def read_element_tree(self):
-        """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
-        Return a message beginning with SUCCESS or ERROR.
-        """
+        elif filePath.lower().endswith('.yw6'):
+            self._VERSION = 6
+            self.EXTENSION = '.yw6'
+            self._filePath = filePath
+            self.ywTreeReader = Utf8TreeReader()
+            self.ywTreeWriter = Yw6TreeWriter()
 
-        try:
-            self._tree = ET.parse(self._filePath)
-
-        except:
-            return 'ERROR: Can not process "' + self._filePath + '".'
-
-        return 'SUCCESS: XML element tree read in.'
+        elif filePath.lower().endswith('.yw5'):
+            self._VERSION = 5
+            self.EXTENSION = '.yw5'
+            self._filePath = filePath
+            self.ywTreeReader = AnsiTreeReader()
+            self.ywTreeWriter = Yw5TreeWriter()
 
     def read(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        message = self.read_element_tree()
+        message = self.ywTreeReader.read_element_tree(self)
 
         if message.startswith('ERROR'):
             return message
@@ -1248,7 +1254,7 @@ class YwFile(Novel):
                         ET.SubElement(items, 'ItemID').text = itId
 
         indent_xml(root)
-        message = self.write_element_tree(root)
+        message = self.ywTreeWriter.write_element_tree(self, root)
 
         if message.startswith('ERROR'):
             return message
@@ -1259,23 +1265,6 @@ class YwFile(Novel):
             return message
 
         return 'SUCCESS: project data written to "' + self._filePath + '".'
-
-    def write_element_tree(self, root):
-        """Write back the xml element tree to a yWriter xml file located at filePath.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-
-        root.tag = 'YWRITER7'
-        self._tree = ET.ElementTree(root)
-
-        try:
-            self._tree.write(
-                self._filePath, xml_declaration=False, encoding='utf-8')
-
-        except(PermissionError):
-            return 'ERROR: "' + self._filePath + '" is write protected.'
-
-        return 'SUCCESS'
 
     def postprocess_xml_file(self):
         '''Postprocess the xml file created by ElementTree:
