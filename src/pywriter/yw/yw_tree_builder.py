@@ -1,4 +1,4 @@
-"""Write yWriter xml project file.
+"""Build yWriter project xml tree.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
@@ -6,14 +6,13 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from abc import abstractmethod
+import xml.etree.ElementTree as ET
 
 
-class YwTreeWriter():
-    """Write yWriter 7 xml project file."""
+class YwTreeBuilder():
+    """Build yWriter project xml tree."""
 
-    @abstractmethod
-    def write_element_tree(self, ywFile):
+    def build_element_tree(self, ywFile):
         """Write back the xml element tree to a yWriter xml file located at filePath.
         Return a message beginning with SUCCESS or ERROR.
         """
@@ -589,29 +588,3 @@ class YwTreeWriter():
 
                     for itId in ywFile.scenes[scId].items:
                         ET.SubElement(items, 'ItemID').text = itId
-
-    def indent_xml(self, elem, level=0):
-        """xml pretty printer
-
-        Kudos to to Fredrik Lundh. 
-        Source: http://effbot.org/zone/element-lib.htm#prettyprint
-        """
-        i = "\n" + level * "  "
-
-        if len(elem):
-
-            if not elem.text or not elem.text.strip():
-                elem.text = i + "  "
-
-            if not elem.tail or not elem.tail.strip():
-                elem.tail = i
-
-            for elem in elem:
-                self.indent_xml(elem, level + 1)
-
-            if not elem.tail or not elem.tail.strip():
-                elem.tail = i
-
-        else:
-            if level and (not elem.tail or not elem.tail.strip()):
-                elem.tail = i

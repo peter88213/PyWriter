@@ -13,11 +13,12 @@ from pywriter.yw.yw_tree_writer import YwTreeWriter
 class Yw6TreeWriter(YwTreeWriter):
     """Write yWriter 6 xml project file."""
 
-    def write_element_tree(self, ywFile, root):
+    def write_element_tree(self, ywFile):
         """Write back the xml element tree to a yWriter xml file located at filePath.
         Return a message beginning with SUCCESS or ERROR.
         """
 
+        root = ywFile._tree.getroot()
         root.tag = 'YWRITER6'
         root.find('PROJECT').find('Ver').text = '5'
         self.indent_xml(root)
