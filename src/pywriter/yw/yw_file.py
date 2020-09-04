@@ -39,27 +39,27 @@ class YwFile(Novel):
             self.EXTENSION = '.yw7'
             self._filePath = filePath
             self.ywTreeReader = Utf8TreeReader()
+            self.ywTreeBuilder = YwTreeBuilder()
             self.ywTreeWriter = Yw7TreeWriter()
             self.ywPostprocessor = Utf8Postprocessor()
-            self.ywTreeBuilder = YwTreeBuilder()
 
         elif filePath.lower().endswith('.yw6'):
             self._VERSION = 6
             self.EXTENSION = '.yw6'
             self._filePath = filePath
             self.ywTreeReader = Utf8TreeReader()
+            self.ywTreeBuilder = YwTreeBuilder()
             self.ywTreeWriter = Yw6TreeWriter()
             self.ywPostprocessor = Utf8Postprocessor()
-            self.ywTreeBuilder = YwTreeBuilder()
 
         elif filePath.lower().endswith('.yw5'):
             self._VERSION = 5
             self.EXTENSION = '.yw5'
             self._filePath = filePath
             self.ywTreeReader = AnsiTreeReader()
+            self.ywTreeBuilder = YwTreeBuilder()
             self.ywTreeWriter = Yw5TreeWriter()
             self.ywPostprocessor = AnsiPostprocessor()
-            self.ywTreeBuilder = YwTreeBuilder()
 
     def read(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
