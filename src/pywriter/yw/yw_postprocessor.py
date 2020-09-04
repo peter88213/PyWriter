@@ -19,6 +19,7 @@ class YwPostprocessor():
         Put a header on top, insert the missing CDATA tags,
         and replace xml entities by plain text.
         Return a message beginning with SUCCESS or ERROR.
+        To be overwritten by file format specific subclasses.
         '''
 
     def format_xml(self, text):

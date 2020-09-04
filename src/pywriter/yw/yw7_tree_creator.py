@@ -1,4 +1,4 @@
-"""Build yWriter 7 project xml tree.
+"""Create a new yWriter 7 project xml tree.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
@@ -11,10 +11,10 @@ import xml.etree.ElementTree as ET
 
 
 class Yw7TreeCreator(YwTreeBuilder):
-    """Build yWriter 7 project xml tree."""
+    """Create a new yWriter 7 project xml tree."""
 
     def build_element_tree(self, ywProject):
-        """Write back the xml element tree to a yWriter xml file located at filePath.
+        """Put the yWriter project attributes to a new xml element tree.
         Return a message beginning with SUCCESS or ERROR.
         """
 

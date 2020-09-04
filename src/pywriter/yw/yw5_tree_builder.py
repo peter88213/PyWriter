@@ -14,7 +14,7 @@ class Yw5TreeBuilder(YwTreeBuilder):
     """Build yWriter 5 project xml tree."""
 
     def build_element_tree(self, ywProject):
-        """Write back the xml element tree to a yWriter xml file located at filePath.
+        """Modify the yWriter project attributes of an existing xml element tree.
         Return a message beginning with SUCCESS or ERROR.
         """
         for chId in ywProject.chapters:
