@@ -1,4 +1,4 @@
-"""Write yWriter 5 xml project file..
+"""Write yWriter 5 xml project file.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
@@ -7,10 +7,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import xml.etree.ElementTree as ET
+from pywriter.yw.yw_tree_writer import YwTreeWriter
 
 
-class Yw5TreeWriter():
-    """Write yWriter 7 xml project file."""
+class Yw5TreeWriter(YwTreeWriter):
+    """Write yWriter 5 xml project file."""
 
     def write_element_tree(self, ywFile, root):
         """Write back the xml element tree to a yWriter xml file located at filePath.
@@ -19,6 +20,7 @@ class Yw5TreeWriter():
 
         root.tag = 'YWRITER5'
         root.find('PROJECT').find('Ver').text = '5'
+        self.indent_xml(root)
         ywFile._tree = ET.ElementTree(root)
 
         try:

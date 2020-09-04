@@ -14,12 +14,13 @@ from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.character import Character
 from pywriter.model.object import Object
-from pywriter.yw.yw_form import *
-from pywriter.yw.xml_tree_reader_utf8 import Utf8TreeReader
-from pywriter.yw.xml_tree_reader_ansi import AnsiTreeReader
+from pywriter.yw.utf8_tree_reader import Utf8TreeReader
+from pywriter.yw.ansi_tree_reader import AnsiTreeReader
 from pywriter.yw.yw7_tree_writer import Yw7TreeWriter
 from pywriter.yw.yw6_tree_writer import Yw6TreeWriter
 from pywriter.yw.yw5_tree_writer import Yw5TreeWriter
+from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
+from pywriter.yw.ansi_postprocessor import AnsiPostprocessor
 
 
 class YwFile(Novel):
@@ -39,6 +40,7 @@ class YwFile(Novel):
             self._filePath = filePath
             self.ywTreeReader = Utf8TreeReader()
             self.ywTreeWriter = Yw7TreeWriter()
+            self.ywPostprocessor = Utf8Postprocessor()
 
         elif filePath.lower().endswith('.yw6'):
             self._VERSION = 6
@@ -46,6 +48,7 @@ class YwFile(Novel):
             self._filePath = filePath
             self.ywTreeReader = Utf8TreeReader()
             self.ywTreeWriter = Yw6TreeWriter()
+            self.ywPostprocessor = Utf8Postprocessor()
 
         elif filePath.lower().endswith('.yw5'):
             self._VERSION = 5
@@ -53,6 +56,7 @@ class YwFile(Novel):
             self._filePath = filePath
             self.ywTreeReader = AnsiTreeReader()
             self.ywTreeWriter = Yw5TreeWriter()
+            self.ywPostprocessor = AnsiPostprocessor()
 
     def read(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
@@ -253,21 +257,21 @@ class YwFile(Novel):
             if scn.find('RTFFile') is not None:
                 self.scenes[scId].rtfFile = scn.find('RTFFile').text
 
+            # This is relevant for yW5 files with no SceneContent:
+
+            if scn.find('WordCount') is not None:
+                self.scenes[scId].wordCount = int(
+                    scn.find('WordCount').text)
+
+            if scn.find('LetterCount') is not None:
+                self.scenes[scId].letterCount = int(
+                    scn.find('LetterCount').text)
+
             if scn.find('SceneContent') is not None:
                 sceneContent = scn.find('SceneContent').text
 
                 if sceneContent is not None:
                     self.scenes[scId].sceneContent = sceneContent
-
-            elif self._VERSION == 5:
-
-                if scn.find('WordCount') is not None:
-                    self.scenes[scId].wordCount = int(
-                        scn.find('WordCount').text)
-
-                if scn.find('LetterCount') is not None:
-                    self.scenes[scId].letterCount = int(
-                        scn.find('LetterCount').text)
 
             if scn.find('Unused') is not None:
                 self.scenes[scId].isUnused = True
@@ -845,12 +849,6 @@ class YwFile(Novel):
         prj = root.find('PROJECT')
         prj.find('Title').text = self.title
 
-        if self._VERSION > 6:
-            prj.find('Ver').text = str(self._VERSION)
-
-        else:
-            prj.find('Ver').text = '5'
-
         if self.desc is not None:
 
             if prj.find('Desc') is None:
@@ -1253,41 +1251,17 @@ class YwFile(Novel):
                     for itId in self.scenes[scId].items:
                         ET.SubElement(items, 'ItemID').text = itId
 
-        indent_xml(root)
         message = self.ywTreeWriter.write_element_tree(self, root)
 
         if message.startswith('ERROR'):
             return message
 
-        message = self.postprocess_xml_file()
+        message = self.ywPostprocessor.postprocess_xml_file(self)
 
         if message.startswith('ERROR'):
             return message
 
         return 'SUCCESS: project data written to "' + self._filePath + '".'
-
-    def postprocess_xml_file(self):
-        '''Postprocess the xml file created by ElementTree:
-        Put a header on top, insert the missing CDATA tags,
-        and replace xml entities by plain text.
-        Return a message beginning with SUCCESS or ERROR.
-        '''
-
-        with open(self.filePath, 'r', encoding='utf-8') as f:
-            text = f.read()
-
-        text = format_xml(text)
-        text = '<?xml version="1.0" encoding="utf-8"?>\n' + text
-
-        try:
-
-            with open(self.filePath, 'w', encoding='utf-8') as f:
-                f.write(text)
-
-        except:
-            return 'ERROR: Can not write "' + self.filePath + '".'
-
-        return 'SUCCESS'
 
     def is_locked(self):
         """Test whether a .lock file placed by yWriter exists.

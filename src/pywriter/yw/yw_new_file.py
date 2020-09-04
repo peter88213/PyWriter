@@ -9,7 +9,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import xml.etree.ElementTree as ET
 
 from pywriter.yw.yw_file import YwFile
-from pywriter.yw.yw_form import *
 
 
 class YwNewFile(YwFile):
@@ -311,24 +310,16 @@ class YwNewFile(YwFile):
                 ET.SubElement(
                     chFields, 'Field_SuppressChapterTitle').text = '1'
 
-        # Pretty print the xml tree.
-
-        indent_xml(root)
-
         # Save the xml tree in a file.
 
         self._tree = ET.ElementTree(root)
 
-        try:
-            self._tree.write(
-                self._filePath, xml_declaration=False, encoding='utf-8')
+        message = self.ywTreeWriter.write_element_tree(self, root)
 
-        except(PermissionError):
-            return 'ERROR: "' + self._filePath + '" is write protected.'
+        if message.startswith('ERROR'):
+            return message
 
-        # Postprocess the xml file created by ElementTree.
-
-        message = self.postprocess_xml_file()
+        message = self.ywPostprocessor.postprocess_xml_file(self)
 
         if message.startswith('ERROR'):
             return message

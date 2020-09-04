@@ -12,7 +12,6 @@ import os
 
 from pywriter.yw.yw5_file import Yw5File
 from pywriter.converter.yw_cnv_gui import YwCnvGui
-from pywriter.model.chapter import Chapter
 
 
 def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
