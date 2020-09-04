@@ -36,7 +36,6 @@ class YwFile(Novel):
         """Accept only filenames with the correct extension. """
 
         if filePath.lower().endswith('.yw7'):
-            self._VERSION = 7
             self.EXTENSION = '.yw7'
             self._filePath = filePath
             self.ywTreeReader = Utf8TreeReader()
@@ -45,7 +44,6 @@ class YwFile(Novel):
             self.ywPostprocessor = Utf8Postprocessor()
 
         elif filePath.lower().endswith('.yw6'):
-            self._VERSION = 6
             self.EXTENSION = '.yw6'
             self._filePath = filePath
             self.ywTreeReader = Utf8TreeReader()
@@ -54,7 +52,6 @@ class YwFile(Novel):
             self.ywPostprocessor = Utf8Postprocessor()
 
         elif filePath.lower().endswith('.yw5'):
-            self._VERSION = 5
             self.EXTENSION = '.yw5'
             self._filePath = filePath
             self.ywTreeReader = AnsiTreeReader()
