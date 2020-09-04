@@ -8,10 +8,13 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import xml.etree.ElementTree as ET
 
+from abc import abstractmethod
+
 
 class YwTreeBuilder():
     """Build yWriter project xml tree."""
 
+    @abstractmethod
     def build_element_tree(self, ywProject):
         """Write back the xml element tree to a yWriter xml file located at filePath.
         Return a message beginning with SUCCESS or ERROR.
@@ -78,7 +81,8 @@ class YwTreeBuilder():
                 if ywProject.items[itId].aka is not None:
 
                     if itm.find('AKA') is None:
-                        ET.SubElement(itm, 'AKA').text = ywProject.items[itId].aka
+                        ET.SubElement(
+                            itm, 'AKA').text = ywProject.items[itId].aka
 
                     else:
                         itm.find('AKA').text = ywProject.items[itId].aka
@@ -242,11 +246,6 @@ class YwTreeBuilder():
                         ET.SubElement(chp, 'ChapterType').text = str(
                             ywProject.chapters[chId].chType)
 
-                if ywProject._VERSION == 5:
-
-                    if ywProject.chapters[chId].oldType == 1:
-                        ywProject.chapters[chId].isUnused = False
-
                 if ywProject.chapters[chId].isUnused:
 
                     if chp.find('Unused') is None:
@@ -274,45 +273,7 @@ class YwTreeBuilder():
                     else:
                         scn.find('Desc').text = ywProject.scenes[scId].desc
 
-                # Write scene content.
-
-                if ywProject._VERSION > 5:
-
-                    if ywProject.scenes[scId].sceneContent is not None:
-                        scn.find(
-                            'SceneContent').text = ywProject.scenes[scId].sceneContent
-                        scn.find('WordCount').text = str(
-                            ywProject.scenes[scId].wordCount)
-                        scn.find('LetterCount').text = str(
-                            ywProject.scenes[scId].letterCount)
-
-                    try:
-                        scn.remove(scn.find('RTFFile'))
-
-                    except:
-                        pass
-
-                else:
-
-                    try:
-                        scn.remove(scn.find('SceneContent'))
-
-                    except:
-                        pass
-
-                    if scn.find('RTFFile') is None:
-                        ET.SubElement(scn, 'RTFFile')
-
-                    try:
-                        scn.find(
-                            'RTFFile').text = ywProject.scenes[scId].rtfFile
-                    except:
-                        return 'ERROR: yWriter 5 RTF file not generated.'
-
-                    scn.find('WordCount').text = str(
-                        ywProject.scenes[scId].wordCount)
-                    scn.find('LetterCount').text = str(
-                        ywProject.scenes[scId].letterCount)
+                # Scene content is written in subclasses.
 
                 if ywProject.scenes[scId].isUnused:
 
@@ -361,7 +322,8 @@ class YwTreeBuilder():
                             scFields.remove(scFields.find('Field_SceneType'))
 
                 if ywProject.scenes[scId].status is not None:
-                    scn.find('Status').text = str(ywProject.scenes[scId].status)
+                    scn.find('Status').text = str(
+                        ywProject.scenes[scId].status)
 
                 if ywProject.scenes[scId].sceneNotes is not None:
 
@@ -588,3 +550,34 @@ class YwTreeBuilder():
 
                     for itId in ywProject.scenes[scId].items:
                         ET.SubElement(items, 'ItemID').text = itId
+
+        self.indent_xml(root)
+        ywProject._tree = ET.ElementTree(root)
+
+        return 'SUCCESS'
+
+    def indent_xml(self, elem, level=0):
+        """xml pretty printer
+
+        Kudos to to Fredrik Lundh. 
+        Source: http://effbot.org/zone/element-lib.htm#prettyprint
+        """
+        i = "\n" + level * "  "
+
+        if len(elem):
+
+            if not elem.text or not elem.text.strip():
+                elem.text = i + "  "
+
+            if not elem.tail or not elem.tail.strip():
+                elem.tail = i
+
+            for elem in elem:
+                self.indent_xml(elem, level + 1)
+
+            if not elem.tail or not elem.tail.strip():
+                elem.tail = i
+
+        else:
+            if level and (not elem.tail or not elem.tail.strip()):
+                elem.tail = i

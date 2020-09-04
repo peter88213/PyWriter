@@ -312,6 +312,8 @@ class YwNewFile(YwFile):
 
         # Save the xml tree in a file.
 
+        self.ywTreeBuilder.indent_xml(root)
+
         self._tree = ET.ElementTree(root)
 
         message = self.ywTreeWriter.write_element_tree(self)

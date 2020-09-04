@@ -15,12 +15,13 @@ from pywriter.model.character import Character
 from pywriter.model.object import Object
 from pywriter.yw.utf8_tree_reader import Utf8TreeReader
 from pywriter.yw.ansi_tree_reader import AnsiTreeReader
-from pywriter.yw.yw7_tree_writer import Yw7TreeWriter
-from pywriter.yw.yw6_tree_writer import Yw6TreeWriter
-from pywriter.yw.yw5_tree_writer import Yw5TreeWriter
+from pywriter.yw.utf8_tree_writer import Utf8TreeWriter
+from pywriter.yw.ansi_tree_writer import AnsiTreeWriter
 from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
 from pywriter.yw.ansi_postprocessor import AnsiPostprocessor
-from pywriter.yw.yw_tree_builder import YwTreeBuilder
+from pywriter.yw.yw7_tree_builder import Yw7TreeBuilder
+from pywriter.yw.yw6_tree_builder import Yw6TreeBuilder
+from pywriter.yw.yw5_tree_builder import Yw5TreeBuilder
 
 
 class YwFile(Novel):
@@ -39,8 +40,8 @@ class YwFile(Novel):
             self.EXTENSION = '.yw7'
             self._filePath = filePath
             self.ywTreeReader = Utf8TreeReader()
-            self.ywTreeBuilder = YwTreeBuilder()
-            self.ywTreeWriter = Yw7TreeWriter()
+            self.ywTreeBuilder = Yw7TreeBuilder()
+            self.ywTreeWriter = Utf8TreeWriter()
             self.ywPostprocessor = Utf8Postprocessor()
 
         elif filePath.lower().endswith('.yw6'):
@@ -48,8 +49,8 @@ class YwFile(Novel):
             self.EXTENSION = '.yw6'
             self._filePath = filePath
             self.ywTreeReader = Utf8TreeReader()
-            self.ywTreeBuilder = YwTreeBuilder()
-            self.ywTreeWriter = Yw6TreeWriter()
+            self.ywTreeBuilder = Yw6TreeBuilder()
+            self.ywTreeWriter = Utf8TreeWriter()
             self.ywPostprocessor = Utf8Postprocessor()
 
         elif filePath.lower().endswith('.yw5'):
@@ -57,8 +58,8 @@ class YwFile(Novel):
             self.EXTENSION = '.yw5'
             self._filePath = filePath
             self.ywTreeReader = AnsiTreeReader()
-            self.ywTreeBuilder = YwTreeBuilder()
-            self.ywTreeWriter = Yw5TreeWriter()
+            self.ywTreeBuilder = Yw5TreeBuilder()
+            self.ywTreeWriter = AnsiTreeWriter()
             self.ywPostprocessor = AnsiPostprocessor()
 
     def read(self):
@@ -683,7 +684,10 @@ class YwFile(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        self.ywTreeBuilder.build_element_tree(self)
+        message = self.ywTreeBuilder.build_element_tree(self)
+
+        if message.startswith('ERROR'):
+            return message
 
         message = self.ywTreeWriter.write_element_tree(self)
 
