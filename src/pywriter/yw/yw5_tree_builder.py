@@ -61,7 +61,7 @@ class Yw5TreeBuilder(YwTreeBuilder):
         Write scene contents to RTF files.
         Return a message beginning with SUCCESS or ERROR.
         """
-        rtfDir = os.path.split(ywProject.filePath)[0] + 'RTF5'
+        rtfDir = os.path.split(ywProject.filePath)[0] + '/RTF5'
 
         for chId in ywProject.chapters:
 
