@@ -69,5 +69,4 @@ class Yw5TreeCreator(Yw5TreeBuilder):
         except:
             return 'ERROR: Can not read xml file "' + ywProject._filePath + '".'
 
-        message = Yw5TreeBuilder.build_element_tree(self, ywProject)
-        return message
+        return Yw5TreeBuilder.build_element_tree(self, ywProject)
