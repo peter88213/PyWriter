@@ -15,6 +15,6 @@ class Yw7NewFile(YwFile):
 
     EXTENSION = '.yw7'
 
-    def __init__(self, filePath):
-        YwFile.__init__(self, filePath)
+    def write(self):
         self.ywTreeBuilder = Yw7TreeCreator()
+        return YwFile.write(self)

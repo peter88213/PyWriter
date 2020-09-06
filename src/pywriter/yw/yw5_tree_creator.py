@@ -24,17 +24,17 @@ class Yw5TreeCreator(Yw5TreeBuilder):
 
         # Copy yw7 file.
 
-        yw7File = os.path.splitext(self.filePath)[0] + '.yw7'
+        yw7File = os.path.splitext(ywProject.filePath)[0] + '.yw7'
 
         try:
             with open(yw7File, 'rb') as f:
                 project = f.read()
 
-            with open(self.filePath, 'wb') as f:
+            with open(ywProject.filePath, 'wb') as f:
                 f.write(project)
 
         except:
-            return 'ERROR: Can not copy "' + yw7File + ' to ' + self.filePath + '".'
+            return 'ERROR: Can not copy "' + yw7File + ' to ' + ywProject.filePath + '".'
 
         # Create RTF5 directory.
 
@@ -67,7 +67,7 @@ class Yw5TreeCreator(Yw5TreeBuilder):
             ywProject._tree = ET.parse(ywProject._filePath)
 
         except:
-            return 'ERROR: Can not read xml file "' + self._filePath + '".'
+            return 'ERROR: Can not read xml file "' + ywProject._filePath + '".'
 
-        message = Yw5TreeBuilder.build_element_tree(ywProject)
+        message = Yw5TreeBuilder.build_element_tree(self, ywProject)
         return message
