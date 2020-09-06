@@ -11,7 +11,7 @@ from tkinter import *
 from tkinter import messagebox
 
 from pywriter.yw.yw_file import YwFile
-from pywriter.yw.yw_new_file import YwNewFile
+from pywriter.yw.yw7_new_file import Yw7NewFile
 from pywriter.converter.yw_cnv import YwCnv
 
 
@@ -127,7 +127,7 @@ class YwCnvGui(YwCnv):
             elif (document.SUFFIX == '') and (document.EXTENSIION == '.html'):
                 document.filePath = sourcePath
                 ywPath = sourcePath.split('.html')[0] + '.yw7'
-                ywFile = YwNewFile(ywPath)
+                ywFile = Yw7NewFile(ywPath)
 
                 if ywFile.file_exists():
                     self.processInfo.config(

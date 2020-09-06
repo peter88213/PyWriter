@@ -11,7 +11,7 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw_cnv import YwCnv
-from pywriter.yw.yw_new_file import YwNewFile
+from pywriter.yw.yw7_new_file import Yw7NewFile
 
 from pywriter.html.html_import import HtmlImport
 from pywriter.html.html_outline import HtmlOutline
@@ -76,7 +76,7 @@ class NrmOpr(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        yw7File = YwNewFile(TEST_YW7)
+        yw7File = Yw7NewFile(TEST_YW7)
         documentFile = HtmlImport(TEST_HTML)
         converter = YwCnv()
 

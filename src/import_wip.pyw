@@ -16,7 +16,7 @@ from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 def run(sourcePath, silentMode=True):
 
-    fileName, FileExtension = os.path.splitext(sourcePath)
+    FileExtension = os.path.splitext(sourcePath)[1]
 
     if FileExtension == '.html':
         document = HtmlImport('')

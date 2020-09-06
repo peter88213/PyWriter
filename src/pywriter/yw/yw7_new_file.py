@@ -10,8 +10,10 @@ from pywriter.yw.yw_file import YwFile
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
 
-class YwNewFile(YwFile):
-    """yWriter xml project file representation."""
+class Yw7NewFile(YwFile):
+    """yWriter 7 xml project file representation."""
+
+    EXTENSION = '.yw7'
 
     def __init__(self, filePath):
         YwFile.__init__(self, filePath)

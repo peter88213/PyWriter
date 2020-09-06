@@ -10,7 +10,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 import os
 
-from pywriter.yw.yw5_file import Yw5File
+from pywriter.yw.yw5_new_file import Yw5NewFile
 from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 
@@ -19,7 +19,7 @@ def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
     fileName, FileExtension = os.path.splitext(sourcePath)
 
     if FileExtension in ['.yw7']:
-        document = Yw5File('')
+        document = Yw5NewFile('')
 
     else:
         sys.exit('ERROR: File type is not supported.')
