@@ -61,7 +61,13 @@ class Yw5TreeBuilder(YwTreeBuilder):
         Write scene contents to RTF files.
         Return a message beginning with SUCCESS or ERROR.
         """
-        rtfDir = os.path.split(ywProject.filePath)[0] + '/RTF5'
+        rtfDir = os.path.dirname(ywProject.filePath)
+
+        if rtfDir == '':
+            rtfDir = './RTF5'
+
+        else:
+            rtfDir += '/RTF5'
 
         for chId in ywProject.chapters:
 
@@ -86,6 +92,7 @@ class Yw5TreeBuilder(YwTreeBuilder):
                         scn, 'RTFFile').text = ywProject.scenes[scId].rtfFile
 
                 rtfPath = rtfDir + '/' + ywProject.scenes[scId].rtfFile
+
                 rtfScene = self.convert_to_rtf(
                     ywProject.scenes[scId].sceneContent)
 

@@ -18,8 +18,8 @@ class Novel():
     of the information included in an yWriter project file).
     """
 
-    EXTENSION = ''
-    SUFFIX = ''
+    EXTENSION = None
+    SUFFIX = None
     # To be extended by file format specific subclasses.
 
     def __init__(self, filePath):

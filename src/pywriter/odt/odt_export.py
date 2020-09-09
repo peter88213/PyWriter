@@ -11,6 +11,8 @@ from pywriter.odt.odt_file import OdtFile
 
 class OdtExport(OdtFile):
 
+    SUFFIX = ''
+
     """OpenDocument xml project file representation."""
 
     fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>

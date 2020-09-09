@@ -16,17 +16,7 @@ from pywriter.model.chapter import Chapter
 
 
 def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
-
-    Chapter.stripChapterFromTitle = stripChapterFromTitle
-    fileName, FileExtension = os.path.splitext(sourcePath)
-
-    if FileExtension in ['.yw6', '.yw7']:
-        document = OdtExport('')
-
-    else:
-        sys.exit('ERROR: File type is not supported.')
-
-    converter = YwCnvGui(sourcePath, document, silentMode)
+    converter = YwCnvGui(sourcePath, OdtExport.SUFFIX, silentMode)
 
 
 if __name__ == '__main__':

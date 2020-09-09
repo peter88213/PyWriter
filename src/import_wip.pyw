@@ -15,16 +15,7 @@ from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 
 def run(sourcePath, silentMode=True):
-
-    FileExtension = os.path.splitext(sourcePath)[1]
-
-    if FileExtension == '.html':
-        document = HtmlImport('')
-
-    else:
-        sys.exit('ERROR: File type is not supported.')
-
-    converter = YwCnvGui(sourcePath, document, silentMode)
+    converter = YwCnvGui(sourcePath, HtmlImport.SUFFIX, silentMode)
 
 
 if __name__ == '__main__':

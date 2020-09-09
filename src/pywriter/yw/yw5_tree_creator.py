@@ -38,7 +38,13 @@ class Yw5TreeCreator(Yw5TreeBuilder):
 
         # Create RTF5 directory.
 
-        rtfDir = os.path.split(ywProject.filePath)[0] + 'RTF5'
+        rtfDir = os.path.dirname(ywProject.filePath)
+
+        if rtfDir == '':
+            rtfDir = './RTF5'
+
+        else:
+            rtfDir += '/RTF5'
 
         try:
             rmtree(rtfDir)

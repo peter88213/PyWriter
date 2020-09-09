@@ -8,23 +8,14 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import sys
-import os
 
 from pywriter.yw.yw5_new_file import Yw5NewFile
 from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 
-def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
+def run(sourcePath, silentMode=True):
 
-    fileName, FileExtension = os.path.splitext(sourcePath)
-
-    if FileExtension in ['.yw7']:
-        document = Yw5NewFile('')
-
-    else:
-        sys.exit('ERROR: File type is not supported.')
-
-    converter = YwCnvGui(sourcePath, document, silentMode)
+    converter = YwCnvGui(sourcePath, Yw5NewFile.SUFFIX, silentMode)
 
 
 if __name__ == '__main__':
@@ -32,4 +23,4 @@ if __name__ == '__main__':
         sourcePath = sys.argv[1]
     except:
         sourcePath = ''
-    run(sourcePath, False, True)
+    run(sourcePath, False)
