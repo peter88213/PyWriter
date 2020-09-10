@@ -57,7 +57,7 @@ class YwCnvGui(YwCnv):
             - _chapters for a html file containing chapter summaries.
     """
 
-    def __init__(self, sourcePath, suffix, silentMode=True):
+    def __init__(self, sourcePath, suffix=None, silentMode=True):
         """Run the converter with a GUI. """
 
         # Prepare the graphical user interface.
