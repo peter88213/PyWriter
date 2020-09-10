@@ -14,8 +14,7 @@ from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 
 def run(sourcePath, silentMode=True):
-    document = CsvLocList('')
-    converter = YwCnvGui(sourcePath, document, silentMode)
+    converter = YwCnvGui(sourcePath, CsvLocList.SUFFIX, silentMode)
 
 
 if __name__ == '__main__':

@@ -14,7 +14,6 @@ from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 
 def run(sourcePath, silentMode=True):
-
     converter = YwCnvGui(sourcePath, Yw5NewFile.SUFFIX, silentMode)
 
 

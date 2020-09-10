@@ -9,29 +9,15 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import sys
-import os
 
 from pywriter.odt.odt_manuscript import OdtManuscript
-from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.model.chapter import Chapter
 from pywriter.converter.yw_cnv_gui import YwCnvGui
 
 
 def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
-
     Chapter.stripChapterFromTitle = stripChapterFromTitle
-    fileName, FileExtension = os.path.splitext(sourcePath)
-
-    if FileExtension in ['.yw6', '.yw7']:
-        document = OdtManuscript('')
-
-    elif FileExtension == '.html':
-        document = HtmlManuscript('')
-
-    else:
-        sys.exit('ERROR: File type is not supported.')
-
-    converter = YwCnvGui(sourcePath, document, silentMode)
+    converter = YwCnvGui(sourcePath, OdtManuscript.SUFFIX, silentMode)
 
 
 if __name__ == '__main__':

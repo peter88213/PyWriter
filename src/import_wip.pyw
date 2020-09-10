@@ -8,7 +8,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import sys
-import os
 
 from pywriter.html.html_import import HtmlImport
 from pywriter.converter.yw_cnv_gui import YwCnvGui

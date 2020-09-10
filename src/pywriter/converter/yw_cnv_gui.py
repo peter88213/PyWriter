@@ -82,12 +82,15 @@ class YwCnvGui(YwCnv):
 
         fileFactory = FileFactory()
 
-        text, sourceFile, TargetFile = fileFactory.get_file_objects(
+        message, sourceFile, TargetFile = fileFactory.get_file_objects(
             sourcePath, suffix)
 
-        if text.startswith('SUCCESS'):
+        if message.startswith('SUCCESS'):
 
             self.convert(sourceFile, TargetFile)
+
+        else:
+            self.processInfo.config(text=message)
 
         # Visualize the outcome.
 
@@ -119,7 +122,6 @@ class YwCnvGui(YwCnv):
                     text='Export yWriter project data to ' + targetFile.EXTENSION)
                 self.processInfo.config(
                     text='Project: "' + sourceFile.filePath + '"')
-
                 self.processInfo.config(
                     text=self.yw_to_document(sourceFile, targetFile))
 
@@ -143,7 +145,6 @@ class YwCnvGui(YwCnv):
                     text='Import yWriter project data from ' + sourceFile.EXTENSION)
                 self.processInfo.config(
                     text='Project: "' + targetFile.filePath + '"')
-
                 self.processInfo.config(
                     text=self.document_to_yw(sourceFile, targetFile))
 

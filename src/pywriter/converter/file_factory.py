@@ -125,14 +125,6 @@ class FileFactory():
 
             targetFile = None
 
-            for ywExt in self.YW_EXTENSIONS:
-
-                # Look for an existing yWriter project to rewrite.
-
-                if os.path.isfile(fileName + ywExt):
-                    targetFile = YwFile(fileName + ywExt)
-                    break
-
             if sourcePath.endswith(HtmlProof.SUFFIX + HtmlProof.EXTENSION):
                 sourceFile = HtmlProof(sourcePath)
 
@@ -192,6 +184,18 @@ class FileFactory():
 
             else:
                 return ['ERROR: File type not supported.', None, None]
+
+            if targetFile is None:
+
+                ywPathBasis = fileName.split(sourceFile.SUFFIX)[0]
+
+                for ywExt in self.YW_EXTENSIONS:
+
+                    # Look for an existing yWriter project to rewrite.
+
+                    if os.path.isfile(ywPathBasis + ywExt):
+                        targetFile = YwFile(ywPathBasis + ywExt)
+                        break
 
             if targetFile is None:
                 return ['ERROR: No yWriter project to write.', None, None]
