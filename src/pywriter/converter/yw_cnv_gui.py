@@ -74,7 +74,7 @@ class YwCnvGui(YwCnv):
         self.processInfo = Label(self.root, text='')
         self.processInfo.pack(padx=5, pady=5)
 
-        self._success = False
+        self.success = False
 
         # Run the converter.
 
@@ -96,7 +96,7 @@ class YwCnvGui(YwCnv):
 
         if not self.silentMode:
 
-            if self._success:
+            if self.success:
                 self.successInfo.config(bg='green')
 
             else:
@@ -151,7 +151,7 @@ class YwCnvGui(YwCnv):
             # Visualize the outcome.
 
             if self.processInfo.cget('text').startswith('SUCCESS'):
-                self._success = True
+                self.success = True
 
     def confirm_overwrite(self, filePath):
         """ Invoked by the parent if a file already exists. """
