@@ -719,7 +719,7 @@ class OdtTemplate():
    <style:text-properties fo:color="#808080" fo:font-size="10pt"/>
   </style:style>
   <style:style style:name="yWriter_20_mark_20_notes" style:display-name="yWriter mark notes" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Standard" style:class="text">
-   <style:text-properties fo:color="#00BFFF" fo:font-size="10pt"/>
+   <style:text-properties fo:color="#0000FF" fo:font-size="10pt"/>
   </style:style>
   <style:style style:name="yWriter_20_mark_20_todo" style:display-name="yWriter mark todo" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Standard" style:class="text">
    <style:text-properties fo:color="#B22222" fo:font-size="10pt"/>
