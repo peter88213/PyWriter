@@ -89,7 +89,7 @@ class NrmOpr(unittest.TestCase):
 
         # Read .yw7 file and convert xml to csv.
 
-        self.assertEqual(converter.yw_to_document(
+        self.assertEqual(converter.convert(
             yw7File, documentFile), 'SUCCESS: Content written to "' + TEST_CSV + '".')
 
         self.assertEqual(read_file(TEST_CSV),
@@ -109,7 +109,7 @@ class NrmOpr(unittest.TestCase):
 
         # Convert csv to xml and replace .yw7 file.
 
-        self.assertEqual(converter.document_to_yw(
+        self.assertEqual(converter.convert(
             documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
 
         # Verify the yw7 project.

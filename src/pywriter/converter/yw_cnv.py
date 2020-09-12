@@ -13,23 +13,15 @@ class YwCnv():
 
     # Methods
 
-    yw_to_document : str
+    convert : str
         Arguments
-            ywFile : YwFile
+            sourceFile : Novel
                 an object representing the source file.
-            documentFile : Novel
-                a Novel subclass instance representing the target file.
-        Read yWriter file, parse xml and create a document file.
-        Return a message beginning with SUCCESS or ERROR.    
-
-    document_to_yw : str
-        Arguments
-            documentFile : Novel
-                a Novel subclass instance representing the source file.
-            ywFile : YwFile
+            targetFile : Novel
                 an object representing the target file.
-        Read document file, convert its content to xml, and replace yWriter file.
+        Read sourceFile, merge the contents to targetFile and write targetFile.
         Return a message beginning with SUCCESS or ERROR.
+        At least one sourcefile or targetFile object should be a yWriter project.
 
     confirm_overwrite : bool
         Arguments
@@ -40,12 +32,7 @@ class YwCnv():
         This method is to be overwritten by subclasses with an user interface.
     """
 
-    def yw_to_document(self, sourceFile, targetFile):
-        """Read yWriter file and convert xml to a document file."""
-
-        return self.document_to_yw(sourceFile, targetFile)
-
-    def document_to_yw(self, sourceFile, targetFile):
+    def convert(self, sourceFile, targetFile):
         """Read document file, convert its content to xml, and replace yWriter file."""
 
         if sourceFile.filePath is None:

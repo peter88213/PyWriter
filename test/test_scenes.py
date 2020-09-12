@@ -106,7 +106,7 @@ class NrmOpr(unittest.TestCase):
 
         # Convert html to xml and replace .yw7 file.
 
-        self.assertEqual(converter.document_to_yw(
+        self.assertEqual(converter.convert(
             documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
 
         # Verify the yw7 project.
@@ -120,7 +120,7 @@ class NrmOpr(unittest.TestCase):
         documentFile = OdtSceneDesc(TEST_ODT)
         converter = YwCnv()
 
-        self.assertEqual(converter.yw_to_document(
+        self.assertEqual(converter.convert(
             yw7File, documentFile), 'SUCCESS: "' + TEST_ODT + '" saved.')
 
         with zipfile.ZipFile(TEST_ODT, 'r') as myzip:

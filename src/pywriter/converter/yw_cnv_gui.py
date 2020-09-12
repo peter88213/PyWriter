@@ -27,20 +27,12 @@ class YwCnvGui(YwCnv):
             Either an yWriter file or a file of any supported type. 
             The file type determines the conversion's direction.    
 
-        document : Novel
-            instance of any Novel subclass representing the 
-            source or target document. 
-
-        extension : str
-            File extension determining the source or target 
-            document's file type. The extension is needed because 
-            there can be ambiguous Novel subclasses 
-            (e.g. OfficeFile).
-            Examples: 
-            - md
-            - docx
-            - odt
-            - html
+        suffix : str
+            Optional file name suffix used for ambiguous html files.
+            Examples:
+            - _manuscript for a html file containing scene contents.
+            - _scenes for a html file containing scene summaries.
+            - _chapters for a html file containing chapter summaries.
 
         silentMode : bool
             True by default. Intended for automated tests. 
@@ -49,12 +41,27 @@ class YwCnvGui(YwCnv):
             files is forced. 
             Calling scripts shall set silentMode = False.
 
-        suffix : str
-            Optional file name suffix used for ambiguous html files.
-            Examples:
-            - _manuscript for a html file containing scene contents.
-            - _scenes for a html file containing scene summaries.
-            - _chapters for a html file containing chapter summaries.
+    # Methods
+
+    convert : str
+        Arguments
+            sourceFile : Novel
+                an object representing the source file.
+            targetFile : Novel
+                an object representing the target file.
+        Read sourceFile, merge the contents to targetFile and write targetFile.
+        Return a message beginning with SUCCESS or ERROR.
+        At least one sourcefile or targetFile object should be a yWriter project.
+
+    confirm_overwrite : bool
+        Arguments
+            fileName : str
+                Path to the file to be overwritten
+        Ask for permission to overwrite the target file.
+
+    edit
+        Open the target file.
+        To be overwritten by subclasses.
     """
 
     def __init__(self, sourcePath, suffix=None, silentMode=True):
@@ -123,7 +130,7 @@ class YwCnvGui(YwCnv):
                 self.processInfo.config(
                     text='Project: "' + sourceFile.filePath + '"')
                 self.processInfo.config(
-                    text=self.yw_to_document(sourceFile, targetFile))
+                    text=YwCnv.convert(sourceFile, targetFile))
 
             elif isinstance(targetFile, Yw7NewFile):
 
@@ -137,7 +144,7 @@ class YwCnvGui(YwCnv):
                     self.processInfo.config(
                         text='New project: "' + targetFile.filePath + '"')
                     self.processInfo.config(
-                        text=self.document_to_yw(sourceFile, targetFile))
+                        text=YwCnv.convert(sourceFile, targetFile))
 
             else:
 
@@ -146,7 +153,7 @@ class YwCnvGui(YwCnv):
                 self.processInfo.config(
                     text='Project: "' + targetFile.filePath + '"')
                 self.processInfo.config(
-                    text=self.document_to_yw(sourceFile, targetFile))
+                    text=YwCnv.convert(sourceFile, targetFile))
 
             # Visualize the outcome.
 
