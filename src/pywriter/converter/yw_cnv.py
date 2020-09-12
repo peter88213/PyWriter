@@ -40,68 +40,37 @@ class YwCnv():
         This method is to be overwritten by subclasses with an user interface.
     """
 
-    def yw_to_document(self, ywFile, documentFile):
+    def yw_to_document(self, sourceFile, targetFile):
         """Read yWriter file and convert xml to a document file."""
-        if ywFile.is_locked():
-            return 'ERROR: yWriter seems to be open. Please close first.'
 
-        if ywFile.filePath is None:
-            return 'ERROR: "' + ywFile.filePath + '" is not an yWriter project.'
+        return self.document_to_yw(sourceFile, targetFile)
 
-        message = ywFile.read()
-
-        if message.startswith('ERROR'):
-            return message
-
-        if documentFile.file_exists():
-
-            if not self.confirm_overwrite(documentFile.filePath):
-                return 'Program abort by user.'
-
-        documentFile.merge(ywFile)
-        return documentFile.write()
-
-    def document_to_yw(self, documentFile, ywFile):
+    def document_to_yw(self, sourceFile, targetFile):
         """Read document file, convert its content to xml, and replace yWriter file."""
-        if ywFile.is_locked():
-            return 'ERROR: yWriter seems to be open. Please close first.'
 
-        if ywFile.filePath is None:
-            return 'ERROR: "' + ywFile.filePath + '" is not an yWriter project.'
+        if sourceFile.filePath is None:
+            return 'ERROR: "' + sourceFile.filePath + '" is not of the supported type.'
 
-        if ywFile.file_exists() and not self.confirm_overwrite(ywFile.filePath):
+        if not sourceFile.file_exists():
+            return 'ERROR: "' + sourceFile.filePath + '" not found.'
+
+        if targetFile.filePath is None:
+            return 'ERROR: "' + targetFile.filePath + '" is not of the supported type.'
+
+        if targetFile.file_exists() and not self.confirm_overwrite(targetFile.filePath):
             return 'Program abort by user.'
 
-        if documentFile.filePath is None:
-            return 'ERROR: Document is not of the supported type.'
-
-        if not documentFile.file_exists():
-            return 'ERROR: "' + documentFile.filePath + '" not found.'
-
-        message = documentFile.read()
+        message = sourceFile.read()
 
         if message.startswith('ERROR'):
             return message
 
-        if ywFile.file_exists():
-            message = ywFile.read()
-            # initialize ywFile data
+        message = targetFile.merge(sourceFile)
 
-            if message.startswith('ERROR'):
-                return message
+        if message.startswith('ERROR'):
+            return message
 
-        prjStructure = documentFile.get_structure()
-
-        if prjStructure is not None:
-
-            if prjStructure == '':
-                return 'ERROR: Source file contains no yWriter project structure information.'
-
-            if prjStructure != ywFile.get_structure():
-                return 'ERROR: Structure mismatch - yWriter project not modified.'
-
-        ywFile.merge(documentFile)
-        return ywFile.write()
+        return targetFile.write()
 
     def confirm_overwrite(self, fileName):
         """To be overwritten by subclasses with UI."""

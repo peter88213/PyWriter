@@ -110,6 +110,8 @@ class FileExport(Novel):
         if novel.items is not None:
             self.items = novel.items
 
+        return 'SUCCESS'
+
     def get_projectTemplateSubst(self):
         projectTemplateSubst = dict(
             Title=self.title,

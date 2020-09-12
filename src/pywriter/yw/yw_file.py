@@ -64,6 +64,9 @@ class YwFile(Novel):
         Return a message beginning with SUCCESS or ERROR.
         """
 
+        if self.is_locked():
+            return 'ERROR: yWriter seems to be open. Please close first.'
+
         message = self.ywTreeReader.read_element_tree(self)
 
         if message.startswith('ERROR'):
@@ -409,6 +412,24 @@ class YwFile(Novel):
     def merge(self, novel):
         """Merge attributes.
         """
+
+        if self.file_exists():
+            message = self.read()
+            # initialize data
+
+            if message.startswith('ERROR'):
+                return message
+
+        prjStructure = novel.get_structure()
+
+        if prjStructure is not None:
+
+            if prjStructure == '':
+                return 'ERROR: Source file contains no yWriter project structure information.'
+
+            if prjStructure != self.get_structure():
+                return 'ERROR: Structure mismatch.'
+
         # Merge locations.
 
         for lcId in novel.locations:
@@ -675,11 +696,16 @@ class YwFile(Novel):
                 if chId in self.chapters:
                     self.srtChapters.append(chId)
 
+        return 'SUCCESS'
+
     def write(self):
         """Open the yWriter xml file located at filePath and 
         replace a set of attributes not being None.
         Return a message beginning with SUCCESS or ERROR.
         """
+
+        if self.is_locked():
+            return 'ERROR: yWriter seems to be open. Please close first.'
 
         message = self.ywTreeBuilder.build_element_tree(self)
 
