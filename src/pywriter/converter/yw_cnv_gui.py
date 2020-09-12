@@ -130,7 +130,7 @@ class YwCnvGui(YwCnv):
                 self.processInfo.config(
                     text='Project: "' + sourceFile.filePath + '"')
                 self.processInfo.config(
-                    text=YwCnv.convert(sourceFile, targetFile))
+                    text=YwCnv.convert(self, sourceFile, targetFile))
 
             elif isinstance(targetFile, Yw7NewFile):
 
@@ -144,7 +144,7 @@ class YwCnvGui(YwCnv):
                     self.processInfo.config(
                         text='New project: "' + targetFile.filePath + '"')
                     self.processInfo.config(
-                        text=YwCnv.convert(sourceFile, targetFile))
+                        text=YwCnv.convert(self, sourceFile, targetFile))
 
             else:
 
@@ -153,7 +153,7 @@ class YwCnvGui(YwCnv):
                 self.processInfo.config(
                     text='Project: "' + targetFile.filePath + '"')
                 self.processInfo.config(
-                    text=YwCnv.convert(sourceFile, targetFile))
+                    text=YwCnv.convert(self, sourceFile, targetFile))
 
             # Visualize the outcome.
 
