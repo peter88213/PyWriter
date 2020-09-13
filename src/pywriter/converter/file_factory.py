@@ -13,8 +13,8 @@ import os
 from pywriter.yw.yw5_file import Yw5File
 from pywriter.yw.yw6_file import Yw6File
 from pywriter.yw.yw7_file import Yw7File
-from pywriter.yw.yw7_new_file import Yw7NewFile
-from pywriter.yw.yw5_new_file import Yw5NewFile
+from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
+from pywriter.yw.yw5_tree_creator import Yw5TreeCreator
 
 from pywriter.odt.odt_proof import OdtProof
 from pywriter.odt.odt_manuscript import OdtManuscript
@@ -72,7 +72,8 @@ class FileFactory():
             # Determine which sort of target is required.
 
             if suffix is None:
-                targetFile = Yw5NewFile(fileName + Yw5NewFile.EXTENSION)
+                targetFile = Yw5File(fileName + Yw5File.EXTENSION)
+                targetFile.ywTreeBuilder = Yw5TreeCreator()
 
             elif suffix == '':
                 targetFile = OdtExport(fileName + OdtExport.EXTENSION)
@@ -172,7 +173,8 @@ class FileFactory():
 
                     else:
                         sourceFile = HtmlImport(sourcePath)
-                        targetFile = Yw7NewFile(fileName + '.yw7')
+                        targetFile = Yw7File(fileName + Yw7File.EXTENSION)
+                        targetFile.ywTreeBuilder = Yw7TreeCreator()
 
                 else:
                     return ['ERROR: Cannot read "' + sourcePath + '".', None, None]

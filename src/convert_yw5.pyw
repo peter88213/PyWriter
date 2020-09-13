@@ -9,12 +9,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 
-from pywriter.yw.yw5_new_file import Yw5NewFile
+from pywriter.yw.yw5_file import Yw5File
 from pywriter.converter.yw_cnv_tk import YwCnvTk
 
 
 def run(sourcePath, silentMode=True):
-    converter = YwCnvTk(sourcePath, Yw5NewFile.SUFFIX, silentMode)
+    converter = YwCnvTk(sourcePath, Yw5File.SUFFIX, silentMode)
 
 
 if __name__ == '__main__':

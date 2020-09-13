@@ -11,7 +11,7 @@ from tkinter import messagebox
 
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.converter.file_factory import FileFactory
-from pywriter.yw.yw7_new_file import Yw7NewFile
+from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
 
 TITLE = 'yWriter import/export'
@@ -132,7 +132,7 @@ class YwCnvTk(YwCnv):
                 self.processInfo.config(
                     text=YwCnv.convert(self, sourceFile, targetFile))
 
-            elif isinstance(targetFile, Yw7NewFile):
+            elif isinstance(targetFile.ywTreeBuilder, Yw7TreeCreator):
 
                 if targetFile.file_exists():
                     self.processInfo.config(
