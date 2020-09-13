@@ -10,7 +10,9 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 
-from pywriter.yw.yw_file import YwFile
+from pywriter.yw.yw5_file import Yw5File
+from pywriter.yw.yw6_file import Yw6File
+from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw7_new_file import Yw7NewFile
 from pywriter.yw.yw5_new_file import Yw5NewFile
 
@@ -49,15 +51,23 @@ class FileFactory():
     and a target file object for conversion.
     """
 
-    YW_EXTENSIONS = ['.yw7', '.yw6', '.yw5']
-
     def get_file_objects(self, sourcePath, suffix=None):
-        fileName, FileExtension = os.path.splitext(sourcePath)
+        fileName, fileExtension = os.path.splitext(sourcePath)
+        isYwProject = False
 
-        if FileExtension in self.YW_EXTENSIONS:
-            # The source file is a yWriter project.
+        if fileExtension == Yw7File.EXTENSION:
+            sourceFile = Yw7File(sourcePath)
+            isYwProject = True
 
-            sourceFile = YwFile(sourcePath)
+        elif fileExtension == Yw5File.EXTENSION:
+            sourceFile = Yw5File(sourcePath)
+            isYwProject = True
+
+        elif fileExtension == Yw6File.EXTENSION:
+            sourceFile = Yw6File(sourcePath)
+            isYwProject = True
+
+        if isYwProject:
 
             # Determine which sort of target is required.
 
@@ -189,13 +199,16 @@ class FileFactory():
 
                 ywPathBasis = fileName.split(sourceFile.SUFFIX)[0]
 
-                for ywExt in self.YW_EXTENSIONS:
+                # Look for an existing yWriter project to rewrite.
 
-                    # Look for an existing yWriter project to rewrite.
+                if os.path.isfile(ywPathBasis + Yw7File.EXTENSION):
+                    targetFile = Yw7File(ywPathBasis + Yw7File.EXTENSION)
 
-                    if os.path.isfile(ywPathBasis + ywExt):
-                        targetFile = YwFile(ywPathBasis + ywExt)
-                        break
+                elif os.path.isfile(ywPathBasis + Yw5File.EXTENSION):
+                    targetFile = Yw5File(ywPathBasis + Yw5File.EXTENSION)
+
+                elif os.path.isfile(ywPathBasis + Yw6File.EXTENSION):
+                    targetFile = Yw6File(ywPathBasis + Yw6File.EXTENSION)
 
             if targetFile is None:
                 return ['ERROR: No yWriter project to write.', None, None]

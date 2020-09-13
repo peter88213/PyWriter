@@ -13,51 +13,10 @@ from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.character import Character
 from pywriter.model.object import Object
-from pywriter.yw.utf8_tree_reader import Utf8TreeReader
-from pywriter.yw.ansi_tree_reader import AnsiTreeReader
-from pywriter.yw.utf8_tree_writer import Utf8TreeWriter
-from pywriter.yw.ansi_tree_writer import AnsiTreeWriter
-from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
-from pywriter.yw.ansi_postprocessor import AnsiPostprocessor
-from pywriter.yw.yw7_tree_builder import Yw7TreeBuilder
-from pywriter.yw.yw6_tree_builder import Yw6TreeBuilder
-from pywriter.yw.yw5_tree_builder import Yw5TreeBuilder
 
 
 class YwFile(Novel):
     """yWriter xml project file representation."""
-
-    @property
-    def filePath(self):
-        return self._filePath
-
-    @filePath.setter
-    def filePath(self, filePath):
-        """Accept only filenames with the correct extension. """
-
-        if filePath.lower().endswith('.yw7'):
-            self.EXTENSION = '.yw7'
-            self._filePath = filePath
-            self.ywTreeReader = Utf8TreeReader()
-            self.ywTreeBuilder = Yw7TreeBuilder()
-            self.ywTreeWriter = Utf8TreeWriter()
-            self.ywPostprocessor = Utf8Postprocessor()
-
-        elif filePath.lower().endswith('.yw6'):
-            self.EXTENSION = '.yw6'
-            self._filePath = filePath
-            self.ywTreeReader = Utf8TreeReader()
-            self.ywTreeBuilder = Yw6TreeBuilder()
-            self.ywTreeWriter = Utf8TreeWriter()
-            self.ywPostprocessor = Utf8Postprocessor()
-
-        elif filePath.lower().endswith('.yw5'):
-            self.EXTENSION = '.yw5'
-            self._filePath = filePath
-            self.ywTreeReader = AnsiTreeReader()
-            self.ywTreeBuilder = Yw5TreeBuilder()
-            self.ywTreeWriter = AnsiTreeWriter()
-            self.ywPostprocessor = AnsiPostprocessor()
 
     def read(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.

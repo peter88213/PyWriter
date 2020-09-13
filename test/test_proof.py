@@ -11,7 +11,7 @@ import unittest
 import zipfile
 
 from pywriter.converter.yw_cnv import YwCnv
-from pywriter.yw.yw_file import YwFile
+from pywriter.yw.yw7_file import Yw7File
 from pywriter.html.html_proof import HtmlProof
 from pywriter.odt.odt_proof import OdtProof
 
@@ -99,7 +99,7 @@ class NrmOpr(unittest.TestCase):
         # This substitutes the proof reading process.
         # Note: The yw7 project file is still unchanged.
 
-        yw7File = YwFile(TEST_YW7)
+        yw7File = Yw7File(TEST_YW7)
         documentFile = HtmlProof(TEST_HTML)
         converter = YwCnv()
 
@@ -116,7 +116,7 @@ class NrmOpr(unittest.TestCase):
     def test_yw7_to_odt(self):
         """Convert markdown to odt. """
 
-        yw7File = YwFile(TEST_YW7)
+        yw7File = Yw7File(TEST_YW7)
         documentFile = OdtProof(TEST_ODT)
         converter = YwCnv()
 

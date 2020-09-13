@@ -111,12 +111,19 @@ class Novel():
     @filePath.setter
     def filePath(self, filePath):
         """Accept only filenames with the right extension. """
-        if filePath.lower().endswith(self.SUFFIX + self.EXTENSION):
+
+        if self.SUFFIX is not None:
+            suffix = self.SUFFIX
+
+        else:
+            suffix = ''
+
+        if filePath.lower().endswith(suffix + self.EXTENSION):
             self._filePath = filePath
             head, tail = os.path.split(os.path.realpath(filePath))
             self.projectPath = quote(head.replace('\\', '/'), '/:')
             self.projectName = quote(tail.replace(
-                self.SUFFIX + self.EXTENSION, ''))
+                suffix + self.EXTENSION, ''))
 
     @abstractmethod
     def read(self):
