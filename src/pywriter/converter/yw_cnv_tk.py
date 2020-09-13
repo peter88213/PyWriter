@@ -17,8 +17,8 @@ from pywriter.yw.yw7_new_file import Yw7NewFile
 TITLE = 'yWriter import/export'
 
 
-class YwCnvGui(YwCnv):
-    """Standalone yWriter converter with a simple GUI. 
+class YwCnvTk(YwCnv):
+    """Standalone yWriter converter with a simple tkinter GUI. 
 
     # Arguments
 

@@ -12,12 +12,12 @@ import sys
 
 from pywriter.odt.odt_manuscript import OdtManuscript
 from pywriter.model.chapter import Chapter
-from pywriter.converter.yw_cnv_gui import YwCnvGui
+from pywriter.converter.yw_cnv_tk import YwCnvTk
 
 
 def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
     Chapter.stripChapterFromTitle = stripChapterFromTitle
-    converter = YwCnvGui(sourcePath, OdtManuscript.SUFFIX, silentMode)
+    converter = YwCnvTk(sourcePath, OdtManuscript.SUFFIX, silentMode)
 
 
 if __name__ == '__main__':

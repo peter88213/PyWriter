@@ -10,11 +10,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 
 from pywriter.csv.csv_plotlist import CsvPlotList
-from pywriter.converter.yw_cnv_gui import YwCnvGui
+from pywriter.converter.yw_cnv_tk import YwCnvTk
 
 
 def run(sourcePath, silentMode=True):
-    converter = YwCnvGui(sourcePath, CsvPlotList.SUFFIX, silentMode)
+    converter = YwCnvTk(sourcePath, CsvPlotList.SUFFIX, silentMode)
 
 
 if __name__ == '__main__':
