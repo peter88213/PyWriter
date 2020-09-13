@@ -69,7 +69,7 @@ class YwCnvTk(YwCnv):
         # Prepare the graphical user interface.
 
         self.root = Tk()
-        self.root.geometry("800x300")
+        self.root.geometry("800x360")
         self.root.title(TITLE)
         self.header = Label(self.root, text=__doc__)
         self.header.pack(padx=5, pady=5)
