@@ -12,6 +12,7 @@ from pywriter.html.html_file import HtmlFile
 class HtmlChapterDesc(HtmlFile):
     """HTML file representation of an yWriter project's chapters summaries."""
 
+    DESCRIPTION = 'Chapter descriptions'
     SUFFIX = '_chapters'
 
     def handle_endtag(self, tag):

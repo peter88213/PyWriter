@@ -85,7 +85,7 @@ class NrmOpr(unittest.TestCase):
         # Convert html to xml and replace .yw7 file.
 
         self.assertEqual(converter.convert(
-            documentFile, yw7File), 'SUCCESS: project data written to "' + TEST_YW7 + '".')
+            documentFile, yw7File), 'SUCCESS: "' + os.path.normpath(TEST_YW7) + '" written.')
 
         # Verify the yw7 project.
 

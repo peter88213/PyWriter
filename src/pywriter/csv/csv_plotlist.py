@@ -11,6 +11,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+import os
 import re
 
 from pywriter.csv.csv_file import CsvFile
@@ -26,7 +27,7 @@ class CsvPlotList(CsvFile):
     * Data fields are delimited by the _SEPARATOR character.
     """
 
-    EXTENSION = '.csv'
+    DESCRIPTION = 'Plot list'
     SUFFIX = '_plotlist'
 
     _SEPARATOR = '|'     # delimits data fields within a record.
@@ -124,7 +125,7 @@ class CsvPlotList(CsvFile):
                 lines = (f.readlines())
 
         except(FileNotFoundError):
-            return 'ERROR: "' + self._filePath + '" not found.'
+            return 'ERROR: "' + os.path.normpath(self._filePath) + '" not found.'
 
         cellsInLine = len(self.fileHeader.split(self._SEPARATOR))
 

@@ -18,6 +18,7 @@ class Novel():
     of the information included in an yWriter project file).
     """
 
+    DESCRIPTION = 'Novel'
     EXTENSION = None
     SUFFIX = None
     # To be extended by file format specific subclasses.

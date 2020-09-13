@@ -20,6 +20,7 @@ class HtmlProof(HtmlFile):
     to be read and written by Open/LibreOffice Writer.
     """
 
+    DESCRIPTION = 'Tagged manuscript for proofing'
     SUFFIX = '_proof'
 
     def __init__(self, filePath):

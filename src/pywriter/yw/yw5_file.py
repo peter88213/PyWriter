@@ -14,8 +14,9 @@ from pywriter.yw.ansi_postprocessor import AnsiPostprocessor
 
 
 class Yw5File(YwFile):
-    """yWriter 5 xml project file representation."""
+    """yWriter 5 project file representation."""
 
+    DESCRIPTION = 'yWriter 5 project'
     EXTENSION = '.yw5'
 
     def __init__(self, filePath):

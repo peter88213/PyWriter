@@ -15,6 +15,7 @@ from pywriter.html.html_file import HtmlFile
 class HtmlLocations(HtmlFile):
     """HTML file representation of an yWriter project's location descriptions."""
 
+    DESCRIPTION = 'Location descriptions'
     SUFFIX = '_locations'
 
     def __init__(self, filePath):

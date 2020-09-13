@@ -12,12 +12,11 @@ from pywriter.model.scene import Scene
 
 
 class HtmlImport(HtmlFile):
-    """HTML file representation of an yWriter project's OfficeFile part.
-
-    Represents a html file without chapter and scene tags 
-    to be written by Open/LibreOffice Writer.
+    """HTML file representation of a work in progress to be 
+    converted to a new yWriter project yWriter project.
     """
 
+    DESCRIPTION = 'Work in progress'
     SUFFIX = ''
 
     _SCENE_DIVIDER = '* * *'

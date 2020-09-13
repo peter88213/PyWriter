@@ -12,4 +12,5 @@ from pywriter.html.html_chapterdesc import HtmlChapterDesc
 class HtmlPartDesc(HtmlChapterDesc):
     """HTML file representation of an yWriter project's parts summaries."""
 
+    DESCRIPTION = 'Part descriptions'
     SUFFIX = '_parts'

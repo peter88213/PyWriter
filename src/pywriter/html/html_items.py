@@ -14,6 +14,7 @@ from pywriter.html.html_file import HtmlFile
 class HtmlItems(HtmlFile):
     """HTML file representation of an yWriter project's item descriptions."""
 
+    DESCRIPTION = 'Item descriptions'
     SUFFIX = '_items'
 
     def __init__(self, filePath):

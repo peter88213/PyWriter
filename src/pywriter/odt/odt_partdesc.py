@@ -12,6 +12,7 @@ from pywriter.odt.odt_file import OdtFile
 class OdtPartDesc(OdtFile):
     """OpenDocument xml part summaries file representation."""
 
+    DESCRIPTION = 'Part descriptions'
     SUFFIX = '_parts'
 
     fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>

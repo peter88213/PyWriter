@@ -12,6 +12,7 @@ from pywriter.odt.odt_file import OdtFile
 class OdtCharacters(OdtFile):
     """OpenDocument xml character descriptions file representation."""
 
+    DESCRIPTION = 'Character descriptions'
     SUFFIX = '_characters'
 
     def get_characterSubst(self, crId):

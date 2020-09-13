@@ -6,6 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+import os
 import re
 
 from pywriter.csv.csv_file import CsvFile
@@ -20,6 +21,7 @@ class CsvLocList(CsvFile):
     * Data fields are delimited by the _SEPARATOR location.
     """
 
+    DESCRIPTION = 'Location list'
     SUFFIX = '_loclist'
 
     fileHeader = '''ID|Name|Description|Aka|Tags
@@ -38,7 +40,7 @@ class CsvLocList(CsvFile):
                 lines = (f.readlines())
 
         except(FileNotFoundError):
-            return 'ERROR: "' + self._filePath + '" not found.'
+            return 'ERROR: "' + os.path.normpath(self._filePath) + '" not found.'
 
         if lines[0] != self.fileHeader:
             return 'ERROR: Wrong lines content.'

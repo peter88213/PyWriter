@@ -12,6 +12,7 @@ from pywriter.odt.odt_file import OdtFile
 class OdtChapterDesc(OdtFile):
     """OpenDocument xml chapter summaries file representation."""
 
+    DESCRIPTION = 'Chapter descriptions'
     SUFFIX = '_chapters'
 
     fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>

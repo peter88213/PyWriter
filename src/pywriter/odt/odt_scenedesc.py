@@ -12,6 +12,7 @@ from pywriter.odt.odt_file import OdtFile
 class OdtSceneDesc(OdtFile):
     """OpenDocument xml scene summaries file representation."""
 
+    DESCRIPTION = 'Scene descriptions'
     SUFFIX = '_scenes'
 
     fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>

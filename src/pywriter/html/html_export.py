@@ -9,6 +9,8 @@ from pywriter.file.file_export import FileExport
 
 
 class HtmlExport(FileExport):
+
+    DESCRIPTION = 'HTML report'
     EXTENSION = '.html'
     # overwrites Novel._FILE_EXTENSION
 

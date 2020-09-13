@@ -5,6 +5,7 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import os
 from string import Template
 
 from pywriter.model.character import Character
@@ -465,6 +466,6 @@ class FileExport(Novel):
                 f.write(text)
 
         except:
-            return 'ERROR: Cannot write "' + self.filePath + '".'
+            return 'ERROR: Cannot write "' + os.path.normpath(self.filePath) + '".'
 
-        return 'SUCCESS: Content written to "' + self.filePath + '".'
+        return 'SUCCESS: "' + os.path.normpath(self.filePath) + '" written.'

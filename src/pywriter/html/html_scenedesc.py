@@ -13,6 +13,7 @@ class HtmlSceneDesc(HtmlFile):
     """HTML file representation of an yWriter project's scene summaries.
     """
 
+    DESCRIPTION = 'Scene descriptions'
     SUFFIX = '_scenes'
 
     def handle_endtag(self, tag):

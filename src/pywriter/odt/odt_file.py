@@ -121,10 +121,10 @@ class OdtFile(FileExport, OdtTemplate):
                     odtTarget.write(file)
         except:
             os.chdir(workdir)
-            return 'ERROR: Cannot generate "' + self._filePath + '".'
+            return 'ERROR: Cannot generate "' + os.path.normpath(self.filePath) + '".'
 
         # Remove temporary data.
 
         os.chdir(workdir)
         self.tear_down()
-        return 'SUCCESS: "' + self._filePath + '" saved.'
+        return 'SUCCESS: "' + os.path.normpath(self.filePath) + '" written.'

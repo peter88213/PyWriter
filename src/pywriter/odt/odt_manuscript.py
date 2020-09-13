@@ -12,6 +12,7 @@ from pywriter.odt.odt_file import OdtFile
 class OdtManuscript(OdtFile):
     """OpenDocument xml manuscript file representation."""
 
+    DESCRIPTION = 'Editable manuscript'
     SUFFIX = '_manuscript'
 
     fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>

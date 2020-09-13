@@ -681,12 +681,12 @@ class YwFile(Novel):
         if message.startswith('ERROR'):
             return message
 
-        return 'SUCCESS: project data written to "' + self._filePath + '".'
+        return 'SUCCESS: "' + os.path.normpath(self.filePath) + '" written.'
 
     def is_locked(self):
         """Test whether a .lock file placed by yWriter exists.
         """
-        if os.path.isfile(self._filePath + '.lock'):
+        if os.path.isfile(self.filePath + '.lock'):
             return True
 
         else:

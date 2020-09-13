@@ -78,7 +78,7 @@ class NrmOpr(unittest.TestCase):
         converter = YwCnv()
 
         self.assertEqual(converter.convert(
-            yw7File, documentFile), 'SUCCESS: "' + TEST_ODT + '" saved.')
+            yw7File, documentFile), 'SUCCESS: "' + os.path.normpath(TEST_ODT) + '" written.')
 
         with zipfile.ZipFile(TEST_ODT, 'r') as myzip:
             myzip.extract(ODT_CONTENT, EXEC_PATH)

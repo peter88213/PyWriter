@@ -1,11 +1,10 @@
 """Import and export yWriter data. 
 
-Standalone yWriter converter with a simple GUI
-
 Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import os
 from tkinter import *
 from tkinter import messagebox
 
@@ -70,7 +69,7 @@ class YwCnvTk(YwCnv):
         # Prepare the graphical user interface.
 
         self.root = Tk()
-        self.root.geometry("800x360")
+        self.root.geometry("800x300")
         self.root.title(TITLE)
         self.header = Label(self.root, text=__doc__)
         self.header.pack(padx=5, pady=5)
@@ -120,15 +119,14 @@ class YwCnvTk(YwCnv):
         # The conversion's direction depends on the sourcePath argument.
 
         if not sourceFile.file_exists():
-            self.processInfo.config(text='ERROR: File not found.')
+            self.processInfo.config(
+                text='ERROR: File "' + os.path.normpath(sourceFile.filePath) + '" not found.')
 
         else:
             if sourceFile.EXTENSION in ['.yw5', '.yw6', '.yw7']:
 
                 self.appInfo.config(
-                    text='Export yWriter project data to ' + targetFile.EXTENSION)
-                self.processInfo.config(
-                    text='Project: "' + sourceFile.filePath + '"')
+                    text='Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
                 self.processInfo.config(
                     text=YwCnv.convert(self, sourceFile, targetFile))
 
@@ -136,22 +134,20 @@ class YwCnvTk(YwCnv):
 
                 if targetFile.file_exists():
                     self.processInfo.config(
-                        text='ERROR: "' + targetFile._filePath + '" already exists.')
+                        text='ERROR: "' + os.path.normpath(targetFile._filePath) + '" already exists.')
 
                 else:
                     self.appInfo.config(
                         text='Create a yWriter project file')
                     self.processInfo.config(
-                        text='New project: "' + targetFile.filePath + '"')
+                        text='New project: "' + os.path.normpath(targetFile.filePath) + '"')
                     self.processInfo.config(
                         text=YwCnv.convert(self, sourceFile, targetFile))
 
             else:
 
                 self.appInfo.config(
-                    text='Import yWriter project data from ' + sourceFile.EXTENSION)
-                self.processInfo.config(
-                    text='Project: "' + targetFile.filePath + '"')
+                    text='Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
                 self.processInfo.config(
                     text=YwCnv.convert(self, sourceFile, targetFile))
 
@@ -167,7 +163,7 @@ class YwCnvTk(YwCnv):
             return True
 
         else:
-            return messagebox.askyesno('WARNING', 'Overwrite existing file "' + filePath + '"?')
+            return messagebox.askyesno('WARNING', 'Overwrite existing file "' + os.path.normpath(filePath) + '"?')
 
     def edit(self):
         pass

@@ -14,8 +14,9 @@ from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
 
 
 class Yw6File(YwFile):
-    """yWriter 6 xml project file representation."""
+    """yWriter 6 project file representation."""
 
+    DESCRIPTION = 'yWriter 6 project'
     EXTENSION = '.yw6'
 
     def __init__(self, filePath):

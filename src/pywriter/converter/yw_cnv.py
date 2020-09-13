@@ -6,6 +6,7 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import os
 
 
 class YwCnv():
@@ -36,13 +37,13 @@ class YwCnv():
         """Read document file, convert its content to xml, and replace yWriter file."""
 
         if sourceFile.filePath is None:
-            return 'ERROR: "' + sourceFile.filePath + '" is not of the supported type.'
+            return 'ERROR: "' + os.path.normpath(sourceFile.filePath) + '" is not of the supported type.'
 
         if not sourceFile.file_exists():
-            return 'ERROR: "' + sourceFile.filePath + '" not found.'
+            return 'ERROR: "' + os.path.normpath(sourceFile.filePath) + '" not found.'
 
         if targetFile.filePath is None:
-            return 'ERROR: "' + targetFile.filePath + '" is not of the supported type.'
+            return 'ERROR: "' + os.path.normpath(targetFile.filePath) + '" is not of the supported type.'
 
         if targetFile.file_exists() and not self.confirm_overwrite(targetFile.filePath):
             return 'Program abort by user.'

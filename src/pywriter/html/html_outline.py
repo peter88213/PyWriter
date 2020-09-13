@@ -18,6 +18,7 @@ class HtmlOutline(HtmlFile):
     to be written by Open/LibreOffice Writer.
     """
 
+    DESCRIPTION = 'Novel outline'
     SUFFIX = ''
 
     def __init__(self, filePath):

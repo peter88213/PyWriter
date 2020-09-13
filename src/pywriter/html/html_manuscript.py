@@ -17,6 +17,7 @@ class HtmlManuscript(HtmlFile):
     OpenOffice/LibreOffice Writer.
     """
 
+    DESCRIPTION = 'Editable manuscript'
     SUFFIX = '_manuscript'
 
     def preprocess(self, text):

@@ -6,6 +6,8 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+import os
+
 
 def read_html_file(filePath):
     """Open a html file being encoded utf-8 or ANSI.
@@ -23,7 +25,7 @@ def read_html_file(filePath):
                 text = (f.read())
 
         except(FileNotFoundError):
-            return ('ERROR: "' + filePath + '" not found.', None)
+            return ('ERROR: "' + os.path.normpath(filePath) + '" not found.', None)
 
     return ('SUCCESS', text)
 
