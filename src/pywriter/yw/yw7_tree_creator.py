@@ -311,8 +311,10 @@ class Yw7TreeCreator(YwTreeBuilder):
 
             chFields = ET.SubElement(chp, 'Fields')
 
-            if ywProject.chapters[chId].title.startswith('@'):
-                ywProject.chapters[chId].suppressChapterTitle = True
+            if ywProject.chapters[chId].title is not None:
+
+                if ywProject.chapters[chId].title.startswith('@'):
+                    ywProject.chapters[chId].suppressChapterTitle = True
 
             if ywProject.chapters[chId].suppressChapterTitle:
                 ET.SubElement(

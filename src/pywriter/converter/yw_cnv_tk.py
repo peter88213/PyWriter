@@ -138,7 +138,7 @@ class YwCnvTk(YwCnv):
 
                 else:
                     self.appInfo.config(
-                        text='Create a yWriter project file')
+                        text='Create a yWriter project file from ' + sourceFile.DESCRIPTION)
                     self.processInfo.config(
                         text='New project: "' + os.path.normpath(targetFile.filePath) + '"')
                     self.processInfo.config(
