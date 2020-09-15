@@ -76,4 +76,11 @@ class HtmlCharacters(HtmlFile):
             self._lines.append(data.rstrip().lstrip())
 
     def get_structure(self):
-        """This file format has no comparable structure."""
+        """returns a string showing the order characters.
+        """
+        lines = []
+
+        for crId in self.characters:
+            lines.append('  CrID:' + str(crId))
+
+        return '\n'.join(lines)

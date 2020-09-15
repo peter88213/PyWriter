@@ -50,6 +50,3 @@ class HtmlManuscript(HtmlFile):
         """
         if self._scId is not None:
             self._lines.append(data.rstrip().lstrip())
-
-    def get_structure(self):
-        """This file format has no comparable structure."""

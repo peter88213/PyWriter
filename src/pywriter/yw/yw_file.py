@@ -187,14 +187,14 @@ class YwFile(Novel):
 
                 if chFields.find('Field_SuppressChapterBreak') is not None:
 
-                    if chFields.find('Field_SuppressChapterTitle').text == '0':
-                        self.chapters[chId].doNotExport = True
+                    if chFields.find('Field_SuppressChapterBreak').text == '1':
+                        self.chapters[chId].suppressChapterBreak = True
 
                     else:
-                        self.chapters[chId].doNotExport = False
+                        self.chapters[chId].suppressChapterBreak = False
 
                 else:
-                    self.chapters[chId].doNotExport = False
+                    self.chapters[chId].suppressChapterBreak = False
 
             self.chapters[chId].srtScenes = []
 
@@ -379,15 +379,8 @@ class YwFile(Novel):
             if message.startswith('ERROR'):
                 return message
 
-        prjStructure = novel.get_structure()
-
-        if prjStructure is not None:
-
-            if prjStructure == '':
-                return 'ERROR: Source file contains no yWriter project structure information.'
-
-            if prjStructure != self.get_structure():
-                return 'ERROR: Structure mismatch.'
+        if novel.get_structure() == '':
+            return 'ERROR: Source file contains nothing to write to a yWriter project.'
 
         # Merge locations.
 
@@ -610,6 +603,9 @@ class YwFile(Novel):
 
             if novel.chapters[chId].suppressChapterTitle is not None:
                 self.chapters[chId].suppressChapterTitle = novel.chapters[chId].suppressChapterTitle
+
+            if novel.chapters[chId].suppressChapterBreak is not None:
+                self.chapters[chId].suppressChapterBreak = novel.chapters[chId].suppressChapterBreak
 
             if novel.chapters[chId].isTrash is not None:
                 self.chapters[chId].isTrash = novel.chapters[chId].isTrash

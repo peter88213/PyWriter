@@ -198,3 +198,13 @@ class CsvSceneList(CsvFile):
                 '''
 
         return 'SUCCESS: Data read from "' + self._filePath + '".'
+
+    def get_structure(self):
+        """returns a string showing the order of scenes.
+        """
+        lines = []
+
+        for scId in self.scenes:
+            lines.append('  ScID:' + str(scId))
+
+        return '\n'.join(lines)

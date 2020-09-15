@@ -67,3 +67,14 @@ class CsvLocList(CsvFile):
         """Copy selected novel attributes.
         """
         self.locations = novel.locations
+        return 'SUCCESS'
+
+    def get_structure(self):
+        """returns a string showing the order items.
+        """
+        lines = []
+
+        for lcId in self.locations:
+            lines.append('  LcID:' + str(lcId))
+
+        return '\n'.join(lines)

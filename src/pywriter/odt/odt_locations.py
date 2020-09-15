@@ -28,7 +28,7 @@ class OdtLocations(OdtFile):
 '''
 
     locationTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title$AKA</text:h>
-<text:section text:style-name="Sect1" text:name="ItID:$ID">
+<text:section text:style-name="Sect1" text:name="LcID:$ID">
 <text:p text:style-name="Text_20_body">$Desc</text:p>
 </text:section>
 '''

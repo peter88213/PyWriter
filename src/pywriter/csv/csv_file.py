@@ -56,7 +56,3 @@ class CsvFile(FileExport):
             text = ''
 
         return text
-
-    def get_structure(self):
-        """This file format has no comparable structure."""
-        return None

@@ -106,6 +106,3 @@ class HtmlImport(HtmlFile):
 
         else:
             self._lines.append(data.rstrip().lstrip())
-
-    def get_structure(self):
-        """This file format has no comparable structure."""

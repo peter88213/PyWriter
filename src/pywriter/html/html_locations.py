@@ -56,4 +56,11 @@ class HtmlLocations(HtmlFile):
             self._lines.append(data.rstrip().lstrip())
 
     def get_structure(self):
-        """This file format has no comparable structure."""
+        """returns a string showing the order items.
+        """
+        lines = []
+
+        for lcId in self.locations:
+            lines.append('  LcID:' + str(lcId))
+
+        return '\n'.join(lines)

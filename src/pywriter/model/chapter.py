@@ -61,7 +61,7 @@ class Chapter():
         # True: This chapter is the yw7 project's "trash bin".
         # False: This chapter is not a "trash bin".
 
-        self.doNotExport = None
+        self.suppressChapterBreak = None
         # bool
         # xml: <Fields><Field_SuppressChapterBreak> 0
 

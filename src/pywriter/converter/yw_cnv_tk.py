@@ -123,7 +123,7 @@ class YwCnvTk(YwCnv):
                 text='ERROR: File "' + os.path.normpath(sourceFile.filePath) + '" not found.')
 
         else:
-            if sourceFile.EXTENSION in ['.yw5', '.yw6', '.yw7']:
+            if sourceFile.EXTENSION in FileFactory.YW_EXTENSIONS:
 
                 self.appInfo.config(
                     text='Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')

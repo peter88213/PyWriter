@@ -23,14 +23,17 @@ class FileExport(Novel):
     notesChapterTemplate = ''
     todoChapterTemplate = ''
     unusedChapterTemplate = ''
+    notExportedChapterTemplate = ''
     sceneTemplate = ''
     appendedSceneTemplate = ''
     notesSceneTemplate = ''
     todoSceneTemplate = ''
     unusedSceneTemplate = ''
+    notExportedSceneTemplate = ''
     sceneDivider = ''
     chapterEndTemplate = ''
     unusedChapterEndTemplate = ''
+    notExportedChapterEndTemplate = ''
     notesChapterEndTemplate = ''
     characterTemplate = ''
     locationTemplate = ''
@@ -336,6 +339,21 @@ class FileExport(Novel):
             # The order counts; be aware that "Todo" and "Notes" chapters are
             # always unused.
 
+            # Has the chapter only scenes not to be exported?
+
+            sceneCount = 0
+            notExportCount = 0
+            doNotExportChapter = False
+
+            for scId in self.chapters[chId].srtScenes:
+                sceneCount += 1
+
+                if self.scenes[scId].doNotExport:
+                    notExportCount += 1
+
+            if sceneCount > 0 and notExportCount == sceneCount:
+                doNotExportChapter = True
+
             if self.chapters[chId].chType == 2:
 
                 if self.todoChapterTemplate != '':
@@ -358,6 +376,14 @@ class FileExport(Novel):
 
                 if self.unusedChapterTemplate != '':
                     template = Template(self.unusedChapterTemplate)
+
+                else:
+                    continue
+
+            elif doNotExportChapter:
+
+                if self.notExportedChapterTemplate != '':
+                    template = Template(self.notExportedChapterTemplate)
 
                 else:
                     continue
@@ -398,10 +424,18 @@ class FileExport(Novel):
                     else:
                         continue
 
-                elif self.scenes[scId].isUnused or self.chapters[chId].isUnused or self.scenes[scId].doNotExport:
+                elif self.scenes[scId].isUnused or self.chapters[chId].isUnused:
 
                     if self.unusedSceneTemplate != '':
                         template = Template(self.unusedSceneTemplate)
+
+                    else:
+                        continue
+
+                elif self.scenes[scId].doNotExport or doNotExportChapter:
+
+                    if self.notExportedSceneTemplate != '':
+                        template = Template(self.notExportedSceneTemplate)
 
                     else:
                         continue
@@ -411,7 +445,7 @@ class FileExport(Novel):
 
                     template = Template(self.sceneTemplate)
 
-                    if self.scenes[scId].appendToPrev and self.appendedSceneTemplate != '':
+                    if not firstSceneInChapter and self.scenes[scId].appendToPrev and self.appendedSceneTemplate != '':
                         template = Template(self.appendedSceneTemplate)
 
                 if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
@@ -422,26 +456,21 @@ class FileExport(Novel):
 
                 firstSceneInChapter = False
 
-            if self.chapters[chId].chType == 2:
-
-                if self.todoChapterEndTemplate != '':
-                    lines.append(self.todoChapterEndTemplate)
-
-                else:
-                    continue
+            if self.chapters[chId].chType == 2 and self.todoChapterEndTemplate != '':
+                lines.append(self.todoChapterEndTemplate)
 
             elif self.chapters[chId].chType == 1 or self.chapters[chId].oldType == 1:
 
                 if self.notesChapterEndTemplate != '':
                     lines.append(self.notesChapterEndTemplate)
 
-                else:
-                    continue
-
             elif self.chapters[chId].isUnused and self.unusedChapterEndTemplate != '':
                 lines.append(self.unusedChapterEndTemplate)
 
-            else:
+            elif doNotExportChapter and self.notExportedChapterEndTemplate != '':
+                lines.append(self.notExportedChapterEndTemplate)
+
+            elif self.chapterEndTemplate != '':
                 lines.append(self.chapterEndTemplate)
 
         for crId in self.characters:

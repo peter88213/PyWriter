@@ -175,6 +175,6 @@ class Novel():
             lines.append('ChID:' + str(chId) + '\n')
 
             for scId in self.chapters[chId].srtScenes:
-                lines.append('  ScID:' + str(scId) + '\n')
+                lines.append('  ScID:' + str(scId))
 
-        return ''.join(lines)
+        return '\n'.join(lines)
