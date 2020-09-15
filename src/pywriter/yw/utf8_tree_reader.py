@@ -6,6 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+import os
 import xml.etree.ElementTree as ET
 from pywriter.yw.yw_tree_reader import YwTreeReader
 
@@ -22,6 +23,6 @@ class Utf8TreeReader(YwTreeReader):
             ywFile._tree = ET.parse(ywFile._filePath)
 
         except:
-            return 'ERROR: Can not process "' + ywFile._filePath + '".'
+            return 'ERROR: Can not process "' + os.path.normpath(ywFile._filePath) + '".'
 
         return 'SUCCESS: XML element tree read in.'

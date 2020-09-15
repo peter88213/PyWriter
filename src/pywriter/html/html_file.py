@@ -132,4 +132,4 @@ class HtmlFile(Novel, HTMLParser):
         self.feed(text)
         self.postprocess()
 
-        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
+        return 'SUCCESS'

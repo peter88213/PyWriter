@@ -13,6 +13,7 @@ import zipfile
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
+from pywriter.yw.yw_project_creator import YwProjectCreator
 
 from pywriter.html.html_import import HtmlImport
 from pywriter.html.html_outline import HtmlOutline
@@ -79,6 +80,7 @@ class NrmOpr(unittest.TestCase):
 
         yw7File = Yw7File(TEST_YW7)
         yw7File.ywTreeBuilder = Yw7TreeCreator()
+        yw7File.ywProjectMerger = YwProjectCreator()
         documentFile = HtmlImport(TEST_HTML)
         converter = YwCnv()
 

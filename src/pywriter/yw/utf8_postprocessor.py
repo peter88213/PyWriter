@@ -6,6 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+import os
 from pywriter.yw.yw_postprocessor import YwPostprocessor
 
 
@@ -31,6 +32,6 @@ class Utf8Postprocessor(YwPostprocessor):
                 f.write(text)
 
         except:
-            return 'ERROR: Can not write "' + filePath + '".'
+            return 'ERROR: Can not write "' + os.path.normpath(filePath) + '".'
 
-        return 'SUCCESS'
+        return 'SUCCESS: "' + os.path.normpath(filePath) + '" written.'

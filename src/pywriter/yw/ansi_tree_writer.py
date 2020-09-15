@@ -6,6 +6,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+import os
 from pywriter.yw.yw_tree_writer import YwTreeWriter
 
 
@@ -22,6 +23,6 @@ class AnsiTreeWriter(YwTreeWriter):
                 ywProject._filePath, xml_declaration=False, encoding='iso-8859-1')
 
         except(PermissionError):
-            return 'ERROR: "' + ywProject._filePath + '" is write protected.'
+            return 'ERROR: "' + os.path.normpath(ywProject._filePath) + '" is write protected.'
 
         return 'SUCCESS'

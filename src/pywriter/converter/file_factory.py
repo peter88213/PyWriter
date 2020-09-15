@@ -15,6 +15,7 @@ from pywriter.yw.yw6_file import Yw6File
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 from pywriter.yw.yw5_tree_creator import Yw5TreeCreator
+from pywriter.yw.yw_project_creator import YwProjectCreator
 
 from pywriter.odt.odt_proof import OdtProof
 from pywriter.odt.odt_manuscript import OdtManuscript
@@ -76,6 +77,7 @@ class FileFactory():
             if suffix is None:
                 targetFile = Yw5File(fileName + Yw5File.EXTENSION)
                 targetFile.ywTreeBuilder = Yw5TreeCreator()
+                targetFile.ywProjectMerger = YwProjectCreator()
 
             elif suffix == '':
                 targetFile = OdtExport(fileName + OdtExport.EXTENSION)
@@ -169,14 +171,15 @@ class FileFactory():
                 result = read_html_file(sourcePath)
 
                 if 'SUCCESS' in result[0]:
+                    targetFile = Yw7File(fileName + Yw7File.EXTENSION)
+                    targetFile.ywTreeBuilder = Yw7TreeCreator()
+                    targetFile.ywProjectMerger = YwProjectCreator()
 
                     if "<h3" in result[1].lower():
                         sourceFile = HtmlOutline(sourcePath)
 
                     else:
                         sourceFile = HtmlImport(sourcePath)
-                        targetFile = Yw7File(fileName + Yw7File.EXTENSION)
-                        targetFile.ywTreeBuilder = Yw7TreeCreator()
 
                 else:
                     return ['ERROR: Cannot read "' + os.path.normpath(sourcePath) + '".', None, None]
