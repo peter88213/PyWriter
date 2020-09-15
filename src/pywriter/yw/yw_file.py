@@ -372,6 +372,14 @@ class YwFile(Novel):
         """Merge attributes.
         """
 
+        def merge_attribute(sourceItem, targetItem, matchCount):
+
+            if sourceItem is not None:
+                matchCount += 1
+                targetItem = sourceItem
+
+            return targetItem, matchCount
+
         if self.file_exists():
             message = self.read()
             # initialize data
@@ -384,6 +392,8 @@ class YwFile(Novel):
 
         # Merge locations.
 
+        locMatchCount = 0
+
         for lcId in novel.locations:
 
             if not lcId in self.locations:
@@ -393,16 +403,16 @@ class YwFile(Novel):
                 # avoids deleting the title, if it is empty by accident
                 self.locations[lcId].title = novel.locations[lcId].title
 
-            if novel.locations[lcId].desc is not None:
-                self.locations[lcId].desc = novel.locations[lcId].desc
-
-            if novel.locations[lcId].aka is not None:
-                self.locations[lcId].aka = novel.locations[lcId].aka
-
-            if novel.locations[lcId].tags is not None:
-                self.locations[lcId].tags = novel.locations[lcId].tags
+            self.locations[lcId].desc, locMatchCount = merge_attribute(
+                novel.locations[lcId].desc, self.locations[lcId].desc, locMatchCount)
+            self.locations[lcId].aka, locMatchCount = merge_attribute(
+                novel.locations[lcId].aka, self.locations[lcId].aka, locMatchCount)
+            self.locations[lcId].tags, locMatchCount = merge_attribute(
+                novel.locations[lcId].tags, self.locations[lcId].tags, locMatchCount)
 
         # Merge items.
+
+        itmMatchCount = 0
 
         for itId in novel.items:
 
@@ -413,16 +423,16 @@ class YwFile(Novel):
                 # avoids deleting the title, if it is empty by accident
                 self.items[itId].title = novel.items[itId].title
 
-            if novel.items[itId].desc is not None:
-                self.items[itId].desc = novel.items[itId].desc
-
-            if novel.items[itId].aka is not None:
-                self.items[itId].aka = novel.items[itId].aka
-
-            if novel.items[itId].tags is not None:
-                self.items[itId].tags = novel.items[itId].tags
+            self.items[itId].desc, itmMatchCount = merge_attribute(
+                novel.items[itId].desc, self.items[itId].desc, itmMatchCount)
+            self.items[itId].aka, itmMatchCount = merge_attribute(
+                novel.items[itId].aka, self.items[itId].aka, itmMatchCount)
+            self.items[itId].tags, itmMatchCount = merge_attribute(
+                novel.items[itId].tags, self.items[itId].tags, itmMatchCount)
 
         # Merge characters.
+
+        chrMatchCount = 0
 
         for crId in novel.characters:
 
@@ -433,14 +443,12 @@ class YwFile(Novel):
                 # avoids deleting the title, if it is empty by accident
                 self.characters[crId].title = novel.characters[crId].title
 
-            if novel.characters[crId].desc is not None:
-                self.characters[crId].desc = novel.characters[crId].desc
-
-            if novel.characters[crId].aka is not None:
-                self.characters[crId].aka = novel.characters[crId].aka
-
-            if novel.characters[crId].tags is not None:
-                self.characters[crId].tags = novel.characters[crId].tags
+            self.locations[lcId].desc, chrMatchCount = merge_attribute(
+                novel.locations[lcId].desc, self.locations[lcId].desc, chrMatchCount)
+            self.locations[lcId].aka, chrMatchCount = merge_attribute(
+                novel.locations[lcId].aka, self.locations[lcId].aka, chrMatchCount)
+            self.locations[lcId].tags, chrMatchCount = merge_attribute(
+                novel.locations[lcId].tags, self.locations[lcId].tags, chrMatchCount)
 
             if novel.characters[crId].notes is not None:
                 self.characters[crId].notes = novel.characters[crId].notes
