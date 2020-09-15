@@ -143,12 +143,6 @@ class YwFile(Novel):
 
             self.chapters[chId].title = chp.find('Title').text
 
-            if self.chapters[chId].title.startswith('@'):
-                self.chapters[chId].suppressChapterTitle = True
-
-            else:
-                self.chapters[chId].suppressChapterTitle = False
-
             if chp.find('Desc') is not None:
                 self.chapters[chId].desc = chp.find('Desc').text
 
@@ -169,6 +163,13 @@ class YwFile(Novel):
 
             else:
                 self.chapters[chId].isUnused = False
+
+            self.chapters[chId].suppressChapterTitle = False
+
+            if self.chapters[chId].title is not None:
+
+                if self.chapters[chId].title.startswith('@'):
+                    self.chapters[chId].suppressChapterTitle = True
 
             for chFields in chp.findall('Fields'):
 
