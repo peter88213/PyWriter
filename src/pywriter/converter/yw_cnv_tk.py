@@ -5,15 +5,11 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-from tkinter import *
-from tkinter import messagebox
 
+from pywriter.converter.cnv_ui_tk import CnvUiTk
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
-
-
-TITLE = 'yWriter import/export'
 
 
 class YwCnvTk(YwCnv):
@@ -66,52 +62,29 @@ class YwCnvTk(YwCnv):
     def __init__(self, sourcePath, suffix=None, silentMode=True):
         """Run the converter with a GUI. """
 
-        # Prepare the graphical user interface.
+        self.silentMode = silentMode
+        fileFactory = FileFactory()
 
-        self.root = Tk()
-        self.root.geometry("800x360")
-        self.root.title(TITLE)
-        self.header = Label(self.root, text=__doc__)
-        self.header.pack(padx=5, pady=5)
-        self.appInfo = Label(self.root, text='')
-        self.appInfo.pack(padx=5, pady=5)
-        self.successInfo = Label(self.root)
-        self.successInfo.pack(fill=X, expand=1, padx=50, pady=5)
-        self.processInfo = Label(self.root, text='')
-        self.processInfo.pack(padx=5, pady=5)
+        # Initialize the GUI
 
-        self.success = False
+        self.cnvUi = CnvUiTk()
 
         # Run the converter.
 
-        self.silentMode = silentMode
-
-        fileFactory = FileFactory()
-
+        self.success = False
         message, sourceFile, TargetFile = fileFactory.get_file_objects(
             sourcePath, suffix)
 
         if message.startswith('SUCCESS'):
-
             self.convert(sourceFile, TargetFile)
 
         else:
-            self.processInfo.config(text=message)
+            self.cnvUi.set_process_info(message)
 
         # Visualize the outcome.
 
         if not self.silentMode:
-
-            if self.success:
-                self.successInfo.config(bg='green')
-
-            else:
-                self.successInfo.config(bg='red')
-
-            self.root.quitButton = Button(text="Quit", command=quit)
-            self.root.quitButton.config(height=1, width=10)
-            self.root.quitButton.pack(padx=5, pady=5)
-            self.root.mainloop()
+            self.cnvUi.show_success(self.success)
 
     def convert(self, sourceFile, targetFile):
         """Determine the direction and invoke the converter. """
@@ -119,41 +92,38 @@ class YwCnvTk(YwCnv):
         # The conversion's direction depends on the sourcePath argument.
 
         if not sourceFile.file_exists():
-            self.processInfo.config(
-                text='ERROR: File "' + os.path.normpath(sourceFile.filePath) + '" not found.')
+            self.cnvUi.set_process_info(
+                'ERROR: File "' + os.path.normpath(sourceFile.filePath) + '" not found.')
 
         else:
             if sourceFile.EXTENSION in FileFactory.YW_EXTENSIONS:
 
-                self.appInfo.config(
-                    text='Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
-                self.processInfo.config(
-                    text=YwCnv.convert(self, sourceFile, targetFile))
+                self.cnvUi.set_app_info('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
+                    sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
+                self.cnvUi.set_process_info(
+                    YwCnv.convert(self, sourceFile, targetFile))
 
             elif isinstance(targetFile.ywTreeBuilder, Yw7TreeCreator):
 
                 if targetFile.file_exists():
-                    self.processInfo.config(
-                        text='ERROR: "' + os.path.normpath(targetFile._filePath) + '" already exists.')
+                    self.cnvUi.set_process_info(
+                        'ERROR: "' + os.path.normpath(targetFile._filePath) + '" already exists.')
 
                 else:
-                    self.appInfo.config(
-                        text='Create a yWriter project file from ' + sourceFile.DESCRIPTION)
-                    self.processInfo.config(
-                        text='New project: "' + os.path.normpath(targetFile.filePath) + '"')
-                    self.processInfo.config(
-                        text=YwCnv.convert(self, sourceFile, targetFile))
-
+                    self.cnvUi.set_app_info(
+                        'Create a yWriter project file from ' + sourceFile.DESCRIPTION)
+                    self.cnvUi.set_process_info(
+                        'New project: "' + os.path.normpath(targetFile.filePath) + '"')
             else:
 
-                self.appInfo.config(
-                    text='Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
-                self.processInfo.config(
-                    text=YwCnv.convert(self, sourceFile, targetFile))
+                self.cnvUi.set_app_info('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
+                    sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
+                self.cnvUi.set_process_info(
+                    YwCnv.convert(self, sourceFile, targetFile))
 
             # Visualize the outcome.
 
-            if self.processInfo.cget('text').startswith('SUCCESS'):
+            if self.cnvUi.get_process_info().startswith('SUCCESS'):
                 self.success = True
 
     def confirm_overwrite(self, filePath):
@@ -163,7 +133,7 @@ class YwCnvTk(YwCnv):
             return True
 
         else:
-            return messagebox.askyesno('WARNING', 'Overwrite existing file "' + os.path.normpath(filePath) + '"?')
+            return self.cnvUi.ask_yes_no('Overwrite existing file "' + os.path.normpath(filePath) + '"?')
 
     def edit(self):
         pass
