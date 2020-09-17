@@ -52,8 +52,6 @@ class FileFactory():
     and a target file object for conversion.
     """
 
-    YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
-
     def get_file_objects(self, sourcePath, suffix=None):
         fileName, fileExtension = os.path.splitext(sourcePath)
         isYwProject = False

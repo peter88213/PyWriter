@@ -12,7 +12,7 @@ from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
 
-class YwCnvTk(YwCnv):
+class YwCnvUi(YwCnv):
     """Standalone yWriter converter with a simple tkinter GUI. 
 
     # Arguments
@@ -49,7 +49,7 @@ class YwCnvTk(YwCnv):
 
     """
 
-    def __init__(self, sourcePath, suffix=None, silentMode=False):
+    def __init__(self, sourcePath, suffix=None):
         """Run the converter with a GUI. """
 
         fileFactory = FileFactory()
@@ -80,7 +80,7 @@ class YwCnvTk(YwCnv):
                 'ERROR: File "' + os.path.normpath(sourceFile.filePath) + '" not found.')
 
         else:
-            if sourceFile.EXTENSION in FileFactory.YW_EXTENSIONS:
+            if sourceFile.EXTENSION in self.YW_EXTENSIONS:
 
                 self.cnvUi.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
                     sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')

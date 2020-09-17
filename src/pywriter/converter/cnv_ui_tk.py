@@ -7,19 +7,16 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from tkinter import *
 from tkinter import messagebox
 
-TITLE = 'yWriter import/export'
-
 
 class CnvUiTk():
+    """UI subclass implementing a Tkinter facade."""
 
-    def __init__(self):
-        """initialize GUI. """
-
-        # Prepare the graphical user interface.
+    def __init__(self, title):
+        """Prepare the graphical user interface. """
 
         self.root = Tk()
         self.root.geometry("800x360")
-        self.root.title(TITLE)
+        self.root.title(title)
         self.header = Label(self.root, text=__doc__)
         self.header.pack(padx=5, pady=5)
         self.appInfo = Label(self.root, text='')
@@ -29,24 +26,25 @@ class CnvUiTk():
         self.processInfo = Label(self.root, text='')
         self.processInfo.pack(padx=5, pady=5)
 
-        self.processInfoText = ''
+        self.infoWhatText = ''
+        self.infoHowText = ''
 
     def ask_yes_no(self, text):
         return messagebox.askyesno('WARNING', text)
 
-    def set_app_info(self, message):
+    def set_info_what(self, message):
+        """What's the converter going to do?"""
+
+        self.infoWhatText = message
         self.appInfo.config(text=message)
 
-    def set_process_info(self, message):
-        self.processInfoText = message
+    def set_info_how(self, message):
+        """How's the converter doing?"""
+
+        self.infoHowText = message
         self.processInfo.config(text=message)
 
-    def get_process_info(self):
-        return self.processInfoText
-
-    def show_success(self, success):
-
-        if success:
+        if message.startswith('SUCCESS'):
             self.successInfo.config(bg='green')
 
         else:
