@@ -18,7 +18,7 @@ class YwCnvTk(YwCnvUi):
         """Run the converter with a GUI. """
 
         if silentMode:
-            self.UserInterface = Ui()
+            self.UserInterface = Ui('')
 
         else:
             self.UserInterface = UiTk('yWriter import/export')
