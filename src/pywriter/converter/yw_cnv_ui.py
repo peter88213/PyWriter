@@ -26,7 +26,7 @@ class YwCnvUi(YwCnv):
         self.success = False
 
     def run_conversion(self, sourcePath, suffix=None):
-        """Create source and target objects and run covertsion.
+        """Create source and target objects and run coversion.
         """
         self.success = False
         message, sourceFile, targetFile = self.fileFactory.get_file_objects(
