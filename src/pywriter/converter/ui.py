@@ -6,7 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 
-class CnvUi():
+class Ui():
     """Superclass for UI facades, implementing a 'silent mode'."""
 
     def __init__(self, title):

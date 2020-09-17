@@ -6,7 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 
-from pywriter.converter.cnv_ui import CnvUi
+from pywriter.converter.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
@@ -14,102 +14,74 @@ from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
 class YwCnvUi(YwCnv):
     """Standalone yWriter converter with a simple tkinter GUI. 
-
-    # Arguments
-
-        sourcePath : str
-            a full or relative path to the file to be converted.
-            Either an yWriter file or a file of any supported type. 
-            The file type determines the conversion's direction.    
-
-        suffix : str
-            Optional file name suffix used for ambiguous html files.
-            Examples:
-            - _manuscript for a html file containing scene contents.
-            - _scenes for a html file containing scene summaries.
-            - _chapters for a html file containing chapter summaries.
-
-    # Methods
-
-    convert : str
-        Arguments
-            sourceFile : Novel
-                an object representing the source file.
-            targetFile : Novel
-                an object representing the target file.
-        Read sourceFile, merge the contents to targetFile and write targetFile.
-        Return a message beginning with SUCCESS or ERROR.
-        At least one sourcefile or targetFile object should be a yWriter project.
-
-    confirm_overwrite : bool
-        Arguments
-            fileName : str
-                Path to the file to be overwritten
-        Ask for permission to overwrite the target file.
-
     """
 
-    def __init__(self, sourcePath, suffix=None):
-        """Run the converter with a GUI. """
+    YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
 
-        fileFactory = FileFactory()
-
-        # Initialize the GUI
-
-        self.cnvUi = CnvUi('yWriter import/export')
-
-        # Run the converter.
-
+    def __init__(self):
+        """Set defaults.
+        """
+        self.fileFactory = FileFactory()
+        self.UserInterface = Ui('yWriter import/export')
         self.success = False
-        message, sourceFile, TargetFile = fileFactory.get_file_objects(
+
+    def run_conversion(self, sourcePath, suffix=None):
+        """Create source and target objects and run covertsion.
+        """
+        self.success = False
+        message, sourceFile, targetFile = self.fileFactory.get_file_objects(
             sourcePath, suffix)
 
-        if message.startswith('SUCCESS'):
-            self.convert(sourceFile, TargetFile)
+        if not message.startswith('SUCCESS'):
+            self.UserInterface.set_info_how(message)
 
-        else:
-            self.cnvUi.set_info_how(message)
-
-    def convert(self, sourceFile, targetFile):
-        """Determine the direction and invoke the converter. """
-
-        # The conversion's direction depends on the sourcePath argument.
-
-        if not sourceFile.file_exists():
-            self.cnvUi.set_info_how(
+        elif not sourceFile.file_exists():
+            self.UserInterface.set_info_how(
                 'ERROR: File "' + os.path.normpath(sourceFile.filePath) + '" not found.')
 
+        elif sourceFile.EXTENSION in self.YW_EXTENSIONS:
+            self.export_from_yw(sourceFile, targetFile)
+
+        elif isinstance(targetFile.ywTreeBuilder, Yw7TreeCreator):
+            self.create_yw7(sourceFile, targetFile)
+
         else:
-            if sourceFile.EXTENSION in self.YW_EXTENSIONS:
+            self.import_to_yw(sourceFile, targetFile)
 
-                self.cnvUi.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
-                    sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
-                self.cnvUi.set_info_how(
-                    YwCnv.convert(self, sourceFile, targetFile))
+    def export_from_yw(self, sourceFile, targetFile):
+        self.UserInterface.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
+            sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
+        message = self.convert(sourceFile, targetFile)
+        self.UserInterface.set_info_how(message)
 
-            elif isinstance(targetFile.ywTreeBuilder, Yw7TreeCreator):
+        if message.startswith('SUCCESS'):
+            self.success = True
 
-                if targetFile.file_exists():
-                    self.cnvUi.set_info_how(
-                        'ERROR: "' + os.path.normpath(targetFile._filePath) + '" already exists.')
+    def create_yw7(self, sourceFile, targetFile):
 
-                else:
-                    self.cnvUi.set_info_what(
-                        'Create a yWriter project file from ' + sourceFile.DESCRIPTION)
-                    self.cnvUi.set_info_how(
-                        'New project: "' + os.path.normpath(targetFile.filePath) + '"')
-            else:
+        if targetFile.file_exists():
+            self.UserInterface.set_info_how(
+                'ERROR: "' + os.path.normpath(targetFile._filePath) + '" already exists.')
 
-                self.cnvUi.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
-                    sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
-                self.cnvUi.set_info_how(
-                    YwCnv.convert(self, sourceFile, targetFile))
+        else:
+            self.UserInterface.set_info_what(
+                'Create a yWriter project file from ' + sourceFile.DESCRIPTION + '\nNew project: "' + os.path.normpath(targetFile.filePath) + '"')
+            message = self.convert(sourceFile, targetFile)
+            self.UserInterface.set_info_how(message)
 
-            # Visualize the outcome.
-
-            if self.cnvUi.get_info_how().startswith('SUCCESS'):
+            if message.startswith('SUCCESS'):
                 self.success = True
 
+    def import_to_yw(self, sourceFile, targetFile):
+        self.UserInterface.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
+            sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
+        message = self.convert(sourceFile, targetFile)
+        self.UserInterface.set_info_how(message)
+
+        if message.startswith('SUCCESS'):
+            self.success = True
+
     def confirm_overwrite(self, filePath):
-        """ Invoked by the parent if a file already exists. """
-        return self.cnvUi.ask_yes_no('Overwrite existing file "' + os.path.normpath(filePath) + '"?')
+        """ Invoked by the parent if a file already exists.
+        """
+        return self.UserInterface.ask_yes_no('Overwrite existing file "' + os.path.normpath(filePath) + '"?')

@@ -4,11 +4,13 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.converter.ui import Ui
+
 from tkinter import *
 from tkinter import messagebox
 
 
-class CnvUiTk():
+class UiTk(Ui):
     """UI subclass implementing a Tkinter facade."""
 
     def __init__(self, title):

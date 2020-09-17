@@ -4,11 +4,10 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.converter.ui import Ui
 
-from pywriter.converter.cnv_ui import CnvUi
 
-
-class CnvUiCmd(CnvUi):
+class UiCmd(Ui):
     """UI subclass implementing a console interface."""
 
     def __init__(self, title):

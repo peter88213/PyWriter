@@ -33,8 +33,6 @@ class YwCnv():
         This method is to be overwritten by subclasses with an user interface.
     """
 
-    YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
-
     def convert(self, sourceFile, targetFile):
         """Read document file, convert its content to xml, and replace yWriter file."""
 
