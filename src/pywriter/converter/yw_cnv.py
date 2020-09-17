@@ -11,30 +11,12 @@ import os
 
 class YwCnv():
     """Converter for yWriter project files.
-
-    # Methods
-
-    convert : str
-        Arguments
-            sourceFile : Novel
-                an object representing the source file.
-            targetFile : Novel
-                an object representing the target file.
-        Read sourceFile, merge the contents to targetFile and write targetFile.
-        Return a message beginning with SUCCESS or ERROR.
-        At least one sourcefile or targetFile object should be a yWriter project.
-
-    confirm_overwrite : bool
-        Arguments
-            fileName : str
-                Path to the file to be overwritten
-        Ask for permission to overwrite the target file.
-        Returns True by default.
-        This method is to be overwritten by subclasses with an user interface.
     """
 
     def convert(self, sourceFile, targetFile):
-        """Read document file, convert its content to xml, and replace yWriter file."""
+        """Read document file, convert its content to xml, and replace yWriter file.
+        Return a message beginning with SUCCESS or ERROR.
+        """
 
         if sourceFile.filePath is None:
             return 'ERROR: "' + os.path.normpath(sourceFile.filePath) + '" is not of the supported type.'
@@ -61,5 +43,5 @@ class YwCnv():
         return targetFile.write()
 
     def confirm_overwrite(self, fileName):
-        """To be overwritten by subclasses with UI."""
+        """Hook for subclasses with UI."""
         return True

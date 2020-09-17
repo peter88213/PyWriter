@@ -23,6 +23,3 @@ class Ui():
     def set_info_how(self, message):
         """How's the converter doing?"""
         self.infoHowText = message
-
-    def get_info_how(self):
-        return self.infoHowText

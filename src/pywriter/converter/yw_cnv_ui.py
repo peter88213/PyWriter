@@ -49,6 +49,8 @@ class YwCnvUi(YwCnv):
             self.import_to_yw(sourceFile, targetFile)
 
     def export_from_yw(self, sourceFile, targetFile):
+        """Template method for conversion from yw to other.
+        """
         self.UserInterface.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
         message = self.convert(sourceFile, targetFile)
@@ -58,6 +60,8 @@ class YwCnvUi(YwCnv):
             self.success = True
 
     def create_yw7(self, sourceFile, targetFile):
+        """Template method for creation of a new yw7 project.
+        """
 
         if targetFile.file_exists():
             self.UserInterface.set_info_how(
@@ -73,6 +77,8 @@ class YwCnvUi(YwCnv):
                 self.success = True
 
     def import_to_yw(self, sourceFile, targetFile):
+        """Template method for conversion from other to yw.
+        """
         self.UserInterface.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
         message = self.convert(sourceFile, targetFile)
