@@ -52,6 +52,12 @@ class UiTk(Ui):
         else:
             self.successInfo.config(bg='red')
 
+    def show_edit_button(self, edit_cmd):
+        self.root.editButton = Button(text="Edit", command=edit_cmd)
+        self.root.editButton.config(height=1, width=10)
+        self.root.editButton.pack(padx=5, pady=5)
+
+    def finish(self):
         self.root.quitButton = Button(text="Quit", command=quit)
         self.root.quitButton.config(height=1, width=10)
         self.root.quitButton.pack(padx=5, pady=5)

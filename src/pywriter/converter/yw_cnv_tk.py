@@ -18,10 +18,10 @@ class YwCnvTk(YwCnvUi):
         """Run the converter with a GUI. """
 
         if silentMode:
-            self.UserInterface = Ui('')
+            self.userInterface = Ui('')
 
         else:
-            self.UserInterface = UiTk('yWriter import/export')
+            self.userInterface = UiTk('yWriter import/export')
 
         self.fileFactory = FileFactory()
 
@@ -29,3 +29,4 @@ class YwCnvTk(YwCnvUi):
 
         self.success = False
         self.run_conversion(sourcePath, suffix)
+        self.userInterface.finish()

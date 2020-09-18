@@ -22,21 +22,21 @@ class YwCnvUi(YwCnv):
         """Set defaults.
         """
         self.fileFactory = FileFactory()
-        self.UserInterface = Ui('yWriter import/export')
+        self.userInterface = Ui('yWriter import/export')
         self.success = False
 
     def run_conversion(self, sourcePath, suffix=None):
-        """Create source and target objects and run coversion.
+        """Create source and target objects and run conversion.
         """
         self.success = False
         message, sourceFile, targetFile = self.fileFactory.get_file_objects(
             sourcePath, suffix)
 
         if not message.startswith('SUCCESS'):
-            self.UserInterface.set_info_how(message)
+            self.userInterface.set_info_how(message)
 
         elif not sourceFile.file_exists():
-            self.UserInterface.set_info_how(
+            self.userInterface.set_info_how(
                 'ERROR: File "' + os.path.normpath(sourceFile.filePath) + '" not found.')
 
         elif sourceFile.EXTENSION in self.YW_EXTENSIONS:
@@ -51,10 +51,10 @@ class YwCnvUi(YwCnv):
     def export_from_yw(self, sourceFile, targetFile):
         """Template method for conversion from yw to other.
         """
-        self.UserInterface.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
+        self.userInterface.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
         message = self.convert(sourceFile, targetFile)
-        self.UserInterface.set_info_how(message)
+        self.userInterface.set_info_how(message)
 
         if message.startswith('SUCCESS'):
             self.success = True
@@ -64,14 +64,14 @@ class YwCnvUi(YwCnv):
         """
 
         if targetFile.file_exists():
-            self.UserInterface.set_info_how(
+            self.userInterface.set_info_how(
                 'ERROR: "' + os.path.normpath(targetFile._filePath) + '" already exists.')
 
         else:
-            self.UserInterface.set_info_what(
+            self.userInterface.set_info_what(
                 'Create a yWriter project file from ' + sourceFile.DESCRIPTION + '\nNew project: "' + os.path.normpath(targetFile.filePath) + '"')
             message = self.convert(sourceFile, targetFile)
-            self.UserInterface.set_info_how(message)
+            self.userInterface.set_info_how(message)
 
             if message.startswith('SUCCESS'):
                 self.success = True
@@ -79,10 +79,10 @@ class YwCnvUi(YwCnv):
     def import_to_yw(self, sourceFile, targetFile):
         """Template method for conversion from other to yw.
         """
-        self.UserInterface.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
+        self.userInterface.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
         message = self.convert(sourceFile, targetFile)
-        self.UserInterface.set_info_how(message)
+        self.userInterface.set_info_how(message)
 
         if message.startswith('SUCCESS'):
             self.success = True
@@ -90,4 +90,27 @@ class YwCnvUi(YwCnv):
     def confirm_overwrite(self, filePath):
         """ Invoked by the parent if a file already exists.
         """
-        return self.UserInterface.ask_yes_no('Overwrite existing file "' + os.path.normpath(filePath) + '"?')
+        return self.userInterface.ask_yes_no('Overwrite existing file "' + os.path.normpath(filePath) + '"?')
+
+    def delete_tempfile(self, filePath):
+        """If an Office file exists, delete the temporary file."""
+
+        if filePath.endswith('.html'):
+
+            if os.path.isfile(filePath.replace('.html', '.odt')):
+
+                try:
+                    os.remove(filePath)
+
+                except:
+                    pass
+
+        elif filePath.endswith('.csv'):
+
+            if os.path.isfile(filePath.replace('.csv', '.ods')):
+
+                try:
+                    os.remove(filePath)
+
+                except:
+                    pass
