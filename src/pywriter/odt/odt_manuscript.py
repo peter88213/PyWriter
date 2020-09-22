@@ -5,7 +5,7 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_template import OdtTemplate
+from pywriter.odt.odt_builder import OdtBuilder
 from pywriter.odt.odt_file import OdtFile
 
 
@@ -15,7 +15,7 @@ class OdtManuscript(OdtFile):
     DESCRIPTION = 'Editable manuscript'
     SUFFIX = '_manuscript'
 
-    fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
+    fileHeader = OdtBuilder.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -53,7 +53,7 @@ class OdtManuscript(OdtFile):
     chapterEndTemplate = '''</text:section>
 '''
 
-    fileFooter = OdtTemplate.CONTENT_XML_FOOTER
+    fileFooter = OdtBuilder.CONTENT_XML_FOOTER
 
     def get_chapterSubst(self, chId, chapterNumber):
         chapterSubst = OdtFile.get_chapterSubst(self, chId, chapterNumber)

@@ -800,7 +800,7 @@
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_W7ajUPshEeq-TdV6dVW08A" name="get_chapterSubst"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_c_rYoIeuEeq_kJF_AkSaiA" name="OdtTemplate">
+      <packagedElement xmi:type="uml:Class" xmi:id="_c_rYoIeuEeq_kJF_AkSaiA" name="OdtBuilder">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_gpggoPseEeq-TdV6dVW08A" name="TEMPDIR" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>

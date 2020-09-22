@@ -1,4 +1,4 @@
-"""OdtTemplate - Class for OpenDocument xml file generation.
+"""OdtBuilder - Class for OpenDocument xml file generation.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
@@ -12,7 +12,7 @@ from shutil import rmtree
 from datetime import datetime
 
 
-class OdtTemplate():
+class OdtBuilder():
 
     TEMPDIR = 'temp_odt'
 

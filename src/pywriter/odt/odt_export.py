@@ -5,7 +5,7 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_template import OdtTemplate
+from pywriter.odt.odt_builder import OdtBuilder
 from pywriter.odt.odt_file import OdtFile
 
 
@@ -15,7 +15,7 @@ class OdtExport(OdtFile):
 
     """OpenDocument xml project file representation."""
 
-    fileHeader = OdtTemplate.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
+    fileHeader = OdtBuilder.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -40,7 +40,7 @@ class OdtExport(OdtFile):
     sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
 '''
 
-    fileFooter = OdtTemplate.CONTENT_XML_FOOTER
+    fileFooter = OdtBuilder.CONTENT_XML_FOOTER
 
     def get_chapterSubst(self, chId, chapterNumber):
         chapterSubst = OdtFile.get_chapterSubst(self, chId, chapterNumber)

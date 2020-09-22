@@ -8,11 +8,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import zipfile
 
-from pywriter.odt.odt_template import OdtTemplate
+from pywriter.odt.odt_builder import OdtBuilder
 from pywriter.file.file_export import FileExport
 
 
-class OdtFile(FileExport, OdtTemplate):
+class OdtFile(FileExport, OdtBuilder):
     """OpenDocument xml project file representation."""
 
     EXTENSION = '.odt'
