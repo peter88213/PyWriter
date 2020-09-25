@@ -52,7 +52,7 @@ def copy_file(inputFile, outputFile):
     return()
 
 
-def remove_all_testfiles():
+def remove_all_tempfiles():
     try:
         os.remove(TEST_HTML)
     except:
@@ -80,7 +80,7 @@ class NrmOpr(unittest.TestCase):
     """
 
     def setUp(self):
-        remove_all_testfiles()
+        remove_all_tempfiles()
         copy_file(REFERENCE_YW7, TEST_YW7)
 
     def test_data(self):
@@ -131,7 +131,7 @@ class NrmOpr(unittest.TestCase):
                          read_file(DATA_PATH + ODT_CONTENT))
 
     def tearDown(self):
-        remove_all_testfiles()
+        remove_all_tempfiles()
 
 
 def main():

@@ -44,7 +44,7 @@ def copy_file(inputFile, outputFile):
     return()
 
 
-def remove_all_testfiles():
+def remove_all_tempfiles():
     try:
         os.remove(TEST_CSV)
     except:
@@ -64,7 +64,7 @@ class NrmOpr(unittest.TestCase):
     """
 
     def setUp(self):
-        remove_all_testfiles()
+        remove_all_tempfiles()
         copy_file(REFERENCE_YW7,
                   TEST_YW7)
 
@@ -118,7 +118,7 @@ class NrmOpr(unittest.TestCase):
                          read_file(PROOFED_YW7))
 
     def tearDown(self):
-        remove_all_testfiles()
+        remove_all_tempfiles()
 
 
 def main():

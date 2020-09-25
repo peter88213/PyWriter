@@ -48,7 +48,7 @@ def copy_file(inputFile, outputFile):
     return()
 
 
-def remove_all_testfiles():
+def remove_all_tempfiles():
 
     try:
         os.remove(TEST_HTML)
@@ -69,7 +69,7 @@ class NrmOpr(unittest.TestCase):
     """
 
     def setUp(self):
-        remove_all_testfiles()
+        remove_all_tempfiles()
 
     def test_wip(self):
         """Import proofed yw7 scenes from html . """
@@ -95,7 +95,7 @@ class NrmOpr(unittest.TestCase):
                          read_file(REFERENCE_YW7))
 
     def tearDown(self):
-        remove_all_testfiles()
+        remove_all_tempfiles()
 
 
 def main():
