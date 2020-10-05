@@ -16,19 +16,25 @@
 ### Chapter level templates
 
 * __chapterTemplate__  (chapter header; applied to all "used" and "normal" chapters unless a "part template" exists)
-* __unusedChapterTemplate__  (chapter header; applied to chapters marked "unused" or "do not export")
-* __infoChapterTemplate__  (chapter header; applied to chapters marked "other")
-
+* __unusedChapterTemplate__  (chapter header; applied to chapters marked "unused")
+* __notExportedChapterTemplate__  (chapter header; applied to chapters marked "do not export")
+* __notesChapterTemplate__ (chapter header; applied to chapters marked "notes")
+* __todoChapterTemplate__  (chapter header; applied to chapters marked "todo")
 * __chapterEndTemplate__  (chapter footer; applied to all "used" and "normal" chapters unless a "part template" exists)
-* __unusedChapterEndTemplate__  (chapter footer; applied to chapters marked "unused" or "do not export")
-* __infoChapterEndTemplate__  (chapter footer; applied to chapters marked "other")
+* __unusedChapterEndTemplate__  (chapter footer; applied to chapters marked "unused")
+* __notExportedChapterEndTemplate__  (chapter footer; applied to chapters marked "do not export")
+* __notesChapterEndTemplate__  (chapter footer; applied to chapters marked "notes")
+* __todoChapterEndTemplate__  (chapter footer; applied to chapters marked "todo")
 
 
 ### Scene level templates
 
 * __sceneTemplate__  (applied to "used" scenes within "normal" chapters)
+* __appendedSceneTemplate__  (applied to scenes marked "append to previous")
 * __unusedSceneTemplate__  (applied to "unused" scenes)
-* __infoSceneTemplate__  (applied to scenes within chapters marked "other")
+* __notExportedSceneTemplate__  (applied to scenes not to be "exported as RTF")
+* __notesSceneTemplate__  (applied to scenes marked "notes")
+* __todoSceneTemplate__  (applied to scenes marked "todo")
 * __sceneDivider__  (lead scenes, beginning from the second in chapter)
 
 
