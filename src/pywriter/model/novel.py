@@ -163,18 +163,3 @@ class Novel():
 
         else:
             return False
-
-    def get_structure(self):
-        """returns a string showing the order of chapters and scenes 
-        as a tree. The result can be used to compare two Novel objects 
-        by their structure.
-        """
-        lines = []
-
-        for chId in self.srtChapters:
-            lines.append('ChID:' + str(chId) + '\n')
-
-            for scId in self.chapters[chId].srtScenes:
-                lines.append('  ScID:' + str(scId))
-
-        return '\n'.join(lines)

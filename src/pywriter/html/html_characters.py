@@ -74,13 +74,3 @@ class HtmlCharacters(HtmlFile):
         """
         if self._section is not None:
             self._lines.append(data.rstrip().lstrip())
-
-    def get_structure(self):
-        """returns a string showing the order characters.
-        """
-        lines = []
-
-        for crId in self.characters:
-            lines.append('  CrID:' + str(crId))
-
-        return '\n'.join(lines)

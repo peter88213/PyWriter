@@ -53,13 +53,3 @@ class HtmlItems(HtmlFile):
         """
         if self._itId is not None:
             self._lines.append(data.rstrip().lstrip())
-
-    def get_structure(self):
-        """returns a string showing the order items.
-        """
-        lines = []
-
-        for itId in self.items:
-            lines.append('  ItID:' + str(itId))
-
-        return '\n'.join(lines)

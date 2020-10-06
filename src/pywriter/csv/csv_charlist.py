@@ -79,13 +79,3 @@ class CsvCharList(CsvFile):
         """
         self.characters = novel.characters
         return 'SUCCESS'
-
-    def get_structure(self):
-        """returns a string showing the order characters.
-        """
-        lines = []
-
-        for crId in self.characters:
-            lines.append('  CrID:' + str(crId))
-
-        return '\n'.join(lines)

@@ -54,13 +54,3 @@ class HtmlLocations(HtmlFile):
         """
         if self._lcId is not None:
             self._lines.append(data.rstrip().lstrip())
-
-    def get_structure(self):
-        """returns a string showing the order items.
-        """
-        lines = []
-
-        for lcId in self.locations:
-            lines.append('  LcID:' + str(lcId))
-
-        return '\n'.join(lines)
