@@ -44,6 +44,8 @@ class YwCnvUi(YwCnv):
         else:
             self.import_to_yw(sourceFile, targetFile)
 
+        self.finish(sourcePath)
+
     def export_from_yw(self, sourceFile, targetFile):
         """Template method for conversion from yw to other.
         """
@@ -110,3 +112,6 @@ class YwCnvUi(YwCnv):
 
                 except:
                     pass
+
+    def finish(self, sourcePath):
+        """Hook for actions to take place after the conversion."""

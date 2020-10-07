@@ -24,8 +24,5 @@ class YwCnvTk(YwCnvUi):
         self.success = False
         self.fileFactory = None
 
-    def run(self, sourcePath, suffix=None):
-        """Create source and target objects and run conversion.
-        """
-        YwCnvUi.run(self, sourcePath, suffix)
+    def finish(self, sourcePath):
         self.userInterface.finish()
