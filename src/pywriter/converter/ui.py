@@ -23,3 +23,8 @@ class Ui():
     def set_info_how(self, message):
         """How's the converter doing?"""
         self.infoHowText = message
+
+    def finish(self):
+        """To be overwritten by subclasses requiring
+        special action to finish user interaction.
+        """
