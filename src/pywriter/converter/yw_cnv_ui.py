@@ -8,7 +8,6 @@ import os
 
 from pywriter.converter.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
-from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
 
@@ -19,16 +18,13 @@ class YwCnvUi(YwCnv):
     YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
 
     def __init__(self):
-        """Set defaults.
-        """
-        self.fileFactory = FileFactory()
         self.userInterface = Ui('yWriter import/export')
         self.success = False
+        self.fileFactory = None
 
-    def run_conversion(self, sourcePath, suffix=None):
+    def run(self, sourcePath, suffix=None):
         """Create source and target objects and run conversion.
         """
-        self.success = False
         message, sourceFile, targetFile = self.fileFactory.get_file_objects(
             sourcePath, suffix)
 

@@ -137,7 +137,7 @@ class FileExport(Novel):
         chapterSubst = dict(
             ID=chId,
             ChapterNumber=chapterNumber,
-            Title=self.chapters[chId].title,
+            Title=self.chapters[chId].get_title(),
             Desc=self.convert_from_yw(self.chapters[chId].desc),
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,

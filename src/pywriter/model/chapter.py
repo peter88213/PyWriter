@@ -12,10 +12,9 @@ class Chapter():
     # xml: <CHAPTERS><CHAPTER>
     """
 
-    stripChapterFromTitle = False
-    # bool
-    # True: Remove 'Chapter ' from the chapter title upon import.
-    # False: Do not modify the chapter title.
+    chapterTitlePrefix = "Chapter "
+    # str
+    # Can be changed at runtime for non-English projects.
 
     def __init__(self):
         self.title = None
@@ -72,10 +71,11 @@ class Chapter():
         # corresponds to the chapter's order of the scenes.
 
     def get_title(self):
-        """Fix auto-chapter titles for non-English """
+        """Fix auto-chapter titles if necessary 
+        """
         text = self.title
 
-        if self.stripChapterFromTitle:
-            text = text.replace('Chapter ', '')
+        if text:
+            text = text.replace('Chapter ', self.chapterTitlePrefix)
 
         return text

@@ -7,22 +7,20 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+SUFFIX = '_manuscript'
 
 import sys
 
-from pywriter.odt.odt_manuscript import OdtManuscript
-from pywriter.model.chapter import Chapter
 from pywriter.converter.yw_cnv_tk import YwCnvTk
+from pywriter.converter.universal_file_factory import UniversalFileFactory
 
 
-def run(sourcePath, silentMode=True, stripChapterFromTitle=False):
-    Chapter.stripChapterFromTitle = stripChapterFromTitle
-    converter = YwCnvTk(sourcePath, OdtManuscript.SUFFIX, silentMode)
+class Converter(YwCnvTk):
+
+    def __init__(self, silentMode=False):
+        YwCnvTk.__init__(self, silentMode)
+        self.fileFactory = UniversalFileFactory()
 
 
 if __name__ == '__main__':
-    try:
-        sourcePath = sys.argv[1]
-    except:
-        sourcePath = ''
-    run(sourcePath, False, True)
+    Converter().run(sys.argv[1], SUFFIX)

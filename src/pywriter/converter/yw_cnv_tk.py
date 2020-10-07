@@ -7,15 +7,13 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from pywriter.converter.yw_cnv_ui import YwCnvUi
 from pywriter.converter.ui import Ui
 from pywriter.converter.ui_tk import UiTk
-from pywriter.converter.file_factory import FileFactory
 
 
 class YwCnvTk(YwCnvUi):
     """Standalone yWriter converter with a simple tkinter GUI. 
     """
 
-    def __init__(self, sourcePath, suffix=None, silentMode=False):
-        """Run the converter with a GUI. """
+    def __init__(self, silentMode=False):
 
         if silentMode:
             self.userInterface = Ui('')
@@ -23,10 +21,11 @@ class YwCnvTk(YwCnvUi):
         else:
             self.userInterface = UiTk('yWriter import/export')
 
-        self.fileFactory = FileFactory()
-
-        # Run the converter.
-
         self.success = False
-        self.run_conversion(sourcePath, suffix)
+        self.fileFactory = None
+
+    def run(self, sourcePath, suffix=None):
+        """Create source and target objects and run conversion.
+        """
+        YwCnvUi.run(self, sourcePath, suffix)
         self.userInterface.finish()
