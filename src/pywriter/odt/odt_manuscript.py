@@ -47,8 +47,8 @@ class OdtManuscript(OdtFile):
 </text:section>
 '''
 
-    sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
-'''
+    sceneDivider = '<text:p ></text:p>'
+    #sceneDivider = '<text:p text:style-name="Heading_20_4">* * *</text:p>'
 
     chapterEndTemplate = '''</text:section>
 '''
