@@ -6,10 +6,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-import re
 import locale
 from shutil import rmtree
 from datetime import datetime
+from string import Template
 
 
 class OdtBuilder():
@@ -48,13 +48,13 @@ class OdtBuilder():
 <office:document-meta xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:grddl="http://www.w3.org/2003/g/data-view#" office:version="1.2">
   <office:meta>
     <meta:generator>PyWriter</meta:generator>
-    <dc:title>%title%</dc:title>
-    <dc:description>%summary%</dc:description>
+    <dc:title>$Title</dc:title>
+    <dc:description>$Summary</dc:description>
     <dc:subject></dc:subject>
     <meta:keyword></meta:keyword>
-    <meta:initial-creator>%author%</meta:initial-creator>
+    <meta:initial-creator>$Author</meta:initial-creator>
     <dc:creator></dc:creator>
-    <meta:creation-date>%date%T%time%Z</meta:creation-date>
+    <meta:creation-date>${Date}T${Time}Z</meta:creation-date>
     <dc:date></dc:date>
   </office:meta>
 </office:document-meta>
@@ -198,11 +198,11 @@ class OdtBuilder():
    <style:paragraph-properties style:text-autospace="ideograph-alpha" style:line-break="strict" style:writing-mode="lr-tb" style:font-independent-line-spacing="false">
     <style:tab-stops/>
    </style:paragraph-properties>
-   <style:text-properties fo:color="#000000" fo:font-size="10pt" fo:language="en" fo:country="US" style:letter-kerning="true" style:font-size-asian="10pt" style:language-asian="zxx" style:country-asian="none" style:font-size-complex="1pt" style:language-complex="zxx" style:country-complex="none"/>
+   <style:text-properties fo:color="#000000" fo:font-size="10pt" fo:language="$Language" fo:country="$Country" style:letter-kerning="true" style:font-size-asian="10pt" style:language-asian="zxx" style:country-asian="none" style:font-size-complex="1pt" style:language-complex="zxx" style:country-complex="none"/>
   </style:default-style>
   <style:default-style style:family="paragraph">
    <style:paragraph-properties fo:hyphenation-ladder-count="no-limit" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:tab-stop-distance="1.251cm" style:writing-mode="lr-tb"/>
-   <style:text-properties fo:color="#000000" style:font-name="Segoe UI" fo:font-size="10pt" fo:language="en" fo:country="US" style:letter-kerning="true" style:font-name-asian="Segoe UI" style:font-size-asian="10pt" style:language-asian="zxx" style:country-asian="none" style:font-name-complex="Segoe UI" style:font-size-complex="1pt" style:language-complex="zxx" style:country-complex="none" fo:hyphenate="false" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2"/>
+   <style:text-properties fo:color="#000000" style:font-name="Segoe UI" fo:font-size="10pt" fo:language="$Language" fo:country="$Country" style:letter-kerning="true" style:font-name-asian="Segoe UI" style:font-size-asian="10pt" style:language-asian="zxx" style:country-asian="none" style:font-name-complex="Segoe UI" style:font-size-complex="1pt" style:language-complex="zxx" style:country-complex="none" fo:hyphenate="false" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2"/>
   </style:default-style>
   <style:default-style style:family="table">
    <style:table-properties table:border-model="separating"/>
@@ -1378,13 +1378,14 @@ class OdtBuilder():
         # Generate styles.xml with system language set as document language
 
         localeCodes = locale.getdefaultlocale()[0].split('_')
-        languageCode = localeCodes[0]
-        countryCode = localeCodes[1]
-        text = self._STYLES_XML
-        text = re.sub('fo\:language\=\"..',
-                      'fo:language="' + languageCode, text)
-        text = re.sub('fo\:country\=\"..',
-                      'fo:country="' + countryCode, text)
+
+        localeSubst = dict(
+            Language=localeCodes[0],
+            Country=localeCodes[1],
+        )
+        template = Template(self._STYLES_XML)
+        text = template.safe_substitute(localeSubst)
+
         try:
             with open(self.TEMPDIR + '/styles.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
@@ -1394,13 +1395,19 @@ class OdtBuilder():
         # Generate meta.xml with actual document metadata
 
         dt = datetime.today()
-        date = str(dt.year) + '-' + str(dt.month).rjust(2, '0') + '-' + \
-            str(dt.day).rjust(2, '0')
-        time = str(dt.hour).rjust(2, '0') + ':' + \
-            str(dt.minute).rjust(2, '0') + ':' + \
-            str(dt.second).rjust(2, '0')
-        text = self._META_XML.replace('%author%', self.author).replace('%title%', self.title).replace(
-            '%summary%', '<![CDATA[' + self.desc + ']]>').replace('%date%', date).replace('%time%', time)
+
+        metaSubst = dict(
+            Author=self.author,
+            Title=self.title,
+            Summary='<![CDATA[' + self.desc + ']]>',
+            Date=str(dt.year) + '-' + str(dt.month).rjust(2, '0') +
+            '-' + str(dt.day).rjust(2, '0'),
+            Time=str(dt.hour).rjust(2, '0') +
+            ':' + str(dt.minute).rjust(2, '0') +
+            ':' + str(dt.second).rjust(2, '0'),
+        )
+        template = Template(self._META_XML)
+        text = template.safe_substitute(metaSubst)
 
         try:
             with open(self.TEMPDIR + '/meta.xml', 'w', encoding='utf-8') as f:
