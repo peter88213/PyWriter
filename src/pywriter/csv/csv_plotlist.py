@@ -104,7 +104,7 @@ class CsvPlotList(CsvFile):
         if self.scenes[scId].field1 == '1' or not self.arc1:
             sceneSubst['Field1'] = ''
 
-        if self.scenes[scId].field2 == '1' or not self.arc1:
+        if self.scenes[scId].field2 == '1' or not self.arc2:
             sceneSubst['Field2'] = ''
 
         if self.scenes[scId].field3 == '1' or not self.arc3:
