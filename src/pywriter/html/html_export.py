@@ -12,7 +12,7 @@ class HtmlExport(FileExport):
 
     DESCRIPTION = 'HTML report'
     EXTENSION = '.html'
-    # overwrites Novel._FILE_EXTENSION
+    # overwrites Novel.EXTENSION
 
     def convert_from_yw(self, text):
         """Convert yw7 markup to target format."""

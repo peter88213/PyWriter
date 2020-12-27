@@ -15,7 +15,7 @@ class CsvFile(FileExport):
     """
 
     EXTENSION = '.csv'
-    # overwrites Novel._FILE_EXTENSION
+    # overwrites Novel.EXTENSION
 
     _SEPARATOR = '|'
     # delimits data fields within a record.

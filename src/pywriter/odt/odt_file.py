@@ -16,7 +16,7 @@ class OdtFile(FileExport, OdtBuilder):
     """OpenDocument xml project file representation."""
 
     EXTENSION = '.odt'
-    # overwrites Novel._FILE_EXTENSION
+    # overwrites Novel.EXTENSION
 
     def convert_from_yw(self, text):
         """Convert yw7 raw markup to odt. Return an xml string."""
