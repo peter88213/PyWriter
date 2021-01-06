@@ -10,18 +10,11 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtLocations(OdtFile):
-    """OpenDocument xml location descriptions file representation."""
+    """OpenDocument xml location descriptions file representation.
+    """
 
     DESCRIPTION = 'Location descriptions'
     SUFFIX = '_locations'
-
-    def get_locationSubst(self, lcId):
-        locationSubst = OdtFile.get_locationSubst(self, lcId)
-
-        if self.locations[lcId].aka:
-            locationSubst['AKA'] = ' ("' + self.locations[lcId].aka + '")'
-
-        return locationSubst
 
     fileHeader = OdtBuilder.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
@@ -34,3 +27,13 @@ class OdtLocations(OdtFile):
 '''
 
     fileFooter = OdtBuilder.CONTENT_XML_FOOTER
+
+    def get_locationMapping(self, lcId):
+        """Return a mapping dictionary for a location section. 
+        """
+        locationMapping = OdtFile.get_locationMapping(self, lcId)
+
+        if self.locations[lcId].aka:
+            locationMapping['AKA'] = ' ("' + self.locations[lcId].aka + '")'
+
+        return locationMapping

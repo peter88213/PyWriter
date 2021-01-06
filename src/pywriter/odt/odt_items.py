@@ -10,18 +10,11 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtItems(OdtFile):
-    """OpenDocument xml item descriptions file representation."""
+    """OpenDocument xml item descriptions file representation.
+    """
 
     DESCRIPTION = 'Item descriptions'
     SUFFIX = '_items'
-
-    def get_itemSubst(self, itId):
-        itemSubst = OdtFile.get_itemSubst(self, itId)
-
-        if self.items[itId].aka:
-            itemSubst['AKA'] = ' ("' + self.items[itId].aka + '")'
-
-        return itemSubst
 
     fileHeader = OdtBuilder.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
@@ -34,3 +27,13 @@ class OdtItems(OdtFile):
 '''
 
     fileFooter = OdtBuilder.CONTENT_XML_FOOTER
+
+    def get_itemMapping(self, itId):
+        """Return a mapping dictionary for an item section. 
+        """
+        itemMapping = OdtFile.get_itemMapping(self, itId)
+
+        if self.items[itId].aka:
+            itemMapping['AKA'] = ' ("' + self.items[itId].aka + '")'
+
+        return itemMapping

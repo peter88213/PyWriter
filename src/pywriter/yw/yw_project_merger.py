@@ -13,7 +13,8 @@ from pywriter.model.object import Object
 
 
 class YwProjectMerger():
-    """Merge two yWriter projects."""
+    """Merge two yWriter projects.
+    """
 
     def merge_projects(self, target, source):
         """Overwrite existing target attributes with source attributes.

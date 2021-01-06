@@ -16,7 +16,9 @@ from pywriter.model.object import Object
 
 
 class YwFile(Novel):
-    """yWriter xml project file representation."""
+    """Abstract yWriter xml project file representation.
+    To be overwritten by version-specific subclasses. 
+    """
 
     def read(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
@@ -370,7 +372,8 @@ class YwFile(Novel):
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def merge(self, novel):
-        """Merge attributes.
+        """Copy required attributes of the novel object.
+        Return a message beginning with SUCCESS or ERROR.
         """
 
         if self.file_exists():

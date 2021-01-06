@@ -10,7 +10,8 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtChapterDesc(OdtFile):
-    """OpenDocument xml chapter summaries file representation."""
+    """OpenDocument xml chapter summaries file representation.
+    """
 
     DESCRIPTION = 'Chapter descriptions'
     SUFFIX = '_chapters'

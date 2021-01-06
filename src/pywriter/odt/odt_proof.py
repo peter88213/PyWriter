@@ -10,7 +10,8 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtProof(OdtFile):
-    """OpenDocument xml proof reading file representation."""
+    """OpenDocument xml proof reading file representation.
+    """
 
     DESCRIPTION = 'Tagged manuscript for proofing'
     SUFFIX = '_proof'

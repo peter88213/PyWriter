@@ -13,13 +13,15 @@ from pywriter.file.file_export import FileExport
 
 
 class OdtFile(FileExport, OdtBuilder):
-    """OpenDocument xml project file representation."""
+    """OpenDocument xml project file representation.
+    """
 
     EXTENSION = '.odt'
     # overwrites Novel.EXTENSION
 
     def convert_from_yw(self, text):
-        """Convert yw7 raw markup to odt. Return an xml string."""
+        """Convert yw7 raw markup to odt. Return an xml string.
+        """
 
         ODT_REPLACEMENTS = [
             ['&', '&amp;'],

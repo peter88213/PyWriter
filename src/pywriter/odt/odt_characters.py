@@ -10,21 +10,11 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtCharacters(OdtFile):
-    """OpenDocument xml character descriptions file representation."""
+    """OpenDocument xml character descriptions file representation.
+    """
 
     DESCRIPTION = 'Character descriptions'
     SUFFIX = '_characters'
-
-    def get_characterSubst(self, crId):
-        characterSubst = OdtFile.get_characterSubst(self, crId)
-
-        if self.characters[crId].aka:
-            characterSubst['AKA'] = ' ("' + self.characters[crId].aka + '")'
-
-        if self.characters[crId].fullName:
-            characterSubst['FullName'] = '/' + self.characters[crId].fullName
-
-        return characterSubst
 
     fileHeader = OdtBuilder.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
@@ -48,3 +38,16 @@ class OdtCharacters(OdtFile):
 '''
 
     fileFooter = OdtBuilder.CONTENT_XML_FOOTER
+
+    def get_characterMapping(self, crId):
+        """Return a mapping dictionary for a character section. 
+        """
+        characterMapping = OdtFile.get_characterMapping(self, crId)
+
+        if self.characters[crId].aka:
+            characterMapping['AKA'] = ' ("' + self.characters[crId].aka + '")'
+
+        if self.characters[crId].fullName:
+            characterMapping['FullName'] = '/' + self.characters[crId].fullName
+
+        return characterMapping

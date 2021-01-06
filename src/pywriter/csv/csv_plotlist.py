@@ -59,8 +59,10 @@ class CsvPlotList(CsvFile):
         '''$SceneNumber|$WordsTotal|$Field1|$Field2|$Field3|$Field4
 '''
 
-    def get_projectTemplateSubst(self):
-        projectTemplateSubst = CsvFile.get_projectTemplateSubst(self)
+    def get_projectTemplateMapping(self):
+        """Return a mapping dictionary for the project section. 
+        """
+        projectTemplateMapping = CsvFile.get_projectTemplateMapping(self)
 
         charList = []
 
@@ -72,48 +74,50 @@ class CsvPlotList(CsvFile):
 
         else:
             self.arc1 = False
-            projectTemplateSubst['FieldTitle1'] = self._NOT_APPLICABLE
+            projectTemplateMapping['FieldTitle1'] = self._NOT_APPLICABLE
 
         if self.fieldTitle2 in charList or self._STORYLINE_MARKER in self.fieldTitle2.lower():
             self.arc2 = True
 
         else:
             self.arc2 = False
-            projectTemplateSubst['FieldTitle2'] = self._NOT_APPLICABLE
+            projectTemplateMapping['FieldTitle2'] = self._NOT_APPLICABLE
 
         if self.fieldTitle3 in charList or self._STORYLINE_MARKER in self.fieldTitle3.lower():
             self.arc3 = True
 
         else:
             self.arc3 = False
-            projectTemplateSubst['FieldTitle3'] = self._NOT_APPLICABLE
+            projectTemplateMapping['FieldTitle3'] = self._NOT_APPLICABLE
 
         if self.fieldTitle4 in charList or self._STORYLINE_MARKER in self.fieldTitle4.lower():
             self.arc4 = True
 
         else:
             self.arc4 = False
-            projectTemplateSubst['FieldTitle4'] = self._NOT_APPLICABLE
+            projectTemplateMapping['FieldTitle4'] = self._NOT_APPLICABLE
 
-        return projectTemplateSubst
+        return projectTemplateMapping
 
-    def get_sceneSubst(self, scId, sceneNumber, wordsTotal, lettersTotal):
-        sceneSubst = CsvFile.get_sceneSubst(
+    def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
+        """Return a mapping dictionary for a scene section. 
+        """
+        sceneMapping = CsvFile.get_sceneMapping(
             self, scId, sceneNumber, wordsTotal, lettersTotal)
 
         if self.scenes[scId].field1 == '1' or not self.arc1:
-            sceneSubst['Field1'] = ''
+            sceneMapping['Field1'] = ''
 
         if self.scenes[scId].field2 == '1' or not self.arc2:
-            sceneSubst['Field2'] = ''
+            sceneMapping['Field2'] = ''
 
         if self.scenes[scId].field3 == '1' or not self.arc3:
-            sceneSubst['Field3'] = ''
+            sceneMapping['Field3'] = ''
 
         if self.scenes[scId].field4 == '1' or not self.arc4:
-            sceneSubst['Field4'] = ''
+            sceneMapping['Field4'] = ''
 
-        return sceneSubst
+        return sceneMapping
 
     def read(self):
         """Parse the csv file located at filePath, fetching 

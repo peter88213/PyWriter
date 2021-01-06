@@ -1,5 +1,10 @@
 """FileExport - Generic template-based file exporter.
 
+* Merge a novel object's attributes.
+* Convert yw7 markup to target format. 
+* Create a template-based output file.
+* This class is generic and contains no conversion algorithm and no templates.
+
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -15,6 +20,8 @@ from pywriter.model.novel import Novel
 
 class FileExport(Novel):
     """Abstract yWriter project file exporter representation.
+    To be overwritten by subclasses providing file type specific 
+    markup converters and templates.
     """
 
     fileHeader = ''
@@ -51,7 +58,8 @@ class FileExport(Novel):
         return(text)
 
     def merge(self, novel):
-        """Copy selected novel attributes.
+        """Copy required attributes of the novel object.
+        Return a message beginning with SUCCESS or ERROR.
         """
 
         if novel.title is not None:
@@ -116,8 +124,10 @@ class FileExport(Novel):
 
         return 'SUCCESS'
 
-    def get_projectTemplateSubst(self):
-        projectTemplateSubst = dict(
+    def get_projectTemplateMapping(self):
+        """Return a mapping dictionary for the project section. 
+        """
+        projectTemplateMapping = dict(
             Title=self.title,
             Desc=self.convert_from_yw(self.desc),
             AuthorName=self.author,
@@ -127,14 +137,16 @@ class FileExport(Novel):
             FieldTitle4=self.fieldTitle4,
         )
 
-        for key in projectTemplateSubst:
-            if projectTemplateSubst[key] is None:
-                projectTemplateSubst[key] = ''
+        for key in projectTemplateMapping:
+            if projectTemplateMapping[key] is None:
+                projectTemplateMapping[key] = ''
 
-        return projectTemplateSubst
+        return projectTemplateMapping
 
-    def get_chapterSubst(self, chId, chapterNumber):
-        chapterSubst = dict(
+    def get_chapterMapping(self, chId, chapterNumber):
+        """Return a mapping dictionary for a chapter section. 
+        """
+        chapterMapping = dict(
             ID=chId,
             ChapterNumber=chapterNumber,
             Title=self.chapters[chId].get_title(),
@@ -143,13 +155,15 @@ class FileExport(Novel):
             ProjectPath=self.projectPath,
         )
 
-        for key in chapterSubst:
-            if chapterSubst[key] is None:
-                chapterSubst[key] = ''
+        for key in chapterMapping:
+            if chapterMapping[key] is None:
+                chapterMapping[key] = ''
 
-        return chapterSubst
+        return chapterMapping
 
-    def get_sceneSubst(self, scId, sceneNumber, wordsTotal, lettersTotal):
+    def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
+        """Return a mapping dictionary for a scene section. 
+        """
 
         if self.scenes[scId].tags is not None:
             tags = ', '.join(self.scenes[scId].tags)
@@ -200,7 +214,7 @@ class FileExport(Novel):
         else:
             reactionScene = Scene.ACTION_MARKER
 
-        sceneSubst = dict(
+        sceneMapping = dict(
             ID=scId,
             SceneNumber=sceneNumber,
             Title=self.scenes[scId].title,
@@ -242,13 +256,15 @@ class FileExport(Novel):
             ProjectPath=self.projectPath,
         )
 
-        for key in sceneSubst:
-            if sceneSubst[key] is None:
-                sceneSubst[key] = ''
+        for key in sceneMapping:
+            if sceneMapping[key] is None:
+                sceneMapping[key] = ''
 
-        return sceneSubst
+        return sceneMapping
 
-    def get_characterSubst(self, crId):
+    def get_characterMapping(self, crId):
+        """Return a mapping dictionary for a character section. 
+        """
 
         if self.characters[crId].tags is not None:
             tags = ', '.join(self.characters[crId].tags)
@@ -262,7 +278,7 @@ class FileExport(Novel):
         else:
             characterStatus = Character.MINOR_MARKER
 
-        characterSubst = dict(
+        characterMapping = dict(
             ID=crId,
             Title=self.characters[crId].title,
             Desc=self.convert_from_yw(self.characters[crId].desc),
@@ -276,13 +292,15 @@ class FileExport(Novel):
             Status=characterStatus,
         )
 
-        for key in characterSubst:
-            if characterSubst[key] is None:
-                characterSubst[key] = ''
+        for key in characterMapping:
+            if characterMapping[key] is None:
+                characterMapping[key] = ''
 
-        return characterSubst
+        return characterMapping
 
-    def get_locationSubst(self, lcId):
+    def get_locationMapping(self, lcId):
+        """Return a mapping dictionary for a location section. 
+        """
 
         if self.locations[lcId].tags is not None:
             tags = ', '.join(self.locations[lcId].tags)
@@ -290,7 +308,7 @@ class FileExport(Novel):
         else:
             tags = ''
 
-        locationSubst = dict(
+        locationMapping = dict(
             ID=lcId,
             Title=self.locations[lcId].title,
             Desc=self.convert_from_yw(self.locations[lcId].desc),
@@ -298,13 +316,15 @@ class FileExport(Novel):
             AKA=FileExport.convert_from_yw(self, self.locations[lcId].aka),
         )
 
-        for key in locationSubst:
-            if locationSubst[key] is None:
-                locationSubst[key] = ''
+        for key in locationMapping:
+            if locationMapping[key] is None:
+                locationMapping[key] = ''
 
-        return locationSubst
+        return locationMapping
 
-    def get_itemSubst(self, itId):
+    def get_itemMapping(self, itId):
+        """Return a mapping dictionary for an item section. 
+        """
 
         if self.items[itId].tags is not None:
             tags = ', '.join(self.items[itId].tags)
@@ -312,7 +332,7 @@ class FileExport(Novel):
         else:
             tags = ''
 
-        itemSubst = dict(
+        itemMapping = dict(
             ID=itId,
             Title=self.items[itId].title,
             Desc=self.convert_from_yw(self.items[itId].desc),
@@ -320,13 +340,16 @@ class FileExport(Novel):
             AKA=FileExport.convert_from_yw(self, self.items[itId].aka),
         )
 
-        for key in itemSubst:
-            if itemSubst[key] is None:
-                itemSubst[key] = ''
+        for key in itemMapping:
+            if itemMapping[key] is None:
+                itemMapping[key] = ''
 
-        return itemSubst
+        return itemMapping
 
     def write(self):
+        """Create a template-based output file. 
+        Return a message string starting with 'SUCCESS' or 'ERROR'.
+        """
         lines = []
         wordsTotal = 0
         lettersTotal = 0
@@ -334,7 +357,8 @@ class FileExport(Novel):
         sceneNumber = 0
 
         template = Template(self.fileHeader)
-        lines.append(template.safe_substitute(self.get_projectTemplateSubst()))
+        lines.append(template.safe_substitute(
+            self.get_projectTemplateMapping()))
 
         for chId in self.srtChapters:
 
@@ -398,7 +422,7 @@ class FileExport(Novel):
                 chapterNumber += 1
 
             lines.append(template.safe_substitute(
-                self.get_chapterSubst(chId, chapterNumber)))
+                self.get_chapterMapping(chId, chapterNumber)))
             firstSceneInChapter = True
 
             for scId in self.chapters[chId].srtScenes:
@@ -453,7 +477,7 @@ class FileExport(Novel):
                 if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
                     lines.append(self.sceneDivider)
 
-                lines.append(template.safe_substitute(self.get_sceneSubst(
+                lines.append(template.safe_substitute(self.get_sceneMapping(
                     scId, sceneNumber, wordsTotal, lettersTotal)))
 
                 firstSceneInChapter = False
@@ -478,16 +502,16 @@ class FileExport(Novel):
         for crId in self.characters:
             template = Template(self.characterTemplate)
             lines.append(template.safe_substitute(
-                self.get_characterSubst(crId)))
+                self.get_characterMapping(crId)))
 
         for lcId in self.locations:
             template = Template(self.locationTemplate)
             lines.append(template.safe_substitute(
-                self.get_locationSubst(lcId)))
+                self.get_locationMapping(lcId)))
 
         for itId in self.items:
             template = Template(self.itemTemplate)
-            lines.append(template.safe_substitute(self.get_itemSubst(itId)))
+            lines.append(template.safe_substitute(self.get_itemMapping(itId)))
 
         lines.append(self.fileFooter)
         text = ''.join(lines)

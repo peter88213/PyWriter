@@ -10,7 +10,8 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtManuscript(OdtFile):
-    """OpenDocument xml manuscript file representation."""
+    """OpenDocument xml manuscript file representation.
+    """
 
     DESCRIPTION = 'Editable manuscript'
     SUFFIX = '_manuscript'
@@ -55,10 +56,12 @@ class OdtManuscript(OdtFile):
 
     fileFooter = OdtBuilder.CONTENT_XML_FOOTER
 
-    def get_chapterSubst(self, chId, chapterNumber):
-        chapterSubst = OdtFile.get_chapterSubst(self, chId, chapterNumber)
+    def get_chapterMapping(self, chId, chapterNumber):
+        """Return a mapping dictionary for a chapter section. 
+        """
+        chapterMapping = OdtFile.get_chapterMapping(self, chId, chapterNumber)
 
         if self.chapters[chId].suppressChapterTitle:
-            chapterSubst['Title'] = ''
+            chapterMapping['Title'] = ''
 
-        return chapterSubst
+        return chapterMapping

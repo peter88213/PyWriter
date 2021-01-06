@@ -13,6 +13,8 @@ from string import Template
 
 
 class OdtBuilder():
+    """Build an ODT zipfile.
+    """
 
     TEMPDIR = 'temp_odt'
 
@@ -1379,12 +1381,12 @@ class OdtBuilder():
 
         localeCodes = locale.getdefaultlocale()[0].split('_')
 
-        localeSubst = dict(
+        localeMapping = dict(
             Language=localeCodes[0],
             Country=localeCodes[1],
         )
         template = Template(self._STYLES_XML)
-        text = template.safe_substitute(localeSubst)
+        text = template.safe_substitute(localeMapping)
 
         try:
             with open(self.TEMPDIR + '/styles.xml', 'w', encoding='utf-8') as f:
@@ -1396,7 +1398,7 @@ class OdtBuilder():
 
         dt = datetime.today()
 
-        metaSubst = dict(
+        metaMapping = dict(
             Author=self.author,
             Title=self.title,
             Summary='<![CDATA[' + self.desc + ']]>',
@@ -1407,7 +1409,7 @@ class OdtBuilder():
             ':' + str(dt.second).rjust(2, '0'),
         )
         template = Template(self._META_XML)
-        text = template.safe_substitute(metaSubst)
+        text = template.safe_substitute(metaMapping)
 
         try:
             with open(self.TEMPDIR + '/meta.xml', 'w', encoding='utf-8') as f:

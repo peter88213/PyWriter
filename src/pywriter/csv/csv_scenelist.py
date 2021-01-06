@@ -43,23 +43,25 @@ class CsvSceneList(CsvFile):
         '''$Characters|$Locations|$Items
 '''
 
-    def get_sceneSubst(self, scId, sceneNumber, wordsTotal, lettersTotal):
-        sceneSubst = CsvFile.get_sceneSubst(
+    def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
+        """Return a mapping dictionary for a scene section. 
+        """
+        sceneMapping = CsvFile.get_sceneMapping(
             self, scId, sceneNumber, wordsTotal, lettersTotal)
 
         if self.scenes[scId].field1 == '1':
-            sceneSubst['Field1'] = ''
+            sceneMapping['Field1'] = ''
 
         if self.scenes[scId].field2 == '1':
-            sceneSubst['Field2'] = ''
+            sceneMapping['Field2'] = ''
 
         if self.scenes[scId].field3 == '1':
-            sceneSubst['Field3'] = ''
+            sceneMapping['Field3'] = ''
 
         if self.scenes[scId].field4 == '1':
-            sceneSubst['Field4'] = ''
+            sceneMapping['Field4'] = ''
 
-        return sceneSubst
+        return sceneMapping
 
     def read(self):
         """Parse the csv file located at filePath, 

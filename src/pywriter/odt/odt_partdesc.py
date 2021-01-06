@@ -10,7 +10,8 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtPartDesc(OdtFile):
-    """OpenDocument xml part summaries file representation."""
+    """OpenDocument xml part summaries file representation.
+    """
 
     DESCRIPTION = 'Part descriptions'
     SUFFIX = '_parts'

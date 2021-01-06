@@ -75,7 +75,8 @@ class CsvCharList(CsvFile):
         return 'SUCCESS: Data read from "' + self._filePath + '".'
 
     def merge(self, novel):
-        """Copy selected novel attributes.
+        """Copy required attributes of the novel object.
+        Return a message beginning with SUCCESS or ERROR.
         """
         self.characters = novel.characters
         return 'SUCCESS'

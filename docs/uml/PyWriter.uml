@@ -609,12 +609,12 @@
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_3zOzEPsPEeq-TdV6dVW08A" name="convert_from_yw"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_3zIFYPsPEeq-TdV6dVW08A" name="merge"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_SKUIoPsdEeq-TdV6dVW08A" name="get_projectTemplateSubst"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_V7WKQPsdEeq-TdV6dVW08A" name="get_chapterSubst"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_WPXScPsdEeq-TdV6dVW08A" name="get_sceneSubst"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_YpGJ8PsdEeq-TdV6dVW08A" name="get_characterSubst"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Yxoa4PsdEeq-TdV6dVW08A" name="get_locationSubst"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Y2Dn4PsdEeq-TdV6dVW08A" name="get_itemSubst"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_SKUIoPsdEeq-TdV6dVW08A" name="get_projectTemplateMapping"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_V7WKQPsdEeq-TdV6dVW08A" name="get_chapterMapping"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_WPXScPsdEeq-TdV6dVW08A" name="get_sceneMapping"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_YpGJ8PsdEeq-TdV6dVW08A" name="get_characterMapping"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Yxoa4PsdEeq-TdV6dVW08A" name="get_locationMapping"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Y2Dn4PsdEeq-TdV6dVW08A" name="get_itemMapping"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_3zMW0PsPEeq-TdV6dVW08A" name="write"/>
       </packagedElement>
     </packagedElement>

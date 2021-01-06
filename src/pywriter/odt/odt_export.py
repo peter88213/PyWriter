@@ -10,10 +10,10 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtExport(OdtFile):
+    """OpenDocument xml project file representation.
+    """
 
     SUFFIX = ''
-
-    """OpenDocument xml project file representation."""
 
     fileHeader = OdtBuilder.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
@@ -42,10 +42,12 @@ class OdtExport(OdtFile):
 
     fileFooter = OdtBuilder.CONTENT_XML_FOOTER
 
-    def get_chapterSubst(self, chId, chapterNumber):
-        chapterSubst = OdtFile.get_chapterSubst(self, chId, chapterNumber)
+    def get_chapterMapping(self, chId, chapterNumber):
+        """Return a mapping dictionary for a chapter section. 
+        """
+        chapterMapping = OdtFile.get_chapterMapping(self, chId, chapterNumber)
 
         if self.chapters[chId].suppressChapterTitle:
-            chapterSubst['Title'] = ''
+            chapterMapping['Title'] = ''
 
-        return chapterSubst
+        return chapterMapping

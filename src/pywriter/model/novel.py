@@ -134,7 +134,7 @@ class Novel():
 
     @abstractmethod
     def merge(self, novel):
-        """Merge selected novel properties.
+        """Copy required attributes of the novel object.
         To be overwritten by file format specific subclasses.
         """
 

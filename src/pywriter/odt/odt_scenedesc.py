@@ -10,7 +10,8 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtSceneDesc(OdtFile):
-    """OpenDocument xml scene summaries file representation."""
+    """OpenDocument xml scene summaries file representation.
+    """
 
     DESCRIPTION = 'Scene descriptions'
     SUFFIX = '_scenes'

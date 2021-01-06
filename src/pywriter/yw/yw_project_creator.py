@@ -10,7 +10,8 @@ from pywriter.yw.yw_project_merger import YwProjectMerger
 
 
 class YwProjectCreator(YwProjectMerger):
-    """Create a new project."""
+    """Create a new project.
+    """
 
     def merge_projects(self, target, source):
         """Create target attributes with source attributes.
