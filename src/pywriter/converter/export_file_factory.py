@@ -42,8 +42,8 @@ class ExportFileFactory(FileFactory):
     """
 
     def get_file_objects(self, sourcePath, suffix=None):
-        """Returns:
-        * A message starting with 'SUCCESS' or 'ERROR'
+        """Return a tuple with three elements:
+        * A message string starting with 'SUCCESS' or 'ERROR'
         * sourceFile: a Novel subclass instance
         * targetFile: a Novel subclass instance
         """
@@ -125,11 +125,11 @@ class ExportFileFactory(FileFactory):
                     fileName + suffix + CsvItemList.EXTENSION)
 
             else:
-                return ['ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None]
+                return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None
 
         else:
             # The source file is not a yWriter project.
 
-            return ['ERROR: Source is not a yWriter project.', None, None]
+            return 'ERROR: Source is not a yWriter project.', None, None
 
-        return ('SUCCESS', sourceFile, targetFile)
+        return 'SUCCESS', sourceFile, targetFile

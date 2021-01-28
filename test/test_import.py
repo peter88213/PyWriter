@@ -69,6 +69,13 @@ class NrmOpr(unittest.TestCase):
     """
 
     def setUp(self):
+
+        try:
+            os.mkdir(EXEC_PATH)
+
+        except:
+            pass
+
         remove_all_tempfiles()
 
     def test_wip(self):

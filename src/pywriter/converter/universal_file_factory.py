@@ -56,8 +56,8 @@ class UniversalFileFactory(FileFactory):
     """
 
     def get_file_objects(self, sourcePath, suffix=None):
-        """Returns:
-        * A message starting with 'SUCCESS' or 'ERROR'
+        """Return a tuple with three elements:
+        * A message string starting with 'SUCCESS' or 'ERROR'
         * sourceFile: a Novel subclass instance
         * targetFile: a Novel subclass instance
         """
@@ -139,7 +139,7 @@ class UniversalFileFactory(FileFactory):
                     fileName + suffix + CsvItemList.EXTENSION)
 
             else:
-                return ['ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None]
+                return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None
 
         else:
             # The source file is not a yWriter project.
@@ -188,7 +188,7 @@ class UniversalFileFactory(FileFactory):
                         sourceFile = HtmlImport(sourcePath)
 
                 else:
-                    return ['ERROR: Cannot read "' + os.path.normpath(sourcePath) + '".', None, None]
+                    return 'ERROR: Cannot read "' + os.path.normpath(sourcePath) + '".', None, None
 
             elif sourcePath.endswith(CsvSceneList.SUFFIX + CsvSceneList.EXTENSION):
                 sourceFile = CsvSceneList(sourcePath)
@@ -206,7 +206,7 @@ class UniversalFileFactory(FileFactory):
                 sourceFile = CsvItemList(sourcePath)
 
             else:
-                return ['ERROR: File type of  "' + os.path.normpath(sourcePath) + '" not supported.', None, None]
+                return 'ERROR: File type of  "' + os.path.normpath(sourcePath) + '" not supported.', None, None
 
             if targetFile is None:
 
@@ -224,6 +224,6 @@ class UniversalFileFactory(FileFactory):
                     targetFile = Yw6File(ywPathBasis + Yw6File.EXTENSION)
 
             if targetFile is None:
-                return ['ERROR: No yWriter project to write.', None, None]
+                return 'ERROR: No yWriter project to write.', None, None
 
-        return ('SUCCESS', sourceFile, targetFile)
+        return 'SUCCESS', sourceFile, targetFile

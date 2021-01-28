@@ -19,7 +19,7 @@ class FileFactory():
     @abstractmethod
     def get_file_objects(self, sourcePath, suffix=None):
         """Abstract method to be overwritten by subclasses.
-        Returns:
+        Return a tuple with three elements:
         * A message string starting with 'SUCCESS' or 'ERROR'
         * sourceFile: a Novel subclass instance
         * targetFile: a Novel subclass instance
