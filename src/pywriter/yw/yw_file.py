@@ -369,7 +369,7 @@ class YwFile(Novel):
 
                     self.scenes[scId].items.append(itId.text)
 
-        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self.filePath + '".'
+        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + os.path.normpath(self.filePath) + '".'
 
     def merge(self, novel):
         """Copy required attributes of the novel object.

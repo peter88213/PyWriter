@@ -72,7 +72,7 @@ class CsvCharList(CsvFile):
                 self.characters[crId].tags = cell[8].split(';')
                 self.characters[crId].notes = self.convert_to_yw(cell[9])
 
-        return 'SUCCESS: Data read from "' + self.filePath + '".'
+        return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
 
     def merge(self, novel):
         """Copy required attributes of the novel object.

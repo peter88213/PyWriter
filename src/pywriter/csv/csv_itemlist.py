@@ -61,7 +61,7 @@ class CsvItemList(CsvFile):
                 self.items[itId].aka = cell[3]
                 self.items[itId].tags = cell[4].split(';')
 
-        return 'SUCCESS: Data read from "' + self.filePath + '".'
+        return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
 
     def merge(self, novel):
         """Copy required attributes of the novel object.

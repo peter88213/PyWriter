@@ -199,4 +199,4 @@ class CsvSceneList(CsvFile):
                             self.scenes[scId].items.append(id)
                 '''
 
-        return 'SUCCESS: Data read from "' + self.filePath + '".'
+        return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
