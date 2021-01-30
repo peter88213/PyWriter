@@ -20,9 +20,9 @@ class AnsiTreeWriter(YwTreeWriter):
 
         try:
             ywProject._tree.write(
-                ywProject._filePath, xml_declaration=False, encoding='iso-8859-1')
+                ywProject.filePath, xml_declaration=False, encoding='iso-8859-1')
 
         except(PermissionError):
-            return 'ERROR: "' + os.path.normpath(ywProject._filePath) + '" is write protected.'
+            return 'ERROR: "' + os.path.normpath(ywProject.filePath) + '" is write protected.'
 
         return 'SUCCESS'

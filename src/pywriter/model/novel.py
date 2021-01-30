@@ -157,8 +157,8 @@ class Novel():
         """
 
     def file_exists(self):
-        """Check whether the file specified by _filePath exists. """
-        if os.path.isfile(self._filePath):
+        """Check whether the file specified by filePath exists. """
+        if os.path.isfile(self.filePath):
             return True
 
         else:

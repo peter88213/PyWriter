@@ -36,11 +36,11 @@ class CsvCharList(CsvFile):
         Return a message beginning with SUCCESS or ERROR.
         """
         try:
-            with open(self._filePath, 'r', encoding='utf-8') as f:
+            with open(self.filePath, 'r', encoding='utf-8') as f:
                 lines = (f.readlines())
 
         except(FileNotFoundError):
-            return 'ERROR: "' + os.path.normpath(self._filePath) + '" not found.'
+            return 'ERROR: "' + os.path.normpath(self.filePath) + '" not found.'
 
         if lines[0] != self.fileHeader:
             return 'ERROR: Wrong lines content.'
@@ -72,7 +72,7 @@ class CsvCharList(CsvFile):
                 self.characters[crId].tags = cell[8].split(';')
                 self.characters[crId].notes = self.convert_to_yw(cell[9])
 
-        return 'SUCCESS: Data read from "' + self._filePath + '".'
+        return 'SUCCESS: Data read from "' + self.filePath + '".'
 
     def merge(self, novel):
         """Copy required attributes of the novel object.

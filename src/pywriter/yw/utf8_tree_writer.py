@@ -20,9 +20,9 @@ class Utf8TreeWriter(YwTreeWriter):
 
         try:
             ywProject._tree.write(
-                ywProject._filePath, xml_declaration=False, encoding='utf-8')
+                ywProject.filePath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return 'ERROR: "' + os.path.normpath(ywProject._filePath) + '" is write protected.'
+            return 'ERROR: "' + os.path.normpath(ywProject.filePath) + '" is write protected.'
 
         return 'SUCCESS'

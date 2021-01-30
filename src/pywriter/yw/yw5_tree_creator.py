@@ -70,9 +70,9 @@ class Yw5TreeCreator(Yw5TreeBuilder):
         # Modify xml tree.
 
         try:
-            ywProject._tree = ET.parse(ywProject._filePath)
+            ywProject._tree = ET.parse(ywProject.filePath)
 
         except:
-            return 'ERROR: Can not read xml file "' + ywProject._filePath + '".'
+            return 'ERROR: Can not read xml file "' + ywProject.filePath + '".'
 
         return Yw5TreeBuilder.build_element_tree(self, ywProject)

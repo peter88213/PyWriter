@@ -123,7 +123,7 @@ class HtmlFile(Novel, HTMLParser):
         with chapter and scene sections.
         Return a message beginning with SUCCESS or ERROR. 
         """
-        result = read_html_file(self._filePath)
+        result = read_html_file(self.filePath)
 
         if result[0].startswith('ERROR'):
             return (result[0])

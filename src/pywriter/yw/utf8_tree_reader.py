@@ -20,9 +20,9 @@ class Utf8TreeReader(YwTreeReader):
         """
 
         try:
-            ywFile._tree = ET.parse(ywFile._filePath)
+            ywFile._tree = ET.parse(ywFile.filePath)
 
         except:
-            return 'ERROR: Can not process "' + os.path.normpath(ywFile._filePath) + '".'
+            return 'ERROR: Can not process "' + os.path.normpath(ywFile.filePath) + '".'
 
         return 'SUCCESS: XML element tree read in.'

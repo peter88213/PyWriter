@@ -65,7 +65,7 @@ class YwCnvUi(YwCnv):
 
         if targetFile.file_exists():
             self.userInterface.set_info_how(
-                'ERROR: "' + os.path.normpath(targetFile._filePath) + '" already exists.')
+                'ERROR: "' + os.path.normpath(targetFile.filePath) + '" already exists.')
 
         else:
             message = self.convert(sourceFile, targetFile)

@@ -125,11 +125,11 @@ class CsvPlotList(CsvFile):
         Return a message beginning with SUCCESS or ERROR.
         """
         try:
-            with open(self._filePath, 'r', encoding='utf-8') as f:
+            with open(self.filePath, 'r', encoding='utf-8') as f:
                 lines = (f.readlines())
 
         except(FileNotFoundError):
-            return 'ERROR: "' + os.path.normpath(self._filePath) + '" not found.'
+            return 'ERROR: "' + os.path.normpath(self.filePath) + '" not found.'
 
         cellsInLine = len(self.fileHeader.split(self._SEPARATOR))
 
@@ -192,4 +192,4 @@ class CsvPlotList(CsvFile):
                 elif tableHeader[i] != self._NOT_APPLICABLE:
                     self.scenes[scId].field4 = '1'
 
-        return 'SUCCESS: Data read from "' + self._filePath + '".'
+        return 'SUCCESS: Data read from "' + self.filePath + '".'

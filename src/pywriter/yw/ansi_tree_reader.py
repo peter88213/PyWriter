@@ -36,6 +36,6 @@ class AnsiTreeReader(YwTreeReader):
             os.remove(_TEMPFILE)
 
         except:
-            return 'ERROR: Can not process "' + os.path.normpath(ywFile._filePath) + '".'
+            return 'ERROR: Can not process "' + os.path.normpath(ywFile.filePath) + '".'
 
         return 'SUCCESS: XML element tree read in.'

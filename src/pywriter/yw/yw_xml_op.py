@@ -19,10 +19,10 @@ class XmlTreeReader():
         """
 
         try:
-            ywFile._tree = ET.parse(ywFile._filePath)
+            ywFile._tree = ET.parse(ywFile.filePath)
 
         except:
-            return 'ERROR: Can not process "' + ywFile._filePath + '".'
+            return 'ERROR: Can not process "' + ywFile.filePath + '".'
 
         return 'SUCCESS: XML element tree read in.'
 
@@ -41,10 +41,10 @@ class XmlTreeWriter():
 
         try:
             ywProject._tree.write(
-                ywProject._filePath, xml_declaration=False, encoding='utf-8')
+                ywProject.filePath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return 'ERROR: "' + ywProject._filePath + '" is write protected.'
+            return 'ERROR: "' + ywProject.filePath + '" is write protected.'
 
         return 'SUCCESS'
 
