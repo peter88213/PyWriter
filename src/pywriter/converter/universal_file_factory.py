@@ -178,10 +178,6 @@ class UniversalFileFactory(FileFactory):
 
                 if result[0].startswith('SUCCESS'):
                     targetFile = Yw7File(fileName + Yw7File.EXTENSION)
-
-                    if targetFile.file_exists():
-                        return 'ERROR: Target "' + os.path.normpath(targetFile.filePath) + '" already exists.', None, None
-
                     targetFile.ywTreeBuilder = Yw7TreeCreator()
                     targetFile.ywProjectMerger = YwProjectCreator()
 

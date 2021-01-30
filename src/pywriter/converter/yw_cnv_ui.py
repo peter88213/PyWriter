@@ -60,14 +60,14 @@ class YwCnvUi(YwCnv):
     def create_yw7(self, sourceFile, targetFile):
         """Template method for creation of a new yw7 project.
         """
+        self.userInterface.set_info_what(
+            'Create a yWriter project file from ' + sourceFile.DESCRIPTION + '\nNew project: "' + os.path.normpath(targetFile.filePath) + '"')
 
         if targetFile.file_exists():
             self.userInterface.set_info_how(
                 'ERROR: "' + os.path.normpath(targetFile._filePath) + '" already exists.')
 
         else:
-            self.userInterface.set_info_what(
-                'Create a yWriter project file from ' + sourceFile.DESCRIPTION + '\nNew project: "' + os.path.normpath(targetFile.filePath) + '"')
             message = self.convert(sourceFile, targetFile)
             self.userInterface.set_info_how(message)
 
