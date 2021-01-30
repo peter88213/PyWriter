@@ -62,9 +62,8 @@ def remove_all_tempfiles():
 class NrmOpr(unittest.TestCase):
     """Test case: Normal operation
 
-        Condition: yw7 file is present and read/writeable. 
-        Expected result: During the whole process, the html 
-            file's content matches the reference. 
+    Condition: There is no yw7 file present. 
+    Expected result: A new yw7 file matching the reference is created.  
     """
 
     def setUp(self):
@@ -81,9 +80,6 @@ class NrmOpr(unittest.TestCase):
         """Import proofed yw7 scenes from html . """
 
         copy_file(REFERENCE_HTML, TEST_HTML)
-        # This substitutes the proof reading process.
-        # Note: The yw7 project file is still unchanged.
-
         yw7File = Yw7File(TEST_YW7)
         yw7File.ywTreeBuilder = Yw7TreeCreator()
         yw7File.ywProjectMerger = YwProjectCreator()
@@ -91,7 +87,7 @@ class NrmOpr(unittest.TestCase):
         documentFile = HtmlOutline(TEST_HTML)
         converter = YwCnv()
 
-        # Convert html to xml and replace .yw7 file.
+        # Convert html to xml and create a .yw7 file.
 
         self.assertEqual(converter.convert(
             documentFile, yw7File), 'SUCCESS: "' + os.path.normpath(TEST_YW7) + '" written.')

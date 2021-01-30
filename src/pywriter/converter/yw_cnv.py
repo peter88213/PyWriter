@@ -14,18 +14,19 @@ class YwCnv():
     """
 
     def convert(self, sourceFile, targetFile):
-        """Read document file, convert its content to xml, and replace yWriter file.
+        """Read the source file, merge its content with that of the target,
+        and write the result to the target file.
         Return a message beginning with SUCCESS or ERROR.
         """
 
         if sourceFile.filePath is None:
-            return 'ERROR: "' + os.path.normpath(sourceFile.filePath) + '" is not of the supported type.'
+            return 'ERROR: Source "' + os.path.normpath(sourceFile.filePath) + '" is not of the supported type.'
 
         if not sourceFile.file_exists():
             return 'ERROR: "' + os.path.normpath(sourceFile.filePath) + '" not found.'
 
         if targetFile.filePath is None:
-            return 'ERROR: "' + os.path.normpath(targetFile.filePath) + '" is not of the supported type.'
+            return 'ERROR: Target "' + os.path.normpath(targetFile.filePath) + '" is not of the supported type.'
 
         if targetFile.file_exists() and not self.confirm_overwrite(targetFile.filePath):
             return 'Program abort by user.'

@@ -172,12 +172,16 @@ class UniversalFileFactory(FileFactory):
 
             elif sourcePath.endswith('.html'):
 
-                # Is the source file an outline or a "work in progress"?
+                # The source file might be an outline or a "work in progress".
 
                 result = read_html_file(sourcePath)
 
-                if 'SUCCESS' in result[0]:
+                if result[0].startswith('SUCCESS'):
                     targetFile = Yw7File(fileName + Yw7File.EXTENSION)
+
+                    if targetFile.file_exists():
+                        return 'ERROR: Target "' + os.path.normpath(targetFile.filePath) + '" already exists.', None, None
+
                     targetFile.ywTreeBuilder = Yw7TreeCreator()
                     targetFile.ywProjectMerger = YwProjectCreator()
 

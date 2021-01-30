@@ -25,9 +25,6 @@ ODT_CONTENT = 'content.xml'
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
 
-with open(REFERENCE_YW7, 'r') as f:
-    TOTAL_SCENES = f.read().count('<SCENE>')
-
 
 def read_file(inputFile):
     with open(inputFile, 'r', encoding='utf-8') as f:
