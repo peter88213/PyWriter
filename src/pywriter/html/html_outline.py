@@ -51,7 +51,7 @@ class HtmlOutline(HtmlFile):
             self.scenes[self._scId] = Scene()
             self.chapters[self._chId].srtScenes.append(self._scId)
             self.scenes[self._scId].sceneContent = ''
-            self.scenes[self._scId].status = '1'
+            self.scenes[self._scId].status = Scene.STATUS.index('Outline')
 
         elif tag == 'div':
             self._scId = None
