@@ -7,6 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import zipfile
+import re
 
 from pywriter.odt.odt_builder import OdtBuilder
 from pywriter.file.file_export import FileExport
@@ -82,6 +83,10 @@ class OdtFile(FileExport, OdtBuilder):
 
             for r in ODT_REPLACEMENTS:
                 text = text.replace(r[0], r[1])
+
+            # Remove highlighting tags.
+
+            text = re.sub('\[\/*h\d\]', '', text)
 
         except AttributeError:
             text = ''

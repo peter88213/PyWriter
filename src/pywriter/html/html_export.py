@@ -10,6 +10,8 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import re
+
 from pywriter.file.file_export import FileExport
 
 
@@ -44,6 +46,10 @@ class HtmlExport(FileExport):
 
             for r in HTML_REPLACEMENTS:
                 text = text.replace(r[0], r[1])
+
+            # Remove highlighting tags.
+
+            text = re.sub('\[\/*h\d\]', '', text)
 
         except AttributeError:
             text = ''

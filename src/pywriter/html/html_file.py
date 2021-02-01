@@ -105,6 +105,10 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('[/i]', '')
         text = text.replace('[b]', '')
         text = text.replace('[/b]', '')
+        text = text.replace('[s]', '')
+        text = text.replace('[/s]', '')
+        text = text.replace('[u]', '')
+        text = text.replace('[/u]', '')
         return text
 
     def postprocess(self):
