@@ -85,10 +85,12 @@ class HtmlImport(HtmlFile):
                 self.scenes[self._scId].sceneContent = ''.join(self._lines)
 
                 if self.scenes[self._scId].wordCount < self._LOW_WORDCOUNT:
-                    self.scenes[self._scId].status = 1
+                    self.scenes[self._scId].status = Scene.STATUS.index(
+                        'Outline')
 
                 else:
-                    self.scenes[self._scId].status = 2
+                    self.scenes[self._scId].status = Scene.STATUS.index(
+                        'Draft')
 
         elif tag in ('h1', 'h2'):
             self.chapters[self._chId].title = ''.join(self._lines)
