@@ -32,6 +32,10 @@ class OdtFile(FileExport, OdtBuilder):
             ['[/i]', '</text:span>'],
             ['[b]', '<text:span text:style-name="Strong_20_Emphasis">'],
             ['[/b]', '</text:span>'],
+            ['[u]', '<text:span text:style-name="T1">'],
+            ['[/u]', '</text:span>'],
+            ['[s]', '<text:span text:style-name="T2">'],
+            ['[/s]', '</text:span>'],
             ['/*', '<office:annotation><dc:creator>' +
                 self.author + '</dc:creator><text:p>'],
             ['*/', '</text:p></office:annotation>'],
