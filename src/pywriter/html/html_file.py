@@ -16,7 +16,7 @@ from pywriter.html.html_fop import read_html_file
 
 
 class HtmlFile(Novel, HTMLParser):
-    """HTML file representation of an yWriter project's part.
+    """Abstract HTML file representation.
     """
 
     EXTENSION = '.html'
@@ -86,8 +86,12 @@ class HtmlFile(Novel, HTMLParser):
         return text
 
     def preprocess(self, text):
-        """Strip yWriter 6/7 raw markup. Return a plain text string."""
-
+        """Clean up the HTML code and strip yWriter 6/7 raw markup. 
+        This prevents accidentally applied formatting from being 
+        transferred to the yWriter metadata. If rich text is 
+        applicable, such as in scenes, overwrite this method 
+        in a subclass) 
+        """
         text = self.convert_to_yw(text)
         text = text.replace('[i]', '')
         text = text.replace('[/i]', '')
@@ -97,11 +101,15 @@ class HtmlFile(Novel, HTMLParser):
 
     def postprocess(self):
         """Process the plain text after parsing.
+        This is a hook for subclasses.
         """
 
     def handle_starttag(self, tag, attrs):
         """Identify scenes and chapters.
-        Overwrites HTMLparser.handle_starttag()
+        Overwrites HTMLparser.handle_starttag().
+        This method is applicable to HTML files that are divided into 
+        chapters and scenes. For differently structured HTML files 
+        overwrite this method in a subclass.
         """
         if tag == 'div':
 
@@ -119,9 +127,10 @@ class HtmlFile(Novel, HTMLParser):
                     self.srtChapters.append(self._chId)
 
     def read(self):
-        """Read scene content from a html file 
-        with chapter and scene sections.
-        Return a message beginning with SUCCESS or ERROR. 
+        """Read and parse a html file, fetching the Novel attributes.
+        Return a message beginning with SUCCESS or ERROR.
+        This is a template method for subclasses tailored to the 
+        content of the respective HTML file.
         """
         result = read_html_file(self.filePath)
 
