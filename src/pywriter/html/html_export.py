@@ -47,9 +47,9 @@ class HtmlExport(FileExport):
             for r in HTML_REPLACEMENTS:
                 text = text.replace(r[0], r[1])
 
-            # Remove highlighting tags.
+            # Remove highlighting and alignment tags.
 
-            text = re.sub('\[\/*h\d\]', '', text)
+            text = re.sub('\[\/*[h|c|r]\d*\]', '', text)
 
         except AttributeError:
             text = ''

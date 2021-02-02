@@ -101,14 +101,10 @@ class HtmlFile(Novel, HTMLParser):
         in a subclass) 
         """
         text = self.convert_to_yw(text)
-        text = text.replace('[i]', '')
-        text = text.replace('[/i]', '')
-        text = text.replace('[b]', '')
-        text = text.replace('[/b]', '')
-        text = text.replace('[s]', '')
-        text = text.replace('[/s]', '')
-        text = text.replace('[u]', '')
-        text = text.replace('[/u]', '')
+
+        # Remove misplaced formatting tags.
+
+        text = re.sub('\[\/*[b|i|s|u]\]', '', text)
         return text
 
     def postprocess(self):
