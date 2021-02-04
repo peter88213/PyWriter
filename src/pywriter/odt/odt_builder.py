@@ -35,12 +35,6 @@ class OdtBuilder():
     <style:columns fo:column-count="1" fo:column-gap="0cm"/>
    </style:section-properties>
   </style:style>
-  <style:style style:name="T1" style:family="text">
-   <style:text-properties style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color"/>
-  </style:style>
-  <style:style style:name="T2" style:family="text">
-   <style:text-properties style:text-line-through-style="solid" style:text-line-through-type="single"/>
-  </style:style>
  </office:automatic-styles>
  <office:body>
   <office:text text:use-soft-page-breaks="true">

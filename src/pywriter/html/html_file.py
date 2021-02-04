@@ -55,14 +55,6 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('<I>', '[i]')
         text = text.replace('</i>', '[/i]')
         text = text.replace('</I>', '[/i]')
-        text = text.replace('<strike>', '[s]')
-        text = text.replace('<STRIKE>', '[s]')
-        text = text.replace('</strike>', '[/s]')
-        text = text.replace('</STRIKE>', '[/s]')
-        text = text.replace('<u>', '[u]')
-        text = text.replace('<U>', '[u]')
-        text = text.replace('</u>', '[/u]')
-        text = text.replace('</U>', '[/u]')
         text = text.replace('</em>', '[/i]')
         text = text.replace('</EM>', '[/i]')
         text = text.replace('<b>', '[b]')
@@ -104,7 +96,7 @@ class HtmlFile(Novel, HTMLParser):
 
         # Remove misplaced formatting tags.
 
-        text = re.sub('\[\/*[b|i|s|u]\]', '', text)
+        text = re.sub('\[\/*[b|i]\]', '', text)
         return text
 
     def postprocess(self):
