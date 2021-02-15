@@ -35,31 +35,20 @@ class CsvLocList(CsvFile):
         fetching the Object attributes contained.
         Return a message beginning with SUCCESS or ERROR.
         """
-        try:
-            with open(self.filePath, 'r', encoding='utf-8') as f:
-                lines = (f.readlines())
+        message = CsvFile.read(self)
 
-        except(FileNotFoundError):
-            return 'ERROR: "' + os.path.normpath(self.filePath) + '" not found.'
+        if message.startswith('ERROR'):
+            return message
 
-        if lines[0] != self.fileHeader:
-            return 'ERROR: Wrong lines content.'
+        for cells in self.rows:
 
-        cellsInLine = len(self.fileHeader.split(self._SEPARATOR))
-
-        for line in lines:
-            cell = line.rstrip().split(self._SEPARATOR)
-
-            if len(cell) != cellsInLine:
-                return 'ERROR: Wrong cell structure.'
-
-            if 'LcID:' in cell[0]:
-                lcId = re.search('LcID\:([0-9]+)', cell[0]).group(1)
+            if 'LcID:' in cells[0]:
+                lcId = re.search('LcID\:([0-9]+)', cells[0]).group(1)
                 self.locations[lcId] = Object()
-                self.locations[lcId].title = cell[1]
-                self.locations[lcId].desc = self.convert_to_yw(cell[2])
-                self.locations[lcId].aka = cell[3]
-                self.locations[lcId].tags = cell[4].split(';')
+                self.locations[lcId].title = cells[1]
+                self.locations[lcId].desc = self.convert_to_yw(cells[2])
+                self.locations[lcId].aka = cells[3]
+                self.locations[lcId].tags = cells[4].split(';')
 
         return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
 

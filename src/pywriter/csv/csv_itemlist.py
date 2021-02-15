@@ -5,7 +5,6 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 import os
 import re
 
@@ -35,31 +34,20 @@ class CsvItemList(CsvFile):
         fetching the Object attributes contained.
         Return a message beginning with SUCCESS or ERROR.
         """
-        try:
-            with open(self.filePath, 'r', encoding='utf-8') as f:
-                lines = (f.readlines())
+        message = CsvFile.read(self)
 
-        except(FileNotFoundError):
-            return 'ERROR: "' + os.path.normpath(self.filePath) + '" not found.'
+        if message.startswith('ERROR'):
+            return message
 
-        if lines[0] != self.fileHeader:
-            return 'ERROR: Wrong lines content.'
+        for cells in self.rows:
 
-        cellsInLine = len(self.fileHeader.split(self._SEPARATOR))
-
-        for line in lines:
-            cell = line.rstrip().split(self._SEPARATOR)
-
-            if len(cell) != cellsInLine:
-                return 'ERROR: Wrong cell structure.'
-
-            if 'ItID:' in cell[0]:
-                itId = re.search('ItID\:([0-9]+)', cell[0]).group(1)
+            if 'ItID:' in cells[0]:
+                itId = re.search('ItID\:([0-9]+)', cells[0]).group(1)
                 self.items[itId] = Object()
-                self.items[itId].title = cell[1]
-                self.items[itId].desc = self.convert_to_yw(cell[2])
-                self.items[itId].aka = cell[3]
-                self.items[itId].tags = cell[4].split(';')
+                self.items[itId].title = cells[1]
+                self.items[itId].desc = self.convert_to_yw(cells[2])
+                self.items[itId].aka = cells[3]
+                self.items[itId].tags = cells[4].split(';')
 
         return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
 

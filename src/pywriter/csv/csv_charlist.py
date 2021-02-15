@@ -35,42 +35,31 @@ class CsvCharList(CsvFile):
         fetching the Character attributes contained.
         Return a message beginning with SUCCESS or ERROR.
         """
-        try:
-            with open(self.filePath, 'r', encoding='utf-8') as f:
-                lines = (f.readlines())
+        message = CsvFile.read(self)
 
-        except(FileNotFoundError):
-            return 'ERROR: "' + os.path.normpath(self.filePath) + '" not found.'
+        if message.startswith('ERROR'):
+            return message
 
-        if lines[0] != self.fileHeader:
-            return 'ERROR: Wrong lines content.'
+        for cells in self.rows:
 
-        cellsInLine = len(self.fileHeader.split(self._SEPARATOR))
-
-        for line in lines:
-            cell = line.rstrip().split(self._SEPARATOR)
-
-            if len(cell) != cellsInLine:
-                return 'ERROR: Wrong cell structure.'
-
-            if 'CrID:' in cell[0]:
-                crId = re.search('CrID\:([0-9]+)', cell[0]).group(1)
+            if 'CrID:' in cells[0]:
+                crId = re.search('CrID\:([0-9]+)', cells[0]).group(1)
                 self.characters[crId] = Character()
-                self.characters[crId].title = cell[1]
-                self.characters[crId].fullName = cell[2]
-                self.characters[crId].aka = cell[3]
-                self.characters[crId].desc = self.convert_to_yw(cell[4])
-                self.characters[crId].bio = cell[5]
-                self.characters[crId].goals = cell[6]
+                self.characters[crId].title = cells[1]
+                self.characters[crId].fullName = cells[2]
+                self.characters[crId].aka = cells[3]
+                self.characters[crId].desc = self.convert_to_yw(cells[4])
+                self.characters[crId].bio = cells[5]
+                self.characters[crId].goals = cells[6]
 
-                if Character.MAJOR_MARKER in cell[7]:
+                if Character.MAJOR_MARKER in cells[7]:
                     self.characters[crId].isMajor = True
 
                 else:
                     self.characters[crId].isMajor = False
 
-                self.characters[crId].tags = cell[8].split(';')
-                self.characters[crId].notes = self.convert_to_yw(cell[9])
+                self.characters[crId].tags = cells[8].split(';')
+                self.characters[crId].notes = self.convert_to_yw(cells[9])
 
         return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
 

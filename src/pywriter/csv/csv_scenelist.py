@@ -5,9 +5,8 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
-import os
 import re
+import os
 
 from pywriter.csv.csv_file import CsvFile
 from pywriter.model.scene import Scene
@@ -68,48 +67,39 @@ class CsvSceneList(CsvFile):
         fetching the Scene attributes contained.
         Return a message beginning with SUCCESS or ERROR.
         """
-        try:
-            with open(self.filePath, 'r', encoding='utf-8') as f:
-                lines = (f.readlines())
+        message = CsvFile.read(self)
 
-        except(FileNotFoundError):
-            return 'ERROR: "' + os.path.normpath(self.filePath) + '" not found.'
+        if message.startswith('ERROR'):
+            return message
 
-        cellsInLine = len(self.fileHeader.split(self._SEPARATOR))
-
-        for line in lines:
-            cell = line.rstrip().split(self._SEPARATOR)
-
-            if len(cell) != cellsInLine:
-                return 'ERROR: Wrong cell structure.'
-
+        for cells in self.rows:
             i = 0
 
-            if 'ScID:' in cell[i]:
-                scId = re.search('ScID\:([0-9]+)', cell[0]).group(1)
+            if 'ScID:' in cells[i]:
+                scId = re.search('ScID\:([0-9]+)', cells[0]).group(1)
                 self.scenes[scId] = Scene()
                 i += 1
-                self.scenes[scId].title = cell[i]
+                self.scenes[scId].title = cells[i]
                 i += 1
-                self.scenes[scId].desc = self.convert_to_yw(cell[i])
+                self.scenes[scId].desc = self.convert_to_yw(cells[i])
                 i += 1
-                self.scenes[scId].tags = cell[i].split(self._LIST_SEPARATOR)
+                self.scenes[scId].tags = cells[i].split(self._LIST_SEPARATOR)
                 i += 1
-                self.scenes[scId].sceneNotes = self.convert_to_yw(cell[i])
+                self.scenes[scId].sceneNotes = self.convert_to_yw(cells[i])
                 i += 1
 
-                if Scene.REACTION_MARKER.lower() in cell[i].lower():
+                if Scene.REACTION_MARKER.lower() in cells[i].lower():
                     self.scenes[scId].isReactionScene = True
 
                 else:
                     self.scenes[scId].isReactionScene = False
 
                 i += 1
-                self.scenes[scId].goal = cell[i]
+                self.scenes[scId].goal = cells[i]
                 i += 1
-                self.scenes[scId].conflict = cell[i]
+                self.scenes[scId].conflict = cells[i]
                 i += 1
-                self.scenes[scId].outcome = cell[i]
+                self.scenes[scId].outcome = cells[i]
                 i += 1
                 # Don't write back sceneCount
                 i += 1
@@ -118,32 +108,32 @@ class CsvSceneList(CsvFile):
 
                 # Transfer scene ratings; set to 1 if deleted
 
-                if cell[i] in self._SCENE_RATINGS:
-                    self.scenes[scId].field1 = cell[i]
+                if cells[i] in self._SCENE_RATINGS:
+                    self.scenes[scId].field1 = cells[i]
 
                 else:
                     self.scenes[scId].field1 = '1'
 
                 i += 1
 
-                if cell[i] in self._SCENE_RATINGS:
-                    self.scenes[scId].field2 = cell[i]
+                if cells[i] in self._SCENE_RATINGS:
+                    self.scenes[scId].field2 = cells[i]
 
                 else:
                     self.scenes[scId].field2 = '1'
 
                 i += 1
 
-                if cell[i] in self._SCENE_RATINGS:
-                    self.scenes[scId].field3 = cell[i]
+                if cells[i] in self._SCENE_RATINGS:
+                    self.scenes[scId].field3 = cells[i]
 
                 else:
                     self.scenes[scId].field3 = '1'
 
                 i += 1
 
-                if cell[i] in self._SCENE_RATINGS:
-                    self.scenes[scId].field4 = cell[i]
+                if cells[i] in self._SCENE_RATINGS:
+                    self.scenes[scId].field4 = cells[i]
 
                 else:
                     self.scenes[scId].field4 = '1'
@@ -155,7 +145,7 @@ class CsvSceneList(CsvFile):
                 i += 1
 
                 try:
-                    self.scenes[scId].status = Scene.STATUS.index(cell[i])
+                    self.scenes[scId].status = Scene.STATUS.index(cells[i])
 
                 except ValueError:
                     pass
@@ -164,7 +154,7 @@ class CsvSceneList(CsvFile):
 
                 i += 1
                 ''' Cannot write back character IDs, because self.characters is None
-                charaNames = cell[i].split(self._LIST_SEPARATOR)
+                charaNames = cells[i].split(self._LIST_SEPARATOR)
                 self.scenes[scId].characters = []
 
                 for charaName in charaNames:
@@ -176,7 +166,7 @@ class CsvSceneList(CsvFile):
                 '''
                 i += 1
                 ''' Cannot write back location IDs, because self.locations is None
-                locaNames = cell[i].split(self._LIST_SEPARATOR)
+                locaNames = cells[i].split(self._LIST_SEPARATOR)
                 self.scenes[scId].locations = []
 
                 for locaName in locaNames:
@@ -188,7 +178,7 @@ class CsvSceneList(CsvFile):
                 '''
                 i += 1
                 ''' Cannot write back item IDs, because self.items is None
-                itemNames = cell[i].split(self._LIST_SEPARATOR)
+                itemNames = cells[i].split(self._LIST_SEPARATOR)
                 self.scenes[scId].items = []
 
                 for itemName in itemNames:

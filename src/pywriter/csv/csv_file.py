@@ -5,6 +5,9 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import os
+import csv
+
 from pywriter.file.file_export import FileExport
 
 
@@ -56,3 +59,32 @@ class CsvFile(FileExport):
             text = ''
 
         return text
+
+    def read(self):
+        """Parse the csv file located at filePath, fetching the rows.
+        Check the number of fields in each row.
+        Return a message beginning with SUCCESS or ERROR.
+        """
+        self.rows = []
+        cellsPerRow = len(self.fileHeader.split(self._SEPARATOR))
+
+        try:
+            with open(self.filePath, newline='', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=self._SEPARATOR)
+
+                for row in reader:
+                    # Each row read from the csv file is returned
+                    # as a list of strings
+
+                    if len(row) != cellsPerRow:
+                        return 'ERROR: Wrong csv structure.'
+
+                    self.rows.append(row)
+
+        except(FileNotFoundError):
+            return 'ERROR: "' + os.path.normpath(self.filePath) + '" not found.'
+
+        except:
+            return 'ERROR: Can not parse "' + os.path.normpath(self.filePath) + '".'
+
+        return 'SUCCESS'
