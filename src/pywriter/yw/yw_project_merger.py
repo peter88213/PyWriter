@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.character import Character
-from pywriter.model.yw_object import YwObject
+from pywriter.model.world_element import WorldElement
 
 
 class YwProjectMerger():
@@ -29,7 +29,7 @@ class YwProjectMerger():
         for lcId in source.locations:
 
             if not lcId in target.locations:
-                target.locations[lcId] = YwObject()
+                target.locations[lcId] = WorldElement()
                 mismatchCount += 1
 
             if source.locations[lcId].title:
@@ -50,7 +50,7 @@ class YwProjectMerger():
         for itId in source.items:
 
             if not itId in target.items:
-                target.items[itId] = YwObject()
+                target.items[itId] = WorldElement()
                 mismatchCount += 1
 
             if source.items[itId].title:

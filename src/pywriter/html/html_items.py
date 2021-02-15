@@ -7,7 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 
-from pywriter.model.yw_object import YwObject
+from pywriter.model.world_element import WorldElement
 from pywriter.html.html_file import HtmlFile
 
 
@@ -31,7 +31,7 @@ class HtmlItems(HtmlFile):
 
                 if attrs[0][1].startswith('ItID'):
                     self._itId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.items[self._itId] = YwObject()
+                    self.items[self._itId] = WorldElement()
 
     def handle_endtag(self, tag):
         """Recognize the end of the item section and save data.

@@ -6,10 +6,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.model.yw_object import YwObject
+from pywriter.model.world_element import WorldElement
 
 
-class Character(YwObject):
+class Character(WorldElement):
     """yWriter character representation.
     # xml: <CHARACTERS><CHARACTER>
     """
@@ -18,7 +18,7 @@ class Character(YwObject):
     MINOR_MARKER = 'Minor'
 
     def __init__(self):
-        YwObject.__init__(self)
+        WorldElement.__init__(self)
 
         self.notes = None
         # str

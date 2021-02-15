@@ -1,4 +1,4 @@
-"""YwObject - represents the basic structure of an object in yWriter.
+"""WorldElement - represents the basic structure of an element in the story world.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
@@ -7,8 +7,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 
-class YwObject():
-    """yWriter object representation.
+class WorldElement():
+    """Story world element representation.
     # xml: <LOCATIONS><LOCATION> or # xml: <ITEMS><ITEM>
     """
 

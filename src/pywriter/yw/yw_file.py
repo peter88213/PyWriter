@@ -12,7 +12,7 @@ from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.character import Character
-from pywriter.model.yw_object import YwObject
+from pywriter.model.world_element import WorldElement
 
 
 class YwFile(Novel):
@@ -40,7 +40,7 @@ class YwFile(Novel):
         for loc in root.iter('LOCATION'):
             lcId = loc.find('ID').text
 
-            self.locations[lcId] = YwObject()
+            self.locations[lcId] = WorldElement()
             self.locations[lcId].title = loc.find('Title').text
 
             if loc.find('Desc') is not None:
@@ -60,7 +60,7 @@ class YwFile(Novel):
         for itm in root.iter('ITEM'):
             itId = itm.find('ID').text
 
-            self.items[itId] = YwObject()
+            self.items[itId] = WorldElement()
             self.items[itId].title = itm.find('Title').text
 
             if itm.find('Desc') is not None:
