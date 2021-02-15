@@ -1,4 +1,4 @@
-"""Object - represents the basic structure of an object in yWriter.
+"""YwObject - represents the basic structure of an object in yWriter.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
@@ -7,7 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 
-class Object():
+class YwObject():
     """yWriter object representation.
     # xml: <LOCATIONS><LOCATION> or # xml: <ITEMS><ITEM>
     """
