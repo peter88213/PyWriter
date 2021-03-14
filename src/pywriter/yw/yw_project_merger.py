@@ -36,6 +36,7 @@ class YwProjectMerger():
                 target.locations[lcId] = WorldElement()
 
                 if not lcId in temploc:
+                    # A new location has been added
                     temploc[lcId] = WorldElement()
 
                 if source.locations[lcId].title:
@@ -83,6 +84,7 @@ class YwProjectMerger():
                 target.items[itId] = WorldElement()
 
                 if not itId in tempitm:
+                    # A new item has been added
                     tempitm[itId] = WorldElement()
 
                 if source.items[itId].title:
@@ -130,6 +132,7 @@ class YwProjectMerger():
                 target.characters[crId] = Character()
 
                 if not crId in tempchr:
+                    # A new character has been added
                     tempchr[crId] = Character()
 
                 if source.characters[crId].title:
