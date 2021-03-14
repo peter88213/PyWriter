@@ -35,6 +35,9 @@ class YwProjectMerger():
 
                 target.locations[lcId] = WorldElement()
 
+                if not lcId in temploc:
+                    temploc[lcId] = WorldElement()
+
                 if source.locations[lcId].title:
                     # avoids deleting the title, if it is empty by accident
                     target.locations[lcId].title = source.locations[lcId].title
@@ -79,6 +82,9 @@ class YwProjectMerger():
 
                 target.items[itId] = WorldElement()
 
+                if not itId in tempitm:
+                    tempitm[itId] = WorldElement()
+
                 if source.items[itId].title:
                     # avoids deleting the title, if it is empty by accident
                     target.items[itId].title = source.items[itId].title
@@ -121,7 +127,10 @@ class YwProjectMerger():
                 # Build a new target.characters dictionary sorted like the
                 # source
 
-                target.characters[crId] = WorldElement()
+                target.characters[crId] = Character()
+
+                if not crId in tempchr:
+                    tempchr[crId] = Character()
 
                 if source.characters[crId].title:
                     # avoids deleting the title, if it is empty by accident

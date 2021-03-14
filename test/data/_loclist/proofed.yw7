@@ -82,6 +82,14 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Tags />
       <SortOrder>4</SortOrder>
     </LOCATION>
+    <LOCATION>
+      <ID>5</ID>
+      <Title><![CDATA[Monolith Burger]]></Title>
+      <Desc><![CDATA[A cheap, tidy fast food restaurant]]></Desc>
+      <AKA />
+      <Tags />
+      <SortOrder>5</SortOrder>
+    </LOCATION>
   </LOCATIONS>
   <ITEMS>
 	</ITEMS>
