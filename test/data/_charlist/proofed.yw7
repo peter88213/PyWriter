@@ -76,122 +76,109 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 	</ITEMS>
   <CHARACTERS>
     <CHARACTER>
-      <ID>1</ID>
-      <Title><![CDATA[Hal]]></Title>
-      <ImageFile><![CDATA[Hal1Facp_NEW.jpg]]></ImageFile>
-      <SortOrder>1</SortOrder>
-      <AKA><![CDATA[Spacejock]]></AKA>
-      <Bio><![CDATA[Somehow, Hal Spacejock ended up in the cargo game. With a loan from a dodgy operator and a ship from the wrong side of the nearest junkyard he works the back reaches of the galaxy. A couple of important things about Hal - he's determined to stay on the right side of the law, and he has a strong sense of justice.]]></Bio>
-      <FullName><![CDATA[Hal Spacejock]]></FullName>
-      <Desc />
-      <Tags />
-      <Notes />
-      <Goals><![CDATA[Have fun, make money.]]></Goals>
-    </CHARACTER>
-    <CHARACTER>
       <ID>2</ID>
       <Title><![CDATA[Jerling]]></Title>
-      <SortOrder>2</SortOrder>
+      <Desc />
+      <SortOrder>1</SortOrder>
+      <Notes />
       <AKA><![CDATA[Walter]]></AKA>
+      <Tags />
       <Bio><![CDATA[Walter Jerling runs a conglomerate spanning several planets. Ruthless and wealthy, he's never forgotten his more modest roots and watches his money carefully.]]></Bio>
       <Goals><![CDATA[One of his companies needs an urgent shipment of parts to complete a set of new robots for the Emperor.]]></Goals>
       <FullName><![CDATA[Walter Jerling]]></FullName>
-      <Desc />
-      <Tags />
-      <Notes />
     </CHARACTER>
     <CHARACTER>
       <ID>3</ID>
       <Title><![CDATA[Clunk]]></Title>
-      <SortOrder>3</SortOrder>
+      <Desc />
+      <SortOrder>2</SortOrder>
+      <Notes />
       <AKA><![CDATA[XG99]]></AKA>
+      <Tags />
       <Bio><![CDATA[Aging humanoid robot owned by Walter Jerling's company, Clunk is being shipped off for reprogramming and advanced pilot training.]]></Bio>
       <Goals><![CDATA[Undergo a refit and advanced pilot training, making him even more useful to his owner.]]></Goals>
       <FullName><![CDATA[Clunk XG99]]></FullName>
-      <Desc />
-      <Tags />
-      <Notes />
     </CHARACTER>
     <CHARACTER>
       <ID>4</ID>
       <Title><![CDATA[Vurdi]]></Title>
-      <SortOrder>4</SortOrder>
-      <Bio><![CDATA[A freelance debt collector looking for that one big client to shake down. Has his sights on Hal and Farrell.]]></Bio>
-      <FullName><![CDATA[Vurdi Makalukar]]></FullName>
       <Desc><![CDATA[Green hair, blue nose.]]></Desc>
+      <SortOrder>3</SortOrder>
+      <Notes />
       <AKA />
       <Tags />
-      <Notes />
+      <Bio><![CDATA[A freelance debt collector looking for that one big client to shake down. Has his sights on Hal and Farrell.]]></Bio>
       <Goals />
+      <FullName><![CDATA[Vurdi Makalukar]]></FullName>
     </CHARACTER>
     <CHARACTER>
       <ID>5</ID>
       <Title><![CDATA[Farrell]]></Title>
-      <SortOrder>5</SortOrder>
+      <Desc />
+      <SortOrder>4</SortOrder>
+      <Notes />
+      <AKA />
+      <Tags />
       <Bio><![CDATA[Younger brother of Gordon Hinchfig, Farrell is a wastrel playboy whose money has been cut off.]]></Bio>
       <Goals><![CDATA[Pay off his gambling debts]]></Goals>
       <FullName><![CDATA[Farrell Hinchfig]]></FullName>
-      <Desc />
-      <AKA />
-      <Tags />
-      <Notes />
     </CHARACTER>
     <CHARACTER>
       <ID>6</ID>
       <Title><![CDATA[Terry]]></Title>
-      <SortOrder>6</SortOrder>
-      <Bio><![CDATA[Farrell's driver, bodyguard and dirty tricks man. Rough and tough, not someone to cross.]]></Bio>
-      <Goals><![CDATA[Whatever Farrell wants.]]></Goals>
       <Desc />
+      <SortOrder>5</SortOrder>
+      <Notes />
       <AKA />
       <Tags />
-      <Notes />
+      <Bio><![CDATA[Farrell's driver, bodyguard and dirty tricks man. Rough and tough, not someone to cross.]]></Bio>
+      <Goals><![CDATA[Whatever Farrell wants.]]></Goals>
       <FullName />
     </CHARACTER>
     <CHARACTER>
       <ID>7</ID>
       <Title><![CDATA[Carina]]></Title>
-      <SortOrder>7</SortOrder>
+      <Desc />
+      <SortOrder>6</SortOrder>
+      <Notes />
+      <AKA />
+      <Tags />
       <Bio><![CDATA[Walter Jerling's private assistant]]></Bio>
       <Goals><![CDATA[Bit player]]></Goals>
       <FullName><![CDATA[Carina Rinoret]]></FullName>
-      <Desc />
-      <AKA />
-      <Tags />
-      <Notes />
     </CHARACTER>
     <CHARACTER>
       <ID>8</ID>
       <Title><![CDATA[Mike]]></Title>
-      <SortOrder>8</SortOrder>
-      <Bio><![CDATA[Computer expert at Hinchfig Enterprises.]]></Bio>
-      <Goals><![CDATA[Bit player]]></Goals>
       <Desc />
+      <SortOrder>7</SortOrder>
+      <Notes />
       <AKA />
       <Tags />
-      <Notes />
+      <Bio><![CDATA[Computer expert at Hinchfig Enterprises.]]></Bio>
+      <Goals><![CDATA[Bit player]]></Goals>
       <FullName />
     </CHARACTER>
     <CHARACTER>
       <ID>9</ID>
       <Title><![CDATA[Gordon]]></Title>
-      <SortOrder>9</SortOrder>
+      <Desc />
+      <SortOrder>8</SortOrder>
+      <Notes />
+      <AKA />
+      <Tags />
       <Bio><![CDATA[Owner of Hinchfig Enterprises, which he inherited from his parents. His father had business acumen and a flair for new products. Gordon has none, and so he slavishly follows his late father's methods with little of his success. His lack of business nous is the reason the company is in trouble, and the reason Farrell Hinchfig no longer has cash to throw around.]]></Bio>
       <Goals><![CDATA[Revitalise the company]]></Goals>
       <FullName><![CDATA[Gordon Hinchfig]]></FullName>
-      <Desc />
-      <AKA />
-      <Tags />
-      <Notes />
     </CHARACTER>
     <CHARACTER>
       <ID>10</ID>
       <Title><![CDATA[Navcom]]></Title>
       <Desc><![CDATA[The Black Gull's flight computer]]></Desc>
-      <SortOrder>10</SortOrder>
+      <SortOrder>9</SortOrder>
+      <Notes />
       <AKA />
       <Tags />
-      <Notes />
       <Bio />
       <Goals />
       <FullName />
@@ -200,10 +187,10 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <ID>11</ID>
       <Title><![CDATA[Brutus]]></Title>
       <Desc><![CDATA[Vurdi's enforcer robot.]]></Desc>
-      <SortOrder>11</SortOrder>
+      <SortOrder>10</SortOrder>
+      <Notes />
       <AKA />
       <Tags />
-      <Notes />
       <Bio />
       <Goals />
       <FullName />
@@ -211,14 +198,27 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <CHARACTER>
       <ID>12</ID>
       <Title><![CDATA[Portmaster]]></Title>
-      <SortOrder>12</SortOrder>
-      <FullName><![CDATA[Portmaster Linten]]></FullName>
       <Desc />
+      <SortOrder>11</SortOrder>
+      <Notes />
       <AKA />
       <Tags />
-      <Notes />
       <Bio />
       <Goals />
+      <FullName><![CDATA[Portmaster Linten]]></FullName>
+    </CHARACTER>
+    <CHARACTER>
+      <ID>1</ID>
+      <Title><![CDATA[Hal]]></Title>
+      <Desc />
+      <ImageFile><![CDATA[Hal1Facp_NEW.jpg]]></ImageFile>
+      <SortOrder>12</SortOrder>
+      <Notes />
+      <AKA><![CDATA[Spacejock]]></AKA>
+      <Tags />
+      <Bio><![CDATA[Somehow, Hal Spacejock ended up in the cargo game. With a loan from a dodgy operator and a ship from the wrong side of the nearest junkyard he works the back reaches of the galaxy. A couple of important things about Hal - he's determined to stay on the right side of the law, and he has a strong sense of justice.]]></Bio>
+      <Goals><![CDATA[Have fun, make money.]]></Goals>
+      <FullName><![CDATA[Hal Spacejock]]></FullName>
     </CHARACTER>
   </CHARACTERS>
   <PROJECTNOTES>

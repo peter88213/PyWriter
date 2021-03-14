@@ -51,36 +51,36 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
   </PROJECT>
   <LOCATIONS>
     <LOCATION>
-      <ID>1</ID>
-      <Title><![CDATA[Black Gull]]></Title>
-      <Desc><![CDATA[Hal's ship, a decrepit old freighter he bought with a dodgy loan]]></Desc>
-      <SortOrder>1</SortOrder>
-      <AKA />
-      <Tags />
-    </LOCATION>
-    <LOCATION>
       <ID>2</ID>
       <Title><![CDATA[Lamira Spaceport]]></Title>
-      <SortOrder>2</SortOrder>
       <Desc><![CDATA[A neat, tidy spaceport on Lamira.]]></Desc>
       <AKA />
       <Tags />
+      <SortOrder>1</SortOrder>
     </LOCATION>
     <LOCATION>
       <ID>3</ID>
       <Title><![CDATA[Planet Forg]]></Title>
-      <SortOrder>3</SortOrder>
       <Desc><![CDATA[An earth-like, slightly polluted planet.]]></Desc>
       <AKA />
       <Tags />
+      <SortOrder>2</SortOrder>
     </LOCATION>
     <LOCATION>
       <ID>4</ID>
       <Title><![CDATA[Jerling Enterprises]]></Title>
-      <SortOrder>4</SortOrder>
       <Desc />
       <AKA />
       <Tags />
+      <SortOrder>3</SortOrder>
+    </LOCATION>
+    <LOCATION>
+      <ID>1</ID>
+      <Title><![CDATA[Black Gull]]></Title>
+      <Desc><![CDATA[Hal's ship, a decrepit old freighter he bought with a dodgy loan]]></Desc>
+      <AKA />
+      <Tags />
+      <SortOrder>4</SortOrder>
     </LOCATION>
   </LOCATIONS>
   <ITEMS>

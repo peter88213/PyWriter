@@ -1,7 +1,7 @@
 """Merge two yWriter projects.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -22,87 +22,171 @@ class YwProjectMerger():
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        mismatchCount = 0
+        # Merge and re-order locations.
 
-        # Merge locations.
+        if source.locations != {}:
+            temploc = target.locations
+            target.locations = {}
 
-        for lcId in source.locations:
+            for lcId in source.locations:
 
-            if not lcId in target.locations:
+                # Build a new target.locations dictionary sorted like the
+                # source
+
                 target.locations[lcId] = WorldElement()
-                mismatchCount += 1
 
-            if source.locations[lcId].title:
-                # avoids deleting the title, if it is empty by accident
-                target.locations[lcId].title = source.locations[lcId].title
+                if source.locations[lcId].title:
+                    # avoids deleting the title, if it is empty by accident
+                    target.locations[lcId].title = source.locations[lcId].title
 
-            if source.locations[lcId].desc is not None:
-                target.locations[lcId].desc = source.locations[lcId].desc
+                else:
+                    target.locations[lcId].title = temploc[lcId].title
 
-            if source.locations[lcId].aka is not None:
-                target.locations[lcId].aka = source.locations[lcId].aka
+                if source.locations[lcId].image is not None:
+                    target.locations[lcId].image = source.locations[lcId].image
 
-            if source.locations[lcId].tags is not None:
-                target.locations[lcId].tags = source.locations[lcId].tags
+                else:
+                    target.locations[lcId].desc = temploc[lcId].desc
 
-        # Merge items.
+                if source.locations[lcId].desc is not None:
+                    target.locations[lcId].desc = source.locations[lcId].desc
 
-        for itId in source.items:
+                else:
+                    target.locations[lcId].desc = temploc[lcId].desc
 
-            if not itId in target.items:
+                if source.locations[lcId].aka is not None:
+                    target.locations[lcId].aka = source.locations[lcId].aka
+
+                else:
+                    target.locations[lcId].aka = temploc[lcId].aka
+
+                if source.locations[lcId].tags is not None:
+                    target.locations[lcId].tags = source.locations[lcId].tags
+
+                else:
+                    target.locations[lcId].tags = temploc[lcId].tags
+
+        # Merge and re-order items.
+
+        if source.items != {}:
+            tempitm = target.items
+            target.items = {}
+
+            for itId in source.items:
+
+                # Build a new target.items dictionary sorted like the
+                # source
+
                 target.items[itId] = WorldElement()
-                mismatchCount += 1
 
-            if source.items[itId].title:
-                # avoids deleting the title, if it is empty by accident
-                target.items[itId].title = source.items[itId].title
+                if source.items[itId].title:
+                    # avoids deleting the title, if it is empty by accident
+                    target.items[itId].title = source.items[itId].title
 
-            if source.items[itId].desc is not None:
-                target.items[itId].desc = source.items[itId].desc
+                else:
+                    target.items[itId].title = tempitm[itId].title
 
-            if source.items[itId].aka is not None:
-                target.items[itId].aka = source.items[itId].aka
+                if source.items[itId].image is not None:
+                    target.items[itId].image = source.items[itId].image
 
-            if source.items[itId].tags is not None:
-                target.items[itId].tags = source.items[itId].tags
+                else:
+                    target.items[itId].image = tempitm[itId].image
 
-        # Merge characters.
+                if source.items[itId].desc is not None:
+                    target.items[itId].desc = source.items[itId].desc
 
-        for crId in source.characters:
+                else:
+                    target.items[itId].desc = tempitm[itId].desc
 
-            if not crId in target.characters:
-                target.characters[crId] = Character()
-                mismatchCount += 1
+                if source.items[itId].aka is not None:
+                    target.items[itId].aka = source.items[itId].aka
 
-            if source.characters[crId].title:
-                # avoids deleting the title, if it is empty by accident
-                target.characters[crId].title = source.characters[crId].title
+                else:
+                    target.items[itId].aka = tempitm[itId].aka
 
-            if source.characters[crId].desc is not None:
-                target.characters[crId].desc = source.characters[crId].desc
+                if source.items[itId].tags is not None:
+                    target.items[itId].tags = source.items[itId].tags
 
-            if source.characters[crId].aka is not None:
-                target.characters[crId].aka = source.characters[crId].aka
+                else:
+                    target.items[itId].tags = tempitm[itId].tags
 
-            if source.characters[crId].tags is not None:
-                target.characters[crId].tags = source.characters[crId].tags
+        # Merge and re-order characters.
 
-            if source.characters[crId].notes is not None:
-                target.characters[crId].notes = source.characters[crId].notes
+        if source.characters != {}:
+            tempchr = target.characters
+            target.characters = {}
 
-            if source.characters[crId].bio is not None:
-                target.characters[crId].bio = source.characters[crId].bio
+            for crId in source.characters:
 
-            if source.characters[crId].goals is not None:
-                target.characters[crId].goals = source.characters[crId].goals
+                # Build a new target.characters dictionary sorted like the
+                # source
 
-            if source.characters[crId].fullName is not None:
-                target.characters[crId].fullName = source.characters[crId].fullName
+                target.characters[crId] = WorldElement()
 
-            if source.characters[crId].isMajor is not None:
-                target.characters[crId].isMajor = source.characters[crId].isMajor
+                if source.characters[crId].title:
+                    # avoids deleting the title, if it is empty by accident
+                    target.characters[crId].title = source.characters[crId].title
+
+                else:
+                    target.characters[crId].title = tempchr[crId].title
+
+                if source.characters[crId].image is not None:
+                    target.characters[crId].image = source.characters[crId].image
+
+                else:
+                    target.characters[crId].image = tempchr[crId].image
+
+                if source.characters[crId].desc is not None:
+                    target.characters[crId].desc = source.characters[crId].desc
+
+                else:
+                    target.characters[crId].desc = tempchr[crId].desc
+
+                if source.characters[crId].aka is not None:
+                    target.characters[crId].aka = source.characters[crId].aka
+
+                else:
+                    target.characters[crId].aka = tempchr[crId].aka
+
+                if source.characters[crId].tags is not None:
+                    target.characters[crId].tags = source.characters[crId].tags
+
+                else:
+                    target.characters[crId].tags = tempchr[crId].tags
+
+                if source.characters[crId].notes is not None:
+                    target.characters[crId].notes = source.characters[crId].notes
+
+                else:
+                    target.characters[crId].notes = tempchr[crId].notes
+
+                if source.characters[crId].bio is not None:
+                    target.characters[crId].bio = source.characters[crId].bio
+
+                else:
+                    target.characters[crId].bio = tempchr[crId].bio
+
+                if source.characters[crId].goals is not None:
+                    target.characters[crId].goals = source.characters[crId].goals
+
+                else:
+                    target.characters[crId].goals = tempchr[crId].goals
+
+                if source.characters[crId].fullName is not None:
+                    target.characters[crId].fullName = source.characters[crId].fullName
+
+                else:
+                    target.characters[crId].fullName = tempchr[crId].fullName
+
+                if source.characters[crId].isMajor is not None:
+                    target.characters[crId].isMajor = source.characters[crId].isMajor
+
+                else:
+                    target.characters[crId].isMajor = tempchr[crId].isMajor
 
         # Merge scenes.
+
+        mismatchCount = 0
 
         for scId in source.scenes:
 

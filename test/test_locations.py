@@ -1,6 +1,6 @@
 """Integration tests for the pyWriter project.
 
-Test the odt/html conversion tasks.
+Test the locations odt/html conversion tasks.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -13,20 +13,20 @@ import zipfile
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
 
-from pywriter.html.html_manuscript import HtmlManuscript
-from pywriter.odt.odt_manuscript import OdtManuscript
+from pywriter.html.html_locations import HtmlLocations
+from pywriter.odt.odt_locations import OdtLocations
 
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + OdtManuscript.SUFFIX + '/'
+DATA_PATH = 'data/' + OdtLocations.SUFFIX + '/'
 
 TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + \
-    OdtManuscript.SUFFIX + OdtManuscript.EXTENSION
+    OdtLocations.SUFFIX + OdtLocations.EXTENSION
 ODT_CONTENT = 'content.xml'
 
 TEST_HTML = EXEC_PATH + 'yw7 Sample Project' + \
-    HtmlManuscript.SUFFIX + HtmlManuscript.EXTENSION
+    HtmlLocations.SUFFIX + HtmlLocations.EXTENSION
 REFERENCE_HTML = DATA_PATH + 'normal.html'
 PROOFED_HTML = DATA_PATH + 'proofed.html'
 
@@ -108,7 +108,7 @@ class NrmOpr(unittest.TestCase):
         # Note: The yw7 project file is still unchanged.
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = HtmlManuscript(TEST_HTML)
+        documentFile = HtmlLocations(TEST_HTML)
         converter = YwCnv()
 
         # Convert html to xml and replace .yw7 file.
@@ -124,7 +124,7 @@ class NrmOpr(unittest.TestCase):
     def test_yw7_to_odt(self):
         """Convert markdown to odt. """
         yw7File = Yw7File(TEST_YW7)
-        documentFile = OdtManuscript(TEST_ODT)
+        documentFile = OdtLocations(TEST_ODT)
         converter = YwCnv()
 
         self.assertEqual(converter.convert(

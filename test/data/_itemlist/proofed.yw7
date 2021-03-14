@@ -74,18 +74,20 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
   </LOCATIONS>
   <ITEMS>
     <ITEM>
-      <ID>1</ID>
-      <Title><![CDATA[Chessboard]]></Title>
-      <Desc><![CDATA[Hal's chessboard, source of infinite joy.]]></Desc>
-      <Tags><![CDATA[Game, Challenge]]></Tags>
-      <AKA><![CDATA[My game]]></AKA>
-    </ITEM>
-    <ITEM>
       <ID>2</ID>
       <Title><![CDATA[Fire extinguisher]]></Title>
       <Desc><![CDATA[Stolen from a Space Patrol Cruiser, this gadget is a real eye candy.]]></Desc>
       <AKA />
       <Tags />
+      <SortOrder>1</SortOrder>
+    </ITEM>
+    <ITEM>
+      <ID>1</ID>
+      <Title><![CDATA[Chessboard]]></Title>
+      <Desc><![CDATA[Hal's chessboard, source of infinite joy.]]></Desc>
+      <AKA><![CDATA[My game]]></AKA>
+      <Tags><![CDATA[Game, Challenge]]></Tags>
+      <SortOrder>2</SortOrder>
     </ITEM>
   </ITEMS>
   <CHARACTERS>

@@ -59,20 +59,20 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <LOCATION>
       <ID>2</ID>
       <Title><![CDATA[Lamira Spaceport]]></Title>
-      <SortOrder>2</SortOrder>
       <Desc><![CDATA[A neat, tidy spaceport on Lamira.]]></Desc>
+      <SortOrder>2</SortOrder>
     </LOCATION>
     <LOCATION>
       <ID>3</ID>
       <Title><![CDATA[Planet Forg]]></Title>
-      <SortOrder>3</SortOrder>
       <Desc><![CDATA[An earth-like, slightly polluted planet.]]></Desc>
+      <SortOrder>3</SortOrder>
     </LOCATION>
     <LOCATION>
       <ID>4</ID>
       <Title><![CDATA[Jerling Enterprises]]></Title>
-      <SortOrder>4</SortOrder>
       <Desc><![CDATA[]]></Desc>
+      <SortOrder>4</SortOrder>
     </LOCATION>
   </LOCATIONS>
   <ITEMS>

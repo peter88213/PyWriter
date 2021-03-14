@@ -17,7 +17,7 @@
   <office:text text:use-soft-page-breaks="true">
 
 <text:p text:style-name="Title">Hal Spacejock book one - Sample yWriter Project</text:p>
-<text:p text:style-name="Subtitle">Items</text:p>
+<text:p text:style-name="Subtitle">Simon Haynes</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chessboard ("My game")</text:h>
 <text:section text:style-name="Sect1" text:name="ItID:1">
 <text:p text:style-name="Text_20_body">Hal's chessboard, source of infinite joy.</text:p>

@@ -1,7 +1,7 @@
 """Build yWriter project xml tree.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -24,167 +24,130 @@ class YwTreeBuilder():
 
         # Write locations to the xml element tree.
 
-        for loc in root.iter('LOCATION'):
-            lcId = loc.find('ID').text
+        locations = root.find('LOCATIONS')
+        sortOrder = 0
 
-            if lcId in ywProject.locations:
+        # Remove LOCATION entries in order to rewrite
+        # the LOCATIONS section in a modified sort order.
 
-                if ywProject.locations[lcId].title is not None:
-                    loc.find('Title').text = ywProject.locations[lcId].title
+        for loc in locations.findall('LOCATION'):
+            locations.remove(loc)
 
-                if ywProject.locations[lcId].desc is not None:
+        for lcId in ywProject.locations:
+            loc = ET.SubElement(locations, 'LOCATION')
+            ET.SubElement(loc, 'ID').text = lcId
 
-                    if loc.find('Desc') is None:
-                        ET.SubElement(
-                            loc, 'Desc').text = ywProject.locations[lcId].desc
+            if ywProject.locations[lcId].title is not None:
+                ET.SubElement(
+                    loc, 'Title').text = ywProject.locations[lcId].title
 
-                    else:
-                        loc.find('Desc').text = ywProject.locations[lcId].desc
+            if ywProject.locations[lcId].image is not None:
+                ET.SubElement(
+                    loc, 'ImageFile').text = ywProject.locations[lcId].image
 
-                if ywProject.locations[lcId].aka is not None:
+            if ywProject.locations[lcId].desc is not None:
+                ET.SubElement(
+                    loc, 'Desc').text = ywProject.locations[lcId].desc
 
-                    if loc.find('AKA') is None:
-                        ET.SubElement(
-                            loc, 'AKA').text = ywProject.locations[lcId].aka
+            if ywProject.locations[lcId].aka is not None:
+                ET.SubElement(loc, 'AKA').text = ywProject.locations[lcId].aka
 
-                    else:
-                        loc.find('AKA').text = ywProject.locations[lcId].aka
+            if ywProject.locations[lcId].tags is not None:
+                ET.SubElement(loc, 'Tags').text = ';'.join(
+                    ywProject.locations[lcId].tags)
 
-                if ywProject.locations[lcId].tags is not None:
-
-                    if loc.find('Tags') is None:
-                        ET.SubElement(loc, 'Tags').text = ';'.join(
-                            ywProject.locations[lcId].tags)
-
-                    else:
-                        loc.find('Tags').text = ';'.join(
-                            ywProject.locations[lcId].tags)
+            sortOrder += 1
+            ET.SubElement(loc, 'SortOrder').text = str(sortOrder)
 
         # Write items to the xml element tree.
 
-        for itm in root.iter('ITEM'):
-            itId = itm.find('ID').text
+        items = root.find('ITEMS')
+        sortOrder = 0
 
-            if itId in ywProject.items:
+        # Remove ITEM entries in order to rewrite
+        # the ITEMS section in a modified sort order.
 
-                if ywProject.items[itId].title is not None:
-                    itm.find('Title').text = ywProject.items[itId].title
+        for itm in items.findall('ITEM'):
+            items.remove(itm)
 
-                if ywProject.items[itId].desc is not None:
+        for itId in ywProject.items:
+            itm = ET.SubElement(items, 'ITEM')
+            ET.SubElement(itm, 'ID').text = itId
 
-                    if itm.find('Desc') is None:
-                        ET.SubElement(
-                            itm, 'Desc').text = ywProject.items[itId].desc
+            if ywProject.items[itId].title is not None:
+                ET.SubElement(itm, 'Title').text = ywProject.items[itId].title
 
-                    else:
-                        itm.find('Desc').text = ywProject.items[itId].desc
+            if ywProject.items[itId].image is not None:
+                ET.SubElement(
+                    itm, 'ImageFile').text = ywProject.items[itId].image
 
-                if ywProject.items[itId].aka is not None:
+            if ywProject.items[itId].desc is not None:
+                ET.SubElement(itm, 'Desc').text = ywProject.items[itId].desc
 
-                    if itm.find('AKA') is None:
-                        ET.SubElement(
-                            itm, 'AKA').text = ywProject.items[itId].aka
+            if ywProject.items[itId].aka is not None:
+                ET.SubElement(itm, 'AKA').text = ywProject.items[itId].aka
 
-                    else:
-                        itm.find('AKA').text = ywProject.items[itId].aka
+            if ywProject.items[itId].tags is not None:
+                ET.SubElement(itm, 'Tags').text = ';'.join(
+                    ywProject.items[itId].tags)
 
-                if ywProject.items[itId].tags is not None:
-
-                    if itm.find('Tags') is None:
-                        ET.SubElement(itm, 'Tags').text = ';'.join(
-                            ywProject.items[itId].tags)
-
-                    else:
-                        itm.find('Tags').text = ';'.join(
-                            ywProject.items[itId].tags)
+            sortOrder += 1
+            ET.SubElement(itm, 'SortOrder').text = str(sortOrder)
 
         # Write characters to the xml element tree.
 
-        for crt in root.iter('CHARACTER'):
-            crId = crt.find('ID').text
+        characters = root.find('CHARACTERS')
+        sortOrder = 0
 
-            if crId in ywProject.characters:
+        # Remove CHARACTER entries in order to rewrite
+        # the CHARACTERS section in a modified sort order.
 
-                if ywProject.characters[crId].title is not None:
-                    crt.find('Title').text = ywProject.characters[crId].title
+        for crt in characters.findall('CHARACTER'):
+            characters.remove(crt)
 
-                if ywProject.characters[crId].desc is not None:
+        for crId in ywProject.characters:
+            crt = ET.SubElement(characters, 'CHARACTER')
+            ET.SubElement(crt, 'ID').text = crId
 
-                    if crt.find('Desc') is None:
-                        ET.SubElement(
-                            crt, 'Desc').text = ywProject.characters[crId].desc
+            if ywProject.characters[crId].title is not None:
+                ET.SubElement(
+                    crt, 'Title').text = ywProject.characters[crId].title
 
-                    else:
-                        crt.find('Desc').text = ywProject.characters[crId].desc
+            if ywProject.characters[crId].desc is not None:
+                ET.SubElement(
+                    crt, 'Desc').text = ywProject.characters[crId].desc
 
-                if ywProject.characters[crId].aka is not None:
+            if ywProject.characters[crId].image is not None:
+                ET.SubElement(
+                    crt, 'ImageFile').text = ywProject.characters[crId].image
 
-                    if crt.find('AKA') is None:
-                        ET.SubElement(
-                            crt, 'AKA').text = ywProject.characters[crId].aka
+            sortOrder += 1
+            ET.SubElement(crt, 'SortOrder').text = str(sortOrder)
 
-                    else:
-                        crt.find('AKA').text = ywProject.characters[crId].aka
+            if ywProject.characters[crId].notes is not None:
+                ET.SubElement(
+                    crt, 'Notes').text = ywProject.characters[crId].notes
 
-                if ywProject.characters[crId].tags is not None:
+            if ywProject.characters[crId].aka is not None:
+                ET.SubElement(crt, 'AKA').text = ywProject.characters[crId].aka
 
-                    if crt.find('Tags') is None:
-                        ET.SubElement(crt, 'Tags').text = ';'.join(
-                            ywProject.characters[crId].tags)
+            if ywProject.characters[crId].tags is not None:
+                ET.SubElement(crt, 'Tags').text = ';'.join(
+                    ywProject.characters[crId].tags)
 
-                    else:
-                        crt.find('Tags').text = ';'.join(
-                            ywProject.characters[crId].tags)
+            if ywProject.characters[crId].bio is not None:
+                ET.SubElement(crt, 'Bio').text = ywProject.characters[crId].bio
 
-                if ywProject.characters[crId].notes is not None:
+            if ywProject.characters[crId].goals is not None:
+                ET.SubElement(
+                    crt, 'Goals').text = ywProject.characters[crId].goals
 
-                    if crt.find('Notes') is None:
-                        ET.SubElement(
-                            crt, 'Notes').text = ywProject.characters[crId].notes
+            if ywProject.characters[crId].fullName is not None:
+                ET.SubElement(
+                    crt, 'FullName').text = ywProject.characters[crId].fullName
 
-                    else:
-                        crt.find(
-                            'Notes').text = ywProject.characters[crId].notes
-
-                if ywProject.characters[crId].bio is not None:
-
-                    if crt.find('Bio') is None:
-                        ET.SubElement(
-                            crt, 'Bio').text = ywProject.characters[crId].bio
-
-                    else:
-                        crt.find('Bio').text = ywProject.characters[crId].bio
-
-                if ywProject.characters[crId].goals is not None:
-
-                    if crt.find('Goals') is None:
-                        ET.SubElement(
-                            crt, 'Goals').text = ywProject.characters[crId].goals
-
-                    else:
-                        crt.find(
-                            'Goals').text = ywProject.characters[crId].goals
-
-                if ywProject.characters[crId].fullName is not None:
-
-                    if crt.find('FullName') is None:
-                        ET.SubElement(
-                            crt, 'FullName').text = ywProject.characters[crId].fullName
-
-                    else:
-                        crt.find(
-                            'FullName').text = ywProject.characters[crId].fullName
-
-                majorMarker = crt.find('Major')
-
-                if majorMarker is not None:
-
-                    if not ywProject.characters[crId].isMajor:
-                        crt.remove(majorMarker)
-
-                else:
-                    if ywProject.characters[crId].isMajor:
-                        ET.SubElement(crt, 'Major').text = '-1'
+            if ywProject.characters[crId].isMajor:
+                ET.SubElement(crt, 'Major').text = '-1'
 
         # Write attributes at novel level to the xml element tree.
 

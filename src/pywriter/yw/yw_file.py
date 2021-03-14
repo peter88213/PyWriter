@@ -43,6 +43,9 @@ class YwFile(Novel):
             self.locations[lcId] = WorldElement()
             self.locations[lcId].title = loc.find('Title').text
 
+            if loc.find('ImageFile') is not None:
+                self.locations[lcId].image = loc.find('ImageFile').text
+
             if loc.find('Desc') is not None:
                 self.locations[lcId].desc = loc.find('Desc').text
 
@@ -63,6 +66,9 @@ class YwFile(Novel):
             self.items[itId] = WorldElement()
             self.items[itId].title = itm.find('Title').text
 
+            if itm.find('ImageFile') is not None:
+                self.items[itId].image = itm.find('ImageFile').text
+
             if itm.find('Desc') is not None:
                 self.items[itId].desc = itm.find('Desc').text
 
@@ -82,6 +88,9 @@ class YwFile(Novel):
 
             self.characters[crId] = Character()
             self.characters[crId].title = crt.find('Title').text
+
+            if crt.find('ImageFile') is not None:
+                self.characters[crId].image = crt.find('ImageFile').text
 
             if crt.find('Desc') is not None:
                 self.characters[crId].desc = crt.find('Desc').text

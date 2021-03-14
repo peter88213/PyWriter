@@ -17,8 +17,9 @@
   <office:text text:use-soft-page-breaks="true">
 
 <text:p text:style-name="Title">Hal Spacejock book one - Sample yWriter Project</text:p>
-<text:p text:style-name="Subtitle">Characters</text:p>
+<text:p text:style-name="Subtitle">Simon Haynes</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Hal/Hal Spacejock ("Spacejock")</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:1">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:1">
 <text:p text:style-name="Text_20_body"></text:p>
@@ -31,7 +32,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:1">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Jerling/Walter Jerling ("Walter")</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:2">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:2">
 <text:p text:style-name="Text_20_body"></text:p>
@@ -44,7 +47,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:2">
 <text:p text:style-name="Text_20_body">One of his companies needs an urgent shipment of parts to complete a set of new robots for the Emperor.</text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Clunk/Clunk XG99 ("XG99")</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:3">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:3">
 <text:p text:style-name="Text_20_body"></text:p>
@@ -57,7 +62,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:3">
 <text:p text:style-name="Text_20_body">Undergo a refit and advanced pilot training, making him even more useful to his owner.</text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Vurdi/Vurdi Makalukar</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:4">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:4">
 <text:p text:style-name="Text_20_body"></text:p>
@@ -70,7 +77,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:4">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Farrell/Farrell Hinchfig</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:5">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:5">
 <text:p text:style-name="Text_20_body"></text:p>
@@ -83,7 +92,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:5">
 <text:p text:style-name="Text_20_body">Pay off his gambling debts</text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Terry</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:6">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:6">
 <text:p text:style-name="Text_20_body"></text:p>
@@ -96,7 +107,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:6">
 <text:p text:style-name="Text_20_body">Whatever Farrell wants.</text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Carina/Carina Rinoret</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:7">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:7">
 <text:p text:style-name="Text_20_body"></text:p>
@@ -109,7 +122,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:7">
 <text:p text:style-name="Text_20_body">Bit player</text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Mike</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:8">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:8">
 <text:p text:style-name="Text_20_body"></text:p>
@@ -122,7 +137,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:8">
 <text:p text:style-name="Text_20_body">Bit player</text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Gordon/Gordon Hinchfig</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:9">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:9">
 <text:p text:style-name="Text_20_body"></text:p>
@@ -135,7 +152,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:9">
 <text:p text:style-name="Text_20_body">Revitalise the company</text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Navcom</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:10">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:10">
 <text:p text:style-name="Text_20_body">The Black Gull's flight computer</text:p>
@@ -148,7 +167,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:10">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Brutus</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:11">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:11">
 <text:p text:style-name="Text_20_body">Vurdi's enforcer robot.</text:p>
@@ -161,7 +182,9 @@
 <text:section text:style-name="Sect1" text:name="CrID_goals:11">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
+</text:section>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Portmaster/Portmaster Linten</text:h>
+<text:section text:style-name="Sect1" text:name="CrID:12">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:12">
 <text:p text:style-name="Text_20_body"></text:p>
@@ -173,6 +196,7 @@
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Goals</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_goals:12">
 <text:p text:style-name="Text_20_body"></text:p>
+</text:section>
 </text:section>
   </office:text>
  </office:body>
