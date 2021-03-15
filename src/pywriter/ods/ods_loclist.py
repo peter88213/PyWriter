@@ -5,7 +5,6 @@ Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.ods.ods_builder import OdsBuilder
 from pywriter.ods.ods_file import OdsFile
 
 
@@ -16,7 +15,7 @@ class OdsLocList(OdsFile):
     DESCRIPTION = 'Location list'
     SUFFIX = '_loclist'
 
-    fileHeader = OdsBuilder.CONTENT_XML_HEADER + DESCRIPTION + '''" table:style-name="ta1" table:print="false">
+    fileHeader = OdsFile.CONTENT_XML_HEADER + DESCRIPTION + '''" table:style-name="ta1" table:print="false">
     <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co4" table:default-cell-style-name="Default"/>
@@ -64,4 +63,4 @@ class OdsLocList(OdsFile):
     </table:table-row>
 
 '''
-    fileFooter = OdsBuilder.CONTENT_XML_FOOTER
+    fileFooter = OdsFile.CONTENT_XML_FOOTER

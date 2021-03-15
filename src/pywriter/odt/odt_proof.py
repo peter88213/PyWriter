@@ -5,7 +5,6 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_builder import OdtBuilder
 from pywriter.odt.odt_file import OdtFile
 
 
@@ -16,7 +15,7 @@ class OdtProof(OdtFile):
     DESCRIPTION = 'Tagged manuscript for proofing'
     SUFFIX = '_proof'
 
-    fileHeader = OdtBuilder.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
+    fileHeader = OdtFile.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -75,4 +74,4 @@ class OdtProof(OdtFile):
     todoChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[/ChID (ToDo)]</text:p>
 '''
 
-    fileFooter = OdtBuilder.CONTENT_XML_FOOTER
+    fileFooter = OdtFile.CONTENT_XML_FOOTER

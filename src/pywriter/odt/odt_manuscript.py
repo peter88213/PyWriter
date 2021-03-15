@@ -5,7 +5,6 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_builder import OdtBuilder
 from pywriter.odt.odt_file import OdtFile
 
 
@@ -16,7 +15,7 @@ class OdtManuscript(OdtFile):
     DESCRIPTION = 'Editable manuscript'
     SUFFIX = '_manuscript'
 
-    fileHeader = OdtBuilder.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
+    fileHeader = OdtFile.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -54,7 +53,7 @@ class OdtManuscript(OdtFile):
     chapterEndTemplate = '''</text:section>
 '''
 
-    fileFooter = OdtBuilder.CONTENT_XML_FOOTER
+    fileFooter = OdtFile.CONTENT_XML_FOOTER
 
     def get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section. 
