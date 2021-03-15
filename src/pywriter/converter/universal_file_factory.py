@@ -47,6 +47,8 @@ from pywriter.csv.csv_loclist import CsvLocList
 from pywriter.csv.csv_itemlist import CsvItemList
 
 from pywriter.ods.ods_charlist import OdsCharList
+from pywriter.ods.ods_loclist import OdsLocList
+from pywriter.ods.ods_itemlist import OdsItemList
 
 from pywriter.html.html_fop import read_html_file
 
@@ -132,13 +134,13 @@ class UniversalFileFactory(FileFactory):
                 targetFile = OdsCharList(
                     fileName + suffix + OdsCharList.EXTENSION)
 
-            elif suffix == CsvLocList.SUFFIX:
-                targetFile = CsvLocList(
-                    fileName + suffix + CsvLocList.EXTENSION)
+            elif suffix == OdsLocList.SUFFIX:
+                targetFile = OdsLocList(
+                    fileName + suffix + OdsLocList.EXTENSION)
 
-            elif suffix == CsvItemList.SUFFIX:
-                targetFile = CsvItemList(
-                    fileName + suffix + CsvItemList.EXTENSION)
+            elif suffix == OdsItemList.SUFFIX:
+                targetFile = OdsItemList(
+                    fileName + suffix + OdsItemList.EXTENSION)
 
             else:
                 return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None

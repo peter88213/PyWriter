@@ -16,24 +16,52 @@ class OdsLocList(OdsFile):
     DESCRIPTION = 'Location list'
     SUFFIX = '_loclist'
 
-    fileHeader = OdsBuilder.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
-<text:p text:style-name="Subtitle">$AuthorName</text:p>
+    fileHeader = OdsBuilder.CONTENT_XML_HEADER + DESCRIPTION + '''" table:style-name="ta1" table:print="false">
+    <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co4" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co2" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co1" table:number-columns-repeated="1014" table:default-cell-style-name="Default"/>
+     <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>ID</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Name</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Description</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Aka</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Tags</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" table:number-columns-repeated="1014"/>
+    </table:table-row>
+
 '''
 
-    locationTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title$AKA</text:h>
-<text:section text:style-name="Sect1" text:name="LcID:$ID">
-<text:p text:style-name="Text_20_body">$Desc</text:p>
-</text:section>
-'''
+    locationTemplate = '''   <table:table-row table:style-name="ro2">
+     <table:table-cell office:value-type="string">
+      <text:p>LcID:$ID</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>$Title</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>$Desc</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>$AKA</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>$Tags</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="1014"/>
+    </table:table-row>
 
+'''
     fileFooter = OdsBuilder.CONTENT_XML_FOOTER
-
-    def get_locationMapping(self, lcId):
-        """Return a mapping dictionary for a location section. 
-        """
-        locationMapping = OdsFile.get_locationMapping(self, lcId)
-
-        if self.locations[lcId].aka:
-            locationMapping['AKA'] = ' ("' + self.locations[lcId].aka + '")'
-
-        return locationMapping

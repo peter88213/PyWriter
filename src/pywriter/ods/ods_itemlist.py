@@ -16,24 +16,53 @@ class OdsItemList(OdsFile):
     DESCRIPTION = 'Item list'
     SUFFIX = '_itemlist'
 
-    fileHeader = OdsBuilder.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
-<text:p text:style-name="Subtitle">$AuthorName</text:p>
+    fileHeader = OdsBuilder.CONTENT_XML_HEADER + DESCRIPTION + '''" table:style-name="ta1" table:print="false">
+    <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co4" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co2" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co1" table:number-columns-repeated="1014" table:default-cell-style-name="Default"/>
+     <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>ID</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Name</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Description</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Aka</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Tags</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" table:number-columns-repeated="1014"/>
+    </table:table-row>
+
 '''
 
-    itemTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title$AKA</text:h>
-<text:section text:style-name="Sect1" text:name="ItID:$ID">
-<text:p text:style-name="Text_20_body">$Desc</text:p>
-</text:section>
+    itemTemplate = '''   <table:table-row table:style-name="ro2">
+     <table:table-cell office:value-type="string">
+      <text:p>ItID:$ID</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>$Title</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>$Desc</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>$AKA</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>$Tags</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="1014"/>
+    </table:table-row>
+
 '''
 
     fileFooter = OdsBuilder.CONTENT_XML_FOOTER
-
-    def get_itemMapping(self, itId):
-        """Return a mapping dictionary for an item section. 
-        """
-        itemMapping = OdsFile.get_itemMapping(self, itId)
-
-        if self.items[itId].aka:
-            itemMapping['AKA'] = ' ("' + self.items[itId].aka + '")'
-
-        return itemMapping
