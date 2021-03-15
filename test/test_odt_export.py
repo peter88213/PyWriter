@@ -75,7 +75,7 @@ class NrmOpr(unittest.TestCase):
         copy_file(REFERENCE_YW7, TEST_YW7)
 
     def test_yw7_to_odt(self):
-        """Convert markdown to odt. """
+        """Convert yw7 to odt. """
 
         yw7File = Yw7File(TEST_YW7)
         documentFile = OdtExport(TEST_ODT)

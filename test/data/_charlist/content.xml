@@ -80,6 +80,40 @@
 
    <table:table-row table:style-name="ro2">
      <table:table-cell office:value-type="string">
+      <text:p>CrID:1</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal Spacejock</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Spacejock</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Somehow, Hal Spacejock ended up in the cargo game. With a loan from a dodgy operator and a ship from the wrong side of the nearest junkyard he works the back reaches of the galaxy. A couple of important things about Hal - he&apos;s determined to stay on the right side of the law, and he has a strong sense of justice.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Minor</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="1014"/>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell office:value-type="string">
       <text:p>CrID:2</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
@@ -101,41 +135,7 @@
       <text:p>One of his companies needs an urgent shipment of parts to complete a set of new robots for the Emperor.</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
-      <text:p>Major</text:p>
-     </table:table-cell>
-     <table:table-cell office:value-type="string">
-      <text:p></text:p>
-     </table:table-cell>
-     <table:table-cell office:value-type="string">
-      <text:p></text:p>
-     </table:table-cell>
-     <table:table-cell table:number-columns-repeated="1014"/>
-    </table:table-row>
-
-   <table:table-row table:style-name="ro2">
-     <table:table-cell office:value-type="string">
-      <text:p>CrID:1</text:p>
-     </table:table-cell>
-     <table:table-cell office:value-type="string">
-      <text:p>Hal</text:p>
-     </table:table-cell>
-     <table:table-cell office:value-type="string">
-      <text:p>Hal Spacejerk</text:p>
-     </table:table-cell>
-     <table:table-cell office:value-type="string">
-      <text:p>Spacejock</text:p>
-     </table:table-cell>
-     <table:table-cell office:value-type="string">
-      <text:p></text:p>
-     </table:table-cell>
-     <table:table-cell office:value-type="string">
-      <text:p>Somehow, Hal Spacejock ended up in the cargo game. With a loan from a dodgy operator and a ship from the wrong side of the nearest junkyard he works the back reaches of the galaxy. A couple of important things about Hal - he&apos;s determined to stay on the right side of the law, and he has a strong sense of justice.</text:p>
-     </table:table-cell>
-     <table:table-cell office:value-type="string">
-      <text:p></text:p>
-     </table:table-cell>
-     <table:table-cell office:value-type="string">
-      <text:p>Major</text:p>
+      <text:p>Minor</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
       <text:p></text:p>
@@ -169,7 +169,7 @@
       <text:p>Undergo a refit and advanced pilot training, making him even more useful to his owner.</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
-      <text:p>Major</text:p>
+      <text:p>Minor</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
       <text:p></text:p>

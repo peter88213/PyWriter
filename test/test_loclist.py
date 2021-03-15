@@ -8,15 +8,21 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 import unittest
+import zipfile
 
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.csv.csv_loclist import CsvLocList
+from pywriter.ods.ods_loclist import OdsLocList
 
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
 DATA_PATH = 'data/' + CsvLocList.SUFFIX + '/'
+
+TEST_ODS = EXEC_PATH + 'yw7 Sample Project' + \
+    OdsLocList.SUFFIX + OdsLocList.EXTENSION
+ODS_CONTENT = 'content.xml'
 
 TEST_CSV = EXEC_PATH + 'yw7 Sample Project' + \
     CsvLocList.SUFFIX + CsvLocList.EXTENSION
@@ -47,6 +53,10 @@ def copy_file(inputFile, outputFile):
 def remove_all_tempfiles():
     try:
         os.remove(TEST_CSV)
+    except:
+        pass
+    try:
+        os.remove(TEST_ODS)
     except:
         pass
     try:
@@ -87,20 +97,24 @@ class NrmOpr(unittest.TestCase):
             read_file(REFERENCE_CSV),
             read_file(PROOFED_CSV))
 
-    def test_yw7_to_csv(self):
-        """Export yW7 locations to csv. """
+    def test_yw7_to_ods(self):
+        """Export yW7 locations to ods. """
 
         yw7File = Yw7File(TEST_YW7)
-        documentFile = CsvLocList(TEST_CSV)
+        documentFile = OdsLocList(TEST_ODS)
         converter = YwCnv()
 
-        # Read .yw7 file and convert xml to csv.
+        # Read .yw7 file and convert xml to ods.
 
         self.assertEqual(converter.convert(
-            yw7File, documentFile), 'SUCCESS: "' + os.path.normpath(TEST_CSV) + '" written.')
+            yw7File, documentFile), 'SUCCESS: "' + os.path.normpath(TEST_ODS) + '" written.')
 
-        self.assertEqual(read_file(TEST_CSV),
-                         read_file(REFERENCE_CSV))
+        with zipfile.ZipFile(TEST_ODS, 'r') as myzip:
+            myzip.extract(ODS_CONTENT, EXEC_PATH)
+            myzip.close
+
+        self.assertEqual(read_file(EXEC_PATH + ODS_CONTENT),
+                         read_file(DATA_PATH + ODS_CONTENT))
 
     def test_csv_to_yw7(self):
         """Import proofed yw7 scenes from csv. """

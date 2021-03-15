@@ -122,7 +122,8 @@ class NrmOpr(unittest.TestCase):
                          read_file(PROOFED_YW7))
 
     def test_yw7_to_odt(self):
-        """Convert markdown to odt. """
+        """Convert yw7 to odt. """
+
         yw7File = Yw7File(TEST_YW7)
         documentFile = OdtItems(TEST_ODT)
         converter = YwCnv()
