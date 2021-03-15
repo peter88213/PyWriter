@@ -1,8 +1,10 @@
 """Import and export yWriter character list. 
 
 File format: csv (intended for spreadsheet conversion).
+Convert yWriter character list to ods.
+Convert csv to yWriter format.
 
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

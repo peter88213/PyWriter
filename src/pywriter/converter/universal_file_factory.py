@@ -3,7 +3,7 @@
 Instantiate the Novel subclass objects 
 sourceFile and targetFile for file conversion.
 
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -45,6 +45,8 @@ from pywriter.csv.csv_plotlist import CsvPlotList
 from pywriter.csv.csv_charlist import CsvCharList
 from pywriter.csv.csv_loclist import CsvLocList
 from pywriter.csv.csv_itemlist import CsvItemList
+
+from pywriter.ods.ods_charlist import OdsCharList
 
 from pywriter.html.html_fop import read_html_file
 
@@ -126,9 +128,9 @@ class UniversalFileFactory(FileFactory):
                 targetFile = CsvPlotList(
                     fileName + suffix + CsvPlotList.EXTENSION)
 
-            elif suffix == CsvCharList.SUFFIX:
-                targetFile = CsvCharList(
-                    fileName + suffix + CsvCharList.EXTENSION)
+            elif suffix == OdsCharList.SUFFIX:
+                targetFile = OdsCharList(
+                    fileName + suffix + OdsCharList.EXTENSION)
 
             elif suffix == CsvLocList.SUFFIX:
                 targetFile = CsvLocList(
