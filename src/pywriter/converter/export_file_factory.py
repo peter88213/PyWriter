@@ -30,9 +30,10 @@ from pywriter.odt.odt_locations import OdtLocations
 
 from pywriter.csv.csv_scenelist import CsvSceneList
 from pywriter.csv.csv_plotlist import CsvPlotList
-from pywriter.csv.csv_charlist import CsvCharList
-from pywriter.csv.csv_loclist import CsvLocList
-from pywriter.csv.csv_itemlist import CsvItemList
+
+from pywriter.ods.ods_charlist import OdsCharList
+from pywriter.ods.ods_loclist import OdsLocList
+from pywriter.ods.ods_itemlist import OdsItemList
 
 
 class ExportFileFactory(FileFactory):
@@ -112,17 +113,17 @@ class ExportFileFactory(FileFactory):
                 targetFile = CsvPlotList(
                     fileName + suffix + CsvPlotList.EXTENSION)
 
-            elif suffix == CsvCharList.SUFFIX:
-                targetFile = CsvCharList(
-                    fileName + suffix + CsvCharList.EXTENSION)
+            elif suffix == OdsCharList.SUFFIX:
+                targetFile = OdsCharList(
+                    fileName + suffix + OdsCharList.EXTENSION)
 
-            elif suffix == CsvLocList.SUFFIX:
-                targetFile = CsvLocList(
-                    fileName + suffix + CsvLocList.EXTENSION)
+            elif suffix == OdsLocList.SUFFIX:
+                targetFile = OdsLocList(
+                    fileName + suffix + OdsLocList.EXTENSION)
 
-            elif suffix == CsvItemList.SUFFIX:
-                targetFile = CsvItemList(
-                    fileName + suffix + CsvItemList.EXTENSION)
+            elif suffix == OdsItemList.SUFFIX:
+                targetFile = OdsItemList(
+                    fileName + suffix + OdsItemList.EXTENSION)
 
             else:
                 return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None
