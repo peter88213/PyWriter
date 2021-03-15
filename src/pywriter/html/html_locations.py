@@ -1,7 +1,7 @@
 """HtmlLocations - Class for html location description file parsing.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -32,6 +32,7 @@ class HtmlLocations(HtmlFile):
 
                 if attrs[0][1].startswith('LcID'):
                     self._lcId = re.search('[0-9]+', attrs[0][1]).group()
+                    self.srtLocations.append(self._lcId)
                     self.locations[self._lcId] = WorldElement()
 
     def handle_endtag(self, tag):

@@ -1,7 +1,7 @@
 """HtmlCharacters - Class for html character description file parsing.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -33,6 +33,7 @@ class HtmlCharacters(HtmlFile):
 
                 if attrs[0][1].startswith('CrID_desc'):
                     self._crId = re.search('[0-9]+', attrs[0][1]).group()
+                    self.srtCharacters.append(self._crId)
                     self.characters[self._crId] = Character()
                     self._section = 'desc'
 

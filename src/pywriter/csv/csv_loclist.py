@@ -1,7 +1,7 @@
 """CsvLocList - Class for csv locations table.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -44,6 +44,7 @@ class CsvLocList(CsvFile):
 
             if 'LcID:' in cells[0]:
                 lcId = re.search('LcID\:([0-9]+)', cells[0]).group(1)
+                self.srtLocations.append(lcId)
                 self.locations[lcId] = WorldElement()
                 self.locations[lcId].title = cells[1]
                 self.locations[lcId].desc = self.convert_to_yw(cells[2])
@@ -56,5 +57,6 @@ class CsvLocList(CsvFile):
         """Copy required attributes of the novel object.
         Return a message beginning with SUCCESS or ERROR.
         """
+        self.srtLocations = novel.srtLocations
         self.locations = novel.locations
         return 'SUCCESS'

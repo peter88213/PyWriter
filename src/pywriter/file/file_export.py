@@ -6,7 +6,7 @@
 * This class is generic and contains no conversion algorithm and no templates.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -113,13 +113,16 @@ class FileExport(Novel):
         if novel.chapters is not None:
             self.chapters = novel.chapters
 
-        if novel.characters is not None:
+        if novel.srtCharacters != []:
+            self.srtCharacters = novel.srtCharacters
             self.characters = novel.characters
 
-        if novel.locations is not None:
+        if novel.srtLocations != []:
+            self.srtLocations = novel.srtLocations
             self.locations = novel.locations
 
-        if novel.items is not None:
+        if novel.srtItems != []:
+            self.srtItems = novel.srtItems
             self.items = novel.items
 
         return 'SUCCESS'
@@ -499,17 +502,17 @@ class FileExport(Novel):
             elif self.chapterEndTemplate != '':
                 lines.append(self.chapterEndTemplate)
 
-        for crId in self.characters:
+        for crId in self.srtCharacters:
             template = Template(self.characterTemplate)
             lines.append(template.safe_substitute(
                 self.get_characterMapping(crId)))
 
-        for lcId in self.locations:
+        for lcId in self.srtLocations:
             template = Template(self.locationTemplate)
             lines.append(template.safe_substitute(
                 self.get_locationMapping(lcId)))
 
-        for itId in self.items:
+        for itId in self.srtItems:
             template = Template(self.itemTemplate)
             lines.append(template.safe_substitute(self.get_itemMapping(itId)))
 

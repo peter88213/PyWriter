@@ -1,7 +1,7 @@
 """CsvCharList - Class for csv characters table.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -44,6 +44,7 @@ class CsvCharList(CsvFile):
 
             if 'CrID:' in cells[0]:
                 crId = re.search('CrID\:([0-9]+)', cells[0]).group(1)
+                self.srtCharacters.append(crId)
                 self.characters[crId] = Character()
                 self.characters[crId].title = cells[1]
                 self.characters[crId].fullName = cells[2]
@@ -67,5 +68,6 @@ class CsvCharList(CsvFile):
         """Copy required attributes of the novel object.
         Return a message beginning with SUCCESS or ERROR.
         """
+        self.srtCharacters = novel.srtCharacters
         self.characters = novel.characters
         return 'SUCCESS'

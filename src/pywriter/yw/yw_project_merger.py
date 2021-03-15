@@ -24,11 +24,12 @@ class YwProjectMerger():
 
         # Merge and re-order locations.
 
-        if source.locations != {}:
+        if source.srtLocations != []:
+            target.srtLocations = source.srtLocations
             temploc = target.locations
             target.locations = {}
 
-            for lcId in source.locations:
+            for lcId in source.srtLocations:
 
                 # Build a new target.locations dictionary sorted like the
                 # source
@@ -72,11 +73,12 @@ class YwProjectMerger():
 
         # Merge and re-order items.
 
-        if source.items != {}:
+        if source.srtItems != []:
+            target.srtItems = source.srtItems
             tempitm = target.items
             target.items = {}
 
-            for itId in source.items:
+            for itId in source.srtItems:
 
                 # Build a new target.items dictionary sorted like the
                 # source
@@ -120,11 +122,12 @@ class YwProjectMerger():
 
         # Merge and re-order characters.
 
-        if source.characters != {}:
+        if source.srtCharacters != []:
+            target.srtCharacters = source.srtCharacters
             tempchr = target.characters
             target.characters = {}
 
-            for crId in source.characters:
+            for crId in source.srtCharacters:
 
                 # Build a new target.characters dictionary sorted like the
                 # source

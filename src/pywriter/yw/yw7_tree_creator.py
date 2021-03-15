@@ -1,7 +1,7 @@
 """Create a new yWriter 7 project xml tree.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -50,7 +50,7 @@ class Yw7TreeCreator(YwTreeBuilder):
 
         locations = ET.SubElement(root, 'LOCATIONS')
 
-        for lcId in ywProject.locations:
+        for lcId in ywProject.srtLocations:
             loc = ET.SubElement(locations, 'LOCATION')
             ET.SubElement(loc, 'ID').text = lcId
 
@@ -73,7 +73,7 @@ class Yw7TreeCreator(YwTreeBuilder):
 
         items = ET.SubElement(root, 'ITEMS')
 
-        for itId in ywProject.items:
+        for itId in ywProject.srtItems:
             itm = ET.SubElement(items, 'ITEM')
             ET.SubElement(itm, 'ID').text = itId
 
@@ -94,7 +94,7 @@ class Yw7TreeCreator(YwTreeBuilder):
 
         characters = ET.SubElement(root, 'CHARACTERS')
 
-        for crId in ywProject.characters:
+        for crId in ywProject.srtCharacters:
             crt = ET.SubElement(characters, 'CHARACTER')
             ET.SubElement(crt, 'ID').text = crId
 

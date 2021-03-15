@@ -6,7 +6,7 @@ Convention:
 * Scene notes give plot relevant informations.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -66,8 +66,9 @@ class CsvPlotList(CsvFile):
 
         charList = []
 
-        for crId in self.characters:
+        for crId in self.srtCharacters:
             charList.append(self.characters[crId].title)
+            # Collect character names to identify storylines
 
         if self.fieldTitle1 in charList or self._STORYLINE_MARKER in self.fieldTitle1.lower():
             self.arc1 = True

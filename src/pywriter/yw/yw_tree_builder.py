@@ -33,7 +33,7 @@ class YwTreeBuilder():
         for loc in locations.findall('LOCATION'):
             locations.remove(loc)
 
-        for lcId in ywProject.locations:
+        for lcId in ywProject.srtLocations:
             loc = ET.SubElement(locations, 'LOCATION')
             ET.SubElement(loc, 'ID').text = lcId
 
@@ -70,7 +70,7 @@ class YwTreeBuilder():
         for itm in items.findall('ITEM'):
             items.remove(itm)
 
-        for itId in ywProject.items:
+        for itId in ywProject.srtItems:
             itm = ET.SubElement(items, 'ITEM')
             ET.SubElement(itm, 'ID').text = itId
 
@@ -105,7 +105,7 @@ class YwTreeBuilder():
         for crt in characters.findall('CHARACTER'):
             characters.remove(crt)
 
-        for crId in ywProject.characters:
+        for crId in ywProject.srtCharacters:
             crt = ET.SubElement(characters, 'CHARACTER')
             ET.SubElement(crt, 'ID').text = crId
 

@@ -75,7 +75,6 @@ class NrmOpr(unittest.TestCase):
         copy_file(REFERENCE_YW7,
                   TEST_YW7)
 
-    @unittest.skip('')
     def test_data(self):
         """Verify test data integrity. """
 
@@ -88,7 +87,6 @@ class NrmOpr(unittest.TestCase):
             read_file(REFERENCE_CSV),
             read_file(PROOFED_CSV))
 
-    @unittest.skip('')
     def test_yw7_to_csv(self):
         """Export yW7 locations to csv. """
 
@@ -126,7 +124,6 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_YW7),
                          read_file(PROOFED_YW7))
 
-    @unittest.skip('')
     def tearDown(self):
         remove_all_tempfiles()
 

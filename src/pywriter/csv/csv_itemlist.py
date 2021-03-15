@@ -1,7 +1,7 @@
 """CsvItemList - Class for csv items table.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -43,6 +43,7 @@ class CsvItemList(CsvFile):
 
             if 'ItID:' in cells[0]:
                 itId = re.search('ItID\:([0-9]+)', cells[0]).group(1)
+                self.srtItems.append(itId)
                 self.items[itId] = WorldElement()
                 self.items[itId].title = cells[1]
                 self.items[itId].desc = self.convert_to_yw(cells[2])
@@ -55,5 +56,6 @@ class CsvItemList(CsvFile):
         """Copy required attributes of the novel object.
         Return a message beginning with SUCCESS or ERROR.
         """
+        self.srtItems = novel.srtItems
         self.items = novel.items
         return 'SUCCESS'

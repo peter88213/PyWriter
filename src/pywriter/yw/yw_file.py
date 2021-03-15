@@ -39,7 +39,7 @@ class YwFile(Novel):
 
         for loc in root.iter('LOCATION'):
             lcId = loc.find('ID').text
-
+            self.srtLocations.append(lcId)
             self.locations[lcId] = WorldElement()
             self.locations[lcId].title = loc.find('Title').text
 
@@ -62,7 +62,7 @@ class YwFile(Novel):
 
         for itm in root.iter('ITEM'):
             itId = itm.find('ID').text
-
+            self.srtItems.append(itId)
             self.items[itId] = WorldElement()
             self.items[itId].title = itm.find('Title').text
 
@@ -85,7 +85,7 @@ class YwFile(Novel):
 
         for crt in root.iter('CHARACTER'):
             crId = crt.find('ID').text
-
+            self.srtCharacters.append(crId)
             self.characters[crId] = Character()
             self.characters[crId].title = crt.find('Title').text
 

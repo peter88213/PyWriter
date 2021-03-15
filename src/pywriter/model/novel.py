@@ -1,7 +1,7 @@
 """Novel - represents the basic structure of an yWriter project.
 
 Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -78,17 +78,32 @@ class Novel():
         # key = location ID, value = Object.
         # The order of the elements does not matter.
 
+        self.srtLocations = []
+        # list of str
+        # The novel's location IDs. The order of its elements
+        # corresponds to the XML project file.
+
         self.items = {}
         # dict
         # xml: <ITEMS>
         # key = item ID, value = Object.
         # The order of the elements does not matter.
 
+        self.srtItems = []
+        # list of str
+        # The novel's item IDs. The order of its elements
+        # corresponds to the XML project file.
+
         self.characters = {}
         # dict
         # xml: <CHARACTERS>
         # key = character ID, value = Character object.
         # The order of the elements does not matter.
+
+        self.srtCharacters = []
+        # list of str
+        # The novel's character IDs. The order of its elements
+        # corresponds to the XML project file.
 
         self._filePath = None
         # str
