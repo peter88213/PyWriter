@@ -28,12 +28,12 @@ from pywriter.odt.odt_characters import OdtCharacters
 from pywriter.odt.odt_items import OdtItems
 from pywriter.odt.odt_locations import OdtLocations
 
-from pywriter.csv.csv_scenelist import CsvSceneList
 from pywriter.csv.csv_plotlist import CsvPlotList
 
 from pywriter.ods.ods_charlist import OdsCharList
 from pywriter.ods.ods_loclist import OdsLocList
 from pywriter.ods.ods_itemlist import OdsItemList
+from pywriter.ods.ods_scenelist import OdsSceneList
 
 
 class ExportFileFactory(FileFactory):
@@ -105,9 +105,9 @@ class ExportFileFactory(FileFactory):
             elif suffix == OdtItems.SUFFIX:
                 targetFile = OdtItems(fileName + suffix + OdtItems.EXTENSION)
 
-            elif suffix == CsvSceneList.SUFFIX:
-                targetFile = CsvSceneList(
-                    fileName + suffix + CsvSceneList.EXTENSION)
+            elif suffix == OdsSceneList.SUFFIX:
+                targetFile = OdsSceneList(
+                    fileName + suffix + OdsSceneList.EXTENSION)
 
             elif suffix == CsvPlotList.SUFFIX:
                 targetFile = CsvPlotList(

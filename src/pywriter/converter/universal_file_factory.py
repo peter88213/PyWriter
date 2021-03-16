@@ -49,6 +49,7 @@ from pywriter.csv.csv_itemlist import CsvItemList
 from pywriter.ods.ods_charlist import OdsCharList
 from pywriter.ods.ods_loclist import OdsLocList
 from pywriter.ods.ods_itemlist import OdsItemList
+from pywriter.ods.ods_scenelist import OdsSceneList
 
 from pywriter.html.html_fop import read_html_file
 
@@ -122,9 +123,9 @@ class UniversalFileFactory(FileFactory):
             elif suffix == OdtItems.SUFFIX:
                 targetFile = OdtItems(fileName + suffix + OdtItems.EXTENSION)
 
-            elif suffix == CsvSceneList.SUFFIX:
-                targetFile = CsvSceneList(
-                    fileName + suffix + CsvSceneList.EXTENSION)
+            elif suffix == OdsSceneList.SUFFIX:
+                targetFile = OdsSceneList(
+                    fileName + suffix + OdsSceneList.EXTENSION)
 
             elif suffix == CsvPlotList.SUFFIX:
                 targetFile = CsvPlotList(
