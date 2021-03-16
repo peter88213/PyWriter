@@ -1,4 +1,4 @@
-"""An universal file factory. 
+"""This class emulates a "FileFactory" Interface.
 
 Instantiate the Novel subclass objects 
 sourceFile and targetFile for file conversion.

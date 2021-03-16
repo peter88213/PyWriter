@@ -1,4 +1,4 @@
-"""Postprocess yWriter project.
+"""Postprocess the generated yWriter project.
 
 Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
