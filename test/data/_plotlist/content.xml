@@ -1,0 +1,2133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" office:version="1.2">
+ <office:scripts/>
+ <office:font-face-decls>
+  <style:font-face style:name="Arial" svg:font-family="Arial" style:font-family-generic="swiss" style:font-pitch="variable"/>
+  <style:font-face style:name="Segoe UI" svg:font-family="&apos;Segoe UI&apos;" style:font-adornments="Standard" style:font-family-generic="swiss" style:font-pitch="variable"/>
+  <style:font-face style:name="Arial Unicode MS" svg:font-family="&apos;Arial Unicode MS&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Microsoft YaHei" svg:font-family="&apos;Microsoft YaHei&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Tahoma" svg:font-family="Tahoma" style:font-family-generic="system" style:font-pitch="variable"/>
+ </office:font-face-decls>
+ <office:automatic-styles>
+  <style:style style:name="co1" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="2.000cm"/>
+  </style:style>
+  <style:style style:name="co2" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="3.000cm"/>
+  </style:style>
+  <style:style style:name="co3" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="4.000cm"/>
+  </style:style>
+  <style:style style:name="co4" style:family="table-column">
+   <style:table-column-properties fo:break-before="auto" style:column-width="8.000cm"/>
+  </style:style>
+  <style:style style:name="ro1" style:family="table-row">
+   <style:table-row-properties style:row-height="1.157cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
+  </style:style>
+  <style:style style:name="ro2" style:family="table-row">
+   <style:table-row-properties style:row-height="2.053cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
+  </style:style>
+  <style:style style:name="ta1" style:family="table" style:master-page-name="Default">
+   <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
+  </style:style>
+ </office:automatic-styles>
+ <office:body>
+  <office:spreadsheet>
+   <table:table table:name="Plot list" table:style-name="ta1" table:print="false">
+    <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co4" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+    <table:table-row table:style-name="ro1">
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>ID</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Plot section</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Plot event</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Plot event title</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Details</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Scene</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>Words total</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>N/A</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>N/A</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>N/A</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" office:value-type="string">
+      <text:p>N/A</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Heading" table:number-columns-repeated="1003"/>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell office:value-type="string">
+      <text:p>ChID:33</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Act 1</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>The hero and his world.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:1%7Cregion&quot;;&quot;ScID:1&quot;)" office:value-type="string" office:string-value="ScID:1">
+      <text:p>ScID:1</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Exposition</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Meet Hal, threatened by Vurdi</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>This is a note. Notice how the N icon shows up when there&apos;s a note attached to a scene.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="372">
+      <text:p>372</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:2%7Cregion&quot;;&quot;ScID:2&quot;)" office:value-type="string" office:string-value="ScID:2">
+      <text:p>ScID:2</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Jerling buys team. Discusses Seraph.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>2</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="435">
+      <text:p>435</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:3%7Cregion&quot;;&quot;ScID:3&quot;)" office:value-type="string" office:string-value="ScID:3">
+      <text:p>ScID:3</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal takes a call from Jerling</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>3</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="520">
+      <text:p>520</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:4%7Cregion&quot;;&quot;ScID:4&quot;)" office:value-type="string" office:string-value="ScID:4">
+      <text:p>ScID:4</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk arrives</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>4</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="584">
+      <text:p>584</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:5%7Cregion&quot;;&quot;ScID:5&quot;)" office:value-type="string" office:string-value="ScID:5">
+      <text:p>ScID:5</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal going to port control</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>5</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="756">
+      <text:p>756</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:6%7Cregion&quot;;&quot;ScID:6&quot;)" office:value-type="string" office:string-value="ScID:6">
+      <text:p>ScID:6</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk checking computer for Incubots.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>6</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="878">
+      <text:p>878</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:7%7Cregion&quot;;&quot;ScID:7&quot;)" office:value-type="string" office:string-value="ScID:7">
+      <text:p>ScID:7</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal talking to the Portmaster</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>7</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="964">
+      <text:p>964</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:8%7Cregion&quot;;&quot;ScID:8&quot;)" office:value-type="string" office:string-value="ScID:8">
+      <text:p>ScID:8</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk takes call from Hal. Calls Jerling. Fire.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>8</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1035">
+      <text:p>1035</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:9%7Cregion&quot;;&quot;ScID:9&quot;)" office:value-type="string" office:string-value="ScID:9">
+      <text:p>ScID:9</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk calls, the landing field is on fire. Hal tells him to sit tight.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>9</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1187">
+      <text:p>1187</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:10%7Cregion&quot;;&quot;ScID:10&quot;)" office:value-type="string" office:string-value="ScID:10">
+      <text:p>ScID:10</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Pinch Point</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk fighting the fire, ends up face-down</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>10</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:12%7Cregion&quot;;&quot;ScID:12&quot;)" office:value-type="string" office:string-value="ScID:12">
+      <text:p>ScID:12</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal gets to the ship and lifts off.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>11</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:15%7Cregion&quot;;&quot;ScID:15&quot;)" office:value-type="string" office:string-value="ScID:15">
+      <text:p>ScID:15</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal finds Clunk on rope, falls out after him.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>12</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:17%7Cregion&quot;;&quot;ScID:17&quot;)" office:value-type="string" office:string-value="ScID:17">
+      <text:p>ScID:17</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Climb up rope to safety. Back in ship for hyperspace.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>13</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell office:value-type="string">
+      <text:p>ChID:35</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Act 2</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Action!</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:19%7Cregion&quot;;&quot;ScID:19&quot;)" office:value-type="string" office:string-value="ScID:19">
+      <text:p>ScID:19</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>In his office. Gordon OKs the deal</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>14</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:22%7Cregion&quot;;&quot;ScID:22&quot;)" office:value-type="string" office:string-value="ScID:22">
+      <text:p>ScID:22</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Exits the ship to meet Bevan</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>15</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:25%7Cregion&quot;;&quot;ScID:25&quot;)" office:value-type="string" office:string-value="ScID:25">
+      <text:p>ScID:25</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Getting food out. Frozen puddings.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>16</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:27%7Cregion&quot;;&quot;ScID:27&quot;)" office:value-type="string" office:string-value="ScID:27">
+      <text:p>ScID:27</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Says goodbye to Clunk</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>17</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:29%7Cregion&quot;;&quot;ScID:29&quot;)" office:value-type="string" office:string-value="ScID:29">
+      <text:p>ScID:29</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal depressed. No escape from here.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>18</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:31%7Cregion&quot;;&quot;ScID:31&quot;)" office:value-type="string" office:string-value="ScID:31">
+      <text:p>ScID:31</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Lighten the ship. Preparing for liftoff.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>19</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:34%7Cregion&quot;;&quot;ScID:34&quot;)" office:value-type="string" office:string-value="ScID:34">
+      <text:p>ScID:34</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Karl and Terry awaiting Hal. They take a call from their spy, intercept is at the orbiter.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>20</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:38%7Cregion&quot;;&quot;ScID:38&quot;)" office:value-type="string" office:string-value="ScID:38">
+      <text:p>ScID:38</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Plot Point</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Karl waiting impatiently</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>21</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:40%7Cregion&quot;;&quot;ScID:40&quot;)" office:value-type="string" office:string-value="ScID:40">
+      <text:p>ScID:40</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Karl and Terry confused about 'Chunk'</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>22</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:43%7Cregion&quot;;&quot;ScID:43&quot;)" office:value-type="string" office:string-value="ScID:43">
+      <text:p>ScID:43</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk slips out the back.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>23</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:45%7Cregion&quot;;&quot;ScID:45&quot;)" office:value-type="string" office:string-value="ScID:45">
+      <text:p>ScID:45</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Karl and Terry waiting.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>24</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:47%7Cregion&quot;;&quot;ScID:47&quot;)" office:value-type="string" office:string-value="ScID:47">
+      <text:p>ScID:47</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk in orbit</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>25</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:49%7Cregion&quot;;&quot;ScID:49&quot;)" office:value-type="string" office:string-value="ScID:49">
+      <text:p>ScID:49</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk uses cylinder</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>26</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:51%7Cregion&quot;;&quot;ScID:51&quot;)" office:value-type="string" office:string-value="ScID:51">
+      <text:p>ScID:51</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Terry places the 'bomb'</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>27</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:53%7Cregion&quot;;&quot;ScID:53&quot;)" office:value-type="string" office:string-value="ScID:53">
+      <text:p>ScID:53</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal buys food</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>28</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:55%7Cregion&quot;;&quot;ScID:55&quot;)" office:value-type="string" office:string-value="ScID:55">
+      <text:p>ScID:55</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Karl leaves a note, takes Clunk.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>29</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:57%7Cregion&quot;;&quot;ScID:57&quot;)" office:value-type="string" office:string-value="ScID:57">
+      <text:p>ScID:57</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal about to hyperspace.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>30</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:60%7Cregion&quot;;&quot;ScID:60&quot;)" office:value-type="string" office:string-value="ScID:60">
+      <text:p>ScID:60</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal gets real Jerling's call. Has to get cargo and robot back.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>31</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:62%7Cregion&quot;;&quot;ScID:62&quot;)" office:value-type="string" office:string-value="ScID:62">
+      <text:p>ScID:62</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal sets course for Forg.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>32</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:64%7Cregion&quot;;&quot;ScID:64&quot;)" office:value-type="string" office:string-value="ScID:64">
+      <text:p>ScID:64</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Land on Forg, in rubbish.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>33</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:66%7Cregion&quot;;&quot;ScID:66&quot;)" office:value-type="string" office:string-value="ScID:66">
+      <text:p>ScID:66</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal rents a car in Jerling's name and heads towards Forgberg and the Casino.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>34</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:68%7Cregion&quot;;&quot;ScID:68&quot;)" office:value-type="string" office:string-value="ScID:68">
+      <text:p>ScID:68</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal after almost running Clunk down. Picks him up.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>35</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:71%7Cregion&quot;;&quot;ScID:71&quot;)" office:value-type="string" office:string-value="ScID:71">
+      <text:p>ScID:71</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Find car, go to find clothes.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>36</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:74%7Cregion&quot;;&quot;ScID:74&quot;)" office:value-type="string" office:string-value="ScID:74">
+      <text:p>ScID:74</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal sells Clunk</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>37</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:77%7Cregion&quot;;&quot;ScID:77&quot;)" office:value-type="string" office:string-value="ScID:77">
+      <text:p>ScID:77</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal annoyed at Clunk for buying only the best.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>38</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:79%7Cregion&quot;;&quot;ScID:79&quot;)" office:value-type="string" office:string-value="ScID:79">
+      <text:p>ScID:79</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk gambling. Fight with human couple.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>39</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:81%7Cregion&quot;;&quot;ScID:81&quot;)" office:value-type="string" office:string-value="ScID:81">
+      <text:p>ScID:81</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Sitting on the steps, battered and bruised. Limo arrives for Karl.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>40</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell office:value-type="string">
+      <text:p>ChID:36</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Act 3</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Solution.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:84%7Cregion&quot;;&quot;ScID:84&quot;)" office:value-type="string" office:string-value="ScID:84">
+      <text:p>ScID:84</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk travelling on the back of Karl's limo</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>41</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:86%7Cregion&quot;;&quot;ScID:86&quot;)" office:value-type="string" office:string-value="ScID:86">
+      <text:p>ScID:86</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk sees Hal catching up again. Limo stops.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>42</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:89%7Cregion&quot;;&quot;ScID:89&quot;)" office:value-type="string" office:string-value="ScID:89">
+      <text:p>ScID:89</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk uploads the Navcom into the ship.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>43</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:92%7Cregion&quot;;&quot;ScID:92&quot;)" office:value-type="string" office:string-value="ScID:92">
+      <text:p>ScID:92</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>The shop robots want Clunk to escape with them. Mention Hal's capture.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>44</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:94%7Cregion&quot;;&quot;ScID:94&quot;)" office:value-type="string" office:string-value="ScID:94">
+      <text:p>ScID:94</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk steals armoured car, drives it into the house.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>45</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:96%7Cregion&quot;;&quot;ScID:96&quot;)" office:value-type="string" office:string-value="ScID:96">
+      <text:p>ScID:96</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Karl and Terry take the limo</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>46</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:98%7Cregion&quot;;&quot;ScID:98&quot;)" office:value-type="string" office:string-value="ScID:98">
+      <text:p>ScID:98</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Karl and Terry overtake and head for Spaceport. Looking for Volante.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>47</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:101%7Cregion&quot;;&quot;ScID:101&quot;)" office:value-type="string" office:string-value="ScID:101">
+      <text:p>ScID:101</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal and Clunk fleeing in Gull</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>48</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:103%7Cregion&quot;;&quot;ScID:103&quot;)" office:value-type="string" office:string-value="ScID:103">
+      <text:p>ScID:103</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk wants to throw stuff at the flyer</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>49</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:105%7Cregion&quot;;&quot;ScID:105&quot;)" office:value-type="string" office:string-value="ScID:105">
+      <text:p>ScID:105</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal fetches the puddings.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>50</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:108%7Cregion&quot;;&quot;ScID:108&quot;)" office:value-type="string" office:string-value="ScID:108">
+      <text:p>ScID:108</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal yells at Jerling, then cargo arrives on truck.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>51</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:110%7Cregion&quot;;&quot;ScID:110&quot;)" office:value-type="string" office:string-value="ScID:110">
+      <text:p>ScID:110</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Clunk outside, depressed.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>52</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:112%7Cregion&quot;;&quot;ScID:112&quot;)" office:value-type="string" office:string-value="ScID:112">
+      <text:p>ScID:112</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Karl bursts in, armed.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>53</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:114%7Cregion&quot;;&quot;ScID:114&quot;)" office:value-type="string" office:string-value="ScID:114">
+      <text:p>ScID:114</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Terry ties Hal in hold, leaves back doors open.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>54</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:116%7Cregion&quot;;&quot;ScID:116&quot;)" office:value-type="string" office:string-value="ScID:116">
+      <text:p>ScID:116</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Hal dodges Brutus, escapes the hold.</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>55</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   <table:table-row table:style-name="ro2">
+     <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///C:/Users/Peter/Git/PyWriter/test/yw7/yw7%20Sample%20Project_manuscript.odt#ScID:119%7Cregion&quot;;&quot;ScID:119&quot;)" office:value-type="string" office:string-value="ScID:119">
+      <text:p>ScID:119</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>Black Gull hyperspaces to oblivion</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p></text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+      <text:p>56</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1218">
+      <text:p>1218</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+     <table:table-cell office:value-type="string">
+
+     </table:table-cell>
+    </table:table-row>
+
+   </table:table>
+  </office:spreadsheet>
+ </office:body>
+</office:document-content>
