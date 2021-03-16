@@ -5,16 +5,12 @@ Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 import xml.etree.ElementTree as ET
-
-from abc import abstractmethod
 
 
 class YwTreeBuilder():
     """Build yWriter project xml tree."""
 
-    @abstractmethod
     def build_element_tree(self, ywProject):
         """Modify the yWriter project attributes of an existing xml element tree.
         Return a message beginning with SUCCESS or ERROR.

@@ -116,6 +116,21 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(EXEC_PATH + ODS_CONTENT),
                          read_file(DATA_PATH + ODS_CONTENT))
 
+    def test_yw7_to_csv(self):
+        """Export yW7 scenes to csv. """
+
+        yw7File = Yw7File(TEST_YW7)
+        documentFile = CsvSceneList(TEST_CSV)
+        converter = YwCnv()
+
+        # Read .yw7 file and convert xml to csv.
+
+        self.assertEqual(converter.convert(
+            yw7File, documentFile), 'SUCCESS: "' + os.path.normpath(TEST_CSV) + '" written.')
+
+        self.assertEqual(read_file(TEST_CSV),
+                         read_file(REFERENCE_CSV))
+
     def test_csv_to_yw7(self):
         """Import proofed yw7 scenes from csv. """
 

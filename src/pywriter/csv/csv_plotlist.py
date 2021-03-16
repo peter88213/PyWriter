@@ -55,7 +55,7 @@ class CsvPlotList(CsvFile):
 '''
 
     sceneTemplate = '''=HYPERLINK("file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion";"ScID:$ID")|''' +\
-        '''|$Tags|$Title|$Notes|''' +\
+        '''|$Tags|$Title|"$Notes"|''' +\
         '''$SceneNumber|$WordsTotal|$Field1|$Field2|$Field3|$Field4
 '''
 

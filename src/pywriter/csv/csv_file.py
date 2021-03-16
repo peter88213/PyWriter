@@ -23,15 +23,10 @@ class CsvFile(FileExport):
     _SEPARATOR = '|'
     # delimits data fields within a record.
 
-    _LINEBREAK = '\t'
-    # substitutes embedded line breaks.
-
     _LIST_SEPARATOR = ','
     # delimits items listed within a data field
 
-    CSV_REPLACEMENTS = [
-        ['\n', _LINEBREAK],
-    ]
+    CSV_REPLACEMENTS = []
 
     def convert_from_yw(self, text):
         """Convert line breaks."""

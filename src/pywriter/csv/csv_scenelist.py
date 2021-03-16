@@ -35,8 +35,8 @@ class CsvSceneList(CsvFile):
 '''
 
     sceneTemplate = '''=HYPERLINK("file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion";"ScID:$ID")|''' +\
-        '''$Title|$Desc|$Tags|$Notes|''' +\
-        '''$ReactionScene|$Goal|$Conflict|$Outcome|''' +\
+        '''$Title|"$Desc"|$Tags|"$Notes"|''' +\
+        '''$ReactionScene|"$Goal"|"$Conflict"|"$Outcome"|''' +\
         '''$SceneNumber|$WordsTotal|$Field1|$Field2|$Field3|$Field4|''' +\
         '''$WordCount|$LetterCount|$Status|''' +\
         '''$Characters|$Locations|$Items

@@ -5,7 +5,6 @@ Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from abc import abstractmethod
 from urllib.parse import quote
 import os
 
@@ -141,35 +140,35 @@ class Novel():
             self.projectName = quote(tail.replace(
                 suffix + self.EXTENSION, ''))
 
-    @abstractmethod
     def read(self):
         """Parse the file and store selected properties.
         To be overwritten by file format specific subclasses.
         """
+        return 'ERROR: read method is not implemented.'
 
-    @abstractmethod
     def merge(self, novel):
         """Copy required attributes of the novel object.
         To be overwritten by file format specific subclasses.
         """
+        return 'ERROR: merge method is not implemented.'
 
-    @abstractmethod
     def write(self):
         """Write selected properties to the file.
         To be overwritten by file format specific subclasses.
         """
+        return 'ERROR: write method is not implemented.'
 
-    @abstractmethod
     def convert_to_yw(self, text):
         """Convert source format to yw7 markup.
         To be overwritten by file format specific subclasses.
         """
+        return text
 
-    @abstractmethod
     def convert_from_yw(self, text):
         """Convert yw7 markup to target format.
         To be overwritten by file format specific subclasses.
         """
+        return text
 
     def file_exists(self):
         """Check whether the file specified by filePath exists. """

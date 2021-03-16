@@ -5,11 +5,11 @@ Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
+from abc import ABC
 from abc import abstractmethod
 
 
-class YwTreeReader():
+class YwTreeReader(ABC):
     """Read yWriter xml project file."""
 
     @abstractmethod

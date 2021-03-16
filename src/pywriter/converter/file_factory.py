@@ -8,10 +8,11 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
+from abc import ABC
 from abc import abstractmethod
 
 
-class FileFactory():
+class FileFactory(ABC):
     """Abstract factory class that instantiates a source file object
     and a target file object for conversion.
     """

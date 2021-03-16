@@ -26,7 +26,7 @@ class CsvItemList(CsvFile):
     fileHeader = '''ID|Name|Description|Aka|Tags
 '''
 
-    itemTemplate = '''ItID:$ID|$Title|$Desc|$AKA|$Tags
+    itemTemplate = '''ItID:$ID|$Title|"$Desc"|$AKA|$Tags
 '''
 
     def read(self):

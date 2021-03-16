@@ -27,7 +27,7 @@ class CsvLocList(CsvFile):
     fileHeader = '''ID|Name|Description|Aka|Tags
 '''
 
-    locationTemplate = '''LcID:$ID|$Title|$Desc|$AKA|$Tags
+    locationTemplate = '''LcID:$ID|$Title|"$Desc"|$AKA|$Tags
 '''
 
     def read(self):
