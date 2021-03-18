@@ -871,7 +871,6 @@
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_g1KVQIfWEeq_kJF_AkSaiA" name="odt">
-      <packagedElement xmi:type="uml:Class" xmi:id="_c_rYoIeuEeq_kJF_AkSaiA" name="OdtBuilder"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_JW3eoIexEeq_kJF_AkSaiA" name="OdtPartDesc">
         <generalization xmi:type="uml:Generalization" xmi:id="_JW3eoYexEeq_kJF_AkSaiA" general="_FoJAYDINEeqilJYfjdmi4Q"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_OTlx4PshEeq-TdV6dVW08A" name="DESCRIPTION" visibility="public" isStatic="true">

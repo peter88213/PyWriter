@@ -2882,32 +2882,6 @@
           <element xmi:type="uml:Class" href="PyWriter.uml#_GEGi0IewEeq_kJF_AkSaiA"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GFHPcYewEeq_kJF_AkSaiA" x="434" y="12" width="161" height="41"/>
         </children>
-        <children xmi:type="notation:Shape" xmi:id="_dDTUYIeuEeq_kJF_AkSaiA" type="Class_Shape_CN">
-          <children xmi:type="notation:DecorationNode" xmi:id="_dDT7cIeuEeq_kJF_AkSaiA" type="Class_NameLabel_CN"/>
-          <children xmi:type="notation:DecorationNode" xmi:id="_dDT7cYeuEeq_kJF_AkSaiA" type="Class_FloatingNameLabel_CN">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_dDT7coeuEeq_kJF_AkSaiA" y="15"/>
-          </children>
-          <children xmi:type="notation:BasicCompartment" xmi:id="_dDT7c4euEeq_kJF_AkSaiA" visible="false" type="Class_AttributeCompartment_CN">
-            <styles xmi:type="notation:TitleStyle" xmi:id="_dDT7dIeuEeq_kJF_AkSaiA"/>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_dDT7dYeuEeq_kJF_AkSaiA"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_dDT7doeuEeq_kJF_AkSaiA"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dDT7d4euEeq_kJF_AkSaiA"/>
-          </children>
-          <children xmi:type="notation:BasicCompartment" xmi:id="_dDUigIeuEeq_kJF_AkSaiA" visible="false" type="Class_OperationCompartment_CN">
-            <styles xmi:type="notation:TitleStyle" xmi:id="_dDUigYeuEeq_kJF_AkSaiA"/>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_dDUigoeuEeq_kJF_AkSaiA"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_dDUig4euEeq_kJF_AkSaiA"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dDUihIeuEeq_kJF_AkSaiA"/>
-          </children>
-          <children xmi:type="notation:BasicCompartment" xmi:id="_dDUihYeuEeq_kJF_AkSaiA" visible="false" type="Class_NestedClassifierCompartment_CN">
-            <styles xmi:type="notation:TitleStyle" xmi:id="_dDUihoeuEeq_kJF_AkSaiA"/>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_dDUih4euEeq_kJF_AkSaiA"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_dDUiiIeuEeq_kJF_AkSaiA"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dDUiiYeuEeq_kJF_AkSaiA"/>
-          </children>
-          <element xmi:type="uml:Class" href="PyWriter.uml#_c_rYoIeuEeq_kJF_AkSaiA"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dDTUYYeuEeq_kJF_AkSaiA" x="54" y="192" width="121" height="41"/>
-        </children>
         <children xmi:type="notation:Shape" xmi:id="_lJ-OoIewEeq_kJF_AkSaiA" type="Class_Shape_CN">
           <children xmi:type="notation:DecorationNode" xmi:id="_lJ-OooewEeq_kJF_AkSaiA" type="Class_NameLabel_CN"/>
           <children xmi:type="notation:DecorationNode" xmi:id="_lJ-Oo4ewEeq_kJF_AkSaiA" type="Class_FloatingNameLabel_CN">
