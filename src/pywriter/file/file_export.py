@@ -47,6 +47,121 @@ class FileExport(Novel):
     itemTemplate = ''
     fileFooter = ''
 
+    def __init__(self, filePath):
+        Novel.__init__(self, filePath)
+
+        # Cross reference dictionaries:
+
+        self.chrScnXref = {}
+        # Scenes per character
+
+        self.locScnXref = {}
+        # Scenes per location
+
+        self.itmScnXref = {}
+        # Scenes per item
+
+        self.tagsScXref = {}
+        # Scenes per tag
+
+        self.tagsCrXref = {}
+        # Characters per tag
+
+        self.tagsLcXref = {}
+        # Locations per tag
+
+        self.tagsItXref = {}
+        # Items per tag
+
+    def make_xref(self):
+        """Generate cross references
+        """
+        self.chrScnXref = {}
+        self.locScnXref = {}
+        self.itmScnXref = {}
+        self.tagsScXref = {}
+        self.tagsCrXref = {}
+        self.tagsLcXref = {}
+        self.tagsItXref = {}
+
+        # Characters per tag:
+
+        for crId in self.srtCharacters:
+            self.chrScnXref[crId] = []
+
+            if self.characters[crId].tags:
+
+                for tag in self.characters[crId].tags:
+
+                    if not tag in self.tagsCrXref:
+                        self.tagsCrXref[tag] = []
+
+                    self.tagsCrXref[tag].append(crId)
+
+        # Locations per tag:
+
+        for lcId in self.srtLocations:
+            self.locScnXref[lcId] = []
+
+            if self.locations[lcId].tags:
+
+                for tag in self.locations[lcId].tags:
+
+                    if not tag in self.tagsLcXref:
+                        self.tagsLcXref[tag] = []
+
+                    self.tagsLcXref[tag].append(lcId)
+
+        # Items per tag:
+
+        for itId in self.srtItems:
+            self.itmScnXref[itId] = []
+
+            if self.items[itId].tags:
+
+                for tag in self.items[itId].tags:
+
+                    if not tag in self.tagsItXref:
+                        self.tagsItXref[tag] = []
+
+                    self.tagsItXref[tag].append(itId)
+
+        for chId in self.srtChapters:
+
+            for scId in self.chapters[chId].srtScenes:
+
+                # Scenes per character:
+
+                if self.scenes[scId].characters:
+
+                    for crId in self.scenes[scId].characters:
+                        self.chrScnXref[crId].append(scId)
+
+                # Scenes per location:
+
+                if self.scenes[scId].locations:
+
+                    for lcId in self.scenes[scId].locations:
+                        self.locScnXref[lcId].append(scId)
+
+                # Scenes per item:
+
+                if self.scenes[scId].items:
+
+                    for itId in self.scenes[scId].items:
+                        self.itmScnXref[itId].append(scId)
+
+                # Scenes per tag:
+
+                if self.scenes[scId].tags:
+
+                    for tag in self.scenes[scId].tags:
+
+                        if not tag in self.tagsScXref:
+                            self.tagsScXref[tag] = []
+
+                        self.tagsScXref[tag].append(scId)
+
     def convert_from_yw(self, text):
         """Convert yw7 markup to target format.
         To be overwritten by file format specific subclasses.
@@ -145,6 +260,19 @@ class FileExport(Novel):
                 projectTemplateMapping[key] = ''
 
         return projectTemplateMapping
+
+    def get_tagsTemplateMapping(self):
+        """Return a mapping dictionary for the tags cross references section. 
+        """
+
+        tagsTemplateMapping = dict(
+        )
+
+        for key in tagsTemplateMapping:
+            if tagsTemplateMapping[key] is None:
+                tagsTemplateMapping[key] = ''
+
+        return tagsTemplateMapping
 
     def get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section. 
@@ -358,6 +486,8 @@ class FileExport(Novel):
         lettersTotal = 0
         chapterNumber = 0
         sceneNumber = 0
+
+        self.make_xref()
 
         template = Template(self.fileHeader)
         lines.append(template.safe_substitute(
