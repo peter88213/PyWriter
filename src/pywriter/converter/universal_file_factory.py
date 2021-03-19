@@ -28,6 +28,7 @@ from pywriter.odt.odt_export import OdtExport
 from pywriter.odt.odt_characters import OdtCharacters
 from pywriter.odt.odt_items import OdtItems
 from pywriter.odt.odt_locations import OdtLocations
+from pywriter.odt.odt_xref import OdtXref
 
 from pywriter.html.html_proof import HtmlProof
 from pywriter.html.html_manuscript import HtmlManuscript
@@ -123,6 +124,9 @@ class UniversalFileFactory(FileFactory):
 
             elif suffix == OdtItems.SUFFIX:
                 targetFile = OdtItems(fileName + suffix + OdtItems.EXTENSION)
+
+            elif suffix == OdtXref.SUFFIX:
+                targetFile = OdtXref(fileName + suffix + OdtXref.EXTENSION)
 
             elif suffix == OdsSceneList.SUFFIX:
                 targetFile = OdsSceneList(

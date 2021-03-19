@@ -10,6 +10,7 @@
 * __characterTemplate__  (applied to characters)
 * __locationTemplate__  (applied to locations)
 * __itemTemplate__  (applied to items)
+* __tagsTemplate__ (applied to tags)
 
 * __fileFooter__ 
 
@@ -48,7 +49,7 @@ There are two options:
 2. ${Placeholder}
 
 
-### "HTML header" placeholders
+### "Project template" placeholders
 
 *  __$Title__  - Project title
 *  __$Desc__  - Project description, html-formatted
@@ -116,6 +117,11 @@ There are two options:
 *  __$Notes__  - Scene notes, html-formatted
 
 
+### "Tags template" placeholders
+
+*  __$Tag__  - Tag name
+*  __$Elements__  - Line break-separated list of tag-related elements
+
 ### "Character template" placeholders
 
 *  __$ID__  - Character ID
@@ -132,6 +138,7 @@ There are two options:
 *  __$Goals__  - The character's goals in the story
 *  __$Notes__  - Character notes)
 
+*  __$Scenes__  - Line break-separated list of character-related scenes
 
 ### "Location template" placeholders
 
@@ -142,6 +149,7 @@ There are two options:
 *  __$Desc__  - Location description
 *  __$Tags__  - Location tags
 
+*  __$Scenes__  - Line break-separated list of location-related scenes
 
 ### "Item template" placeholders
 
@@ -152,3 +160,4 @@ There are two options:
 *  __$Desc__  - Item description
 *  __$Tags__  - Item tags
 
+*  __$Scenes__  - Line break-separated list of item-related scenes

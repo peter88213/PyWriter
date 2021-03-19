@@ -3,7 +3,7 @@
 Instantiate the Novel subclass objects 
 sourceFile and targetFile for file conversion.
 
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -27,6 +27,7 @@ from pywriter.odt.odt_export import OdtExport
 from pywriter.odt.odt_characters import OdtCharacters
 from pywriter.odt.odt_items import OdtItems
 from pywriter.odt.odt_locations import OdtLocations
+from pywriter.odt.odt_xref import OdtXref
 
 from pywriter.ods.ods_charlist import OdsCharList
 from pywriter.ods.ods_loclist import OdsLocList
@@ -103,6 +104,9 @@ class ExportFileFactory(FileFactory):
 
             elif suffix == OdtItems.SUFFIX:
                 targetFile = OdtItems(fileName + suffix + OdtItems.EXTENSION)
+
+            elif suffix == OdtXref.SUFFIX:
+                targetFile = OdtXref(fileName + suffix + OdtXref.EXTENSION)
 
             elif suffix == OdsSceneList.SUFFIX:
                 targetFile = OdsSceneList(
