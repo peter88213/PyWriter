@@ -56,24 +56,28 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<ID>1</ID>
 		<Title><![CDATA[Black Gull]]></Title>
 		<Desc><![CDATA[Hal's ship, a decrepit old freighter he bought with a dodgy loan]]></Desc>
+		<Tags><![CDATA[Space ship; freighter]]></Tags>
 		<SortOrder>1</SortOrder>
 	</LOCATION>
 
 	<LOCATION>
 		<ID>2</ID>
 		<Title><![CDATA[Lamira Spaceport]]></Title>
+		<Tags><![CDATA[Port; Forg]]></Tags>
 		<SortOrder>2</SortOrder>
 	</LOCATION>
 
 	<LOCATION>
 		<ID>3</ID>
 		<Title><![CDATA[Planet Forg]]></Title>
+		<Tags><![CDATA[Planet]]></Tags>
 		<SortOrder>3</SortOrder>
 	</LOCATION>
 
 	<LOCATION>
 		<ID>4</ID>
 		<Title><![CDATA[Jerling Enterprises]]></Title>
+		<Tags><![CDATA[Company; Forg]]></Tags>
 		<SortOrder>4</SortOrder>
 	</LOCATION>
 
@@ -83,7 +87,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<ID>1</ID>
 		<Title><![CDATA[Chessboard]]></Title>
 		<Desc><![CDATA[Hal's chessboard, source of infinite joy.]]></Desc>
-		<Tags><![CDATA[Game, Challenge]]></Tags>
+		<Tags><![CDATA[Game; Challenge]]></Tags>
 		<SortOrder>1</SortOrder>
 		<AKA><![CDATA[My game]]></AKA>
 	</ITEM>
@@ -93,12 +97,20 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<Desc><![CDATA[Bought from Space Patrol surplus, this gadget is a real eye candy.]]></Desc>
 		<SortOrder>2</SortOrder>
 	</ITEM>
+	<ITEM>
+		<ID>3</ID>
+		<Title><![CDATA[Pocket lint]]></Title>
+		<Desc><![CDATA[Hal's trustworthy pocket lint.]]></Desc>
+		<Tags><![CDATA[necessary]]></Tags>
+		<SortOrder>3</SortOrder>
+		<AKA><![CDATA[linty]]></AKA>
+	</ITEM>
 	</ITEMS>
 	<CHARACTERS>
 	<CHARACTER>
 		<ID>1</ID>
 		<Title><![CDATA[Hal]]></Title>
-		<Tags><![CDATA[hero, pilot]]></Tags>
+		<Tags><![CDATA[hero; pilot]]></Tags>
 		<ImageFile><![CDATA[Hal1Facp_NEW.jpg]]></ImageFile>
 		<SortOrder>1</SortOrder>
 		<AKA><![CDATA[Spacejock]]></AKA>
@@ -120,7 +132,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 	<CHARACTER>
 		<ID>3</ID>
 		<Title><![CDATA[Clunk]]></Title>
-		<Tags><![CDATA[robot, smart]]></Tags>
+		<Tags><![CDATA[robot; smart]]></Tags>
 		<SortOrder>3</SortOrder>
 		<AKA><![CDATA[XG99]]></AKA>
 		<Bio><![CDATA[Aging humanoid robot owned by Walter Jerling's company, Clunk is being shipped off for reprogramming and advanced pilot training.]]></Bio>
@@ -177,7 +189,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 	<CHARACTER>
 		<ID>9</ID>
 		<Title><![CDATA[Gordon]]></Title>
-		<Tags><![CDATA[businessman, smart]]></Tags>
+		<Tags><![CDATA[businessman; smart]]></Tags>
 		<SortOrder>9</SortOrder>
 		<Bio><![CDATA[Owner of Hinchfig Enterprises, which he inherited from his parents. His father had business acumen and a flair for new products. Gordon has none, and so he slavishly follows his late father's methods with little of his success. His lack of business nous is the reason the company is in trouble, and the reason Farrell Hinchfig no longer has cash to throw around.]]></Bio>
 		<Goals><![CDATA[Revitalise the company]]></Goals>
@@ -195,7 +207,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<ID>11</ID>
 		<Title><![CDATA[Brutus]]></Title>
 		<Desc><![CDATA[Vurdi's enforcer robot.]]></Desc>
-		<Tags><![CDATA[robot, evil]]></Tags>
+		<Tags><![CDATA[robot; evil]]></Tags>
 		<SortOrder>11</SortOrder>
 	</CHARACTER>
 
@@ -230,9 +242,13 @@ Always short of money, Hal has arranged an interview with his financial backers 
 Hal doesn't have any money, so Vurdi says he'll take an arm or leg instead, and sets Brutus on him.
 During the scuffle, Hal manages to tell Vurdi that he accepted a cargo job earlier in the day, and will use the proceeds to settle his debts. Vurdi is suspicious, but calls Brutus off and gives Hal 24 hours.
 After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer (the Navcom), reviewing the cargo jobs he's been offered. He chooses the one which sounds less risky than the others, a freight job offered by the Jerling corporation. The Navcom objects, reminding Hal that he turned it down earlier because he thought it involved stolen goods. Hal doesn't care - he can't afford to be choosy any more.]]></Desc>
-		<Tags><![CDATA[Beginning; Plot Point]]></Tags>
+		<Tags><![CDATA[Beginning;Plot Point]]></Tags>
 		<ImageFile><![CDATA[Hal3Launch10.jpg]]></ImageFile>
 		<Notes><![CDATA[This is a note. Notice how the N icon shows up when there's a note attached to a scene.]]></Notes>
+		<Fields>
+			<Field_UseExporterTags>0</Field_UseExporterTags>
+		</Fields>
+
 		<BelongsToChID>1</BelongsToChID>
 		<Minute>14</Minute>
 		<Hour>8</Hour>
@@ -248,7 +264,7 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
 		<Field4>3</Field4>
 		<Status>4</Status>
 		<WordCount>376</WordCount>
-		<LetterCount>2208</LetterCount>
+		<LetterCount>2192</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 			<CharID>10</CharID>
@@ -278,7 +294,8 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 "What are the others? Interstellar navigation for nutters? Moon landings for morons?"
 "Shall I add those titles to your basket?"
 
-. . .]]></SceneContent>
+. . .
+]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -645,6 +662,11 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 	<SCENE>
 		<ID>17</ID>
 		<Title><![CDATA[Climb up rope to safety. Back in ship for hyperspace.]]></Title>
+		<Tags><![CDATA[Plot Point]]></Tags>
+		<Fields>
+			<Field_UseExporterTags>0</Field_UseExporterTags>
+		</Fields>
+
 		<BelongsToChID>8</BelongsToChID>
 		<SpecificDateMode>-1</SpecificDateMode>
 		<SpecificDateTime>2424-12-30 14:15:00</SpecificDateTime>
@@ -662,7 +684,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent><![CDATA[]]></SceneContent>
+		<SceneContent><![CDATA[
+]]></SceneContent>
 	</SCENE>
 
 	<SCENE>

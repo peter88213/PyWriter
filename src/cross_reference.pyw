@@ -1,4 +1,4 @@
-"""Generate cross references for a yWriterproject. 
+"""Generate cross references for a yWriter project. 
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

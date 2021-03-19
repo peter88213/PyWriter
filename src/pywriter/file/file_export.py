@@ -42,9 +42,9 @@ class FileExport(Novel):
     unusedChapterEndTemplate = ''
     notExportedChapterEndTemplate = ''
     notesChapterEndTemplate = ''
-    chrTagsTemplate = ''
-    locTagsTemplate = ''
-    itmTagsTemplate = ''
+    characterTagsTemplate = ''
+    locationTagsTemplate = ''
+    itemTagsTemplate = ''
     scnTagsTemplate = ''
     characterTemplate = ''
     locationTemplate = ''
@@ -264,19 +264,6 @@ class FileExport(Novel):
                 projectTemplateMapping[key] = ''
 
         return projectTemplateMapping
-
-    def get_tagsTemplateMapping(self):
-        """Return a mapping dictionary for the tags cross references section. 
-        """
-
-        tagsTemplateMapping = dict(
-        )
-
-        for key in tagsTemplateMapping:
-            if tagsTemplateMapping[key] is None:
-                tagsTemplateMapping[key] = ''
-
-        return tagsTemplateMapping
 
     def get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section. 
@@ -526,7 +513,7 @@ class FileExport(Novel):
         try:
             titlelist = []
 
-            for elementId in xref[tag]:
+            for elementId in xref:
                 titlelist.append(elements[elementId].title)
 
             titles = '\n'.join(titlelist)
@@ -700,22 +687,60 @@ class FileExport(Novel):
             elif self.chapterEndTemplate != '':
                 lines.append(self.chapterEndTemplate)
 
+        # Scene tags
+
+        for tag in self.tagsScXref:
+            template = Template(self.scnTagsTemplate)
+            lines.append(template.safe_substitute(
+                self.get_tagMapping(tag, self.tagsScXref[tag], self.scenes)))
+
+        # Characters
+
         for crId in self.srtCharacters:
             template = Template(self.characterTemplate)
             lines.append(template.safe_substitute(
                 self.get_characterMapping(crId)))
+
+        # Locations
 
         for lcId in self.srtLocations:
             template = Template(self.locationTemplate)
             lines.append(template.safe_substitute(
                 self.get_locationMapping(lcId)))
 
+        # Items
+
         for itId in self.srtItems:
             template = Template(self.itemTemplate)
             lines.append(template.safe_substitute(self.get_itemMapping(itId)))
 
+        # Character tags
+
+        for tag in self.tagsCrXref:
+            template = Template(self.characterTagsTemplate)
+            lines.append(template.safe_substitute(
+                self.get_tagMapping(tag, self.tagsCrXref[tag], self.characters)))
+
+        # Location tags
+
+        for tag in self.tagsLcXref:
+            template = Template(self.locationTagsTemplate)
+            lines.append(template.safe_substitute(
+                self.get_tagMapping(tag, self.tagsLcXref[tag], self.locations)))
+
+        # Item tags
+
+        for tag in self.tagsItXref:
+            template = Template(self.itemTagsTemplate)
+            lines.append(template.safe_substitute(
+                self.get_tagMapping(tag, self.tagsItXref[tag], self.items)))
+
+        # Assemble the whole text...
+
         lines.append(self.fileFooter)
         text = ''.join(lines)
+
+        # Write the file...
 
         try:
             with open(self.filePath, 'w', encoding='utf-8') as f:
