@@ -162,10 +162,10 @@ class OdsPlotList(OdsFile):
 
     fileFooter = OdsFile.CONTENT_XML_FOOTER
 
-    def get_projectTemplateMapping(self):
+    def get_fileHeaderMapping(self):
         """Return a mapping dictionary for the project section. 
         """
-        projectTemplateMapping = OdsFile.get_projectTemplateMapping(self)
+        projectTemplateMapping = OdsFile.get_fileHeaderMapping(self)
 
         charList = []
 

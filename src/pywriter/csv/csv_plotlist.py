@@ -59,10 +59,10 @@ class CsvPlotList(CsvFile):
         '''$SceneNumber|$WordsTotal|$Field1|$Field2|$Field3|$Field4
 '''
 
-    def get_projectTemplateMapping(self):
+    def get_fileHeaderMapping(self):
         """Return a mapping dictionary for the project section. 
         """
-        projectTemplateMapping = CsvFile.get_projectTemplateMapping(self)
+        projectTemplateMapping = CsvFile.get_fileHeaderMapping(self)
 
         charList = []
 

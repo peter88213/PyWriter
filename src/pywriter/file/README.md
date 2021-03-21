@@ -10,7 +10,6 @@
 * __characterTemplate__  (applied to characters)
 * __locationTemplate__  (applied to locations)
 * __itemTemplate__  (applied to items)
-* __tagsTemplate__ (applied to tags)
 
 * __fileFooter__ 
 
@@ -116,11 +115,6 @@ There are two options:
 
 *  __$Notes__  - Scene notes, html-formatted
 
-
-### "Tags template" placeholders
-
-*  __$Tag__  - Tag name
-*  __$Elements__  - Comma-separated list of tag-related element IDs
 
 ### "Character template" placeholders
 
