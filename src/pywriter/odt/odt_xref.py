@@ -38,27 +38,63 @@ class OdtXref(OdtFile):
     fileFooter = OdtFile.CONTENT_XML_FOOTER
 
     def get_characterMapping(self, crId):
-        """Return a mapping dictionary for a character section. 
+        """Return a mapping dictionary for a character section.
+        Add character-related scenes ($Scenes) to the dictionary.
         """
         characterMapping = OdtFile.get_characterMapping(self, crId)
-        characterMapping['Scenes'] = characterMapping['Scenes'].replace(
-            '\n', '</text:p><text:p text:style-name="Hanging_20_indent">')
+
+        if self.chrScnXref[crId]:
+            substitutes = []
+
+            for scId in self.chrScnXref[crId]:
+                substitutes.append(self.scenes[scId].title)
+
+            characterMapping['Scenes'] = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
+                substitutes)
+
+        else:
+            characterMapping['Scenes'] = ''
+
         return characterMapping
 
     def get_locationMapping(self, lcId):
         """Return a mapping dictionary for a location section. 
+        Add location-related scenes ($Scenes) to the dictionary.
         """
         locationMapping = OdtFile.get_locationMapping(self, lcId)
-        locationMapping['Scenes'] = locationMapping['Scenes'].replace(
-            '\n', '</text:p><text:p text:style-name="Hanging_20_indent">')
+
+        if self.locScnXref[lcId]:
+            substitutes = []
+
+            for scId in self.locScnXref[lcId]:
+                substitutes.append(self.scenes[scId].title)
+
+            locationMapping['Scenes'] = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
+                substitutes)
+
+        else:
+            locationMapping['Scenes'] = ''
+
         return locationMapping
 
     def get_itemMapping(self, itId):
         """Return a mapping dictionary for a item section. 
+        Add item-related scenes ($Scenes) to the dictionary.
         """
         itemMapping = OdtFile.get_itemMapping(self, itId)
-        itemMapping['Scenes'] = itemMapping['Scenes'].replace(
-            '\n', '</text:p><text:p text:style-name="Hanging_20_indent">')
+
+        if self.itmScnXref[itId]:
+            substitutes = []
+
+            for scId in self.itmScnXref[itId]:
+                substitutes.append(self.scenes[scId].title)
+
+            itemMapping['Scenes'] = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
+                substitutes)
+
+        else:
+            itemMapping['Scenes'] = ''
+
         return itemMapping
 
     def get_tagMapping(self, tag, xref, elements):

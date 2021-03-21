@@ -120,7 +120,7 @@ There are two options:
 ### "Tags template" placeholders
 
 *  __$Tag__  - Tag name
-*  __$Elements__  - Line break-separated list of tag-related elements
+*  __$Elements__  - Comma-separated list of tag-related element IDs
 
 ### "Character template" placeholders
 
@@ -138,8 +138,6 @@ There are two options:
 *  __$Goals__  - The character's goals in the story
 *  __$Notes__  - Character notes)
 
-*  __$Scenes__  - Line break-separated list of character-related scenes
-
 ### "Location template" placeholders
 
 *  __$ID__  - Location ID
@@ -149,8 +147,6 @@ There are two options:
 *  __$Desc__  - Location description
 *  __$Tags__  - Location tags
 
-*  __$Scenes__  - Line break-separated list of location-related scenes
-
 ### "Item template" placeholders
 
 *  __$ID__  - Item ID
@@ -159,5 +155,3 @@ There are two options:
 *  __$AKA__  - Alternative name
 *  __$Desc__  - Item description
 *  __$Tags__  - Item tags
-
-*  __$Scenes__  - Line break-separated list of item-related scenes

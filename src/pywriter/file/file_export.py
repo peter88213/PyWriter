@@ -388,17 +388,6 @@ class FileExport(Novel):
         """Return a mapping dictionary for a character section. 
         """
 
-        if self.chrScnXref[crId] != []:
-            scenelist = []
-
-            for scId in self.chrScnXref[crId]:
-                scenelist.append(self.scenes[scId].title)
-
-            scenes = '\n'.join(scenelist)
-
-        else:
-            scenes = ''
-
         if self.characters[crId].tags is not None:
             tags = ', '.join(self.characters[crId].tags)
 
@@ -423,7 +412,6 @@ class FileExport(Novel):
             FullName=FileExport.convert_from_yw(
                 self, self.characters[crId].fullName),
             Status=characterStatus,
-            Scenes=scenes,
         )
 
         for key in characterMapping:
@@ -435,17 +423,6 @@ class FileExport(Novel):
     def get_locationMapping(self, lcId):
         """Return a mapping dictionary for a location section. 
         """
-
-        if self.locScnXref[lcId] != []:
-            scenelist = []
-
-            for scId in self.locScnXref[lcId]:
-                scenelist.append(self.scenes[scId].title)
-
-            scenes = '\n'.join(scenelist)
-
-        else:
-            scenes = ''
 
         if self.locations[lcId].tags is not None:
             tags = ', '.join(self.locations[lcId].tags)
@@ -459,7 +436,6 @@ class FileExport(Novel):
             Desc=self.convert_from_yw(self.locations[lcId].desc),
             Tags=tags,
             AKA=FileExport.convert_from_yw(self, self.locations[lcId].aka),
-            Scenes=scenes,
         )
 
         for key in locationMapping:
@@ -471,17 +447,6 @@ class FileExport(Novel):
     def get_itemMapping(self, itId):
         """Return a mapping dictionary for an item section. 
         """
-
-        if self.itmScnXref[itId] != []:
-            scenelist = []
-
-            for scId in self.itmScnXref[itId]:
-                scenelist.append(self.scenes[scId].title)
-
-            scenes = '\n'.join(scenelist)
-
-        else:
-            scenes = ''
 
         if self.items[itId].tags is not None:
             tags = ', '.join(self.items[itId].tags)
@@ -495,7 +460,6 @@ class FileExport(Novel):
             Desc=self.convert_from_yw(self.items[itId].desc),
             Tags=tags,
             AKA=FileExport.convert_from_yw(self, self.items[itId].aka),
-            Scenes=scenes,
         )
 
         for key in itemMapping:
