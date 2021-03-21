@@ -48,9 +48,7 @@ class OdtXref(OdtFile):
         self.xr = CrossReferences()
 
     def get_characterMapping(self, crId):
-        """Apply the template method pattern
-        by overwriting a method called during the file export process.
-        Return a mapping dictionary for a character section.
+        """Return a mapping dictionary for a character section.
         Add character-related scenes ($Scenes) to the dictionary.
         """
         characterMapping = OdtFile.get_characterMapping(self, crId)
@@ -70,9 +68,7 @@ class OdtXref(OdtFile):
         return characterMapping
 
     def get_locationMapping(self, lcId):
-        """Apply the template method pattern
-        by overwriting a method called during the file export process.
-        Return a mapping dictionary for a location section. 
+        """Return a mapping dictionary for a location section. 
         Add location-related scenes ($Scenes) to the dictionary.
         """
         locationMapping = OdtFile.get_locationMapping(self, lcId)
@@ -92,9 +88,7 @@ class OdtXref(OdtFile):
         return locationMapping
 
     def get_itemMapping(self, itId):
-        """Apply the template method pattern
-        by overwriting a method called during the file export process.
-        Return a mapping dictionary for a item section. 
+        """Return a mapping dictionary for a item section. 
         Add item-related scenes ($Scenes) to the dictionary.
         """
         itemMapping = OdtFile.get_itemMapping(self, itId)
@@ -114,11 +108,27 @@ class OdtXref(OdtFile):
         return itemMapping
 
     def get_tagMapping(self, tag, xref, elements):
-        """Return a mapping dictionary for a tag section. 
+        """Return a mapping dictionary for a tags section. 
+        xref: Cross reference dictionary.
+        elements: dictionary of tagged elements.
         """
-        tagMapping = OdtFile.get_tagMapping(self, tag, xref, elements)
-        tagMapping['Elements'] = tagMapping['Elements'].replace(
-            '\n', '</text:p><text:p text:style-name="Hanging_20_indent">')
+
+        try:
+            titlelist = []
+
+            for elementId in xref:
+                titlelist.append(elements[elementId].title)
+
+            titles = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
+                titlelist)
+
+        except:
+            titles = ''
+
+        tagMapping = dict(
+            Tag=tag,
+            Elements=titles,
+        )
         return tagMapping
 
     def get_sceneTags(self):

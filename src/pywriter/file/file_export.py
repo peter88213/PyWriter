@@ -139,11 +139,6 @@ class FileExport(Novel):
             FieldTitle3=self.fieldTitle3,
             FieldTitle4=self.fieldTitle4,
         )
-
-        for key in projectTemplateMapping:
-            if projectTemplateMapping[key] is None:
-                projectTemplateMapping[key] = ''
-
         return projectTemplateMapping
 
     def get_chapterMapping(self, chId, chapterNumber):
@@ -157,11 +152,6 @@ class FileExport(Novel):
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
-
-        for key in chapterMapping:
-            if chapterMapping[key] is None:
-                chapterMapping[key] = ''
-
         return chapterMapping
 
     def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
@@ -258,11 +248,6 @@ class FileExport(Novel):
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
-
-        for key in sceneMapping:
-            if sceneMapping[key] is None:
-                sceneMapping[key] = ''
-
         return sceneMapping
 
     def get_characterMapping(self, crId):
@@ -294,11 +279,6 @@ class FileExport(Novel):
                 self, self.characters[crId].fullName),
             Status=characterStatus,
         )
-
-        for key in characterMapping:
-            if characterMapping[key] is None:
-                characterMapping[key] = ''
-
         return characterMapping
 
     def get_locationMapping(self, lcId):
@@ -318,11 +298,6 @@ class FileExport(Novel):
             Tags=tags,
             AKA=FileExport.convert_from_yw(self, self.locations[lcId].aka),
         )
-
-        for key in locationMapping:
-            if locationMapping[key] is None:
-                locationMapping[key] = ''
-
         return locationMapping
 
     def get_itemMapping(self, itId):
@@ -342,40 +317,7 @@ class FileExport(Novel):
             Tags=tags,
             AKA=FileExport.convert_from_yw(self, self.items[itId].aka),
         )
-
-        for key in itemMapping:
-            if itemMapping[key] is None:
-                itemMapping[key] = ''
-
         return itemMapping
-
-    def get_tagMapping(self, tag, xref, elements):
-        """Return a mapping dictionary for a tags section. 
-        xref: Cross reference dictionary.
-        elements: dictionary of tagged elements.
-        """
-
-        try:
-            titlelist = []
-
-            for elementId in xref:
-                titlelist.append(elements[elementId].title)
-
-            titles = '\n'.join(titlelist)
-
-        except:
-            titles = ''
-
-        tagMapping = dict(
-            Tag=tag,
-            Elements=titles,
-        )
-
-        for key in tagMapping:
-            if tagMapping[key] is None:
-                tagMapping[key] = ''
-
-        return tagMapping
 
     def get_fileHeader(self):
         """Process the file header.
