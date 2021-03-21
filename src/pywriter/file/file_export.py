@@ -600,14 +600,11 @@ class FileExport(Novel):
         Return a string to be written to the output file.
         """
         lines = self.get_fileHeader()
-
         lines.extend(self.get_chapters())
         lines.extend(self.get_characters())
         lines.extend(self.get_locations())
         lines.extend(self.get_items())
-
         lines.append(self.fileFooter)
-
         return ''.join(lines)
 
     def write(self):

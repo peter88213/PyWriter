@@ -1,6 +1,6 @@
 """OdtXref - Class for OpenDocument xml file generation.
 
-Create cross reference lists.
+Create ODT document containing ross references.
 
 Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
@@ -9,6 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 from string import Template
 
+from pywriter.model.cross_references import CrossReferences
 from pywriter.odt.odt_file import OdtFile
 
 
@@ -40,130 +41,24 @@ class OdtXref(OdtFile):
     fileFooter = OdtFile.CONTENT_XML_FOOTER
 
     def __init__(self, filePath):
-        OdtFile.__init__(self, filePath)
-
-        # Cross reference dictionaries:
-
-        self.chrScnXref = {}
-        # Scenes per character
-
-        self.locScnXref = {}
-        # Scenes per location
-
-        self.itmScnXref = {}
-        # Scenes per item
-
-        self.tagsScXref = {}
-        # Scenes per tag
-
-        self.tagsCrXref = {}
-        # Characters per tag
-
-        self.tagsLcXref = {}
-        # Locations per tag
-
-        self.tagsItXref = {}
-        # Items per tag
-
-    def make_xref(self):
-        """Generate cross references
+        """Apply the strategy pattern 
+        by delegating the cross reference to an external object.
         """
-        self.chrScnXref = {}
-        self.locScnXref = {}
-        self.itmScnXref = {}
-        self.tagsScXref = {}
-        self.tagsCrXref = {}
-        self.tagsLcXref = {}
-        self.tagsItXref = {}
-
-        # Characters per tag:
-
-        for crId in self.srtCharacters:
-            self.chrScnXref[crId] = []
-
-            if self.characters[crId].tags:
-
-                for tag in self.characters[crId].tags:
-
-                    if not tag in self.tagsCrXref:
-                        self.tagsCrXref[tag] = []
-
-                    self.tagsCrXref[tag].append(crId)
-
-        # Locations per tag:
-
-        for lcId in self.srtLocations:
-            self.locScnXref[lcId] = []
-
-            if self.locations[lcId].tags:
-
-                for tag in self.locations[lcId].tags:
-
-                    if not tag in self.tagsLcXref:
-                        self.tagsLcXref[tag] = []
-
-                    self.tagsLcXref[tag].append(lcId)
-
-        # Items per tag:
-
-        for itId in self.srtItems:
-            self.itmScnXref[itId] = []
-
-            if self.items[itId].tags:
-
-                for tag in self.items[itId].tags:
-
-                    if not tag in self.tagsItXref:
-                        self.tagsItXref[tag] = []
-
-                    self.tagsItXref[tag].append(itId)
-
-        for chId in self.srtChapters:
-
-            for scId in self.chapters[chId].srtScenes:
-
-                # Scenes per character:
-
-                if self.scenes[scId].characters:
-
-                    for crId in self.scenes[scId].characters:
-                        self.chrScnXref[crId].append(scId)
-
-                # Scenes per location:
-
-                if self.scenes[scId].locations:
-
-                    for lcId in self.scenes[scId].locations:
-                        self.locScnXref[lcId].append(scId)
-
-                # Scenes per item:
-
-                if self.scenes[scId].items:
-
-                    for itId in self.scenes[scId].items:
-                        self.itmScnXref[itId].append(scId)
-
-                # Scenes per tag:
-
-                if self.scenes[scId].tags:
-
-                    for tag in self.scenes[scId].tags:
-
-                        if not tag in self.tagsScXref:
-                            self.tagsScXref[tag] = []
-
-                        self.tagsScXref[tag].append(scId)
+        OdtFile.__init__(self, filePath)
+        self.xr = CrossReferences()
 
     def get_characterMapping(self, crId):
-        """Return a mapping dictionary for a character section.
+        """Apply the template method pattern
+        by overwriting a method called during the file export process.
+        Return a mapping dictionary for a character section.
         Add character-related scenes ($Scenes) to the dictionary.
         """
         characterMapping = OdtFile.get_characterMapping(self, crId)
 
-        if self.chrScnXref[crId]:
+        if self.xr.scnPerChr[crId]:
             substitutes = []
 
-            for scId in self.chrScnXref[crId]:
+            for scId in self.xr.scnPerChr[crId]:
                 substitutes.append(self.scenes[scId].title)
 
             characterMapping['Scenes'] = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
@@ -175,15 +70,17 @@ class OdtXref(OdtFile):
         return characterMapping
 
     def get_locationMapping(self, lcId):
-        """Return a mapping dictionary for a location section. 
+        """Apply the template method pattern
+        by overwriting a method called during the file export process.
+        Return a mapping dictionary for a location section. 
         Add location-related scenes ($Scenes) to the dictionary.
         """
         locationMapping = OdtFile.get_locationMapping(self, lcId)
 
-        if self.locScnXref[lcId]:
+        if self.xr.scnPerLoc[lcId]:
             substitutes = []
 
-            for scId in self.locScnXref[lcId]:
+            for scId in self.xr.scnPerLoc[lcId]:
                 substitutes.append(self.scenes[scId].title)
 
             locationMapping['Scenes'] = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
@@ -195,15 +92,17 @@ class OdtXref(OdtFile):
         return locationMapping
 
     def get_itemMapping(self, itId):
-        """Return a mapping dictionary for a item section. 
+        """Apply the template method pattern
+        by overwriting a method called during the file export process.
+        Return a mapping dictionary for a item section. 
         Add item-related scenes ($Scenes) to the dictionary.
         """
         itemMapping = OdtFile.get_itemMapping(self, itId)
 
-        if self.itmScnXref[itId]:
+        if self.xr.scnPerItm[itId]:
             substitutes = []
 
-            for scId in self.itmScnXref[itId]:
+            for scId in self.xr.scnPerItm[itId]:
                 substitutes.append(self.scenes[scId].title)
 
             itemMapping['Scenes'] = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
@@ -228,10 +127,10 @@ class OdtXref(OdtFile):
         """
         lines = []
 
-        for tag in self.tagsScXref:
+        for tag in self.xr.scnPerTag:
             template = Template(self.sceneTagsTemplate)
             lines.append(template.safe_substitute(
-                self.get_tagMapping(tag, self.tagsScXref[tag], self.scenes)))
+                self.get_tagMapping(tag, self.xr.scnPerTag[tag], self.scenes)))
 
         return lines
 
@@ -241,10 +140,10 @@ class OdtXref(OdtFile):
         """
         lines = []
 
-        for tag in self.tagsCrXref:
+        for tag in self.xr.chrPerTag:
             template = Template(self.characterTagsTemplate)
             lines.append(template.safe_substitute(
-                self.get_tagMapping(tag, self.tagsCrXref[tag], self.characters)))
+                self.get_tagMapping(tag, self.xr.chrPerTag[tag], self.characters)))
 
         return lines
 
@@ -254,10 +153,10 @@ class OdtXref(OdtFile):
         """
         lines = []
 
-        for tag in self.tagsLcXref:
+        for tag in self.xr.locPerTag:
             template = Template(self.locationTagsTemplate)
             lines.append(template.safe_substitute(
-                self.get_tagMapping(tag, self.tagsLcXref[tag], self.locations)))
+                self.get_tagMapping(tag, self.xr.locPerTag[tag], self.locations)))
 
         return lines
 
@@ -267,18 +166,19 @@ class OdtXref(OdtFile):
         """
         lines = []
 
-        for tag in self.tagsItXref:
+        for tag in self.xr.itmPerTag:
             template = Template(self.itemTagsTemplate)
             lines.append(template.safe_substitute(
-                self.get_tagMapping(tag, self.tagsItXref[tag], self.items)))
+                self.get_tagMapping(tag, self.xr.itmPerTag[tag], self.items)))
 
         return lines
 
     def get_text(self):
-        """Assemple the whole text applying the templates.
-        Return a string to be written to the output file.
+        """Apply the template method pattern
+        by overwriting a method called during the file export process.
         """
-        self.make_xref()
+        self.xr.generate_xref(self)
+
         lines = self.get_fileHeader()
         lines.extend(self.get_characters())
         lines.extend(self.get_locations())
@@ -288,5 +188,4 @@ class OdtXref(OdtFile):
         lines.extend(self.get_locationTags())
         lines.extend(self.get_itemTags())
         lines.append(self.fileFooter)
-
         return ''.join(lines)
