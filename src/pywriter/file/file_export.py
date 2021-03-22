@@ -278,6 +278,8 @@ class FileExport(Novel):
             FullName=FileExport.convert_from_yw(
                 self, self.characters[crId].fullName),
             Status=characterStatus,
+            ProjectName=self.projectName,
+            ProjectPath=self.projectPath,
         )
         return characterMapping
 
@@ -297,6 +299,8 @@ class FileExport(Novel):
             Desc=self.convert_from_yw(self.locations[lcId].desc),
             Tags=tags,
             AKA=FileExport.convert_from_yw(self, self.locations[lcId].aka),
+            ProjectName=self.projectName,
+            ProjectPath=self.projectPath,
         )
         return locationMapping
 
@@ -316,6 +320,8 @@ class FileExport(Novel):
             Desc=self.convert_from_yw(self.items[itId].desc),
             Tags=tags,
             AKA=FileExport.convert_from_yw(self, self.items[itId].aka),
+            ProjectName=self.projectName,
+            ProjectPath=self.projectPath,
         )
         return itemMapping
 
@@ -324,18 +330,15 @@ class FileExport(Novel):
         Return a list of strings.
         """
         lines = []
-
         template = Template(self.fileHeader)
         lines.append(template.safe_substitute(
             self.get_fileHeaderMapping()))
-
         return lines
 
     def get_scenes(self, chId, sceneNumber, wordsTotal, lettersTotal, doNotExport):
         """Process the scenes.
         Return a list of strings.
         """
-
         lines = []
         firstSceneInChapter = True
 
@@ -504,9 +507,9 @@ class FileExport(Novel):
         Return a list of strings.
         """
         lines = []
+        template = Template(self.characterTemplate)
 
         for crId in self.srtCharacters:
-            template = Template(self.characterTemplate)
             lines.append(template.safe_substitute(
                 self.get_characterMapping(crId)))
 
@@ -517,9 +520,9 @@ class FileExport(Novel):
         Return a list of strings.
         """
         lines = []
+        template = Template(self.locationTemplate)
 
         for lcId in self.srtLocations:
-            template = Template(self.locationTemplate)
             lines.append(template.safe_substitute(
                 self.get_locationMapping(lcId)))
 
@@ -530,9 +533,9 @@ class FileExport(Novel):
         Return a list of strings.
         """
         lines = []
+        template = Template(self.itemTemplate)
 
         for itId in self.srtItems:
-            template = Template(self.itemTemplate)
             lines.append(template.safe_substitute(self.get_itemMapping(itId)))
 
         return lines

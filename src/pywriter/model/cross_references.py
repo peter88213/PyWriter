@@ -15,25 +15,48 @@ class CrossReferences():
         # Cross reference dictionaries:
 
         self.scnPerChr = {}
+        # dict
+        # key = character ID, value: list of scene IDs
         # Scenes per character
 
         self.scnPerLoc = {}
+        # dict
+        # key = location ID, value: list of scene IDs
         # Scenes per location
 
         self.scnPerItm = {}
+        # dict
+        # key = item ID, value: list of scene IDs
         # Scenes per item
 
         self.scnPerTag = {}
+        # dict
+        # key = tag, value: list of scene IDs
         # Scenes per tag
 
         self.chrPerTag = {}
+        # dict
+        # key = tag, value: list of character IDs
         # Characters per tag
 
         self.locPerTag = {}
+        # dict
+        # key = tag, value: list of location IDs
         # Locations per tag
 
         self.itmPerTag = {}
+        # dict
+        # key = tag, value: list of item IDs
         # Items per tag
+
+        self.chpPerScn = {}
+        # dict
+        # key = scene ID, value: chapter ID
+        # Chapter to which the scene belongs
+
+        self.srtScenes = None
+        # list of str
+        # scene IDs in the overall order
 
     def generate_xref(self, novel):
         """Generate cross references
@@ -45,6 +68,8 @@ class CrossReferences():
         self.chrPerTag = {}
         self.locPerTag = {}
         self.itmPerTag = {}
+        self.chpPerScn = {}
+        self.srtScenes = []
 
         # Characters per tag:
 
@@ -91,6 +116,8 @@ class CrossReferences():
         for chId in novel.srtChapters:
 
             for scId in novel.chapters[chId].srtScenes:
+                self.srtScenes.append(scId)
+                self.chpPerScn[scId] = chId
 
                 # Scenes per character:
 

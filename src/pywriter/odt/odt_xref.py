@@ -24,19 +24,35 @@ class OdtXref(OdtFile):
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
-    characterTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Character $Title:</text:h><text:p text:style-name="Hanging_20_indent">$Scenes</text:p>
+    sceneTemplate = '''<text:p text:style-name="Text_20_body">
+<text:a xlink:href="../${ProjectName}_manuscript.odt#ScID:$ID%7Cregion">$SceneNumber</text:a> (Ch $Chapter) $Title
+</text:p>
 '''
-    locationTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Location $Title:</text:h><text:p text:style-name="Hanging_20_indent">$Scenes</text:p>
+    characterTemplate = '''<text:p text:style-name="Text_20_body">
+<text:a xlink:href="../${ProjectName}_characters.odt#CrID:$ID%7Cregion">$Title</text:a> $FullName
+</text:p>
 '''
-    itemTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Item $Title:</text:h><text:p text:style-name="Hanging_20_indent">$Scenes</text:p>
+    locationTemplate = '''<text:p text:style-name="Text_20_body">
+<text:a xlink:href="../${ProjectName}_locations.odt#LcID:$ID%7Cregion">$Title</text:a>
+</text:p>
 '''
-    characterTagsTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Characters tagged $Tag:</text:h><text:p text:style-name="Hanging_20_indent">$Elements</text:p>
+    itemTemplate = '''<text:p text:style-name="Text_20_body">
+<text:a xlink:href="../${ProjectName}_items.odt#ItrID:$ID%7Cregion">$Title</text:a>
+</text:p>
 '''
-    locationTagsTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Locations tagged $Tag:</text:h><text:p text:style-name="Hanging_20_indent">$Elements</text:p>
+    scnPerChrTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Character $Title:</text:h>
 '''
-    itemTagsTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Items tagged $Tag:</text:h><text:p text:style-name="Hanging_20_indent">$Elements</text:p>
+    scnPerLocTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Location $Title:</text:h>
 '''
-    sceneTagsTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes tagged $Tag:</text:h><text:p text:style-name="Hanging_20_indent">$Elements</text:p>
+    scnPerItmTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Item $Title:</text:h>
+'''
+    chrPerTagTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Characters tagged $Tag:</text:h>
+'''
+    locPerTagTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Locations tagged $Tag:</text:h>
+'''
+    itmPerTagTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Items tagged $Tag:</text:h>
+'''
+    scnPerTagtemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes tagged $Tag:</text:h>
 '''
     fileFooter = OdtFile.CONTENT_XML_FOOTER
 
@@ -47,87 +63,20 @@ class OdtXref(OdtFile):
         OdtFile.__init__(self, filePath)
         self.xr = CrossReferences()
 
-    def get_characterMapping(self, crId):
-        """Return a mapping dictionary for a character section.
-        Add character-related scenes ($Scenes) to the dictionary.
+    def get_sceneMapping(self, scId):
+        """Add the chapter number to the original mapping dictionary.
         """
-        characterMapping = OdtFile.get_characterMapping(self, crId)
+        sceneNumber = self.xr.srtScenes.index(scId) + 1
+        sceneMapping = OdtFile.get_sceneMapping(self, scId, sceneNumber, 0, 0)
+        chapterNumber = self.srtChapters.index(self.xr.chpPerScn[scId]) + 1
+        sceneMapping['Chapter'] = str(chapterNumber)
+        return sceneMapping
 
-        if self.xr.scnPerChr[crId]:
-            substitutes = []
-
-            for scId in self.xr.scnPerChr[crId]:
-                substitutes.append(self.scenes[scId].title)
-
-            characterMapping['Scenes'] = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
-                substitutes)
-
-        else:
-            characterMapping['Scenes'] = ''
-
-        return characterMapping
-
-    def get_locationMapping(self, lcId):
-        """Return a mapping dictionary for a location section. 
-        Add location-related scenes ($Scenes) to the dictionary.
-        """
-        locationMapping = OdtFile.get_locationMapping(self, lcId)
-
-        if self.xr.scnPerLoc[lcId]:
-            substitutes = []
-
-            for scId in self.xr.scnPerLoc[lcId]:
-                substitutes.append(self.scenes[scId].title)
-
-            locationMapping['Scenes'] = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
-                substitutes)
-
-        else:
-            locationMapping['Scenes'] = ''
-
-        return locationMapping
-
-    def get_itemMapping(self, itId):
-        """Return a mapping dictionary for a item section. 
-        Add item-related scenes ($Scenes) to the dictionary.
-        """
-        itemMapping = OdtFile.get_itemMapping(self, itId)
-
-        if self.xr.scnPerItm[itId]:
-            substitutes = []
-
-            for scId in self.xr.scnPerItm[itId]:
-                substitutes.append(self.scenes[scId].title)
-
-            itemMapping['Scenes'] = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
-                substitutes)
-
-        else:
-            itemMapping['Scenes'] = ''
-
-        return itemMapping
-
-    def get_tagMapping(self, tag, xref, elements):
+    def get_tagMapping(self, tag):
         """Return a mapping dictionary for a tags section. 
-        xref: Cross reference dictionary.
-        elements: dictionary of tagged elements.
         """
-
-        try:
-            titlelist = []
-
-            for elementId in xref:
-                titlelist.append(elements[elementId].title)
-
-            titles = '</text:p><text:p text:style-name="Hanging_20_indent">'.join(
-                titlelist)
-
-        except:
-            titles = ''
-
         tagMapping = dict(
             Tag=tag,
-            Elements=titles,
         )
         return tagMapping
 
@@ -136,11 +85,18 @@ class OdtXref(OdtFile):
         Return a list of strings.
         """
         lines = []
+        headerTemplate = Template(self.scnPerTagtemplate)
+        template = Template(self.sceneTemplate)
 
         for tag in self.xr.scnPerTag:
-            template = Template(self.sceneTagsTemplate)
-            lines.append(template.safe_substitute(
-                self.get_tagMapping(tag, self.xr.scnPerTag[tag], self.scenes)))
+
+            if self.xr.scnPerTag[tag] != []:
+                lines.append(headerTemplate.safe_substitute(
+                    self.get_tagMapping(tag)))
+
+                for scId in self.xr.scnPerTag[tag]:
+                    lines.append(template.safe_substitute(
+                        self.get_sceneMapping(scId)))
 
         return lines
 
@@ -149,11 +105,18 @@ class OdtXref(OdtFile):
         Return a list of strings.
         """
         lines = []
+        headerTemplate = Template(self.chrPerTagTemplate)
+        template = Template(self.characterTemplate)
 
         for tag in self.xr.chrPerTag:
-            template = Template(self.characterTagsTemplate)
-            lines.append(template.safe_substitute(
-                self.get_tagMapping(tag, self.xr.chrPerTag[tag], self.characters)))
+
+            if self.xr.chrPerTag[tag] != []:
+                lines.append(headerTemplate.safe_substitute(
+                    self.get_tagMapping(tag)))
+
+                for crId in self.xr.chrPerTag[tag]:
+                    lines.append(template.safe_substitute(
+                        self.get_characterMapping(crId)))
 
         return lines
 
@@ -162,11 +125,18 @@ class OdtXref(OdtFile):
         Return a list of strings.
         """
         lines = []
+        headerTemplate = Template(self.locPerTagTemplate)
+        template = Template(self.locationTemplate)
 
         for tag in self.xr.locPerTag:
-            template = Template(self.locationTagsTemplate)
-            lines.append(template.safe_substitute(
-                self.get_tagMapping(tag, self.xr.locPerTag[tag], self.locations)))
+
+            if self.xr.locPerTag[tag]:
+                lines.append(headerTemplate.safe_substitute(
+                    self.get_tagMapping(tag)))
+
+                for lcId in self.xr.locPerTag[tag]:
+                    lines.append(template.safe_substitute(
+                        self.get_locationMapping(lcId)))
 
         return lines
 
@@ -175,13 +145,80 @@ class OdtXref(OdtFile):
         Return a list of strings.
         """
         lines = []
+        headerTemplate = Template(self.itmPerTagTemplate)
+        template = Template(self.itemTemplate)
 
         for tag in self.xr.itmPerTag:
-            template = Template(self.itemTagsTemplate)
-            lines.append(template.safe_substitute(
-                self.get_tagMapping(tag, self.xr.itmPerTag[tag], self.items)))
+
+            if self.xr.itmPerTag[tag] != []:
+                lines.append(headerTemplate.safe_substitute(
+                    self.get_tagMapping(tag)))
+
+                for itId in self.xr.itmPerTag[tag]:
+                    lines.append(template.safe_substitute(
+                        self.get_itemMapping(itId)))
 
         return lines
+
+    def get_characters(self):
+        """Process the scenes per character.
+        Return a list of strings.
+        """
+        lines = []
+        headerTemplate = Template(self.scnPerChrTemplate)
+        template = Template(self.sceneTemplate)
+
+        for crId in self.xr.scnPerChr:
+
+            if self.xr.scnPerChr[crId] != []:
+                lines.append(headerTemplate.safe_substitute(
+                    self.get_characterMapping(crId)))
+
+                for scId in self.xr.scnPerChr[crId]:
+                    lines.append(template.safe_substitute(
+                        self.get_sceneMapping(scId)))
+
+        return lines
+
+    def get_locations(self):
+        """Process the locations.
+        Return a list of strings.
+        """
+        lines = []
+        headerTemplate = Template(self.scnPerLocTemplate)
+        template = Template(self.sceneTemplate)
+
+        for lcId in self.xr.scnPerLoc:
+
+            if self.xr.scnPerLoc[lcId] != []:
+                lines.append(headerTemplate.safe_substitute(
+                    self.get_locationMapping(lcId)))
+
+                for scId in self.xr.scnPerLoc[lcId]:
+                    lines.append(template.safe_substitute(
+                        self.get_sceneMapping(scId)))
+
+        return lines
+
+    def get_items(self):
+        """Process the items.
+        Return a list of strings.
+        """
+        lines = []
+        headerTemplate = Template(self.scnPerItmTemplate)
+        template = Template(self.sceneTemplate)
+
+        for itId in self.xr.scnPerItm:
+
+            if self.xr.scnPerItm[itId] != []:
+                lines.append(headerTemplate.safe_substitute(
+                    self.get_itemMapping(itId)))
+
+                for scId in self.xr.scnPerItm[itId]:
+                    lines.append(template.safe_substitute(
+                        self.get_sceneMapping(scId)))
+
+            return lines
 
     def get_text(self):
         """Apply the template method pattern
