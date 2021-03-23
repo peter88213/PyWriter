@@ -18,7 +18,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<FieldTitle2><![CDATA[Tension]]></FieldTitle2>
 		<FieldTitle3><![CDATA[Humour]]></FieldTitle3>
 		<FieldTitle4><![CDATA[Quality]]></FieldTitle4>
-		<LastFullBackup>2021-03-19</LastFullBackup>
+		<LastFullBackup>2021-03-23</LastFullBackup>
 		<WordTarget>0</WordTarget>
 		<WordTargetStartDate>2007-07-28</WordTargetStartDate>
 		<WordTargetEndDate>2007-08-27</WordTargetEndDate>
@@ -35,7 +35,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<LaTeXHeaderFile><![CDATA[ ]]></LaTeXHeaderFile>
 		<MRUSpecificDate>2424-12-30</MRUSpecificDate>
 		<MRUSpecificTime>17:15:00</MRUSpecificTime>
-		<LastViewedScID>1</LastViewedScID>
+		<LastViewedScID>123</LastViewedScID>
 		<DeadlineDate1>2004-09-01</DeadlineDate1>
 		<DeadlineDate2>2004-12-14</DeadlineDate2>
 		<DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -56,14 +56,14 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<ID>1</ID>
 		<Title><![CDATA[Black Gull]]></Title>
 		<Desc><![CDATA[Hal's ship, a decrepit old freighter he bought with a dodgy loan]]></Desc>
-		<Tags><![CDATA[Space ship; freighter]]></Tags>
+		<Tags><![CDATA[Space ship;freighter]]></Tags>
 		<SortOrder>1</SortOrder>
 	</LOCATION>
 
 	<LOCATION>
 		<ID>2</ID>
 		<Title><![CDATA[Lamira Spaceport]]></Title>
-		<Tags><![CDATA[Port; Forg]]></Tags>
+		<Tags><![CDATA[Port;Forg]]></Tags>
 		<SortOrder>2</SortOrder>
 	</LOCATION>
 
@@ -77,7 +77,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 	<LOCATION>
 		<ID>4</ID>
 		<Title><![CDATA[Jerling Enterprises]]></Title>
-		<Tags><![CDATA[Company; Forg]]></Tags>
+		<Tags><![CDATA[Company;Forg]]></Tags>
 		<SortOrder>4</SortOrder>
 	</LOCATION>
 
@@ -87,7 +87,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<ID>1</ID>
 		<Title><![CDATA[Chessboard]]></Title>
 		<Desc><![CDATA[Hal's chessboard, source of infinite joy.]]></Desc>
-		<Tags><![CDATA[Game; Challenge]]></Tags>
+		<Tags><![CDATA[Game;Challenge]]></Tags>
 		<SortOrder>1</SortOrder>
 		<AKA><![CDATA[My game]]></AKA>
 	</ITEM>
@@ -110,7 +110,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 	<CHARACTER>
 		<ID>1</ID>
 		<Title><![CDATA[Hal]]></Title>
-		<Tags><![CDATA[hero; pilot]]></Tags>
+		<Tags><![CDATA[hero;pilot]]></Tags>
 		<ImageFile><![CDATA[Hal1Facp_NEW.jpg]]></ImageFile>
 		<SortOrder>1</SortOrder>
 		<AKA><![CDATA[Spacejock]]></AKA>
@@ -132,7 +132,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 	<CHARACTER>
 		<ID>3</ID>
 		<Title><![CDATA[Clunk]]></Title>
-		<Tags><![CDATA[robot; smart]]></Tags>
+		<Tags><![CDATA[robot;smart]]></Tags>
 		<SortOrder>3</SortOrder>
 		<AKA><![CDATA[XG99]]></AKA>
 		<Bio><![CDATA[Aging humanoid robot owned by Walter Jerling's company, Clunk is being shipped off for reprogramming and advanced pilot training.]]></Bio>
@@ -189,7 +189,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 	<CHARACTER>
 		<ID>9</ID>
 		<Title><![CDATA[Gordon]]></Title>
-		<Tags><![CDATA[businessman; smart]]></Tags>
+		<Tags><![CDATA[businessman;smart]]></Tags>
 		<SortOrder>9</SortOrder>
 		<Bio><![CDATA[Owner of Hinchfig Enterprises, which he inherited from his parents. His father had business acumen and a flair for new products. Gordon has none, and so he slavishly follows his late father's methods with little of his success. His lack of business nous is the reason the company is in trouble, and the reason Farrell Hinchfig no longer has cash to throw around.]]></Bio>
 		<Goals><![CDATA[Revitalise the company]]></Goals>
@@ -207,7 +207,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<ID>11</ID>
 		<Title><![CDATA[Brutus]]></Title>
 		<Desc><![CDATA[Vurdi's enforcer robot.]]></Desc>
-		<Tags><![CDATA[robot; evil]]></Tags>
+		<Tags><![CDATA[robot;evil]]></Tags>
 		<SortOrder>11</SortOrder>
 	</CHARACTER>
 
@@ -1673,6 +1673,65 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<SceneContent><![CDATA[This text is not needed.]]></SceneContent>
 	</SCENE>
 
+	<SCENE>
+		<ID>122</ID>
+		<Title><![CDATA[Notes about the chapter]]></Title>
+		<Tags><![CDATA[Annotation]]></Tags>
+		<Unused>-1</Unused>
+		<Fields>
+			<Field_UseExporterTags>0</Field_UseExporterTags>
+			<Field_SceneType>1</Field_SceneType>
+		</Fields>
+
+		<BelongsToChID>14</BelongsToChID>
+		<Field1>1</Field1>
+		<Field2>1</Field2>
+		<Field3>1</Field3>
+		<Field4>1</Field4>
+		<Status>1</Status>
+		<WordCount>0</WordCount>
+		<LetterCount>0</LetterCount>
+		<Characters>
+			<CharID>1</CharID>
+		</Characters>
+		<Locations>
+		</Locations>
+		<Items>
+		</Items>
+		<SceneContent><![CDATA[
+]]></SceneContent>
+	</SCENE>
+
+	<SCENE>
+		<ID>123</ID>
+		<Title><![CDATA[Missing in this chapter]]></Title>
+		<Tags><![CDATA[Agenda]]></Tags>
+		<Unused>-1</Unused>
+		<Fields>
+			<Field_UseExporterTags>0</Field_UseExporterTags>
+			<Field_SceneType>2</Field_SceneType>
+		</Fields>
+
+		<BelongsToChID>17</BelongsToChID>
+		<Field1>1</Field1>
+		<Field2>1</Field2>
+		<Field3>1</Field3>
+		<Field4>1</Field4>
+		<Status>1</Status>
+		<WordCount>6</WordCount>
+		<LetterCount>21</LetterCount>
+		<Characters>
+			<CharID>1</CharID>
+		</Characters>
+		<Locations>
+		</Locations>
+		<Items>
+		</Items>
+		<SceneContent><![CDATA[1. Do this
+2. Do that
+]]></SceneContent>
+	</SCENE>
+
 	</SCENES>
 	<CHAPTERS>
 	<CHAPTER>
@@ -1851,9 +1910,13 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>14</ID>
 		<Title><![CDATA[Chapter 14]]></Title>
+		<Unused>-1</Unused>
 		<SortOrder>15</SortOrder>
-		<Type>0</Type>
-		<ChapterType>0</ChapterType>
+		<Type>1</Type>
+		<ChapterType>1</ChapterType>
+		<Scenes>
+			<ScID>122</ScID>
+		</Scenes>
 	</CHAPTER>
 
 	<CHAPTER>
@@ -1889,6 +1952,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Scenes>
 			<ScID>47</ScID>
 			<ScID>49</ScID>
+			<ScID>123</ScID>
 		</Scenes>
 	</CHAPTER>
 
@@ -2156,6 +2220,12 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Date>2021-03-19</Date>
 		<Count>1254</Count>
 		<TotalCount>1329</TotalCount>
+	</WC>
+
+	<WC>
+		<Date>2021-03-23</Date>
+		<Count>1254</Count>
+		<TotalCount>1335</TotalCount>
 	</WC>
 
 	</WCLog>
