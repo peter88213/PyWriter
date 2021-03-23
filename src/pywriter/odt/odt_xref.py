@@ -23,9 +23,20 @@ class OdtXref(OdtFile):
     fileHeader = OdtFile.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
-
-    sceneTemplate = '''<text:p text:style-name="Text_20_body">
+    sceneTemplate = '''<text:p text:style-name="yWriter_20_mark">
 <text:a xlink:href="../${ProjectName}_manuscript.odt#ScID:$ID%7Cregion">$SceneNumber</text:a> (Ch $Chapter) $Title
+</text:p>
+'''
+    unusedSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">
+$SceneNumber (Ch $Chapter) $Title (Unused)
+</text:p>
+'''
+    notesSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">
+$SceneNumber (Ch $Chapter) $Title (Notes)
+</text:p>
+'''
+    todoSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">
+$SceneNumber (Ch $Chapter) $Title (ToDo)
 </text:p>
 '''
     characterTemplate = '''<text:p text:style-name="Text_20_body">
@@ -80,6 +91,31 @@ class OdtXref(OdtFile):
         )
         return tagMapping
 
+    def get_scenes(self, scenes):
+        """Process the scenes.
+        Return a list of strings.
+        """
+        lines = []
+
+        for scId in scenes:
+
+            if self.scenes[scId].isNotesScene:
+                template = Template(self.notesSceneTemplate)
+
+            elif self.scenes[scId].isTodoScene:
+                template = Template(self.todoSceneTemplate)
+
+            elif self.scenes[scId].isUnused:
+                template = Template(self.unusedSceneTemplate)
+
+            else:
+                template = Template(self.sceneTemplate)
+
+            lines.append(template.safe_substitute(
+                self.get_sceneMapping(scId)))
+
+        return lines
+
     def get_sceneTags(self):
         """Process the scene related tags.
         Return a list of strings.
@@ -93,10 +129,55 @@ class OdtXref(OdtFile):
             if self.xr.scnPerTag[tag] != []:
                 lines.append(headerTemplate.safe_substitute(
                     self.get_tagMapping(tag)))
+                lines.extend(self.get_scenes(self.xr.scnPerTag[tag]))
 
-                for scId in self.xr.scnPerTag[tag]:
-                    lines.append(template.safe_substitute(
-                        self.get_sceneMapping(scId)))
+        return lines
+
+    def get_characters(self):
+        """Process the scenes per character.
+        Return a list of strings.
+        """
+        lines = []
+        headerTemplate = Template(self.scnPerChrTemplate)
+
+        for crId in self.xr.scnPerChr:
+
+            if self.xr.scnPerChr[crId] != []:
+                lines.append(headerTemplate.safe_substitute(
+                    self.get_characterMapping(crId)))
+                lines.extend(self.get_scenes(self.xr.scnPerChr[crId]))
+
+        return lines
+
+    def get_locations(self):
+        """Process the locations.
+        Return a list of strings.
+        """
+        lines = []
+        headerTemplate = Template(self.scnPerLocTemplate)
+
+        for lcId in self.xr.scnPerLoc:
+
+            if self.xr.scnPerLoc[lcId] != []:
+                lines.append(headerTemplate.safe_substitute(
+                    self.get_locationMapping(lcId)))
+                lines.extend(self.get_scenes(self.xr.scnPerLoc[lcId]))
+
+        return lines
+
+    def get_items(self):
+        """Process the items.
+        Return a list of strings.
+        """
+        lines = []
+        headerTemplate = Template(self.scnPerItmTemplate)
+
+        for itId in self.xr.scnPerItm:
+
+            if self.xr.scnPerItm[itId] != []:
+                lines.append(headerTemplate.safe_substitute(
+                    self.get_itemMapping(itId)))
+                lines.extend(self.get_scenes(self.xr.scnPerItm[itId]))
 
         return lines
 
@@ -159,66 +240,6 @@ class OdtXref(OdtFile):
                         self.get_itemMapping(itId)))
 
         return lines
-
-    def get_characters(self):
-        """Process the scenes per character.
-        Return a list of strings.
-        """
-        lines = []
-        headerTemplate = Template(self.scnPerChrTemplate)
-        template = Template(self.sceneTemplate)
-
-        for crId in self.xr.scnPerChr:
-
-            if self.xr.scnPerChr[crId] != []:
-                lines.append(headerTemplate.safe_substitute(
-                    self.get_characterMapping(crId)))
-
-                for scId in self.xr.scnPerChr[crId]:
-                    lines.append(template.safe_substitute(
-                        self.get_sceneMapping(scId)))
-
-        return lines
-
-    def get_locations(self):
-        """Process the locations.
-        Return a list of strings.
-        """
-        lines = []
-        headerTemplate = Template(self.scnPerLocTemplate)
-        template = Template(self.sceneTemplate)
-
-        for lcId in self.xr.scnPerLoc:
-
-            if self.xr.scnPerLoc[lcId] != []:
-                lines.append(headerTemplate.safe_substitute(
-                    self.get_locationMapping(lcId)))
-
-                for scId in self.xr.scnPerLoc[lcId]:
-                    lines.append(template.safe_substitute(
-                        self.get_sceneMapping(scId)))
-
-        return lines
-
-    def get_items(self):
-        """Process the items.
-        Return a list of strings.
-        """
-        lines = []
-        headerTemplate = Template(self.scnPerItmTemplate)
-        template = Template(self.sceneTemplate)
-
-        for itId in self.xr.scnPerItm:
-
-            if self.xr.scnPerItm[itId] != []:
-                lines.append(headerTemplate.safe_substitute(
-                    self.get_itemMapping(itId)))
-
-                for scId in self.xr.scnPerItm[itId]:
-                    lines.append(template.safe_substitute(
-                        self.get_sceneMapping(scId)))
-
-            return lines
 
     def get_text(self):
         """Apply the template method pattern
