@@ -49,7 +49,8 @@ class CsvLocList(CsvFile):
                 self.locations[lcId].title = cells[1]
                 self.locations[lcId].desc = self.convert_to_yw(cells[2])
                 self.locations[lcId].aka = cells[3]
-                self.locations[lcId].tags = cells[4].split(';')
+                self.locations[lcId].tags = cells[4].split(
+                    self.LIST_SEPARATOR)
 
         return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
 

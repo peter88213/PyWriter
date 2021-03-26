@@ -143,7 +143,7 @@ class CsvPlotList(CsvFile):
             if 'ScID:' in cells[0]:
                 scId = re.search('ScID\:([0-9]+)', cells[0]).group(1)
                 self.scenes[scId] = Scene()
-                self.scenes[scId].tags = cells[2].split(self._LIST_SEPARATOR)
+                self.scenes[scId].tags = cells[2].split(self.LIST_SEPARATOR)
                 self.scenes[scId].title = cells[3]
                 self.scenes[scId].sceneNotes = self.convert_to_yw(cells[4])
 

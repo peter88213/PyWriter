@@ -23,9 +23,6 @@ class CsvFile(FileExport):
     _SEPARATOR = '|'
     # delimits data fields within a record.
 
-    _LIST_SEPARATOR = ','
-    # delimits items listed within a data field
-
     CSV_REPLACEMENTS = []
 
     def convert_from_yw(self, text):

@@ -23,6 +23,8 @@ class FileExport(Novel):
     To be overwritten by subclasses providing file type specific 
     markup converters and templates.
     """
+    LIST_SEPARATOR = ', '
+    # delimits elements listed within a string
 
     fileHeader = ''
     partTemplate = ''
@@ -159,7 +161,7 @@ class FileExport(Novel):
         """
 
         if self.scenes[scId].tags is not None:
-            tags = ', '.join(self.scenes[scId].tags)
+            tags = self.LIST_SEPARATOR.join(self.scenes[scId].tags)
 
         else:
             tags = ''
@@ -172,7 +174,7 @@ class FileExport(Novel):
             for chId in self.scenes[scId].characters:
                 sChList.append(self.characters[chId].title)
 
-            sceneChars = ', '.join(sChList)
+            sceneChars = self.LIST_SEPARATOR.join(sChList)
             viewpointChar = sChList[0]
 
         except:
@@ -185,7 +187,7 @@ class FileExport(Novel):
             for lcId in self.scenes[scId].locations:
                 sLcList.append(self.locations[lcId].title)
 
-            sceneLocs = ', '.join(sLcList)
+            sceneLocs = self.LIST_SEPARATOR.join(sLcList)
 
         else:
             sceneLocs = ''
@@ -196,7 +198,7 @@ class FileExport(Novel):
             for itId in self.scenes[scId].items:
                 sItList.append(self.items[itId].title)
 
-            sceneItems = ', '.join(sItList)
+            sceneItems = self.LIST_SEPARATOR.join(sItList)
 
         else:
             sceneItems = ''
@@ -255,7 +257,7 @@ class FileExport(Novel):
         """
 
         if self.characters[crId].tags is not None:
-            tags = ', '.join(self.characters[crId].tags)
+            tags = self.LIST_SEPARATOR.join(self.characters[crId].tags)
 
         else:
             tags = ''
@@ -288,7 +290,7 @@ class FileExport(Novel):
         """
 
         if self.locations[lcId].tags is not None:
-            tags = ', '.join(self.locations[lcId].tags)
+            tags = self.LIST_SEPARATOR.join(self.locations[lcId].tags)
 
         else:
             tags = ''
@@ -309,7 +311,7 @@ class FileExport(Novel):
         """
 
         if self.items[itId].tags is not None:
-            tags = ', '.join(self.items[itId].tags)
+            tags = self.LIST_SEPARATOR.join(self.items[itId].tags)
 
         else:
             tags = ''
