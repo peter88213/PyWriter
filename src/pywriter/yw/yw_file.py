@@ -20,6 +20,17 @@ class YwFile(Novel):
     To be overwritten by version-specific subclasses. 
     """
 
+    def strip_spaces(self, elements):
+        """remove leading and trailing spaces from the elements
+        of a list of strings.
+        """
+        stripped = []
+
+        for element in elements:
+            stripped.append(element.lstrip().rstrip())
+
+        return stripped
+
     def read(self):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
@@ -55,11 +66,8 @@ class YwFile(Novel):
             if loc.find('Tags') is not None:
 
                 if loc.find('Tags').text is not None:
-                    self.locations[lcId].tags = []
                     tags = loc.find('Tags').text.split(';')
-
-                    for tag in tags:
-                        self.locations[lcId].tags.append(tag.lstrip())
+                    self.locations[lcId].tags = self.strip_spaces(tags)
 
         # Read items from the xml element tree.
 
@@ -81,11 +89,8 @@ class YwFile(Novel):
             if itm.find('Tags') is not None:
 
                 if itm.find('Tags').text is not None:
-                    self.items[itId].tags = []
                     tags = itm.find('Tags').text.split(';')
-
-                    for tag in tags:
-                        self.items[itId].tags.append(tag.lstrip())
+                    self.items[itId].tags = self.strip_spaces(tags)
 
         # Read characters from the xml element tree.
 
@@ -107,11 +112,8 @@ class YwFile(Novel):
             if crt.find('Tags') is not None:
 
                 if crt.find('Tags').text is not None:
-                    self.characters[crId].tags = []
                     tags = crt.find('Tags').text.split(';')
-
-                    for tag in tags:
-                        self.characters[crId].tags.append(tag.lstrip())
+                    self.characters[crId].tags = self.strip_spaces(tags)
 
             if crt.find('Notes') is not None:
                 self.characters[crId].notes = crt.find('Notes').text
@@ -291,11 +293,8 @@ class YwFile(Novel):
             if scn.find('Tags') is not None:
 
                 if scn.find('Tags').text is not None:
-                    self.scenes[scId].tags = []
                     tags = scn.find('Tags').text.split(';')
-
-                    for tag in tags:
-                        self.scenes[scId].tags.append(tag.lstrip())
+                    self.scenes[scId].tags = self.strip_spaces(tags)
 
             if scn.find('Field1') is not None:
                 self.scenes[scId].field1 = scn.find('Field1').text

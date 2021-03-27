@@ -59,8 +59,7 @@ class CsvCharList(CsvFile):
                 else:
                     self.characters[crId].isMajor = False
 
-                self.characters[crId].tags = cells[8].split(
-                    self.LIST_SEPARATOR)
+                self.characters[crId].tags = self.get_list(cells[8])
                 self.characters[crId].notes = self.convert_to_yw(cells[9])
 
         return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'

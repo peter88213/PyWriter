@@ -48,7 +48,7 @@ class CsvItemList(CsvFile):
                 self.items[itId].title = cells[1]
                 self.items[itId].desc = self.convert_to_yw(cells[2])
                 self.items[itId].aka = cells[3]
-                self.items[itId].tags = cells[4].split(self.LIST_SEPARATOR)
+                self.items[itId].tags = self.get_list(cells[4])
 
         return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
 

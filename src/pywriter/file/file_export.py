@@ -23,9 +23,6 @@ class FileExport(Novel):
     To be overwritten by subclasses providing file type specific 
     markup converters and templates.
     """
-    LIST_SEPARATOR = ', '
-    # delimits elements listed within a string
-
     fileHeader = ''
     partTemplate = ''
     chapterTemplate = ''
@@ -48,6 +45,28 @@ class FileExport(Novel):
     locationTemplate = ''
     itemTemplate = ''
     fileFooter = ''
+
+    def get_string(self, elements):
+        """Return a string which is the concatenation of the 
+        members of the list of strings "elements", separated by 
+        a comma plus a space. The space allows word wrap in 
+        spreadsheet cells.
+        """
+        text = (', ').join(elements)
+        return text
+
+    def get_list(self, text):
+        """Split a sequence of strings into a list of strings
+        using a comma as delimiter. Remove leading and trailing
+        spaces, if any.
+        """
+        elements = []
+        tempList = text.split(',')
+
+        for element in tempList:
+            elements.append(element.lstrip().rstrip())
+
+        return elements
 
     def convert_from_yw(self, text):
         """Convert yw7 markup to target format.
@@ -161,7 +180,7 @@ class FileExport(Novel):
         """
 
         if self.scenes[scId].tags is not None:
-            tags = self.LIST_SEPARATOR.join(self.scenes[scId].tags)
+            tags = self.get_string(self.scenes[scId].tags)
 
         else:
             tags = ''
@@ -174,7 +193,7 @@ class FileExport(Novel):
             for chId in self.scenes[scId].characters:
                 sChList.append(self.characters[chId].title)
 
-            sceneChars = self.LIST_SEPARATOR.join(sChList)
+            sceneChars = self.get_string(sChList)
             viewpointChar = sChList[0]
 
         except:
@@ -187,7 +206,7 @@ class FileExport(Novel):
             for lcId in self.scenes[scId].locations:
                 sLcList.append(self.locations[lcId].title)
 
-            sceneLocs = self.LIST_SEPARATOR.join(sLcList)
+            sceneLocs = self.get_string(sLcList)
 
         else:
             sceneLocs = ''
@@ -198,7 +217,7 @@ class FileExport(Novel):
             for itId in self.scenes[scId].items:
                 sItList.append(self.items[itId].title)
 
-            sceneItems = self.LIST_SEPARATOR.join(sItList)
+            sceneItems = self.get_string(sItList)
 
         else:
             sceneItems = ''
@@ -257,7 +276,7 @@ class FileExport(Novel):
         """
 
         if self.characters[crId].tags is not None:
-            tags = self.LIST_SEPARATOR.join(self.characters[crId].tags)
+            tags = self.get_string(self.characters[crId].tags)
 
         else:
             tags = ''
@@ -290,7 +309,7 @@ class FileExport(Novel):
         """
 
         if self.locations[lcId].tags is not None:
-            tags = self.LIST_SEPARATOR.join(self.locations[lcId].tags)
+            tags = self.get_string(self.locations[lcId].tags)
 
         else:
             tags = ''
@@ -311,7 +330,7 @@ class FileExport(Novel):
         """
 
         if self.items[itId].tags is not None:
-            tags = self.LIST_SEPARATOR.join(self.items[itId].tags)
+            tags = self.get_string(self.items[itId].tags)
 
         else:
             tags = ''

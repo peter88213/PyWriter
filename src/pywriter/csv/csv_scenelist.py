@@ -83,7 +83,7 @@ class CsvSceneList(CsvFile):
                 i += 1
                 self.scenes[scId].desc = self.convert_to_yw(cells[i])
                 i += 1
-                self.scenes[scId].tags = cells[i].split(self.LIST_SEPARATOR)
+                self.scenes[scId].tags = self.get_list(cells[i])
                 i += 1
                 self.scenes[scId].sceneNotes = self.convert_to_yw(cells[i])
                 i += 1
@@ -154,7 +154,7 @@ class CsvSceneList(CsvFile):
 
                 i += 1
                 ''' Cannot write back character IDs, because self.characters is None
-                charaNames = cells[i].split(self._LIST_SEPARATOR)
+                charaNames = self.get_list(cells[i])
                 self.scenes[scId].characters = []
 
                 for charaName in charaNames:
@@ -166,7 +166,7 @@ class CsvSceneList(CsvFile):
                 '''
                 i += 1
                 ''' Cannot write back location IDs, because self.locations is None
-                locaNames = cells[i].split(self._LIST_SEPARATOR)
+                locaNames = self.get_list(cells[i])
                 self.scenes[scId].locations = []
 
                 for locaName in locaNames:
@@ -178,7 +178,7 @@ class CsvSceneList(CsvFile):
                 '''
                 i += 1
                 ''' Cannot write back item IDs, because self.items is None
-                itemNames = cells[i].split(self._LIST_SEPARATOR)
+                itemNames = self.get_list(cells[i])
                 self.scenes[scId].items = []
 
                 for itemName in itemNames:
