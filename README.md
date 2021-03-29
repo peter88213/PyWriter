@@ -10,7 +10,7 @@ The PyWriter project started with a library for yWriter7 file operations such as
 
 * [The yw-cnv extension for LibreOffice: Import and export yWriter 6/7 projects](https://peter88213.github.io/yw-cnv)
 * [The pywoo extension for OpenOffice and Python: Import and export yWriter 6/7 projects](https://peter88213.github.io/pywoo)
-* [yw2html - HTML export with templates from yWriter 6/7](https://peter88213.github.io/yw2html)
+* [yw2html - HTML export from yWriter 6/7 with templates](https://peter88213.github.io/yw2html)
     
 
 ## Want to fork this project?
