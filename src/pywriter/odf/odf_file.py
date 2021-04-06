@@ -138,7 +138,7 @@ class OdfFile(FileExport):
             return message
 
         # Pack the contents of the temporary directory
-        # into the ODS file.
+        # into the ODF file.
 
         workdir = os.getcwd()
 
@@ -147,7 +147,7 @@ class OdfFile(FileExport):
                 os.chdir(self.TEMPDIR)
 
                 for file in self.ODF_COMPONENTS:
-                    odfTarget.write(file)
+                    odfTarget.write(file, compress_type=zipfile.ZIP_DEFLATED)
         except:
             os.chdir(workdir)
             return 'ERROR: Cannot generate "' + os.path.normpath(self.filePath) + '".'
