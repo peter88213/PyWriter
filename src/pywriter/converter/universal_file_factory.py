@@ -180,7 +180,7 @@ class UniversalFileFactory(FileFactory):
             elif sourcePath.endswith(HtmlItems.SUFFIX + HtmlItems.EXTENSION):
                 sourceFile = HtmlItems(sourcePath)
 
-            if (OdtXref.SUFFIX + '.' in sourcePath):
+            elif (OdtXref.SUFFIX + '.' in sourcePath):
                 return 'ERROR: Cross references are not meant to be written back.', None, None
 
             elif sourcePath.endswith('.html'):
