@@ -18,7 +18,7 @@ class YwCnvUi(YwCnv):
     YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
 
     def __init__(self):
-        self.userInterface = Ui('yWriter import/export')
+        self.userInterface = Ui('')
         self.success = False
         self.fileFactory = None
 

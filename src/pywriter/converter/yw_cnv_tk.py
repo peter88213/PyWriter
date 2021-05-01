@@ -14,15 +14,10 @@ class YwCnvTk(YwCnvUi):
     """
 
     def __init__(self, silentMode=False):
+        YwCnvUi.__init__(self)
 
-        if silentMode:
-            self.userInterface = Ui('')
-
-        else:
+        if not silentMode:
             self.userInterface = UiTk('yWriter import/export')
-
-        self.success = False
-        self.fileFactory = None
 
     def finish(self, sourcePath):
         self.userInterface.finish()
