@@ -12,7 +12,7 @@ from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
 
 class YwCnvUi(YwCnv):
-    """Standalone yWriter converter with a simple tkinter GUI. 
+    """Standalone yWriter converter with a 'silent' user interface. 
     """
 
     YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
