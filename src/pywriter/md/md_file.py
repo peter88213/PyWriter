@@ -34,7 +34,7 @@ class MdFile(FileExport):
 
     chapterTemplate = '\n## ${Title}\n\n'
 
-    sceneTemplate = '${SceneContent}\n\n'
+    sceneTemplate = '<!---${Title}--->${SceneContent}\n\n'
 
     sceneDivider = '\n\n' + SCENE_DIVIDER + '\n\n'
 
@@ -212,6 +212,20 @@ class MdFile(FileExport):
                 self.scenes[scId].status = '1'
                 self.scenes[scId].title = 'Scene ' + str(scCount)
 
-                lines = [mdLine]
+                if mdLine.startswith('/*'):
+
+                    # The scene title is prefixed as a comment.
+
+                    try:
+                        scTitle, scContent = mdLine.rsplit(
+                            sep='*/', maxsplit=1)
+                        self.scenes[scId].title = scTitle.lstrip('/*')
+                        lines = [scContent]
+
+                    except:
+                        lines = [mdLine]
+
+                else:
+                    lines = [mdLine]
 
         return 'SUCCESS'
