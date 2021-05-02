@@ -25,8 +25,9 @@ class MdFileFactory(FileFactory):
     and a target file object for conversion.
     """
 
-    def __init__(self, markdownMode=False):
+    def __init__(self, markdownMode=False, noSceneTitles=False):
         self.markdownMode = markdownMode
+        self.noSceneTitles = noSceneTitles
 
     def get_file_objects(self, sourcePath, suffix):
         """Return a tuple with three elements:
@@ -48,11 +49,13 @@ class MdFileFactory(FileFactory):
             isYwProject = False
 
         if isYwProject:
-            targetFile = MdFile(fileName + suffix + MdFile.EXTENSION)
+            targetFile = MdFile(
+                fileName + suffix + MdFile.EXTENSION, self.markdownMode, self.noSceneTitles)
             targetFile.SUFFIX = suffix
 
         else:
-            sourceFile = MdFile(sourcePath, self.markdownMode)
+            sourceFile = MdFile(
+                sourcePath, self.markdownMode, self.noSceneTitles)
             targetFile = Yw7File(fileName + Yw7File.EXTENSION)
             targetFile.ywTreeBuilder = Yw7TreeCreator()
             targetFile.ywProjectMerger = YwProjectCreator()
@@ -64,7 +67,8 @@ class Converter(YwCnvTk):
 
     def __init__(self, silentMode=False):
         YwCnvTk.__init__(self, silentMode)
-        self.fileFactory = MdFileFactory()
+        self.fileFactory = MdFileFactory(
+            markdownMode=True, noSceneTitles=True)
 
 
 if __name__ == '__main__':

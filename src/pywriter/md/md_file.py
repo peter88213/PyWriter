@@ -38,9 +38,14 @@ class MdFile(FileExport):
 
     sceneDivider = '\n\n' + SCENE_DIVIDER + '\n\n'
 
-    def __init__(self, filePath, markdownMode=False):
+    def __init__(self, filePath, markdownMode=False, noSceneTitles=False):
         FileExport.__init__(self, filePath)
         self.markdownMode = markdownMode
+        self.noSceneTitles = noSceneTitles
+
+        if self.noSceneTitles:
+            self.sceneTemplate = self.sceneTemplate.replace(
+                '<!---${Title}--->', '')
 
     def get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section. 
@@ -135,7 +140,14 @@ class MdFile(FileExport):
         def write_scene_content(scId, lines):
 
             if scId is not None:
-                self.scenes[scId].sceneContent = '\n'.join(lines)
+                text = '\n'.join(lines)
+                """ Python 3.9+
+                text = text.removeprefix('\n')
+                if text.startswith('\n'):
+                    text = text[len('\n'):]
+
+                """
+                self.scenes[scId].sceneContent = text
 
                 if self.scenes[scId].wordCount < LOW_WORDCOUNT:
                     self.scenes[scId].status = Scene.STATUS.index('Outline')
@@ -160,6 +172,14 @@ class MdFile(FileExport):
 
         except:
             return 'ERROR: Can not parse "' + os.path.normpath(self.filePath) + '".'
+
+        if self.markdownMode:
+            commentStart = '<!---'
+            commentEnd = '--->'
+
+        else:
+            commentStart = '/*'
+            commentEnd = '*/'
 
         for mdLine in mdLines:
 
@@ -200,9 +220,9 @@ class MdFile(FileExport):
             elif scId is not None:
                 lines.append(mdLine)
 
-            elif chId is not None:
+            elif mdLine and chId is not None:
 
-                # Add a scene.
+                # Add a scene; drop the first line if empty.
 
                 scCount += 1
                 scId = str(scCount)
@@ -212,14 +232,14 @@ class MdFile(FileExport):
                 self.scenes[scId].status = '1'
                 self.scenes[scId].title = 'Scene ' + str(scCount)
 
-                if mdLine.startswith('/*'):
+                if not self.noSceneTitles and mdLine.startswith(commentStart):
 
                     # The scene title is prefixed as a comment.
 
                     try:
                         scTitle, scContent = mdLine.rsplit(
-                            sep='*/', maxsplit=1)
-                        self.scenes[scId].title = scTitle.lstrip('/*')
+                            sep=commentEnd, maxsplit=1)
+                        self.scenes[scId].title = scTitle.lstrip(commentStart)
                         lines = [scContent]
 
                     except:
