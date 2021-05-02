@@ -24,6 +24,7 @@ class HtmlExport(FileExport):
     fileHeader = '''<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
 <style type="text/css">
 h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}
 h1, h2, h3, h4 {text-align: center}
@@ -32,29 +33,33 @@ h1, h2 {font-weight: bold}
 h3 {font-style: italic}
 p {margin-top:0; margin-bottom:0}
 p+p {margin-top:0; margin-bottom:0; text-indent: 1em}
-p.title {text-align:center}
+p.title {text-align:center; font-weight:normal; text-transform: uppercase}
+p.author {text-align:center; font-weight:normal}
+p.scenedivider {text-align:center; margin: 1.5em; line-height: 1.5em}
 strong {font-weight:normal; text-transform: uppercase}
 </style>
+
 <title>$Title</title>
 </head>
+
 <body>
 <p class=title><strong>$Title</strong></p>
-<p class=title>by</p>
-<p class=title><strong>$AuthorName</strong></p>
+<p class=author>by</p>
+<p class=author>$AuthorName</p>
 
 '''
 
-    partTemplate = '''<h1><a name="ChID:$ID">$Title</h1>
+    partTemplate = '''<h1><a name="ChID:$ID" />$Title</h1>
 '''
 
-    chapterTemplate = '''<h2><a name="ChID:$ID">$Title</h2>
+    chapterTemplate = '''<h2><a name="ChID:$ID" />$Title</h2>
 '''
 
-    sceneTemplate = '''<h3><a name="ScID:$ID">$Title</a></h3>
+    sceneTemplate = '''<a name="ScID:$ID" /><!-- ${Title} -->
 <p>$SceneContent</p>
 '''
 
-    sceneDivider = '\n\n' + SCENE_DIVIDER + '\n\n'
+    sceneDivider = '<p class="scenedivider">' + SCENE_DIVIDER + '</p>'
 
     fileFooter = '''</body>
 </html>
