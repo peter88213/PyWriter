@@ -68,7 +68,7 @@ class Converter(YwCnvTk):
     def __init__(self, silentMode=False):
         YwCnvTk.__init__(self, silentMode)
         self.fileFactory = MdFileFactory(
-            markdownMode=True, noSceneTitles=True)
+            markdownMode=True, noSceneTitles=False)
 
 
 if __name__ == '__main__':

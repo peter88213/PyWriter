@@ -63,7 +63,6 @@ class MdFile(FileExport):
         """
 
         MD_REPLACEMENTS = [
-            ['\n', '\n\n'],
             ['[i]', '*'],
             ['[/i]', '*'],
             ['[b]', '**'],
@@ -72,6 +71,9 @@ class MdFile(FileExport):
             ['*/', '--->'],
             ['  ', ' '],
         ]
+
+        if not self.markdownMode:
+            MD_REPLACEMENTS[:0] = [['\n', '\n\n']]
 
         try:
 

@@ -136,7 +136,9 @@ class YwFile(Novel):
         # Read attributes at novel level from the xml element tree.
 
         prj = root.find('PROJECT')
-        self.title = prj.find('Title').text
+
+        if prj.find('Title') is not None:
+            self.title = prj.find('Title').text
 
         if prj.find('AuthorName') is not None:
             self.author = prj.find('AuthorName').text
