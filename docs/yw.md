@@ -1,7 +1,7 @@
-[pywriter](pywriter) [home](index)
+[home](index) > [pywriter](pywriter) > yw
 
 - - -
 
-# yw - Read and write yWriter projects
+# The yw package - Read and write yWriter project files
 
-
+This package contains modules

@@ -1,10 +1,10 @@
-[pywriter](pywriter) [home](index)
+[home](index) > [pywriter](pywriter) > file
 
 - - -
 
-# file - Template-based file generation
+# The file package - Template-based file generation
 
-Modules for template-based file processing.
+This package contains modules for template-based file processing.
 
 This is how the file generation from a yWriter project is generally done:
 The write method runs through all chapters, scenes, and world building 

@@ -1,5 +1,7 @@
-[pywriter](pywriter) [home](index)
+[home](index) > [pywriter](pywriter) > odt
 
 - - -
 
-# odt - Write text documents
+# The odt package - Write text documents
+
+This package contains modules

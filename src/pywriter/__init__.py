@@ -1,4 +1,4 @@
-"""pywriter - A library for yWriter project conversion.
+"""The pywriter library - Convert yWriter projects
 
 The system is based on the meta-model of a novel, which is also the basis of the yWriter novel writing 
 application: 

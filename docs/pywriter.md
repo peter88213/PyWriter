@@ -1,8 +1,8 @@
-[home](index)
+[home](index) > pywriter
 
 - - -
 
-# pywriter - A library for yWriter project conversion.
+# The pywriter library - Convert yWriter projects
 
 The system is based on the meta-model of a novel, which is also the basis of the yWriter novel writing 
 application: 
@@ -17,23 +17,23 @@ this Novel superclass. For each file format there is a separate package in the P
 
 ## Package structure
 
-[model](model) - The novel meta-model
+[model](model) - yWriter's novel meta-model
 
---[yw](yw) - Read and write yWriter projects
+---[yw](yw) - Read and write yWriter projects
 
---[file](file) - Template-based file generation
+---[file](file) - Template-based file generation
 
-----[odf](odf) - Open document format base class
+------[odf](odf) - Write Open Document files
 
-------[odt](odt) - Write text documents
+---------[odt](odt) - Write text documents
 
-------[ods](ods) - Write spreadsheet documents
+---------[ods](ods) - Write spreadsheet documents
 
-----[html](html) - Read text documents
+------[html](html) - Read text documents
 
-----[csv](csv) - Read spreadsheet documents
+------[csv](csv) - Read spreadsheet documents
 
---[md](md) - Read and write Markdown formatted documents
+---[md](md) - Read and write Markdown formatted documents
 
 [converter](converter) - Convert from one file format to another
 

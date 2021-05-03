@@ -1,6 +1,6 @@
 
 
-## Develooper's guide
+## Developer's guide
 
 [The pywriter library](pywriter)
 

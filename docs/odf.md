@@ -1,6 +1,7 @@
-[pywriter](pywriter) [home](index)
+[home](index) > [pywriter](pywriter) > odf
 
 - - -
 
-# odf - Open document format base class
+# The odf package - Write Open Document files
 
+This package contains modules

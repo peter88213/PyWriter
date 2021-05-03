@@ -1,10 +1,10 @@
-[pywriter](pywriter) [home](index)
+[home](index) > [pywriter](pywriter) > csv
 
 - - -
 
-# csv - Read spreadsheet documents
+# The csv package - Read spreadsheet documents
 
-Modules for csv (comma-separated values) file processing.
+This package contains modules for csv (comma-separated values) file processing.
 
 The csv format is mainly used to read spreadsheet documents exported by Office 
 applications like OpenOffice and LibreOffice. This is because the csv format 

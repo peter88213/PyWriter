@@ -1,3 +1,5 @@
-'''md - Read and write Markdown formatted documents
+'''The md package - Read and write Markdown formatted documents
+
+This package contains modules
 
 '''
