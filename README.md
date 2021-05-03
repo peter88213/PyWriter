@@ -1,6 +1,6 @@
 # PyWriter: Read, write, and process yWriter 7 files with Python
 
-[yWriter 7](http://www.spacejock.com/yWriter7.html) is a free word processor whose strengths are structuring novels and controlling the progress during the writing process. The PyWriter library provides Python classes to read and write yWriter 5/6/7 projects and convert the project data to and from several file formats such as odt, ods, csv and html.
+[yWriter 7](http://www.spacejock.com/yWriter7.html) is a free word processor whose strengths are structuring novels and controlling the progress during the writing process. The PyWriter library provides Python classes to read and write yWriter 5/6/7 projects and convert the project data to and from several file formats such as odt, ods, csv, and html.
 
 For more information, see the [Project home page](https://peter88213.github.io/PyWriter/)
 
