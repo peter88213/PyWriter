@@ -1,7 +1,4 @@
-"""An universal file factory. 
-
-Instantiate the Novel subclass objects 
-sourceFile and targetFile for file conversion.
+"""UniversalFileFactory - Instantiate the objects for file conversion. 
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -59,11 +56,13 @@ from pywriter.html.html_fop import read_html_file
 class UniversalFileFactory(FileFactory):
     """A factory class that instantiates a source file object
     and a target file object for conversion.
-    All filetypes are covered.
+    All file types relevant for OpenOffice/LibreOffice import 
+    and export are available.
     """
 
     def get_file_objects(self, sourcePath, suffix=None):
-        """Return a tuple with three elements:
+        """Factory method.
+        Return a tuple with three elements:
         * A message string starting with 'SUCCESS' or 'ERROR'
         * sourceFile: a Novel subclass instance
         * targetFile: a Novel subclass instance
