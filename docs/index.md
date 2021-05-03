@@ -1,4 +1,8 @@
-# The pywriter library
+
+
+## Develooper's guide
+
+[The pywriter library](pywriter)
 
 
 ## License
