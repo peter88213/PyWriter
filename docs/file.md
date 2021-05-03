@@ -2,7 +2,7 @@
 
 - - -
 
-# The file package - Template-based file generation
+# The file package - Write documents template based
 
 This package contains modules for template-based file processing.
 

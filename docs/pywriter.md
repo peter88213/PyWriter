@@ -21,7 +21,7 @@ this Novel superclass. For each file format there is a separate package in the P
 
 ---[yw](yw) - Read and write yWriter projects
 
----[file](file) - Template-based file generation
+---[file](file) - Write documents template based
 
 ------[odf](odf) - Write Open Document files
 
