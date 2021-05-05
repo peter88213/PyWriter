@@ -4,6 +4,26 @@
 
 # The pywriter development roadmap
 
+## About versioning
+
+This project uses semantic versioning with three-part numbers.
+
+__Up to v2.16__ , the following applies: 
+
+*  __Major version__  numbers are incremented for changes on the upper architectural level.
+*  __Minor version__  numbers are incremented for releases which change the API in any way.
+*  __Patch__  numbers are incremented for minor changes and bug fixes which do not change the API. 
+
+__As of v2.12__ , the following applies to the  __minor versions__ :
+*  __Even numbers__  indicate releases, published on the  _master_  branch. 
+*  __Odd numbers__  are development versions, initially not on the  _master_  branch.
+
+__As of v2.16__ , the following applies:
+
+*  __Major version__  numbers are incremented for API changes which are not backward-compatible.
+*  __Minor version__  numbers are incremented for releases which add new, but backward-compatible, API features
+*  __Patch__  numbers are incremented for minor changes and bug fixes which do not change the API. 
+
 ## Version 1.x: Standalone exporters and importers for proof reading
 
 Standalone exporters and importers to and from office word processors. 
@@ -148,6 +168,13 @@ Change scene and plot list export from csv to ods file format.
 
 * Add Markdown processing.
 * Add HtmlExport class.
+
+#### v2.18
+
+* Add real GUI capability while remaining downward compatible.
+* Make the converter a plug-in function  
+
+## Version 3.x: Support a plug-in architecture for applications of all kinds
 
 
 ### Future:

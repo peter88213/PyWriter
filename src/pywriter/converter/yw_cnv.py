@@ -1,8 +1,8 @@
-"""Import and export yWriter data. 
+"""Generic converter for yWriter project files.
 
 Standalone yWriter file converter with basic error handling 
 
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -29,7 +29,7 @@ class YwCnv():
             return 'ERROR: Target "' + os.path.normpath(targetFile.filePath) + '" is not of the supported type.'
 
         if targetFile.file_exists() and not self.confirm_overwrite(targetFile.filePath):
-            return 'Program abort by user.'
+            return 'Canceled by user.'
 
         message = sourceFile.read()
 

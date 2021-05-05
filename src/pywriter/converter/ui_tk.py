@@ -1,6 +1,6 @@
 """User interface for the converter: Tk facade
 
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -13,13 +13,17 @@ from tkinter import messagebox
 class UiTk(Ui):
     """UI subclass implementing a Tkinter facade."""
 
-    def __init__(self, title):
+    def __init__(self, title, description=None):
         """Prepare the graphical user interface. """
+
+        if description is None:
+            description = __doc__
+            # Just for legacy compatibility
 
         self.root = Tk()
         self.root.geometry("800x360")
         self.root.title(title)
-        self.header = Label(self.root, text=__doc__)
+        self.header = Label(self.root, text=description)
         self.header.pack(padx=5, pady=5)
         self.appInfo = Label(self.root, text='')
         self.appInfo.pack(padx=5, pady=5)

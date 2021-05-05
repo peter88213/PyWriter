@@ -17,25 +17,28 @@ this Novel superclass. For each file format there is a separate package in the P
 
 ## Package structure
 
-[model](model) - yWriter's novel meta-model
+- [model](model) - yWriter's novel meta-model
 
----[yw](yw) - Read and write yWriter projects
+- [yw](yw) - Read and write yWriter projects
 
----[file](file) - Write documents template based
+- [file](file) - Write documents template based
 
-------[odf](odf) - Write Open Document files
+- [odf](odf) - Write Open Document files
 
----------[odt](odt) - Write text documents
+- [odt](odt) - Write text documents
 
----------[ods](ods) - Write spreadsheet documents
+- [ods](ods) - Write spreadsheet documents
 
-------[html](html) - Read text documents
+- [html](html) - Read text documents
 
-------[csv](csv) - Read spreadsheet documents
+- [csv](csv) - Read spreadsheet documents
 
----[md](md) - Read and write Markdown formatted documents
+- [md](md) - Read and write Markdown formatted documents
 
-[converter](converter) - Convert from one file format to another
+- [converter](converter) - Convert from one file format to another
+
+- [app](app) - Generic applications using pywriter functions
+
 
 
 

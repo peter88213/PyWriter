@@ -1,6 +1,6 @@
-"""User interface for the converter: abstract facade
+"""Facade for a user interface.
 
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -12,8 +12,18 @@ class Ui():
     def __init__(self, title):
         self.infoWhatText = ''
         self.infoHowText = ''
+        self.app = None
+
+    def start(self, app=None):
+        """Start the user interface, if exists, 
+        and link it to the application.
+        """
+        self.app = app
 
     def ask_yes_no(self, text):
+        """The application may use a subclass  
+        for confirmation requests.  
+        """
         return True
 
     def set_info_what(self, message):
