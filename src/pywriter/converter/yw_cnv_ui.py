@@ -5,6 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
+import sys
 
 from pywriter.ui.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
@@ -21,7 +22,7 @@ class YwCnvUi(YwCnv):
     def __init__(self):
         self.ui = Ui('')
         self.fileFactory = None
-        self.success = False
+        self.newFile = None
 
     def run(self, sourcePath, suffix=None):
         """Create source and target objects and run conversion.
@@ -45,8 +46,6 @@ class YwCnvUi(YwCnv):
         else:
             self.import_to_yw(sourceFile, targetFile)
 
-        self.ui.finish()
-
     def export_from_yw(self, sourceFile, targetFile):
         """Template method for conversion from yw to other.
         """
@@ -56,7 +55,7 @@ class YwCnvUi(YwCnv):
         self.ui.set_info_how(message)
 
         if message.startswith('SUCCESS'):
-            self.success = True
+            self.newFile = targetFile.filePath
 
     def create_yw7(self, sourceFile, targetFile):
         """Template method for creation of a new yw7 project.
@@ -73,7 +72,7 @@ class YwCnvUi(YwCnv):
             self.ui.set_info_how(message)
 
             if message.startswith('SUCCESS'):
-                self.success = True
+                self.newFile = targetFile.filePath
 
     def import_to_yw(self, sourceFile, targetFile):
         """Template method for conversion from other to yw.
@@ -82,9 +81,10 @@ class YwCnvUi(YwCnv):
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
         message = self.convert(sourceFile, targetFile)
         self.ui.set_info_how(message)
+        self.delete_tempfile(sourceFile.filePath)
 
         if message.startswith('SUCCESS'):
-            self.success = True
+            self.newFile = targetFile.filePath
 
     def confirm_overwrite(self, filePath):
         """ Invoked by the parent if a file already exists.
@@ -113,3 +113,7 @@ class YwCnvUi(YwCnv):
 
                 except:
                     pass
+
+    def open_newFile(self):
+        os.startfile(self.newFile)
+        sys.exit(0)

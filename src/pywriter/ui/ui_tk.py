@@ -4,10 +4,10 @@ Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.ui.ui import Ui
-
 from tkinter import *
 from tkinter import messagebox
+
+from pywriter.ui.ui import Ui
 
 
 class UiTk(Ui):
@@ -55,11 +55,6 @@ class UiTk(Ui):
 
         else:
             self.successInfo.config(bg='red')
-
-    def show_edit_button(self, edit_cmd):
-        self.root.editButton = Button(text="Edit", command=edit_cmd)
-        self.root.editButton.config(height=1, width=10)
-        self.root.editButton.pack(padx=5, pady=5)
 
     def start(self):
         self.root.quitButton = Button(text="Quit", command=quit)
