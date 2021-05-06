@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
 """Export yWriter project to html. 
-
-Version @release
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/yw2html

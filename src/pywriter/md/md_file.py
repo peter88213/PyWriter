@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Class for Markdown file processing. 
 
 Part of the PyWriter project.
