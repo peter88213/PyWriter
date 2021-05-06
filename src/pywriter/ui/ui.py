@@ -29,6 +29,11 @@ class Ui():
         """How's the converter doing?"""
         self.infoHowText = message
 
+    def start(self):
+        """To be overwritten by subclasses requiring
+        special action to launch the user interaction.
+        """
+
     def finish(self):
         """To be overwritten by subclasses requiring
         special action to finish user interaction.

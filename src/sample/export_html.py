@@ -1,6 +1,6 @@
-"""Export yWriter scenes. 
+"""Convert yWriter to html format.
 
-Convert yWriter to html format.
+
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -10,11 +10,13 @@ SUFFIX = ''
 
 import sys
 import os
+
+from pywriter.ui.ui_cmd import UiCmd
+from pywriter.ui.ui_tk import UiTk
+from pywriter.converter.yw_cnv_ui import YwCnvUi
 from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw6_file import Yw6File
 from pywriter.yw.yw7_file import Yw7File
-
-from pywriter.converter.yw_cnv_tk import YwCnvTk
 from pywriter.html.html_export import HtmlExport
 
 
@@ -46,12 +48,13 @@ class HtmlFileFactory(FileFactory):
         return 'SUCCESS', sourceFile, targetFile
 
 
-class Converter(YwCnvTk):
-
-    def __init__(self, silentMode=False):
-        YwCnvTk.__init__(self, silentMode)
-        self.fileFactory = HtmlFileFactory()
+def run(sourcePath, suffix=None):
+    ui = UiTk('yWriter import/export')
+    converter = YwCnvUi(ui)
+    converter.fileFactory = HtmlFileFactory()
+    converter.run(sourcePath, suffix)
+    ui.start()
 
 
 if __name__ == '__main__':
-    Converter().run(sys.argv[1], SUFFIX)
+    run(sys.argv[1], SUFFIX)

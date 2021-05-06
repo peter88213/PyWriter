@@ -37,7 +37,8 @@ this Novel superclass. For each file format there is a separate package in the P
 
 - [converter](converter) - Convert from one file format to another
 
-- [app](app) - Generic applications using pywriter functions
+- [ui](ui) - User interface
+
 
 
 

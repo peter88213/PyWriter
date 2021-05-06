@@ -6,7 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 
-from pywriter.converter.ui import Ui
+from pywriter.ui.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
@@ -17,8 +17,8 @@ class YwCnvUi(YwCnv):
 
     YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
 
-    def __init__(self):
-        self.userInterface = Ui('')
+    def __init__(self, userInterface):
+        self.ui = userInterface
         self.success = False
         self.fileFactory = None
 
@@ -29,10 +29,10 @@ class YwCnvUi(YwCnv):
             sourcePath, suffix)
 
         if not message.startswith('SUCCESS'):
-            self.userInterface.set_info_how(message)
+            self.ui.set_info_how(message)
 
         elif not sourceFile.file_exists():
-            self.userInterface.set_info_how(
+            self.ui.set_info_how(
                 'ERROR: File "' + os.path.normpath(sourceFile.filePath) + '" not found.')
 
         elif sourceFile.EXTENSION in self.YW_EXTENSIONS:
@@ -44,15 +44,15 @@ class YwCnvUi(YwCnv):
         else:
             self.import_to_yw(sourceFile, targetFile)
 
-        self.finish(sourcePath)
+        self.ui.finish()
 
     def export_from_yw(self, sourceFile, targetFile):
         """Template method for conversion from yw to other.
         """
-        self.userInterface.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
+        self.ui.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
         message = self.convert(sourceFile, targetFile)
-        self.userInterface.set_info_how(message)
+        self.ui.set_info_how(message)
 
         if message.startswith('SUCCESS'):
             self.success = True
@@ -60,16 +60,16 @@ class YwCnvUi(YwCnv):
     def create_yw7(self, sourceFile, targetFile):
         """Template method for creation of a new yw7 project.
         """
-        self.userInterface.set_info_what(
+        self.ui.set_info_what(
             'Create a yWriter project file from ' + sourceFile.DESCRIPTION + '\nNew project: "' + os.path.normpath(targetFile.filePath) + '"')
 
         if targetFile.file_exists():
-            self.userInterface.set_info_how(
+            self.ui.set_info_how(
                 'ERROR: "' + os.path.normpath(targetFile.filePath) + '" already exists.')
 
         else:
             message = self.convert(sourceFile, targetFile)
-            self.userInterface.set_info_how(message)
+            self.ui.set_info_how(message)
 
             if message.startswith('SUCCESS'):
                 self.success = True
@@ -77,10 +77,10 @@ class YwCnvUi(YwCnv):
     def import_to_yw(self, sourceFile, targetFile):
         """Template method for conversion from other to yw.
         """
-        self.userInterface.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
+        self.ui.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
         message = self.convert(sourceFile, targetFile)
-        self.userInterface.set_info_how(message)
+        self.ui.set_info_how(message)
 
         if message.startswith('SUCCESS'):
             self.success = True
@@ -88,7 +88,7 @@ class YwCnvUi(YwCnv):
     def confirm_overwrite(self, filePath):
         """ Invoked by the parent if a file already exists.
         """
-        return self.userInterface.ask_yes_no('Overwrite existing file "' + os.path.normpath(filePath) + '"?')
+        return self.ui.ask_yes_no('Overwrite existing file "' + os.path.normpath(filePath) + '"?')
 
     def delete_tempfile(self, filePath):
         """If an Office file exists, delete the temporary file."""
@@ -112,6 +112,3 @@ class YwCnvUi(YwCnv):
 
                 except:
                     pass
-
-    def finish(self, sourcePath):
-        """Hook for actions to take place after the conversion."""

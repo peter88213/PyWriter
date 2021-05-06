@@ -4,7 +4,7 @@ Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.converter.ui import Ui
+from pywriter.ui.ui import Ui
 
 from tkinter import *
 from tkinter import messagebox
@@ -61,7 +61,7 @@ class UiTk(Ui):
         self.root.editButton.config(height=1, width=10)
         self.root.editButton.pack(padx=5, pady=5)
 
-    def finish(self):
+    def start(self):
         self.root.quitButton = Button(text="Quit", command=quit)
         self.root.quitButton.config(height=1, width=10)
         self.root.quitButton.pack(padx=5, pady=5)

@@ -1,9 +1,11 @@
 /src/__pycache__/
+/src/sample/__pycache__/
 /src/pywriter/__pycache__/
 /src/pywriter/model/__pycache__/
 /src/pywriter/file/__pycache__/
 /src/pywriter/csv/__pycache__/
 /src/pywriter/md/__pycache__/
+/src/pywriter/ui/__pycache__/
 /src/pywriter/converter/__pycache__/
 /src/pywriter/html/__pycache__/
 /src/pywriter/odt/__pycache__/
