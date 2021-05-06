@@ -10,19 +10,14 @@ class Ui():
     """Superclass for UI facades, implementing a 'silent mode'."""
 
     def __init__(self, title):
+        """Initialize text buffers for messaging.
+        """
         self.infoWhatText = ''
         self.infoHowText = ''
-        self.app = None
-
-    def start(self, app=None):
-        """Start the user interface, if exists, 
-        and link it to the application.
-        """
-        self.app = app
 
     def ask_yes_no(self, text):
         """The application may use a subclass  
-        for confirmation requests.  
+        for confirmation requests.    
         """
         return True
 

@@ -172,9 +172,6 @@ Change scene and plot list export from csv to ods file format.
 #### v2.18
 
 * Add real GUI capability while remaining downward compatible.
-* Make the converter a plug-in function  
-
-## Version 3.x: Support a plug-in architecture for applications of all kinds
 
 
 ### Future:
