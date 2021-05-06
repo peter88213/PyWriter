@@ -21,7 +21,7 @@ __As of v2.12__ , the following applies to the  __minor versions__ :
 __As of v2.16__ , the following applies:
 
 *  __Major version__  numbers are incremented for API changes which are not backward-compatible.
-*  __Minor version__  numbers are incremented for releases which add new, but backward-compatible, API features
+*  __Minor version__  numbers are incremented for releases which add new, but backward-compatible, API features. The latest minor release with an odd number might belong th the next major release development, thus not being necessarily backward-compatible.
 *  __Patch__  numbers are incremented for minor changes and bug fixes which do not change the API. 
 
 ## Version 1.x: Standalone exporters and importers for proof reading
@@ -169,9 +169,24 @@ Change scene and plot list export from csv to ods file format.
 * Add Markdown processing.
 * Add HtmlExport class.
 
-#### v2.18
+#### v2.17
 
-* Add real GUI capability while remaining downward compatible.
+Start with v3 development. This version is backward-incompatible.
+
+
+## Version 3.x: New user interface concept
+
+The converter is now even more loosely coupled with its user interface. 
+This should make it easier for application developers to customize user interaction, 
+and use any GUI framework.
+
+
+#### v3.0
+
+* Move the user interface facades to an own package and couple them
+loosely to the YwCnvUi class.
+* Reorganize the applications. They are now based on composition rather
+than inheritance.
 
 
 ### Future:
