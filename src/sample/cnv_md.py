@@ -68,7 +68,8 @@ class MdFileFactory(FileFactory):
 
 def run(sourcePath, suffix=None):
     ui = UiTk('yWriter import/export')
-    converter = YwCnvUi(ui)
+    converter = YwCnvUi()
+    converter.ui = ui
     converter.fileFactory = MdFileFactory(
         markdownMode=True, noSceneTitles=False)
     converter.run(sourcePath, suffix)

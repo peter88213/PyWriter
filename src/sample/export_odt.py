@@ -18,7 +18,8 @@ from pywriter.converter.export_file_factory import ExportFileFactory
 
 def run(sourcePath, suffix=None):
     ui = UiTk('yWriter import/export')
-    converter = YwCnvUi(ui)
+    converter = YwCnvUi()
+    converter.ui = ui
     converter.fileFactory = ExportFileFactory()
     converter.run(sourcePath, suffix)
     ui.start()

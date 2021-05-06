@@ -1,6 +1,6 @@
 """Import and export yWriter data. 
 
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -12,15 +12,16 @@ from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
 
 class YwCnvUi(YwCnv):
-    """Standalone yWriter converter with a 'silent' user interface. 
+    """yWriter converter using a user interface facade. 
+    Per default, 'silent mode' is active.
     """
 
     YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
 
-    def __init__(self, userInterface):
-        self.ui = userInterface
-        self.success = False
+    def __init__(self):
+        self.ui = Ui('')
         self.fileFactory = None
+        self.success = False
 
     def run(self, sourcePath, suffix=None):
         """Create source and target objects and run conversion.

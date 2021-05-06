@@ -50,7 +50,8 @@ class HtmlFileFactory(FileFactory):
 
 def run(sourcePath, suffix=None):
     ui = UiTk('yWriter import/export')
-    converter = YwCnvUi(ui)
+    converter = YwCnvUi()
+    converter.ui = ui
     converter.fileFactory = HtmlFileFactory()
     converter.run(sourcePath, suffix)
     ui.start()
