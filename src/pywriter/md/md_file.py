@@ -100,17 +100,8 @@ class MdFile(FileExport):
 
             text = text.replace(self.SCENE_DIVIDER, SAFE_SCENE_DIVIDER)
 
-            def set_bold(i):
-                return '[b]' + i.group(1) + '[/b]'
-
-            def set_italic(i):
-                return '[i]' + i.group(1) + '[/i]'
-
-            boldMd = re.compile('\*\*(.+?)\*\*')
-            text = boldMd.sub(set_bold, text)
-
-            italicMd = re.compile('\*(.+?)\*')
-            text = italicMd.sub(set_italic, text)
+            text = re.sub('\*\*(.+?)\*\*', '[b]\\1[/b]', text)
+            text = re.sub('\*(.+?)\*', '[i]\\1[/i]', text)
 
             # Restore the scene dividers
 
@@ -142,12 +133,6 @@ class MdFile(FileExport):
 
             if scId is not None:
                 text = '\n'.join(lines)
-                """ Python 3.9+
-                text = text.removeprefix('\n')
-                if text.startswith('\n'):
-                    text = text[len('\n'):]
-
-                """
                 self.scenes[scId].sceneContent = text
 
                 if self.scenes[scId].wordCount < LOW_WORDCOUNT:
@@ -238,7 +223,7 @@ class MdFile(FileExport):
                     # The scene title is prefixed as a comment.
 
                     try:
-                        scTitle, scContent = mdLine.rsplit(
+                        scTitle, scContent = mdLine.split(
                             sep=commentEnd, maxsplit=1)
                         self.scenes[scId].title = scTitle.lstrip(commentStart)
                         lines = [scContent]

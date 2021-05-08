@@ -71,7 +71,7 @@ def run(sourcePath, suffix=None):
     converter = YwCnvUi()
     converter.ui = ui
     converter.fileFactory = MdFileFactory(
-        markdownMode=True, noSceneTitles=False)
+        markdownMode=False, noSceneTitles=False)
     converter.run(sourcePath, suffix)
     ui.start()
 
