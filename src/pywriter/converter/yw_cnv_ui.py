@@ -1,4 +1,4 @@
-"""Import and export yWriter data. 
+"""Provide a class for Novel file conversion with user interface.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -13,16 +13,28 @@ from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
 
 class YwCnvUi(YwCnv):
-    """yWriter converter using a user interface facade. 
-    Per default, 'silent mode' is active.
+    """Class for Novel file conversion with user interface.
+
+
+
     """
 
     YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
 
     def __init__(self):
+        """Define instance variables.
+
+        ui -- The user interface; Ui or a Ui subclass.
+        fileFactory -- The file factory; 
+        """
         self.ui = Ui('')
+        # Per default, 'silent mode' is active.
+
         self.fileFactory = None
+        # Must be set explicitly from outside.
+
         self.newFile = None
+        # Also indicates successful conversion.
 
     def run(self, sourcePath, suffix=None):
         """Create source and target objects and run conversion.
@@ -47,7 +59,11 @@ class YwCnvUi(YwCnv):
             self.import_to_yw(sourceFile, targetFile)
 
     def export_from_yw(self, sourceFile, targetFile):
-        """Template method for conversion from yw to other.
+        """Convert from yWriter project to other file format. 
+
+
+        Pass info and messages to ui.
+        Set newFile
         """
         self.ui.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
@@ -75,8 +91,7 @@ class YwCnvUi(YwCnv):
                 self.newFile = targetFile.filePath
 
     def import_to_yw(self, sourceFile, targetFile):
-        """Template method for conversion from other to yw.
-        """
+        """Convert any file format into yWriter project. Pass info and messages to ui."""
         self.ui.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
         message = self.convert(sourceFile, targetFile)
@@ -87,16 +102,17 @@ class YwCnvUi(YwCnv):
             self.newFile = targetFile.filePath
 
     def confirm_overwrite(self, filePath):
-        """ Invoked by the parent if a file already exists.
-        """
+        """Return boolean permission to overwrite the target file, overriding the superclass method."""
         return self.ui.ask_yes_no('Overwrite existing file "' + os.path.normpath(filePath) + '"?')
 
     def delete_tempfile(self, filePath):
-        """If an Office file exists, delete the temporary file."""
+        """Delete filePath if it is a temporary file no longer needed."""
 
         if filePath.endswith('.html'):
+            # Might it be a temporary text document?
 
             if os.path.isfile(filePath.replace('.html', '.odt')):
+                # Does a corresponding Office document exist?
 
                 try:
                     os.remove(filePath)
@@ -105,8 +121,10 @@ class YwCnvUi(YwCnv):
                     pass
 
         elif filePath.endswith('.csv'):
+            # Might it be a temporary spreadsheet document?
 
             if os.path.isfile(filePath.replace('.csv', '.ods')):
+                # Does a corresponding Office document exist?
 
                 try:
                     os.remove(filePath)
