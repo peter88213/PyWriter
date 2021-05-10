@@ -10,6 +10,9 @@ import os
 class YwCnv():
     """Base class for Novel file conversion.
 
+    Public methods:
+    convert(sourceFile, targetFile) -- Convert sourceFile into targetFile and return a message.
+
     All converters inherit from this class. 
     """
 

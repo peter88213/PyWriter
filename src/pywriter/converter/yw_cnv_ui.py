@@ -15,8 +15,10 @@ from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 class YwCnvUi(YwCnv):
     """Class for Novel file conversion with user interface.
 
+    Public methods:
+    run(sourcePath, suffix) -- Create source and target objects and run conversion.
 
-
+    All converters with a user interface inherit from this class. 
     """
 
     YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
@@ -27,6 +29,7 @@ class YwCnvUi(YwCnv):
         ui -- The user interface; Ui or a Ui subclass.
         fileFactory -- The file factory; 
         """
+
         self.ui = Ui('')
         # Per default, 'silent mode' is active.
 
@@ -61,21 +64,58 @@ class YwCnvUi(YwCnv):
     def export_from_yw(self, sourceFile, targetFile):
         """Convert from yWriter project to other file format. 
 
+        sourceFile -- YwFile subclass instance.
+        targetFile -- Any Novel subclass instance.
 
-        Pass info and messages to ui.
-        Set newFile
+        1. Send specific information about the conversion to the UI.
+        2. Convert sourceFile into targetFile.
+        3. Pass the message to the UI.
+        4. Save the new file pathname.
+
+        Error handling:
+        - If the conversion fails, newFile is set to None.
         """
+
+        # Send specific information about the conversion to the UI.
+
         self.ui.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
+
+        # Convert sourceFile into targetFile.
+
         message = self.convert(sourceFile, targetFile)
+
+        # Pass the message to the UI.
+
         self.ui.set_info_how(message)
+
+        # Save the new file pathname.
 
         if message.startswith('SUCCESS'):
             self.newFile = targetFile.filePath
 
+        else:
+            self.newFile = None
+
     def create_yw7(self, sourceFile, targetFile):
-        """Template method for creation of a new yw7 project.
+        """Create targetFile from sourceFile.
+
+        sourceFile -- Any Novel subclass instance.
+        targetFile -- YwFile subclass instance.
+
+        1. Send specific information about the conversion to the UI.
+        2. Convert sourceFile into targetFile.
+        3. Pass the message to the UI.
+        4. Save the new file pathname.
+
+        Error handling:
+        - Tf targetFile already exists as a file, the conversion is cancelled,
+          an error message is sent to the UI.
+        - If the conversion fails, newFile is set to None.
         """
+
+        # Send specific information about the conversion to the UI.
+
         self.ui.set_info_what(
             'Create a yWriter project file from ' + sourceFile.DESCRIPTION + '\nNew project: "' + os.path.normpath(targetFile.filePath) + '"')
 
@@ -84,22 +124,62 @@ class YwCnvUi(YwCnv):
                 'ERROR: "' + os.path.normpath(targetFile.filePath) + '" already exists.')
 
         else:
+            # Convert sourceFile into targetFile.
+
             message = self.convert(sourceFile, targetFile)
+
+            # Pass the message to the UI.
+
             self.ui.set_info_how(message)
+
+            # Save the new file pathname.
 
             if message.startswith('SUCCESS'):
                 self.newFile = targetFile.filePath
 
+            else:
+                self.newFile = None
+
     def import_to_yw(self, sourceFile, targetFile):
-        """Convert any file format into yWriter project. Pass info and messages to ui."""
+        """Convert from any file format to yWriter project.
+
+        sourceFile -- Any Novel subclass instance.
+        targetFile -- YwFile subclass instance.
+
+        1. Send specific information about the conversion to the UI.
+        2. Convert sourceFile into targetFile.
+        3. Pass the message to the UI.
+        4. Delete the temporay file, if exists.
+        5. Save the new file pathname.
+
+        Error handling:
+        - If the conversion fails, newFile is set to None.
+        """
+
+        # Send specific information about the conversion to the UI.
+
         self.ui.set_info_what('Input: ' + sourceFile.DESCRIPTION + ' "' + os.path.normpath(
             sourceFile.filePath) + '"\nOutput: ' + targetFile.DESCRIPTION + ' "' + os.path.normpath(targetFile.filePath) + '"')
+
+        # Convert sourceFile into targetFile.
+
         message = self.convert(sourceFile, targetFile)
+
+        # Pass the message to the UI.
+
         self.ui.set_info_how(message)
+
+        # Delete the temporay file, if exists.
+
         self.delete_tempfile(sourceFile.filePath)
+
+        # Save the new file pathname.
 
         if message.startswith('SUCCESS'):
             self.newFile = targetFile.filePath
+
+        else:
+            self.newFile = None
 
     def confirm_overwrite(self, filePath):
         """Return boolean permission to overwrite the target file, overriding the superclass method."""
@@ -133,5 +213,6 @@ class YwCnvUi(YwCnv):
                     pass
 
     def open_newFile(self):
+        """Open the converted file for editing and exit the converter script."""
         os.startfile(self.newFile)
         sys.exit(0)
