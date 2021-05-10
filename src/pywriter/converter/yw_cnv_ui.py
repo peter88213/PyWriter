@@ -26,8 +26,8 @@ class YwCnvUi(YwCnv):
     def __init__(self):
         """Define instance variables.
 
-        ui -- The user interface; Ui or a Ui subclass.
-        fileFactory -- The file factory; 
+        ui -- user interface object; instance of Ui or a Ui subclass.
+        fileFactory -- file factory object; instance of a FileFactory subclass.
         """
 
         self.ui = Ui('')
@@ -41,6 +41,12 @@ class YwCnvUi(YwCnv):
 
     def run(self, sourcePath, suffix=None):
         """Create source and target objects and run conversion.
+
+        sourcePath -- str; the source file path.
+        suffix -- str; target file name suffix. 
+
+        This is a template method that calls primitive operations by case.
+
         """
         message, sourceFile, targetFile = self.fileFactory.get_file_objects(
             sourcePath, suffix)
@@ -62,10 +68,12 @@ class YwCnvUi(YwCnv):
             self.import_to_yw(sourceFile, targetFile)
 
     def export_from_yw(self, sourceFile, targetFile):
-        """Convert from yWriter project to other file format. 
+        """Convert from yWriter project to other file format.
 
         sourceFile -- YwFile subclass instance.
         targetFile -- Any Novel subclass instance.
+
+        This is a primitive operation of the run() template method.
 
         1. Send specific information about the conversion to the UI.
         2. Convert sourceFile into targetFile.
@@ -102,6 +110,8 @@ class YwCnvUi(YwCnv):
 
         sourceFile -- Any Novel subclass instance.
         targetFile -- YwFile subclass instance.
+
+        This is a primitive operation of the run() template method.
 
         1. Send specific information about the conversion to the UI.
         2. Convert sourceFile into targetFile.
@@ -145,6 +155,8 @@ class YwCnvUi(YwCnv):
 
         sourceFile -- Any Novel subclass instance.
         targetFile -- YwFile subclass instance.
+
+        This is a primitive operation of the run() template method.
 
         1. Send specific information about the conversion to the UI.
         2. Convert sourceFile into targetFile.
