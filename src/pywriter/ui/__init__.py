@@ -1,6 +1,5 @@
-'''The ui package - User interface.
+"""Modules for user interfaces.
 
-This package contains modules for several user interface facades.
+file_factory -- Provide a base class for UI facades'.
 
-
-'''
+"""

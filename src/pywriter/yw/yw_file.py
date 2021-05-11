@@ -52,7 +52,9 @@ class YwFile(Novel):
             lcId = loc.find('ID').text
             self.srtLocations.append(lcId)
             self.locations[lcId] = WorldElement()
-            self.locations[lcId].title = loc.find('Title').text
+
+            if loc.find('Title') is not None:
+                self.locations[lcId].title = loc.find('Title').text
 
             if loc.find('ImageFile') is not None:
                 self.locations[lcId].image = loc.find('ImageFile').text
@@ -75,7 +77,9 @@ class YwFile(Novel):
             itId = itm.find('ID').text
             self.srtItems.append(itId)
             self.items[itId] = WorldElement()
-            self.items[itId].title = itm.find('Title').text
+
+            if itm.find('Title') is not None:
+                self.items[itId].title = itm.find('Title').text
 
             if itm.find('ImageFile') is not None:
                 self.items[itId].image = itm.find('ImageFile').text
@@ -98,7 +102,9 @@ class YwFile(Novel):
             crId = crt.find('ID').text
             self.srtCharacters.append(crId)
             self.characters[crId] = Character()
-            self.characters[crId].title = crt.find('Title').text
+
+            if crt.find('Title') is not None:
+                self.characters[crId].title = crt.find('Title').text
 
             if crt.find('ImageFile') is not None:
                 self.characters[crId].image = crt.find('ImageFile').text
@@ -165,7 +171,8 @@ class YwFile(Novel):
             self.chapters[chId] = Chapter()
             self.srtChapters.append(chId)
 
-            self.chapters[chId].title = chp.find('Title').text
+            if chp.find('Title') is not None:
+                self.chapters[chId].title = chp.find('Title').text
 
             if chp.find('Desc') is not None:
                 self.chapters[chId].desc = chp.find('Desc').text
@@ -237,7 +244,8 @@ class YwFile(Novel):
             scId = scn.find('ID').text
             self.scenes[scId] = Scene()
 
-            self.scenes[scId].title = scn.find('Title').text
+            if scn.find('Title') is not None:
+                self.scenes[scId].title = scn.find('Title').text
 
             if scn.find('Desc') is not None:
                 self.scenes[scId].desc = scn.find('Desc').text

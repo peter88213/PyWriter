@@ -1,4 +1,4 @@
-"""Facade for a user interface.
+"""Provide a base class for UI facades'.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -7,7 +7,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 
 class Ui():
-    """Superclass for UI facades, implementing a 'silent mode'."""
+    """Base class for UI facades, implementing a 'silent mode'.
+
+    All UI facades inherit from this class. 
+    """
 
     def __init__(self, title):
         """Initialize text buffers for messaging.

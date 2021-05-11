@@ -13,8 +13,6 @@ import os
 from pywriter.converter.file_factory import FileFactory
 
 from pywriter.yw.yw5_file import Yw5File
-from pywriter.yw.yw6_file import Yw6File
-from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw5_tree_creator import Yw5TreeCreator
 from pywriter.yw.yw_project_creator import YwProjectCreator
 
@@ -42,98 +40,90 @@ class ExportFileFactory(FileFactory):
     All filetypes to be exported from yWriter are covered.
     """
 
-    def get_file_objects(self, sourcePath, suffix=None):
-        """Return a tuple with three elements:
-        * A message string starting with 'SUCCESS' or 'ERROR'
-        * sourceFile: a Novel subclass instance
-        * targetFile: a Novel subclass instance
+    def make_export_target(self, sourcePath, suffix):
         """
+
+        This is a primitive operation of the make_file_objects() template method.
+
+        """
+        # Determine which sort of target is required.
+
         fileName, fileExtension = os.path.splitext(sourcePath)
-        isYwProject = False
 
-        if fileExtension == Yw7File.EXTENSION:
-            sourceFile = Yw7File(sourcePath)
-            isYwProject = True
+        if suffix is None:
+            targetFile = Yw5File(fileName + Yw5File.EXTENSION)
+            targetFile.ywTreeBuilder = Yw5TreeCreator()
+            targetFile.ywProjectMerger = YwProjectCreator()
 
-        elif fileExtension == Yw5File.EXTENSION:
-            sourceFile = Yw5File(sourcePath)
-            isYwProject = True
+        elif suffix == '':
+            targetFile = OdtExport(fileName + OdtExport.EXTENSION)
 
-        elif fileExtension == Yw6File.EXTENSION:
-            sourceFile = Yw6File(sourcePath)
-            isYwProject = True
+        elif suffix == OdtManuscript.SUFFIX:
+            targetFile = OdtManuscript(
+                fileName + suffix + OdtManuscript.EXTENSION)
 
-        if isYwProject:
+        elif suffix == OdtProof.SUFFIX:
+            targetFile = OdtProof(fileName + suffix + OdtProof.EXTENSION)
 
-            # Determine which sort of target is required.
+        elif suffix == OdtSceneDesc.SUFFIX:
+            targetFile = OdtSceneDesc(
+                fileName + suffix + OdtSceneDesc.EXTENSION)
 
-            if suffix is None:
-                targetFile = Yw5File(fileName + Yw5File.EXTENSION)
-                targetFile.ywTreeBuilder = Yw5TreeCreator()
-                targetFile.ywProjectMerger = YwProjectCreator()
+        elif suffix == OdtChapterDesc.SUFFIX:
+            targetFile = OdtChapterDesc(
+                fileName + suffix + OdtChapterDesc.EXTENSION)
 
-            elif suffix == '':
-                targetFile = OdtExport(fileName + OdtExport.EXTENSION)
+        elif suffix == OdtPartDesc.SUFFIX:
+            targetFile = OdtPartDesc(
+                fileName + suffix + OdtPartDesc.EXTENSION)
 
-            elif suffix == OdtManuscript.SUFFIX:
-                targetFile = OdtManuscript(
-                    fileName + suffix + OdtManuscript.EXTENSION)
+        elif suffix == OdtCharacters.SUFFIX:
+            targetFile = OdtCharacters(
+                fileName + suffix + OdtCharacters.EXTENSION)
 
-            elif suffix == OdtProof.SUFFIX:
-                targetFile = OdtProof(fileName + suffix + OdtProof.EXTENSION)
+        elif suffix == OdtLocations.SUFFIX:
+            targetFile = OdtLocations(
+                fileName + suffix + OdtLocations.EXTENSION)
 
-            elif suffix == OdtSceneDesc.SUFFIX:
-                targetFile = OdtSceneDesc(
-                    fileName + suffix + OdtSceneDesc.EXTENSION)
+        elif suffix == OdtItems.SUFFIX:
+            targetFile = OdtItems(fileName + suffix + OdtItems.EXTENSION)
 
-            elif suffix == OdtChapterDesc.SUFFIX:
-                targetFile = OdtChapterDesc(
-                    fileName + suffix + OdtChapterDesc.EXTENSION)
+        elif suffix == OdtXref.SUFFIX:
+            targetFile = OdtXref(fileName + suffix + OdtXref.EXTENSION)
 
-            elif suffix == OdtPartDesc.SUFFIX:
-                targetFile = OdtPartDesc(
-                    fileName + suffix + OdtPartDesc.EXTENSION)
+        elif suffix == OdsSceneList.SUFFIX:
+            targetFile = OdsSceneList(
+                fileName + suffix + OdsSceneList.EXTENSION)
 
-            elif suffix == OdtCharacters.SUFFIX:
-                targetFile = OdtCharacters(
-                    fileName + suffix + OdtCharacters.EXTENSION)
+        elif suffix == OdsPlotList.SUFFIX:
+            targetFile = OdsPlotList(
+                fileName + suffix + OdsPlotList.EXTENSION)
 
-            elif suffix == OdtLocations.SUFFIX:
-                targetFile = OdtLocations(
-                    fileName + suffix + OdtLocations.EXTENSION)
+        elif suffix == OdsCharList.SUFFIX:
+            targetFile = OdsCharList(
+                fileName + suffix + OdsCharList.EXTENSION)
 
-            elif suffix == OdtItems.SUFFIX:
-                targetFile = OdtItems(fileName + suffix + OdtItems.EXTENSION)
+        elif suffix == OdsLocList.SUFFIX:
+            targetFile = OdsLocList(
+                fileName + suffix + OdsLocList.EXTENSION)
 
-            elif suffix == OdtXref.SUFFIX:
-                targetFile = OdtXref(fileName + suffix + OdtXref.EXTENSION)
-
-            elif suffix == OdsSceneList.SUFFIX:
-                targetFile = OdsSceneList(
-                    fileName + suffix + OdsSceneList.EXTENSION)
-
-            elif suffix == OdsPlotList.SUFFIX:
-                targetFile = OdsPlotList(
-                    fileName + suffix + OdsPlotList.EXTENSION)
-
-            elif suffix == OdsCharList.SUFFIX:
-                targetFile = OdsCharList(
-                    fileName + suffix + OdsCharList.EXTENSION)
-
-            elif suffix == OdsLocList.SUFFIX:
-                targetFile = OdsLocList(
-                    fileName + suffix + OdsLocList.EXTENSION)
-
-            elif suffix == OdsItemList.SUFFIX:
-                targetFile = OdsItemList(
-                    fileName + suffix + OdsItemList.EXTENSION)
-
-            else:
-                return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None
+        elif suffix == OdsItemList.SUFFIX:
+            targetFile = OdsItemList(
+                fileName + suffix + OdsItemList.EXTENSION)
 
         else:
-            # The source file is not a yWriter project.
+            targetFile = None
 
-            return 'ERROR: Source is not a yWriter project.', None, None
+        return targetFile
 
-        return 'SUCCESS', sourceFile, targetFile
+    def make_import_objects(self, sourcePath):
+        """Factory method.
+        Return a tuple with three elements:
+        - A message string starting with 'SUCCESS' or 'ERROR'
+        - sourceFile: a Novel subclass instance
+        - targetFile: a Novel subclass instance
+
+        This is a primitive operation of the make_file_objects() template method.
+
+        """
+        return 'ERROR: Source is not a yWriter project.', None, None

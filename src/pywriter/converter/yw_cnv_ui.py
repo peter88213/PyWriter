@@ -9,6 +9,7 @@ import sys
 
 from pywriter.ui.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
+from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
 
@@ -33,8 +34,7 @@ class YwCnvUi(YwCnv):
         self.ui = Ui('')
         # Per default, 'silent mode' is active.
 
-        self.fileFactory = None
-        # Must be set explicitly from outside.
+        self.fileFactory = FileFactory()
 
         self.newFile = None
         # Also indicates successful conversion.
@@ -48,7 +48,7 @@ class YwCnvUi(YwCnv):
         This is a template method that calls primitive operations by case.
 
         """
-        message, sourceFile, targetFile = self.fileFactory.get_file_objects(
+        message, sourceFile, targetFile = self.fileFactory.make_file_objects(
             sourcePath, suffix)
 
         if not message.startswith('SUCCESS'):
