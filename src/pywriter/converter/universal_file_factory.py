@@ -5,9 +5,13 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.converter.abstract_file_factory import AbstractFileFactory
-from pywriter.converter.yw7_source_factory import Yw7SourceFactory
+from pywriter.converter.source_file_factory import SourceFileFactory
 from pywriter.converter.export_target_factory import ExportTargetFactory
 from pywriter.converter.import_objects_factory import ImportObjectsFactory
+
+from pywriter.yw.yw7_file import Yw7File
+from pywriter.yw.yw6_file import Yw6File
+from pywriter.yw.yw5_file import Yw5File
 
 from pywriter.odt.odt_proof import OdtProof
 from pywriter.odt.odt_manuscript import OdtManuscript
@@ -34,8 +38,6 @@ from pywriter.html.html_partdesc import HtmlPartDesc
 from pywriter.html.html_characters import HtmlCharacters
 from pywriter.html.html_locations import HtmlLocations
 from pywriter.html.html_items import HtmlItems
-from pywriter.html.html_import import HtmlImport
-from pywriter.html.html_outline import HtmlOutline
 
 from pywriter.csv.csv_scenelist import CsvSceneList
 from pywriter.csv.csv_plotlist import CsvPlotList
@@ -56,11 +58,15 @@ class UniversalFileFactory(AbstractFileFactory):
 
         Override the AbstractFileFactory constructor.
 
-        exportSourceFactory (default: Yw7SourceFactory)
+        exportSourceFactory (default: SourceFileFactory)
         exportTargetFactory (default: ExportTargetFactory)
         importObjectsFactory (default: ImportObjectsFactory)
         """
-        self.exportSourceFactory = Yw7SourceFactory()
+        self.exportSourceFactory = SourceFileFactory()
+        self.exportSourceFactory.sourceClasses = [Yw7File,
+                                                  Yw6File,
+                                                  Yw5File,
+                                                  ]
         self.exportTargetFactory = ExportTargetFactory()
         self.exportTargetFactory.expTargets = [OdtExport,
                                                OdtProof,
@@ -79,17 +85,17 @@ class UniversalFileFactory(AbstractFileFactory):
                                                OdtXref,
                                                ]
         self.importObjectsFactory = ImportObjectsFactory()
-        self.importObjectsFactory.impSources = [HtmlProof,
-                                                HtmlManuscript,
-                                                HtmlSceneDesc,
-                                                HtmlChapterDesc,
-                                                HtmlPartDesc,
-                                                HtmlCharacters,
-                                                HtmlItems,
-                                                HtmlLocations,
-                                                CsvCharList,
-                                                CsvLocList,
-                                                CsvItemList,
-                                                CsvSceneList,
-                                                CsvPlotList,
-                                                ]
+        self.importObjectsFactory.sourceClasses = [HtmlProof,
+                                                   HtmlManuscript,
+                                                   HtmlSceneDesc,
+                                                   HtmlChapterDesc,
+                                                   HtmlPartDesc,
+                                                   HtmlCharacters,
+                                                   HtmlItems,
+                                                   HtmlLocations,
+                                                   CsvCharList,
+                                                   CsvLocList,
+                                                   CsvItemList,
+                                                   CsvSceneList,
+                                                   CsvPlotList,
+                                                   ]

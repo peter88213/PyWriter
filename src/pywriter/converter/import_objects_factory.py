@@ -7,6 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 
 from pywriter.converter.file_factory import FileFactory
+from pywriter.converter.source_file_factory import SourceFileFactory
 
 from pywriter.yw.yw5_file import Yw5File
 from pywriter.yw.yw6_file import Yw6File
@@ -26,7 +27,7 @@ class ImportObjectsFactory(FileFactory):
     """A factory class that instantiates source and target file objects."""
 
     def __init__(self):
-        self.impSources = []
+        self.sourceClasses = []
         # List of FileExport subclasses. To be set by the caller.
 
     def make_file_objects(self, sourcePath, suffix=None):
@@ -38,13 +39,11 @@ class ImportObjectsFactory(FileFactory):
 
         """
         fileName, fileExtension = os.path.splitext(sourcePath)
-        sourceFile = None
-        targetFile = None
 
-        for impSource in self.impSources:
+        factory = SourceFileFactory()
+        factory.sourceClasses = self.sourceClasses
 
-            if sourcePath.endswith(impSource.SUFFIX + impSource.EXTENSION):
-                sourceFile = impSource(sourcePath)
+        message, sourceFile, targetFile = factory.make_file_objects(sourcePath)
 
         if sourceFile is None:
 

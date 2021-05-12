@@ -6,8 +6,12 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 from pywriter.converter.file_factory import FileFactory
 from pywriter.converter.abstract_file_factory import AbstractFileFactory
-from pywriter.converter.yw7_source_factory import Yw7SourceFactory
+from pywriter.converter.source_file_factory import SourceFileFactory
 from pywriter.converter.export_target_factory import ExportTargetFactory
+
+from pywriter.yw.yw7_file import Yw7File
+from pywriter.yw.yw6_file import Yw6File
+from pywriter.yw.yw5_file import Yw5File
 
 from pywriter.odt.odt_proof import OdtProof
 from pywriter.odt.odt_manuscript import OdtManuscript
@@ -39,10 +43,14 @@ class ExportFileFactory(AbstractFileFactory):
 
         Override the AbstractFileFactory constructor.
 
-        exportSourceFactory (default: ExportSourceFactory)
+        exportSourceFactory (default: SourceFileFactory)
         exportTargetFactory (default: ExportTargetFactory)
         """
-        self.exportSourceFactory = Yw7SourceFactory()
+        self.exportSourceFactory = SourceFileFactory()
+        self.exportSourceFactory.sourceClasses = [Yw7File,
+                                                  Yw6File,
+                                                  Yw5File,
+                                                  ]
         self.exportTargetFactory = ExportTargetFactory()
         self.exportTargetFactory.expTargets = [OdtProof, OdtManuscript, OdtSceneDesc, OdtChapterDesc,
                                                OdtPartDesc, OdtExport, OdtCharacters, OdtItems, OdtLocations, OdtXref,
