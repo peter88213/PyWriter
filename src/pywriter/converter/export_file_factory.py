@@ -4,6 +4,7 @@ Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.converter.file_factory import FileFactory
 from pywriter.converter.abstract_file_factory import AbstractFileFactory
 from pywriter.converter.yw7_source_factory import Yw7SourceFactory
 from pywriter.converter.export_target_factory import ExportTargetFactory
@@ -46,3 +47,4 @@ class ExportFileFactory(AbstractFileFactory):
         self.exportTargetFactory.expTargets = [OdtProof, OdtManuscript, OdtSceneDesc, OdtChapterDesc,
                                                OdtPartDesc, OdtExport, OdtCharacters, OdtItems, OdtLocations, OdtXref,
                                                OdsCharList, OdsLocList, OdsItemList, OdsSceneList, OdsPlotList]
+        self.importObjectsFactory = FileFactory()
