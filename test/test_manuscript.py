@@ -1,65 +1,52 @@
 """Integration tests for the pyWriter project.
 
-Test the odt/html conversion tasks.
+Test the conversion of the manuscript.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.html.html_manuscript import HtmlManuscript
+from pywriter.odt.odt_manuscript import OdtManuscript
+
+importClass = HtmlManuscript
+exportClass = OdtManuscript
+
+from helper import read_file, copy_file
 
 import os
 import unittest
 import zipfile
 
+from pywriter.converter.yw_cnv_ui import YwCnvUi
+from pywriter.converter.universal_file_factory import UniversalFileFactory
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
 
-from pywriter.html.html_manuscript import HtmlManuscript
-from pywriter.odt.odt_manuscript import OdtManuscript
-
-
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + OdtManuscript.SUFFIX + '/'
+DATA_PATH = 'data/' + exportClass.SUFFIX + '/'
 
-TEST_ODT = EXEC_PATH + 'yw7 Sample Project' + \
-    OdtManuscript.SUFFIX + OdtManuscript.EXTENSION
-ODT_CONTENT = 'content.xml'
+TEST_EXP = EXEC_PATH + 'yw7 Sample Project' + \
+    exportClass.SUFFIX + exportClass.EXTENSION
+ODF_CONTENT = 'content.xml'
 
-TEST_HTML = EXEC_PATH + 'yw7 Sample Project' + \
-    HtmlManuscript.SUFFIX + HtmlManuscript.EXTENSION
-REFERENCE_HTML = DATA_PATH + 'normal.html'
-PROOFED_HTML = DATA_PATH + 'proofed.html'
+TEST_IMP = EXEC_PATH + 'yw7 Sample Project' + \
+    importClass.SUFFIX + importClass.EXTENSION
+REFERENCE_IMP = DATA_PATH + 'normal' + importClass.EXTENSION
+PROOFED_IMP = DATA_PATH + 'proofed' + importClass.EXTENSION
 
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
 PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
 
-def read_file(inputFile):
-    try:
-        with open(inputFile, 'r', encoding='utf-8') as f:
-            return f.read()
-    except:
-        # HTML files exported by a word processor may be ANSI encoded.
-        with open(inputFile, 'r') as f:
-            return f.read()
-
-
-def copy_file(inputFile, outputFile):
-    with open(inputFile, 'rb') as f:
-        myData = f.read()
-    with open(outputFile, 'wb') as f:
-        f.write(myData)
-    return()
-
-
 def remove_all_tempfiles():
     try:
-        os.remove(TEST_HTML)
+        os.remove(TEST_IMP)
     except:
         pass
     try:
-        os.remove(TEST_ODT)
+        os.remove(TEST_EXP)
     except:
         pass
     try:
@@ -67,7 +54,7 @@ def remove_all_tempfiles():
     except:
         pass
     try:
-        os.remove(EXEC_PATH + ODT_CONTENT)
+        os.remove(EXEC_PATH + ODF_CONTENT)
     except:
         pass
 
@@ -100,43 +87,63 @@ class NrmOpr(unittest.TestCase):
             read_file(REFERENCE_YW7),
             read_file(PROOFED_YW7))
 
-    def test_html_to_yw7(self):
-        """Import proofed yw7 scenes from html . """
-
-        copy_file(PROOFED_HTML, TEST_HTML)
-        # This substitutes the proof reading process.
-        # Note: The yw7 project file is still unchanged.
-
+    def test_imp_to_yw7(self):
+        """Use YwCnv class. """
+        copy_file(PROOFED_IMP, TEST_IMP)
         yw7File = Yw7File(TEST_YW7)
-        documentFile = HtmlManuscript(TEST_HTML)
+        documentFile = importClass(TEST_IMP)
         converter = YwCnv()
-
-        # Convert html to xml and replace .yw7 file.
 
         self.assertEqual(converter.convert(
             documentFile, yw7File), 'SUCCESS: "' + os.path.normpath(TEST_YW7) + '" written.')
 
-        # Verify the yw7 project.
+        self.assertEqual(read_file(TEST_YW7),
+                         read_file(PROOFED_YW7))
+
+    def test_yw7_to_exp(self):
+        """Use YwCnv class. """
+        yw7File = Yw7File(TEST_YW7)
+        documentFile = exportClass(TEST_EXP)
+        converter = YwCnv()
+
+        self.assertEqual(converter.convert(
+            yw7File, documentFile), 'SUCCESS: "' + os.path.normpath(TEST_EXP) + '" written.')
+
+        with zipfile.ZipFile(TEST_EXP, 'r') as myzip:
+            myzip.extract(ODF_CONTENT, EXEC_PATH)
+            myzip.close
+
+        self.assertEqual(read_file(EXEC_PATH + ODF_CONTENT),
+                         read_file(DATA_PATH + ODF_CONTENT))
+
+    def test_imp_to_yw7_ui(self):
+        """Use YwCnvUi class. """
+        copy_file(PROOFED_IMP, TEST_IMP)
+        converter = YwCnvUi()
+        converter.fileFactory = UniversalFileFactory()
+        converter.run(TEST_IMP, importClass.SUFFIX)
+
+        self.assertEqual(converter.userInterface.infoHowText,
+                         'SUCCESS: "' + os.path.normpath(TEST_YW7) + '" written.')
 
         self.assertEqual(read_file(TEST_YW7),
                          read_file(PROOFED_YW7))
 
-    def test_yw7_to_odt(self):
-        """Convert yw7 to odt. """
+    def test_yw7_to_exp_ui(self):
+        """Use YwCnvUi class. """
+        converter = YwCnvUi()
+        converter.fileFactory = UniversalFileFactory()
+        converter.run(TEST_YW7, exportClass.SUFFIX)
 
-        yw7File = Yw7File(TEST_YW7)
-        documentFile = OdtManuscript(TEST_ODT)
-        converter = YwCnv()
+        self.assertEqual(converter.userInterface.infoHowText,
+                         'SUCCESS: "' + os.path.normpath(TEST_EXP) + '" written.')
 
-        self.assertEqual(converter.convert(
-            yw7File, documentFile), 'SUCCESS: "' + os.path.normpath(TEST_ODT) + '" written.')
-
-        with zipfile.ZipFile(TEST_ODT, 'r') as myzip:
-            myzip.extract(ODT_CONTENT, EXEC_PATH)
+        with zipfile.ZipFile(TEST_EXP, 'r') as myzip:
+            myzip.extract(ODF_CONTENT, EXEC_PATH)
             myzip.close
 
-        self.assertEqual(read_file(EXEC_PATH + ODT_CONTENT),
-                         read_file(DATA_PATH + ODT_CONTENT))
+        self.assertEqual(read_file(EXEC_PATH + ODF_CONTENT),
+                         read_file(DATA_PATH + ODF_CONTENT))
 
     def tearDown(self):
         remove_all_tempfiles()

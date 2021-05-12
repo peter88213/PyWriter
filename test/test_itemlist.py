@@ -1,66 +1,60 @@
 """Integration tests for the pyWriter project.
 
-Test the csv item list conversion tasks.
+Test the conversion of the item list.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.csv.csv_itemlist import CsvItemList
+from pywriter.ods.ods_itemlist import OdsItemList
+
+importClass = CsvItemList
+exportClass = OdsItemList
+
+from helper import read_file, copy_file
 
 import os
 import unittest
 import zipfile
 
+from pywriter.converter.yw_cnv_ui import YwCnvUi
+from pywriter.converter.universal_file_factory import UniversalFileFactory
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
-from pywriter.csv.csv_itemlist import CsvItemList
-from pywriter.ods.ods_itemlist import OdsItemList
-
 
 TEST_PATH = os.getcwd()
 EXEC_PATH = 'yw7/'
-DATA_PATH = 'data/' + CsvItemList.SUFFIX + '/'
+DATA_PATH = 'data/' + exportClass.SUFFIX + '/'
 
-TEST_ODS = EXEC_PATH + 'yw7 Sample Project' + \
-    OdsItemList.SUFFIX + OdsItemList.EXTENSION
-ODS_CONTENT = 'content.xml'
+TEST_EXP = EXEC_PATH + 'yw7 Sample Project' + \
+    exportClass.SUFFIX + exportClass.EXTENSION
+ODF_CONTENT = 'content.xml'
 
-TEST_CSV = EXEC_PATH + 'yw7 Sample Project' + \
-    CsvItemList.SUFFIX + CsvItemList.EXTENSION
-REFERENCE_CSV = DATA_PATH + 'normal.csv'
-PROOFED_CSV = DATA_PATH + 'proofed.csv'
+TEST_IMP = EXEC_PATH + 'yw7 Sample Project' + \
+    importClass.SUFFIX + importClass.EXTENSION
+REFERENCE_IMP = DATA_PATH + 'normal' + importClass.EXTENSION
+PROOFED_IMP = DATA_PATH + 'proofed' + importClass.EXTENSION
 
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
 PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
-with open(REFERENCE_YW7, 'r') as f:
-    TOTAL_SCENES = f.read().count('<SCENE>')
-
-
-def read_file(inputFile):
-    with open(inputFile, 'r', encoding='utf-8') as f:
-        return(f.read())
-
-
-def copy_file(inputFile, outputFile):
-    with open(inputFile, 'rb') as f:
-        myData = f.read()
-    with open(outputFile, 'wb') as f:
-        f.write(myData)
-    return()
-
 
 def remove_all_tempfiles():
     try:
-        os.remove(TEST_CSV)
+        os.remove(TEST_IMP)
     except:
         pass
     try:
-        os.remove(TEST_ODS)
+        os.remove(TEST_EXP)
     except:
         pass
     try:
         os.remove(TEST_YW7)
+    except:
+        pass
+    try:
+        os.remove(EXEC_PATH + ODF_CONTENT)
     except:
         pass
 
@@ -82,8 +76,7 @@ class NrmOpr(unittest.TestCase):
             pass
 
         remove_all_tempfiles()
-        copy_file(REFERENCE_YW7,
-                  TEST_YW7)
+        copy_file(REFERENCE_YW7, TEST_YW7)
 
     def test_data(self):
         """Verify test data integrity. """
@@ -93,65 +86,64 @@ class NrmOpr(unittest.TestCase):
         self.assertNotEqual(
             read_file(REFERENCE_YW7),
             read_file(PROOFED_YW7))
-        self.assertNotEqual(
-            read_file(REFERENCE_CSV),
-            read_file(PROOFED_CSV))
 
-    def test_yw7_to_ods(self):
-        """Export yW7 items to ods. """
-
+    def test_imp_to_yw7(self):
+        """Use YwCnv class. """
+        copy_file(PROOFED_IMP, TEST_IMP)
         yw7File = Yw7File(TEST_YW7)
-        documentFile = OdsItemList(TEST_ODS)
+        documentFile = importClass(TEST_IMP)
         converter = YwCnv()
-
-        # Read .yw7 file and convert xml to ods.
-
-        self.assertEqual(converter.convert(
-            yw7File, documentFile), 'SUCCESS: "' + os.path.normpath(TEST_ODS) + '" written.')
-
-        with zipfile.ZipFile(TEST_ODS, 'r') as myzip:
-            myzip.extract(ODS_CONTENT, EXEC_PATH)
-            myzip.close
-
-        self.assertEqual(read_file(EXEC_PATH + ODS_CONTENT),
-                         read_file(DATA_PATH + ODS_CONTENT))
-
-    def test_yw7_to_csv(self):
-        """Export yW7 items to csv. """
-
-        yw7File = Yw7File(TEST_YW7)
-        documentFile = CsvItemList(TEST_CSV)
-        converter = YwCnv()
-
-        # Read .yw7 file and convert xml to csv.
-
-        self.assertEqual(converter.convert(
-            yw7File, documentFile), 'SUCCESS: "' + os.path.normpath(TEST_CSV) + '" written.')
-
-        self.assertEqual(read_file(TEST_CSV),
-                         read_file(REFERENCE_CSV))
-
-    def test_csv_to_yw7(self):
-        """Import proofed yw7 scenes from csv. """
-
-        copy_file(PROOFED_CSV,
-                  TEST_CSV)
-        # This substitutes the proof reading process.
-        # Note: The yw7 project file is still unchanged.
-
-        yw7File = Yw7File(TEST_YW7)
-        documentFile = CsvItemList(TEST_CSV)
-        converter = YwCnv()
-
-        # Convert csv to xml and replace .yw7 file.
 
         self.assertEqual(converter.convert(
             documentFile, yw7File), 'SUCCESS: "' + os.path.normpath(TEST_YW7) + '" written.')
 
-        # Verify the yw7 project.
+        self.assertEqual(read_file(TEST_YW7),
+                         read_file(PROOFED_YW7))
+
+    def test_yw7_to_exp(self):
+        """Use YwCnv class. """
+        yw7File = Yw7File(TEST_YW7)
+        documentFile = exportClass(TEST_EXP)
+        converter = YwCnv()
+
+        self.assertEqual(converter.convert(
+            yw7File, documentFile), 'SUCCESS: "' + os.path.normpath(TEST_EXP) + '" written.')
+
+        with zipfile.ZipFile(TEST_EXP, 'r') as myzip:
+            myzip.extract(ODF_CONTENT, EXEC_PATH)
+            myzip.close
+
+        self.assertEqual(read_file(EXEC_PATH + ODF_CONTENT),
+                         read_file(DATA_PATH + ODF_CONTENT))
+
+    def test_imp_to_yw7_ui(self):
+        """Use YwCnvUi class. """
+        copy_file(PROOFED_IMP, TEST_IMP)
+        converter = YwCnvUi()
+        converter.fileFactory = UniversalFileFactory()
+        converter.run(TEST_IMP, importClass.SUFFIX)
+
+        self.assertEqual(converter.userInterface.infoHowText,
+                         'SUCCESS: "' + os.path.normpath(TEST_YW7) + '" written.')
 
         self.assertEqual(read_file(TEST_YW7),
                          read_file(PROOFED_YW7))
+
+    def test_yw7_to_exp_ui(self):
+        """Use YwCnvUi class. """
+        converter = YwCnvUi()
+        converter.fileFactory = UniversalFileFactory()
+        converter.run(TEST_YW7, exportClass.SUFFIX)
+
+        self.assertEqual(converter.userInterface.infoHowText,
+                         'SUCCESS: "' + os.path.normpath(TEST_EXP) + '" written.')
+
+        with zipfile.ZipFile(TEST_EXP, 'r') as myzip:
+            myzip.extract(ODF_CONTENT, EXEC_PATH)
+            myzip.close
+
+        self.assertEqual(read_file(EXEC_PATH + ODF_CONTENT),
+                         read_file(DATA_PATH + ODF_CONTENT))
 
     def tearDown(self):
         remove_all_tempfiles()
