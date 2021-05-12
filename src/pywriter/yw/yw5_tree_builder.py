@@ -91,19 +91,20 @@ class Yw5TreeBuilder(YwTreeBuilder):
                     ET.SubElement(
                         scn, 'RTFFile').text = ywProject.scenes[scId].rtfFile
 
-                rtfPath = rtfDir + '/' + ywProject.scenes[scId].rtfFile
+                if ywProject.scenes[scId].sceneContent is not None:
+                    rtfPath = rtfDir + '/' + ywProject.scenes[scId].rtfFile
 
-                rtfScene = self.convert_to_rtf(
-                    ywProject.scenes[scId].sceneContent)
+                    rtfScene = self.convert_to_rtf(
+                        ywProject.scenes[scId].sceneContent)
 
-                try:
+                    try:
 
-                    with open(rtfPath, 'w') as f:
-                        f.write(rtfScene)
+                        with open(rtfPath, 'w') as f:
+                            f.write(rtfScene)
 
-                except:
+                    except:
 
-                    return 'ERROR: Can not write scene file "' + rtfPath + '".'
+                        return 'ERROR: Can not write scene file "' + rtfPath + '".'
 
         root.tag = 'YWRITER5'
         root.find('PROJECT').find('Ver').text = '5'

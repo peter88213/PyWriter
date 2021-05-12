@@ -219,9 +219,6 @@ class YwProjectMerger():
             if source.scenes[scId].sceneContent is not None:
                 target.scenes[scId].sceneContent = source.scenes[scId].sceneContent
 
-            if source.scenes[scId].rtfFile is not None:
-                target.scenes[scId].sceneContent = source.scenes[scId].sceneContent
-
             if source.scenes[scId].isUnused is not None:
                 target.scenes[scId].isUnused = source.scenes[scId].isUnused
 
