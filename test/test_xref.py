@@ -95,7 +95,7 @@ class NrmOpr(unittest.TestCase):
         converter.fileFactory = UniversalFileFactory()
         converter.run(yw7File.filePath, exportClass.SUFFIX)
 
-        self.assertEqual(converter.userInterface.infoHowText,
+        self.assertEqual(converter.ui.infoHowText,
                          'SUCCESS: "' + os.path.normpath(TEST_ODT) + '" written.')
 
         with zipfile.ZipFile(TEST_ODT, 'r') as myzip:
