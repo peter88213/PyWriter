@@ -1,117 +1,35 @@
-"""An export file factory. 
-
-Instantiate the Novel subclass objects 
-sourceFile and targetFile for file conversion.
+"""Provide a factory class for any export target object.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 import os
 
 from pywriter.converter.file_factory import FileFactory
 
-from pywriter.yw.yw5_file import Yw5File
-from pywriter.yw.yw5_tree_creator import Yw5TreeCreator
-from pywriter.yw.yw_project_creator import YwProjectCreator
-
-from pywriter.odt.odt_proof import OdtProof
-from pywriter.odt.odt_manuscript import OdtManuscript
-from pywriter.odt.odt_scenedesc import OdtSceneDesc
-from pywriter.odt.odt_chapterdesc import OdtChapterDesc
-from pywriter.odt.odt_partdesc import OdtPartDesc
-from pywriter.odt.odt_export import OdtExport
-from pywriter.odt.odt_characters import OdtCharacters
-from pywriter.odt.odt_items import OdtItems
-from pywriter.odt.odt_locations import OdtLocations
-from pywriter.odt.odt_xref import OdtXref
-
-from pywriter.ods.ods_charlist import OdsCharList
-from pywriter.ods.ods_loclist import OdsLocList
-from pywriter.ods.ods_itemlist import OdsItemList
-from pywriter.ods.ods_scenelist import OdsSceneList
-from pywriter.ods.ods_plotlist import OdsPlotList
-
 
 class ExportTargetFactory(FileFactory):
-    """A factory class that instantiates a source file object
-    and a target file object for conversion.
-    All filetypes to be exported from yWriter are covered.
-    """
+    """A factory class that instantiates an export target file object."""
 
-    def make_file_objects(self, sourcePath, suffix):
+    def __init__(self):
+        self.expTargets = []
+        # List of FileExport subclasses. To be set by the caller.
+
+    def make_file_objects(self, sourcePath, suffix=None):
+        """Instantiate a target object for conversion to any format.
+
+        Return a tuple with three elements:
+        - A message string starting with 'SUCCESS' or 'ERROR'
+        - sourceFile: None
+        - targetFile: a FileExport subclass instance, or None in case of error 
         """
-
-        This is a primitive operation of the make_file_objects() template method.
-
-        """
-        # Determine which sort of target is required.
-
         fileName, fileExtension = os.path.splitext(sourcePath)
 
-        if suffix is None:
-            targetFile = Yw5File(fileName + Yw5File.EXTENSION)
-            targetFile.ywTreeBuilder = Yw5TreeCreator()
-            targetFile.ywProjectMerger = YwProjectCreator()
+        for expTarget in self.expTargets:
 
-        elif suffix == '':
-            targetFile = OdtExport(fileName + OdtExport.EXTENSION)
+            if expTarget.SUFFIX == suffix:
+                targetFile = expTarget(fileName + suffix + expTarget.EXTENSION)
+                return 'SUCCESS', None, targetFile
 
-        elif suffix == OdtManuscript.SUFFIX:
-            targetFile = OdtManuscript(
-                fileName + suffix + OdtManuscript.EXTENSION)
-
-        elif suffix == OdtProof.SUFFIX:
-            targetFile = OdtProof(fileName + suffix + OdtProof.EXTENSION)
-
-        elif suffix == OdtSceneDesc.SUFFIX:
-            targetFile = OdtSceneDesc(
-                fileName + suffix + OdtSceneDesc.EXTENSION)
-
-        elif suffix == OdtChapterDesc.SUFFIX:
-            targetFile = OdtChapterDesc(
-                fileName + suffix + OdtChapterDesc.EXTENSION)
-
-        elif suffix == OdtPartDesc.SUFFIX:
-            targetFile = OdtPartDesc(
-                fileName + suffix + OdtPartDesc.EXTENSION)
-
-        elif suffix == OdtCharacters.SUFFIX:
-            targetFile = OdtCharacters(
-                fileName + suffix + OdtCharacters.EXTENSION)
-
-        elif suffix == OdtLocations.SUFFIX:
-            targetFile = OdtLocations(
-                fileName + suffix + OdtLocations.EXTENSION)
-
-        elif suffix == OdtItems.SUFFIX:
-            targetFile = OdtItems(fileName + suffix + OdtItems.EXTENSION)
-
-        elif suffix == OdtXref.SUFFIX:
-            targetFile = OdtXref(fileName + suffix + OdtXref.EXTENSION)
-
-        elif suffix == OdsSceneList.SUFFIX:
-            targetFile = OdsSceneList(
-                fileName + suffix + OdsSceneList.EXTENSION)
-
-        elif suffix == OdsPlotList.SUFFIX:
-            targetFile = OdsPlotList(
-                fileName + suffix + OdsPlotList.EXTENSION)
-
-        elif suffix == OdsCharList.SUFFIX:
-            targetFile = OdsCharList(
-                fileName + suffix + OdsCharList.EXTENSION)
-
-        elif suffix == OdsLocList.SUFFIX:
-            targetFile = OdsLocList(
-                fileName + suffix + OdsLocList.EXTENSION)
-
-        elif suffix == OdsItemList.SUFFIX:
-            targetFile = OdsItemList(
-                fileName + suffix + OdsItemList.EXTENSION)
-
-        else:
-            return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None
-
-        return 'SUCCESS', None, targetFile
+        return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None

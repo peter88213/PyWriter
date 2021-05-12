@@ -1,11 +1,9 @@
-"""Provide an interface emulation for conversion object factory classes.
+"""Provide an abstract factory for conversion object instantiation.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import os
-
 from pywriter.converter.file_factory import FileFactory
 
 
@@ -13,6 +11,12 @@ class AbstractFileFactory(FileFactory):
     """Abstract factory for conversion objects."""
 
     def __init__(self):
+        """Set the instance variables for the abstract factory:
+
+        exportSourceFactory (default: FileFactory)
+        exportTargetFactory (default: FileFactory)
+        importObjectsFactory (default: FileFactory)
+        """
         self.exportSourceFactory = FileFactory()
         self.exportTargetFactory = FileFactory()
         self.importObjectsFactory = FileFactory()
