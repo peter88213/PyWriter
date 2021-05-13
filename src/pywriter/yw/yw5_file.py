@@ -21,7 +21,9 @@ class Yw5File(YwFile):
     EXTENSION = '.yw5'
 
     def __init__(self, filePath):
+        """Extends the super class constructor."""
         YwFile.__init__(self, filePath)
+
         self.ywTreeReader = AnsiTreeReader()
         self.ywProjectMerger = YwProjectMerger()
         self.ywTreeBuilder = Yw5TreeBuilder()

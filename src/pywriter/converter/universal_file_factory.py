@@ -5,9 +5,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.converter.abstract_file_factory import AbstractFileFactory
-from pywriter.converter.source_file_factory import SourceFileFactory
-from pywriter.converter.export_target_factory import ExportTargetFactory
-from pywriter.converter.import_objects_factory import ImportObjectsFactory
 
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw6_file import Yw6File
@@ -52,50 +49,40 @@ class UniversalFileFactory(AbstractFileFactory):
     Support yWriter 7 projects and most of the Novel subclasses 
     that can be read or written by OpenOffice/LibreOffice. 
     """
+    EXPORT_SOURCE_CLASSES = [Yw7File,
+                             Yw6File,
+                             Yw5File]
 
-    def __init__(self):
-        """Set the instance variables for the abstract factory.
+    EXPORT_TARGET_CLASSES = [OdtExport,
+                             OdtProof,
+                             OdtManuscript,
+                             OdtSceneDesc,
+                             OdtChapterDesc,
+                             OdtPartDesc,
+                             OdtCharacters,
+                             OdtItems,
+                             OdtLocations,
+                             OdsCharList,
+                             OdsLocList,
+                             OdsItemList,
+                             OdsSceneList,
+                             OdsPlotList,
+                             OdtXref]
 
-        Override the AbstractFileFactory constructor.
+    IMPORT_SOURCE_CLASSES = [HtmlProof,
+                             HtmlManuscript,
+                             HtmlSceneDesc,
+                             HtmlChapterDesc,
+                             HtmlPartDesc,
+                             HtmlCharacters,
+                             HtmlItems,
+                             HtmlLocations,
+                             CsvCharList,
+                             CsvLocList,
+                             CsvItemList,
+                             CsvSceneList,
+                             CsvPlotList]
 
-        exportSourceFactory (default: SourceFileFactory)
-        exportTargetFactory (default: ExportTargetFactory)
-        importObjectsFactory (default: ImportObjectsFactory)
-        """
-        self.exportSourceFactory = SourceFileFactory()
-        self.exportSourceFactory.sourceClasses = [Yw7File,
-                                                  Yw6File,
-                                                  Yw5File,
-                                                  ]
-        self.exportTargetFactory = ExportTargetFactory()
-        self.exportTargetFactory.expTargets = [OdtExport,
-                                               OdtProof,
-                                               OdtManuscript,
-                                               OdtSceneDesc,
-                                               OdtChapterDesc,
-                                               OdtPartDesc,
-                                               OdtCharacters,
-                                               OdtItems,
-                                               OdtLocations,
-                                               OdsCharList,
-                                               OdsLocList,
-                                               OdsItemList,
-                                               OdsSceneList,
-                                               OdsPlotList,
-                                               OdtXref,
-                                               ]
-        self.importObjectsFactory = ImportObjectsFactory()
-        self.importObjectsFactory.sourceClasses = [HtmlProof,
-                                                   HtmlManuscript,
-                                                   HtmlSceneDesc,
-                                                   HtmlChapterDesc,
-                                                   HtmlPartDesc,
-                                                   HtmlCharacters,
-                                                   HtmlItems,
-                                                   HtmlLocations,
-                                                   CsvCharList,
-                                                   CsvLocList,
-                                                   CsvItemList,
-                                                   CsvSceneList,
-                                                   CsvPlotList,
-                                                   ]
+    IMPORT_TARGET_CLASSES = [Yw7File,
+                             Yw6File,
+                             Yw5File]

@@ -8,12 +8,9 @@ import os
 
 from pywriter.converter.file_factory import FileFactory
 from pywriter.converter.source_file_factory import SourceFileFactory
+from pywriter.converter.import_target_factory import ImportTargetFactory
 
-from pywriter.yw.yw5_file import Yw5File
-from pywriter.yw.yw6_file import Yw6File
-from pywriter.yw.yw7_file import Yw7File
-from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
-from pywriter.yw.yw_project_creator import YwProjectCreator
+from pywriter.yw.yw7_new_file import Yw7NewFile
 
 
 from pywriter.html.html_import import HtmlImport
@@ -26,9 +23,9 @@ from pywriter.html.html_fop import read_html_file
 class ImportObjectsFactory(FileFactory):
     """A factory class that instantiates source and target file objects."""
 
-    def __init__(self):
-        self.sourceClasses = []
-        # List of FileExport subclasses. To be set by the caller.
+    def __init__(self, sourceClasses=[], targetClasses=[]):
+        self.sourceClasses = sourceClasses
+        self.targetClasses = targetClasses
 
     def make_file_objects(self, sourcePath, suffix=None):
         """Factory method.
@@ -40,8 +37,7 @@ class ImportObjectsFactory(FileFactory):
         """
         fileName, fileExtension = os.path.splitext(sourcePath)
 
-        factory = SourceFileFactory()
-        factory.sourceClasses = self.sourceClasses
+        factory = SourceFileFactory(self.sourceClasses)
 
         message, sourceFile, targetFile = factory.make_file_objects(sourcePath)
 
@@ -57,9 +53,7 @@ class ImportObjectsFactory(FileFactory):
                 result = read_html_file(sourcePath)
 
                 if result[0].startswith('SUCCESS'):
-                    targetFile = Yw7File(fileName + Yw7File.EXTENSION)
-                    targetFile.ywTreeBuilder = Yw7TreeCreator()
-                    targetFile.ywProjectMerger = YwProjectCreator()
+                    targetFile = Yw7NewFile(fileName + Yw7NewFile.EXTENSION)
 
                     if "<h3" in result[1].lower():
                         sourceFile = HtmlOutline(sourcePath)
@@ -74,21 +68,12 @@ class ImportObjectsFactory(FileFactory):
                 return 'ERROR: File type of  "' + os.path.normpath(sourcePath) + '" not supported.', None, None
 
         if targetFile is None:
+            factory = ImportTargetFactory(self.targetClasses)
 
-            ywPathBasis = fileName.split(sourceFile.SUFFIX)[0]
+            message, dummy, targetFile = factory.make_file_objects(
+                sourcePath, sourceFile.SUFFIX)
 
-            # Look for an existing yWriter project to rewrite.
-
-            if os.path.isfile(ywPathBasis + Yw7File.EXTENSION):
-                targetFile = Yw7File(ywPathBasis + Yw7File.EXTENSION)
-
-            elif os.path.isfile(ywPathBasis + Yw5File.EXTENSION):
-                targetFile = Yw5File(ywPathBasis + Yw5File.EXTENSION)
-
-            elif os.path.isfile(ywPathBasis + Yw6File.EXTENSION):
-                targetFile = Yw6File(ywPathBasis + Yw6File.EXTENSION)
-
-        if targetFile is None:
-            return 'ERROR: No yWriter project to write.', None, None
+            if message.startswith('ERROR'):
+                return message, None, None
 
         return 'SUCCESS', sourceFile, targetFile

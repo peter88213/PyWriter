@@ -8,9 +8,7 @@ import os
 
 from pywriter.converter.file_factory import FileFactory
 
-from pywriter.yw.yw5_file import Yw5File
-from pywriter.yw.yw5_tree_creator import Yw5TreeCreator
-from pywriter.yw.yw_project_creator import YwProjectCreator
+from pywriter.yw.yw5_new_file import Yw5NewFile
 
 
 class Yw5TargetFactory(FileFactory):
@@ -27,9 +25,7 @@ class Yw5TargetFactory(FileFactory):
         fileName, fileExtension = os.path.splitext(sourcePath)
 
         if suffix is None:
-            targetFile = Yw5File(fileName + Yw5File.EXTENSION)
-            targetFile.ywTreeBuilder = Yw5TreeCreator()
-            targetFile.ywProjectMerger = YwProjectCreator()
+            targetFile = Yw5NewFile(fileName + Yw5NewFile.EXTENSION)
             return 'SUCCESS', None, targetFile
 
         return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None

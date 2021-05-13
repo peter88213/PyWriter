@@ -10,11 +10,10 @@ from pywriter.converter.file_factory import FileFactory
 
 
 class SourceFileFactory(FileFactory):
-    """A factory class that instantiates an import source file object."""
+    """A factory class that instantiates a source file object for import or export."""
 
-    def __init__(self):
-        self.sourceClasses = []
-        # List of FileExport subclasses. To be set by the caller.
+    def __init__(self, sourceClasses=[]):
+        self.sourceClasses = sourceClasses
 
     def make_file_objects(self, sourcePath, suffix=None):
         """Instantiate a source object for conversion to a yWriter format.

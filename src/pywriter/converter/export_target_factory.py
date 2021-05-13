@@ -12,9 +12,8 @@ from pywriter.converter.file_factory import FileFactory
 class ExportTargetFactory(FileFactory):
     """A factory class that instantiates an export target file object."""
 
-    def __init__(self):
-        self.expTargets = []
-        # List of FileExport subclasses. To be set by the caller.
+    def __init__(self, expTargets=[]):
+        self.expTargets = expTargets
 
     def make_file_objects(self, sourcePath, suffix=None):
         """Instantiate a target object for conversion to any format.
@@ -29,6 +28,10 @@ class ExportTargetFactory(FileFactory):
         for expTarget in self.expTargets:
 
             if expTarget.SUFFIX == suffix:
+
+                if suffix is None:
+                    suffix = ''
+
                 targetFile = expTarget(fileName + suffix + expTarget.EXTENSION)
                 return 'SUCCESS', None, targetFile
 
