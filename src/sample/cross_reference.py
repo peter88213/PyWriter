@@ -10,17 +10,14 @@ SUFFIX = '_xref'
 
 import sys
 
-from pywriter.ui.ui_cmd import UiCmd
 from pywriter.ui.ui_tk import UiTk
-from pywriter.converter.yw_cnv_ui import YwCnvUi
-from pywriter.converter.export_file_factory import ExportFileFactory
+from pywriter.converter.universal_exporter import UniversalExporter
 
 
 def run(sourcePath, suffix=None):
     ui = UiTk('yWriter import/export')
-    converter = YwCnvUi()
+    converter = UniversalExporter()
     converter.ui = ui
-    converter.fileFactory = ExportFileFactory()
     converter.run(sourcePath, suffix)
     ui.start()
 

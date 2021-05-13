@@ -12,17 +12,14 @@ SUFFIX = '_loclist'
 
 import sys
 
-from pywriter.ui.ui_cmd import UiCmd
 from pywriter.ui.ui_tk import UiTk
-from pywriter.converter.yw_cnv_ui import YwCnvUi
-from pywriter.converter.universal_file_factory import UniversalFileFactory
+from pywriter.converter.universal_converter import UniversalConverter
 
 
 def run(sourcePath, suffix=None):
     ui = UiTk('yWriter import/export')
-    converter = YwCnvUi()
+    converter = UniversalConverter()
     converter.ui = ui
-    converter.fileFactory = UniversalFileFactory()
     converter.run(sourcePath, suffix)
     ui.start()
 

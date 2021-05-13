@@ -17,8 +17,7 @@ import os
 import unittest
 import zipfile
 
-from pywriter.converter.yw_cnv_ui import YwCnvUi
-from pywriter.converter.universal_file_factory import UniversalFileFactory
+from pywriter.converter.universal_converter import UniversalConverter
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
 
@@ -119,8 +118,7 @@ class NrmOpr(unittest.TestCase):
     def test_imp_to_yw7_ui(self):
         """Use YwCnvUi class. """
         copy_file(PROOFED_IMP, TEST_IMP)
-        converter = YwCnvUi()
-        converter.fileFactory = UniversalFileFactory()
+        converter = UniversalConverter()
         converter.run(TEST_IMP)
 
         self.assertEqual(converter.ui.infoHowText,
@@ -131,8 +129,7 @@ class NrmOpr(unittest.TestCase):
 
     def test_yw7_to_exp_ui(self):
         """Use YwCnvUi class. """
-        converter = YwCnvUi()
-        converter.fileFactory = UniversalFileFactory()
+        converter = UniversalConverter()
         converter.run(TEST_YW7, exportClass.SUFFIX)
 
         self.assertEqual(converter.ui.infoHowText,

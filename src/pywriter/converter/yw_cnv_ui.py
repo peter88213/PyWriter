@@ -9,7 +9,12 @@ import sys
 
 from pywriter.ui.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
+
 from pywriter.converter.file_factory import FileFactory
+from pywriter.converter.export_source_factory import ExportSourceFactory
+from pywriter.converter.export_target_factory import ExportTargetFactory
+from pywriter.converter.import_source_factory import ImportSourceFactory
+from pywriter.converter.import_target_factory import ImportTargetFactory
 
 
 class YwCnvUi(YwCnv):
@@ -21,7 +26,10 @@ class YwCnvUi(YwCnv):
     All converters with a user interface inherit from this class. 
     """
 
-    YW_EXTENSIONS = ['.yw5', '.yw6', '.yw7']
+    EXPORT_SOURCE_CLASSES = []
+    EXPORT_TARGET_CLASSES = []
+    IMPORT_SOURCE_CLASSES = []
+    IMPORT_TARGET_CLASSES = []
 
     def __init__(self):
         """Define instance variables.
@@ -33,7 +41,14 @@ class YwCnvUi(YwCnv):
         self.ui = Ui('')
         # Per default, 'silent mode' is active.
 
-        self.fileFactory = FileFactory()
+        self.exportSourceFactory = ExportSourceFactory(
+            self.EXPORT_SOURCE_CLASSES)
+        self.exportTargetFactory = ExportTargetFactory(
+            self.EXPORT_TARGET_CLASSES)
+        self.importSourceFactory = ImportSourceFactory(
+            self.IMPORT_SOURCE_CLASSES)
+        self.importTargetFactory = ImportTargetFactory(
+            self.IMPORT_TARGET_CLASSES)
         self.newProjectFactory = FileFactory()
 
         self.newFile = None
@@ -52,24 +67,45 @@ class YwCnvUi(YwCnv):
                 'ERROR: File "' + os.path.normpath(sourcePath) + '" not found.')
             return
 
-        message, sourceFile, targetFile = self.fileFactory.make_file_objects(
-            sourcePath, suffix)
+        message, sourceFile, dummy = self.exportSourceFactory.make_file_objects(
+            sourcePath)
 
-        if not message.startswith('SUCCESS'):
-            message, sourceFile, targetFile = self.newProjectFactory.make_file_objects(
-                sourcePath)
+        if message.startswith('SUCCESS'):
+            # The source file is a yWriter project.
+
+            message, dummy, targetFile = self.exportTargetFactory.make_file_objects(
+                sourcePath, suffix)
 
             if message.startswith('SUCCESS'):
-                self.create_yw7(sourceFile, targetFile)
+                self.export_from_yw(sourceFile, targetFile)
 
             else:
                 self.ui.set_info_how(message)
 
-        elif sourceFile.EXTENSION in self.YW_EXTENSIONS:
-            self.export_from_yw(sourceFile, targetFile)
-
         else:
-            self.import_to_yw(sourceFile, targetFile)
+            # The source file is not a yWriter project.
+
+            message, sourceFile, dummy = self.importSourceFactory.make_file_objects(
+                sourcePath)
+
+            if message.startswith('SUCCESS'):
+                message, dummy, targetFile = self.importTargetFactory.make_file_objects(
+                    sourcePath, sourceFile.SUFFIX)
+
+                if message.startswith('SUCCESS'):
+                    self.import_to_yw(sourceFile, targetFile)
+
+            else:
+                # A new yWriter project might be required.
+
+                message, sourceFile, targetFile = self.newProjectFactory.make_file_objects(
+                    sourcePath)
+
+                if message.startswith('SUCCESS'):
+                    self.create_yw7(sourceFile, targetFile)
+
+                else:
+                    self.ui.set_info_how(message)
 
     def export_from_yw(self, sourceFile, targetFile):
         """Convert from yWriter project to other file format.

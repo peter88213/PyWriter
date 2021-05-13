@@ -10,22 +10,20 @@ import sys
 
 from pywriter.ui.ui_tk import UiTk
 from pywriter.converter.yw_cnv_ui import YwCnvUi
-from pywriter.converter.abstract_file_factory import AbstractFileFactory
 
 from pywriter.yw.yw5_new_file import Yw5NewFile
 from pywriter.yw.yw7_file import Yw7File
 
 
-class MyFileFactory(AbstractFileFactory):
+class MyConverter(YwCnvUi):
     EXPORT_SOURCE_CLASSES = [Yw7File]
     EXPORT_TARGET_CLASSES = [Yw5NewFile]
 
 
 def run(sourcePath, suffix=None):
     ui = UiTk('yWriter import/export')
-    converter = YwCnvUi()
+    converter = MyConverter()
     converter.ui = ui
-    converter.fileFactory = MyFileFactory()
     converter.run(sourcePath, suffix)
     ui.start()
 

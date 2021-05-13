@@ -4,7 +4,7 @@ Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.converter.abstract_file_factory import AbstractFileFactory
+from pywriter.converter.yw_cnv_ui import YwCnvUi
 
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw6_file import Yw6File
@@ -28,8 +28,8 @@ from pywriter.ods.ods_scenelist import OdsSceneList
 from pywriter.ods.ods_plotlist import OdsPlotList
 
 
-class ExportFileFactory(AbstractFileFactory):
-    """A factory class that instantiates the file objects for conversion.
+class UniversalExporter(YwCnvUi):
+    """A converter for export.
 
     Instantiate a Yw7File object as sourceFile and a
     Novel subclass object as targetFile for file conversion.

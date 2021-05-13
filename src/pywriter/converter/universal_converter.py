@@ -4,7 +4,8 @@ Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.converter.abstract_file_factory import AbstractFileFactory
+from pywriter.converter.yw_cnv_ui import YwCnvUi
+from pywriter.converter.new_project_factory import NewProjectFactory
 
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw6_file import Yw6File
@@ -43,8 +44,8 @@ from pywriter.csv.csv_loclist import CsvLocList
 from pywriter.csv.csv_itemlist import CsvItemList
 
 
-class UniversalFileFactory(AbstractFileFactory):
-    """A factory class that instantiates the file objects for conversion.
+class UniversalConverter(YwCnvUi):
+    """A converter class.
 
     Support yWriter 7 projects and most of the Novel subclasses 
     that can be read or written by OpenOffice/LibreOffice. 
@@ -87,3 +88,7 @@ class UniversalFileFactory(AbstractFileFactory):
                              Yw6File,
                              Yw5File,
                              ]
+
+    def __init__(self):
+        YwCnvUi.__init__(self)
+        self.newProjectFactory = NewProjectFactory()
