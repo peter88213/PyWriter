@@ -121,7 +121,7 @@ class NrmOpr(unittest.TestCase):
         copy_file(PROOFED_HTML, TEST_HTML)
         converter = YwCnvUi()
         converter.fileFactory = UniversalFileFactory()
-        converter.run(TEST_HTML, importClass.SUFFIX)
+        converter.run(TEST_HTML)
 
         self.assertEqual(converter.ui.infoHowText,
                          'SUCCESS: "' + os.path.normpath(TEST_YW7) + '" written.')

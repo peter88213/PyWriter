@@ -51,8 +51,8 @@ class UniversalFileFactory(AbstractFileFactory):
     """
     EXPORT_SOURCE_CLASSES = [Yw7File,
                              Yw6File,
-                             Yw5File]
-
+                             Yw5File,
+                             ]
     EXPORT_TARGET_CLASSES = [OdtExport,
                              OdtProof,
                              OdtManuscript,
@@ -67,8 +67,8 @@ class UniversalFileFactory(AbstractFileFactory):
                              OdsItemList,
                              OdsSceneList,
                              OdsPlotList,
-                             OdtXref]
-
+                             OdtXref,
+                             ]
     IMPORT_SOURCE_CLASSES = [HtmlProof,
                              HtmlManuscript,
                              HtmlSceneDesc,
@@ -81,8 +81,9 @@ class UniversalFileFactory(AbstractFileFactory):
                              CsvLocList,
                              CsvItemList,
                              CsvSceneList,
-                             CsvPlotList]
-
+                             CsvPlotList,
+                             ]
     IMPORT_TARGET_CLASSES = [Yw7File,
                              Yw6File,
-                             Yw5File]
+                             Yw5File,
+                             ]

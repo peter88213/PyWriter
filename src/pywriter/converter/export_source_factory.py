@@ -12,9 +12,8 @@ from pywriter.converter.file_factory import FileFactory
 class ExportSourceFactory(FileFactory):
     """A factory class that instantiates an export source file object."""
 
-    def __init__(self):
-        self.expSources = []
-        # List of YwFile subclasses. To be set by the caller.
+    def __init__(self, sourceClasses=[]):
+        self.sourceClasses = sourceClasses
 
     def make_file_objects(self, sourcePath, suffix=None):
         """Instantiate a source object for conversion from a yWriter format.
@@ -26,10 +25,10 @@ class ExportSourceFactory(FileFactory):
         """
         fileName, fileExtension = os.path.splitext(sourcePath)
 
-        for expSource in self.expSources:
+        for sourceClass in self.sourceClasses:
 
-            if expSource.EXTENSION == fileExtension:
-                sourceFile = expSource(sourcePath)
+            if sourceClass.EXTENSION == fileExtension:
+                sourceFile = sourceClass(sourcePath)
                 return 'SUCCESS', sourceFile, None
 
         return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None

@@ -9,7 +9,7 @@ import os
 from pywriter.converter.file_factory import FileFactory
 
 
-class SourceFileFactory(FileFactory):
+class ImportSourceFactory(FileFactory):
     """A factory class that instantiates a source file object for import or export."""
 
     def __init__(self, sourceClasses=[]):
@@ -26,14 +26,10 @@ class SourceFileFactory(FileFactory):
 
         for sourceClass in self.sourceClasses:
 
-            if sourceClass.SUFFIX is None:
-                suffix = ''
+            if sourceClass.SUFFIX is not None:
 
-            else:
-                suffix = sourceClass.SUFFIX
+                if sourcePath.endswith(sourceClass.SUFFIX + sourceClass.EXTENSION):
+                    sourceFile = sourceClass(sourcePath)
+                    return 'SUCCESS', sourceFile, None
 
-            if sourcePath.endswith(suffix + sourceClass.EXTENSION):
-                sourceFile = sourceClass(sourcePath)
-                return 'SUCCESS', sourceFile, None
-
-        return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None
+        return 'ERROR: This document is not meant to be written back.', None, None

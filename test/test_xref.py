@@ -114,10 +114,10 @@ class NrmOpr(unittest.TestCase):
         copy_file(REFERENCE_HTML, TEST_HTML)
         converter = YwCnvUi()
         converter.fileFactory = UniversalFileFactory()
-        converter.run(TEST_HTML, exportClass.SUFFIX)
+        converter.run(TEST_HTML)
 
         self.assertEqual(converter.ui.infoHowText,
-                         'ERROR: Cross references are not meant to be written back.')
+                         'ERROR: This document is not meant to be written back.')
 
         self.assertEqual(read_file(TEST_YW7),
                          read_file(REFERENCE_YW7))
