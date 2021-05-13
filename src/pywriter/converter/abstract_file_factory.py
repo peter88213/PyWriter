@@ -9,7 +9,6 @@ from pywriter.converter.export_source_factory import ExportSourceFactory
 from pywriter.converter.export_target_factory import ExportTargetFactory
 from pywriter.converter.import_source_factory import ImportSourceFactory
 from pywriter.converter.import_target_factory import ImportTargetFactory
-from pywriter.converter.new_project_factory import NewProjectFactory
 
 
 class AbstractFileFactory(FileFactory):
@@ -70,11 +69,6 @@ class AbstractFileFactory(FileFactory):
             if message.startswith('SUCCESS'):
                 message, dummy, targetFile = self.importTargetFactory.make_file_objects(
                     sourcePath, sourceFile.SUFFIX)
-
-            else:
-                factory = NewProjectFactory()
-                message, sourceFile, targetFile = factory.make_file_objects(
-                    sourcePath)
 
             if message.startswith('ERROR'):
                 return message, None, None

@@ -10,7 +10,6 @@ import sys
 from pywriter.ui.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.converter.file_factory import FileFactory
-from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
 
 
 class YwCnvUi(YwCnv):
@@ -35,6 +34,7 @@ class YwCnvUi(YwCnv):
         # Per default, 'silent mode' is active.
 
         self.fileFactory = FileFactory()
+        self.newProjectFactory = FileFactory()
 
         self.newFile = None
         # Also indicates successful conversion.
@@ -46,23 +46,27 @@ class YwCnvUi(YwCnv):
         suffix -- str; target file name suffix. 
 
         This is a template method that calls primitive operations by case.
-
         """
+        if not os.path.isfile(sourcePath):
+            self.ui.set_info_how(
+                'ERROR: File "' + os.path.normpath(sourcePath) + '" not found.')
+            return
+
         message, sourceFile, targetFile = self.fileFactory.make_file_objects(
             sourcePath, suffix)
 
         if not message.startswith('SUCCESS'):
-            self.ui.set_info_how(message)
+            message, sourceFile, targetFile = self.newProjectFactory.make_file_objects(
+                sourcePath)
 
-        elif not sourceFile.file_exists():
-            self.ui.set_info_how(
-                'ERROR: File "' + os.path.normpath(sourceFile.filePath) + '" not found.')
+            if message.startswith('SUCCESS'):
+                self.create_yw7(sourceFile, targetFile)
+
+            else:
+                self.ui.set_info_how(message)
 
         elif sourceFile.EXTENSION in self.YW_EXTENSIONS:
             self.export_from_yw(sourceFile, targetFile)
-
-        elif isinstance(targetFile.ywTreeBuilder, Yw7TreeCreator):
-            self.create_yw7(sourceFile, targetFile)
 
         else:
             self.import_to_yw(sourceFile, targetFile)

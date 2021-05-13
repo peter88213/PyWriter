@@ -18,6 +18,7 @@ import zipfile
 
 from pywriter.converter.yw_cnv_ui import YwCnvUi
 from pywriter.converter.universal_file_factory import UniversalFileFactory
+from pywriter.converter.new_project_factory import NewProjectFactory
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
@@ -85,6 +86,7 @@ class NrmOpr(unittest.TestCase):
         copy_file(REFERENCE_HTML, TEST_HTML)
         converter = YwCnvUi()
         converter.fileFactory = UniversalFileFactory()
+        converter.newProjectFactory = NewProjectFactory()
         converter.run(TEST_HTML)
 
         self.assertEqual(converter.ui.infoHowText,
