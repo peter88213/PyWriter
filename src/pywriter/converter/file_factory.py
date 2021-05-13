@@ -14,6 +14,9 @@ class FileFactory:
     Instances can be used as stubs for factories instantiated at runtime.
     """
 
+    def __init__(self, fileClasses=[]):
+        self.fileClasses = fileClasses
+
     def make_file_objects(self, sourcePath, suffix=None):
         """A factory method stub.
 

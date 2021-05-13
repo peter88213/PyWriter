@@ -12,9 +12,6 @@ from pywriter.converter.file_factory import FileFactory
 class ExportTargetFactory(FileFactory):
     """A factory class that instantiates an export target file object."""
 
-    def __init__(self, expTargets=[]):
-        self.expTargets = expTargets
-
     def make_file_objects(self, sourcePath, suffix=None):
         """Instantiate a target object for conversion to any format.
 
@@ -25,14 +22,14 @@ class ExportTargetFactory(FileFactory):
         """
         fileName, fileExtension = os.path.splitext(sourcePath)
 
-        for expTarget in self.expTargets:
+        for fileClass in self.fileClasses:
 
-            if expTarget.SUFFIX == suffix:
+            if fileClass.SUFFIX == suffix:
 
                 if suffix is None:
                     suffix = ''
 
-                targetFile = expTarget(fileName + suffix + expTarget.EXTENSION)
+                targetFile = fileClass(fileName + suffix + fileClass.EXTENSION)
                 return 'SUCCESS', None, targetFile
 
         return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None

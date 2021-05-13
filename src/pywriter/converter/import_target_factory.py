@@ -12,9 +12,6 @@ from pywriter.converter.file_factory import FileFactory
 class ImportTargetFactory(FileFactory):
     """A factory class that instantiates a target file object for import."""
 
-    def __init__(self, targetClasses=[]):
-        self.targetClasses = targetClasses
-
     def make_file_objects(self, sourcePath, sourceSuffix=''):
         """Factory method.
         Return a tuple with three elements:
@@ -28,10 +25,10 @@ class ImportTargetFactory(FileFactory):
 
         # Look for an existing yWriter project to rewrite.
 
-        for targetClass in self.targetClasses:
+        for fileClass in self.fileClasses:
 
-            if os.path.isfile(ywPathBasis + targetClass.EXTENSION):
-                targetFile = targetClass(ywPathBasis + targetClass.EXTENSION)
+            if os.path.isfile(ywPathBasis + fileClass.EXTENSION):
+                targetFile = fileClass(ywPathBasis + fileClass.EXTENSION)
                 return 'SUCCESS', None, targetFile
 
         return 'ERROR: No yWriter project to write.', None, None

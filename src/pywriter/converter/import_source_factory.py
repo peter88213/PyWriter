@@ -10,9 +10,6 @@ from pywriter.converter.file_factory import FileFactory
 class ImportSourceFactory(FileFactory):
     """A factory class that instantiates a source file object for import or export."""
 
-    def __init__(self, sourceClasses=[]):
-        self.sourceClasses = sourceClasses
-
     def make_file_objects(self, sourcePath, suffix=None):
         """Instantiate a source object for conversion to a yWriter format.
 
@@ -22,12 +19,12 @@ class ImportSourceFactory(FileFactory):
         - targetFile: None
         """
 
-        for sourceClass in self.sourceClasses:
+        for fileClass in self.fileClasses:
 
-            if sourceClass.SUFFIX is not None:
+            if fileClass.SUFFIX is not None:
 
-                if sourcePath.endswith(sourceClass.SUFFIX + sourceClass.EXTENSION):
-                    sourceFile = sourceClass(sourcePath)
+                if sourcePath.endswith(fileClass.SUFFIX + fileClass.EXTENSION):
+                    sourceFile = fileClass(sourcePath)
                     return 'SUCCESS', sourceFile, None
 
         return 'ERROR: This document is not meant to be written back.', None, None
