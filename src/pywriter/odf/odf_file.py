@@ -18,7 +18,6 @@ from pywriter.file.file_export import FileExport
 class OdfFile(FileExport):
     """OpenDocument xml project file representation.
     """
-
     TEMPDIR = 'temp_odf'
 
     ODF_COMPONENTS = []

@@ -14,7 +14,7 @@ from pywriter.ui.ui_tk import UiTk
 from pywriter.converter.universal_exporter import UniversalExporter
 
 
-def run(sourcePath, suffix=None):
+def run(sourcePath, suffix=''):
     ui = UiTk('yWriter import/export')
     converter = UniversalExporter()
     converter.ui = ui

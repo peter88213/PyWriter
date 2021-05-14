@@ -20,7 +20,7 @@ class MyConverter(YwCnvUi):
     EXPORT_TARGET_CLASSES = [Yw5NewFile]
 
 
-def run(sourcePath, suffix=None):
+def run(sourcePath, suffix=''):
     ui = UiTk('yWriter import/export')
     converter = MyConverter()
     converter.ui = ui

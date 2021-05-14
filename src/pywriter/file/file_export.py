@@ -23,6 +23,8 @@ class FileExport(Novel):
     To be overwritten by subclasses providing file type specific 
     markup converters and templates.
     """
+    SUFFIX = ''
+
     fileHeader = ''
     partTemplate = ''
     chapterTemplate = ''
