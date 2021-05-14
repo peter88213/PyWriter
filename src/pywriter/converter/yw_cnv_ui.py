@@ -95,6 +95,9 @@ class YwCnvUi(YwCnv):
                 if message.startswith('SUCCESS'):
                     self.import_to_yw(sourceFile, targetFile)
 
+                else:
+                    self.ui.set_info_how(message)
+
             else:
                 # A new yWriter project might be required.
 
