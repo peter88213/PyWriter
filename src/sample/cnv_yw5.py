@@ -24,7 +24,8 @@ def run(sourcePath, suffix=None):
     ui = UiTk('yWriter import/export')
     converter = MyConverter()
     converter.ui = ui
-    converter.run(sourcePath, suffix)
+    kwargs = {'suffix': suffix}
+    converter.run(sourcePath, **kwargs)
     ui.start()
 
 

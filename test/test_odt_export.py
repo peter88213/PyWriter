@@ -93,7 +93,8 @@ class NrmOpr(unittest.TestCase):
     def test_yw7_to_odt_ui(self):
         """Use YwCnvUi class. """
         converter = UniversalConverter()
-        converter.run(TEST_YW7, exportClass.SUFFIX)
+        kwargs = {'suffix': exportClass.SUFFIX}
+        converter.run(TEST_YW7, **kwargs)
 
         self.assertEqual(converter.ui.infoHowText,
                          'SUCCESS: "' + os.path.normpath(TEST_ODT) + '" written.')

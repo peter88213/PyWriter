@@ -12,7 +12,7 @@ from pywriter.converter.file_factory import FileFactory
 class ImportTargetFactory(FileFactory):
     """A factory class that instantiates a target file object for import."""
 
-    def make_file_objects(self, sourcePath, sourceSuffix=''):
+    def make_file_objects(self, sourcePath, **kwargs):
         """Factory method.
         Return a tuple with three elements:
         - A message string starting with 'SUCCESS' or 'ERROR'
@@ -21,6 +21,11 @@ class ImportTargetFactory(FileFactory):
 
         """
         fileName, fileExtension = os.path.splitext(sourcePath)
+        sourceSuffix = kwargs['suffix']
+
+        if sourceSuffix is None:
+            sourceSuffix = ''
+
         ywPathBasis = fileName.split(sourceSuffix)[0]
 
         # Look for an existing yWriter project to rewrite.

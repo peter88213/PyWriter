@@ -54,7 +54,7 @@ class YwCnvUi(YwCnv):
         self.newFile = None
         # Also indicates successful conversion.
 
-    def run(self, sourcePath, suffix=None):
+    def run(self, sourcePath, **kwargs):
         """Create source and target objects and run conversion.
 
         sourcePath -- str; the source file path.
@@ -74,7 +74,7 @@ class YwCnvUi(YwCnv):
             # The source file is a yWriter project.
 
             message, dummy, targetFile = self.exportTargetFactory.make_file_objects(
-                sourcePath, suffix)
+                sourcePath, **kwargs)
 
             if message.startswith('SUCCESS'):
                 self.export_from_yw(sourceFile, targetFile)
@@ -89,8 +89,9 @@ class YwCnvUi(YwCnv):
                 sourcePath)
 
             if message.startswith('SUCCESS'):
+                kwargs['suffix'] = sourceFile.SUFFIX
                 message, dummy, targetFile = self.importTargetFactory.make_file_objects(
-                    sourcePath, sourceFile.SUFFIX)
+                    sourcePath, **kwargs)
 
                 if message.startswith('SUCCESS'):
                     self.import_to_yw(sourceFile, targetFile)

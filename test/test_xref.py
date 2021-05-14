@@ -95,7 +95,8 @@ class NrmOpr(unittest.TestCase):
         yw7File = Yw7File(TEST_YW7)
 
         converter = UniversalConverter()
-        converter.run(yw7File.filePath, exportClass.SUFFIX)
+        kwargs = {'suffix': exportClass.SUFFIX}
+        converter.run(TEST_YW7, **kwargs)
 
         self.assertEqual(converter.ui.infoHowText,
                          'SUCCESS: "' + os.path.normpath(TEST_ODT) + '" written.')

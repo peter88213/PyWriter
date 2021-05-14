@@ -12,7 +12,7 @@ from pywriter.converter.file_factory import FileFactory
 class ExportSourceFactory(FileFactory):
     """A factory class that instantiates an export source file object."""
 
-    def make_file_objects(self, sourcePath, suffix=None):
+    def make_file_objects(self, sourcePath, **kwargs):
         """Instantiate a source object for conversion from a yWriter format.
 
         Return a tuple with three elements:

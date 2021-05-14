@@ -12,7 +12,7 @@ from pywriter.converter.file_factory import FileFactory
 class ExportTargetFactory(FileFactory):
     """A factory class that instantiates an export target file object."""
 
-    def make_file_objects(self, sourcePath, suffix=None):
+    def make_file_objects(self, sourcePath, **kwargs):
         """Instantiate a target object for conversion to any format.
 
         Return a tuple with three elements:
@@ -21,6 +21,7 @@ class ExportTargetFactory(FileFactory):
         - targetFile: a FileExport subclass instance, or None in case of error 
         """
         fileName, fileExtension = os.path.splitext(sourcePath)
+        suffix = kwargs['suffix']
 
         for fileClass in self.fileClasses:
 

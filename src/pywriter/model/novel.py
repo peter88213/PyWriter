@@ -22,7 +22,7 @@ class Novel():
     SUFFIX = None
     # To be extended by file format specific subclasses.
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         self.title = None
         # str
         # xml: <PROJECT><Title>

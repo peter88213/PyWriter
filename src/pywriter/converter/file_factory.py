@@ -17,7 +17,7 @@ class FileFactory:
     def __init__(self, fileClasses=[]):
         self.fileClasses = fileClasses
 
-    def make_file_objects(self, sourcePath, suffix=None):
+    def make_file_objects(self, sourcePath, **kwargs):
         """A factory method stub.
 
         Return a tuple with three elements:
