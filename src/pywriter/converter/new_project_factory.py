@@ -20,7 +20,7 @@ class NewProjectFactory(FileFactory):
 
     DO_NOT_IMPORT = ['_xref']
 
-    def make_file_objects(self, sourcePath, suffix=None):
+    def make_file_objects(self, sourcePath, **kwargs):
         """Factory method.
         Return a tuple with three elements:
         - A message string starting with 'SUCCESS' or 'ERROR'
@@ -39,13 +39,14 @@ class NewProjectFactory(FileFactory):
 
             if result[0].startswith('SUCCESS'):
                 fileName, fileExtension = os.path.splitext(sourcePath)
-                targetFile = Yw7NewFile(fileName + Yw7NewFile.EXTENSION)
+                targetFile = Yw7NewFile(
+                    fileName + Yw7NewFile.EXTENSION, **kwargs)
 
                 if "<h3" in result[1].lower():
-                    sourceFile = HtmlOutline(sourcePath)
+                    sourceFile = HtmlOutline(sourcePath, **kwargs)
 
                 else:
-                    sourceFile = HtmlImport(sourcePath)
+                    sourceFile = HtmlImport(sourcePath, **kwargs)
 
             else:
                 return 'ERROR: Cannot read "' + os.path.normpath(sourcePath) + '".', None, None

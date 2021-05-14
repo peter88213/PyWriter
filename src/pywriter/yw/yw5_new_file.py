@@ -14,7 +14,7 @@ from pywriter.yw.yw_project_creator import YwProjectCreator
 class Yw5NewFile(Yw5File):
     """yWriter 7 new project file representation."""
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         """Extends the super class constructor."""
         Yw5File.__init__(self, filePath)
 

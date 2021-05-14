@@ -23,7 +23,7 @@ class HtmlProof(HtmlFile):
     DESCRIPTION = 'Tagged manuscript for proofing'
     SUFFIX = '_proof'
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         HtmlFile.__init__(self, filePath)
         self._collectText = False
 

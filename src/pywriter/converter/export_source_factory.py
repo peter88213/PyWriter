@@ -25,7 +25,7 @@ class ExportSourceFactory(FileFactory):
         for fileClass in self.fileClasses:
 
             if fileClass.EXTENSION == fileExtension:
-                sourceFile = fileClass(sourcePath)
+                sourceFile = fileClass(sourcePath, **kwargs)
                 return 'SUCCESS', sourceFile, None
 
         return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None

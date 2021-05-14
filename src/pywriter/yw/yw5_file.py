@@ -20,7 +20,7 @@ class Yw5File(YwFile):
     DESCRIPTION = 'yWriter 5 project'
     EXTENSION = '.yw5'
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         """Extends the super class constructor."""
         YwFile.__init__(self, filePath)
 

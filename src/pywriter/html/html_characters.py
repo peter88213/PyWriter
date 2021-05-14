@@ -18,7 +18,7 @@ class HtmlCharacters(HtmlFile):
     DESCRIPTION = 'Character descriptions'
     SUFFIX = '_characters'
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         HtmlFile.__init__(self, filePath)
         self._crId = None
         self._section = None

@@ -21,7 +21,7 @@ class HtmlFile(Novel, HTMLParser):
 
     EXTENSION = '.html'
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         Novel.__init__(self, filePath)
         HTMLParser.__init__(self)
         self._lines = []

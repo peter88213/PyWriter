@@ -22,7 +22,7 @@ class HtmlImport(HtmlFile):
     _SCENE_DIVIDER = '* * *'
     _LOW_WORDCOUNT = 10
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         HtmlFile.__init__(self, filePath)
         self._chCount = 0
         self._scCount = 0

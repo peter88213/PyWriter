@@ -21,7 +21,7 @@ class Yw7File(YwFile):
     DESCRIPTION = 'yWriter 7 project'
     EXTENSION = '.yw7'
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         YwFile.__init__(self, filePath)
         self.ywTreeReader = Utf8TreeReader()
         self.ywProjectMerger = YwProjectMerger()

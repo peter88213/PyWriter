@@ -67,7 +67,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 '''
     fileFooter = OdtFile.CONTENT_XML_FOOTER
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         """Apply the strategy pattern 
         by delegating the cross reference to an external object.
         """

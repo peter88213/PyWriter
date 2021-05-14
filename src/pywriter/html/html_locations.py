@@ -18,7 +18,7 @@ class HtmlLocations(HtmlFile):
     DESCRIPTION = 'Location descriptions'
     SUFFIX = '_locations'
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         HtmlFile.__init__(self, filePath)
         self._lcId = None
 

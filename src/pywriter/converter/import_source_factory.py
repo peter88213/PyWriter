@@ -24,7 +24,7 @@ class ImportSourceFactory(FileFactory):
             if fileClass.SUFFIX is not None:
 
                 if sourcePath.endswith(fileClass.SUFFIX + fileClass.EXTENSION):
-                    sourceFile = fileClass(sourcePath)
+                    sourceFile = fileClass(sourcePath, **kwargs)
                     return 'SUCCESS', sourceFile, None
 
         return 'ERROR: This document is not meant to be written back.', None, None

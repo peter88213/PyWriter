@@ -17,7 +17,7 @@ class HtmlItems(HtmlFile):
     DESCRIPTION = 'Item descriptions'
     SUFFIX = '_items'
 
-    def __init__(self, filePath):
+    def __init__(self, filePath, **kwargs):
         HtmlFile.__init__(self, filePath)
         self._itId = None
 
