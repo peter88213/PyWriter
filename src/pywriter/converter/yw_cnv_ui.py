@@ -68,7 +68,7 @@ class YwCnvUi(YwCnv):
             return
 
         message, sourceFile, dummy = self.exportSourceFactory.make_file_objects(
-            sourcePath)
+            sourcePath, **kwargs)
 
         if message.startswith('SUCCESS'):
             # The source file is a yWriter project.
@@ -86,7 +86,7 @@ class YwCnvUi(YwCnv):
             # The source file is not a yWriter project.
 
             message, sourceFile, dummy = self.importSourceFactory.make_file_objects(
-                sourcePath)
+                sourcePath, **kwargs)
 
             if message.startswith('SUCCESS'):
                 kwargs['suffix'] = sourceFile.SUFFIX
@@ -103,7 +103,7 @@ class YwCnvUi(YwCnv):
                 # A new yWriter project might be required.
 
                 message, sourceFile, targetFile = self.newProjectFactory.make_file_objects(
-                    sourcePath)
+                    sourcePath, **kwargs)
 
                 if message.startswith('SUCCESS'):
                     self.create_yw7(sourceFile, targetFile)

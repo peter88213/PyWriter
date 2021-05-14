@@ -23,10 +23,11 @@ class ImportTargetFactory(FileFactory):
         fileName, fileExtension = os.path.splitext(sourcePath)
         sourceSuffix = kwargs['suffix']
 
-        if sourceSuffix is None:
-            sourceSuffix = ''
+        if sourceSuffix:
+            ywPathBasis = fileName.split(sourceSuffix)[0]
 
-        ywPathBasis = fileName.split(sourceSuffix)[0]
+        else:
+            ywPathBasis = fileName
 
         # Look for an existing yWriter project to rewrite.
 
