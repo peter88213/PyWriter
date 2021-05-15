@@ -88,7 +88,8 @@ class UniversalConverter(YwCnvUi):
                              Yw6File,
                              Yw5File,
                              ]
+    CREATE_SOURCE_CLASSES = []
 
     def __init__(self):
         YwCnvUi.__init__(self)
-        self.newProjectFactory = NewProjectFactory()
+        self.newProjectFactory = NewProjectFactory(self.CREATE_SOURCE_CLASSES)

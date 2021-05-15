@@ -56,17 +56,17 @@ class Cleaner(unittest.TestCase):
 
     def test_cleaner(self):
         result = clean(CLUTTERED)
-        print(result)
+        # print(result)
         self.assertEqual(result, CLEANED)
 
     def test_converter(self):
         result = convert(CLEANED)
-        print(result)
+        # print(result)
         self.assertEqual(result, CONVERTED)
 
     def test_stripper(self):
         result = strip(CONVERTED)
-        print(result)
+        # print(result)
         self.assertEqual(result, STRIPPED)
 
 

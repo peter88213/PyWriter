@@ -31,6 +31,9 @@ class NewProjectFactory(FileFactory):
         if not self.canImport(sourcePath):
             return 'ERROR: This document is not meant to be written back.', None, None
 
+        fileName, fileExtension = os.path.splitext(sourcePath)
+        targetFile = Yw7NewFile(fileName + Yw7NewFile.EXTENSION, **kwargs)
+
         if sourcePath.endswith('.html'):
 
             # The source file might be an outline or a "work in progress".
@@ -38,9 +41,6 @@ class NewProjectFactory(FileFactory):
             result = read_html_file(sourcePath)
 
             if result[0].startswith('SUCCESS'):
-                fileName, fileExtension = os.path.splitext(sourcePath)
-                targetFile = Yw7NewFile(
-                    fileName + Yw7NewFile.EXTENSION, **kwargs)
 
                 if "<h3" in result[1].lower():
                     sourceFile = HtmlOutline(sourcePath, **kwargs)
@@ -48,13 +48,21 @@ class NewProjectFactory(FileFactory):
                 else:
                     sourceFile = HtmlImport(sourcePath, **kwargs)
 
+                return 'SUCCESS', sourceFile, targetFile
+
             else:
                 return 'ERROR: Cannot read "' + os.path.normpath(sourcePath) + '".', None, None
 
         else:
-            return 'ERROR: File type of  "' + os.path.normpath(sourcePath) + '" not supported.', None, None
+            for fileClass in self.fileClasses:
 
-        return 'SUCCESS', sourceFile, targetFile
+                if fileClass.SUFFIX is not None:
+
+                    if sourcePath.endswith(fileClass.SUFFIX + fileClass.EXTENSION):
+                        sourceFile = fileClass(sourcePath, **kwargs)
+                        return 'SUCCESS', sourceFile, targetFile
+
+            return 'ERROR: File type of  "' + os.path.normpath(sourcePath) + '" not supported.', None, None
 
     def canImport(self, sourcePath):
         fileName, fileExtension = os.path.splitext(sourcePath)
