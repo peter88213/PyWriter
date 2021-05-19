@@ -13,27 +13,24 @@ from pywriter.ui.ui import Ui
 class UiTk(Ui):
     """UI subclass implementing a Tkinter facade."""
 
-    def __init__(self, title, description=None):
+    def __init__(self, title):
         """Prepare the graphical user interface. """
-
-        if description is None:
-            description = __doc__
-            # Just for legacy compatibility
+        Ui.__init__(self, title)
 
         self.root = Tk()
-        self.root.geometry("800x360")
         self.root.title(title)
-        self.header = Label(self.root, text=description)
-        self.header.pack(padx=5, pady=5)
-        self.appInfo = Label(self.root, text='')
-        self.appInfo.pack(padx=5, pady=5)
-        self.successInfo = Label(self.root)
-        self.successInfo.pack(fill=X, expand=1, padx=50, pady=5)
-        self.processInfo = Label(self.root, text='')
-        self.processInfo.pack(padx=5, pady=5)
 
-        self.infoWhatText = ''
-        self.infoHowText = ''
+        self.appInfo = Label(self.root, text='')
+        self.successInfo = Label(self.root)
+        self.successInfo.config(height=1, width=60)
+        self.processInfo = Label(self.root, text='')
+        self.root.quitButton = Button(text="Quit", command=quit)
+        self.root.quitButton.config(height=1, width=10)
+
+        self.appInfo.grid(row=1, column=1, padx=5, pady=5)
+        self.successInfo.grid(row=2, column=1, padx=10, pady=10)
+        self.processInfo.grid(row=3, column=1, pady=10)
+        self.root.quitButton.grid(row=4, column=1, pady=10)
 
     def ask_yes_no(self, text):
         return messagebox.askyesno('WARNING', text)
@@ -57,7 +54,4 @@ class UiTk(Ui):
             self.successInfo.config(bg='red')
 
     def start(self):
-        self.root.quitButton = Button(text="Quit", command=quit)
-        self.root.quitButton.config(height=1, width=10)
-        self.root.quitButton.pack(padx=5, pady=5)
         self.root.mainloop()
