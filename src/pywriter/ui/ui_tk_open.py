@@ -1,4 +1,4 @@
-"""User interface for the converter: Tk facade
+"""Provide a UiTk subclass with an additional 'Open' button.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -10,9 +10,11 @@ from pywriter.ui.ui_tk import UiTk
 
 
 class UiTkOpen(UiTk):
-    """Add an 'Open' button to UiTk."""
+    """Extend the UiTk class with an additional 'Open' button."""
 
     def show_open_button(self, open_cmd):
+        """Add an 'Open' button to UiTk."""
         self.root.openButton = Button(text="Open", command=open_cmd)
         self.root.openButton.config(height=1, width=10)
-        self.root.openButton.pack(padx=5, pady=5)
+        self.rowCount += 1
+        self.root.openButton.grid(row=self.rowCount, column=1, pady=10)

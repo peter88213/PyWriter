@@ -1,4 +1,4 @@
-"""User interface for the converter: Tk facade
+"""Provide a Tkinter facade for graphical user interface.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -14,7 +14,7 @@ class UiTk(Ui):
     """UI subclass implementing a Tkinter facade."""
 
     def __init__(self, title):
-        """Prepare the graphical user interface. """
+        """Extend the Ui constructor. """
         Ui.__init__(self, title)
 
         self.root = Tk()
@@ -27,12 +27,17 @@ class UiTk(Ui):
         self.root.quitButton = Button(text="Quit", command=quit)
         self.root.quitButton.config(height=1, width=10)
 
-        self.appInfo.grid(row=1, column=1, padx=5, pady=5)
-        self.successInfo.grid(row=2, column=1, padx=10, pady=10)
-        self.processInfo.grid(row=3, column=1, pady=10)
-        self.root.quitButton.grid(row=4, column=1, pady=10)
+        self.rowCount = 1
+        self.appInfo.grid(row=self.rowCount, column=1, padx=5, pady=5)
+        self.rowCount += 1
+        self.successInfo.grid(row=self.rowCount, column=1, padx=10, pady=10)
+        self.rowCount += 1
+        self.processInfo.grid(row=self.rowCount, column=1, pady=10)
+        self.rowCount += 1
+        self.root.quitButton.grid(row=self.rowCount, column=1, pady=10)
 
     def ask_yes_no(self, text):
+        """Override the Ui method."""
         return messagebox.askyesno('WARNING', text)
 
     def set_info_what(self, message):
@@ -54,4 +59,5 @@ class UiTk(Ui):
             self.successInfo.config(bg='red')
 
     def start(self):
+        """Start the Tk main loop."""
         self.root.mainloop()
