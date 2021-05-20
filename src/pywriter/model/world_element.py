@@ -1,6 +1,5 @@
-"""WorldElement - represents the basic structure of an element in the story world.
+"""Provide a generic class for yWriter story world element representation.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
