@@ -1,7 +1,14 @@
-"""HtmlOutline - Class for html outline file parsing.
+"""Provide a class for html outline import.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Conventions:
+An outline has at least one third level heading.
+
+-   Heading 1 -- New chapter title (beginning a new section).
+-   Heading 2 -- New chapter title.
+-   Heading 3 -- New scene title.
+-   All other text is considered to be chapter/scene description.
+
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -12,10 +19,9 @@ from pywriter.model.scene import Scene
 
 
 class HtmlOutline(HtmlFile):
-    """HTML file representation of an yWriter project's OfficeFile part.
+    """HTML outline file representation.
 
-    Represents a html file without chapter and scene tags 
-    to be written by Open/LibreOffice Writer.
+    Import an outline without chapter and scene tags.
     """
 
     DESCRIPTION = 'Novel outline'

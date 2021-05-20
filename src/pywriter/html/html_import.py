@@ -1,7 +1,15 @@
-"""HtmlImport - Class for html import file parsing.
+"""Provide a class for html 'work in progress' import.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Conventions:
+A work in progress has no third level heading.
+
+-   Heading 1 -- New chapter title (beginning a new section).
+-   Heading 2 -- New chapter title.
+-   * * * -- Scene divider (not needed for the first scenes in a chapter).
+-   Comments right at the scene beginning are considered scene titles.
+-   All other text is considered scene content.
+
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -12,8 +20,9 @@ from pywriter.model.scene import Scene
 
 
 class HtmlImport(HtmlFile):
-    """HTML file representation of a work in progress to be 
-    converted to a new yWriter project yWriter project.
+    """HTML 'work in progress' file representation.
+
+    Import untagged chapters and scenes.
     """
 
     DESCRIPTION = 'Work in progress'
@@ -110,7 +119,7 @@ class HtmlImport(HtmlFile):
 
         else:
             data = data.rstrip().lstrip()
-            
+
             # Convert prefixed comment into scene title.
 
             if self._lines == [] and data.startswith(self._COMMENT_START):

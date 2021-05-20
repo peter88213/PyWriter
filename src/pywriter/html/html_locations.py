@@ -1,6 +1,5 @@
-"""HtmlLocations - Class for html location description file parsing.
+"""Provide a class for html invisibly tagged location descriptions import.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -13,7 +12,10 @@ from pywriter.html.html_file import HtmlFile
 
 
 class HtmlLocations(HtmlFile):
-    """HTML file representation of an yWriter project's location descriptions."""
+    """HTML location descriptions file representation.
+
+    Import a location sheet with invisibly tagged descriptions.
+    """
 
     DESCRIPTION = 'Location descriptions'
     SUFFIX = '_locations'

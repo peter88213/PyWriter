@@ -1,7 +1,6 @@
-"""OdtManuscript - Class for OpenDocument xml file generation.
+"""Provide a class for ODT invisibly tagged chapters and scenes export.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -9,7 +8,9 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtManuscript(OdtFile):
-    """OpenDocument xml manuscript file representation.
+    """ODT manuscript file representation.
+
+    Export a manuscript with invisibly tagged chapters and scenes.
     """
 
     DESCRIPTION = 'Editable manuscript'

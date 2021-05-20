@@ -1,7 +1,6 @@
-"""OdtSceneDesc - Class for OpenDocument xml file generation.
+"""Provide a class for ODT invisibly tagged scene descriptions export.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -9,7 +8,9 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtSceneDesc(OdtFile):
-    """OpenDocument xml scene summaries file representation.
+    """ODT scene summaries file representation.
+
+    Export a full synopsis with invisibly tagged scene descriptions.
     """
 
     DESCRIPTION = 'Scene descriptions'

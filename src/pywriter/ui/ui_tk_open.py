@@ -1,4 +1,4 @@
-"""Provide a UiTk subclass with an additional 'Open' button.
+"""Provide a facade for a Tkinter GUI with an additional 'Open' button.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

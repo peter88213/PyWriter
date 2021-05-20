@@ -1,4 +1,4 @@
-"""Provide a factory class for universal import and export.
+"""Provide a converter class for universal import and export.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -45,7 +45,7 @@ from pywriter.csv.csv_itemlist import CsvItemList
 
 
 class UniversalConverter(YwCnvUi):
-    """A converter class.
+    """A converter for import and export.
 
     Support yWriter 7 projects and most of the Novel subclasses 
     that can be read or written by OpenOffice/LibreOffice. 

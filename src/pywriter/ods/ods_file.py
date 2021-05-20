@@ -1,6 +1,5 @@
-"""OdsFile - Class for ODF spreadsheet document generation.
+"""Provide a generic class for ODS file export.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -9,8 +8,7 @@ from pywriter.odf.odf_file import OdfFile
 
 
 class OdsFile(OdfFile):
-    """OpenDocument xml project file representation.
-    """
+    """ODS project file representation."""
 
     EXTENSION = '.ods'
     # overwrites Novel.EXTENSION

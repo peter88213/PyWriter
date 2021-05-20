@@ -1,7 +1,6 @@
-"""CsvFile - Class for csv file generation.
+"""Provide a generic class for csv file import.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -13,8 +12,9 @@ from pywriter.file.file_export import FileExport
 
 class CsvFile(FileExport):
     """csv file representation.
-    * Records are separated by line breaks.
-    * Data fields are delimited by the _SEPARATOR character.
+
+    - Records are separated by line breaks.
+    - Data fields are delimited by the _SEPARATOR character.
     """
 
     EXTENSION = '.csv'

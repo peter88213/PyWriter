@@ -1,6 +1,5 @@
-"""OdsPlotList - Class for OpenDocument xml plot table.
+"""Provide a class for ODS plot list export.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -9,8 +8,7 @@ from pywriter.ods.ods_file import OdsFile
 
 
 class OdsPlotList(OdsFile):
-    """OpenDocument xml scenes spreadsheet representation.
-    """
+    """ODS plot list representation with plot related metadata."""
 
     DESCRIPTION = 'Plot list'
     SUFFIX = '_plotlist'

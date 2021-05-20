@@ -1,6 +1,5 @@
-"""OdsCharList - Class for OpenDocument xml characters table.
+"""Provide a class for ODS character list export.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -9,8 +8,7 @@ from pywriter.ods.ods_file import OdsFile
 
 
 class OdsCharList(OdsFile):
-    """OpenDocument xml characters spreadsheet representation.
-    """
+    """ODS character list representation."""
 
     DESCRIPTION = 'Character list'
     SUFFIX = '_charlist'

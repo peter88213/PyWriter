@@ -1,4 +1,4 @@
-"""Provide a factory class for export from yWriter 7. 
+"""Provide a converter class for universal export from a yWriter project. 
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

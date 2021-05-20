@@ -1,4 +1,4 @@
-"""Provide a factory class for import source and target objects.
+"""Provide a factory class for source and target objects to create a new yWriter project.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

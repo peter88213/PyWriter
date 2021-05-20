@@ -1,7 +1,6 @@
-"""OdtFile - Class for OpenDocument xml file generation.
+"""Provide a class for ODT chapters and scenes export.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -9,7 +8,9 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtExport(OdtFile):
-    """OpenDocument xml project file representation.
+    """ODT novel file representation.
+
+    Export a non-reimportable manuscript with chapters and scenes.
     """
     fileHeader = OdtFile.CONTENT_XML_HEADER + '''<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>

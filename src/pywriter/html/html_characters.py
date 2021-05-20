@@ -1,6 +1,5 @@
-"""HtmlCharacters - Class for html character description file parsing.
+"""Provide a class for html invisibly tagged character descriptions import.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -13,7 +12,10 @@ from pywriter.html.html_file import HtmlFile
 
 
 class HtmlCharacters(HtmlFile):
-    """HTML file representation of an yWriter project's character descriptions."""
+    """HTML character descriptions file representation.
+
+    Import a character sheet with invisibly tagged descriptions.
+    """
 
     DESCRIPTION = 'Character descriptions'
     SUFFIX = '_characters'

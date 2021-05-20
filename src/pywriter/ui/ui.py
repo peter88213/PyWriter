@@ -1,4 +1,4 @@
-"""Provide a base class for UI facades'.
+"""Provide a base class for user interface facades.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

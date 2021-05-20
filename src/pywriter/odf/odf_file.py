@@ -1,6 +1,5 @@
-"""OdfFile - Generic Class for OpenDocument xml file generation.
+"""Provide a generic class for OpenDocument xml file export.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -16,7 +15,9 @@ from pywriter.file.file_export import FileExport
 
 
 class OdfFile(FileExport):
-    """OpenDocument xml project file representation.
+    """Generic OpenDocument xml file representation.
+
+    Specific document representations inherit from this class.
     """
     TEMPDIR = 'temp_odf'
 
@@ -37,7 +38,9 @@ class OdfFile(FileExport):
             pass
 
     def set_up(self):
-        """Create a temporary directory containing the internal 
+        """Helper method for ZIP file generation.
+
+        Create a temporary directory containing the internal 
         structure of an ODF file except 'content.xml'.
         """
         self.tear_down()
@@ -111,9 +114,7 @@ class OdfFile(FileExport):
         return 'SUCCESS: ODF structure generated.'
 
     def write(self):
-        """Generate an odf file from a template.
-        Return a message beginning with SUCCESS or ERROR.
-        """
+        """Extend the super class method, adding ZIP file operations."""
 
         # Create a temporary directory containing the internal
         # structure of an ODS file except "content.xml".

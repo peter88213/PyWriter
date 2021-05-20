@@ -1,6 +1,5 @@
-"""HtmlItems - Class for html item description file parsing.
+"""Provide a class for html item invisibly tagged descriptions import.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -12,7 +11,10 @@ from pywriter.html.html_file import HtmlFile
 
 
 class HtmlItems(HtmlFile):
-    """HTML file representation of an yWriter project's item descriptions."""
+    """HTML item descriptions file representation.
+
+    Import a item sheet with invisibly tagged descriptions.
+    """
 
     DESCRIPTION = 'Item descriptions'
     SUFFIX = '_items'

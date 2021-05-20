@@ -1,11 +1,10 @@
-"""CsvPlotList - Class for csv plot structure table.
+"""Provide a class for csv plot list import.
 
 Convention: 
 * Used chapters marked "other" precede and describe plot sections (e.g. acts, steps).
 * Tagged scenes contain plot events (e.g. inciting event, plot point, climax).
 * Scene notes give plot relevant informations.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -23,8 +22,8 @@ class CsvPlotList(CsvFile):
     """csv file representation of an yWriter project's scenes table. 
 
     Represents a csv file with a record per scene.
-    * Records are separated by line breaks.
-    * Data fields are delimited by the _SEPARATOR character.
+    - Records are separated by line breaks.
+    - Data fields are delimited by the _SEPARATOR character.
     """
 
     DESCRIPTION = 'Plot list'

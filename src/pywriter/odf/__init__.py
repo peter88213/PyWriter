@@ -1,5 +1,6 @@
-'''The odf package - Write Open Document files
+"""Shared modules for writing Open Document files.
 
-This package contains modules
+Modules:
 
-'''
+odf_file -- Provide a generic class for OpenDocument xml file export.
+"""

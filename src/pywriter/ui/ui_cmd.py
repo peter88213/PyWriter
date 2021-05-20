@@ -1,4 +1,4 @@
-"""User interface for the converter: console facade
+"""Provide a facade for a command line user interface.
 
 Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -8,7 +8,7 @@ from pywriter.ui.ui import Ui
 
 
 class UiCmd(Ui):
-    """UI subclass implementing a console interface."""
+    """Ui subclass implementing a console interface."""
 
     def __init__(self, title):
         """initialize UI. """

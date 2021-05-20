@@ -1,4 +1,4 @@
-"""Provide a Tkinter facade for graphical user interface.
+"""Provide a facade for a Tkinter based GUI.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

@@ -1,7 +1,6 @@
-"""OdtLocations - Class for OpenDocument xml file generation.
+"""Provide a class for ODT invisibly tagged location descriptions export.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -9,7 +8,9 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtLocations(OdtFile):
-    """OpenDocument xml location descriptions file representation.
+    """ODT location descriptions file representation.
+
+    Export a location sheet with invisibly tagged descriptions.
     """
 
     DESCRIPTION = 'Location descriptions'

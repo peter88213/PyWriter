@@ -1,6 +1,5 @@
-"""OdsItemList - Class for OpenDocument xml items table.
+"""Provide a class for ODS item list export.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -9,8 +8,7 @@ from pywriter.ods.ods_file import OdsFile
 
 
 class OdsItemList(OdsFile):
-    """OpenDocument xml items spreadsheet representation.
-    """
+    """ODS item list representation."""
 
     DESCRIPTION = 'Item list'
     SUFFIX = '_itemlist'

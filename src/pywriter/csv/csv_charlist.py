@@ -1,6 +1,5 @@
-"""CsvCharList - Class for csv characters table.
+"""Provide a class for csv character list import.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -17,8 +16,8 @@ class CsvCharList(CsvFile):
     """csv file representation of an yWriter project's characters table. 
 
     Represents a csv file with a record per character.
-    * Records are separated by line breaks.
-    * Data fields are delimited by the _SEPARATOR character.
+    - Records are separated by line breaks.
+    - Data fields are delimited by the _SEPARATOR character.
     """
 
     DESCRIPTION = 'Character list'

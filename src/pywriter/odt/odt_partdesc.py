@@ -1,6 +1,7 @@
-"""OdtPartDesc - Class for OpenDocument xml file generation.
+"""Provide a class for ODT invisibly tagged part descriptions export.
 
-Part of the PyWriter project.
+Parts are chapters marked `This chapter  begins a new section` in yWriter.
+
 Copyright (c) 2020 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -9,7 +10,9 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtPartDesc(OdtFile):
-    """OpenDocument xml part summaries file representation.
+    """ODT part summaries file representation.
+
+    Export a very brief synopsis with invisibly tagged part descriptions.
     """
 
     DESCRIPTION = 'Part descriptions'

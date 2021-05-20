@@ -1,7 +1,6 @@
-"""HtmlProof - Class for html proof reading file parsing.
+"""Provide a class for html visibly tagged chapters and scenes import.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -14,10 +13,9 @@ from pywriter.model.scene import Scene
 
 
 class HtmlProof(HtmlFile):
-    """HTML file representation of an yWriter project's OfficeFile part.
+    """HTML proof reading file representation.
 
-    Represents a html file with visible chapter and scene tags 
-    to be read and written by Open/LibreOffice Writer.
+    Import a manuscript with visibly tagged chapters and scenes.
     """
 
     DESCRIPTION = 'Tagged manuscript for proofing'

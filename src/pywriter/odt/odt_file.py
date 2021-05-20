@@ -1,7 +1,6 @@
-"""OdtFile - Class for ODF text document generation.
+"""Provide a generic class for ODT file export.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -11,8 +10,7 @@ from pywriter.odf.odf_file import OdfFile
 
 
 class OdtFile(OdfFile):
-    """OpenDocument xml project file representation.
-    """
+    """Generic OpenDocument text document representation."""
 
     EXTENSION = '.odt'
     # overwrites Novel.EXTENSION

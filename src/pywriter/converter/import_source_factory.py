@@ -8,14 +8,14 @@ from pywriter.converter.file_factory import FileFactory
 
 
 class ImportSourceFactory(FileFactory):
-    """A factory class that instantiates a source file object for import or export."""
+    """A factory class that instantiates an import source file object."""
 
     def make_file_objects(self, sourcePath, **kwargs):
         """Instantiate a source object for conversion to a yWriter format.
 
         Return a tuple with three elements:
         - A message string starting with 'SUCCESS' or 'ERROR'
-        - sourceFile: a YwFile subclass instance, or None in case of error
+        - sourceFile: a Novel subclass instance, or None in case of error
         - targetFile: None
         """
 

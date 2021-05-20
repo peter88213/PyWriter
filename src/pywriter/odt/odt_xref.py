@@ -1,8 +1,5 @@
-"""OdtXref - Class for OpenDocument xml file generation.
+"""Provide a class for ODT ross reference export.
 
-Create ODT document containing ross references.
-
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -14,8 +11,7 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtXref(OdtFile):
-    """OpenDocument xml cross reference file representation.
-    """
+    """OpenDocument xml cross reference file representation."""
 
     DESCRIPTION = 'Cross reference'
     SUFFIX = '_xref'

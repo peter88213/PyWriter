@@ -1,4 +1,4 @@
-"""Provide an interface emulation for conversion object factory classes.
+"""Provide a base class for factories that instantiate conversion objects.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

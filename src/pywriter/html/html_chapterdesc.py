@@ -1,4 +1,4 @@
-"""HtmlChapterDesc - Class for html chapter summary file parsing.
+"""Provide a class for html invisibly tagged chapter descriptions import.
 
 Part of the PyWriter project.
 Copyright (c) 2020 Peter Triesberger
@@ -10,7 +10,10 @@ from pywriter.html.html_file import HtmlFile
 
 
 class HtmlChapterDesc(HtmlFile):
-    """HTML file representation of an yWriter project's chapters summaries."""
+    """HTML chapter summaries file representation.
+
+    Import a brief synopsis with invisibly tagged chapter descriptions.
+    """
 
     DESCRIPTION = 'Chapter descriptions'
     SUFFIX = '_chapters'

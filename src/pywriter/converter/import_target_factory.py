@@ -1,4 +1,4 @@
-"""Provide a factory class for import source and target objects.
+"""Provide a factory class for any import target object.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -10,14 +10,14 @@ from pywriter.converter.file_factory import FileFactory
 
 
 class ImportTargetFactory(FileFactory):
-    """A factory class that instantiates a target file object for import."""
+    """A factory class that instantiates an import target file object."""
 
     def make_file_objects(self, sourcePath, **kwargs):
         """Factory method.
         Return a tuple with three elements:
         - A message string starting with 'SUCCESS' or 'ERROR'
-        - sourceFile: a Novel subclass instance
-        - targetFile: a Novel subclass instance
+        - sourceFile: None
+        - targetFile: a YwFile subclass instance, or None in case of error
 
         """
         fileName, fileExtension = os.path.splitext(sourcePath)

@@ -1,6 +1,5 @@
-"""CsvItemList - Class for csv items table.
+"""Provide a class for csv item list import.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -16,8 +15,8 @@ class CsvItemList(CsvFile):
     """csv file representation of an yWriter project's items table. 
 
     Represents a csv file with a record per item.
-    * Records are separated by line breaks.
-    * Data fields are delimited by the _SEPARATOR item.
+    - Records are separated by line breaks.
+    - Data fields are delimited by the _SEPARATOR item.
     """
 
     DESCRIPTION = 'Item list'

@@ -1,5 +1,11 @@
-'''The model package - yWriter's novel meta-model
+"""Modules for representation of yWriter's meta model.
 
-This package contains modules
+Modules:
 
-'''
+chapter -- Provide 
+character -- Provide 
+cross_references -- Provide 
+novel -- Provide 
+scene -- Provide 
+world_element -- Provide 
+"""
