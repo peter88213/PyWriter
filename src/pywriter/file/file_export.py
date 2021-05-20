@@ -1,11 +1,10 @@
-"""FileExport - Generic template-based file exporter.
+"""Provide a generic class for template-based file export.
 
 * Merge a novel object's attributes.
 * Convert yw7 markup to target format. 
 * Create a template-based output file.
 * This class is generic and contains no conversion algorithm and no templates.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)

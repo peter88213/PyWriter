@@ -9,5 +9,5 @@ https://github.com/peter88213/PyWriter/tree/master/src/pywriter/file#readme
 
 Modules:
 
-file_export.py
+file_export.py -- Provide a generic class for template-based file export.
 """

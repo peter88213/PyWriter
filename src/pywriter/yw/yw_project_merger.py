@@ -1,6 +1,5 @@
-"""Merge two yWriter projects.
+"""Provide a strategy class to merge two yWriter project structures.
 
-Part of the PyWriter project.
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -13,13 +12,12 @@ from pywriter.model.world_element import WorldElement
 
 
 class YwProjectMerger():
-    """Merge two yWriter projects.
-    """
+    """Merge the attributes of two yWriter project structures."""
 
     def merge_projects(self, target, source):
         """Overwrite existing target attributes with source attributes.
-        Create target attributes, if not existing, but return ERROR.
         Return a message beginning with SUCCESS or ERROR.
+        Create target attributes, if not existing, but return ERROR.
         """
 
         # Merge and re-order locations.

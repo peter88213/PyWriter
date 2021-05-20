@@ -1,5 +1,7 @@
 """Provide a base class for factories that instantiate conversion objects.
 
+Converter-specific file factories inherit from this class.
+
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)

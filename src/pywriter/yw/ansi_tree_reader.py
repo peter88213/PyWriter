@@ -1,7 +1,6 @@
-"""Read ANSI encoded yWriter project.
+"""Provide a strategy class to read ANSI encoded yWriter projects.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -12,7 +11,7 @@ from pywriter.yw.yw_tree_reader import YwTreeReader
 
 
 class AnsiTreeReader(YwTreeReader):
-    """Read yWriter xml project file."""
+    """Read ANSI encoded yWriter xml project file."""
 
     def read_element_tree(self, ywFile):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.

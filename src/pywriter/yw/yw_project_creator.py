@@ -1,7 +1,6 @@
-"""Fill a new yWriter project with the attributes of another.
+"""Provide a strategy class to create a new yWriter project structure.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -10,12 +9,13 @@ from pywriter.yw.yw_project_merger import YwProjectMerger
 
 
 class YwProjectCreator(YwProjectMerger):
-    """Create a new project.
-    """
+    """Extend the super class by disabling its project structure check."""
 
     def merge_projects(self, target, source):
         """Create target attributes with source attributes.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with SUCCESS, even if the source and 
+        target project structures are inconsistent. Thus the source
+        project can be merged with an empty target, creating a new project.
         """
         YwProjectMerger.merge_projects(self, target, source)
         return 'SUCCESS'

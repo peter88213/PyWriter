@@ -1,8 +1,6 @@
-"""Create a new yWriter 5 project xml tree 
-from an existing yw7 project.
+"""Provide a strategy class to build a new yWriter 5 xml tree.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

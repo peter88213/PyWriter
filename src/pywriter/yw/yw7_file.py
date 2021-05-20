@@ -1,7 +1,6 @@
-"""yW7File - Class for yWriter 7 xml file operations and parsing.
+"""Provide a class for yWriter 7 project import and export.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -15,8 +14,7 @@ from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
 
 
 class Yw7File(YwFile):
-    """yWriter 7 project file representation.
-    """
+    """yWriter 7 project file representation."""
 
     DESCRIPTION = 'yWriter 7 project'
     EXTENSION = '.yw7'

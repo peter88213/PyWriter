@@ -1,4 +1,6 @@
-"""Modules for conversion of Novel subclasses.
+"""Provide the base class for Novel file conversion.
+
+Other converters inherit from this class. 
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

@@ -1,6 +1,7 @@
-"""yWFile - Class for yWriter 7 xml file operations and parsing.
+"""Provide a generic class for yWriter project import and export.
 
-Part of the PyWriter project.
+yWriter version-specific file representations inherit from this class.
+
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -17,7 +18,7 @@ from pywriter.model.world_element import WorldElement
 
 class YwFile(Novel):
     """Abstract yWriter xml project file representation.
-    To be overwritten by version-specific subclasses. 
+    To be overwritten by yWriter-version-specific subclasses. 
     """
 
     def strip_spaces(self, elements):

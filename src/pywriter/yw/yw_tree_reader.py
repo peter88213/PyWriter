@@ -1,6 +1,7 @@
-"""This class emulates a "YwTreeReader" Interface.
+"""Provide an abstract strategy class to read yWriter project files.
 
-Part of the PyWriter project.
+yWriter version-specific tree readers inherit from this class.
+
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)

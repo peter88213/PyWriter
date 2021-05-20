@@ -1,7 +1,8 @@
-"""yW5File - Class for yWriter 5 xml file operations and parsing.
+"""Provide a class for yWriter 5 project import and export.
 
-Part of the PyWriter project.
-Copyright (c) 2020 Peter Triesberger
+Scene content can not be read in.
+
+Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
