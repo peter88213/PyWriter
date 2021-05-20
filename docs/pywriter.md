@@ -1,6 +1,6 @@
 [home](index) > pywriter
 
-- - -
+---
 
 # The pywriter library - Convert yWriter projects
 
@@ -15,29 +15,27 @@ contains some elementary methods for file operations. File format-specific subcl
 this Novel superclass. For each file format there is a separate package in the PyWriter library.
 
 
-## Package structure
+## Packages
 
-- [model](model) - yWriter's novel meta-model
+- [model](model) -- Modules for representation of yWriter's meta model.
 
-- [yw](yw) - Read and write yWriter projects
+- [yw](yw) -- Modules for reading and writing yWriter project files.
 
-- [file](file) - Write documents template based
+- [file](file) -- Shared modules for template-based document generation.
 
-- [odf](odf) - Write Open Document files
+- [odf](odf) -- Shared modules for writing Open Document files.
 
-- [odt](odt) - Write text documents
+- [odt](odt) -- Modules for writing Open Document text documents.
 
-- [ods](ods) - Write spreadsheet documents
+- [ods](ods) -- Modules for writing Open Document spreadsheet documents.
 
-- [html](html) - Read text documents
+- [html](html) -- Modules for reading html files.
 
-- [csv](csv) - Read spreadsheet documents
+- [csv](csv) -- Modules for reading and writing csv spreadsheet documents.
 
-- [md](md) - Read and write Markdown formatted documents
+- [converter](converter) -- Modules for conversion of Novel subclasses.
 
-- [converter](converter) - Convert from one file format to another
-
-- [ui](ui) - User interface
+- [ui](ui) -- Modules for user interfaces.
 
 
 

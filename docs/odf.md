@@ -1,7 +1,9 @@
 [home](index) > [pywriter](pywriter) > odf
 
-- - -
+---
 
-# The odf package - Write Open Document files
-
-This package contains modules
+# The odf package - Shared modules for writing Open Document files
+ 
+## Modules
+ 
+- **odf_file** -- Provide a generic class for OpenDocument xml file export.

@@ -2,7 +2,7 @@
 
 The csv format is mainly used to read spreadsheet documents exported by Office 
 applications like OpenOffice and LibreOffice. This is because the csv format 
-is much easier to parse than the csv format.
+is much easier to parse than the ods format.
 
 Modules:
 
