@@ -7,6 +7,7 @@ Based on the  _pywriter_  library, there now are several applications, supportin
 
 - [The yw-cnv extension for LibreOffice: Import and export yWriter 6/7 projects](https://peter88213.github.io/yw-cnv)
 - [The pywoo extension for OpenOffice and Python: Import and export yWriter 6/7 projects](https://peter88213.github.io/pywoo)
+- [yW2OO - yWriter to OpenOffice/LibreOffice standalone converter](https://peter88213.github.io/yW2OO)
 - [yw2html - HTML export from yWriter 6/7 with templates](https://peter88213.github.io/yw2html)
 - [yw2md - Markdown import and export from yWriter 6/7](https://peter88213.github.io/yw2md)
 
