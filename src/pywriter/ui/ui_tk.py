@@ -61,3 +61,10 @@ class UiTk(Ui):
     def start(self):
         """Start the Tk main loop."""
         self.root.mainloop()
+
+    def show_open_button(self, open_cmd):
+        """Add an 'Open' button to the main window."""
+        self.root.openButton = Button(text="Open", command=open_cmd)
+        self.root.openButton.config(height=1, width=10)
+        self.rowCount += 1
+        self.root.openButton.grid(row=self.rowCount, column=1, pady=10)
