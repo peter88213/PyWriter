@@ -30,3 +30,8 @@ a target file. Typically, one of the two is a yWriter project file.
 - **import_target_factory** -- Provide a factory class for any import target object.
 
 - **new_project_factory** -- Provide a factory class for source and target objects to create a new yWriter project.
+
+
+## Classes
+
+![converter package class diagram](img/converter_package_class_diagram.png)
