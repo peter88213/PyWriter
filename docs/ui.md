@@ -14,4 +14,6 @@
 
 - **ui_tk_open** -- Provide a facade for a Tkinter GUI with an additional 'Open' button.
 
+## Classes
 
+![ui package class diagram](img/ui_package_class_diagram.png)
