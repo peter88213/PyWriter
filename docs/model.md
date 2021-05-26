@@ -17,3 +17,7 @@
 - **character** -- Provide a class for yWriter character representation.
 
 - **cross_references** -- Provide a class for yWriter cross reference generation.
+
+## Classes
+
+![model package class diagram](img/model_package_class_diagram.png)

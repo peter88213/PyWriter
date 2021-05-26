@@ -303,12 +303,11 @@
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Ut2VkCwKEequtbdKEmlZqQ" name="__init__"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iG2NsCtfEeqgj_wxJ3Xgsg" name="read"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_ujNOoPsOEeq-TdV6dVW08A" name="merge" isAbstract="true"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_ujNOoPsOEeq-TdV6dVW08A" name="merge"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_kSov0CtfEeqgj_wxJ3Xgsg" name="write"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_zXW6IPsOEeq-TdV6dVW08A" name="convert_to_yw" isAbstract="true"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_1t8XAPsOEeq-TdV6dVW08A" name="convert_from_yw" isAbstract="true"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_zXW6IPsOEeq-TdV6dVW08A" name="convert_to_yw"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_1t8XAPsOEeq-TdV6dVW08A" name="convert_from_yw"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_mSV9wCtfEeqgj_wxJ3Xgsg" name="file_exists" visibility="public"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_LclRsCteEeqgj_wxJ3Xgsg" name="get_structure"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_mAsc4JEUEeqtx4SqQAS9Eg" name="DictOfCharacters">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_mAsc4ZEUEeqtx4SqQAS9Eg" name="crId">
@@ -567,7 +566,8 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_5WZqEL4fEeuITv7MyBA5yA" name="ListOfFileClasses">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_E3y0ML4hEeuITv7MyBA5yA" name="FileClass" type="_SZHKgCtUEeqgj_wxJ3Xgsg">
-          <lowerValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MzmNIL4hEeuITv7MyBA5yA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CPgMML41EeuITv7MyBA5yA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uVYnIL40EeuITv7MyBA5yA" value="*"/>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_gJJ3IL4iEeuITv7MyBA5yA" name="UniversalConverter">
@@ -611,7 +611,8 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_7OPw8L4pEeuITv7MyBA5yA" name="ListOfSuffixes">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_7OPw8b4pEeuITv7MyBA5yA" name="Suffix">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <lowerValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7OPw8r4pEeuITv7MyBA5yA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AuiIsL41EeuITv7MyBA5yA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6uIFcL40EeuITv7MyBA5yA" value="*"/>
         </ownedAttribute>
       </packagedElement>
     </packagedElement>
