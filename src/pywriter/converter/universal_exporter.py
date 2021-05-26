@@ -29,10 +29,12 @@ from pywriter.ods.ods_plotlist import OdsPlotList
 
 
 class UniversalExporter(YwCnvUi):
-    """A converter for export.
+    """A converter for universal export from a yWriter project.
 
     Instantiate a Yw7File object as sourceFile and a
     Novel subclass object as targetFile for file conversion.
+
+    Override the superclass constants EXPORT_SOURCE_CLASSES, EXPORT_TARGET_CLASSES.    
     """
     EXPORT_SOURCE_CLASSES = [Yw7File,
                              Yw6File,

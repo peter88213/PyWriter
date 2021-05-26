@@ -45,10 +45,17 @@ from pywriter.csv.csv_itemlist import CsvItemList
 
 
 class UniversalConverter(YwCnvUi):
-    """A converter for import and export.
+    """A converter for universal import and export.
 
     Support yWriter 7 projects and most of the Novel subclasses 
-    that can be read or written by OpenOffice/LibreOffice. 
+    that can be read or written by OpenOffice/LibreOffice.
+
+    Override the superclass constants EXPORT_SOURCE_CLASSES,
+    EXPORT_TARGET_CLASSES, IMPORT_SOURCE_CLASSES, IMPORT_TARGET_CLASSES.
+
+    Class constants:
+        CREATE_SOURCE_CLASSES -- list of classes that - additional to HtmlImport
+                        and HtmlOutline - can be exported to a new yWriter project.
     """
     EXPORT_SOURCE_CLASSES = [Yw7File,
                              Yw6File,
@@ -91,5 +98,8 @@ class UniversalConverter(YwCnvUi):
     CREATE_SOURCE_CLASSES = []
 
     def __init__(self):
+        """Extend the superclass constructor.
+        Override newProjectFactory.
+        """
         YwCnvUi.__init__(self)
         self.newProjectFactory = NewProjectFactory(self.CREATE_SOURCE_CLASSES)

@@ -1,4 +1,4 @@
-"""Provide a factory class for source and target objects to create a new yWriter project.
+"""Provide a factory class for a document object to read and a new yWriter project.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -16,17 +16,26 @@ from pywriter.html.html_fop import read_html_file
 
 
 class NewProjectFactory(FileFactory):
-    """A factory class that instantiates source and target file objects."""
+    """A factory class that instantiates a document object to read, 
+    and a new yWriter project.
+
+    Class constant:
+        DO_NOT_IMPORT -- list of suffixes from file classes not meant to be imported.    
+    """
 
     DO_NOT_IMPORT = ['_xref']
 
     def make_file_objects(self, sourcePath, **kwargs):
-        """Factory method.
+        """Instantiate a source and a target object for creation of a new yWriter project.
+        Override the superclass method.
+
+        Positional arguments:
+            sourcePath -- string; path to the source file to convert.
+
         Return a tuple with three elements:
         - A message string starting with 'SUCCESS' or 'ERROR'
         - sourceFile: a Novel subclass instance
         - targetFile: a Novel subclass instance
-
         """
         if not self.canImport(sourcePath):
             return 'ERROR: This document is not meant to be written back.', None, None
@@ -65,6 +74,9 @@ class NewProjectFactory(FileFactory):
             return 'ERROR: File type of  "' + os.path.normpath(sourcePath) + '" not supported.', None, None
 
     def canImport(self, sourcePath):
+        """Return True, if the file located at sourcepath is of an importable type.
+        Otherwise, return False.
+        """
         fileName, fileExtension = os.path.splitext(sourcePath)
 
         for suffix in self.DO_NOT_IMPORT:

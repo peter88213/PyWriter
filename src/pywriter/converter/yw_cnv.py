@@ -13,7 +13,8 @@ class YwCnv():
     """Base class for Novel file conversion.
 
     Public methods:
-    convert(sourceFile, targetFile) -- Convert sourceFile into targetFile and return a message.
+        convert(sourceFile, targetFile) -- Convert sourceFile into targetFile 
+                                           and return a message.
 
     All converters inherit from this class. 
     """
@@ -21,7 +22,8 @@ class YwCnv():
     def convert(self, sourceFile, targetFile):
         """Convert sourceFile into targetFile and return a message.
 
-        sourceFile, targetFile -- Novel subclass instances.
+        Positional arguments:
+            sourceFile, targetFile -- Novel subclass instances.
 
         1. Make the source object read the source file.
         2. Make the target object merge the source object's instance variables.
@@ -68,5 +70,7 @@ class YwCnv():
         return targetFile.write()
 
     def confirm_overwrite(self, fileName):
-        """Return boolean permission to overwrite the target file."""
+        """Return boolean permission to overwrite the target file.
+        This is a stub to be overridden by subclass methods.
+        """
         return True

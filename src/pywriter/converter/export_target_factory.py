@@ -1,4 +1,4 @@
-"""Provide a factory class for any export target object.
+"""Provide a factory class for a document object to write.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -10,10 +10,17 @@ from pywriter.converter.file_factory import FileFactory
 
 
 class ExportTargetFactory(FileFactory):
-    """A factory class that instantiates an export target file object."""
+    """A factory class that instantiates a document object to write."""
 
     def make_file_objects(self, sourcePath, **kwargs):
-        """Instantiate a target object for conversion to any format.
+        """Instantiate a target object for conversion from a yWriter project.
+        Override the superclass method.
+
+        Positional arguments:
+            sourcePath -- string; path to the source file to convert.
+
+        Optional arguments:
+            suffix -- string; an indicator for the target file type.
 
         Return a tuple with three elements:
         - A message string starting with 'SUCCESS' or 'ERROR'

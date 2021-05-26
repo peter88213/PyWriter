@@ -1,4 +1,4 @@
-"""Provide a factory class for any import target object.
+"""Provide a factory class for a yWriter object to write.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -10,10 +10,18 @@ from pywriter.converter.file_factory import FileFactory
 
 
 class ImportTargetFactory(FileFactory):
-    """A factory class that instantiates an import target file object."""
+    """A factory class that instantiates a yWriter object to write."""
 
     def make_file_objects(self, sourcePath, **kwargs):
-        """Factory method.
+        """Instantiate a target object for conversion to a yWriter project.
+        Override the superclass method.
+
+        Positional arguments:
+            sourcePath -- string; path to the source file to convert.
+
+        Optional arguments:
+            suffix -- string; an indicator for the source file type.
+
         Return a tuple with three elements:
         - A message string starting with 'SUCCESS' or 'ERROR'
         - sourceFile: None

@@ -12,15 +12,29 @@ import os
 class FileFactory:
     """Base class for conversion object factory classes.
 
+    Public methods:
+        make_file_objects(self, sourcePath, **kwargs) -- return conversion objects.
+
     This class emulates a "FileFactory" Interface.
     Instances can be used as stubs for factories instantiated at runtime.
     """
 
     def __init__(self, fileClasses=[]):
+        """Write the parameter to a private instance variable.
+
+        Private instance variables:
+            fileClasses = list of classes from which an instance can be returned.
+        """
         self.fileClasses = fileClasses
 
     def make_file_objects(self, sourcePath, **kwargs):
         """A factory method stub.
+
+        Positional arguments:
+            sourcePath -- string; path to the source file to convert.
+
+        Optional arguments:
+            suffix -- string; an indicator for the target file type.
 
         Return a tuple with three elements:
         - A message string starting with 'ERROR'

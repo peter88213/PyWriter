@@ -20,10 +20,27 @@ from pywriter.converter.import_target_factory import ImportTargetFactory
 
 
 class YwCnvUi(YwCnv):
-    """Class for Novel file conversion with user interface.
+    """Base class for Novel file conversion with user interface.
 
     Public methods:
-    run(sourcePath, suffix) -- Create source and target objects and run conversion.
+        run(sourcePath, suffix) -- Create source and target objects and run conversion.
+
+    Class constants:
+        EXPORT_SOURCE_CLASSES -- List of YwFile subclasses from which can be exported.
+        EXPORT_TARGET_CLASSES -- List of FileExport subclasses to which export is possible.
+        IMPORT_SOURCE_CLASSES -- List of Novel subclasses from which can be imported.
+        IMPORT_TARGET_CLASSES -- List of YwFile subclasses to which import is possible.
+
+    All lists are empty and meant to be overridden by subclasses.
+
+    Instance variables:
+        ui -- Ui (can be overridden e.g. by subclasses).
+        exportSourceFactory -- ExportSourceFactory.
+        exportTargetFactory -- ExportTargetFactory.
+        importSourceFactory -- ImportSourceFactory.
+        importTargetFactory -- ImportTargetFactory.
+        newProjectFactory -- FileFactory (a stub to be overridden by subclasses).
+        newFile -- string; path to the target file in case of success.   
 
     All converters with a user interface inherit from this class. 
     """
@@ -34,12 +51,7 @@ class YwCnvUi(YwCnv):
     IMPORT_TARGET_CLASSES = []
 
     def __init__(self):
-        """Define instance variables.
-
-        ui -- user interface object; instance of Ui or a Ui subclass.
-        fileFactory -- file factory object; instance of a FileFactory subclass.
-        """
-
+        """Define instance variables."""
         self.ui = Ui('')
         # Per default, 'silent mode' is active.
 
