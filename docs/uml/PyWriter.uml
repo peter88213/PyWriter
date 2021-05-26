@@ -907,14 +907,15 @@
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_00CQkIgFEeuRjYowZVZmEQ" name="odf">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_eyXSQL5BEeuITv7MyBA5yA" annotatedElement="_jvOqUL5AEeuITv7MyBA5yA">
+        <body>Python list with the names of all zipped files</body>
+      </ownedComment>
       <packagedElement xmi:type="uml:Class" xmi:id="_Cxoz4IgGEeuRjYowZVZmEQ" name="OdfFile">
         <generalization xmi:type="uml:Generalization" xmi:id="_Cxoz4ogGEeuRjYowZVZmEQ" general="_vHrYMPsPEeq-TdV6dVW08A"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_R3gm0IgGEeuRjYowZVZmEQ" name="TEMPDIR" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mofAgPseEeq-TdV6dVW08A" name="ODF_COMPONENTS" visibility="public" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_mofAgPseEeq-TdV6dVW08A" name="ODF_COMPONENTS" visibility="public" isStatic="true" type="_jvOqUL5AEeuITv7MyBA5yA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_4F3YQIgGEeuRjYowZVZmEQ" name="_MIMETYPE" visibility="private" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -930,9 +931,20 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_D0s98IgHEeuRjYowZVZmEQ" name="_META_XML" visibility="private" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ETEwAb5BEeuITv7MyBA5yA" name="ODF_COMPONENTS" type="_jvOqUL5AEeuITv7MyBA5yA" aggregation="composite" association="_ETC60L5BEeuITv7MyBA5yA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ETHMQL5BEeuITv7MyBA5yA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ETK2oL5BEeuITv7MyBA5yA" value="1"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_S4a_UIevEeq_kJF_AkSaiA" name="tear_down"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Vy4lUIevEeq_kJF_AkSaiA" name="set_up"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Cxoz5YgGEeuRjYowZVZmEQ" name="write"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_jvOqUL5AEeuITv7MyBA5yA" name="ListOfFiles">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_2SWAML5AEeuITv7MyBA5yA" name="file">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_73Wg4L5AEeuITv7MyBA5yA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_93KcgL5AEeuITv7MyBA5yA" value="*"/>
+        </ownedAttribute>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_4qdIgIgFEeuRjYowZVZmEQ" name="ods">
@@ -1013,9 +1025,7 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_SJFusPsfEeq-TdV6dVW08A" name="EXTENSION" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_XlF_QIgHEeuRjYowZVZmEQ" name="ODF_COMPONENTS" visibility="public" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_XlF_QIgHEeuRjYowZVZmEQ" name="ODF_COMPONENTS" visibility="public" isStatic="true" type="_jvOqUL5AEeuITv7MyBA5yA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_dolLsIgHEeuRjYowZVZmEQ" name="CONTENT_XML_HEADER" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -1040,7 +1050,6 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_N5jcIIgJEeuRjYowZVZmEQ" name="_MIMETYPE" visibility="private" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_3CrrgDIPEeqilJYfjdmi4Q" name="set_up"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_aLxLsPsfEeq-TdV6dVW08A" name="convert_from_yw"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_PdkzoIewEeq_kJF_AkSaiA" name="OdtProof">
@@ -1292,6 +1301,12 @@
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gQLgkDXfEeqSIpxCmEaNZA" key="nature" value="UML_Nature"/>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_gQNVwTXfEeqSIpxCmEaNZA" name="novel" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_gQGoEDXfEeqSIpxCmEaNZA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ETC60L5BEeuITv7MyBA5yA" memberEnd="_ETEwAb5BEeuITv7MyBA5yA _ETOhAL5BEeuITv7MyBA5yA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ETEI8L5BEeuITv7MyBA5yA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ETEwAL5BEeuITv7MyBA5yA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_ETOhAL5BEeuITv7MyBA5yA" name="odfFile" type="_Cxoz4IgGEeuRjYowZVZmEQ" association="_ETC60L5BEeuITv7MyBA5yA"/>
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_a-spEIfrEeuRjYowZVZmEQ" memberEnd="_a-yIoIfrEeuRjYowZVZmEQ _a-zWwIfrEeuRjYowZVZmEQ">

@@ -27,3 +27,7 @@
 - **odt_locations** -- Provide a class for ODT invisibly tagged location descriptions export.
 
 - **odt_xref** -- Provide a class for ODT ross reference export.
+
+## Classes
+
+![odt package class diagram](img/odt_package_class_diagram.png)

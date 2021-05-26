@@ -33,3 +33,7 @@ is much easier to parse than the odt format.
 - **html_import** -- Provide a class for html 'work in progress' import.
 
 - **html_outline** -- Provide a class for html outline import.
+
+## Classes
+
+![html package class diagram](img/html_package_class_diagram.png)

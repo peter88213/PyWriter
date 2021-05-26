@@ -17,3 +17,7 @@
 - **ods_plotlist** -- Provide a class for ODS plot list export.
 
 - **ods_scenelist** -- Provide a class for ODS scene list export.
+
+## Classes
+
+![ods package class diagram](img/ods_package_class_diagram.png)

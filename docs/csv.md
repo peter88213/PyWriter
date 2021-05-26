@@ -21,3 +21,7 @@ is much easier to parse than the ods format.
 - **csv_plotlist** -- Provide a class for csv plot list import.
 
 - **csv_scenelist** -- Provide a class for csv scene list import.
+
+## Classes
+
+![csv package class diagram](img/csv_package_class_diagram.png)

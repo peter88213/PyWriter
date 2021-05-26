@@ -13,3 +13,7 @@ The package's [README](https://github.com/peter88213/PyWriter/tree/master/src/py
 ## Modules
  
 - **file_export** -- Provide a generic class for template-based file export.
+
+## Classes
+
+![file package class diagram](img/file_package_class_diagram.png)
