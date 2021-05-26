@@ -471,6 +471,9 @@
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_seuasCwTEequtbdKEmlZqQ" name="converter">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_1wocQL4qEeuITv7MyBA5yA" annotatedElement="_5WZqEL4fEeuITv7MyBA5yA _7OPw8L4pEeuITv7MyBA5yA">
+        <body>Python lists</body>
+      </ownedComment>
       <packagedElement xmi:type="uml:Class" xmi:id="_WAqBgCtrEeqgj_wxJ3Xgsg" name="YwCnvUi">
         <generalization xmi:type="uml:Generalization" xmi:id="_l3wbYDPiEeqKbaMl5EbWAw" general="_TschgDPiEeqKbaMl5EbWAw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_XJDCAL31EeuITv7MyBA5yA" name="ui" type="_JtCGsPxDEeq5hMee5ike2Q"/>
@@ -555,7 +558,10 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_kHagcL32EeuITv7MyBA5yA" name="NewProjectFactory">
         <generalization xmi:type="uml:Generalization" xmi:id="_iOQbEL4lEeuITv7MyBA5yA" general="_7-9fEPxAEeq5hMee5ike2Q"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_SUQ5AL4kEeuITv7MyBA5yA" name="DO_NOT_IMPORT"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Pmaj8r4qEeuITv7MyBA5yA" name="DO_NOT_IMPORT" type="_7OPw8L4pEeuITv7MyBA5yA" aggregation="composite" association="_PmZV0L4qEeuITv7MyBA5yA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PmbLAL4qEeuITv7MyBA5yA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PmbLAb4qEeuITv7MyBA5yA" value="1"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Dz6N8L4kEeuITv7MyBA5yA" name="make_file_objects"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ZUFx4L4kEeuITv7MyBA5yA" name="canImport"/>
       </packagedElement>
@@ -600,6 +606,12 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_b4oAo74jEeuITv7MyBA5yA" name="EXPORT_TARGET_CLASSES" isStatic="true" type="_5WZqEL4fEeuITv7MyBA5yA">
           <qualifier xmi:type="uml:Property" xmi:id="_b4oApL4jEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true" type="_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_b4oApb4jEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true" type="_5WZqEL4fEeuITv7MyBA5yA"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_7OPw8L4pEeuITv7MyBA5yA" name="ListOfSuffixes">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_7OPw8b4pEeuITv7MyBA5yA" name="Suffix">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <lowerValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7OPw8r4pEeuITv7MyBA5yA" value="*"/>
         </ownedAttribute>
       </packagedElement>
     </packagedElement>
@@ -1362,5 +1374,11 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ep78kb4hEeuITv7MyBA5yA" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_ep9KsL4hEeuITv7MyBA5yA" name="fileFactory" type="_7-9fEPxAEeq5hMee5ike2Q" association="_ep6HYL4hEeuITv7MyBA5yA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_PmZV0L4qEeuITv7MyBA5yA" memberEnd="_Pmaj8r4qEeuITv7MyBA5yA _PmbyEL4qEeuITv7MyBA5yA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Pmaj8L4qEeuITv7MyBA5yA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Pmaj8b4qEeuITv7MyBA5yA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_PmbyEL4qEeuITv7MyBA5yA" name="newProjectFactory" type="_kHagcL32EeuITv7MyBA5yA" association="_PmZV0L4qEeuITv7MyBA5yA"/>
   </packagedElement>
 </uml:Model>
