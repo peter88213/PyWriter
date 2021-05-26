@@ -21,15 +21,15 @@ a target file. Typically, one of the two is a yWriter project file.
 
 - **file_factory** -- Provide a base class for factories that instantiate conversion objects.
 
-- **export_source_factory** -- Provide a factory class for any export source object.
+- **export_source_factory** -- Provide a factory class for a yWriter object to read.
 
-- **export_target_factory** -- Provide a factory class for any export target object.
+- **export_target_factory** -- Provide a factory class for a document object to write.
 
-- **import_source_factory** -- Provide a factory class for any import source object.
+- **import_source_factory** -- Provide a factory class for a document object to read.
 
-- **import_target_factory** -- Provide a factory class for any import target object.
+- **import_target_factory** -- Provide a factory class for a yWriter object to write.
 
-- **new_project_factory** -- Provide a factory class for source and target objects to create a new yWriter project.
+- **new_project_factory** -- Provide a factory class for a document object to read and a new yWriter project.
 
 
 ## Classes
