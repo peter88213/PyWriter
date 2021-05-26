@@ -14,6 +14,26 @@ class Novel():
     This class represents a file containing a novel with additional 
     attributes and structural information (a full set or a subset
     of the information included in an yWriter project file).
+    All classes representing specific file formats inherit from this class.
+
+    Instance variables:
+        title -- str; title
+        desc -- str; description
+        author -- str; author name
+        fieldTitle1 -- str; field title 1
+        fieldTitle2 -- str; field title 2
+        fieldTitle3 -- str; field title 3
+        fieldTitle4 -- str; field title 4
+        chapters -- dict; key = chapter ID, value = Chapter instance.
+        scenes -- dict; key = scene ID, value = Scene instance.
+        srtChapters -- list of str; The novel's sorted chapter IDs. 
+        locations -- dict; key = location ID, value = WorldElement instance.
+        srtLocations -- list of str; The novel's sorted location IDs. 
+        items -- dict; key = item ID, value = WorldElement instance.
+        srtItems -- list of str; The novel's sorted item IDs. 
+        characters -- dict; key = character ID, value = Character instance.
+        srtCharacters -- list of str The novel's sorted character IDs.
+        filePath -- str; path to the file represented by the class.   
     """
 
     DESCRIPTION = 'Novel'
@@ -22,6 +42,11 @@ class Novel():
     # To be extended by file format specific subclasses.
 
     def __init__(self, filePath, **kwargs):
+        """Define instance variables.
+
+        Positional argument:
+            filePath -- string; path to the file represented by the class.
+        """
         self.title = None
         # str
         # xml: <PROJECT><Title>
@@ -53,14 +78,14 @@ class Novel():
         self.chapters = {}
         # dict
         # xml: <CHAPTERS><CHAPTER><ID>
-        # key = chapter ID, value = Chapter object.
+        # key = chapter ID, value = Chapter instance.
         # The order of the elements does not matter (the novel's
         # order of the chapters is defined by srtChapters)
 
         self.scenes = {}
         # dict
         # xml: <SCENES><SCENE><ID>
-        # key = scene ID, value = Scene object.
+        # key = scene ID, value = Scene instance.
         # The order of the elements does not matter (the novel's
         # order of the scenes is defined by the order of the chapters
         # and the order of the scenes within the chapters)
@@ -73,7 +98,7 @@ class Novel():
         self.locations = {}
         # dict
         # xml: <LOCATIONS>
-        # key = location ID, value = Object.
+        # key = location ID, value = WorldElement instance.
         # The order of the elements does not matter.
 
         self.srtLocations = []
@@ -84,7 +109,7 @@ class Novel():
         self.items = {}
         # dict
         # xml: <ITEMS>
-        # key = item ID, value = Object.
+        # key = item ID, value = WorldElement instance.
         # The order of the elements does not matter.
 
         self.srtItems = []
@@ -95,7 +120,7 @@ class Novel():
         self.characters = {}
         # dict
         # xml: <CHARACTERS>
-        # key = character ID, value = Character object.
+        # key = character ID, value = Character instance.
         # The order of the elements does not matter.
 
         self.srtCharacters = []
@@ -124,7 +149,10 @@ class Novel():
 
     @filePath.setter
     def filePath(self, filePath):
-        """Accept only filenames with the right extension. """
+        """Setter for the filePath instance variable.        
+        - Format the path string according to Python's requirements. 
+        - Accept only filenames with the right suffix and extension.
+        """
 
         if self.SUFFIX is not None:
             suffix = self.SUFFIX
