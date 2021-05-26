@@ -16,6 +16,14 @@ class Novel():
     of the information included in an yWriter project file).
     All classes representing specific file formats inherit from this class.
 
+    Public methods: 
+        read() -- Parse the file and store selected properties.
+        merge(novel) -- Copy required attributes of the novel object.
+        write() -- Write selected properties to the file.
+        convert_to_yw(text) -- Return text, converted from source format to yw7 markup.
+        convert_from_yw(text) -- Return text, converted from yw7 markup to target format.
+        file_exists() -- Return True, if the file specified by filePath exists.
+
     Instance variables:
         title -- str; title
         desc -- str; description
@@ -169,36 +177,41 @@ class Novel():
 
     def read(self):
         """Parse the file and store selected properties.
-        To be overwritten by file format specific subclasses.
+        Return a message beginning with SUCCESS or ERROR.
+        This is a stub to be overwritten by file format specific subclasses.
         """
         return 'ERROR: read method is not implemented.'
 
     def merge(self, novel):
         """Copy required attributes of the novel object.
-        To be overwritten by file format specific subclasses.
+        Return a message beginning with SUCCESS or ERROR.
+        This is a stub to be overwritten by file format specific subclasses.
         """
         return 'ERROR: merge method is not implemented.'
 
     def write(self):
         """Write selected properties to the file.
-        To be overwritten by file format specific subclasses.
+        Return a message beginning with SUCCESS or ERROR.
+        This is a stub to be overwritten by file format specific subclasses.
         """
         return 'ERROR: write method is not implemented.'
 
     def convert_to_yw(self, text):
-        """Convert source format to yw7 markup.
-        To be overwritten by file format specific subclasses.
+        """Return text, converted from source format to yw7 markup.
+        This is a stub to be overwritten by file format specific subclasses.
         """
         return text
 
     def convert_from_yw(self, text):
-        """Convert yw7 markup to target format.
-        To be overwritten by file format specific subclasses.
+        """Return text, converted from yw7 markup to target format.
+        This is a stub to be overwritten by file format specific subclasses.
         """
         return text
 
     def file_exists(self):
-        """Check whether the file specified by filePath exists. """
+        """Return True, if the file specified by filePath exists. 
+        Otherwise, return False.
+        """
         if os.path.isfile(self.filePath):
             return True
 
