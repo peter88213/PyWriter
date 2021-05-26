@@ -1,6 +1,6 @@
 """Provide a class for Novel file conversion with user interface.
 
-User interface-specific converters inherit from this class. 
+All converters with a user interface inherit from this class. 
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -41,8 +41,6 @@ class YwCnvUi(YwCnv):
         importTargetFactory -- ImportTargetFactory.
         newProjectFactory -- FileFactory (a stub to be overridden by subclasses).
         newFile -- string; path to the target file in case of success.   
-
-    All converters with a user interface inherit from this class. 
     """
 
     EXPORT_SOURCE_CLASSES = []

@@ -41,7 +41,7 @@ class FileFactory:
         - sourceFile: None
         - targetFile: None
 
-        Factory method to be overwritten by subclasses.
+        Factory method to be overridden by subclasses.
         Subclasses return a tuple with three elements:
         - A message string starting with 'SUCCESS' or 'ERROR'
         - sourceFile: a Novel subclass instance

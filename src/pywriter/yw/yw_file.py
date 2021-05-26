@@ -18,7 +18,6 @@ from pywriter.model.world_element import WorldElement
 
 class YwFile(Novel):
     """Abstract yWriter xml project file representation.
-    To be overwritten by yWriter-version-specific subclasses. 
     """
 
     def strip_spaces(self, elements):

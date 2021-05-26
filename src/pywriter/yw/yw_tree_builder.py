@@ -15,7 +15,7 @@ class YwTreeBuilder():
     def build_element_tree(self, ywProject):
         """Modify the yWriter project attributes of an existing xml element tree.
         Return a message beginning with SUCCESS or ERROR.
-        To be overwritten by file format specific subclasses.
+        To be overridden by file format specific subclasses.
         """
         root = ywProject._tree.getroot()
 

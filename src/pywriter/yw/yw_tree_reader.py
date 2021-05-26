@@ -17,5 +17,5 @@ class YwTreeReader(ABC):
     def read_element_tree(self, ywFile):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
-        To be overwritten by file format specific subclasses.
+        To be overridden by file format specific subclasses.
         """

@@ -1,5 +1,7 @@
 """Provide a base class for user interface facades.
 
+All UI facades inherit from this class. 
+
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -8,8 +10,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 class Ui():
     """Base class for UI facades, implementing a 'silent mode'.
-
-    All UI facades inherit from this class. 
     """
 
     def __init__(self, title):
@@ -33,6 +33,6 @@ class Ui():
         self.infoHowText = message
 
     def start(self):
-        """To be overwritten by subclasses requiring
+        """To be overridden by subclasses requiring
         special action to launch the user interaction.
         """

@@ -1,9 +1,6 @@
 """Provide a generic class for template-based file export.
 
-* Merge a novel object's attributes.
-* Convert yw7 markup to target format. 
-* Create a template-based output file.
-* This class is generic and contains no conversion algorithm and no templates.
+All file representations with template-based write methods inherit from this class.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -19,8 +16,7 @@ from pywriter.model.novel import Novel
 
 class FileExport(Novel):
     """Abstract yWriter project file exporter representation.
-    To be overwritten by subclasses providing file type specific 
-    markup converters and templates.
+    This class is generic and contains no conversion algorithm and no templates.
     """
     SUFFIX = ''
 
@@ -71,7 +67,7 @@ class FileExport(Novel):
 
     def convert_from_yw(self, text):
         """Convert yw7 markup to target format.
-        To be overwritten by file format specific subclasses.
+        This is a stub to be overridden by subclass methods.
         """
 
         if text is None:

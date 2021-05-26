@@ -1,5 +1,7 @@
 """Provide a generic class for yWriter project representation.
 
+All classes representing specific file formats inherit from this class.
+
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -14,7 +16,6 @@ class Novel():
     This class represents a file containing a novel with additional 
     attributes and structural information (a full set or a subset
     of the information included in an yWriter project file).
-    All classes representing specific file formats inherit from this class.
 
     Public methods: 
         read() -- Parse the file and store selected properties.
@@ -47,7 +48,7 @@ class Novel():
     DESCRIPTION = 'Novel'
     EXTENSION = None
     SUFFIX = None
-    # To be extended by file format specific subclasses.
+    # To be extended by subclass methods.
 
     def __init__(self, filePath, **kwargs):
         """Define instance variables.
@@ -178,33 +179,33 @@ class Novel():
     def read(self):
         """Parse the file and store selected properties.
         Return a message beginning with SUCCESS or ERROR.
-        This is a stub to be overwritten by file format specific subclasses.
+        This is a stub to be overridden by subclass methods.
         """
         return 'ERROR: read method is not implemented.'
 
     def merge(self, novel):
         """Copy required attributes of the novel object.
         Return a message beginning with SUCCESS or ERROR.
-        This is a stub to be overwritten by file format specific subclasses.
+        This is a stub to be overridden by subclass methods.
         """
         return 'ERROR: merge method is not implemented.'
 
     def write(self):
         """Write selected properties to the file.
         Return a message beginning with SUCCESS or ERROR.
-        This is a stub to be overwritten by file format specific subclasses.
+        This is a stub to be overridden by subclass methods.
         """
         return 'ERROR: write method is not implemented.'
 
     def convert_to_yw(self, text):
         """Return text, converted from source format to yw7 markup.
-        This is a stub to be overwritten by file format specific subclasses.
+        This is a stub to be overridden by subclass methods.
         """
         return text
 
     def convert_from_yw(self, text):
         """Return text, converted from yw7 markup to target format.
-        This is a stub to be overwritten by file format specific subclasses.
+        This is a stub to be overridden by subclass methods.
         """
         return text
 

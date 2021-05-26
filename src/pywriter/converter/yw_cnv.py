@@ -1,6 +1,6 @@
 """Provide the base class for Novel file conversion.
 
-Other converters inherit from this class. 
+All converters inherit from this class. 
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -13,10 +13,7 @@ class YwCnv():
     """Base class for Novel file conversion.
 
     Public methods:
-        convert(sourceFile, targetFile) -- Convert sourceFile into targetFile 
-                                           and return a message.
-
-    All converters inherit from this class. 
+        convert(sourceFile, targetFile) -- Convert sourceFile into targetFile.
     """
 
     def convert(self, sourceFile, targetFile):

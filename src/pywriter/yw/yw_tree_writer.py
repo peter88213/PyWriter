@@ -17,5 +17,5 @@ class YwTreeWriter(ABC):
     def write_element_tree(self, ywProject):
         """Write back the xml element tree to a yWriter xml file located at filePath.
         Return a message beginning with SUCCESS or ERROR.
-        To be overwritten by file format specific subclasses.
+        To be overridden by file format specific subclasses.
         """
