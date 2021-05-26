@@ -23,7 +23,7 @@ class FileFactory:
         """Write the parameter to a private instance variable.
 
         Private instance variables:
-            fileClasses = list of classes from which an instance can be returned.
+            fileClasses -- list of classes from which an instance can be returned.
         """
         self.fileClasses = fileClasses
 
