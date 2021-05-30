@@ -14,7 +14,7 @@ Based on the  _pywriter_  library, there now are several applications, supportin
 
 ## Developer's guide
 
-[The pywriter library explained](pywriter)
+[The pywriter library explained](developer/lib/pywriter)
 
 [Roadmap](roadmap)
 

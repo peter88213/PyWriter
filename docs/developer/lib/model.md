@@ -1,4 +1,4 @@
-[home](index) > [pywriter](pywriter) > model
+[home](../../index) > [pywriter](pywriter) > model
 
 ---
 
