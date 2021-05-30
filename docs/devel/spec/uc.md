@@ -2,6 +2,8 @@
 
 ---
 
+![Use case diagram](img/uc.png)
+
 # Use cases
 
 ## uc1 Export from yw
