@@ -1,4 +1,4 @@
-[Home](../../index) > [Specifications](spec) > Use cases
+[Home](../../index) > [Specifications](index) > Use cases
 
 ---
 

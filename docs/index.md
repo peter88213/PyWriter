@@ -14,11 +14,11 @@ Based on the  _pywriter_  library, there now are several applications, supportin
 
 ## Developer's guide
 
-[Specifications](development/spec/index)
+[Specifications](devel/spec/index)
 
-[The pywriter library explained](development/lib/pywriter)
+[The pywriter library explained](devel/lib/pywriter)
 
-[Roadmap](roadmap)
+[Roadmap](devel/roadmap)
 
 
 ## License
