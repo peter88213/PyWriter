@@ -12,7 +12,7 @@
 
 - **ui_tk** -- Provide a facade for a Tkinter based GUI.
 
-- **ui_tk_open** -- Provide a facade for a Tkinter GUI with an additional 'Open' button.
+- **ui_mb** -- Provide a facade for a GUI featuring just message boxes.
 
 ## Classes
 
