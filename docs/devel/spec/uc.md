@@ -15,7 +15,9 @@ The user wants a document with content from an existing yWriter project. The tar
 
 The user launches the converter script, giving two arguments: The file path to the yWriter project, and the suffix of the target document.
 
-The converter script reads the yWriter project, and creates a new target document in the same directory as the yWriter project is located. The file name of the target document equals the file name of the yWriter project (except the file extension) plus a suffix specified [here](types).
+The converter script reads the yWriter project, and creates a new target document in the same directory as the yWriter project is located. The file name of the target document equals the file name of the yWriter project (except the file extension) plus the suffix given as argument.
+
+![uc1 activity diagram](img/uc1_activity1.png)
 
 
 ## uc2 Import to yw

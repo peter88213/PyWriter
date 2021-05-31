@@ -1510,6 +1510,35 @@
     <packagedElement xmi:type="uml:Actor" xmi:id="_jAc_QL8xEeuEecdtmvW-dw" name="user"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_tkb7YL8xEeuEecdtmvW-dw"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_vegbYL8xEeuEecdtmvW-dw"/>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_b03PwMH5EeuZP-F13h7WZQ" name="Export from yw" node="_vSma0MH5EeuZP-F13h7WZQ _yUQ1AMH5EeuZP-F13h7WZQ _9yxfsMH5EeuZP-F13h7WZQ _J22VkMH6EeuZP-F13h7WZQ _YQZ1EMH6EeuZP-F13h7WZQ _jIO6QMH6EeuZP-F13h7WZQ _GYcfkMH7EeuZP-F13h7WZQ _y2jX0MH7EeuZP-F13h7WZQ _93IwYMH7EeuZP-F13h7WZQ _E5QIQMH8EeuZP-F13h7WZQ _eFXLYMH8EeuZP-F13h7WZQ _5toH4MH8EeuZP-F13h7WZQ" group="_ieAG8MH5EeuZP-F13h7WZQ _lzSAsMH5EeuZP-F13h7WZQ">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_3rc8IMH5EeuZP-F13h7WZQ" inPartition="_ieAG8MH5EeuZP-F13h7WZQ" target="_yUQ1AMH5EeuZP-F13h7WZQ" source="_vSma0MH5EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_By5tQMH6EeuZP-F13h7WZQ" inPartition="_ieAG8MH5EeuZP-F13h7WZQ" target="_9yxfsMH5EeuZP-F13h7WZQ" source="_yUQ1AMH5EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_OAE0wMH6EeuZP-F13h7WZQ" target="_J22VkMH6EeuZP-F13h7WZQ" source="_9yxfsMH5EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_hoT_oMH6EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ" target="_YQZ1EMH6EeuZP-F13h7WZQ" source="_J22VkMH6EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_l_dmEMH6EeuZP-F13h7WZQ" name="[Target file doesn't exist]" inPartition="_lzSAsMH5EeuZP-F13h7WZQ" target="_jIO6QMH6EeuZP-F13h7WZQ" source="_YQZ1EMH6EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_M-owcMH7EeuZP-F13h7WZQ" name="[Target file already exists]" target="_GYcfkMH7EeuZP-F13h7WZQ" source="_YQZ1EMH6EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_WC93sMH7EeuZP-F13h7WZQ" name="[yes: overwrite]" target="_jIO6QMH6EeuZP-F13h7WZQ" source="_GYcfkMH7EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_AVr2cMH8EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ" target="_y2jX0MH7EeuZP-F13h7WZQ" source="_jIO6QMH6EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Jg3zoMH8EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ" target="_E5QIQMH8EeuZP-F13h7WZQ" source="_y2jX0MH7EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_KTaq4MH8EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ" target="_93IwYMH7EeuZP-F13h7WZQ" source="_E5QIQMH8EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_VtT7UMH8EeuZP-F13h7WZQ" name="[no: don't overwrite]" target="_93IwYMH7EeuZP-F13h7WZQ" source="_GYcfkMH7EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_fkOWEMH8EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ" target="_eFXLYMH8EeuZP-F13h7WZQ" source="_5toH4MH8EeuZP-F13h7WZQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_BqDL4MH9EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ" target="_5toH4MH8EeuZP-F13h7WZQ" source="_93IwYMH7EeuZP-F13h7WZQ"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_ieAG8MH5EeuZP-F13h7WZQ" name="user" node="_vSma0MH5EeuZP-F13h7WZQ _yUQ1AMH5EeuZP-F13h7WZQ _9yxfsMH5EeuZP-F13h7WZQ _GYcfkMH7EeuZP-F13h7WZQ" edge="_3rc8IMH5EeuZP-F13h7WZQ _By5tQMH6EeuZP-F13h7WZQ"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_lzSAsMH5EeuZP-F13h7WZQ" name="converter script" node="_J22VkMH6EeuZP-F13h7WZQ _YQZ1EMH6EeuZP-F13h7WZQ _jIO6QMH6EeuZP-F13h7WZQ _y2jX0MH7EeuZP-F13h7WZQ _93IwYMH7EeuZP-F13h7WZQ _E5QIQMH8EeuZP-F13h7WZQ _eFXLYMH8EeuZP-F13h7WZQ _5toH4MH8EeuZP-F13h7WZQ" edge="_hoT_oMH6EeuZP-F13h7WZQ _l_dmEMH6EeuZP-F13h7WZQ _AVr2cMH8EeuZP-F13h7WZQ _Jg3zoMH8EeuZP-F13h7WZQ _KTaq4MH8EeuZP-F13h7WZQ _fkOWEMH8EeuZP-F13h7WZQ _BqDL4MH9EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_vSma0MH5EeuZP-F13h7WZQ" name="" outgoing="_3rc8IMH5EeuZP-F13h7WZQ" inPartition="_ieAG8MH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_yUQ1AMH5EeuZP-F13h7WZQ" name="Provide a yWriter project as source file" incoming="_3rc8IMH5EeuZP-F13h7WZQ" outgoing="_By5tQMH6EeuZP-F13h7WZQ" inPartition="_ieAG8MH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_9yxfsMH5EeuZP-F13h7WZQ" name="Specify source file path and suffix" incoming="_By5tQMH6EeuZP-F13h7WZQ" outgoing="_OAE0wMH6EeuZP-F13h7WZQ" inPartition="_ieAG8MH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_J22VkMH6EeuZP-F13h7WZQ" name="Determine target file path" incoming="_OAE0wMH6EeuZP-F13h7WZQ" outgoing="_hoT_oMH6EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_YQZ1EMH6EeuZP-F13h7WZQ" name="check target file path" incoming="_hoT_oMH6EeuZP-F13h7WZQ" outgoing="_l_dmEMH6EeuZP-F13h7WZQ _M-owcMH7EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_jIO6QMH6EeuZP-F13h7WZQ" incoming="_l_dmEMH6EeuZP-F13h7WZQ _WC93sMH7EeuZP-F13h7WZQ" outgoing="_AVr2cMH8EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_GYcfkMH7EeuZP-F13h7WZQ" name="overwrite target file?" incoming="_M-owcMH7EeuZP-F13h7WZQ" outgoing="_WC93sMH7EeuZP-F13h7WZQ _VtT7UMH8EeuZP-F13h7WZQ" inPartition="_ieAG8MH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_y2jX0MH7EeuZP-F13h7WZQ" name="Read source file" incoming="_AVr2cMH8EeuZP-F13h7WZQ" outgoing="_Jg3zoMH8EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:JoinNode" xmi:id="_93IwYMH7EeuZP-F13h7WZQ" incoming="_KTaq4MH8EeuZP-F13h7WZQ _VtT7UMH8EeuZP-F13h7WZQ" outgoing="_BqDL4MH9EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_E5QIQMH8EeuZP-F13h7WZQ" name="Write target file" incoming="_Jg3zoMH8EeuZP-F13h7WZQ" outgoing="_KTaq4MH8EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_eFXLYMH8EeuZP-F13h7WZQ" name="" incoming="_fkOWEMH8EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_5toH4MH8EeuZP-F13h7WZQ" name="Show a message" incoming="_BqDL4MH9EeuZP-F13h7WZQ" outgoing="_fkOWEMH8EeuZP-F13h7WZQ" inPartition="_lzSAsMH5EeuZP-F13h7WZQ"/>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_Saqm0L8zEeuEecdtmvW-dw" name="application">
     <packagedElement xmi:type="uml:Component" xmi:id="_hFjY0L8xEeuEecdtmvW-dw" name="converter script" useCase="_kB2x4L8xEeuEecdtmvW-dw _qGJPkL8xEeuEecdtmvW-dw __Ho9sMH1EeuZP-F13h7WZQ">
