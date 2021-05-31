@@ -588,9 +588,9 @@
               <element xmi:type="uml:Property" href="PyWriter.uml#_pREBcZEUEeqtx4SqQAS9Eg"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_7rs7UZEVEeqtx4SqQAS9Eg"/>
             </children>
-            <children xmi:type="notation:Shape" xmi:id="_ySUwIMJNEeuoILv35KfERQ" type="Property_ClassAttributeLabel">
-              <element xmi:type="uml:Property" href="PyWriter.uml#_yRGoIMJNEeuoILv35KfERQ"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_ySUwIcJNEeuoILv35KfERQ"/>
+            <children xmi:type="notation:Shape" xmi:id="_24CLcMJXEeuPFKy88qv7aA" type="Property_ClassAttributeLabel">
+              <element xmi:type="uml:Property" href="PyWriter.uml#_ZxoFspEZEeqtx4SqQAS9Eg"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_24CLccJXEeuPFKy88qv7aA"/>
             </children>
             <styles xmi:type="notation:TitleStyle" xmi:id="_2RrYFJEUEeqtx4SqQAS9Eg"/>
             <styles xmi:type="notation:SortingStyle" xmi:id="_2RrYFZEUEeqtx4SqQAS9Eg"/>
