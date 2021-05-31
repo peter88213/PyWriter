@@ -1504,14 +1504,22 @@
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_QikHoL8xEeuEecdtmvW-dw" name="use cases">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_Vp630MH2EeuZP-F13h7WZQ" annotatedElement="_GLlhkMH2EeuZP-F13h7WZQ">
+      <body>Condition: The source file name doesn't include a suffix defined in the document type list</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:Actor" xmi:id="_jAc_QL8xEeuEecdtmvW-dw" name="user"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_tkb7YL8xEeuEecdtmvW-dw"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_vegbYL8xEeuEecdtmvW-dw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_Saqm0L8zEeuEecdtmvW-dw" name="application">
-    <packagedElement xmi:type="uml:Component" xmi:id="_hFjY0L8xEeuEecdtmvW-dw" name="converter script" useCase="_kB2x4L8xEeuEecdtmvW-dw _qGJPkL8xEeuEecdtmvW-dw">
+    <packagedElement xmi:type="uml:Component" xmi:id="_hFjY0L8xEeuEecdtmvW-dw" name="converter script" useCase="_kB2x4L8xEeuEecdtmvW-dw _qGJPkL8xEeuEecdtmvW-dw __Ho9sMH1EeuZP-F13h7WZQ">
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_kB2x4L8xEeuEecdtmvW-dw" name="export from yw" subject="_hFjY0L8xEeuEecdtmvW-dw"/>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_qGJPkL8xEeuEecdtmvW-dw" name="import to yw" subject="_hFjY0L8xEeuEecdtmvW-dw"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_qGJPkL8xEeuEecdtmvW-dw" name="import to yw" subject="_hFjY0L8xEeuEecdtmvW-dw">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_GLmvsMH2EeuZP-F13h7WZQ" name="ExtensionPoint1"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="__Ho9sMH1EeuZP-F13h7WZQ" name="create yw7" subject="_hFjY0L8xEeuEecdtmvW-dw">
+        <extend xmi:type="uml:Extend" xmi:id="_GLlhkMH2EeuZP-F13h7WZQ" extendedCase="_qGJPkL8xEeuEecdtmvW-dw" extensionLocation="_GLmvsMH2EeuZP-F13h7WZQ"/>
+      </ownedUseCase>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_PrFQkL8yEeuEecdtmvW-dw" name="ui" type="_JtCGsPxDEeq5hMee5ike2Q"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_hfwMEL8yEeuEecdtmvW-dw" name="sourceFile" type="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_modLQL8yEeuEecdtmvW-dw" name="targetFile" type="_SZHKgCtUEeqgj_wxJ3Xgsg"/>

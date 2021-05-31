@@ -1,0 +1,279 @@
+[Home](../../index) > [Specifications](index) > Document types
+
+# Document types
+
+The document types are recognized by a suffix added to the yWriter project name.
+
+_Example_ 
+
+- yWriter project file name = `normal.yw7`
+- Exported manuscript file name = `normal_manuscript.odt`
+- Manuscript file name to import = `normal_manuscript.html`
+
+## Export from yWriter
+
+### Generate ODT (text document)
+
+-   [Export chapters and scenes](#export-chapters-and-scenes) -- no suffix
+-   [Export chapters and scenes for proof reading](#export-chapters-and-scenes-for-proof-reading) -- suffix = `_proof`
+-   [Export manuscript with chapter and scene sections](#export-manuscript-with-chapter-and-scene-sections) -- suffix = `_manuscript`
+-   [Export scene descriptions](#export-scene-descriptions) -- suffix = `_scenes`
+-   [Export chapter descriptions](#export-chapter-descriptions) -- suffix = `_chapters`
+-   [Export part descriptions](#export-part-descriptions) -- suffix = `_partst`
+-   [Export character descriptions](#export-character-descriptions) -- suffix = `_characters`
+-   [Export location descriptions](#export-location-descriptions) -- suffix = `_locations`
+-   [Export item descriptions](#export-item-descriptions) -- suffix = `_items`
+-   [Export cross reference](#export-cross-reference) -- suffix = `_xref`
+
+### Generate ODS (spreadsheet document)
+
+-   [Export character list](#export-character-list) -- suffix = `_charlist`
+-   [Export location list](#export-location-list) -- suffix = `_loclist`
+-   [Export item list](#export-item-list) -- suffix = `_itemlist`
+-   [Export scene list](#export-scene-list) -- suffix = `_scenelist`
+-   [Export plot list](#export-plot-list) -- suffix = `_plotlist`
+
+## Import to an existing yWriter project
+
+### Source: HTML file (text document)
+
+-   [Import chapters and scenes for proof reading](#import-chapters-and-scenes-for-proof-reading) -- suffix = `_proof`
+-   [Import manuscript with chapter and scene sections](#import-manuscript-with-chapter-and-scene-sections) -- suffix = `_manuscript`
+-   [Import scene descriptions](#import-scene-descriptions) -- suffix = `_scenes`
+-   [Import chapter descriptions](#import-chapter-descriptions) -- suffix = `_chapters`
+-   [Import part descriptions](#import-part-descriptions) -- suffix = `_partst`
+-   [Import character descriptions](#import-character-descriptions) -- suffix = `_characters`
+-   [Import location descriptions](#import-location-descriptions) -- suffix = `_locations`
+-   [Import item descriptions](#import-item-descriptions) -- suffix = `_items`
+
+### Source: CSV file (spreadsheet document)
+
+-   [Import character list](#import-character-list) -- suffix = `_charlist`
+-   [Import location list](#import-location-list) -- suffix = `_loclist`
+-   [Import item list](#import-item-list) -- suffix = `_itemlist`
+-   [Import scene list](#import-scene-list) -- suffix = `_scenelist`
+-   [Import plot list](#import-plot-list) -- suffix = `_plotlist`
+
+## Create a new yWriter project
+
+### Source: HTML file (text document)
+
+-   [Import work in progress](#import-work-in-progress) -- no suffix
+-   [Import outline](#import-outline) -- no suffix
+
+
+------------------------------------------------------------------------
+
+## Export chapters and scenes
+
+Write yWriter 6/7 chapters and scenes into a new OpenDocument
+text document (odt).
+
+-   The document is placed in the same folder as the yWriter project.
+-   Document's **filename**: `<yW project name>.odt`.
+-   Text markup: Bold and italics are supported. Other highlighting such
+    as underline and strikethrough are lost.
+-   Only "normal" chapters and scenes are imported. Chapters and
+    scenes marked "unused", "todo" or "notes" are not imported.
+-   Only scenes that are intended for RTF export in yWriter will be
+    imported.
+-   Comments in the text bracketed with slashes and asterisks (like
+    `/* this is a comment */`) are converted to author's comments.
+-   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
+-   Gobal variables and project variables are not resolved.
+-   Chapter titles appear as first level heading if the chapter is
+    marked as beginning of a new section in yWriter. Such headings are
+    considered as "part" headings.
+-   Chapter titles appear as second level heading if the chapter is not
+    marked as beginning of a new section. Such headings are considered
+    as "chapter" headings.
+-   Scene titles appear as navigable comments pinned to the beginning of
+    the scene.
+-   Usually, scenes are separated by blank lines. The first line is not
+    indented.
+-   Starting from the second paragraph, paragraphs begin with
+    indentation of the first line.
+-   Scenes marked "attach to previous scene" in yWriter appear like
+    continuous paragraphs.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export chapters and scenes for proof reading
+
+Write yWriter 6/7 chapters and scenes into a new OpenDocument
+text document (odt) with chapter and scene markers. File name suffix is
+`_proof`.
+
+-   The proof read document is placed in the same folder as the yWriter
+    project.
+-   Document's filename: `<yW project name>_proof.odt`.
+-   Text markup: Bold and italics are supported. Other highlighting such
+    as underline and strikethrough are lost.
+-   All chapters and scenes will be exported, whether "used" or
+    "unused".
+-   The document contains chapter `[ChID:x]` and scene `[ScID:y]`
+    markers according to yWriter 5 standard. **Do not touch lines
+    containing the markers** if you want to be able to reimport the
+    document into yWriter.
+-   Back up your yWriter project and close yWriter before.
+
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export manuscript with chapter and scene sections
+
+Write yWriter 6/7 chapters and scenes into a new OpenDocument
+text document (odt) with invisible chapter and scene sections (to be
+seen in the Navigator). File name suffix is `_manuscript`.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export scene descriptions
+
+Generate a new OpenDocument text document (odt) containing a
+**full synopsis** with chapter titles and scene descriptions that can be
+edited and written back to yWriter format. File name suffix is
+`_scenes`.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export chapter descriptions
+
+Generate a new OpenDocument text document (odt) containing a
+**brief synopsis** with chapter titles and chapter descriptions that can
+be edited and written back to yWriter format. File name suffix is
+`_chapters`.
+
+**Note:** Doesn't apply to chapters marked
+`This chapter begins a new section` in yWriter.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export part descriptions
+
+Generate a new OpenDocument text document (odt) containing a
+**very brief synopsis** with part titles and part descriptions that can
+be edited and written back to yWriter format. File name suffix is
+`_parts`.
+
+**Note:** Applies only to chapters marked
+`This chapter  begins a new section` in yWriter.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export character descriptions
+
+Generate a new OpenDocument text document (odt) containing
+character descriptions, bio and goals that can be edited in Office
+Writer and written back to yWriter format. File name suffix is
+`_characters`.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export location descriptions
+
+Generate a new OpenDocument text document (odt) containing
+location descriptions that can be edited in Office Writer and written
+back to yWriter format. File name suffix is `_locations`.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export item descriptions
+
+Generate a new OpenDocument text document (odt) containing
+item descriptions that can be edited in Office Writer and written back
+to yWriter format. File name suffix is `_items`.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export cross reference
+
+Generate a new OpenDocument text document (odt) containing
+navigable cross references. File name suffix is `_xref`. The cross
+references are:
+
+-   Scenes per character,
+-   scenes per location,
+-   scenes per item,
+-   scenes per tag,
+-   characters per tag,
+-   locations per tag,
+-   items per tag.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export character list
+
+Generate a new OpenDocument spreadsheet (ods) containing a
+character list that can be edited in Office Calc and written back to
+yWriter format. File name suffix is `_charlist`.
+
+You may change the sort order of the rows. You may also add or remove
+rows. New entities must get a unique ID.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export location list
+
+Generate a new OpenDocument spreadsheet (ods) containing a
+location list that can be edited in Office Calc and written back to
+yWriter format. File name suffix is `_loclist`.
+
+You may change the sort order of the rows. You may also add or remove
+rows. New entities must get a unique ID.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export item list
+
+Generate a new OpenDocument spreadsheet (ods) containing an
+item list that can be edited in Office Calc and written back to yWriter
+format. File name suffix is `_itemlist`.
+
+You may change the sort order of the rows. You may also add or remove
+rows. New entities must get a unique ID.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export scene list
+
+Generate a new OpenDocument spreadsheet (ods) listing scene
+title, scene descriptions, and links to the manuscript\'s scene
+sections. Further scene metadata (e.g. tags, goals, time), if any. File
+name suffix is `_scenelist`.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export plot list
+
+Generate a new OpenDocument spreadsheet (ods) listing plot
+related metadata that can be displayed and edited. File name suffix is
+`_plotlist`.

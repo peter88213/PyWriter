@@ -2,4 +2,6 @@
 
 ---
 
+[Document types](types)
+
 [Use cases](uc)
