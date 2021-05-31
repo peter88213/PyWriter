@@ -28,6 +28,9 @@ The user launches the converter script, giving one argument: The file path to th
 
 The converter script reads the source document, identifies the project content, and replaces the corresponding content of the existing yWriter project.
 
+![uc2 activity diagram](img/uc2_activity1.png)
+
+
 ## uc3 Create yw7
 
 The user wants to transfer the content of an existing source document to a new yWriter 7 project. 
@@ -36,4 +39,4 @@ The user launches the converter script, giving one argument: The file path to th
 
 The converter script reads the source document, identifies the project content, and creates a new yWriter 7 project at the same location as the source document. The file name of the yWriter project equals the file name of the source document (except the file extension). 
 
-
+![uc3 activity diagram](img/uc3_activity1.png)
