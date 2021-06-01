@@ -557,6 +557,9 @@
       <ownedComment xmi:type="uml:Comment" xmi:id="_1wocQL4qEeuITv7MyBA5yA" annotatedElement="_5WZqEL4fEeuITv7MyBA5yA _7OPw8L4pEeuITv7MyBA5yA">
         <body>Python lists</body>
       </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_iIhj8MKuEeu379CuP61w2A">
+        <body>The factory methods instantiate the sourceFile and targetFile objects</body>
+      </ownedComment>
       <packagedElement xmi:type="uml:Class" xmi:id="_WAqBgCtrEeqgj_wxJ3Xgsg" name="YwCnvUi">
         <generalization xmi:type="uml:Generalization" xmi:id="_l3wbYDPiEeqKbaMl5EbWAw" general="_TschgDPiEeqKbaMl5EbWAw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_XJDCAL31EeuITv7MyBA5yA" name="ui" type="_JtCGsPxDEeq5hMee5ike2Q"/>
@@ -613,6 +616,8 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_9ZsAsL4cEeuITv7MyBA5yA" name="create_yw7" visibility="public"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_TschgDPiEeqKbaMl5EbWAw" name="YwCnv">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_MSNNYMKtEeu379CuP61w2A" name="sourceFile" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_MSIU4MKtEeu379CuP61w2A"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_N036AMKtEeu379CuP61w2A" name="targetFile" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_N02E0MKtEeu379CuP61w2A"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_aPjCIDPiEeqKbaMl5EbWAw" name="confirm_overwrite"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_cVeY4L4cEeuITv7MyBA5yA" name="convert"/>
       </packagedElement>
@@ -740,6 +745,18 @@
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CUk9UPxBEeq5hMee5ike2Q" key="nature" value="UML_Nature"/>
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_CUlkYvxBEeq5hMee5ike2Q" name="converter" type="_WAqBgCtrEeqgj_wxJ3Xgsg" association="_CUjIIPxBEeq5hMee5ike2Q"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_MSIU4MKtEeu379CuP61w2A" memberEnd="_MSNNYMKtEeu379CuP61w2A _MSObgcKtEeu379CuP61w2A">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MSL_QMKtEeu379CuP61w2A" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MSMmUMKtEeu379CuP61w2A" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_MSObgcKtEeu379CuP61w2A" name="converter" type="_TschgDPiEeqKbaMl5EbWAw" association="_MSIU4MKtEeu379CuP61w2A"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_N02E0MKtEeu379CuP61w2A" memberEnd="_N036AMKtEeu379CuP61w2A _N04hEcKtEeu379CuP61w2A">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_N03S8MKtEeu379CuP61w2A" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_N03S8cKtEeu379CuP61w2A" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_N04hEcKtEeu379CuP61w2A" name="converter" type="_TschgDPiEeqKbaMl5EbWAw" association="_N02E0MKtEeu379CuP61w2A"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_PZBEwIelEeqZkamAUXuhyQ" name="yw">
