@@ -60,7 +60,7 @@
 
 - **utf8_postprocessor** -- Provide a strategy class to postprocess utf-8 encoded yWriter project files.
 
-- **ansi_postprocessor** -- Provide an abstract strategy class to postprocess yWriter project files.
+- **ansi_postprocessor** -- Provide a strategy class to postprocess ANSI encoded yWriter project files.
 
 ## Classes
 

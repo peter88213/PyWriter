@@ -12,11 +12,11 @@ Based on the  _pywriter_  library, there now are several applications, supportin
 - [yw2md - Markdown import and export from yWriter 6/7](https://peter88213.github.io/yw2md)
 
 
-## Developer's guide
+## Development
 
 [Specifications](devel/spec/index)
 
-[The pywriter library explained](devel/lib/pywriter)
+[The pywriter library](devel/lib/pywriter)
 
 [Roadmap](devel/roadmap)
 
