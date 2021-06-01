@@ -6,11 +6,48 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import os
-from pywriter.yw.yw_postprocessor import YwPostprocessor
+import re
+from html import unescape
 
 
-class Utf8Postprocessor(YwPostprocessor):
+class Utf8Postprocessor():
     """Postprocess ANSI encoded yWriter project."""
+
+    def format_xml(self, text):
+        '''Postprocess the xml file created by ElementTree:
+           Insert the missing CDATA tags,
+           and replace xml entities by plain text.
+        '''
+
+        cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc',
+                     'FieldTitle1', 'FieldTitle2', 'FieldTitle3',
+                     'FieldTitle4', 'LaTeXHeaderFile', 'Tags',
+                     'AKA', 'ImageFile', 'FullName', 'Goals',
+                     'Notes', 'RTFFile', 'SceneContent',
+                     'Outcome', 'Goal', 'Conflict']
+        # Names of yWriter xml elements containing CDATA.
+        # ElementTree.write omits CDATA tags, so they have to be inserted
+        # afterwards.
+
+        lines = text.split('\n')
+        newlines = []
+
+        for line in lines:
+
+            for tag in cdataTags:
+                line = re.sub('\<' + tag + '\>', '<' +
+                              tag + '><![CDATA[', line)
+                line = re.sub('\<\/' + tag + '\>',
+                              ']]></' + tag + '>', line)
+
+            newlines.append(line)
+
+        text = '\n'.join(newlines)
+        text = text.replace('[CDATA[ \n', '[CDATA[')
+        text = text.replace('\n]]', ']]')
+        text = unescape(text)
+
+        return text
 
     def postprocess_xml_file(self, filePath):
         '''Postprocess the xml file created by ElementTree:

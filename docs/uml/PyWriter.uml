@@ -761,9 +761,9 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_PZBEwIelEeqZkamAUXuhyQ" name="yw">
       <packagedElement xmi:type="uml:Usage" xmi:id="_P_PSEIe3Eeq_kJF_AkSaiA" client="_Etc0wIe3Eeq_kJF_AkSaiA" supplier="_0ErCACtbEeqgj_wxJ3Xgsg"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_S2CgoCtgEeqgj_wxJ3Xgsg" name="YwFile">
+      <packagedElement xmi:type="uml:Class" xmi:id="_S2CgoCtgEeqgj_wxJ3Xgsg" name="Yw7File">
         <generalization xmi:type="uml:Generalization" xmi:id="_S2CgoStgEeqgj_wxJ3Xgsg" general="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_c7PW0C1UEeqtbohuTq_ZAA" name="tree" visibility="private" association="_c7J3QC1UEeqtbohuTq_ZAA">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_c7PW0C1UEeqtbohuTq_ZAA" name="ET" visibility="private" association="_c7J3QC1UEeqtbohuTq_ZAA">
           <type xmi:type="uml:Class" href="stadardlib.uml#_QoWo4C1UEeqtbohuTq_ZAA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_VLVcUC2KEeqtbohuTq_ZAA" name="root" visibility="private">
@@ -771,9 +771,6 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Hus8UvxEEeq5hMee5ike2Q" name="ywTreeReader" type="_mlA0EPxCEeq5hMee5ike2Q" aggregation="shared" association="_HuruMPxEEeq5hMee5ike2Q">
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HutjYfxEEeq5hMee5ike2Q" value="1"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_IYk_wvxEEeq5hMee5ike2Q" name="ywProjectMerger" type="_rRbf4PxCEeq5hMee5ike2Q" aggregation="shared" association="_IYjKkPxEEeq5hMee5ike2Q">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IYlm0fxEEeq5hMee5ike2Q" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_JN2a4vxEEeq5hMee5ike2Q" name="ywTreeBuilder" type="__GSVAPxDEeq5hMee5ike2Q" aggregation="shared" association="_JN1MwPxEEeq5hMee5ike2Q">
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JN3B8fxEEeq5hMee5ike2Q" value="1"/>
@@ -784,27 +781,24 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_KzsXUvxEEeq5hMee5ike2Q" name="ywPostprocessor" type="_1d--APxDEeq5hMee5ike2Q" aggregation="shared" association="_KzqiIPxEEeq5hMee5ike2Q">
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Kzs-YfxEEeq5hMee5ike2Q" value="1"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_IYk_wvxEEeq5hMee5ike2Q" name="ywProjectMerger" type="_rRbf4PxCEeq5hMee5ike2Q" aggregation="shared" association="_IYjKkPxEEeq5hMee5ike2Q">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IYlm0fxEEeq5hMee5ike2Q" value="1"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_rLXIUC1mEeqtbohuTq_ZAA" name="__init__"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_S2CgoytgEeqgj_wxJ3Xgsg" name="read"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_S2CgpCtgEeqgj_wxJ3Xgsg" name="write"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_tSehgDFmEeq5SLjbDFDS4A" name="is_locked"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_mlA0EPxCEeq5hMee5ike2Q" name="YwTreeReader"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mlA0EPxCEeq5hMee5ike2Q" name="Utf8TreeReader"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_rRbf4PxCEeq5hMee5ike2Q" name="YwProjectMerger"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_0I_9gPxCEeq5hMee5ike2Q" name="YwTreeWriter"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_1d--APxDEeq5hMee5ike2Q" name="YwPostprocessor"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="__GSVAPxDEeq5hMee5ike2Q" name="YwTreeBuilder"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_0I_9gPxCEeq5hMee5ike2Q" name="Utf8TreeWriter"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_1d--APxDEeq5hMee5ike2Q" name="Utf8Postprocessor"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="__GSVAPxDEeq5hMee5ike2Q" name="Yw7TreeBuilder"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_gfe6cPypEeqEK6KdQRY5bw" name="Yw5File">
         <generalization xmi:type="uml:Generalization" xmi:id="_rgoTsPypEeqEK6KdQRY5bw" general="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_jOuu8PypEeqEK6KdQRY5bw" name="Yw6File">
         <generalization xmi:type="uml:Generalization" xmi:id="_sRZpUPypEeqEK6KdQRY5bw" general="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_kx8OIPypEeqEK6KdQRY5bw" name="Yw7File">
-        <generalization xmi:type="uml:Generalization" xmi:id="_txT84PypEeqEK6KdQRY5bw" general="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_8UqcIPyqEeqEK6KdQRY5bw" name="Utf8TreeReader">
-        <generalization xmi:type="uml:Generalization" xmi:id="_GGSuQPyrEeqEK6KdQRY5bw" general="_mlA0EPxCEeq5hMee5ike2Q"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_Bb9tIPyrEeqEK6KdQRY5bw" name="AnsiTreeReader">
         <generalization xmi:type="uml:Generalization" xmi:id="_HW_hIPyrEeqEK6KdQRY5bw" general="_mlA0EPxCEeq5hMee5ike2Q"/>
@@ -818,20 +812,11 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_fKgZoPyrEeqEK6KdQRY5bw" name="Yw6TreeBuilder">
         <generalization xmi:type="uml:Generalization" xmi:id="_y0HdgPyrEeqEK6KdQRY5bw" general="__GSVAPxDEeq5hMee5ike2Q"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_lvoTgPyrEeqEK6KdQRY5bw" name="Yw7TreeBuilder">
-        <generalization xmi:type="uml:Generalization" xmi:id="_0V29EPyrEeqEK6KdQRY5bw" general="__GSVAPxDEeq5hMee5ike2Q"/>
-      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_syKiIPyrEeqEK6KdQRY5bw" name="Yw7TreeCreator">
-        <generalization xmi:type="uml:Generalization" xmi:id="_1jcKgPyrEeqEK6KdQRY5bw" general="_lvoTgPyrEeqEK6KdQRY5bw"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_HmIT4PysEeqEK6KdQRY5bw" name="Utf8TreeWriter">
-        <generalization xmi:type="uml:Generalization" xmi:id="_PilNEPysEeqEK6KdQRY5bw" general="_0I_9gPxCEeq5hMee5ike2Q"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_0V29EPyrEeqEK6KdQRY5bw" general="__GSVAPxDEeq5hMee5ike2Q"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_KcdAwPysEeqEK6KdQRY5bw" name="AnsiTreeWriter">
         <generalization xmi:type="uml:Generalization" xmi:id="_QOq3APysEeqEK6KdQRY5bw" general="_0I_9gPxCEeq5hMee5ike2Q"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_RXVIMPysEeqEK6KdQRY5bw" name="Utf8Postprocessor">
-        <generalization xmi:type="uml:Generalization" xmi:id="_eQyt8PysEeqEK6KdQRY5bw" general="_1d--APxDEeq5hMee5ike2Q"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_Vt44wPysEeqEK6KdQRY5bw" name="AnsiPostprocessor">
         <generalization xmi:type="uml:Generalization" xmi:id="_dsyB8PysEeqEK6KdQRY5bw" general="_1d--APxDEeq5hMee5ike2Q"/>
@@ -873,7 +858,7 @@
         <ownedEnd xmi:type="uml:Property" xmi:id="_Kzs-YvxEEeq5hMee5ike2Q" name="targetFile" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_KzqiIPxEEeq5hMee5ike2Q"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_IjMhAMLZEeuyj_fXzzjZfg" name="Yw7NewFile">
-        <generalization xmi:type="uml:Generalization" xmi:id="_jbF7EMLaEeuyj_fXzzjZfg" general="_kx8OIPypEeqEK6KdQRY5bw"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_jbF7EMLaEeuyj_fXzzjZfg" general="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_L1eKEMLZEeuyj_fXzzjZfg" name="Yw5NewFile">
         <generalization xmi:type="uml:Generalization" xmi:id="_kKv2YMLaEeuyj_fXzzjZfg" general="_gfe6cPypEeqEK6KdQRY5bw"/>

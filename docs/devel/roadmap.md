@@ -189,6 +189,10 @@ loosely to the YwCnvUi class.
 than inheritance.
 
 
+#### v3.2
+
+- Refactor the library in order to decrease the number of "abstract" base classes.
+
 ### Future:
 
 #### Edit the novel structure independently from yWriter

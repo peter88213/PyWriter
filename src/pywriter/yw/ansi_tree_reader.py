@@ -7,14 +7,15 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 import xml.etree.ElementTree as ET
-from pywriter.yw.yw_tree_reader import YwTreeReader
+from pywriter.yw.utf8_tree_reader import Utf8TreeReader
 
 
-class AnsiTreeReader(YwTreeReader):
+class AnsiTreeReader(Utf8TreeReader):
     """Read ANSI encoded yWriter xml project file."""
 
     def read_element_tree(self, ywProject):
-        """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
+        """Override the superclass method.
+        Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
 

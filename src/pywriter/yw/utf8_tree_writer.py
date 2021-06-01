@@ -6,10 +6,9 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import os
-from pywriter.yw.yw_tree_writer import YwTreeWriter
 
 
-class Utf8TreeWriter(YwTreeWriter):
+class Utf8TreeWriter():
     """Write utf-8 encoded yWriter project file."""
 
     def write_element_tree(self, ywProject):

@@ -7,10 +7,9 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 import xml.etree.ElementTree as ET
-from pywriter.yw.yw_tree_reader import YwTreeReader
 
 
-class Utf8TreeReader(YwTreeReader):
+class Utf8TreeReader():
     """Read utf-8 encoded yWriter xml project file."""
 
     def read_element_tree(self, ywProject):

@@ -5,7 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.yw.yw_file import YwFile
+from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw6_tree_builder import Yw6TreeBuilder
 from pywriter.yw.utf8_tree_reader import Utf8TreeReader
 from pywriter.yw.yw_project_merger import YwProjectMerger
@@ -13,7 +13,7 @@ from pywriter.yw.utf8_tree_writer import Utf8TreeWriter
 from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
 
 
-class Yw6File(YwFile):
+class Yw6File(Yw7File):
     """yWriter 6 project file representation."""
 
     DESCRIPTION = 'yWriter 6 project'
@@ -23,7 +23,7 @@ class Yw6File(YwFile):
         """Extend the superclass constructor.
         Initialize instance variables.
         """
-        YwFile.__init__(self, filePath)
+        Yw7File.__init__(self, filePath)
 
         self.ywTreeReader = Utf8TreeReader()
         self.ywProjectMerger = YwProjectMerger()

@@ -6,14 +6,15 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import os
-from pywriter.yw.yw_postprocessor import YwPostprocessor
+from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
 
 
-class AnsiPostprocessor(YwPostprocessor):
+class AnsiPostprocessor(Utf8Postprocessor):
     """Postprocess ANSI encoded yWriter project."""
 
     def postprocess_xml_file(self, filePath):
-        '''Postprocess the xml file created by ElementTree:
+        '''Override the superclass method.
+        Postprocess the xml file created by ElementTree:
         Put a header on top, insert the missing CDATA tags,
         and replace xml entities by plain text.
         Return a message beginning with SUCCESS or ERROR.
