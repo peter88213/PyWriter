@@ -73,7 +73,7 @@ class Yw5TreeBuilder(YwTreeBuilder):
             if ywProject.chapters[chId].oldType == 1:
                 ywProject.chapters[chId].isUnused = False
 
-        root = ywProject._tree.getroot()
+        root = ywProject.tree.getroot()
 
         for scn in root.iter('SCENE'):
             scId = scn.find('ID').text
@@ -107,6 +107,6 @@ class Yw5TreeBuilder(YwTreeBuilder):
 
         root.tag = 'YWRITER5'
         root.find('PROJECT').find('Ver').text = '5'
-        ywProject._tree = ET.ElementTree(root)
+        ywProject.tree = ET.ElementTree(root)
 
         return YwTreeBuilder.build_element_tree(self, ywProject)

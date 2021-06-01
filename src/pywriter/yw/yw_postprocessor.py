@@ -6,15 +6,12 @@ Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from abc import ABC
-from abc import abstractmethod
 import re
 from html import unescape
 
 
-class YwPostprocessor(ABC):
+class YwPostprocessor():
 
-    @abstractmethod
     def postprocess_xml_file(self, ywFile):
         '''Postprocess the xml file created by ElementTree:
         Put a header on top, insert the missing CDATA tags,

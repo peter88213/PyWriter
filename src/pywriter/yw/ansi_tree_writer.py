@@ -18,7 +18,7 @@ class AnsiTreeWriter(YwTreeWriter):
         """
 
         try:
-            ywProject._tree.write(
+            ywProject.tree.write(
                 ywProject.filePath, xml_declaration=False, encoding='iso-8859-1')
 
         except(PermissionError):

@@ -13,15 +13,15 @@ from pywriter.yw.yw_tree_reader import YwTreeReader
 class Utf8TreeReader(YwTreeReader):
     """Read utf-8 encoded yWriter xml project file."""
 
-    def read_element_tree(self, ywFile):
+    def read_element_tree(self, ywProject):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
 
         try:
-            ywFile._tree = ET.parse(ywFile.filePath)
+            ywProject.tree = ET.parse(ywProject.filePath)
 
         except:
-            return 'ERROR: Can not process "' + os.path.normpath(ywFile.filePath) + '".'
+            return 'ERROR: Can not process "' + os.path.normpath(ywProject.filePath) + '".'
 
         return 'SUCCESS: XML element tree read in.'

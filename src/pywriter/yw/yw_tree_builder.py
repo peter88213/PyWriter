@@ -17,7 +17,7 @@ class YwTreeBuilder():
         Return a message beginning with SUCCESS or ERROR.
         To be overridden by file format specific subclasses.
         """
-        root = ywProject._tree.getroot()
+        root = ywProject.tree.getroot()
 
         # Write locations to the xml element tree.
 
@@ -513,7 +513,7 @@ class YwTreeBuilder():
                         ET.SubElement(items, 'ItemID').text = itId
 
         self.indent_xml(root)
-        ywProject._tree = ET.ElementTree(root)
+        ywProject.tree = ET.ElementTree(root)
 
         return 'SUCCESS'
 

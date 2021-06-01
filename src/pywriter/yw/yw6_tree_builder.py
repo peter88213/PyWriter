@@ -17,7 +17,7 @@ class Yw6TreeBuilder(YwTreeBuilder):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        root = ywProject._tree.getroot()
+        root = ywProject.tree.getroot()
 
         for scn in root.iter('SCENE'):
             scId = scn.find('ID').text
@@ -32,6 +32,6 @@ class Yw6TreeBuilder(YwTreeBuilder):
 
         root.tag = 'YWRITER6'
         root.find('PROJECT').find('Ver').text = '5'
-        ywProject._tree = ET.ElementTree(root)
+        ywProject.tree = ET.ElementTree(root)
 
         return YwTreeBuilder.build_element_tree(self, ywProject)

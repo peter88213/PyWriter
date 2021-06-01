@@ -13,7 +13,7 @@ from pywriter.yw.yw_tree_reader import YwTreeReader
 class AnsiTreeReader(YwTreeReader):
     """Read ANSI encoded yWriter xml project file."""
 
-    def read_element_tree(self, ywFile):
+    def read_element_tree(self, ywProject):
         """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
@@ -22,7 +22,7 @@ class AnsiTreeReader(YwTreeReader):
 
         try:
 
-            with open(ywFile.filePath, 'r') as f:
+            with open(ywProject.filePath, 'r') as f:
                 project = f.readlines()
 
             project[0] = project[0].replace('<?xml version="1.0" encoding="iso-8859-1"?>',
@@ -31,10 +31,10 @@ class AnsiTreeReader(YwTreeReader):
             with open(_TEMPFILE, 'w') as f:
                 f.writelines(project)
 
-            ywFile._tree = ET.parse(_TEMPFILE)
+            ywProject.tree = ET.parse(_TEMPFILE)
             os.remove(_TEMPFILE)
 
         except:
-            return 'ERROR: Can not process "' + os.path.normpath(ywFile.filePath) + '".'
+            return 'ERROR: Can not process "' + os.path.normpath(ywProject.filePath) + '".'
 
         return 'SUCCESS: XML element tree read in.'

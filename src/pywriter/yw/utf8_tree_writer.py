@@ -18,7 +18,7 @@ class Utf8TreeWriter(YwTreeWriter):
         """
 
         try:
-            ywProject._tree.write(
+            ywProject.tree.write(
                 ywProject.filePath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):

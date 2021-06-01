@@ -15,24 +15,63 @@ from pywriter.model.scene import Scene
 from pywriter.model.character import Character
 from pywriter.model.world_element import WorldElement
 
+from pywriter.yw.yw_tree_builder import YwTreeBuilder
+from pywriter.yw.yw_tree_reader import YwTreeReader
+from pywriter.yw.yw_project_merger import YwProjectMerger
+from pywriter.yw.yw_tree_writer import YwTreeWriter
+from pywriter.yw.yw_postprocessor import YwPostprocessor
+
 
 class YwFile(Novel):
     """Abstract yWriter xml project file representation.
+
+    Instance variables:
+        ywTreeReader -- strategy class to read yWriter project files.
+        ywProjectMerger -- strategy class to merge two yWriter project structures.
+        ywTreeBuilder -- strategy class to build an xml tree.
+        ywTreeWriter -- strategy class to write yWriter project files.
+        ywPostprocessor -- strategy class to postprocess yWriter project files.
+        tree -- xml element tree of the yWriter project
+
+    Public methods:
+        read() -- Parse the yWriter xml file, fetching the Novel attributes.
+        merge(novel) -- Copy required attributes of the novel object.
+        write() -- Open the yWriter xml file and replace a set of attributes not being None.
+        is_locked() -- Return True if a .lock file placed by yWriter exists.
+
     """
 
-    def strip_spaces(self, elements):
-        """remove leading and trailing spaces from the elements
-        of a list of strings.
+    def __init__(self, filePath, **kwargs):
+        """Extend the superclass constructor.
+        Initialize instance variables.
+        """
+        Novel.__init__(self, filePath)
+
+        self.ywTreeReader = YwTreeReader()
+        self.ywProjectMerger = YwProjectMerger()
+        self.ywTreeBuilder = YwTreeBuilder()
+        self.ywTreeWriter = YwTreeWriter()
+        self.ywPostprocessor = YwPostprocessor()
+        self.tree = None
+
+    def _strip_spaces(self, lines):
+        """Local helper method.
+
+        Positional argument:
+            lines -- list of strings
+
+        Return lines with leading and trailing spaces removed.
         """
         stripped = []
 
-        for element in elements:
-            stripped.append(element.lstrip().rstrip())
+        for line in lines:
+            stripped.append(line.lstrip().rstrip())
 
         return stripped
 
     def read(self):
-        """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
+        """Override the superclass method.
+        Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
 
@@ -44,7 +83,7 @@ class YwFile(Novel):
         if message.startswith('ERROR'):
             return message
 
-        root = self._tree.getroot()
+        root = self.tree.getroot()
 
         # Read locations from the xml element tree.
 
@@ -69,7 +108,7 @@ class YwFile(Novel):
 
                 if loc.find('Tags').text is not None:
                     tags = loc.find('Tags').text.split(';')
-                    self.locations[lcId].tags = self.strip_spaces(tags)
+                    self.locations[lcId].tags = self._strip_spaces(tags)
 
         # Read items from the xml element tree.
 
@@ -94,7 +133,7 @@ class YwFile(Novel):
 
                 if itm.find('Tags').text is not None:
                     tags = itm.find('Tags').text.split(';')
-                    self.items[itId].tags = self.strip_spaces(tags)
+                    self.items[itId].tags = self._strip_spaces(tags)
 
         # Read characters from the xml element tree.
 
@@ -119,7 +158,7 @@ class YwFile(Novel):
 
                 if crt.find('Tags').text is not None:
                     tags = crt.find('Tags').text.split(';')
-                    self.characters[crId].tags = self.strip_spaces(tags)
+                    self.characters[crId].tags = self._strip_spaces(tags)
 
             if crt.find('Notes') is not None:
                 self.characters[crId].notes = crt.find('Notes').text
@@ -304,7 +343,7 @@ class YwFile(Novel):
 
                 if scn.find('Tags').text is not None:
                     tags = scn.find('Tags').text.split(';')
-                    self.scenes[scId].tags = self.strip_spaces(tags)
+                    self.scenes[scId].tags = self._strip_spaces(tags)
 
             if scn.find('Field1') is not None:
                 self.scenes[scId].field1 = scn.find('Field1').text
@@ -402,7 +441,8 @@ class YwFile(Novel):
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + os.path.normpath(self.filePath) + '".'
 
     def merge(self, novel):
-        """Copy required attributes of the novel object.
+        """Override the superclass method.
+        Copy required attributes of the novel object.
         Return a message beginning with SUCCESS or ERROR.
         """
 
@@ -416,7 +456,8 @@ class YwFile(Novel):
         return self.ywProjectMerger.merge_projects(self, novel)
 
     def write(self):
-        """Open the yWriter xml file located at filePath and 
+        """Override the superclass method.
+        Open the yWriter xml file located at filePath and 
         replace a set of attributes not being None.
         Return a message beginning with SUCCESS or ERROR.
         """
@@ -437,7 +478,8 @@ class YwFile(Novel):
         return self.ywPostprocessor.postprocess_xml_file(self.filePath)
 
     def is_locked(self):
-        """Test whether a .lock file placed by yWriter exists.
+        """Return True if a .lock file placed by yWriter exists.
+        Otherwise, return False. 
         """
         if os.path.isfile(self.filePath + '.lock'):
             return True

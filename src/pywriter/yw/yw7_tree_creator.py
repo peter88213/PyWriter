@@ -320,6 +320,6 @@ class Yw7TreeCreator(YwTreeBuilder):
                     chFields, 'Field_SuppressChapterTitle').text = '1'
 
         self.indent_xml(root)
-        ywProject._tree = ET.ElementTree(root)
+        ywProject.tree = ET.ElementTree(root)
 
         return 'SUCCESS'
