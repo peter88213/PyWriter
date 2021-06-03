@@ -14,8 +14,8 @@ class Yw6TreeBuilder(Yw7TreeBuilder):
     TAG = 'YWRITER6'
     VER = '5'
 
-    def build_scene_content(self, ywProject):
-        """Modify the yWriter project attributes of an existing xml element tree.
+    def put_scene_contents(self, ywProject):
+        """Modify the scene contents of an existing xml element tree.
         Return a message beginning with SUCCESS or ERROR.
         Override the superclass method.
         """
@@ -32,3 +32,5 @@ class Yw6TreeBuilder(Yw7TreeBuilder):
                     ywProject.scenes[scId].wordCount)
                 scn.find('LetterCount').text = str(
                     ywProject.scenes[scId].letterCount)
+
+        return 'SUCCESS'

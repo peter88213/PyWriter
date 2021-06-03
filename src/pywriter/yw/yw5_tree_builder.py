@@ -58,8 +58,8 @@ class Yw5TreeBuilder(Yw7TreeBuilder):
 
         return RTF_HEADER + text + RTF_FOOTER
 
-    def build_scene_content(self, ywProject):
-        """Modify the yWriter project attributes of an existing xml element tree.
+    def put_scene_contents(self, ywProject):
+        """Modify the scene contents of an existing xml element tree.
         Write scene contents to RTF files.
         Return a message beginning with SUCCESS or ERROR.
         Override the superclass method.
@@ -106,5 +106,6 @@ class Yw5TreeBuilder(Yw7TreeBuilder):
                             f.write(rtfScene)
 
                     except:
-
                         return 'ERROR: Can not write scene file "' + rtfPath + '".'
+
+        return 'SUCCESS'

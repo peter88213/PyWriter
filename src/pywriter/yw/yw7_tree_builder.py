@@ -14,8 +14,8 @@ class Yw7TreeBuilder():
     TAG = 'YWRITER7'
     VER = '7'
 
-    def build_scene_content(self, ywProject):
-        """Modify the yWriter project attributes of an existing xml element tree.
+    def put_scene_contents(self, ywProject):
+        """Modify the scene contents of an existing xml element tree.
         Return a message beginning with SUCCESS or ERROR.
         """
 
@@ -37,6 +37,8 @@ class Yw7TreeBuilder():
 
             except:
                 pass
+
+        return 'SUCCESS'
 
     def build_element_tree(self, ywProject):
         """Modify the yWriter project attributes of an existing xml element tree.
@@ -244,7 +246,10 @@ class Yw7TreeBuilder():
 
         # Write attributes at scene level to the xml element tree.
 
-        self.build_scene_content(ywProject)
+        message = self.put_scene_contents(ywProject)
+
+        if message.startswith('ERROR'):
+            return message
 
         for scn in root.iter('SCENE'):
             scId = scn.find('ID').text
