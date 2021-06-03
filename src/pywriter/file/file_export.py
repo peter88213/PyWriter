@@ -75,73 +75,73 @@ class FileExport(Novel):
 
         return(text)
 
-    def merge(self, novel):
-        """Copy required attributes of the novel object.
+    def merge(self, source):
+        """Copy required attributes of the source object.
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        if novel.title is not None:
-            self.title = novel.title
+        if source.title is not None:
+            self.title = source.title
 
         else:
             self.title = ''
 
-        if novel.desc is not None:
-            self.desc = novel.desc
+        if source.desc is not None:
+            self.desc = source.desc
 
         else:
             self.desc = ''
 
-        if novel.author is not None:
-            self.author = novel.author
+        if source.author is not None:
+            self.author = source.author
 
         else:
             self.author = ''
 
-        if novel.fieldTitle1 is not None:
-            self.fieldTitle1 = novel.fieldTitle1
+        if source.fieldTitle1 is not None:
+            self.fieldTitle1 = source.fieldTitle1
 
         else:
             self.fieldTitle1 = 'Field 1'
 
-        if novel.fieldTitle2 is not None:
-            self.fieldTitle2 = novel.fieldTitle2
+        if source.fieldTitle2 is not None:
+            self.fieldTitle2 = source.fieldTitle2
 
         else:
             self.fieldTitle2 = 'Field 2'
 
-        if novel.fieldTitle3 is not None:
-            self.fieldTitle3 = novel.fieldTitle3
+        if source.fieldTitle3 is not None:
+            self.fieldTitle3 = source.fieldTitle3
 
         else:
             self.fieldTitle3 = 'Field 3'
 
-        if novel.fieldTitle4 is not None:
-            self.fieldTitle4 = novel.fieldTitle4
+        if source.fieldTitle4 is not None:
+            self.fieldTitle4 = source.fieldTitle4
 
         else:
             self.fieldTitle4 = 'Field 4'
 
-        if novel.srtChapters != []:
-            self.srtChapters = novel.srtChapters
+        if source.srtChapters != []:
+            self.srtChapters = source.srtChapters
 
-        if novel.scenes is not None:
-            self.scenes = novel.scenes
+        if source.scenes is not None:
+            self.scenes = source.scenes
 
-        if novel.chapters is not None:
-            self.chapters = novel.chapters
+        if source.chapters is not None:
+            self.chapters = source.chapters
 
-        if novel.srtCharacters != []:
-            self.srtCharacters = novel.srtCharacters
-            self.characters = novel.characters
+        if source.srtCharacters != []:
+            self.srtCharacters = source.srtCharacters
+            self.characters = source.characters
 
-        if novel.srtLocations != []:
-            self.srtLocations = novel.srtLocations
-            self.locations = novel.locations
+        if source.srtLocations != []:
+            self.srtLocations = source.srtLocations
+            self.locations = source.locations
 
-        if novel.srtItems != []:
-            self.srtItems = novel.srtItems
-            self.items = novel.items
+        if source.srtItems != []:
+            self.srtItems = source.srtItems
+            self.items = source.items
 
         return 'SUCCESS'
 

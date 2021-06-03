@@ -443,9 +443,9 @@ class Yw7File(Novel):
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + os.path.normpath(self.filePath) + '".'
 
-    def merge(self, novel):
+    def merge(self, source):
         """Override the superclass method.
-        Copy required attributes of the novel object.
+        Copy required attributes of the source object.
         Return a message beginning with SUCCESS or ERROR.
         """
 
@@ -456,7 +456,7 @@ class Yw7File(Novel):
             if message.startswith('ERROR'):
                 return message
 
-        return self.ywProjectMerger.merge_projects(self, novel)
+        return self.ywProjectMerger.merge_projects(self, source)
 
     def write(self):
         """Override the superclass method.

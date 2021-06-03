@@ -51,10 +51,10 @@ class CsvItemList(CsvFile):
 
         return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
 
-    def merge(self, novel):
-        """Copy required attributes of the novel object.
+    def merge(self, source):
+        """Copy required attributes of the source object.
         Return a message beginning with SUCCESS or ERROR.
         """
-        self.srtItems = novel.srtItems
-        self.items = novel.items
+        self.srtItems = source.srtItems
+        self.items = source.items
         return 'SUCCESS'

@@ -183,8 +183,8 @@ class Novel():
         """
         return 'ERROR: read method is not implemented.'
 
-    def merge(self, novel):
-        """Copy required attributes of the novel object.
+    def merge(self, source):
+        """Copy required attributes of the source object.
         Return a message beginning with SUCCESS or ERROR.
         This is a stub to be overridden by subclass methods.
         """

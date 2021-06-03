@@ -16,7 +16,7 @@ Based on the  _pywriter_  library, there now are several applications, supportin
 
 [Specifications](devel/spec/index)
 
-[The pywriter library](devel/lib/pywriter)
+[pywriter library overview](devel/lib/pywriter)
 
 [Roadmap](devel/roadmap)
 
