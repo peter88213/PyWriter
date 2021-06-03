@@ -13,11 +13,11 @@ class AnsiPostprocessor(Utf8Postprocessor):
     """Postprocess ANSI encoded yWriter project."""
 
     def postprocess_xml_file(self, filePath):
-        '''Override the superclass method.
-        Postprocess the xml file created by ElementTree:
+        '''Postprocess the xml file created by ElementTree:
         Put a header on top, insert the missing CDATA tags,
         and replace xml entities by plain text.
         Return a message beginning with SUCCESS or ERROR.
+        Override the superclass method.
         '''
 
         with open(filePath, 'r') as f:

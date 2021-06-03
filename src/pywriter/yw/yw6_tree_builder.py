@@ -5,16 +5,19 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.yw.yw_tree_builder import YwTreeBuilder
-import xml.etree.ElementTree as ET
+from pywriter.yw.yw7_tree_builder import Yw7TreeBuilder
 
 
-class Yw6TreeBuilder(YwTreeBuilder):
+class Yw6TreeBuilder(Yw7TreeBuilder):
     """Build yWriter 6 project xml tree."""
 
-    def build_element_tree(self, ywProject):
+    TAG = 'YWRITER6'
+    VER = '5'
+
+    def build_scene_content(self, ywProject):
         """Modify the yWriter project attributes of an existing xml element tree.
         Return a message beginning with SUCCESS or ERROR.
+        Override the superclass method.
         """
 
         root = ywProject.tree.getroot()
@@ -29,9 +32,3 @@ class Yw6TreeBuilder(YwTreeBuilder):
                     ywProject.scenes[scId].wordCount)
                 scn.find('LetterCount').text = str(
                     ywProject.scenes[scId].letterCount)
-
-        root.tag = 'YWRITER6'
-        root.find('PROJECT').find('Ver').text = '5'
-        ywProject.tree = ET.ElementTree(root)
-
-        return YwTreeBuilder.build_element_tree(self, ywProject)

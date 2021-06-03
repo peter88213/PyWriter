@@ -14,9 +14,9 @@ class AnsiTreeReader(Utf8TreeReader):
     """Read ANSI encoded yWriter xml project file."""
 
     def read_element_tree(self, ywProject):
-        """Override the superclass method.
-        Parse the yWriter xml file located at filePath, fetching the Novel attributes.
+        """Parse the yWriter xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
+        Override the superclass method.
         """
 
         _TEMPFILE = '._tempfile.xml'

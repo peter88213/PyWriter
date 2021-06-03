@@ -7,12 +7,15 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 
-from pywriter.yw.yw_tree_builder import YwTreeBuilder
+from pywriter.yw.yw7_tree_builder import Yw7TreeBuilder
 import xml.etree.ElementTree as ET
 
 
-class Yw5TreeBuilder(YwTreeBuilder):
+class Yw5TreeBuilder(Yw7TreeBuilder):
     """Build yWriter 5 project xml tree."""
+
+    TAG = 'YWRITER5'
+    VER = '5'
 
     def convert_to_rtf(self, text):
         """Convert yw6/7 raw markup to rtf. 
@@ -55,10 +58,11 @@ class Yw5TreeBuilder(YwTreeBuilder):
 
         return RTF_HEADER + text + RTF_FOOTER
 
-    def build_element_tree(self, ywProject):
+    def build_scene_content(self, ywProject):
         """Modify the yWriter project attributes of an existing xml element tree.
         Write scene contents to RTF files.
         Return a message beginning with SUCCESS or ERROR.
+        Override the superclass method.
         """
         rtfDir = os.path.dirname(ywProject.filePath)
 
@@ -104,9 +108,3 @@ class Yw5TreeBuilder(YwTreeBuilder):
                     except:
 
                         return 'ERROR: Can not write scene file "' + rtfPath + '".'
-
-        root.tag = 'YWRITER5'
-        root.find('PROJECT').find('Ver').text = '5'
-        ywProject.tree = ET.ElementTree(root)
-
-        return YwTreeBuilder.build_element_tree(self, ywProject)

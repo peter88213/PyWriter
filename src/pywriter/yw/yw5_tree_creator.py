@@ -13,7 +13,7 @@ from pywriter.yw.yw5_tree_builder import Yw5TreeBuilder
 
 
 class Yw5TreeCreator(Yw5TreeBuilder):
-    """Create a new yWriter 7 project xml tree."""
+    """Create a yw5 project xml tree from an existing yw7 project."""
 
     def build_element_tree(self, ywProject):
         """Put the yWriter project attributes to a new xml element tree.

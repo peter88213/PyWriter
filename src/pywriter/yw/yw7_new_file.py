@@ -14,7 +14,10 @@ class Yw7NewFile(Yw7File):
     """yWriter 7 new project file representation."""
 
     def __init__(self, filePath, **kwargs):
-        """Extends the superclass constructor."""
+        """Initialize instance variables.
+        Extend the superclass constructor by changing the
+        ywProjectMerger and ywTreeBuilder strategies.
+        """
         Yw7File.__init__(self, filePath)
 
         self.ywProjectMerger = YwProjectCreator()

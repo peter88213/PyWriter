@@ -25,28 +25,21 @@ from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
 class Yw7File(Novel):
     """yWriter 7 project file representation.
 
-    Instance variables:
+    Additional attributes:
         ywTreeReader -- strategy class to read yWriter project files.
         ywProjectMerger -- strategy class to merge two yWriter project structures.
         ywTreeBuilder -- strategy class to build an xml tree.
         ywTreeWriter -- strategy class to write yWriter project files.
         ywPostprocessor -- strategy class to postprocess yWriter project files.
         tree -- xml element tree of the yWriter project
-
-    Public methods:
-        read() -- Parse the yWriter xml file, fetching the Novel attributes.
-        merge(novel) -- Copy required attributes of the novel object.
-        write() -- Open the yWriter xml file and replace a set of attributes not being None.
-        is_locked() -- Return True if a .lock file placed by yWriter exists.
-
     """
 
     DESCRIPTION = 'yWriter 7 project'
     EXTENSION = '.yw7'
 
     def __init__(self, filePath, **kwargs):
-        """Extend the superclass constructor.
-        Initialize instance variables.
+        """Initialize instance variables:
+        Extend the superclass constructor by adding.
         """
         Novel.__init__(self, filePath)
 
@@ -73,9 +66,9 @@ class Yw7File(Novel):
         return stripped
 
     def read(self):
-        """Override the superclass method.
-        Parse the yWriter xml file located at filePath, fetching the Novel attributes.
+        """Parse the yWriter xml file, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
+        Override the superclass method.
         """
 
         if self.is_locked():
@@ -444,9 +437,9 @@ class Yw7File(Novel):
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + os.path.normpath(self.filePath) + '".'
 
     def merge(self, source):
-        """Override the superclass method.
-        Copy required attributes of the source object.
+        """Copy required attributes of the source object.
         Return a message beginning with SUCCESS or ERROR.
+        Override the superclass method.
         """
 
         if self.file_exists():
@@ -459,10 +452,10 @@ class Yw7File(Novel):
         return self.ywProjectMerger.merge_projects(self, source)
 
     def write(self):
-        """Override the superclass method.
-        Open the yWriter xml file located at filePath and 
+        """Open the yWriter xml file located at filePath and 
         replace a set of attributes not being None.
         Return a message beginning with SUCCESS or ERROR.
+        Override the superclass method.
         """
 
         if self.is_locked():

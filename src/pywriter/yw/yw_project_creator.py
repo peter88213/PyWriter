@@ -12,7 +12,7 @@ class YwProjectCreator(YwProjectMerger):
     """Extend the super class by disabling its project structure check."""
 
     def merge_projects(self, target, source):
-        """Create target attributes with source attributes.
+        """Copy source attributes to the target.
         Return a message beginning with SUCCESS, even if the source and 
         target project structures are inconsistent. Thus the source
         project can be merged with an empty target, creating a new project.

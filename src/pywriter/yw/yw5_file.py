@@ -22,13 +22,14 @@ class Yw5File(Yw7File):
     EXTENSION = '.yw5'
 
     def __init__(self, filePath, **kwargs):
-        """Extend the superclass constructor.
-        Initialize instance variables.
+        """Initialize instance variables.
+        Extend the superclass constructor by changing the 
+        ywTreeReader, ywTreeBuilder, ywTreeWriter, and
+        ywPostprocessor strategies.
         """
         Yw7File.__init__(self, filePath)
 
         self.ywTreeReader = AnsiTreeReader()
-        self.ywProjectMerger = YwProjectMerger()
         self.ywTreeBuilder = Yw5TreeBuilder()
         self.ywTreeWriter = AnsiTreeWriter()
         self.ywPostprocessor = AnsiPostprocessor()

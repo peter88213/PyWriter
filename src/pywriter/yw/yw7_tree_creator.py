@@ -5,11 +5,11 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
-from pywriter.yw.yw_tree_builder import YwTreeBuilder
+from pywriter.yw.yw7_tree_builder import Yw7TreeBuilder
 import xml.etree.ElementTree as ET
 
 
-class Yw7TreeCreator(YwTreeBuilder):
+class Yw7TreeCreator(Yw7TreeBuilder):
     """Create a new yWriter 7 project xml tree."""
 
     def build_element_tree(self, ywProject):
@@ -17,12 +17,12 @@ class Yw7TreeCreator(YwTreeBuilder):
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        root = ET.Element('YWRITER7')
+        root = ET.Element(self.TAG)
 
         # Write attributes at novel level to the xml element tree.
 
         prj = ET.SubElement(root, 'PROJECT')
-        ET.SubElement(prj, 'Ver').text = '7'
+        ET.SubElement(prj, 'Ver').text = self.VER
 
         if ywProject.title is not None:
             ET.SubElement(prj, 'Title').text = ywProject.title

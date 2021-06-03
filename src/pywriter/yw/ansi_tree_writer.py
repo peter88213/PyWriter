@@ -13,9 +13,9 @@ class AnsiTreeWriter(Utf8TreeWriter):
     """Write ANSI encoded yWriter project file."""
 
     def write_element_tree(self, ywProject):
-        """Override the superclass method.
-        Write back the xml element tree to a yWriter xml file located at filePath.
+        """Write back the xml element tree to a yWriter xml file located at filePath.
         Return a message beginning with SUCCESS or ERROR.
+        Override the superclass method.
         """
 
         try:

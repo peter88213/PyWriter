@@ -20,13 +20,10 @@ class Yw6File(Yw7File):
     EXTENSION = '.yw6'
 
     def __init__(self, filePath, **kwargs):
-        """Extend the superclass constructor.
-        Initialize instance variables.
+        """Initialize instance variables.
+        Extend the superclass constructor by changing
+        the ywTreeBuilder strategy. 
         """
         Yw7File.__init__(self, filePath)
 
-        self.ywTreeReader = Utf8TreeReader()
-        self.ywProjectMerger = YwProjectMerger()
         self.ywTreeBuilder = Yw6TreeBuilder()
-        self.ywTreeWriter = Utf8TreeWriter()
-        self.ywPostprocessor = Utf8Postprocessor()
