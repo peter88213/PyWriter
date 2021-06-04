@@ -7,10 +7,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw6_tree_builder import Yw6TreeBuilder
-from pywriter.yw.utf8_tree_reader import Utf8TreeReader
-from pywriter.yw.yw_project_merger import YwProjectMerger
-from pywriter.yw.utf8_tree_writer import Utf8TreeWriter
-from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
 
 
 class Yw6File(Yw7File):

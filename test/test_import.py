@@ -15,7 +15,7 @@ import os
 import unittest
 import zipfile
 
-from pywriter.converter.universal_converter import UniversalConverter
+from pywriter.converter.yw7_converter import Yw7Converter
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw7_tree_creator import Yw7TreeCreator
@@ -80,7 +80,7 @@ class NrmOpr(unittest.TestCase):
     def test_html_to_yw7_ui(self):
         """Use YwCnvUi class. """
         copy_file(REFERENCE_HTML, TEST_HTML)
-        converter = UniversalConverter()
+        converter = Yw7Converter()
         converter.run(TEST_HTML)
 
         self.assertEqual(converter.ui.infoHowText,

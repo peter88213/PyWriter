@@ -193,6 +193,12 @@ than inheritance.
 
 - Refactor the library in order to decrease the number of "abstract" base classes.
 
+#### v3.4
+
+Make yw7 the default yWriter format
+- Make yw7-specific classes the base classes in the yw package.
+- Add yw7-only converter and exporter classes.
+
 ### Future:
 
 #### Edit the novel structure independently from yWriter

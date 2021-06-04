@@ -1,4 +1,4 @@
-"""Provide a converter class for universal import and export.
+"""Provide a converter class for yWriter 7 universal import and export.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -8,8 +8,6 @@ from pywriter.converter.yw_cnv_ui import YwCnvUi
 from pywriter.converter.new_project_factory import NewProjectFactory
 
 from pywriter.yw.yw7_file import Yw7File
-from pywriter.yw.yw6_file import Yw6File
-from pywriter.yw.yw5_file import Yw5File
 
 from pywriter.odt.odt_proof import OdtProof
 from pywriter.odt.odt_manuscript import OdtManuscript
@@ -44,10 +42,10 @@ from pywriter.csv.csv_loclist import CsvLocList
 from pywriter.csv.csv_itemlist import CsvItemList
 
 
-class UniversalConverter(YwCnvUi):
+class Yw7Converter(YwCnvUi):
     """A converter for universal import and export.
 
-    Support yWriter 5/6/7 projects and most of the Novel subclasses 
+    Support yWriter 7 projects and most of the Novel subclasses 
     that can be read or written by OpenOffice/LibreOffice.
 
     Override the superclass constants EXPORT_SOURCE_CLASSES,
@@ -57,10 +55,7 @@ class UniversalConverter(YwCnvUi):
         CREATE_SOURCE_CLASSES -- list of classes that - additional to HtmlImport
                         and HtmlOutline - can be exported to a new yWriter project.
     """
-    EXPORT_SOURCE_CLASSES = [Yw7File,
-                             Yw6File,
-                             Yw5File,
-                             ]
+    EXPORT_SOURCE_CLASSES = [Yw7File]
     EXPORT_TARGET_CLASSES = [OdtExport,
                              OdtProof,
                              OdtManuscript,
@@ -91,10 +86,7 @@ class UniversalConverter(YwCnvUi):
                              CsvSceneList,
                              CsvPlotList,
                              ]
-    IMPORT_TARGET_CLASSES = [Yw7File,
-                             Yw6File,
-                             Yw5File,
-                             ]
+    IMPORT_TARGET_CLASSES = [Yw7File]
     CREATE_SOURCE_CLASSES = []
 
     def __init__(self):
