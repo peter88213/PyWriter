@@ -46,7 +46,7 @@ class CsvPlotList(CsvFile):
                    'vague', 'satisfied', 'happy', '', '', '', '']
 
     fileHeader = '''ID|''' +\
-        '''Plot section|Plot event|Plot event title|Details|''' +\
+        '''Plot section|Plot event|Scene title|Details|''' +\
         '''Scene|Words total|$FieldTitle1|$FieldTitle2|$FieldTitle3|$FieldTitle4
 '''
 
