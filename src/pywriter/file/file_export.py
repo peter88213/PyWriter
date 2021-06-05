@@ -375,9 +375,8 @@ class FileExport(Novel):
                 else:
                     continue
 
-            elif self.scenes[scId].isNotesScene or self.chapters[chId].oldType == 1:
-                # Scene is "Notes" (new file format) or "Info" (old file
-                # format) scene.
+            elif self.scenes[scId].isNotesScene:
+                # Scene is "Notes" type.
 
                 if self.notesSceneTemplate != '':
                     template = Template(self.notesSceneTemplate)
@@ -389,6 +388,15 @@ class FileExport(Novel):
 
                 if self.unusedSceneTemplate != '':
                     template = Template(self.unusedSceneTemplate)
+
+                else:
+                    continue
+
+            elif self.chapters[chId].oldType == 1:
+                # Scene is "Info" type (old file format).
+
+                if self.notesSceneTemplate != '':
+                    template = Template(self.notesSceneTemplate)
 
                 else:
                     continue
