@@ -457,9 +457,8 @@ class FileExport(Novel):
                 else:
                     continue
 
-            elif self.chapters[chId].chType == 1 or self.chapters[chId].oldType == 1:
-                # Chapter is "Notes" (new file format) or "Info" (old file
-                # format) chapter.
+            elif self.chapters[chId].chType == 1:
+                # Chapter is "Notes" type.
 
                 if self.notesChapterTemplate != '':
                     template = Template(self.notesChapterTemplate)
@@ -471,6 +470,15 @@ class FileExport(Novel):
 
                 if self.unusedChapterTemplate != '':
                     template = Template(self.unusedChapterTemplate)
+
+                else:
+                    continue
+
+            elif self.chapters[chId].oldType == 1:
+                # Chapter is "Info" type (old file format).
+
+                if self.notesChapterTemplate != '':
+                    template = Template(self.notesChapterTemplate)
 
                 else:
                     continue
