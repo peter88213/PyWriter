@@ -512,13 +512,18 @@ class FileExport(Novel):
             if self.chapters[chId].chType == 2 and self.todoChapterEndTemplate != '':
                 lines.append(self.todoChapterEndTemplate)
 
-            elif self.chapters[chId].chType == 1 or self.chapters[chId].oldType == 1:
+            elif self.chapters[chId].chType == 1:
 
                 if self.notesChapterEndTemplate != '':
                     lines.append(self.notesChapterEndTemplate)
 
             elif self.chapters[chId].isUnused and self.unusedChapterEndTemplate != '':
                 lines.append(self.unusedChapterEndTemplate)
+
+            elif self.chapters[chId].oldType == 1:
+
+                if self.notesChapterEndTemplate != '':
+                    lines.append(self.notesChapterEndTemplate)
 
             elif doNotExport and self.notExportedChapterEndTemplate != '':
                 lines.append(self.notExportedChapterEndTemplate)
