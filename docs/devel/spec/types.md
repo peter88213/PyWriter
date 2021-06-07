@@ -66,7 +66,7 @@ _Example_
 
 ## Export chapters and scenes
 
-Write yWriter 6/7 chapters and scenes into a new OpenDocument
+Write yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt).
 
 -   The document is placed in the same folder as the yWriter project.
@@ -102,7 +102,7 @@ text document (odt).
 
 ## Export chapters and scenes for proof reading
 
-Write yWriter 6/7 chapters and scenes into a new OpenDocument
+Write yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt) with chapter and scene markers. File name suffix is
 `_proof`.
 
@@ -126,7 +126,7 @@ text document (odt) with chapter and scene markers. File name suffix is
 
 ## Export manuscript with chapter and scene sections
 
-Write yWriter 6/7 chapters and scenes into a new OpenDocument
+Write yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt) with invisible chapter and scene sections (to be
 seen in the Navigator). File name suffix is `_manuscript`.
 
