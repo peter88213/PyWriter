@@ -31,16 +31,8 @@ TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
 PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
-TEST_HTML = EXEC_PATH + 'yw7 Sample Project' + \
-    exportClass.SUFFIX + '.html'
-REFERENCE_HTML = DATA_PATH + 'normal.html'
-
 
 def remove_all_tempfiles():
-    try:
-        os.remove(TEST_HTML)
-    except:
-        pass
     try:
         os.remove(TEST_ODT)
     except:
@@ -105,18 +97,6 @@ class NrmOpr(unittest.TestCase):
 
         self.assertEqual(read_file(EXEC_PATH + ODT_CONTENT),
                          read_file(DATA_PATH + ODT_CONTENT))
-
-    def test_html_to_yw7_ui(self):
-        """Use YwCnvUi class. """
-        copy_file(REFERENCE_HTML, TEST_HTML)
-        converter = Yw7Converter()
-        converter.run(TEST_HTML)
-
-        self.assertEqual(converter.ui.infoHowText,
-                         'ERROR: "' + os.path.normpath(TEST_YW7) + '" already exists.')
-
-        self.assertEqual(read_file(TEST_YW7),
-                         read_file(REFERENCE_YW7))
 
     def tearDown(self):
         remove_all_tempfiles()

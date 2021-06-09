@@ -24,7 +24,24 @@ class HtmlSceneDesc(HtmlFile):
         if self._scId is not None:
 
             if tag == 'div':
-                self.scenes[self._scId].desc = ''.join(self._lines)
+                text = ''.join(self._lines)
+
+                if text.startswith(self.COMMENT_START):
+
+                    try:
+                        scTitle, scContent = text.split(
+                            sep=self.COMMENT_END, maxsplit=1)
+                        parts = scTitle.split('~')
+
+                        scTitle = parts[1].lstrip().rstrip()
+
+                        self.scenes[self._scId].title = scTitle
+                        text = scContent
+
+                    except:
+                        pass
+
+                self.scenes[self._scId].desc = text
                 self._lines = []
                 self._scId = None
 

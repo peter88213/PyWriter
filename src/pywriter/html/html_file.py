@@ -20,6 +20,8 @@ class HtmlFile(Novel, HTMLParser):
     """Generic HTML file representation."""
 
     EXTENSION = '.html'
+    COMMENT_START = '/*'
+    COMMENT_END = '*/'
 
     def __init__(self, filePath, **kwargs):
         Novel.__init__(self, filePath)
@@ -73,10 +75,6 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('[/b][b]', '')
         text = text.replace('[/i][i]', '')
         text = text.replace('[/b][b]', '')
-
-        # Remove scene title annotations.
-
-        text = re.sub('\<\!-- - .*? - -->', '', text)
 
         # Convert author's comments
 

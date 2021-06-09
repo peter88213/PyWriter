@@ -24,13 +24,13 @@ class OdtExport(OdtFile):
 
     sceneTemplate = '''<text:p text:style-name="Text_20_body"><office:annotation>
 <dc:creator>scene title</dc:creator>
-<text:p>- $Title</text:p>
+<text:p>~ ${Title} ~</text:p>
 </office:annotation>$SceneContent</text:p>
 '''
 
     appendedSceneTemplate = '''<text:p text:style-name="First_20_line_20_indent"><office:annotation>
 <dc:creator>scene title</dc:creator>
-<text:p>- $Title</text:p>
+<text:p>~ ${Title} ~</text:p>
 </office:annotation>$SceneContent</text:p>
 '''
 
