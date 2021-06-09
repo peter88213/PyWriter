@@ -106,10 +106,10 @@ class HtmlFile(Novel, HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         """Identify scenes and chapters.
-        Overwrites HTMLparser.handle_starttag().
+        Override HTMLparser.handle_starttag().
         This method is applicable to HTML files that are divided into 
         chapters and scenes. For differently structured HTML files 
-        overwrite this method in a subclass.
+        do override this method in a subclass.
         """
         if tag == 'div':
 

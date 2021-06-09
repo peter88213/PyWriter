@@ -180,6 +180,12 @@ The converter is now even more loosely coupled with its user interface.
 This should make it easier for application developers to customize user interaction, 
 and use any GUI framework.
 
+### File formats 
+
+- ODT
+- HTML
+- CSV
+- ODS
 
 #### v3.0
 
@@ -187,7 +193,8 @@ and use any GUI framework.
 loosely to the YwCnvUi class.
 - Reorganize the applications. They are now based on composition rather
 than inheritance.
-
+- Remove Markdown processing.
+- Remove HtmlExport class.
 
 #### v3.2
 
@@ -199,9 +206,8 @@ Make yw7 the default yWriter format
 - Make yw7-specific classes the base classes in the yw package.
 - Add yw7-only converter and exporter classes.
 
-### Future:
 
-#### Edit the novel structure independently from yWriter
+## Version 4.x: Edit the novel structure independently from yWriter
 
 - Write back the whole yWriter project structure.
     - Create a new xml tree when writing back a yWriter project.
@@ -209,6 +215,7 @@ Make yw7 the default yWriter format
     - Add, delete, move scenes.
     - Add, delete characters, locations, and items (already implemented as of v2.10).
 
+### Future:
 
 #### Full LibreOffice/OpenOffice integration
 
