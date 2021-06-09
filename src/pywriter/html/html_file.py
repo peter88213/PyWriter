@@ -22,6 +22,7 @@ class HtmlFile(Novel, HTMLParser):
     EXTENSION = '.html'
     COMMENT_START = '/*'
     COMMENT_END = '*/'
+    SC_TITLE_BRACKET = '~'
 
     def __init__(self, filePath, **kwargs):
         Novel.__init__(self, filePath)

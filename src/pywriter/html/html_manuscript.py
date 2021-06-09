@@ -36,11 +36,11 @@ class HtmlManuscript(HtmlFile):
                     try:
                         scTitle, scContent = text.split(
                             sep=self.COMMENT_END, maxsplit=1)
-                        parts = scTitle.split('~')
 
-                        scTitle = parts[1].lstrip().rstrip()
+                        if self.SC_TITLE_BRACKET in scTitle:
+                            self.scenes[self._scId].title = scTitle.split(
+                                self.SC_TITLE_BRACKET)[1].lstrip().rstrip()
 
-                        self.scenes[self._scId].title = scTitle
                         text = scContent
 
                     except:

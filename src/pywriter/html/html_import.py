@@ -5,7 +5,7 @@ A work in progress has no third level heading.
 
 -   Heading 1 -- New chapter title (beginning a new section).
 -   Heading 2 -- New chapter title.
--   * * * -- Scene divider (not needed for the first scenes in a chapter).
+-   * * * -- Scene divider (not needed for the first scene in a chapter).
 -   Comments right at the scene beginning are considered scene titles.
 -   All other text is considered scene content.
 
@@ -30,8 +30,6 @@ class HtmlImport(HtmlFile):
 
     _SCENE_DIVIDER = '* * *'
     _LOW_WORDCOUNT = 10
-    _COMMENT_START = '/*'
-    _COMMENT_END = '*/'
 
     def __init__(self, filePath, **kwargs):
         HtmlFile.__init__(self, filePath)
@@ -118,18 +116,24 @@ class HtmlImport(HtmlFile):
             self._scId = None
 
         else:
-            data = data.rstrip().lstrip()
+            data = data.lstrip().rstrip()
 
             # Convert prefixed comment into scene title.
 
-            if self._lines == [] and data.startswith(self._COMMENT_START):
+            if self._lines == [] and data.startswith(self.COMMENT_START):
 
                 try:
-                    scTitle, scText = data.split(
-                        sep=self._COMMENT_END, maxsplit=1)
-                    self.scenes[self._scId].title = scTitle.lstrip(
-                        self._COMMENT_START).lstrip('- ')
-                    data = scText
+                    scTitle, scContent = data.split(
+                        sep=self.COMMENT_END, maxsplit=1)
+
+                    if self.SC_TITLE_BRACKET in scTitle:
+                        scTitle = scTitle.split(self.SC_TITLE_BRACKET)[1]
+
+                    else:
+                        scTitle = scTitle.lstrip(self.COMMENT_START)
+
+                    self.scenes[self._scId].title = scTitle.lstrip().rstrip()
+                    data = scContent
 
                 except:
                     pass
