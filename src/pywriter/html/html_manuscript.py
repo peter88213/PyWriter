@@ -16,6 +16,8 @@ class HtmlManuscript(HtmlFile):
 
     DESCRIPTION = 'Editable manuscript'
     SUFFIX = '_manuscript'
+    COMMENT_START = '/*'
+    COMMENT_END = '*/'
 
     def preprocess(self, text):
         """Process the html text before parsing.
@@ -29,7 +31,23 @@ class HtmlManuscript(HtmlFile):
         if self._scId is not None:
 
             if tag == 'div':
-                self.scenes[self._scId].sceneContent = ''.join(self._lines)
+                text = ''.join(self._lines)
+
+                if text.startswith(self.COMMENT_START):
+
+                    # A new scene title is prefixed as a comment.
+
+                    try:
+                        scTitle, scContent = text.split(
+                            sep=self.COMMENT_END, maxsplit=1)
+                        self.scenes[self._scId].title = scTitle.lstrip(
+                            self.COMMENT_START).lstrip().rstrip()
+                        text = scContent.lstrip()
+
+                    except:
+                        pass
+
+                self.scenes[self._scId].sceneContent = text
                 self._lines = []
                 self._scId = None
 
