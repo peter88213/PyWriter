@@ -19,8 +19,9 @@ class HtmlSceneDesc(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
-        Overwrites HTMLparser.handle_endtag().
+        Override HTMLparser.handle_endtag().
         """
+
         if self._scId is not None:
 
             if tag == 'div':
@@ -55,7 +56,12 @@ class HtmlSceneDesc(HtmlFile):
 
     def handle_data(self, data):
         """Collect data within scene sections.
-        Overwrites HTMLparser.handle_data().
+        Override HTMLparser.handle_data().
         """
         if self._scId is not None:
             self._lines.append(data.rstrip().lstrip())
+
+        elif self._chId is not None:
+
+            if not self.chapters[self._chId].title:
+                self.chapters[self._chId].title = data.rstrip().lstrip()
