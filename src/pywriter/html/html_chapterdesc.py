@@ -34,7 +34,7 @@ class HtmlChapterDesc(HtmlFile):
             elif tag == 'h1' or tag == 'h2':
 
                 if not self.chapters[self._chId].title:
-                    self.chapters[self._chId].desc = ''.join(self._lines)
+                    self.chapters[self._chId].title = ''.join(self._lines)
                     self._lines = []
 
     def handle_data(self, data):
