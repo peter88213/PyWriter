@@ -40,7 +40,6 @@ PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
 
 def remove_all_tempfiles():
-    return
     try:
         os.remove(TEST_IMP)
     except:
