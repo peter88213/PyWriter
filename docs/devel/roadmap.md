@@ -208,7 +208,7 @@ Make yw7 the default yWriter format
 
 #### v3.6
 
-Import changed chapter and scene titles from manuscript and scene descriptions.
+Import changed chapter and scene titles from html input.
 
 
 ## Version 4.x: Edit the novel structure independently from yWriter

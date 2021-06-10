@@ -35,7 +35,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
 		<LaTeXHeaderFile><![CDATA[ ]]></LaTeXHeaderFile>
 		<MRUSpecificDate>1899-12-30</MRUSpecificDate>
 		<MRUSpecificTime>00:00:00</MRUSpecificTime>
-		<LastViewedScID>0</LastViewedScID>
+		<LastViewedScID>2</LastViewedScID>
 		<DeadlineDate1>2004-09-01</DeadlineDate1>
 		<DeadlineDate2>2004-12-14</DeadlineDate2>
 		<DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -210,7 +210,6 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
 		<Notes><![CDATA[This is a note. Notice how the N icon shows up when there's a note attached to a scene.]]></Notes>
 		<BelongsToChID>1</BelongsToChID>
 		<Day>1</Day>
-		<RTFFile><![CDATA[RTF_00001.rtf]]></RTFFile>
 		<Field1>5</Field1>
 		<Field2>3</Field2>
 		<Field3>3</Field3>
@@ -259,7 +258,6 @@ He examines the Seraph file. There's a shipment of robot parts ordered and paid 
 Carina explains that they can't risk their own ships, they wouldn't be covered by insurance and anyway, none of their pilots will fly into the danger zone. They tried to hire a freelancer but none of them wanted the job either - they were all warned off by a Spacers Guild bulletin. Jerling asks why they didn't try non-Guild pilots, Carina explains that they could only locate one and he turned it down because he was convinced it was a stolen goods racket. Jerling is annoyed that his staff hid the problem from him. Carina explains that they didn't want to worry him.  Jerling says they should have come to him before, this is important, if they lose preferred supplier status his business is at risk, and worse still the Hinchfigs will gain on him.
 Jerling asks Carina to call the idiot, the one who thought it was stolen goods. Before the assistant makes the call, she discovers that there's a message from the 'idiot' already - he wants the job. Carina tries to pursuade Jerling that others can deal with the issue but Jerling's fired up and won't let go, it's his pet project.]]></Desc>
 		<BelongsToChID>2</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00002.rtf]]></RTFFile>
 		<Field1>4</Field1>
 		<Field2>1</Field2>
 		<Field3>2</Field3>
@@ -287,7 +285,6 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
 		<Desc><![CDATA[Back with Hal, Jerling's call comes through and the businessman explains about his cargo, reassures Hal it's not stolen goods, then explains he has a pilot at the Lamira Spaceport (the same location as Hal) who needs a lift to Seraph IV. If Hal can take him, the pilot will return the favour by landing Hal's ship when they arrive at the destination.
 Hal says he doesn't need help, Jerling explains that the landing is at night, with no guidance. This makes Hal suspicious about the job again, but he decides that nothing could be worse than another session with Brutus. Jerling reassures him that the pilot can handle everything and reminds him that delivery is to his premises on Forg. Hal agrees to the job, starts to ask for an advance but Jerling disconnects.]]></Desc>
 		<BelongsToChID>2</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00003.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>2</Field3>
@@ -322,7 +319,6 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
 Hal closes the airlock in its face, runs to the flight deck and calls Jerling. He protests that an old robot like that can't possibly land his valuable ship. Jerling explains that the robot is an experienced pilot. After some discussion, Hal accepts the situation. He goes back to the airlock, lets Clunk in but sends him to the cargo hold.
 Hal prepares the ship for takeoff, but ground control won't let him leave. The Port Commander wants to see him in person. Hal leaves the ship, putting Clunk in charge.]]></Desc>
 		<BelongsToChID>3</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00004.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
@@ -356,7 +352,6 @@ Hal decides to walk and sets off across the field towards the distant buildings,
 While the robot is busy mending the pipes, Hal leaps into the vehicle and starts it up. The robot spots him and pursues. The vehicle accelerates, but the robot manages to grab hold and swing itself aboard. Hal wiggles the joystick and the wild movements throw the robot from side to side, battering it against the sides of the tray. One last violent twist of the controls hurls the robot from the back of the vehicle, and it cartwheels through the grass before coming to a halt in a sparking, smoking huddle.
 Hal drives off, oblivious to the flames starting to flicker around the fallen robot.]]></Desc>
 		<BelongsToChID>4</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00005.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>2</Field3>
@@ -384,7 +379,6 @@ Hal's ship was somewhat further down the alphabet, and was therefore sitting in 
 		<Desc><![CDATA[Aboard the Black Gull, Clunk is curious. He knows he's being sent to Incubots on Seraph IV, but nobody has told him why. He searches the Black Gull's outdated computer for information on the company. (There's an equivalent to the internet called Galnet, but Hal can't afford the fees so his ship has a snapshot about 5 or 6 years old.) Clunk discovers that Incubots makes parts for new robots and replacement parts for older models. He's relieved, because Jerling's staff were vague about the reason for his trip, and it's fairly common for Jerling's older, obsolete robots to be sent to out-of-the-way planets, never to return. Now it seems he's to be upgraded, which is good news because he's got long list of worn parts which need replacements.
 Sitting at the console, Clunk uses the Black Gull's simulation mode to practice a couple of landings, then veers off and dreams he's flying the ship to a mythical robot planet.]]></Desc>
 		<BelongsToChID>4</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00006.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
@@ -418,7 +412,6 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 The Portmaster invites him into his office, and Hal discovers there are overdue landing fees, stamp duty, fuel, snacks, etc etc to pay for. The Port of Lamira is going to auction Hal's ship to recover debts. Hal protests that he has a job which will cover the fees, but the Portmaster doesn't believe him.
 Hal decides to call his brand new best buddy Clunk, thinking the robot can ask Jerling for an advance on his fee.]]></Desc>
 		<BelongsToChID>4</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00007.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>2</Field3>
@@ -446,7 +439,6 @@ Hal watched the floor numbers changing as he dropped further and further undergr
 		<Desc><![CDATA[Clunk tells Hal that Jerling won't advance any money, but Hal tells him to ask anyway. Clunk calls Jerling, who won't advance any money. Clunk mentions that he's found out what Incubots is all about, Jerling hangs up quickly.
 Clunk notices smoke in the air. He runs to the airlock and discovers the landing field is on fire.]]></Desc>
 		<BelongsToChID>4</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00008.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>4</Field3>
@@ -484,7 +476,6 @@ Clunk sat up straight. "Please open the connection."
 		<Desc><![CDATA[Hal is sitting with the Portmaster, waiting for a call from Clunk to say he's got the advance from Jerling. Instead, Clunk calls to say that raging flames are threatening the ship. Hal tells him to sit tight, and leaps up to go to the rescue. The Portmaster stops him - you're not fooling me, sonny, I've heard every excuse in the book. Hal protests, but the Portmaster is firm. He says the maintenance robot working near the Black Gull would have called in if anything was wrong.
 Then the control tower calls to say the landing field is on fire around the Black Gull.]]></Desc>
 		<BelongsToChID>5</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00009.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>2</Field3>
@@ -523,7 +514,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 He finds the source of the fire - the maintenance robot which Hal disabled. Clunk drags it out of the area, then returns and uses the fire extinguisher on the flames.
 Clunk's battery starts to run low. He continues. As the fire extinguisher begins to run low, the fuel pipes explode near the back of the ship. A piece of debris hits Clunk in the head and he falls to the ground, stunned.]]></Desc>
 		<BelongsToChID>5</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00010.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
@@ -552,14 +542,13 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 		<Title><![CDATA[Hal gets to the ship and lifts off.]]></Title>
 		<Desc><![CDATA[Arriving at the Black Gull, Hal sees the prone robot in the burnt-out grass. (It's Clunk, but he assumes it's the one he disabled)  Goes aboard, seals the ship and gets the engines going. Discovers the winch has been lowered, presses the button to raise it. Prepares ship for takeoff and takes his seat.]]></Desc>
 		<BelongsToChID>6</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00011.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -567,7 +556,7 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -578,14 +567,13 @@ Talking to the Navcom, Hal suddenly discovers Clunk isn't aboard. There's a clun
 Hal gets the ship to hover 4,000 metres above the landing field, then goes outside on the landing platform to help. Throws Clunk a line and starts to pull the robot in, but a departing ship roars past, rocking the Black Gull and hurling Hal over the side of the platform. He ends up dangling from the safety cord, which is tied to the robot's leg.
 Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<BelongsToChID>7</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00012.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -593,21 +581,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>17</ID>
 		<Title><![CDATA[Climb up rope to safety. Back in ship for hyperspace.]]></Title>
 		<BelongsToChID>8</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00013.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -615,21 +602,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>19</ID>
 		<Title><![CDATA[In his office. Gordon OKs the deal]]></Title>
 		<BelongsToChID>9</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00014.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -637,21 +623,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>22</ID>
 		<Title><![CDATA[Exits the ship to meet Bevan]]></Title>
 		<BelongsToChID>10</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00015.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -659,21 +644,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>25</ID>
 		<Title><![CDATA[Getting food out. Frozen puddings.]]></Title>
 		<BelongsToChID>11</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00016.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -681,21 +665,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>27</ID>
 		<Title><![CDATA[Says goodbye to Clunk]]></Title>
 		<BelongsToChID>11</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00017.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -703,21 +686,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>29</ID>
 		<Title><![CDATA[Hal depressed. No escape from here.]]></Title>
 		<BelongsToChID>12</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00018.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -725,21 +707,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>31</ID>
 		<Title><![CDATA[Lighten the ship. Preparing for liftoff.]]></Title>
 		<BelongsToChID>12</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00019.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -747,21 +728,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>34</ID>
 		<Title><![CDATA[Karl and Terry awaiting Hal. They take a call from their spy, intercept is at the orbiter.]]></Title>
 		<BelongsToChID>13</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00020.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -769,21 +749,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>38</ID>
 		<Title><![CDATA[Karl waiting impatiently]]></Title>
 		<BelongsToChID>15</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00021.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -791,21 +770,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>40</ID>
 		<Title><![CDATA[Karl and Terry confused about 'Chunk']]></Title>
 		<BelongsToChID>15</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00022.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -813,21 +791,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>43</ID>
 		<Title><![CDATA[Clunk slips out the back.]]></Title>
 		<BelongsToChID>16</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00023.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -835,21 +812,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>45</ID>
 		<Title><![CDATA[Karl and Terry waiting.]]></Title>
 		<BelongsToChID>16</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00024.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -857,21 +833,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>47</ID>
 		<Title><![CDATA[Clunk in orbit]]></Title>
 		<BelongsToChID>17</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00025.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -879,21 +854,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>49</ID>
 		<Title><![CDATA[Clunk uses cylinder]]></Title>
 		<BelongsToChID>17</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00026.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -901,21 +875,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>51</ID>
 		<Title><![CDATA[Terry places the 'bomb']]></Title>
 		<BelongsToChID>18</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00027.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>6</CharID>
 		</Characters>
@@ -923,21 +896,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>53</ID>
 		<Title><![CDATA[Hal buys food]]></Title>
 		<BelongsToChID>18</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00028.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -945,21 +917,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>55</ID>
 		<Title><![CDATA[Karl leaves a note, takes Clunk.]]></Title>
 		<BelongsToChID>19</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00029.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -967,21 +938,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>57</ID>
 		<Title><![CDATA[Hal about to hyperspace.]]></Title>
 		<BelongsToChID>19</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00030.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -989,21 +959,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>60</ID>
 		<Title><![CDATA[Hal gets real Jerling's call. Has to get cargo and robot back.]]></Title>
 		<BelongsToChID>20</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00031.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1011,21 +980,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>62</ID>
 		<Title><![CDATA[Hal sets course for Forg.]]></Title>
 		<BelongsToChID>20</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00032.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1033,21 +1001,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>64</ID>
 		<Title><![CDATA[Land on Forg, in rubbish.]]></Title>
 		<BelongsToChID>20</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00033.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1055,21 +1022,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>66</ID>
 		<Title><![CDATA[Hal rents a car in Jerling's name and heads towards Forgberg and the Casino.]]></Title>
 		<BelongsToChID>21</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00034.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1077,21 +1043,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>68</ID>
 		<Title><![CDATA[Hal after almost running Clunk down. Picks him up.]]></Title>
 		<BelongsToChID>21</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00035.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1099,21 +1064,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>71</ID>
 		<Title><![CDATA[Find car, go to find clothes.]]></Title>
 		<BelongsToChID>22</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00036.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1121,21 +1085,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>74</ID>
 		<Title><![CDATA[Hal sells Clunk]]></Title>
 		<BelongsToChID>23</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00037.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1143,21 +1106,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>77</ID>
 		<Title><![CDATA[Hal annoyed at Clunk for buying only the best.]]></Title>
 		<BelongsToChID>24</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00038.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1165,21 +1127,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>79</ID>
 		<Title><![CDATA[Clunk gambling. Fight with human couple.]]></Title>
 		<BelongsToChID>24</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00039.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1187,21 +1148,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>81</ID>
 		<Title><![CDATA[Sitting on the steps, battered and bruised. Limo arrives for Karl.]]></Title>
 		<BelongsToChID>24</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00040.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1209,21 +1169,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>84</ID>
 		<Title><![CDATA[Clunk travelling on the back of Karl's limo]]></Title>
 		<BelongsToChID>25</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00041.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1231,21 +1190,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>86</ID>
 		<Title><![CDATA[Clunk sees Hal catching up again. Limo stops.]]></Title>
 		<BelongsToChID>25</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00042.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1253,21 +1211,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>89</ID>
 		<Title><![CDATA[Clunk uploads the Navcom into the ship.]]></Title>
 		<BelongsToChID>26</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00043.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1275,21 +1232,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>92</ID>
 		<Title><![CDATA[The shop robots want Clunk to escape with them. Mention Hal's capture.]]></Title>
 		<BelongsToChID>27</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00044.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1297,21 +1253,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>94</ID>
 		<Title><![CDATA[Clunk steals armoured car, drives it into the house.]]></Title>
 		<BelongsToChID>27</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00045.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1319,21 +1274,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>96</ID>
 		<Title><![CDATA[Karl and Terry take the limo]]></Title>
 		<BelongsToChID>28</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00046.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -1341,21 +1295,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>98</ID>
 		<Title><![CDATA[Karl and Terry overtake and head for Spaceport. Looking for Volante.]]></Title>
 		<BelongsToChID>28</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00047.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -1363,21 +1316,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>101</ID>
 		<Title><![CDATA[Hal and Clunk fleeing in Gull]]></Title>
 		<BelongsToChID>29</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00048.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1385,21 +1337,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>103</ID>
 		<Title><![CDATA[Clunk wants to throw stuff at the flyer]]></Title>
 		<BelongsToChID>29</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00049.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1407,21 +1358,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>105</ID>
 		<Title><![CDATA[Hal fetches the puddings.]]></Title>
 		<BelongsToChID>29</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00050.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1429,21 +1379,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>108</ID>
 		<Title><![CDATA[Hal yells at Jerling, then cargo arrives on truck.]]></Title>
 		<BelongsToChID>30</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00051.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1451,21 +1400,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>110</ID>
 		<Title><![CDATA[Clunk outside, depressed.]]></Title>
 		<BelongsToChID>30</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00052.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>3</CharID>
 		</Characters>
@@ -1473,21 +1421,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>112</ID>
 		<Title><![CDATA[Karl bursts in, armed.]]></Title>
 		<BelongsToChID>30</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00053.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1495,21 +1442,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>114</ID>
 		<Title><![CDATA[Terry ties Hal in hold, leaves back doors open.]]></Title>
 		<BelongsToChID>31</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00054.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1517,21 +1463,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>116</ID>
 		<Title><![CDATA[Hal dodges Brutus, escapes the hold.]]></Title>
 		<BelongsToChID>31</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00055.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>1</CharID>
 		</Characters>
@@ -1539,21 +1484,20 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
 		<ID>119</ID>
 		<Title><![CDATA[Black Gull hyperspaces to oblivion]]></Title>
 		<BelongsToChID>32</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00056.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
 		<Field4>1</Field4>
 		<Status>4</Status>
 		<WordCount>0</WordCount>
-		<LetterCount>1</LetterCount>
+		<LetterCount>0</LetterCount>
 		<Characters>
 			<CharID>5</CharID>
 		</Characters>
@@ -1561,7 +1505,7 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
 		<Items>
 		</Items>
-		<SceneContent />
+		<SceneContent><![CDATA[]]></SceneContent>
 	</SCENE>
 
 	<SCENE>
@@ -1569,7 +1513,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		<Title><![CDATA[New Scene]]></Title>
 		<Unused>-1</Unused>
 		<BelongsToChID>6</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00057.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
@@ -1590,8 +1533,12 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 	<SCENE>
 		<ID>120</ID>
 		<Title><![CDATA[Information about the sample project]]></Title>
+		<Unused>-1</Unused>
+		<Fields>
+			<Field_SceneType>1</Field_SceneType>
+		</Fields>
+
 		<BelongsToChID>33</BelongsToChID>
-		<RTFFile><![CDATA[RTF_00058.rtf]]></RTFFile>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
 		<Field3>1</Field3>
@@ -1618,6 +1565,11 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<SCENE>
 		<ID>121</ID>
 		<Title><![CDATA[New Scene]]></Title>
+		<Unused>-1</Unused>
+		<Fields>
+			<Field_SceneType>0</Field_SceneType>
+		</Fields>
+
 		<BelongsToChID>36</BelongsToChID>
 		<Field1>1</Field1>
 		<Field2>1</Field2>
@@ -1641,8 +1593,10 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>33</ID>
 		<Title><![CDATA[Info]]></Title>
+		<Unused>-1</Unused>
 		<SortOrder>1</SortOrder>
 		<Type>1</Type>
+		<ChapterType>1</ChapterType>
 		<Scenes>
 			<ScID>120</ScID>
 		</Scenes>
@@ -1651,22 +1605,32 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>34</ID>
 		<Title><![CDATA[Part 1]]></Title>
+		<Desc><![CDATA[This is the first part. Hal meets certain characters.]]></Desc>
 		<SortOrder>2</SortOrder>
-		<Desc><![CDATA[This is the first part of the novel (just for testing).]]></Desc>
 		<Fields>
 			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
 			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+			<Field_UseLatexChapterTitle>0</Field_UseLatexChapterTitle>
 		</Fields>
 
 		<SectionStart>-1</SectionStart>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 	</CHAPTER>
 
 	<CHAPTER>
 		<ID>1</ID>
 		<Title><![CDATA[Chapter 1]]></Title>
+		<Desc><![CDATA[In the first chapter, trouble comes up.]]></Desc>
 		<SortOrder>3</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+			<Field_UseLatexChapterTitle>0</Field_UseLatexChapterTitle>
+		</Fields>
+
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>1</ScID>
 		</Scenes>
@@ -1675,8 +1639,16 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 	<CHAPTER>
 		<ID>2</ID>
 		<Title><![CDATA[Chapter 2]]></Title>
+		<Desc><![CDATA[Second chapter, introducing Jerling.]]></Desc>
 		<SortOrder>4</SortOrder>
+		<Fields>
+			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+			<Field_UseLatexChapterTitle>0</Field_UseLatexChapterTitle>
+		</Fields>
+
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>2</ScID>
 			<ScID>3</ScID>
@@ -1688,6 +1660,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 3]]></Title>
 		<SortOrder>5</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>4</ScID>
 		</Scenes>
@@ -1698,6 +1671,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 4]]></Title>
 		<SortOrder>6</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>5</ScID>
 			<ScID>6</ScID>
@@ -1711,6 +1685,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 5]]></Title>
 		<SortOrder>7</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>9</ScID>
 			<ScID>10</ScID>
@@ -1727,6 +1702,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		</Fields>
 
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>58</ScID>
 			<ScID>12</ScID>
@@ -1738,6 +1714,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 7]]></Title>
 		<SortOrder>9</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>15</ScID>
 		</Scenes>
@@ -1748,6 +1725,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 8]]></Title>
 		<SortOrder>10</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>17</ScID>
 		</Scenes>
@@ -1758,6 +1736,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 9]]></Title>
 		<SortOrder>11</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>19</ScID>
 		</Scenes>
@@ -1768,6 +1747,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 10]]></Title>
 		<SortOrder>12</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>22</ScID>
 		</Scenes>
@@ -1778,6 +1758,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 11]]></Title>
 		<SortOrder>13</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>25</ScID>
 			<ScID>27</ScID>
@@ -1789,6 +1770,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 12]]></Title>
 		<SortOrder>14</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>29</ScID>
 			<ScID>31</ScID>
@@ -1800,6 +1782,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 13]]></Title>
 		<SortOrder>15</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>34</ScID>
 		</Scenes>
@@ -1810,6 +1793,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 14]]></Title>
 		<SortOrder>16</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 	</CHAPTER>
 
 	<CHAPTER>
@@ -1817,6 +1801,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 15]]></Title>
 		<SortOrder>17</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>38</ScID>
 			<ScID>40</ScID>
@@ -1828,6 +1813,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 16]]></Title>
 		<SortOrder>18</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>43</ScID>
 			<ScID>45</ScID>
@@ -1839,6 +1825,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 17]]></Title>
 		<SortOrder>19</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>47</ScID>
 			<ScID>49</ScID>
@@ -1856,6 +1843,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 
 		<SectionStart>-1</SectionStart>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 	</CHAPTER>
 
 	<CHAPTER>
@@ -1863,6 +1851,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 18]]></Title>
 		<SortOrder>21</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>51</ScID>
 			<ScID>53</ScID>
@@ -1874,6 +1863,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 19]]></Title>
 		<SortOrder>22</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>55</ScID>
 			<ScID>57</ScID>
@@ -1885,6 +1875,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 20]]></Title>
 		<SortOrder>23</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>60</ScID>
 			<ScID>62</ScID>
@@ -1897,6 +1888,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 21]]></Title>
 		<SortOrder>24</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>66</ScID>
 			<ScID>68</ScID>
@@ -1908,6 +1900,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 22]]></Title>
 		<SortOrder>25</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>71</ScID>
 		</Scenes>
@@ -1918,6 +1911,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 23]]></Title>
 		<SortOrder>26</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>74</ScID>
 		</Scenes>
@@ -1928,6 +1922,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 24]]></Title>
 		<SortOrder>27</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>77</ScID>
 			<ScID>79</ScID>
@@ -1940,6 +1935,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 25]]></Title>
 		<SortOrder>28</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>84</ScID>
 			<ScID>86</ScID>
@@ -1951,6 +1947,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 26]]></Title>
 		<SortOrder>29</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>89</ScID>
 		</Scenes>
@@ -1961,6 +1958,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 27]]></Title>
 		<SortOrder>30</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>92</ScID>
 			<ScID>94</ScID>
@@ -1972,6 +1970,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 28]]></Title>
 		<SortOrder>31</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>96</ScID>
 			<ScID>98</ScID>
@@ -1983,6 +1982,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 29]]></Title>
 		<SortOrder>32</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>101</ScID>
 			<ScID>103</ScID>
@@ -1995,6 +1995,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 30]]></Title>
 		<SortOrder>33</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>108</ScID>
 			<ScID>110</ScID>
@@ -2007,6 +2008,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 31]]></Title>
 		<SortOrder>34</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>114</ScID>
 			<ScID>116</ScID>
@@ -2018,6 +2020,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 32]]></Title>
 		<SortOrder>35</SortOrder>
 		<Type>0</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>119</ScID>
 		</Scenes>
@@ -2028,12 +2031,14 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		<Title><![CDATA[Chapter 33]]></Title>
 		<Desc><![CDATA[This is not a joke.]]></Desc>
 		<Unused>-1</Unused>
+		<SortOrder>36</SortOrder>
 		<Fields>
 			<Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
 			<Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
 		</Fields>
 
-		<Type>0</Type>
+		<Type>1</Type>
+		<ChapterType>0</ChapterType>
 		<Scenes>
 			<ScID>121</ScID>
 		</Scenes>
@@ -2073,6 +2078,12 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 
 	<WC>
 		<Date>2020-01-30</Date>
+		<Count>1266</Count>
+		<TotalCount>1341</TotalCount>
+	</WC>
+
+	<WC>
+		<Date>2021-06-10</Date>
 		<Count>1266</Count>
 		<TotalCount>1341</TotalCount>
 	</WC>

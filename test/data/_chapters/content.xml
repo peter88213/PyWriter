@@ -19,133 +19,133 @@
 <text:p text:style-name="Title">Hal Spacejock book one - Sample yWriter Project</text:p>
 <text:p text:style-name="Subtitle">Simon Haynes</text:p>
 <text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../yw7%20Sample%20Project_parts.odt#ChID:34%7Cregion">Part 1</text:a></text:h>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:1%7Cregion">Chapter 1</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:1">
-<text:p text:style-name="Text_20_body"></text:p>
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:1%7Cregion">Chapter 1</text:a></text:h>
+<text:p text:style-name="Text_20_body">In the first chapter, trouble comes up.</text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:2%7Cregion">Chapter 2</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:2">
-<text:p text:style-name="Text_20_body"></text:p>
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:2%7Cregion">Chapter 2</text:a></text:h>
+<text:p text:style-name="Text_20_body">Second chapter, introducing Jerling.</text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:3%7Cregion">Chapter 3</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:3">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:3%7Cregion">Chapter 3</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:4%7Cregion">Chapter 4</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:4">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:4%7Cregion">Chapter 4</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:5%7Cregion">Chapter 5</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:5">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:5%7Cregion">Chapter 5</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:6%7Cregion">Chapter 6</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:6">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:6%7Cregion">Chapter 6</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:7%7Cregion">Chapter 7</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:7">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:7%7Cregion">Chapter 7</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:8%7Cregion">Chapter 8</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:8">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:8%7Cregion">Chapter 8</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:9%7Cregion">Chapter 9</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:9">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:9%7Cregion">Chapter 9</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:10%7Cregion">Chapter 10</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:10">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:10%7Cregion">Chapter 10</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:11%7Cregion">Chapter 11</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:11">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:11%7Cregion">Chapter 11</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:12%7Cregion">Chapter 12</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:12">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:12%7Cregion">Chapter 12</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:13%7Cregion">Chapter 13</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:13">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:13%7Cregion">Chapter 13</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:14%7Cregion">Chapter 14</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:14">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:14%7Cregion">Chapter 14</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:15%7Cregion">Chapter 15</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:15">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:15%7Cregion">Chapter 15</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:16%7Cregion">Chapter 16</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:16">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:16%7Cregion">Chapter 16</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:17%7Cregion">Chapter 17</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:17">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:17%7Cregion">Chapter 17</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
 <text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../yw7%20Sample%20Project_parts.odt#ChID:35%7Cregion">Part 2</text:a></text:h>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:18%7Cregion">Chapter 18</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:18">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:18%7Cregion">Chapter 18</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:19%7Cregion">Chapter 19</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:19">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:19%7Cregion">Chapter 19</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:20%7Cregion">Chapter 20</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:20">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:20%7Cregion">Chapter 20</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:21%7Cregion">Chapter 21</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:21">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:21%7Cregion">Chapter 21</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:22%7Cregion">Chapter 22</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:22">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:22%7Cregion">Chapter 22</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:23%7Cregion">Chapter 23</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:23">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:23%7Cregion">Chapter 23</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:24%7Cregion">Chapter 24</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:24">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:24%7Cregion">Chapter 24</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:25%7Cregion">Chapter 25</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:25">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:25%7Cregion">Chapter 25</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:26%7Cregion">Chapter 26</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:26">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:26%7Cregion">Chapter 26</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:27%7Cregion">Chapter 27</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:27">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:27%7Cregion">Chapter 27</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:28%7Cregion">Chapter 28</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:28">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:28%7Cregion">Chapter 28</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:29%7Cregion">Chapter 29</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:29">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:29%7Cregion">Chapter 29</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:30%7Cregion">Chapter 30</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:30">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:30%7Cregion">Chapter 30</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:31%7Cregion">Chapter 31</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:31">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:31%7Cregion">Chapter 31</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:32%7Cregion">Chapter 32</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ChID:32">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ChID:32%7Cregion">Chapter 32</text:a></text:h>
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
   </office:text>
