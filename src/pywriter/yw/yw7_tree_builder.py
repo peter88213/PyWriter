@@ -207,7 +207,15 @@ class Yw7TreeBuilder():
             chId = chp.find('ID').text
 
             if chId in ywProject.chapters:
-                chp.find('Title').text = ywProject.chapters[chId].title
+
+                if ywProject.chapters[chId] is not None:
+
+                    if chp.find('Title') is not None:
+                        chp.find('Title').text = ywProject.chapters[chId].title
+
+                    else:
+                        ET.SubElement(
+                            chp, 'Title').text = ywProject.chapters[chId].title
 
                 if ywProject.chapters[chId].desc is not None:
 
@@ -257,7 +265,13 @@ class Yw7TreeBuilder():
             if scId in ywProject.scenes:
 
                 if ywProject.scenes[scId].title is not None:
-                    scn.find('Title').text = ywProject.scenes[scId].title
+
+                    if scn.find('Title') is not None:
+                        scn.find('Title').text = ywProject.scenes[scId].title
+
+                    else:
+                        ET.SubElement(
+                            scn, 'Title').text = ywProject.scenes[scId].title
 
                 if ywProject.scenes[scId].desc is not None:
 
