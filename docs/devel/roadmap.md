@@ -206,6 +206,10 @@ Make yw7 the default yWriter format
 - Make yw7-specific classes the base classes in the yw package.
 - Add yw7-only converter and exporter classes.
 
+#### v3.6
+
+Import changed chapter and scene titles from manuscript and scene descriptions.
+
 
 ## Version 4.x: Edit the novel structure independently from yWriter
 

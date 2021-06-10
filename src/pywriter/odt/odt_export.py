@@ -34,8 +34,8 @@ class OdtExport(OdtFile):
 </office:annotation>$SceneContent</text:p>
 '''
 
-    sceneDivider = '<text:p ></text:p>'
-    #sceneDivider = '<text:p text:style-name="Heading_20_4">* * *</text:p>'
+    sceneDivider = '<text:p text:style-name="Heading_20_4">* * *</text:p>\n'
+    #sceneDivider = '<text:p text:style-name="Heading_20_5"></text:p>\n'
 
     fileFooter = OdtFile.CONTENT_XML_FOOTER
 
