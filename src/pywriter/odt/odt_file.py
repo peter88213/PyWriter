@@ -701,7 +701,7 @@ class OdtFile(OdfFile):
     <style:tab-stops/>
     <style:background-image/>
    </style:paragraph-properties>
-   <style:text-properties fo:text-transform="uppercase" fo:letter-spacing="0.106cm" fo:font-weight="normal" style:letter-kerning="false"/>
+   <style:text-properties fo:text-transform="uppercase" fo:font-weight="normal" style:letter-kerning="false"/>
   </style:style>
   <style:style style:name="Subtitle" style:family="paragraph" style:parent-style-name="Title" style:class="chapter" style:master-page-name="">
    <style:paragraph-properties loext:contextual-spacing="false" fo:margin-top="0cm" fo:margin-bottom="0cm" style:page-number="auto"/>
