@@ -19,7 +19,7 @@ from pywriter.file.file_export import FileExport
 class OdfFile(FileExport):
     """Generic OpenDocument xml file representation.
     """
-    TEMPDIR = 'temp_odf'
+    TEMPDIR = (os.getenv("TEMP") + '/temp_odf').replace('\\', '/')
 
     ODF_COMPONENTS = []
     _MIMETYPE = ''
