@@ -1121,7 +1121,7 @@ class OdtFile(OdfFile):
         # Generate manifest.rdf
 
         try:
-            with open(self.TEMPDIR + '/manifest.rdf', 'w', encoding='utf-8') as f:
+            with open(self.tempDir + '/manifest.rdf', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_RDF)
         except:
             return 'ERROR: Cannot write "manifest.rdf"'
