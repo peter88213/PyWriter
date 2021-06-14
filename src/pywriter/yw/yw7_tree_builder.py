@@ -44,225 +44,34 @@ class Yw7TreeBuilder():
         """Modify the yWriter project attributes of an existing xml element tree.
         Return a message beginning with SUCCESS or ERROR.
         """
+
+        xmlScenes = {}
+        xmlChapters = {}
+
         root = ywProject.tree.getroot()
-        root.tag = self.TAG
-        root.find('PROJECT').find('Ver').text = self.VER
-
-        # Write locations to the xml element tree.
-
-        locations = root.find('LOCATIONS')
-        sortOrder = 0
-
-        # Remove LOCATION entries in order to rewrite
-        # the LOCATIONS section in a modified sort order.
-
-        for loc in locations.findall('LOCATION'):
-            locations.remove(loc)
-
-        for lcId in ywProject.srtLocations:
-            loc = ET.SubElement(locations, 'LOCATION')
-            ET.SubElement(loc, 'ID').text = lcId
-
-            if ywProject.locations[lcId].title is not None:
-                ET.SubElement(
-                    loc, 'Title').text = ywProject.locations[lcId].title
-
-            if ywProject.locations[lcId].image is not None:
-                ET.SubElement(
-                    loc, 'ImageFile').text = ywProject.locations[lcId].image
-
-            if ywProject.locations[lcId].desc is not None:
-                ET.SubElement(
-                    loc, 'Desc').text = ywProject.locations[lcId].desc
-
-            if ywProject.locations[lcId].aka is not None:
-                ET.SubElement(loc, 'AKA').text = ywProject.locations[lcId].aka
-
-            if ywProject.locations[lcId].tags is not None:
-                ET.SubElement(loc, 'Tags').text = ';'.join(
-                    ywProject.locations[lcId].tags)
-
-            sortOrder += 1
-            ET.SubElement(loc, 'SortOrder').text = str(sortOrder)
-
-        # Write items to the xml element tree.
-
-        items = root.find('ITEMS')
-        sortOrder = 0
-
-        # Remove ITEM entries in order to rewrite
-        # the ITEMS section in a modified sort order.
-
-        for itm in items.findall('ITEM'):
-            items.remove(itm)
-
-        for itId in ywProject.srtItems:
-            itm = ET.SubElement(items, 'ITEM')
-            ET.SubElement(itm, 'ID').text = itId
-
-            if ywProject.items[itId].title is not None:
-                ET.SubElement(itm, 'Title').text = ywProject.items[itId].title
-
-            if ywProject.items[itId].image is not None:
-                ET.SubElement(
-                    itm, 'ImageFile').text = ywProject.items[itId].image
-
-            if ywProject.items[itId].desc is not None:
-                ET.SubElement(itm, 'Desc').text = ywProject.items[itId].desc
-
-            if ywProject.items[itId].aka is not None:
-                ET.SubElement(itm, 'AKA').text = ywProject.items[itId].aka
-
-            if ywProject.items[itId].tags is not None:
-                ET.SubElement(itm, 'Tags').text = ';'.join(
-                    ywProject.items[itId].tags)
-
-            sortOrder += 1
-            ET.SubElement(itm, 'SortOrder').text = str(sortOrder)
-
-        # Write characters to the xml element tree.
-
-        characters = root.find('CHARACTERS')
-        sortOrder = 0
-
-        # Remove CHARACTER entries in order to rewrite
-        # the CHARACTERS section in a modified sort order.
-
-        for crt in characters.findall('CHARACTER'):
-            characters.remove(crt)
-
-        for crId in ywProject.srtCharacters:
-            crt = ET.SubElement(characters, 'CHARACTER')
-            ET.SubElement(crt, 'ID').text = crId
-
-            if ywProject.characters[crId].title is not None:
-                ET.SubElement(
-                    crt, 'Title').text = ywProject.characters[crId].title
-
-            if ywProject.characters[crId].desc is not None:
-                ET.SubElement(
-                    crt, 'Desc').text = ywProject.characters[crId].desc
-
-            if ywProject.characters[crId].image is not None:
-                ET.SubElement(
-                    crt, 'ImageFile').text = ywProject.characters[crId].image
-
-            sortOrder += 1
-            ET.SubElement(crt, 'SortOrder').text = str(sortOrder)
-
-            if ywProject.characters[crId].notes is not None:
-                ET.SubElement(
-                    crt, 'Notes').text = ywProject.characters[crId].notes
-
-            if ywProject.characters[crId].aka is not None:
-                ET.SubElement(crt, 'AKA').text = ywProject.characters[crId].aka
-
-            if ywProject.characters[crId].tags is not None:
-                ET.SubElement(crt, 'Tags').text = ';'.join(
-                    ywProject.characters[crId].tags)
-
-            if ywProject.characters[crId].bio is not None:
-                ET.SubElement(crt, 'Bio').text = ywProject.characters[crId].bio
-
-            if ywProject.characters[crId].goals is not None:
-                ET.SubElement(
-                    crt, 'Goals').text = ywProject.characters[crId].goals
-
-            if ywProject.characters[crId].fullName is not None:
-                ET.SubElement(
-                    crt, 'FullName').text = ywProject.characters[crId].fullName
-
-            if ywProject.characters[crId].isMajor:
-                ET.SubElement(crt, 'Major').text = '-1'
-
-        # Write attributes at novel level to the xml element tree.
-
-        prj = root.find('PROJECT')
-        prj.find('Title').text = ywProject.title
-
-        if ywProject.desc is not None:
-
-            if prj.find('Desc') is None:
-                ET.SubElement(prj, 'Desc').text = ywProject.desc
-
-            else:
-                prj.find('Desc').text = ywProject.desc
-
-        if ywProject.author is not None:
-
-            if prj.find('AuthorName') is None:
-                ET.SubElement(prj, 'AuthorName').text = ywProject.author
-
-            else:
-                prj.find('AuthorName').text = ywProject.author
-
-        prj.find('FieldTitle1').text = ywProject.fieldTitle1
-        prj.find('FieldTitle2').text = ywProject.fieldTitle2
-        prj.find('FieldTitle3').text = ywProject.fieldTitle3
-        prj.find('FieldTitle4').text = ywProject.fieldTitle4
-
-        # Write attributes at chapter level to the xml element tree.
-
-        for chp in root.iter('CHAPTER'):
-            chId = chp.find('ID').text
-
-            if chId in ywProject.chapters:
-
-                if ywProject.chapters[chId] is not None:
-
-                    if chp.find('Title') is not None:
-                        chp.find('Title').text = ywProject.chapters[chId].title
-
-                    else:
-                        ET.SubElement(
-                            chp, 'Title').text = ywProject.chapters[chId].title
-
-                if ywProject.chapters[chId].desc is not None:
-
-                    if chp.find('Desc') is None:
-                        ET.SubElement(
-                            chp, 'Desc').text = ywProject.chapters[chId].desc
-
-                    else:
-                        chp.find('Desc').text = ywProject.chapters[chId].desc
-
-                levelInfo = chp.find('SectionStart')
-
-                if levelInfo is not None:
-
-                    if ywProject.chapters[chId].chLevel == 0:
-                        chp.remove(levelInfo)
-
-                chp.find('Type').text = str(ywProject.chapters[chId].oldType)
-
-                if ywProject.chapters[chId].chType is not None:
-
-                    if chp.find('ChapterType') is not None:
-                        chp.find('ChapterType').text = str(
-                            ywProject.chapters[chId].chType)
-                    else:
-                        ET.SubElement(chp, 'ChapterType').text = str(
-                            ywProject.chapters[chId].chType)
-
-                if ywProject.chapters[chId].isUnused:
-
-                    if chp.find('Unused') is None:
-                        ET.SubElement(chp, 'Unused').text = '-1'
-
-                elif chp.find('Unused') is not None:
-                    chp.remove(chp.find('Unused'))
 
         # Write attributes at scene level to the xml element tree.
 
-        message = self.put_scene_contents(ywProject)
+        scenes = root.find('SCENES')
 
-        if message.startswith('ERROR'):
-            return message
-
-        for scn in root.iter('SCENE'):
+        for scn in scenes.findall('SCENE'):
             scId = scn.find('ID').text
 
-            if scId in ywProject.scenes:
+            # Save the original XML scene subtree
+            # and remove it from the project tree.
+
+            xmlScenes[scId] = scn
+            scenes.remove(scn)
+
+        for scId in ywProject.scenes:
+
+            # Modify and append all XML scene subtrees.
+
+            if scId in xmlScenes:
+
+                # Use the original XML scene subtree.
+
+                scn = xmlScenes[scId]
 
                 if ywProject.scenes[scId].title is not None:
 
@@ -559,6 +368,429 @@ class Yw7TreeBuilder():
 
                     for itId in ywProject.scenes[scId].items:
                         ET.SubElement(items, 'ItemID').text = itId
+
+            else:
+                # Create a new XML scene subtree.
+
+                scn = ET.Element('SCENE')
+                ET.SubElement(scn, 'ID').text = scId
+
+                if ywProject.scenes[scId].title is not None:
+                    ET.SubElement(
+                        scn, 'Title').text = ywProject.scenes[scId].title
+
+                for chId in ywProject.chapters:
+
+                    if scId in ywProject.chapters[chId].srtScenes:
+                        ET.SubElement(scn, 'BelongsToChID').text = chId
+                        break
+
+                if ywProject.scenes[scId].desc is not None:
+                    ET.SubElement(
+                        scn, 'Desc').text = ywProject.scenes[scId].desc
+
+                if ywProject.scenes[scId].sceneContent is not None:
+                    ET.SubElement(scn,
+                                  'SceneContent').text = ywProject.scenes[scId].sceneContent
+                    ET.SubElement(scn, 'WordCount').text = str(
+                        ywProject.scenes[scId].wordCount)
+                    ET.SubElement(scn, 'LetterCount').text = str(
+                        ywProject.scenes[scId].letterCount)
+
+                if ywProject.scenes[scId].isUnused:
+                    ET.SubElement(scn, 'Unused').text = '-1'
+
+                scFields = ET.SubElement(scn, 'Fields')
+
+                if ywProject.scenes[scId].isNotesScene:
+                    ET.SubElement(scFields, 'Field_SceneType').text = '1'
+
+                elif ywProject.scenes[scId].isTodoScene:
+                    ET.SubElement(scFields, 'Field_SceneType').text = '2'
+
+                if ywProject.scenes[scId].status is not None:
+                    ET.SubElement(scn, 'Status').text = str(
+                        ywProject.scenes[scId].status)
+
+                if ywProject.scenes[scId].sceneNotes is not None:
+                    ET.SubElement(
+                        scn, 'Notes').text = ywProject.scenes[scId].sceneNotes
+
+                if ywProject.scenes[scId].tags is not None:
+                    ET.SubElement(scn, 'Tags').text = ';'.join(
+                        ywProject.scenes[scId].tags)
+
+                if ywProject.scenes[scId].field1 is not None:
+                    ET.SubElement(
+                        scn, 'Field1').text = ywProject.scenes[scId].field1
+
+                if ywProject.scenes[scId].field2 is not None:
+                    ET.SubElement(
+                        scn, 'Field2').text = ywProject.scenes[scId].field2
+
+                if ywProject.scenes[scId].field3 is not None:
+                    ET.SubElement(
+                        scn, 'Field3').text = ywProject.scenes[scId].field3
+
+                if ywProject.scenes[scId].field4 is not None:
+                    ET.SubElement(
+                        scn, 'Field4').text = ywProject.scenes[scId].field4
+
+                if ywProject.scenes[scId].appendToPrev:
+                    ET.SubElement(scn, 'AppendToPrev').text = '-1'
+
+                # Date/time information
+
+                if (ywProject.scenes[scId].date is not None) and (ywProject.scenes[scId].time is not None):
+                    dateTime = ' '.join(
+                        ywProject.scenes[scId].date, ywProject.scenes[scId].time)
+                    ET.SubElement(scn, 'SpecificDateTime').text = dateTime
+                    ET.SubElement(scn, 'SpecificDateMode').text = '-1'
+
+                elif (ywProject.scenes[scId].day is not None) or (ywProject.scenes[scId].hour is not None) or (ywProject.scenes[scId].minute is not None):
+
+                    if ywProject.scenes[scId].day is not None:
+                        ET.SubElement(
+                            scn, 'Day').text = ywProject.scenes[scId].day
+
+                    if ywProject.scenes[scId].hour is not None:
+                        ET.SubElement(
+                            scn, 'Hour').text = ywProject.scenes[scId].hour
+
+                    if ywProject.scenes[scId].minute is not None:
+                        ET.SubElement(
+                            scn, 'Minute').text = ywProject.scenes[scId].minute
+
+                if ywProject.scenes[scId].lastsDays is not None:
+                    ET.SubElement(
+                        scn, 'LastsDays').text = ywProject.scenes[scId].lastsDays
+
+                if ywProject.scenes[scId].lastsHours is not None:
+                    ET.SubElement(
+                        scn, 'LastsHours').text = ywProject.scenes[scId].lastsHours
+
+                if ywProject.scenes[scId].lastsMinutes is not None:
+                    ET.SubElement(
+                        scn, 'LastsMinutes').text = ywProject.scenes[scId].lastsMinutes
+
+                # Plot related information
+
+                if ywProject.scenes[scId].isReactionScene:
+                    ET.SubElement(scn, 'ReactionScene').text = '-1'
+
+                if ywProject.scenes[scId].isSubPlot:
+                    ET.SubElement(scn, 'SubPlot').text = '-1'
+
+                if ywProject.scenes[scId].goal is not None:
+                    ET.SubElement(
+                        scn, 'Goal').text = ywProject.scenes[scId].goal
+
+                if ywProject.scenes[scId].conflict is not None:
+                    ET.SubElement(
+                        scn, 'Conflict').text = ywProject.scenes[scId].conflict
+
+                if ywProject.scenes[scId].outcome is not None:
+                    ET.SubElement(
+                        scn, 'Outcome').text = ywProject.scenes[scId].outcome
+
+                if ywProject.scenes[scId].characters is not None:
+                    scCharacters = ET.SubElement(scn, 'Characters')
+
+                    for crId in ywProject.scenes[scId].characters:
+                        ET.SubElement(scCharacters, 'CharID').text = crId
+
+                if ywProject.scenes[scId].locations is not None:
+                    scLocations = ET.SubElement(scn, 'Locations')
+
+                    for lcId in ywProject.scenes[scId].locations:
+                        ET.SubElement(scLocations, 'LocID').text = lcId
+
+                if ywProject.scenes[scId].items is not None:
+                    scItems = ET.SubElement(scn, 'Items')
+
+                    for itId in ywProject.scenes[scId].items:
+                        ET.SubElement(scItems, 'ItemID').text = itId
+
+            scenes.append(scn)
+
+        # Write attributes at scene level to the xml element tree.
+
+        message = self.put_scene_contents(ywProject)
+
+        if message.startswith('ERROR'):
+            return message
+
+        # Write attributes at chapter level to the xml element tree.
+
+        chapters = root.find('CHAPTERS')
+
+        for chp in chapters.findall('CHAPTER'):
+            chId = chp.find('ID').text
+
+            # Save the original XML chapter subtree
+            # and remove it from the project tree.
+
+            xmlChapters[chId] = chp
+            chapters.remove(chp)
+
+        sortOrder = 0
+
+        for chId in ywProject.srtChapters:
+            sortOrder += 1
+
+            if chId in xmlChapters:
+
+                # Use the original XML chapter subtree.
+
+                chp = xmlChapters[chId]
+
+                if ywProject.chapters[chId] is not None:
+
+                    if chp.find('SortOrder') is not None:
+                        chp.find('SortOrder').text = str(sortOrder)
+
+                    else:
+                        ET.SubElement(chp, 'SortOrder').text = str(sortOrder)
+
+                    if chp.find('Title') is not None:
+                        chp.find('Title').text = ywProject.chapters[chId].title
+
+                    else:
+                        ET.SubElement(
+                            chp, 'Title').text = ywProject.chapters[chId].title
+
+                if ywProject.chapters[chId].desc is not None:
+
+                    if chp.find('Desc') is None:
+                        ET.SubElement(
+                            chp, 'Desc').text = ywProject.chapters[chId].desc
+
+                    else:
+                        chp.find('Desc').text = ywProject.chapters[chId].desc
+
+                levelInfo = chp.find('SectionStart')
+
+                if levelInfo is not None:
+
+                    if ywProject.chapters[chId].chLevel == 0:
+                        chp.remove(levelInfo)
+
+                chp.find('Type').text = str(ywProject.chapters[chId].oldType)
+
+                if ywProject.chapters[chId].chType is not None:
+
+                    if chp.find('ChapterType') is not None:
+                        chp.find('ChapterType').text = str(
+                            ywProject.chapters[chId].chType)
+                    else:
+                        ET.SubElement(chp, 'ChapterType').text = str(
+                            ywProject.chapters[chId].chType)
+
+                if ywProject.chapters[chId].isUnused:
+
+                    if chp.find('Unused') is None:
+                        ET.SubElement(chp, 'Unused').text = '-1'
+
+                elif chp.find('Unused') is not None:
+                    chp.remove(chp.find('Unused'))
+
+            else:
+                # Create a new XML chapter subtree.
+
+                chp = ET.Element('CHAPTER')
+                ET.SubElement(chp, 'ID').text = chId
+                ET.SubElement(chp, 'SortOrder').text = str(sortOrder)
+
+                if ywProject.chapters[chId].title is not None:
+                    ET.SubElement(
+                        chp, 'Title').text = ywProject.chapters[chId].title
+
+                if ywProject.chapters[chId].desc is not None:
+                    ET.SubElement(
+                        chp, 'Desc').text = ywProject.chapters[chId].desc
+
+                if ywProject.chapters[chId].chLevel == 1:
+                    ET.SubElement(chp, 'SectionStart').text = '-1'
+
+                if ywProject.chapters[chId].oldType is not None:
+                    ET.SubElement(chp, 'Type').text = str(
+                        ywProject.chapters[chId].oldType)
+
+                if ywProject.chapters[chId].chType is not None:
+                    ET.SubElement(chp, 'ChapterType').text = str(
+                        ywProject.chapters[chId].chType)
+
+                if ywProject.chapters[chId].isUnused:
+                    ET.SubElement(chp, 'Unused').text = '-1'
+
+                sortSc = ET.SubElement(chp, 'Scenes')
+
+                for scId in ywProject.chapters[chId].srtScenes:
+                    ET.SubElement(sortSc, 'ScID').text = scId
+
+                chFields = ET.SubElement(chp, 'Fields')
+
+                if ywProject.chapters[chId].title is not None:
+
+                    if ywProject.chapters[chId].title.startswith('@'):
+                        ywProject.chapters[chId].suppressChapterTitle = True
+
+                if ywProject.chapters[chId].suppressChapterTitle:
+                    ET.SubElement(
+                        chFields, 'Field_SuppressChapterTitle').text = '1'
+
+            chapters.append(chp)
+
+        # Write attributes at novel level to the xml element tree.
+
+        prj = root.find('PROJECT')
+        prj.find('Title').text = ywProject.title
+
+        if ywProject.desc is not None:
+
+            if prj.find('Desc') is None:
+                ET.SubElement(prj, 'Desc').text = ywProject.desc
+
+            else:
+                prj.find('Desc').text = ywProject.desc
+
+        if ywProject.author is not None:
+
+            if prj.find('AuthorName') is None:
+                ET.SubElement(prj, 'AuthorName').text = ywProject.author
+
+            else:
+                prj.find('AuthorName').text = ywProject.author
+
+        prj.find('FieldTitle1').text = ywProject.fieldTitle1
+        prj.find('FieldTitle2').text = ywProject.fieldTitle2
+        prj.find('FieldTitle3').text = ywProject.fieldTitle3
+        prj.find('FieldTitle4').text = ywProject.fieldTitle4
+
+        locations = root.find('LOCATIONS')
+        sortOrder = 0
+
+        # Remove LOCATION entries in order to rewrite
+        # the LOCATIONS section in a modified sort order.
+
+        for loc in locations.findall('LOCATION'):
+            locations.remove(loc)
+
+        for lcId in ywProject.srtLocations:
+            loc = ET.SubElement(locations, 'LOCATION')
+            ET.SubElement(loc, 'ID').text = lcId
+
+            if ywProject.locations[lcId].title is not None:
+                ET.SubElement(
+                    loc, 'Title').text = ywProject.locations[lcId].title
+
+            if ywProject.locations[lcId].image is not None:
+                ET.SubElement(
+                    loc, 'ImageFile').text = ywProject.locations[lcId].image
+
+            if ywProject.locations[lcId].desc is not None:
+                ET.SubElement(
+                    loc, 'Desc').text = ywProject.locations[lcId].desc
+
+            if ywProject.locations[lcId].aka is not None:
+                ET.SubElement(loc, 'AKA').text = ywProject.locations[lcId].aka
+
+            if ywProject.locations[lcId].tags is not None:
+                ET.SubElement(loc, 'Tags').text = ';'.join(
+                    ywProject.locations[lcId].tags)
+
+            sortOrder += 1
+            ET.SubElement(loc, 'SortOrder').text = str(sortOrder)
+
+        # Write items to the xml element tree.
+
+        items = root.find('ITEMS')
+        sortOrder = 0
+
+        # Remove ITEM entries in order to rewrite
+        # the ITEMS section in a modified sort order.
+
+        for itm in items.findall('ITEM'):
+            items.remove(itm)
+
+        for itId in ywProject.srtItems:
+            itm = ET.SubElement(items, 'ITEM')
+            ET.SubElement(itm, 'ID').text = itId
+
+            if ywProject.items[itId].title is not None:
+                ET.SubElement(itm, 'Title').text = ywProject.items[itId].title
+
+            if ywProject.items[itId].image is not None:
+                ET.SubElement(
+                    itm, 'ImageFile').text = ywProject.items[itId].image
+
+            if ywProject.items[itId].desc is not None:
+                ET.SubElement(itm, 'Desc').text = ywProject.items[itId].desc
+
+            if ywProject.items[itId].aka is not None:
+                ET.SubElement(itm, 'AKA').text = ywProject.items[itId].aka
+
+            if ywProject.items[itId].tags is not None:
+                ET.SubElement(itm, 'Tags').text = ';'.join(
+                    ywProject.items[itId].tags)
+
+            sortOrder += 1
+            ET.SubElement(itm, 'SortOrder').text = str(sortOrder)
+
+        # Write characters to the xml element tree.
+
+        characters = root.find('CHARACTERS')
+        sortOrder = 0
+
+        # Remove CHARACTER entries in order to rewrite
+        # the CHARACTERS section in a modified sort order.
+
+        for crt in characters.findall('CHARACTER'):
+            characters.remove(crt)
+
+        for crId in ywProject.srtCharacters:
+            crt = ET.SubElement(characters, 'CHARACTER')
+            ET.SubElement(crt, 'ID').text = crId
+
+            if ywProject.characters[crId].title is not None:
+                ET.SubElement(
+                    crt, 'Title').text = ywProject.characters[crId].title
+
+            if ywProject.characters[crId].desc is not None:
+                ET.SubElement(
+                    crt, 'Desc').text = ywProject.characters[crId].desc
+
+            if ywProject.characters[crId].image is not None:
+                ET.SubElement(
+                    crt, 'ImageFile').text = ywProject.characters[crId].image
+
+            sortOrder += 1
+            ET.SubElement(crt, 'SortOrder').text = str(sortOrder)
+
+            if ywProject.characters[crId].notes is not None:
+                ET.SubElement(
+                    crt, 'Notes').text = ywProject.characters[crId].notes
+
+            if ywProject.characters[crId].aka is not None:
+                ET.SubElement(crt, 'AKA').text = ywProject.characters[crId].aka
+
+            if ywProject.characters[crId].tags is not None:
+                ET.SubElement(crt, 'Tags').text = ';'.join(
+                    ywProject.characters[crId].tags)
+
+            if ywProject.characters[crId].bio is not None:
+                ET.SubElement(crt, 'Bio').text = ywProject.characters[crId].bio
+
+            if ywProject.characters[crId].goals is not None:
+                ET.SubElement(
+                    crt, 'Goals').text = ywProject.characters[crId].goals
+
+            if ywProject.characters[crId].fullName is not None:
+                ET.SubElement(
+                    crt, 'FullName').text = ywProject.characters[crId].fullName
+
+            if ywProject.characters[crId].isMajor:
+                ET.SubElement(crt, 'Major').text = '-1'
 
         self.indent_xml(root)
         ywProject.tree = ET.ElementTree(root)
