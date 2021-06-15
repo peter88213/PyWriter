@@ -1897,6 +1897,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 33]]></Title>
       <Desc><![CDATA[This is not a joke.]]></Desc>
       <Unused>-1</Unused>
+      <SortOrder>36</SortOrder>
       <Fields>
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
         <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>

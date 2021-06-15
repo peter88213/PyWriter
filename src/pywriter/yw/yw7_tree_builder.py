@@ -535,7 +535,7 @@ class Yw7TreeBuilder():
 
         sortOrder = 0
 
-        for chId in ywProject.srtChapters:
+        for chId in ywProject.chapters:
             sortOrder += 1
 
             if chId in xmlChapters:
