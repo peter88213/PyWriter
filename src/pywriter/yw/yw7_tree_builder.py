@@ -143,19 +143,19 @@ class Yw7TreeBuilder():
 
             if prjScn.title is not None:
 
-                if xmlScn.find('Title') is not None:
+                try:
                     xmlScn.find('Title').text = prjScn.title
 
-                else:
+                except(AttributeError):
                     ET.SubElement(xmlScn, 'Title').text = prjScn.title
 
             if prjScn.desc is not None:
 
-                if xmlScn.find('Desc') is None:
-                    ET.SubElement(xmlScn, 'Desc').text = prjScn.desc
-
-                else:
+                try:
                     xmlScn.find('Desc').text = prjScn.desc
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Desc').text = prjScn.desc
 
             # Scene content is written in subclasses.
 
@@ -169,11 +169,11 @@ class Yw7TreeBuilder():
 
             if prjScn.isNotesScene:
 
-                if xmlScn.find('Fields') is None:
-                    scFields = ET.SubElement(xmlScn, 'Fields')
-
-                else:
+                try:
                     scFields = xmlScn.find('Fields')
+
+                except(AttributeError):
+                    scFields = ET.SubElement(xmlScn, 'Fields')
 
                 if scFields.find('Field_SceneType') is None:
                     ET.SubElement(scFields, 'Field_SceneType').text = '1'
@@ -188,11 +188,11 @@ class Yw7TreeBuilder():
 
             if prjScn.isTodoScene:
 
-                if xmlScn.find('Fields') is None:
-                    scFields = ET.SubElement(xmlScn, 'Fields')
-
-                else:
+                try:
                     scFields = xmlScn.find('Fields')
+
+                except(AttributeError):
+                    scFields = ET.SubElement(xmlScn, 'Fields')
 
                 if scFields.find('Field_SceneType') is None:
                     ET.SubElement(scFields, 'Field_SceneType').text = '2'
@@ -210,58 +210,51 @@ class Yw7TreeBuilder():
 
             if prjScn.sceneNotes is not None:
 
-                if xmlScn.find('Notes') is None:
-                    ET.SubElement(
-                        xmlScn, 'Notes').text = prjScn.sceneNotes
-
-                else:
+                try:
                     xmlScn.find('Notes').text = prjScn.sceneNotes
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Notes').text = prjScn.sceneNotes
 
             if prjScn.tags is not None:
 
-                if xmlScn.find('Tags') is None:
-                    ET.SubElement(xmlScn, 'Tags').text = ';'.join(
-                        prjScn.tags)
+                try:
+                    xmlScn.find('Tags').text = ';'.join(prjScn.tags)
 
-                else:
-                    xmlScn.find('Tags').text = ';'.join(
-                        prjScn.tags)
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Tags').text = ';'.join(prjScn.tags)
 
             if prjScn.field1 is not None:
 
-                if xmlScn.find('Field1') is None:
-                    ET.SubElement(
-                        xmlScn, 'Field1').text = prjScn.field1
-
-                else:
+                try:
                     xmlScn.find('Field1').text = prjScn.field1
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Field1').text = prjScn.field1
 
             if prjScn.field2 is not None:
 
-                if xmlScn.find('Field2') is None:
-                    ET.SubElement(
-                        xmlScn, 'Field2').text = prjScn.field2
-
-                else:
+                try:
                     xmlScn.find('Field2').text = prjScn.field2
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Field2').text = prjScn.field2
 
             if prjScn.field3 is not None:
 
-                if xmlScn.find('Field3') is None:
-                    ET.SubElement(
-                        xmlScn, 'Field3').text = prjScn.field3
-
-                else:
+                try:
                     xmlScn.find('Field3').text = prjScn.field3
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Field3').text = prjScn.field3
 
             if prjScn.field4 is not None:
 
-                if xmlScn.find('Field4') is None:
-                    ET.SubElement(
-                        xmlScn, 'Field4').text = prjScn.field4
-
-                else:
+                try:
                     xmlScn.find('Field4').text = prjScn.field4
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Field4').text = prjScn.field4
 
             if prjScn.appendToPrev:
 
@@ -274,8 +267,7 @@ class Yw7TreeBuilder():
             # Date/time information
 
             if (prjScn.date is not None) and (prjScn.time is not None):
-                dateTime = prjScn.date + \
-                    ' ' + prjScn.time
+                dateTime = prjScn.date + ' ' + prjScn.time
 
                 if xmlScn.find('SpecificDateTime') is not None:
                     xmlScn.find('SpecificDateTime').text = dateTime
@@ -303,51 +295,51 @@ class Yw7TreeBuilder():
 
                 if prjScn.day is not None:
 
-                    if xmlScn.find('Day') is not None:
+                    try:
                         xmlScn.find('Day').text = prjScn.day
 
-                    else:
+                    except(AttributeError):
                         ET.SubElement(xmlScn, 'Day').text = prjScn.day
 
                 if prjScn.hour is not None:
 
-                    if xmlScn.find('Hour') is not None:
+                    try:
                         xmlScn.find('Hour').text = prjScn.hour
 
-                    else:
+                    except(AttributeError):
                         ET.SubElement(xmlScn, 'Hour').text = prjScn.hour
 
                 if prjScn.minute is not None:
 
-                    if xmlScn.find('Minute') is not None:
+                    try:
                         xmlScn.find('Minute').text = prjScn.minute
 
-                    else:
+                    except(AttributeError):
                         ET.SubElement(xmlScn, 'Minute').text = prjScn.minute
 
             if prjScn.lastsDays is not None:
 
-                if xmlScn.find('LastsDays') is not None:
+                try:
                     xmlScn.find('LastsDays').text = prjScn.lastsDays
 
-                else:
+                except(AttributeError):
                     ET.SubElement(xmlScn, 'LastsDays').text = prjScn.lastsDays
 
             if prjScn.lastsHours is not None:
 
-                if xmlScn.find('LastsHours') is not None:
+                try:
                     xmlScn.find('LastsHours').text = prjScn.lastsHours
 
-                else:
+                except(AttributeError):
                     ET.SubElement(
                         xmlScn, 'LastsHours').text = prjScn.lastsHours
 
             if prjScn.lastsMinutes is not None:
 
-                if xmlScn.find('LastsMinutes') is not None:
+                try:
                     xmlScn.find('LastsMinutes').text = prjScn.lastsMinutes
 
-                else:
+                except(AttributeError):
                     ET.SubElement(
                         xmlScn, 'LastsMinutes').text = prjScn.lastsMinutes
 
@@ -371,27 +363,27 @@ class Yw7TreeBuilder():
 
             if prjScn.goal is not None:
 
-                if xmlScn.find('Goal') is None:
-                    ET.SubElement(xmlScn, 'Goal').text = prjScn.goal
-
-                else:
+                try:
                     xmlScn.find('Goal').text = prjScn.goal
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Goal').text = prjScn.goal
 
             if prjScn.conflict is not None:
 
-                if xmlScn.find('Conflict') is None:
-                    ET.SubElement(xmlScn, 'Conflict').text = prjScn.conflict
-
-                else:
+                try:
                     xmlScn.find('Conflict').text = prjScn.conflict
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Conflict').text = prjScn.conflict
 
             if prjScn.outcome is not None:
 
-                if xmlScn.find('Outcome') is None:
-                    ET.SubElement(xmlScn, 'Outcome').text = prjScn.outcome
-
-                else:
+                try:
                     xmlScn.find('Outcome').text = prjScn.outcome
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Outcome').text = prjScn.outcome
 
             if prjScn.characters is not None:
                 characters = xmlScn.find('Characters')
@@ -460,43 +452,48 @@ class Yw7TreeBuilder():
 
         def build_chapter_subtree(xmlChp, prjChp, sortOrder):
 
-            if prjChp is not None:
+            try:
+                xmlChp.find('SortOrder').text = str(sortOrder)
 
-                if xmlChp.find('SortOrder') is not None:
-                    xmlChp.find('SortOrder').text = str(sortOrder)
+            except(AttributeError):
+                ET.SubElement(xmlChp, 'SortOrder').text = str(sortOrder)
 
-                else:
-                    ET.SubElement(xmlChp, 'SortOrder').text = str(sortOrder)
+            try:
+                xmlChp.find('Title').text = prjChp.title
 
-                if xmlChp.find('Title') is not None:
-                    xmlChp.find('Title').text = prjChp.title
-
-                else:
-                    ET.SubElement(
-                        xmlChp, 'Title').text = prjChp.title
+            except(AttributeError):
+                ET.SubElement(xmlChp, 'Title').text = prjChp.title
 
             if prjChp.desc is not None:
 
-                if xmlChp.find('Desc') is None:
-                    ET.SubElement(xmlChp, 'Desc').text = prjChp.desc
-
-                else:
+                try:
                     xmlChp.find('Desc').text = prjChp.desc
 
-            levelInfo = xmlChp.find('SectionStart')
+                except(AttributeError):
+                    ET.SubElement(xmlChp, 'Desc').text = prjChp.desc
 
-            if levelInfo is not None:
+            if xmlChp.find('SectionStart') is not None:
 
                 if prjChp.chLevel == 0:
-                    xmlChp.remove(levelInfo)
+                    xmlChp.remove(xmlChp.find('SectionStart'))
 
-            xmlChp.find('Type').text = str(prjChp.oldType)
+            elif prjChp.chLevel == 1:
+                ET.SubElement(xmlChp, 'SectionStart').text = '-1'
+
+            if prjChp.oldType is not None:
+
+                try:
+                    xmlChp.find('Type').text = str(prjChp.oldType)
+
+                except(AttributeError):
+                    ET.SubElement(xmlChp, 'Type').text = str(prjChp.oldType)
 
             if prjChp.chType is not None:
 
-                if xmlChp.find('ChapterType') is not None:
+                try:
                     xmlChp.find('ChapterType').text = str(prjChp.chType)
-                else:
+
+                except(AttributeError):
                     ET.SubElement(xmlChp, 'ChapterType').text = str(
                         prjChp.chType)
 
@@ -586,75 +583,148 @@ class Yw7TreeBuilder():
 
         def build_project_subtree(xmlPrj, ywProject):
 
+            try:
+                xmlPrj.find('Ver').text = self.VER
+
+            except(AttributeError):
+                ET.SubElement(xmlPrj, 'Ver').text = self.VER
+
             if ywProject.title is not None:
 
-                if xmlPrj.find('Title') is not None:
+                try:
                     xmlPrj.find('Title').text = ywProject.title
 
-                else:
+                except(AttributeError):
                     ET.SubElement(xmlPrj, 'Title').text = ywProject.title
 
             if ywProject.desc is not None:
 
-                if xmlPrj.find('Desc') is not None:
+                try:
                     xmlPrj.find('Desc').text = ywProject.desc
 
-                else:
+                except(AttributeError):
                     ET.SubElement(xmlPrj, 'Desc').text = ywProject.desc
 
             if ywProject.author is not None:
 
-                if xmlPrj.find('AuthorName') is not None:
+                try:
                     xmlPrj.find('AuthorName').text = ywProject.author
 
-                else:
+                except(AttributeError):
                     ET.SubElement(xmlPrj, 'AuthorName').text = ywProject.author
 
             if ywProject.fieldTitle1 is not None:
 
-                if xmlPrj.find('FieldTitle1') is not None:
+                try:
                     xmlPrj.find('FieldTitle1').text = ywProject.fieldTitle1
 
-                else:
+                except(AttributeError):
                     ET.SubElement(
                         xmlPrj, 'FieldTitle1').text = ywProject.fieldTitle1
 
             if ywProject.fieldTitle2 is not None:
 
-                if xmlPrj.find('FieldTitle2').text is not None:
+                try:
                     xmlPrj.find('FieldTitle2').text = ywProject.fieldTitle2
 
-                else:
+                except(AttributeError):
                     ET.SubElement(
                         xmlPrj, 'FieldTitle2').text = ywProject.fieldTitle2
 
             if ywProject.fieldTitle3 is not None:
 
-                if xmlPrj.find('FieldTitle3') is not None:
+                try:
                     xmlPrj.find('FieldTitle3').text = ywProject.fieldTitle3
 
-                else:
+                except(AttributeError):
                     ET.SubElement(
                         xmlPrj, 'FieldTitle3').text = ywProject.fieldTitle3
 
             if ywProject.fieldTitle4 is not None:
 
-                if xmlPrj.find('FieldTitle4') is not None:
+                try:
                     xmlPrj.find('FieldTitle4').text = ywProject.fieldTitle4
 
-                else:
+                except(AttributeError):
                     ET.SubElement(
                         xmlPrj, 'FieldTitle4').text = ywProject.fieldTitle4
 
         xmlScenes = {}
         xmlChapters = {}
 
-        root = ywProject.tree.getroot()
+        try:
+            root = ywProject.tree.getroot()
+            xmlPrj = root.find('PROJECT')
+            locations = root.find('LOCATIONS')
+            items = root.find('ITEMS')
+            characters = root.find('CHARACTERS')
+            scenes = root.find('SCENES')
+            chapters = root.find('CHAPTERS')
+
+        except(AttributeError):
+            root = ET.Element(self.TAG)
+            xmlPrj = ET.SubElement(root, 'PROJECT')
+            locations = ET.SubElement(root, 'LOCATIONS')
+            items = ET.SubElement(root, 'ITEMS')
+            characters = ET.SubElement(root, 'CHARACTERS')
+            scenes = ET.SubElement(root, 'SCENES')
+            chapters = ET.SubElement(root, 'CHAPTERS')
+
+        #--- Process project attributes.
+
+        build_project_subtree(xmlPrj, ywProject)
+
+        #--- Process locations.
+        # Remove LOCATION entries in order to rewrite
+        # the LOCATIONS section in a modified sort order.
+
+        for xmlLoc in locations.findall('LOCATION'):
+            locations.remove(xmlLoc)
+
+        # Add the new XML location subtrees to the project tree.
+
+        sortOrder = 0
+
+        for lcId in ywProject.srtLocations:
+            sortOrder += 1
+            xmlLoc = ET.SubElement(locations, 'LOCATION')
+            create_location_subtree(
+                xmlLoc, ywProject.locations[lcId], sortOrder)
+
+        #--- Process items.
+        # Remove ITEM entries in order to rewrite
+        # the ITEMS section in a modified sort order.
+
+        for xmlItm in items.findall('ITEM'):
+            items.remove(xmlItm)
+
+        # Add the new XML item subtrees to the project tree.
+
+        sortOrder = 0
+
+        for itId in ywProject.srtItems:
+            sortOrder += 1
+            xmlItm = ET.SubElement(items, 'ITEM')
+            create_item_subtree(xmlItm, ywProject.items[itId], sortOrder)
+
+        #--- Process characters.
+        # Remove CHARACTER entries in order to rewrite
+        # the CHARACTERS section in a modified sort order.
+
+        for xmlCrt in characters.findall('CHARACTER'):
+            characters.remove(xmlCrt)
+
+        # Add the new XML character subtrees to the project tree.
+
+        sortOrder = 0
+
+        for crId in ywProject.srtCharacters:
+            sortOrder += 1
+            xmlCrt = ET.SubElement(characters, 'CHARACTER')
+            create_character_subtree(
+                xmlCrt, ywProject.characters[crId], sortOrder)
 
         #--- Process scenes.
-
-        scenes = root.find('SCENES')
-
         # Save the original XML scene subtrees
         # and remove them from the project tree.
 
@@ -676,17 +746,7 @@ class Yw7TreeBuilder():
 
             scenes.append(xmlScenes[scId])
 
-        # Write version-dependent scene contents to the xml element tree.
-
-        message = self.put_scene_contents(ywProject)
-
-        if message.startswith('ERROR'):
-            return message
-
         #--- Process chapters.
-
-        chapters = root.find('CHAPTERS')
-
         # Save the original XML chapter subtree
         # and remove it from the project tree.
 
@@ -708,79 +768,20 @@ class Yw7TreeBuilder():
 
             else:
                 xmlChapters[chId] = ET.Element('CHAPTER')
+                # ET.SubElement(xmlChapters[chId], 'ID').text = chId
+
+                # build_chapter_subtree(
                 create_chapter_subtree(
                     xmlChapters[chId], ywProject.chapters[chId], sortOrder)
 
             chapters.append(xmlChapters[chId])
 
-        #--- Process project attributes.
-
-        xmlPrj = root.find('PROJECT')
-        build_project_subtree(xmlPrj, ywProject)
-
-        #--- Process locations.
-
-        locations = root.find('LOCATIONS')
-
-        # Remove LOCATION entries in order to rewrite
-        # the LOCATIONS section in a modified sort order.
-
-        for xmlLoc in locations.findall('LOCATION'):
-            locations.remove(xmlLoc)
-
-        # Add the new XML location subtrees to the project tree.
-
-        sortOrder = 0
-
-        for lcId in ywProject.srtLocations:
-            sortOrder += 1
-            xmlLoc = ET.SubElement(locations, 'LOCATION')
-            create_location_subtree(
-                xmlLoc, ywProject.locations[lcId], sortOrder)
-
-        #--- Process items.
-
-        items = root.find('ITEMS')
-
-        # Remove ITEM entries in order to rewrite
-        # the ITEMS section in a modified sort order.
-
-        for xmlItm in items.findall('ITEM'):
-            items.remove(xmlItm)
-
-        # Add the new XML item subtrees to the project tree.
-
-        sortOrder = 0
-
-        for itId in ywProject.srtItems:
-            sortOrder += 1
-            xmlItm = ET.SubElement(items, 'ITEM')
-            create_item_subtree(xmlItm, ywProject.items[itId], sortOrder)
-
-        #--- Process characters.
-
-        characters = root.find('CHARACTERS')
-
-        # Remove CHARACTER entries in order to rewrite
-        # the CHARACTERS section in a modified sort order.
-
-        for xmlCrt in characters.findall('CHARACTER'):
-            characters.remove(xmlCrt)
-
-        # Add the new XML character subtrees to the project tree.
-
-        sortOrder = 0
-
-        for crId in ywProject.srtCharacters:
-            sortOrder += 1
-            xmlCrt = ET.SubElement(characters, 'CHARACTER')
-            create_character_subtree(
-                xmlCrt, ywProject.characters[crId], sortOrder)
-
         self.indent_xml(root)
         ywProject.tree = ET.ElementTree(root)
 
-        return 'SUCCESS'
+        # Write version-dependent scene contents to the xml element tree.
+
+        return self.put_scene_contents(ywProject)
 
     def put_scene_contents(self, ywProject):
         """Modify the scene contents of an existing xml element tree.
