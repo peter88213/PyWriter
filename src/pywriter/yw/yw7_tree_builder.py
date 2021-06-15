@@ -14,33 +14,6 @@ class Yw7TreeBuilder():
     TAG = 'YWRITER7'
     VER = '7'
 
-    def put_scene_contents(self, ywProject):
-        """Modify the scene contents of an existing xml element tree.
-        Return a message beginning with SUCCESS or ERROR.
-        Strategy method for the yw7 file format variant.
-        """
-
-        root = ywProject.tree.getroot()
-
-        for scn in root.iter('SCENE'):
-            scId = scn.find('ID').text
-
-            if ywProject.scenes[scId].sceneContent is not None:
-                scn.find(
-                    'SceneContent').text = ywProject.scenes[scId].sceneContent
-                scn.find('WordCount').text = str(
-                    ywProject.scenes[scId].wordCount)
-                scn.find('LetterCount').text = str(
-                    ywProject.scenes[scId].letterCount)
-
-            try:
-                scn.remove(scn.find('RTFFile'))
-
-            except:
-                pass
-
-        return 'SUCCESS'
-
     def build_element_tree(self, ywProject):
         """Modify the yWriter project attributes of an existing xml element tree.
         Return a message beginning with SUCCESS or ERROR.
@@ -166,7 +139,7 @@ class Yw7TreeBuilder():
                 for itId in prjScn.items:
                     ET.SubElement(scItems, 'ItemID').text = itId
 
-        def modify_scene_subtree(xmlScn, prjScn):
+        def build_scene_subtree(xmlScn, prjScn):
 
             if prjScn.title is not None:
 
@@ -485,7 +458,7 @@ class Yw7TreeBuilder():
                 ET.SubElement(
                     chFields, 'Field_SuppressChapterTitle').text = '1'
 
-        def modify_chapter_subtree(xmlChp, prjChp, sortOrder):
+        def build_chapter_subtree(xmlChp, prjChp, sortOrder):
 
             if prjChp is not None:
 
@@ -611,29 +584,67 @@ class Yw7TreeBuilder():
             if prjCrt.isMajor:
                 ET.SubElement(xmlCrt, 'Major').text = '-1'
 
-        def modify_project_subtree(xmlPrj, ywProject):
-            xmlPrj.find('Title').text = ywProject.title
+        def build_project_subtree(xmlPrj, ywProject):
+
+            if ywProject.title is not None:
+
+                if xmlPrj.find('Title') is not None:
+                    xmlPrj.find('Title').text = ywProject.title
+
+                else:
+                    ET.SubElement(xmlPrj, 'Title').text = ywProject.title
 
             if ywProject.desc is not None:
 
-                if xmlPrj.find('Desc') is None:
-                    ET.SubElement(xmlPrj, 'Desc').text = ywProject.desc
+                if xmlPrj.find('Desc') is not None:
+                    xmlPrj.find('Desc').text = ywProject.desc
 
                 else:
-                    xmlPrj.find('Desc').text = ywProject.desc
+                    ET.SubElement(xmlPrj, 'Desc').text = ywProject.desc
 
             if ywProject.author is not None:
 
-                if xmlPrj.find('AuthorName') is None:
-                    ET.SubElement(xmlPrj, 'AuthorName').text = ywProject.author
-
-                else:
+                if xmlPrj.find('AuthorName') is not None:
                     xmlPrj.find('AuthorName').text = ywProject.author
 
-            xmlPrj.find('FieldTitle1').text = ywProject.fieldTitle1
-            xmlPrj.find('FieldTitle2').text = ywProject.fieldTitle2
-            xmlPrj.find('FieldTitle3').text = ywProject.fieldTitle3
-            xmlPrj.find('FieldTitle4').text = ywProject.fieldTitle4
+                else:
+                    ET.SubElement(xmlPrj, 'AuthorName').text = ywProject.author
+
+            if ywProject.fieldTitle1 is not None:
+
+                if xmlPrj.find('FieldTitle1') is not None:
+                    xmlPrj.find('FieldTitle1').text = ywProject.fieldTitle1
+
+                else:
+                    ET.SubElement(
+                        xmlPrj, 'FieldTitle1').text = ywProject.fieldTitle1
+
+            if ywProject.fieldTitle2 is not None:
+
+                if xmlPrj.find('FieldTitle2').text is not None:
+                    xmlPrj.find('FieldTitle2').text = ywProject.fieldTitle2
+
+                else:
+                    ET.SubElement(
+                        xmlPrj, 'FieldTitle2').text = ywProject.fieldTitle2
+
+            if ywProject.fieldTitle3 is not None:
+
+                if xmlPrj.find('FieldTitle3') is not None:
+                    xmlPrj.find('FieldTitle3').text = ywProject.fieldTitle3
+
+                else:
+                    ET.SubElement(
+                        xmlPrj, 'FieldTitle3').text = ywProject.fieldTitle3
+
+            if ywProject.fieldTitle4 is not None:
+
+                if xmlPrj.find('FieldTitle4') is not None:
+                    xmlPrj.find('FieldTitle4').text = ywProject.fieldTitle4
+
+                else:
+                    ET.SubElement(
+                        xmlPrj, 'FieldTitle4').text = ywProject.fieldTitle4
 
         xmlScenes = {}
         xmlChapters = {}
@@ -657,7 +668,7 @@ class Yw7TreeBuilder():
         for scId in ywProject.scenes:
 
             if scId in xmlScenes:
-                modify_scene_subtree(xmlScenes[scId], ywProject.scenes[scId])
+                build_scene_subtree(xmlScenes[scId], ywProject.scenes[scId])
 
             else:
                 xmlScenes[scId] = ET.Element('SCENE')
@@ -692,7 +703,7 @@ class Yw7TreeBuilder():
             sortOrder += 1
 
             if chId in xmlChapters:
-                modify_chapter_subtree(
+                build_chapter_subtree(
                     xmlChapters[chId], ywProject.chapters[chId], sortOrder)
 
             else:
@@ -705,7 +716,7 @@ class Yw7TreeBuilder():
         #--- Process project attributes.
 
         xmlPrj = root.find('PROJECT')
-        modify_project_subtree(xmlPrj, ywProject)
+        build_project_subtree(xmlPrj, ywProject)
 
         #--- Process locations.
 
@@ -768,6 +779,33 @@ class Yw7TreeBuilder():
 
         self.indent_xml(root)
         ywProject.tree = ET.ElementTree(root)
+
+        return 'SUCCESS'
+
+    def put_scene_contents(self, ywProject):
+        """Modify the scene contents of an existing xml element tree.
+        Return a message beginning with SUCCESS or ERROR.
+        Strategy method for the yw7 file format variant.
+        """
+
+        root = ywProject.tree.getroot()
+
+        for scn in root.iter('SCENE'):
+            scId = scn.find('ID').text
+
+            if ywProject.scenes[scId].sceneContent is not None:
+                scn.find(
+                    'SceneContent').text = ywProject.scenes[scId].sceneContent
+                scn.find('WordCount').text = str(
+                    ywProject.scenes[scId].wordCount)
+                scn.find('LetterCount').text = str(
+                    ywProject.scenes[scId].letterCount)
+
+            try:
+                scn.remove(scn.find('RTFFile'))
+
+            except:
+                pass
 
         return 'SUCCESS'
 
