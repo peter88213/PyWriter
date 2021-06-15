@@ -30,9 +30,7 @@
 
 ---
  
-- **yw7_tree_builder** -- Provide a strategy class to build an yWriter 7 xml tree.
-
-- **yw7_tree_creator** -- Provide a strategy class to build a new yWriter 7 xml tree.
+- **yw7_tree_builder** -- Provide a strategy class to build a yWriter 7 xml tree.
 
 - **yw6_tree_builder** -- Provide a strategy class to build an yWriter 6 xml tree.
 

@@ -820,9 +820,6 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_fKgZoPyrEeqEK6KdQRY5bw" name="Yw6TreeBuilder">
         <generalization xmi:type="uml:Generalization" xmi:id="_y0HdgPyrEeqEK6KdQRY5bw" general="__GSVAPxDEeq5hMee5ike2Q"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_syKiIPyrEeqEK6KdQRY5bw" name="Yw7TreeCreator">
-        <generalization xmi:type="uml:Generalization" xmi:id="_0V29EPyrEeqEK6KdQRY5bw" general="__GSVAPxDEeq5hMee5ike2Q"/>
-      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_KcdAwPysEeqEK6KdQRY5bw" name="AnsiTreeWriter">
         <generalization xmi:type="uml:Generalization" xmi:id="_QOq3APysEeqEK6KdQRY5bw" general="_0I_9gPxCEeq5hMee5ike2Q"/>
       </packagedElement>
