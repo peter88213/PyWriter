@@ -17,6 +17,7 @@ class Yw7TreeBuilder():
     def put_scene_contents(self, ywProject):
         """Modify the scene contents of an existing xml element tree.
         Return a message beginning with SUCCESS or ERROR.
+        Strategy method for the yw7 file format variant.
         """
 
         root = ywProject.tree.getroot()
@@ -45,6 +46,537 @@ class Yw7TreeBuilder():
         Return a message beginning with SUCCESS or ERROR.
         """
 
+        def create_scene_subtree(xmlScn, prjScn):
+            ET.SubElement(xmlScn, 'ID').text = scId
+
+            if prjScn.title is not None:
+                ET.SubElement(
+                    xmlScn, 'Title').text = prjScn.title
+
+            for chId in ywProject.chapters:
+
+                if scId in ywProject.chapters[chId].srtScenes:
+                    ET.SubElement(xmlScn, 'BelongsToChID').text = chId
+                    break
+
+            if prjScn.desc is not None:
+                ET.SubElement(
+                    xmlScn, 'Desc').text = prjScn.desc
+
+            if prjScn.sceneContent is not None:
+                ET.SubElement(xmlScn,
+                              'SceneContent').text = prjScn.sceneContent
+                ET.SubElement(xmlScn, 'WordCount').text = str(
+                    prjScn.wordCount)
+                ET.SubElement(xmlScn, 'LetterCount').text = str(
+                    prjScn.letterCount)
+
+            if prjScn.isUnused:
+                ET.SubElement(xmlScn, 'Unused').text = '-1'
+
+            scFields = ET.SubElement(xmlScn, 'Fields')
+
+            if prjScn.isNotesScene:
+                ET.SubElement(scFields, 'Field_SceneType').text = '1'
+
+            elif prjScn.isTodoScene:
+                ET.SubElement(scFields, 'Field_SceneType').text = '2'
+
+            if prjScn.status is not None:
+                ET.SubElement(xmlScn, 'Status').text = str(
+                    prjScn.status)
+
+            if prjScn.sceneNotes is not None:
+                ET.SubElement(
+                    xmlScn, 'Notes').text = prjScn.sceneNotes
+
+            if prjScn.tags is not None:
+                ET.SubElement(xmlScn, 'Tags').text = ';'.join(
+                    prjScn.tags)
+
+            if prjScn.field1 is not None:
+                ET.SubElement(
+                    xmlScn, 'Field1').text = prjScn.field1
+
+            if prjScn.field2 is not None:
+                ET.SubElement(
+                    xmlScn, 'Field2').text = prjScn.field2
+
+            if prjScn.field3 is not None:
+                ET.SubElement(
+                    xmlScn, 'Field3').text = prjScn.field3
+
+            if prjScn.field4 is not None:
+                ET.SubElement(
+                    xmlScn, 'Field4').text = prjScn.field4
+
+            if prjScn.appendToPrev:
+                ET.SubElement(xmlScn, 'AppendToPrev').text = '-1'
+
+            # Date/time information
+
+            if (prjScn.date is not None) and (prjScn.time is not None):
+                dateTime = ' '.join(
+                    prjScn.date, prjScn.time)
+                ET.SubElement(xmlScn, 'SpecificDateTime').text = dateTime
+                ET.SubElement(xmlScn, 'SpecificDateMode').text = '-1'
+
+            elif (prjScn.day is not None) or (prjScn.hour is not None) or (prjScn.minute is not None):
+
+                if prjScn.day is not None:
+                    ET.SubElement(
+                        xmlScn, 'Day').text = prjScn.day
+
+                if prjScn.hour is not None:
+                    ET.SubElement(
+                        xmlScn, 'Hour').text = prjScn.hour
+
+                if prjScn.minute is not None:
+                    ET.SubElement(
+                        xmlScn, 'Minute').text = prjScn.minute
+
+            if prjScn.lastsDays is not None:
+                ET.SubElement(
+                    xmlScn, 'LastsDays').text = prjScn.lastsDays
+
+            if prjScn.lastsHours is not None:
+                ET.SubElement(
+                    xmlScn, 'LastsHours').text = prjScn.lastsHours
+
+            if prjScn.lastsMinutes is not None:
+                ET.SubElement(
+                    xmlScn, 'LastsMinutes').text = prjScn.lastsMinutes
+
+            # Plot related information
+
+            if prjScn.isReactionScene:
+                ET.SubElement(xmlScn, 'ReactionScene').text = '-1'
+
+            if prjScn.isSubPlot:
+                ET.SubElement(xmlScn, 'SubPlot').text = '-1'
+
+            if prjScn.goal is not None:
+                ET.SubElement(
+                    xmlScn, 'Goal').text = prjScn.goal
+
+            if prjScn.conflict is not None:
+                ET.SubElement(
+                    xmlScn, 'Conflict').text = prjScn.conflict
+
+            if prjScn.outcome is not None:
+                ET.SubElement(
+                    xmlScn, 'Outcome').text = prjScn.outcome
+
+            if prjScn.characters is not None:
+                scCharacters = ET.SubElement(xmlScn, 'Characters')
+
+                for crId in prjScn.characters:
+                    ET.SubElement(scCharacters, 'CharID').text = crId
+
+            if prjScn.locations is not None:
+                scLocations = ET.SubElement(xmlScn, 'Locations')
+
+                for lcId in prjScn.locations:
+                    ET.SubElement(scLocations, 'LocID').text = lcId
+
+            if prjScn.items is not None:
+                scItems = ET.SubElement(xmlScn, 'Items')
+
+                for itId in prjScn.items:
+                    ET.SubElement(scItems, 'ItemID').text = itId
+
+        def modify_scene_subtree(xmlScn, prjScn):
+
+            if prjScn.title is not None:
+
+                if xmlScn.find('Title') is not None:
+                    xmlScn.find('Title').text = prjScn.title
+
+                else:
+                    ET.SubElement(
+                        xmlScn, 'Title').text = prjScn.title
+
+            if prjScn.desc is not None:
+
+                if xmlScn.find('Desc') is None:
+                    ET.SubElement(
+                        xmlScn, 'Desc').text = prjScn.desc
+
+                else:
+                    xmlScn.find('Desc').text = prjScn.desc
+
+            # Scene content is written in subclasses.
+
+            if prjScn.isUnused:
+
+                if xmlScn.find('Unused') is None:
+                    ET.SubElement(xmlScn, 'Unused').text = '-1'
+
+            elif xmlScn.find('Unused') is not None:
+                xmlScn.remove(xmlScn.find('Unused'))
+
+            if prjScn.isNotesScene:
+
+                if xmlScn.find('Fields') is None:
+                    scFields = ET.SubElement(xmlScn, 'Fields')
+
+                else:
+                    scFields = xmlScn.find('Fields')
+
+                if scFields.find('Field_SceneType') is None:
+                    ET.SubElement(scFields, 'Field_SceneType').text = '1'
+
+            elif xmlScn.find('Fields') is not None:
+                scFields = xmlScn.find('Fields')
+
+                if scFields.find('Field_SceneType') is not None:
+
+                    if scFields.find('Field_SceneType').text == '1':
+                        scFields.remove(scFields.find('Field_SceneType'))
+
+            if prjScn.isTodoScene:
+
+                if xmlScn.find('Fields') is None:
+                    scFields = ET.SubElement(xmlScn, 'Fields')
+
+                else:
+                    scFields = xmlScn.find('Fields')
+
+                if scFields.find('Field_SceneType') is None:
+                    ET.SubElement(scFields, 'Field_SceneType').text = '2'
+
+            elif xmlScn.find('Fields') is not None:
+                scFields = xmlScn.find('Fields')
+
+                if scFields.find('Field_SceneType') is not None:
+
+                    if scFields.find('Field_SceneType').text == '2':
+                        scFields.remove(scFields.find('Field_SceneType'))
+
+            if prjScn.status is not None:
+                xmlScn.find('Status').text = str(
+                    prjScn.status)
+
+            if prjScn.sceneNotes is not None:
+
+                if xmlScn.find('Notes') is None:
+                    ET.SubElement(
+                        xmlScn, 'Notes').text = prjScn.sceneNotes
+
+                else:
+                    xmlScn.find(
+                        'Notes').text = prjScn.sceneNotes
+
+            if prjScn.tags is not None:
+
+                if xmlScn.find('Tags') is None:
+                    ET.SubElement(xmlScn, 'Tags').text = ';'.join(
+                        prjScn.tags)
+
+                else:
+                    xmlScn.find('Tags').text = ';'.join(
+                        prjScn.tags)
+
+            if prjScn.field1 is not None:
+
+                if xmlScn.find('Field1') is None:
+                    ET.SubElement(
+                        xmlScn, 'Field1').text = prjScn.field1
+
+                else:
+                    xmlScn.find('Field1').text = prjScn.field1
+
+            if prjScn.field2 is not None:
+
+                if xmlScn.find('Field2') is None:
+                    ET.SubElement(
+                        xmlScn, 'Field2').text = prjScn.field2
+
+                else:
+                    xmlScn.find('Field2').text = prjScn.field2
+
+            if prjScn.field3 is not None:
+
+                if xmlScn.find('Field3') is None:
+                    ET.SubElement(
+                        xmlScn, 'Field3').text = prjScn.field3
+
+                else:
+                    xmlScn.find('Field3').text = prjScn.field3
+
+            if prjScn.field4 is not None:
+
+                if xmlScn.find('Field4') is None:
+                    ET.SubElement(
+                        xmlScn, 'Field4').text = prjScn.field4
+
+                else:
+                    xmlScn.find('Field4').text = prjScn.field4
+
+            if prjScn.appendToPrev:
+
+                if xmlScn.find('AppendToPrev') is None:
+                    ET.SubElement(xmlScn, 'AppendToPrev').text = '-1'
+
+            elif xmlScn.find('AppendToPrev') is not None:
+                xmlScn.remove(xmlScn.find('AppendToPrev'))
+
+            # Date/time information
+
+            if (prjScn.date is not None) and (prjScn.time is not None):
+                dateTime = prjScn.date + \
+                    ' ' + prjScn.time
+
+                if xmlScn.find('SpecificDateTime') is not None:
+                    xmlScn.find('SpecificDateTime').text = dateTime
+
+                else:
+                    ET.SubElement(xmlScn, 'SpecificDateTime').text = dateTime
+                    ET.SubElement(xmlScn, 'SpecificDateMode').text = '-1'
+
+                    if xmlScn.find('Day') is not None:
+                        xmlScn.remove(xmlScn.find('Day'))
+
+                    if xmlScn.find('Hour') is not None:
+                        xmlScn.remove(xmlScn.find('Hour'))
+
+                    if xmlScn.find('Minute') is not None:
+                        xmlScn.remove(xmlScn.find('Minute'))
+
+            elif (prjScn.day is not None) or (prjScn.hour is not None) or (prjScn.minute is not None):
+
+                if xmlScn.find('SpecificDateTime') is not None:
+                    xmlScn.remove(xmlScn.find('SpecificDateTime'))
+
+                if xmlScn.find('SpecificDateMode') is not None:
+                    xmlScn.remove(xmlScn.find('SpecificDateMode'))
+
+                if prjScn.day is not None:
+
+                    if xmlScn.find('Day') is not None:
+                        xmlScn.find('Day').text = prjScn.day
+
+                    else:
+                        ET.SubElement(
+                            xmlScn, 'Day').text = prjScn.day
+
+                if prjScn.hour is not None:
+
+                    if xmlScn.find('Hour') is not None:
+                        xmlScn.find('Hour').text = prjScn.hour
+
+                    else:
+                        ET.SubElement(
+                            xmlScn, 'Hour').text = prjScn.hour
+
+                if prjScn.minute is not None:
+
+                    if xmlScn.find('Minute') is not None:
+                        xmlScn.find(
+                            'Minute').text = prjScn.minute
+
+                    else:
+                        ET.SubElement(
+                            xmlScn, 'Minute').text = prjScn.minute
+
+            if prjScn.lastsDays is not None:
+
+                if xmlScn.find('LastsDays') is not None:
+                    xmlScn.find(
+                        'LastsDays').text = prjScn.lastsDays
+
+                else:
+                    ET.SubElement(
+                        xmlScn, 'LastsDays').text = prjScn.lastsDays
+
+            if prjScn.lastsHours is not None:
+
+                if xmlScn.find('LastsHours') is not None:
+                    xmlScn.find(
+                        'LastsHours').text = prjScn.lastsHours
+
+                else:
+                    ET.SubElement(
+                        xmlScn, 'LastsHours').text = prjScn.lastsHours
+
+            if prjScn.lastsMinutes is not None:
+
+                if xmlScn.find('LastsMinutes') is not None:
+                    xmlScn.find(
+                        'LastsMinutes').text = prjScn.lastsMinutes
+
+                else:
+                    ET.SubElement(
+                        xmlScn, 'LastsMinutes').text = prjScn.lastsMinutes
+
+            # Plot related information
+
+            if prjScn.isReactionScene:
+
+                if xmlScn.find('ReactionScene') is None:
+                    ET.SubElement(xmlScn, 'ReactionScene').text = '-1'
+
+            elif xmlScn.find('ReactionScene') is not None:
+                xmlScn.remove(xmlScn.find('ReactionScene'))
+
+            if prjScn.isSubPlot:
+
+                if xmlScn.find('SubPlot') is None:
+                    ET.SubElement(xmlScn, 'SubPlot').text = '-1'
+
+            elif xmlScn.find('SubPlot') is not None:
+                xmlScn.remove(xmlScn.find('SubPlot'))
+
+            if prjScn.goal is not None:
+
+                if xmlScn.find('Goal') is None:
+                    ET.SubElement(
+                        xmlScn, 'Goal').text = prjScn.goal
+
+                else:
+                    xmlScn.find('Goal').text = prjScn.goal
+
+            if prjScn.conflict is not None:
+
+                if xmlScn.find('Conflict') is None:
+                    ET.SubElement(
+                        xmlScn, 'Conflict').text = prjScn.conflict
+
+                else:
+                    xmlScn.find(
+                        'Conflict').text = prjScn.conflict
+
+            if prjScn.outcome is not None:
+
+                if xmlScn.find('Outcome') is None:
+                    ET.SubElement(
+                        xmlScn, 'Outcome').text = prjScn.outcome
+
+                else:
+                    xmlScn.find(
+                        'Outcome').text = prjScn.outcome
+
+            if prjScn.characters is not None:
+                characters = xmlScn.find('Characters')
+
+                for oldCrId in characters.findall('CharID'):
+                    characters.remove(oldCrId)
+
+                for crId in prjScn.characters:
+                    ET.SubElement(characters, 'CharID').text = crId
+
+            if prjScn.locations is not None:
+                locations = xmlScn.find('Locations')
+
+                for oldLcId in locations.findall('LocID'):
+                    locations.remove(oldLcId)
+
+                for lcId in prjScn.locations:
+                    ET.SubElement(locations, 'LocID').text = lcId
+
+            if prjScn.items is not None:
+                items = xmlScn.find('Items')
+
+                for oldItId in items.findall('ItemID'):
+                    items.remove(oldItId)
+
+                for itId in prjScn.items:
+                    ET.SubElement(items, 'ItemID').text = itId
+
+        def create_chapter_subtree(xmlChp, prjChp, sortOrder):
+            ET.SubElement(xmlChp, 'ID').text = chId
+            ET.SubElement(xmlChp, 'SortOrder').text = str(sortOrder)
+
+            if prjChp.title is not None:
+                ET.SubElement(
+                    xmlChp, 'Title').text = prjChp.title
+
+            if prjChp.desc is not None:
+                ET.SubElement(
+                    xmlChp, 'Desc').text = prjChp.desc
+
+            if prjChp.chLevel == 1:
+                ET.SubElement(xmlChp, 'SectionStart').text = '-1'
+
+            if prjChp.oldType is not None:
+                ET.SubElement(xmlChp, 'Type').text = str(
+                    prjChp.oldType)
+
+            if prjChp.chType is not None:
+                ET.SubElement(xmlChp, 'ChapterType').text = str(
+                    prjChp.chType)
+
+            if prjChp.isUnused:
+                ET.SubElement(xmlChp, 'Unused').text = '-1'
+
+            sortSc = ET.SubElement(xmlChp, 'Scenes')
+
+            for scId in prjChp.srtScenes:
+                ET.SubElement(sortSc, 'ScID').text = scId
+
+            chFields = ET.SubElement(xmlChp, 'Fields')
+
+            if prjChp.title is not None:
+
+                if prjChp.title.startswith('@'):
+                    prjChp.suppressChapterTitle = True
+
+            if prjChp.suppressChapterTitle:
+                ET.SubElement(
+                    chFields, 'Field_SuppressChapterTitle').text = '1'
+
+        def modify_chapter_subtree(xmlChp, prjChp, sortOrder):
+
+            if ywProject.chapters[chId] is not None:
+
+                if xmlChp.find('SortOrder') is not None:
+                    xmlChp.find('SortOrder').text = str(sortOrder)
+
+                else:
+                    ET.SubElement(xmlChp, 'SortOrder').text = str(sortOrder)
+
+                if xmlChp.find('Title') is not None:
+                    xmlChp.find('Title').text = prjChp.title
+
+                else:
+                    ET.SubElement(
+                        xmlChp, 'Title').text = prjChp.title
+
+            if prjChp.desc is not None:
+
+                if xmlChp.find('Desc') is None:
+                    ET.SubElement(
+                        xmlChp, 'Desc').text = prjChp.desc
+
+                else:
+                    xmlChp.find('Desc').text = prjChp.desc
+
+            levelInfo = xmlChp.find('SectionStart')
+
+            if levelInfo is not None:
+
+                if prjChp.chLevel == 0:
+                    xmlChp.remove(levelInfo)
+
+            xmlChp.find('Type').text = str(prjChp.oldType)
+
+            if prjChp.chType is not None:
+
+                if xmlChp.find('ChapterType') is not None:
+                    xmlChp.find('ChapterType').text = str(
+                        prjChp.chType)
+                else:
+                    ET.SubElement(xmlChp, 'ChapterType').text = str(
+                        prjChp.chType)
+
+            if prjChp.isUnused:
+
+                if xmlChp.find('Unused') is None:
+                    ET.SubElement(xmlChp, 'Unused').text = '-1'
+
+            elif xmlChp.find('Unused') is not None:
+                xmlChp.remove(xmlChp.find('Unused'))
+
         xmlScenes = {}
         xmlChapters = {}
 
@@ -54,466 +586,28 @@ class Yw7TreeBuilder():
 
         scenes = root.find('SCENES')
 
-        for scn in scenes.findall('SCENE'):
-            scId = scn.find('ID').text
+        # Save the original XML scene subtrees
+        # and remove them from the project tree.
 
-            # Save the original XML scene subtree
-            # and remove it from the project tree.
+        for xmlScn in scenes.findall('SCENE'):
+            scId = xmlScn.find('ID').text
+            xmlScenes[scId] = xmlScn
+            scenes.remove(xmlScn)
 
-            xmlScenes[scId] = scn
-            scenes.remove(scn)
+        # Add the new XML scene subtrees to the project tree.
 
         for scId in ywProject.scenes:
 
-            # Modify and append all XML scene subtrees.
-
             if scId in xmlScenes:
-
-                # Use the original XML scene subtree.
-
-                scn = xmlScenes[scId]
-
-                if ywProject.scenes[scId].title is not None:
-
-                    if scn.find('Title') is not None:
-                        scn.find('Title').text = ywProject.scenes[scId].title
-
-                    else:
-                        ET.SubElement(
-                            scn, 'Title').text = ywProject.scenes[scId].title
-
-                if ywProject.scenes[scId].desc is not None:
-
-                    if scn.find('Desc') is None:
-                        ET.SubElement(
-                            scn, 'Desc').text = ywProject.scenes[scId].desc
-
-                    else:
-                        scn.find('Desc').text = ywProject.scenes[scId].desc
-
-                # Scene content is written in subclasses.
-
-                if ywProject.scenes[scId].isUnused:
-
-                    if scn.find('Unused') is None:
-                        ET.SubElement(scn, 'Unused').text = '-1'
-
-                elif scn.find('Unused') is not None:
-                    scn.remove(scn.find('Unused'))
-
-                if ywProject.scenes[scId].isNotesScene:
-
-                    if scn.find('Fields') is None:
-                        scFields = ET.SubElement(scn, 'Fields')
-
-                    else:
-                        scFields = scn.find('Fields')
-
-                    if scFields.find('Field_SceneType') is None:
-                        ET.SubElement(scFields, 'Field_SceneType').text = '1'
-
-                elif scn.find('Fields') is not None:
-                    scFields = scn.find('Fields')
-
-                    if scFields.find('Field_SceneType') is not None:
-
-                        if scFields.find('Field_SceneType').text == '1':
-                            scFields.remove(scFields.find('Field_SceneType'))
-
-                if ywProject.scenes[scId].isTodoScene:
-
-                    if scn.find('Fields') is None:
-                        scFields = ET.SubElement(scn, 'Fields')
-
-                    else:
-                        scFields = scn.find('Fields')
-
-                    if scFields.find('Field_SceneType') is None:
-                        ET.SubElement(scFields, 'Field_SceneType').text = '2'
-
-                elif scn.find('Fields') is not None:
-                    scFields = scn.find('Fields')
-
-                    if scFields.find('Field_SceneType') is not None:
-
-                        if scFields.find('Field_SceneType').text == '2':
-                            scFields.remove(scFields.find('Field_SceneType'))
-
-                if ywProject.scenes[scId].status is not None:
-                    scn.find('Status').text = str(
-                        ywProject.scenes[scId].status)
-
-                if ywProject.scenes[scId].sceneNotes is not None:
-
-                    if scn.find('Notes') is None:
-                        ET.SubElement(
-                            scn, 'Notes').text = ywProject.scenes[scId].sceneNotes
-
-                    else:
-                        scn.find(
-                            'Notes').text = ywProject.scenes[scId].sceneNotes
-
-                if ywProject.scenes[scId].tags is not None:
-
-                    if scn.find('Tags') is None:
-                        ET.SubElement(scn, 'Tags').text = ';'.join(
-                            ywProject.scenes[scId].tags)
-
-                    else:
-                        scn.find('Tags').text = ';'.join(
-                            ywProject.scenes[scId].tags)
-
-                if ywProject.scenes[scId].field1 is not None:
-
-                    if scn.find('Field1') is None:
-                        ET.SubElement(
-                            scn, 'Field1').text = ywProject.scenes[scId].field1
-
-                    else:
-                        scn.find('Field1').text = ywProject.scenes[scId].field1
-
-                if ywProject.scenes[scId].field2 is not None:
-
-                    if scn.find('Field2') is None:
-                        ET.SubElement(
-                            scn, 'Field2').text = ywProject.scenes[scId].field2
-
-                    else:
-                        scn.find('Field2').text = ywProject.scenes[scId].field2
-
-                if ywProject.scenes[scId].field3 is not None:
-
-                    if scn.find('Field3') is None:
-                        ET.SubElement(
-                            scn, 'Field3').text = ywProject.scenes[scId].field3
-
-                    else:
-                        scn.find('Field3').text = ywProject.scenes[scId].field3
-
-                if ywProject.scenes[scId].field4 is not None:
-
-                    if scn.find('Field4') is None:
-                        ET.SubElement(
-                            scn, 'Field4').text = ywProject.scenes[scId].field4
-
-                    else:
-                        scn.find('Field4').text = ywProject.scenes[scId].field4
-
-                if ywProject.scenes[scId].appendToPrev:
-
-                    if scn.find('AppendToPrev') is None:
-                        ET.SubElement(scn, 'AppendToPrev').text = '-1'
-
-                elif scn.find('AppendToPrev') is not None:
-                    scn.remove(scn.find('AppendToPrev'))
-
-                # Date/time information
-
-                if (ywProject.scenes[scId].date is not None) and (ywProject.scenes[scId].time is not None):
-                    dateTime = ywProject.scenes[scId].date + \
-                        ' ' + ywProject.scenes[scId].time
-
-                    if scn.find('SpecificDateTime') is not None:
-                        scn.find('SpecificDateTime').text = dateTime
-
-                    else:
-                        ET.SubElement(scn, 'SpecificDateTime').text = dateTime
-                        ET.SubElement(scn, 'SpecificDateMode').text = '-1'
-
-                        if scn.find('Day') is not None:
-                            scn.remove(scn.find('Day'))
-
-                        if scn.find('Hour') is not None:
-                            scn.remove(scn.find('Hour'))
-
-                        if scn.find('Minute') is not None:
-                            scn.remove(scn.find('Minute'))
-
-                elif (ywProject.scenes[scId].day is not None) or (ywProject.scenes[scId].hour is not None) or (ywProject.scenes[scId].minute is not None):
-
-                    if scn.find('SpecificDateTime') is not None:
-                        scn.remove(scn.find('SpecificDateTime'))
-
-                    if scn.find('SpecificDateMode') is not None:
-                        scn.remove(scn.find('SpecificDateMode'))
-
-                    if ywProject.scenes[scId].day is not None:
-
-                        if scn.find('Day') is not None:
-                            scn.find('Day').text = ywProject.scenes[scId].day
-
-                        else:
-                            ET.SubElement(
-                                scn, 'Day').text = ywProject.scenes[scId].day
-
-                    if ywProject.scenes[scId].hour is not None:
-
-                        if scn.find('Hour') is not None:
-                            scn.find('Hour').text = ywProject.scenes[scId].hour
-
-                        else:
-                            ET.SubElement(
-                                scn, 'Hour').text = ywProject.scenes[scId].hour
-
-                    if ywProject.scenes[scId].minute is not None:
-
-                        if scn.find('Minute') is not None:
-                            scn.find(
-                                'Minute').text = ywProject.scenes[scId].minute
-
-                        else:
-                            ET.SubElement(
-                                scn, 'Minute').text = ywProject.scenes[scId].minute
-
-                if ywProject.scenes[scId].lastsDays is not None:
-
-                    if scn.find('LastsDays') is not None:
-                        scn.find(
-                            'LastsDays').text = ywProject.scenes[scId].lastsDays
-
-                    else:
-                        ET.SubElement(
-                            scn, 'LastsDays').text = ywProject.scenes[scId].lastsDays
-
-                if ywProject.scenes[scId].lastsHours is not None:
-
-                    if scn.find('LastsHours') is not None:
-                        scn.find(
-                            'LastsHours').text = ywProject.scenes[scId].lastsHours
-
-                    else:
-                        ET.SubElement(
-                            scn, 'LastsHours').text = ywProject.scenes[scId].lastsHours
-
-                if ywProject.scenes[scId].lastsMinutes is not None:
-
-                    if scn.find('LastsMinutes') is not None:
-                        scn.find(
-                            'LastsMinutes').text = ywProject.scenes[scId].lastsMinutes
-
-                    else:
-                        ET.SubElement(
-                            scn, 'LastsMinutes').text = ywProject.scenes[scId].lastsMinutes
-
-                # Plot related information
-
-                if ywProject.scenes[scId].isReactionScene:
-
-                    if scn.find('ReactionScene') is None:
-                        ET.SubElement(scn, 'ReactionScene').text = '-1'
-
-                elif scn.find('ReactionScene') is not None:
-                    scn.remove(scn.find('ReactionScene'))
-
-                if ywProject.scenes[scId].isSubPlot:
-
-                    if scn.find('SubPlot') is None:
-                        ET.SubElement(scn, 'SubPlot').text = '-1'
-
-                elif scn.find('SubPlot') is not None:
-                    scn.remove(scn.find('SubPlot'))
-
-                if ywProject.scenes[scId].goal is not None:
-
-                    if scn.find('Goal') is None:
-                        ET.SubElement(
-                            scn, 'Goal').text = ywProject.scenes[scId].goal
-
-                    else:
-                        scn.find('Goal').text = ywProject.scenes[scId].goal
-
-                if ywProject.scenes[scId].conflict is not None:
-
-                    if scn.find('Conflict') is None:
-                        ET.SubElement(
-                            scn, 'Conflict').text = ywProject.scenes[scId].conflict
-
-                    else:
-                        scn.find(
-                            'Conflict').text = ywProject.scenes[scId].conflict
-
-                if ywProject.scenes[scId].outcome is not None:
-
-                    if scn.find('Outcome') is None:
-                        ET.SubElement(
-                            scn, 'Outcome').text = ywProject.scenes[scId].outcome
-
-                    else:
-                        scn.find(
-                            'Outcome').text = ywProject.scenes[scId].outcome
-
-                if ywProject.scenes[scId].characters is not None:
-                    characters = scn.find('Characters')
-
-                    for oldCrId in characters.findall('CharID'):
-                        characters.remove(oldCrId)
-
-                    for crId in ywProject.scenes[scId].characters:
-                        ET.SubElement(characters, 'CharID').text = crId
-
-                if ywProject.scenes[scId].locations is not None:
-                    locations = scn.find('Locations')
-
-                    for oldLcId in locations.findall('LocID'):
-                        locations.remove(oldLcId)
-
-                    for lcId in ywProject.scenes[scId].locations:
-                        ET.SubElement(locations, 'LocID').text = lcId
-
-                if ywProject.scenes[scId].items is not None:
-                    items = scn.find('Items')
-
-                    for oldItId in items.findall('ItemID'):
-                        items.remove(oldItId)
-
-                    for itId in ywProject.scenes[scId].items:
-                        ET.SubElement(items, 'ItemID').text = itId
+                modify_scene_subtree(xmlScenes[scId], ywProject.scenes[scId])
 
             else:
-                # Create a new XML scene subtree.
+                xmlScenes[scId] = ET.Element('SCENE')
+                create_scene_subtree(xmlScenes[scId], ywProject.scenes[scId])
 
-                scn = ET.Element('SCENE')
-                ET.SubElement(scn, 'ID').text = scId
+            scenes.append(xmlScenes[scId])
 
-                if ywProject.scenes[scId].title is not None:
-                    ET.SubElement(
-                        scn, 'Title').text = ywProject.scenes[scId].title
-
-                for chId in ywProject.chapters:
-
-                    if scId in ywProject.chapters[chId].srtScenes:
-                        ET.SubElement(scn, 'BelongsToChID').text = chId
-                        break
-
-                if ywProject.scenes[scId].desc is not None:
-                    ET.SubElement(
-                        scn, 'Desc').text = ywProject.scenes[scId].desc
-
-                if ywProject.scenes[scId].sceneContent is not None:
-                    ET.SubElement(scn,
-                                  'SceneContent').text = ywProject.scenes[scId].sceneContent
-                    ET.SubElement(scn, 'WordCount').text = str(
-                        ywProject.scenes[scId].wordCount)
-                    ET.SubElement(scn, 'LetterCount').text = str(
-                        ywProject.scenes[scId].letterCount)
-
-                if ywProject.scenes[scId].isUnused:
-                    ET.SubElement(scn, 'Unused').text = '-1'
-
-                scFields = ET.SubElement(scn, 'Fields')
-
-                if ywProject.scenes[scId].isNotesScene:
-                    ET.SubElement(scFields, 'Field_SceneType').text = '1'
-
-                elif ywProject.scenes[scId].isTodoScene:
-                    ET.SubElement(scFields, 'Field_SceneType').text = '2'
-
-                if ywProject.scenes[scId].status is not None:
-                    ET.SubElement(scn, 'Status').text = str(
-                        ywProject.scenes[scId].status)
-
-                if ywProject.scenes[scId].sceneNotes is not None:
-                    ET.SubElement(
-                        scn, 'Notes').text = ywProject.scenes[scId].sceneNotes
-
-                if ywProject.scenes[scId].tags is not None:
-                    ET.SubElement(scn, 'Tags').text = ';'.join(
-                        ywProject.scenes[scId].tags)
-
-                if ywProject.scenes[scId].field1 is not None:
-                    ET.SubElement(
-                        scn, 'Field1').text = ywProject.scenes[scId].field1
-
-                if ywProject.scenes[scId].field2 is not None:
-                    ET.SubElement(
-                        scn, 'Field2').text = ywProject.scenes[scId].field2
-
-                if ywProject.scenes[scId].field3 is not None:
-                    ET.SubElement(
-                        scn, 'Field3').text = ywProject.scenes[scId].field3
-
-                if ywProject.scenes[scId].field4 is not None:
-                    ET.SubElement(
-                        scn, 'Field4').text = ywProject.scenes[scId].field4
-
-                if ywProject.scenes[scId].appendToPrev:
-                    ET.SubElement(scn, 'AppendToPrev').text = '-1'
-
-                # Date/time information
-
-                if (ywProject.scenes[scId].date is not None) and (ywProject.scenes[scId].time is not None):
-                    dateTime = ' '.join(
-                        ywProject.scenes[scId].date, ywProject.scenes[scId].time)
-                    ET.SubElement(scn, 'SpecificDateTime').text = dateTime
-                    ET.SubElement(scn, 'SpecificDateMode').text = '-1'
-
-                elif (ywProject.scenes[scId].day is not None) or (ywProject.scenes[scId].hour is not None) or (ywProject.scenes[scId].minute is not None):
-
-                    if ywProject.scenes[scId].day is not None:
-                        ET.SubElement(
-                            scn, 'Day').text = ywProject.scenes[scId].day
-
-                    if ywProject.scenes[scId].hour is not None:
-                        ET.SubElement(
-                            scn, 'Hour').text = ywProject.scenes[scId].hour
-
-                    if ywProject.scenes[scId].minute is not None:
-                        ET.SubElement(
-                            scn, 'Minute').text = ywProject.scenes[scId].minute
-
-                if ywProject.scenes[scId].lastsDays is not None:
-                    ET.SubElement(
-                        scn, 'LastsDays').text = ywProject.scenes[scId].lastsDays
-
-                if ywProject.scenes[scId].lastsHours is not None:
-                    ET.SubElement(
-                        scn, 'LastsHours').text = ywProject.scenes[scId].lastsHours
-
-                if ywProject.scenes[scId].lastsMinutes is not None:
-                    ET.SubElement(
-                        scn, 'LastsMinutes').text = ywProject.scenes[scId].lastsMinutes
-
-                # Plot related information
-
-                if ywProject.scenes[scId].isReactionScene:
-                    ET.SubElement(scn, 'ReactionScene').text = '-1'
-
-                if ywProject.scenes[scId].isSubPlot:
-                    ET.SubElement(scn, 'SubPlot').text = '-1'
-
-                if ywProject.scenes[scId].goal is not None:
-                    ET.SubElement(
-                        scn, 'Goal').text = ywProject.scenes[scId].goal
-
-                if ywProject.scenes[scId].conflict is not None:
-                    ET.SubElement(
-                        scn, 'Conflict').text = ywProject.scenes[scId].conflict
-
-                if ywProject.scenes[scId].outcome is not None:
-                    ET.SubElement(
-                        scn, 'Outcome').text = ywProject.scenes[scId].outcome
-
-                if ywProject.scenes[scId].characters is not None:
-                    scCharacters = ET.SubElement(scn, 'Characters')
-
-                    for crId in ywProject.scenes[scId].characters:
-                        ET.SubElement(scCharacters, 'CharID').text = crId
-
-                if ywProject.scenes[scId].locations is not None:
-                    scLocations = ET.SubElement(scn, 'Locations')
-
-                    for lcId in ywProject.scenes[scId].locations:
-                        ET.SubElement(scLocations, 'LocID').text = lcId
-
-                if ywProject.scenes[scId].items is not None:
-                    scItems = ET.SubElement(scn, 'Items')
-
-                    for itId in ywProject.scenes[scId].items:
-                        ET.SubElement(scItems, 'ItemID').text = itId
-
-            scenes.append(scn)
-
-        # Write attributes at scene level to the xml element tree.
+        # Write version-dependent scene contents to the xml element tree.
 
         message = self.put_scene_contents(ywProject)
 
@@ -524,14 +618,15 @@ class Yw7TreeBuilder():
 
         chapters = root.find('CHAPTERS')
 
-        for chp in chapters.findall('CHAPTER'):
-            chId = chp.find('ID').text
+        # Save the original XML chapter subtree
+        # and remove it from the project tree.
 
-            # Save the original XML chapter subtree
-            # and remove it from the project tree.
+        for xmlChp in chapters.findall('CHAPTER'):
+            chId = xmlChp.find('ID').text
+            xmlChapters[chId] = xmlChp
+            chapters.remove(xmlChp)
 
-            xmlChapters[chId] = chp
-            chapters.remove(chp)
+        # Add the new XML chapter subtrees to the project tree.
 
         sortOrder = 0
 
@@ -539,107 +634,15 @@ class Yw7TreeBuilder():
             sortOrder += 1
 
             if chId in xmlChapters:
-
-                # Use the original XML chapter subtree.
-
-                chp = xmlChapters[chId]
-
-                if ywProject.chapters[chId] is not None:
-
-                    if chp.find('SortOrder') is not None:
-                        chp.find('SortOrder').text = str(sortOrder)
-
-                    else:
-                        ET.SubElement(chp, 'SortOrder').text = str(sortOrder)
-
-                    if chp.find('Title') is not None:
-                        chp.find('Title').text = ywProject.chapters[chId].title
-
-                    else:
-                        ET.SubElement(
-                            chp, 'Title').text = ywProject.chapters[chId].title
-
-                if ywProject.chapters[chId].desc is not None:
-
-                    if chp.find('Desc') is None:
-                        ET.SubElement(
-                            chp, 'Desc').text = ywProject.chapters[chId].desc
-
-                    else:
-                        chp.find('Desc').text = ywProject.chapters[chId].desc
-
-                levelInfo = chp.find('SectionStart')
-
-                if levelInfo is not None:
-
-                    if ywProject.chapters[chId].chLevel == 0:
-                        chp.remove(levelInfo)
-
-                chp.find('Type').text = str(ywProject.chapters[chId].oldType)
-
-                if ywProject.chapters[chId].chType is not None:
-
-                    if chp.find('ChapterType') is not None:
-                        chp.find('ChapterType').text = str(
-                            ywProject.chapters[chId].chType)
-                    else:
-                        ET.SubElement(chp, 'ChapterType').text = str(
-                            ywProject.chapters[chId].chType)
-
-                if ywProject.chapters[chId].isUnused:
-
-                    if chp.find('Unused') is None:
-                        ET.SubElement(chp, 'Unused').text = '-1'
-
-                elif chp.find('Unused') is not None:
-                    chp.remove(chp.find('Unused'))
+                modify_chapter_subtree(
+                    xmlChapters[chId], ywProject.chapters[chId], sortOrder)
 
             else:
-                # Create a new XML chapter subtree.
+                xmlChapters[chId] = ET.Element('CHAPTER')
+                create_chapter_subtree(
+                    xmlChapters[chId], ywProject.chapters[chId], sortOrder)
 
-                chp = ET.Element('CHAPTER')
-                ET.SubElement(chp, 'ID').text = chId
-                ET.SubElement(chp, 'SortOrder').text = str(sortOrder)
-
-                if ywProject.chapters[chId].title is not None:
-                    ET.SubElement(
-                        chp, 'Title').text = ywProject.chapters[chId].title
-
-                if ywProject.chapters[chId].desc is not None:
-                    ET.SubElement(
-                        chp, 'Desc').text = ywProject.chapters[chId].desc
-
-                if ywProject.chapters[chId].chLevel == 1:
-                    ET.SubElement(chp, 'SectionStart').text = '-1'
-
-                if ywProject.chapters[chId].oldType is not None:
-                    ET.SubElement(chp, 'Type').text = str(
-                        ywProject.chapters[chId].oldType)
-
-                if ywProject.chapters[chId].chType is not None:
-                    ET.SubElement(chp, 'ChapterType').text = str(
-                        ywProject.chapters[chId].chType)
-
-                if ywProject.chapters[chId].isUnused:
-                    ET.SubElement(chp, 'Unused').text = '-1'
-
-                sortSc = ET.SubElement(chp, 'Scenes')
-
-                for scId in ywProject.chapters[chId].srtScenes:
-                    ET.SubElement(sortSc, 'ScID').text = scId
-
-                chFields = ET.SubElement(chp, 'Fields')
-
-                if ywProject.chapters[chId].title is not None:
-
-                    if ywProject.chapters[chId].title.startswith('@'):
-                        ywProject.chapters[chId].suppressChapterTitle = True
-
-                if ywProject.chapters[chId].suppressChapterTitle:
-                    ET.SubElement(
-                        chFields, 'Field_SuppressChapterTitle').text = '1'
-
-            chapters.append(chp)
+            chapters.append(xmlChapters[chId])
 
         # Write attributes at novel level to the xml element tree.
 
