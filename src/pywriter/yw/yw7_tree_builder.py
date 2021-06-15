@@ -611,12 +611,36 @@ class Yw7TreeBuilder():
             if prjCrt.isMajor:
                 ET.SubElement(xmlCrt, 'Major').text = '-1'
 
+        def modify_project_subtree(xmlPrj, ywProject):
+            xmlPrj.find('Title').text = ywProject.title
+
+            if ywProject.desc is not None:
+
+                if xmlPrj.find('Desc') is None:
+                    ET.SubElement(xmlPrj, 'Desc').text = ywProject.desc
+
+                else:
+                    xmlPrj.find('Desc').text = ywProject.desc
+
+            if ywProject.author is not None:
+
+                if xmlPrj.find('AuthorName') is None:
+                    ET.SubElement(xmlPrj, 'AuthorName').text = ywProject.author
+
+                else:
+                    xmlPrj.find('AuthorName').text = ywProject.author
+
+            xmlPrj.find('FieldTitle1').text = ywProject.fieldTitle1
+            xmlPrj.find('FieldTitle2').text = ywProject.fieldTitle2
+            xmlPrj.find('FieldTitle3').text = ywProject.fieldTitle3
+            xmlPrj.find('FieldTitle4').text = ywProject.fieldTitle4
+
         xmlScenes = {}
         xmlChapters = {}
 
         root = ywProject.tree.getroot()
 
-        # Write attributes at scene level to the xml element tree.
+        #--- Process scenes.
 
         scenes = root.find('SCENES')
 
@@ -648,7 +672,7 @@ class Yw7TreeBuilder():
         if message.startswith('ERROR'):
             return message
 
-        # Write attributes at chapter level to the xml element tree.
+        #--- Process chapters.
 
         chapters = root.find('CHAPTERS')
 
@@ -678,31 +702,12 @@ class Yw7TreeBuilder():
 
             chapters.append(xmlChapters[chId])
 
-        # Write attributes at novel level to the xml element tree.
+        #--- Process project attributes.
 
-        prj = root.find('PROJECT')
-        prj.find('Title').text = ywProject.title
+        xmlPrj = root.find('PROJECT')
+        modify_project_subtree(xmlPrj, ywProject)
 
-        if ywProject.desc is not None:
-
-            if prj.find('Desc') is None:
-                ET.SubElement(prj, 'Desc').text = ywProject.desc
-
-            else:
-                prj.find('Desc').text = ywProject.desc
-
-        if ywProject.author is not None:
-
-            if prj.find('AuthorName') is None:
-                ET.SubElement(prj, 'AuthorName').text = ywProject.author
-
-            else:
-                prj.find('AuthorName').text = ywProject.author
-
-        prj.find('FieldTitle1').text = ywProject.fieldTitle1
-        prj.find('FieldTitle2').text = ywProject.fieldTitle2
-        prj.find('FieldTitle3').text = ywProject.fieldTitle3
-        prj.find('FieldTitle4').text = ywProject.fieldTitle4
+        #--- Process locations.
 
         locations = root.find('LOCATIONS')
 
@@ -712,6 +717,8 @@ class Yw7TreeBuilder():
         for xmlLoc in locations.findall('LOCATION'):
             locations.remove(xmlLoc)
 
+        # Add the new XML location subtrees to the project tree.
+
         sortOrder = 0
 
         for lcId in ywProject.srtLocations:
@@ -720,7 +727,7 @@ class Yw7TreeBuilder():
             create_location_subtree(
                 xmlLoc, ywProject.locations[lcId], sortOrder)
 
-        # Write items to the xml element tree.
+        #--- Process items.
 
         items = root.find('ITEMS')
 
@@ -730,6 +737,8 @@ class Yw7TreeBuilder():
         for xmlItm in items.findall('ITEM'):
             items.remove(xmlItm)
 
+        # Add the new XML item subtrees to the project tree.
+
         sortOrder = 0
 
         for itId in ywProject.srtItems:
@@ -737,7 +746,7 @@ class Yw7TreeBuilder():
             xmlItm = ET.SubElement(items, 'ITEM')
             create_item_subtree(xmlItm, ywProject.items[itId], sortOrder)
 
-        # Write characters to the xml element tree.
+        #--- Process characters.
 
         characters = root.find('CHARACTERS')
 
@@ -746,6 +755,8 @@ class Yw7TreeBuilder():
 
         for xmlCrt in characters.findall('CHARACTER'):
             characters.remove(xmlCrt)
+
+        # Add the new XML character subtrees to the project tree.
 
         sortOrder = 0
 
