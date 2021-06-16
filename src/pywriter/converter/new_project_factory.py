@@ -8,7 +8,7 @@ import os
 
 from pywriter.converter.file_factory import FileFactory
 
-from pywriter.yw.yw7_new_file import Yw7NewFile
+from pywriter.yw.yw7_file import Yw7File
 from pywriter.html.html_import import HtmlImport
 from pywriter.html.html_outline import HtmlOutline
 
@@ -41,7 +41,7 @@ class NewProjectFactory(FileFactory):
             return 'ERROR: This document is not meant to be written back.', None, None
 
         fileName, fileExtension = os.path.splitext(sourcePath)
-        targetFile = Yw7NewFile(fileName + Yw7NewFile.EXTENSION, **kwargs)
+        targetFile = Yw7File(fileName + Yw7File.EXTENSION, **kwargs)
 
         if sourcePath.endswith('.html'):
 

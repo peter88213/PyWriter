@@ -7,7 +7,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 from pywriter.yw.yw5_file import Yw5File
 from pywriter.yw.yw5_tree_creator import Yw5TreeCreator
-from pywriter.yw.yw_project_creator import YwProjectCreator
 
 
 class Yw5NewFile(Yw5File):
@@ -20,5 +19,4 @@ class Yw5NewFile(Yw5File):
         """
         Yw5File.__init__(self, filePath)
 
-        self.ywProjectMerger = YwProjectCreator()
         self.ywTreeBuilder = Yw5TreeCreator()

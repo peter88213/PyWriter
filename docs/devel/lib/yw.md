@@ -8,8 +8,6 @@
  
 - **yw7_file** -- Provide a class for yWriter 7 project import and export.
 
-- **yw7_new_file** -- Provide a class for yWriter 7 project creation.
-
 - **yw6_file** -- Provide a class for yWriter 6 project import and export.
 
 - **yw5_file** -- Provide a class for yWriter 5 project export.
@@ -25,8 +23,6 @@
 ---
  
 - **yw_project_merger** -- Provide a strategy class to merge two yWriter project structures.
-
-- **yw_project_creator** -- Provide a strategy class to create a new yWriter project structure.
 
 ---
  

@@ -19,7 +19,7 @@ from pywriter.converter.yw7_converter import Yw7Converter
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.yw.yw7_tree_builder import Yw7TreeBuilder
-from pywriter.yw.yw_project_creator import YwProjectCreator
+from pywriter.yw.yw_project_merger import YwProjectMerger
 
 
 DATA_PATH = 'data/_import/'
@@ -67,7 +67,7 @@ class NrmOpr(unittest.TestCase):
         copy_file(REFERENCE_HTML, TEST_HTML)
         yw7File = Yw7File(TEST_YW7)
         yw7File.ywTreeBuilder = Yw7TreeBuilder()
-        yw7File.ywProjectMerger = YwProjectCreator()
+        yw7File.ywProjectMerger = YwProjectMerger()
         documentFile = importClass(TEST_HTML)
         converter = YwCnv()
 

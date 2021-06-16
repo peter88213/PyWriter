@@ -391,8 +391,4 @@ class YwProjectMerger():
             for chId in source.srtChapters:
                 target.srtChapters.append(chId)
 
-        if mismatchCount > 0:
-            return 'ERROR: Project structure mismatch.'
-
-        else:
-            return 'SUCCESS'
+        return 'SUCCESS'
