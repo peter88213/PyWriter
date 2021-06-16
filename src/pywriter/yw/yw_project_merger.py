@@ -20,7 +20,7 @@ class YwProjectMerger():
         Create target attributes, if not existing, but return ERROR.
         """
 
-        # Merge and re-order locations.
+        #--- Merge and re-order locations.
 
         if source.srtLocations != []:
             target.srtLocations = source.srtLocations
@@ -69,7 +69,7 @@ class YwProjectMerger():
                 else:
                     target.locations[lcId].tags = temploc[lcId].tags
 
-        # Merge and re-order items.
+        #--- Merge and re-order items.
 
         if source.srtItems != []:
             target.srtItems = source.srtItems
@@ -118,7 +118,7 @@ class YwProjectMerger():
                 else:
                     target.items[itId].tags = tempitm[itId].tags
 
-        # Merge and re-order characters.
+        #--- Merge and re-order characters.
 
         if source.srtCharacters != []:
             target.srtCharacters = source.srtCharacters
@@ -197,7 +197,7 @@ class YwProjectMerger():
                 else:
                     target.characters[crId].isMajor = tempchr[crId].isMajor
 
-        # Merge scenes.
+        #--- Merge scenes.
 
         mismatchCount = 0
 
@@ -313,7 +313,7 @@ class YwProjectMerger():
                     if itId in target.items:
                         target.scenes[scId].append(itId)
 
-        # Merge chapters.
+        #--- Merge chapters.
 
         scenesAssigned = []
 
@@ -360,7 +360,7 @@ class YwProjectMerger():
                         target.chapters[chId].srtScenes.append(scId)
                         scenesAssigned.append(scId)
 
-        # Merge attributes at novel level.
+        #--- Merge project attributes.
 
         if source.title:
             # avoids deleting the title, if it is empty by accident
@@ -384,7 +384,8 @@ class YwProjectMerger():
         if source.fieldTitle4 is not None:
             target.fieldTitle4 = source.fieldTitle4
 
-        if source.srtChapters != []:
+        # if source.srtChapters != []:
+        if target.srtChapters == []:
             target.srtChapters = []
 
             for chId in source.srtChapters:
