@@ -10,8 +10,6 @@ yw5_new_file -- Provide a class for yWriter 5 project creation.
 utf8_tree_reader -- Provide a strategy class to read utf-8 encoded yWriter project files.
 ansi_tree_reader -- Provide a strategy class to read ANSI encoded yWriter project files.
 
-yw_project_merger -- Provide a strategy class to merge two yWriter project structures.
-
 yw7_tree_builder -- Provide a strategy class to build an yWriter 7 xml tree.
 yw6_tree_builder -- Provide a strategy class to build an yWriter 6 xml tree.
 yw5_tree_builder -- Provide a strategy class to build an yWriter 5 xml tree.

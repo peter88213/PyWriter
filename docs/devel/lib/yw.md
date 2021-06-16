@@ -22,10 +22,6 @@
 
 ---
  
-- **yw_project_merger** -- Provide a strategy class to merge two yWriter project structures.
-
----
- 
 - **yw7_tree_builder** -- Provide a strategy class to build a yWriter 7 xml tree.
 
 - **yw6_tree_builder** -- Provide a strategy class to build an yWriter 6 xml tree.
