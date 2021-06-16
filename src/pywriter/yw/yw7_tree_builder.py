@@ -19,126 +19,6 @@ class Yw7TreeBuilder():
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        def create_scene_subtree(xmlScn, prjScn):
-            ET.SubElement(xmlScn, 'ID').text = scId
-
-            if prjScn.title is not None:
-                ET.SubElement(xmlScn, 'Title').text = prjScn.title
-
-            for chId in ywProject.chapters:
-
-                if scId in ywProject.chapters[chId].srtScenes:
-                    ET.SubElement(xmlScn, 'BelongsToChID').text = chId
-                    break
-
-            if prjScn.desc is not None:
-                ET.SubElement(xmlScn, 'Desc').text = prjScn.desc
-
-            if prjScn.sceneContent is not None:
-                ET.SubElement(xmlScn,
-                              'SceneContent').text = prjScn.sceneContent
-                ET.SubElement(xmlScn, 'WordCount').text = str(prjScn.wordCount)
-                ET.SubElement(xmlScn, 'LetterCount').text = str(
-                    prjScn.letterCount)
-
-            if prjScn.isUnused:
-                ET.SubElement(xmlScn, 'Unused').text = '-1'
-
-            scFields = ET.SubElement(xmlScn, 'Fields')
-
-            if prjScn.isNotesScene:
-                ET.SubElement(scFields, 'Field_SceneType').text = '1'
-
-            elif prjScn.isTodoScene:
-                ET.SubElement(scFields, 'Field_SceneType').text = '2'
-
-            if prjScn.status is not None:
-                ET.SubElement(xmlScn, 'Status').text = str(prjScn.status)
-
-            if prjScn.sceneNotes is not None:
-                ET.SubElement(xmlScn, 'Notes').text = prjScn.sceneNotes
-
-            if prjScn.tags is not None:
-                ET.SubElement(xmlScn, 'Tags').text = ';'.join(prjScn.tags)
-
-            if prjScn.field1 is not None:
-                ET.SubElement(xmlScn, 'Field1').text = prjScn.field1
-
-            if prjScn.field2 is not None:
-                ET.SubElement(xmlScn, 'Field2').text = prjScn.field2
-
-            if prjScn.field3 is not None:
-                ET.SubElement(xmlScn, 'Field3').text = prjScn.field3
-
-            if prjScn.field4 is not None:
-                ET.SubElement(xmlScn, 'Field4').text = prjScn.field4
-
-            if prjScn.appendToPrev:
-                ET.SubElement(xmlScn, 'AppendToPrev').text = '-1'
-
-            # Date/time information
-
-            if (prjScn.date is not None) and (prjScn.time is not None):
-                dateTime = ' '.join(prjScn.date, prjScn.time)
-                ET.SubElement(xmlScn, 'SpecificDateTime').text = dateTime
-                ET.SubElement(xmlScn, 'SpecificDateMode').text = '-1'
-
-            elif (prjScn.day is not None) or (prjScn.hour is not None) or (prjScn.minute is not None):
-
-                if prjScn.day is not None:
-                    ET.SubElement(xmlScn, 'Day').text = prjScn.day
-
-                if prjScn.hour is not None:
-                    ET.SubElement(xmlScn, 'Hour').text = prjScn.hour
-
-                if prjScn.minute is not None:
-                    ET.SubElement(xmlScn, 'Minute').text = prjScn.minute
-
-            if prjScn.lastsDays is not None:
-                ET.SubElement(xmlScn, 'LastsDays').text = prjScn.lastsDays
-
-            if prjScn.lastsHours is not None:
-                ET.SubElement(xmlScn, 'LastsHours').text = prjScn.lastsHours
-
-            if prjScn.lastsMinutes is not None:
-                ET.SubElement(
-                    xmlScn, 'LastsMinutes').text = prjScn.lastsMinutes
-
-            # Plot related information
-
-            if prjScn.isReactionScene:
-                ET.SubElement(xmlScn, 'ReactionScene').text = '-1'
-
-            if prjScn.isSubPlot:
-                ET.SubElement(xmlScn, 'SubPlot').text = '-1'
-
-            if prjScn.goal is not None:
-                ET.SubElement(xmlScn, 'Goal').text = prjScn.goal
-
-            if prjScn.conflict is not None:
-                ET.SubElement(xmlScn, 'Conflict').text = prjScn.conflict
-
-            if prjScn.outcome is not None:
-                ET.SubElement(xmlScn, 'Outcome').text = prjScn.outcome
-
-            if prjScn.characters is not None:
-                scCharacters = ET.SubElement(xmlScn, 'Characters')
-
-                for crId in prjScn.characters:
-                    ET.SubElement(scCharacters, 'CharID').text = crId
-
-            if prjScn.locations is not None:
-                scLocations = ET.SubElement(xmlScn, 'Locations')
-
-                for lcId in prjScn.locations:
-                    ET.SubElement(scLocations, 'LocID').text = lcId
-
-            if prjScn.items is not None:
-                scItems = ET.SubElement(xmlScn, 'Items')
-
-                for itId in prjScn.items:
-                    ET.SubElement(scItems, 'ItemID').text = itId
-
         def build_scene_subtree(xmlScn, prjScn):
 
             if prjScn.title is not None:
@@ -149,6 +29,14 @@ class Yw7TreeBuilder():
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Title').text = prjScn.title
 
+            if xmlScn.find('BelongsToChID') is None:
+
+                for chId in ywProject.chapters:
+
+                    if scId in ywProject.chapters[chId].srtScenes:
+                        ET.SubElement(xmlScn, 'BelongsToChID').text = chId
+                        break
+
             if prjScn.desc is not None:
 
                 try:
@@ -157,7 +45,19 @@ class Yw7TreeBuilder():
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Desc').text = prjScn.desc
 
-            # Scene content is written in subclasses.
+            # Scene content is overwritten in subclasses.
+
+            if xmlScn.find('SceneContent') is None:
+                ET.SubElement(
+                    xmlScn, 'SceneContent').text = prjScn.sceneContent
+
+            if xmlScn.find('WordCount') is None:
+                ET.SubElement(xmlScn, 'WordCount').text = str(
+                    prjScn.wordCount)
+
+            if xmlScn.find('LetterCount') is None:
+                ET.SubElement(xmlScn, 'LetterCount').text = str(
+                    prjScn.letterCount)
 
             if prjScn.isUnused:
 
@@ -206,7 +106,11 @@ class Yw7TreeBuilder():
                         scFields.remove(scFields.find('Field_SceneType'))
 
             if prjScn.status is not None:
-                xmlScn.find('Status').text = str(prjScn.status)
+                try:
+                    xmlScn.find('Status').text = str(prjScn.status)
+
+                except:
+                    ET.SubElement(xmlScn, 'Status').text = str(prjScn.status)
 
             if prjScn.sceneNotes is not None:
 
@@ -505,7 +409,7 @@ class Yw7TreeBuilder():
             elif xmlChp.find('Unused') is not None:
                 xmlChp.remove(xmlChp.find('Unused'))
 
-        def create_location_subtree(xmlLoc, prjLoc, sortOrder):
+        def build_location_subtree(xmlLoc, prjLoc, sortOrder):
             ET.SubElement(xmlLoc, 'ID').text = lcId
 
             if prjLoc.title is not None:
@@ -525,7 +429,7 @@ class Yw7TreeBuilder():
 
             ET.SubElement(xmlLoc, 'SortOrder').text = str(sortOrder)
 
-        def create_item_subtree(xmlItm, prjItm, sortOrder):
+        def build_item_subtree(xmlItm, prjItm, sortOrder):
             ET.SubElement(xmlItm, 'ID').text = itId
 
             if prjItm.title is not None:
@@ -545,7 +449,7 @@ class Yw7TreeBuilder():
 
             ET.SubElement(xmlItm, 'SortOrder').text = str(sortOrder)
 
-        def create_character_subtree(xmlCrt, prjCrt, sortOrder):
+        def build_character_subtree(xmlCrt, prjCrt, sortOrder):
             ET.SubElement(xmlCrt, 'ID').text = crId
 
             if prjCrt.title is not None:
@@ -688,7 +592,7 @@ class Yw7TreeBuilder():
         for lcId in ywProject.srtLocations:
             sortOrder += 1
             xmlLoc = ET.SubElement(locations, 'LOCATION')
-            create_location_subtree(
+            build_location_subtree(
                 xmlLoc, ywProject.locations[lcId], sortOrder)
 
         #--- Process items.
@@ -705,7 +609,7 @@ class Yw7TreeBuilder():
         for itId in ywProject.srtItems:
             sortOrder += 1
             xmlItm = ET.SubElement(items, 'ITEM')
-            create_item_subtree(xmlItm, ywProject.items[itId], sortOrder)
+            build_item_subtree(xmlItm, ywProject.items[itId], sortOrder)
 
         #--- Process characters.
         # Remove CHARACTER entries in order to rewrite
@@ -721,7 +625,7 @@ class Yw7TreeBuilder():
         for crId in ywProject.srtCharacters:
             sortOrder += 1
             xmlCrt = ET.SubElement(characters, 'CHARACTER')
-            create_character_subtree(
+            build_character_subtree(
                 xmlCrt, ywProject.characters[crId], sortOrder)
 
         #--- Process scenes.
@@ -737,13 +641,11 @@ class Yw7TreeBuilder():
 
         for scId in ywProject.scenes:
 
-            if scId in xmlScenes:
-                build_scene_subtree(xmlScenes[scId], ywProject.scenes[scId])
-
-            else:
+            if not scId in xmlScenes:
                 xmlScenes[scId] = ET.Element('SCENE')
-                create_scene_subtree(xmlScenes[scId], ywProject.scenes[scId])
+                ET.SubElement(xmlScenes[scId], 'ID').text = scId
 
+            build_scene_subtree(xmlScenes[scId], ywProject.scenes[scId])
             scenes.append(xmlScenes[scId])
 
         #--- Process chapters.
