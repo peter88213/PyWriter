@@ -194,8 +194,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
       <Title><![CDATA[Part 1]]></Title>
       <SectionStart>-1</SectionStart>
       <Type>0</Type>
-      <Scenes />
-      <Fields />
     </CHAPTER>
     <CHAPTER>
       <ID>2</ID>
@@ -205,7 +203,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
       <Scenes>
         <ScID>1</ScID>
       </Scenes>
-      <Fields />
     </CHAPTER>
     <CHAPTER>
       <ID>3</ID>
@@ -216,7 +213,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
         <ScID>2</ScID>
         <ScID>3</ScID>
       </Scenes>
-      <Fields />
     </CHAPTER>
     <CHAPTER>
       <ID>4</ID>
@@ -226,7 +222,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
       <Scenes>
         <ScID>4</ScID>
       </Scenes>
-      <Fields />
     </CHAPTER>
     <CHAPTER>
       <ID>5</ID>
@@ -239,7 +234,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
         <ScID>7</ScID>
         <ScID>8</ScID>
       </Scenes>
-      <Fields />
     </CHAPTER>
     <CHAPTER>
       <ID>6</ID>
@@ -250,7 +244,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
         <ScID>9</ScID>
         <ScID>10</ScID>
       </Scenes>
-      <Fields />
     </CHAPTER>
     <CHAPTER>
       <ID>7</ID>
@@ -261,7 +254,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
         <ScID>11</ScID>
         <ScID>12</ScID>
       </Scenes>
-      <Fields />
     </CHAPTER>
   </CHAPTERS>
 </YWRITER7>

@@ -316,44 +316,6 @@ class Yw7TreeBuilder():
                 for itId in prjScn.items:
                     ET.SubElement(items, 'ItemID').text = itId
 
-        def create_chapter_subtree(xmlChp, prjChp, sortOrder):
-            ET.SubElement(xmlChp, 'ID').text = chId
-            ET.SubElement(xmlChp, 'SortOrder').text = str(sortOrder)
-
-            if prjChp.title is not None:
-                ET.SubElement(xmlChp, 'Title').text = prjChp.title
-
-            if prjChp.desc is not None:
-                ET.SubElement(xmlChp, 'Desc').text = prjChp.desc
-
-            if prjChp.chLevel == 1:
-                ET.SubElement(xmlChp, 'SectionStart').text = '-1'
-
-            if prjChp.oldType is not None:
-                ET.SubElement(xmlChp, 'Type').text = str(prjChp.oldType)
-
-            if prjChp.chType is not None:
-                ET.SubElement(xmlChp, 'ChapterType').text = str(prjChp.chType)
-
-            if prjChp.isUnused:
-                ET.SubElement(xmlChp, 'Unused').text = '-1'
-
-            sortSc = ET.SubElement(xmlChp, 'Scenes')
-
-            for scId in prjChp.srtScenes:
-                ET.SubElement(sortSc, 'ScID').text = scId
-
-            chFields = ET.SubElement(xmlChp, 'Fields')
-
-            if prjChp.title is not None:
-
-                if prjChp.title.startswith('@'):
-                    prjChp.suppressChapterTitle = True
-
-            if prjChp.suppressChapterTitle:
-                ET.SubElement(
-                    chFields, 'Field_SuppressChapterTitle').text = '1'
-
         def build_chapter_subtree(xmlChp, prjChp, sortOrder):
 
             try:
@@ -408,6 +370,14 @@ class Yw7TreeBuilder():
 
             elif xmlChp.find('Unused') is not None:
                 xmlChp.remove(xmlChp.find('Unused'))
+
+            if prjChp.srtScenes:
+
+                if xmlChp.find('Scenes') is None:
+                    sortSc = ET.SubElement(xmlChp, 'Scenes')
+
+                    for scId in prjChp.srtScenes:
+                        ET.SubElement(sortSc, 'ScID').text = scId
 
         def build_location_subtree(xmlLoc, prjLoc, sortOrder):
             ET.SubElement(xmlLoc, 'ID').text = lcId
@@ -664,17 +634,12 @@ class Yw7TreeBuilder():
         for chId in ywProject.srtChapters:
             sortOrder += 1
 
-            if chId in xmlChapters:
-                build_chapter_subtree(
-                    xmlChapters[chId], ywProject.chapters[chId], sortOrder)
-
-            else:
+            if not chId in xmlChapters:
                 xmlChapters[chId] = ET.Element('CHAPTER')
-                # ET.SubElement(xmlChapters[chId], 'ID').text = chId
+                ET.SubElement(xmlChapters[chId], 'ID').text = chId
 
-                # build_chapter_subtree(
-                create_chapter_subtree(
-                    xmlChapters[chId], ywProject.chapters[chId], sortOrder)
+            build_chapter_subtree(
+                xmlChapters[chId], ywProject.chapters[chId], sortOrder)
 
             chapters.append(xmlChapters[chId])
 
