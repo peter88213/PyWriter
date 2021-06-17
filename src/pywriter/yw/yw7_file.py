@@ -817,6 +817,13 @@ class Yw7File(Novel):
             for chId in source.srtChapters:
                 self.srtChapters.append(chId)
 
+        if self.tree is not None:
+
+            # The project structure must match the target.
+
+            if mismatchCount != 0:
+                return 'ERROR: Project structure mismatch.'
+
         return 'SUCCESS'
 
     def write(self):
