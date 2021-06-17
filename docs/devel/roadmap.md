@@ -210,7 +210,14 @@ Make yw7 the default yWriter format
 
 Import changed chapter and scene titles from html input.
 
+#### v3.8
 
+Possible changes of the chapter/scene structure.
+
+The yw7 tree builder can mix new chapters and scenes with existing ones 
+without losing unknown metadata. The target yw7 project sructure is fully 
+controlled by the Yw7File.merge method. 
+ 
 ## Version 4.x: Edit the novel structure independently from yWriter
 
 - Write back the whole yWriter project structure.
