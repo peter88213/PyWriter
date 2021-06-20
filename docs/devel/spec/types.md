@@ -263,10 +263,31 @@ rows. New entities must get a unique ID.
 
 ## Export scene list
 
-Generate a new OpenDocument spreadsheet (ods) listing scene
-title, scene descriptions, and links to the manuscript\'s scene
-sections. Further scene metadata (e.g. tags, goals, time), if any. File
-name suffix is `_scenelist`.
+Generate a new OpenDocument spreadsheet (ods) listing the following:
+
+- Link to the manuscript's scene section
+- Scene title
+- Scene description
+- Tags
+- Scene notes
+- A/R
+- Goal
+- Conflict
+- Outcome
+- Scene
+- Words total
+- FieldTitle 1
+- FieldTitle 2
+- FieldTitle 3
+- FieldTitle 4
+- Word count
+- Letter count
+- Status
+- Characters
+- Locations
+- Items
+
+File name suffix is `_scenelist`.
 
 [Top of page](#top)
 
