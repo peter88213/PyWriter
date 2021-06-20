@@ -265,7 +265,7 @@ rows. New entities must get a unique ID.
 
 Generate a new OpenDocument spreadsheet (ods) listing the following:
 
-- Link to the manuscript's scene section
+- Hyperlink to the manuscript's scene section
 - Scene title
 - Scene description
 - Tags
@@ -274,7 +274,7 @@ Generate a new OpenDocument spreadsheet (ods) listing the following:
 - Goal
 - Conflict
 - Outcome
-- Scene
+- Sequential scene number
 - Words total
 - FieldTitle 1
 - FieldTitle 2
@@ -296,5 +296,19 @@ File name suffix is `_scenelist`.
 ## Export plot list
 
 Generate a new OpenDocument spreadsheet (ods) listing plot
-related metadata that can be displayed and edited. File name suffix is
-`_plotlist`.
+related metadata that can be displayed and edited. 
+
+- ID (Hyperlink to the manuscript)
+- Plot section (Title of "Notes" chapter)
+- Plot event (Scene tag)
+- Scene title
+- Details (Notes)
+- Sequential scene number
+- Words total
+- Field Title1
+- Field Title2
+- Field Title3
+- Field Title4
+
+File name suffix is `_plotlist`.
+
