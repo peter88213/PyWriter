@@ -75,6 +75,8 @@ class YwCnvUi(YwCnv):
 
         This is a template method that calls primitive operations by case.
         """
+        self.newFile = None
+
         if not os.path.isfile(sourcePath):
             self.ui.set_info_how(
                 'ERROR: File "' + os.path.normpath(sourcePath) + '" not found.')
