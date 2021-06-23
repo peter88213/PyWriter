@@ -13,6 +13,7 @@ The PyWriter project started with a library for yWriter7 file operations such as
 - [yW2OO - yWriter to OpenOffice/LibreOffice standalone converter](https://peter88213.github.io/yW2OO)
 - [yw2html - HTML export from yWriter with templates](https://peter88213.github.io/yw2html)
 - [yw2md - Markdown import and export from yWriter](https://peter88213.github.io/yw2md)
+- [yw-reporter - Configurable report generator for yWriter projects](https://peter88213.github.io/yw-reporter)
     
 
 
