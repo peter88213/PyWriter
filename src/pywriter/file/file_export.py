@@ -175,6 +175,7 @@ class FileExport(Novel):
     def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
         """Return a mapping dictionary for a scene section. 
         """
+        # Create a comma separated tag list.
 
         if self.scenes[scId].tags is not None:
             tags = self.get_string(self.scenes[scId].tags)
@@ -182,9 +183,12 @@ class FileExport(Novel):
         else:
             tags = ''
 
+        # Create a comma separated character list.
+
         try:
             # Note: Due to a bug, yWriter scenes might hold invalid
             # viepoint characters
+
             sChList = []
 
             for chId in self.scenes[scId].characters:
@@ -197,6 +201,8 @@ class FileExport(Novel):
             sceneChars = ''
             viewpointChar = ''
 
+        # Create a comma separated location list.
+
         if self.scenes[scId].locations is not None:
             sLcList = []
 
@@ -207,6 +213,8 @@ class FileExport(Novel):
 
         else:
             sceneLocs = ''
+
+        # Create a comma separated item list.
 
         if self.scenes[scId].items is not None:
             sItList = []
@@ -219,11 +227,60 @@ class FileExport(Novel):
         else:
             sceneItems = ''
 
+        # Create A/R marker string.
+
         if self.scenes[scId].isReactionScene:
             reactionScene = Scene.REACTION_MARKER
 
         else:
             reactionScene = Scene.ACTION_MARKER
+
+        # Create a combined date information.
+
+        if self.scenes[scId].date is None:
+
+            if self.scenes[scId].day is None:
+                scDate = ''
+            else:
+                scDate = 'Day ' + self.scenes[scId].day
+
+        else:
+            scDate = self.scenes[scId].date
+
+        # Create a combined time information.
+
+        if self.scenes[scId].time is None:
+
+            if self.scenes[scId].hour is None:
+                scTime = ''
+            else:
+                scTime = self.scenes[scId].hour.zfill(2) + \
+                    ':' + self.scenes[scId].minute.zfill(2)
+
+        else:
+            scTime = self.scenes[scId].time.rsplit(':', 1)[0]
+
+        # Create a combined duration information.
+
+        if self.scenes[scId].lastsDays is None:
+            days = ''
+        else:
+            days = self.scenes[scId].lastsDays + 'd '
+
+        if self.scenes[scId].lastsHours is None:
+            hours = ''
+
+        else:
+            hours = self.scenes[scId].lastsHours + 'h '
+
+        if self.scenes[scId].lastsMinutes is None:
+
+            minutes = ''
+
+        else:
+            minutes = self.scenes[scId].lastsMinutes + 'min'
+
+        duration = days + hours + minutes
 
         sceneMapping = dict(
             ID=scId,
@@ -250,9 +307,12 @@ class FileExport(Novel):
             Day=self.scenes[scId].day,
             Hour=self.scenes[scId].hour,
             Minute=self.scenes[scId].minute,
+            ScDate=scDate,
+            ScTime=scTime,
             LastsDays=self.scenes[scId].lastsDays,
             LastsHours=self.scenes[scId].lastsHours,
             LastsMinutes=self.scenes[scId].lastsMinutes,
+            Duration=duration,
             ReactionScene=reactionScene,
             Goal=self.convert_from_yw(self.scenes[scId].goal),
             Conflict=self.convert_from_yw(self.scenes[scId].conflict),
@@ -266,6 +326,7 @@ class FileExport(Novel):
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
+
         return sceneMapping
 
     def get_characterMapping(self, crId):
