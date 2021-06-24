@@ -1,4 +1,4 @@
-"""Provide a class for ODT ross reference export.
+"""Provide a class for ODT cross reference export.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -90,6 +90,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
     def get_scenes(self, scenes):
         """Process the scenes.
         Return a list of strings.
+        Override the superclass method.
         """
         lines = []
 
@@ -118,7 +119,6 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """
         lines = []
         headerTemplate = Template(self.scnPerTagtemplate)
-        template = Template(self.sceneTemplate)
 
         for tag in self.xr.scnPerTag:
 
@@ -132,6 +132,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
     def get_characters(self):
         """Process the scenes per character.
         Return a list of strings.
+        Override the superclass method.
         """
         lines = []
         headerTemplate = Template(self.scnPerChrTemplate)
@@ -148,6 +149,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
     def get_locations(self):
         """Process the locations.
         Return a list of strings.
+        Override the superclass method.
         """
         lines = []
         headerTemplate = Template(self.scnPerLocTemplate)
@@ -164,6 +166,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
     def get_items(self):
         """Process the items.
         Return a list of strings.
+        Override the superclass method.
         """
         lines = []
         headerTemplate = Template(self.scnPerItmTemplate)
@@ -238,8 +241,9 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         return lines
 
     def get_text(self):
-        """Apply the template method pattern
-        by overwriting a method called during the file export process.
+        """Assemple the whole text applying the templates.
+        Return a string to be written to the output file.
+        Override the superclass method.
         """
         self.xr.generate_xref(self)
 
