@@ -422,8 +422,6 @@ class FileExport(Novel):
         firstSceneInChapter = True
 
         for scId in self.chapters[chId].srtScenes:
-            wordsTotal += self.scenes[scId].wordCount
-            lettersTotal += self.scenes[scId].letterCount
 
             # The order counts; be aware that "Todo" and "Notes" scenes are
             # always unused.
@@ -472,6 +470,8 @@ class FileExport(Novel):
 
             else:
                 sceneNumber += 1
+                wordsTotal += self.scenes[scId].wordCount
+                lettersTotal += self.scenes[scId].letterCount
 
                 template = Template(self.sceneTemplate)
 
