@@ -435,7 +435,7 @@ class FileExport(Novel):
 
         for scId in self.chapters[chId].srtScenes:
 
-            if not self.sceneFilter.accept(scId):
+            if not self.sceneFilter.accept(self, scId):
                 continue
 
             # The order counts; be aware that "Todo" and "Notes" scenes are
@@ -515,7 +515,7 @@ class FileExport(Novel):
 
         for chId in self.srtChapters:
 
-            if not self.chapterFilter.accept(chId):
+            if not self.chapterFilter.accept(self, chId):
                 continue
 
             # The order counts; be aware that "Todo" and "Notes" chapters are
@@ -629,7 +629,7 @@ class FileExport(Novel):
 
         for crId in self.srtCharacters:
 
-            if self.characterFilter.accept(crId):
+            if self.characterFilter.accept(self, crId):
                 lines.append(template.safe_substitute(
                     self.get_characterMapping(crId)))
 
@@ -644,7 +644,7 @@ class FileExport(Novel):
 
         for lcId in self.srtLocations:
 
-            if self.locationFilter.accept(lcId):
+            if self.locationFilter.accept(self, lcId):
                 lines.append(template.safe_substitute(
                     self.get_locationMapping(lcId)))
 
@@ -659,7 +659,7 @@ class FileExport(Novel):
 
         for itId in self.srtItems:
 
-            if self.itemFilter.accept(itId):
+            if self.itemFilter.accept(self, itId):
                 lines.append(template.safe_substitute(
                     self.get_itemMapping(itId)))
 

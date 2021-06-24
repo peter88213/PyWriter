@@ -13,7 +13,7 @@ class Filter():
     for template-based scene export.
     """
 
-    def accept(self, id):
+    def accept(self, source, id):
         """Return True if the entity is not to be filtered out.
         This is a stub to be overridden by subclass methods
         implementing filters.
