@@ -10,7 +10,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 class Filter():
     """Strategy class, implementing filtering criteria 
-    for template-based scene export.
+    for template-based export.
     """
 
     def accept(self, source, id):
