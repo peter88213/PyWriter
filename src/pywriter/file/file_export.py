@@ -414,6 +414,13 @@ class FileExport(Novel):
             self.get_fileHeaderMapping()))
         return lines
 
+    def reject_scene(self, scId):
+        """Return True if the scene is to be filtered out.
+        This is a stub to be overridden by subclass methods
+        implementing scene filters.
+        """
+        return False
+
     def get_scenes(self, chId, sceneNumber, wordsTotal, lettersTotal, doNotExport):
         """Process the scenes.
         Return a list of strings.
@@ -422,6 +429,9 @@ class FileExport(Novel):
         firstSceneInChapter = True
 
         for scId in self.chapters[chId].srtScenes:
+
+            if self.reject_scene(scId):
+                continue
 
             # The order counts; be aware that "Todo" and "Notes" scenes are
             # always unused.
