@@ -29,6 +29,7 @@ class FileExport(Novel):
     unusedChapterTemplate = ''
     notExportedChapterTemplate = ''
     sceneTemplate = ''
+    firstSceneTemplate = ''
     appendedSceneTemplate = ''
     notesSceneTemplate = ''
     todoSceneTemplate = ''
@@ -495,6 +496,9 @@ class FileExport(Novel):
 
             if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
                 lines.append(self.sceneDivider)
+
+            if firstSceneInChapter and self.firstSceneTemplate != '':
+                template = Template(self.firstSceneTemplate)
 
             lines.append(template.safe_substitute(self.get_sceneMapping(
                 scId, sceneNumber, wordsTotal, lettersTotal)))

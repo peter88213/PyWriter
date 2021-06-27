@@ -956,6 +956,10 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_OO1nAPscEeq-TdV6dVW08A" name="fileFooter" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_M-9_INcZEeuOsLFcfhIZmQ" name="filter" type="_EZq9QNcZEeuOsLFcfhIZmQ" aggregation="shared" association="_M-4fkNcZEeuOsLFcfhIZmQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_M-_NQNcZEeuOsLFcfhIZmQ" value="5"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_M-_0UNcZEeuOsLFcfhIZmQ" value="5"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_KQ70UMFcEeu3Uqtx9hJ-Ng" name="get_string"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_OqhqwMFcEeu3Uqtx9hJ-Ng" name="get_list"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_3zOzEPsPEeq-TdV6dVW08A" name="convert_from_yw"/>
@@ -974,6 +978,28 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_rpq6oMFcEeu3Uqtx9hJ-Ng" name="get_items"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_uKM9sMFcEeu3Uqtx9hJ-Ng" name="get_text"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_3zMW0PsPEeq-TdV6dVW08A" name="write"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_EZq9QNcZEeuOsLFcfhIZmQ" name="Filter"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_M-4fkNcZEeuOsLFcfhIZmQ" memberEnd="_M-9_INcZEeuOsLFcfhIZmQ _M-_0UdcZEeuOsLFcfhIZmQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_M-8xANcZEeuOsLFcfhIZmQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_M-8xAdcZEeuOsLFcfhIZmQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_M-_0UdcZEeuOsLFcfhIZmQ" name="self" type="_vHrYMPsPEeq-TdV6dVW08A" association="_M-4fkNcZEeuOsLFcfhIZmQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_tPuJsNcZEeuOsLFcfhIZmQ" name="ScCrFilter">
+        <generalization xmi:type="uml:Generalization" xmi:id="_Ca1ckNcaEeuOsLFcfhIZmQ" general="_EZq9QNcZEeuOsLFcfhIZmQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_tVCukNcZEeuOsLFcfhIZmQ" name="ScItFilter">
+        <generalization xmi:type="uml:Generalization" xmi:id="_DH0eYNcaEeuOsLFcfhIZmQ" general="_EZq9QNcZEeuOsLFcfhIZmQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_tZP5INcZEeuOsLFcfhIZmQ" name="ScLcFilter">
+        <generalization xmi:type="uml:Generalization" xmi:id="_DwUo0NcaEeuOsLFcfhIZmQ" general="_EZq9QNcZEeuOsLFcfhIZmQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_tc304NcZEeuOsLFcfhIZmQ" name="ScTgFilter">
+        <generalization xmi:type="uml:Generalization" xmi:id="_EVd9QNcaEeuOsLFcfhIZmQ" general="_EZq9QNcZEeuOsLFcfhIZmQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_tf7I4NcZEeuOsLFcfhIZmQ" name="ScVpFilter">
+        <generalization xmi:type="uml:Generalization" xmi:id="_FA440NcaEeuOsLFcfhIZmQ" general="_EZq9QNcZEeuOsLFcfhIZmQ"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_C8dO4IfQEeq_kJF_AkSaiA" name="html">

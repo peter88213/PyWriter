@@ -1,4 +1,4 @@
-"""Provide a scene filter class for template-based file export.
+"""Provide a scene per location filter class for template-based file export.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

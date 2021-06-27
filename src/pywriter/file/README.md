@@ -1,3 +1,4 @@
+appendedSceneTemplate (applied to scenes marked "append to previous")
 # Template-based file export
 
 ## List of templates
@@ -30,6 +31,7 @@
 ### Scene level templates
 
 * **sceneTemplate** (applied to "used" scenes within "normal" chapters)
+* **firstSceneTemplate** (applied  to scenes at the beginning of the chapter)
 * **appendedSceneTemplate** (applied to scenes marked "append to previous")
 * **unusedSceneTemplate** (applied to "unused" scenes)
 * **notExportedSceneTemplate** (applied to scenes not to be "exported as RTF")
