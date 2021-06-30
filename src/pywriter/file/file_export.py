@@ -533,6 +533,7 @@ class FileExport(Novel):
             sceneCount = 0
             notExportCount = 0
             doNotExport = False
+            template = None
 
             for scId in self.chapters[chId].srtScenes:
                 sceneCount += 1
@@ -544,29 +545,22 @@ class FileExport(Novel):
                 doNotExport = True
 
             if self.chapters[chId].chType == 2:
+                # Chapter is "ToDo" type (implies "unused").
 
                 if self.todoChapterTemplate != '':
                     template = Template(self.todoChapterTemplate)
 
-                else:
-                    continue
-
             elif self.chapters[chId].chType == 1:
-                # Chapter is "Notes" type.
+                # Chapter is "Notes" type (implies "unused").
 
                 if self.notesChapterTemplate != '':
                     template = Template(self.notesChapterTemplate)
 
-                else:
-                    continue
-
             elif self.chapters[chId].isUnused:
+                # Chapter is "really" unused.
 
                 if self.unusedChapterTemplate != '':
                     template = Template(self.unusedChapterTemplate)
-
-                else:
-                    continue
 
             elif self.chapters[chId].oldType == 1:
                 # Chapter is "Info" type (old file format).
@@ -574,16 +568,10 @@ class FileExport(Novel):
                 if self.notesChapterTemplate != '':
                     template = Template(self.notesChapterTemplate)
 
-                else:
-                    continue
-
             elif doNotExport:
 
                 if self.notExportedChapterTemplate != '':
                     template = Template(self.notExportedChapterTemplate)
-
-                else:
-                    continue
 
             elif self.chapters[chId].chLevel == 1 and self.partTemplate != '':
                 template = Template(self.partTemplate)
@@ -593,8 +581,9 @@ class FileExport(Novel):
                 chapterNumber += 1
                 dispNumber = str(chapterNumber)
 
-            lines.append(template.safe_substitute(
-                self.get_chapterMapping(chId, dispNumber)))
+            if template is not None:
+                lines.append(template.safe_substitute(
+                    self.get_chapterMapping(chId, dispNumber)))
 
             # Process scenes.
 
@@ -604,27 +593,39 @@ class FileExport(Novel):
 
             # Process chapter ending.
 
-            if self.chapters[chId].chType == 2 and self.todoChapterEndTemplate != '':
-                lines.append(self.todoChapterEndTemplate)
+            template = None
+
+            if self.chapters[chId].chType == 2:
+
+                if self.todoChapterEndTemplate != '':
+                    template = Template(self.todoChapterEndTemplate)
 
             elif self.chapters[chId].chType == 1:
 
                 if self.notesChapterEndTemplate != '':
-                    lines.append(self.notesChapterEndTemplate)
+                    template = Template(self.notesChapterEndTemplate)
 
-            elif self.chapters[chId].isUnused and self.unusedChapterEndTemplate != '':
-                lines.append(self.unusedChapterEndTemplate)
+            elif self.chapters[chId].isUnused:
+
+                if self.unusedChapterEndTemplate != '':
+                    template = Template(self.unusedChapterEndTemplate)
 
             elif self.chapters[chId].oldType == 1:
 
                 if self.notesChapterEndTemplate != '':
-                    lines.append(self.notesChapterEndTemplate)
+                    template = Template(self.notesChapterEndTemplate)
 
-            elif doNotExport and self.notExportedChapterEndTemplate != '':
-                lines.append(self.notExportedChapterEndTemplate)
+            elif doNotExport:
+
+                if self.notExportedChapterEndTemplate != '':
+                    template = Template(self.notExportedChapterEndTemplate)
 
             elif self.chapterEndTemplate != '':
-                lines.append(self.chapterEndTemplate)
+                template = Template(self.chapterEndTemplate)
+
+            if template is not None:
+                lines.append(template.safe_substitute(
+                    self.get_chapterMapping(chId, dispNumber)))
 
         return lines
 

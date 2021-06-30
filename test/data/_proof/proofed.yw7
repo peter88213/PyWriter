@@ -1515,6 +1515,7 @@ And now for something completely different.]]></SceneContent>
       <Items>
 		</Items>
       <SceneContent><![CDATA[This text is not funny.]]></SceneContent>
+      <Unused>-1</Unused>
     </SCENE>
   </SCENES>
   <CHAPTERS>

@@ -1559,6 +1559,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Items>
 		</Items>
       <SceneContent><![CDATA[This text is not needed.]]></SceneContent>
+      <Unused>-1</Unused>
     </SCENE>
   </SCENES>
   <CHAPTERS>

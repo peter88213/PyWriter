@@ -431,6 +431,30 @@ class Yw7File(Novel):
 
                     self.scenes[scId].items.append(itId.text)
 
+        # Make sure that ToDo, Notes, and Unused type is inherited from the
+        # chapter.
+
+        for chId in self.chapters:
+
+            if self.chapters[chId].chType == 2:
+                # Chapter is "ToDo" type.
+
+                for scId in self.chapters[chId].srtScenes:
+                    self.scenes[scId].isTodoScene = True
+                    self.scenes[scId].isUnused = True
+
+            elif self.chapters[chId].chType == 1:
+                # Chapter is "Notes" type.
+
+                for scId in self.chapters[chId].srtScenes:
+                    self.scenes[scId].isNotesScene = True
+                    self.scenes[scId].isUnused = True
+
+            elif self.chapters[chId].isUnused:
+
+                for scId in self.chapters[chId].srtScenes:
+                    self.scenes[scId].isUnused = True
+
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + os.path.normpath(self.filePath) + '".'
 
     def merge(self, source):
