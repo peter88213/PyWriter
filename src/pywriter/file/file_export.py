@@ -435,6 +435,7 @@ class FileExport(Novel):
         firstSceneInChapter = True
 
         for scId in self.chapters[chId].srtScenes:
+            dispNumber = ''
 
             if not self.sceneFilter.accept(self, scId):
                 continue
@@ -486,6 +487,7 @@ class FileExport(Novel):
 
             else:
                 sceneNumber += 1
+                dispNumber = str(sceneNumber)
                 wordsTotal += self.scenes[scId].wordCount
                 lettersTotal += self.scenes[scId].letterCount
 
@@ -501,7 +503,7 @@ class FileExport(Novel):
                 template = Template(self.firstSceneTemplate)
 
             lines.append(template.safe_substitute(self.get_sceneMapping(
-                scId, sceneNumber, wordsTotal, lettersTotal)))
+                scId, dispNumber, wordsTotal, lettersTotal)))
 
             firstSceneInChapter = False
 
@@ -518,6 +520,7 @@ class FileExport(Novel):
         lettersTotal = 0
 
         for chId in self.srtChapters:
+            dispNumber = ''
 
             if not self.chapterFilter.accept(self, chId):
                 continue
@@ -588,9 +591,10 @@ class FileExport(Novel):
             else:
                 template = Template(self.chapterTemplate)
                 chapterNumber += 1
+                dispNumber = str(chapterNumber)
 
             lines.append(template.safe_substitute(
-                self.get_chapterMapping(chId, chapterNumber)))
+                self.get_chapterMapping(chId, dispNumber)))
 
             # Process scenes.
 
