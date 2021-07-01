@@ -175,6 +175,9 @@ class FileExport(Novel):
     def get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section. 
         """
+        if chapterNumber == 0:
+            chapterNumber = ''
+
         chapterMapping = dict(
             ID=chId,
             ChapterNumber=chapterNumber,
@@ -189,6 +192,9 @@ class FileExport(Novel):
         """Return a mapping dictionary for a scene section. 
         """
         # Create a comma separated tag list.
+
+        if sceneNumber == 0:
+            sceneNumber = ''
 
         if self.scenes[scId].tags is not None:
             tags = self.get_string(self.scenes[scId].tags)
@@ -435,7 +441,7 @@ class FileExport(Novel):
         firstSceneInChapter = True
 
         for scId in self.chapters[chId].srtScenes:
-            dispNumber = ''
+            dispNumber = 0
 
             if not self.sceneFilter.accept(self, scId):
                 continue
@@ -487,7 +493,7 @@ class FileExport(Novel):
 
             else:
                 sceneNumber += 1
-                dispNumber = str(sceneNumber)
+                dispNumber = sceneNumber
                 wordsTotal += self.scenes[scId].wordCount
                 lettersTotal += self.scenes[scId].letterCount
 
@@ -520,7 +526,7 @@ class FileExport(Novel):
         lettersTotal = 0
 
         for chId in self.srtChapters:
-            dispNumber = ''
+            dispNumber = 0
 
             if not self.chapterFilter.accept(self, chId):
                 continue
@@ -579,7 +585,7 @@ class FileExport(Novel):
             else:
                 template = Template(self.chapterTemplate)
                 chapterNumber += 1
-                dispNumber = str(chapterNumber)
+                dispNumber = chapterNumber
 
             if template is not None:
                 lines.append(template.safe_substitute(
