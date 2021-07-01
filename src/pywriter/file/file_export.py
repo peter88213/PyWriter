@@ -256,48 +256,69 @@ class FileExport(Novel):
 
         # Create a combined date information.
 
-        if self.scenes[scId].date is None:
-
-            if self.scenes[scId].day is None:
-                scDate = ''
-            else:
-                scDate = 'Day ' + self.scenes[scId].day
+        if self.scenes[scId].date is not None:
+            day = ''
+            date = self.scenes[scId].date
+            scDate = self.scenes[scId].date
 
         else:
-            scDate = self.scenes[scId].date
+            date = ''
+
+            if self.scenes[scId].day is not None:
+                day = self.scenes[scId].day
+                scDate = 'Day ' + self.scenes[scId].day
+
+            else:
+                day = ''
+                scDate = ''
 
         # Create a combined time information.
 
-        if self.scenes[scId].time is None:
+        if self.scenes[scId].time is not None:
+            hour = ''
+            minute = ''
+            time = self.scenes[scId].time
+            scTime = self.scenes[scId].time.rsplit(':', 1)[0]
 
-            if self.scenes[scId].hour is None:
-                scTime = ''
-            else:
+        else:
+            time = ''
+
+            if self.scenes[scId].hour is not None:
+                hour = self.scenes[scId].hour
+                minute = self.scenes[scId].minute
                 scTime = self.scenes[scId].hour.zfill(2) + \
                     ':' + self.scenes[scId].minute.zfill(2)
 
-        else:
-            scTime = self.scenes[scId].time.rsplit(':', 1)[0]
+            else:
+                hour = ''
+                minute = ''
+                scTime = ''
 
         # Create a combined duration information.
 
-        if self.scenes[scId].lastsDays is None:
-            days = ''
-        else:
+        if self.scenes[scId].lastsDays is not None:
+            lastsDays = self.scenes[scId].lastsDays
             days = self.scenes[scId].lastsDays + 'd '
 
-        if self.scenes[scId].lastsHours is None:
-            hours = ''
-
         else:
+            lastsDays = ''
+            days = ''
+
+        if self.scenes[scId].lastsHours is not None:
+            lastsHours = self.scenes[scId].lastsHours
             hours = self.scenes[scId].lastsHours + 'h '
 
-        if self.scenes[scId].lastsMinutes is None:
+        else:
+            lastsHours = ''
+            hours = ''
 
-            minutes = ''
+        if self.scenes[scId].lastsMinutes is not None:
+            lastsMinutes = self.scenes[scId].lastsMinutes
+            minutes = self.scenes[scId].lastsMinutes + 'min'
 
         else:
-            minutes = self.scenes[scId].lastsMinutes + 'min'
+            lastsMinutes = ''
+            minutes = ''
 
         duration = days + hours + minutes
 
@@ -321,16 +342,16 @@ class FileExport(Novel):
             Field2=self.scenes[scId].field2,
             Field3=self.scenes[scId].field3,
             Field4=self.scenes[scId].field4,
-            Date=self.scenes[scId].date,
-            Time=self.scenes[scId].time,
-            Day=self.scenes[scId].day,
-            Hour=self.scenes[scId].hour,
-            Minute=self.scenes[scId].minute,
+            Date=date,
+            Time=time,
+            Day=day,
+            Hour=hour,
+            Minute=minute,
             ScDate=scDate,
             ScTime=scTime,
-            LastsDays=self.scenes[scId].lastsDays,
-            LastsHours=self.scenes[scId].lastsHours,
-            LastsMinutes=self.scenes[scId].lastsMinutes,
+            LastsDays=lastsDays,
+            LastsHours=lastsHours,
+            LastsMinutes=lastsMinutes,
             Duration=duration,
             ReactionScene=reactionScene,
             Goal=self.convert_from_yw(self.scenes[scId].goal),
