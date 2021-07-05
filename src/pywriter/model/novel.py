@@ -169,7 +169,7 @@ class Novel():
         else:
             suffix = ''
 
-        if filePath.lower().endswith(suffix + self.EXTENSION):
+        if filePath.lower().endswith((suffix + self.EXTENSION).lower()):
             self._filePath = filePath
             head, tail = os.path.split(os.path.realpath(filePath))
             self.projectPath = quote(head.replace('\\', '/'), '/:')
