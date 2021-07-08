@@ -34,6 +34,7 @@ class OdfFile(FileExport):
         """
         FileExport.__init__(self, filePath, **kwargs)
         self.tempDir = tempfile.mkdtemp(suffix='.tmp', prefix='odf_')
+        self.originalPath = self._filePath
 
     def __del__(self):
         """Make sure to delete the temporary directory,
@@ -145,13 +146,13 @@ class OdfFile(FileExport):
 
         # Add "content.xml" to the temporary directory.
 
-        filePath = self._filePath
+        self.originalPath = self._filePath
 
         self._filePath = self.tempDir + '/content.xml'
 
         message = FileExport.write(self)
 
-        self._filePath = filePath
+        self._filePath = self.originalPath
 
         if message.startswith('ERROR'):
             return message
