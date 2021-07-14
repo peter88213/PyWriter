@@ -68,14 +68,14 @@ class Yw7TreeBuilder():
                 xmlScn.remove(xmlScn.find('Unused'))
 
             if prjScn.isNotesScene:
+                scFields = xmlScn.find('Fields')
 
                 try:
-                    scFields = xmlScn.find('Fields')
+                    if scFields.find('Field_SceneType') is None:
+                        ET.SubElement(scFields, 'Field_SceneType').text = '1'
 
                 except(AttributeError):
                     scFields = ET.SubElement(xmlScn, 'Fields')
-
-                if scFields.find('Field_SceneType') is None:
                     ET.SubElement(scFields, 'Field_SceneType').text = '1'
 
             elif xmlScn.find('Fields') is not None:
@@ -87,14 +87,15 @@ class Yw7TreeBuilder():
                         scFields.remove(scFields.find('Field_SceneType'))
 
             if prjScn.isTodoScene:
+                scFields = xmlScn.find('Fields')
 
                 try:
-                    scFields = xmlScn.find('Fields')
+
+                    if scFields.find('Field_SceneType') is None:
+                        ET.SubElement(scFields, 'Field_SceneType').text = '2'
 
                 except(AttributeError):
                     scFields = ET.SubElement(xmlScn, 'Fields')
-
-                if scFields.find('Field_SceneType') is None:
                     ET.SubElement(scFields, 'Field_SceneType').text = '2'
 
             elif xmlScn.find('Fields') is not None:
