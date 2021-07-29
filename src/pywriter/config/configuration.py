@@ -1,71 +1,89 @@
-"""Provide a Configuration class.
+"""Provide a Configuration class for reading and writing INI files.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import os
 from configparser import ConfigParser
 
 
 class Configuration():
     """Read/write the program configuration.
+
+        INI file sections:
+        <self.sLabel> - Strings
+        <self.oLabel> - Boolean values
+
+    Instance variables:    
+        settings - dictionary of strings
+        options - dictionary of boolean values
     """
 
-    def __init__(self, defaultConfiguration):
+    def __init__(self, settings={}, options={}):
         """Define attribute variables.
-        defaultSettings - dict of dictionaries
-        {category:{option:setting}}
+
+        Arguments:
+        settings - default settings (dictionary of strings)
+        options - default options (dictionary of boolean values)
         """
-        self.defaultConfiguration = defaultConfiguration
-        self.configuration = defaultConfiguration
+        self.sLabel = 'SETTINGS'
+        self.oLabel = 'OPTIONS'
+        self.set(settings, options)
+
+    def set(self, settings=None, options=None):
+
+        if settings is not None:
+            self.settings = settings.copy()
+
+        if options is not None:
+            self.options = options.copy()
 
     def read(self, iniFile):
-        """Load the configuration from iniFile.
-        Return True, if successful. Otherwise return False.
+        """Read a configuration file.
+        Settings and options that can not be read in, remain unchanged.
         """
         config = ConfigParser()
+        config.read(iniFile)
 
-        try:
-            config.read(iniFile)
+        if config.has_section(self.sLabel):
 
-            for cat in self.defaultConfiguration:
+            section = config[self.sLabel]
 
-                for opt in self.defaultConfiguration[cat]:
+            for setting in self.settings:
+                fallback = self.settings[setting]
+                self.settings[setting] = section.get(setting, fallback)
 
-                    try:
-                        self.configuration[cat][opt] = config.get(cat, opt)
+        if config.has_section(self.oLabel):
 
-                    except:
-                        pass
+            section = config[self.oLabel]
 
-        except:
-            return False
-
-        return True
+            for option in self.options:
+                fallback = self.options[option]
+                self.options[option] = section.getboolean(option, fallback)
 
     def write(self, iniFile):
         """Save the configuration to iniFile.
-        Return True, if successful. Otherwise return False.
         """
         config = ConfigParser()
 
-        iniDir = os.path.dirname(iniFile)
+        if self.settings != {}:
 
-        if not os.path.isdir(iniDir):
-            os.makedirs(iniDir)
+            config.add_section(self.sLabel)
 
-        try:
-            for cat in self.defaultConfiguration:
-                config.add_section(cat)
+            for settingId in self.settings:
+                config.set(self.sLabel, settingId, self.settings[settingId])
 
-                for opt in self.defaultConfiguration[cat]:
-                    config.set(cat, opt, self.configuration[cat][opt])
+        if self.options != {}:
 
-            with open(iniFile, 'w') as f:
-                config.write(f)
+            config.add_section(self.oLabel)
 
-        except:
-            return False
+            for settingId in self.options:
 
-        return True
+                if self.options[settingId]:
+                    config.set(self.oLabel, settingId, 'Yes')
+
+                else:
+                    config.set(self.oLabel, settingId, 'No')
+
+        with open(iniFile, 'w') as f:
+            config.write(f)
