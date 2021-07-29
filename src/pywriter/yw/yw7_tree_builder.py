@@ -68,14 +68,14 @@ class Yw7TreeBuilder():
                 xmlScn.remove(xmlScn.find('Unused'))
 
             if prjScn.isNotesScene:
+                scFields = xmlScn.find('Fields')
 
                 try:
-                    scFields = xmlScn.find('Fields')
+                    if scFields.find('Field_SceneType') is None:
+                        ET.SubElement(scFields, 'Field_SceneType').text = '1'
 
                 except(AttributeError):
                     scFields = ET.SubElement(xmlScn, 'Fields')
-
-                if scFields.find('Field_SceneType') is None:
                     ET.SubElement(scFields, 'Field_SceneType').text = '1'
 
             elif xmlScn.find('Fields') is not None:
@@ -87,14 +87,15 @@ class Yw7TreeBuilder():
                         scFields.remove(scFields.find('Field_SceneType'))
 
             if prjScn.isTodoScene:
+                scFields = xmlScn.find('Fields')
 
                 try:
-                    scFields = xmlScn.find('Fields')
+
+                    if scFields.find('Field_SceneType') is None:
+                        ET.SubElement(scFields, 'Field_SceneType').text = '2'
 
                 except(AttributeError):
                     scFields = ET.SubElement(xmlScn, 'Fields')
-
-                if scFields.find('Field_SceneType') is None:
                     ET.SubElement(scFields, 'Field_SceneType').text = '2'
 
             elif xmlScn.find('Fields') is not None:
@@ -292,8 +293,12 @@ class Yw7TreeBuilder():
             if prjScn.characters is not None:
                 characters = xmlScn.find('Characters')
 
-                for oldCrId in characters.findall('CharID'):
-                    characters.remove(oldCrId)
+                try:
+                    for oldCrId in characters.findall('CharID'):
+                        characters.remove(oldCrId)
+
+                except(AttributeError):
+                    characters = ET.SubElement(xmlScn, 'Characters')
 
                 for crId in prjScn.characters:
                     ET.SubElement(characters, 'CharID').text = crId
@@ -301,8 +306,12 @@ class Yw7TreeBuilder():
             if prjScn.locations is not None:
                 locations = xmlScn.find('Locations')
 
-                for oldLcId in locations.findall('LocID'):
-                    locations.remove(oldLcId)
+                try:
+                    for oldLcId in locations.findall('LocID'):
+                        locations.remove(oldLcId)
+
+                except(AttributeError):
+                    locations = ET.SubElement(xmlScn, 'Locations')
 
                 for lcId in prjScn.locations:
                     ET.SubElement(locations, 'LocID').text = lcId
@@ -310,8 +319,12 @@ class Yw7TreeBuilder():
             if prjScn.items is not None:
                 items = xmlScn.find('Items')
 
-                for oldItId in items.findall('ItemID'):
-                    items.remove(oldItId)
+                try:
+                    for oldItId in items.findall('ItemID'):
+                        items.remove(oldItId)
+
+                except(AttributeError):
+                    items = ET.SubElement(xmlScn, 'Items')
 
                 for itId in prjScn.items:
                     ET.SubElement(items, 'ItemID').text = itId
