@@ -212,12 +212,20 @@ Import changed chapter and scene titles from html input.
 
 #### v3.8
 
-Possible changes of the chapter/scene structure.
+Process XML scene subtrees when writing back. Thus, scenes can be re-ordered without losing unknown metadata. 
 
-The yw7 tree builder can mix new chapters and scenes with existing ones 
-without losing unknown metadata. The target yw7 project sructure is fully 
-controlled by the Yw7File.merge method. 
- 
+#### v3.10
+
+Add combined date/time/duration tags for template-based export.
+
+#### v3.12
+
+Allow filtering of scenes when exporting.
+
+#### v3.14
+
+Add a Configuration class for reading and writing INI files.
+
 ## Version 4.x: Edit the novel structure independently from yWriter
 
 - Write back the whole yWriter project structure.
