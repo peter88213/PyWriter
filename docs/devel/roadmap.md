@@ -226,6 +226,10 @@ Allow filtering of scenes when exporting.
 
 Add a Configuration class for reading and writing INI files.
 
+#### v3.16
+
+Add a backup method to the Novel class. 
+
 ## Version 4.x: Edit the novel structure independently from yWriter
 
 - Write back the whole yWriter project structure.
