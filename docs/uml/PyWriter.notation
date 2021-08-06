@@ -12579,4 +12579,47 @@
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_N2se8cKtEeu379CuP61w2A" id="(1.0,0.7407407407407407)"/>
     </edges>
   </notation:Diagram>
+  <notation:Diagram xmi:id="_XUSEwPbkEeuIY7rtcArmxw" type="PapyrusUMLClassDiagram" name="configuration package class diagram" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_Y8c8cPbkEeuIY7rtcArmxw" type="Package_Shape">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Y8hN4PbkEeuIY7rtcArmxw" type="Package_NameLabel"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_Y8hN4fbkEeuIY7rtcArmxw" type="Package_PackagedElementCompartment">
+        <children xmi:type="notation:Shape" xmi:id="_aoVPcPbkEeuIY7rtcArmxw" type="Class_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_aoV2gPbkEeuIY7rtcArmxw" type="Class_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_aoV2gfbkEeuIY7rtcArmxw" type="Class_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_aoV2gvbkEeuIY7rtcArmxw" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_aoV2g_bkEeuIY7rtcArmxw" visible="false" type="Class_AttributeCompartment_CN">
+            <styles xmi:type="notation:TitleStyle" xmi:id="_aoV2hPbkEeuIY7rtcArmxw"/>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_aoV2hfbkEeuIY7rtcArmxw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_aoV2hvbkEeuIY7rtcArmxw"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aoV2h_bkEeuIY7rtcArmxw"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_aoWdkPbkEeuIY7rtcArmxw" visible="false" type="Class_OperationCompartment_CN">
+            <styles xmi:type="notation:TitleStyle" xmi:id="_aoWdkfbkEeuIY7rtcArmxw"/>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_aoWdkvbkEeuIY7rtcArmxw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_aoWdk_bkEeuIY7rtcArmxw"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aoWdlPbkEeuIY7rtcArmxw"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_aoWdlfbkEeuIY7rtcArmxw" visible="false" type="Class_NestedClassifierCompartment_CN">
+            <styles xmi:type="notation:TitleStyle" xmi:id="_aoWdlvbkEeuIY7rtcArmxw"/>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_aoWdl_bkEeuIY7rtcArmxw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_aoWdmPbkEeuIY7rtcArmxw"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aoWdmfbkEeuIY7rtcArmxw"/>
+          </children>
+          <element xmi:type="uml:Class" href="PyWriter.uml#_aoPI0PbkEeuIY7rtcArmxw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aoVPcfbkEeuIY7rtcArmxw" x="95" y="72" width="171" height="97"/>
+        </children>
+        <styles xmi:type="notation:TitleStyle" xmi:id="_Y8hN4vbkEeuIY7rtcArmxw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Y8hN4_bkEeuIY7rtcArmxw"/>
+      </children>
+      <element xmi:type="uml:Package" href="PyWriter.uml#__7zicPbjEeuIY7rtcArmxw"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Y8c8cfbkEeuIY7rtcArmxw" x="379" y="60" width="422" height="321"/>
+    </children>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_XUSEwfbkEeuIY7rtcArmxw" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_XUSEwvbkEeuIY7rtcArmxw"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_XUSEw_bkEeuIY7rtcArmxw" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
+      <owner xmi:type="uml:Model" href="PyWriter.uml#_345bMCtTEeqgj_wxJ3Xgsg"/>
+    </styles>
+    <element xmi:type="uml:Model" href="PyWriter.uml#_345bMCtTEeqgj_wxJ3Xgsg"/>
+  </notation:Diagram>
 </xmi:XMI>

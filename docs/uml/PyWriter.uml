@@ -1539,6 +1539,16 @@
         <generalization xmi:type="uml:Generalization" xmi:id="_j7E8oL7-EeuLVoie0Ovs3Q" general="_FoJAYDINEeqilJYfjdmi4Q"/>
       </packagedElement>
     </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="__7zicPbjEeuIY7rtcArmxw" name="config">
+      <packagedElement xmi:type="uml:Class" xmi:id="_aoPI0PbkEeuIY7rtcArmxw" name="Configuration">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_gDqPsPbkEeuIY7rtcArmxw" name="settings"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ja0_0PbkEeuIY7rtcArmxw" name="options"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_1Tts8PbkEeuIY7rtcArmxw" name="__init__"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_4ObKkPbkEeuIY7rtcArmxw" name="set"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_5ovzgPbkEeuIY7rtcArmxw" name="read"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_61WJgPbkEeuIY7rtcArmxw" name="write"/>
+      </packagedElement>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_QikHoL8xEeuEecdtmvW-dw" name="use cases">
     <ownedComment xmi:type="uml:Comment" xmi:id="_Vp630MH2EeuZP-F13h7WZQ" annotatedElement="_GLlhkMH2EeuZP-F13h7WZQ">

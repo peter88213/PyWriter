@@ -53,7 +53,7 @@ The **YwCnvUi** subclass has several **fileFactory** subclasses to instantiate t
 
 - [ui](ui) -- Modules for user interfaces.
 
-- [configuration](configuration) -- Modules for configuration persistence.
+- [config](config) -- Modules for configuration persistence.
 
 
 
