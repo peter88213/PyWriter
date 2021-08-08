@@ -15,11 +15,3 @@ def read_file(inputFile):
         # HTML files exported by a word processor may be ANSI encoded.
         with open(inputFile, 'r') as f:
             return f.read()
-
-
-def copy_file(inputFile, outputFile):
-    with open(inputFile, 'rb') as f:
-        myData = f.read()
-    with open(outputFile, 'wb') as f:
-        f.write(myData)
-    return()

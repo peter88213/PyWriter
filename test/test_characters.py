@@ -11,11 +11,12 @@ from pywriter.odt.odt_characters import OdtCharacters
 importClass = HtmlCharacters
 exportClass = OdtCharacters
 
-from helper import read_file, copy_file
+from helper import read_file
 
 import os
 import unittest
 import zipfile
+from shutil import copyfile
 
 from pywriter.converter.yw7_converter import Yw7Converter
 from pywriter.converter.yw_cnv import YwCnv
@@ -75,7 +76,7 @@ class NrmOpr(unittest.TestCase):
             pass
 
         remove_all_tempfiles()
-        copy_file(REFERENCE_YW7, TEST_YW7)
+        copyfile(REFERENCE_YW7, TEST_YW7)
 
     def test_data(self):
         """Verify test data integrity. """
@@ -88,7 +89,7 @@ class NrmOpr(unittest.TestCase):
 
     def test_imp_to_yw7(self):
         """Use YwCnv class. """
-        copy_file(PROOFED_IMP, TEST_IMP)
+        copyfile(PROOFED_IMP, TEST_IMP)
         yw7File = Yw7File(TEST_YW7)
         documentFile = importClass(TEST_IMP)
         converter = YwCnv()
@@ -117,7 +118,7 @@ class NrmOpr(unittest.TestCase):
 
     def test_imp_to_yw7_ui(self):
         """Use YwCnvUi class. """
-        copy_file(PROOFED_IMP, TEST_IMP)
+        copyfile(PROOFED_IMP, TEST_IMP)
         converter = Yw7Converter()
         converter.run(TEST_IMP)
 

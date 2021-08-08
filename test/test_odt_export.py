@@ -9,11 +9,12 @@ from pywriter.odt.odt_export import OdtExport
 
 exportClass = OdtExport
 
-from helper import read_file, copy_file
+from helper import read_file
 
 import os
 import unittest
 import zipfile
+from shutil import copyfile
 
 from pywriter.converter.yw7_converter import Yw7Converter
 from pywriter.converter.yw_cnv import YwCnv
@@ -64,7 +65,7 @@ class NrmOpr(unittest.TestCase):
             pass
 
         remove_all_tempfiles()
-        copy_file(REFERENCE_YW7, TEST_YW7)
+        copyfile(REFERENCE_YW7, TEST_YW7)
 
     def test_yw7_to_odt(self):
         """Use YwCnv class. """

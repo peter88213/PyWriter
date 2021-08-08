@@ -10,11 +10,12 @@ from pywriter.html.html_outline import HtmlOutline
 importClass = HtmlOutline
 
 
-from helper import read_file, copy_file
+from helper import read_file
 
 import os
 import unittest
 import zipfile
+from shutil import copyfile
 
 from pywriter.converter.yw7_converter import Yw7Converter
 from pywriter.converter.yw_cnv import YwCnv
@@ -63,7 +64,7 @@ class NrmOpr(unittest.TestCase):
 
     def test_html_to_yw7(self):
         """Use YwCnv class. """
-        copy_file(REFERENCE_HTML, TEST_HTML)
+        copyfile(REFERENCE_HTML, TEST_HTML)
         yw7File = Yw7File(TEST_YW7)
 
         documentFile = importClass(TEST_HTML)
@@ -77,7 +78,7 @@ class NrmOpr(unittest.TestCase):
 
     def test_html_to_yw7_ui(self):
         """Use YwCnvUi class. """
-        copy_file(REFERENCE_HTML, TEST_HTML)
+        copyfile(REFERENCE_HTML, TEST_HTML)
         converter = Yw7Converter()
         converter.run(TEST_HTML)
 
