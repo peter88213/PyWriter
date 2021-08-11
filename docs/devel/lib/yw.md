@@ -42,6 +42,8 @@
 
 - **ansi_postprocessor** -- Provide a strategy class to postprocess ANSI encoded yWriter project files.
 
+- **xml_indent** -- Provide an xml pretty printer.
+
 ## Classes
 
 ![yw package class diagram](img/yw_package_class_diagram.png)
