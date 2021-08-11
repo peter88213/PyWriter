@@ -6,6 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import xml.etree.ElementTree as ET
+from pywriter.yw.xml_indent import indent
 
 
 class Yw7TreeBuilder():
@@ -656,7 +657,7 @@ class Yw7TreeBuilder():
 
             chapters.append(xmlChapters[chId])
 
-        self.indent_xml(root)
+        indent(root)
         ywProject.tree = ET.ElementTree(root)
 
         # Write version-dependent scene contents to the xml element tree.
@@ -689,29 +690,3 @@ class Yw7TreeBuilder():
                 pass
 
         return 'SUCCESS'
-
-    def indent_xml(self, elem, level=0):
-        """xml pretty printer
-
-        Kudos to to Fredrik Lundh. 
-        Source: http://effbot.org/zone/element-lib.htm#prettyprint
-        """
-        i = "\n" + level * "  "
-
-        if len(elem):
-
-            if not elem.text or not elem.text.strip():
-                elem.text = i + "  "
-
-            if not elem.tail or not elem.tail.strip():
-                elem.tail = i
-
-            for elem in elem:
-                self.indent_xml(elem, level + 1)
-
-            if not elem.tail or not elem.tail.strip():
-                elem.tail = i
-
-        else:
-            if level and (not elem.tail or not elem.tail.strip()):
-                elem.tail = i
