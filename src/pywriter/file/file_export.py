@@ -283,11 +283,21 @@ class FileExport(Novel):
         else:
             time = ''
 
-            if self.scenes[scId].hour is not None:
-                hour = self.scenes[scId].hour
-                minute = self.scenes[scId].minute
-                scTime = self.scenes[scId].hour.zfill(2) + \
-                    ':' + self.scenes[scId].minute.zfill(2)
+            if self.scenes[scId].hour or self.scenes[scId].minute:
+
+                if self.scenes[scId].hour:
+                    hour = self.scenes[scId].hour
+
+                else:
+                    hour = '00'
+
+                if self.scenes[scId].minute:
+                    minute = self.scenes[scId].minute
+
+                else:
+                    minute = '00'
+
+                scTime = hour.zfill(2) + ':' + minute.zfill(2)
 
             else:
                 hour = ''
