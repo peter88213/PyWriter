@@ -198,6 +198,9 @@ class Yw7File(Novel):
 
         #--- Read attributes at chapter level from the xml element tree.
 
+        self.srtChapters = []
+        # This is necessary for re-reading.
+
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
             self.chapters[chId] = Chapter()
