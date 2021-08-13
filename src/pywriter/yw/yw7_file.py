@@ -703,11 +703,17 @@ class Yw7File(Novel):
             if source.scenes[scId].appendToPrev is not None:
                 self.scenes[scId].appendToPrev = source.scenes[scId].appendToPrev
 
-            if source.scenes[scId].date is not None:
-                self.scenes[scId].date = source.scenes[scId].date
+            if source.scenes[scId].date or source.scenes[scId].time:
 
-            if source.scenes[scId].time is not None:
-                self.scenes[scId].time = source.scenes[scId].time
+                if source.scenes[scId].date is not None:
+                    self.scenes[scId].date = source.scenes[scId].date
+
+                if source.scenes[scId].time is not None:
+                    self.scenes[scId].time = source.scenes[scId].time
+
+            elif source.scenes[scId].minute or source.scenes[scId].hour or source.scenes[scId].day:
+                self.scenes[scId].date = None
+                self.scenes[scId].time = None
 
             if source.scenes[scId].minute is not None:
                 self.scenes[scId].minute = source.scenes[scId].minute
