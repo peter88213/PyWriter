@@ -291,6 +291,14 @@ class Yw7TreeBuilder():
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Outcome').text = prjScn.outcome
 
+            if prjScn.image is not None:
+
+                try:
+                    xmlScn.find('ImageFile').text = prjScn.image
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'ImageFile').text = prjScn.image
+
             if prjScn.characters is not None:
                 characters = xmlScn.find('Characters')
 

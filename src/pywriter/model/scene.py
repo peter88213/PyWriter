@@ -159,6 +159,10 @@ class Scene():
         # str
         # xml: <LastsDays>
 
+        self.image = None
+        # str
+        # xml: <ImageFile>
+
     @property
     def sceneContent(self):
         return self._sceneContent

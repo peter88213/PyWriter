@@ -410,6 +410,9 @@ class Yw7File(Novel):
             if scn.find('Outcome') is not None:
                 self.scenes[scId].outcome = scn.find('Outcome').text
 
+            if scn.find('ImageFile') is not None:
+                self.scenes[scId].image = scn.find('ImageFile').text
+
             if scn.find('Characters') is not None:
                 for crId in scn.find('Characters').iter('CharID'):
 
