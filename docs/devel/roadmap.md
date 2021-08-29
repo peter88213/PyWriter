@@ -230,6 +230,11 @@ Add a Configuration class for reading and writing INI files.
 
 Add a backup method to the Novel class. 
 
+
+#### v3.18 
+
+Read and write image file info.
+
 ## Version 4.x: Edit the novel structure independently from yWriter
 
 - Write back the whole yWriter project structure.
