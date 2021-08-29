@@ -773,7 +773,7 @@ class Yw7File(Novel):
                 for itId in source.scenes[scId].items:
 
                     if itId in self.items:
-                        self.scenes[scId].append(itId)
+                        self.scenes[scId].items.append(itId)
 
         #--- Merge chapters.
 
