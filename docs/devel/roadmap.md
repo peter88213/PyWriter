@@ -235,6 +235,18 @@ Add a backup method to the Novel class.
 
 Read and write image file info.
 
+#### v3.20 
+
+Add classes for yWriter XML data file processing.
+
+yWriter XML data files are:
+- projectname_Characters.xml
+- projectname_Locations.xml
+- projectname_Items.xml
+
+These files can be imported into any existing yWriter project.
+
+
 ## Version 4.x: Edit the novel structure independently from yWriter
 
 - Write back the whole yWriter project structure.
