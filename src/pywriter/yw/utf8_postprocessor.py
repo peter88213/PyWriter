@@ -11,16 +11,16 @@ from html import unescape
 
 
 class Utf8Postprocessor():
-    """Postprocess ANSI encoded yWriter project."""
+    """Postprocess utf-8 encoded yWriter project."""
 
     def __init__(self):
         """Initialize instance variables."""
         self.cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc',
-                           'FieldTitle1', 'FieldTitle2', 'FieldTitle3',
-                           'FieldTitle4', 'LaTeXHeaderFile', 'Tags',
-                           'AKA', 'ImageFile', 'FullName', 'Goals',
-                           'Notes', 'RTFFile', 'SceneContent',
-                           'Outcome', 'Goal', 'Conflict']
+                          'FieldTitle1', 'FieldTitle2', 'FieldTitle3',
+                          'FieldTitle4', 'LaTeXHeaderFile', 'Tags',
+                          'AKA', 'ImageFile', 'FullName', 'Goals',
+                          'Notes', 'RTFFile', 'SceneContent',
+                          'Outcome', 'Goal', 'Conflict']
         # Names of yWriter xml elements containing CDATA.
         # ElementTree.write omits CDATA tags, so they have to be inserted
         # afterwards.
