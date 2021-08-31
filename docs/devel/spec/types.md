@@ -176,7 +176,7 @@ be edited and written back to yWriter format. File name suffix is
 ## Export character descriptions
 
 Generate a new OpenDocument text document (odt) containing
-character descriptions, bio and goals that can be edited in Office
+character descriptions, bio, goals, and notes that can be edited in Office
 Writer and written back to yWriter format. File name suffix is
 `_characters`.
 

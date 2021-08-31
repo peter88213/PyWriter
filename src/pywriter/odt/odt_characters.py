@@ -34,6 +34,10 @@ class OdtCharacters(OdtFile):
 <text:section text:style-name="Sect1" text:name="CrID_goals:$ID">
 <text:p text:style-name="Text_20_body">$Goals</text:p>
 </text:section>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Notes</text:h>
+<text:section text:style-name="Sect1" text:name="CrID_notes:$ID">
+<text:p text:style-name="Text_20_body">$Notes</text:p>
+</text:section>
 </text:section>
 '''
 

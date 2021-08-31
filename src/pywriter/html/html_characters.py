@@ -45,6 +45,9 @@ class HtmlCharacters(HtmlFile):
                 elif attrs[0][1].startswith('CrID_goals'):
                     self._section = 'goals'
 
+                elif attrs[0][1].startswith('CrID_notes'):
+                    self._section = 'notes'
+
     def handle_endtag(self, tag):
         """Recognize the end of the character section and save data.
         Overwrites HTMLparser.handle_endtag().
@@ -65,6 +68,11 @@ class HtmlCharacters(HtmlFile):
 
                 elif self._section == 'goals':
                     self.characters[self._crId].goals = ''.join(self._lines)
+                    self._lines = []
+                    self._section = None
+
+                elif self._section == 'notes':
+                    self.characters[self._crId].notes = ''.join(self._lines)
                     self._lines = []
                     self._section = None
 
