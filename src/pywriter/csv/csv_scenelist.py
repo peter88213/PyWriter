@@ -13,10 +13,6 @@ from pywriter.model.scene import Scene
 
 class CsvSceneList(CsvFile):
     """csv file representation of an yWriter project's scenes table. 
-
-    Represents a csv file with a record per scene.
-    - Records are separated by line breaks.
-    - Data fields are delimited by the _SEPARATOR character.
     """
 
     DESCRIPTION = 'Scene list'
@@ -25,41 +21,10 @@ class CsvSceneList(CsvFile):
     _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
     # '1' is assigned N/A (empty table cell).
 
-    fileHeader = '''Scene link|''' +\
-        '''Scene title|Scene description|Tags|Scene notes|''' +\
-        '''A/R|Goal|Conflict|Outcome|''' +\
-        '''Scene|Words total|$FieldTitle1|$FieldTitle2|$FieldTitle3|$FieldTitle4|''' +\
-        '''Word count|Letter count|Status|''' +\
-        '''Characters|Locations|Items
-'''
-
-    sceneTemplate = '''=HYPERLINK("file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion";"ScID:$ID")|''' +\
-        '''$Title|"$Desc"|$Tags|"$Notes"|''' +\
-        '''$ReactionScene|"$Goal"|"$Conflict"|"$Outcome"|''' +\
-        '''$SceneNumber|$WordsTotal|$Field1|$Field2|$Field3|$Field4|''' +\
-        '''$WordCount|$LetterCount|$Status|''' +\
-        '''$Characters|$Locations|$Items
-'''
-
-    def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
-        """Return a mapping dictionary for a scene section. 
-        """
-        sceneMapping = CsvFile.get_sceneMapping(
-            self, scId, sceneNumber, wordsTotal, lettersTotal)
-
-        if self.scenes[scId].field1 == '1':
-            sceneMapping['Field1'] = ''
-
-        if self.scenes[scId].field2 == '1':
-            sceneMapping['Field2'] = ''
-
-        if self.scenes[scId].field3 == '1':
-            sceneMapping['Field3'] = ''
-
-        if self.scenes[scId].field4 == '1':
-            sceneMapping['Field4'] = ''
-
-        return sceneMapping
+    rowTitles = ['Scene link', 'Scene title', 'Scene description', 'Tags', 'Scene notes', 'A/R',
+                 'Goal', 'Conflict', 'Outcome', 'Scene', 'Words total',
+                 '$FieldTitle1', '$FieldTitle2', '$FieldTitle3', '$FieldTitle4',
+                 'Word count', 'Letter count', 'Status', 'Characters', 'Locations', 'Items']
 
     def read(self):
         """Parse the csv file located at filePath, 

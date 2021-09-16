@@ -17,14 +17,8 @@ class OdsPlotList(OdsFile):
     # Field names containing this string (case insensitive)
     # are associated to storylines
 
-    _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
-    # '1' is assigned N/A (empty table cell).
-
     _NOT_APPLICABLE = 'N/A'
     # Scene field column header for fields not being assigned to a storyline
-
-    _CHAR_STATE = ['', 'N/A', 'unhappy', 'dissatisfied',
-                   'vague', 'satisfied', 'happy', '', '', '', '']
 
     # Column width:
     # co1 2.000cm

@@ -22,7 +22,7 @@ class CsvFile(FileExport):
     EXTENSION = '.csv'
     # overwrites Novel.EXTENSION
 
-    _SEPARATOR = '|'
+    _SEPARATOR = ','
     # delimits data fields within a record.
 
     def read(self):
@@ -31,7 +31,7 @@ class CsvFile(FileExport):
         Return a message beginning with SUCCESS or ERROR.
         """
         self.rows = []
-        cellsPerRow = len(self.fileHeader.split(self._SEPARATOR))
+        cellsPerRow = len(self.rowTitles)
 
         try:
             with open(self.filePath, newline='', encoding='utf-8') as f:

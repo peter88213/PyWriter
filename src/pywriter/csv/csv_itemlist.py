@@ -13,20 +13,12 @@ from pywriter.model.world_element import WorldElement
 
 class CsvItemList(CsvFile):
     """csv file representation of an yWriter project's items table. 
-
-    Represents a csv file with a record per item.
-    - Records are separated by line breaks.
-    - Data fields are delimited by the _SEPARATOR item.
     """
 
     DESCRIPTION = 'Item list'
     SUFFIX = '_itemlist'
 
-    fileHeader = '''ID|Name|Description|Aka|Tags
-'''
-
-    itemTemplate = '''ItID:$ID|$Title|"$Desc"|$AKA|$Tags
-'''
+    rowTitles = ['ID', 'Name', 'Description', 'Aka', 'Tags']
 
     def read(self):
         """Parse the csv file located at filePath, 

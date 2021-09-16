@@ -13,9 +13,6 @@ class OdsSceneList(OdsFile):
     DESCRIPTION = 'Scene list'
     SUFFIX = '_scenelist'
 
-    _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
-    # '1' is assigned N/A (empty table cell).
-
     # Column width:
     # co1 2.000cm
     # co2 3.000cm

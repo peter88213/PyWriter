@@ -20,21 +20,10 @@ from pywriter.model.scene import Scene
 
 class CsvPlotList(CsvFile):
     """csv file representation of an yWriter project's scenes table. 
-
-    Represents a csv file with a record per scene.
-    - Records are separated by line breaks.
-    - Data fields are delimited by the _SEPARATOR character.
     """
 
     DESCRIPTION = 'Plot list'
     SUFFIX = '_plotlist'
-
-    _SEPARATOR = '|'     # delimits data fields within a record.
-    _LINEBREAK = '\t'    # substitutes embedded line breaks.
-
-    _STORYLINE_MARKER = 'story'
-    # Field names containing this string (case insensitive)
-    # are associated to storylines
 
     _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
     # '1' is assigned N/A (empty table cell).
@@ -42,82 +31,8 @@ class CsvPlotList(CsvFile):
     _NOT_APPLICABLE = 'N/A'
     # Scene field column header for fields not being assigned to a storyline
 
-    _CHAR_STATE = ['', 'N/A', 'unhappy', 'dissatisfied',
-                   'vague', 'satisfied', 'happy', '', '', '', '']
-
-    fileHeader = '''ID|''' +\
-        '''Plot section|Plot event|Scene title|Details|''' +\
-        '''Scene|Words total|$FieldTitle1|$FieldTitle2|$FieldTitle3|$FieldTitle4
-'''
-
-    notesChapterTemplate = '''ChID:$ID|$Title|||$Desc||||||
-'''
-
-    sceneTemplate = '''=HYPERLINK("file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion";"ScID:$ID")|''' +\
-        '''|$Tags|$Title|"$Notes"|''' +\
-        '''$SceneNumber|$WordsTotal|$Field1|$Field2|$Field3|$Field4
-'''
-
-    def get_fileHeaderMapping(self):
-        """Return a mapping dictionary for the project section. 
-        """
-        projectTemplateMapping = CsvFile.get_fileHeaderMapping(self)
-
-        charList = []
-
-        for crId in self.srtCharacters:
-            charList.append(self.characters[crId].title)
-            # Collect character names to identify storylines
-
-        if self.fieldTitle1 in charList or self._STORYLINE_MARKER in self.fieldTitle1.lower():
-            self.arc1 = True
-
-        else:
-            self.arc1 = False
-            projectTemplateMapping['FieldTitle1'] = self._NOT_APPLICABLE
-
-        if self.fieldTitle2 in charList or self._STORYLINE_MARKER in self.fieldTitle2.lower():
-            self.arc2 = True
-
-        else:
-            self.arc2 = False
-            projectTemplateMapping['FieldTitle2'] = self._NOT_APPLICABLE
-
-        if self.fieldTitle3 in charList or self._STORYLINE_MARKER in self.fieldTitle3.lower():
-            self.arc3 = True
-
-        else:
-            self.arc3 = False
-            projectTemplateMapping['FieldTitle3'] = self._NOT_APPLICABLE
-
-        if self.fieldTitle4 in charList or self._STORYLINE_MARKER in self.fieldTitle4.lower():
-            self.arc4 = True
-
-        else:
-            self.arc4 = False
-            projectTemplateMapping['FieldTitle4'] = self._NOT_APPLICABLE
-
-        return projectTemplateMapping
-
-    def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
-        """Return a mapping dictionary for a scene section. 
-        """
-        sceneMapping = CsvFile.get_sceneMapping(
-            self, scId, sceneNumber, wordsTotal, lettersTotal)
-
-        if self.scenes[scId].field1 == '1' or not self.arc1:
-            sceneMapping['Field1'] = ''
-
-        if self.scenes[scId].field2 == '1' or not self.arc2:
-            sceneMapping['Field2'] = ''
-
-        if self.scenes[scId].field3 == '1' or not self.arc3:
-            sceneMapping['Field3'] = ''
-
-        if self.scenes[scId].field4 == '1' or not self.arc4:
-            sceneMapping['Field4'] = ''
-
-        return sceneMapping
+    rowTitles = ['ID', 'Plot section', 'Plot event', 'Scene title', 'Details', 'Scene', 'Words total',
+                 '$FieldTitle1', '$FieldTitle2', '$FieldTitle3', '$FieldTitle4']
 
     def read(self):
         """Parse the csv file located at filePath, fetching 

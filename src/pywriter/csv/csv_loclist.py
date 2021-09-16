@@ -14,20 +14,12 @@ from pywriter.model.world_element import WorldElement
 
 class CsvLocList(CsvFile):
     """csv file representation of an yWriter project's locations table. 
-
-    Represents a csv file with a record per location.
-    - Records are separated by line breaks.
-    - Data fields are delimited by the _SEPARATOR location.
     """
 
     DESCRIPTION = 'Location list'
     SUFFIX = '_loclist'
 
-    fileHeader = '''ID|Name|Description|Aka|Tags
-'''
-
-    locationTemplate = '''LcID:$ID|$Title|"$Desc"|$AKA|$Tags
-'''
+    rowTitles = ['ID', 'Name', 'Description', 'Aka', 'Tags']
 
     def read(self):
         """Parse the csv file located at filePath, 

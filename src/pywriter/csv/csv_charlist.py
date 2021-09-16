@@ -14,20 +14,12 @@ from pywriter.model.character import Character
 
 class CsvCharList(CsvFile):
     """csv file representation of an yWriter project's characters table. 
-
-    Represents a csv file with a record per character.
-    - Records are separated by line breaks.
-    - Data fields are delimited by the _SEPARATOR character.
     """
 
     DESCRIPTION = 'Character list'
     SUFFIX = '_charlist'
 
-    fileHeader = '''ID|Name|Full name|Aka|Description|Bio|Goals|Importance|Tags|Notes
-'''
-
-    characterTemplate = '''CrID:$ID|$Title|$FullName|$AKA|"$Desc"|"$Bio"|"$Goals"|$Status|$Tags|"$Notes"
-'''
+    rowTitles = ['ID', 'Name', 'Full name', 'Aka', 'Description', 'Bio', 'Goals', 'Importance', 'Tags', 'Notes']
 
     def read(self):
         """Parse the csv file located at filePath, 
