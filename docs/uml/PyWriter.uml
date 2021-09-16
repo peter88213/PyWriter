@@ -876,7 +876,7 @@
       <packagedElement xmi:type="uml:Usage" xmi:id="_OfoZUIffEeq_kJF_AkSaiA" client="_nxQV8IfcEeq_kJF_AkSaiA" supplier="_0ErCACtbEeqgj_wxJ3Xgsg"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_PYsIQIffEeq_kJF_AkSaiA" client="_nxQV8IfcEeq_kJF_AkSaiA" supplier="_ypTQMCtbEeqgj_wxJ3Xgsg"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_hkf2MPyzEeqEK6KdQRY5bw" name="CsvFile">
-        <generalization xmi:type="uml:Generalization" xmi:id="_nRDJUPyzEeqEK6KdQRY5bw" general="_vHrYMPsPEeq-TdV6dVW08A"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_nRDJUPyzEeqEK6KdQRY5bw" general="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_DcHksL8DEeuLVoie0Ovs3Q" name="CsvCharList">
         <generalization xmi:type="uml:Generalization" xmi:id="_iZ_yIL8DEeuLVoie0Ovs3Q" general="_hkf2MPyzEeqEK6KdQRY5bw"/>
