@@ -42,11 +42,3 @@ class CsvItemList(CsvFile):
                 self.items[itId].tags = self.get_list(cells[4])
 
         return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
-
-    def merge(self, source):
-        """Copy required attributes of the source object.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-        self.srtItems = source.srtItems
-        self.items = source.items
-        return 'SUCCESS'

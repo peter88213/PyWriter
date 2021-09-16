@@ -54,11 +54,3 @@ class CsvCharList(CsvFile):
                 self.characters[crId].notes = self.convert_to_yw(cells[9])
 
         return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
-
-    def merge(self, source):
-        """Copy required attributes of the source object.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-        self.srtCharacters = source.srtCharacters
-        self.characters = source.characters
-        return 'SUCCESS'
