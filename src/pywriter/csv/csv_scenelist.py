@@ -30,6 +30,7 @@ class CsvSceneList(CsvFile):
         """Parse the csv file located at filePath, 
         fetching the Scene attributes contained.
         Return a message beginning with SUCCESS or ERROR.
+        Extend the superclass method.
         """
         message = CsvFile.read(self)
 

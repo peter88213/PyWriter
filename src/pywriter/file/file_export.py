@@ -56,38 +56,6 @@ class FileExport(Novel):
         self.locationFilter = Filter()
         self.itemFilter = Filter()
 
-    def get_string(self, elements):
-        """Return a string which is the concatenation of the 
-        members of the list of strings "elements", separated by 
-        a comma plus a space. The space allows word wrap in 
-        spreadsheet cells.
-        """
-        text = (', ').join(elements)
-        return text
-
-    def get_list(self, text):
-        """Split a sequence of strings into a list of strings
-        using a comma as delimiter. Remove leading and trailing
-        spaces, if any.
-        """
-        elements = []
-        tempList = text.split(',')
-
-        for element in tempList:
-            elements.append(element.lstrip().rstrip())
-
-        return elements
-
-    def convert_from_yw(self, text):
-        """Convert yw7 markup to target format.
-        This is a stub to be overridden by subclass methods.
-        """
-
-        if text is None:
-            text = ''
-
-        return(text)
-
     def merge(self, source):
         """Copy required attributes of the source object.
         Return a message beginning with SUCCESS or ERROR.
@@ -740,3 +708,22 @@ class FileExport(Novel):
             return 'ERROR: Cannot write "' + os.path.normpath(self.filePath) + '".'
 
         return 'SUCCESS: "' + os.path.normpath(self.filePath) + '" written.'
+
+    def get_string(self, elements):
+        """Return a string which is the concatenation of the 
+        members of the list of strings "elements", separated by 
+        a comma plus a space. The space allows word wrap in 
+        spreadsheet cells.
+        """
+        text = (', ').join(elements)
+        return text
+
+    def convert_from_yw(self, text):
+        """Convert yw7 markup to target format.
+        This is a stub to be overridden by subclass methods.
+        """
+
+        if text is None:
+            text = ''
+
+        return(text)

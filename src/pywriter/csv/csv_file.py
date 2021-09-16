@@ -9,10 +9,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import csv
 
-from pywriter.file.file_export import FileExport
+from pywriter.model.novel import Novel
 
 
-class CsvFile(FileExport):
+class CsvFile(Novel):
     """csv file representation.
 
     - Records are separated by line breaks.
@@ -25,10 +25,13 @@ class CsvFile(FileExport):
     _SEPARATOR = ','
     # delimits data fields within a record.
 
+    rowTitles = []
+
     def read(self):
         """Parse the csv file located at filePath, fetching the rows.
         Check the number of fields in each row.
         Return a message beginning with SUCCESS or ERROR.
+        Override the superclass method.
         """
         self.rows = []
         cellsPerRow = len(self.rowTitles)
@@ -53,3 +56,15 @@ class CsvFile(FileExport):
             return 'ERROR: Can not parse "' + os.path.normpath(self.filePath) + '".'
 
         return 'SUCCESS'
+
+    def get_list(self, text):
+        """Split a sequence of comma separated strings into a list of strings.
+        Remove leading and trailing spaces, if any.
+        """
+        elements = []
+        tempList = text.split(',')
+
+        for element in tempList:
+            elements.append(element.lstrip().rstrip())
+
+        return elements
