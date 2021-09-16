@@ -25,35 +25,6 @@ class CsvFile(FileExport):
     _SEPARATOR = '|'
     # delimits data fields within a record.
 
-    CSV_REPLACEMENTS = []
-
-    def convert_from_yw(self, text):
-        """Convert line breaks."""
-
-        try:
-            text = text.rstrip()
-
-            for r in self.CSV_REPLACEMENTS:
-                text = text.replace(r[0], r[1])
-
-        except AttributeError:
-            text = ''
-
-        return text
-
-    def convert_to_yw(self, text):
-        """Convert line breaks."""
-
-        try:
-
-            for r in self.CSV_REPLACEMENTS:
-                text = text.replace(r[1], r[0])
-
-        except AttributeError:
-            text = ''
-
-        return text
-
     def read(self):
         """Parse the csv file located at filePath, fetching the rows.
         Check the number of fields in each row.
