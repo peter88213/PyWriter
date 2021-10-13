@@ -18,6 +18,9 @@ class Scene():
     ACTION_MARKER = 'A'
     REACTION_MARKER = 'R'
 
+    NULL_DATE = '0001-01-01'
+    NULL_TIME = '00:00:00'
+
     def __init__(self):
         self.title = None
         # str
