@@ -40,8 +40,11 @@ class FileExport(Novel):
     unusedChapterEndTemplate = ''
     notExportedChapterEndTemplate = ''
     notesChapterEndTemplate = ''
+    characterSectionHeading = ''
     characterTemplate = ''
+    locationSectionHeading = ''
     locationTemplate = ''
+    itemSectionHeading = ''
     itemTemplate = ''
     fileFooter = ''
 
@@ -590,8 +593,7 @@ class FileExport(Novel):
                 dispNumber = chapterNumber
 
             if template is not None:
-                lines.append(template.safe_substitute(
-                    self.get_chapterMapping(chId, dispNumber)))
+                lines.append(template.safe_substitute(self.get_chapterMapping(chId, dispNumber)))
 
             # Process scenes.
 
@@ -632,8 +634,7 @@ class FileExport(Novel):
                 template = Template(self.chapterEndTemplate)
 
             if template is not None:
-                lines.append(template.safe_substitute(
-                    self.get_chapterMapping(chId, dispNumber)))
+                lines.append(template.safe_substitute(self.get_chapterMapping(chId, dispNumber)))
 
         return lines
 
@@ -641,14 +642,19 @@ class FileExport(Novel):
         """Process the characters.
         Return a list of strings.
         """
-        lines = []
+
+        if self.characterSectionHeading:
+            lines = [self.characterSectionHeading]
+
+        else:
+            lines = []
+
         template = Template(self.characterTemplate)
 
         for crId in self.srtCharacters:
 
             if self.characterFilter.accept(self, crId):
-                lines.append(template.safe_substitute(
-                    self.get_characterMapping(crId)))
+                lines.append(template.safe_substitute(self.get_characterMapping(crId)))
 
         return lines
 
@@ -656,14 +662,19 @@ class FileExport(Novel):
         """Process the locations.
         Return a list of strings.
         """
-        lines = []
+
+        if self.locationSectionHeading:
+            lines = [self.locationSectionHeading]
+
+        else:
+            lines = []
+
         template = Template(self.locationTemplate)
 
         for lcId in self.srtLocations:
 
             if self.locationFilter.accept(self, lcId):
-                lines.append(template.safe_substitute(
-                    self.get_locationMapping(lcId)))
+                lines.append(template.safe_substitute(self.get_locationMapping(lcId)))
 
         return lines
 
@@ -671,14 +682,19 @@ class FileExport(Novel):
         """Process the items.
         Return a list of strings.
         """
-        lines = []
+
+        if self.itemSectionHeading:
+            lines = [self.itemSectionHeading]
+
+        else:
+            lines = []
+
         template = Template(self.itemTemplate)
 
         for itId in self.srtItems:
 
             if self.itemFilter.accept(self, itId):
-                lines.append(template.safe_substitute(
-                    self.get_itemMapping(itId)))
+                lines.append(template.safe_substitute(self.get_itemMapping(itId)))
 
         return lines
 
