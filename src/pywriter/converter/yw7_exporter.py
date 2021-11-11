@@ -13,6 +13,7 @@ from pywriter.odt.odt_manuscript import OdtManuscript
 from pywriter.odt.odt_scenedesc import OdtSceneDesc
 from pywriter.odt.odt_chapterdesc import OdtChapterDesc
 from pywriter.odt.odt_partdesc import OdtPartDesc
+from pywriter.odt.odt_brief_synopsis import OdtBriefSynopsis
 from pywriter.odt.odt_export import OdtExport
 from pywriter.odt.odt_characters import OdtCharacters
 from pywriter.odt.odt_items import OdtItems
@@ -38,6 +39,7 @@ class Yw7Exporter(YwCnvUi):
 
     EXPORT_TARGET_CLASSES = [OdtProof,
                              OdtManuscript,
+                             OdtBriefSynopsis,
                              OdtSceneDesc,
                              OdtChapterDesc,
                              OdtPartDesc,
