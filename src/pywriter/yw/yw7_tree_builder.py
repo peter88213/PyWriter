@@ -72,8 +72,7 @@ class Yw7TreeBuilder():
                 scFields = xmlScn.find('Fields')
 
                 try:
-                    if scFields.find('Field_SceneType') is None:
-                        ET.SubElement(scFields, 'Field_SceneType').text = '1'
+                    scFields.find('Field_SceneType').text = '1'
 
                 except(AttributeError):
                     scFields = ET.SubElement(xmlScn, 'Fields')
@@ -92,8 +91,7 @@ class Yw7TreeBuilder():
 
                 try:
 
-                    if scFields.find('Field_SceneType') is None:
-                        ET.SubElement(scFields, 'Field_SceneType').text = '2'
+                    scFields.find('Field_SceneType').text = '2'
 
                 except(AttributeError):
                     scFields = ET.SubElement(xmlScn, 'Fields')

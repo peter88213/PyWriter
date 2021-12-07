@@ -310,6 +310,9 @@ class Yw7File(Novel):
             else:
                 self.scenes[scId].isUnused = False
 
+            self.scenes[scId].isNotesScene = False
+            self.scenes[scId].isTodoScene = False
+
             for scFields in scn.findall('Fields'):
 
                 if scFields.find('Field_SceneType') is not None:
