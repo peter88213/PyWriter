@@ -28,3 +28,5 @@ class OdtBriefSynopsis(OdtFile):
 
     sceneTemplate = '''<text:p text:style-name="Text_20_body">$Title</text:p>
 '''
+
+    fileFooter = OdtFile.CONTENT_XML_FOOTER
