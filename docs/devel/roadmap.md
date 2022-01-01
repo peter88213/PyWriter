@@ -255,6 +255,10 @@ These files can be imported into any existing yWriter project.
     - Add, delete, move scenes.
     - Add, delete characters, locations, and items (already implemented as of v2.10).
 
+- Drop .yw5 and .yw6 support.
+- Provide a flexible tk Ui. 
+- Complete the docstrings and provide a package at PyPi.
+
 ### Future:
 
 #### Full LibreOffice/OpenOffice integration
