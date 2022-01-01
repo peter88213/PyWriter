@@ -12,6 +12,8 @@
 
 - **odt_proof** -- Provide a class for ODT visibly tagged chapters and scenes export.
 
+- **odt_brief_synopsis** -- Provide a class for ODT brief synopsis export.
+
 - **odt_manuscript** -- Provide a class for ODT invisibly tagged chapters and scenes export.
 
 - **odt_partdesc** -- Provide a class for ODT invisibly tagged part descriptions export.

@@ -1539,6 +1539,9 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_FWVA4L7-EeuLVoie0Ovs3Q" name="OdtItems">
         <generalization xmi:type="uml:Generalization" xmi:id="_j7E8oL7-EeuLVoie0Ovs3Q" general="_FoJAYDINEeqilJYfjdmi4Q"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_KYyToGrgEeysAfb7OFex7Q" name="OdtBriefSynopsis">
+        <generalization xmi:type="uml:Generalization" xmi:id="_Wa9FAGrgEeysAfb7OFex7Q" general="_FoJAYDINEeqilJYfjdmi4Q"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="__7zicPbjEeuIY7rtcArmxw" name="config">
       <packagedElement xmi:type="uml:Class" xmi:id="_aoPI0PbkEeuIY7rtcArmxw" name="Configuration">
