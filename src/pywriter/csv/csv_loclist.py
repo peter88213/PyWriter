@@ -13,7 +13,7 @@ from pywriter.model.world_element import WorldElement
 
 
 class CsvLocList(CsvFile):
-    """csv file representation of an yWriter project's locations table. 
+    """csv file representation of a yWriter project's locations table. 
     """
 
     DESCRIPTION = 'Location list'

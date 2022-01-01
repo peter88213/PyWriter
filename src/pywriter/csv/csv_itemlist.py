@@ -12,7 +12,7 @@ from pywriter.model.world_element import WorldElement
 
 
 class CsvItemList(CsvFile):
-    """csv file representation of an yWriter project's items table. 
+    """csv file representation of a yWriter project's items table. 
     """
 
     DESCRIPTION = 'Item list'

@@ -19,7 +19,7 @@ from pywriter.model.scene import Scene
 
 
 class CsvPlotList(CsvFile):
-    """csv file representation of an yWriter project's scenes table. 
+    """csv file representation of a yWriter project's scenes table. 
     """
 
     DESCRIPTION = 'Plot list'

@@ -13,7 +13,7 @@ from pywriter.model.character import Character
 
 
 class CsvCharList(CsvFile):
-    """csv file representation of an yWriter project's characters table. 
+    """csv file representation of a yWriter project's characters table. 
     """
 
     DESCRIPTION = 'Character list'
