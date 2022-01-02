@@ -1,7 +1,7 @@
 """Provide an xml pretty printer.
 
 Copyright (c) 2021 Peter Triesberger
-For further information see https://github.com/peter88213/yw-timeline
+For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 
