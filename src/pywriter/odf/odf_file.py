@@ -162,6 +162,13 @@ class OdfFile(FileExport):
 
         workdir = os.getcwd()
 
+        if os.path.isfile(self.filePath):
+            os.replace(self.filePath, self.filePath + '.bak')
+            backedUp = True
+
+        else:
+            backedUp = False
+
         try:
             with zipfile.ZipFile(self.filePath, 'w') as odfTarget:
                 os.chdir(self.tempDir)
@@ -169,6 +176,10 @@ class OdfFile(FileExport):
                 for file in self.ODF_COMPONENTS:
                     odfTarget.write(file, compress_type=zipfile.ZIP_DEFLATED)
         except:
+
+            if backedUp:
+                os.replace(self.filePath + '.bak', self.filePath)
+
             os.chdir(workdir)
             return 'ERROR: Cannot generate "' + os.path.normpath(self.filePath) + '".'
 
