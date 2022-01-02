@@ -716,11 +716,23 @@ class FileExport(Novel):
         """
         text = self.get_text()
 
+        if os.path.isfile(self.filePath):
+            os.replace(self.filePath, self.filePath + '.bak')
+            backedUp = True
+
+        else:
+            backedUp = False
+
         try:
+
             with open(self.filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
 
         except:
+
+            if backedUp:
+                os.replace(self.filePath + '.bak', self.filePath)
+
             return 'ERROR: Cannot write "' + os.path.normpath(self.filePath) + '".'
 
         return 'SUCCESS: "' + os.path.normpath(self.filePath) + '" written.'

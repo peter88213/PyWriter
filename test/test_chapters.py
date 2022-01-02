@@ -36,6 +36,7 @@ REFERENCE_IMP = DATA_PATH + 'normal' + importClass.EXTENSION
 PROOFED_IMP = DATA_PATH + 'proofed' + importClass.EXTENSION
 
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
+TEST_YW7_BAK = TEST_YW7 + '.bak'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
 PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
@@ -50,7 +51,7 @@ def remove_all_tempfiles():
     except:
         pass
     try:
-        os.remove(TEST_YW7)
+        os.remove(TEST_YW7_BAK)
     except:
         pass
     try:
@@ -100,6 +101,9 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_YW7),
                          read_file(PROOFED_YW7))
 
+        self.assertEqual(read_file(TEST_YW7_BAK),
+                         read_file(REFERENCE_YW7))
+
     def test_yw7_to_exp(self):
         """Use YwCnv class. """
         yw7File = Yw7File(TEST_YW7)
@@ -127,6 +131,9 @@ class NrmOpr(unittest.TestCase):
 
         self.assertEqual(read_file(TEST_YW7),
                          read_file(PROOFED_YW7))
+
+        self.assertEqual(read_file(TEST_YW7_BAK),
+                         read_file(REFERENCE_YW7))
 
     def test_yw7_to_exp_ui(self):
         """Use YwCnvUi class. """

@@ -1,6 +1,6 @@
 """Provide a strategy class to write utf-8 encoded yWriter project files.
 
-Copyright (c) 2021 Peter Triesberger
+Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -16,11 +16,21 @@ class Utf8TreeWriter():
         Return a message beginning with SUCCESS or ERROR.
         """
 
-        try:
-            ywProject.tree.write(
-                ywProject.filePath, xml_declaration=False, encoding='utf-8')
+        if os.path.isfile(ywProject.filePath):
+            os.replace(ywProject.filePath, ywProject.filePath + '.bak')
+            backedUp = True
 
-        except(PermissionError):
-            return 'ERROR: "' + os.path.normpath(ywProject.filePath) + '" is write protected.'
+        else:
+            backedUp = False
+
+        try:
+            ywProject.tree.write(ywProject.filePath, xml_declaration=False, encoding='utf-8')
+
+        except:
+
+            if backedUp:
+                os.replace(ywProject.filePath + '.bak', ywProject.filePath)
+
+            return 'ERROR: Cannot write "' + os.path.normpath(ywProject.filePath) + '".'
 
         return 'SUCCESS'

@@ -1,6 +1,7 @@
 """Provide a class for yWriter 5 project import and export.
 
 Scene content can not be read in.
+DEPRECATED -- This module is no longer provided for v4.
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

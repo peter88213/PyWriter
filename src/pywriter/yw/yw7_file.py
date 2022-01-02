@@ -2,7 +2,7 @@
 
 yWriter version-specific file representations inherit from this class.
 
-Copyright (c) 2021 Peter Triesberger
+Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -472,7 +472,7 @@ class Yw7File(Novel):
         Override the superclass method.
         """
 
-        if self.file_exists():
+        if os.path.isfile(self.filePath):
             message = self.read()
             # initialize data
 

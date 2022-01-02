@@ -1,6 +1,8 @@
 """Provide a strategy class to build an yWriter 5 xml tree.
 
-Copyright (c) 2021 Peter Triesberger
+DEPRECATED -- This module is no longer provided for v4.
+
+ (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

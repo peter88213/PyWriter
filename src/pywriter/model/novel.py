@@ -2,7 +2,7 @@
 
 All classes representing specific file formats inherit from this class.
 
-Copyright (c) 2021 Peter Triesberger
+Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -25,6 +25,7 @@ class Novel():
         convert_to_yw(text) -- Return text, converted from source format to yw7 markup.
         convert_from_yw(text) -- Return text, converted from yw7 markup to target format.
         file_exists() -- Return True, if the file specified by filePath exists.
+        back_up() -- Create a backup file from filePath.
 
     Instance variables:
         title -- str; title
@@ -213,6 +214,8 @@ class Novel():
     def file_exists(self):
         """Return True, if the file specified by filePath exists. 
         Otherwise, return False.
+
+        DEPRECATED -- This method is no longer provided for v4.
         """
         if os.path.isfile(self.filePath):
             return True
@@ -227,6 +230,8 @@ class Novel():
         Parameter: single
         True - Overwrite existing backup file. Extension = .bak
         False - Create a new, numbered backup file. Extension = .bkxxxx
+
+        DEPRECATED -- This method is no longer provided for v4.
         """
         if os.path.isfile(self.filePath):
 

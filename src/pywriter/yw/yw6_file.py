@@ -1,5 +1,7 @@
 """Provide a class for yWriter 6 project import and export.
 
+DEPRECATED -- This module is no longer provided for v4.
+
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)

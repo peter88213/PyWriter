@@ -2,7 +2,7 @@
 
 All converters inherit from this class. 
 
-Copyright (c) 2021 Peter Triesberger
+Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -39,13 +39,13 @@ class YwCnv():
         if sourceFile.filePath is None:
             return 'ERROR: Source "' + os.path.normpath(sourceFile.filePath) + '" is not of the supported type.'
 
-        if not sourceFile.file_exists():
+        if not os.path.isfile(sourceFile.filePath):
             return 'ERROR: "' + os.path.normpath(sourceFile.filePath) + '" not found.'
 
         if targetFile.filePath is None:
             return 'ERROR: Target "' + os.path.normpath(targetFile.filePath) + '" is not of the supported type.'
 
-        if targetFile.file_exists() and not self.confirm_overwrite(targetFile.filePath):
+        if os.path.isfile(targetFile.filePath) and not self.confirm_overwrite(targetFile.filePath):
             return 'ERROR: Action canceled by user.'
 
         # Make the source object read the source file.

@@ -36,6 +36,7 @@ REFERENCE_HTML = DATA_PATH + 'normal.html'
 PROOFED_HTML = DATA_PATH + 'proofed.html'
 
 TEST_YW7 = EXEC_PATH + 'yw7 Sample Project.yw7'
+TEST_YW7_BAK = TEST_YW7 + '.bak'
 REFERENCE_YW7 = DATA_PATH + 'normal.yw7'
 PROOFED_YW7 = DATA_PATH + 'proofed.yw7'
 
@@ -51,6 +52,10 @@ def remove_all_tempfiles():
         pass
     try:
         os.remove(TEST_YW7)
+    except:
+        pass
+    try:
+        os.remove(TEST_YW7_BAK)
     except:
         pass
     try:
@@ -100,6 +105,9 @@ class NrmOpr(unittest.TestCase):
         self.assertEqual(read_file(TEST_YW7),
                          read_file(PROOFED_YW7))
 
+        self.assertEqual(read_file(TEST_YW7_BAK),
+                         read_file(REFERENCE_YW7))
+
     def test_yw7_to_odt(self):
         """Use YwCnv class. """
         yw7File = Yw7File(TEST_YW7)
@@ -127,6 +135,9 @@ class NrmOpr(unittest.TestCase):
 
         self.assertEqual(read_file(TEST_YW7),
                          read_file(PROOFED_YW7))
+
+        self.assertEqual(read_file(TEST_YW7_BAK),
+                         read_file(REFERENCE_YW7))
 
     def test_yw7_to_odt_ui(self):
         """Use YwCnvUi class. """
