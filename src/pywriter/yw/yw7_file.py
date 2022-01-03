@@ -472,6 +472,20 @@ class Yw7File(Novel):
         Override the superclass method.
         """
 
+        def merge_lists(srcLst, tgtLst):
+            """Insert srcLst items to tgtLst, if missing.
+            """
+            j = 0
+
+            for i in range(len(srcLst)):
+
+                if not srcLst[i] in tgtLst:
+                    tgtLst.insert(j, srcLst[i])
+                    j += 1
+
+                else:
+                    j = tgtLst.index(srcLst[i]) + 1
+
         if os.path.isfile(self.filePath):
             message = self.read()
             # initialize data
@@ -659,6 +673,7 @@ class Yw7File(Novel):
         #--- Merge scenes.
 
         mismatchCount = 0
+        sourceHasSceneContent = False
 
         for scId in source.scenes:
 
@@ -675,6 +690,7 @@ class Yw7File(Novel):
 
             if source.scenes[scId].sceneContent is not None:
                 self.scenes[scId].sceneContent = source.scenes[scId].sceneContent
+                sourceHasSceneContent = True
 
             if source.scenes[scId].isUnused is not None:
                 self.scenes[scId].isUnused = source.scenes[scId].isUnused
@@ -780,8 +796,6 @@ class Yw7File(Novel):
 
         #--- Merge chapters.
 
-        scenesAssigned = []
-
         for chId in source.chapters:
 
             if not chId in self.chapters:
@@ -816,18 +830,8 @@ class Yw7File(Novel):
             if source.chapters[chId].isTrash is not None:
                 self.chapters[chId].isTrash = source.chapters[chId].isTrash
 
-            #--- TODO:
-            # This must be fixed. Existing scenes that are not of the "Normal" type will disappear
-            # from the srtScenes list.
-
             if source.chapters[chId].srtScenes is not None:
-                self.chapters[chId].srtScenes = []
-
-                for scId in source.chapters[chId].srtScenes:
-
-                    if (scId in self.scenes) and not (scId in scenesAssigned):
-                        self.chapters[chId].srtScenes.append(scId)
-                        scenesAssigned.append(scId)
+                merge_lists(source.chapters[chId].srtScenes, self.chapters[chId].srtScenes)
 
         #--- Merge project attributes.
 
@@ -865,6 +869,9 @@ class Yw7File(Novel):
             if mismatchCount != 0:
                 return 'ERROR: Project structure mismatch.'
 
+        if sourceHasSceneContent:
+            self.split_scenes()
+
         return 'SUCCESS'
 
     def write(self):
@@ -876,8 +883,6 @@ class Yw7File(Novel):
 
         if self.is_locked():
             return 'ERROR: yWriter seems to be open. Please close first.'
-
-        self.split_scenes()
 
         message = self.ywTreeBuilder.build_element_tree(self)
 

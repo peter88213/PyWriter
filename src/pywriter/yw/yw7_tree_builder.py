@@ -388,7 +388,10 @@ class Yw7TreeBuilder():
 
             if prjChp.srtScenes:
                 xScnList = xmlChp.find('Scenes')
-                xmlChp.remove(xScnList)
+
+                if xScnList is not None:
+                    xmlChp.remove(xScnList)
+
                 sortSc = ET.SubElement(xmlChp, 'Scenes')
 
                 for scId in prjChp.srtScenes:
