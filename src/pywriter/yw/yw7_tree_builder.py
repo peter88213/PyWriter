@@ -49,16 +49,13 @@ class Yw7TreeBuilder():
             # Scene content is overwritten in subclasses.
 
             if xmlScn.find('SceneContent') is None:
-                ET.SubElement(
-                    xmlScn, 'SceneContent').text = prjScn.sceneContent
+                ET.SubElement(xmlScn, 'SceneContent').text = prjScn.sceneContent
 
             if xmlScn.find('WordCount') is None:
-                ET.SubElement(xmlScn, 'WordCount').text = str(
-                    prjScn.wordCount)
+                ET.SubElement(xmlScn, 'WordCount').text = str(prjScn.wordCount)
 
             if xmlScn.find('LetterCount') is None:
-                ET.SubElement(xmlScn, 'LetterCount').text = str(
-                    prjScn.letterCount)
+                ET.SubElement(xmlScn, 'LetterCount').text = str(prjScn.letterCount)
 
             if prjScn.isUnused:
 
@@ -90,7 +87,6 @@ class Yw7TreeBuilder():
                 scFields = xmlScn.find('Fields')
 
                 try:
-
                     scFields.find('Field_SceneType').text = '2'
 
                 except(AttributeError):
@@ -235,8 +231,7 @@ class Yw7TreeBuilder():
                     xmlScn.find('LastsHours').text = prjScn.lastsHours
 
                 except(AttributeError):
-                    ET.SubElement(
-                        xmlScn, 'LastsHours').text = prjScn.lastsHours
+                    ET.SubElement(xmlScn, 'LastsHours').text = prjScn.lastsHours
 
             if prjScn.lastsMinutes is not None:
 
@@ -244,8 +239,7 @@ class Yw7TreeBuilder():
                     xmlScn.find('LastsMinutes').text = prjScn.lastsMinutes
 
                 except(AttributeError):
-                    ET.SubElement(
-                        xmlScn, 'LastsMinutes').text = prjScn.lastsMinutes
+                    ET.SubElement(xmlScn, 'LastsMinutes').text = prjScn.lastsMinutes
 
             # Plot related information
 
@@ -380,8 +374,7 @@ class Yw7TreeBuilder():
                     xmlChp.find('ChapterType').text = str(prjChp.chType)
 
                 except(AttributeError):
-                    ET.SubElement(xmlChp, 'ChapterType').text = str(
-                        prjChp.chType)
+                    ET.SubElement(xmlChp, 'ChapterType').text = str(prjChp.chType)
 
             if prjChp.isUnused:
 
@@ -391,13 +384,15 @@ class Yw7TreeBuilder():
             elif xmlChp.find('Unused') is not None:
                 xmlChp.remove(xmlChp.find('Unused'))
 
+            #--- Rebuild the chapter's scene list.
+
             if prjChp.srtScenes:
+                xScnList = xmlChp.find('Scenes')
+                xmlChp.remove(xScnList)
+                sortSc = ET.SubElement(xmlChp, 'Scenes')
 
-                if xmlChp.find('Scenes') is None:
-                    sortSc = ET.SubElement(xmlChp, 'Scenes')
-
-                    for scId in prjChp.srtScenes:
-                        ET.SubElement(sortSc, 'ScID').text = scId
+                for scId in prjChp.srtScenes:
+                    ET.SubElement(sortSc, 'ScID').text = scId
 
         def build_location_subtree(xmlLoc, prjLoc, sortOrder):
             ET.SubElement(xmlLoc, 'ID').text = lcId
@@ -460,8 +455,7 @@ class Yw7TreeBuilder():
                 ET.SubElement(xmlCrt, 'AKA').text = prjCrt.aka
 
             if prjCrt.tags is not None:
-                ET.SubElement(xmlCrt, 'Tags').text = ';'.join(
-                    prjCrt.tags)
+                ET.SubElement(xmlCrt, 'Tags').text = ';'.join(prjCrt.tags)
 
             if prjCrt.bio is not None:
                 ET.SubElement(xmlCrt, 'Bio').text = prjCrt.bio
@@ -513,8 +507,7 @@ class Yw7TreeBuilder():
                     xmlPrj.find('FieldTitle1').text = ywProject.fieldTitle1
 
                 except(AttributeError):
-                    ET.SubElement(
-                        xmlPrj, 'FieldTitle1').text = ywProject.fieldTitle1
+                    ET.SubElement(xmlPrj, 'FieldTitle1').text = ywProject.fieldTitle1
 
             if ywProject.fieldTitle2 is not None:
 
@@ -522,8 +515,7 @@ class Yw7TreeBuilder():
                     xmlPrj.find('FieldTitle2').text = ywProject.fieldTitle2
 
                 except(AttributeError):
-                    ET.SubElement(
-                        xmlPrj, 'FieldTitle2').text = ywProject.fieldTitle2
+                    ET.SubElement(xmlPrj, 'FieldTitle2').text = ywProject.fieldTitle2
 
             if ywProject.fieldTitle3 is not None:
 
@@ -531,8 +523,7 @@ class Yw7TreeBuilder():
                     xmlPrj.find('FieldTitle3').text = ywProject.fieldTitle3
 
                 except(AttributeError):
-                    ET.SubElement(
-                        xmlPrj, 'FieldTitle3').text = ywProject.fieldTitle3
+                    ET.SubElement(xmlPrj, 'FieldTitle3').text = ywProject.fieldTitle3
 
             if ywProject.fieldTitle4 is not None:
 
@@ -540,8 +531,7 @@ class Yw7TreeBuilder():
                     xmlPrj.find('FieldTitle4').text = ywProject.fieldTitle4
 
                 except(AttributeError):
-                    ET.SubElement(
-                        xmlPrj, 'FieldTitle4').text = ywProject.fieldTitle4
+                    ET.SubElement(xmlPrj, 'FieldTitle4').text = ywProject.fieldTitle4
 
         xmlScenes = {}
         xmlChapters = {}
@@ -582,8 +572,7 @@ class Yw7TreeBuilder():
         for lcId in ywProject.srtLocations:
             sortOrder += 1
             xmlLoc = ET.SubElement(locations, 'LOCATION')
-            build_location_subtree(
-                xmlLoc, ywProject.locations[lcId], sortOrder)
+            build_location_subtree(xmlLoc, ywProject.locations[lcId], sortOrder)
 
         #--- Process items.
         # Remove ITEM entries in order to rewrite
@@ -615,8 +604,7 @@ class Yw7TreeBuilder():
         for crId in ywProject.srtCharacters:
             sortOrder += 1
             xmlCrt = ET.SubElement(characters, 'CHARACTER')
-            build_character_subtree(
-                xmlCrt, ywProject.characters[crId], sortOrder)
+            build_character_subtree(xmlCrt, ywProject.characters[crId], sortOrder)
 
         #--- Process scenes.
         # Save the original XML scene subtrees
@@ -658,8 +646,7 @@ class Yw7TreeBuilder():
                 xmlChapters[chId] = ET.Element('CHAPTER')
                 ET.SubElement(xmlChapters[chId], 'ID').text = chId
 
-            build_chapter_subtree(
-                xmlChapters[chId], ywProject.chapters[chId], sortOrder)
+            build_chapter_subtree(xmlChapters[chId], ywProject.chapters[chId], sortOrder)
 
             chapters.append(xmlChapters[chId])
 
@@ -682,12 +669,9 @@ class Yw7TreeBuilder():
             scId = scn.find('ID').text
 
             if ywProject.scenes[scId].sceneContent is not None:
-                scn.find(
-                    'SceneContent').text = ywProject.scenes[scId].sceneContent
-                scn.find('WordCount').text = str(
-                    ywProject.scenes[scId].wordCount)
-                scn.find('LetterCount').text = str(
-                    ywProject.scenes[scId].letterCount)
+                scn.find('SceneContent').text = ywProject.scenes[scId].sceneContent
+                scn.find('WordCount').text = str(ywProject.scenes[scId].wordCount)
+                scn.find('LetterCount').text = str(ywProject.scenes[scId].letterCount)
 
             try:
                 scn.remove(scn.find('RTFFile'))

@@ -816,6 +816,10 @@ class Yw7File(Novel):
             if source.chapters[chId].isTrash is not None:
                 self.chapters[chId].isTrash = source.chapters[chId].isTrash
 
+            #--- TODO:
+            # This must be fixed. Existing scenes that are not of the "Normal" type will disappear
+            # from the srtScenes list.
+
             if source.chapters[chId].srtScenes is not None:
                 self.chapters[chId].srtScenes = []
 
@@ -849,9 +853,7 @@ class Yw7File(Novel):
         if source.fieldTitle4 is not None:
             self.fieldTitle4 = source.fieldTitle4
 
-        # if source.srtChapters != []:
         if self.srtChapters == []:
-            self.srtChapters = []
 
             for chId in source.srtChapters:
                 self.srtChapters.append(chId)
@@ -909,10 +911,10 @@ class Yw7File(Novel):
             self.chapters[chapterId] = newChapter
 
         def create_scene(sceneId, parent):
-
-            WARNING = ' (!) '
             """Create a new scene and add it to the novel.
             """
+            WARNING = ' (!) '
+
             newScene = Scene()
 
             if parent.desc and not parent.title.endswith(' (split)'):
@@ -994,7 +996,7 @@ class Yw7File(Novel):
                     if line.startswith(self.PART_SEPARATOR):
 
                         if inScene:
-                            self.scenes[sceneId].sceneContent = ('').join(newLines)
+                            self.scenes[sceneId].sceneContent = '\n'.join(newLines)
                             newLines = []
                             inScene = False
 
@@ -1009,7 +1011,7 @@ class Yw7File(Novel):
                     elif line.startswith(self.CHAPTER_SEPARATOR):
 
                         if inScene:
-                            self.scenes[sceneId].sceneContent = ('\n').join(newLines)
+                            self.scenes[sceneId].sceneContent = '\n'.join(newLines)
                             newLines = []
                             inScene = False
 
@@ -1022,7 +1024,7 @@ class Yw7File(Novel):
                         srtChapters.append(chapterId)
 
                     elif line.startswith(self.SCENE_SEPARATOR):
-                        self.scenes[sceneId].sceneContent = ('\n').join(newLines)
+                        self.scenes[sceneId].sceneContent = '\n'.join(newLines)
                         newLines = []
                         scIdMax += 1
                         sceneId = str(scIdMax)
@@ -1041,7 +1043,7 @@ class Yw7File(Novel):
                     else:
                         newLines.append(line)
 
-                self.scenes[sceneId].sceneContent = ('\n').join(newLines)
+                self.scenes[sceneId].sceneContent = '\n'.join(newLines)
 
             self.chapters[chapterId].srtScenes = srtScenes
 
