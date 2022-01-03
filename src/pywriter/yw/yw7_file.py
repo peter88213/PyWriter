@@ -911,6 +911,7 @@ class Yw7File(Novel):
             """
             newChapter = Chapter()
             newChapter.title = title
+            newChapter.desc = desc
             newChapter.chLevel = level
             newChapter.chType = 0
             self.chapters[chapterId] = newChapter
