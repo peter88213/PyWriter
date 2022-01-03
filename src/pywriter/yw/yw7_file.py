@@ -875,6 +875,8 @@ class Yw7File(Novel):
         if self.is_locked():
             return 'ERROR: yWriter seems to be open. Please close first.'
 
+        self.split_scenes()
+
         message = self.ywTreeBuilder.build_element_tree(self)
 
         if message.startswith('ERROR'):
@@ -891,8 +893,156 @@ class Yw7File(Novel):
         """Return True if a .lock file placed by yWriter exists.
         Otherwise, return False. 
         """
-        if os.path.isfile(self.filePath + '.lock'):
-            return True
+        return os.path.isfile(self.filePath + '.lock')
 
-        else:
-            return False
+    def split_scenes(self):
+        """Generate new chapters and scenes if there are dividers within the scene content.
+        """
+
+        def create_chapter(chapterId, title, desc, level):
+            """Create a new chapter and add it to the novel.
+            """
+            newChapter = Chapter()
+            newChapter.title = title
+            newChapter.chLevel = level
+            newChapter.chType = 0
+            self.chapters[chapterId] = newChapter
+
+        def create_scene(sceneId, parent):
+
+            WARNING = ' (!) '
+            """Create a new scene and add it to the novel.
+            """
+            newScene = Scene()
+
+            if parent.desc and not parent.title.endswith(' (split)'):
+                parent.title += ' (split)'
+
+            newScene.title = parent.title
+
+            if parent.desc and not parent.desc.startswith(WARNING):
+                parent.desc = WARNING + parent.desc
+
+            newScene.desc = parent.desc
+
+            if parent.goal and not parent.goal.startswith(WARNING):
+                parent.goal = WARNING + parent.goal
+
+            newScene.goal = parent.goal
+
+            if parent.conflict and not parent.conflict.startswith(WARNING):
+                parent.conflict = WARNING + parent.conflict
+
+            newScene.conflict = parent.conflict
+
+            if parent.outcome and not parent.outcome.startswith(WARNING):
+                parent.outcome = WARNING + parent.outcome
+
+            newScene.outcome = parent.outcome
+
+            newScene.status = parent.status
+            newScene.isNotesScene = parent.isNotesScene
+            newScene.isUnused = parent.isUnused
+            newScene.isTodoScene = parent.isTodoScene
+            newScene.date = parent.date
+            newScene.time = parent.time
+            newScene.day = parent.day
+            newScene.hour = parent.hour
+            newScene.minute = parent.minute
+            newScene.lastsDays = parent.lastsDays
+            newScene.lastsHours = parent.lastsHours
+            newScene.lastsMinutes = parent.lastsMinutes
+            self.scenes[sceneId] = newScene
+
+        # Get the maximum chapter ID and scene ID.
+
+        chIdMax = 0
+        scIdMax = 0
+
+        for chId in self.srtChapters:
+
+            if int(chId) > chIdMax:
+                chIdMax = int(chId)
+
+        for scId in self.scenes:
+
+            if int(scId) > scIdMax:
+                scIdMax = int(scId)
+
+        srtChapters = []
+
+        for chId in self.srtChapters:
+            srtChapters.append(chId)
+            chapterId = chId
+            srtScenes = []
+
+            for scId in self.chapters[chId].srtScenes:
+                srtScenes.append(scId)
+
+                if not self.scenes[scId].sceneContent:
+                    continue
+
+                sceneId = scId
+                lines = self.scenes[scId].sceneContent.split('\n')
+                newLines = []
+                inScene = True
+
+                # Search scene content for dividers.
+
+                for line in lines:
+
+                    if line.startswith(self.PART_SEPARATOR):
+
+                        if inScene:
+                            self.scenes[sceneId].sceneContent = ('').join(newLines)
+                            newLines = []
+                            inScene = False
+
+                        self.chapters[chapterId].srtScenes = srtScenes
+                        srtScenes = []
+
+                        chIdMax += 1
+                        chapterId = str(chIdMax)
+                        create_chapter(chapterId, 'New part', line.replace(self.PART_SEPARATOR, ''), 1)
+                        srtChapters.append(chapterId)
+
+                    elif line.startswith(self.CHAPTER_SEPARATOR):
+
+                        if inScene:
+                            self.scenes[sceneId].sceneContent = ('\n').join(newLines)
+                            newLines = []
+                            inScene = False
+
+                        self.chapters[chapterId].srtScenes = srtScenes
+                        srtScenes = []
+
+                        chIdMax += 1
+                        chapterId = str(chIdMax)
+                        create_chapter(chapterId, 'New chapter', line.replace(self.CHAPTER_SEPARATOR, ''), 0)
+                        srtChapters.append(chapterId)
+
+                    elif line.startswith(self.SCENE_SEPARATOR):
+                        self.scenes[sceneId].sceneContent = ('\n').join(newLines)
+                        newLines = []
+                        scIdMax += 1
+                        sceneId = str(scIdMax)
+                        create_scene(sceneId, self.scenes[scId])
+                        srtScenes.append(sceneId)
+                        inScene = True
+
+                    elif not inScene:
+                        newLines.append(line)
+                        scIdMax += 1
+                        sceneId = str(scIdMax)
+                        create_scene(sceneId, self.scenes[scId])
+                        srtScenes.append(sceneId)
+                        inScene = True
+
+                    else:
+                        newLines.append(line)
+
+                self.scenes[sceneId].sceneContent = ('\n').join(newLines)
+
+            self.chapters[chapterId].srtScenes = srtScenes
+
+        self.srtChapters = srtChapters
