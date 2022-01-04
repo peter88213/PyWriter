@@ -13,6 +13,7 @@ class Splitter():
     PART_SEPARATOR = '# '
     CHAPTER_SEPARATOR = '## '
     SCENE_SEPARATOR = '* * *'
+    CLIP_TITLE = 20
     # This is used for splitting scenes.
 
     def split_scenes(self, ywPrj):
@@ -29,37 +30,42 @@ class Splitter():
             newChapter.chType = 0
             ywPrj.chapters[chapterId] = newChapter
 
-        def create_scene(sceneId, parent):
+        def create_scene(sceneId, parent, splitCount):
             """Create a new scene and add it to the novel.
             """
             WARNING = ' (!) '
 
             newScene = Scene()
 
-            if parent.desc and not parent.title.endswith(' (split)'):
-                parent.title += ' (split)'
+            if parent.title:
 
-            newScene.title = parent.title
+                if len(parent.title) > self.CLIP_TITLE:
+                    title = parent.title[:self.CLIP_TITLE] + '...'
+
+                else:
+                    title = parent.title
+
+                newScene.title = title + ' Split: ' + str(splitCount)
+
+            else:
+                newScene.title = 'New scene Split: ' + str(splitCount)
 
             if parent.desc and not parent.desc.startswith(WARNING):
                 parent.desc = WARNING + parent.desc
 
-            newScene.desc = parent.desc
-
             if parent.goal and not parent.goal.startswith(WARNING):
                 parent.goal = WARNING + parent.goal
-
-            newScene.goal = parent.goal
 
             if parent.conflict and not parent.conflict.startswith(WARNING):
                 parent.conflict = WARNING + parent.conflict
 
-            newScene.conflict = parent.conflict
-
             if parent.outcome and not parent.outcome.startswith(WARNING):
                 parent.outcome = WARNING + parent.outcome
 
-            newScene.outcome = parent.outcome
+            # Reset the parent's status to Draft, if not Outline.
+
+            if parent.status > 2:
+                parent.status = 2
 
             newScene.status = parent.status
             newScene.isNotesScene = parent.isNotesScene
@@ -107,6 +113,7 @@ class Splitter():
                 lines = ywPrj.scenes[scId].sceneContent.split('\n')
                 newLines = []
                 inScene = True
+                sceneSplitCount = 0
 
                 # Search scene content for dividers.
 
@@ -117,6 +124,7 @@ class Splitter():
                         if inScene:
                             ywPrj.scenes[sceneId].sceneContent = '\n'.join(newLines)
                             newLines = []
+                            sceneSplitCount = 0
                             inScene = False
 
                         ywPrj.chapters[chapterId].srtScenes = srtScenes
@@ -132,6 +140,7 @@ class Splitter():
                         if inScene:
                             ywPrj.scenes[sceneId].sceneContent = '\n'.join(newLines)
                             newLines = []
+                            sceneSplitCount = 0
                             inScene = False
 
                         ywPrj.chapters[chapterId].srtScenes = srtScenes
@@ -145,17 +154,19 @@ class Splitter():
                     elif line.startswith(self.SCENE_SEPARATOR):
                         ywPrj.scenes[sceneId].sceneContent = '\n'.join(newLines)
                         newLines = []
+                        sceneSplitCount += 1
                         scIdMax += 1
                         sceneId = str(scIdMax)
-                        create_scene(sceneId, ywPrj.scenes[scId])
+                        create_scene(sceneId, ywPrj.scenes[scId], sceneSplitCount)
                         srtScenes.append(sceneId)
                         inScene = True
 
                     elif not inScene:
                         newLines.append(line)
+                        sceneSplitCount += 1
                         scIdMax += 1
                         sceneId = str(scIdMax)
-                        create_scene(sceneId, ywPrj.scenes[scId])
+                        create_scene(sceneId, ywPrj.scenes[scId], sceneSplitCount)
                         srtScenes.append(sceneId)
                         inScene = True
 
