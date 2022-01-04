@@ -1,6 +1,6 @@
 """Provide a class for html visibly tagged chapters and scenes import.
 
-Copyright (c) 2021 Peter Triesberger
+Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -10,6 +10,7 @@ from pywriter.html.html_file import HtmlFile
 
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
+from pywriter.model.splitter import Splitter
 
 
 class HtmlProof(HtmlFile):
@@ -23,7 +24,7 @@ class HtmlProof(HtmlFile):
 
     def __init__(self, filePath, **kwargs):
         HtmlFile.__init__(self, filePath)
-        self._collectText = False
+        self._prefix = None
 
     def preprocess(self, text):
         """Process the html text before parsing.
@@ -67,18 +68,24 @@ class HtmlProof(HtmlFile):
         Overwrites HTMLparser.handle_endtag().
         """
         if tag == 'p':
-            self._collectText = True
+            self._prefix = ''
+
+        elif tag == 'h2':
+            self._prefix = Splitter.CHAPTER_SEPARATOR
+
+        elif tag == 'h1':
+            self._prefix = Splitter.PART_SEPARATOR
 
     def handle_endtag(self, tag):
         """Recognize the paragraph's end.
         Overwrites HTMLparser.handle_endtag().
         """
-        if tag == 'p':
-            self._collectText = False
+        if tag in ['p', 'h2', 'h1']:
+            self._prefix = None
 
     def handle_data(self, data):
         """Copy the scene paragraphs.
         Overwrites HTMLparser.handle_data().
         """
-        if self._collectText:
-            self._lines.append(data)
+        if self._prefix is not None:
+            self._lines.append(self._prefix + data)
