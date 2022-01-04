@@ -18,6 +18,8 @@
 
 - **cross_references** -- Provide a class for yWriter cross reference generation.
 
+- **splitter** -- Provide a helper class for scene and chapter splitting.
+
 ## Classes
 
 ![model package class diagram](img/model_package_class_diagram.png)

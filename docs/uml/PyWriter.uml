@@ -564,6 +564,20 @@
         <ownedEnd xmi:type="uml:Property" xmi:id="_hff64cwLEeuVlZjMUHKreQ" name="self" type="_4-Ru8MwKEeuVlZjMUHKreQ" association="_hfYmIMwLEeuVlZjMUHKreQ"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_hfdeoMwLEeuVlZjMUHKreQ" name="novel" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_hfYmIMwLEeuVlZjMUHKreQ"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_parT0G1QEeyo8PGsOj-8FQ" name="Splitter">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_5o_VgG1QEeyo8PGsOj-8FQ" name="split_scenes">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_FIh68G1REeyo8PGsOj-8FQ" name="ywPrj" type="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_UnrJgG1REeyo8PGsOj-8FQ" client="_parT0G1QEeyo8PGsOj-8FQ" supplier="_0ErCACtbEeqgj_wxJ3Xgsg"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_Zfw50G1REeyo8PGsOj-8FQ" client="_parT0G1QEeyo8PGsOj-8FQ" supplier="_ypTQMCtbEeqgj_wxJ3Xgsg"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_BYZbwG1SEeyo8PGsOj-8FQ" memberEnd="_BYe7UG1SEeyo8PGsOj-8FQ _BYhXkW1SEeyo8PGsOj-8FQ" navigableOwnedEnd="_BYe7UG1SEeyo8PGsOj-8FQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BYb4AG1SEeyo8PGsOj-8FQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BYb4AW1SEeyo8PGsOj-8FQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_BYhXkW1SEeyo8PGsOj-8FQ" name="self" type="_parT0G1QEeyo8PGsOj-8FQ" association="_BYZbwG1SEeyo8PGsOj-8FQ"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_BYe7UG1SEeyo8PGsOj-8FQ" name="ywPrj" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_BYZbwG1SEeyo8PGsOj-8FQ"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_seuasCwTEequtbdKEmlZqQ" name="converter">
       <ownedComment xmi:type="uml:Comment" xmi:id="_1wocQL4qEeuITv7MyBA5yA" annotatedElement="_5WZqEL4fEeuITv7MyBA5yA _7OPw8L4pEeuITv7MyBA5yA">
@@ -1685,6 +1699,16 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_3f9vIswQEeuVlZjMUHKreQ" type="_0I_9gPxCEeq5hMee5ike2Q" association="_3f758MwQEeuVlZjMUHKreQ"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_3f9IEswQEeuVlZjMUHKreQ" name="ET" association="_3f758MwQEeuVlZjMUHKreQ">
       <type xmi:type="uml:Class" href="stadardlib.uml#_QoWo4C1UEeqtbohuTq_ZAA"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_i1qcwG1SEeyo8PGsOj-8FQ" memberEnd="_i1tgEW1SEeyo8PGsOj-8FQ _i1uHIm1SEeyo8PGsOj-8FQ" navigableOwnedEnd="_i1tgEW1SEeyo8PGsOj-8FQ _i1uHIm1SEeyo8PGsOj-8FQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_i1s5AG1SEeyo8PGsOj-8FQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_i1tgEG1SEeyo8PGsOj-8FQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_i1uHIm1SEeyo8PGsOj-8FQ" name="ywPrj" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_i1qcwG1SEeyo8PGsOj-8FQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_i1tgEW1SEeyo8PGsOj-8FQ" name="sceneSplitter" type="_parT0G1QEeyo8PGsOj-8FQ" association="_i1qcwG1SEeyo8PGsOj-8FQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i1uHIG1SEeyo8PGsOj-8FQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i1uHIW1SEeyo8PGsOj-8FQ" value="1"/>
     </ownedEnd>
   </packagedElement>
 </uml:Model>
