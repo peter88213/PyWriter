@@ -20,6 +20,8 @@ from pywriter.yw.utf8_tree_reader import Utf8TreeReader
 from pywriter.yw.utf8_tree_writer import Utf8TreeWriter
 from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
 
+from pywriter.model.splitter import Splitter
+
 
 class Yw7File(Novel):
     """yWriter 7 project file representation.
@@ -672,14 +674,12 @@ class Yw7File(Novel):
 
         #--- Merge scenes.
 
-        mismatchCount = 0
         sourceHasSceneContent = False
 
         for scId in source.scenes:
 
             if not scId in self.scenes:
                 self.scenes[scId] = Scene()
-                mismatchCount += 1
 
             if source.scenes[scId].title:
                 # avoids deleting the title, if it is empty by accident
@@ -800,7 +800,6 @@ class Yw7File(Novel):
 
             if not chId in self.chapters:
                 self.chapters[chId] = Chapter()
-                mismatchCount += 1
 
             if source.chapters[chId].title:
                 # avoids deleting the title, if it is empty by accident
@@ -833,7 +832,8 @@ class Yw7File(Novel):
             #--- Merge the chapter's scene list.
             # New scenes may be added.
             # Existing scenes may be moved to another chapter.
-            # NOTE: Deletion of scenes is not considered.
+            # Deletion of scenes is not considered.
+            # The scene's sort order may not change.
 
             if source.chapters[chId].srtScenes is not None:
 
@@ -877,20 +877,19 @@ class Yw7File(Novel):
         if source.fieldTitle4 is not None:
             self.fieldTitle4 = source.fieldTitle4
 
-        if self.srtChapters == []:
+        # Add new chapters to the chapter list.
+        # Deletion of chapters is not considered.
+        # The sort order of chapters may not change.
 
-            for chId in source.srtChapters:
-                self.srtChapters.append(chId)
+        merge_lists(source.srtChapters, self.srtChapters)
 
-        if self.tree is not None:
-
-            # The project structure must match the target.
-
-            if mismatchCount != 0:
-                return 'ERROR: Project structure mismatch.'
+        # Split scenes by inserted part/chapter/scene dividers.
+        # This must be done after regular merging
+        # in order to avoid creating duplicate IDs.
 
         if sourceHasSceneContent:
-            self.split_scenes()
+            sceneSplitter = Splitter()
+            sceneSplitter.split_scenes(self)
 
         return 'SUCCESS'
 
@@ -921,156 +920,3 @@ class Yw7File(Novel):
         Otherwise, return False. 
         """
         return os.path.isfile(self.filePath + '.lock')
-
-    def split_scenes(self):
-        """Generate new chapters and scenes if there are dividers within the scene content.
-        """
-
-        def create_chapter(chapterId, title, desc, level):
-            """Create a new chapter and add it to the novel.
-            """
-            newChapter = Chapter()
-            newChapter.title = title
-            newChapter.desc = desc
-            newChapter.chLevel = level
-            newChapter.chType = 0
-            self.chapters[chapterId] = newChapter
-
-        def create_scene(sceneId, parent):
-            """Create a new scene and add it to the novel.
-            """
-            WARNING = ' (!) '
-
-            newScene = Scene()
-
-            if parent.desc and not parent.title.endswith(' (split)'):
-                parent.title += ' (split)'
-
-            newScene.title = parent.title
-
-            if parent.desc and not parent.desc.startswith(WARNING):
-                parent.desc = WARNING + parent.desc
-
-            newScene.desc = parent.desc
-
-            if parent.goal and not parent.goal.startswith(WARNING):
-                parent.goal = WARNING + parent.goal
-
-            newScene.goal = parent.goal
-
-            if parent.conflict and not parent.conflict.startswith(WARNING):
-                parent.conflict = WARNING + parent.conflict
-
-            newScene.conflict = parent.conflict
-
-            if parent.outcome and not parent.outcome.startswith(WARNING):
-                parent.outcome = WARNING + parent.outcome
-
-            newScene.outcome = parent.outcome
-
-            newScene.status = parent.status
-            newScene.isNotesScene = parent.isNotesScene
-            newScene.isUnused = parent.isUnused
-            newScene.isTodoScene = parent.isTodoScene
-            newScene.date = parent.date
-            newScene.time = parent.time
-            newScene.day = parent.day
-            newScene.hour = parent.hour
-            newScene.minute = parent.minute
-            newScene.lastsDays = parent.lastsDays
-            newScene.lastsHours = parent.lastsHours
-            newScene.lastsMinutes = parent.lastsMinutes
-            self.scenes[sceneId] = newScene
-
-        # Get the maximum chapter ID and scene ID.
-
-        chIdMax = 0
-        scIdMax = 0
-
-        for chId in self.srtChapters:
-
-            if int(chId) > chIdMax:
-                chIdMax = int(chId)
-
-        for scId in self.scenes:
-
-            if int(scId) > scIdMax:
-                scIdMax = int(scId)
-
-        srtChapters = []
-
-        for chId in self.srtChapters:
-            srtChapters.append(chId)
-            chapterId = chId
-            srtScenes = []
-
-            for scId in self.chapters[chId].srtScenes:
-                srtScenes.append(scId)
-
-                if not self.scenes[scId].sceneContent:
-                    continue
-
-                sceneId = scId
-                lines = self.scenes[scId].sceneContent.split('\n')
-                newLines = []
-                inScene = True
-
-                # Search scene content for dividers.
-
-                for line in lines:
-
-                    if line.startswith(self.PART_SEPARATOR):
-
-                        if inScene:
-                            self.scenes[sceneId].sceneContent = '\n'.join(newLines)
-                            newLines = []
-                            inScene = False
-
-                        self.chapters[chapterId].srtScenes = srtScenes
-                        srtScenes = []
-
-                        chIdMax += 1
-                        chapterId = str(chIdMax)
-                        create_chapter(chapterId, 'New part', line.replace(self.PART_SEPARATOR, ''), 1)
-                        srtChapters.append(chapterId)
-
-                    elif line.startswith(self.CHAPTER_SEPARATOR):
-
-                        if inScene:
-                            self.scenes[sceneId].sceneContent = '\n'.join(newLines)
-                            newLines = []
-                            inScene = False
-
-                        self.chapters[chapterId].srtScenes = srtScenes
-                        srtScenes = []
-
-                        chIdMax += 1
-                        chapterId = str(chIdMax)
-                        create_chapter(chapterId, 'New chapter', line.replace(self.CHAPTER_SEPARATOR, ''), 0)
-                        srtChapters.append(chapterId)
-
-                    elif line.startswith(self.SCENE_SEPARATOR):
-                        self.scenes[sceneId].sceneContent = '\n'.join(newLines)
-                        newLines = []
-                        scIdMax += 1
-                        sceneId = str(scIdMax)
-                        create_scene(sceneId, self.scenes[scId])
-                        srtScenes.append(sceneId)
-                        inScene = True
-
-                    elif not inScene:
-                        newLines.append(line)
-                        scIdMax += 1
-                        sceneId = str(scIdMax)
-                        create_scene(sceneId, self.scenes[scId])
-                        srtScenes.append(sceneId)
-                        inScene = True
-
-                    else:
-                        newLines.append(line)
-
-                self.scenes[sceneId].sceneContent = '\n'.join(newLines)
-
-            self.chapters[chapterId].srtScenes = srtScenes
-
-        self.srtChapters = srtChapters

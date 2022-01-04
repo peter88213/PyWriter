@@ -6,8 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 from pywriter.html.html_file import HtmlFile
-from pywriter.model.chapter import Chapter
-from pywriter.model.scene import Scene
+from pywriter.model.splitter import Splitter
 
 
 class HtmlManuscript(HtmlFile):
@@ -33,10 +32,10 @@ class HtmlManuscript(HtmlFile):
         if self._scId is not None:
 
             if tag == 'h1':
-                self._lines.append(self.PART_SEPARATOR)
+                self._lines.append(Splitter.PART_SEPARATOR)
 
             elif tag == 'h2':
-                self._lines.append(self.CHAPTER_SEPARATOR)
+                self._lines.append(Splitter.CHAPTER_SEPARATOR)
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.

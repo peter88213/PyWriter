@@ -52,11 +52,6 @@ class Novel():
     SUFFIX = None
     # To be extended by subclass methods.
 
-    PART_SEPARATOR = '# '
-    CHAPTER_SEPARATOR = '## '
-    SCENE_SEPARATOR = '* * *'
-    # This is used for splitting scenes.
-
     def __init__(self, filePath, **kwargs):
         """Define instance variables.
 
