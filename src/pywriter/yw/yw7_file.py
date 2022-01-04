@@ -830,7 +830,27 @@ class Yw7File(Novel):
             if source.chapters[chId].isTrash is not None:
                 self.chapters[chId].isTrash = source.chapters[chId].isTrash
 
+            #--- Merge the chapter's scene list.
+            # New scenes may be added.
+            # Existing scenes may be moved to another chapter.
+            # NOTE: Deletion of scenes is not considered.
+
             if source.chapters[chId].srtScenes is not None:
+
+                # Remove scenes that have been moved to another chapter from the scene list.
+
+                srtScenes = []
+
+                for scId in self.chapters[chId].srtScenes:
+
+                    if scId in source.chapters[chId].srtScenes or not scId in source.scenes:
+                        srtScenes.append(scId)
+                        # The scene has not moved to another chapter or isn't imported
+
+                    self.chapters[chId].srtScenes = srtScenes
+
+                # Add new or moved scenes to the scene list.
+
                 merge_lists(source.chapters[chId].srtScenes, self.chapters[chId].srtScenes)
 
         #--- Merge project attributes.
