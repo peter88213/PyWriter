@@ -23,4 +23,7 @@ odt -- Modules for writing Open Document text documents.
 ui -- Modules for user interfaces.
 yw -- Modules for reading and writing yWriter project files.
 
+Copyright (c) 2022 Peter Triesberger
+For further information see https://github.com/peter88213/PyWriter
+Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

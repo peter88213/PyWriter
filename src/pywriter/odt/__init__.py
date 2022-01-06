@@ -14,4 +14,8 @@ odt_characters -- Provide a class for ODT invisibly tagged character description
 odt_items -- Provide a class for ODT item invisibly tagged descriptions export.
 odt_locations -- Provide a class for ODT invisibly tagged location descriptions export.
 odt_xref -- Provide a class for ODT ross reference export.
+
+Copyright (c) 2022 Peter Triesberger
+For further information see https://github.com/peter88213/PyWriter
+Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

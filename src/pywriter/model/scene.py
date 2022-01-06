@@ -1,6 +1,6 @@
 """Provide a class for yWriter scene representation.
 
-Copyright (c) 2021 Peter Triesberger
+Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -13,6 +13,8 @@ class Scene():
     """
 
     # Emulate an enumeration for the scene status
+    # Since the items are used to replace text,
+    # they may contain spaces. This is why Enum cannot be used here.
 
     STATUS = [None, 'Outline', 'Draft', '1st Edit', '2nd Edit', 'Done']
     ACTION_MARKER = 'A'
@@ -66,7 +68,14 @@ class Scene():
         # xml: <ExportCondSpecific><ExportWhenRTF>
 
         self.status = None
-        # int # xml: <Status>
+        # int
+        # xml: <Status>
+        # 1 - Outline
+        # 2 - Draft
+        # 3 - 1st Edit
+        # 4 - 2nd Edit
+        # 5 - Done
+        # See also the STATUS list for conversion.
 
         self.sceneNotes = None
         # str

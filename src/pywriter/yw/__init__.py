@@ -25,5 +25,9 @@ data_files -- Provide a class for yWriter XML data files.
 data_writer -- Provide a strategy class to write utf-8 encoded yWriter XML data files.
 data_postprocessor -- Provide a strategy class to postprocess utf-8 encoded yWriter XML data files.
 
-xml_indent -- Provide an xml pretty printer.
+xml_indent -- Helper module for xml pretty printing.
+
+Copyright (c) 2022 Peter Triesberger
+For further information see https://github.com/peter88213/PyWriter
+Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

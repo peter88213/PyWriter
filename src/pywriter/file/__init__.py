@@ -16,4 +16,8 @@ sc_cr_filter.py -- Provide a scene per character filter class for template-based
 sc_tg_filter.py -- Provide a scene per tag filter class for template-based file export.
 sc_it_filter.py -- Provide a scene per item filter class for template-based file export.
 sc_vp_filter.py -- Provide a scene per viewpoint filter class for template-based file export.
+
+Copyright (c) 2022 Peter Triesberger
+For further information see https://github.com/peter88213/PyWriter
+Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

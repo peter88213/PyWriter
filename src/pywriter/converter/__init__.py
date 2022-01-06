@@ -14,4 +14,8 @@ yw7_converter -- Provide a converter class for yWriter 7 universal import and ex
 yw7_exporter -- Provide a converter class for universal export from a yWriter 7 project.
 universal_converter -- Provide a converter class for universal import and export.
 universal_exporter -- Provide a converter class for universal export from a yWriter project.
+
+Copyright (c) 2022 Peter Triesberger
+For further information see https://github.com/peter88213/PyWriter
+Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
