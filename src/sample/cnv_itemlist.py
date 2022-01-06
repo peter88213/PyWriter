@@ -2,7 +2,7 @@
 
 File format: csv (intended for spreadsheet conversion).
 
-Copyright (c) 2021 Peter Triesberger
+Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -11,12 +11,12 @@ SUFFIX = '_itemlist'
 import sys
 
 from pywriter.ui.ui_tk import UiTk
-from pywriter.converter.universal_converter import UniversalConverter
+from pywriter.converter.yw7_converter import Yw7Converter
 
 
 def run(sourcePath, suffix=''):
     ui = UiTk('yWriter import/export')
-    converter = UniversalConverter()
+    converter = Yw7Converter()
     converter.ui = ui
     kwargs = {'suffix': suffix}
     converter.run(sourcePath, **kwargs)
