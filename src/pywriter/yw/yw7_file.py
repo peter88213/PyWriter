@@ -60,7 +60,7 @@ class Yw7File(Novel):
         stripped = []
 
         for line in lines:
-            stripped.append(line.lstrip().rstrip())
+            stripped.append(line.strip())
 
         return stripped
 

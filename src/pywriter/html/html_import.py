@@ -116,7 +116,7 @@ class HtmlImport(HtmlFile):
             self._scId = None
 
         else:
-            data = data.lstrip().rstrip()
+            data = data.strip()
 
             # Convert prefixed comment into scene title.
 
@@ -132,7 +132,7 @@ class HtmlImport(HtmlFile):
                     else:
                         scTitle = scTitle.lstrip(self.COMMENT_START)
 
-                    self.scenes[self._scId].title = scTitle.lstrip().rstrip()
+                    self.scenes[self._scId].title = scTitle.strip()
                     data = scContent
 
                 except:

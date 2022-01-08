@@ -54,7 +54,7 @@ class HtmlManuscript(HtmlFile):
 
                         if self.SC_TITLE_BRACKET in scTitle:
                             self.scenes[self._scId].title = scTitle.split(
-                                self.SC_TITLE_BRACKET)[1].lstrip().rstrip()
+                                self.SC_TITLE_BRACKET)[1].strip()
 
                         text = scContent
 
@@ -84,9 +84,9 @@ class HtmlManuscript(HtmlFile):
         Override HTMLparser.handle_data().
         """
         if self._scId is not None:
-            self._lines.append(data.rstrip().lstrip())
+            self._lines.append(data.strip())
 
         elif self._chId is not None:
 
             if not self.chapters[self._chId].title:
-                self.chapters[self._chId].title = data.rstrip().lstrip()
+                self.chapters[self._chId].title = data.strip()

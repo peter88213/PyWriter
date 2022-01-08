@@ -50,7 +50,7 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('\t', ' ')
 
         while '  ' in text:
-            text = text.replace('  ', ' ').rstrip().lstrip()
+            text = text.replace('  ', ' ').strip()
 
         # Replace HTML tags by yWriter markup.
 

@@ -100,4 +100,4 @@ class HtmlOutline(HtmlFile):
         """Collect data within scene sections.
         Overwrites HTMLparser.handle_data().
         """
-        self._lines.append(data.rstrip().lstrip())
+        self._lines.append(data.strip())

@@ -42,4 +42,4 @@ class HtmlChapterDesc(HtmlFile):
         Override HTMLparser.handle_data().
         """
         if self._chId is not None:
-            self._lines.append(data.rstrip().lstrip())
+            self._lines.append(data.strip())

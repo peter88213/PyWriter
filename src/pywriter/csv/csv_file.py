@@ -65,6 +65,6 @@ class CsvFile(Novel):
         tempList = text.split(',')
 
         for element in tempList:
-            elements.append(element.lstrip().rstrip())
+            elements.append(element.strip())
 
         return elements

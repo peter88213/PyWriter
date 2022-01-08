@@ -24,7 +24,7 @@ def clean(text):
     text = text.replace('\n', ' ')
 
     while '  ' in text:
-        text = text.replace('  ', ' ').lstrip().rstrip()
+        text = text.replace('  ', ' ').strip()
 
     return text
 

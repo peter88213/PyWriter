@@ -84,4 +84,4 @@ class HtmlCharacters(HtmlFile):
         Overwrites HTMLparser.handle_data().
         """
         if self._section is not None:
-            self._lines.append(data.rstrip().lstrip())
+            self._lines.append(data.strip())
