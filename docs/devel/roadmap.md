@@ -246,6 +246,11 @@ yWriter XML data files are:
 
 These files can be imported into any existing yWriter project.
 
+#### v3.32
+
+Expand the document structure by splitting scenes.
+- Split scenes in manuscript and proof reading files using part, chapter and scene separators.
+
 
 ## Version 4.x: Edit the novel structure independently from yWriter
 
@@ -254,6 +259,10 @@ These files can be imported into any existing yWriter project.
     - Add, delete, move chapters.
     - Add, delete, move scenes.
     - Add, delete characters, locations, and items (already implemented as of v2.10).
+    
+- Refactor the converter package.
+    - Remove the file factories from YwCnvUi.
+    - Provide a new converter class that uses the file factories. 
 
 - Drop .yw5 and .yw6 support.
 - Provide a flexible tk Ui. 

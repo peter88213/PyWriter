@@ -117,7 +117,12 @@ text document (odt) with chapter and scene markers. File name suffix is
     markers according to yWriter 5 standard. **Do not touch lines
     containing the markers** if you want to be able to reimport the
     document into yWriter.
--   Back up your yWriter project and close yWriter before.
+-   Chapters and scenes can neither be rearranged nor deleted.
+-   Scenes can be split by inserting headings or a scene divider:
+    -  *Heading 1* --› New chapter title (beginning a new section).
+    -  *Heading 2* --› New chapter title.
+    -  `* * *` --› Scene divider.
+
 
 
 [Top of page](#top)
@@ -129,6 +134,14 @@ text document (odt) with chapter and scene markers. File name suffix is
 Write yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt) with invisible chapter and scene sections (to be
 seen in the Navigator). File name suffix is `_manuscript`.
+
+-  Comments right at the beginning of the scenes are written back 
+   as scene titles.
+-  Chapters and scenes can neither be rearranged nor deleted.
+-  Scenes can be split by inserting headings or a scene divider:
+    -  *Heading 1* --› New chapter title (beginning a new section).
+    -  *Heading 2* --› New chapter title.
+    -  `* * *` --› Scene divider.
 
 [Top of page](#top)
 
