@@ -1148,7 +1148,9 @@ class OdtFile(OdfFile):
             ['&', '&amp;'],
             ['>', '&gt;'],
             ['<', '&lt;'],
-            ['\n', '</text:p>\n<text:p text:style-name="First_20_line_20_indent">'],
+            ['\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'],
+            ['\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'],
+            ['\r', '\n'],
             ['[i]', '<text:span text:style-name="Emphasis">'],
             ['[/i]', '</text:span>'],
             ['[b]', '<text:span text:style-name="Strong_20_Emphasis">'],
@@ -1166,6 +1168,7 @@ class OdtFile(OdfFile):
             bold = False
             newlines = []
             lines = text.split('\n')
+
             for line in lines:
                 if italics:
                     line = '[i]' + line
