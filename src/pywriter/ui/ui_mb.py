@@ -13,7 +13,8 @@ class UiMb(Ui):
     """UI subclass with messagebox."""
 
     def __init__(self, title):
-        """Override the superclass constructor. """
+        """Extend the Ui constructor. """
+        Ui.__init__(self, title)
         root = tk.Tk()
         root.withdraw()
         self.title = title

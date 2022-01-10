@@ -11,7 +11,8 @@ class UiCmd(Ui):
     """Ui subclass implementing a console interface."""
 
     def __init__(self, title):
-        """initialize UI. """
+        """Extend the Ui constructor. """
+        Ui.__init__(self, title)
         print(title)
 
     def ask_yes_no(self, text):
