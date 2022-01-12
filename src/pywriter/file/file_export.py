@@ -699,7 +699,7 @@ class FileExport(Novel):
         return lines
 
     def get_text(self):
-        """Assemple the whole text applying the templates.
+        """Assemble the whole text applying the templates.
         Return a string to be written to the output file.
         """
         lines = self.get_fileHeader()
