@@ -31,7 +31,7 @@ class OdtItems(OdtFile):
     def get_itemMapping(self, itId):
         """Return a mapping dictionary for an item section. 
         """
-        itemMapping = OdtFile.get_itemMapping(self, itId)
+        itemMapping = super().get_itemMapping(itId)
 
         if self.items[itId].aka:
             itemMapping['AKA'] = ' ("' + self.items[itId].aka + '")'

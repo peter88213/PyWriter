@@ -17,7 +17,7 @@ class Character(WorldElement):
     MINOR_MARKER = 'Minor'
 
     def __init__(self):
-        WorldElement.__init__(self)
+        super().__init__()
 
         self.notes = None
         # str

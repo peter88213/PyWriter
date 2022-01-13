@@ -20,7 +20,7 @@ class HtmlItems(HtmlFile):
     SUFFIX = '_items'
 
     def __init__(self, filePath, **kwargs):
-        HtmlFile.__init__(self, filePath)
+        super().__init__(filePath)
         self._itId = None
 
     def handle_starttag(self, tag, attrs):

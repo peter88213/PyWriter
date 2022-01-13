@@ -31,7 +31,7 @@ class OdtLocations(OdtFile):
     def get_locationMapping(self, lcId):
         """Return a mapping dictionary for a location section. 
         """
-        locationMapping = OdtFile.get_locationMapping(self, lcId)
+        locationMapping = super().get_locationMapping(lcId)
 
         if self.locations[lcId].aka:
             locationMapping['AKA'] = ' ("' + self.locations[lcId].aka + '")'

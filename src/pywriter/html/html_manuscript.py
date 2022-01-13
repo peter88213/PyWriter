@@ -27,7 +27,7 @@ class HtmlManuscript(HtmlFile):
         """Identify scenes and chapters.
         Extend HtmlFile.handle_starttag() by processing inline chapter and scene dividers.
         """
-        HtmlFile.handle_starttag(self, tag, attrs)
+        super().handle_starttag(tag, attrs)
 
         if self._scId is not None:
 

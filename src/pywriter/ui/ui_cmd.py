@@ -12,7 +12,7 @@ class UiCmd(Ui):
 
     def __init__(self, title):
         """Extend the Ui constructor. """
-        Ui.__init__(self, title)
+        super().__init__(title)
         print(title)
 
     def ask_yes_no(self, text):

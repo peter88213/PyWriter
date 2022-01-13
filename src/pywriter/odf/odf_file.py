@@ -32,7 +32,7 @@ class OdfFile(FileExport):
         """Extend the superclass constructor, 
         creating a temporary directory.
         """
-        FileExport.__init__(self, filePath, **kwargs)
+        super().__init__(filePath, **kwargs)
         self.tempDir = tempfile.mkdtemp(suffix='.tmp', prefix='odf_')
         self.originalPath = self._filePath
 
@@ -150,7 +150,7 @@ class OdfFile(FileExport):
 
         self._filePath = self.tempDir + '/content.xml'
 
-        message = FileExport.write(self)
+        message = super().write()
 
         self._filePath = self.originalPath
 

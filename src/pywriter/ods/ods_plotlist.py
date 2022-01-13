@@ -157,7 +157,7 @@ class OdsPlotList(OdsFile):
     def get_fileHeaderMapping(self):
         """Return a mapping dictionary for the project section. 
         """
-        projectTemplateMapping = OdsFile.get_fileHeaderMapping(self)
+        projectTemplateMapping = super().get_fileHeaderMapping()
 
         charList = []
 
@@ -198,8 +198,7 @@ class OdsPlotList(OdsFile):
     def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
         """Return a mapping dictionary for a scene section. 
         """
-        sceneMapping = OdsFile.get_sceneMapping(
-            self, scId, sceneNumber, wordsTotal, lettersTotal)
+        sceneMapping = super().get_sceneMapping(scId, sceneNumber, wordsTotal, lettersTotal)
 
         # Suppress display if the field doesn't represent a storyline,
         # or if the field's value equals 1

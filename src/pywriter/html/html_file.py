@@ -25,7 +25,7 @@ class HtmlFile(Novel, HTMLParser):
     SC_TITLE_BRACKET = '~'
 
     def __init__(self, filePath, **kwargs):
-        Novel.__init__(self, filePath)
+        super().__init__(filePath)
         HTMLParser.__init__(self)
         self._lines = []
         self._scId = None

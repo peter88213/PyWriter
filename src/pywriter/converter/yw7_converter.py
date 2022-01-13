@@ -96,5 +96,5 @@ class Yw7Converter(YwCnvUi):
         Extend the superclass constructor by
         changing the newProjectFactory strategy.
         """
-        YwCnvUi.__init__(self)
+        super().__init__()
         self.newProjectFactory = NewProjectFactory(self.CREATE_SOURCE_CLASSES)

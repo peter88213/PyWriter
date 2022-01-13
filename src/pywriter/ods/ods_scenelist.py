@@ -207,8 +207,7 @@ class OdsSceneList(OdsFile):
     def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
         """Return a mapping dictionary for a scene section. 
         """
-        sceneMapping = OdsFile.get_sceneMapping(
-            self, scId, sceneNumber, wordsTotal, lettersTotal)
+        sceneMapping = super().get_sceneMapping(scId, sceneNumber, wordsTotal, lettersTotal)
 
         if self.scenes[scId].field1 == '1':
             sceneMapping['Field1'] = ''

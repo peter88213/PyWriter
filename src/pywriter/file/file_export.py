@@ -52,7 +52,7 @@ class FileExport(Novel):
         """Extend the superclass constructor,
         initializing a filter class.
         """
-        Novel.__init__(self, filePath, **kwargs)
+        super().__init__(filePath, **kwargs)
         self.sceneFilter = Filter()
         self.chapterFilter = Filter()
         self.characterFilter = Filter()

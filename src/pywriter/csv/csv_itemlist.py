@@ -26,7 +26,7 @@ class CsvItemList(CsvFile):
         Return a message beginning with SUCCESS or ERROR.
         Extend the superclass method.
         """
-        message = CsvFile.read(self)
+        message = super().read()
 
         if message.startswith('ERROR'):
             return message

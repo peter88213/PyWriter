@@ -20,7 +20,7 @@ class DataFiles(Yw7File):
         Extend the superclass constructor by changing
         the ywTreeBuilder strategy. 
         """
-        Yw7File.__init__(self, filePath)
+        super().__init__(filePath)
 
         self.ywTreeWriter = DataWriter()
         self.ywPostprocessor = DataPostprocessor()

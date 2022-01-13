@@ -15,7 +15,7 @@ class UiTk(Ui):
 
     def __init__(self, title):
         """Extend the Ui constructor. """
-        Ui.__init__(self, title)
+        super().__init__(title)
 
         self.root = Tk()
         self.root.title(title)

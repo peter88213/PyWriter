@@ -41,7 +41,7 @@ class Yw7File(Novel):
         """Initialize instance variables:
         Extend the superclass constructor by adding.
         """
-        Novel.__init__(self, filePath)
+        super().__init__(filePath)
 
         self.ywTreeReader = Utf8TreeReader()
         self.ywTreeBuilder = Yw7TreeBuilder()

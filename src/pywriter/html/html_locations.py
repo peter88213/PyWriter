@@ -21,7 +21,7 @@ class HtmlLocations(HtmlFile):
     SUFFIX = '_locations'
 
     def __init__(self, filePath, **kwargs):
-        HtmlFile.__init__(self, filePath)
+        super().__init__(filePath)
         self._lcId = None
 
     def handle_starttag(self, tag, attrs):

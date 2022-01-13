@@ -23,7 +23,7 @@ class HtmlProof(HtmlFile):
     SUFFIX = '_proof'
 
     def __init__(self, filePath, **kwargs):
-        HtmlFile.__init__(self, filePath)
+        super().__init__(filePath)
         self._prefix = None
 
     def preprocess(self, text):

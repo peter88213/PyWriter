@@ -67,14 +67,14 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """Apply the strategy pattern 
         by delegating the cross reference to an external object.
         """
-        OdtFile.__init__(self, filePath)
+        super().__init__(filePath)
         self.xr = CrossReferences()
 
     def get_sceneMapping(self, scId):
         """Add the chapter number to the original mapping dictionary.
         """
         sceneNumber = self.xr.srtScenes.index(scId) + 1
-        sceneMapping = OdtFile.get_sceneMapping(self, scId, sceneNumber, 0, 0)
+        sceneMapping = super().get_sceneMapping(scId, sceneNumber, 0, 0)
         chapterNumber = self.srtChapters.index(self.xr.chpPerScn[scId]) + 1
         sceneMapping['Chapter'] = str(chapterNumber)
         return sceneMapping

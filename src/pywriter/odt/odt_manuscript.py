@@ -59,7 +59,7 @@ class OdtManuscript(OdtFile):
     def get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section. 
         """
-        chapterMapping = OdtFile.get_chapterMapping(self, chId, chapterNumber)
+        chapterMapping = super().get_chapterMapping(chId, chapterNumber)
 
         if self.chapters[chId].suppressChapterTitle:
             chapterMapping['Title'] = ''

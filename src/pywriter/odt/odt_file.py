@@ -1125,7 +1125,7 @@ class OdtFile(OdfFile):
 
         # Generate the common ODF components.
 
-        message = OdfFile.set_up(self)
+        message = super().set_up()
 
         if message.startswith('ERROR'):
             return message

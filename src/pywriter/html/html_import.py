@@ -32,7 +32,7 @@ class HtmlImport(HtmlFile):
     _LOW_WORDCOUNT = 10
 
     def __init__(self, filePath, **kwargs):
-        HtmlFile.__init__(self, filePath)
+        super().__init__(filePath)
         self._chCount = 0
         self._scCount = 0
 
