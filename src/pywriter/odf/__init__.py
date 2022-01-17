@@ -1,4 +1,4 @@
-"""Shared modules for writing Open Document files.
+"""Package for writing Open Document files.
 
 Modules:
 

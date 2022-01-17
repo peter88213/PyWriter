@@ -12,9 +12,6 @@ from pywriter.yw.xml_indent import indent
 class Yw7TreeBuilder():
     """Build yWriter 7 project xml tree."""
 
-    TAG = 'YWRITER7'
-    VER = '7'
-
     def build_element_tree(self, ywProject):
         """Modify the yWriter project attributes of an existing xml element tree.
         Return a message beginning with SUCCESS or ERROR.
@@ -474,11 +471,13 @@ class Yw7TreeBuilder():
 
         def build_project_subtree(xmlPrj, ywProject):
 
+            VER = '7'
+
             try:
-                xmlPrj.find('Ver').text = self.VER
+                xmlPrj.find('Ver').text = VER
 
             except(AttributeError):
-                ET.SubElement(xmlPrj, 'Ver').text = self.VER
+                ET.SubElement(xmlPrj, 'Ver').text = VER
 
             if ywProject.title is not None:
 
@@ -536,6 +535,7 @@ class Yw7TreeBuilder():
                 except(AttributeError):
                     ET.SubElement(xmlPrj, 'FieldTitle4').text = ywProject.fieldTitle4
 
+        TAG = 'YWRITER7'
         xmlScenes = {}
         xmlChapters = {}
 
@@ -549,7 +549,7 @@ class Yw7TreeBuilder():
             chapters = root.find('CHAPTERS')
 
         except(AttributeError):
-            root = ET.Element(self.TAG)
+            root = ET.Element(TAG)
             xmlPrj = ET.SubElement(root, 'PROJECT')
             locations = ET.SubElement(root, 'LOCATIONS')
             items = ET.SubElement(root, 'ITEMS')

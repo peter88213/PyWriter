@@ -1,4 +1,4 @@
-"""Modules for user interfaces.
+"""Package for user interfaces.
 
 Modules:
 

@@ -4,7 +4,7 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.converter.yw_cnv_ui import YwCnvUi
+from pywriter.converter.yw_cnv_ff import YwCnvFf
 from pywriter.converter.new_project_factory import NewProjectFactory
 
 from pywriter.yw.yw7_file import Yw7File
@@ -43,7 +43,7 @@ from pywriter.csv.csv_loclist import CsvLocList
 from pywriter.csv.csv_itemlist import CsvItemList
 
 
-class Yw7Converter(YwCnvUi):
+class Yw7Converter(YwCnvFf):
     """A converter for universal import and export.
 
     Support yWriter 7 projects and most of the Novel subclasses 

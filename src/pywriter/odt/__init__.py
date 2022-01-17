@@ -1,4 +1,4 @@
-"""Modules for writing Open Document text documents.
+"""Package for writing Open Document text documents.
 
 Modules:
 

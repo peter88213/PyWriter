@@ -1,4 +1,4 @@
-"""Shared modules for template-based document generation.
+"""Package for template-based document generation.
 
 This is how the file generation from a yWriter project is generally done:
 The write method runs through all chapters, scenes, and world building 

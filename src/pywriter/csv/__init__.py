@@ -1,4 +1,4 @@
-"""Modules for reading csv spreadsheet documents.
+"""Package for reading csv spreadsheet documents.
 
 The csv format is mainly used to read spreadsheet documents exported by Office 
 applications like OpenOffice and LibreOffice. This is because the csv format 

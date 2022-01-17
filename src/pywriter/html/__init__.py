@@ -1,4 +1,4 @@
-"""Modules for reading html files.
+"""Package for reading html files.
 
 The html format is mainly used to read text documents exported by Office 
 applications like OpenOffice and LibreOffice. This is because the html format 

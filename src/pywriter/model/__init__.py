@@ -1,4 +1,4 @@
-"""Modules for representation of yWriter's novel meta model.
+"""Package for representation of yWriter's novel meta model.
 
 Modules:
 

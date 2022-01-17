@@ -1,4 +1,4 @@
-"""Modules for configuration persistence.
+"""Package for configuration persistence.
 
 Modules:
 

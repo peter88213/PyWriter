@@ -13,118 +13,26 @@ import webbrowser
 from pywriter.ui.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
 
-from pywriter.converter.file_factory import FileFactory
-from pywriter.converter.export_source_factory import ExportSourceFactory
-from pywriter.converter.export_target_factory import ExportTargetFactory
-from pywriter.converter.import_source_factory import ImportSourceFactory
-from pywriter.converter.import_target_factory import ImportTargetFactory
-
 
 class YwCnvUi(YwCnv):
     """Base class for Novel file conversion with user interface.
 
     Public methods:
-        run(sourcePath, suffix) -- Create source and target objects and run conversion.
-
-    Class constants:
-        EXPORT_SOURCE_CLASSES -- List of YwFile subclasses from which can be exported.
-        EXPORT_TARGET_CLASSES -- List of FileExport subclasses to which export is possible.
-        IMPORT_SOURCE_CLASSES -- List of Novel subclasses from which can be imported.
-        IMPORT_TARGET_CLASSES -- List of YwFile subclasses to which import is possible.
-
-    All lists are empty and meant to be overridden by subclasses.
+        export_from_yw(sourceFile, targetFile) -- Convert from yWriter project to other file format.
+        import_to_yw(sourceFile, targetFile) -- Convert from any file format to yWriter project.
 
     Instance variables:
         ui -- Ui (can be overridden e.g. by subclasses).
-        exportSourceFactory -- ExportSourceFactory.
-        exportTargetFactory -- ExportTargetFactory.
-        importSourceFactory -- ImportSourceFactory.
-        importTargetFactory -- ImportTargetFactory.
-        newProjectFactory -- FileFactory (a stub to be overridden by subclasses).
         newFile -- string; path to the target file in case of success.   
     """
-
-    EXPORT_SOURCE_CLASSES = []
-    EXPORT_TARGET_CLASSES = []
-    IMPORT_SOURCE_CLASSES = []
-    IMPORT_TARGET_CLASSES = []
 
     def __init__(self):
         """Define instance variables."""
         self.ui = Ui('')
         # Per default, 'silent mode' is active.
 
-        self.exportSourceFactory = ExportSourceFactory(
-            self.EXPORT_SOURCE_CLASSES)
-        self.exportTargetFactory = ExportTargetFactory(
-            self.EXPORT_TARGET_CLASSES)
-        self.importSourceFactory = ImportSourceFactory(
-            self.IMPORT_SOURCE_CLASSES)
-        self.importTargetFactory = ImportTargetFactory(
-            self.IMPORT_TARGET_CLASSES)
-        self.newProjectFactory = FileFactory()
-
         self.newFile = None
         # Also indicates successful conversion.
-
-    def run(self, sourcePath, **kwargs):
-        """Create source and target objects and run conversion.
-
-        sourcePath -- str; the source file path.
-        suffix -- str; target file name suffix. 
-
-        This is a template method that calls primitive operations by case.
-        """
-        self.newFile = None
-
-        if not os.path.isfile(sourcePath):
-            self.ui.set_info_how(
-                'ERROR: File "' + os.path.normpath(sourcePath) + '" not found.')
-            return
-
-        message, sourceFile, dummy = self.exportSourceFactory.make_file_objects(
-            sourcePath, **kwargs)
-
-        if message.startswith('SUCCESS'):
-            # The source file is a yWriter project.
-
-            message, dummy, targetFile = self.exportTargetFactory.make_file_objects(
-                sourcePath, **kwargs)
-
-            if message.startswith('SUCCESS'):
-                self.export_from_yw(sourceFile, targetFile)
-
-            else:
-                self.ui.set_info_how(message)
-
-        else:
-            # The source file is not a yWriter project.
-
-            message, sourceFile, dummy = self.importSourceFactory.make_file_objects(
-                sourcePath, **kwargs)
-
-            if message.startswith('SUCCESS'):
-                kwargs['suffix'] = sourceFile.SUFFIX
-                message, dummy, targetFile = self.importTargetFactory.make_file_objects(
-                    sourcePath, **kwargs)
-
-                if message.startswith('SUCCESS'):
-                    self.import_to_yw(sourceFile, targetFile)
-
-                else:
-                    self.ui.set_info_how(message)
-
-            else:
-                # A new yWriter project might be required.
-
-                message, sourceFile, targetFile = self.newProjectFactory.make_file_objects(
-                    sourcePath, **kwargs)
-
-                if message.startswith('SUCCESS'):
-                    self.create_yw7(sourceFile, targetFile)
-
-                else:
-                    self.ui.set_info_how(message)
 
     def export_from_yw(self, sourceFile, targetFile):
         """Convert from yWriter project to other file format.

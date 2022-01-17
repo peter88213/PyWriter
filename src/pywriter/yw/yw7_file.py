@@ -6,8 +6,8 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 import os
+import xml.etree.ElementTree as ET
 
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
@@ -16,7 +16,6 @@ from pywriter.model.character import Character
 from pywriter.model.world_element import WorldElement
 
 from pywriter.yw.yw7_tree_builder import Yw7TreeBuilder
-from pywriter.yw.utf8_tree_reader import Utf8TreeReader
 from pywriter.yw.utf8_tree_writer import Utf8TreeWriter
 from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
 
@@ -27,7 +26,6 @@ class Yw7File(Novel):
     """yWriter 7 project file representation.
 
     Additional attributes:
-        ywTreeReader -- strategy class to read yWriter project files.
         ywTreeBuilder -- strategy class to build an xml tree.
         ywTreeWriter -- strategy class to write yWriter project files.
         ywPostprocessor -- strategy class to postprocess yWriter project files.
@@ -43,7 +41,6 @@ class Yw7File(Novel):
         """
         super().__init__(filePath)
 
-        self.ywTreeReader = Utf8TreeReader()
         self.ywTreeBuilder = Yw7TreeBuilder()
         self.ywTreeWriter = Utf8TreeWriter()
         self.ywPostprocessor = Utf8Postprocessor()
@@ -73,10 +70,11 @@ class Yw7File(Novel):
         if self.is_locked():
             return 'ERROR: yWriter seems to be open. Please close first.'
 
-        message = self.ywTreeReader.read_element_tree(self)
+        try:
+            self.tree = ET.parse(self.filePath)
 
-        if message.startswith('ERROR'):
-            return message
+        except:
+            return 'ERROR: Can not process "' + os.path.normpath(self.filePath) + '".'
 
         root = self.tree.getroot()
 

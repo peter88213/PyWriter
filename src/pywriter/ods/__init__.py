@@ -1,4 +1,4 @@
-"""Modules for writing Open Document spreadsheet documents.
+"""Package for writing Open Document spreadsheet documents.
 
 Modules:
 
