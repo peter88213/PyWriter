@@ -5,10 +5,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
+from pywriter.yw.yw7_postprocessor import Yw7Postprocessor
 
 
-class DataPostprocessor(Utf8Postprocessor):
+class DataPostprocessor(Yw7Postprocessor):
     """Postprocess utf-8 encoded yWriter data."""
 
     def postprocess_xml_file(self, filePath):

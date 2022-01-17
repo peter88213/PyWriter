@@ -10,7 +10,7 @@ import re
 from html import unescape
 
 
-class Utf8Postprocessor():
+class Yw7Postprocessor():
     """Postprocess utf-8 encoded yWriter project."""
 
     def __init__(self):

@@ -3,10 +3,8 @@
 Modules:
 
 yw7_file -- Provide a class for yWriter 7 project import and export.
-yw7_tree_builder -- Provide a strategy class to build an yWriter 7 xml tree.
-
-utf8_tree_writer -- Provide a strategy class to write utf-8 encoded yWriter project files.
-utf8_postprocessor -- Provide a strategy class to postprocess utf-8 encoded yWriter project files.
+yw7_tree_writer -- Provide a strategy class to write utf-8 encoded yWriter project files.
+yw7_postprocessor -- Provide a strategy class to postprocess utf-8 encoded yWriter project files.
 
 data_files -- Provide a class for yWriter XML data files.
 data_writer -- Provide a strategy class to write utf-8 encoded yWriter XML data files.

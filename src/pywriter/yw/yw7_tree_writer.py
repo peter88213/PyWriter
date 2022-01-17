@@ -8,7 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 
 
-class Utf8TreeWriter():
+class Yw7TreeWriter():
     """Write utf-8 encoded yWriter project file."""
 
     def write_element_tree(self, ywProject):

@@ -15,9 +15,9 @@ from pywriter.model.scene import Scene
 from pywriter.model.character import Character
 from pywriter.model.world_element import WorldElement
 
-from pywriter.yw.yw7_tree_builder import Yw7TreeBuilder
-from pywriter.yw.utf8_tree_writer import Utf8TreeWriter
-from pywriter.yw.utf8_postprocessor import Utf8Postprocessor
+from pywriter.yw.xml_indent import indent
+from pywriter.yw.yw7_tree_writer import Yw7TreeWriter
+from pywriter.yw.yw7_postprocessor import Yw7Postprocessor
 
 from pywriter.model.splitter import Splitter
 
@@ -41,9 +41,8 @@ class Yw7File(Novel):
         """
         super().__init__(filePath)
 
-        self.ywTreeBuilder = Yw7TreeBuilder()
-        self.ywTreeWriter = Utf8TreeWriter()
-        self.ywPostprocessor = Utf8Postprocessor()
+        self.ywTreeWriter = Yw7TreeWriter()
+        self.ywPostprocessor = Yw7Postprocessor()
         self.tree = None
 
     def _strip_spaces(self, lines):
@@ -898,14 +897,666 @@ class Yw7File(Novel):
         Override the superclass method.
         """
 
+        def build_scene_subtree(xmlScn, prjScn):
+
+            if prjScn.title is not None:
+
+                try:
+                    xmlScn.find('Title').text = prjScn.title
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Title').text = prjScn.title
+
+            if xmlScn.find('BelongsToChID') is None:
+
+                for chId in self.chapters:
+
+                    if scId in self.chapters[chId].srtScenes:
+                        ET.SubElement(xmlScn, 'BelongsToChID').text = chId
+                        break
+
+            if prjScn.desc is not None:
+
+                try:
+                    xmlScn.find('Desc').text = prjScn.desc
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Desc').text = prjScn.desc
+
+            # Scene content is overwritten in subclasses.
+
+            if xmlScn.find('SceneContent') is None:
+                ET.SubElement(xmlScn, 'SceneContent').text = prjScn.sceneContent
+
+            if xmlScn.find('WordCount') is None:
+                ET.SubElement(xmlScn, 'WordCount').text = str(prjScn.wordCount)
+
+            if xmlScn.find('LetterCount') is None:
+                ET.SubElement(xmlScn, 'LetterCount').text = str(prjScn.letterCount)
+
+            if prjScn.isUnused:
+
+                if xmlScn.find('Unused') is None:
+                    ET.SubElement(xmlScn, 'Unused').text = '-1'
+
+            elif xmlScn.find('Unused') is not None:
+                xmlScn.remove(xmlScn.find('Unused'))
+
+            if prjScn.isNotesScene:
+                scFields = xmlScn.find('Fields')
+
+                try:
+                    scFields.find('Field_SceneType').text = '1'
+
+                except(AttributeError):
+                    scFields = ET.SubElement(xmlScn, 'Fields')
+                    ET.SubElement(scFields, 'Field_SceneType').text = '1'
+
+            elif xmlScn.find('Fields') is not None:
+                scFields = xmlScn.find('Fields')
+
+                if scFields.find('Field_SceneType') is not None:
+
+                    if scFields.find('Field_SceneType').text == '1':
+                        scFields.remove(scFields.find('Field_SceneType'))
+
+            if prjScn.isTodoScene:
+                scFields = xmlScn.find('Fields')
+
+                try:
+                    scFields.find('Field_SceneType').text = '2'
+
+                except(AttributeError):
+                    scFields = ET.SubElement(xmlScn, 'Fields')
+                    ET.SubElement(scFields, 'Field_SceneType').text = '2'
+
+            elif xmlScn.find('Fields') is not None:
+                scFields = xmlScn.find('Fields')
+
+                if scFields.find('Field_SceneType') is not None:
+
+                    if scFields.find('Field_SceneType').text == '2':
+                        scFields.remove(scFields.find('Field_SceneType'))
+
+            if prjScn.status is not None:
+                try:
+                    xmlScn.find('Status').text = str(prjScn.status)
+
+                except:
+                    ET.SubElement(xmlScn, 'Status').text = str(prjScn.status)
+
+            if prjScn.sceneNotes is not None:
+
+                try:
+                    xmlScn.find('Notes').text = prjScn.sceneNotes
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Notes').text = prjScn.sceneNotes
+
+            if prjScn.tags is not None:
+
+                try:
+                    xmlScn.find('Tags').text = ';'.join(prjScn.tags)
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Tags').text = ';'.join(prjScn.tags)
+
+            if prjScn.field1 is not None:
+
+                try:
+                    xmlScn.find('Field1').text = prjScn.field1
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Field1').text = prjScn.field1
+
+            if prjScn.field2 is not None:
+
+                try:
+                    xmlScn.find('Field2').text = prjScn.field2
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Field2').text = prjScn.field2
+
+            if prjScn.field3 is not None:
+
+                try:
+                    xmlScn.find('Field3').text = prjScn.field3
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Field3').text = prjScn.field3
+
+            if prjScn.field4 is not None:
+
+                try:
+                    xmlScn.find('Field4').text = prjScn.field4
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Field4').text = prjScn.field4
+
+            if prjScn.appendToPrev:
+
+                if xmlScn.find('AppendToPrev') is None:
+                    ET.SubElement(xmlScn, 'AppendToPrev').text = '-1'
+
+            elif xmlScn.find('AppendToPrev') is not None:
+                xmlScn.remove(xmlScn.find('AppendToPrev'))
+
+            # Date/time information
+
+            if (prjScn.date is not None) and (prjScn.time is not None):
+                dateTime = prjScn.date + ' ' + prjScn.time
+
+                if xmlScn.find('SpecificDateTime') is not None:
+                    xmlScn.find('SpecificDateTime').text = dateTime
+
+                else:
+                    ET.SubElement(xmlScn, 'SpecificDateTime').text = dateTime
+                    ET.SubElement(xmlScn, 'SpecificDateMode').text = '-1'
+
+                    if xmlScn.find('Day') is not None:
+                        xmlScn.remove(xmlScn.find('Day'))
+
+                    if xmlScn.find('Hour') is not None:
+                        xmlScn.remove(xmlScn.find('Hour'))
+
+                    if xmlScn.find('Minute') is not None:
+                        xmlScn.remove(xmlScn.find('Minute'))
+
+            elif (prjScn.day is not None) or (prjScn.hour is not None) or (prjScn.minute is not None):
+
+                if xmlScn.find('SpecificDateTime') is not None:
+                    xmlScn.remove(xmlScn.find('SpecificDateTime'))
+
+                if xmlScn.find('SpecificDateMode') is not None:
+                    xmlScn.remove(xmlScn.find('SpecificDateMode'))
+
+                if prjScn.day is not None:
+
+                    try:
+                        xmlScn.find('Day').text = prjScn.day
+
+                    except(AttributeError):
+                        ET.SubElement(xmlScn, 'Day').text = prjScn.day
+
+                if prjScn.hour is not None:
+
+                    try:
+                        xmlScn.find('Hour').text = prjScn.hour
+
+                    except(AttributeError):
+                        ET.SubElement(xmlScn, 'Hour').text = prjScn.hour
+
+                if prjScn.minute is not None:
+
+                    try:
+                        xmlScn.find('Minute').text = prjScn.minute
+
+                    except(AttributeError):
+                        ET.SubElement(xmlScn, 'Minute').text = prjScn.minute
+
+            if prjScn.lastsDays is not None:
+
+                try:
+                    xmlScn.find('LastsDays').text = prjScn.lastsDays
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'LastsDays').text = prjScn.lastsDays
+
+            if prjScn.lastsHours is not None:
+
+                try:
+                    xmlScn.find('LastsHours').text = prjScn.lastsHours
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'LastsHours').text = prjScn.lastsHours
+
+            if prjScn.lastsMinutes is not None:
+
+                try:
+                    xmlScn.find('LastsMinutes').text = prjScn.lastsMinutes
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'LastsMinutes').text = prjScn.lastsMinutes
+
+            # Plot related information
+
+            if prjScn.isReactionScene:
+
+                if xmlScn.find('ReactionScene') is None:
+                    ET.SubElement(xmlScn, 'ReactionScene').text = '-1'
+
+            elif xmlScn.find('ReactionScene') is not None:
+                xmlScn.remove(xmlScn.find('ReactionScene'))
+
+            if prjScn.isSubPlot:
+
+                if xmlScn.find('SubPlot') is None:
+                    ET.SubElement(xmlScn, 'SubPlot').text = '-1'
+
+            elif xmlScn.find('SubPlot') is not None:
+                xmlScn.remove(xmlScn.find('SubPlot'))
+
+            if prjScn.goal is not None:
+
+                try:
+                    xmlScn.find('Goal').text = prjScn.goal
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Goal').text = prjScn.goal
+
+            if prjScn.conflict is not None:
+
+                try:
+                    xmlScn.find('Conflict').text = prjScn.conflict
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Conflict').text = prjScn.conflict
+
+            if prjScn.outcome is not None:
+
+                try:
+                    xmlScn.find('Outcome').text = prjScn.outcome
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'Outcome').text = prjScn.outcome
+
+            if prjScn.image is not None:
+
+                try:
+                    xmlScn.find('ImageFile').text = prjScn.image
+
+                except(AttributeError):
+                    ET.SubElement(xmlScn, 'ImageFile').text = prjScn.image
+
+            if prjScn.characters is not None:
+                characters = xmlScn.find('Characters')
+
+                try:
+                    for oldCrId in characters.findall('CharID'):
+                        characters.remove(oldCrId)
+
+                except(AttributeError):
+                    characters = ET.SubElement(xmlScn, 'Characters')
+
+                for crId in prjScn.characters:
+                    ET.SubElement(characters, 'CharID').text = crId
+
+            if prjScn.locations is not None:
+                locations = xmlScn.find('Locations')
+
+                try:
+                    for oldLcId in locations.findall('LocID'):
+                        locations.remove(oldLcId)
+
+                except(AttributeError):
+                    locations = ET.SubElement(xmlScn, 'Locations')
+
+                for lcId in prjScn.locations:
+                    ET.SubElement(locations, 'LocID').text = lcId
+
+            if prjScn.items is not None:
+                items = xmlScn.find('Items')
+
+                try:
+                    for oldItId in items.findall('ItemID'):
+                        items.remove(oldItId)
+
+                except(AttributeError):
+                    items = ET.SubElement(xmlScn, 'Items')
+
+                for itId in prjScn.items:
+                    ET.SubElement(items, 'ItemID').text = itId
+
+        def build_chapter_subtree(xmlChp, prjChp, sortOrder):
+
+            try:
+                xmlChp.find('SortOrder').text = str(sortOrder)
+
+            except(AttributeError):
+                ET.SubElement(xmlChp, 'SortOrder').text = str(sortOrder)
+
+            try:
+                xmlChp.find('Title').text = prjChp.title
+
+            except(AttributeError):
+                ET.SubElement(xmlChp, 'Title').text = prjChp.title
+
+            if prjChp.desc is not None:
+
+                try:
+                    xmlChp.find('Desc').text = prjChp.desc
+
+                except(AttributeError):
+                    ET.SubElement(xmlChp, 'Desc').text = prjChp.desc
+
+            if xmlChp.find('SectionStart') is not None:
+
+                if prjChp.chLevel == 0:
+                    xmlChp.remove(xmlChp.find('SectionStart'))
+
+            elif prjChp.chLevel == 1:
+                ET.SubElement(xmlChp, 'SectionStart').text = '-1'
+
+            if prjChp.oldType is not None:
+
+                try:
+                    xmlChp.find('Type').text = str(prjChp.oldType)
+
+                except(AttributeError):
+                    ET.SubElement(xmlChp, 'Type').text = str(prjChp.oldType)
+
+            if prjChp.chType is not None:
+
+                try:
+                    xmlChp.find('ChapterType').text = str(prjChp.chType)
+
+                except(AttributeError):
+                    ET.SubElement(xmlChp, 'ChapterType').text = str(prjChp.chType)
+
+            if prjChp.isUnused:
+
+                if xmlChp.find('Unused') is None:
+                    ET.SubElement(xmlChp, 'Unused').text = '-1'
+
+            elif xmlChp.find('Unused') is not None:
+                xmlChp.remove(xmlChp.find('Unused'))
+
+            #--- Rebuild the chapter's scene list.
+
+            if prjChp.srtScenes:
+                xScnList = xmlChp.find('Scenes')
+
+                if xScnList is not None:
+                    xmlChp.remove(xScnList)
+
+                sortSc = ET.SubElement(xmlChp, 'Scenes')
+
+                for scId in prjChp.srtScenes:
+                    ET.SubElement(sortSc, 'ScID').text = scId
+
+        def build_location_subtree(xmlLoc, prjLoc, sortOrder):
+            ET.SubElement(xmlLoc, 'ID').text = lcId
+
+            if prjLoc.title is not None:
+                ET.SubElement(xmlLoc, 'Title').text = prjLoc.title
+
+            if prjLoc.image is not None:
+                ET.SubElement(xmlLoc, 'ImageFile').text = prjLoc.image
+
+            if prjLoc.desc is not None:
+                ET.SubElement(xmlLoc, 'Desc').text = prjLoc.desc
+
+            if prjLoc.aka is not None:
+                ET.SubElement(xmlLoc, 'AKA').text = prjLoc.aka
+
+            if prjLoc.tags is not None:
+                ET.SubElement(xmlLoc, 'Tags').text = ';'.join(prjLoc.tags)
+
+            ET.SubElement(xmlLoc, 'SortOrder').text = str(sortOrder)
+
+        def build_item_subtree(xmlItm, prjItm, sortOrder):
+            ET.SubElement(xmlItm, 'ID').text = itId
+
+            if prjItm.title is not None:
+                ET.SubElement(xmlItm, 'Title').text = prjItm.title
+
+            if prjItm.image is not None:
+                ET.SubElement(xmlItm, 'ImageFile').text = prjItm.image
+
+            if prjItm.desc is not None:
+                ET.SubElement(xmlItm, 'Desc').text = prjItm.desc
+
+            if prjItm.aka is not None:
+                ET.SubElement(xmlItm, 'AKA').text = prjItm.aka
+
+            if prjItm.tags is not None:
+                ET.SubElement(xmlItm, 'Tags').text = ';'.join(prjItm.tags)
+
+            ET.SubElement(xmlItm, 'SortOrder').text = str(sortOrder)
+
+        def build_character_subtree(xmlCrt, prjCrt, sortOrder):
+            ET.SubElement(xmlCrt, 'ID').text = crId
+
+            if prjCrt.title is not None:
+                ET.SubElement(xmlCrt, 'Title').text = prjCrt.title
+
+            if prjCrt.desc is not None:
+                ET.SubElement(xmlCrt, 'Desc').text = prjCrt.desc
+
+            if prjCrt.image is not None:
+                ET.SubElement(xmlCrt, 'ImageFile').text = prjCrt.image
+
+            ET.SubElement(xmlCrt, 'SortOrder').text = str(sortOrder)
+
+            if prjCrt.notes is not None:
+                ET.SubElement(xmlCrt, 'Notes').text = prjCrt.notes
+
+            if prjCrt.aka is not None:
+                ET.SubElement(xmlCrt, 'AKA').text = prjCrt.aka
+
+            if prjCrt.tags is not None:
+                ET.SubElement(xmlCrt, 'Tags').text = ';'.join(prjCrt.tags)
+
+            if prjCrt.bio is not None:
+                ET.SubElement(xmlCrt, 'Bio').text = prjCrt.bio
+
+            if prjCrt.goals is not None:
+                ET.SubElement(xmlCrt, 'Goals').text = prjCrt.goals
+
+            if prjCrt.fullName is not None:
+                ET.SubElement(xmlCrt, 'FullName').text = prjCrt.fullName
+
+            if prjCrt.isMajor:
+                ET.SubElement(xmlCrt, 'Major').text = '-1'
+
+        def build_project_subtree(xmlPrj):
+
+            VER = '7'
+
+            try:
+                xmlPrj.find('Ver').text = VER
+
+            except(AttributeError):
+                ET.SubElement(xmlPrj, 'Ver').text = VER
+
+            if self.title is not None:
+
+                try:
+                    xmlPrj.find('Title').text = self.title
+
+                except(AttributeError):
+                    ET.SubElement(xmlPrj, 'Title').text = self.title
+
+            if self.desc is not None:
+
+                try:
+                    xmlPrj.find('Desc').text = self.desc
+
+                except(AttributeError):
+                    ET.SubElement(xmlPrj, 'Desc').text = self.desc
+
+            if self.author is not None:
+
+                try:
+                    xmlPrj.find('AuthorName').text = self.author
+
+                except(AttributeError):
+                    ET.SubElement(xmlPrj, 'AuthorName').text = self.author
+
+            if self.fieldTitle1 is not None:
+
+                try:
+                    xmlPrj.find('FieldTitle1').text = self.fieldTitle1
+
+                except(AttributeError):
+                    ET.SubElement(xmlPrj, 'FieldTitle1').text = self.fieldTitle1
+
+            if self.fieldTitle2 is not None:
+
+                try:
+                    xmlPrj.find('FieldTitle2').text = self.fieldTitle2
+
+                except(AttributeError):
+                    ET.SubElement(xmlPrj, 'FieldTitle2').text = self.fieldTitle2
+
+            if self.fieldTitle3 is not None:
+
+                try:
+                    xmlPrj.find('FieldTitle3').text = self.fieldTitle3
+
+                except(AttributeError):
+                    ET.SubElement(xmlPrj, 'FieldTitle3').text = self.fieldTitle3
+
+            if self.fieldTitle4 is not None:
+
+                try:
+                    xmlPrj.find('FieldTitle4').text = self.fieldTitle4
+
+                except(AttributeError):
+                    ET.SubElement(xmlPrj, 'FieldTitle4').text = self.fieldTitle4
+
+        #--- Start write method.
+
         if self.is_locked():
             return 'ERROR: yWriter seems to be open. Please close first.'
 
-        message = self.ywTreeBuilder.build_element_tree(self)
+        TAG = 'YWRITER7'
+        xmlScenes = {}
+        xmlChapters = {}
 
-        if message.startswith('ERROR'):
-            return message
+        try:
+            root = self.tree.getroot()
+            xmlPrj = root.find('PROJECT')
+            locations = root.find('LOCATIONS')
+            items = root.find('ITEMS')
+            characters = root.find('CHARACTERS')
+            scenes = root.find('SCENES')
+            chapters = root.find('CHAPTERS')
 
+        except(AttributeError):
+            root = ET.Element(TAG)
+            xmlPrj = ET.SubElement(root, 'PROJECT')
+            locations = ET.SubElement(root, 'LOCATIONS')
+            items = ET.SubElement(root, 'ITEMS')
+            characters = ET.SubElement(root, 'CHARACTERS')
+            scenes = ET.SubElement(root, 'SCENES')
+            chapters = ET.SubElement(root, 'CHAPTERS')
+
+        #--- Process project attributes.
+
+        build_project_subtree(xmlPrj)
+
+        #--- Process locations.
+        # Remove LOCATION entries in order to rewrite
+        # the LOCATIONS section in a modified sort order.
+
+        for xmlLoc in locations.findall('LOCATION'):
+            locations.remove(xmlLoc)
+
+        # Add the new XML location subtrees to the project tree.
+
+        sortOrder = 0
+
+        for lcId in self.srtLocations:
+            sortOrder += 1
+            xmlLoc = ET.SubElement(locations, 'LOCATION')
+            build_location_subtree(xmlLoc, self.locations[lcId], sortOrder)
+
+        #--- Process items.
+        # Remove ITEM entries in order to rewrite
+        # the ITEMS section in a modified sort order.
+
+        for xmlItm in items.findall('ITEM'):
+            items.remove(xmlItm)
+
+        # Add the new XML item subtrees to the project tree.
+
+        sortOrder = 0
+
+        for itId in self.srtItems:
+            sortOrder += 1
+            xmlItm = ET.SubElement(items, 'ITEM')
+            build_item_subtree(xmlItm, self.items[itId], sortOrder)
+
+        #--- Process characters.
+        # Remove CHARACTER entries in order to rewrite
+        # the CHARACTERS section in a modified sort order.
+
+        for xmlCrt in characters.findall('CHARACTER'):
+            characters.remove(xmlCrt)
+
+        # Add the new XML character subtrees to the project tree.
+
+        sortOrder = 0
+
+        for crId in self.srtCharacters:
+            sortOrder += 1
+            xmlCrt = ET.SubElement(characters, 'CHARACTER')
+            build_character_subtree(xmlCrt, self.characters[crId], sortOrder)
+
+        #--- Process scenes.
+        # Save the original XML scene subtrees
+        # and remove them from the project tree.
+
+        for xmlScn in scenes.findall('SCENE'):
+            scId = xmlScn.find('ID').text
+            xmlScenes[scId] = xmlScn
+            scenes.remove(xmlScn)
+
+        # Add the new XML scene subtrees to the project tree.
+
+        for scId in self.scenes:
+
+            if not scId in xmlScenes:
+                xmlScenes[scId] = ET.Element('SCENE')
+                ET.SubElement(xmlScenes[scId], 'ID').text = scId
+
+            build_scene_subtree(xmlScenes[scId], self.scenes[scId])
+            scenes.append(xmlScenes[scId])
+
+        #--- Process chapters.
+        # Save the original XML chapter subtree
+        # and remove it from the project tree.
+
+        for xmlChp in chapters.findall('CHAPTER'):
+            chId = xmlChp.find('ID').text
+            xmlChapters[chId] = xmlChp
+            chapters.remove(xmlChp)
+
+        # Add the new XML chapter subtrees to the project tree.
+
+        sortOrder = 0
+
+        for chId in self.srtChapters:
+            sortOrder += 1
+
+            if not chId in xmlChapters:
+                xmlChapters[chId] = ET.Element('CHAPTER')
+                ET.SubElement(xmlChapters[chId], 'ID').text = chId
+
+            build_chapter_subtree(xmlChapters[chId], self.chapters[chId], sortOrder)
+
+            chapters.append(xmlChapters[chId])
+
+        indent(root)
+
+        # Modify the scene contents of an existing xml element tree.
+
+        for scn in root.iter('SCENE'):
+            scId = scn.find('ID').text
+
+            if self.scenes[scId].sceneContent is not None:
+                scn.find('SceneContent').text = self.scenes[scId].sceneContent
+                scn.find('WordCount').text = str(self.scenes[scId].wordCount)
+                scn.find('LetterCount').text = str(self.scenes[scId].letterCount)
+
+            try:
+                scn.remove(scn.find('RTFFile'))
+
+            except:
+                pass
+
+        self.tree = ET.ElementTree(root)
         message = self.ywTreeWriter.write_element_tree(self)
 
         if message.startswith('ERROR'):
