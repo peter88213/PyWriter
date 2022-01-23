@@ -252,10 +252,10 @@ Expand the document structure by splitting scenes.
 - Split scenes in manuscript and proof reading files using part, chapter and scene separators.
 
 
-## Version 4.x: Edit the novel structure independently from yWriter
+## Version 4.x: Build the novel tree independently from the existing yWriter project
 
 - Write back the whole yWriter project structure.
-    - Create a new xml tree when writing back a yWriter project.
+    - Create new xml subtrees when writing back a yWriter project.
     - Add, delete, move chapters.
     - Add, delete, move scenes.
     - Add, delete characters, locations, and items (already implemented as of v2.10).
