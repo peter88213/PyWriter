@@ -19,13 +19,8 @@ class Novel():
     of the information included in an yWriter project file).
 
     Public methods: 
-        read() -- Parse the file and store selected properties.
-        merge(novel) -- Copy required attributes of the novel object.
-        write() -- Write selected properties to the file.
         convert_to_yw(text) -- Return text, converted from source format to yw7 markup.
         convert_from_yw(text) -- Return text, converted from yw7 markup to target format.
-        file_exists() -- Return True, if the file specified by filePath exists.
-        back_up() -- Create a backup file from filePath.
 
     Instance variables:
         title -- str; title

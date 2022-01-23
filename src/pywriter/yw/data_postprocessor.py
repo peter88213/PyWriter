@@ -9,7 +9,11 @@ from pywriter.yw.yw7_postprocessor import Yw7Postprocessor
 
 
 class DataPostprocessor(Yw7Postprocessor):
-    """Postprocess utf-8 encoded yWriter data."""
+    """Postprocess utf-8 encoded yWriter data.
+
+    Public methods: 
+        postprocess_xml_file(filePath) -- Postprocess the xml files created by ElementTree.    
+    """
 
     def postprocess_xml_file(self, filePath):
         '''Postprocess the xml files created by ElementTree:

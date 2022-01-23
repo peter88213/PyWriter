@@ -16,7 +16,6 @@ class ImportSourceFactory(FileFactory):
 
     def make_file_objects(self, sourcePath, **kwargs):
         """Instantiate a source object for conversion to a yWriter project.       
-        Override the superclass method.
 
         Positional arguments:
             sourcePath -- string; path to the source file to convert.

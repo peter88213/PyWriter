@@ -10,15 +10,19 @@ from pywriter.yw.data_postprocessor import DataPostprocessor
 
 
 class DataFiles(Yw7File):
-    """yWriter XML data files representation."""
+    """yWriter XML data files representation.
+
+    Public methods: 
+        merge(novel) -- Copy required attributes of the novel object.    
+    """
 
     DESCRIPTION = 'yWriter XML data files'
     EXTENSION = '.xml'
 
     def __init__(self, filePath, **kwargs):
         """Initialize instance variables.
-        Extend the superclass constructor by changing
-        the ywTreeBuilder strategy. 
+        Extend the superclass constructor by changing the ywTreeWriter 
+        and ywPostprocessor strategies. 
         """
         super().__init__(filePath)
 

@@ -30,7 +30,6 @@ class NewProjectFactory(FileFactory):
 
     def make_file_objects(self, sourcePath, **kwargs):
         """Instantiate a source and a target object for creation of a new yWriter project.
-        Override the superclass method.
 
         Positional arguments:
             sourcePath -- string; path to the source file to convert.
@@ -40,7 +39,7 @@ class NewProjectFactory(FileFactory):
         - sourceFile: a Novel subclass instance
         - targetFile: a Novel subclass instance
         """
-        if not self.canImport(sourcePath):
+        if not self._canImport(sourcePath):
             return 'ERROR: This document is not meant to be written back.', None, None
 
         fileName, fileExtension = os.path.splitext(sourcePath)
@@ -76,7 +75,7 @@ class NewProjectFactory(FileFactory):
 
             return 'ERROR: File type of  "' + os.path.normpath(sourcePath) + '" not supported.', None, None
 
-    def canImport(self, sourcePath):
+    def _canImport(self, sourcePath):
         """Return True, if the file located at sourcepath is of an importable type.
         Otherwise, return False.
         """

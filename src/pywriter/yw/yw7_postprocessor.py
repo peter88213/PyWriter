@@ -11,31 +11,32 @@ from html import unescape
 
 
 class Yw7Postprocessor():
-    """Postprocess utf-8 encoded yWriter project."""
+    """Postprocess utf-8 encoded yWriter project.
+    Insert the missing CDATA tags, replace xml entities by plain text.
 
-    def __init__(self):
-        """Initialize instance variables."""
-        self.cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc',
-                          'FieldTitle1', 'FieldTitle2', 'FieldTitle3',
-                          'FieldTitle4', 'LaTeXHeaderFile', 'Tags',
-                          'AKA', 'ImageFile', 'FullName', 'Goals',
-                          'Notes', 'RTFFile', 'SceneContent',
-                          'Outcome', 'Goal', 'Conflict']
-        # Names of yWriter xml elements containing CDATA.
-        # ElementTree.write omits CDATA tags, so they have to be inserted
-        # afterwards.
+    Public methods:
+        postprocess_xml_file(filePath) -- Postprocess the xml files created by ElementTree.        
+    """
 
-    def format_xml(self, text):
+    _CDATA_TAGS = ['Title', 'AuthorName', 'Bio', 'Desc',
+                   'FieldTitle1', 'FieldTitle2', 'FieldTitle3',
+                   'FieldTitle4', 'LaTeXHeaderFile', 'Tags',
+                   'AKA', 'ImageFile', 'FullName', 'Goals',
+                   'Notes', 'RTFFile', 'SceneContent',
+                   'Outcome', 'Goal', 'Conflict']
+    # Names of xml elements containing CDATA.
+    # ElementTree.write omits CDATA tags, so they have to be inserted afterwards.
+
+    def _format_xml(self, text):
         '''Postprocess the xml file created by ElementTree:
-           Insert the missing CDATA tags,
-           and replace xml entities by plain text.
+           Insert the missing CDATA tags, replace xml entities by plain text.
         '''
         lines = text.split('\n')
         newlines = []
 
         for line in lines:
 
-            for tag in self.cdataTags:
+            for tag in self._CDATA_TAGS:
                 line = re.sub('\<' + tag + '\>', '<' +
                               tag + '><![CDATA[', line)
                 line = re.sub('\<\/' + tag + '\>',
@@ -60,7 +61,7 @@ class Yw7Postprocessor():
         with open(filePath, 'r', encoding='utf-8') as f:
             text = f.read()
 
-        text = self.format_xml(text)
+        text = self._format_xml(text)
         text = '<?xml version="1.0" encoding="utf-8"?>\n' + text
 
         try:

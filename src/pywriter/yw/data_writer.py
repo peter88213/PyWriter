@@ -9,7 +9,11 @@ import xml.etree.ElementTree as ET
 
 
 class DataWriter():
-    """Write utf-8 encoded yWriter XML data files."""
+    """Write utf-8 encoded yWriter XML data files.
+
+    Public methods: 
+        write_element_tree(ywProject) -- Write back the xml element tree to a a yWriter xml file.   
+    """
 
     def write_element_tree(self, ywProject):
         """Write back the xml element tree to a yWriter xml file located at filePath.

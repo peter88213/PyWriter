@@ -20,6 +20,7 @@ class YwCnvUi(YwCnv):
     Public methods:
         export_from_yw(sourceFile, targetFile) -- Convert from yWriter project to other file format.
         import_to_yw(sourceFile, targetFile) -- Convert from any file format to yWriter project.
+        confirm_overwrite(fileName) -- Return boolean permission to overwrite the target file.
 
     Instance variables:
         ui -- Ui (can be overridden e.g. by subclasses).

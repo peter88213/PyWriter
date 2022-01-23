@@ -9,7 +9,11 @@ import os
 
 
 class Yw7TreeWriter():
-    """Write utf-8 encoded yWriter project file."""
+    """Write utf-8 encoded yWriter project file.
+
+    Public methods: 
+        write_element_tree(ywProject) -- Write back the xml element tree to a yw7 file.   
+    """
 
     def write_element_tree(self, ywProject):
         """Write back the xml element tree to a yWriter xml file located at filePath.

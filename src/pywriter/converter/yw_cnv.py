@@ -14,6 +14,7 @@ class YwCnv():
 
     Public methods:
         convert(sourceFile, targetFile) -- Convert sourceFile into targetFile.
+        confirm_overwrite(fileName) -- Return boolean permission to overwrite the target file.
     """
 
     def convert(self, sourceFile, targetFile):

@@ -25,8 +25,13 @@ from pywriter.model.splitter import Splitter
 class Yw7File(Novel):
     """yWriter 7 project file representation.
 
+    Public methods: 
+        read() -- Parse the file and store selected properties.
+        merge(novel) -- Copy required attributes of the novel object.
+        write() -- Write selected properties to the file.
+        is_locked() -- Check whether the yw7 file is locked by yWriter.
+
     Additional attributes:
-        ywTreeBuilder -- strategy class to build an xml tree.
         ywTreeWriter -- strategy class to write yWriter project files.
         ywPostprocessor -- strategy class to postprocess yWriter project files.
         tree -- xml element tree of the yWriter project
