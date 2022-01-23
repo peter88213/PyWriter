@@ -19,6 +19,9 @@ class NewProjectFactory(FileFactory):
     """A factory class that instantiates a document object to read, 
     and a new yWriter project.
 
+    Public methods:
+        make_file_objects(self, sourcePath, **kwargs) -- return conversion objects.
+
     Class constant:
         DO_NOT_IMPORT -- list of suffixes from file classes not meant to be imported.    
     """

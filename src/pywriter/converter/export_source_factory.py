@@ -10,7 +10,11 @@ from pywriter.converter.file_factory import FileFactory
 
 
 class ExportSourceFactory(FileFactory):
-    """A factory class that instantiates a yWriter object to read."""
+    """A factory class that instantiates a yWriter object to read.
+
+    Public methods:
+        make_file_objects(self, sourcePath, **kwargs) -- return conversion objects.
+    """
 
     def make_file_objects(self, sourcePath, **kwargs):
         """Instantiate a source object for conversion from a yWriter project.

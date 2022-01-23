@@ -10,7 +10,11 @@ from pywriter.converter.file_factory import FileFactory
 
 
 class ExportTargetFactory(FileFactory):
-    """A factory class that instantiates a document object to write."""
+    """A factory class that instantiates a document object to write.
+
+    Public methods:
+        make_file_objects(self, sourcePath, **kwargs) -- return conversion objects.
+    """
 
     def make_file_objects(self, sourcePath, **kwargs):
         """Instantiate a target object for conversion from a yWriter project.

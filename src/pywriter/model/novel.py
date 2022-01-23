@@ -178,27 +178,6 @@ class Novel():
             self.projectName = quote(tail.replace(
                 suffix + self.EXTENSION, ''))
 
-    def read(self):
-        """Parse the file and store selected properties.
-        Return a message beginning with SUCCESS or ERROR.
-        This is a stub to be overridden by subclass methods.
-        """
-        return 'ERROR: read method is not implemented.'
-
-    def merge(self, source):
-        """Copy required attributes of the source object.
-        Return a message beginning with SUCCESS or ERROR.
-        This is a stub to be overridden by subclass methods.
-        """
-        return 'ERROR: merge method is not implemented.'
-
-    def write(self):
-        """Write selected properties to the file.
-        Return a message beginning with SUCCESS or ERROR.
-        This is a stub to be overridden by subclass methods.
-        """
-        return 'ERROR: write method is not implemented.'
-
     def convert_to_yw(self, text):
         """Return text, converted from source format to yw7 markup.
         This is a stub to be overridden by subclass methods.
@@ -210,48 +189,3 @@ class Novel():
         This is a stub to be overridden by subclass methods.
         """
         return text
-
-    def file_exists(self):
-        """Return True, if the file specified by filePath exists. 
-        Otherwise, return False.
-
-        DEPRECATED -- This method is no longer provided for v4.
-        """
-        if os.path.isfile(self.filePath):
-            return True
-
-        else:
-            return False
-
-    def back_up(self, single=True):
-        """Create a backup file from filePath. Return True, if successful.
-        Otherwise, return False.
-
-        Parameter: single
-        True - Overwrite existing backup file. Extension = .bak
-        False - Create a new, numbered backup file. Extension = .bkxxxx
-
-        DEPRECATED -- This method is no longer provided for v4.
-        """
-        if os.path.isfile(self.filePath):
-
-            if single:
-                backupFile = self.filePath + '.bak'
-
-            else:
-                i = 0
-                backupFile = self.filePath + '.bk0000'
-
-                while os.path.isfile(backupFile):
-                    i += 1
-                    backupFile = self.filePath + '.bk' + str(i).zfill(4)
-
-            try:
-                copy2(self.filePath, backupFile)
-                return True
-
-            except:
-                return False
-
-        else:
-            return False
