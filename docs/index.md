@@ -9,6 +9,8 @@ For more information, see my [GitHub home page](https://peter88213.github.io).
 
 ## Development
 
+[GitHub repository](https://github.com/peter88213/PyWriter)
+
 [Specifications](devel/spec/index)
 
 [pywriter library overview](devel/lib/pywriter)
