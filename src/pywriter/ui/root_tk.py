@@ -90,15 +90,27 @@ class RootTk():
             self.instantiate_project(fileName)
             message = self.ywPrj.read()
 
-            if message.startswith('ERROR'):
-                self.close_project()
-                self.statusBar.config(text=message)
+            if not message.startswith('ERROR'):
 
-            else:
-                self.titleBar.config(text=self.ywPrj.titleView)
-                self.statusBar.config(text=self.ywPrj.statView)
+                if self.ywPrj.title:
+                    titleView = self.ywPrj.title
+
+                else:
+                    titleView = 'Untitled yWriter project'
+
+                if self.ywPrj.author:
+                    authorView = self.ywPrj.author
+
+                else:
+                    authorView = 'Unknown author'
+
+                self.titleBar.config(text=titleView + ' by ' + authorView)
                 self.enable_menu()
                 return True
+
+            else:
+                self.close_project()
+                self.statusBar.config(text=message)
 
         return False
 
