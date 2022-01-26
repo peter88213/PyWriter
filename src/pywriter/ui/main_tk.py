@@ -82,7 +82,11 @@ class MainTk():
         Return the file name.
         To be extended by subclasses.
         """
-        initDir = os.path.dirname(fileName)
+        if fileName:
+            initDir = os.path.dirname(fileName)
+
+        else:
+            initDir = os.path.dirname(self.kwargs['yw_last_open'])
 
         if not initDir:
             initDir = './'
