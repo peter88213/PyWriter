@@ -18,25 +18,19 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_l-qNMIerEeq_kJF_AkSaiA" name="title">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_87YSAsFnEeu3Uqtx9hJ-Ng" name="QuitButton" type="_4EVVcMFlEeu3Uqtx9hJ-Ng">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_87Y5EMFnEeu3Uqtx9hJ-Ng" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_87ZgIMFnEeu3Uqtx9hJ-Ng" value="1"/>
-        <association xmi:type="uml:Association" href="PyWriter.uml#_87XD4MFnEeu3Uqtx9hJ-Ng"/>
-      </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_IPC-osFoEeu3Uqtx9hJ-Ng" name="OpenButton" type="_4EVVcMFlEeu3Uqtx9hJ-Ng">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IPDlsMFoEeu3Uqtx9hJ-Ng"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IPDlscFoEeu3Uqtx9hJ-Ng" value="1"/>
         <association xmi:type="uml:Association" href="PyWriter.uml#_IPCXkMFoEeu3Uqtx9hJ-Ng"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_87YSAsFnEeu3Uqtx9hJ-Ng" name="QuitButton" type="_4EVVcMFlEeu3Uqtx9hJ-Ng">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_87Y5EMFnEeu3Uqtx9hJ-Ng"/>
+        <association xmi:type="uml:Association" href="PyWriter.uml#_87XD4MFnEeu3Uqtx9hJ-Ng"/>
+      </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_vxQTMIesEeq_kJF_AkSaiA" name="mainloop"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_Iacr8IesEeq_kJF_AkSaiA" name="Label">
       <ownedOperation xmi:type="uml:Operation" xmi:id="_byIrIMFlEeu3Uqtx9hJ-Ng" name="config"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_QLuBoMFlEeu3Uqtx9hJ-Ng" name="messagebox">
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_T_fOMMFlEeu3Uqtx9hJ-Ng" name="askyesno"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_pz25cMFlEeu3Uqtx9hJ-Ng" name="showerror"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_rOCYcMFlEeu3Uqtx9hJ-Ng" name="showinfo"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_4EVVcMFlEeu3Uqtx9hJ-Ng" name="Button">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_83p6gMFlEeu3Uqtx9hJ-Ng" name="text">
@@ -45,6 +39,7 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_-6bDgMFlEeu3Uqtx9hJ-Ng" name="command" type="_hATxcMFrEeu3Uqtx9hJ-Ng"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_Dx7lAMFmEeu3Uqtx9hJ-Ng" name="config"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_lmncoH7FEey1Ut-6sSExGQ" name="Menu"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_DBoUgC1UEeqtbohuTq_ZAA" name="xml.etree">
     <packagedElement xmi:type="uml:Class" xmi:id="_QoWo4C1UEeqtbohuTq_ZAA" name="ElementTree" visibility="public">

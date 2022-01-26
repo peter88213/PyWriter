@@ -1044,6 +1044,27 @@
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_tco8sL3xEeuITv7MyBA5yA" name="ui">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_fHzUMH7HEey1Ut-6sSExGQ" annotatedElement="_eePr0PxDEeq5hMee5ike2Q">
+        <body>Simple GUI&#xD;
+displaying process information&#xD;
+and some buttons</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_sM4UEH7HEey1Ut-6sSExGQ" annotatedElement="_JtCGsPxDEeq5hMee5ike2Q">
+        <body>Base class implementing&#xD;
+a &quot;silent mode&quot; </body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_7owMMH7HEey1Ut-6sSExGQ" annotatedElement="_i4_Y0PxDEeq5hMee5ike2Q">
+        <body>Command line interface</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_8IuFsH7HEey1Ut-6sSExGQ" annotatedElement="_Z2J44MFgEeu3Uqtx9hJ-Ng">
+        <body>Use just a message box for error &#xD;
+or success information</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_QDH-oH7IEey1Ut-6sSExGQ" annotatedElement="_VruYIH7DEey1Ut-6sSExGQ">
+        <body>GUI with main menu, title bar, &#xD;
+main window frame, status bar, &#xD;
+and path bar</body>
+      </ownedComment>
       <packagedElement xmi:type="uml:Class" xmi:id="_JtCGsPxDEeq5hMee5ike2Q" name="Ui">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-UEncMFgEeu3Uqtx9hJ-Ng" name="infoWhatText">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1105,12 +1126,6 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iLHjQMFhEeu3Uqtx9hJ-Ng" name="ask_yes_no"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iLJYcMFhEeu3Uqtx9hJ-Ng" name="set_info_how"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_vakDQMFlEeu3Uqtx9hJ-Ng" client="_Z2J44MFgEeu3Uqtx9hJ-Ng">
-        <supplier xmi:type="uml:Class" href="stadardlib.uml#_QLuBoMFlEeu3Uqtx9hJ-Ng"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_wWs7YMFlEeu3Uqtx9hJ-Ng" client="_eePr0PxDEeq5hMee5ike2Q">
-        <supplier xmi:type="uml:Class" href="stadardlib.uml#_QLuBoMFlEeu3Uqtx9hJ-Ng"/>
-      </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_905wcMFmEeu3Uqtx9hJ-Ng" memberEnd="_906-kcFmEeu3Uqtx9hJ-Ng _906-lMFmEeu3Uqtx9hJ-Ng">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_906XgMFmEeu3Uqtx9hJ-Ng" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_906-kMFmEeu3Uqtx9hJ-Ng" key="nature" value="UML_Nature"/>
@@ -1154,6 +1169,62 @@
         <ownedEnd xmi:type="uml:Property" xmi:id="_IPDlssFoEeu3Uqtx9hJ-Ng" name="self" association="_IPCXkMFoEeu3Uqtx9hJ-Ng">
           <type xmi:type="uml:Class" href="stadardlib.uml#_GssmIIerEeq_kJF_AkSaiA"/>
         </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_VruYIH7DEey1Ut-6sSExGQ" name="MainTk">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_hO4SQH7DEey1Ut-6sSExGQ" name="root" aggregation="shared" association="_hO12AH7DEey1Ut-6sSExGQ">
+          <type xmi:type="uml:Class" href="stadardlib.uml#_GssmIIerEeq_kJF_AkSaiA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_00WyIn7FEey1Ut-6sSExGQ" name="mainMenu" aggregation="shared" association="_00WLEH7FEey1Ut-6sSExGQ">
+          <type xmi:type="uml:Class" href="stadardlib.uml#_lmncoH7FEey1Ut-6sSExGQ"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_D0LAYH7GEey1Ut-6sSExGQ" name="fMenu" aggregation="shared" association="_D0JLMH7GEey1Ut-6sSExGQ">
+          <type xmi:type="uml:Class" href="stadardlib.uml#_lmncoH7FEey1Ut-6sSExGQ"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_kG9LQn7GEey1Ut-6sSExGQ" name="titleBar" aggregation="shared" association="_kG79IH7GEey1Ut-6sSExGQ">
+          <type xmi:type="uml:Class" href="stadardlib.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_lZBQEH7GEey1Ut-6sSExGQ" name="statusBar" aggregation="shared" association="_lY_a4H7GEey1Ut-6sSExGQ">
+          <type xmi:type="uml:Class" href="stadardlib.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_l_bv0X7GEey1Ut-6sSExGQ" name="pathBar" aggregation="shared" association="_l_ahsH7GEey1Ut-6sSExGQ">
+          <type xmi:type="uml:Class" href="stadardlib.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_hO12AH7DEey1Ut-6sSExGQ" memberEnd="_hO4SQH7DEey1Ut-6sSExGQ _hPTwEH7DEey1Ut-6sSExGQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_hO3rMH7DEey1Ut-6sSExGQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_hO3rMX7DEey1Ut-6sSExGQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_hPTwEH7DEey1Ut-6sSExGQ" name="self" type="_VruYIH7DEey1Ut-6sSExGQ" association="_hO12AH7DEey1Ut-6sSExGQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_00WLEH7FEey1Ut-6sSExGQ" memberEnd="_00WyIn7FEey1Ut-6sSExGQ _00XZMn7FEey1Ut-6sSExGQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_00WyIH7FEey1Ut-6sSExGQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_00WyIX7FEey1Ut-6sSExGQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_00XZMn7FEey1Ut-6sSExGQ" name="self" type="_VruYIH7DEey1Ut-6sSExGQ" association="_00WLEH7FEey1Ut-6sSExGQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_D0JLMH7GEey1Ut-6sSExGQ" memberEnd="_D0LAYH7GEey1Ut-6sSExGQ _D0LncH7GEey1Ut-6sSExGQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_D0KZUH7GEey1Ut-6sSExGQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_D0KZUX7GEey1Ut-6sSExGQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_D0LncH7GEey1Ut-6sSExGQ" name="self" type="_VruYIH7DEey1Ut-6sSExGQ" association="_D0JLMH7GEey1Ut-6sSExGQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_kG79IH7GEey1Ut-6sSExGQ" memberEnd="_kG9LQn7GEey1Ut-6sSExGQ _kG9yUn7GEey1Ut-6sSExGQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kG9LQH7GEey1Ut-6sSExGQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kG9LQX7GEey1Ut-6sSExGQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_kG9yUn7GEey1Ut-6sSExGQ" name="self" type="_VruYIH7DEey1Ut-6sSExGQ" association="_kG79IH7GEey1Ut-6sSExGQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_lY_a4H7GEey1Ut-6sSExGQ" memberEnd="_lZBQEH7GEey1Ut-6sSExGQ _lZB3IH7GEey1Ut-6sSExGQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lZApAH7GEey1Ut-6sSExGQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lZApAX7GEey1Ut-6sSExGQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_lZB3IH7GEey1Ut-6sSExGQ" name="self" type="_VruYIH7DEey1Ut-6sSExGQ" association="_lY_a4H7GEey1Ut-6sSExGQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_l_ahsH7GEey1Ut-6sSExGQ" memberEnd="_l_bv0X7GEey1Ut-6sSExGQ _l_cW4X7GEey1Ut-6sSExGQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_l_bIwH7GEey1Ut-6sSExGQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_l_bv0H7GEey1Ut-6sSExGQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_l_cW4X7GEey1Ut-6sSExGQ" name="self" type="_VruYIH7DEey1Ut-6sSExGQ" association="_l_ahsH7GEey1Ut-6sSExGQ"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_00CQkIgFEeuRjYowZVZmEQ" name="odf">

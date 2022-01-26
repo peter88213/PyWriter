@@ -13,7 +13,7 @@ from tkinter import messagebox
 
 class MainTk():
     """A tkinter GUI root class.
-    Main menu, title bar, main window, status bar, path bar.
+    Main menu, title bar, main window frame, status bar, path bar.
     """
 
     def __init__(self, title, **kwargs):
@@ -21,7 +21,7 @@ class MainTk():
         and configure the user interface.
         - Create a main menu to be extended by subclasses.
         - Create a title bar for the project title.
-        - Open a main window to be used by subclasses.
+        - Open a main window frame to be used by subclasses.
         - Create a status bar to be used by subclasses.
         - Create a path bar for the project file path.
         """
@@ -82,11 +82,7 @@ class MainTk():
         Return the file name.
         To be extended by subclasses.
         """
-        if fileName:
-            initDir = os.path.dirname(fileName)
-
-        else:
-            initDir = os.path.dirname(self.kwargs['yw_last_open'])
+        initDir = os.path.dirname(self.kwargs['yw_last_open'])
 
         if not initDir:
             initDir = './'
