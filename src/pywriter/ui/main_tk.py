@@ -8,9 +8,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import tkinter as tk
 from tkinter import filedialog
+from tkinter import messagebox
 
 
-class MainWinTk():
+class MainTk():
     """A tkinter GUI root class.
     Main menu, title bar, main window, status bar, path bar.
     """
@@ -94,6 +95,7 @@ class MainWinTk():
             self.kwargs['yw_last_open'] = fileName
             self.pathBar.config(text=os.path.normpath(fileName))
 
+        self.statusBar.config(text='')
         return fileName
 
     def close_project(self):
@@ -106,3 +108,9 @@ class MainWinTk():
         self.statusBar.config(text='')
         self.pathBar.config(text='')
         self.disable_menu()
+
+    def ask_yes_no(self, text):
+        """Display a message box with "yes/no" options.
+        Return True or False depending on user input.
+        """
+        return messagebox.askyesno('WARNING', text)
