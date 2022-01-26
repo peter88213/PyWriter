@@ -31,6 +31,8 @@ class Configuration():
         self.set(settings, options)
 
     def set(self, settings=None, options=None):
+        """Set the entire configuration without writing the INI file.
+        """
 
         if settings is not None:
             self.settings = settings.copy()
