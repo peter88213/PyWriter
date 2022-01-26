@@ -6,7 +6,7 @@ ui -- Provide a base class for user interface facades.
 ui_cmd -- Provide a facade class for a command line user interface.
 ui_tk -- Provide a facade class for a Tkinter based GUI.
 ui_mb -- Provide a facade class for a GUI featuring just message boxes.
-root_tk -- Provide a tkinter GUI class with main menu and main window.
+main_win_tk -- Provide a tkinter GUI class with main menu and main window.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

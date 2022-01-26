@@ -9,10 +9,8 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 
-from pywriter.yw.yw7_file import Yw7File
 
-
-class RootTk():
+class MainWinTk():
     """A tkinter GUI root class.
     Main menu, title bar, main window, status bar, path bar.
     """
@@ -31,14 +29,16 @@ class RootTk():
 
         self.root = tk.Tk()
         self.root.title(title)
-        self.menubar = tk.Menu(self.root)
-        self.menuF = tk.Menu(self.menubar, title='my title', tearoff=0)
-        self.menubar.add_cascade(label='Project', menu=self.menuF)
-        self.menuF.add_command(label='Open Project...', command=lambda: self.open_project(''))
-        self.menuF.add_command(label='Close Project', command=lambda: self.close_project())
-        self.menuF.add_command(label='Exit', command=self.root.quit)
+        self.mainMenu = tk.Menu(self.root)
+        self.fileMenu = tk.Menu(self.mainMenu, title='my title', tearoff=0)
+        self.mainMenu.add_cascade(label='File', menu=self.fileMenu)
+        self.fileMenu.add_command(label='Open Project...', command=lambda: self.open_project(''))
+        self.fileMenu.add_command(label='Close Project', command=lambda: self.close_project())
+        self.fileMenu.entryconfig('Close Project', state='disabled')
+        self.fileMenu.add_command(label='Exit', command=self.root.quit)
         self.extend_menu()
-        self.root.config(menu=self.menubar)
+        # Hook for subclasses
+        self.root.config(menu=self.mainMenu)
         self.titleBar = tk.Label(self.root,  text='')
         self.titleBar.pack(expand=False, anchor='w')
         self.mainWindow = tk.Frame()
@@ -54,69 +54,52 @@ class RootTk():
         """
 
     def disable_menu(self):
-        """Disable menu entries when no project is open."""
-        self.menuF.entryconfig('Close Project', state='disabled')
+        """Disable menu entries when no project is open.
+        To be extended by subclasses.
+        """
+        self.fileMenu.entryconfig('Close Project', state='disabled')
 
     def enable_menu(self):
-        """Enable menu entries when a project is open."""
-        self.menuF.entryconfig('Close Project', state='normal')
+        """Enable menu entries when a project is open.
+        To be extended by subclasses.
+        """
+        self.fileMenu.entryconfig('Close Project', state='normal')
 
     def start(self):
-        """Start the Tk main loop."""
+        """Start the user interface.
+        Note: This can not be done in the constructor method.
+        """
         self.root.mainloop()
 
-    def instantiate_project(self, fileName):
-        """Create an object that represents the project file.
-        This is a template method that can be overridden by subclasses. 
-        """
-        self.ywPrj = Yw7File(fileName)
-
     def open_project(self, fileName):
-        """Create a yWriter project instance and read the file.
-        Return True if sucessful, otherwise return False.
+        """Select a valid project file and display the path.
+
+        Priority:
+        1. use file name argument
+        2. open file select dialog
+
+        Return the file name.
+        To be extended by subclasses.
         """
         initDir = os.path.dirname(fileName)
 
         if not initDir:
             initDir = './'
 
-        if not fileName:
+        if not fileName or not os.path.isfile(fileName):
             fileName = filedialog.askopenfilename(filetypes=[('yWriter 7 project', '.yw7')],
                                                   defaultextension='.yw7', initialdir=initDir)
 
         if fileName:
             self.kwargs['yw_last_open'] = fileName
             self.pathBar.config(text=os.path.normpath(fileName))
-            self.instantiate_project(fileName)
-            message = self.ywPrj.read()
 
-            if not message.startswith('ERROR'):
-
-                if self.ywPrj.title:
-                    titleView = self.ywPrj.title
-
-                else:
-                    titleView = 'Untitled yWriter project'
-
-                if self.ywPrj.author:
-                    authorView = self.ywPrj.author
-
-                else:
-                    authorView = 'Unknown author'
-
-                self.titleBar.config(text=titleView + ' by ' + authorView)
-                self.enable_menu()
-                return True
-
-            else:
-                self.close_project()
-                self.statusBar.config(text=message)
-
-        return False
+        return fileName
 
     def close_project(self):
         """Close the yWriter project without saving.
         Reset the user interface.
+        To be extended by subclasses.
         """
         self.ywPrj = None
         self.titleBar.config(text='')
