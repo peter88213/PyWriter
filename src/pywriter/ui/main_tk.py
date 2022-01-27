@@ -43,7 +43,7 @@ class MainTk():
         self.titleBar = tk.Label(self.root,  text='')
         self.titleBar.pack(expand=False, anchor='w')
         self.mainWindow = tk.Frame()
-        self.mainWindow.pack(expand=True, fill='both', padx=4, pady=4)
+        self.mainWindow.pack(expand=True, fill='both')
         self.statusBar = tk.Label(self.root,  text='')
         self.statusBar.pack(expand=False, anchor='w')
         self.pathBar = tk.Label(self.root,  text='')
