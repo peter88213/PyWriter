@@ -26,7 +26,7 @@ class NewProjectFactory(FileFactory):
         DO_NOT_IMPORT -- list of suffixes from file classes not meant to be imported.    
     """
 
-    DO_NOT_IMPORT = ['_xref']
+    DO_NOT_IMPORT = ['_xref', '_brf_synopsis']
 
     def make_file_objects(self, sourcePath, **kwargs):
         """Instantiate a source and a target object for creation of a new yWriter project.
