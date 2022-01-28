@@ -16,7 +16,7 @@ def read_html_file(filePath):
     """
     try:
         with open(filePath, 'r', encoding='utf-8') as f:
-            text = (f.read())
+            text = f.read()
     except:
         # HTML files exported by a word processor may be ANSI encoded.
         try:
@@ -24,9 +24,9 @@ def read_html_file(filePath):
                 text = (f.read())
 
         except(FileNotFoundError):
-            return ('ERROR: "{}" not found.'.format(os.path.normpath(filePath), None))
+            return 'ERROR: "{}" not found.'.format(os.path.normpath(filePath)), None
 
-    return ('SUCCESS', text)
+    return 'SUCCESS', text
 
 
 if __name__ == '__main__':
