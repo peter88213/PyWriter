@@ -62,7 +62,7 @@ class NewProjectFactory(FileFactory):
                 return 'SUCCESS', sourceFile, targetFile
 
             else:
-                return 'ERROR: Cannot read "' + os.path.normpath(sourcePath) + '".', None, None
+                return 'ERROR: Cannot read "{}".'.format(os.path.normpath(sourcePath)), None, None
 
         else:
             for fileClass in self.fileClasses:
@@ -73,7 +73,7 @@ class NewProjectFactory(FileFactory):
                         sourceFile = fileClass(sourcePath, **kwargs)
                         return 'SUCCESS', sourceFile, targetFile
 
-            return 'ERROR: File type of  "' + os.path.normpath(sourcePath) + '" not supported.', None, None
+            return 'ERROR: File type of  "{}" not supported.'.format(os.path.normpath(sourcePath)), None, None
 
     def _canImport(self, sourcePath):
         """Return True, if the file located at sourcepath is of an importable type.

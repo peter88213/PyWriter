@@ -70,6 +70,6 @@ class Yw7Postprocessor():
                 f.write(text)
 
         except:
-            return 'ERROR: Can not write "' + os.path.normpath(filePath) + '".'
+            return 'ERROR: Can not write "{}".'.format(os.path.normpath(filePath))
 
-        return 'SUCCESS: "' + os.path.normpath(filePath) + '" written.'
+        return 'SUCCESS: "{}" written.'.format(os.path.normpath(filePath))

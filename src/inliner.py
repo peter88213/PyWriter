@@ -12,7 +12,7 @@ import os
 
 def inline_module(file, package, text, processedModules):
     with open(file, 'r') as f:
-        print('Processing "' + file + '"...')
+        print('Processing "{}"...'.format(file))
         lines = f.readlines()
         inSuppressedComment = False
         inHeader = True
@@ -68,7 +68,7 @@ def run(sourceFile, targetFile, package):
     processedModules = []
     text = (inline_module(sourceFile, package, text, processedModules))
     with open(targetFile, 'w') as f:
-        print('Writing "' + targetFile + '"...\n')
+        print('Writing "{}"...\n'.format(targetFile))
         f.write(text)
 
 

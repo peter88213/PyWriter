@@ -49,9 +49,9 @@ class OdtCharacters(OdtFile):
         characterMapping = OdtFile.get_characterMapping(self, crId)
 
         if self.characters[crId].aka:
-            characterMapping['AKA'] = ' ("' + self.characters[crId].aka + '")'
+            characterMapping['AKA'] = ' ("{}")'.format(self.characters[crId].aka)
 
         if self.characters[crId].fullName:
-            characterMapping['FullName'] = '/' + self.characters[crId].fullName
+            characterMapping['FullName'] = '/{}'.format(self.characters[crId].fullName)
 
         return characterMapping

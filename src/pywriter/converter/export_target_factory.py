@@ -44,4 +44,4 @@ class ExportTargetFactory(FileFactory):
                     fileName + suffix + fileClass.EXTENSION, **kwargs)
                 return 'SUCCESS', None, targetFile
 
-        return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None
+        return 'ERROR: File type of "{}" not supported.'.format(os.path.normpath(sourcePath)), None, None

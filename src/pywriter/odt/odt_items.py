@@ -34,6 +34,6 @@ class OdtItems(OdtFile):
         itemMapping = super().get_itemMapping(itId)
 
         if self.items[itId].aka:
-            itemMapping['AKA'] = ' ("' + self.items[itId].aka + '")'
+            itemMapping['AKA'] = ' ("{}")'.format(self.items[itId].aka)
 
         return itemMapping

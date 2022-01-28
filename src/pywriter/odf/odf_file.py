@@ -65,7 +65,7 @@ class OdfFile(FileExport):
             os.mkdir(self.tempDir + '/META-INF')
 
         except:
-            return 'ERROR: Cannot create "' + os.path.normpath(self.tempDir) + '".'
+            return 'ERROR: Cannot create "{}".'.format(os.path.normpath(self.tempDir))
 
         # Generate mimetype.
 
@@ -181,10 +181,10 @@ class OdfFile(FileExport):
                 os.replace(self.filePath + '.bak', self.filePath)
 
             os.chdir(workdir)
-            return 'ERROR: Cannot generate "' + os.path.normpath(self.filePath) + '".'
+            return 'ERROR: Cannot generate "{}".'.format(os.path.normpath(self.filePath))
 
         # Remove temporary data.
 
         os.chdir(workdir)
         self.tear_down()
-        return 'SUCCESS: "' + os.path.normpath(self.filePath) + '" written.'
+        return 'SUCCESS: "{}" written.'.format(os.path.normpath(self.filePath))

@@ -733,9 +733,9 @@ class FileExport(Novel):
             if backedUp:
                 os.replace(self.filePath + '.bak', self.filePath)
 
-            return 'ERROR: Cannot write "' + os.path.normpath(self.filePath) + '".'
+            return 'ERROR: Cannot write "{}".'.format(os.path.normpath(self.filePath))
 
-        return 'SUCCESS: "' + os.path.normpath(self.filePath) + '" written.'
+        return 'SUCCESS: "{}" written.'.format(os.path.normpath(self.filePath))
 
     def get_string(self, elements):
         """Return a string which is the concatenation of the 

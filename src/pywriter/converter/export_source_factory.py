@@ -35,4 +35,4 @@ class ExportSourceFactory(FileFactory):
                 sourceFile = fileClass(sourcePath, **kwargs)
                 return 'SUCCESS', sourceFile, None
 
-        return 'ERROR: File type of "' + os.path.normpath(sourcePath) + '" not supported.', None, None
+        return 'ERROR: File type of "{}" not supported.'.format(os.path.normpath(sourcePath)), None, None

@@ -78,7 +78,7 @@ class Yw7File(Novel):
             self.tree = ET.parse(self.filePath)
 
         except:
-            return 'ERROR: Can not process "' + os.path.normpath(self.filePath) + '".'
+            return 'ERROR: Can not process "{}".'.format(os.path.normpath(self.filePath))
 
         root = self.tree.getroot()
 
@@ -468,7 +468,7 @@ class Yw7File(Novel):
                 for scId in self.chapters[chId].srtScenes:
                     self.scenes[scId].isUnused = True
 
-        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + os.path.normpath(self.filePath) + '".'
+        return 'SUCCESS'
 
     def merge(self, source):
         """Copy required attributes of the source object.

@@ -35,6 +35,6 @@ class Yw7TreeWriter():
             if backedUp:
                 os.replace(ywProject.filePath + '.bak', ywProject.filePath)
 
-            return 'ERROR: Cannot write "' + os.path.normpath(ywProject.filePath) + '".'
+            return 'ERROR: Cannot write "{}".'.format(os.path.normpath(ywProject.filePath))
 
         return 'SUCCESS'

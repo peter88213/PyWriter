@@ -100,4 +100,4 @@ class CsvPlotList(CsvFile):
                 elif tableHeader[i] != self._NOT_APPLICABLE:
                     self.scenes[scId].field4 = '1'
 
-        return 'SUCCESS: Data read from "' + os.path.normpath(self.filePath) + '".'
+        return 'SUCCESS: Data read from "{}".'.format(os.path.normpath(self.filePath))
