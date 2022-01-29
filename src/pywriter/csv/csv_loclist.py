@@ -43,4 +43,4 @@ class CsvLocList(CsvFile):
                 self.locations[lcId].aka = cells[3]
                 self.locations[lcId].tags = self.get_list(cells[4])
 
-        return 'SUCCESS: Data read from "{}".'.format(os.path.normpath(self.filePath))
+        return 'SUCCESS'

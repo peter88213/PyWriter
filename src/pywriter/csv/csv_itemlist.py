@@ -42,4 +42,4 @@ class CsvItemList(CsvFile):
                 self.items[itId].aka = cells[3]
                 self.items[itId].tags = self.get_list(cells[4])
 
-        return 'SUCCESS: Data read from "{}".'.format(os.path.normpath(self.filePath))
+        return 'SUCCESS'

@@ -65,7 +65,7 @@ class OdfFile(FileExport):
             os.mkdir(self.tempDir + '/META-INF')
 
         except:
-            return 'ERROR: Cannot create "{}".'.format(os.path.normpath(self.tempDir))
+            return f'ERROR: Cannot create "{os.path.normpath(self.tempDir)}".'
 
         # Generate mimetype.
 
@@ -103,7 +103,7 @@ class OdfFile(FileExport):
         text = template.safe_substitute(localeMapping)
 
         try:
-            with open(self.tempDir + '/styles.xml', 'w', encoding='utf-8') as f:
+            with open(f'{self.tempDir}/styles.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
             return 'ERROR: Cannot write "styles.xml"'
@@ -126,7 +126,7 @@ class OdfFile(FileExport):
         text = template.safe_substitute(metaMapping)
 
         try:
-            with open(self.tempDir + '/meta.xml', 'w', encoding='utf-8') as f:
+            with open(f'{self.tempDir}/meta.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
             return 'ERROR: Cannot write "meta.xml".'
@@ -163,7 +163,7 @@ class OdfFile(FileExport):
         workdir = os.getcwd()
 
         if os.path.isfile(self.filePath):
-            os.replace(self.filePath, self.filePath + '.bak')
+            os.replace(self.filePath, f'{self.filePath}.bak')
             backedUp = True
 
         else:
@@ -178,13 +178,13 @@ class OdfFile(FileExport):
         except:
 
             if backedUp:
-                os.replace(self.filePath + '.bak', self.filePath)
+                os.replace(f'{self.filePath}.bak', self.filePath)
 
             os.chdir(workdir)
-            return 'ERROR: Cannot generate "{}".'.format(os.path.normpath(self.filePath))
+            return f'ERROR: Cannot generate "{os.path.normpath(self.filePath)}".'
 
         # Remove temporary data.
 
         os.chdir(workdir)
         self.tear_down()
-        return 'SUCCESS: "{}" written.'.format(os.path.normpath(self.filePath))
+        return f'SUCCESS: "{os.path.normpath(self.filePath)}" written.'

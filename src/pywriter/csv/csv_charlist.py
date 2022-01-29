@@ -54,4 +54,4 @@ class CsvCharList(CsvFile):
                 self.characters[crId].tags = self.get_list(cells[8])
                 self.characters[crId].notes = self.convert_to_yw(cells[9])
 
-        return 'SUCCESS: Data read from "{}".'.format(os.path.normpath(self.filePath))
+        return 'SUCCESS'

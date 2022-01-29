@@ -78,7 +78,7 @@ class Yw7File(Novel):
             self.tree = ET.parse(self.filePath)
 
         except:
-            return 'ERROR: Can not process "{}".'.format(os.path.normpath(self.filePath))
+            return f'ERROR: Can not process "{os.path.normpath(self.filePath)}".'
 
         root = self.tree.getroot()
 

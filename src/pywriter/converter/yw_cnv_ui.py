@@ -54,8 +54,8 @@ class YwCnvUi(YwCnv):
 
         # Send specific information about the conversion to the UI.
 
-        self.ui.set_info_what('Input: {} "{}"\nOutput: {} "{}"'.format(sourceFile.DESCRIPTION, os.path.normpath(
-            sourceFile.filePath), targetFile.DESCRIPTION, os.path.normpath(targetFile.filePath)))
+        self.ui.set_info_what(
+            f'Input: {sourceFile.DESCRIPTION} "{os.path.normpath(sourceFile.filePath)}"\nOutput: {targetFile.DESCRIPTION} "{os.path.normpath(targetFile.filePath)}"')
 
         # Convert sourceFile into targetFile.
 
@@ -95,10 +95,10 @@ class YwCnvUi(YwCnv):
         # Send specific information about the conversion to the UI.
 
         self.ui.set_info_what(
-            'Create a yWriter project file from {}\nNew project: "{}"'.format(sourceFile.DESCRIPTION, os.path.normpath(targetFile.filePath)))
+            f'Create a yWriter project file from {sourceFile.DESCRIPTION}\nNew project: "{os.path.normpath(targetFile.filePath)}"')
 
         if os.path.isfile(targetFile.filePath):
-            self.ui.set_info_how('ERROR: "{}" already exists.'.format(os.path.normpath(targetFile.filePath)))
+            self.ui.set_info_how(f'ERROR: "{os.path.normpath(targetFile.filePath)}" already exists.')
 
         else:
             # Convert sourceFile into targetFile.
@@ -137,8 +137,8 @@ class YwCnvUi(YwCnv):
 
         # Send specific information about the conversion to the UI.
 
-        self.ui.set_info_what('Input: {} "{}"\nOutput: {} "{}"'.format(sourceFile.DESCRIPTION, os.path.normpath(
-            sourceFile.filePath), targetFile.DESCRIPTION, os.path.normpath(targetFile.filePath)))
+        self.ui.set_info_what(
+            f'Input: {sourceFile.DESCRIPTION} "{os.path.normpath(sourceFile.filePath)}"\nOutput: {targetFile.DESCRIPTION} "{os.path.normpath(targetFile.filePath)}"')
 
         # Convert sourceFile into targetFile.
 
@@ -162,7 +162,7 @@ class YwCnvUi(YwCnv):
 
     def confirm_overwrite(self, filePath):
         """Return boolean permission to overwrite the target file, overriding the superclass method."""
-        return self.ui.ask_yes_no('Overwrite existing file "{}"?'.format(os.path.normpath(filePath)))
+        return self.ui.ask_yes_no('Overwrite existing file "{os.path.normpath(filePath)}"?')
 
     def delete_tempfile(self, filePath):
         """Delete filePath if it is a temporary file no longer needed."""

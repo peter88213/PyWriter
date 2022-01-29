@@ -38,13 +38,13 @@ class YwCnv():
         # Initial error handling.
 
         if sourceFile.filePath is None:
-            return 'ERROR: Source "{}" is not of the supported type.'.format(os.path.normpath(sourceFile.filePath))
+            return f'ERROR: Source "{os.path.normpath(sourceFile.filePath)}" is not of the supported type.'
 
         if not os.path.isfile(sourceFile.filePath):
-            return 'ERROR: "{}" not found.'.format(os.path.normpath(sourceFile.filePath))
+            return f'ERROR: "{os.path.normpath(sourceFile.filePath)}" not found.'
 
         if targetFile.filePath is None:
-            return 'ERROR: Target "{}" is not of the supported type.'.format(os.path.normpath(targetFile.filePath))
+            return f'ERROR: Target "{os.path.normpath(targetFile.filePath)}" is not of the supported type.'
 
         if os.path.isfile(targetFile.filePath) and not self.confirm_overwrite(targetFile.filePath):
             return 'ERROR: Action canceled by user.'

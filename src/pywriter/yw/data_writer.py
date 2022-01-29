@@ -30,7 +30,7 @@ class DataWriter():
             characterTree.write(characterPath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return 'ERROR: "{}" is write protected.'.format(os.path.normpath(characterPath))
+            return f'ERROR: "{os.path.normpath(characterPath)}" is write protected.'
 
         locationPath = path + '_Locations.xml'
         locationSubtree = ywProject.tree.find('LOCATIONS')
@@ -40,7 +40,7 @@ class DataWriter():
             locationTree.write(locationPath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return 'ERROR: "{}" is write protected.'.format(os.path.normpath(locationPath))
+            return f'ERROR: "{os.path.normpath(locationPath)}" is write protected.'
 
         itemPath = path + '_Items.xml'
         itemSubtree = ywProject.tree.find('ITEMS')
@@ -50,6 +50,6 @@ class DataWriter():
             itemTree.write(itemPath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return 'ERROR: "{}" is write protected.'.format(os.path.normpath(itemPath))
+            return f'ERROR: "{os.path.normpath(itemPath)}" is write protected.'
 
         return 'SUCCESS'

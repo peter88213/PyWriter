@@ -50,10 +50,10 @@ class CsvFile(Novel):
                     self.rows.append(row)
 
         except(FileNotFoundError):
-            return 'ERROR: "{}" not found.'.format(os.path.normpath(self.filePath))
+            return f'ERROR: "{os.path.normpath(self.filePath)}" not found.'
 
         except:
-            return 'ERROR: Can not parse "{}".'.format(os.path.normpath(self.filePath))
+            return f'ERROR: Can not parse "{os.path.normpath(self.filePath)}".'
 
         return 'SUCCESS'
 

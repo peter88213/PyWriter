@@ -68,7 +68,7 @@ class HtmlImport(HtmlFile):
                 self.scenes[self._scId] = Scene()
                 self.chapters[self._chId].srtScenes.append(self._scId)
                 self.scenes[self._scId].status = '1'
-                self.scenes[self._scId].title = 'Scene ' + str(self._scCount)
+                self.scenes[self._scId].title = f'Scene {self._scCount}'
 
         elif tag == 'div':
             self._scId = None
@@ -94,12 +94,10 @@ class HtmlImport(HtmlFile):
                 self.scenes[self._scId].sceneContent = ''.join(self._lines)
 
                 if self.scenes[self._scId].wordCount < self._LOW_WORDCOUNT:
-                    self.scenes[self._scId].status = Scene.STATUS.index(
-                        'Outline')
+                    self.scenes[self._scId].status = Scene.STATUS.index('Outline')
 
                 else:
-                    self.scenes[self._scId].status = Scene.STATUS.index(
-                        'Draft')
+                    self.scenes[self._scId].status = Scene.STATUS.index('Draft')
 
         elif tag in ('h1', 'h2'):
             self.chapters[self._chId].title = ''.join(self._lines)

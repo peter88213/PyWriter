@@ -24,7 +24,7 @@ def read_html_file(filePath):
                 text = (f.read())
 
         except(FileNotFoundError):
-            return 'ERROR: "{}" not found.'.format(os.path.normpath(filePath)), None
+            return f'ERROR: "{os.path.normpath(filePath)}" not found.', None
 
     return 'SUCCESS', text
 
