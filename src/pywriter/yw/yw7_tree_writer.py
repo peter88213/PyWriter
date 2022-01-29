@@ -21,7 +21,7 @@ class Yw7TreeWriter():
         """
 
         if os.path.isfile(ywProject.filePath):
-            os.replace(ywProject.filePath, ywProject.filePath + '.bak')
+            os.replace(ywProject.filePath, f'{ywProject.filePath}.bak')
             backedUp = True
 
         else:
@@ -33,7 +33,7 @@ class Yw7TreeWriter():
         except:
 
             if backedUp:
-                os.replace(ywProject.filePath + '.bak', ywProject.filePath)
+                os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
 
             return f'ERROR: Cannot write "{os.path.normpath(ywProject.filePath)}".'
 

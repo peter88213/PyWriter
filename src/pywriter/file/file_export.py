@@ -237,7 +237,7 @@ class FileExport(Novel):
 
             if self.scenes[scId].day is not None:
                 day = self.scenes[scId].day
-                scDate = 'Day ' + self.scenes[scId].day
+                scDate = f'Day {self.scenes[scId].day}'
 
             else:
                 day = ''
@@ -268,7 +268,7 @@ class FileExport(Novel):
                 else:
                     minute = '00'
 
-                scTime = hour.zfill(2) + ':' + minute.zfill(2)
+                scTime = f'{hour:02}:{minute:02}'
 
             else:
                 hour = ''
@@ -279,7 +279,7 @@ class FileExport(Novel):
 
         if self.scenes[scId].lastsDays is not None and self.scenes[scId].lastsDays != '0':
             lastsDays = self.scenes[scId].lastsDays
-            days = self.scenes[scId].lastsDays + 'd '
+            days = f'{self.scenes[scId].lastsDays}d '
 
         else:
             lastsDays = ''
@@ -287,7 +287,7 @@ class FileExport(Novel):
 
         if self.scenes[scId].lastsHours is not None and self.scenes[scId].lastsHours != '0':
             lastsHours = self.scenes[scId].lastsHours
-            hours = self.scenes[scId].lastsHours + 'h '
+            hours = f'{self.scenes[scId].lastsHours}h '
 
         else:
             lastsHours = ''
@@ -295,13 +295,13 @@ class FileExport(Novel):
 
         if self.scenes[scId].lastsMinutes is not None and self.scenes[scId].lastsMinutes != '0':
             lastsMinutes = self.scenes[scId].lastsMinutes
-            minutes = self.scenes[scId].lastsMinutes + 'min'
+            minutes = f'{self.scenes[scId].lastsMinutes}min'
 
         else:
             lastsMinutes = ''
             minutes = ''
 
-        duration = days + hours + minutes
+        duration = f'{days}{hours}{minutes}'
 
         sceneMapping = dict(
             ID=scId,
@@ -717,7 +717,7 @@ class FileExport(Novel):
         text = self.get_text()
 
         if os.path.isfile(self.filePath):
-            os.replace(self.filePath, self.filePath + '.bak')
+            os.replace(self.filePath, f'{self.filePath}.bak')
             backedUp = True
 
         else:
@@ -731,7 +731,7 @@ class FileExport(Novel):
         except:
 
             if backedUp:
-                os.replace(self.filePath + '.bak', self.filePath)
+                os.replace(f'{self.filePath}.bak', self.filePath)
 
             return f'ERROR: Cannot write "{os.path.normpath(self.filePath)}".'
 

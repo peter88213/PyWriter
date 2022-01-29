@@ -24,19 +24,19 @@ class DataPostprocessor(Yw7Postprocessor):
 
         path, extension = os.path.splitext(filePath)
 
-        characterPath = path + '_Characters.xml'
+        characterPath = f'{path}_Characters.xml'
         message = super().postprocess_xml_file(characterPath)
 
         if message.startswith('ERROR'):
             return message
 
-        locationPath = path + '_Locations.xml'
+        locationPath = f'{path}_Locations.xml'
         message = super().postprocess_xml_file(locationPath)
 
         if message.startswith('ERROR'):
             return message
 
-        itemPath = path + '_Items.xml'
+        itemPath = f'{path}_Items.xml'
         message = super().postprocess_xml_file(itemPath)
 
         if message.startswith('ERROR'):

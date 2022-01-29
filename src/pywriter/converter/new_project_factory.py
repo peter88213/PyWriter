@@ -43,7 +43,7 @@ class NewProjectFactory(FileFactory):
             return 'ERROR: This document is not meant to be written back.', None, None
 
         fileName, fileExtension = os.path.splitext(sourcePath)
-        targetFile = Yw7File(fileName + Yw7File.EXTENSION, **kwargs)
+        targetFile = Yw7File(f'{fileName}{Yw7File.EXTENSION}', **kwargs)
 
         if sourcePath.endswith('.html'):
 
@@ -69,7 +69,7 @@ class NewProjectFactory(FileFactory):
 
                 if fileClass.SUFFIX is not None:
 
-                    if sourcePath.endswith(fileClass.SUFFIX + fileClass.EXTENSION):
+                    if sourcePath.endswith(f'{fileClass.SUFFIX}{fileClass.EXTENSION}'):
                         sourceFile = fileClass(sourcePath, **kwargs)
                         return 'SUCCESS', sourceFile, targetFile
 

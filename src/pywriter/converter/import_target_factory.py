@@ -44,9 +44,8 @@ class ImportTargetFactory(FileFactory):
 
         for fileClass in self.fileClasses:
 
-            if os.path.isfile(ywPathBasis + fileClass.EXTENSION):
-                targetFile = fileClass(
-                    ywPathBasis + fileClass.EXTENSION, **kwargs)
+            if os.path.isfile(f'{ywPathBasis}{fileClass.EXTENSION}'):
+                targetFile = fileClass(f'{ywPathBasis}{fileClass.EXTENSION}', **kwargs)
                 return 'SUCCESS', None, targetFile
 
         return 'ERROR: No yWriter project to write.', None, None

@@ -62,7 +62,7 @@ class OdfFile(FileExport):
         try:
             self.tear_down()
             os.mkdir(self.tempDir)
-            os.mkdir(self.tempDir + '/META-INF')
+            os.mkdir(f'{self.tempDir}/META-INF')
 
         except:
             return f'ERROR: Cannot create "{os.path.normpath(self.tempDir)}".'
@@ -70,7 +70,7 @@ class OdfFile(FileExport):
         # Generate mimetype.
 
         try:
-            with open(self.tempDir + '/mimetype', 'w', encoding='utf-8') as f:
+            with open(f'{self.tempDir}/mimetype', 'w', encoding='utf-8') as f:
                 f.write(self._MIMETYPE)
         except:
             return 'ERROR: Cannot write "mimetype"'
@@ -78,7 +78,7 @@ class OdfFile(FileExport):
         # Generate settings.xml.
 
         try:
-            with open(self.tempDir + '/settings.xml', 'w', encoding='utf-8') as f:
+            with open(f'{self.tempDir}/settings.xml', 'w', encoding='utf-8') as f:
                 f.write(self._SETTINGS_XML)
         except:
             return 'ERROR: Cannot write "settings.xml"'
@@ -86,7 +86,7 @@ class OdfFile(FileExport):
         # Generate META-INF\manifest.xml.
 
         try:
-            with open(self.tempDir + '/META-INF/manifest.xml', 'w', encoding='utf-8') as f:
+            with open(f'{self.tempDir}/META-INF/manifest.xml', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_XML)
         except:
             return 'ERROR: Cannot write "manifest.xml"'
@@ -115,12 +115,9 @@ class OdfFile(FileExport):
         metaMapping = dict(
             Author=self.author,
             Title=self.title,
-            Summary='<![CDATA[' + self.desc + ']]>',
-            Date=str(dt.year) + '-' + str(dt.month).rjust(2, '0') +
-            '-' + str(dt.day).rjust(2, '0'),
-            Time=str(dt.hour).rjust(2, '0') +
-            ':' + str(dt.minute).rjust(2, '0') +
-            ':' + str(dt.second).rjust(2, '0'),
+            Summary=f'<![CDATA[{self.desc}]]>',
+            Date=f'{dt.year}-{dt.month:02}-{dt.day:02}',
+            Time=f'{dt.hour:02}:{dt.minute:02}:{dt.second:02}',
         )
         template = Template(self._META_XML)
         text = template.safe_substitute(metaMapping)
@@ -148,7 +145,7 @@ class OdfFile(FileExport):
 
         self.originalPath = self._filePath
 
-        self._filePath = self.tempDir + '/content.xml'
+        self._filePath = f'{self.tempDir}/content.xml'
 
         message = super().write()
 

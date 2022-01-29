@@ -88,4 +88,4 @@ class HtmlProof(HtmlFile):
         Overwrites HTMLparser.handle_data().
         """
         if self._prefix is not None:
-            self._lines.append(self._prefix + data)
+            self._lines.append(f'{self._prefix}{data}')

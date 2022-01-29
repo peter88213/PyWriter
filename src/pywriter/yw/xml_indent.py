@@ -12,12 +12,12 @@ def indent(elem, level=0):
     Kudos to to Fredrik Lundh. 
     Source: http://effbot.org/zone/element-lib.htm#prettyprint
     """
-    i = "\n" + level * "  "
+    i = f'\n{level * "  "}'
 
     if len(elem):
 
         if not elem.text or not elem.text.strip():
-            elem.text = i + "  "
+            elem.text = f'{i}  '
 
         if not elem.tail or not elem.tail.strip():
             elem.tail = i

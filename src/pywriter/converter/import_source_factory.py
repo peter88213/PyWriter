@@ -30,7 +30,7 @@ class ImportSourceFactory(FileFactory):
 
             if fileClass.SUFFIX is not None:
 
-                if sourcePath.endswith(fileClass.SUFFIX + fileClass.EXTENSION):
+                if sourcePath.endswith(f'{fileClass.SUFFIX }{fileClass.EXTENSION}'):
                     sourceFile = fileClass(sourcePath, **kwargs)
                     return 'SUCCESS', sourceFile, None
 

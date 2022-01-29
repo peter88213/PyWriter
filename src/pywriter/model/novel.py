@@ -166,12 +166,11 @@ class Novel():
         else:
             suffix = ''
 
-        if filePath.lower().endswith((suffix + self.EXTENSION).lower()):
+        if filePath.lower().endswith(f'{suffix}{self.EXTENSION}'.lower()):
             self._filePath = filePath
             head, tail = os.path.split(os.path.realpath(filePath))
             self.projectPath = quote(head.replace('\\', '/'), '/:')
-            self.projectName = quote(tail.replace(
-                suffix + self.EXTENSION, ''))
+            self.projectName = quote(tail.replace(f'{suffix}{self.EXTENSION}', ''))
 
     def convert_to_yw(self, text):
         """Return text, converted from source format to yw7 markup.

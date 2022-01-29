@@ -39,7 +39,7 @@ class OdsPlotList(OdsFile):
     # $FieldTitle3
     # $FieldTitle4
 
-    fileHeader = OdsFile.CONTENT_XML_HEADER + DESCRIPTION + '''" table:style-name="ta1" table:print="false">
+    fileHeader = f'''{OdsFile.CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
     <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
@@ -207,28 +207,24 @@ class OdsPlotList(OdsFile):
             sceneMapping['Field1'] = '"string">\n'
 
         else:
-            sceneMapping['Field1'] = '"float" office:value="' + sceneMapping['Field1'] + \
-                '">\n      <text:p>' + sceneMapping['Field1'] + '</text:p>'
+            sceneMapping['Field1'] = f'"float" office:value="{sceneMapping["Field1"]}">\n      <text:p>{sceneMapping["Field1"]}</text:p>'
 
         if self.scenes[scId].field2 == '1' or not self.arc2:
             sceneMapping['Field2'] = '"string">\n'
 
         else:
-            sceneMapping['Field2'] = '"float" office:value="' + sceneMapping['Field2'] + \
-                '">\n      <text:p>' + sceneMapping['Field2'] + '</text:p>'
+            sceneMapping['Field2'] = f'"float" office:value="{sceneMapping["Field2"]}">\n      <text:p>{sceneMapping["Field2"]}</text:p>'
 
         if self.scenes[scId].field3 == '1' or not self.arc3:
             sceneMapping['Field3'] = '"string">\n'
 
         else:
-            sceneMapping['Field3'] = '"float" office:value="' + sceneMapping['Field3'] + \
-                '">\n      <text:p>' + sceneMapping['Field3'] + '</text:p>'
+            sceneMapping['Field3'] = f'"float" office:value="{sceneMapping["Field3"]}">\n      <text:p>{sceneMapping["Field3"]}</text:p>'
 
         if self.scenes[scId].field4 == '1' or not self.arc4:
             sceneMapping['Field4'] = '"string">\n'
 
         else:
-            sceneMapping['Field4'] = '"float" office:value="' + sceneMapping['Field4'] + \
-                '">\n      <text:p>' + sceneMapping['Field4'] + '</text:p>'
+            sceneMapping['Field4'] = f'"float" office:value="{sceneMapping["Field4"]}">\n      <text:p>{sceneMapping["Field4"]}</text:p>'
 
         return sceneMapping

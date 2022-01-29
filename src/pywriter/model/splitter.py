@@ -40,27 +40,27 @@ class Splitter():
             if parent.title:
 
                 if len(parent.title) > self.CLIP_TITLE:
-                    title = parent.title[:self.CLIP_TITLE] + '...'
+                    title = f'{parent.title[:self.CLIP_TITLE]}...'
 
                 else:
                     title = parent.title
 
-                newScene.title = title + ' Split: ' + str(splitCount)
+                newScene.title = f'{title} Split: {splitCount}'
 
             else:
-                newScene.title = 'New scene Split: ' + str(splitCount)
+                newScene.title = f'New scene Split: {splitCount}'
 
             if parent.desc and not parent.desc.startswith(WARNING):
-                parent.desc = WARNING + parent.desc
+                parent.desc = f'{WARNING}{parent.desc}'
 
             if parent.goal and not parent.goal.startswith(WARNING):
-                parent.goal = WARNING + parent.goal
+                parent.goal = f'{WARNING}{parent.goal}'
 
             if parent.conflict and not parent.conflict.startswith(WARNING):
-                parent.conflict = WARNING + parent.conflict
+                parent.conflict = f'{WARNING}{parent.conflict}'
 
             if parent.outcome and not parent.outcome.startswith(WARNING):
-                parent.outcome = WARNING + parent.outcome
+                parent.outcome = f'{WARNING}{parent.outcome}'
 
             # Reset the parent's status to Draft, if not Outline.
 

@@ -22,7 +22,7 @@ class DataWriter():
 
         path, extension = os.path.splitext(ywProject.filePath)
 
-        characterPath = path + '_Characters.xml'
+        characterPath = f'{path}_Characters.xml'
         characterSubtree = ywProject.tree.find('CHARACTERS')
         characterTree = ET.ElementTree(characterSubtree)
 
@@ -32,7 +32,7 @@ class DataWriter():
         except(PermissionError):
             return f'ERROR: "{os.path.normpath(characterPath)}" is write protected.'
 
-        locationPath = path + '_Locations.xml'
+        locationPath = f'{path}_Locations.xml'
         locationSubtree = ywProject.tree.find('LOCATIONS')
         locationTree = ET.ElementTree(locationSubtree)
 
@@ -42,7 +42,7 @@ class DataWriter():
         except(PermissionError):
             return f'ERROR: "{os.path.normpath(locationPath)}" is write protected.'
 
-        itemPath = path + '_Items.xml'
+        itemPath = f'{path}_Items.xml'
         itemSubtree = ywProject.tree.find('ITEMS')
         itemTree = ET.ElementTree(itemSubtree)
 

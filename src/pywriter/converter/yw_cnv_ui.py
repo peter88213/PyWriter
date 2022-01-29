@@ -162,7 +162,7 @@ class YwCnvUi(YwCnv):
 
     def confirm_overwrite(self, filePath):
         """Return boolean permission to overwrite the target file, overriding the superclass method."""
-        return self.ui.ask_yes_no('Overwrite existing file "{os.path.normpath(filePath)}"?')
+        return self.ui.ask_yes_no(f'Overwrite existing file "{os.path.normpath(filePath)}"?')
 
     def delete_tempfile(self, filePath):
         """Delete filePath if it is a temporary file no longer needed."""

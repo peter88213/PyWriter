@@ -16,7 +16,7 @@ class UiCmd(Ui):
         print(title)
 
     def ask_yes_no(self, text):
-        result = input('WARNING: ' + text + ' (y/n)')
+        result = input(f'WARNING: {text} (y/n)')
 
         if result.lower() == 'y':
             return True

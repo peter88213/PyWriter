@@ -1133,7 +1133,7 @@ class OdtFile(OdfFile):
         # Generate manifest.rdf
 
         try:
-            with open(self.tempDir + '/manifest.rdf', 'w', encoding='utf-8') as f:
+            with open(f'{self.tempDir}/manifest.rdf', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_RDF)
         except:
             return 'ERROR: Cannot write "manifest.rdf"'
@@ -1155,8 +1155,7 @@ class OdtFile(OdfFile):
             ['[/i]', '</text:span>'],
             ['[b]', '<text:span text:style-name="Strong_20_Emphasis">'],
             ['[/b]', '</text:span>'],
-            ['/*', '<office:annotation><dc:creator>' +
-                self.author + '</dc:creator><text:p>'],
+            ['/*', f'<office:annotation><dc:creator>{self.author}</dc:creator><text:p>'],
             ['*/', '</text:p></office:annotation>'],
         ]
 
@@ -1171,28 +1170,28 @@ class OdtFile(OdfFile):
 
             for line in lines:
                 if italics:
-                    line = '[i]' + line
+                    line = f'[i]{line}'
                     italics = False
 
                 while line.count('[i]') > line.count('[/i]'):
-                    line += '[/i]'
+                    line = f'{line}[/i]'
                     italics = True
 
                 while line.count('[/i]') > line.count('[i]'):
-                    line = '[i]' + line
+                    line = f'[i]{line}'
 
                 line = line.replace('[i][/i]', '')
 
                 if bold:
-                    line = '[b]' + line
+                    line = f'[b]{line}'
                     bold = False
 
                 while line.count('[b]') > line.count('[/b]'):
-                    line += '[/b]'
+                    line = f'{line}[/b]'
                     bold = True
 
                 while line.count('[/b]') > line.count('[b]'):
-                    line = '[b]' + line
+                    line = f'[b]{line}'
 
                 line = line.replace('[b][/b]', '')
 

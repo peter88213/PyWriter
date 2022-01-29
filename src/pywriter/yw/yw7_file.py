@@ -1049,7 +1049,7 @@ class Yw7File(Novel):
             # Date/time information
 
             if (prjScn.date is not None) and (prjScn.time is not None):
-                dateTime = prjScn.date + ' ' + prjScn.time
+                dateTime = f'{prjScn.date} {prjScn.time}'
 
                 if xmlScn.find('SpecificDateTime') is not None:
                     xmlScn.find('SpecificDateTime').text = dateTime
@@ -1573,4 +1573,4 @@ class Yw7File(Novel):
         """Return True if a .lock file placed by yWriter exists.
         Otherwise, return False. 
         """
-        return os.path.isfile(self.filePath + '.lock')
+        return os.path.isfile(f'{self.filePath}.lock')

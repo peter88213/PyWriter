@@ -37,10 +37,8 @@ class Yw7Postprocessor():
         for line in lines:
 
             for tag in self._CDATA_TAGS:
-                line = re.sub('\<' + tag + '\>', '<' +
-                              tag + '><![CDATA[', line)
-                line = re.sub('\<\/' + tag + '\>',
-                              ']]></' + tag + '>', line)
+                line = re.sub(f'\<{tag}\>', f'<{tag}><![CDATA[', line)
+                line = re.sub(f'\<\/{tag}\>', f']]></{tag}>', line)
 
             newlines.append(line)
 
@@ -62,7 +60,7 @@ class Yw7Postprocessor():
             text = f.read()
 
         text = self._format_xml(text)
-        text = '<?xml version="1.0" encoding="utf-8"?>\n' + text
+        text = f'<?xml version="1.0" encoding="utf-8"?>\n{text}'
 
         try:
 

@@ -40,8 +40,7 @@ class ExportTargetFactory(FileFactory):
                 if suffix is None:
                     suffix = ''
 
-                targetFile = fileClass(
-                    fileName + suffix + fileClass.EXTENSION, **kwargs)
+                targetFile = fileClass(f'{fileName}{suffix}{fileClass.EXTENSION}', **kwargs)
                 return 'SUCCESS', None, targetFile
 
         return f'ERROR: File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
