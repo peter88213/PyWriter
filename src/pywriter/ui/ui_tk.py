@@ -26,7 +26,7 @@ class UiTk(Ui):
         self.appInfo.grid(row=self.rowCount, column=1, padx=5, pady=5)
 
         self.rowCount += 1
-        self.processInfo = Label(self.root, text='', width=60)
+        self.processInfo = Label(self.root, text='')
         self.processInfo.grid(row=self.rowCount, column=1, pady=10, padx=10)
 
         self.rowCount += 1
