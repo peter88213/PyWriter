@@ -10,8 +10,11 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
 
+from pywriter.pywriter_globals import ERROR
+from pywriter.ui.ui import Ui
 
-class MainTk():
+
+class MainTk(Ui):
     """A tkinter GUI root class.
     Main menu, title bar, main window frame, status bar, path bar.
     """
@@ -25,6 +28,8 @@ class MainTk():
         - Create a status bar to be used by subclasses.
         - Create a path bar for the project file path.
         """
+        super().__init__(title)
+        self.statusText = ''
         self.kwargs = kwargs
         self.ywPrj = None
 
@@ -82,6 +87,7 @@ class MainTk():
         Return the file name.
         To be extended by subclasses.
         """
+        self.set_status(self.statusText)
         initDir = os.path.dirname(self.kwargs['yw_last_open'])
 
         if not initDir:
@@ -95,7 +101,6 @@ class MainTk():
             self.kwargs['yw_last_open'] = fileName
             self.pathBar.config(text=os.path.normpath(fileName))
 
-        self.statusBar.config(text='')
         return fileName
 
     def close_project(self):
@@ -105,7 +110,7 @@ class MainTk():
         """
         self.ywPrj = None
         self.titleBar.config(text='')
-        self.statusBar.config(text='')
+        self.set_status('')
         self.pathBar.config(text='')
         self.disable_menu()
 
@@ -114,3 +119,27 @@ class MainTk():
         Return True or False depending on user input.
         """
         return messagebox.askyesno('WARNING', text)
+
+    def set_info_how(self, message):
+        """How's the application doing?
+        Put a message on the status bar.
+        """
+
+        if message.startswith(ERROR):
+            self.statusBar.config(bg='red')
+            self.statusBar.config(fg='white')
+            self.infoHowText = message.split(ERROR, maxsplit=1)[1].strip()
+
+        else:
+            self.statusBar.config(bg='green')
+            self.statusBar.config(fg='white')
+            self.infoHowText = message
+
+        self.statusBar.config(text=self.infoHowText)
+
+    def set_status(self, message):
+        """Put text on the status bar."""
+        self.statusText = message
+        self.statusBar.config(bg=self.root.cget('background'))
+        self.statusBar.config(fg='black')
+        self.statusBar.config(text=message)
