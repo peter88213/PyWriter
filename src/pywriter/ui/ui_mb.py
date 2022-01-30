@@ -6,6 +6,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 from tkinter import messagebox
 import tkinter as tk
+
+from pywriter.pywriter_globals import ERROR
 from pywriter.ui.ui import Ui
 
 
@@ -26,7 +28,7 @@ class UiMb(Ui):
     def set_info_how(self, message):
         """Override the superclass method."""
 
-        if message.startswith('ERROR'):
+        if message.startswith(ERROR):
             messagebox.showerror(self.title, message)
 
         else:

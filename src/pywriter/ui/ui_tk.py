@@ -7,6 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from tkinter import *
 from tkinter import messagebox
 
+from pywriter.pywriter_globals import ERROR
 from pywriter.ui.ui import Ui
 
 
@@ -52,7 +53,7 @@ class UiTk(Ui):
         self.infoHowText = message
         self.processInfo.config(text=message)
 
-        if message.startswith('ERROR'):
+        if message.startswith(ERROR):
             self.successInfo.config(bg='red')
 
         else:

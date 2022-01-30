@@ -4,8 +4,9 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 import os
+
+from pywriter.pywriter_globals import ERROR
 
 
 class Yw7TreeWriter():
@@ -35,6 +36,6 @@ class Yw7TreeWriter():
             if backedUp:
                 os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
 
-            return f'ERROR: Cannot write "{os.path.normpath(ywProject.filePath)}".'
+            return f'{ERROR}: Cannot write "{os.path.normpath(ywProject.filePath)}".'
 
         return 'SUCCESS'

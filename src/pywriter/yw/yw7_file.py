@@ -9,17 +9,16 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import xml.etree.ElementTree as ET
 
+from pywriter.pywriter_globals import ERROR
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.character import Character
 from pywriter.model.world_element import WorldElement
-
+from pywriter.model.splitter import Splitter
 from pywriter.yw.xml_indent import indent
 from pywriter.yw.yw7_tree_writer import Yw7TreeWriter
 from pywriter.yw.yw7_postprocessor import Yw7Postprocessor
-
-from pywriter.model.splitter import Splitter
 
 
 class Yw7File(Novel):
@@ -72,13 +71,13 @@ class Yw7File(Novel):
         """
 
         if self.is_locked():
-            return 'ERROR: yWriter seems to be open. Please close first.'
+            return f'{ERROR}: yWriter seems to be open. Please close first.'
 
         try:
             self.tree = ET.parse(self.filePath)
 
         except:
-            return f'ERROR: Can not process "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}: Can not process "{os.path.normpath(self.filePath)}".'
 
         root = self.tree.getroot()
 
@@ -494,7 +493,7 @@ class Yw7File(Novel):
             message = self.read()
             # initialize data
 
-            if message.startswith('ERROR'):
+            if message.startswith(ERROR):
                 return message
 
         #--- Merge and re-order locations.
@@ -1423,7 +1422,7 @@ class Yw7File(Novel):
         #--- Start write method.
 
         if self.is_locked():
-            return 'ERROR: yWriter seems to be open. Please close first.'
+            return f'{ERROR}: yWriter seems to be open. Please close first.'
 
         TAG = 'YWRITER7'
         xmlScenes = {}
@@ -1564,7 +1563,7 @@ class Yw7File(Novel):
         self.tree = ET.ElementTree(root)
         message = self.ywTreeWriter.write_element_tree(self)
 
-        if message.startswith('ERROR'):
+        if message.startswith(ERROR):
             return message
 
         return self.ywPostprocessor.postprocess_xml_file(self.filePath)

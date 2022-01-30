@@ -6,10 +6,10 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 import re
 from html.parser import HTMLParser
 
+from pywriter.pywriter_globals import ERROR
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
@@ -133,7 +133,7 @@ class HtmlFile(Novel, HTMLParser):
         """
         result = read_html_file(self.filePath)
 
-        if result[0].startswith('ERROR'):
+        if result[0].startswith(ERROR):
             return (result[0])
 
         text = self.preprocess(result[1])

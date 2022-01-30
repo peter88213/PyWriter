@@ -4,10 +4,11 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 import os
 import re
 from html import unescape
+
+from pywriter.pywriter_globals import ERROR
 
 
 class Yw7Postprocessor():
@@ -68,6 +69,6 @@ class Yw7Postprocessor():
                 f.write(text)
 
         except:
-            return f'ERROR: Can not write "{os.path.normpath(filePath)}".'
+            return f'{ERROR}: Can not write "{os.path.normpath(filePath)}".'
 
         return f'SUCCESS: "{os.path.normpath(filePath)}" written.'

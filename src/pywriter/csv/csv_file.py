@@ -9,6 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import csv
 
+from pywriter.pywriter_globals import ERROR
 from pywriter.model.novel import Novel
 
 
@@ -45,15 +46,15 @@ class CsvFile(Novel):
                     # as a list of strings
 
                     if len(row) != cellsPerRow:
-                        return 'ERROR: Wrong csv structure.'
+                        return f'{ERROR}: Wrong csv structure.'
 
                     self.rows.append(row)
 
         except(FileNotFoundError):
-            return f'ERROR: "{os.path.normpath(self.filePath)}" not found.'
+            return f'{ERROR}: "{os.path.normpath(self.filePath)}" not found.'
 
         except:
-            return f'ERROR: Can not parse "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}: Can not parse "{os.path.normpath(self.filePath)}".'
 
         return 'SUCCESS'
 

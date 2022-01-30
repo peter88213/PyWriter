@@ -8,6 +8,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 
+from pywriter.pywriter_globals import ERROR
+
 
 class YwCnv():
     """Base class for Novel file conversion.
@@ -38,29 +40,29 @@ class YwCnv():
         # Initial error handling.
 
         if sourceFile.filePath is None:
-            return f'ERROR: Source "{os.path.normpath(sourceFile.filePath)}" is not of the supported type.'
+            return f'{ERROR}: Source "{os.path.normpath(sourceFile.filePath)}" is not of the supported type.'
 
         if not os.path.isfile(sourceFile.filePath):
-            return f'ERROR: "{os.path.normpath(sourceFile.filePath)}" not found.'
+            return f'{ERROR}: "{os.path.normpath(sourceFile.filePath)}" not found.'
 
         if targetFile.filePath is None:
-            return f'ERROR: Target "{os.path.normpath(targetFile.filePath)}" is not of the supported type.'
+            return f'{ERROR}: Target "{os.path.normpath(targetFile.filePath)}" is not of the supported type.'
 
         if os.path.isfile(targetFile.filePath) and not self.confirm_overwrite(targetFile.filePath):
-            return 'ERROR: Action canceled by user.'
+            return f'{ERROR}: Action canceled by user.'
 
         # Make the source object read the source file.
 
         message = sourceFile.read()
 
-        if message.startswith('ERROR'):
+        if message.startswith(ERROR):
             return message
 
         # Make the target object merge the source object's instance variables.
 
         message = targetFile.merge(sourceFile)
 
-        if message.startswith('ERROR'):
+        if message.startswith(ERROR):
             return message
 
         # Make the source object write the target file.

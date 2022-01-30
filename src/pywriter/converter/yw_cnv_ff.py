@@ -6,6 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 
+from pywriter.pywriter_globals import ERROR
 from pywriter.converter.yw_cnv_ui import YwCnvUi
 from pywriter.converter.file_factory import FileFactory
 from pywriter.converter.export_source_factory import ExportSourceFactory
@@ -68,17 +69,17 @@ class YwCnvFf(YwCnvUi):
 
         message, sourceFile, dummy = self.exportSourceFactory.make_file_objects(sourcePath, **kwargs)
 
-        if message.startswith('ERROR'):
+        if message.startswith(ERROR):
             # The source file is not a yWriter project.
 
             message, sourceFile, dummy = self.importSourceFactory.make_file_objects(sourcePath, **kwargs)
 
-            if message.startswith('ERROR'):
+            if message.startswith(ERROR):
                 # A new yWriter project might be required.
 
                 message, sourceFile, targetFile = self.newProjectFactory.make_file_objects(sourcePath, **kwargs)
 
-                if message.startswith('ERROR'):
+                if message.startswith(ERROR):
                     self.ui.set_info_how(message)
 
                 else:
@@ -90,7 +91,7 @@ class YwCnvFf(YwCnvUi):
                 kwargs['suffix'] = sourceFile.SUFFIX
                 message, dummy, targetFile = self.importTargetFactory.make_file_objects(sourcePath, **kwargs)
 
-                if message.startswith('ERROR'):
+                if message.startswith(ERROR):
                     self.ui.set_info_how(message)
 
                 else:
@@ -101,7 +102,7 @@ class YwCnvFf(YwCnvUi):
 
             message, dummy, targetFile = self.exportTargetFactory.make_file_objects(sourcePath, **kwargs)
 
-            if message.startswith('ERROR'):
+            if message.startswith(ERROR):
                 self.ui.set_info_how(message)
 
             else:

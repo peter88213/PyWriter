@@ -7,6 +7,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import xml.etree.ElementTree as ET
 
+from pywriter.pywriter_globals import ERROR
+
 
 class DataWriter():
     """Write utf-8 encoded yWriter XML data files.
@@ -30,7 +32,7 @@ class DataWriter():
             characterTree.write(characterPath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return f'ERROR: "{os.path.normpath(characterPath)}" is write protected.'
+            return f'{ERROR}: "{os.path.normpath(characterPath)}" is write protected.'
 
         locationPath = f'{path}_Locations.xml'
         locationSubtree = ywProject.tree.find('LOCATIONS')
@@ -40,7 +42,7 @@ class DataWriter():
             locationTree.write(locationPath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return f'ERROR: "{os.path.normpath(locationPath)}" is write protected.'
+            return f'{ERROR}: "{os.path.normpath(locationPath)}" is write protected.'
 
         itemPath = f'{path}_Items.xml'
         itemSubtree = ywProject.tree.find('ITEMS')
@@ -50,6 +52,6 @@ class DataWriter():
             itemTree.write(itemPath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return f'ERROR: "{os.path.normpath(itemPath)}" is write protected.'
+            return f'{ERROR}: "{os.path.normpath(itemPath)}" is write protected.'
 
         return 'SUCCESS'

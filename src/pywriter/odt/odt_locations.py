@@ -34,6 +34,6 @@ class OdtLocations(OdtFile):
         locationMapping = super().get_locationMapping(lcId)
 
         if self.locations[lcId].aka:
-            locationMapping['AKA'] = ' ("{}")'.format(self.locations[lcId].aka)
+            locationMapping['AKA'] = f' ("{self.locations[lcId].aka}")'
 
         return locationMapping

@@ -16,6 +16,7 @@ import unittest
 import zipfile
 from shutil import copyfile
 
+from pywriter.pywriter_globals import ERROR
 from pywriter.converter.yw7_converter import Yw7Converter
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
@@ -116,7 +117,7 @@ class NrmOpr(unittest.TestCase):
         converter.run(TEST_HTML)
 
         self.assertEqual(converter.ui.infoHowText,
-                         'ERROR: This document is not meant to be written back.')
+                         f'{ERROR}: This document is not meant to be written back.')
 
         self.assertEqual(read_file(TEST_YW7),
                          read_file(REFERENCE_YW7))

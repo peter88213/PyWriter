@@ -9,6 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 from string import Template
 
+from pywriter.pywriter_globals import ERROR
 from pywriter.model.character import Character
 from pywriter.model.scene import Scene
 from pywriter.model.novel import Novel
@@ -733,7 +734,7 @@ class FileExport(Novel):
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
 
-            return f'ERROR: Cannot write "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}: Cannot write "{os.path.normpath(self.filePath)}".'
 
         return f'SUCCESS: "{os.path.normpath(self.filePath)}" written.'
 

@@ -5,6 +5,8 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
+
+from pywriter.pywriter_globals import ERROR
 from pywriter.yw.yw7_postprocessor import Yw7Postprocessor
 
 
@@ -27,19 +29,19 @@ class DataPostprocessor(Yw7Postprocessor):
         characterPath = f'{path}_Characters.xml'
         message = super().postprocess_xml_file(characterPath)
 
-        if message.startswith('ERROR'):
+        if message.startswith(ERROR):
             return message
 
         locationPath = f'{path}_Locations.xml'
         message = super().postprocess_xml_file(locationPath)
 
-        if message.startswith('ERROR'):
+        if message.startswith(ERROR):
             return message
 
         itemPath = f'{path}_Items.xml'
         message = super().postprocess_xml_file(itemPath)
 
-        if message.startswith('ERROR'):
+        if message.startswith(ERROR):
             return message
 
         return 'SUCCESS: All XML data files written.'

@@ -6,12 +6,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 
+from pywriter.pywriter_globals import ERROR
 from pywriter.converter.file_factory import FileFactory
-
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.html.html_import import HtmlImport
 from pywriter.html.html_outline import HtmlOutline
-
 from pywriter.html.html_fop import read_html_file
 
 
@@ -40,7 +39,7 @@ class NewProjectFactory(FileFactory):
         - targetFile: a Novel subclass instance
         """
         if not self._canImport(sourcePath):
-            return 'ERROR: This document is not meant to be written back.', None, None
+            return f'{ERROR}: This document is not meant to be written back.', None, None
 
         fileName, fileExtension = os.path.splitext(sourcePath)
         targetFile = Yw7File(f'{fileName}{Yw7File.EXTENSION}', **kwargs)
@@ -51,7 +50,7 @@ class NewProjectFactory(FileFactory):
 
             result = read_html_file(sourcePath)
 
-            if result[0].startswith('ERROR'):
+            if result[0].startswith(ERROR):
                 return result[0], None, None
 
             else:
@@ -73,7 +72,7 @@ class NewProjectFactory(FileFactory):
                         sourceFile = fileClass(sourcePath, **kwargs)
                         return 'SUCCESS', sourceFile, targetFile
 
-            return f'ERROR: File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
+            return f'{ERROR}: File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
 
     def _canImport(self, sourcePath):
         """Return True, if the file located at sourcepath is of an importable type.
