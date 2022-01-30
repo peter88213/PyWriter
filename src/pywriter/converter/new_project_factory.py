@@ -51,7 +51,10 @@ class NewProjectFactory(FileFactory):
 
             result = read_html_file(sourcePath)
 
-            if result[0].startswith('SUCCESS'):
+            if result[0].startswith('ERROR'):
+                return result[0], None, None
+
+            else:
 
                 if "<h3" in result[1].lower():
                     sourceFile = HtmlOutline(sourcePath, **kwargs)
@@ -60,9 +63,6 @@ class NewProjectFactory(FileFactory):
                     sourceFile = HtmlImport(sourcePath, **kwargs)
 
                 return 'SUCCESS', sourceFile, targetFile
-
-            else:
-                return f'ERROR: Cannot read "{os.path.normpath(sourcePath)}".', None, None
 
         else:
             for fileClass in self.fileClasses:

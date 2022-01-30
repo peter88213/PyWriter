@@ -68,39 +68,41 @@ class YwCnvFf(YwCnvUi):
 
         message, sourceFile, dummy = self.exportSourceFactory.make_file_objects(sourcePath, **kwargs)
 
-        if message.startswith('SUCCESS'):
-            # The source file is a yWriter project.
-
-            message, dummy, targetFile = self.exportTargetFactory.make_file_objects(sourcePath, **kwargs)
-
-            if message.startswith('SUCCESS'):
-                self.export_from_yw(sourceFile, targetFile)
-
-            else:
-                self.ui.set_info_how(message)
-
-        else:
+        if message.startswith('ERROR'):
             # The source file is not a yWriter project.
 
             message, sourceFile, dummy = self.importSourceFactory.make_file_objects(sourcePath, **kwargs)
 
-            if message.startswith('SUCCESS'):
-                kwargs['suffix'] = sourceFile.SUFFIX
-                message, dummy, targetFile = self.importTargetFactory.make_file_objects(sourcePath, **kwargs)
-
-                if message.startswith('SUCCESS'):
-                    self.import_to_yw(sourceFile, targetFile)
-
-                else:
-                    self.ui.set_info_how(message)
-
-            else:
+            if message.startswith('ERROR'):
                 # A new yWriter project might be required.
 
                 message, sourceFile, targetFile = self.newProjectFactory.make_file_objects(sourcePath, **kwargs)
 
-                if message.startswith('SUCCESS'):
-                    self.create_yw7(sourceFile, targetFile)
+                if message.startswith('ERROR'):
+                    self.ui.set_info_how(message)
 
                 else:
+                    self.create_yw7(sourceFile, targetFile)
+
+            else:
+                # Try to update an existing yWriter project.
+
+                kwargs['suffix'] = sourceFile.SUFFIX
+                message, dummy, targetFile = self.importTargetFactory.make_file_objects(sourcePath, **kwargs)
+
+                if message.startswith('ERROR'):
                     self.ui.set_info_how(message)
+
+                else:
+                    self.import_to_yw(sourceFile, targetFile)
+
+        else:
+            # The source file is a yWriter project.
+
+            message, dummy, targetFile = self.exportTargetFactory.make_file_objects(sourcePath, **kwargs)
+
+            if message.startswith('ERROR'):
+                self.ui.set_info_how(message)
+
+            else:
+                self.export_from_yw(sourceFile, targetFile)

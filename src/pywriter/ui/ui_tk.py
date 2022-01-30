@@ -52,11 +52,11 @@ class UiTk(Ui):
         self.infoHowText = message
         self.processInfo.config(text=message)
 
-        if message.startswith('SUCCESS'):
-            self.successInfo.config(bg='green')
+        if message.startswith('ERROR'):
+            self.successInfo.config(bg='red')
 
         else:
-            self.successInfo.config(bg='red')
+            self.successInfo.config(bg='green')
 
     def start(self):
         """Start the Tk main loop."""
