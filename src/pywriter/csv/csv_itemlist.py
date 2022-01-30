@@ -23,7 +23,7 @@ class CsvItemList(CsvFile):
     def read(self):
         """Parse the csv file located at filePath, 
         fetching the WorldElement attributes contained.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         Extend the superclass method.
         """
         message = super().read()
@@ -42,4 +42,4 @@ class CsvItemList(CsvFile):
                 self.items[itId].aka = cells[3]
                 self.items[itId].tags = self.get_list(cells[4])
 
-        return 'SUCCESS'
+        return 'Item data read in.'

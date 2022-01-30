@@ -29,6 +29,7 @@ class UiMb(Ui):
         """Override the superclass method."""
 
         if message.startswith(ERROR):
+            message = message.split(ERROR, maxsplit=1)[1].strip()
             messagebox.showerror(self.title, message)
 
         else:

@@ -1137,9 +1137,9 @@ class OdtFile(OdfFile):
             with open(f'{self.tempDir}/manifest.rdf', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_RDF)
         except:
-            return f'{ERROR}: Cannot write "manifest.rdf"'
+            return f'{ERROR}Cannot write "manifest.rdf"'
 
-        return 'SUCCESS: ODT structure generated.'
+        return 'ODT structure generated.'
 
     def convert_from_yw(self, text):
         """Convert yw7 raw markup to odt. Return an xml string.

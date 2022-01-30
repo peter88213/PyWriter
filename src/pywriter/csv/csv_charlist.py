@@ -24,7 +24,7 @@ class CsvCharList(CsvFile):
     def read(self):
         """Parse the csv file located at filePath, 
         fetching the Character attributes contained.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         Extend the superclass method.
         """
         message = super().read()
@@ -54,4 +54,4 @@ class CsvCharList(CsvFile):
                 self.characters[crId].tags = self.get_list(cells[8])
                 self.characters[crId].notes = self.convert_to_yw(cells[9])
 
-        return 'SUCCESS'
+        return 'Character data read in.'

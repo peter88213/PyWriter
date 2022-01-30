@@ -22,7 +22,7 @@ class ImportSourceFactory(FileFactory):
             sourcePath -- string; path to the source file to convert.
 
         Return a tuple with three elements:
-        - A message string starting with 'SUCCESS' or 'ERROR'
+        - A message beginning with the ERROR constant in case of error
         - sourceFile: a Novel subclass instance, or None in case of error
         - targetFile: None
         """
@@ -33,6 +33,6 @@ class ImportSourceFactory(FileFactory):
 
                 if sourcePath.endswith(f'{fileClass.SUFFIX }{fileClass.EXTENSION}'):
                     sourceFile = fileClass(sourcePath, **kwargs)
-                    return 'SUCCESS', sourceFile, None
+                    return 'Source object created.', sourceFile, None
 
-        return f'{ERROR}: This document is not meant to be written back.', None, None
+        return f'{ERROR}This document is not meant to be written back.', None, None

@@ -28,7 +28,7 @@ class YwCnv():
         1. Make the source object read the source file.
         2. Make the target object merge the source object's instance variables.
         3. Make the target object write the target file.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
 
         Error handling:
         - Check if sourceFile and targetFile are correctly initialized.
@@ -40,16 +40,16 @@ class YwCnv():
         # Initial error handling.
 
         if sourceFile.filePath is None:
-            return f'{ERROR}: Source "{os.path.normpath(sourceFile.filePath)}" is not of the supported type.'
+            return f'{ERROR}Source "{os.path.normpath(sourceFile.filePath)}" is not of the supported type.'
 
         if not os.path.isfile(sourceFile.filePath):
-            return f'{ERROR}: "{os.path.normpath(sourceFile.filePath)}" not found.'
+            return f'{ERROR}"{os.path.normpath(sourceFile.filePath)}" not found.'
 
         if targetFile.filePath is None:
-            return f'{ERROR}: Target "{os.path.normpath(targetFile.filePath)}" is not of the supported type.'
+            return f'{ERROR}Target "{os.path.normpath(targetFile.filePath)}" is not of the supported type.'
 
         if os.path.isfile(targetFile.filePath) and not self.confirm_overwrite(targetFile.filePath):
-            return f'{ERROR}: Action canceled by user.'
+            return f'{ERROR}Action canceled by user.'
 
         # Make the source object read the source file.
 

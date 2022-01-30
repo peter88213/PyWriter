@@ -54,7 +54,7 @@ class Yw7Postprocessor():
         '''Postprocess the xml file created by ElementTree:
         Put a header on top, insert the missing CDATA tags,
         and replace xml entities by plain text.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         '''
 
         with open(filePath, 'r', encoding='utf-8') as f:
@@ -69,6 +69,6 @@ class Yw7Postprocessor():
                 f.write(text)
 
         except:
-            return f'{ERROR}: Can not write "{os.path.normpath(filePath)}".'
+            return f'{ERROR}Can not write "{os.path.normpath(filePath)}".'
 
-        return f'SUCCESS: "{os.path.normpath(filePath)}" written.'
+        return f'"{os.path.normpath(filePath)}" written.'

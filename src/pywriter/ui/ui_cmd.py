@@ -4,6 +4,7 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.pywriter_globals import ERROR
 from pywriter.ui.ui import Ui
 
 
@@ -30,5 +31,9 @@ class UiCmd(Ui):
 
     def set_info_how(self, message):
         """How's the converter doing?"""
+
+        if message.startswith(ERROR):
+            message = f'FAIL: {message.split(ERROR, maxsplit=1)[1].strip()}'
+
         self.infoHowText = message
         print(message)

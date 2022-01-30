@@ -34,12 +34,12 @@ class NewProjectFactory(FileFactory):
             sourcePath -- string; path to the source file to convert.
 
         Return a tuple with three elements:
-        - A message string starting with 'SUCCESS' or 'ERROR'
+        - A message beginning with the ERROR constant in case of error
         - sourceFile: a Novel subclass instance
         - targetFile: a Novel subclass instance
         """
         if not self._canImport(sourcePath):
-            return f'{ERROR}: This document is not meant to be written back.', None, None
+            return f'{ERROR}This document is not meant to be written back.', None, None
 
         fileName, fileExtension = os.path.splitext(sourcePath)
         targetFile = Yw7File(f'{fileName}{Yw7File.EXTENSION}', **kwargs)
@@ -61,7 +61,7 @@ class NewProjectFactory(FileFactory):
                 else:
                     sourceFile = HtmlImport(sourcePath, **kwargs)
 
-                return 'SUCCESS', sourceFile, targetFile
+                return 'Source and target objects created.', sourceFile, targetFile
 
         else:
             for fileClass in self.fileClasses:
@@ -70,9 +70,9 @@ class NewProjectFactory(FileFactory):
 
                     if sourcePath.endswith(f'{fileClass.SUFFIX}{fileClass.EXTENSION}'):
                         sourceFile = fileClass(sourcePath, **kwargs)
-                        return 'SUCCESS', sourceFile, targetFile
+                        return 'Source and target objects created.', sourceFile, targetFile
 
-            return f'{ERROR}: File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
+            return f'{ERROR}File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
 
     def _canImport(self, sourcePath):
         """Return True, if the file located at sourcepath is of an importable type.

@@ -12,7 +12,7 @@ from pywriter.pywriter_globals import ERROR
 def read_html_file(filePath):
     """Open a html file being encoded utf-8 or ANSI.
     Return a tuple:
-    [0] = Message beginning with SUCCESS or ERROR.
+    [0] = Message beginning with the ERROR constant in case of error.
     [1] = The file content in a single string. 
     """
     try:
@@ -25,9 +25,9 @@ def read_html_file(filePath):
                 text = (f.read())
 
         except(FileNotFoundError):
-            return f'{ERROR}: "{os.path.normpath(filePath)}" not found.', None
+            return f'{ERROR}"{os.path.normpath(filePath)}" not found.', None
 
-    return 'SUCCESS', text
+    return 'HTML data read in.', text
 
 
 if __name__ == '__main__':

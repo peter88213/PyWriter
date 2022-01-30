@@ -24,7 +24,7 @@ class ExportSourceFactory(FileFactory):
             sourcePath -- string; path to the source file to convert.
 
         Return a tuple with three elements:
-        - A message string starting with 'SUCCESS' or 'ERROR'
+        - A message beginning with the ERROR constant in case of error
         - sourceFile: a YwFile subclass instance, or None in case of error
         - targetFile: None
         """
@@ -34,6 +34,6 @@ class ExportSourceFactory(FileFactory):
 
             if fileClass.EXTENSION == fileExtension:
                 sourceFile = fileClass(sourcePath, **kwargs)
-                return 'SUCCESS', sourceFile, None
+                return 'Source object created.', sourceFile, None
 
-        return f'{ERROR}: File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
+        return f'{ERROR}File type of "{os.path.normpath(sourcePath)}" not supported.', None, None

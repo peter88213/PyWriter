@@ -27,7 +27,7 @@ class ExportTargetFactory(FileFactory):
             suffix -- string; an indicator for the target file type.
 
         Return a tuple with three elements:
-        - A message string starting with 'SUCCESS' or 'ERROR'
+        - A message beginning with the ERROR constant in case of error
         - sourceFile: None
         - targetFile: a FileExport subclass instance, or None in case of error 
         """
@@ -42,6 +42,6 @@ class ExportTargetFactory(FileFactory):
                     suffix = ''
 
                 targetFile = fileClass(f'{fileName}{suffix}{fileClass.EXTENSION}', **kwargs)
-                return 'SUCCESS', None, targetFile
+                return 'Target object created.', None, targetFile
 
-        return f'{ERROR}: File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
+        return f'{ERROR}File type of "{os.path.normpath(sourcePath)}" not supported.', None, None

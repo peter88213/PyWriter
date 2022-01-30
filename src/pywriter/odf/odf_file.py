@@ -66,7 +66,7 @@ class OdfFile(FileExport):
             os.mkdir(f'{self.tempDir}/META-INF')
 
         except:
-            return f'{ERROR}: Cannot create "{os.path.normpath(self.tempDir)}".'
+            return f'{ERROR}Cannot create "{os.path.normpath(self.tempDir)}".'
 
         # Generate mimetype.
 
@@ -74,7 +74,7 @@ class OdfFile(FileExport):
             with open(f'{self.tempDir}/mimetype', 'w', encoding='utf-8') as f:
                 f.write(self._MIMETYPE)
         except:
-            return f'{ERROR}: Cannot write "mimetype"'
+            return f'{ERROR}Cannot write "mimetype"'
 
         # Generate settings.xml.
 
@@ -82,7 +82,7 @@ class OdfFile(FileExport):
             with open(f'{self.tempDir}/settings.xml', 'w', encoding='utf-8') as f:
                 f.write(self._SETTINGS_XML)
         except:
-            return f'{ERROR}: Cannot write "settings.xml"'
+            return f'{ERROR}Cannot write "settings.xml"'
 
         # Generate META-INF\manifest.xml.
 
@@ -90,7 +90,7 @@ class OdfFile(FileExport):
             with open(f'{self.tempDir}/META-INF/manifest.xml', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_XML)
         except:
-            return f'{ERROR}: Cannot write "manifest.xml"'
+            return f'{ERROR}Cannot write "manifest.xml"'
 
         # Generate styles.xml with system language set as document language.
 
@@ -107,7 +107,7 @@ class OdfFile(FileExport):
             with open(f'{self.tempDir}/styles.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
-            return f'{ERROR}: Cannot write "styles.xml"'
+            return f'{ERROR}Cannot write "styles.xml"'
 
         # Generate meta.xml with actual document metadata.
 
@@ -127,9 +127,9 @@ class OdfFile(FileExport):
             with open(f'{self.tempDir}/meta.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
-            return f'{ERROR}: Cannot write "meta.xml".'
+            return f'{ERROR}Cannot write "meta.xml".'
 
-        return 'SUCCESS: ODF structure generated.'
+        return 'ODF structure generated.'
 
     def write(self):
         """Extend the super class method, adding ZIP file operations."""
@@ -179,10 +179,10 @@ class OdfFile(FileExport):
                 os.replace(f'{self.filePath}.bak', self.filePath)
 
             os.chdir(workdir)
-            return f'{ERROR}: Cannot generate "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}Cannot generate "{os.path.normpath(self.filePath)}".'
 
         # Remove temporary data.
 
         os.chdir(workdir)
         self.tear_down()
-        return f'SUCCESS: "{os.path.normpath(self.filePath)}" written.'
+        return f'"{os.path.normpath(self.filePath)}" written.'

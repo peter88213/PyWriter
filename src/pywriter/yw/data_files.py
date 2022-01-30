@@ -31,7 +31,7 @@ class DataFiles(Yw7File):
 
     def merge(self, source):
         """Copy required attributes of the source object.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         Override the superclass method.
         """
         self.characters = source.characters
@@ -40,4 +40,4 @@ class DataFiles(Yw7File):
         self.srtLocations = source.srtLocations
         self.items = source.items
         self.srtItems = source.srtItems
-        return 'SUCCESS'
+        return 'XML Data file content updated from novel.'

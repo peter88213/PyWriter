@@ -29,7 +29,7 @@ class CsvSceneList(CsvFile):
     def read(self):
         """Parse the csv file located at filePath, 
         fetching the Scene attributes contained.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         Extend the superclass method.
         """
         message = super().read()
@@ -154,4 +154,4 @@ class CsvSceneList(CsvFile):
                             self.scenes[scId].items.append(id)
                 '''
 
-        return 'SUCCESS'
+        return 'CSV data converted to novel structure.'

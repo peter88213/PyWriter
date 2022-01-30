@@ -62,7 +62,7 @@ class FileExport(Novel):
 
     def merge(self, source):
         """Copy required attributes of the source object.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         """
 
         if source.title is not None:
@@ -128,7 +128,7 @@ class FileExport(Novel):
             self.srtItems = source.srtItems
             self.items = source.items
 
-        return 'SUCCESS'
+        return 'Export data updated from novel.'
 
     def get_fileHeaderMapping(self):
         """Return a mapping dictionary for the project section. 
@@ -713,7 +713,7 @@ class FileExport(Novel):
 
     def write(self):
         """Create a template-based output file. 
-        Return a message string starting with 'SUCCESS' or 'ERROR'.
+        Return a message beginning with the ERROR constant in case of error.
         """
         text = self.get_text()
 
@@ -734,9 +734,9 @@ class FileExport(Novel):
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
 
-            return f'{ERROR}: Cannot write "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}Cannot write "{os.path.normpath(self.filePath)}".'
 
-        return f'SUCCESS: "{os.path.normpath(self.filePath)}" written.'
+        return f'"{os.path.normpath(self.filePath)}" written.'
 
     def get_string(self, elements):
         """Return a string which is the concatenation of the 

@@ -18,7 +18,7 @@ class Yw7TreeWriter():
 
     def write_element_tree(self, ywProject):
         """Write back the xml element tree to a yWriter xml file located at filePath.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         """
 
         if os.path.isfile(ywProject.filePath):
@@ -36,6 +36,6 @@ class Yw7TreeWriter():
             if backedUp:
                 os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
 
-            return f'{ERROR}: Cannot write "{os.path.normpath(ywProject.filePath)}".'
+            return f'{ERROR}Cannot write "{os.path.normpath(ywProject.filePath)}".'
 
-        return 'SUCCESS'
+        return 'yWriter XML tree written.'

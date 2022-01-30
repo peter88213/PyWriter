@@ -71,7 +71,7 @@ class NrmOpr(unittest.TestCase):
         converter = YwCnv()
 
         self.assertEqual(converter.convert(
-            documentFile, yw7File), 'SUCCESS: "' + os.path.normpath(TEST_YW7) + '" written.')
+            documentFile, yw7File), '"' + os.path.normpath(TEST_YW7) + '" written.')
 
         self.assertEqual(read_file(TEST_YW7),
                          read_file(REFERENCE_YW7))
@@ -83,7 +83,7 @@ class NrmOpr(unittest.TestCase):
         converter.run(TEST_HTML)
 
         self.assertEqual(converter.ui.infoHowText,
-                         'SUCCESS: "' + os.path.normpath(TEST_YW7) + '" written.')
+                         '"' + os.path.normpath(TEST_YW7) + '" written.')
 
         self.assertEqual(read_file(TEST_YW7),
                          read_file(REFERENCE_YW7))

@@ -66,18 +66,18 @@ class Yw7File(Novel):
 
     def read(self):
         """Parse the yWriter xml file, fetching the Novel attributes.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         Override the superclass method.
         """
 
         if self.is_locked():
-            return f'{ERROR}: yWriter seems to be open. Please close first.'
+            return f'{ERROR}yWriter seems to be open. Please close first.'
 
         try:
             self.tree = ET.parse(self.filePath)
 
         except:
-            return f'{ERROR}: Can not process "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}Can not process "{os.path.normpath(self.filePath)}".'
 
         root = self.tree.getroot()
 
@@ -467,11 +467,11 @@ class Yw7File(Novel):
                 for scId in self.chapters[chId].srtScenes:
                     self.scenes[scId].isUnused = True
 
-        return 'SUCCESS'
+        return 'yWriter project data read in.'
 
     def merge(self, source):
         """Copy required attributes of the source object.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         Override the superclass method.
         """
 
@@ -892,12 +892,12 @@ class Yw7File(Novel):
             sceneSplitter = Splitter()
             sceneSplitter.split_scenes(self)
 
-        return 'SUCCESS'
+        return 'yWriter project data updated or created.'
 
     def write(self):
         """Open the yWriter xml file located at filePath and 
         replace a set of attributes not being None.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         Override the superclass method.
         """
 
@@ -1422,7 +1422,7 @@ class Yw7File(Novel):
         #--- Start write method.
 
         if self.is_locked():
-            return f'{ERROR}: yWriter seems to be open. Please close first.'
+            return f'{ERROR}yWriter seems to be open. Please close first.'
 
         TAG = 'YWRITER7'
         xmlScenes = {}

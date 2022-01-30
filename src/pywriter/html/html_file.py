@@ -127,7 +127,7 @@ class HtmlFile(Novel, HTMLParser):
 
     def read(self):
         """Read and parse a html file, fetching the Novel attributes.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         This is a template method for subclasses tailored to the 
         content of the respective HTML file.
         """
@@ -140,4 +140,4 @@ class HtmlFile(Novel, HTMLParser):
         self.feed(text)
         self.postprocess()
 
-        return 'SUCCESS'
+        return 'Created novel structure from HTML data.'

@@ -31,7 +31,7 @@ class CsvFile(Novel):
     def read(self):
         """Parse the csv file located at filePath, fetching the rows.
         Check the number of fields in each row.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         Override the superclass method.
         """
         self.rows = []
@@ -46,17 +46,17 @@ class CsvFile(Novel):
                     # as a list of strings
 
                     if len(row) != cellsPerRow:
-                        return f'{ERROR}: Wrong csv structure.'
+                        return f'{ERROR}Wrong csv structure.'
 
                     self.rows.append(row)
 
         except(FileNotFoundError):
-            return f'{ERROR}: "{os.path.normpath(self.filePath)}" not found.'
+            return f'{ERROR}"{os.path.normpath(self.filePath)}" not found.'
 
         except:
-            return f'{ERROR}: Can not parse "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}Can not parse "{os.path.normpath(self.filePath)}".'
 
-        return 'SUCCESS'
+        return 'CSV data read in.'
 
     def get_list(self, text):
         """Split a sequence of comma separated strings into a list of strings.

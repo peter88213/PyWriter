@@ -19,7 +19,7 @@ class DataWriter():
 
     def write_element_tree(self, ywProject):
         """Write back the xml element tree to a yWriter xml file located at filePath.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         """
 
         path, extension = os.path.splitext(ywProject.filePath)
@@ -32,7 +32,7 @@ class DataWriter():
             characterTree.write(characterPath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return f'{ERROR}: "{os.path.normpath(characterPath)}" is write protected.'
+            return f'{ERROR}"{os.path.normpath(characterPath)}" is write protected.'
 
         locationPath = f'{path}_Locations.xml'
         locationSubtree = ywProject.tree.find('LOCATIONS')
@@ -42,7 +42,7 @@ class DataWriter():
             locationTree.write(locationPath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return f'{ERROR}: "{os.path.normpath(locationPath)}" is write protected.'
+            return f'{ERROR}"{os.path.normpath(locationPath)}" is write protected.'
 
         itemPath = f'{path}_Items.xml'
         itemSubtree = ywProject.tree.find('ITEMS')
@@ -52,6 +52,6 @@ class DataWriter():
             itemTree.write(itemPath, xml_declaration=False, encoding='utf-8')
 
         except(PermissionError):
-            return f'{ERROR}: "{os.path.normpath(itemPath)}" is write protected.'
+            return f'{ERROR}"{os.path.normpath(itemPath)}" is write protected.'
 
-        return 'SUCCESS'
+        return 'All XML data files written.'

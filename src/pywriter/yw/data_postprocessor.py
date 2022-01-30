@@ -21,7 +21,7 @@ class DataPostprocessor(Yw7Postprocessor):
         '''Postprocess the xml files created by ElementTree:
         Put headers on top, insert the missing CDATA tags,
         and replace xml entities by plain text.
-        Return a message beginning with SUCCESS or ERROR.
+        Return a message beginning with the ERROR constant in case of error.
         '''
 
         path, extension = os.path.splitext(filePath)
@@ -44,4 +44,4 @@ class DataPostprocessor(Yw7Postprocessor):
         if message.startswith(ERROR):
             return message
 
-        return 'SUCCESS: All XML data files written.'
+        return 'All XML data files postprocessed.'

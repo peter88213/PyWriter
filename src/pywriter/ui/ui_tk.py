@@ -21,20 +21,17 @@ class UiTk(Ui):
         self.root = Tk()
         self.root.title(title)
 
+        self.rowCount = 1
         self.appInfo = Label(self.root, text='')
-        self.successInfo = Label(self.root)
-        self.successInfo.config(height=1, width=60)
-        self.processInfo = Label(self.root, text='')
+        self.appInfo.grid(row=self.rowCount, column=1, padx=5, pady=5)
+
+        self.rowCount += 1
+        self.processInfo = Label(self.root, text='', width=60)
+        self.processInfo.grid(row=self.rowCount, column=1, pady=10, padx=10)
+
+        self.rowCount += 1
         self.root.quitButton = Button(text="Quit", command=quit)
         self.root.quitButton.config(height=1, width=10)
-
-        self.rowCount = 1
-        self.appInfo.grid(row=self.rowCount, column=1, padx=5, pady=5)
-        self.rowCount += 1
-        self.successInfo.grid(row=self.rowCount, column=1, padx=10, pady=10)
-        self.rowCount += 1
-        self.processInfo.grid(row=self.rowCount, column=1, pady=10)
-        self.rowCount += 1
         self.root.quitButton.grid(row=self.rowCount, column=1, pady=10)
 
     def ask_yes_no(self, text):
@@ -50,14 +47,17 @@ class UiTk(Ui):
     def set_info_how(self, message):
         """How's the converter doing?"""
 
-        self.infoHowText = message
-        self.processInfo.config(text=message)
-
         if message.startswith(ERROR):
-            self.successInfo.config(bg='red')
+            self.processInfo.config(bg='red')
+            self.processInfo.config(fg='white')
+            self.infoHowText = message.split(ERROR, maxsplit=1)[1].strip()
 
         else:
-            self.successInfo.config(bg='green')
+            self.processInfo.config(bg='green')
+            self.processInfo.config(fg='white')
+            self.infoHowText = message
+
+        self.processInfo.config(text=self.infoHowText)
 
     def start(self):
         """Start the Tk main loop."""

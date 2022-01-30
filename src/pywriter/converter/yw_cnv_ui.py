@@ -10,6 +10,7 @@ import os
 import sys
 import webbrowser
 
+from pywriter.pywriter_globals import ERROR
 from pywriter.ui.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
 
@@ -67,11 +68,11 @@ class YwCnvUi(YwCnv):
 
         # Save the new file pathname.
 
-        if message.startswith('SUCCESS'):
-            self.newFile = targetFile.filePath
+        if message.startswith(ERROR):
+            self.newFile = None
 
         else:
-            self.newFile = None
+            self.newFile = targetFile.filePath
 
     def create_yw7(self, sourceFile, targetFile):
         """Create targetFile from sourceFile.
@@ -98,7 +99,7 @@ class YwCnvUi(YwCnv):
             f'Create a yWriter project file from {sourceFile.DESCRIPTION}\nNew project: "{os.path.normpath(targetFile.filePath)}"')
 
         if os.path.isfile(targetFile.filePath):
-            self.ui.set_info_how(f'ERROR: "{os.path.normpath(targetFile.filePath)}" already exists.')
+            self.ui.set_info_how(f'{ERROR}"{os.path.normpath(targetFile.filePath)}" already exists.')
 
         else:
             # Convert sourceFile into targetFile.
@@ -111,11 +112,11 @@ class YwCnvUi(YwCnv):
 
             # Save the new file pathname.
 
-            if message.startswith('SUCCESS'):
-                self.newFile = targetFile.filePath
+            if message.startswith(ERROR):
+                self.newFile = None
 
             else:
-                self.newFile = None
+                self.newFile = targetFile.filePath
 
     def import_to_yw(self, sourceFile, targetFile):
         """Convert from any file format to yWriter project.
@@ -154,11 +155,11 @@ class YwCnvUi(YwCnv):
 
         # Save the new file pathname.
 
-        if message.startswith('SUCCESS'):
-            self.newFile = targetFile.filePath
+        if message.startswith(ERROR):
+            self.newFile = None
 
         else:
-            self.newFile = None
+            self.newFile = targetFile.filePath
 
     def confirm_overwrite(self, filePath):
         """Return boolean permission to overwrite the target file, overriding the superclass method."""

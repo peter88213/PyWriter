@@ -27,7 +27,7 @@ class ImportTargetFactory(FileFactory):
             suffix -- string; an indicator for the source file type.
 
         Return a tuple with three elements:
-        - A message string starting with 'SUCCESS' or 'ERROR'
+        - A message beginning with the ERROR constant in case of error
         - sourceFile: None
         - targetFile: a YwFile subclass instance, or None in case of error
 
@@ -47,6 +47,6 @@ class ImportTargetFactory(FileFactory):
 
             if os.path.isfile(f'{ywPathBasis}{fileClass.EXTENSION}'):
                 targetFile = fileClass(f'{ywPathBasis}{fileClass.EXTENSION}', **kwargs)
-                return 'SUCCESS', None, targetFile
+                return 'Target object created.', None, targetFile
 
-        return f'{ERROR}: No yWriter project to write.', None, None
+        return f'{ERROR}No yWriter project to write.', None, None
