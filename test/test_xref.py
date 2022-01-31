@@ -117,7 +117,7 @@ class NrmOpr(unittest.TestCase):
         converter.run(TEST_HTML)
 
         self.assertEqual(converter.ui.infoHowText,
-                         f'{ERROR}This document is not meant to be written back.')
+                         'FAIL: This document is not meant to be written back.')
 
         self.assertEqual(read_file(TEST_YW7),
                          read_file(REFERENCE_YW7))
