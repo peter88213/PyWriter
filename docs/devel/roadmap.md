@@ -266,7 +266,16 @@ Expand the document structure by splitting scenes.
 
 - Drop .yw5 and .yw6 support.
 - Provide a flexible tk Ui. 
+
+
+## Version 5.x: Rework the messaging system
+
+- Don't ceck "SUCCESS"/"ERROR" for error-free execution. 
+  Instead use one global variable not to be displayed.
+- Refactor the code: Avoid string concatenation. Use f-strings instead.
 - Complete the docstrings and provide a package at PyPi.
+
+
 
 ### Future:
 
