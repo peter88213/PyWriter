@@ -7,7 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 
 
-# documents = os.environ['USERPROFILE'] + '\\Documents'
+# documents = f{os.environ['USERPROFILE']}\\Documents'
 
 documents = '../test/data'
 pathList = []
@@ -17,7 +17,7 @@ for (path, dirs, files) in os.walk(documents):
     for file in files:
 
         if file == 'proofed.yw7':
-            filepath = (path + '/' + file).replace('\\', '/')
+            filepath = (f'{path}/{file}').replace('\\', '/')
 
             with open(filepath, 'r', encoding='utf-8') as f:
                 lines = f.readlines()
@@ -38,7 +38,7 @@ for (path, dirs, files) in os.walk(documents):
                 with open(filepath, 'w', encoding='utf-8') as f:
                     f.writelines(newlines)
 
-                print(filepath + ' written\n')
+                print(f'{filepath} written\n')
 
             else:
-                print('--- ' + filepath + ' skipped\n')
+                print(f'--- {filepath} skipped\n')
