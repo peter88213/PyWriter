@@ -5,7 +5,7 @@ The write method runs through all chapters, scenes, and world building
 elements, such as characters, locations ans items, and fills templates. 
 
 The package's README file contains a list of templates and placeholders:
-https://github.com/peter88213/PyWriter/tree/master/src/pywriter/file#readme
+https://github.com/peter88213/PyWriter/tree/main/src/pywriter/file#readme
 
 Modules:
 
