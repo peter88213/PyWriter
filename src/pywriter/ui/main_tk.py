@@ -38,9 +38,9 @@ class MainTk(Ui):
         self.mainMenu = tk.Menu(self.root)
         self.fileMenu = tk.Menu(self.mainMenu, title='my title', tearoff=0)
         self.mainMenu.add_cascade(label='File', menu=self.fileMenu)
-        self.fileMenu.add_command(label='Open Project...', command=lambda: self.open_project(''))
-        self.fileMenu.add_command(label='Close Project', command=lambda: self.close_project())
-        self.fileMenu.entryconfig('Close Project', state='disabled')
+        self.fileMenu.add_command(label='Open...', command=lambda: self.open_project(''))
+        self.fileMenu.add_command(label='Close', command=lambda: self.close_project())
+        self.fileMenu.entryconfig('Close', state='disabled')
         self.fileMenu.add_command(label='Exit', command=self.root.quit)
         self.extend_menu()
         # Hook for subclasses
@@ -63,13 +63,13 @@ class MainTk(Ui):
         """Disable menu entries when no project is open.
         To be extended by subclasses.
         """
-        self.fileMenu.entryconfig('Close Project', state='disabled')
+        self.fileMenu.entryconfig('Close', state='disabled')
 
     def enable_menu(self):
         """Enable menu entries when a project is open.
         To be extended by subclasses.
         """
-        self.fileMenu.entryconfig('Close Project', state='normal')
+        self.fileMenu.entryconfig('Close', state='normal')
 
     def start(self):
         """Start the user interface.

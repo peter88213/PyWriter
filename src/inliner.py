@@ -1,4 +1,4 @@
-""" Build python scripts for the PyWriter distributions.
+""" Build python scripts for the PyWriter based distributions.
         
 In order to distribute single scripts without dependencies, 
 this script "inlines" all modules imported from the pywriter package.
@@ -81,14 +81,10 @@ def run(sourceFile, targetFile, package, packagePath):
 
     text = ''
     processedModules = []
-    text = (inline_module(sourceFile, package,
-                          packagePath, text, processedModules))
+    text = (inline_module(sourceFile, package, packagePath, text, processedModules))
 
     with open(targetFile, 'w', encoding='utf-8') as f:
-
         print(f'Writing "{targetFile}"...\n')
         f.write(text)
 
 
-if __name__ == '__main__':
-    pass
