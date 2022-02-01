@@ -251,6 +251,10 @@ These files can be imported into any existing yWriter project.
 Expand the document structure by splitting scenes.
 - Split scenes in manuscript and proof reading files using part, chapter and scene separators.
 
+#### v3.33
+
+Start with v4 development. This version is backward-incompatible.
+
 
 ## Version 4.x: Build the novel tree independently from the existing yWriter project
 
@@ -261,6 +265,7 @@ Expand the document structure by splitting scenes.
     - Add, delete characters, locations, and items (already implemented as of v2.10).
     
 - Refactor the converter package.
+  This breaks the backward compatibility.
     - Remove the file factories from YwCnvUi.
     - Provide a new converter class that uses the file factories. 
 
@@ -268,16 +273,36 @@ Expand the document structure by splitting scenes.
 - Provide a flexible tk Ui. 
 
 
-## Version 5.x: Rework the messaging system
+#### v4.1
 
-- Don't ceck "SUCCESS"/"ERROR" for error-free execution. 
-  Instead use one global variable not to be displayed.
+Start with v5 development. This version is backward-incompatible.
+
+
+## Version 5.x: Overall quality improvement
+
+#### Improve the design
+
+- Don't ceck "SUCCESS"/"ERROR" for subroutine execution messages. 
+  Instead use one global constant not to be displayed.
+  This breaks the backward compatibility.
+
+#### Improve the code quality
+
 - Refactor the code: Avoid string concatenation. Use f-strings instead.
-- Complete the docstrings and provide a package at PyPi.
+- Use more "local" instance variables.
+
+#### Improve documentation
+
+- Complete the docstrings.
+- Extend/update the UML model.
+
+#### Improve testing
+
+- Update the test data and provide "fault case" tests.
 
 
 
-### Future:
+## Future:
 
 #### Full LibreOffice/OpenOffice integration
 
