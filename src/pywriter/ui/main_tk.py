@@ -77,7 +77,7 @@ class MainTk(Ui):
         """
         self.root.mainloop()
 
-    def open_project(self, fileName):
+    def open_project(self, fileName, fileTypes=[('yWriter 7 project', '.yw7')]):
         """Select a valid project file and display the path.
 
         Priority:
@@ -94,8 +94,7 @@ class MainTk(Ui):
             initDir = './'
 
         if not fileName or not os.path.isfile(fileName):
-            fileName = filedialog.askopenfilename(filetypes=[('yWriter 7 project', '.yw7')],
-                                                  defaultextension='.yw7', initialdir=initDir)
+            fileName = filedialog.askopenfilename(filetypes=fileTypes, defaultextension='.yw7', initialdir=initDir)
 
         if fileName:
             self.kwargs['yw_last_open'] = fileName
