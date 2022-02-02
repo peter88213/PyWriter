@@ -44,4 +44,4 @@ class DataPostprocessor(Yw7Postprocessor):
         if message.startswith(ERROR):
             return message
 
-        return 'All XML data files postprocessed.'
+        return 'All XML data files written.'
