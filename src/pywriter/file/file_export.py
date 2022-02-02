@@ -269,7 +269,7 @@ class FileExport(Novel):
                 else:
                     minute = '00'
 
-                scTime = f'{hour:02}:{minute:02}'
+                scTime = f'{hour.zfill(2)}:{minute.zfill(2)}'
 
             else:
                 hour = ''
