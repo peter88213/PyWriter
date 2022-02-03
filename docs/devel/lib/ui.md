@@ -14,6 +14,11 @@
 
 - **ui_mb** -- Provide a facade for a GUI featuring just message boxes.
 
+- **main_tk** -- Provide a tkinter GUI class with main menu and main window.
+
+- **main_tk_cnv** -- Provide a tkinter GUI base class for converter applications.
+
+
 ## Classes
 
 ![ui package class diagram](img/ui_package_class_diagram.png)

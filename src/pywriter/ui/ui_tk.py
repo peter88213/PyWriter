@@ -18,23 +18,20 @@ class UiTk(Ui):
         """Extend the Ui constructor. """
         super().__init__(title)
 
-        self.root = Tk()
-        self.root.minsize(400, 150)
-        self.root.resizable(width=FALSE, height=FALSE)
-        self.root.title(title)
+        self._root = Tk()
+        self._root.minsize(400, 150)
+        self._root.resizable(width=FALSE, height=FALSE)
+        self._root.title(title)
 
-        self.rowCount = 1
-        self.appInfo = Label(self.root, text='')
-        self.appInfo.pack(padx=20, pady=5)
+        self._appInfo = Label(self._root, text='')
+        self._appInfo.pack(padx=20, pady=5)
 
-        self.rowCount += 1
-        self.processInfo = Label(self.root, text='', padx=20)
-        self.processInfo.pack(pady=20, fill='both')
+        self._processInfo = Label(self._root, text='', padx=20)
+        self._processInfo.pack(pady=20, fill='both')
 
-        self.rowCount += 1
-        self.root.quitButton = Button(text="Quit", command=quit)
-        self.root.quitButton.config(height=1, width=10)
-        self.root.quitButton.pack(pady=10)
+        self._root.quitButton = Button(text="Quit", command=quit)
+        self._root.quitButton.config(height=1, width=10)
+        self._root.quitButton.pack(pady=10)
 
     def ask_yes_no(self, text):
         """Override the Ui method."""
@@ -42,32 +39,30 @@ class UiTk(Ui):
 
     def set_info_what(self, message):
         """What's the converter going to do?"""
-
         self.infoWhatText = message
-        self.appInfo.config(text=message)
+        self._appInfo.config(text=message)
 
     def set_info_how(self, message):
         """How's the converter doing?"""
 
         if message.startswith(ERROR):
-            self.processInfo.config(bg='red')
-            self.processInfo.config(fg='white')
+            self._processInfo.config(bg='red')
+            self._processInfo.config(fg='white')
             self.infoHowText = message.split(ERROR, maxsplit=1)[1].strip()
 
         else:
-            self.processInfo.config(bg='green')
-            self.processInfo.config(fg='white')
+            self._processInfo.config(bg='green')
+            self._processInfo.config(fg='white')
             self.infoHowText = message
 
-        self.processInfo.config(text=self.infoHowText)
+        self._processInfo.config(text=self.infoHowText)
 
     def start(self):
         """Start the Tk main loop."""
-        self.root.mainloop()
+        self._root.mainloop()
 
     def show_open_button(self, open_cmd):
         """Add an 'Open' button to the main window."""
-        self.root.openButton = Button(text="Open", command=open_cmd)
-        self.root.openButton.config(height=1, width=10)
-        self.rowCount += 1
-        self.root.openButton.pack(pady=10)
+        self._root.openButton = Button(text="Open", command=open_cmd)
+        self._root.openButton.config(height=1, width=10)
+        self._root.openButton.pack(pady=10)
