@@ -11,8 +11,8 @@ class Configuration():
     """Read/write the program configuration.
 
         INI file sections:
-        <self.sLabel> - Strings
-        <self.oLabel> - Boolean values
+        <self._sLabel> - Strings
+        <self._oLabel> - Boolean values
 
     Instance variables:    
         settings - dictionary of strings
@@ -26,8 +26,10 @@ class Configuration():
         settings - default settings (dictionary of strings)
         options - default options (dictionary of boolean values)
         """
-        self.sLabel = 'SETTINGS'
-        self.oLabel = 'OPTIONS'
+        self.settings = None
+        self.options = None
+        self._sLabel = 'SETTINGS'
+        self._oLabel = 'OPTIONS'
         self.set(settings, options)
 
     def set(self, settings=None, options=None):
@@ -47,17 +49,17 @@ class Configuration():
         config = ConfigParser()
         config.read(iniFile)
 
-        if config.has_section(self.sLabel):
+        if config.has_section(self._sLabel):
 
-            section = config[self.sLabel]
+            section = config[self._sLabel]
 
             for setting in self.settings:
                 fallback = self.settings[setting]
                 self.settings[setting] = section.get(setting, fallback)
 
-        if config.has_section(self.oLabel):
+        if config.has_section(self._oLabel):
 
-            section = config[self.oLabel]
+            section = config[self._oLabel]
 
             for option in self.options:
                 fallback = self.options[option]
@@ -70,22 +72,22 @@ class Configuration():
 
         if self.settings != {}:
 
-            config.add_section(self.sLabel)
+            config.add_section(self._sLabel)
 
             for settingId in self.settings:
-                config.set(self.sLabel, settingId, str(self.settings[settingId]))
+                config.set(self._sLabel, settingId, str(self.settings[settingId]))
 
         if self.options != {}:
 
-            config.add_section(self.oLabel)
+            config.add_section(self._oLabel)
 
             for settingId in self.options:
 
                 if self.options[settingId]:
-                    config.set(self.oLabel, settingId, 'Yes')
+                    config.set(self._oLabel, settingId, 'Yes')
 
                 else:
-                    config.set(self.oLabel, settingId, 'No')
+                    config.set(self._oLabel, settingId, 'No')
 
         with open(iniFile, 'w') as f:
             config.write(f)
