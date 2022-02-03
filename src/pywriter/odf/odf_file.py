@@ -159,14 +159,17 @@ class OdfFile(FileExport):
         # into the ODF file.
 
         workdir = os.getcwd()
+        backedUp = False
 
         if os.path.isfile(self.filePath):
-            os.replace(self.filePath, f'{self.filePath}.bak')
-            backedUp = True
 
-        else:
-            backedUp = False
-
+            try:
+                os.replace(self.filePath, f'{self.filePath}.bak')
+                backedUp = True
+                
+            except:
+                return f'{ERROR}Cannot overwrite "{os.path.normpath(self.filePath)}".'
+            
         try:
             with zipfile.ZipFile(self.filePath, 'w') as odfTarget:
                 os.chdir(self.tempDir)

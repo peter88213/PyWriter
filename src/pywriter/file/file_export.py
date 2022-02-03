@@ -54,7 +54,7 @@ class FileExport(Novel):
         initializing a filter class.
         """
         super().__init__(filePath, **kwargs)
-        self.sceneFilter = Filter()
+        self._sceneFilter = Filter()
         self.chapterFilter = Filter()
         self.characterFilter = Filter()
         self.locationFilter = Filter()
@@ -449,7 +449,7 @@ class FileExport(Novel):
         for scId in self.chapters[chId].srtScenes:
             dispNumber = 0
 
-            if not self.sceneFilter.accept(self, scId):
+            if not self._sceneFilter.accept(self, scId):
                 continue
 
             # The order counts; be aware that "Todo" and "Notes" scenes are
@@ -716,14 +716,17 @@ class FileExport(Novel):
         Return a message beginning with the ERROR constant in case of error.
         """
         text = self.get_text()
+        backedUp = False
 
         if os.path.isfile(self.filePath):
-            os.replace(self.filePath, f'{self.filePath}.bak')
-            backedUp = True
 
-        else:
-            backedUp = False
-
+            try:
+                os.replace(self.filePath, f'{self.filePath}.bak')
+                backedUp = True
+                
+            except:
+                return f'{ERROR}Cannot overwrite "{os.path.normpath(self.filePath)}".'
+            
         try:
 
             with open(self.filePath, 'w', encoding='utf-8') as f:
