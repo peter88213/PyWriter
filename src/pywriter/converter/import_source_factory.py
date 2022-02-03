@@ -27,7 +27,7 @@ class ImportSourceFactory(FileFactory):
         - targetFile: None
         """
 
-        for fileClass in self.fileClasses:
+        for fileClass in self._fileClasses:
 
             if fileClass.SUFFIX is not None:
 

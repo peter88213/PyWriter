@@ -16,22 +16,22 @@ class OdtItems(OdtFile):
     DESCRIPTION = 'Item descriptions'
     SUFFIX = '_items'
 
-    fileHeader = f'''{OdtFile.CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
-    itemTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title$AKA</text:h>
+    _itemTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title$AKA</text:h>
 <text:section text:style-name="Sect1" text:name="ItID:$ID">
 <text:p text:style-name="Text_20_body">$Desc</text:p>
 </text:section>
 '''
 
-    fileFooter = OdtFile.CONTENT_XML_FOOTER
+    _fileFooter = OdtFile._CONTENT_XML_FOOTER
 
-    def get_itemMapping(self, itId):
+    def _get_itemMapping(self, itId):
         """Return a mapping dictionary for an item section. 
         """
-        itemMapping = super().get_itemMapping(itId)
+        itemMapping = super()._get_itemMapping(itId)
 
         if self.items[itId].aka:
             itemMapping['AKA'] = f' ("{self.items[itId].aka}")'

@@ -16,19 +16,19 @@ class OdtManuscript(OdtFile):
     DESCRIPTION = 'Editable manuscript'
     SUFFIX = '_manuscript'
 
-    fileHeader = f'''{OdtFile.CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
-    partTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
+    _partTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
 <text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../${ProjectName}_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 '''
 
-    chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
+    _chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../${ProjectName}_chapters.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 '''
 
-    sceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
+    _sceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
 <text:p text:style-name="Text_20_body"><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>~ ${Title} ~</text:p>
@@ -38,7 +38,7 @@ class OdtManuscript(OdtFile):
 </text:section>
 '''
 
-    appendedSceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
+    _appendedSceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
 <text:p text:style-name="First_20_line_20_indent"><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>~ ${Title} ~</text:p>
@@ -48,18 +48,18 @@ class OdtManuscript(OdtFile):
 </text:section>
 '''
 
-    sceneDivider = '<text:p text:style-name="Heading_20_4">* * *</text:p>\n'
+    _sceneDivider = '<text:p text:style-name="Heading_20_4">* * *</text:p>\n'
     #sceneDivider = '<text:p text:style-name="Heading_20_5"></text:p>\n'
 
-    chapterEndTemplate = '''</text:section>
+    _chapterEndTemplate = '''</text:section>
 '''
 
-    fileFooter = OdtFile.CONTENT_XML_FOOTER
+    _fileFooter = OdtFile._CONTENT_XML_FOOTER
 
-    def get_chapterMapping(self, chId, chapterNumber):
+    def _get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section. 
         """
-        chapterMapping = super().get_chapterMapping(chId, chapterNumber)
+        chapterMapping = super()._get_chapterMapping(chId, chapterNumber)
 
         if self.chapters[chId].suppressChapterTitle:
             chapterMapping['Title'] = ''

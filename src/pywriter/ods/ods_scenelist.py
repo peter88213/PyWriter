@@ -42,7 +42,7 @@ class OdsSceneList(OdsFile):
     # Locations
     # Items
 
-    fileHeader = f'''{OdsFile.CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
+    _fileHeader = f'''{OdsFile._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
     <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co4" table:default-cell-style-name="Default"/>
@@ -134,7 +134,7 @@ class OdsSceneList(OdsFile):
 
 '''
 
-    sceneTemplate = '''   <table:table-row table:style-name="ro2">
+    _sceneTemplate = '''   <table:table-row table:style-name="ro2">
      <table:table-cell table:formula="of:=HYPERLINK(&quot;file:///$ProjectPath/${ProjectName}_manuscript.odt#ScID:$ID%7Cregion&quot;;&quot;ScID:$ID&quot;)" office:value-type="string" office:string-value="ScID:$ID">
       <text:p>ScID:$ID</text:p>
      </table:table-cell>
@@ -202,12 +202,12 @@ class OdsSceneList(OdsFile):
 
 '''
 
-    fileFooter = OdsFile.CONTENT_XML_FOOTER
+    _fileFooter = OdsFile._CONTENT_XML_FOOTER 
 
-    def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
+    def _get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
         """Return a mapping dictionary for a scene section. 
         """
-        sceneMapping = super().get_sceneMapping(scId, sceneNumber, wordsTotal, lettersTotal)
+        sceneMapping = super()._get_sceneMapping(scId, sceneNumber, wordsTotal, lettersTotal)
 
         if self.scenes[scId].field1 == '1':
             sceneMapping['Field1'] = ''

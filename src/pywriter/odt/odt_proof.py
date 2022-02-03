@@ -16,63 +16,63 @@ class OdtProof(OdtFile):
     DESCRIPTION = 'Tagged manuscript for proofing'
     SUFFIX = '_proof'
 
-    fileHeader = f'''{OdtFile.CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
-    partTemplate = '''<text:p text:style-name="yWriter_20_mark">[ChID:$ID]</text:p>
+    _partTemplate = '''<text:p text:style-name="yWriter_20_mark">[ChID:$ID]</text:p>
 <text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
 '''
 
-    chapterTemplate = '''<text:p text:style-name="yWriter_20_mark">[ChID:$ID]</text:p>
+    _chapterTemplate = '''<text:p text:style-name="yWriter_20_mark">[ChID:$ID]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
-    unusedChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">[ChID:$ID (Unused)]</text:p>
+    _unusedChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">[ChID:$ID (Unused)]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
-    notesChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">[ChID:$ID (Notes)]</text:p>
+    _notesChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">[ChID:$ID (Notes)]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
-    todoChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[ChID:$ID (ToDo)]</text:p>
+    _todoChapterTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[ChID:$ID (ToDo)]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
-    sceneTemplate = '''<text:p text:style-name="yWriter_20_mark">[ScID:$ID]</text:p>
+    _sceneTemplate = '''<text:p text:style-name="yWriter_20_mark">[ScID:$ID]</text:p>
 <text:p text:style-name="Text_20_body">$SceneContent</text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
 '''
 
-    unusedSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">[ScID:$ID (Unused)]</text:p>
+    _unusedSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">[ScID:$ID (Unused)]</text:p>
 <text:p text:style-name="Text_20_body">$SceneContent</text:p>
 <text:p text:style-name="yWriter_20_mark_20_unused">[/ScID (Unused)]</text:p>
 '''
 
-    notesSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">[ScID:$ID (Notes)]</text:p>
+    _notesSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">[ScID:$ID (Notes)]</text:p>
 <text:p text:style-name="Text_20_body">$SceneContent</text:p>
 <text:p text:style-name="yWriter_20_mark_20_notes">[/ScID (Notes)]</text:p>
 '''
 
-    todoSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[ScID:$ID (ToDo)]</text:p>
+    _todoSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[ScID:$ID (ToDo)]</text:p>
 <text:p text:style-name="Text_20_body">$SceneContent</text:p>
 <text:p text:style-name="yWriter_20_mark_20_todo">[/ScID (ToDo)]</text:p>
 '''
 
-    sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
+    _sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
 '''
 
-    chapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
+    _chapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
 '''
 
-    unusedChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">[/ChID (Unused)]</text:p>
+    _unusedChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">[/ChID (Unused)]</text:p>
 '''
 
-    notesChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">[/ChID (Notes)]</text:p>
+    _notesChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">[/ChID (Notes)]</text:p>
 '''
 
-    todoChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[/ChID (ToDo)]</text:p>
+    _todoChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[/ChID (ToDo)]</text:p>
 '''
 
-    fileFooter = OdtFile.CONTENT_XML_FOOTER
+    _fileFooter = OdtFile._CONTENT_XML_FOOTER

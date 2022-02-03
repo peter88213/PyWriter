@@ -21,7 +21,7 @@ class CsvSceneList(CsvFile):
     _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
     # '1' is assigned N/A (empty table cell).
 
-    rowTitles = ['Scene link', 'Scene title', 'Scene description', 'Tags', 'Scene notes', 'A/R',
+    _rowTitles = ['Scene link', 'Scene title', 'Scene description', 'Tags', 'Scene notes', 'A/R',
                  'Goal', 'Conflict', 'Outcome', 'Scene', 'Words total',
                  '$FieldTitle1', '$FieldTitle2', '$FieldTitle3', '$FieldTitle4',
                  'Word count', 'Letter count', 'Status', 'Characters', 'Locations', 'Items']
@@ -37,7 +37,7 @@ class CsvSceneList(CsvFile):
         if message.startswith(ERROR):
             return message
 
-        for cells in self.rows:
+        for cells in self._rows:
             i = 0
 
             if 'ScID:' in cells[i]:
@@ -46,11 +46,11 @@ class CsvSceneList(CsvFile):
                 i += 1
                 self.scenes[scId].title = cells[i]
                 i += 1
-                self.scenes[scId].desc = self.convert_to_yw(cells[i])
+                self.scenes[scId].desc = self._convert_to_yw(cells[i])
                 i += 1
-                self.scenes[scId].tags = self.get_list(cells[i])
+                self.scenes[scId].tags = self._get_list(cells[i])
                 i += 1
-                self.scenes[scId].sceneNotes = self.convert_to_yw(cells[i])
+                self.scenes[scId].sceneNotes = self._convert_to_yw(cells[i])
                 i += 1
 
                 if Scene.REACTION_MARKER.lower() in cells[i].lower():
@@ -119,7 +119,7 @@ class CsvSceneList(CsvFile):
 
                 i += 1
                 ''' Cannot write back character IDs, because self.characters is None
-                charaNames = self.get_list(cells[i])
+                charaNames = self._get_list(cells[i])
                 self.scenes[scId].characters = []
 
                 for charaName in charaNames:
@@ -131,7 +131,7 @@ class CsvSceneList(CsvFile):
                 '''
                 i += 1
                 ''' Cannot write back location IDs, because self.locations is None
-                locaNames = self.get_list(cells[i])
+                locaNames = self._get_list(cells[i])
                 self.scenes[scId].locations = []
 
                 for locaName in locaNames:
@@ -143,7 +143,7 @@ class CsvSceneList(CsvFile):
                 '''
                 i += 1
                 ''' Cannot write back item IDs, because self.items is None
-                itemNames = self.get_list(cells[i])
+                itemNames = self._get_list(cells[i])
                 self.scenes[scId].items = []
 
                 for itemName in itemNames:

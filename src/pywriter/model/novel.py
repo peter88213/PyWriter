@@ -18,11 +18,7 @@ class Novel():
     attributes and structural information (a full set or a subset
     of the information included in an yWriter project file).
 
-    Public methods: 
-        convert_to_yw(text) -- Return text, converted from source format to yw7 markup.
-        convert_from_yw(text) -- Return text, converted from yw7 markup to target format.
-
-    Instance variables:
+    Public instance variables:
         title -- str; title
         desc -- str; description
         author -- str; author name
@@ -172,13 +168,13 @@ class Novel():
             self.projectPath = quote(head.replace('\\', '/'), '/:')
             self.projectName = quote(tail.replace(f'{suffix}{self.EXTENSION}', ''))
 
-    def convert_to_yw(self, text):
+    def _convert_to_yw(self, text):
         """Return text, converted from source format to yw7 markup.
         This is a stub to be overridden by subclass methods.
         """
         return text
 
-    def convert_from_yw(self, text):
+    def _convert_from_yw(self, text):
         """Return text, converted from yw7 markup to target format.
         This is a stub to be overridden by subclass methods.
         """

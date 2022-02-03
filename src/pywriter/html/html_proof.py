@@ -26,12 +26,12 @@ class HtmlProof(HtmlFile):
         super().__init__(filePath)
         self._prefix = None
 
-    def preprocess(self, text):
+    def _preprocess(self, text):
         """Process the html text before parsing.
         """
-        return self.convert_to_yw(text)
+        return self._convert_to_yw(text)
 
-    def postprocess(self):
+    def _postprocess(self):
         """Parse the converted text to identify chapters and scenes.
         """
         sceneText = []

@@ -30,7 +30,7 @@ class CsvPlotList(CsvFile):
     _NOT_APPLICABLE = 'N/A'
     # Scene field column header for fields not being assigned to a storyline
 
-    rowTitles = ['ID', 'Plot section', 'Plot event', 'Scene title', 'Details', 'Scene', 'Words total',
+    _rowTitles = ['ID', 'Plot section', 'Plot event', 'Scene title', 'Details', 'Scene', 'Words total',
                  '$FieldTitle1', '$FieldTitle2', '$FieldTitle3', '$FieldTitle4']
 
     def read(self):
@@ -44,22 +44,22 @@ class CsvPlotList(CsvFile):
         if message.startswith(ERROR):
             return message
 
-        tableHeader = self.rows[0]
+        tableHeader = self._rows[0]
 
-        for cells in self.rows:
+        for cells in self._rows:
 
             if 'ChID:' in cells[0]:
                 chId = re.search('ChID\:([0-9]+)', cells[0]).group(1)
                 self.chapters[chId] = Chapter()
                 self.chapters[chId].title = cells[1]
-                self.chapters[chId].desc = self.convert_to_yw(cells[4])
+                self.chapters[chId].desc = self._convert_to_yw(cells[4])
 
             if 'ScID:' in cells[0]:
                 scId = re.search('ScID\:([0-9]+)', cells[0]).group(1)
                 self.scenes[scId] = Scene()
-                self.scenes[scId].tags = self.get_list(cells[2])
+                self.scenes[scId].tags = self._get_list(cells[2])
                 self.scenes[scId].title = cells[3]
-                self.scenes[scId].sceneNotes = self.convert_to_yw(cells[4])
+                self.scenes[scId].sceneNotes = self._convert_to_yw(cells[4])
 
                 i = 5
                 # Don't write back sceneCount

@@ -16,7 +16,7 @@ class YwCnv():
 
     Public methods:
         convert(sourceFile, targetFile) -- Convert sourceFile into targetFile.
-        confirm_overwrite(fileName) -- Return boolean permission to overwrite the target file.
+        _confirm_overwrite(fileName) -- Return boolean permission to overwrite the target file.
     """
 
     def convert(self, sourceFile, targetFile):
@@ -48,7 +48,7 @@ class YwCnv():
         if targetFile.filePath is None:
             return f'{ERROR}Target "{os.path.normpath(targetFile.filePath)}" is not of the supported type.'
 
-        if os.path.isfile(targetFile.filePath) and not self.confirm_overwrite(targetFile.filePath):
+        if os.path.isfile(targetFile.filePath) and not self._confirm_overwrite(targetFile.filePath):
             return f'{ERROR}Action canceled by user.'
 
         # Make the source object read the source file.
@@ -69,7 +69,7 @@ class YwCnv():
 
         return targetFile.write()
 
-    def confirm_overwrite(self, fileName):
+    def _confirm_overwrite(self, fileName):
         """Return boolean permission to overwrite the target file.
         This is a stub to be overridden by subclass methods.
         """

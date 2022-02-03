@@ -21,7 +21,7 @@ class YwCnvUi(YwCnv):
     Public methods:
         export_from_yw(sourceFile, targetFile) -- Convert from yWriter project to other file format.
         import_to_yw(sourceFile, targetFile) -- Convert from any file format to yWriter project.
-        confirm_overwrite(fileName) -- Return boolean permission to overwrite the target file.
+        _confirm_overwrite(fileName) -- Return boolean permission to overwrite the target file.
 
     Instance variables:
         ui -- Ui (can be overridden e.g. by subclasses).
@@ -151,7 +151,7 @@ class YwCnvUi(YwCnv):
 
         # Delete the temporay file, if exists.
 
-        self.delete_tempfile(sourceFile.filePath)
+        self._delete_tempfile(sourceFile.filePath)
 
         # Save the new file pathname.
 
@@ -161,11 +161,11 @@ class YwCnvUi(YwCnv):
         else:
             self.newFile = targetFile.filePath
 
-    def confirm_overwrite(self, filePath):
+    def _confirm_overwrite(self, filePath):
         """Return boolean permission to overwrite the target file, overriding the superclass method."""
         return self.ui.ask_yes_no(f'Overwrite existing file "{os.path.normpath(filePath)}"?')
 
-    def delete_tempfile(self, filePath):
+    def _delete_tempfile(self, filePath):
         """Delete filePath if it is a temporary file no longer needed."""
 
         if filePath.endswith('.html'):
@@ -192,7 +192,7 @@ class YwCnvUi(YwCnv):
                 except:
                     pass
 
-    def open_newFile(self):
+    def _open_newFile(self):
         """Open the converted file for editing and exit the converter script."""
         webbrowser.open(self.newFile)
         sys.exit(0)

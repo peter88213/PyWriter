@@ -22,32 +22,32 @@ class FileExport(Novel):
     """
     SUFFIX = ''
 
-    fileHeader = ''
-    partTemplate = ''
-    chapterTemplate = ''
-    notesChapterTemplate = ''
-    todoChapterTemplate = ''
-    unusedChapterTemplate = ''
-    notExportedChapterTemplate = ''
-    sceneTemplate = ''
-    firstSceneTemplate = ''
-    appendedSceneTemplate = ''
-    notesSceneTemplate = ''
-    todoSceneTemplate = ''
-    unusedSceneTemplate = ''
-    notExportedSceneTemplate = ''
-    sceneDivider = ''
-    chapterEndTemplate = ''
-    unusedChapterEndTemplate = ''
-    notExportedChapterEndTemplate = ''
-    notesChapterEndTemplate = ''
-    characterSectionHeading = ''
-    characterTemplate = ''
-    locationSectionHeading = ''
-    locationTemplate = ''
-    itemSectionHeading = ''
-    itemTemplate = ''
-    fileFooter = ''
+    _fileHeader = ''
+    _partTemplate = ''
+    _chapterTemplate = ''
+    _notesChapterTemplate = ''
+    _todoChapterTemplate = ''
+    _unusedChapterTemplate = ''
+    _notExportedChapterTemplate = ''
+    _sceneTemplate = ''
+    _firstSceneTemplate = ''
+    _appendedSceneTemplate = ''
+    _notesSceneTemplate = ''
+    _todoSceneTemplate = ''
+    _unusedSceneTemplate = ''
+    _notExportedSceneTemplate = ''
+    _sceneDivider = ''
+    _chapterEndTemplate = ''
+    _unusedChapterEndTemplate = ''
+    _notExportedChapterEndTemplate = ''
+    _notesChapterEndTemplate = ''
+    _characterSectionHeading = ''
+    _characterTemplate = ''
+    _locationSectionHeading = ''
+    _locationTemplate = ''
+    _itemSectionHeading = ''
+    _itemTemplate = ''
+    _fileFooter = ''
 
     def __init__(self, filePath, **kwargs):
         """Extend the superclass constructor,
@@ -55,10 +55,10 @@ class FileExport(Novel):
         """
         super().__init__(filePath, **kwargs)
         self._sceneFilter = Filter()
-        self.chapterFilter = Filter()
-        self.characterFilter = Filter()
-        self.locationFilter = Filter()
-        self.itemFilter = Filter()
+        self._chapterFilter = Filter()
+        self._characterFilter = Filter()
+        self._locationFilter = Filter()
+        self._itemFilter = Filter()
 
     def merge(self, source):
         """Copy required attributes of the source object.
@@ -130,12 +130,12 @@ class FileExport(Novel):
 
         return 'Export data updated from novel.'
 
-    def get_fileHeaderMapping(self):
+    def _get_fileHeaderMapping(self):
         """Return a mapping dictionary for the project section. 
         """
         projectTemplateMapping = dict(
             Title=self.title,
-            Desc=self.convert_from_yw(self.desc),
+            Desc=self._convert_from_yw(self.desc),
             AuthorName=self.author,
             FieldTitle1=self.fieldTitle1,
             FieldTitle2=self.fieldTitle2,
@@ -144,7 +144,7 @@ class FileExport(Novel):
         )
         return projectTemplateMapping
 
-    def get_chapterMapping(self, chId, chapterNumber):
+    def _get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section. 
         """
         if chapterNumber == 0:
@@ -154,13 +154,13 @@ class FileExport(Novel):
             ID=chId,
             ChapterNumber=chapterNumber,
             Title=self.chapters[chId].get_title(),
-            Desc=self.convert_from_yw(self.chapters[chId].desc),
+            Desc=self._convert_from_yw(self.chapters[chId].desc),
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
         return chapterMapping
 
-    def get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
+    def _get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
         """Return a mapping dictionary for a scene section. 
         """
         # Create a comma separated tag list.
@@ -169,7 +169,7 @@ class FileExport(Novel):
             sceneNumber = ''
 
         if self.scenes[scId].tags is not None:
-            tags = self.get_string(self.scenes[scId].tags)
+            tags = self._get_string(self.scenes[scId].tags)
 
         else:
             tags = ''
@@ -185,7 +185,7 @@ class FileExport(Novel):
             for chId in self.scenes[scId].characters:
                 sChList.append(self.characters[chId].title)
 
-            sceneChars = self.get_string(sChList)
+            sceneChars = self._get_string(sChList)
             viewpointChar = sChList[0]
 
         except:
@@ -200,7 +200,7 @@ class FileExport(Novel):
             for lcId in self.scenes[scId].locations:
                 sLcList.append(self.locations[lcId].title)
 
-            sceneLocs = self.get_string(sLcList)
+            sceneLocs = self._get_string(sLcList)
 
         else:
             sceneLocs = ''
@@ -213,7 +213,7 @@ class FileExport(Novel):
             for itId in self.scenes[scId].items:
                 sItList.append(self.items[itId].title)
 
-            sceneItems = self.get_string(sItList)
+            sceneItems = self._get_string(sItList)
 
         else:
             sceneItems = ''
@@ -308,13 +308,13 @@ class FileExport(Novel):
             ID=scId,
             SceneNumber=sceneNumber,
             Title=self.scenes[scId].title,
-            Desc=self.convert_from_yw(self.scenes[scId].desc),
+            Desc=self._convert_from_yw(self.scenes[scId].desc),
             WordCount=str(self.scenes[scId].wordCount),
             WordsTotal=wordsTotal,
             LetterCount=str(self.scenes[scId].letterCount),
             LettersTotal=lettersTotal,
             Status=Scene.STATUS[self.scenes[scId].status],
-            SceneContent=self.convert_from_yw(self.scenes[scId].sceneContent),
+            SceneContent=self._convert_from_yw(self.scenes[scId].sceneContent),
             FieldTitle1=self.fieldTitle1,
             FieldTitle2=self.fieldTitle2,
             FieldTitle3=self.fieldTitle3,
@@ -335,28 +335,28 @@ class FileExport(Novel):
             LastsMinutes=lastsMinutes,
             Duration=duration,
             ReactionScene=reactionScene,
-            Goal=self.convert_from_yw(self.scenes[scId].goal),
-            Conflict=self.convert_from_yw(self.scenes[scId].conflict),
-            Outcome=self.convert_from_yw(self.scenes[scId].outcome),
+            Goal=self._convert_from_yw(self.scenes[scId].goal),
+            Conflict=self._convert_from_yw(self.scenes[scId].conflict),
+            Outcome=self._convert_from_yw(self.scenes[scId].outcome),
             Tags=tags,
             Image=self.scenes[scId].image,
             Characters=sceneChars,
             Viewpoint=viewpointChar,
             Locations=sceneLocs,
             Items=sceneItems,
-            Notes=self.convert_from_yw(self.scenes[scId].sceneNotes),
+            Notes=self._convert_from_yw(self.scenes[scId].sceneNotes),
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
 
         return sceneMapping
 
-    def get_characterMapping(self, crId):
+    def _get_characterMapping(self, crId):
         """Return a mapping dictionary for a character section. 
         """
 
         if self.characters[crId].tags is not None:
-            tags = self.get_string(self.characters[crId].tags)
+            tags = self._get_string(self.characters[crId].tags)
 
         else:
             tags = ''
@@ -370,27 +370,26 @@ class FileExport(Novel):
         characterMapping = dict(
             ID=crId,
             Title=self.characters[crId].title,
-            Desc=self.convert_from_yw(self.characters[crId].desc),
+            Desc=self._convert_from_yw(self.characters[crId].desc),
             Tags=tags,
             Image=self.characters[crId].image,
-            AKA=FileExport.convert_from_yw(self, self.characters[crId].aka),
-            Notes=self.convert_from_yw(self.characters[crId].notes),
-            Bio=self.convert_from_yw(self.characters[crId].bio),
-            Goals=self.convert_from_yw(self.characters[crId].goals),
-            FullName=FileExport.convert_from_yw(
-                self, self.characters[crId].fullName),
+            AKA=FileExport._convert_from_yw(self, self.characters[crId].aka),
+            Notes=self._convert_from_yw(self.characters[crId].notes),
+            Bio=self._convert_from_yw(self.characters[crId].bio),
+            Goals=self._convert_from_yw(self.characters[crId].goals),
+            FullName=FileExport._convert_from_yw(self, self.characters[crId].fullName),
             Status=characterStatus,
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
         return characterMapping
 
-    def get_locationMapping(self, lcId):
+    def _get_locationMapping(self, lcId):
         """Return a mapping dictionary for a location section. 
         """
 
         if self.locations[lcId].tags is not None:
-            tags = self.get_string(self.locations[lcId].tags)
+            tags = self._get_string(self.locations[lcId].tags)
 
         else:
             tags = ''
@@ -398,21 +397,21 @@ class FileExport(Novel):
         locationMapping = dict(
             ID=lcId,
             Title=self.locations[lcId].title,
-            Desc=self.convert_from_yw(self.locations[lcId].desc),
+            Desc=self._convert_from_yw(self.locations[lcId].desc),
             Tags=tags,
             Image=self.locations[lcId].image,
-            AKA=FileExport.convert_from_yw(self, self.locations[lcId].aka),
+            AKA=FileExport._convert_from_yw(self, self.locations[lcId].aka),
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
         return locationMapping
 
-    def get_itemMapping(self, itId):
+    def _get_itemMapping(self, itId):
         """Return a mapping dictionary for an item section. 
         """
 
         if self.items[itId].tags is not None:
-            tags = self.get_string(self.items[itId].tags)
+            tags = self._get_string(self.items[itId].tags)
 
         else:
             tags = ''
@@ -420,26 +419,25 @@ class FileExport(Novel):
         itemMapping = dict(
             ID=itId,
             Title=self.items[itId].title,
-            Desc=self.convert_from_yw(self.items[itId].desc),
+            Desc=self._convert_from_yw(self.items[itId].desc),
             Tags=tags,
             Image=self.items[itId].image,
-            AKA=FileExport.convert_from_yw(self, self.items[itId].aka),
+            AKA=FileExport._convert_from_yw(self, self.items[itId].aka),
             ProjectName=self.projectName,
             ProjectPath=self.projectPath,
         )
         return itemMapping
 
-    def get_fileHeader(self):
+    def _get_fileHeader(self):
         """Process the file header.
         Return a list of strings.
         """
         lines = []
-        template = Template(self.fileHeader)
-        lines.append(template.safe_substitute(
-            self.get_fileHeaderMapping()))
+        template = Template(self._fileHeader)
+        lines.append(template.safe_substitute(self._get_fileHeaderMapping()))
         return lines
 
-    def get_scenes(self, chId, sceneNumber, wordsTotal, lettersTotal, doNotExport):
+    def _get_scenes(self, chId, sceneNumber, wordsTotal, lettersTotal, doNotExport):
         """Process the scenes.
         Return a list of strings.
         """
@@ -457,8 +455,8 @@ class FileExport(Novel):
 
             if self.scenes[scId].isTodoScene:
 
-                if self.todoSceneTemplate != '':
-                    template = Template(self.todoSceneTemplate)
+                if self._todoSceneTemplate != '':
+                    template = Template(self._todoSceneTemplate)
 
                 else:
                     continue
@@ -466,16 +464,16 @@ class FileExport(Novel):
             elif self.scenes[scId].isNotesScene:
                 # Scene is "Notes" type.
 
-                if self.notesSceneTemplate != '':
-                    template = Template(self.notesSceneTemplate)
+                if self._notesSceneTemplate != '':
+                    template = Template(self._notesSceneTemplate)
 
                 else:
                     continue
 
             elif self.scenes[scId].isUnused or self.chapters[chId].isUnused:
 
-                if self.unusedSceneTemplate != '':
-                    template = Template(self.unusedSceneTemplate)
+                if self._unusedSceneTemplate != '':
+                    template = Template(self._unusedSceneTemplate)
 
                 else:
                     continue
@@ -483,16 +481,16 @@ class FileExport(Novel):
             elif self.chapters[chId].oldType == 1:
                 # Scene is "Info" type (old file format).
 
-                if self.notesSceneTemplate != '':
-                    template = Template(self.notesSceneTemplate)
+                if self._notesSceneTemplate != '':
+                    template = Template(self._notesSceneTemplate)
 
                 else:
                     continue
 
             elif self.scenes[scId].doNotExport or doNotExport:
 
-                if self.notExportedSceneTemplate != '':
-                    template = Template(self.notExportedSceneTemplate)
+                if self._notExportedSceneTemplate != '':
+                    template = Template(self._notExportedSceneTemplate)
 
                 else:
                     continue
@@ -503,25 +501,25 @@ class FileExport(Novel):
                 wordsTotal += self.scenes[scId].wordCount
                 lettersTotal += self.scenes[scId].letterCount
 
-                template = Template(self.sceneTemplate)
+                template = Template(self._sceneTemplate)
 
-                if not firstSceneInChapter and self.scenes[scId].appendToPrev and self.appendedSceneTemplate != '':
-                    template = Template(self.appendedSceneTemplate)
+                if not firstSceneInChapter and self.scenes[scId].appendToPrev and self._appendedSceneTemplate != '':
+                    template = Template(self._appendedSceneTemplate)
 
             if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
-                lines.append(self.sceneDivider)
+                lines.append(self._sceneDivider)
 
-            if firstSceneInChapter and self.firstSceneTemplate != '':
-                template = Template(self.firstSceneTemplate)
+            if firstSceneInChapter and self._firstSceneTemplate != '':
+                template = Template(self._firstSceneTemplate)
 
-            lines.append(template.safe_substitute(self.get_sceneMapping(
+            lines.append(template.safe_substitute(self._get_sceneMapping(
                 scId, dispNumber, wordsTotal, lettersTotal)))
 
             firstSceneInChapter = False
 
         return lines, sceneNumber, wordsTotal, lettersTotal
 
-    def get_chapters(self):
+    def _get_chapters(self):
         """Process the chapters and nested scenes.
         Return a list of strings.
         """
@@ -534,7 +532,7 @@ class FileExport(Novel):
         for chId in self.srtChapters:
             dispNumber = 0
 
-            if not self.chapterFilter.accept(self, chId):
+            if not self._chapterFilter.accept(self, chId):
                 continue
 
             # The order counts; be aware that "Todo" and "Notes" chapters are
@@ -559,46 +557,46 @@ class FileExport(Novel):
             if self.chapters[chId].chType == 2:
                 # Chapter is "ToDo" type (implies "unused").
 
-                if self.todoChapterTemplate != '':
-                    template = Template(self.todoChapterTemplate)
+                if self._todoChapterTemplate != '':
+                    template = Template(self._todoChapterTemplate)
 
             elif self.chapters[chId].chType == 1:
                 # Chapter is "Notes" type (implies "unused").
 
-                if self.notesChapterTemplate != '':
-                    template = Template(self.notesChapterTemplate)
+                if self._notesChapterTemplate != '':
+                    template = Template(self._notesChapterTemplate)
 
             elif self.chapters[chId].isUnused:
                 # Chapter is "really" unused.
 
-                if self.unusedChapterTemplate != '':
-                    template = Template(self.unusedChapterTemplate)
+                if self._unusedChapterTemplate != '':
+                    template = Template(self._unusedChapterTemplate)
 
             elif self.chapters[chId].oldType == 1:
                 # Chapter is "Info" type (old file format).
 
-                if self.notesChapterTemplate != '':
-                    template = Template(self.notesChapterTemplate)
+                if self._notesChapterTemplate != '':
+                    template = Template(self._notesChapterTemplate)
 
             elif doNotExport:
 
-                if self.notExportedChapterTemplate != '':
-                    template = Template(self.notExportedChapterTemplate)
+                if self._notExportedChapterTemplate != '':
+                    template = Template(self._notExportedChapterTemplate)
 
-            elif self.chapters[chId].chLevel == 1 and self.partTemplate != '':
-                template = Template(self.partTemplate)
+            elif self.chapters[chId].chLevel == 1 and self._partTemplate != '':
+                template = Template(self._partTemplate)
 
             else:
-                template = Template(self.chapterTemplate)
+                template = Template(self._chapterTemplate)
                 chapterNumber += 1
                 dispNumber = chapterNumber
 
             if template is not None:
-                lines.append(template.safe_substitute(self.get_chapterMapping(chId, dispNumber)))
+                lines.append(template.safe_substitute(self._get_chapterMapping(chId, dispNumber)))
 
             # Process scenes.
 
-            sceneLines, sceneNumber, wordsTotal, lettersTotal = self.get_scenes(
+            sceneLines, sceneNumber, wordsTotal, lettersTotal = self._get_scenes(
                 chId, sceneNumber, wordsTotal, lettersTotal, doNotExport)
             lines.extend(sceneLines)
 
@@ -608,114 +606,114 @@ class FileExport(Novel):
 
             if self.chapters[chId].chType == 2:
 
-                if self.todoChapterEndTemplate != '':
-                    template = Template(self.todoChapterEndTemplate)
+                if self._todoChapterEndTemplate != '':
+                    template = Template(self._todoChapterEndTemplate)
 
             elif self.chapters[chId].chType == 1:
 
-                if self.notesChapterEndTemplate != '':
-                    template = Template(self.notesChapterEndTemplate)
+                if self._notesChapterEndTemplate != '':
+                    template = Template(self._notesChapterEndTemplate)
 
             elif self.chapters[chId].isUnused:
 
-                if self.unusedChapterEndTemplate != '':
-                    template = Template(self.unusedChapterEndTemplate)
+                if self._unusedChapterEndTemplate != '':
+                    template = Template(self._unusedChapterEndTemplate)
 
             elif self.chapters[chId].oldType == 1:
 
-                if self.notesChapterEndTemplate != '':
-                    template = Template(self.notesChapterEndTemplate)
+                if self._notesChapterEndTemplate != '':
+                    template = Template(self._notesChapterEndTemplate)
 
             elif doNotExport:
 
-                if self.notExportedChapterEndTemplate != '':
-                    template = Template(self.notExportedChapterEndTemplate)
+                if self._notExportedChapterEndTemplate != '':
+                    template = Template(self._notExportedChapterEndTemplate)
 
-            elif self.chapterEndTemplate != '':
-                template = Template(self.chapterEndTemplate)
+            elif self._chapterEndTemplate != '':
+                template = Template(self._chapterEndTemplate)
 
             if template is not None:
-                lines.append(template.safe_substitute(self.get_chapterMapping(chId, dispNumber)))
+                lines.append(template.safe_substitute(self._get_chapterMapping(chId, dispNumber)))
 
         return lines
 
-    def get_characters(self):
+    def _get_characters(self):
         """Process the characters.
         Return a list of strings.
         """
 
-        if self.characterSectionHeading:
-            lines = [self.characterSectionHeading]
+        if self._characterSectionHeading:
+            lines = [self._characterSectionHeading]
 
         else:
             lines = []
 
-        template = Template(self.characterTemplate)
+        template = Template(self._characterTemplate)
 
         for crId in self.srtCharacters:
 
-            if self.characterFilter.accept(self, crId):
-                lines.append(template.safe_substitute(self.get_characterMapping(crId)))
+            if self._characterFilter.accept(self, crId):
+                lines.append(template.safe_substitute(self._get_characterMapping(crId)))
 
         return lines
 
-    def get_locations(self):
+    def _get_locations(self):
         """Process the locations.
         Return a list of strings.
         """
 
-        if self.locationSectionHeading:
-            lines = [self.locationSectionHeading]
+        if self._locationSectionHeading:
+            lines = [self._locationSectionHeading]
 
         else:
             lines = []
 
-        template = Template(self.locationTemplate)
+        template = Template(self._locationTemplate)
 
         for lcId in self.srtLocations:
 
-            if self.locationFilter.accept(self, lcId):
-                lines.append(template.safe_substitute(self.get_locationMapping(lcId)))
+            if self._locationFilter.accept(self, lcId):
+                lines.append(template.safe_substitute(self._get_locationMapping(lcId)))
 
         return lines
 
-    def get_items(self):
+    def _get_items(self):
         """Process the items.
         Return a list of strings.
         """
 
-        if self.itemSectionHeading:
-            lines = [self.itemSectionHeading]
+        if self._itemSectionHeading:
+            lines = [self._itemSectionHeading]
 
         else:
             lines = []
 
-        template = Template(self.itemTemplate)
+        template = Template(self._itemTemplate)
 
         for itId in self.srtItems:
 
-            if self.itemFilter.accept(self, itId):
-                lines.append(template.safe_substitute(self.get_itemMapping(itId)))
+            if self._itemFilter.accept(self, itId):
+                lines.append(template.safe_substitute(self._get_itemMapping(itId)))
 
         return lines
 
-    def get_text(self):
+    def _get_text(self):
         """Assemble the whole text applying the templates.
         Return a string to be written to the output file.
         """
-        lines = self.get_fileHeader()
-        lines.extend(self.get_chapters())
-        lines.extend(self.get_characters())
-        lines.extend(self.get_locations())
-        lines.extend(self.get_items())
-        lines.append(self.fileFooter)
+        lines = self._get_fileHeader()
+        lines.extend(self._get_chapters())
+        lines.extend(self._get_characters())
+        lines.extend(self._get_locations())
+        lines.extend(self._get_items())
+        lines.append(self._fileFooter)
         return ''.join(lines)
 
     def write(self):
         """Create a template-based output file. 
         Return a message beginning with the ERROR constant in case of error.
         """
-        text = self.get_text()
+        text = self._get_text()
         backedUp = False
 
         if os.path.isfile(self.filePath):
@@ -741,7 +739,7 @@ class FileExport(Novel):
 
         return f'"{os.path.normpath(self.filePath)}" written.'
 
-    def get_string(self, elements):
+    def _get_string(self, elements):
         """Return a string which is the concatenation of the 
         members of the list of strings "elements", separated by 
         a comma plus a space. The space allows word wrap in 
@@ -750,7 +748,7 @@ class FileExport(Novel):
         text = (', ').join(elements)
         return text
 
-    def convert_from_yw(self, text):
+    def _convert_from_yw(self, text):
         """Convert yw7 markup to target format.
         This is a stub to be overridden by subclass methods.
         """

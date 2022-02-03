@@ -13,7 +13,7 @@ class OdsLocList(OdsFile):
     DESCRIPTION = 'Location list'
     SUFFIX = '_loclist'
 
-    fileHeader = f'''{OdsFile.CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
+    _fileHeader = f'''{OdsFile._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
     <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co4" table:default-cell-style-name="Default"/>
@@ -41,7 +41,7 @@ class OdsLocList(OdsFile):
 
 '''
 
-    locationTemplate = '''   <table:table-row table:style-name="ro2">
+    _locationTemplate = '''   <table:table-row table:style-name="ro2">
      <table:table-cell office:value-type="string">
       <text:p>LcID:$ID</text:p>
      </table:table-cell>
@@ -61,4 +61,4 @@ class OdsLocList(OdsFile):
     </table:table-row>
 
 '''
-    fileFooter = OdsFile.CONTENT_XML_FOOTER
+    _fileFooter = OdsFile._CONTENT_XML_FOOTER 

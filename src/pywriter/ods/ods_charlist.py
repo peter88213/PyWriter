@@ -13,7 +13,7 @@ class OdsCharList(OdsFile):
     DESCRIPTION = 'Character list'
     SUFFIX = '_charlist'
 
-    fileHeader = f'''{OdsFile.CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
+    _fileHeader = f'''{OdsFile._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
     <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co2" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
@@ -59,7 +59,7 @@ class OdsCharList(OdsFile):
 
 '''
 
-    characterTemplate = '''   <table:table-row table:style-name="ro2">
+    _characterTemplate = '''   <table:table-row table:style-name="ro2">
      <table:table-cell office:value-type="string">
       <text:p>CrID:$ID</text:p>
      </table:table-cell>
@@ -95,4 +95,4 @@ class OdsCharList(OdsFile):
 
 '''
 
-    fileFooter = OdsFile.CONTENT_XML_FOOTER
+    _fileFooter = OdsFile._CONTENT_XML_FOOTER

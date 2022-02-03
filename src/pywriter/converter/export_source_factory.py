@@ -30,7 +30,7 @@ class ExportSourceFactory(FileFactory):
         """
         fileName, fileExtension = os.path.splitext(sourcePath)
 
-        for fileClass in self.fileClasses:
+        for fileClass in self._fileClasses:
 
             if fileClass.EXTENSION == fileExtension:
                 sourceFile = fileClass(sourcePath, **kwargs)

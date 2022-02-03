@@ -27,15 +27,15 @@ class HtmlSceneDesc(HtmlFile):
             if tag == 'div':
                 text = ''.join(self._lines)
 
-                if text.startswith(self.COMMENT_START):
+                if text.startswith(self._COMMENT_START):
 
                     try:
                         scTitle, scContent = text.split(
-                            sep=self.COMMENT_END, maxsplit=1)
+                            sep=self._COMMENT_END, maxsplit=1)
 
-                        if self.SC_TITLE_BRACKET in scTitle:
+                        if self._SC_TITLE_BRACKET in scTitle:
                             self.scenes[self._scId].title = scTitle.split(
-                                self.SC_TITLE_BRACKET)[1].strip()
+                                self._SC_TITLE_BRACKET)[1].strip()
 
                         text = scContent
 

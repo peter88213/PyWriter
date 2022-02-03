@@ -20,9 +20,10 @@ class HtmlFile(Novel, HTMLParser):
     """Generic HTML file representation."""
 
     EXTENSION = '.html'
-    COMMENT_START = '/*'
-    COMMENT_END = '*/'
-    SC_TITLE_BRACKET = '~'
+    
+    _COMMENT_START = '/*'
+    _COMMENT_END = '*/'
+    _SC_TITLE_BRACKET = '~'
 
     def __init__(self, filePath, **kwargs):
         super().__init__(filePath)
@@ -31,7 +32,7 @@ class HtmlFile(Novel, HTMLParser):
         self._scId = None
         self._chId = None
 
-    def convert_to_yw(self, text):
+    def _convert_to_yw(self, text):
         """Convert html tags to yWriter 6/7 raw markup. 
         Return a yw6/7 markup string.
         """
@@ -84,21 +85,21 @@ class HtmlFile(Novel, HTMLParser):
 
         return text
 
-    def preprocess(self, text):
+    def _preprocess(self, text):
         """Clean up the HTML code and strip yWriter 6/7 raw markup. 
         This prevents accidentally applied formatting from being 
         transferred to the yWriter metadata. If rich text is 
         applicable, such as in scenes, overwrite this method 
         in a subclass) 
         """
-        text = self.convert_to_yw(text)
+        text = self._convert_to_yw(text)
 
         # Remove misplaced formatting tags.
 
         text = re.sub('\[\/*[b|i]\]', '', text)
         return text
 
-    def postprocess(self):
+    def _postprocess(self):
         """Process the plain text after parsing.
         This is a hook for subclasses.
         """
@@ -136,8 +137,8 @@ class HtmlFile(Novel, HTMLParser):
         if result[0].startswith(ERROR):
             return (result[0])
 
-        text = self.preprocess(result[1])
+        text = self._preprocess(result[1])
         self.feed(text)
-        self.postprocess()
+        self._postprocess()
 
         return 'Created novel structure from HTML data.'

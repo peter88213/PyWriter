@@ -16,70 +16,70 @@ class OdtXref(OdtFile):
     DESCRIPTION = 'Cross reference'
     SUFFIX = '_xref'
 
-    fileHeader = f'''{OdtFile.CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
-    sceneTemplate = '''<text:p text:style-name="yWriter_20_mark">
+    _sceneTemplate = '''<text:p text:style-name="yWriter_20_mark">
 <text:a xlink:href="../${ProjectName}_manuscript.odt#ScID:$ID%7Cregion">$SceneNumber</text:a> (Ch $Chapter) $Title
 </text:p>
 '''
-    unusedSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">
+    _unusedSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_unused">
 $SceneNumber (Ch $Chapter) $Title (Unused)
 </text:p>
 '''
-    notesSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">
+    _notesSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_notes">
 $SceneNumber (Ch $Chapter) $Title (Notes)
 </text:p>
 '''
-    todoSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">
+    _todoSceneTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">
 $SceneNumber (Ch $Chapter) $Title (ToDo)
 </text:p>
 '''
-    characterTemplate = '''<text:p text:style-name="Text_20_body">
+    _characterTemplate = '''<text:p text:style-name="Text_20_body">
 <text:a xlink:href="../${ProjectName}_characters.odt#CrID:$ID%7Cregion">$Title</text:a> $FullName
 </text:p>
 '''
-    locationTemplate = '''<text:p text:style-name="Text_20_body">
+    _locationTemplate = '''<text:p text:style-name="Text_20_body">
 <text:a xlink:href="../${ProjectName}_locations.odt#LcID:$ID%7Cregion">$Title</text:a>
 </text:p>
 '''
-    itemTemplate = '''<text:p text:style-name="Text_20_body">
+    _itemTemplate = '''<text:p text:style-name="Text_20_body">
 <text:a xlink:href="../${ProjectName}_items.odt#ItrID:$ID%7Cregion">$Title</text:a>
 </text:p>
 '''
-    scnPerChrTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Character $Title:</text:h>
+    _scnPerChrTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Character $Title:</text:h>
 '''
-    scnPerLocTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Location $Title:</text:h>
+    _scnPerLocTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Location $Title:</text:h>
 '''
-    scnPerItmTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Item $Title:</text:h>
+    _scnPerItmTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Item $Title:</text:h>
 '''
-    chrPerTagTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Characters tagged $Tag:</text:h>
+    _chrPerTagTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Characters tagged $Tag:</text:h>
 '''
-    locPerTagTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Locations tagged $Tag:</text:h>
+    _locPerTagTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Locations tagged $Tag:</text:h>
 '''
-    itmPerTagTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Items tagged $Tag:</text:h>
+    _itmPerTagTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Items tagged $Tag:</text:h>
 '''
-    scnPerTagtemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes tagged $Tag:</text:h>
+    _scnPerTagtemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes tagged $Tag:</text:h>
 '''
-    fileFooter = OdtFile.CONTENT_XML_FOOTER
+    _fileFooter = OdtFile._CONTENT_XML_FOOTER
 
     def __init__(self, filePath, **kwargs):
         """Apply the strategy pattern 
         by delegating the cross reference to an external object.
         """
         super().__init__(filePath)
-        self.xr = CrossReferences()
+        self._xr = CrossReferences()
 
-    def get_sceneMapping(self, scId):
+    def _get_sceneMapping(self, scId):
         """Add the chapter number to the original mapping dictionary.
         """
-        sceneNumber = self.xr.srtScenes.index(scId) + 1
-        sceneMapping = super().get_sceneMapping(scId, sceneNumber, 0, 0)
-        chapterNumber = self.srtChapters.index(self.xr.chpPerScn[scId]) + 1
+        sceneNumber = self._xr.srtScenes.index(scId) + 1
+        sceneMapping = super()._get_sceneMapping(scId, sceneNumber, 0, 0)
+        chapterNumber = self.srtChapters.index(self._xr.chpPerScn[scId]) + 1
         sceneMapping['Chapter'] = str(chapterNumber)
         return sceneMapping
 
-    def get_tagMapping(self, tag):
+    def _get_tagMapping(self, tag):
         """Return a mapping dictionary for a tags section. 
         """
         tagMapping = dict(
@@ -87,7 +87,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         )
         return tagMapping
 
-    def get_scenes(self, scenes):
+    def _get_scenes(self, scenes):
         """Process the scenes.
         Return a list of strings.
         Override the superclass method.
@@ -97,163 +97,163 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         for scId in scenes:
 
             if self.scenes[scId].isNotesScene:
-                template = Template(self.notesSceneTemplate)
+                template = Template(self._notesSceneTemplate)
 
             elif self.scenes[scId].isTodoScene:
-                template = Template(self.todoSceneTemplate)
+                template = Template(self._todoSceneTemplate)
 
             elif self.scenes[scId].isUnused:
-                template = Template(self.unusedSceneTemplate)
+                template = Template(self._unusedSceneTemplate)
 
             else:
-                template = Template(self.sceneTemplate)
+                template = Template(self._sceneTemplate)
 
             lines.append(template.safe_substitute(
-                self.get_sceneMapping(scId)))
+                self._get_sceneMapping(scId)))
 
         return lines
 
-    def get_sceneTags(self):
+    def _get_sceneTags(self):
         """Process the scene related tags.
         Return a list of strings.
         """
         lines = []
-        headerTemplate = Template(self.scnPerTagtemplate)
+        headerTemplate = Template(self._scnPerTagtemplate)
 
-        for tag in self.xr.scnPerTag:
+        for tag in self._xr.scnPerTag:
 
-            if self.xr.scnPerTag[tag] != []:
+            if self._xr.scnPerTag[tag] != []:
                 lines.append(headerTemplate.safe_substitute(
-                    self.get_tagMapping(tag)))
-                lines.extend(self.get_scenes(self.xr.scnPerTag[tag]))
+                    self._get_tagMapping(tag)))
+                lines.extend(self._get_scenes(self._xr.scnPerTag[tag]))
 
         return lines
 
-    def get_characters(self):
+    def _get_characters(self):
         """Process the scenes per character.
         Return a list of strings.
         Override the superclass method.
         """
         lines = []
-        headerTemplate = Template(self.scnPerChrTemplate)
+        headerTemplate = Template(self._scnPerChrTemplate)
 
-        for crId in self.xr.scnPerChr:
+        for crId in self._xr.scnPerChr:
 
-            if self.xr.scnPerChr[crId] != []:
+            if self._xr.scnPerChr[crId] != []:
                 lines.append(headerTemplate.safe_substitute(
-                    self.get_characterMapping(crId)))
-                lines.extend(self.get_scenes(self.xr.scnPerChr[crId]))
+                    self._get_characterMapping(crId)))
+                lines.extend(self._get_scenes(self._xr.scnPerChr[crId]))
 
         return lines
 
-    def get_locations(self):
+    def _get_locations(self):
         """Process the locations.
         Return a list of strings.
         Override the superclass method.
         """
         lines = []
-        headerTemplate = Template(self.scnPerLocTemplate)
+        headerTemplate = Template(self._scnPerLocTemplate)
 
-        for lcId in self.xr.scnPerLoc:
+        for lcId in self._xr.scnPerLoc:
 
-            if self.xr.scnPerLoc[lcId] != []:
+            if self._xr.scnPerLoc[lcId] != []:
                 lines.append(headerTemplate.safe_substitute(
-                    self.get_locationMapping(lcId)))
-                lines.extend(self.get_scenes(self.xr.scnPerLoc[lcId]))
+                    self._get_locationMapping(lcId)))
+                lines.extend(self._get_scenes(self._xr.scnPerLoc[lcId]))
 
         return lines
 
-    def get_items(self):
+    def _get_items(self):
         """Process the items.
         Return a list of strings.
         Override the superclass method.
         """
         lines = []
-        headerTemplate = Template(self.scnPerItmTemplate)
+        headerTemplate = Template(self._scnPerItmTemplate)
 
-        for itId in self.xr.scnPerItm:
+        for itId in self._xr.scnPerItm:
 
-            if self.xr.scnPerItm[itId] != []:
+            if self._xr.scnPerItm[itId] != []:
                 lines.append(headerTemplate.safe_substitute(
-                    self.get_itemMapping(itId)))
-                lines.extend(self.get_scenes(self.xr.scnPerItm[itId]))
+                    self._get_itemMapping(itId)))
+                lines.extend(self._get_scenes(self._xr.scnPerItm[itId]))
 
         return lines
 
-    def get_characterTags(self):
+    def _get_characterTags(self):
         """Process the character related tags.
         Return a list of strings.
         """
         lines = []
-        headerTemplate = Template(self.chrPerTagTemplate)
-        template = Template(self.characterTemplate)
+        headerTemplate = Template(self._chrPerTagTemplate)
+        template = Template(self._characterTemplate)
 
-        for tag in self.xr.chrPerTag:
+        for tag in self._xr.chrPerTag:
 
-            if self.xr.chrPerTag[tag] != []:
+            if self._xr.chrPerTag[tag] != []:
                 lines.append(headerTemplate.safe_substitute(
-                    self.get_tagMapping(tag)))
+                    self._get_tagMapping(tag)))
 
-                for crId in self.xr.chrPerTag[tag]:
+                for crId in self._xr.chrPerTag[tag]:
                     lines.append(template.safe_substitute(
-                        self.get_characterMapping(crId)))
+                        self._get_characterMapping(crId)))
 
         return lines
 
-    def get_locationTags(self):
+    def _get_locationTags(self):
         """Process the location related tags.
         Return a list of strings.
         """
         lines = []
-        headerTemplate = Template(self.locPerTagTemplate)
-        template = Template(self.locationTemplate)
+        headerTemplate = Template(self._locPerTagTemplate)
+        template = Template(self._locationTemplate)
 
-        for tag in self.xr.locPerTag:
+        for tag in self._xr.locPerTag:
 
-            if self.xr.locPerTag[tag]:
+            if self._xr.locPerTag[tag]:
                 lines.append(headerTemplate.safe_substitute(
-                    self.get_tagMapping(tag)))
+                    self._get_tagMapping(tag)))
 
-                for lcId in self.xr.locPerTag[tag]:
+                for lcId in self._xr.locPerTag[tag]:
                     lines.append(template.safe_substitute(
-                        self.get_locationMapping(lcId)))
+                        self._get_locationMapping(lcId)))
 
         return lines
 
-    def get_itemTags(self):
+    def _get_itemTags(self):
         """Process the item related tags.
         Return a list of strings.
         """
         lines = []
-        headerTemplate = Template(self.itmPerTagTemplate)
-        template = Template(self.itemTemplate)
+        headerTemplate = Template(self._itmPerTagTemplate)
+        template = Template(self._itemTemplate)
 
-        for tag in self.xr.itmPerTag:
+        for tag in self._xr.itmPerTag:
 
-            if self.xr.itmPerTag[tag] != []:
+            if self._xr.itmPerTag[tag] != []:
                 lines.append(headerTemplate.safe_substitute(
-                    self.get_tagMapping(tag)))
+                    self._get_tagMapping(tag)))
 
-                for itId in self.xr.itmPerTag[tag]:
+                for itId in self._xr.itmPerTag[tag]:
                     lines.append(template.safe_substitute(
-                        self.get_itemMapping(itId)))
+                        self._get_itemMapping(itId)))
 
         return lines
 
-    def get_text(self):
+    def _get_text(self):
         """Assemble the whole text applying the templates.
         Return a string to be written to the output file.
         Override the superclass method.
         """
-        self.xr.generate_xref(self)
+        self._xr.generate_xref(self)
 
-        lines = self.get_fileHeader()
-        lines.extend(self.get_characters())
-        lines.extend(self.get_locations())
-        lines.extend(self.get_items())
-        lines.extend(self.get_sceneTags())
-        lines.extend(self.get_characterTags())
-        lines.extend(self.get_locationTags())
-        lines.extend(self.get_itemTags())
-        lines.append(self.fileFooter)
+        lines = self._get_fileHeader()
+        lines.extend(self._get_characters())
+        lines.extend(self._get_locations())
+        lines.extend(self._get_items())
+        lines.extend(self._get_sceneTags())
+        lines.extend(self._get_characterTags())
+        lines.extend(self._get_locationTags())
+        lines.extend(self._get_itemTags())
+        lines.append(self._fileFooter)
         return ''.join(lines)

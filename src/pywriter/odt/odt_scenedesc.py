@@ -16,19 +16,19 @@ class OdtSceneDesc(OdtFile):
     DESCRIPTION = 'Scene descriptions'
     SUFFIX = '_scenes'
 
-    fileHeader = f'''{OdtFile.CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
-    partTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
+    _partTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
 <text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../${ProjectName}_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 '''
 
-    chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
+    _chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../${ProjectName}_chapters.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 '''
 
-    sceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
+    _sceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
 <text:p text:style-name="Text_20_body"><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>~ ${Title} ~</text:p>
@@ -38,7 +38,7 @@ class OdtSceneDesc(OdtFile):
 </text:section>
 '''
 
-    appendedSceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
+    _appendedSceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
 <text:p text:style-name="First_20_line_20_indent"><office:annotation>
 <dc:creator>scene title</dc:creator>
 <text:p>~ ${Title} ~</text:p>
@@ -48,10 +48,10 @@ class OdtSceneDesc(OdtFile):
 </text:section>
 '''
 
-    sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
+    _sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
 '''
 
-    chapterEndTemplate = '''</text:section>
+    _chapterEndTemplate = '''</text:section>
 '''
 
-    fileFooter = OdtFile.CONTENT_XML_FOOTER
+    _fileFooter = OdtFile._CONTENT_XML_FOOTER

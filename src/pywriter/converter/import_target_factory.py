@@ -43,7 +43,7 @@ class ImportTargetFactory(FileFactory):
 
         # Look for an existing yWriter project to rewrite.
 
-        for fileClass in self.fileClasses:
+        for fileClass in self._fileClasses:
 
             if os.path.isfile(f'{ywPathBasis}{fileClass.EXTENSION}'):
                 targetFile = fileClass(f'{ywPathBasis}{fileClass.EXTENSION}', **kwargs)

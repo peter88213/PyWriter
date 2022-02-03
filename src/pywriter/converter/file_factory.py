@@ -16,6 +16,6 @@ class FileFactory:
         """Write the parameter to a private instance variable.
 
         Positional arguments:
-            fileClasses -- list of classes from which an instance can be returned.
+            _fileClasses -- list of classes from which an instance can be returned.
         """
-        self.fileClasses = fileClasses
+        self._fileClasses = fileClasses

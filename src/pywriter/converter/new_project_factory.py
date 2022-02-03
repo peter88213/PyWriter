@@ -64,7 +64,7 @@ class NewProjectFactory(FileFactory):
                 return 'Source and target objects created.', sourceFile, targetFile
 
         else:
-            for fileClass in self.fileClasses:
+            for fileClass in self._fileClasses:
 
                 if fileClass.SUFFIX is not None:
 

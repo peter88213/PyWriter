@@ -18,7 +18,7 @@ class CsvItemList(CsvFile):
     DESCRIPTION = 'Item list'
     SUFFIX = '_itemlist'
 
-    rowTitles = ['ID', 'Name', 'Description', 'Aka', 'Tags']
+    _rowTitles = ['ID', 'Name', 'Description', 'Aka', 'Tags']
 
     def read(self):
         """Parse the csv file located at filePath, 
@@ -31,15 +31,15 @@ class CsvItemList(CsvFile):
         if message.startswith(ERROR):
             return message
 
-        for cells in self.rows:
+        for cells in self._rows:
 
             if 'ItID:' in cells[0]:
                 itId = re.search('ItID\:([0-9]+)', cells[0]).group(1)
                 self.srtItems.append(itId)
                 self.items[itId] = WorldElement()
                 self.items[itId].title = cells[1]
-                self.items[itId].desc = self.convert_to_yw(cells[2])
+                self.items[itId].desc = self._convert_to_yw(cells[2])
                 self.items[itId].aka = cells[3]
-                self.items[itId].tags = self.get_list(cells[4])
+                self.items[itId].tags = self._get_list(cells[4])
 
         return 'Item data read in.'

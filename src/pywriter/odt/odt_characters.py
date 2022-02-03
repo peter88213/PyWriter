@@ -16,11 +16,11 @@ class OdtCharacters(OdtFile):
     DESCRIPTION = 'Character descriptions'
     SUFFIX = '_characters'
 
-    fileHeader = f'''{OdtFile.CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
-    characterTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title$FullName$AKA</text:h>
+    _characterTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title$FullName$AKA</text:h>
 <text:section text:style-name="Sect1" text:name="CrID:$ID">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Description</text:h>
 <text:section text:style-name="Sect1" text:name="CrID_desc:$ID">
@@ -41,12 +41,12 @@ class OdtCharacters(OdtFile):
 </text:section>
 '''
 
-    fileFooter = OdtFile.CONTENT_XML_FOOTER
+    _fileFooter = OdtFile._CONTENT_XML_FOOTER
 
-    def get_characterMapping(self, crId):
+    def _get_characterMapping(self, crId):
         """Return a mapping dictionary for a character section. 
         """
-        characterMapping = OdtFile.get_characterMapping(self, crId)
+        characterMapping = OdtFile._get_characterMapping(self, crId)
 
         if self.characters[crId].aka:
             characterMapping['AKA'] = f' ("{self.characters[crId].aka}")'

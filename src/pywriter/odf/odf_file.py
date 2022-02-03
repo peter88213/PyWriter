@@ -22,7 +22,7 @@ class OdfFile(FileExport):
     """Generic OpenDocument xml file representation.
     """
 
-    ODF_COMPONENTS = []
+    _ODF_COMPONENTS = []
     _MIMETYPE = ''
     _SETTINGS_XML = ''
     _MANIFEST_XML = ''
@@ -34,25 +34,25 @@ class OdfFile(FileExport):
         creating a temporary directory.
         """
         super().__init__(filePath, **kwargs)
-        self.tempDir = tempfile.mkdtemp(suffix='.tmp', prefix='odf_')
-        self.originalPath = self._filePath
+        self._tempDir = tempfile.mkdtemp(suffix='.tmp', prefix='odf_')
+        self._originalPath = self._filePath
 
     def __del__(self):
         """Make sure to delete the temporary directory,
         in case write() has not been called.
         """
-        self.tear_down()
+        self._tear_down()
 
-    def tear_down(self):
+    def _tear_down(self):
         """Delete the temporary directory 
         containing the unpacked ODF directory structure.
         """
         try:
-            rmtree(self.tempDir)
+            rmtree(self._tempDir)
         except:
             pass
 
-    def set_up(self):
+    def _set_up(self):
         """Helper method for ZIP file generation.
 
         Prepare the temporary directory containing the internal 
@@ -61,17 +61,17 @@ class OdfFile(FileExport):
         # Create and open a temporary directory for the files to zip.
 
         try:
-            self.tear_down()
-            os.mkdir(self.tempDir)
-            os.mkdir(f'{self.tempDir}/META-INF')
+            self._tear_down()
+            os.mkdir(self._tempDir)
+            os.mkdir(f'{self._tempDir}/META-INF')
 
         except:
-            return f'{ERROR}Cannot create "{os.path.normpath(self.tempDir)}".'
+            return f'{ERROR}Cannot create "{os.path.normpath(self._tempDir)}".'
 
         # Generate mimetype.
 
         try:
-            with open(f'{self.tempDir}/mimetype', 'w', encoding='utf-8') as f:
+            with open(f'{self._tempDir}/mimetype', 'w', encoding='utf-8') as f:
                 f.write(self._MIMETYPE)
         except:
             return f'{ERROR}Cannot write "mimetype"'
@@ -79,7 +79,7 @@ class OdfFile(FileExport):
         # Generate settings.xml.
 
         try:
-            with open(f'{self.tempDir}/settings.xml', 'w', encoding='utf-8') as f:
+            with open(f'{self._tempDir}/settings.xml', 'w', encoding='utf-8') as f:
                 f.write(self._SETTINGS_XML)
         except:
             return f'{ERROR}Cannot write "settings.xml"'
@@ -87,7 +87,7 @@ class OdfFile(FileExport):
         # Generate META-INF\manifest.xml.
 
         try:
-            with open(f'{self.tempDir}/META-INF/manifest.xml', 'w', encoding='utf-8') as f:
+            with open(f'{self._tempDir}/META-INF/manifest.xml', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_XML)
         except:
             return f'{ERROR}Cannot write "manifest.xml"'
@@ -104,7 +104,7 @@ class OdfFile(FileExport):
         text = template.safe_substitute(localeMapping)
 
         try:
-            with open(f'{self.tempDir}/styles.xml', 'w', encoding='utf-8') as f:
+            with open(f'{self._tempDir}/styles.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
             return f'{ERROR}Cannot write "styles.xml"'
@@ -124,7 +124,7 @@ class OdfFile(FileExport):
         text = template.safe_substitute(metaMapping)
 
         try:
-            with open(f'{self.tempDir}/meta.xml', 'w', encoding='utf-8') as f:
+            with open(f'{self._tempDir}/meta.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
             return f'{ERROR}Cannot write "meta.xml".'
@@ -137,20 +137,20 @@ class OdfFile(FileExport):
         # Create a temporary directory containing the internal
         # structure of an ODS file except "content.xml".
 
-        message = self.set_up()
+        message = self._set_up()
 
         if message.startswith(ERROR):
             return message
 
         # Add "content.xml" to the temporary directory.
 
-        self.originalPath = self._filePath
+        self._originalPath = self._filePath
 
-        self._filePath = f'{self.tempDir}/content.xml'
+        self._filePath = f'{self._tempDir}/content.xml'
 
         message = super().write()
 
-        self._filePath = self.originalPath
+        self._filePath = self._originalPath
 
         if message.startswith(ERROR):
             return message
@@ -172,9 +172,9 @@ class OdfFile(FileExport):
             
         try:
             with zipfile.ZipFile(self.filePath, 'w') as odfTarget:
-                os.chdir(self.tempDir)
+                os.chdir(self._tempDir)
 
-                for file in self.ODF_COMPONENTS:
+                for file in self._ODF_COMPONENTS:
                     odfTarget.write(file, compress_type=zipfile.ZIP_DEFLATED)
         except:
 
@@ -187,5 +187,5 @@ class OdfFile(FileExport):
         # Remove temporary data.
 
         os.chdir(workdir)
-        self.tear_down()
+        self._tear_down()
         return f'"{os.path.normpath(self.filePath)}" written.'

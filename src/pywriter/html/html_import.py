@@ -36,10 +36,10 @@ class HtmlImport(HtmlFile):
         self._chCount = 0
         self._scCount = 0
 
-    def preprocess(self, text):
+    def _preprocess(self, text):
         """Process the html text before parsing.
         """
-        return self.convert_to_yw(text)
+        return self._convert_to_yw(text)
 
     def handle_starttag(self, tag, attrs):
 
@@ -118,17 +118,17 @@ class HtmlImport(HtmlFile):
 
             # Convert prefixed comment into scene title.
 
-            if self._lines == [] and data.startswith(self.COMMENT_START):
+            if self._lines == [] and data.startswith(self._COMMENT_START):
 
                 try:
                     scTitle, scContent = data.split(
-                        sep=self.COMMENT_END, maxsplit=1)
+                        sep=self._COMMENT_END, maxsplit=1)
 
-                    if self.SC_TITLE_BRACKET in scTitle:
-                        scTitle = scTitle.split(self.SC_TITLE_BRACKET)[1]
+                    if self._SC_TITLE_BRACKET in scTitle:
+                        scTitle = scTitle.split(self._SC_TITLE_BRACKET)[1]
 
                     else:
-                        scTitle = scTitle.lstrip(self.COMMENT_START)
+                        scTitle = scTitle.lstrip(self._COMMENT_START)
 
                     self.scenes[self._scId].title = scTitle.strip()
                     data = scContent

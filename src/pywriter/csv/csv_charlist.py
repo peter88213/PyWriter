@@ -19,7 +19,7 @@ class CsvCharList(CsvFile):
     DESCRIPTION = 'Character list'
     SUFFIX = '_charlist'
 
-    rowTitles = ['ID', 'Name', 'Full name', 'Aka', 'Description', 'Bio', 'Goals', 'Importance', 'Tags', 'Notes']
+    _rowTitles = ['ID', 'Name', 'Full name', 'Aka', 'Description', 'Bio', 'Goals', 'Importance', 'Tags', 'Notes']
 
     def read(self):
         """Parse the csv file located at filePath, 
@@ -32,7 +32,7 @@ class CsvCharList(CsvFile):
         if message.startswith(ERROR):
             return message
 
-        for cells in self.rows:
+        for cells in self._rows:
 
             if 'CrID:' in cells[0]:
                 crId = re.search('CrID\:([0-9]+)', cells[0]).group(1)
@@ -41,7 +41,7 @@ class CsvCharList(CsvFile):
                 self.characters[crId].title = cells[1]
                 self.characters[crId].fullName = cells[2]
                 self.characters[crId].aka = cells[3]
-                self.characters[crId].desc = self.convert_to_yw(cells[4])
+                self.characters[crId].desc = self._convert_to_yw(cells[4])
                 self.characters[crId].bio = cells[5]
                 self.characters[crId].goals = cells[6]
 
@@ -51,7 +51,7 @@ class CsvCharList(CsvFile):
                 else:
                     self.characters[crId].isMajor = False
 
-                self.characters[crId].tags = self.get_list(cells[8])
-                self.characters[crId].notes = self.convert_to_yw(cells[9])
+                self.characters[crId].tags = self._get_list(cells[8])
+                self.characters[crId].notes = self._convert_to_yw(cells[9])
 
         return 'Character data read in.'

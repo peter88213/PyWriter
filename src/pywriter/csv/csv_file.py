@@ -26,16 +26,21 @@ class CsvFile(Novel):
     _SEPARATOR = ','
     # delimits data fields within a record.
 
-    rowTitles = []
+    _rowTitles = []
 
+    def __init__(self, filePath, **kwargs):
+        super().__init__(filePath)
+        self._rows = []
+        
+        
     def read(self):
-        """Parse the csv file located at filePath, fetching the rows.
+        """Parse the csv file located at filePath, fetching the _rows.
         Check the number of fields in each row.
         Return a message beginning with the ERROR constant in case of error.
         Override the superclass method.
         """
-        self.rows = []
-        cellsPerRow = len(self.rowTitles)
+        self._rows = []
+        cellsPerRow = len(self._rowTitles)
 
         try:
             with open(self.filePath, newline='', encoding='utf-8') as f:
@@ -48,7 +53,7 @@ class CsvFile(Novel):
                     if len(row) != cellsPerRow:
                         return f'{ERROR}Wrong csv structure.'
 
-                    self.rows.append(row)
+                    self._rows.append(row)
 
         except(FileNotFoundError):
             return f'{ERROR}"{os.path.normpath(self.filePath)}" not found.'
@@ -58,7 +63,7 @@ class CsvFile(Novel):
 
         return 'CSV data read in.'
 
-    def get_list(self, text):
+    def _get_list(self, text):
         """Split a sequence of comma separated strings into a list of strings.
         Remove leading and trailing spaces, if any.
         """
