@@ -47,7 +47,7 @@ class Configuration():
         Settings and options that can not be read in, remain unchanged.
         """
         config = ConfigParser()
-        config.read(iniFile)
+        config.read(iniFile, encoding='utf-8')
 
         if config.has_section(self._sLabel):
 
@@ -89,5 +89,5 @@ class Configuration():
                 else:
                     config.set(self._oLabel, settingId, 'No')
 
-        with open(iniFile, 'w') as f:
+        with open(iniFile, 'w', encoding='utf-8') as f:
             config.write(f)
