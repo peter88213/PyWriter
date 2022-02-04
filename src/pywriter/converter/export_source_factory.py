@@ -28,7 +28,7 @@ class ExportSourceFactory(FileFactory):
         - sourceFile: a YwFile subclass instance, or None in case of error
         - targetFile: None
         """
-        fileName, fileExtension = os.path.splitext(sourcePath)
+        __, fileExtension = os.path.splitext(sourcePath)
 
         for fileClass in self._fileClasses:
 

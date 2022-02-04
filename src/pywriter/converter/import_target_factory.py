@@ -32,7 +32,7 @@ class ImportTargetFactory(FileFactory):
         - targetFile: a YwFile subclass instance, or None in case of error
 
         """
-        fileName, fileExtension = os.path.splitext(sourcePath)
+        fileName, __ = os.path.splitext(sourcePath)
         sourceSuffix = kwargs['suffix']
 
         if sourceSuffix:

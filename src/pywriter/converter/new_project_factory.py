@@ -41,7 +41,7 @@ class NewProjectFactory(FileFactory):
         if not self._canImport(sourcePath):
             return f'{ERROR}This document is not meant to be written back.', None, None
 
-        fileName, fileExtension = os.path.splitext(sourcePath)
+        fileName, __ = os.path.splitext(sourcePath)
         targetFile = Yw7File(f'{fileName}{Yw7File.EXTENSION}', **kwargs)
 
         if sourcePath.endswith('.html'):
@@ -78,7 +78,7 @@ class NewProjectFactory(FileFactory):
         """Return True, if the file located at sourcepath is of an importable type.
         Otherwise, return False.
         """
-        fileName, fileExtension = os.path.splitext(sourcePath)
+        fileName, __ = os.path.splitext(sourcePath)
 
         for suffix in self.DO_NOT_IMPORT:
 
