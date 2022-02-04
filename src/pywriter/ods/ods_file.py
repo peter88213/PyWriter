@@ -277,17 +277,17 @@ class OdsFile(OdfFile):
 '''
     _MIMETYPE = 'application/vnd.oasis.opendocument.spreadsheet'
 
-    def _convert_from_yw(self, text):
+    def _convert_from_yw(self, text, quick=False):
         """Convert yw7 raw markup to ods. Return an xml string.
         """
 
         ODS_REPLACEMENTS = [
-            ['&', '&amp;'],  # must be first!
-            ['"', '&quot;'],
-            ["'", '&apos;'],
-            ['>', '&gt;'],
-            ['<', '&lt;'],
-            ['\n', '</text:p>\n<text:p>'],
+            ('&', '&amp;'),  # must be first!
+            ('"', '&quot;'),
+            ("'", '&apos;'),
+            ('>', '&gt;'),
+            ('<', '&lt;'),
+            ('\n', '</text:p>\n<text:p>'),
         ]
 
         try:

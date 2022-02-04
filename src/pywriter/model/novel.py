@@ -174,7 +174,7 @@ class Novel():
         """
         return text
 
-    def _convert_from_yw(self, text):
+    def _convert_from_yw(self, text, quick=False):
         """Return text, converted from yw7 markup to target format.
         This is a stub to be overridden by subclass methods.
         """

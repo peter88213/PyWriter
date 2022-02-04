@@ -1142,23 +1142,31 @@ class OdtFile(OdfFile):
 
         return 'ODT structure generated.'
 
-    def _convert_from_yw(self, text):
+    def _convert_from_yw(self, text, quick=False):
         """Convert yw7 raw markup to odt. Return an xml string.
-        """
+        """        
+        if quick:            
+            # Just clean up a one-liner without sophisticated formatting.
+            
+            try:
+                return text.replace('&', '&amp;').replace('>', '&gt;').replace('<', '&lt;')
+            
+            except AttributeError:
+                return ''
 
         ODT_REPLACEMENTS = [
-            ['&', '&amp;'],
-            ['>', '&gt;'],
-            ['<', '&lt;'],
-            ['\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'],
-            ['\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'],
-            ['\r', '\n'],
-            ['[i]', '<text:span text:style-name="Emphasis">'],
-            ['[/i]', '</text:span>'],
-            ['[b]', '<text:span text:style-name="Strong_20_Emphasis">'],
-            ['[/b]', '</text:span>'],
-            ['/*', f'<office:annotation><dc:creator>{self.author}</dc:creator><text:p>'],
-            ['*/', '</text:p></office:annotation>'],
+            ('&', '&amp;'),
+            ('>', '&gt;'),
+            ('<', '&lt;'),
+            ('\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'),
+            ('\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'),
+            ('\r', '\n'),
+            ('[i]', '<text:span text:style-name="Emphasis">'),
+            ('[/i]', '</text:span>'),
+            ('[b]', '<text:span text:style-name="Strong_20_Emphasis">'),
+            ('[/b]', '</text:span>'),
+            ('/*', f'<office:annotation><dc:creator>{self.author}</dc:creator><text:p>'),
+            ('*/', '</text:p></office:annotation>'),
         ]
 
         try:

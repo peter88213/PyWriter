@@ -134,13 +134,13 @@ class FileExport(Novel):
         """Return a mapping dictionary for the project section. 
         """
         projectTemplateMapping = dict(
-            Title=self._convert_from_yw(self.title),
+            Title=self._convert_from_yw(self.title, True),
             Desc=self._convert_from_yw(self.desc),
-            AuthorName=self._convert_from_yw(self.author),
-            FieldTitle1=self._convert_from_yw(self.fieldTitle1),
-            FieldTitle2=self._convert_from_yw(self.fieldTitle2),
-            FieldTitle3=self._convert_from_yw(self.fieldTitle3),
-            FieldTitle4=self._convert_from_yw(self.fieldTitle4),
+            AuthorName=self._convert_from_yw(self.author, True),
+            FieldTitle1=self._convert_from_yw(self.fieldTitle1, True),
+            FieldTitle2=self._convert_from_yw(self.fieldTitle2, True),
+            FieldTitle3=self._convert_from_yw(self.fieldTitle3, True),
+            FieldTitle4=self._convert_from_yw(self.fieldTitle4, True),
         )
         return projectTemplateMapping
 
@@ -153,9 +153,9 @@ class FileExport(Novel):
         chapterMapping = dict(
             ID=chId,
             ChapterNumber=chapterNumber,
-            Title=self._convert_from_yw(self.chapters[chId].get_title()),
+            Title=self._convert_from_yw(self.chapters[chId].get_title(), True),
             Desc=self._convert_from_yw(self.chapters[chId].desc),
-            ProjectName=self._convert_from_yw(self.projectName),
+            ProjectName=self._convert_from_yw(self.projectName, True),
             ProjectPath=self.projectPath,
         )
         return chapterMapping
@@ -307,7 +307,7 @@ class FileExport(Novel):
         sceneMapping = dict(
             ID=scId,
             SceneNumber=sceneNumber,
-            Title=self._convert_from_yw(self.scenes[scId].title),
+            Title=self._convert_from_yw(self.scenes[scId].title, True),
             Desc=self._convert_from_yw(self.scenes[scId].desc),
             WordCount=str(self.scenes[scId].wordCount),
             WordsTotal=wordsTotal,
@@ -315,10 +315,10 @@ class FileExport(Novel):
             LettersTotal=lettersTotal,
             Status=Scene.STATUS[self.scenes[scId].status],
             SceneContent=self._convert_from_yw(self.scenes[scId].sceneContent),
-            FieldTitle1=self._convert_from_yw(self.fieldTitle1),
-            FieldTitle2=self._convert_from_yw(self.fieldTitle2),
-            FieldTitle3=self._convert_from_yw(self.fieldTitle3),
-            FieldTitle4=self._convert_from_yw(self.fieldTitle4),
+            FieldTitle1=self._convert_from_yw(self.fieldTitle1, True),
+            FieldTitle2=self._convert_from_yw(self.fieldTitle2, True),
+            FieldTitle3=self._convert_from_yw(self.fieldTitle3, True),
+            FieldTitle4=self._convert_from_yw(self.fieldTitle4, True),
             Field1=self.scenes[scId].field1,
             Field2=self.scenes[scId].field2,
             Field3=self.scenes[scId].field3,
@@ -338,14 +338,14 @@ class FileExport(Novel):
             Goal=self._convert_from_yw(self.scenes[scId].goal),
             Conflict=self._convert_from_yw(self.scenes[scId].conflict),
             Outcome=self._convert_from_yw(self.scenes[scId].outcome),
-            Tags=self._convert_from_yw(tags),
+            Tags=self._convert_from_yw(tags, True),
             Image=self.scenes[scId].image,
             Characters=sceneChars,
             Viewpoint=viewpointChar,
             Locations=sceneLocs,
             Items=sceneItems,
             Notes=self._convert_from_yw(self.scenes[scId].sceneNotes),
-            ProjectName=self._convert_from_yw(self.projectName),
+            ProjectName=self._convert_from_yw(self.projectName, True),
             ProjectPath=self.projectPath,
         )
 
@@ -369,15 +369,15 @@ class FileExport(Novel):
 
         characterMapping = dict(
             ID=crId,
-            Title=self._convert_from_yw(self.characters[crId].title),
+            Title=self._convert_from_yw(self.characters[crId].title, True),
             Desc=self._convert_from_yw(self.characters[crId].desc),
             Tags=self._convert_from_yw(tags),
             Image=self.characters[crId].image,
-            AKA=FileExport._convert_from_yw(self, self.characters[crId].aka),
+            AKA=self._convert_from_yw(self.characters[crId].aka, True),
             Notes=self._convert_from_yw(self.characters[crId].notes),
             Bio=self._convert_from_yw(self.characters[crId].bio),
             Goals=self._convert_from_yw(self.characters[crId].goals),
-            FullName=FileExport._convert_from_yw(self, self.characters[crId].fullName),
+            FullName=self._convert_from_yw(self.characters[crId].fullName, True),
             Status=characterStatus,
             ProjectName=self._convert_from_yw(self.projectName),
             ProjectPath=self.projectPath,
@@ -396,12 +396,12 @@ class FileExport(Novel):
 
         locationMapping = dict(
             ID=lcId,
-            Title=self._convert_from_yw(self.locations[lcId].title),
+            Title=self._convert_from_yw(self.locations[lcId].title, True),
             Desc=self._convert_from_yw(self.locations[lcId].desc),
-            Tags=self._convert_from_yw(tags),
+            Tags=self._convert_from_yw(tags, True),
             Image=self.locations[lcId].image,
-            AKA=FileExport._convert_from_yw(self, self.locations[lcId].aka),
-            ProjectName=self._convert_from_yw(self.projectName),
+            AKA=self._convert_from_yw(self.locations[lcId].aka, True),
+            ProjectName=self._convert_from_yw(self.projectName, True),
             ProjectPath=self.projectPath,
         )
         return locationMapping
@@ -418,12 +418,12 @@ class FileExport(Novel):
 
         itemMapping = dict(
             ID=itId,
-            Title=self._convert_from_yw(self.items[itId].title),
+            Title=self._convert_from_yw(self.items[itId].title, True),
             Desc=self._convert_from_yw(self.items[itId].desc),
-            Tags=self._convert_from_yw(tags),
+            Tags=self._convert_from_yw(tags, True),
             Image=self.items[itId].image,
-            AKA=FileExport._convert_from_yw(self, self.items[itId].aka),
-            ProjectName=self._convert_from_yw(self.projectName),
+            AKA=self._convert_from_yw(self.items[itId].aka, True),
+            ProjectName=self._convert_from_yw(self.projectName, True),
             ProjectPath=self.projectPath,
         )
         return itemMapping
@@ -748,7 +748,7 @@ class FileExport(Novel):
         text = (', ').join(elements)
         return text
 
-    def _convert_from_yw(self, text):
+    def _convert_from_yw(self, text, quick=False):
         """Convert yw7 markup to target format.
         This is a stub to be overridden by subclass methods.
         """
