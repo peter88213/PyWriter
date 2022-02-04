@@ -1541,7 +1541,7 @@
       <text:p>ScID:40</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
-      <text:p>Karl and Terry confused about 'Chunk'</text:p>
+      <text:p>Karl and Terry confused about &apos;Chunk&apos;</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
       <text:p></text:p>
@@ -1871,7 +1871,7 @@
       <text:p>ScID:51</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
-      <text:p>Terry places the 'bomb'</text:p>
+      <text:p>Terry places the &apos;bomb&apos;</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
       <text:p></text:p>
@@ -2135,7 +2135,7 @@
       <text:p>ScID:60</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
-      <text:p>Hal gets real Jerling's call. Has to get cargo and robot back.</text:p>
+      <text:p>Hal gets real Jerling&apos;s call. Has to get cargo and robot back.</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
       <text:p></text:p>
@@ -2333,7 +2333,7 @@
       <text:p>ScID:66</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
-      <text:p>Hal rents a car in Jerling's name and heads towards Forgberg and the Casino.</text:p>
+      <text:p>Hal rents a car in Jerling&apos;s name and heads towards Forgberg and the Casino.</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
       <text:p></text:p>
@@ -2795,7 +2795,7 @@
       <text:p>ScID:84</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
-      <text:p>Clunk travelling on the back of Karl's limo</text:p>
+      <text:p>Clunk travelling on the back of Karl&apos;s limo</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
       <text:p></text:p>
@@ -2993,7 +2993,7 @@
       <text:p>ScID:92</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
-      <text:p>The shop robots want Clunk to escape with them. Mention Hal's capture.</text:p>
+      <text:p>The shop robots want Clunk to escape with them. Mention Hal&apos;s capture.</text:p>
      </table:table-cell>
      <table:table-cell office:value-type="string">
       <text:p></text:p>
