@@ -78,11 +78,6 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('[/i][i]', '')
         text = text.replace('[/b][b]', '')
 
-        # Convert author's comments
-
-        text = text.replace('<!--', '/*')
-        text = text.replace('-->', '*/')
-
         return text
 
     def _preprocess(self, text):
@@ -125,6 +120,12 @@ class HtmlFile(Novel, HTMLParser):
                     self.chapters[self._chId] = Chapter()
                     self.chapters[self._chId].srtScenes = []
                     self.srtChapters.append(self._chId)
+
+    def handle_comment(self, data):
+        
+        if self._scId is not None: 
+            self._lines.append(f'{self._COMMENT_START}{data}{self._COMMENT_END}')
+            
 
     def read(self):
         """Read and parse a html file, fetching the Novel attributes.

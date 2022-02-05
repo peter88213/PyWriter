@@ -37,6 +37,25 @@ class HtmlManuscript(HtmlFile):
             elif tag == 'h2':
                 self._lines.append(Splitter.CHAPTER_SEPARATOR)
 
+    def handle_comment(self, data):
+        
+        if self._scId is not None: 
+            
+            if self._lines == []:
+                # Comment is at scene start
+                
+                if self._SC_TITLE_BRACKET in data:
+                    # Comment is marked as a scene title
+                    try:   
+                        self.scenes[self._scId].title = data.split(self._SC_TITLE_BRACKET)[1].strip()
+                    except:
+                        pass
+                    
+                    return
+
+            self._lines.append(f'{self._COMMENT_START}{data.strip()}{self._COMMENT_END}')
+            
+
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
         Overwrites HTMLparser.handle_endtag().
@@ -45,22 +64,6 @@ class HtmlManuscript(HtmlFile):
 
             if tag == 'div':
                 text = ''.join(self._lines)
-
-                if text.startswith(self._COMMENT_START):
-
-                    try:
-                        scTitle, scContent = text.split(
-                            sep=self._COMMENT_END, maxsplit=1)
-
-                        if self._SC_TITLE_BRACKET in scTitle:
-                            self.scenes[self._scId].title = scTitle.split(
-                                self._SC_TITLE_BRACKET)[1].strip()
-
-                        text = scContent
-
-                    except:
-                        pass
-
                 self.scenes[self._scId].sceneContent = text
                 self._lines = []
                 self._scId = None
@@ -83,8 +86,11 @@ class HtmlManuscript(HtmlFile):
         """Collect data within scene sections.
         Override HTMLparser.handle_data().
         """
+       
         if self._scId is not None:
-            self._lines.append(data.strip())
+            
+            if not data.isspace():
+                self._lines.append(data)
 
         elif self._chId is not None:
 
