@@ -1,4 +1,4 @@
-"""Provide a generic class for yWriter project import and export.
+"""Provide a class for yWriter 7 project import and export.
 
 yWriter version-specific file representations inherit from this class.
 
@@ -7,6 +7,8 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
+import re
+from html import unescape
 import xml.etree.ElementTree as ET
 
 from pywriter.pywriter_globals import ERROR
@@ -17,8 +19,6 @@ from pywriter.model.character import Character
 from pywriter.model.world_element import WorldElement
 from pywriter.model.splitter import Splitter
 from pywriter.yw.xml_indent import indent
-from pywriter.yw.yw7_tree_writer import Yw7TreeWriter
-from pywriter.yw.yw7_postprocessor import Yw7Postprocessor
 
 
 class Yw7File(Novel):
@@ -31,38 +31,27 @@ class Yw7File(Novel):
         is_locked() -- Check whether the yw7 file is locked by yWriter.
 
     Additional attributes:
-        ywTreeWriter -- strategy class to write yWriter project files.
-        ywPostprocessor -- strategy class to postprocess yWriter project files.
         tree -- xml element tree of the yWriter project
     """
 
     DESCRIPTION = 'yWriter 7 project'
     EXTENSION = '.yw7'
 
+    _CDATA_TAGS = ['Title', 'AuthorName', 'Bio', 'Desc',
+                   'FieldTitle1', 'FieldTitle2', 'FieldTitle3',
+                   'FieldTitle4', 'LaTeXHeaderFile', 'Tags',
+                   'AKA', 'ImageFile', 'FullName', 'Goals',
+                   'Notes', 'RTFFile', 'SceneContent',
+                   'Outcome', 'Goal', 'Conflict']
+    # Names of xml elements containing CDATA.
+    # ElementTree.write omits CDATA tags, so they have to be inserted afterwards.
+
     def __init__(self, filePath, **kwargs):
         """Initialize instance variables:
-        Extend the superclass constructor by adding.
+        Extend the superclass constructor.
         """
         super().__init__(filePath)
-
-        self.ywTreeWriter = Yw7TreeWriter()
-        self.ywPostprocessor = Yw7Postprocessor()
         self.tree = None
-
-    def _strip_spaces(self, lines):
-        """Local helper method.
-
-        Positional argument:
-            lines -- list of strings
-
-        Return lines with leading and trailing spaces removed.
-        """
-        stripped = []
-
-        for line in lines:
-            stripped.append(line.strip())
-
-        return stripped
 
     def read(self):
         """Parse the yWriter xml file, fetching the Novel attributes.
@@ -1561,15 +1550,100 @@ class Yw7File(Novel):
                 pass
 
         self.tree = ET.ElementTree(root)
-        message = self.ywTreeWriter.write_element_tree(self)
+        message = self._write_element_tree(self)
 
         if message.startswith(ERROR):
             return message
 
-        return self.ywPostprocessor.postprocess_xml_file(self.filePath)
+        return self._postprocess_xml_file(self.filePath)
 
     def is_locked(self):
         """Return True if a .lock file placed by yWriter exists.
         Otherwise, return False. 
         """
         return os.path.isfile(f'{self.filePath}.lock')
+    
+    def _write_element_tree(self, ywProject):
+        """Write back the xml element tree to a yWriter xml file located at filePath.
+        Return a message beginning with the ERROR constant in case of error.
+        """
+
+        if os.path.isfile(ywProject.filePath):
+            os.replace(ywProject.filePath, f'{ywProject.filePath}.bak')
+            backedUp = True
+
+        else:
+            backedUp = False
+
+        try:
+            ywProject.tree.write(ywProject.filePath, xml_declaration=False, encoding='utf-8')
+
+        except:
+
+            if backedUp:
+                os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
+
+            return f'{ERROR}Cannot write "{os.path.normpath(ywProject.filePath)}".'
+
+        return 'yWriter XML tree written.'
+
+    def _format_xml(self, text):
+        '''Postprocess the xml file created by ElementTree:
+           Insert the missing CDATA tags, replace xml entities by plain text.
+        '''
+        lines = text.split('\n')
+        newlines = []
+
+        for line in lines:
+
+            for tag in self._CDATA_TAGS:
+                line = re.sub(f'\<{tag}\>', f'<{tag}><![CDATA[', line)
+                line = re.sub(f'\<\/{tag}\>', f']]></{tag}>', line)
+
+            newlines.append(line)
+
+        text = '\n'.join(newlines)
+        text = text.replace('[CDATA[ \n', '[CDATA[')
+        text = text.replace('\n]]', ']]')
+        text = unescape(text)
+
+        return text
+
+    def _postprocess_xml_file(self, filePath):
+        '''Postprocess the xml file created by ElementTree:
+        Put a header on top, insert the missing CDATA tags,
+        and replace xml entities by plain text.
+        Return a message beginning with the ERROR constant in case of error.
+        '''
+
+        with open(filePath, 'r', encoding='utf-8') as f:
+            text = f.read()
+
+        text = self._format_xml(text)
+        text = f'<?xml version="1.0" encoding="utf-8"?>\n{text}'
+
+        try:
+
+            with open(filePath, 'w', encoding='utf-8') as f:
+                f.write(text)
+
+        except:
+            return f'{ERROR}Can not write "{os.path.normpath(filePath)}".'
+
+        return f'"{os.path.normpath(filePath)}" written.'
+
+    def _strip_spaces(self, lines):
+        """Local helper method.
+
+        Positional argument:
+            lines -- list of strings
+
+        Return lines with leading and trailing spaces removed.
+        """
+        stripped = []
+
+        for line in lines:
+            stripped.append(line.strip())
+
+        return stripped
+

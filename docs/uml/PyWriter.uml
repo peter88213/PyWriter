@@ -801,50 +801,16 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_VLVcUC2KEeqtbohuTq_ZAA" name="root" visibility="private">
           <type xmi:type="uml:Class" href="stadardlib.uml#_81JUkC2JEeqtbohuTq_ZAA"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_J3Dv8vxEEeq5hMee5ike2Q" name="ywTreeWriter" type="_0I_9gPxCEeq5hMee5ike2Q" aggregation="shared" association="_J3Ch0PxEEeq5hMee5ike2Q">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_J3EXAfxEEeq5hMee5ike2Q" value="1"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_KzsXUvxEEeq5hMee5ike2Q" name="ywPostprocessor" type="_1d--APxDEeq5hMee5ike2Q" aggregation="shared" association="_KzqiIPxEEeq5hMee5ike2Q">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Kzs-YfxEEeq5hMee5ike2Q" value="1"/>
-        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_rLXIUC1mEeqtbohuTq_ZAA" name="__init__"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_S2CgoytgEeqgj_wxJ3Xgsg" name="read"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_S2CgpCtgEeqgj_wxJ3Xgsg" name="write"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_tSehgDFmEeq5SLjbDFDS4A" name="is_locked"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_9HPPsHexEeyoo8DPyEkfSw" name="merge"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_0I_9gPxCEeq5hMee5ike2Q" name="Yw7TreeWriter">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_UiZdIHezEeyoo8DPyEkfSw" name="write_element_tree"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_1d--APxDEeq5hMee5ike2Q" name="Yw7Postprocessor">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_-zp4wHeyEeyoo8DPyEkfSw" name="postprocess_xml_file"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_J23ukHezEeyoo8DPyEkfSw" name="__init__"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_M3AewHezEeyoo8DPyEkfSw" name="format_xml"/>
-      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_L1eKEMLZEeuyj_fXzzjZfg" name="DataFiles">
         <generalization xmi:type="uml:Generalization" xmi:id="_wmXToHeyEeyoo8DPyEkfSw" general="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_C5TU8HeyEeyoo8DPyEkfSw" name="__init__"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_C5VKIHeyEeyoo8DPyEkfSw" name="merge"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_KcdAwPysEeqEK6KdQRY5bw" name="DataWriter">
-        <generalization xmi:type="uml:Generalization" xmi:id="_QOq3APysEeqEK6KdQRY5bw" general="_0I_9gPxCEeq5hMee5ike2Q"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_XCI2AHezEeyoo8DPyEkfSw" name="write_element_tree"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_Vt44wPysEeqEK6KdQRY5bw" name="DataPostprocessor">
-        <generalization xmi:type="uml:Generalization" xmi:id="_dsyB8PysEeqEK6KdQRY5bw" general="_1d--APxDEeq5hMee5ike2Q"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_HAKnMHezEeyoo8DPyEkfSw" name="postprocess_xml_file"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_J3Ch0PxEEeq5hMee5ike2Q" memberEnd="_J3Dv8vxEEeq5hMee5ike2Q _J3E-EPxEEeq5hMee5ike2Q">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_J3Dv8PxEEeq5hMee5ike2Q" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_J3Dv8fxEEeq5hMee5ike2Q" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_J3E-EPxEEeq5hMee5ike2Q" name="ywProject" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_J3Ch0PxEEeq5hMee5ike2Q"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_KzqiIPxEEeq5hMee5ike2Q" memberEnd="_KzsXUvxEEeq5hMee5ike2Q _Kzs-YvxEEeq5hMee5ike2Q">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KzsXUPxEEeq5hMee5ike2Q" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KzsXUfxEEeq5hMee5ike2Q" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Kzs-YvxEEeq5hMee5ike2Q" name="self" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_KzqiIPxEEeq5hMee5ike2Q"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_ZoscoIfYEeq_kJF_AkSaiA" name="csv">
@@ -1740,7 +1706,7 @@ and path bar</body>
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3f9IEMwQEeuVlZjMUHKreQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3f9IEcwQEeuVlZjMUHKreQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_3f9vIswQEeuVlZjMUHKreQ" type="_0I_9gPxCEeq5hMee5ike2Q" association="_3f758MwQEeuVlZjMUHKreQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_3f9vIswQEeuVlZjMUHKreQ" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_3f758MwQEeuVlZjMUHKreQ"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_3f9IEswQEeuVlZjMUHKreQ" name="ET" association="_3f758MwQEeuVlZjMUHKreQ">
       <type xmi:type="uml:Class" href="stadardlib.uml#_QoWo4C1UEeqtbohuTq_ZAA"/>
     </ownedEnd>
