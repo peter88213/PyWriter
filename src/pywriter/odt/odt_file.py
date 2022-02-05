@@ -1209,8 +1209,8 @@ class OdtFile(OdfFile):
 
             text = '\n'.join(newlines).rstrip()
 
-            for r in ODT_REPLACEMENTS:
-                text = text.replace(r[0], r[1])
+            for yw, od in ODT_REPLACEMENTS:
+                text = text.replace(yw, od)
 
             # Remove highlighting, alignment,
             # strikethrough, and underline tags.

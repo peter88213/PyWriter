@@ -293,8 +293,8 @@ class OdsFile(OdfFile):
         try:
             text = text.rstrip()
 
-            for r in ODS_REPLACEMENTS:
-                text = text.replace(r[0], r[1])
+            for yw, od in ODS_REPLACEMENTS:
+                text = text.replace(yw, od)
 
         except AttributeError:
             text = ''
