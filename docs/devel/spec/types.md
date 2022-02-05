@@ -24,6 +24,8 @@ _Example_
 -   [Export location descriptions](#export-location-descriptions) -- suffix = `_locations`
 -   [Export item descriptions](#export-item-descriptions) -- suffix = `_items`
 -   [Export cross reference](#export-cross-reference) -- suffix = `_xref`
+-   [Export brief synopsis](#export-brief-synopsis) -- suffix = `_brf_synopsis`
+
 
 ### Generate ODS (spreadsheet document)
 
@@ -136,7 +138,7 @@ text document (odt) with invisible chapter and scene sections (to be
 seen in the Navigator). File name suffix is `_manuscript`.
 
 -  Comments right at the beginning of the scenes are written back 
-   as scene titles.
+as scene titles if surrounded by `~`.
 -  Chapters and scenes can neither be rearranged nor deleted.
 -  Scenes can be split by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
@@ -149,9 +151,9 @@ seen in the Navigator). File name suffix is `_manuscript`.
 
 ## Export scene descriptions
 
-Generate a new OpenDocument text document (odt) containing a
-**full synopsis** with chapter titles and scene descriptions that can be
-edited and written back to yWriter format. File name suffix is
+Generate a new OpenDocument text document (odt) containing chapter
+titles and scene descriptions that can be edited and written back to
+yWriter format. File name suffix is
 `_scenes`.
 
 [Top of page](#top)
@@ -160,9 +162,9 @@ edited and written back to yWriter format. File name suffix is
 
 ## Export chapter descriptions
 
-Generate a new OpenDocument text document (odt) containing a
-**brief synopsis** with chapter titles and chapter descriptions that can
-be edited and written back to yWriter format. File name suffix is
+Generate a new OpenDocument text document (odt) containing chapter
+titles and chapter descriptions that can be edited and written back to
+yWriter format. File name suffix is
 `_chapters`.
 
 **Note:** Doesn't apply to chapters marked
@@ -174,9 +176,9 @@ be edited and written back to yWriter format. File name suffix is
 
 ## Export part descriptions
 
-Generate a new OpenDocument text document (odt) containing a
-**very brief synopsis** with part titles and part descriptions that can
-be edited and written back to yWriter format. File name suffix is
+Generate a new OpenDocument text document (odt) containing part titles
+and part descriptions that can be edited and written back to yWriter
+format. File name suffix is
 `_parts`.
 
 **Note:** Applies only to chapters marked
@@ -230,6 +232,27 @@ references are:
 -   characters per tag,
 -   locations per tag,
 -   items per tag.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export brief synopsis
+
+Generate a brief synopsis with chapter and scenes titles. File name
+suffix is `_brf_synopsis`.
+
+-   Only "normal" chapters and scenes are exported. Chapters and
+    scenes marked "unused", "todo" or "notes" are not exported.
+-   Only scenes that are intended for RTF export in yWriter will be
+    exported.
+-   Chapter titles appear as first level heading if the chapter is
+    marked as beginning of a new section in yWriter. Such headings are
+    considered as "part" headings.
+-   Chapter titles appear as second level heading if the chapter is not
+    marked as beginning of a new section. Such headings are considered
+    as "chapter" headings.
+-   Scene titles appear as plain paragraphs.
 
 [Top of page](#top)
 
