@@ -41,7 +41,7 @@ class HtmlManuscript(HtmlFile):
         
         if self._scId is not None: 
             
-            if self._lines == []:
+            if not self._lines:
                 # Comment is at scene start
                 
                 if self._SC_TITLE_BRACKET in data:

@@ -122,7 +122,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
         for tag in self._xr.scnPerTag:
 
-            if self._xr.scnPerTag[tag] != []:
+            if self._xr.scnPerTag[tag]:
                 lines.append(headerTemplate.safe_substitute(
                     self._get_tagMapping(tag)))
                 lines.extend(self._get_scenes(self._xr.scnPerTag[tag]))
@@ -139,7 +139,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
         for crId in self._xr.scnPerChr:
 
-            if self._xr.scnPerChr[crId] != []:
+            if self._xr.scnPerChr[crId]:
                 lines.append(headerTemplate.safe_substitute(
                     self._get_characterMapping(crId)))
                 lines.extend(self._get_scenes(self._xr.scnPerChr[crId]))
@@ -156,7 +156,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
         for lcId in self._xr.scnPerLoc:
 
-            if self._xr.scnPerLoc[lcId] != []:
+            if self._xr.scnPerLoc[lcId]:
                 lines.append(headerTemplate.safe_substitute(
                     self._get_locationMapping(lcId)))
                 lines.extend(self._get_scenes(self._xr.scnPerLoc[lcId]))
@@ -173,7 +173,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
         for itId in self._xr.scnPerItm:
 
-            if self._xr.scnPerItm[itId] != []:
+            if self._xr.scnPerItm[itId]:
                 lines.append(headerTemplate.safe_substitute(
                     self._get_itemMapping(itId)))
                 lines.extend(self._get_scenes(self._xr.scnPerItm[itId]))
@@ -190,7 +190,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
         for tag in self._xr.chrPerTag:
 
-            if self._xr.chrPerTag[tag] != []:
+            if self._xr.chrPerTag[tag]:
                 lines.append(headerTemplate.safe_substitute(
                     self._get_tagMapping(tag)))
 
@@ -230,7 +230,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
         for tag in self._xr.itmPerTag:
 
-            if self._xr.itmPerTag[tag] != []:
+            if self._xr.itmPerTag[tag]:
                 lines.append(headerTemplate.safe_substitute(
                     self._get_tagMapping(tag)))
 

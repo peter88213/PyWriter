@@ -118,7 +118,7 @@ class HtmlImport(HtmlFile):
 
             # Convert prefixed comment into scene title.
 
-            if self._lines == [] and data.startswith(self._COMMENT_START):
+            if not self._lines and data.startswith(self._COMMENT_START):
 
                 try:
                     scTitle, scContent = data.split(

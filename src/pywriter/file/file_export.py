@@ -107,7 +107,7 @@ class FileExport(Novel):
         else:
             self.fieldTitle4 = 'Field 4'
 
-        if source.srtChapters != []:
+        if source.srtChapters:
             self.srtChapters = source.srtChapters
 
         if source.scenes is not None:
@@ -116,15 +116,15 @@ class FileExport(Novel):
         if source.chapters is not None:
             self.chapters = source.chapters
 
-        if source.srtCharacters != []:
+        if source.srtCharacters:
             self.srtCharacters = source.srtCharacters
             self.characters = source.characters
 
-        if source.srtLocations != []:
+        if source.srtLocations:
             self.srtLocations = source.srtLocations
             self.locations = source.locations
 
-        if source.srtItems != []:
+        if source.srtItems:
             self.srtItems = source.srtItems
             self.items = source.items
 

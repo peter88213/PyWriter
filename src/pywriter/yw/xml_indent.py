@@ -14,7 +14,7 @@ def indent(elem, level=0):
     """
     i = f'\n{level * "  "}'
 
-    if len(elem):
+    if elem:
 
         if not elem.text or not elem.text.strip():
             elem.text = f'{i}  '

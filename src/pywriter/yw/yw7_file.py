@@ -487,7 +487,7 @@ class Yw7File(Novel):
 
         #--- Merge and re-order locations.
 
-        if source.srtLocations != []:
+        if source.srtLocations:
             self.srtLocations = source.srtLocations
             temploc = self.locations
             self.locations = {}
@@ -536,7 +536,7 @@ class Yw7File(Novel):
 
         #--- Merge and re-order items.
 
-        if source.srtItems != []:
+        if source.srtItems:
             self.srtItems = source.srtItems
             tempitm = self.items
             self.items = {}
@@ -585,7 +585,7 @@ class Yw7File(Novel):
 
         #--- Merge and re-order characters.
 
-        if source.srtCharacters != []:
+        if source.srtCharacters:
             self.srtCharacters = source.srtCharacters
             tempchr = self.characters
             self.characters = {}
