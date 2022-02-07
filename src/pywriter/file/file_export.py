@@ -455,7 +455,7 @@ class FileExport(Novel):
 
             if self.scenes[scId].isTodoScene:
 
-                if self._todoSceneTemplate != '':
+                if self._todoSceneTemplate:
                     template = Template(self._todoSceneTemplate)
 
                 else:
@@ -464,7 +464,7 @@ class FileExport(Novel):
             elif self.scenes[scId].isNotesScene:
                 # Scene is "Notes" type.
 
-                if self._notesSceneTemplate != '':
+                if self._notesSceneTemplate:
                     template = Template(self._notesSceneTemplate)
 
                 else:
@@ -472,7 +472,7 @@ class FileExport(Novel):
 
             elif self.scenes[scId].isUnused or self.chapters[chId].isUnused:
 
-                if self._unusedSceneTemplate != '':
+                if self._unusedSceneTemplate:
                     template = Template(self._unusedSceneTemplate)
 
                 else:
@@ -481,7 +481,7 @@ class FileExport(Novel):
             elif self.chapters[chId].oldType == 1:
                 # Scene is "Info" type (old file format).
 
-                if self._notesSceneTemplate != '':
+                if self._notesSceneTemplate:
                     template = Template(self._notesSceneTemplate)
 
                 else:
@@ -489,7 +489,7 @@ class FileExport(Novel):
 
             elif self.scenes[scId].doNotExport or doNotExport:
 
-                if self._notExportedSceneTemplate != '':
+                if self._notExportedSceneTemplate:
                     template = Template(self._notExportedSceneTemplate)
 
                 else:
@@ -503,13 +503,13 @@ class FileExport(Novel):
 
                 template = Template(self._sceneTemplate)
 
-                if not firstSceneInChapter and self.scenes[scId].appendToPrev and self._appendedSceneTemplate != '':
+                if not firstSceneInChapter and self.scenes[scId].appendToPrev and self._appendedSceneTemplate:
                     template = Template(self._appendedSceneTemplate)
 
             if not (firstSceneInChapter or self.scenes[scId].appendToPrev):
                 lines.append(self._sceneDivider)
 
-            if firstSceneInChapter and self._firstSceneTemplate != '':
+            if firstSceneInChapter and self._firstSceneTemplate:
                 template = Template(self._firstSceneTemplate)
 
             lines.append(template.safe_substitute(self._get_sceneMapping(
@@ -557,33 +557,33 @@ class FileExport(Novel):
             if self.chapters[chId].chType == 2:
                 # Chapter is "ToDo" type (implies "unused").
 
-                if self._todoChapterTemplate != '':
+                if self._todoChapterTemplate:
                     template = Template(self._todoChapterTemplate)
 
             elif self.chapters[chId].chType == 1:
                 # Chapter is "Notes" type (implies "unused").
 
-                if self._notesChapterTemplate != '':
+                if self._notesChapterTemplate:
                     template = Template(self._notesChapterTemplate)
 
             elif self.chapters[chId].isUnused:
                 # Chapter is "really" unused.
 
-                if self._unusedChapterTemplate != '':
+                if self._unusedChapterTemplate:
                     template = Template(self._unusedChapterTemplate)
 
             elif self.chapters[chId].oldType == 1:
                 # Chapter is "Info" type (old file format).
 
-                if self._notesChapterTemplate != '':
+                if self._notesChapterTemplate:
                     template = Template(self._notesChapterTemplate)
 
             elif doNotExport:
 
-                if self._notExportedChapterTemplate != '':
+                if self._notExportedChapterTemplate:
                     template = Template(self._notExportedChapterTemplate)
 
-            elif self.chapters[chId].chLevel == 1 and self._partTemplate != '':
+            elif self.chapters[chId].chLevel == 1 and self._partTemplate:
                 template = Template(self._partTemplate)
 
             else:
@@ -606,30 +606,30 @@ class FileExport(Novel):
 
             if self.chapters[chId].chType == 2:
 
-                if self._todoChapterEndTemplate != '':
+                if self._todoChapterEndTemplate:
                     template = Template(self._todoChapterEndTemplate)
 
             elif self.chapters[chId].chType == 1:
 
-                if self._notesChapterEndTemplate != '':
+                if self._notesChapterEndTemplate:
                     template = Template(self._notesChapterEndTemplate)
 
             elif self.chapters[chId].isUnused:
 
-                if self._unusedChapterEndTemplate != '':
+                if self._unusedChapterEndTemplate:
                     template = Template(self._unusedChapterEndTemplate)
 
             elif self.chapters[chId].oldType == 1:
 
-                if self._notesChapterEndTemplate != '':
+                if self._notesChapterEndTemplate:
                     template = Template(self._notesChapterEndTemplate)
 
             elif doNotExport:
 
-                if self._notExportedChapterEndTemplate != '':
+                if self._notExportedChapterEndTemplate:
                     template = Template(self._notExportedChapterEndTemplate)
 
-            elif self._chapterEndTemplate != '':
+            elif self._chapterEndTemplate:
                 template = Template(self._chapterEndTemplate)
 
             if template is not None:
