@@ -15,14 +15,24 @@ class DataFiles(Yw7File):
     """yWriter XML data files representation.
 
     Public methods: 
-        merge(novel) -- Copy required attributes of the novel object.    
+        merge(source) -- Update instance variables from a source instance.
+        
+    yWriter can import or export characters, locations and items as separate
+    xml files. This class represents a set of three xml files generated from
+    a yWriter 7 project.
     """
 
     DESCRIPTION = 'yWriter XML data files'
     EXTENSION = '.xml'
 
     def _write_element_tree(self, ywProject):
-        """Write back the xml element tree to a yWriter xml file located at filePath.
+        """Save the characters/locations/items subtrees as separate xml files
+        
+        Positional argument:
+            ywProject -- Yw7File instance.
+            
+        Extract the characters/locations/items xml subtrees from a yWriter project.
+        Generate the xml file paths from the .yw7 path and write each subtree to an xml file.
         Return a message beginning with the ERROR constant in case of error.
         """
 
@@ -61,10 +71,15 @@ class DataFiles(Yw7File):
         return 'All XML data files written.'
 
     def _postprocess_xml_file(self, filePath):
-        '''Postprocess the xml files created by ElementTree:
-        Put headers on top, insert the missing CDATA tags,
-        and replace xml entities by plain text.
+        '''Postprocess three xml files created by ElementTree.
+        
+        Positional argument:
+            filePath -- string; path to .yw7 xml file.
+            
+        Generate the xml file paths from the .yw7 path. 
+        Read, postprocess and write the characters, locations, and items xml files.        
         Return a message beginning with the ERROR constant in case of error.
+        Extend the superclass method.
         '''
 
         path, __ = os.path.splitext(filePath)
@@ -90,7 +105,11 @@ class DataFiles(Yw7File):
         return 'All XML data files written.'
 
     def merge(self, source):
-        """Copy required attributes of the source object.
+        """Update instance variables from a source instance.
+        
+        Positional arguments:
+            source -- Novel subclass instance to merge.
+        
         Return a message beginning with the ERROR constant in case of error.
         Override the superclass method.
         """

@@ -47,14 +47,22 @@ class Yw7File(Novel):
     # ElementTree.write omits CDATA tags, so they have to be inserted afterwards.
 
     def __init__(self, filePath, **kwargs):
-        """Initialize instance variables:
+        """Initialize instance variables.
+        
+        Positional arguments:
+            filePath -- string; path to the yw7 file.
+            
+        Optional arguments:
+            kwargs -- keyword arguments (not used here).            
+        
         Extend the superclass constructor.
         """
         super().__init__(filePath)
         self.tree = None
 
     def read(self):
-        """Parse the yWriter xml file, fetching the Novel attributes.
+        """Parse the yWriter xml file and get the instance variables.
+        
         Return a message beginning with the ERROR constant in case of error.
         Override the superclass method.
         """
@@ -462,7 +470,11 @@ class Yw7File(Novel):
         return 'yWriter project data read in.'
 
     def merge(self, source):
-        """Copy required attributes of the source object.
+        """Update instance variables from a source instance.
+        
+        Positional arguments:
+            source -- Novel subclass instance to merge.
+        
         Return a message beginning with the ERROR constant in case of error.
         Override the superclass method.
         """
@@ -890,8 +902,10 @@ class Yw7File(Novel):
         return 'yWriter project data updated or created.'
 
     def write(self):
-        """Open the yWriter xml file located at filePath and 
-        replace a set of attributes not being None.
+        """Write instance variables to the file.
+        
+        Open the yWriter xml file located at filePath and replace the instance variables 
+        not being None. Create new XML elements if necessary.
         Return a message beginning with the ERROR constant in case of error.
         Override the superclass method.
         """
@@ -1572,13 +1586,16 @@ class Yw7File(Novel):
         return self._postprocess_xml_file(self.filePath)
 
     def is_locked(self):
-        """Return True if a .lock file placed by yWriter exists.
+        """Check whether the yw7 file is locked by yWriter.
+        
+        Return True if a .lock file placed by yWriter exists.
         Otherwise, return False. 
         """
         return os.path.isfile(f'{self.filePath}.lock')
     
     def _write_element_tree(self, ywProject):
-        """Write back the xml element tree to a yWriter xml file located at filePath.
+        """Write back the xml element tree to a .yw7 xml file located at filePath.
+        
         Return a message beginning with the ERROR constant in case of error.
         """
 
@@ -1601,12 +1618,26 @@ class Yw7File(Novel):
 
         return 'yWriter XML tree written.'
 
-    def _format_xml(self, text):
-        '''Postprocess the xml file created by ElementTree:
-           Insert the missing CDATA tags, replace xml entities by plain text.
+
+    def _postprocess_xml_file(self, filePath):
+        '''Postprocess an xml file created by ElementTree.
+        
+        Positional argument:
+            filePath -- string; path to xml file.
+        
+        Read the xml file, put a header on top, insert the missing CDATA tags,
+        and replace xml entities by plain text (unescape). Overwrite the .yw7 xml file.
+        Return a message beginning with the ERROR constant in case of error.
+        
+        Note: The path is given as an argument rather than using self.filePath. 
+        So this routine can be used for yWriter-generated xml files other than .yw7 as well. 
         '''
+
+        with open(filePath, 'r', encoding='utf-8') as f:
+            text = f.read()
+
         lines = text.split('\n')
-        newlines = []
+        newlines = ['<?xml version="1.0" encoding="utf-8"?>']
 
         for line in lines:
 
@@ -1620,21 +1651,6 @@ class Yw7File(Novel):
         text = text.replace('[CDATA[ \n', '[CDATA[')
         text = text.replace('\n]]', ']]')
         text = unescape(text)
-
-        return text
-
-    def _postprocess_xml_file(self, filePath):
-        '''Postprocess the xml file created by ElementTree:
-        Put a header on top, insert the missing CDATA tags,
-        and replace xml entities by plain text.
-        Return a message beginning with the ERROR constant in case of error.
-        '''
-
-        with open(filePath, 'r', encoding='utf-8') as f:
-            text = f.read()
-
-        text = self._format_xml(text)
-        text = f'<?xml version="1.0" encoding="utf-8"?>\n{text}'
 
         try:
 

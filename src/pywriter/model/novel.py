@@ -7,9 +7,9 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from urllib.parse import quote
-from shutil import copy2
 import os
 
+from pywriter.pywriter_globals import ERROR
 
 class Novel():
     """Abstract yWriter project file representation.
@@ -17,6 +17,11 @@ class Novel():
     This class represents a file containing a novel with additional 
     attributes and structural information (a full set or a subset
     of the information included in an yWriter project file).
+
+    Public methods:
+        read() -- parse the file and get the instance attributes.
+        merge(source) -- copy required attributes of the source object.
+        write() -- write selected properties to the file.
 
     Public instance variables:
         title -- title.
@@ -170,8 +175,38 @@ class Novel():
             self.projectPath = quote(head.replace('\\', '/'), '/:')
             self.projectName = quote(tail.replace(f'{suffix}{self.EXTENSION}', ''))
 
+    def read(self):
+        """Parse the file and get the instance variables.
+        
+        Return a message beginning with the ERROR constant in case of error.
+        This is a stub to be overridden by subclass methods.
+        """
+        return f'{ERROR}Read method is not implemented.'
+
+    def merge(self, source):
+        """Update instance variables from a source instance.
+        
+        Positional arguments:
+            source -- Novel subclass instance to merge.
+        
+        Return a message beginning with the ERROR constant in case of error.
+        This is a stub to be overridden by subclass methods.
+        """
+        return f'{ERROR}Merge method is not implemented.'
+
+    def write(self):
+        """Write instance variables to the file.
+        
+        Return a message beginning with the ERROR constant in case of error.
+        This is a stub to be overridden by subclass methods.
+        """
+        return f'{ERROR}Write method is not implemented.'
+
     def _convert_to_yw(self, text):
         """Return text, converted from source format to yw7 markup.
+        
+        Positional arguments:
+            text -- string to convert.
         
         This is a stub to be overridden by subclass methods.
         """
@@ -179,6 +214,12 @@ class Novel():
 
     def _convert_from_yw(self, text, quick=False):
         """Return text, converted from yw7 markup to target format.
+        
+        Positional arguments:
+            text -- string to convert.
+        
+        Optional arguments:
+            quick -- Boolean; if True, apply a conversion mode for one-liners without formatting.
         
         This is a stub to be overridden by subclass methods.
         """
