@@ -9,38 +9,50 @@ from pywriter.model.scene import Scene
 
 
 class Splitter():
+    """Helper class for scene and chapter splitting.
+    
+    When importing scenes to yWriter, they may contain manually inserted scene and chapter dividers.
+    The Splitter class updates a Novel instance by splitting such scenes and creating new chapters and scenes. 
+    
+    Public methods:
+        split_scenes(novel) -- Split scenes by inserted chapter and scene dividers.    
+    """
 
     PART_SEPARATOR = '# '
     CHAPTER_SEPARATOR = '## '
-    SCENE_SEPARATOR = '* * *'
-    CLIP_TITLE = 20
-    # This is used for splitting scenes.
+    _SCENE_SEPARATOR = '* * *'
+    _CLIP_TITLE = 20
+    # Maximum length of newly generated scene titles.
 
-    def split_scenes(self, ywPrj):
-        """Generate new chapters and scenes if there are dividers within the scene content.
+    def split_scenes(self, novel):
+        """Split scenes by inserted chapter and scene dividers.
+        
+        Update a Novel instance by generating new chapters and scenes 
+        if there are dividers within the scene content.
+        
+        Positional argument: 
+            novel -- Novel instance to update.
         """
 
         def create_chapter(chapterId, title, desc, level):
-            """Create a new chapter and add it to the novel.
-            """
+            """Create a new chapter and add it to the novel."""
             newChapter = Chapter()
             newChapter.title = title
             newChapter.desc = desc
             newChapter.chLevel = level
             newChapter.chType = 0
-            ywPrj.chapters[chapterId] = newChapter
+            novel.chapters[chapterId] = newChapter
 
         def create_scene(sceneId, parent, splitCount):
-            """Create a new scene and add it to the novel.
-            """
+            """Create a new scene and add it to the novel."""
             WARNING = ' (!) '
-
+            # Mark metadata of split scenes.
             newScene = Scene()
 
             if parent.title:
 
-                if len(parent.title) > self.CLIP_TITLE:
-                    title = f'{parent.title[:self.CLIP_TITLE]}...'
+                if len(parent.title) > self._CLIP_TITLE:
+                    title = f'{parent.title[:self._CLIP_TITLE]}...'
 
                 else:
                     title = parent.title
@@ -79,55 +91,57 @@ class Splitter():
             newScene.lastsDays = parent.lastsDays
             newScene.lastsHours = parent.lastsHours
             newScene.lastsMinutes = parent.lastsMinutes
-            ywPrj.scenes[sceneId] = newScene
+            novel.scenes[sceneId] = newScene
 
         # Get the maximum chapter ID and scene ID.
 
         chIdMax = 0
         scIdMax = 0
 
-        for chId in ywPrj.srtChapters:
+        for chId in novel.srtChapters:
 
             if int(chId) > chIdMax:
                 chIdMax = int(chId)
 
-        for scId in ywPrj.scenes:
+        for scId in novel.scenes:
 
             if int(scId) > scIdMax:
                 scIdMax = int(scId)
+                
+        #--- Process chapters and scenes.
 
         srtChapters = []
 
-        for chId in ywPrj.srtChapters:
+        for chId in novel.srtChapters:
             srtChapters.append(chId)
             chapterId = chId
             srtScenes = []
 
-            for scId in ywPrj.chapters[chId].srtScenes:
+            for scId in novel.chapters[chId].srtScenes:
                 srtScenes.append(scId)
 
-                if not ywPrj.scenes[scId].sceneContent:
+                if not novel.scenes[scId].sceneContent:
                     continue
 
                 sceneId = scId
-                lines = ywPrj.scenes[scId].sceneContent.split('\n')
+                lines = novel.scenes[scId].sceneContent.split('\n')
                 newLines = []
                 inScene = True
                 sceneSplitCount = 0
 
-                # Search scene content for dividers.
+                #--- Search scene content for dividers.
 
                 for line in lines:
 
                     if line.startswith(self.PART_SEPARATOR):
 
                         if inScene:
-                            ywPrj.scenes[sceneId].sceneContent = '\n'.join(newLines)
+                            novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
                             newLines = []
                             sceneSplitCount = 0
                             inScene = False
 
-                        ywPrj.chapters[chapterId].srtScenes = srtScenes
+                        novel.chapters[chapterId].srtScenes = srtScenes
                         srtScenes = []
 
                         chIdMax += 1
@@ -138,12 +152,12 @@ class Splitter():
                     elif line.startswith(self.CHAPTER_SEPARATOR):
 
                         if inScene:
-                            ywPrj.scenes[sceneId].sceneContent = '\n'.join(newLines)
+                            novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
                             newLines = []
                             sceneSplitCount = 0
                             inScene = False
 
-                        ywPrj.chapters[chapterId].srtScenes = srtScenes
+                        novel.chapters[chapterId].srtScenes = srtScenes
                         srtScenes = []
 
                         chIdMax += 1
@@ -151,13 +165,13 @@ class Splitter():
                         create_chapter(chapterId, 'New chapter', line.replace(self.CHAPTER_SEPARATOR, ''), 0)
                         srtChapters.append(chapterId)
 
-                    elif line.startswith(self.SCENE_SEPARATOR):
-                        ywPrj.scenes[sceneId].sceneContent = '\n'.join(newLines)
+                    elif line.startswith(self._SCENE_SEPARATOR):
+                        novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
                         newLines = []
                         sceneSplitCount += 1
                         scIdMax += 1
                         sceneId = str(scIdMax)
-                        create_scene(sceneId, ywPrj.scenes[scId], sceneSplitCount)
+                        create_scene(sceneId, novel.scenes[scId], sceneSplitCount)
                         srtScenes.append(sceneId)
                         inScene = True
 
@@ -166,15 +180,15 @@ class Splitter():
                         sceneSplitCount += 1
                         scIdMax += 1
                         sceneId = str(scIdMax)
-                        create_scene(sceneId, ywPrj.scenes[scId], sceneSplitCount)
+                        create_scene(sceneId, novel.scenes[scId], sceneSplitCount)
                         srtScenes.append(sceneId)
                         inScene = True
 
                     else:
                         newLines.append(line)
 
-                ywPrj.scenes[sceneId].sceneContent = '\n'.join(newLines)
+                novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
 
-            ywPrj.chapters[chapterId].srtScenes = srtScenes
+            novel.chapters[chapterId].srtScenes = srtScenes
 
-        ywPrj.srtChapters = srtChapters
+        novel.srtChapters = srtChapters

@@ -58,7 +58,7 @@ class HtmlManuscript(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
-        Overwrites HTMLparser.handle_endtag().
+        Override HTMLparser.handle_endtag().
         """
         if self._scId is not None:
 

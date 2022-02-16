@@ -8,12 +8,19 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 class Chapter():
     """yWriter chapter representation.
-    # xml: <CHAPTERS><CHAPTER>
+    
+    Public instance variables:
+        title -- chapter title (may be the heading).
+        desc -- chapter description in a single string.
+        chLevel -- chapter level (part/chapter).
+        oldType -- chapter type (Chapter/Other).
+        chType -- chapter type yWriter 7.0.7.2+ (Normal/Notes/Todo).
+        isUnused -- True, if the chapter is marked "Unused".
+        suppressChapterTitle -- Suppress chapter title when exporting.
+        isTrash -- True, if the chapter is the project's trash bin.
+        suppressChapterBreak -- Suppress chapter break when exporting.
+        srtScenes -- the chapter's sorted scene IDs.        
     """
-
-    chapterTitlePrefix = "Chapter "
-    # str
-    # Can be changed at runtime for non-English projects.
 
     def __init__(self):
         self.title = None
@@ -35,6 +42,7 @@ class Chapter():
         # xml: <Type>
         # 0 = chapter type (marked "Chapter")
         # 1 = other type (marked "Other")
+        # Applies to projects created by a yWriter version prior to 7.0.7.2.
 
         self.chType = None
         # int
@@ -42,6 +50,7 @@ class Chapter():
         # 0 = Normal
         # 1 = Notes
         # 2 = Todo
+        # Applies to projects created by yWriter version 7.0.7.2+.
 
         self.isUnused = None
         # bool
@@ -69,12 +78,3 @@ class Chapter():
         # The chapter's scene IDs. The order of its elements
         # corresponds to the chapter's order of the scenes.
 
-    def get_title(self):
-        """Fix auto-chapter titles if necessary 
-        """
-        text = self.title
-
-        if text:
-            text = text.replace('Chapter ', self.chapterTitlePrefix)
-
-        return text

@@ -7,8 +7,14 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 
 class WorldElement():
-    """Story world element representation.
-    # xml: <LOCATIONS><LOCATION> or # xml: <ITEMS><ITEM>
+    """Story world element representation (may be location or item).
+    
+    Public instance variables:
+        title -- title (name).
+        image -- image file.
+        desc -- description in a single string.
+        tags -- list of tags.
+        aka -- alternate name.
     """
 
     def __init__(self):

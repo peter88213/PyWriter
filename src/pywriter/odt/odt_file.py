@@ -1165,7 +1165,7 @@ class OdtFile(OdfFile):
             ('[/i]', '</text:span>'),
             ('[b]', '<text:span text:style-name="Strong_20_Emphasis">'),
             ('[/b]', '</text:span>'),
-            ('/*', f'<office:annotation><dc:creator>{self.author}</dc:creator><text:p>'),
+            ('/*', f'<office:annotation><dc:creator>{self.authorName}</dc:creator><text:p>'),
             ('*/', '</text:p></office:annotation>'),
         ]
 

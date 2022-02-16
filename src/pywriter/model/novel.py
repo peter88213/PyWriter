@@ -19,23 +19,23 @@ class Novel():
     of the information included in an yWriter project file).
 
     Public instance variables:
-        title -- str; title
-        desc -- str; description
-        author -- str; author name
-        fieldTitle1 -- str; field title 1
-        fieldTitle2 -- str; field title 2
-        fieldTitle3 -- str; field title 3
-        fieldTitle4 -- str; field title 4
-        chapters -- dict; key = chapter ID, value = Chapter instance.
-        scenes -- dict; key = scene ID, value = Scene instance.
-        srtChapters -- list of str; The novel's sorted chapter IDs. 
-        locations -- dict; key = location ID, value = WorldElement instance.
-        srtLocations -- list of str; The novel's sorted location IDs. 
-        items -- dict; key = item ID, value = WorldElement instance.
-        srtItems -- list of str; The novel's sorted item IDs. 
-        characters -- dict; key = character ID, value = Character instance.
-        srtCharacters -- list of str The novel's sorted character IDs.
-        filePath -- str; path to the file represented by the class.   
+        title -- title.
+        desc -- description in a single string.
+        authorName -- authorName name.
+        fieldTitle1 -- field title 1.
+        fieldTitle2 -- field title 2.
+        fieldTitle3 -- field title 3.
+        fieldTitle4 -- field title 4.
+        chapters -- chapter instances per ID.
+        scenes -- scene instances per ID.
+        srtChapters -- the novel's sorted chapter IDs.
+        locations -- WorldElement instances per ID.
+        srtLocations -- the novel's sorted location IDs.
+        items -- WorldElement instances per ID.
+        srtItems -- the novel's sorted item IDs.
+        characters -- character instances per ID.
+        srtCharacters -- the novel's sorted character IDs.
+        filePath -- path to the file (property with getter and setter). 
     """
 
     DESCRIPTION = 'Novel'
@@ -46,8 +46,11 @@ class Novel():
     def __init__(self, filePath, **kwargs):
         """Define instance variables.
 
-        Positional argument:
-            filePath -- string; path to the file represented by the class.
+        Positional arguments:
+            filePath -- string; path to the file represented by the Novel instance.
+            
+        Optional arguments:
+            kwargs -- keyword arguments to be used by subclasses.            
         """
         self.title = None
         # str
@@ -57,9 +60,13 @@ class Novel():
         # str
         # xml: <PROJECT><Desc>
 
-        self.author = None
+        self.authorName = None
         # str
         # xml: <PROJECT><AuthorName>
+
+        self.authorBio = None
+        # str
+        # xml: <PROJECT><Bio>
 
         self.fieldTitle1 = None
         # str
@@ -81,21 +88,18 @@ class Novel():
         # dict
         # xml: <CHAPTERS><CHAPTER><ID>
         # key = chapter ID, value = Chapter instance.
-        # The order of the elements does not matter (the novel's
-        # order of the chapters is defined by srtChapters)
+        # The order of the elements does not matter (the novel's order of the chapters is defined by srtChapters)
 
         self.scenes = {}
         # dict
         # xml: <SCENES><SCENE><ID>
         # key = scene ID, value = Scene instance.
-        # The order of the elements does not matter (the novel's
-        # order of the scenes is defined by the order of the chapters
-        # and the order of the scenes within the chapters)
+        # The order of the elements does not matter (the novel's order of the scenes is defined by
+        # the order of the chapters and the order of the scenes within the chapters)
 
         self.srtChapters = []
         # list of str
-        # The novel's chapter IDs. The order of its elements
-        # corresponds to the novel's order of the chapters.
+        # The novel's chapter IDs. The order of its elements corresponds to the novel's order of the chapters.
 
         self.locations = {}
         # dict
@@ -116,8 +120,7 @@ class Novel():
 
         self.srtItems = []
         # list of str
-        # The novel's item IDs. The order of its elements
-        # corresponds to the XML project file.
+        # The novel's item IDs. The order of its elements corresponds to the XML project file.
 
         self.characters = {}
         # dict
@@ -127,13 +130,11 @@ class Novel():
 
         self.srtCharacters = []
         # list of str
-        # The novel's character IDs. The order of its elements
-        # corresponds to the XML project file.
+        # The novel's character IDs. The order of its elements corresponds to the XML project file.
 
         self._filePath = None
         # str
-        # Path to the file. The setter only accepts files of a
-        # supported type as specified by EXTENSION.
+        # Path to the file. The setter only accepts files of a supported type as specified by EXTENSION.
 
         self._projectName = None
         # str
@@ -151,7 +152,8 @@ class Novel():
 
     @filePath.setter
     def filePath(self, filePath):
-        """Setter for the filePath instance variable.        
+        """Setter for the filePath instance variable.
+                
         - Format the path string according to Python's requirements. 
         - Accept only filenames with the right suffix and extension.
         """
@@ -170,12 +172,14 @@ class Novel():
 
     def _convert_to_yw(self, text):
         """Return text, converted from source format to yw7 markup.
+        
         This is a stub to be overridden by subclass methods.
         """
         return text
 
     def _convert_from_yw(self, text, quick=False):
         """Return text, converted from yw7 markup to target format.
+        
         This is a stub to be overridden by subclass methods.
         """
         return text

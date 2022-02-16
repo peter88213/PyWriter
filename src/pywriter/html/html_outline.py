@@ -66,7 +66,7 @@ class HtmlOutline(HtmlFile):
         elif tag == 'meta':
 
             if attrs[0][1].lower() == 'author':
-                self.author = attrs[1][1]
+                self.authorName = attrs[1][1]
 
             if attrs[0][1].lower() == 'description':
                 self.desc = attrs[1][1]
@@ -98,6 +98,6 @@ class HtmlOutline(HtmlFile):
 
     def handle_data(self, data):
         """Collect data within scene sections.
-        Overwrites HTMLparser.handle_data().
+        Override HTMLparser.handle_data().
         """
         self._lines.append(data.strip())

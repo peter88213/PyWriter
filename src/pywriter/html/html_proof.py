@@ -27,13 +27,11 @@ class HtmlProof(HtmlFile):
         self._prefix = None
 
     def _preprocess(self, text):
-        """Process the html text before parsing.
-        """
+        """Process the html text before parsing."""
         return self._convert_to_yw(text)
 
     def _postprocess(self):
-        """Parse the converted text to identify chapters and scenes.
-        """
+        """Parse the converted text to identify chapters and scenes."""
         sceneText = []
         scId = ''
         chId = ''
@@ -65,7 +63,8 @@ class HtmlProof(HtmlFile):
 
     def handle_starttag(self, tag, attrs):
         """Recognize the paragraph's beginning.
-        Overwrites HTMLparser.handle_endtag().
+        
+        Override HTMLparser.handle_endtag().
         """
         if tag == 'p':
             self._prefix = ''
@@ -78,14 +77,16 @@ class HtmlProof(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the paragraph's end.
-        Overwrites HTMLparser.handle_endtag().
+        
+        Override HTMLparser.handle_endtag().
         """
         if tag in ['p', 'h2', 'h1']:
             self._prefix = None
 
     def handle_data(self, data):
         """Copy the scene paragraphs.
-        Overwrites HTMLparser.handle_data().
+        
+        Override HTMLparser.handle_data().
         """
         if self._prefix is not None:
             self._lines.append(f'{self._prefix}{data}')

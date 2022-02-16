@@ -77,11 +77,17 @@ class FileExport(Novel):
         else:
             self.desc = ''
 
-        if source.author is not None:
-            self.author = source.author
+        if source.authorName is not None:
+            self.authorName = source.authorName
 
         else:
-            self.author = ''
+            self.authorName = ''
+
+        if source.authorBio is not None:
+            self.authorBio = source.authorBio
+
+        else:
+            self.authorBio = ''
 
         if source.fieldTitle1 is not None:
             self.fieldTitle1 = source.fieldTitle1
@@ -136,7 +142,8 @@ class FileExport(Novel):
         projectTemplateMapping = dict(
             Title=self._convert_from_yw(self.title, True),
             Desc=self._convert_from_yw(self.desc),
-            AuthorName=self._convert_from_yw(self.author, True),
+            AuthorName=self._convert_from_yw(self.authorName, True),
+            AuthorBio=self._convert_from_yw(self.authorBio, True),
             FieldTitle1=self._convert_from_yw(self.fieldTitle1, True),
             FieldTitle2=self._convert_from_yw(self.fieldTitle2, True),
             FieldTitle3=self._convert_from_yw(self.fieldTitle3, True),
@@ -153,7 +160,7 @@ class FileExport(Novel):
         chapterMapping = dict(
             ID=chId,
             ChapterNumber=chapterNumber,
-            Title=self._convert_from_yw(self.chapters[chId].get_title(), True),
+            Title=self._convert_from_yw(self.chapters[chId].title, True),
             Desc=self._convert_from_yw(self.chapters[chId].desc),
             ProjectName=self._convert_from_yw(self.projectName, True),
             ProjectPath=self.projectPath,

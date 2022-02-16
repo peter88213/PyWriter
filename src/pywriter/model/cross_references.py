@@ -7,15 +7,21 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 
 class CrossReferences():
-    """Create dictionaries containing a novel's cross references:
+    """Dictionaries containing a novel's cross references.
 
-    - Characters per tag
-    - Locations per tag
-    - Items per tag
-    - Scenes per character
-    - Scenes per location
-    - Scenes per item
-    - Scenes per tag
+    Public methods:
+        generate_xref(novel) -- Generate cross references for a novel.
+
+    Public instance variables:
+        scnPerChr -- scenes per character.
+        scnPerLoc -- scenes per location.
+        scnPerItm -- scenes per item.
+        scnPerTag -- scenes per tag.
+        chrPerTag -- characters per tag.
+        locPerTag -- locations per tag.
+        itmPerTag -- items per tag.
+        chpPerScn -- chapters per scene.
+        srtScenes -- the novel's sorted scene IDs.
     """
 
     def __init__(self):
@@ -63,10 +69,14 @@ class CrossReferences():
 
         self.srtScenes = None
         # list of str
-        # scene IDs in the overall order
+        # Scene IDs in the overall order
 
     def generate_xref(self, novel):
-        """Generate cross references."""
+        """Generate cross references for a novel.
+        
+        Positional argument:
+            novel -- Novel instance to process.
+        """
         self.scnPerChr = {}
         self.scnPerLoc = {}
         self.scnPerItm = {}
@@ -77,7 +87,7 @@ class CrossReferences():
         self.chpPerScn = {}
         self.srtScenes = []
 
-        # Characters per tag:
+        #--- Characters per tag.
 
         for crId in novel.srtCharacters:
             self.scnPerChr[crId] = []
@@ -91,7 +101,7 @@ class CrossReferences():
 
                     self.chrPerTag[tag].append(crId)
 
-        # Locations per tag:
+        #--- Locations per tag.
 
         for lcId in novel.srtLocations:
             self.scnPerLoc[lcId] = []
@@ -105,7 +115,7 @@ class CrossReferences():
 
                     self.locPerTag[tag].append(lcId)
 
-        # Items per tag:
+        #--- Items per tag.
 
         for itId in novel.srtItems:
             self.scnPerItm[itId] = []
@@ -118,6 +128,8 @@ class CrossReferences():
                         self.itmPerTag[tag] = []
 
                     self.itmPerTag[tag].append(itId)
+                    
+        #--- Process chapters and scenes.
 
         for chId in novel.srtChapters:
 
@@ -125,28 +137,28 @@ class CrossReferences():
                 self.srtScenes.append(scId)
                 self.chpPerScn[scId] = chId
 
-                # Scenes per character:
+                #--- Scenes per character.
 
                 if novel.scenes[scId].characters:
 
                     for crId in novel.scenes[scId].characters:
                         self.scnPerChr[crId].append(scId)
 
-                # Scenes per location:
+                #--- Scenes per location.
 
                 if novel.scenes[scId].locations:
 
                     for lcId in novel.scenes[scId].locations:
                         self.scnPerLoc[lcId].append(scId)
 
-                # Scenes per item:
+                #--- Scenes per item.
 
                 if novel.scenes[scId].items:
 
                     for itId in novel.scenes[scId].items:
                         self.scnPerItm[itId].append(scId)
 
-                # Scenes per tag:
+                #--- Scenes per tag.
 
                 if novel.scenes[scId].tags:
 

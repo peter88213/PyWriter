@@ -27,7 +27,7 @@ class HtmlCharacters(HtmlFile):
 
     def handle_starttag(self, tag, attrs):
         """Identify characters with subsections.
-        Overwrites HTMLparser.handle_starttag()
+        Override HTMLparser.handle_starttag()
         """
         if tag == 'div':
 
@@ -50,7 +50,7 @@ class HtmlCharacters(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the character section and save data.
-        Overwrites HTMLparser.handle_endtag().
+        Override HTMLparser.handle_endtag().
         """
         if self._crId is not None:
 
@@ -81,7 +81,7 @@ class HtmlCharacters(HtmlFile):
 
     def handle_data(self, data):
         """collect data within character sections.
-        Overwrites HTMLparser.handle_data().
+        Override HTMLparser.handle_data().
         """
         if self._section is not None:
             self._lines.append(data.strip())

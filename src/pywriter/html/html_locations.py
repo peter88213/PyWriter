@@ -26,7 +26,7 @@ class HtmlLocations(HtmlFile):
 
     def handle_starttag(self, tag, attrs):
         """Identify locations.
-        Overwrites HTMLparser.handle_starttag()
+        Override HTMLparser.handle_starttag()
         """
         if tag == 'div':
 
@@ -39,7 +39,7 @@ class HtmlLocations(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the location section and save data.
-        Overwrites HTMLparser.handle_endtag().
+        Override HTMLparser.handle_endtag().
         """
         if self._lcId is not None:
 
@@ -53,7 +53,7 @@ class HtmlLocations(HtmlFile):
 
     def handle_data(self, data):
         """collect data within location sections.
-        Overwrites HTMLparser.handle_data().
+        Override HTMLparser.handle_data().
         """
         if self._lcId is not None:
             self._lines.append(data.strip())

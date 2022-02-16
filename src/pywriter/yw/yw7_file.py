@@ -26,7 +26,7 @@ class Yw7File(Novel):
 
     Public methods: 
         read() -- Parse the file and store selected properties.
-        merge(novel) -- Copy required attributes of the novel object.
+        merge(novel) -- Copy required attributes of the novel instance.
         write() -- Write selected properties to the file.
         is_locked() -- Check whether the yw7 file is locked by yWriter.
 
@@ -171,7 +171,10 @@ class Yw7File(Novel):
             self.title = prj.find('Title').text
 
         if prj.find('AuthorName') is not None:
-            self.author = prj.find('AuthorName').text
+            self.authorName = prj.find('AuthorName').text
+
+        if prj.find('Bio') is not None:
+            self.authorBio = prj.find('Bio').text
 
         if prj.find('Desc') is not None:
             self.desc = prj.find('Desc').text
@@ -852,8 +855,11 @@ class Yw7File(Novel):
         if source.desc is not None:
             self.desc = source.desc
 
-        if source.author is not None:
-            self.author = source.author
+        if source.authorName is not None:
+            self.authorName = source.authorName
+
+        if source.authorBio is not None:
+            self.authorBio = source.authorBio
 
         if source.fieldTitle1 is not None:
             self.fieldTitle1 = source.fieldTitle1
@@ -1368,13 +1374,21 @@ class Yw7File(Novel):
                 except(AttributeError):
                     ET.SubElement(xmlPrj, 'Desc').text = self.desc
 
-            if self.author is not None:
+            if self.authorName is not None:
 
                 try:
-                    xmlPrj.find('AuthorName').text = self.author
+                    xmlPrj.find('AuthorName').text = self.authorName
 
                 except(AttributeError):
-                    ET.SubElement(xmlPrj, 'AuthorName').text = self.author
+                    ET.SubElement(xmlPrj, 'AuthorName').text = self.authorName
+
+            if self.authorBio is not None:
+
+                try:
+                    xmlPrj.find('Bio').text = self.authorBio
+
+                except(AttributeError):
+                    ET.SubElement(xmlPrj, 'Bio').text = self.authorBio
 
             if self.fieldTitle1 is not None:
 

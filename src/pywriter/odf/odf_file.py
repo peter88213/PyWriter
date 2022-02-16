@@ -114,7 +114,7 @@ class OdfFile(FileExport):
         dt = datetime.today()
 
         metaMapping = dict(
-            Author=self.author,
+            Author=self.authorName,
             Title=self.title,
             Summary=f'<![CDATA[{self.desc}]]>',
             Date=f'{dt.year}-{dt.month:02}-{dt.day:02}',
