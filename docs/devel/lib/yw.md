@@ -12,4 +12,10 @@
 
 ## Classes
 
+### Overview
+
 ![yw package class diagram](img/yw_package_class_diagram.png)
+
+### Detailed class diagram
+
+![yw package detailed class diagram](img/yw_package_detailed_class_diagram.png)
