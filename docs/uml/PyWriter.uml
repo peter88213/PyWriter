@@ -905,6 +905,16 @@
       <packagedElement xmi:type="uml:Usage" xmi:id="_8OTEgI92Eey0x9qBdTLxTA" client="_S2CgoCtgEeqgj_wxJ3Xgsg" supplier="_0ErCACtbEeqgj_wxJ3Xgsg"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_-EtMgI92Eey0x9qBdTLxTA" client="_S2CgoCtgEeqgj_wxJ3Xgsg" supplier="_ZSkdEJEXEeqtx4SqQAS9Eg"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="__GyUkI92Eey0x9qBdTLxTA" client="_S2CgoCtgEeqgj_wxJ3Xgsg" supplier="_LIE_MJEVEeqtx4SqQAS9Eg"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_nEsT4I9-Eeyjx8O5a_-QzA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nExMYI9-Eeyjx8O5a_-QzA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nExMYY9-Eeyjx8O5a_-QzA" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <memberEnd xmi:type="uml:Property" href="stadardlib.uml#_nEzBkI9-Eeyjx8O5a_-QzA"/>
+        <memberEnd xmi:type="uml:Property" href="#_oIJU8I9-Eeyjx8O5a_-QzA"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_oIJU8I9-Eeyjx8O5a_-QzA" name="ET" association="_nEsT4I9-Eeyjx8O5a_-QzA">
+          <type xmi:type="uml:Class" href="stadardlib.uml#_QoWo4C1UEeqtbohuTq_ZAA"/>
+        </ownedEnd>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_ZoscoIfYEeq_kJF_AkSaiA" name="csv">
       <packagedElement xmi:type="uml:Class" xmi:id="_Etc0wIe3Eeq_kJF_AkSaiA" name="CsvSceneList">
