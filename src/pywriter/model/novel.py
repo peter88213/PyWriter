@@ -19,18 +19,19 @@ class Novel():
     of the information included in an yWriter project file).
 
     Public methods:
-        read() -- parse the file and get the instance attributes.
-        merge(source) -- copy required attributes of the source object.
-        write() -- write selected properties to the file.
+        read() -- parse the file and get the instance variables.
+        merge(source) -- update instance variables from a source instance.
+        write() -- write instance variables to the file.
 
     Public instance variables:
         title -- title.
         desc -- description in a single string.
-        authorName -- authorName name.
-        fieldTitle1 -- field title 1.
-        fieldTitle2 -- field title 2.
-        fieldTitle3 -- field title 3.
-        fieldTitle4 -- field title 4.
+        authorName -- author's name.
+        author bio -- information about the author.
+        fieldTitle1 -- scene rating field title 1.
+        fieldTitle2 -- scene rating field title 2.
+        fieldTitle3 -- scene rating field title 3.
+        fieldTitle4 -- scene rating field title 4.
         chapters -- chapter instances per ID.
         scenes -- scene instances per ID.
         srtChapters -- the novel's sorted chapter IDs.

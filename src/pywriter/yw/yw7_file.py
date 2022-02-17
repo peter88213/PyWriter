@@ -25,12 +25,12 @@ class Yw7File(Novel):
     """yWriter 7 project file representation.
 
     Public methods: 
-        read() -- Parse the file and store selected properties.
-        merge(novel) -- Copy required attributes of the novel instance.
-        write() -- Write selected properties to the file.
-        is_locked() -- Check whether the yw7 file is locked by yWriter.
+        read() -- parse the yWriter xml file and get the instance variables.
+        merge(source) -- update instance variables from a source instance.
+        write() -- write instance variables to the yWriter xml file.
+        is_locked() -- check whether the yw7 file is locked by yWriter.
 
-    Additional attributes:
+    Public instance variables:
         tree -- xml element tree of the yWriter project
     """
 
@@ -902,7 +902,7 @@ class Yw7File(Novel):
         return 'yWriter project data updated or created.'
 
     def write(self):
-        """Write instance variables to the file.
+        """Write instance variables to the yWriter xml file.
         
         Open the yWriter xml file located at filePath and replace the instance variables 
         not being None. Create new XML elements if necessary.
