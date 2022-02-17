@@ -8,21 +8,34 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 class ScVpFilter():
     """Filter Scene per viewpoint.
-    Strategy class, implementing filtering criteria 
-    for template-based scene export.
+    
+    Public methods:
+        accept -- check whether a scene's viewpoint matches the filter viewpoint.
+    
+    Strategy class, implementing filtering criteria for template-based scene export.
     """
 
     def __init__(self, crId=None):
-        self.viewpoint = crId
+        """Set the filter viewpoint."""
+        self._viewpoint = crId
 
-    def accept(self, source, id):
-        """Return True if the source scene's viewpoint matches.
+    def accept(self, source, eId):
+        """Check whether a scene's viewpoint matches the filter viewpoint.
+        
+        Positional arguments:
+            source -- Novel instance holding the scene to check.
+            eId -- scene ID of the scene to check.
+        
+        Return True if the source scene's viewpoint matches the filter viewpoint.
+        Return True if no filter viewpoint is set.
+        Oherwise, return False.
+        Override the superclass method.
         """
 
-        if self.viewpoint is not None:
+        if self._viewpoint is not None:
 
             try:
-                if self.viewpoint == source.scenes[id].characters[0]:
+                if self._viewpoint == source.scenes[eId].characters[0]:
                     return True
 
                 else:

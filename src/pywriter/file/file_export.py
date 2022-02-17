@@ -18,6 +18,11 @@ from pywriter.file.filter import Filter
 
 class FileExport(Novel):
     """Abstract yWriter project file exporter representation.
+    
+    Public methods:
+        merge(source) -- update instance variables from a source instance.
+        write() -- write instance variables to the yWriter xml file.
+    
     This class is generic and contains no conversion algorithm and no templates.
     """
     SUFFIX = ''
@@ -50,8 +55,9 @@ class FileExport(Novel):
     _fileFooter = ''
 
     def __init__(self, filePath, **kwargs):
-        """Extend the superclass constructor,
-        initializing a filter class.
+        """Initialize a filter class.
+        
+        Extend the superclass constructor.
         """
         super().__init__(filePath, **kwargs)
         self._sceneFilter = Filter()
@@ -747,7 +753,9 @@ class FileExport(Novel):
         return f'"{os.path.normpath(self.filePath)}" written.'
 
     def _get_string(self, elements):
-        """Return a string which is the concatenation of the 
+        """Join strings from a list.
+        
+        Return a string which is the concatenation of the 
         members of the list of strings "elements", separated by 
         a comma plus a space. The space allows word wrap in 
         spreadsheet cells.

@@ -13,16 +13,16 @@ class ScTgFilter():
     """
 
     def __init__(self, tag=None):
-        self.tag = tag
+        self._tag = tag
 
-    def accept(self, source, id):
+    def accept(self, source, eId):
         """Return True if a source scene's tag matches.
         """
 
-        if self.tag is not None:
+        if self._tag is not None:
 
             try:
-                if self.tag in source.scenes[id].tags:
+                if self._tag in source.scenes[eId].tags:
                     return True
 
                 else:

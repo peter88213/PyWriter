@@ -13,16 +13,16 @@ class ScLcFilter():
     """
 
     def __init__(self, lcId=None):
-        self.location = lcId
+        self._location = lcId
 
-    def accept(self, source, id):
+    def accept(self, source, eId):
         """Return True if a source scene's location matches.
         """
 
-        if self.location is not None:
+        if self._location is not None:
 
             try:
-                if self.location in source.scenes[id].locations:
+                if self._location in source.scenes[eId].locations:
                     return True
 
                 else:

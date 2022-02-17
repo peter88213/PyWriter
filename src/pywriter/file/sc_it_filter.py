@@ -13,16 +13,16 @@ class ScItFilter():
     """
 
     def __init__(self, itId=None):
-        self.item = itId
+        self._item = itId
 
-    def accept(self, source, id):
+    def accept(self, source, eId):
         """Return True if a source scene's item matches.
         """
 
-        if self.item is not None:
+        if self._item is not None:
 
             try:
-                if self.item in source.scenes[id].items:
+                if self._item in source.scenes[eId].items:
                     return True
 
                 else:

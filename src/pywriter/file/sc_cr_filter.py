@@ -13,16 +13,16 @@ class ScCrFilter():
     """
 
     def __init__(self, crId=None):
-        self.character = crId
+        self._character = crId
 
-    def accept(self, source, id):
+    def accept(self, source, eId):
         """Return True if a source scene's character matches.
         """
 
-        if self.character is not None:
+        if self._character is not None:
 
             try:
-                if self.character in source.scenes[id].characters:
+                if self._character in source.scenes[eId].characters:
                     return True
 
                 else:
