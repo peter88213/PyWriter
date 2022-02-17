@@ -21,7 +21,7 @@ class FileExport(Novel):
     
     Public methods:
         merge(source) -- update instance variables from a source instance.
-        write() -- write instance variables to the yWriter xml file.
+        write() -- write instance variables to the export file.
     
     This class is generic and contains no conversion algorithm and no templates.
     """
@@ -67,8 +67,13 @@ class FileExport(Novel):
         self._itemFilter = Filter()
 
     def merge(self, source):
-        """Copy required attributes of the source object.
+        """Update instance variables from a source instance.
+        
+        Positional arguments:
+            source -- Novel subclass instance to merge.
+        
         Return a message beginning with the ERROR constant in case of error.
+        Override the superclass method.
         """
 
         if source.title is not None:
@@ -143,7 +148,9 @@ class FileExport(Novel):
         return 'Export data updated from novel.'
 
     def _get_fileHeaderMapping(self):
-        """Return a mapping dictionary for the project section. 
+        """Return a mapping dictionary for the project section.
+        
+        This is a template method that can be extended or overridden by subclasses.
         """
         projectTemplateMapping = dict(
             Title=self._convert_from_yw(self.title, True),
@@ -158,7 +165,9 @@ class FileExport(Novel):
         return projectTemplateMapping
 
     def _get_chapterMapping(self, chId, chapterNumber):
-        """Return a mapping dictionary for a chapter section. 
+        """Return a mapping dictionary for a chapter section.
+        
+        This is a template method that can be extended or overridden by subclasses.
         """
         if chapterNumber == 0:
             chapterNumber = ''
@@ -174,9 +183,12 @@ class FileExport(Novel):
         return chapterMapping
 
     def _get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
-        """Return a mapping dictionary for a scene section. 
+        """Return a mapping dictionary for a scene section.
+        
+        This is a template method that can be extended or overridden by subclasses.
         """
-        # Create a comma separated tag list.
+        
+        #--- Create a comma separated tag list.
 
         if sceneNumber == 0:
             sceneNumber = ''
@@ -187,7 +199,7 @@ class FileExport(Novel):
         else:
             tags = ''
 
-        # Create a comma separated character list.
+        #--- Create a comma separated character list.
 
         try:
             # Note: Due to a bug, yWriter scenes might hold invalid
@@ -205,7 +217,7 @@ class FileExport(Novel):
             sceneChars = ''
             viewpointChar = ''
 
-        # Create a comma separated location list.
+        #--- Create a comma separated location list.
 
         if self.scenes[scId].locations is not None:
             sLcList = []
@@ -218,7 +230,7 @@ class FileExport(Novel):
         else:
             sceneLocs = ''
 
-        # Create a comma separated item list.
+        #--- Create a comma separated item list.
 
         if self.scenes[scId].items is not None:
             sItList = []
@@ -231,7 +243,7 @@ class FileExport(Novel):
         else:
             sceneItems = ''
 
-        # Create A/R marker string.
+        #--- Create A/R marker string.
 
         if self.scenes[scId].isReactionScene:
             reactionScene = Scene.REACTION_MARKER
@@ -239,7 +251,7 @@ class FileExport(Novel):
         else:
             reactionScene = Scene.ACTION_MARKER
 
-        # Create a combined date information.
+        #--- Create a combined date information.
 
         if self.scenes[scId].date is not None and self.scenes[scId].date != Scene.NULL_DATE:
             day = ''
@@ -257,7 +269,7 @@ class FileExport(Novel):
                 day = ''
                 scDate = ''
 
-        # Create a combined time information.
+        #--- Create a combined time information.
 
         if self.scenes[scId].time is not None and self.scenes[scId].date != Scene.NULL_DATE:
             hour = ''
@@ -289,7 +301,7 @@ class FileExport(Novel):
                 minute = ''
                 scTime = ''
 
-        # Create a combined duration information.
+        #--- Create a combined duration information.
 
         if self.scenes[scId].lastsDays is not None and self.scenes[scId].lastsDays != '0':
             lastsDays = self.scenes[scId].lastsDays
@@ -365,7 +377,9 @@ class FileExport(Novel):
         return sceneMapping
 
     def _get_characterMapping(self, crId):
-        """Return a mapping dictionary for a character section. 
+        """Return a mapping dictionary for a character section.
+        
+        This is a template method that can be extended or overridden by subclasses.
         """
 
         if self.characters[crId].tags is not None:
@@ -398,7 +412,9 @@ class FileExport(Novel):
         return characterMapping
 
     def _get_locationMapping(self, lcId):
-        """Return a mapping dictionary for a location section. 
+        """Return a mapping dictionary for a location section.
+        
+        This is a template method that can be extended or overridden by subclasses.
         """
 
         if self.locations[lcId].tags is not None:
@@ -420,7 +436,9 @@ class FileExport(Novel):
         return locationMapping
 
     def _get_itemMapping(self, itId):
-        """Return a mapping dictionary for an item section. 
+        """Return a mapping dictionary for an item section.
+        
+        This is a template method that can be extended or overridden by subclasses.
         """
 
         if self.items[itId].tags is not None:
@@ -443,7 +461,11 @@ class FileExport(Novel):
 
     def _get_fileHeader(self):
         """Process the file header.
+        
+        Apply the file header template, substituting placeholders 
+        according to the file header mapping dictionary.
         Return a list of strings.
+        This is a template method that can be extended or overridden by subclasses.
         """
         lines = []
         template = Template(self._fileHeader)
@@ -452,7 +474,12 @@ class FileExport(Novel):
 
     def _get_scenes(self, chId, sceneNumber, wordsTotal, lettersTotal, doNotExport):
         """Process the scenes.
+        
+        Iterate through a sorted scene list and apply the templates, 
+        substituting placeholders according to the scene mapping dictionary.
+        Skip scenes not accepted by the scene filter.
         Return a list of strings.
+        This is a template method that can be extended or overridden by subclasses.
         """
         lines = []
         firstSceneInChapter = True
@@ -534,7 +561,13 @@ class FileExport(Novel):
 
     def _get_chapters(self):
         """Process the chapters and nested scenes.
+        
+        Iterate through the sorted chapter list and apply the templates, 
+        substituting placeholders according to the chapter mapping dictionary.
+        For each chapter call the processing of its included scenes.
+        Skip chapters not accepted by the chapter filter.
         Return a list of strings.
+        This is a template method that can be extended or overridden by subclasses.
         """
         lines = []
         chapterNumber = 0
@@ -652,7 +685,12 @@ class FileExport(Novel):
 
     def _get_characters(self):
         """Process the characters.
+        
+        Iterate through the sorted character list and apply the template, 
+        substituting placeholders according to the character mapping dictionary.
+        Skip characters not accepted by the character filter.
         Return a list of strings.
+        This is a template method that can be extended or overridden by subclasses.
         """
 
         if self._characterSectionHeading:
@@ -672,7 +710,12 @@ class FileExport(Novel):
 
     def _get_locations(self):
         """Process the locations.
+        
+        Iterate through the sorted location list and apply the template, 
+        substituting placeholders according to the location mapping dictionary.
+        Skip locations not accepted by the location filter.
         Return a list of strings.
+        This is a template method that can be extended or overridden by subclasses.
         """
 
         if self._locationSectionHeading:
@@ -691,8 +734,13 @@ class FileExport(Novel):
         return lines
 
     def _get_items(self):
-        """Process the items.
+        """Process the items. 
+        
+        Iterate through the sorted item list and apply the template, 
+        substituting placeholders according to the item mapping dictionary.
+        Skip items not accepted by the item filter.
         Return a list of strings.
+        This is a template method that can be extended or overridden by subclasses.
         """
 
         if self._itemSectionHeading:
@@ -711,8 +759,10 @@ class FileExport(Novel):
         return lines
 
     def _get_text(self):
-        """Assemble the whole text applying the templates.
+        """Call all processing methods.
+        
         Return a string to be written to the output file.
+        This is a template method that can be extended or overridden by subclasses.
         """
         lines = self._get_fileHeader()
         lines.extend(self._get_chapters())
@@ -723,7 +773,9 @@ class FileExport(Novel):
         return ''.join(lines)
 
     def write(self):
-        """Create a template-based output file. 
+        """Write instance variables to the export file.
+        
+        Create a template-based output file. 
         Return a message beginning with the ERROR constant in case of error.
         """
         text = self._get_text()

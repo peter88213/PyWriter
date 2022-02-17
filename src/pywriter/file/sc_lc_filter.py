@@ -8,15 +8,28 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 class ScLcFilter():
     """Filter Scene per location.
-    Strategy class, implementing filtering criteria 
-    for template-based scene export.
+    
+    Public methods:
+        accept -- check whether a scene is associated with the filter location.
+    
+    Strategy class, implementing filtering criteria for template-based scene export.
     """
 
     def __init__(self, lcId=None):
+        """Set the filter location."""
         self._location = lcId
 
     def accept(self, source, eId):
-        """Return True if a source scene's location matches.
+        """Check whether a scene is associated with the filter location.
+        
+        Positional arguments:
+            source -- Novel instance holding the scene to check.
+            eId -- scene ID of the scene to check.       
+        
+        Return True if a source scene's location matches the filter location.
+        Return True if no filter location is set. 
+        Oherwise, return False.
+        Override the superclass method.
         """
 
         if self._location is not None:

@@ -27,7 +27,7 @@ class ScVpFilter():
             eId -- scene ID of the scene to check.
         
         Return True if the source scene's viewpoint matches the filter viewpoint.
-        Return True if no filter viewpoint is set.
+        Return True if no filter viewpoint is set. 
         Oherwise, return False.
         Override the superclass method.
         """

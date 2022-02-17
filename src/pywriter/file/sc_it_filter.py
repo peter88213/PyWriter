@@ -8,15 +8,28 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 class ScItFilter():
     """Filter Scene per item.
-    Strategy class, implementing filtering criteria 
-    for template-based scene export.
+    
+    Public methods:
+        accept -- check whether a scene is associated with the filter item.
+    
+    Strategy class, implementing filtering criteria for template-based scene export.
     """
 
     def __init__(self, itId=None):
+        """Set the filter item."""
         self._item = itId
 
     def accept(self, source, eId):
-        """Return True if a source scene's item matches.
+        """Check whether a scene is associated with the filter item.
+        
+        Positional arguments:
+            source -- Novel instance holding the scene to check.
+            eId -- scene ID of the scene to check.       
+        
+        Return True if a source scene's item matches the filter item.
+        Return True if no filter item is set. 
+        Oherwise, return False.
+        Override the superclass method.
         """
 
         if self._item is not None:
