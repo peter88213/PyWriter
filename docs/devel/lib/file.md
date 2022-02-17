@@ -8,7 +8,7 @@ This is how the file generation from a yWriter project is generally done:
 The write method runs through all chapters, scenes, and world building 
 elements, such as characters, locations ans items, and fills templates. 
 
-The package's [README](https://github.com/peter88213/PyWriter/tree/main/src/pywriter/file#readme) file contains a list of templates and placeholders.
+[List of templates and placeholders](../spec/template_based_export)
 
 ## Modules
  
@@ -22,4 +22,10 @@ The package's [README](https://github.com/peter88213/PyWriter/tree/main/src/pywr
 
 ## Classes
 
+### Overview
+
 ![file package class diagram](img/file_package_class_diagram.png)
+
+### Detailed class diagram
+
+![file package detailed class diagram](img/file_package_detailed_class_diagram.png)

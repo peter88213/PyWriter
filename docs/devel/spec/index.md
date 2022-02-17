@@ -4,4 +4,6 @@
 
 [Document types](types)
 
+[Template-based file export](template_based_export)
+
 [Use cases](uc)

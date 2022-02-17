@@ -1,4 +1,5 @@
-appendedSceneTemplate (applied to scenes marked "append to previous")
+[home](../../index) > [specifications](index) > Template-based file export
+
 # Template-based file export
 
 ## List of templates
@@ -16,6 +17,7 @@ appendedSceneTemplate (applied to scenes marked "append to previous")
 
 ### Chapter level templates
 
+- **partTemplate** (chapter header; applied to chapters marked "section beginning")
 - **chapterTemplate** (chapter header; applied to all "used" and "normal" chapters unless a "part template" exists)
 - **unusedChapterTemplate** (chapter header; applied to chapters marked "unused")
 - **notExportedChapterTemplate** (chapter header; applied to chapters marked "do not export")
@@ -55,6 +57,7 @@ There are two options:
 - **$Title** - Project title
 - **$Desc** - Project description, html-formatted
 - **$AuthorName** - Author's name
+- **$AuthorBio** - Information about the author
 
 
 - **$FieldTitle1** - Rating names: field 1
