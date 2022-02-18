@@ -43,6 +43,7 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_lmncoH7FEey1Ut-6sSExGQ" name="Menu"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_ygw_AJDFEey_Lt93nuuNDA" name="Messagebox"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_kty3AJDIEey_Lt93nuuNDA" name="filedialog"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qA5goJDOEey_Lt93nuuNDA" name="Frame"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_DBoUgC1UEeqtbohuTq_ZAA" name="xml.etree">
       <packagedElement xmi:type="uml:Class" xmi:id="_QoWo4C1UEeqtbohuTq_ZAA" name="ElementTree" visibility="public">
