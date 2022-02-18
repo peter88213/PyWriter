@@ -16,61 +16,65 @@ class YwCnv():
 
     Public methods:
         convert(sourceFile, targetFile) -- Convert sourceFile into targetFile.
-        _confirm_overwrite(fileName) -- Return boolean permission to overwrite the target file.
     """
 
-    def convert(self, sourceFile, targetFile):
-        """Convert sourceFile into targetFile and return a message.
+    def convert(self, source, target):
+        """Convert source into target and return a message.
 
         Positional arguments:
-            sourceFile, targetFile -- Novel subclass instances.
+            source, target -- Novel subclass instances.
 
+        Operation:
         1. Make the source object read the source file.
         2. Make the target object merge the source object's instance variables.
         3. Make the target object write the target file.
         Return a message beginning with the ERROR constant in case of error.
 
         Error handling:
-        - Check if sourceFile and targetFile are correctly initialized.
-        - Ask for permission to overwrite targetFile.
-        - Pass the error messages of the called methods of sourceFile and targetFile.
-        - The success message comes from targetFile.write(), if called.       
+        - Check if source and target are correctly initialized.
+        - Ask for permission to overwrite target.
+        - Pass the error messages of the called methods of source and target.
+        - The success message comes from target.write(), if called.       
         """
 
         # Initial error handling.
 
-        if sourceFile.filePath is None:
-            return f'{ERROR}Source "{os.path.normpath(sourceFile.filePath)}" is not of the supported type.'
+        if source.filePath is None:
+            return f'{ERROR}Source "{os.path.normpath(source.filePath)}" is not of the supported type.'
 
-        if not os.path.isfile(sourceFile.filePath):
-            return f'{ERROR}"{os.path.normpath(sourceFile.filePath)}" not found.'
+        if not os.path.isfile(source.filePath):
+            return f'{ERROR}"{os.path.normpath(source.filePath)}" not found.'
 
-        if targetFile.filePath is None:
-            return f'{ERROR}Target "{os.path.normpath(targetFile.filePath)}" is not of the supported type.'
+        if target.filePath is None:
+            return f'{ERROR}Target "{os.path.normpath(target.filePath)}" is not of the supported type.'
 
-        if os.path.isfile(targetFile.filePath) and not self._confirm_overwrite(targetFile.filePath):
+        if os.path.isfile(target.filePath) and not self._confirm_overwrite(target.filePath):
             return f'{ERROR}Action canceled by user.'
 
         # Make the source object read the source file.
 
-        message = sourceFile.read()
+        message = source.read()
 
         if message.startswith(ERROR):
             return message
 
         # Make the target object merge the source object's instance variables.
 
-        message = targetFile.merge(sourceFile)
+        message = target.merge(source)
 
         if message.startswith(ERROR):
             return message
 
         # Make the source object write the target file.
 
-        return targetFile.write()
+        return target.write()
 
     def _confirm_overwrite(self, fileName):
         """Return boolean permission to overwrite the target file.
+        
+        Positional argument:
+            fileName -- path to the target file.
+        
         This is a stub to be overridden by subclass methods.
         """
         return True

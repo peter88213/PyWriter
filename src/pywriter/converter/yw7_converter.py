@@ -92,9 +92,9 @@ class Yw7Converter(YwCnvFf):
     CREATE_SOURCE_CLASSES = []
 
     def __init__(self):
-        """Initialize instance variables.
-        Extend the superclass constructor by
-        changing the newProjectFactory strategy.
+        """Change the newProjectFactory strategy.
+        
+        Extend the superclass constructor.
         """
         super().__init__()
         self.newProjectFactory = NewProjectFactory(self.CREATE_SOURCE_CLASSES)

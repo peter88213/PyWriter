@@ -20,8 +20,8 @@ class YwCnvUi(YwCnv):
 
     Public methods:
         export_from_yw(sourceFile, targetFile) -- Convert from yWriter project to other file format.
+        create_yw(sourceFile, targetFile) -- Create target from source.
         import_to_yw(sourceFile, targetFile) -- Convert from any file format to yWriter project.
-        _confirm_overwrite(fileName) -- Return boolean permission to overwrite the target file.
 
     Instance variables:
         ui -- Ui (can be overridden e.g. by subclasses).
@@ -36,16 +36,16 @@ class YwCnvUi(YwCnv):
         self.newFile = None
         # Also indicates successful conversion.
 
-    def export_from_yw(self, sourceFile, targetFile):
+    def export_from_yw(self, source, target):
         """Convert from yWriter project to other file format.
 
-        sourceFile -- YwFile subclass instance.
-        targetFile -- Any Novel subclass instance.
+        Positional arguments:
+            source -- YwFile subclass instance.
+            target -- Any Novel subclass instance.
 
-        This is a primitive operation of the run() template method.
-
+        Operation:
         1. Send specific information about the conversion to the UI.
-        2. Convert sourceFile into targetFile.
+        2. Convert source into target.
         3. Pass the message to the UI.
         4. Save the new file pathname.
 
@@ -56,11 +56,11 @@ class YwCnvUi(YwCnv):
         # Send specific information about the conversion to the UI.
 
         self.ui.set_info_what(
-            f'Input: {sourceFile.DESCRIPTION} "{os.path.normpath(sourceFile.filePath)}"\nOutput: {targetFile.DESCRIPTION} "{os.path.normpath(targetFile.filePath)}"')
+            f'Input: {source.DESCRIPTION} "{os.path.normpath(source.filePath)}"\nOutput: {target.DESCRIPTION} "{os.path.normpath(target.filePath)}"')
 
-        # Convert sourceFile into targetFile.
+        # Convert source into target.
 
-        message = self.convert(sourceFile, targetFile)
+        message = self.convert(source, target)
 
         # Pass the message to the UI.
 
@@ -72,23 +72,23 @@ class YwCnvUi(YwCnv):
             self.newFile = None
 
         else:
-            self.newFile = targetFile.filePath
+            self.newFile = target.filePath
 
-    def create_yw7(self, sourceFile, targetFile):
-        """Create targetFile from sourceFile.
+    def create_yw7(self, source, target):
+        """Create target from source.
 
-        sourceFile -- Any Novel subclass instance.
-        targetFile -- YwFile subclass instance.
+        Positional arguments:
+            source -- Any Novel subclass instance.
+            target -- YwFile subclass instance.
 
-        This is a primitive operation of the run() template method.
-
+        Operation:
         1. Send specific information about the conversion to the UI.
-        2. Convert sourceFile into targetFile.
+        2. Convert source into target.
         3. Pass the message to the UI.
         4. Save the new file pathname.
 
         Error handling:
-        - Tf targetFile already exists as a file, the conversion is cancelled,
+        - Tf target already exists as a file, the conversion is cancelled,
           an error message is sent to the UI.
         - If the conversion fails, newFile is set to None.
         """
@@ -96,15 +96,15 @@ class YwCnvUi(YwCnv):
         # Send specific information about the conversion to the UI.
 
         self.ui.set_info_what(
-            f'Create a yWriter project file from {sourceFile.DESCRIPTION}\nNew project: "{os.path.normpath(targetFile.filePath)}"')
+            f'Create a yWriter project file from {source.DESCRIPTION}\nNew project: "{os.path.normpath(target.filePath)}"')
 
-        if os.path.isfile(targetFile.filePath):
-            self.ui.set_info_how(f'{ERROR}"{os.path.normpath(targetFile.filePath)}" already exists.')
+        if os.path.isfile(target.filePath):
+            self.ui.set_info_how(f'{ERROR}"{os.path.normpath(target.filePath)}" already exists.')
 
         else:
-            # Convert sourceFile into targetFile.
+            # Convert source into target.
 
-            message = self.convert(sourceFile, targetFile)
+            message = self.convert(source, target)
 
             # Pass the message to the UI.
 
@@ -116,18 +116,18 @@ class YwCnvUi(YwCnv):
                 self.newFile = None
 
             else:
-                self.newFile = targetFile.filePath
+                self.newFile = target.filePath
 
-    def import_to_yw(self, sourceFile, targetFile):
+    def import_to_yw(self, source, target):
         """Convert from any file format to yWriter project.
 
-        sourceFile -- Any Novel subclass instance.
-        targetFile -- YwFile subclass instance.
+        Positional arguments:
+            source -- Any Novel subclass instance.
+            target -- YwFile subclass instance.
 
-        This is a primitive operation of the run() template method.
-
+        Operation:
         1. Send specific information about the conversion to the UI.
-        2. Convert sourceFile into targetFile.
+        2. Convert source into target.
         3. Pass the message to the UI.
         4. Delete the temporay file, if exists.
         5. Save the new file pathname.
@@ -139,11 +139,11 @@ class YwCnvUi(YwCnv):
         # Send specific information about the conversion to the UI.
 
         self.ui.set_info_what(
-            f'Input: {sourceFile.DESCRIPTION} "{os.path.normpath(sourceFile.filePath)}"\nOutput: {targetFile.DESCRIPTION} "{os.path.normpath(targetFile.filePath)}"')
+            f'Input: {source.DESCRIPTION} "{os.path.normpath(source.filePath)}"\nOutput: {target.DESCRIPTION} "{os.path.normpath(target.filePath)}"')
 
-        # Convert sourceFile into targetFile.
+        # Convert source into target.
 
-        message = self.convert(sourceFile, targetFile)
+        message = self.convert(source, target)
 
         # Pass the message to the UI.
 
@@ -151,7 +151,7 @@ class YwCnvUi(YwCnv):
 
         # Delete the temporay file, if exists.
 
-        self._delete_tempfile(sourceFile.filePath)
+        self._delete_tempfile(source.filePath)
 
         # Save the new file pathname.
 
@@ -159,10 +159,16 @@ class YwCnvUi(YwCnv):
             self.newFile = None
 
         else:
-            self.newFile = targetFile.filePath
+            self.newFile = target.filePath
 
     def _confirm_overwrite(self, filePath):
-        """Return boolean permission to overwrite the target file, overriding the superclass method."""
+        """Return boolean permission to overwrite the target file.
+        
+        Positional arguments:
+            fileName -- path to the target file.
+        
+        Override the superclass method.
+        """
         return self.ui.ask_yes_no(f'Overwrite existing file "{os.path.normpath(filePath)}"?')
 
     def _delete_tempfile(self, filePath):

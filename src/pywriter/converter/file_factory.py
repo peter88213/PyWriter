@@ -13,9 +13,9 @@ class FileFactory:
     """
 
     def __init__(self, fileClasses=[]):
-        """Write the parameter to a private instance variable.
+        """Write the parameter to a "private" instance variable.
 
-        Positional arguments:
+        Optional arguments:
             _fileClasses -- list of classes from which an instance can be returned.
         """
         self._fileClasses = fileClasses

@@ -44,9 +44,11 @@ class YwCnvFf(YwCnvUi):
     IMPORT_TARGET_CLASSES = []
 
     def __init__(self):
-        """Define instance variables."""
+        """Create strategy class instances.
+        
+        Extend the superclass constructor.
+        """
         super().__init__()
-
         self.exportSourceFactory = ExportSourceFactory(self.EXPORT_SOURCE_CLASSES)
         self.exportTargetFactory = ExportTargetFactory(self.EXPORT_TARGET_CLASSES)
         self.importSourceFactory = ImportSourceFactory(self.IMPORT_SOURCE_CLASSES)
@@ -56,10 +58,12 @@ class YwCnvFf(YwCnvUi):
     def run(self, sourcePath, **kwargs):
         """Create source and target objects and run conversion.
 
-        sourcePath -- str; the source file path.
+        Positional arguments: 
+            sourcePath -- str; the source file path.
+        
         Required keyword argument: 'suffix' -- str; target file name suffix.
 
-        This is a template method that calls primitive operations by case.
+        This is a template method that calls superclass methods as primitive operations by case.
         """
         self.newFile = None
 

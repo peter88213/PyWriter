@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_NuwQ8MFaEeu3Uqtx9hJ-Ng" name="python">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_NuwQ8MFaEeu3Uqtx9hJ-Ng" name="python">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_NyPp0MFaEeu3Uqtx9hJ-Ng">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -41,13 +41,14 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Dx7lAMFmEeu3Uqtx9hJ-Ng" name="config"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_lmncoH7FEey1Ut-6sSExGQ" name="Menu"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ygw_AJDFEey_Lt93nuuNDA" name="Messagebox"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_kty3AJDIEey_Lt93nuuNDA" name="filedialog"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_DBoUgC1UEeqtbohuTq_ZAA" name="xml.etree">
       <packagedElement xmi:type="uml:Class" xmi:id="_QoWo4C1UEeqtbohuTq_ZAA" name="ElementTree" visibility="public">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_nEzBkI9-Eeyjx8O5a_-QzA" name="element" type="_81JUkC2JEeqtbohuTq_ZAA" aggregation="shared">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_nEzBkI9-Eeyjx8O5a_-QzA" name="element" type="_81JUkC2JEeqtbohuTq_ZAA" aggregation="composite" association="_nEsT4I9-Eeyjx8O5a_-QzA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oIIG0I9-Eeyjx8O5a_-QzA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oIIt4I9-Eeyjx8O5a_-QzA" value="*"/>
-          <association xmi:type="uml:Association" href="PyWriter.uml#_nEsT4I9-Eeyjx8O5a_-QzA"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_v1IQUC2IEeqtbohuTq_ZAA" name="parse"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ARn38C2JEeqtbohuTq_ZAA" name="getroot"/>
@@ -55,6 +56,12 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_81JUkC2JEeqtbohuTq_ZAA" name="Element">
         <ownedOperation xmi:type="uml:Operation" xmi:id="_soax0C2KEeqtbohuTq_ZAA" name="iter"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_nEsT4I9-Eeyjx8O5a_-QzA" memberEnd="_nEzBkI9-Eeyjx8O5a_-QzA _oIJU8I9-Eeyjx8O5a_-QzA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nExMYI9-Eeyjx8O5a_-QzA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nExMYY9-Eeyjx8O5a_-QzA" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_oIJU8I9-Eeyjx8O5a_-QzA" name="ET" type="_QoWo4C1UEeqtbohuTq_ZAA" association="_nEsT4I9-Eeyjx8O5a_-QzA"/>
       </packagedElement>
     </packagedElement>
   </packagedElement>
@@ -220,5 +227,9 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uVYnIL40EeuITv7MyBA5yA" value="*"/>
       </ownedAttribute>
     </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ci24sJC9Eey_Lt93nuuNDA" name="Dict"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_EqR4MJC9Eey_Lt93nuuNDA" name="Tuple"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_GKAlkJC9Eey_Lt93nuuNDA" name="List"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_wBNo0JDEEey_Lt93nuuNDA" name="Method"/>
   </packagedElement>
 </uml:Model>
