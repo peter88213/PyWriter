@@ -23,7 +23,7 @@ class Character(WorldElement):
     MINOR_MARKER = 'Minor'
 
     def __init__(self):
-        """Extend the superclass constructor by adding instance variables."""
+        """Extends the superclass constructor by adding instance variables."""
         super().__init__()
 
         self.notes = None

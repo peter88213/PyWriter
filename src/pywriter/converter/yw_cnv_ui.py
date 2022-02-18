@@ -167,7 +167,7 @@ class YwCnvUi(YwCnv):
         Positional arguments:
             fileName -- path to the target file.
         
-        Override the superclass method.
+        Overrides the superclass method.
         """
         return self.ui.ask_yes_no(f'Overwrite existing file "{os.path.normpath(filePath)}"?')
 

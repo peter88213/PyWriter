@@ -25,7 +25,7 @@ class HtmlManuscript(HtmlFile):
 
     def handle_starttag(self, tag, attrs):
         """Identify scenes and chapters.
-        Extend HtmlFile.handle_starttag() by processing inline chapter and scene dividers.
+        Extends HtmlFile.handle_starttag() by processing inline chapter and scene dividers.
         """
         super().handle_starttag(tag, attrs)
 
@@ -58,7 +58,7 @@ class HtmlManuscript(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
-        Override HTMLparser.handle_endtag().
+        Overrides HTMLparser.handle_endtag().
         """
         if self._scId is not None:
 
@@ -84,7 +84,7 @@ class HtmlManuscript(HtmlFile):
 
     def handle_data(self, data):
         """Collect data within scene sections.
-        Override HTMLparser.handle_data().
+        Overrides HTMLparser.handle_data().
         """
        
         if self._scId is not None:

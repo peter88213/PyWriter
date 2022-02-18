@@ -49,7 +49,7 @@ class Yw7Converter(YwCnvFf):
     Support yWriter 7 projects and most of the Novel subclasses 
     that can be read or written by OpenOffice/LibreOffice.
 
-    Override the superclass constants EXPORT_SOURCE_CLASSES,
+    Overrides the superclass constants EXPORT_SOURCE_CLASSES,
     EXPORT_TARGET_CLASSES, IMPORT_SOURCE_CLASSES, IMPORT_TARGET_CLASSES.
 
     Class constants:
@@ -94,7 +94,7 @@ class Yw7Converter(YwCnvFf):
     def __init__(self):
         """Change the newProjectFactory strategy.
         
-        Extend the superclass constructor.
+        Extends the superclass constructor.
         """
         super().__init__()
         self.newProjectFactory = NewProjectFactory(self.CREATE_SOURCE_CLASSES)

@@ -79,7 +79,7 @@ class DataFiles(Yw7File):
         Generate the xml file paths from the .yw7 path. 
         Read, postprocess and write the characters, locations, and items xml files.        
         Return a message beginning with the ERROR constant in case of error.
-        Extend the superclass method.
+        Extends the superclass method.
         '''
 
         path, __ = os.path.splitext(filePath)
@@ -111,7 +111,7 @@ class DataFiles(Yw7File):
             source -- Novel subclass instance to merge.
         
         Return a message beginning with the ERROR constant in case of error.
-        Override the superclass method.
+        Overrides the superclass method.
         """
         self.characters = source.characters
         self.srtCharacters = source.srtCharacters

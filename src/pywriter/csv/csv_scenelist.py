@@ -30,7 +30,7 @@ class CsvSceneList(CsvFile):
         """Parse the csv file located at filePath, 
         fetching the Scene attributes contained.
         Return a message beginning with the ERROR constant in case of error.
-        Extend the superclass method.
+        Extends the superclass method.
         """
         message = super().read()
 

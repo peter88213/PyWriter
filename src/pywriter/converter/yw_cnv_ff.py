@@ -46,7 +46,7 @@ class YwCnvFf(YwCnvUi):
     def __init__(self):
         """Create strategy class instances.
         
-        Extend the superclass constructor.
+        Extends the superclass constructor.
         """
         super().__init__()
         self.exportSourceFactory = ExportSourceFactory(self.EXPORT_SOURCE_CLASSES)

@@ -37,7 +37,7 @@ class CsvFile(Novel):
         """Parse the csv file located at filePath, fetching the _rows.
         Check the number of fields in each row.
         Return a message beginning with the ERROR constant in case of error.
-        Override the superclass method.
+        Overrides the superclass method.
         """
         self._rows = []
         cellsPerRow = len(self._rowTitles)

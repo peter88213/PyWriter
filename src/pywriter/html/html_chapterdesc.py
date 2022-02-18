@@ -19,7 +19,7 @@ class HtmlChapterDesc(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the chapter section and save data.
-        Override HTMLparser.handle_endtag().
+        Overrides HTMLparser.handle_endtag().
         """
         if self._chId is not None:
 
@@ -39,7 +39,7 @@ class HtmlChapterDesc(HtmlFile):
 
     def handle_data(self, data):
         """collect data within chapter sections.
-        Override HTMLparser.handle_data().
+        Overrides HTMLparser.handle_data().
         """
         if self._chId is not None:
             self._lines.append(data.strip())

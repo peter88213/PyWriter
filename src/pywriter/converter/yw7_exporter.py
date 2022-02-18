@@ -33,7 +33,7 @@ class Yw7Exporter(YwCnvFf):
     Instantiate a Yw7File object as sourceFile and a
     Novel subclass object as targetFile for file conversion.
 
-    Override the superclass constants EXPORT_SOURCE_CLASSES, EXPORT_TARGET_CLASSES.    
+    Overrides the superclass constants EXPORT_SOURCE_CLASSES, EXPORT_TARGET_CLASSES.    
     """
     EXPORT_SOURCE_CLASSES = [Yw7File]
 

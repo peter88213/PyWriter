@@ -29,7 +29,7 @@ class ScCrFilter():
         Return True if a source scene's character matches the filter character.
         Return True if no filter character is set. 
         Oherwise, return False.
-        Override the superclass method.
+        Overrides the superclass method.
         """
 
         if self._character is not None:

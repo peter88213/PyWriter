@@ -108,7 +108,7 @@ class HtmlImport(HtmlFile):
 
     def handle_data(self, data):
         """Collect data within scene sections.
-        Override HTMLparser.handle_data().
+        Overrides HTMLparser.handle_data().
         """
         if self._scId is not None and self._SCENE_DIVIDER in data:
             self._scId = None

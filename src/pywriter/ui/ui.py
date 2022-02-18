@@ -18,28 +18,49 @@ class Ui():
         ask_yes_no(text) -- return True or False.
         set_info_what(message) -- show what the converter is going to do.
         set_info_how(message) -- show how the converter is doing.
-        start() -- launch the GUI, if any.   
+        start() -- launch the GUI, if any.
+        
+    Public instance variables:
+        infoWhatText -- buffer for general messages.
+        infoHowText -- buffer for error/success messages.
     """
 
     def __init__(self, title):
-        """Initialize text buffers for messaging."""
+        """Initialize text buffers for messaging.
+        
+        Positional arguments:
+            title -- application title.
+        """
         self.infoWhatText = ''
         self.infoHowText = ''
 
     def ask_yes_no(self, text):
         """Return True or False.
         
+        Positional arguments:
+            text -- question to be asked. 
+            
         This is a stub used for "silent mode".
         The application may use a subclass for confirmation requests.    
         """
         return True
 
     def set_info_what(self, message):
-        """Show what the converter is going to do."""
+        """Show what the converter is going to do.
+        
+        Positional arguments:
+            message -- message to be buffered. 
+        """
         self.infoWhatText = message
 
     def set_info_how(self, message):
-        """Show how the converter is doing."""
+        """Show how the converter is doing.
+        
+        Positional arguments:
+            message -- message to be buffered.
+            
+        Print the message to stderr, replacing the error marker, if any.
+        """
 
         if message.startswith(ERROR):
             message = f'FAIL: {message.split(ERROR, maxsplit=1)[1].strip()}'

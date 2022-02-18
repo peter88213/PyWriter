@@ -1506,7 +1506,7 @@ or success information</body>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_Z2J44MFgEeu3Uqtx9hJ-Ng" name="UiMb">
         <generalization xmi:type="uml:Generalization" xmi:id="_20wrUMFiEeu3Uqtx9hJ-Ng" general="_JtCGsPxDEeq5hMee5ike2Q"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_qOHJUMFhEeu3Uqtx9hJ-Ng" name="title" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_qOHJUMFhEeu3Uqtx9hJ-Ng" name="_title" visibility="protected">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_xNrRYJDDEey_Lt93nuuNDA" name="__init__">
@@ -1624,6 +1624,9 @@ or success information</body>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_UpWz8JDREey_Lt93nuuNDA" name="fileTypes">
             <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_iefRkJDuEeyEl8hC1hWOFQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_deC8sJDREey_Lt93nuuNDA" name="_close_project"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_rA8hAJDREey_Lt93nuuNDA" name="ask_yes_no">
@@ -1647,6 +1650,12 @@ or success information</body>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_0uCngJDIEey_Lt93nuuNDA" name="MainTkCnv">
         <generalization xmi:type="uml:Generalization" xmi:id="_6R6fwJDIEey_Lt93nuuNDA" general="_VruYIH7DEey1Ut-6sSExGQ"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ZkFs8JDvEeyEl8hC1hWOFQ" name="_EXPORT_DESC" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_f46hAJDvEeyEl8hC1hWOFQ" name="_IMPORT_DESC" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_9CgMgpDSEey_Lt93nuuNDA" name="ui" type="_WAqBgCtrEeqgj_wxJ3Xgsg" association="_9Ce-YJDSEey_Lt93nuuNDA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9CgzkJDSEey_Lt93nuuNDA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9ChaoJDSEey_Lt93nuuNDA" value="1"/>
@@ -1675,8 +1684,8 @@ or success information</body>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZW5rsZDSEey_Lt93nuuNDA" name="fileName">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZW5rspDSEey_Lt93nuuNDA" name="fileTypes">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_f2Pc8JDuEeyEl8hC1hWOFQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_bgkt8JDSEey_Lt93nuuNDA" name="_reverse_direction" visibility="protected"/>

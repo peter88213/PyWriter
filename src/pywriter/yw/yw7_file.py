@@ -55,7 +55,7 @@ class Yw7File(Novel):
         Optional arguments:
             kwargs -- keyword arguments (not used here).            
         
-        Extend the superclass constructor.
+        Extends the superclass constructor.
         """
         super().__init__(filePath)
         self.tree = None
@@ -64,7 +64,7 @@ class Yw7File(Novel):
         """Parse the yWriter xml file and get the instance variables.
         
         Return a message beginning with the ERROR constant in case of error.
-        Override the superclass method.
+        Overrides the superclass method.
         """
 
         if self.is_locked():
@@ -476,7 +476,7 @@ class Yw7File(Novel):
             source -- Novel subclass instance to merge.
         
         Return a message beginning with the ERROR constant in case of error.
-        Override the superclass method.
+        Overrides the superclass method.
         """
 
         def merge_lists(srcLst, tgtLst):
@@ -907,7 +907,7 @@ class Yw7File(Novel):
         Open the yWriter xml file located at filePath and replace the instance variables 
         not being None. Create new XML elements if necessary.
         Return a message beginning with the ERROR constant in case of error.
-        Override the superclass method.
+        Overrides the superclass method.
         """
 
         def build_scene_subtree(xmlScn, prjScn):

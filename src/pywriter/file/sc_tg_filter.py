@@ -29,7 +29,7 @@ class ScTgFilter():
         Return True if a source scene's tag matches the filter tag.
         Return True if no filter tag is set. 
         Oherwise, return False.
-        Override the superclass method.
+        Overrides the superclass method.
         """
 
         if self._tag is not None:

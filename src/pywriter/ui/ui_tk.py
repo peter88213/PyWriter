@@ -12,10 +12,23 @@ from pywriter.ui.ui import Ui
 
 
 class UiTk(Ui):
-    """UI subclass implementing a Tkinter facade."""
+    """UI subclass implementing a Tkinter facade.
+    
+    Public methods:
+        ask_yes_no(text) -- query yes or no with a pop-up box.
+        set_info_what(message) -- show what the converter is going to do.
+        set_info_how(message) -- show how the converter is doing.
+        start() -- start the Tk main loop.
+    """
 
     def __init__(self, title):
-        """Extend the Ui constructor. """
+        """Initialize the GUI window.
+        
+        Positional arguments:
+            title -- application title to be displayed at the window frame.
+            
+        Extends the superclass constructor.
+        """
         super().__init__(title)
 
         self._root = Tk()
@@ -34,16 +47,36 @@ class UiTk(Ui):
         self._root.quitButton.pack(pady=10)
 
     def ask_yes_no(self, text):
-        """Override the Ui method."""
+        """Query yes or no with a pop-up box.
+        
+        Positional arguments:
+            text -- question to be asked in the pop-up box. 
+            
+        Overrides the superclass method.       
+        """
         return messagebox.askyesno('WARNING', text)
 
     def set_info_what(self, message):
-        """What's the converter going to do?"""
+        """Show what the converter is going to do.
+        
+        Positional arguments:
+            message -- message to be displayed. 
+            
+        Display the message at the _appinfo label.
+        Overrides the superclass method.
+        """
         self.infoWhatText = message
         self._appInfo.config(text=message)
 
     def set_info_how(self, message):
-        """How's the converter doing?"""
+        """Show how the converter is doing.
+        
+        Positional arguments:
+            message -- message to be displayed. 
+            
+        Display the message at the _processinfo label.
+        Overrides the superclass method.
+        """
 
         if message.startswith(ERROR):
             self._processInfo.config(bg='red')
@@ -62,7 +95,11 @@ class UiTk(Ui):
         self._root.mainloop()
 
     def _show_open_button(self, open_cmd):
-        """Add an 'Open' button to the main window."""
+        """Add an 'Open' button to the main window.
+        
+        Positional argument:
+            open_cmd -- subclass method that opens the file.
+        """
         self._root.openButton = Button(text="Open", command=open_cmd)
         self._root.openButton.config(height=1, width=10)
         self._root.openButton.pack(pady=10)

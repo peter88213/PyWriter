@@ -30,7 +30,7 @@ class OdfFile(FileExport):
     _META_XML = ''
 
     def __init__(self, filePath, **kwargs):
-        """Extend the superclass constructor, 
+        """Extends the superclass constructor, 
         creating a temporary directory.
         """
         super().__init__(filePath, **kwargs)
@@ -132,7 +132,7 @@ class OdfFile(FileExport):
         return 'ODF structure generated.'
 
     def write(self):
-        """Extend the super class method, adding ZIP file operations."""
+        """Extends the super class method, adding ZIP file operations."""
 
         # Create a temporary directory containing the internal
         # structure of an ODS file except "content.xml".

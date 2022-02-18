@@ -57,7 +57,7 @@ class FileExport(Novel):
     def __init__(self, filePath, **kwargs):
         """Initialize a filter class.
         
-        Extend the superclass constructor.
+        Extends the superclass constructor.
         """
         super().__init__(filePath, **kwargs)
         self._sceneFilter = Filter()
@@ -73,7 +73,7 @@ class FileExport(Novel):
             source -- Novel subclass instance to merge.
         
         Return a message beginning with the ERROR constant in case of error.
-        Override the superclass method.
+        Overrides the superclass method.
         """
 
         if source.title is not None:

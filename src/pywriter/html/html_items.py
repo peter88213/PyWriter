@@ -25,7 +25,7 @@ class HtmlItems(HtmlFile):
 
     def handle_starttag(self, tag, attrs):
         """Identify items.
-        Override HTMLparser.handle_starttag()
+        Overrides HTMLparser.handle_starttag()
         """
         if tag == 'div':
 
@@ -38,7 +38,7 @@ class HtmlItems(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the item section and save data.
-        Override HTMLparser.handle_endtag().
+        Overrides HTMLparser.handle_endtag().
         """
         if self._itId is not None:
 
@@ -52,7 +52,7 @@ class HtmlItems(HtmlFile):
 
     def handle_data(self, data):
         """collect data within item sections.
-        Override HTMLparser.handle_data().
+        Overrides HTMLparser.handle_data().
         """
         if self._itId is not None:
             self._lines.append(data.strip())

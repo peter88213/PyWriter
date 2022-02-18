@@ -29,7 +29,7 @@ class ScItFilter():
         Return True if a source scene's item matches the filter item.
         Return True if no filter item is set. 
         Oherwise, return False.
-        Override the superclass method.
+        Overrides the superclass method.
         """
 
         if self._item is not None:

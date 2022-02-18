@@ -29,7 +29,7 @@ class ScVpFilter():
         Return True if the source scene's viewpoint matches the filter viewpoint.
         Return True if no filter viewpoint is set. 
         Oherwise, return False.
-        Override the superclass method.
+        Overrides the superclass method.
         """
 
         if self._viewpoint is not None:

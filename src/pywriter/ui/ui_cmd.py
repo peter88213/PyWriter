@@ -12,7 +12,7 @@ class UiCmd(Ui):
     """Ui subclass implementing a console interface.
     
     Public methods:
-        ask_yes_no(text) -- return True or False.
+        ask_yes_no(text) -- query yes or no at the console.
         set_info_what(message) -- show what the converter is going to do.
         set_info_how(message) -- show how the converter is doing.
     """
@@ -20,18 +20,21 @@ class UiCmd(Ui):
     def __init__(self, title):
         """Print the title.
         
-        Extend the Ui constructor.
+        Positional arguments:
+            title -- application title to be displayed at the console.
+        
+        Extends the superclass constructor.
         """
         super().__init__(title)
         print(title)
 
     def ask_yes_no(self, text):
-        """Query True or False at the console.
+        """Query yes or no at the console.
         
-        Positional argument.
-            Question to be printed at the console. 
+        Positional arguments:
+            text -- question to be asked at the console. 
             
-        Override the superclass method.       
+        Overrides the superclass method.       
         """
         result = input(f'WARNING: {text} (y/n)')
 
@@ -44,16 +47,22 @@ class UiCmd(Ui):
     def set_info_what(self, message):
         """Show what the converter is going to do.
         
+        Positional arguments:
+            message -- message to be printed at the console. 
+            
         Print the message.
-        Override the superclass method.
+        Overrides the superclass method.
         """
         print(message)
 
     def set_info_how(self, message):
         """Show how the converter is doing.
 
+        Positional arguments:
+            message -- message to be printed at the console. 
+            
         Print the message, replacing the error marker, if any.
-        Override the superclass method.
+        Overrides the superclass method.
         """
         if message.startswith(ERROR):
             message = f'FAIL: {message.split(ERROR, maxsplit=1)[1].strip()}'

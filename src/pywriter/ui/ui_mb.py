@@ -12,25 +12,48 @@ from pywriter.ui.ui import Ui
 
 
 class UiMb(Ui):
-    """UI subclass with messagebox."""
+    """UI subclass with messagebox.
+    
+    Public methods:
+        ask_yes_no(text) -- query yes or no with a pop-up box.
+        set_info_how(message) -- show a pop-up message in case of error.
+    """
 
     def __init__(self, title):
-        """Extend the Ui constructor. """
+        """Initialize the GUI and remove the tk window from the screen.
+        
+        Positional arguments:
+            title -- application title to be displayed at the messagebox frame.
+            
+        Extends the superclass constructor.
+        """
         super().__init__(title)
         root = tk.Tk()
         root.withdraw()
-        self.title = title
+        self._title = title
 
     def ask_yes_no(self, text):
-        """Override the superclass method."""
-        return messagebox.askyesno(self.title, text)
+        """Query yes or no with a pop-up box.
+        
+        Positional arguments:
+            text -- question to be asked in the pop-up box. 
+            
+        Overrides the superclass method.       
+        """
+        return messagebox.askyesno(self._title, text)
 
     def set_info_how(self, message):
-        """Override the superclass method."""
+        """Show a pop-up message in case of error.
+        
+        Positional arguments:
+            message -- message to be displayed. 
+            
+        Overrides the superclass method.
+        """
 
         if message.startswith(ERROR):
             message = message.split(ERROR, maxsplit=1)[1].strip()
-            messagebox.showerror(self.title, message)
+            messagebox.showerror(self._title, message)
 
         else:
-            messagebox.showinfo(self.title, message)
+            messagebox.showinfo(self._title, message)

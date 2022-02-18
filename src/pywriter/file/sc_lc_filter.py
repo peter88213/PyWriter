@@ -29,7 +29,7 @@ class ScLcFilter():
         Return True if a source scene's location matches the filter location.
         Return True if no filter location is set. 
         Oherwise, return False.
-        Override the superclass method.
+        Overrides the superclass method.
         """
 
         if self._location is not None:

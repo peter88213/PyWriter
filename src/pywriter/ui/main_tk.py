@@ -16,17 +16,36 @@ from pywriter.ui.ui import Ui
 
 class MainTk(Ui):
     """A tkinter GUI root class.
+
+    Public methods:
+        start() -- start the Tk main loop.
+        open_project -- select a valid project file and display the path.
+        ask_yes_no(text) -- query yes or no with a pop-up box.
+        set_info_how(message) -- show how the converter is doing.
+
+    Public instance variables: 
+        kwargs -- keyword arguments buffer. 
+
     Main menu, title bar, main window frame, status bar, path bar.
     """
 
     def __init__(self, title, **kwargs):
-        """Initialize the project related instance variables
-        and configure the user interface.
+        """Initialize the GUI window and instance variables.
+        
+        Positional arguments:
+            title -- application title to be displayed at the window frame.
+         
+        Keyword arguments:
+            yw_last_open -- initial file.
+        
+        Operation:
         - Create a main menu to be extended by subclasses.
         - Create a title bar for the project title.
         - Open a main window frame to be used by subclasses.
         - Create a status bar to be used by subclasses.
         - Create a path bar for the project file path.
+        
+        Extends the superclass constructor.
         """
         super().__init__(title)
         self._statusText = ''
@@ -58,29 +77,39 @@ class MainTk(Ui):
 
     def _extend_menu(self):
         """Create an object that represents the project file.
+        
         This is a template method that can be overridden by subclasses. 
         """
 
     def _disable_menu(self):
         """Disable menu entries when no project is open.
+        
         To be extended by subclasses.
         """
         self._fileMenu.entryconfig('Close', state='disabled')
 
     def _enable_menu(self):
         """Enable menu entries when a project is open.
+        
         To be extended by subclasses.
         """
         self._fileMenu.entryconfig('Close', state='normal')
 
     def start(self):
-        """Start the user interface.
+        """Start the Tk main loop.
+        
         Note: This can not be done in the constructor method.
         """
         self._root.mainloop()
 
     def open_project(self, fileName, fileTypes=[('yWriter 7 project', '.yw7')]):
         """Select a valid project file and display the path.
+
+        Positional arguments:
+            fileName -- string: project file path.
+            
+        Optional arguments:
+            fileTypes -- list of tuples for file selection (display text, extension).
 
         Priority:
         1. use file name argument
@@ -105,8 +134,8 @@ class MainTk(Ui):
         return fileName
 
     def _close_project(self):
-        """Close the yWriter project without saving.
-        Reset the user interface.
+        """Close the yWriter project without saving and reset the user interface.
+        
         To be extended by subclasses.
         """
         self._ywPrj = None
@@ -116,14 +145,23 @@ class MainTk(Ui):
         self._disable_menu()
 
     def ask_yes_no(self, text):
-        """Display a message box with "yes/no" options.
-        Return True or False depending on user input.
+        """Query yes or no with a pop-up box.
+        
+        Positional arguments:
+            text -- question to be asked in the pop-up box. 
+            
+        Overrides the superclass method.       
         """
         return messagebox.askyesno('WARNING', text)
 
     def set_info_how(self, message):
-        """How's the application doing?
-        Put a message on the status bar.
+        """Show how the converter is doing.
+        
+        Positional arguments:
+            message -- message to be displayed. 
+            
+        Display the message at the status bar.
+        Overrides the superclass method.
         """
 
         if message.startswith(ERROR):

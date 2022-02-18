@@ -64,7 +64,7 @@ class HtmlProof(HtmlFile):
     def handle_starttag(self, tag, attrs):
         """Recognize the paragraph's beginning.
         
-        Override HTMLparser.handle_endtag().
+        Overrides HTMLparser.handle_endtag().
         """
         if tag == 'p':
             self._prefix = ''
@@ -78,7 +78,7 @@ class HtmlProof(HtmlFile):
     def handle_endtag(self, tag):
         """Recognize the paragraph's end.
         
-        Override HTMLparser.handle_endtag().
+        Overrides HTMLparser.handle_endtag().
         """
         if tag in ['p', 'h2', 'h1']:
             self._prefix = None
@@ -86,7 +86,7 @@ class HtmlProof(HtmlFile):
     def handle_data(self, data):
         """Copy the scene paragraphs.
         
-        Override HTMLparser.handle_data().
+        Overrides HTMLparser.handle_data().
         """
         if self._prefix is not None:
             self._lines.append(f'{self._prefix}{data}')

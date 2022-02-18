@@ -24,7 +24,7 @@ class CsvLocList(CsvFile):
         """Parse the csv file located at filePath, 
         fetching the WorldElement attributes contained.
         Return a message beginning with the ERROR constant in case of error.
-        Extend the superclass method.
+        Extends the superclass method.
         """
         message = super().read()
 

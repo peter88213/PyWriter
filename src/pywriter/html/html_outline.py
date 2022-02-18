@@ -98,6 +98,6 @@ class HtmlOutline(HtmlFile):
 
     def handle_data(self, data):
         """Collect data within scene sections.
-        Override HTMLparser.handle_data().
+        Overrides HTMLparser.handle_data().
         """
         self._lines.append(data.strip())

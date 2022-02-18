@@ -90,7 +90,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
     def _get_scenes(self, scenes):
         """Process the scenes.
         Return a list of strings.
-        Override the superclass method.
+        Overrides the superclass method.
         """
         lines = []
 
@@ -132,7 +132,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
     def _get_characters(self):
         """Process the scenes per character.
         Return a list of strings.
-        Override the superclass method.
+        Overrides the superclass method.
         """
         lines = []
         headerTemplate = Template(self._scnPerChrTemplate)
@@ -149,7 +149,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
     def _get_locations(self):
         """Process the locations.
         Return a list of strings.
-        Override the superclass method.
+        Overrides the superclass method.
         """
         lines = []
         headerTemplate = Template(self._scnPerLocTemplate)
@@ -166,7 +166,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
     def _get_items(self):
         """Process the items.
         Return a list of strings.
-        Override the superclass method.
+        Overrides the superclass method.
         """
         lines = []
         headerTemplate = Template(self._scnPerItmTemplate)
@@ -243,7 +243,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
     def _get_text(self):
         """Assemble the whole text applying the templates.
         Return a string to be written to the output file.
-        Override the superclass method.
+        Overrides the superclass method.
         """
         self._xr.generate_xref(self)
 
