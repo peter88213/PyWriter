@@ -50,7 +50,7 @@ class Novel():
     # To be extended by subclass methods.
 
     def __init__(self, filePath, **kwargs):
-        """Define instance variables.
+        """Initialize instance variables.
 
         Positional arguments:
             filePath -- string; path to the file represented by the Novel instance.

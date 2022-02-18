@@ -60,6 +60,7 @@ class Scene():
     NULL_TIME = '00:00:00'
 
     def __init__(self):
+        """Initialize instance variables."""
         self.title = None
         # str
         # xml: <Title>

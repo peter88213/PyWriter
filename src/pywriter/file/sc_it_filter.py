@@ -10,7 +10,7 @@ class ScItFilter():
     """Filter Scene per item.
     
     Public methods:
-        accept -- check whether a scene is associated with the filter item.
+        accept(source, eId) -- check whether a scene is associated with the filter item.
     
     Strategy class, implementing filtering criteria for template-based scene export.
     """

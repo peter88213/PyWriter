@@ -18,6 +18,7 @@ class WorldElement():
     """
 
     def __init__(self):
+        """Initialize instance variables."""
         self.title = None
         # str
         # xml: <Title>

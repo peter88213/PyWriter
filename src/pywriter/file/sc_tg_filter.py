@@ -10,7 +10,7 @@ class ScTgFilter():
     """Filter Scene per tag.
 
     Public methods:
-        accept -- check whether a scene is tagged with the filter tag.
+        accept(source, eId) -- check whether a scene is tagged with the filter tag.
     
     Strategy class, implementing filtering criteria for template-based scene export.
     """

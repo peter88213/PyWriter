@@ -15,7 +15,7 @@ class MainTkCnv(MainTk):
     """A tkinter GUI base class for yWriter file conversion.
 
     Public methods:
-        open_project -- select a valid project file and display the path.
+        open_project(fileName) -- select a valid project file and display the path.
 
     Public instance variables:
         converter -- converter strategy class.

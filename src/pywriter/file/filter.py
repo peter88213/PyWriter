@@ -12,7 +12,7 @@ class Filter():
     """Filter an entity (chapter/scene/character/location/item) by filter criteria.
     
     Public methods:
-        accept -- check whether an entity matches the filter criteria.
+        accept(source, eId) -- check whether an entity matches the filter criteria.
     
     Strategy class, implementing filtering criteria for template-based export.
     This is a stub with no filter criteria specified.

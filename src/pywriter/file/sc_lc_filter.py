@@ -10,7 +10,7 @@ class ScLcFilter():
     """Filter Scene per location.
     
     Public methods:
-        accept -- check whether a scene is associated with the filter location.
+        accept(source, eId) -- check whether a scene is associated with the filter location.
     
     Strategy class, implementing filtering criteria for template-based scene export.
     """

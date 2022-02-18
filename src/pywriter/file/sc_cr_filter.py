@@ -10,7 +10,7 @@ class ScCrFilter():
     """Filter Scene per character.
     
     Public methods:
-        accept -- check whether a scene is associated with the filter character.
+        accept(source, eId) -- check whether a scene is associated with the filter character.
     
     Strategy class, implementing filtering criteria for template-based scene export.
     """

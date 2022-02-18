@@ -19,7 +19,8 @@ class MainTk(Ui):
 
     Public methods:
         start() -- start the Tk main loop.
-        open_project -- select a valid project file and display the path.
+        open_project(fileName, fileTypes=[('yWriter 7 project', '.yw7')]) 
+            -- select a valid project file and display the path.
         ask_yes_no(text) -- query yes or no with a pop-up box.
         set_info_how(message) -- show how the converter is doing.
 

@@ -10,7 +10,7 @@ class ScVpFilter():
     """Filter Scene per viewpoint.
     
     Public methods:
-        accept -- check whether a scene's viewpoint matches the filter viewpoint.
+        accept(source, eId) -- check whether a scene's viewpoint matches the filter viewpoint.
     
     Strategy class, implementing filtering criteria for template-based scene export.
     """

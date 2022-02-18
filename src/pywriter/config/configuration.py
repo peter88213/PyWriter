@@ -8,23 +8,28 @@ from configparser import ConfigParser
 
 
 class Configuration():
-    """Read/write the program configuration.
+    """Application configuration, representing an INI file.
 
         INI file sections:
         <self._sLabel> - Strings
         <self._oLabel> - Boolean values
 
-    Instance variables:    
+    Public methods:
+        set(settings={}, options={}) -- set the entire configuration without writing the INI file.
+        read(iniFile) -- read a configuration file.
+        write(iniFile) -- save the configuration to iniFile.
+
+    Public instance variables:    
         settings - dictionary of strings
         options - dictionary of boolean values
     """
 
     def __init__(self, settings={}, options={}):
-        """Define attribute variables.
+        """Initalize attribute variables.
 
-        Arguments:
-        settings - default settings (dictionary of strings)
-        options - default options (dictionary of boolean values)
+        Optional rguments:
+            settings -- default settings (dictionary of strings)
+            options -- default options (dictionary of boolean values)
         """
         self.settings = None
         self.options = None
@@ -34,6 +39,10 @@ class Configuration():
 
     def set(self, settings=None, options=None):
         """Set the entire configuration without writing the INI file.
+
+        Optional arguments:
+            settings -- new settings (dictionary of strings)
+            options -- new options (dictionary of boolean values)
         """
 
         if settings is not None:
@@ -44,6 +53,10 @@ class Configuration():
 
     def read(self, iniFile):
         """Read a configuration file.
+        
+        Positional arguments:
+            iniFile -- string: path configuration file path.
+            
         Settings and options that can not be read in, remain unchanged.
         """
         config = ConfigParser()
@@ -67,6 +80,9 @@ class Configuration():
 
     def write(self, iniFile):
         """Save the configuration to iniFile.
+
+        Positional arguments:
+            iniFile -- string: path configuration file path.
         """
         config = ConfigParser()
 

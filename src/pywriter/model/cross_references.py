@@ -25,6 +25,8 @@ class CrossReferences():
     """
 
     def __init__(self):
+        """Initialize instance variables."""
+        
         # Cross reference dictionaries:
 
         self.scnPerChr = {}
