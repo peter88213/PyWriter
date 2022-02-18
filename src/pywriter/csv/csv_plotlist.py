@@ -19,8 +19,10 @@ from pywriter.model.scene import Scene
 
 class CsvPlotList(CsvFile):
     """csv file representation of a yWriter project's scenes table. 
+    
+    Public methods:
+        read() -- parse the file and get the instance variables.
     """
-
     DESCRIPTION = 'Plot list'
     SUFFIX = '_plotlist'
 
@@ -34,8 +36,9 @@ class CsvPlotList(CsvFile):
                  '$FieldTitle1', '$FieldTitle2', '$FieldTitle3', '$FieldTitle4']
 
     def read(self):
-        """Parse the csv file located at filePath, fetching 
-        the Scene attributes contained.
+        """Parse the file and get the instance variables.
+        
+        Parse the csv file located at filePath, fetching the Scene attributes contained.
         Return a message beginning with the ERROR constant in case of error.
         Extends the superclass method.
         """

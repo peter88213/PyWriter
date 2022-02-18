@@ -4,7 +4,6 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import os
 import re
 
 from pywriter.pywriter_globals import ERROR
@@ -14,16 +13,19 @@ from pywriter.model.character import Character
 
 class CsvCharList(CsvFile):
     """csv file representation of a yWriter project's characters table. 
+    
+    Public methods:
+        read() -- parse the file and get the instance variables.
     """
-
     DESCRIPTION = 'Character list'
     SUFFIX = '_charlist'
 
     _rowTitles = ['ID', 'Name', 'Full name', 'Aka', 'Description', 'Bio', 'Goals', 'Importance', 'Tags', 'Notes']
 
     def read(self):
-        """Parse the csv file located at filePath, 
-        fetching the Character attributes contained.
+        """Parse the file and get the instance variables.
+        
+        Parse the csv file located at filePath, fetching the Character attributes contained.
         Return a message beginning with the ERROR constant in case of error.
         Extends the superclass method.
         """

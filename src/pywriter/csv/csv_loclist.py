@@ -13,16 +13,19 @@ from pywriter.model.world_element import WorldElement
 
 class CsvLocList(CsvFile):
     """csv file representation of a yWriter project's locations table. 
+    
+    Public methods:
+        read() -- parse the file and get the instance variables.
     """
-
     DESCRIPTION = 'Location list'
     SUFFIX = '_loclist'
 
     _rowTitles = ['ID', 'Name', 'Description', 'Aka', 'Tags']
 
     def read(self):
-        """Parse the csv file located at filePath, 
-        fetching the WorldElement attributes contained.
+        """Parse the file and get the instance variables.
+        
+        Parse the csv file located at filePath, fetching the location attributes contained.
         Return a message beginning with the ERROR constant in case of error.
         Extends the superclass method.
         """

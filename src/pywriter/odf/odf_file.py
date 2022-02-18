@@ -20,6 +20,9 @@ from pywriter.file.file_export import FileExport
 
 class OdfFile(FileExport):
     """Generic OpenDocument xml file representation.
+
+    Public methods:
+        write() -- write instance variables to the export file.
     """
 
     _ODF_COMPONENTS = []
@@ -30,23 +33,17 @@ class OdfFile(FileExport):
     _META_XML = ''
 
     def __init__(self, filePath, **kwargs):
-        """Extends the superclass constructor, 
-        creating a temporary directory.
-        """
+        """Extends the superclass constructor, creating a temporary directory."""
         super().__init__(filePath, **kwargs)
         self._tempDir = tempfile.mkdtemp(suffix='.tmp', prefix='odf_')
         self._originalPath = self._filePath
 
     def __del__(self):
-        """Make sure to delete the temporary directory,
-        in case write() has not been called.
-        """
+        """Make sure to delete the temporary directory, in case write() has not been called."""
         self._tear_down()
 
     def _tear_down(self):
-        """Delete the temporary directory 
-        containing the unpacked ODF directory structure.
-        """
+        """Delete the temporary directory containing the unpacked ODF directory structure."""
         try:
             rmtree(self._tempDir)
         except:
@@ -132,7 +129,12 @@ class OdfFile(FileExport):
         return 'ODF structure generated.'
 
     def write(self):
-        """Extends the super class method, adding ZIP file operations."""
+        """Write instance variables to the export file.
+        
+        Create a template-based output file. 
+        Return a message beginning with the ERROR constant in case of error.
+        Extends the super class method, adding ZIP file operations.
+        """
 
         # Create a temporary directory containing the internal
         # structure of an ODS file except "content.xml".

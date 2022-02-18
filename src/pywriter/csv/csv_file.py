@@ -16,10 +16,13 @@ from pywriter.model.novel import Novel
 class CsvFile(Novel):
     """csv file representation.
 
+    Public methods:
+        read() -- parse the file and get the instance variables.
+
+    Convention:
     - Records are separated by line breaks.
     - Data fields are delimited by the _SEPARATOR character.
     """
-
     EXTENSION = '.csv'
     # overwrites Novel.EXTENSION
 
@@ -29,12 +32,24 @@ class CsvFile(Novel):
     _rowTitles = []
 
     def __init__(self, filePath, **kwargs):
+        """Initialize instance variables.
+
+        Positional arguments:
+            filePath -- string; path to the file represented by the Novel instance.
+            
+        Optional arguments:
+            kwargs -- keyword arguments to be used by subclasses.            
+        
+        Extends the superclass constructor.
+        """
         super().__init__(filePath)
         self._rows = []
         
         
     def read(self):
-        """Parse the csv file located at filePath, fetching the _rows.
+        """Parse the file and get the instance variables.
+        
+        Parse the csv file located at filePath, fetching the rows.
         Check the number of fields in each row.
         Return a message beginning with the ERROR constant in case of error.
         Overrides the superclass method.
@@ -64,8 +79,14 @@ class CsvFile(Novel):
         return 'CSV data read in.'
 
     def _get_list(self, text):
-        """Split a sequence of comma separated strings into a list of strings.
+        """Convert a string into a list.
+        
+        Positional arguments:
+            text -- string containing of comma-separated substrings.
+        
+        Split a sequence of comma separated strings into a list of strings.
         Remove leading and trailing spaces, if any.
+        Return a list of strings.
         """
         elements = []
         tempList = text.split(',')
