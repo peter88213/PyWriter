@@ -91,11 +91,10 @@ class OdfFile(FileExport):
 
         # Generate styles.xml with system language set as document language.
 
-        localeCodes = locale.getdefaultlocale()[0].split('_')
-
+        lng, ctr = locale.getdefaultlocale()[0].split('_')
         localeMapping = dict(
-            Language=localeCodes[0],
-            Country=localeCodes[1],
+            Language=lng,
+            Country=ctr,
         )
         template = Template(self._STYLES_XML)
         text = template.safe_substitute(localeMapping)
@@ -108,14 +107,11 @@ class OdfFile(FileExport):
 
         # Generate meta.xml with actual document metadata.
 
-        dt = datetime.today()
-
         metaMapping = dict(
             Author=self.authorName,
             Title=self.title,
             Summary=f'<![CDATA[{self.desc}]]>',
-            Date=f'{dt.year}-{dt.month:02}-{dt.day:02}',
-            Time=f'{dt.hour:02}:{dt.minute:02}:{dt.second:02}',
+            Datetime=datetime.today().replace(microsecond=0).isoformat(),
         )
         template = Template(self._META_XML)
         text = template.safe_substitute(metaMapping)

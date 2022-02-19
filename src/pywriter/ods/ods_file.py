@@ -78,7 +78,7 @@ class OdsFile(OdfFile):
     <meta:keyword></meta:keyword>
     <meta:initial-creator>$Author</meta:initial-creator>
     <dc:creator></dc:creator>
-    <meta:creation-date>${Date}T${Time}Z</meta:creation-date>
+    <meta:creation-date>${Datetime}Z</meta:creation-date>
     <dc:date></dc:date>
   </office:meta>
 </office:document-meta>
@@ -199,7 +199,7 @@ class OdsFile(OdfFile):
  <office:styles>
   <style:default-style style:family="table-cell">
    <style:paragraph-properties style:tab-stop-distance="1.25cm"/>
-   <style:text-properties style:font-name="Arial" fo:language="de" fo:country="DE" style:font-name-asian="Arial Unicode MS" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Tahoma" style:language-complex="hi" style:country-complex="IN"/>
+   <style:text-properties style:font-name="Arial" fo:language="$Language" fo:country="$Country" style:font-name-asian="Arial Unicode MS" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Tahoma" style:language-complex="hi" style:country-complex="IN"/>
   </style:default-style>
   <number:number-style style:name="N0">
    <number:number number:min-integer-digits="1"/>
