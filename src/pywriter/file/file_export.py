@@ -167,6 +167,10 @@ class FileExport(Novel):
     def _get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section.
         
+        Positional arguments:
+            chId -- str: chapter ID.
+            chapterNumber -- int: chapter number.
+        
         This is a template method that can be extended or overridden by subclasses.
         """
         if chapterNumber == 0:
@@ -184,6 +188,12 @@ class FileExport(Novel):
 
     def _get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
         """Return a mapping dictionary for a scene section.
+        
+        Positional arguments:
+            scId -- str: scene ID.
+            sceneNumber -- int: scene number to be displayed.
+            wordsTotal -- int: accumulated wordcount.
+            lettersTotal -- int: accumulated lettercount.
         
         This is a template method that can be extended or overridden by subclasses.
         """
@@ -379,6 +389,9 @@ class FileExport(Novel):
     def _get_characterMapping(self, crId):
         """Return a mapping dictionary for a character section.
         
+        Positional arguments:
+            crId -- str: character ID.
+        
         This is a template method that can be extended or overridden by subclasses.
         """
 
@@ -414,6 +427,9 @@ class FileExport(Novel):
     def _get_locationMapping(self, lcId):
         """Return a mapping dictionary for a location section.
         
+        Positional arguments:
+            lcId -- str: location ID.
+        
         This is a template method that can be extended or overridden by subclasses.
         """
 
@@ -437,6 +453,9 @@ class FileExport(Novel):
 
     def _get_itemMapping(self, itId):
         """Return a mapping dictionary for an item section.
+        
+        Positional arguments:
+            itId -- str: item ID.
         
         This is a template method that can be extended or overridden by subclasses.
         """
@@ -465,6 +484,7 @@ class FileExport(Novel):
         Apply the file header template, substituting placeholders 
         according to the file header mapping dictionary.
         Return a list of strings.
+        
         This is a template method that can be extended or overridden by subclasses.
         """
         lines = []
@@ -475,10 +495,23 @@ class FileExport(Novel):
     def _get_scenes(self, chId, sceneNumber, wordsTotal, lettersTotal, doNotExport):
         """Process the scenes.
         
+        Positional arguments:
+            chId -- str: chapter ID.
+            sceneNumber -- int: number of previously processed scenes.
+            wordsTotal -- int: accumulated wordcount of the previous scenes.
+            lettersTotal -- int: accumulated lettercount of the previous scenes.
+            doNotExport -- bool: scene belongs to a chapter that is not to be exported.
+        
         Iterate through a sorted scene list and apply the templates, 
         substituting placeholders according to the scene mapping dictionary.
         Skip scenes not accepted by the scene filter.
-        Return a list of strings.
+        
+        Return a tuple:
+            lines -- list of strings: the lines of the processed scene.
+            sceneNumber -- int: number of all processed scenes.
+            wordsTotal -- int: accumulated wordcount of all processed scenes.
+            lettersTotal -- int: accumulated lettercount of all processed scenes.
+        
         This is a template method that can be extended or overridden by subclasses.
         """
         lines = []

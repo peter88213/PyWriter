@@ -33,8 +33,13 @@ class HtmlFile(Novel, HTMLParser):
         self._chId = None
 
     def _convert_to_yw(self, text):
-        """Convert html tags to yWriter 6/7 raw markup. 
-        Return a yw6/7 markup string.
+        """Convert html tags to yWriter 7 raw markup.
+        
+        Positional arguments:
+            text -- string to convert.
+        
+        Return a yw7 markup string.
+        Overrides the superclass method.
         """
 
         # Clean up polluted HTML code.

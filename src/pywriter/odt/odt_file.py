@@ -1143,8 +1143,17 @@ class OdtFile(OdfFile):
         return 'ODT structure generated.'
 
     def _convert_from_yw(self, text, quick=False):
-        """Convert yw7 raw markup to odt. Return an xml string.
-        """        
+        """Return text, converted from yw7 markup to target format.
+        
+        Positional arguments:
+            text -- string to convert.
+        
+        Optional arguments:
+            quick -- Boolean; if True, apply a conversion mode for one-liners without formatting.
+        
+        Overrides the superclass method.
+        """
+        
         if quick:            
             # Just clean up a one-liner without sophisticated formatting.
             
@@ -1170,7 +1179,6 @@ class OdtFile(OdfFile):
         ]
 
         try:
-
             # process italics and bold markup reaching across linebreaks
 
             italics = False

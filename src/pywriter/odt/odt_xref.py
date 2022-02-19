@@ -64,14 +64,20 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
     _fileFooter = OdtFile._CONTENT_XML_FOOTER
 
     def __init__(self, filePath, **kwargs):
-        """Apply the strategy pattern 
-        by delegating the cross reference to an external object.
+        """Apply the strategy pattern by delegating the cross reference to an external object.
+        
+        Extends the superclass constructor.
         """
         super().__init__(filePath)
         self._xr = CrossReferences()
 
     def _get_sceneMapping(self, scId):
-        """Add the chapter number to the original mapping dictionary.
+        """Return a mapping dictionary for a scene section.
+
+        Positional arguments:
+            scId -- str: scene ID.
+        
+        Extends the superclass template method.
         """
         sceneNumber = self._xr.srtScenes.index(scId) + 1
         sceneMapping = super()._get_sceneMapping(scId, sceneNumber, 0, 0)
@@ -89,6 +95,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
     def _get_scenes(self, scenes):
         """Process the scenes.
+        
         Return a list of strings.
         Overrides the superclass method.
         """
@@ -115,6 +122,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
     def _get_sceneTags(self):
         """Process the scene related tags.
+        
         Return a list of strings.
         """
         lines = []

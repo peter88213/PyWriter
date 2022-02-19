@@ -155,7 +155,9 @@ class OdsPlotList(OdsFile):
     _fileFooter = OdsFile._CONTENT_XML_FOOTER 
 
     def _get_fileHeaderMapping(self):
-        """Return a mapping dictionary for the project section. 
+        """Return a mapping dictionary for the project section.
+        
+        Overrides the superclass template method.
         """
         projectTemplateMapping = super()._get_fileHeaderMapping()
 
@@ -196,7 +198,15 @@ class OdsPlotList(OdsFile):
         return projectTemplateMapping
 
     def _get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
-        """Return a mapping dictionary for a scene section. 
+        """Return a mapping dictionary for a scene section.
+        
+        Positional arguments:
+            scId -- str: scene ID.
+            sceneNumber -- int: scene number to be displayed.
+            wordsTotal -- int: accumulated wordcount.
+            lettersTotal -- int: accumulated lettercount.
+        
+        Extends the superclass template method.
         """
         sceneMapping = super()._get_sceneMapping(scId, sceneNumber, wordsTotal, lettersTotal)
 

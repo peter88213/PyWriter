@@ -40,9 +40,15 @@ class OdtExport(OdtFile):
     _fileFooter = OdtFile._CONTENT_XML_FOOTER
 
     def _get_chapterMapping(self, chId, chapterNumber):
-        """Return a mapping dictionary for a chapter section. 
+        """Return a mapping dictionary for a chapter section.
+        
+        Positional arguments:
+            chId -- str: chapter ID.
+            chapterNumber -- int: chapter number.
+        
+        Extends the superclass method.
         """
-        chapterMapping = OdtFile._get_chapterMapping(self, chId, chapterNumber)
+        chapterMapping = super()._get_chapterMapping(chId, chapterNumber)
 
         if self.chapters[chId].suppressChapterTitle:
             chapterMapping['Title'] = ''
