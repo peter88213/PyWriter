@@ -44,7 +44,13 @@ class OdtCharacters(OdtFile):
     _fileFooter = OdtFile._CONTENT_XML_FOOTER
 
     def _get_characterMapping(self, crId):
-        """Return a mapping dictionary for a character section. 
+        """Return a mapping dictionary for a character section.
+        
+        Positional arguments:
+            crId -- str: character ID.
+        
+        Special formatting of alternate and full name. 
+        Extends the superclass method.
         """
         characterMapping = OdtFile._get_characterMapping(self, crId)
 

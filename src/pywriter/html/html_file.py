@@ -17,8 +17,13 @@ from pywriter.html.html_fop import read_html_file
 
 
 class HtmlFile(Novel, HTMLParser):
-    """Generic HTML file representation."""
-
+    """Generic HTML file representation.
+    
+    Public methods:
+        handle_starttag -- identify scenes and chapters.
+        handle comment --
+        read --
+    """
     EXTENSION = '.html'
     
     _COMMENT_START = '/*'
@@ -26,6 +31,12 @@ class HtmlFile(Novel, HTMLParser):
     _SC_TITLE_BRACKET = '~'
 
     def __init__(self, filePath, **kwargs):
+        """Initialize the HTML parser and local instance variables for parsing.
+        
+        The HTML parser works like a state machine. 
+        Scene ID, chapter ID and processed lines must be saved between the transitions.         
+        Extends the superclass constructor.
+        """
         super().__init__(filePath)
         HTMLParser.__init__(self)
         self._lines = []
@@ -33,7 +44,7 @@ class HtmlFile(Novel, HTMLParser):
         self._chId = None
 
     def _convert_to_yw(self, text):
-        """Convert html tags to yWriter 7 raw markup.
+        """Convert html formatting tags to yWriter 7 raw markup.
         
         Positional arguments:
             text -- string to convert.
@@ -42,14 +53,14 @@ class HtmlFile(Novel, HTMLParser):
         Overrides the superclass method.
         """
 
-        # Clean up polluted HTML code.
+        #--- Clean up polluted HTML code.
 
         text = re.sub('</*font.*?>', '', text)
         text = re.sub('</*span.*?>', '', text)
         text = re.sub('</*FONT.*?>', '', text)
         text = re.sub('</*SPAN.*?>', '', text)
 
-        # Put everything in one line.
+        #--- Put everything in one line.
 
         text = text.replace('\n', ' ')
         text = text.replace('\r', ' ')
@@ -58,7 +69,7 @@ class HtmlFile(Novel, HTMLParser):
         while '  ' in text:
             text = text.replace('  ', ' ').strip()
 
-        # Replace HTML tags by yWriter markup.
+        #--- Replace HTML tags by yWriter markup.
 
         text = text.replace('<i>', '[i]')
         text = text.replace('<I>', '[i]')
@@ -77,7 +88,7 @@ class HtmlFile(Novel, HTMLParser):
         text = re.sub('<strong.*?>', '[b]', text)
         text = re.sub('<STRONG.*?>', '[b]', text)
 
-        # Remove orphaned tags.
+        #--- Remove orphaned tags.
 
         text = text.replace('[/b][b]', '')
         text = text.replace('[/i][i]', '')
@@ -86,11 +97,14 @@ class HtmlFile(Novel, HTMLParser):
         return text
 
     def _preprocess(self, text):
-        """Clean up the HTML code and strip yWriter 6/7 raw markup. 
-        This prevents accidentally applied formatting from being 
-        transferred to the yWriter metadata. If rich text is 
-        applicable, such as in scenes, overwrite this method 
-        in a subclass) 
+        """Clean up the HTML code and strip yWriter 7 raw markup.
+        
+        Positional arguments:
+            text -- str: HTML text to be processed.
+        
+        This prevents accidentally applied formatting from being transferred to the yWriter metadata.
+        If rich text is applicable, such as in scenes, overwrite this method in a subclass.
+        Return a sring.
         """
         text = self._convert_to_yw(text)
 
@@ -101,15 +115,20 @@ class HtmlFile(Novel, HTMLParser):
 
     def _postprocess(self):
         """Process the plain text after parsing.
+        
         This is a hook for subclasses.
         """
 
     def handle_starttag(self, tag, attrs):
         """Identify scenes and chapters.
-        Overrides HTMLparser.handle_starttag().
-        This method is applicable to HTML files that are divided into 
-        chapters and scenes. For differently structured HTML files 
-        do override this method in a subclass.
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
+        
+        Overrides HTMLparser.handle_starttag() called by the parser to handle the start of a tag. 
+        This method is applicable to HTML files that are divided into chapters and scenes. 
+        For differently structured HTML files  do override this method in a subclass.
         """
         if tag == 'div':
 
@@ -127,24 +146,31 @@ class HtmlFile(Novel, HTMLParser):
                     self.srtChapters.append(self._chId)
 
     def handle_comment(self, data):
+        """Process inline comments within scene content.
+        
+        Positional arguments:
+            data -- str: comment text. 
+        
+        Overrides HTMLparser.handle_comment() called by the parser when a comment is encountered.
+        """
         
         if self._scId is not None: 
             self._lines.append(f'{self._COMMENT_START}{data}{self._COMMENT_END}')
             
 
     def read(self):
-        """Read and parse a html file, fetching the Novel attributes.
+        """Parse the file and get the instance variables.
+        
         Return a message beginning with the ERROR constant in case of error.
         This is a template method for subclasses tailored to the 
         content of the respective HTML file.
         """
-        result = read_html_file(self.filePath)
+        message, content = read_html_file(self._filePath)
 
-        if result[0].startswith(ERROR):
-            return (result[0])
+        if message.startswith(ERROR):
+            return message
 
-        text = self._preprocess(result[1])
-        self.feed(text)
+        content = self._preprocess(content)
+        self.feed(content)
         self._postprocess()
-
         return 'Created novel structure from HTML data.'

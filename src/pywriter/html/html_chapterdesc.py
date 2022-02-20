@@ -19,8 +19,13 @@ class HtmlChapterDesc(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the chapter section and save data.
-        Overrides HTMLparser.handle_endtag().
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+
+        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
+        
         if self._chId is not None:
 
             if tag == 'div':
@@ -38,8 +43,13 @@ class HtmlChapterDesc(HtmlFile):
                     self._lines = []
 
     def handle_data(self, data):
-        """collect data within chapter sections.
-        Overrides HTMLparser.handle_data().
+        """Collect data within chapter sections.
+
+        Positional arguments:
+            data -- str: text to be stored. 
+        
+        Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
+        
         if self._chId is not None:
             self._lines.append(data.strip())

@@ -32,16 +32,36 @@ class HtmlImport(HtmlFile):
     _LOW_WORDCOUNT = 10
 
     def __init__(self, filePath, **kwargs):
+        """Initialize local instance variables for parsing.
+
+        Positional arguments:
+            filePath -- str: path to the file represented by the Novel instance.
+            
+        The HTML parser works like a state machine. 
+        Chapter and scene count must be saved between the transitions.         
+        Extends the superclass constructor.
+        """
         super().__init__(filePath)
         self._chCount = 0
         self._scCount = 0
 
     def _preprocess(self, text):
         """Process the html text before parsing.
+        
+        Convert html formatting tags to yWriter 7 raw markup.
+        Overrides the superclass method.
         """
         return self._convert_to_yw(text)
 
     def handle_starttag(self, tag, attrs):
+        """Recognize the paragraph's beginning.
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
+        
+        Overrides the superclass method.
+        """
 
         if tag in ('h1', 'h2'):
             self._scId = None
@@ -86,6 +106,13 @@ class HtmlImport(HtmlFile):
             self._lines = []
 
     def handle_endtag(self, tag):
+        """Recognize the paragraph's end.
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+
+        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
+        """
 
         if tag == 'p':
             self._lines.append('\n')
@@ -108,8 +135,13 @@ class HtmlImport(HtmlFile):
 
     def handle_data(self, data):
         """Collect data within scene sections.
-        Overrides HTMLparser.handle_data().
+
+        Positional arguments:
+            data -- str: text to be stored. 
+        
+        Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
+        
         if self._scId is not None and self._SCENE_DIVIDER in data:
             self._scId = None
 

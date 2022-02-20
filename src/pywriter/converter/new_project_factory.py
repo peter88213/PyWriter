@@ -31,7 +31,7 @@ class NewProjectFactory(FileFactory):
         """Instantiate a source and a target object for creation of a new yWriter project.
 
         Positional arguments:
-            sourcePath -- string; path to the source file to convert.
+            sourcePath -- str: path to the source file to convert.
 
         Return a tuple with three elements:
         - A message beginning with the ERROR constant in case of error
@@ -45,17 +45,16 @@ class NewProjectFactory(FileFactory):
         targetFile = Yw7File(f'{fileName}{Yw7File.EXTENSION}', **kwargs)
 
         if sourcePath.endswith('.html'):
-
             # The source file might be an outline or a "work in progress".
 
-            result = read_html_file(sourcePath)
+            message, content = read_html_file(sourcePath)
 
-            if result[0].startswith(ERROR):
-                return result[0], None, None
+            if message.startswith(ERROR):
+                return message, None, None
 
             else:
 
-                if "<h3" in result[1].lower():
+                if "<h3" in content.lower():
                     sourceFile = HtmlOutline(sourcePath, **kwargs)
 
                 else:
@@ -75,7 +74,12 @@ class NewProjectFactory(FileFactory):
             return f'{ERROR}File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
 
     def _canImport(self, sourcePath):
-        """Return True, if the file located at sourcepath is of an importable type.
+        """Check whether the source file can be imported to yWriter.
+        
+        Positional arguments: 
+            sourcePath -- str: path of the file to be ckecked.
+        
+        Return True, if the file located at sourcepath is of an importable type.
         Otherwise, return False.
         """
         fileName, __ = os.path.splitext(sourcePath)

@@ -19,7 +19,11 @@ class HtmlSceneDesc(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
-        Overrides HTMLparser.handle_endtag().
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+
+        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
 
         if self._scId is not None:
@@ -56,8 +60,13 @@ class HtmlSceneDesc(HtmlFile):
 
     def handle_data(self, data):
         """Collect data within scene sections.
-        Overrides HTMLparser.handle_data().
+
+        Positional arguments:
+            data -- str: text to be stored. 
+        
+        Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
+        
         if self._scId is not None:
             self._lines.append(data.strip())
 

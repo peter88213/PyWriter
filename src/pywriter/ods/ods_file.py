@@ -10,7 +10,7 @@ from pywriter.odf.odf_file import OdfFile
 
 
 class OdsFile(OdfFile):
-    """ODS project file representation."""
+    """Generic OpenDocument spreadsheet document representation."""
 
     EXTENSION = '.ods'
     # overwrites Novel.EXTENSION
@@ -284,7 +284,7 @@ class OdsFile(OdfFile):
             text -- string to convert.
         
         Optional arguments:
-            quick -- Boolean; if True, apply a conversion mode for one-liners without formatting.
+            quick -- bool: if True, apply a conversion mode for one-liners without formatting.
         
         Overrides the superclass method.
         """

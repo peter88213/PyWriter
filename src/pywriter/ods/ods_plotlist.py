@@ -157,6 +157,7 @@ class OdsPlotList(OdsFile):
     def _get_fileHeaderMapping(self):
         """Return a mapping dictionary for the project section.
         
+        Special treatment of scene ratings as storylines.
         Overrides the superclass template method.
         """
         projectTemplateMapping = super()._get_fileHeaderMapping()
@@ -206,6 +207,8 @@ class OdsPlotList(OdsFile):
             wordsTotal -- int: accumulated wordcount.
             lettersTotal -- int: accumulated lettercount.
         
+        Special treatment of scene ratings as storylines.
+        Scene rating "1" is not applicable.
         Extends the superclass template method.
         """
         sceneMapping = super()._get_sceneMapping(scId, sceneNumber, wordsTotal, lettersTotal)

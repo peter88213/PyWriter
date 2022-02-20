@@ -23,11 +23,19 @@ class HtmlOutline(HtmlFile):
 
     Import an outline without chapter and scene tags.
     """
-
     DESCRIPTION = 'Novel outline'
     SUFFIX = ''
 
     def __init__(self, filePath, **kwargs):
+        """Initialize local instance variables for parsing.
+
+        Positional arguments:
+            filePath -- str: path to the file represented by the Novel instance.
+            
+        The HTML parser works like a state machine. 
+        Chapter and scene count must be saved between the transitions.         
+        Extends the superclass constructor.
+        """
         super().__init__(filePath)
         self._chCount = 0
         self._scCount = 0
@@ -75,6 +83,13 @@ class HtmlOutline(HtmlFile):
             self._lines = []
 
     def handle_endtag(self, tag):
+        """Recognize the paragraph's end.
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+
+        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
+        """
 
         if tag == 'p':
             self._lines.append('\n')
@@ -98,6 +113,10 @@ class HtmlOutline(HtmlFile):
 
     def handle_data(self, data):
         """Collect data within scene sections.
-        Overrides HTMLparser.handle_data().
+
+        Positional arguments:
+            data -- str: text to be stored. 
+        
+        Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
         self._lines.append(data.strip())

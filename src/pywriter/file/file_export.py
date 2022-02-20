@@ -849,8 +849,15 @@ class FileExport(Novel):
         return text
 
     def _convert_from_yw(self, text, quick=False):
-        """Convert yw7 markup to target format.
-        This is a stub to be overridden by subclass methods.
+        """Return text, converted from yw7 markup to target format.
+        
+        Positional arguments:
+            text -- string to convert.
+        
+        Optional arguments:
+            quick -- bool: if True, apply a conversion mode for one-liners without formatting.
+        
+        Overrides the superclass method.
         """
 
         if text is None:

@@ -35,7 +35,7 @@ class CsvFile(Novel):
         """Initialize instance variables.
 
         Positional arguments:
-            filePath -- string; path to the file represented by the Novel instance.
+            filePath -- str: path to the file represented by the Novel instance.
             
         Optional arguments:
             kwargs -- keyword arguments to be used by subclasses.            

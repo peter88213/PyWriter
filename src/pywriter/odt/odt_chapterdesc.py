@@ -10,7 +10,7 @@ from pywriter.odt.odt_file import OdtFile
 class OdtChapterDesc(OdtFile):
     """ODT chapter summaries file representation.
 
-    Export a brief synopsis with invisibly tagged chapter descriptions.
+    Export a synopsis with invisibly tagged chapter descriptions.
     """
 
     DESCRIPTION = 'Chapter descriptions'

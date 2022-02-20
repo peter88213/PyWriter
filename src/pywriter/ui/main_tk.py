@@ -36,8 +36,8 @@ class MainTk(Ui):
         Positional arguments:
             title -- application title to be displayed at the window frame.
          
-        Keyword arguments:
-            yw_last_open -- initial file.
+        Required keyword arguments:
+            yw_last_open -- str: initial file.
         
         Operation:
         - Create a main menu to be extended by subclasses.
@@ -107,7 +107,7 @@ class MainTk(Ui):
         """Select a valid project file and display the path.
 
         Positional arguments:
-            fileName -- string: project file path.
+            fileName -- str: project file path.
             
         Optional arguments:
             fileTypes -- list of tuples for file selection (display text, extension).

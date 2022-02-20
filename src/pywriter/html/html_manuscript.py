@@ -20,12 +20,20 @@ class HtmlManuscript(HtmlFile):
 
     def _preprocess(self, text):
         """Process the html text before parsing.
+        
+        Convert html formatting tags to yWriter 7 raw markup.
+        Overrides the superclass method.
         """
         return self._convert_to_yw(text)
 
     def handle_starttag(self, tag, attrs):
         """Identify scenes and chapters.
-        Extends HtmlFile.handle_starttag() by processing inline chapter and scene dividers.
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
+        
+        Extends the superclass method by processing inline chapter and scene dividers.
         """
         super().handle_starttag(tag, attrs)
 
@@ -38,6 +46,14 @@ class HtmlManuscript(HtmlFile):
                 self._lines.append(Splitter.CHAPTER_SEPARATOR)
 
     def handle_comment(self, data):
+        """Process inline comments within scene content.
+        
+        Positional arguments:
+            data -- str: comment text. 
+        
+        Use marked comments at scene start as scene titles.
+        Overrides the superclass method.
+        """
         
         if self._scId is not None: 
             
@@ -58,8 +74,13 @@ class HtmlManuscript(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
-        Overrides HTMLparser.handle_endtag().
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+
+        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
+
         if self._scId is not None:
 
             if tag == 'div':
@@ -84,7 +105,11 @@ class HtmlManuscript(HtmlFile):
 
     def handle_data(self, data):
         """Collect data within scene sections.
-        Overrides HTMLparser.handle_data().
+
+        Positional arguments:
+            data -- str: text to be stored. 
+        
+        Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
        
         if self._scId is not None:

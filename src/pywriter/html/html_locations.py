@@ -21,13 +21,28 @@ class HtmlLocations(HtmlFile):
     SUFFIX = '_locations'
 
     def __init__(self, filePath, **kwargs):
+        """Initialize local instance variables for parsing.
+
+        Positional arguments:
+            filePath -- str: path to the file represented by the Novel instance.
+            
+        The HTML parser works like a state machine. 
+        The location ID must be saved between the transitions.         
+        Extends the superclass constructor.
+        """
         super().__init__(filePath)
         self._lcId = None
 
     def handle_starttag(self, tag, attrs):
         """Identify locations.
-        Overrides HTMLparser.handle_starttag()
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
+        
+        Overrides the superclass method.
         """
+
         if tag == 'div':
 
             if attrs[0][0] == 'id':
@@ -39,7 +54,11 @@ class HtmlLocations(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the location section and save data.
-        Overrides HTMLparser.handle_endtag().
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+
+        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
         if self._lcId is not None:
 
@@ -53,7 +72,11 @@ class HtmlLocations(HtmlFile):
 
     def handle_data(self, data):
         """collect data within location sections.
-        Overrides HTMLparser.handle_data().
+        
+        Positional arguments:
+            data -- str: text to be stored. 
+        
+        Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
         if self._lcId is not None:
             self._lines.append(data.strip())

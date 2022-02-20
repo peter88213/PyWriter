@@ -21,7 +21,7 @@ class ExportSourceFactory(FileFactory):
         """Instantiate a source object for conversion from a yWriter project.
 
         Positional arguments:
-            sourcePath -- string; path to the source file to convert.
+            sourcePath -- str: path to the source file to convert.
 
         Return a tuple with three elements:
         - A message beginning with the ERROR constant in case of error

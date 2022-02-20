@@ -55,7 +55,7 @@ class Configuration():
         """Read a configuration file.
         
         Positional arguments:
-            iniFile -- string: path configuration file path.
+            iniFile -- str: path configuration file path.
             
         Settings and options that can not be read in, remain unchanged.
         """
@@ -82,7 +82,7 @@ class Configuration():
         """Save the configuration to iniFile.
 
         Positional arguments:
-            iniFile -- string: path configuration file path.
+            iniFile -- str: path configuration file path.
         """
         config = ConfigParser()
 

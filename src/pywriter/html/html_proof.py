@@ -23,15 +23,31 @@ class HtmlProof(HtmlFile):
     SUFFIX = '_proof'
 
     def __init__(self, filePath, **kwargs):
+        """Initialize local instance variables for parsing.
+
+        Positional arguments:
+            filePath -- str: path to the file represented by the Novel instance.
+            
+        The HTML parser works like a state machine. 
+        A prefix for chapter and scene recognition must be saved between the transitions.         
+        Extends the superclass constructor.
+        """
         super().__init__(filePath)
         self._prefix = None
 
     def _preprocess(self, text):
-        """Process the html text before parsing."""
+        """Process the html text before parsing.
+        
+        Convert html formatting tags to yWriter 7 raw markup.
+        Overrides the superclass method.
+        """
         return self._convert_to_yw(text)
 
     def _postprocess(self):
-        """Parse the converted text to identify chapters and scenes."""
+        """Parse the converted text to identify chapters and scenes.
+        
+        Overrides the superclass method.
+        """
         sceneText = []
         scId = ''
         chId = ''
@@ -64,8 +80,13 @@ class HtmlProof(HtmlFile):
     def handle_starttag(self, tag, attrs):
         """Recognize the paragraph's beginning.
         
-        Overrides HTMLparser.handle_endtag().
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
+        
+        Overrides the superclass method.
         """
+
         if tag == 'p':
             self._prefix = ''
 
@@ -76,17 +97,24 @@ class HtmlProof(HtmlFile):
             self._prefix = Splitter.PART_SEPARATOR
 
     def handle_endtag(self, tag):
-        """Recognize the paragraph's end.
+        """Recognize the paragraph's end.      
         
-        Overrides HTMLparser.handle_endtag().
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+
+        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
         if tag in ['p', 'h2', 'h1']:
             self._prefix = None
 
     def handle_data(self, data):
-        """Copy the scene paragraphs.
+        """Copy the scene paragraphs.      
+
+        Positional arguments:
+            data -- str: text to be stored. 
         
-        Overrides HTMLparser.handle_data().
+        Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
+        
         if self._prefix is not None:
             self._lines.append(f'{self._prefix}{data}')

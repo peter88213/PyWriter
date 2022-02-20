@@ -31,7 +31,7 @@ class MainTkCnv(MainTk):
         Positional arguments:
             title -- application title to be displayed at the window frame.
                     
-        Keyword arguments:
+        Required keyword arguments:
             yw_last_open -- initial file.
             file_types -- list of tuples for file selection (display text, extension).
         
@@ -76,7 +76,7 @@ class MainTkCnv(MainTk):
         """Create a source object instance and read the file.
         
         Positional arguments:
-            fileName -- string: project file path.
+            fileName -- str: project file path.
             
         Return the file name.
         Extends the superclass method.

@@ -29,7 +29,13 @@ class OdtLocations(OdtFile):
     _fileFooter = OdtFile._CONTENT_XML_FOOTER
 
     def _get_locationMapping(self, lcId):
-        """Return a mapping dictionary for a location section. 
+        """Return a mapping dictionary for a location section.
+        
+        Positional arguments:
+            lcId -- str: location ID.
+        
+        Special formatting of alternate name. 
+        Extends the superclass method.
         """
         locationMapping = super()._get_locationMapping(lcId)
 

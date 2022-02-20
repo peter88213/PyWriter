@@ -11,8 +11,8 @@ from pywriter.html.html_chapterdesc import HtmlChapterDesc
 class HtmlPartDesc(HtmlChapterDesc):
     """HTML part summaries file representation.
 
-    Import a very brief synopsis with invisibly tagged part descriptions.
+    Parts are chapters marked in yWriter as beginning of a new section.
+    Import a synopsis with invisibly tagged part descriptions.
     """
-
     DESCRIPTION = 'Part descriptions'
     SUFFIX = '_parts'

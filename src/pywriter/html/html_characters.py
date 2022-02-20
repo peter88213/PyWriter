@@ -21,14 +21,29 @@ class HtmlCharacters(HtmlFile):
     SUFFIX = '_characters'
 
     def __init__(self, filePath, **kwargs):
+        """Initialize local instance variables for parsing.
+
+        Positional arguments:
+            filePath -- str: path to the file represented by the Novel instance.
+            
+        The HTML parser works like a state machine. 
+        Character ID and section title must be saved between the transitions.         
+        Extends the superclass constructor.
+        """
         HtmlFile.__init__(self, filePath)
         self._crId = None
         self._section = None
 
     def handle_starttag(self, tag, attrs):
         """Identify characters with subsections.
-        Overrides HTMLparser.handle_starttag()
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
+        
+        Overrides the superclass method.
         """
+        
         if tag == 'div':
 
             if attrs[0][0] == 'id':
@@ -50,8 +65,13 @@ class HtmlCharacters(HtmlFile):
 
     def handle_endtag(self, tag):
         """Recognize the end of the character section and save data.
-        Overrides HTMLparser.handle_endtag().
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+
+        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
+        
         if self._crId is not None:
 
             if tag == 'div':
@@ -81,7 +101,12 @@ class HtmlCharacters(HtmlFile):
 
     def handle_data(self, data):
         """collect data within character sections.
-        Overrides HTMLparser.handle_data().
+
+        Positional arguments:
+            data -- str: text to be stored. 
+        
+        Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
+        
         if self._section is not None:
             self._lines.append(data.strip())

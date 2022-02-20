@@ -1120,8 +1120,11 @@ class OdtFile(OdfFile):
     _MIMETYPE = 'application/vnd.oasis.opendocument.text'
 
     def _set_up(self):
-        """Create a temporary directory containing the internal 
-        structure of an ODT file except 'content.xml'.
+        """Helper method for ZIP file generation.
+
+        Add rdf manifest to the temporary directory containing the internal structure of an ODF file.
+        Return a message beginning with the ERROR constant in case of error.
+        Extends the superclass method.
         """
 
         # Generate the common ODF components.
@@ -1149,7 +1152,7 @@ class OdtFile(OdfFile):
             text -- string to convert.
         
         Optional arguments:
-            quick -- Boolean; if True, apply a conversion mode for one-liners without formatting.
+            quick -- bool: if True, apply a conversion mode for one-liners without formatting.
         
         Overrides the superclass method.
         """

@@ -213,6 +213,7 @@ class OdsSceneList(OdsFile):
             wordsTotal -- int: accumulated wordcount.
             lettersTotal -- int: accumulated lettercount.
         
+        Scene rating "1" is not applicable.
         Extends the superclass template method.
         """
         sceneMapping = super()._get_sceneMapping(scId, sceneNumber, wordsTotal, lettersTotal)

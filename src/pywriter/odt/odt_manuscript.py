@@ -63,6 +63,7 @@ class OdtManuscript(OdtFile):
             chId -- str: chapter ID.
             chapterNumber -- int: chapter number.
         
+        Suppress the chapter title if necessary.
         Extends the superclass method.
         """
         chapterMapping = super()._get_chapterMapping(chId, chapterNumber)

@@ -11,24 +11,21 @@ from pywriter.pywriter_globals import ERROR
 
 def read_html_file(filePath):
     """Open a html file being encoded utf-8 or ANSI.
+    
     Return a tuple:
-    [0] = Message beginning with the ERROR constant in case of error.
-    [1] = The file content in a single string. 
+    message = Message beginning with the ERROR constant in case of error.
+    content = The file content in a single string. None in case of error.
     """
     try:
         with open(filePath, 'r', encoding='utf-8') as f:
-            text = f.read()
+            content = f.read()
     except:
         # HTML files exported by a word processor may be ANSI encoded.
         try:
             with open(filePath, 'r') as f:
-                text = (f.read())
+                content = (f.read())
 
         except(FileNotFoundError):
             return f'{ERROR}"{os.path.normpath(filePath)}" not found.', None
 
-    return 'HTML data read in.', text
-
-
-if __name__ == '__main__':
-    pass
+    return 'HTML data read in.', content

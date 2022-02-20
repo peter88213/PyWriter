@@ -29,7 +29,13 @@ class OdtItems(OdtFile):
     _fileFooter = OdtFile._CONTENT_XML_FOOTER
 
     def _get_itemMapping(self, itId):
-        """Return a mapping dictionary for an item section. 
+        """Return a mapping dictionary for an item section.
+        
+        Positional arguments:
+            itId -- str: item ID.
+        
+        Special formatting of alternate name. 
+        Extends the superclass method.
         """
         itemMapping = super()._get_itemMapping(itId)
 

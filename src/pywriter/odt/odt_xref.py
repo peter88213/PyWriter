@@ -87,6 +87,9 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
     def _get_tagMapping(self, tag):
         """Return a mapping dictionary for a tags section. 
+
+        Positional arguments:
+            tag -- str: a single scene tag.
         """
         tagMapping = dict(
             Tag=tag,
@@ -95,6 +98,9 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
     def _get_scenes(self, scenes):
         """Process the scenes.
+        
+        Positional arguments:
+            scenes -- iterable of scene IDs.
         
         Return a list of strings.
         Overrides the superclass method.
@@ -139,6 +145,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
     def _get_characters(self):
         """Process the scenes per character.
+        
         Return a list of strings.
         Overrides the superclass method.
         """
@@ -156,6 +163,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
     def _get_locations(self):
         """Process the locations.
+        
         Return a list of strings.
         Overrides the superclass method.
         """
@@ -173,6 +181,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
     def _get_items(self):
         """Process the items.
+        
         Return a list of strings.
         Overrides the superclass method.
         """
@@ -190,6 +199,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
     def _get_characterTags(self):
         """Process the character related tags.
+        
         Return a list of strings.
         """
         lines = []
@@ -199,8 +209,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         for tag in self._xr.chrPerTag:
 
             if self._xr.chrPerTag[tag]:
-                lines.append(headerTemplate.safe_substitute(
-                    self._get_tagMapping(tag)))
+                lines.append(headerTemplate.safe_substitute(self._get_tagMapping(tag)))
 
                 for crId in self._xr.chrPerTag[tag]:
                     lines.append(template.safe_substitute(
@@ -210,6 +219,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
     def _get_locationTags(self):
         """Process the location related tags.
+        
         Return a list of strings.
         """
         lines = []
@@ -230,6 +240,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 
     def _get_itemTags(self):
         """Process the item related tags.
+        
         Return a list of strings.
         """
         lines = []
@@ -249,7 +260,8 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         return lines
 
     def _get_text(self):
-        """Assemble the whole text applying the templates.
+        """Call all processing methods.
+        
         Return a string to be written to the output file.
         Overrides the superclass method.
         """

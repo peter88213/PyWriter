@@ -59,9 +59,10 @@ class YwCnvFf(YwCnvUi):
         """Create source and target objects and run conversion.
 
         Positional arguments: 
-            sourcePath -- str; the source file path.
+            sourcePath -- str: the source file path.
         
-        Required keyword argument: 'suffix' -- str; target file name suffix.
+        Required keyword arguments: 
+            suffix -- str: target file name suffix.
 
         This is a template method that calls superclass methods as primitive operations by case.
         """

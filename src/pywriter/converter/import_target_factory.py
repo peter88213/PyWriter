@@ -21,10 +21,13 @@ class ImportTargetFactory(FileFactory):
         """Instantiate a target object for conversion to a yWriter project.
 
         Positional arguments:
-            sourcePath -- string; path to the source file to convert.
+            sourcePath -- str: path to the source file to convert.
 
         Optional arguments:
-            suffix -- string; an indicator for the source file type.
+            suffix -- str: an indicator for the source file type.
+
+        Required keyword arguments: 
+            suffix -- str: target file name suffix.
 
         Return a tuple with three elements:
         - A message beginning with the ERROR constant in case of error

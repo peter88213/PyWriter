@@ -52,9 +52,10 @@ class OdfFile(FileExport):
     def _set_up(self):
         """Helper method for ZIP file generation.
 
-        Prepare the temporary directory containing the internal 
-        structure of an ODF file except 'content.xml'.
+        Prepare the temporary directory containing the internal structure of an ODF file except 'content.xml'.
+        Return a message beginning with the ERROR constant in case of error.
         """
+        
         # Create and open a temporary directory for the files to zip.
 
         try:

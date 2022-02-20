@@ -12,7 +12,7 @@ from pywriter.odt.odt_file import OdtFile
 class OdtPartDesc(OdtFile):
     """ODT part summaries file representation.
 
-    Export a very brief synopsis with invisibly tagged part descriptions.
+    Export a synopsis with invisibly tagged part descriptions.
     """
 
     DESCRIPTION = 'Part descriptions'
