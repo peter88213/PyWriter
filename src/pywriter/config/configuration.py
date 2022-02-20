@@ -27,7 +27,7 @@ class Configuration():
     def __init__(self, settings={}, options={}):
         """Initalize attribute variables.
 
-        Optional rguments:
+        Optional arguments:
             settings -- default settings (dictionary of strings)
             options -- default options (dictionary of boolean values)
         """

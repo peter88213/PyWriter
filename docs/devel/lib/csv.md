@@ -24,4 +24,10 @@ is much easier to parse than the ods format.
 
 ## Classes
 
+### Overview
+
 ![csv package class diagram](img/csv_package_class_diagram.png)
+
+### Detailed class diagram
+
+![csv package ditailed class diagram](img/csv_package_detailed_class_diagram.png)

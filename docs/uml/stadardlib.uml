@@ -7,9 +7,10 @@
     <packagedElement xmi:type="uml:Package" xmi:id="__5QEQCwUEequtbdKEmlZqQ" name="html">
       <packagedElement xmi:type="uml:Package" xmi:id="_-kfv8MKbEeuxjKJtrrPiwg" name="parser">
         <packagedElement xmi:type="uml:Class" xmi:id="_uzf0kCthEeqgj_wxJ3Xgsg" name="HTMLParser">
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_22I1UCthEeqgj_wxJ3Xgsg" name="handle_starttag" visibility="private"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_4lDOMCthEeqgj_wxJ3Xgsg" name="handle_endtag" visibility="private"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_6-Ce0CthEeqgj_wxJ3Xgsg" name="handle_data" visibility="private"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_22I1UCthEeqgj_wxJ3Xgsg" name="handle_starttag" visibility="public"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4lDOMCthEeqgj_wxJ3Xgsg" name="handle_endtag" visibility="public"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EdBR0JKKEeyF7cNQ8xAkzg" name="handle_comment"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_6-Ce0CthEeqgj_wxJ3Xgsg" name="handle_data" visibility="public"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_YLFSUC2HEeqtbohuTq_ZAA" name="feed"/>
         </packagedElement>
       </packagedElement>

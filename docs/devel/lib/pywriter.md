@@ -34,25 +34,15 @@ The **YwCnvUi** subclass has several **fileFactory** subclasses to instantiate t
 ## Packages
 
 - [model](model) -- Modules for representation of yWriter's meta model.
-
 - [yw](yw) -- Modules for reading and writing yWriter project files.
-
 - [file](file) -- Shared modules for template-based document generation.
-
 - [odf](odf) -- Shared modules for writing Open Document files.
-
 - [odt](odt) -- Modules for writing Open Document text documents.
-
 - [ods](ods) -- Modules for writing Open Document spreadsheet documents.
-
 - [html](html) -- Modules for reading html files.
-
 - [csv](csv) -- Modules for reading and writing csv spreadsheet documents.
-
 - [converter](converter) -- Modules for conversion of Novel subclasses.
-
 - [ui](ui) -- Modules for user interfaces.
-
 - [config](config) -- Modules for configuration persistence.
 
 

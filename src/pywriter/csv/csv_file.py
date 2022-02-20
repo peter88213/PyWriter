@@ -82,7 +82,7 @@ class CsvFile(Novel):
         """Convert a string into a list.
         
         Positional arguments:
-            text -- string containing of comma-separated substrings.
+            text -- string containing comma-separated substrings.
         
         Split a sequence of comma separated strings into a list of strings.
         Remove leading and trailing spaces, if any.
