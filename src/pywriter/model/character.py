@@ -4,7 +4,6 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 from pywriter.model.world_element import WorldElement
 
 
@@ -12,13 +11,12 @@ class Character(WorldElement):
     """yWriter character representation.
 
     Public instance variables:
-        notes -- character notes in a single string.
-        bio -- character biography in a single string.
-        goals -- character's goals in the story in a single string.
-        fullName -- full name (the title inherited may be a short name).
-        isMajor -- True, if it's a major character.
+        notes -- str: character notes.
+        bio -- str: character biography.
+        goals -- str: character's goals in the story.
+        fullName -- str: full name (the title inherited may be a short name).
+        isMajor -- bool: True, if it's a major character.
     """
-
     MAJOR_MARKER = 'Major'
     MINOR_MARKER = 'Minor'
 

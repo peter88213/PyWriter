@@ -12,7 +12,6 @@ class OdtLocations(OdtFile):
 
     Export a location sheet with invisibly tagged descriptions.
     """
-
     DESCRIPTION = 'Location descriptions'
     SUFFIX = '_locations'
 

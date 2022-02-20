@@ -33,7 +33,6 @@ class Yw7File(Novel):
     Public instance variables:
         tree -- xml element tree of the yWriter project
     """
-
     DESCRIPTION = 'yWriter 7 project'
     EXTENSION = '.yw7'
 

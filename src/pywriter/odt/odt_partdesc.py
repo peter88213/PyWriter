@@ -14,7 +14,6 @@ class OdtPartDesc(OdtFile):
 
     Export a synopsis with invisibly tagged part descriptions.
     """
-
     DESCRIPTION = 'Part descriptions'
     SUFFIX = '_parts'
 

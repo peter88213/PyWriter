@@ -16,7 +16,11 @@ class ScCrFilter():
     """
 
     def __init__(self, crId=None):
-        """Set the filter character."""
+        """Set the filter character.
+        
+        Positional arguments:
+            crId -- str: filter character ID.
+        """       
         self._character = crId
 
     def accept(self, source, eId):

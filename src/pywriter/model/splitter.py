@@ -15,9 +15,12 @@ class Splitter():
     The Splitter class updates a Novel instance by splitting such scenes and creating new chapters and scenes. 
     
     Public methods:
-        split_scenes(novel) -- Split scenes by inserted chapter and scene dividers.    
+        split_scenes(novel) -- Split scenes by inserted chapter and scene dividers.
+        
+    Public class constants:
+        PART_SEPARATOR -- marker indicating the beginning of a new part, splitting a scene.
+        CHAPTER_SEPARATOR -- marker indicating the beginning of a new chapter, splitting a scene.
     """
-
     PART_SEPARATOR = '# '
     CHAPTER_SEPARATOR = '## '
     _SCENE_SEPARATOR = '* * *'
@@ -35,7 +38,14 @@ class Splitter():
         """
 
         def create_chapter(chapterId, title, desc, level):
-            """Create a new chapter and add it to the novel."""
+            """Create a new chapter and add it to the novel.
+            
+            Positional arguments:
+                chapterId -- str: ID of the chapter to create.
+                title -- str: title of the chapter to create.
+                desc -- str: description of the chapter to create.
+                level -- int: chapter level (part/chapter).           
+            """
             newChapter = Chapter()
             newChapter.title = title
             newChapter.desc = desc
@@ -44,7 +54,13 @@ class Splitter():
             novel.chapters[chapterId] = newChapter
 
         def create_scene(sceneId, parent, splitCount):
-            """Create a new scene and add it to the novel."""
+            """Create a new scene and add it to the novel.
+            
+            Positional arguments:
+                sceneId -- str: ID of the scene to create.
+                parent -- Scene instance: parent scene.
+                splitCount -- int: number of parent's splittings.
+            """
             WARNING = ' (!) '
             # Mark metadata of split scenes.
             newScene = Scene()

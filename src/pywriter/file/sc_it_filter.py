@@ -16,7 +16,11 @@ class ScItFilter():
     """
 
     def __init__(self, itId=None):
-        """Set the filter item."""
+        """Set the filter item.
+                
+        Positional arguments:
+            itId -- str: filter item ID.
+        """
         self._item = itId
 
     def accept(self, source, eId):

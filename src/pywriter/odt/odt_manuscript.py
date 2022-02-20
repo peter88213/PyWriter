@@ -12,7 +12,6 @@ class OdtManuscript(OdtFile):
 
     Export a manuscript with invisibly tagged chapters and scenes.
     """
-
     DESCRIPTION = 'Editable manuscript'
     SUFFIX = '_manuscript'
 

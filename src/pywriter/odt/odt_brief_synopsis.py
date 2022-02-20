@@ -12,7 +12,6 @@ class OdtBriefSynopsis(OdtFile):
 
     Export a brief synopsis with chapter titles and scene titles.
     """
-
     DESCRIPTION = 'Brief synopsis'
     SUFFIX = '_brf_synopsis'
 

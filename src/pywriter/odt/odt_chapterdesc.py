@@ -12,7 +12,6 @@ class OdtChapterDesc(OdtFile):
 
     Export a synopsis with invisibly tagged chapter descriptions.
     """
-
     DESCRIPTION = 'Chapter descriptions'
     SUFFIX = '_chapters'
 

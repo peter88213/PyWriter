@@ -24,7 +24,6 @@ class OdfFile(FileExport):
     Public methods:
         write() -- write instance variables to the export file.
     """
-
     _ODF_COMPONENTS = []
     _MIMETYPE = ''
     _SETTINGS_XML = ''
@@ -33,7 +32,16 @@ class OdfFile(FileExport):
     _META_XML = ''
 
     def __init__(self, filePath, **kwargs):
-        """Extends the superclass constructor, creating a temporary directory."""
+        """Create a temporary directory for zipfile generation.
+        
+        Positional arguments:
+            filePath -- str: path to the file represented by the Novel instance.
+            
+        Optional arguments:
+            kwargs -- keyword arguments to be used by subclasses.            
+
+        Extends the superclass constructor,        
+        """
         super().__init__(filePath, **kwargs)
         self._tempDir = tempfile.mkdtemp(suffix='.tmp', prefix='odf_')
         self._originalPath = self._filePath

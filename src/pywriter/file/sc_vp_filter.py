@@ -16,7 +16,11 @@ class ScVpFilter():
     """
 
     def __init__(self, crId=None):
-        """Set the filter viewpoint."""
+        """Set the filter viewpoint.
+        
+        Positional arguments:
+            crId -- str: viewpoint character ID.
+        """
         self._viewpoint = crId
 
     def accept(self, source, eId):

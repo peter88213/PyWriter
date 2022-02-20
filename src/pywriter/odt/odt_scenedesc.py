@@ -12,7 +12,6 @@ class OdtSceneDesc(OdtFile):
 
     Export a full synopsis with invisibly tagged scene descriptions.
     """
-
     DESCRIPTION = 'Scene descriptions'
     SUFFIX = '_scenes'
 

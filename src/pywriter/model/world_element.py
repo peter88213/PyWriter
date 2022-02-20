@@ -10,11 +10,11 @@ class WorldElement():
     """Story world element representation (may be location or item).
     
     Public instance variables:
-        title -- title (name).
-        image -- image file.
-        desc -- description in a single string.
+        title -- str: title (name).
+        image -- str: image file path.
+        desc -- str: description.
         tags -- list of tags.
-        aka -- alternate name.
+        aka -- str: alternate name.
     """
 
     def __init__(self):

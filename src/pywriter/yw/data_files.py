@@ -21,7 +21,6 @@ class DataFiles(Yw7File):
     xml files. This class represents a set of three xml files generated from
     a yWriter 7 project.
     """
-
     DESCRIPTION = 'yWriter XML data files'
     EXTENSION = '.xml'
 
@@ -35,9 +34,7 @@ class DataFiles(Yw7File):
         Generate the xml file paths from the .yw7 path and write each subtree to an xml file.
         Return a message beginning with the ERROR constant in case of error.
         """
-
         path, __ = os.path.splitext(ywProject.filePath)
-
         characterPath = f'{path}_Characters.xml'
         characterSubtree = ywProject.tree.find('CHARACTERS')
         characterTree = ET.ElementTree(characterSubtree)
@@ -81,9 +78,7 @@ class DataFiles(Yw7File):
         Return a message beginning with the ERROR constant in case of error.
         Extends the superclass method.
         '''
-
         path, __ = os.path.splitext(filePath)
-
         characterPath = f'{path}_Characters.xml'
         message = super()._postprocess_xml_file(characterPath)
 

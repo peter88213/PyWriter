@@ -12,7 +12,6 @@ class OdtCharacters(OdtFile):
 
     Export a character sheet with invisibly tagged descriptions.
     """
-
     DESCRIPTION = 'Character descriptions'
     SUFFIX = '_characters'
 

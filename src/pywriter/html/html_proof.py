@@ -4,7 +4,6 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 import re
 from pywriter.html.html_file import HtmlFile
 
@@ -18,7 +17,6 @@ class HtmlProof(HtmlFile):
 
     Import a manuscript with visibly tagged chapters and scenes.
     """
-
     DESCRIPTION = 'Tagged manuscript for proofing'
     SUFFIX = '_proof'
 

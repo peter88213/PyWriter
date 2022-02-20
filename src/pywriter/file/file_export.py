@@ -55,8 +55,14 @@ class FileExport(Novel):
     _fileFooter = ''
 
     def __init__(self, filePath, **kwargs):
-        """Initialize a filter class.
+        """Initialize filter strategy class instances.
         
+        Positional arguments:
+            filePath -- str: path to the file represented by the Novel instance.
+            
+        Optional arguments:
+            kwargs -- keyword arguments to be used by subclasses.            
+
         Extends the superclass constructor.
         """
         super().__init__(filePath, **kwargs)
@@ -261,55 +267,55 @@ class FileExport(Novel):
         else:
             reactionScene = Scene.ACTION_MARKER
 
-        #--- Create a combined date information.
+        #--- Create a combined scDate information.
 
         if self.scenes[scId].date is not None and self.scenes[scId].date != Scene.NULL_DATE:
-            day = ''
-            date = self.scenes[scId].date
+            scDay = ''
             scDate = self.scenes[scId].date
+            cmbDate = self.scenes[scId].date
 
         else:
-            date = ''
+            scDate = ''
 
             if self.scenes[scId].day is not None:
-                day = self.scenes[scId].day
-                scDate = f'Day {self.scenes[scId].day}'
+                scDay = self.scenes[scId].day
+                cmbDate = f'Day {self.scenes[scId].day}'
 
             else:
-                day = ''
-                scDate = ''
+                scDay = ''
+                cmbDate = ''
 
         #--- Create a combined time information.
 
         if self.scenes[scId].time is not None and self.scenes[scId].date != Scene.NULL_DATE:
-            hour = ''
-            minute = ''
-            time = self.scenes[scId].time
-            scTime = self.scenes[scId].time.rsplit(':', 1)[0]
+            scHour = ''
+            scMinute = ''
+            scTime = self.scenes[scId].time
+            cmbTime = self.scenes[scId].time.rsplit(':', 1)[0]
 
         else:
-            time = ''
+            scTime = ''
 
             if self.scenes[scId].hour or self.scenes[scId].minute:
 
                 if self.scenes[scId].hour:
-                    hour = self.scenes[scId].hour
+                    scHour = self.scenes[scId].hour
 
                 else:
-                    hour = '00'
+                    scHour = '00'
 
                 if self.scenes[scId].minute:
-                    minute = self.scenes[scId].minute
+                    scMinute = self.scenes[scId].minute
 
                 else:
-                    minute = '00'
+                    scMinute = '00'
 
-                scTime = f'{hour.zfill(2)}:{minute.zfill(2)}'
+                cmbTime = f'{scHour.zfill(2)}:{scMinute.zfill(2)}'
 
             else:
-                hour = ''
-                minute = ''
-                scTime = ''
+                scHour = ''
+                scMinute = ''
+                cmbTime = ''
 
         #--- Create a combined duration information.
 
@@ -358,13 +364,13 @@ class FileExport(Novel):
             Field2=self.scenes[scId].field2,
             Field3=self.scenes[scId].field3,
             Field4=self.scenes[scId].field4,
-            Date=date,
-            Time=time,
-            Day=day,
-            Hour=hour,
-            Minute=minute,
-            ScDate=scDate,
-            ScTime=scTime,
+            Date=scDate,
+            Time=scTime,
+            Day=scDay,
+            Hour=scHour,
+            Minute=scMinute,
+            ScDate=cmbDate,
+            ScTime=cmbTime,
             LastsDays=lastsDays,
             LastsHours=lastsHours,
             LastsMinutes=lastsMinutes,

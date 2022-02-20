@@ -12,7 +12,6 @@ class OdtProof(OdtFile):
 
     Export a manuscript with visibly tagged chapters and scenes.
     """
-
     DESCRIPTION = 'Tagged manuscript for proofing'
     SUFFIX = '_proof'
 

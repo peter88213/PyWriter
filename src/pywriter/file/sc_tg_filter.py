@@ -16,7 +16,11 @@ class ScTgFilter():
     """
 
     def __init__(self, tag=None):
-        """Set the filter tag."""
+        """Set the filter tag.
+        
+        Positional arguments:
+            tag -- str: filter tag.
+        """
         self._tag = tag
 
     def accept(self, source, eId):

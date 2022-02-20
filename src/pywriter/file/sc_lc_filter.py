@@ -16,7 +16,11 @@ class ScLcFilter():
     """
 
     def __init__(self, lcId=None):
-        """Set the filter location."""
+        """Set the filter location.
+        
+        Positional arguments:
+            lcId -- str: filter location ID.
+        """
         self._location = lcId
 
     def accept(self, source, eId):

@@ -24,26 +24,25 @@ class Novel():
         write() -- write instance variables to the file.
 
     Public instance variables:
-        title -- title.
-        desc -- description in a single string.
-        authorName -- author's name.
-        author bio -- information about the author.
-        fieldTitle1 -- scene rating field title 1.
-        fieldTitle2 -- scene rating field title 2.
-        fieldTitle3 -- scene rating field title 3.
-        fieldTitle4 -- scene rating field title 4.
-        chapters -- chapter instances per ID.
-        scenes -- scene instances per ID.
-        srtChapters -- the novel's sorted chapter IDs.
-        locations -- WorldElement instances per ID.
-        srtLocations -- the novel's sorted location IDs.
-        items -- WorldElement instances per ID.
-        srtItems -- the novel's sorted item IDs.
-        characters -- character instances per ID.
-        srtCharacters -- the novel's sorted character IDs.
-        filePath -- path to the file (property with getter and setter). 
+        title -- str: title.
+        desc -- str: description in a single string.
+        authorName -- str: author's name.
+        author bio -- str: information about the author.
+        fieldTitle1 -- str: scene rating field title 1.
+        fieldTitle2 -- str: scene rating field title 2.
+        fieldTitle3 -- str: scene rating field title 3.
+        fieldTitle4 -- str: scene rating field title 4.
+        chapters -- dict: (key: ID; value: chapter instance).
+        scenes -- dict: (key: ID, value: scene instance).
+        srtChapters -- list: the novel's sorted chapter IDs.
+        locations -- dict: (key: ID, value: WorldElement instance).
+        srtLocations -- list: the novel's sorted location IDs.
+        items -- dict: (key: ID, value: WorldElement instance).
+        srtItems -- list: the novel's sorted item IDs.
+        characters -- dict: (key: ID, value: character instance).
+        srtCharacters -- list: the novel's sorted character IDs.
+        filePath -- str: path to the file (property with getter and setter). 
     """
-
     DESCRIPTION = 'Novel'
     EXTENSION = None
     SUFFIX = None

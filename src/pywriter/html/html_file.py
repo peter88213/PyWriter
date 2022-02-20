@@ -33,6 +33,12 @@ class HtmlFile(Novel, HTMLParser):
     def __init__(self, filePath, **kwargs):
         """Initialize the HTML parser and local instance variables for parsing.
         
+        Positional arguments:
+            filePath -- str: path to the file represented by the Novel instance.
+            
+        Optional arguments:
+            kwargs -- keyword arguments to be used by subclasses.            
+
         The HTML parser works like a state machine. 
         Scene ID, chapter ID and processed lines must be saved between the transitions.         
         Extends the superclass constructor.
