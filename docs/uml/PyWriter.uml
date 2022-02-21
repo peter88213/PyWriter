@@ -9,10 +9,10 @@
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-NJQwCuxEeq6NdJQFgby7A" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-NJ30CuxEeq6NdJQFgby7A" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <memberEnd xmi:type="uml:Property" href="stadardlib.uml#_-NLtACuxEeq6NdJQFgby7A"/>
+        <memberEnd xmi:type="uml:Property" href="Python.uml#_-NLtACuxEeq6NdJQFgby7A"/>
         <memberEnd xmi:type="uml:Property" href="#_-NMUESuxEeq6NdJQFgby7A"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_-NMUESuxEeq6NdJQFgby7A" name="scenes" association="_-NEYQCuxEeq6NdJQFgby7A">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_hnQSkCuqEeqsNupfleJppQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_hnQSkCuqEeqsNupfleJppQ"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_QJO1ICutEeq6j_3L0bwv2g" memberEnd="_QJPcMiutEeq6j_3L0bwv2g _QJQDQSutEeq6j_3L0bwv2g">
@@ -31,10 +31,10 @@
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_41fMYCutEeq6j_3L0bwv2g" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_41fzcCutEeq6j_3L0bwv2g" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <memberEnd xmi:type="uml:Property" href="stadardlib.uml#_41fzcSutEeq6j_3L0bwv2g"/>
+        <memberEnd xmi:type="uml:Property" href="Python.uml#_41fzcSutEeq6j_3L0bwv2g"/>
         <memberEnd xmi:type="uml:Property" href="#_41hBkCutEeq6j_3L0bwv2g"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_41hBkCutEeq6j_3L0bwv2g" name="chapters" association="_41elUCutEeq6j_3L0bwv2g">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_Cqx6sCunEeqsNupfleJppQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_Cqx6sCunEeqsNupfleJppQ"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_pQyhsCuoEeqsNupfleJppQ" visibility="public" memberEnd="_pQ1lACuoEeqsNupfleJppQ _pQ2MEiuoEeqsNupfleJppQ">
@@ -119,30 +119,30 @@
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_W-GOIJEZEeqtx4SqQAS9Eg" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_W-GOIZEZEeqtx4SqQAS9Eg" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <memberEnd xmi:type="uml:Property" href="stadardlib.uml#_W-GOIpEZEeqtx4SqQAS9Eg"/>
+        <memberEnd xmi:type="uml:Property" href="Python.uml#_W-GOIpEZEeqtx4SqQAS9Eg"/>
         <memberEnd xmi:type="uml:Property" href="#_W-HcQJEZEeqtx4SqQAS9Eg"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_W-HcQJEZEeqtx4SqQAS9Eg" name="characters" association="_W-FAAJEZEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_mAsc4JEUEeqtx4SqQAS9Eg"/>
+          <type xmi:type="uml:Class" href="Python.uml#_mAsc4JEUEeqtx4SqQAS9Eg"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_X-uksJEZEeqtx4SqQAS9Eg">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_X-vLwJEZEeqtx4SqQAS9Eg" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_X-vy0JEZEeqtx4SqQAS9Eg" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <memberEnd xmi:type="uml:Property" href="stadardlib.uml#_X-vy0ZEZEeqtx4SqQAS9Eg"/>
+        <memberEnd xmi:type="uml:Property" href="Python.uml#_X-vy0ZEZEeqtx4SqQAS9Eg"/>
         <memberEnd xmi:type="uml:Property" href="#_X-wZ4JEZEeqtx4SqQAS9Eg"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_X-wZ4JEZEeqtx4SqQAS9Eg" name="items" association="_X-uksJEZEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_pU9qAJEUEeqtx4SqQAS9Eg"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pU9qAJEUEeqtx4SqQAS9Eg"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_ZxmQgJEZEeqtx4SqQAS9Eg">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZxoFsJEZEeqtx4SqQAS9Eg" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZxoFsZEZEeqtx4SqQAS9Eg" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <memberEnd xmi:type="uml:Property" href="stadardlib.uml#_ZxoFspEZEeqtx4SqQAS9Eg"/>
+        <memberEnd xmi:type="uml:Property" href="Python.uml#_ZxoFspEZEeqtx4SqQAS9Eg"/>
         <memberEnd xmi:type="uml:Property" href="#_ZxoswpEZEeqtx4SqQAS9Eg"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_ZxoswpEZEeqtx4SqQAS9Eg" name="locations" association="_ZxmQgJEZEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_gQGoEDXfEeqSIpxCmEaNZA" memberEnd="_gQMusDXfEeqSIpxCmEaNZA _gQNVwTXfEeqSIpxCmEaNZA">
@@ -161,7 +161,7 @@
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_XmSMUZEVEeqtx4SqQAS9Eg"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_hrGgMpEVEeqtx4SqQAS9Eg" name="tags" association="_hrErAJEVEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_gusT8IehEeqZkamAUXuhyQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_gusT8IehEeqZkamAUXuhyQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_a-zAQJEVEeqtx4SqQAS9Eg" name="aka">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -232,13 +232,13 @@
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_FW_ZcYfuEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_pQ1lACuoEeqsNupfleJppQ" name="srtScenes" isOrdered="true" association="_pQyhsCuoEeqsNupfleJppQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_JI8bgCuoEeqsNupfleJppQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_JI8bgCuoEeqsNupfleJppQ"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ce2zwCwKEequtbdKEmlZqQ" name="__init__" visibility="public"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_0ErCACtbEeqgj_wxJ3Xgsg" name="Scene">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_30rZEofvEeuRjYowZVZmEQ" name="STATUS" isStatic="true" association="_30qK8IfvEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_Ct1yoIf-EeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_Ct1yoIf-EeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_HztBkIfwEeuRjYowZVZmEQ" name="ACTION_MARKER" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -303,7 +303,7 @@
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_YOTx0IeiEeqZkamAUXuhyQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_UV150JEWEeqtx4SqQAS9Eg" name="tags" association="_UV0EoJEWEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_gusT8IehEeqZkamAUXuhyQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_gusT8IehEeqZkamAUXuhyQ"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tQCwUI_VEeynvIR1yn0cow" value="1"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_p7B48IgAEeuRjYowZVZmEQ"/>
         </ownedAttribute>
@@ -348,15 +348,15 @@
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_Bb3GAYgBEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_brzIMogCEeuRjYowZVZmEQ" name="characters" association="_brxTAIgCEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_XCUIgIfqEeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_XCUIgIfqEeuRjYowZVZmEQ"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_Ss76UIgDEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_qV6zQYgCEeuRjYowZVZmEQ" name="locations" association="_qV4-EIgCEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_UmL68IgDEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_w97pEYgCEeuRjYowZVZmEQ" name="items" association="_w95z4IgCEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_nYshEIfqEeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_nYshEIfqEeuRjYowZVZmEQ"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_VqiT4IgDEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_bqJF4IgDEeuRjYowZVZmEQ" name="date">
@@ -468,34 +468,34 @@
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_XwCBwYefEeqZkamAUXuhyQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_PFYygCutEeq6j_3L0bwv2g" name="chapters" visibility="public" aggregation="composite" association="_PFVvMCutEeq6j_3L0bwv2g">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_Cqx6sCunEeqsNupfleJppQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_Cqx6sCunEeqsNupfleJppQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QJPcMiutEeq6j_3L0bwv2g" name="scenes" visibility="public" aggregation="composite" association="_QJO1ICutEeq6j_3L0bwv2g">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_hnQSkCuqEeqsNupfleJppQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_hnQSkCuqEeqsNupfleJppQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_gQMusDXfEeqSIpxCmEaNZA" name="srtChapters" visibility="public" isOrdered="true" association="_gQGoEDXfEeqSIpxCmEaNZA">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_yH7asDXeEeqSIpxCmEaNZA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_yH7asDXeEeqSIpxCmEaNZA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Vzre4pEYEeqtx4SqQAS9Eg" name="locations" visibility="public" aggregation="composite" association="_VzppsJEYEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VzsF8ZEYEeqtx4SqQAS9Eg" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_cZ0jQofrEeuRjYowZVZmEQ" name="srtLocations" visibility="public" isOrdered="true" association="_cZzVIIfrEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_UyKXgpEYEeqtx4SqQAS9Eg" name="items" visibility="public" aggregation="composite" association="_UyH7QJEYEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_pU9qAJEUEeqtx4SqQAS9Eg"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pU9qAJEUEeqtx4SqQAS9Eg"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UyK-kZEYEeqtx4SqQAS9Eg" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_dXz1gYfrEeuRjYowZVZmEQ" name="srtItems" visibility="public" isOrdered="true" association="_dXyAUIfrEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_nYshEIfqEeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_nYshEIfqEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TtwUMpEYEeqtx4SqQAS9Eg" name="characters" visibility="public" aggregation="composite" association="_TtufAJEYEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_mAsc4JEUEeqtx4SqQAS9Eg"/>
+          <type xmi:type="uml:Class" href="Python.uml#_mAsc4JEUEeqtx4SqQAS9Eg"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ttw7QZEYEeqtx4SqQAS9Eg" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_a-yIoIfrEeuRjYowZVZmEQ" name="srtCharacters" visibility="public" isOrdered="true" association="_a-spEIfrEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_XCUIgIfqEeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_XCUIgIfqEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ad9wwCtfEeqgj_wxJ3Xgsg" name="filePath" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -512,7 +512,7 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_4mmjsI83EeyWxuxLhWA0gA" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_9ryOoI9UEeyklMyKAJOE0w" name="read">
@@ -556,39 +556,39 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_WAqBgCtrEeqgj_wxJ3Xgsg" name="YwCnvFf">
         <generalization xmi:type="uml:Generalization" xmi:id="_xzFFwHevEeyoo8DPyEkfSw" general="_mbjA8PxAEeq5hMee5ike2Q"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Gd_ggL4iEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_NsfukL4iEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_ODTFAL4iEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_PNhccL4iEeuITv7MyBA5yA" name="EXPORT_TARGET_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_PNhccb4iEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_PNhccr4iEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QABQYL4iEeuITv7MyBA5yA" name="IMPORT_SOURCE_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_QABQYb4iEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_QABQYr4iEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QnxM4L4iEeuITv7MyBA5yA" name="IMPORT_TARGET_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_QnxM4b4iEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_QnxM4r4iEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Xa3qor4dEeuITv7MyBA5yA" name="exportSourceFactory" type="_aia8IL32EeuITv7MyBA5yA" association="_Xa2cgL4dEeuITv7MyBA5yA">
@@ -617,7 +617,7 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_1KDoYJC4Eey_Lt93nuuNDA" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -674,13 +674,13 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_7-9fEPxAEeq5hMee5ike2Q" name="FileFactory">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ep78kr4hEeuITv7MyBA5yA" name="_fileClasses" visibility="protected" association="_ep6HYL4hEeuITv7MyBA5yA">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ep8joL4hEeuITv7MyBA5yA" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ep8job4hEeuITv7MyBA5yA" value="1"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_bo0m4L4fEeuITv7MyBA5yA" name="__init__">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_WAYvwJC6Eey_Lt93nuuNDA" name="fileClasses">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -691,10 +691,10 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_Js-ygpC8Eey_Lt93nuuNDA" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_weQ1YJC9Eey_Lt93nuuNDA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -705,10 +705,10 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_SEJ40pC8Eey_Lt93nuuNDA" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_s7hHYJC9Eey_Lt93nuuNDA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -719,10 +719,10 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_SlfEQpC8Eey_Lt93nuuNDA" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_q3ezEJC9Eey_Lt93nuuNDA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -733,17 +733,17 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_TOwDspC8Eey_Lt93nuuNDA" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_or9WsJC9Eey_Lt93nuuNDA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_kHagcL32EeuITv7MyBA5yA" name="NewProjectFactory">
         <generalization xmi:type="uml:Generalization" xmi:id="_iOQbEL4lEeuITv7MyBA5yA" general="_7-9fEPxAEeq5hMee5ike2Q"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Pmaj8r4qEeuITv7MyBA5yA" name="DO_NOT_IMPORT" association="_PmZV0L4qEeuITv7MyBA5yA">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_7OPw8L4pEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_7OPw8L4pEeuITv7MyBA5yA"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PmbLAL4qEeuITv7MyBA5yA" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PmbLAb4qEeuITv7MyBA5yA" value="1"/>
         </ownedAttribute>
@@ -752,10 +752,10 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_UOGA0pC8Eey_Lt93nuuNDA" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZZvJ0JC9Eey_Lt93nuuNDA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ZUFx4L4kEeuITv7MyBA5yA" name="_canImport" visibility="protected">
@@ -770,48 +770,48 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_gJJ3IL4iEeuITv7MyBA5yA" name="Yw7Converter">
         <generalization xmi:type="uml:Generalization" xmi:id="_gNfIEL4jEeuITv7MyBA5yA" general="_WAqBgCtrEeqgj_wxJ3Xgsg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_RjYrIL4jEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_RjYrIb4jEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_RjYrIr4jEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_RjbucL4jEeuITv7MyBA5yA" name="EXPORT_TARGET_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_Rjbucb4jEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_Rjbucr4jEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Rjf_4L4jEeuITv7MyBA5yA" name="IMPORT_SOURCE_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_Rjf_4b4jEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_Rjf_4r4jEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_RjjqQL4jEeuITv7MyBA5yA" name="IMPORT_TARGET_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_RjjqQb4jEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_RjjqQr4jEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Q-bZYL4iEeuITv7MyBA5yA" name="CREATE_SOURCE_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_Q-bZYb4iEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_Q-bZYr4iEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_xY1kEJC5Eey_Lt93nuuNDA" name="__init__"/>
@@ -819,21 +819,21 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_b4nZkL4jEeuITv7MyBA5yA" name="Yw7Exporter">
         <generalization xmi:type="uml:Generalization" xmi:id="_qygbcL4iEeuITv7MyBA5yA" general="_WAqBgCtrEeqgj_wxJ3Xgsg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_b4oAoL4jEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_b4oAob4jEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_b4oAor4jEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_b4oAo74jEeuITv7MyBA5yA" name="EXPORT_TARGET_CLASSES" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <qualifier xmi:type="uml:Property" xmi:id="_b4oApL4jEeuITv7MyBA5yA" name="EXPORT_SOURCE_CLASSES" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
           <qualifier xmi:type="uml:Property" xmi:id="_b4oApb4jEeuITv7MyBA5yA" name="CopyOf_EXPORT_SOURCE_CLASSES_1" isStatic="true">
-            <type xmi:type="uml:Class" href="stadardlib.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
+            <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           </qualifier>
         </ownedAttribute>
       </packagedElement>
@@ -910,7 +910,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_3f9IEswQEeuVlZjMUHKreQ" name="tree" association="_3f758MwQEeuVlZjMUHKreQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_QoWo4C1UEeqtbohuTq_ZAA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_QoWo4C1UEeqtbohuTq_ZAA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_i1tgEW1SEeyo8PGsOj-8FQ" name="sceneSplitter" type="_parT0G1QEeyo8PGsOj-8FQ" association="_i1qcwG1SEeyo8PGsOj-8FQ">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i1uHIG1SEeyo8PGsOj-8FQ"/>
@@ -921,7 +921,7 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_53i6co90Eey0x9qBdTLxTA" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_53l9wI90Eey0x9qBdTLxTA" name="read">
@@ -961,10 +961,10 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_AaV8QI95Eey0x9qBdTLxTA" name="_strip_spaces" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_K1cCII95Eey0x9qBdTLxTA" name="lines">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_OCbikI95Eey0x9qBdTLxTA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -1012,10 +1012,10 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="__nJeIJKAEeyF7cNQ8xAkzg" name="_SCENE_RATINGS" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_9U02MJKAEeyF7cNQ8xAkzg" name="_rowTitles" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_9U3ScJKAEeyF7cNQ8xAkzg" name="read">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_9U3ScZKAEeyF7cNQ8xAkzg" direction="return" effect="read">
@@ -1032,13 +1032,13 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_N_BioJKBEeyF7cNQ8xAkzg" name="_SCENE_RATINGS" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_O2ZPgJKBEeyF7cNQ8xAkzg" name="_NOT_APPLICABLE" visibility="protected" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_N_El8JKBEeyF7cNQ8xAkzg" name="_rowTitles" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_N_JecJKBEeyF7cNQ8xAkzg" name="read">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_N_JecZKBEeyF7cNQ8xAkzg" direction="return" effect="read">
@@ -1057,17 +1057,17 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_U4098JJ_EeyF7cNQ8xAkzg" name="_rowTitles" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_nECKIJJ_EeyF7cNQ8xAkzg" name="_rows" visibility="protected">
-          <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_g2xWoJJ_EeyF7cNQ8xAkzg" name="__init__" visibility="public">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_g2xWoZJ_EeyF7cNQ8xAkzg" name="filePath">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_g2xWopJ_EeyF7cNQ8xAkzg" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_wEZ-cJJ_EeyF7cNQ8xAkzg" name="read">
@@ -1077,7 +1077,7 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_yU1I8JJ_EeyF7cNQ8xAkzg" name="_get_list" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_yU1I8ZJ_EeyF7cNQ8xAkzg" direction="return" effect="read">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_6GKXQJJ_EeyF7cNQ8xAkzg" name="text">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1093,7 +1093,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_hi3yMJKAEeyF7cNQ8xAkzg" name="_rowTitles" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ivYooJKAEeyF7cNQ8xAkzg" name="read">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_ivYooZKAEeyF7cNQ8xAkzg" direction="return" effect="read">
@@ -1110,7 +1110,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_oypyoJKAEeyF7cNQ8xAkzg" name="_rowTitles" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_oyvSMJKAEeyF7cNQ8xAkzg" name="read">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_oyvSMZKAEeyF7cNQ8xAkzg" direction="return" effect="read">
@@ -1127,7 +1127,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_pdKIMJKAEeyF7cNQ8xAkzg" name="_rowTitles" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_pdNLgJKAEeyF7cNQ8xAkzg" name="read">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_pdNLgZKAEeyF7cNQ8xAkzg" direction="return" effect="read">
@@ -1225,42 +1225,42 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_SKUIoPsdEeq-TdV6dVW08A" name="_get_fileHeaderMapping" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_vzP70I_0EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_V7WKQPsdEeq-TdV6dVW08A" name="_get_chapterMapping" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_0VmssI_0EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_WPXScPsdEeq-TdV6dVW08A" name="_get_sceneMapping" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_3QCdgI_0EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_YpGJ8PsdEeq-TdV6dVW08A" name="_get_characterMapping" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_5r2_sI_0EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Yxoa4PsdEeq-TdV6dVW08A" name="_get_locationMapping" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_899poI_0EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Y2Dn4PsdEeq-TdV6dVW08A" name="_get_itemMapping" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="__LFogI_0EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_blAkMMFcEeu3Uqtx9hJ-Ng" name="_get_fileHeader" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_EspzoI_1EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_eSRbsMFcEeu3Uqtx9hJ-Ng" name="_get_scenes" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_KEnW0I_1EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_MfcagI_1EeyrrpbZaghMmQ" name="chId">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1280,22 +1280,22 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_j2QBoMFcEeu3Uqtx9hJ-Ng" name="_get_chapters" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_FQpcEI_2EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_mo3TMMFcEeu3Uqtx9hJ-Ng" name="_get_characters" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_La1tcI_2EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_oqfMsMFcEeu3Uqtx9hJ-Ng" name="_get_locations" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_OQlykI_2EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_rpq6oMFcEeu3Uqtx9hJ-Ng" name="_get_items" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_RO4IoI_2EeyrrpbZaghMmQ" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_uKM9sMFcEeu3Uqtx9hJ-Ng" name="_get_text" visibility="protected">
@@ -1310,7 +1310,7 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_KQ70UMFcEeu3Uqtx9hJ-Ng" name="_get_string" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_dhLxII_dEeynvIR1yn0cow" name="elements">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_hDLRMI_dEeynvIR1yn0cow" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1413,7 +1413,7 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_8SW1YPyyEeqEK6KdQRY5bw" name="HtmlFile">
         <generalization xmi:type="uml:Generalization" xmi:id="_G8Vr0PyzEeqEK6KdQRY5bw" general="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_zWEA0CthEeqgj_wxJ3Xgsg">
-          <general xmi:type="uml:Class" href="stadardlib.uml#_uzf0kCthEeqgj_wxJ3Xgsg"/>
+          <general xmi:type="uml:Class" href="Python.uml#_uzf0kCthEeqgj_wxJ3Xgsg"/>
         </generalization>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_PM7B8PyzEeqEK6KdQRY5bw" name="HtmlPartDesc">
@@ -1540,17 +1540,17 @@ or success information</body>
       <packagedElement xmi:type="uml:Class" xmi:id="_eePr0PxDEeq5hMee5ike2Q" name="UiTk">
         <generalization xmi:type="uml:Generalization" xmi:id="_pGSokPxDEeq5hMee5ike2Q" general="_JtCGsPxDEeq5hMee5ike2Q"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_906-kcFmEeu3Uqtx9hJ-Ng" name="_root" visibility="protected" aggregation="composite" association="_905wcMFmEeu3Uqtx9hJ-Ng">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_GssmIIerEeq_kJF_AkSaiA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_GssmIIerEeq_kJF_AkSaiA"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_906-ksFmEeu3Uqtx9hJ-Ng" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_906-k8FmEeu3Uqtx9hJ-Ng" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_bKkp8sFnEeu3Uqtx9hJ-Ng" name="_appInfo" visibility="protected" aggregation="composite" association="_bKkC4MFnEeu3Uqtx9hJ-Ng">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bKkp88FnEeu3Uqtx9hJ-Ng" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bKlRAMFnEeu3Uqtx9hJ-Ng" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_iDHPEcFnEeu3Uqtx9hJ-Ng" name="_processInfo" visibility="protected" aggregation="composite" association="_iDGA8MFnEeu3Uqtx9hJ-Ng">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iDH2IMFnEeu3Uqtx9hJ-Ng" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iDH2IcFnEeu3Uqtx9hJ-Ng" value="1"/>
         </ownedAttribute>
@@ -1580,7 +1580,7 @@ or success information</body>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_UdDQwMFhEeu3Uqtx9hJ-Ng" name="start"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Vls64MFhEeu3Uqtx9hJ-Ng" name="show_open_button">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_OOFskJDEEey_Lt93nuuNDA" name="open_cmd">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_wBNo0JDEEey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_wBNo0JDEEey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -1590,36 +1590,36 @@ or success information</body>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_VmEbMJDOEey_Lt93nuuNDA" name="kwargs" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_o57cEpDPEey_Lt93nuuNDA" name="_ywPrj" visibility="protected" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_o561AJDPEey_Lt93nuuNDA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_hO4SQH7DEey1Ut-6sSExGQ" name="_root" visibility="protected" aggregation="composite" association="_hO12AH7DEey1Ut-6sSExGQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_GssmIIerEeq_kJF_AkSaiA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_GssmIIerEeq_kJF_AkSaiA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_00WyIn7FEey1Ut-6sSExGQ" name="_mainMenu" visibility="protected" aggregation="composite" association="_00WLEH7FEey1Ut-6sSExGQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_lmncoH7FEey1Ut-6sSExGQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_lmncoH7FEey1Ut-6sSExGQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_D0LAYH7GEey1Ut-6sSExGQ" name="_fileMenu" visibility="protected" aggregation="composite" association="_D0JLMH7GEey1Ut-6sSExGQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_lmncoH7FEey1Ut-6sSExGQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_lmncoH7FEey1Ut-6sSExGQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_kG9LQn7GEey1Ut-6sSExGQ" name="_titleBar" visibility="protected" aggregation="composite" association="_kG79IH7GEey1Ut-6sSExGQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_4UQ4kJDOEey_Lt93nuuNDA" name="_mainWindow" visibility="protected" aggregation="composite" association="_4UN1QJDOEey_Lt93nuuNDA">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_qA5goJDOEey_Lt93nuuNDA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_qA5goJDOEey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_lZBQEH7GEey1Ut-6sSExGQ" name="_statusBar" visibility="protected" aggregation="composite" association="_lY_a4H7GEey1Ut-6sSExGQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_l_bv0X7GEey1Ut-6sSExGQ" name="_pathBar" visibility="protected" aggregation="composite" association="_l_ahsH7GEey1Ut-6sSExGQ">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_Iacr8IesEeq_kJF_AkSaiA"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="__MrXUJDNEey_Lt93nuuNDA" name="__init__">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="__MrXUZDNEey_Lt93nuuNDA" name="title">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_FcGG8JDOEey_Lt93nuuNDA" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_6QSOcJDQEey_Lt93nuuNDA" name="_extend_menu" visibility="protected"/>
@@ -1631,7 +1631,7 @@ or success information</body>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_UpWz8JDREey_Lt93nuuNDA" name="fileTypes">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_iefRkJDuEeyEl8hC1hWOFQ" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1683,7 +1683,7 @@ or success information</body>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZWjtcpDSEey_Lt93nuuNDA" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ZWqbIJDSEey_Lt93nuuNDA" name="_extend_menu" visibility="protected"/>
@@ -1728,20 +1728,20 @@ or success information</body>
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_87YSAMFnEeu3Uqtx9hJ-Ng" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_87YSAcFnEeu3Uqtx9hJ-Ng" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <memberEnd xmi:type="uml:Property" href="stadardlib.uml#_87YSAsFnEeu3Uqtx9hJ-Ng"/>
+        <memberEnd xmi:type="uml:Property" href="Python.uml#_87YSAsFnEeu3Uqtx9hJ-Ng"/>
         <memberEnd xmi:type="uml:Property" href="#_87ZgIcFnEeu3Uqtx9hJ-Ng"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_87ZgIcFnEeu3Uqtx9hJ-Ng" name="self" association="_87XD4MFnEeu3Uqtx9hJ-Ng">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_GssmIIerEeq_kJF_AkSaiA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_GssmIIerEeq_kJF_AkSaiA"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_IPCXkMFoEeu3Uqtx9hJ-Ng">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IPC-oMFoEeu3Uqtx9hJ-Ng" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_IPC-ocFoEeu3Uqtx9hJ-Ng" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <memberEnd xmi:type="uml:Property" href="stadardlib.uml#_IPC-osFoEeu3Uqtx9hJ-Ng"/>
+        <memberEnd xmi:type="uml:Property" href="Python.uml#_IPC-osFoEeu3Uqtx9hJ-Ng"/>
         <memberEnd xmi:type="uml:Property" href="#_IPDlssFoEeu3Uqtx9hJ-Ng"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_IPDlssFoEeu3Uqtx9hJ-Ng" name="self" association="_IPCXkMFoEeu3Uqtx9hJ-Ng">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_GssmIIerEeq_kJF_AkSaiA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_GssmIIerEeq_kJF_AkSaiA"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_hO12AH7DEey1Ut-6sSExGQ" memberEnd="_hO4SQH7DEey1Ut-6sSExGQ _hPTwEH7DEey1Ut-6sSExGQ">
@@ -1793,14 +1793,14 @@ or success information</body>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_8IK-IJDFEey_Lt93nuuNDA" client="_Z2J44MFgEeu3Uqtx9hJ-Ng">
-        <supplier xmi:type="uml:Class" href="stadardlib.uml#_ygw_AJDFEey_Lt93nuuNDA"/>
+        <supplier xmi:type="uml:Class" href="Python.uml#_ygw_AJDFEey_Lt93nuuNDA"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_JmZd0JDGEey_Lt93nuuNDA" client="_eePr0PxDEeq5hMee5ike2Q" supplier="_tco8sL3xEeuITv7MyBA5yA"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_e-Wn8JDIEey_Lt93nuuNDA" client="_VruYIH7DEey1Ut-6sSExGQ">
-        <supplier xmi:type="uml:Class" href="stadardlib.uml#_ygw_AJDFEey_Lt93nuuNDA"/>
+        <supplier xmi:type="uml:Class" href="Python.uml#_ygw_AJDFEey_Lt93nuuNDA"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_pxtc0JDIEey_Lt93nuuNDA" client="_VruYIH7DEey1Ut-6sSExGQ">
-        <supplier xmi:type="uml:Class" href="stadardlib.uml#_kty3AJDIEey_Lt93nuuNDA"/>
+        <supplier xmi:type="uml:Class" href="Python.uml#_kty3AJDIEey_Lt93nuuNDA"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_JItU4JDJEey_Lt93nuuNDA" client="_0uCngJDIEey_Lt93nuuNDA" supplier="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
       <packagedElement xmi:type="uml:Association" xmi:id="_4UN1QJDOEey_Lt93nuuNDA" memberEnd="_4UQ4kJDOEey_Lt93nuuNDA _4URfoZDOEey_Lt93nuuNDA">
@@ -1828,17 +1828,17 @@ or success information</body>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_00CQkIgFEeuRjYowZVZmEQ" name="odf">
       <ownedComment xmi:type="uml:Comment" xmi:id="_eyXSQL5BEeuITv7MyBA5yA">
-        <annotatedElement xmi:type="uml:Class" href="stadardlib.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
+        <annotatedElement xmi:type="uml:Class" href="Python.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
         <body>Python list with the names of all zipped files</body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_1bj9YMFaEeu3Uqtx9hJ-Ng">
-        <annotatedElement xmi:type="uml:Class" href="stadardlib.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
+        <annotatedElement xmi:type="uml:Class" href="Python.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
         <body>Python list with the names of all zipped files</body>
       </ownedComment>
       <packagedElement xmi:type="uml:Class" xmi:id="_Cxoz4IgGEeuRjYowZVZmEQ" name="OdfFile">
         <generalization xmi:type="uml:Generalization" xmi:id="_Cxoz4ogGEeuRjYowZVZmEQ" general="_vHrYMPsPEeq-TdV6dVW08A"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ETEwAb5BEeuITv7MyBA5yA" name="_ODF_COMPONENTS" visibility="protected" aggregation="composite" association="_ETC60L5BEeuITv7MyBA5yA">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ETHMQL5BEeuITv7MyBA5yA" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ETK2oL5BEeuITv7MyBA5yA" value="1"/>
         </ownedAttribute>
@@ -1862,7 +1862,7 @@ or success information</body>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_jqMm4pKHEeyF7cNQ8xAkzg" name="kwargs">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_1CHU8JKHEeyF7cNQ8xAkzg" name="__del__"/>
@@ -1916,7 +1916,7 @@ or success information</body>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_rfb0AL8AEeuLVoie0Ovs3Q" name="ODF_COMPONENTS" aggregation="composite" association="_rfXikL8AEeuLVoie0Ovs3Q">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rfb0Ab8AEeuLVoie0Ovs3Q" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rfcbEL8AEeuLVoie0Ovs3Q" value="1"/>
         </ownedAttribute>
@@ -1990,7 +1990,7 @@ or success information</body>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_XlF_QIgHEeuRjYowZVZmEQ" name="ODF_COMPONENTS" visibility="public" isStatic="true">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_dolLsIgHEeuRjYowZVZmEQ" name="CONTENT_XML_HEADER" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -2017,7 +2017,7 @@ or success information</body>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_BV0Rcr8BEeuLVoie0Ovs3Q" name="ODF_COMPONENTS" aggregation="composite" association="_BVycQL8BEeuLVoie0Ovs3Q">
-          <type xmi:type="uml:Class" href="stadardlib.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_jvOqUL5AEeuITv7MyBA5yA"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BV04gL8BEeuLVoie0Ovs3Q" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BV04gb8BEeuLVoie0Ovs3Q" value="1"/>
         </ownedAttribute>
@@ -2225,18 +2225,18 @@ or success information</body>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_1Tts8PbkEeuIY7rtcArmxw" name="__init__">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_6R4xAJJ9EeyF7cNQ8xAkzg" name="settings">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_8Vj48JJ9EeyF7cNQ8xAkzg" name="options">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_4ObKkPbkEeuIY7rtcArmxw" name="set">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_07_DUJJ9EeyF7cNQ8xAkzg" name="settings">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_262jwJJ9EeyF7cNQ8xAkzg" name="options">
-            <type xmi:type="uml:PrimitiveType" href="stadardlib.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_5ovzgPbkEeuIY7rtcArmxw" name="read">
