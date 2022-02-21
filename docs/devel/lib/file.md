@@ -14,11 +14,6 @@ elements, such as characters, locations ans items, and fills templates.
  
 - **file_export** -- Provide a generic class for template-based file export.
 - **filter** -- Provide a generic filter class for template-based file export.
-- **sc_lc_filter** -- Provide a scene per location filter class for template-based file export.
-- **sc_cr_filter** -- Provide a scene per character filter class for template-based file export.
-- **sc_tg_filter** -- Provide a scene per tag filter class for template-based file export.
-- **sc_it_filter** -- Provide a scene per item filter class for template-based file export.
-- **sc_vp_filter** -- Provide a scene per viewpoint filter class for template-based file export.
 
 ## Classes
 
