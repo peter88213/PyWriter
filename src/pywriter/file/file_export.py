@@ -46,6 +46,7 @@ class FileExport(Novel):
     _unusedChapterEndTemplate = ''
     _notExportedChapterEndTemplate = ''
     _notesChapterEndTemplate = ''
+    _todoChapterEndTemplate = ''
     _characterSectionHeading = ''
     _characterTemplate = ''
     _locationSectionHeading = ''
