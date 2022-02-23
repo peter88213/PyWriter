@@ -110,7 +110,7 @@ class HtmlFile(Novel, HTMLParser):
         
         This prevents accidentally applied formatting from being transferred to the yWriter metadata.
         If rich text is applicable, such as in scenes, overwrite this method in a subclass.
-        Return a sring.
+        Return a string.
         """
         text = self._convert_to_yw(text)
 
