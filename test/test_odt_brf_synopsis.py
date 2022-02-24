@@ -13,6 +13,14 @@ import unittest
 class NrmOpr(ExportTest, unittest.TestCase):
     _exportClass = OdtBriefSynopsis
 
+    def test_yw7_to_exp(self):
+        """This is needed to identify the source of failure."""
+        super().test_yw7_to_exp()
+        
+    def test_yw7_to_exp_ui(self):
+        """This is needed to identify the source of failure."""
+        super().test_yw7_to_exp_ui()
+
 
 def main():
     unittest.main()

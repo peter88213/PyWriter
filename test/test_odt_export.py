@@ -14,6 +14,13 @@ class NrmOpr(ExportTest, unittest.TestCase):
     _DATA_PATH = 'data/_odt/'
     _exportClass = OdtExport
 
+    def test_yw7_to_exp(self):
+        """This is needed to identify the source of failure."""
+        super().test_yw7_to_exp()
+        
+    def test_yw7_to_exp_ui(self):
+        """This is needed to identify the source of failure."""
+        super().test_yw7_to_exp_ui()
 
 
 def main():
