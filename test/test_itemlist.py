@@ -15,24 +15,21 @@ class NrmOpr(ImportExportTest, unittest.TestCase):
     _importClass = CsvItemList
     _exportClass = OdsItemList
 
+    # The following is needed to identify the source of failure.
+
     def test_yw7_to_exp(self):
-        """This is needed to identify the source of failure."""
         super().test_yw7_to_exp()
         
     def test_yw7_to_exp_ui(self):
-        """This is needed to identify the source of failure."""
         super().test_yw7_to_exp_ui()
         
     def test_imp_to_yw7(self):
-        """This is needed to identify the source of failure."""
         super().test_imp_to_yw7()
         
     def test_imp_to_yw7_ui(self):
-        """This is needed to identify the source of failure."""
         super().test_imp_to_yw7_ui()
         
     def test_data(self):
-        """This is needed to identify the source of failure."""
         super().test_data()
 
 

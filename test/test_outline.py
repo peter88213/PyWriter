@@ -13,13 +13,13 @@ import unittest
 class NrmOpr(ImportTest, unittest.TestCase):
     _importClass = HtmlOutline
     _DATA_PATH = 'data/_outline/'
+
+    # The following is needed to identify the source of failure.
         
     def test_imp_to_yw7(self):
-        """This is needed to identify the source of failure."""
         super().test_imp_to_yw7()
         
     def test_imp_to_yw7_ui(self):
-        """This is needed to identify the source of failure."""
         super().test_imp_to_yw7_ui()
         
 
