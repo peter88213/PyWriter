@@ -15,11 +15,11 @@ For more information, see my [GitHub home page](https://peter88213.github.io).
 
 [GitHub repository](https://github.com/peter88213/PyWriter)
 
-[Specifications](devel/spec/index)
+[Specifications](spec/index)
 
-[pywriter library overview](devel/lib/pywriter)
+[pywriter library overview](lib/pywriter)
 
-[Roadmap](devel/roadmap)
+[Roadmap](roadmap)
 
 
 ## License

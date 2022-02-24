@@ -6,15 +6,15 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.html.html_import import HtmlImport
-from pywriter.testcases.import_test import ImportTest
+from pywriter.test.import_test import ImportTest
 import unittest
 
 
 class NrmOpr(ImportTest, unittest.TestCase):
     _importClass = HtmlImport
-    _DATA_PATH = 'data/_import/'
+    _dataPath = 'data/_import/'
         
-    # The following is needed to identify the source of failure.
+    # The test methods must be defined here to identify the source of failure.
 
     def test_imp_to_yw7(self):
         super().test_imp_to_yw7()

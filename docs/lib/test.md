@@ -1,8 +1,8 @@
-[home](../../index) > [pywriter](pywriter) > testcases
+[home](../index) > [The pywriter library](pywriter) > testcases
 
 ---
 
-# The testcases package - Modules for automated regression tests.
+# The test package - Modules for automated regression tests.
 
 
 ## Modules
@@ -16,8 +16,8 @@
 
 ### Overview
 
-![testcases package class diagram](img/testcases_package_class_diagram.png)
+![test package class diagram](img/test_package_class_diagram.png)
 
 ### Detailed class diagram
 
-![testcases package detailed class diagram](img/testcases_package_detailed_class_diagram.png)
+![test package detailed class diagram](img/test_package_detailed_class_diagram.png)

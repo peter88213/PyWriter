@@ -7,7 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 from pywriter.html.html_locations import HtmlLocations
 from pywriter.odt.odt_locations import OdtLocations
-from pywriter.testcases.import_export_test import ImportExportTest
+from pywriter.test.import_export_test import ImportExportTest
 import unittest
 
 
@@ -15,7 +15,7 @@ class NrmOpr(ImportExportTest, unittest.TestCase):
     _importClass = HtmlLocations
     _exportClass = OdtLocations
 
-    # The following is needed to identify the source of failure.
+    # The test methods must be defined here to identify the source of failure.
 
     def test_yw7_to_exp(self):
         super().test_yw7_to_exp()

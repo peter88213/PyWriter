@@ -7,7 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 from pywriter.html.html_partdesc import HtmlPartDesc
 from pywriter.odt.odt_partdesc import OdtPartDesc
-from pywriter.testcases.import_export_test import ImportExportTest
+from pywriter.test.import_export_test import ImportExportTest
 import unittest
 
 
@@ -15,7 +15,7 @@ class NrmOpr(ImportExportTest, unittest.TestCase):
     _importClass = HtmlPartDesc
     _exportClass = OdtPartDesc
 
-    # The following is needed to identify the source of failure.
+    # The test methods must be defined here to identify the source of failure.
 
     def test_yw7_to_exp(self):
         super().test_yw7_to_exp()
