@@ -12,8 +12,8 @@ with open(ywFile, 'r', encoding='utf-8') as f:
 newlines = []
 
 for line in lines:
-    line = re.sub(' \<' + tag + '\>$', '<' + tag + '><![CDATA[', line)
-    line = re.sub(' \<\/' + tag + '\>$', ']]></' + tag + '>', line)
+    line = re.sub(f' \<{tag}\>$', f'<{tag}><![CDATA[', line)
+    line = re.sub(f' \<\/{tag}\>$', f']]></{tag}>', line)
     newlines.append(line)
     
 with open(ywFile, 'w', encoding='utf-8') as f:
