@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](pywriter) > testcases
+[home](../index) > [The pywriter library](pywriter) > test
 
 ---
 
