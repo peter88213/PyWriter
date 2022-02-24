@@ -44,6 +44,7 @@ The **YwCnvUi** subclass has several **fileFactory** subclasses to instantiate t
 - [converter](converter) -- Modules for conversion of Novel subclasses.
 - [ui](ui) -- Modules for user interfaces.
 - [config](config) -- Modules for configuration persistence.
+- [testcases](testcases) -- Modules for automated regression tests.
 
 
 
