@@ -10,4 +10,4 @@ The following are some example sequence diagrams, each illustrating one of the u
 
 ## Export from yw: Convert yWriter chapters and scenes to odt format.
 
-![sequence diagram](img/sd_export_odt_from_yw.png)
+[![sequence diagram](img/sd_export_odt_from_yw.png)](https://peter88213.github.io/PyWriter/spec/img/sd_export_odt_from_yw.png)
