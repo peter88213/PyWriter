@@ -1,0 +1,83 @@
+@startuml
+!$srcClass = "Yw7File"
+!$tgtClass = "OdtExport"
+!$srcObj = "source : Yw7File"
+!$tgtObj = "target : OdtExport"
+!$newPrjFact = "newProjectFactory : NewProjectFactory"
+!$newPrjFactClass = "NewProjectFactory"
+!$converter = "converter : Yw7Converter"
+!$expSrcFact = "exportSourceFactory : ExportSourceFactory"
+!$expTgtFact = "exportTargetFactory : ExportTargetFactory"
+!$impSrcFact = "importSourceFactory : ImportSourceFactory"
+!$impTgtFact = "importTargetFactory : ImportTargetFactory"
+
+create export_odt.py
+
+create "ui : UiTk"
+export_odt.py ->> "ui : UiTk" : UiTk()
+
+create "$converter" 
+export_odt.py ->> "$converter" : Yw7Converter()
+
+create "$expSrcFact" 
+"$converter" ->> "$expSrcFact" : ExportSourceFactory(fileClasses)
+
+create "$expTgtFact" 
+"$converter" ->> "$expTgtFact" : ExportTargetFactory(fileClasses)
+
+create "$impSrcFact" 
+"$converter" ->> "$impSrcFact" : ImportSourceFactory(fileClasses)
+
+create "$impTgtFact" 
+"$converter" ->> "$impTgtFact" : ImportTargetFactory(fileClasses)
+
+create "$newPrjFact" 
+"$converter" ->> "$newPrjFact" : $newPrjFactClass(fileClasses)
+
+export_odt.py ->> "$converter" : run(sourcePath, **kwargs)
+
+activate "$converter"
+"$converter" ->> "$expSrcFact" : make_file_objects(sourcePath, **kwargs)
+
+activate "$expSrcFact"
+create "$srcObj"
+"$expSrcFact" ->> "$srcObj" : $srcClass()
+"$expSrcFact" -->> "$converter" : message, source
+deactivate "$expSrcFact"
+
+"$converter" ->> "$expTgtFact" : make_file_objects(sourcePath, **kwargs)
+
+activate "$expTgtFact"
+create "$tgtObj"
+"$expTgtFact" ->> "$tgtObj" : $tgtClass()
+"$expTgtFact" -->> "$converter" : message, target
+deactivate "$expTgtFact"
+
+"$converter" ->> "$converter" : export_from_yw(source, target)
+activate "$converter"
+"$converter" ->> "ui : UiTk" : set_info_what(message)
+"$converter" ->> "$converter" : convert(source, target)
+activate "$converter"
+
+"$converter" ->> "$srcObj" : read()
+activate "$srcObj"
+"$srcObj" -->> "$converter" : message
+deactivate "$srcObj"
+
+"$converter" ->> "$tgtObj" : merge(source)
+activate "$tgtObj"
+"$tgtObj" -->>  "$converter" : message
+deactivate "$tgtObj"
+
+"$converter" ->> "$tgtObj" : write()
+activate "$tgtObj"
+"$tgtObj" -->>  "$converter" : message
+deactivate "$converter"
+deactivate "$tgtObj"
+
+"$converter" ->> "ui : UiTk" : set_info_how(message)
+deactivate "$converter"
+deactivate "$converter"
+
+export_odt.py ->> "ui : UiTk" : start()
+@enduml
