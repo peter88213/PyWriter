@@ -21870,7 +21870,7 @@
         <children xmi:type="notation:Shape" xmi:id="_DtmGQJaLEeyh8qp-GiQQxg" type="Lifeline_Shape">
           <children xmi:type="notation:DecorationNode" xmi:id="_DtoigJaLEeyh8qp-GiQQxg" type="Lifeline_NameLabel"/>
           <element xmi:type="uml:Lifeline" href="PyWriter.uml#_Ds_pUJaLEeyh8qp-GiQQxg"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DtmGQZaLEeyh8qp-GiQQxg" x="1557" y="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DtmGQZaLEeyh8qp-GiQQxg" x="456" y="10"/>
         </children>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oNyrlJZxEeyHWt2eMLX-aQ"/>
       </children>
