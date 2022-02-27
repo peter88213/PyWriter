@@ -1,5 +1,5 @@
 @startuml
-create export_odt.py as script
+create import_wip.py as script
 
 create "ui : UiTk"
 script ->> "ui : UiTk" : UiTk()
@@ -28,20 +28,26 @@ activate converter
 converter ->> exportSourceFactory : make_file_objects(sourcePath, **kwargs)
 
 activate exportSourceFactory
-create "source : Yw7File" as source
-exportSourceFactory ->> source : Yw7File()
-exportSourceFactory -->> converter : message, source
+exportSourceFactory -->> converter : message
 deactivate exportSourceFactory
 
-converter ->> exportTargetFactory : make_file_objects(sourcePath, **kwargs)
+converter ->> importSourceFactory : make_file_objects(sourcePath, **kwargs)
 
-activate exportTargetFactory
-create "target : OdtExport" as target
-exportTargetFactory ->> target : OdtExport()
-exportTargetFactory -->> converter : message, target
-deactivate exportTargetFactory
+activate importSourceFactory
+importSourceFactory -->> converter : message
+deactivate importSourceFactory
 
-converter ->> converter : export_from_yw(source, target)
+converter ->> newProjectFactory : make_file_objects(sourcePath, **kwargs)
+
+activate newProjectFactory
+create "source : HtmlImport" as source
+newProjectFactory ->> source : HtmlImport()
+create "target : Yw7File" as target
+newProjectFactory ->> target : Yw7File()
+newProjectFactory -->> converter : message, source, target
+deactivate newProjectFactory
+
+converter ->> converter : create_yw7(source, target)
 activate converter
 converter ->> "ui : UiTk" : set_info_what(message)
 converter ->> converter : convert(source, target)
