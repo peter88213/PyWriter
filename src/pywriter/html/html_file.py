@@ -25,7 +25,6 @@ class HtmlFile(Novel, HTMLParser):
         read --
     """
     EXTENSION = '.html'
-    
     _COMMENT_START = '/*'
     _COMMENT_END = '*/'
     _SC_TITLE_BRACKET = '~'
@@ -71,7 +70,6 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('\n', ' ')
         text = text.replace('\r', ' ')
         text = text.replace('\t', ' ')
-
         while '  ' in text:
             text = text.replace('  ', ' ').strip()
 
@@ -99,7 +97,6 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('[/b][b]', '')
         text = text.replace('[/i][i]', '')
         text = text.replace('[/b][b]', '')
-
         return text
 
     def _preprocess(self, text):
@@ -137,14 +134,11 @@ class HtmlFile(Novel, HTMLParser):
         For differently structured HTML files  do override this method in a subclass.
         """
         if tag == 'div':
-
             if attrs[0][0] == 'id':
-
                 if attrs[0][1].startswith('ScID'):
                     self._scId = re.search('[0-9]+', attrs[0][1]).group()
                     self.scenes[self._scId] = Scene()
                     self.chapters[self._chId].srtScenes.append(self._scId)
-
                 elif attrs[0][1].startswith('ChID'):
                     self._chId = re.search('[0-9]+', attrs[0][1]).group()
                     self.chapters[self._chId] = Chapter()
@@ -159,10 +153,8 @@ class HtmlFile(Novel, HTMLParser):
         
         Overrides HTMLparser.handle_comment() called by the parser when a comment is encountered.
         """
-        
         if self._scId is not None: 
             self._lines.append(f'{self._COMMENT_START}{data}{self._COMMENT_END}')
-            
 
     def read(self):
         """Parse the file and get the instance variables.
@@ -172,7 +164,6 @@ class HtmlFile(Novel, HTMLParser):
         content of the respective HTML file.
         """
         message, content = read_html_file(self._filePath)
-
         if message.startswith(ERROR):
             return message
 

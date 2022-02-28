@@ -1130,7 +1130,6 @@ class OdtFile(OdfFile):
         # Generate the common ODF components.
 
         message = super()._set_up()
-
         if message.startswith(ERROR):
             return message
 
@@ -1139,7 +1138,6 @@ class OdtFile(OdfFile):
         try:
             with open(f'{self._tempDir}/manifest.rdf', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_RDF)
-        
         except:
             return f'{ERROR}Cannot write "manifest.rdf"'
 
@@ -1156,10 +1154,8 @@ class OdtFile(OdfFile):
         
         Overrides the superclass method.
         """
-        
         if quick:            
             # Just clean up a one-liner without sophisticated formatting.
-            
             try:
                 return text.replace('&', '&amp;').replace('>', '&gt;').replace('<', '&lt;')
             
@@ -1180,7 +1176,6 @@ class OdtFile(OdfFile):
             ('/*', f'<office:annotation><dc:creator>{self.authorName}</dc:creator><text:p>'),
             ('*/', '</text:p></office:annotation>'),
         ]
-
         try:
             # process italics and bold markup reaching across linebreaks
 
@@ -1188,38 +1183,27 @@ class OdtFile(OdfFile):
             bold = False
             newlines = []
             lines = text.split('\n')
-
             for line in lines:
                 if italics:
                     line = f'[i]{line}'
                     italics = False
-
                 while line.count('[i]') > line.count('[/i]'):
                     line = f'{line}[/i]'
                     italics = True
-
                 while line.count('[/i]') > line.count('[i]'):
                     line = f'[i]{line}'
-
                 line = line.replace('[i][/i]', '')
-
                 if bold:
                     line = f'[b]{line}'
                     bold = False
-
                 while line.count('[b]') > line.count('[/b]'):
                     line = f'{line}[/b]'
                     bold = True
-
                 while line.count('[/b]') > line.count('[b]'):
                     line = f'[b]{line}'
-
                 line = line.replace('[b][/b]', '')
-
                 newlines.append(line)
-
             text = '\n'.join(newlines).rstrip()
-
             for yw, od in ODT_REPLACEMENTS:
                 text = text.replace(yw, od)
 
@@ -1227,8 +1211,6 @@ class OdtFile(OdfFile):
             # strikethrough, and underline tags.
 
             text = re.sub('\[\/*[h|c|r|s|u]\d*\]', '', text)
-
         except AttributeError:
             text = ''
-
         return text

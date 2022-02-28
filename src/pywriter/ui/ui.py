@@ -61,11 +61,9 @@ class Ui():
             
         Print the message to stderr, replacing the error marker, if any.
         """
-
         if message.startswith(ERROR):
             message = f'FAIL: {message.split(ERROR, maxsplit=1)[1].strip()}'
             sys.stderr.write(message)
-
         self.infoHowText = message
 
     def start(self):

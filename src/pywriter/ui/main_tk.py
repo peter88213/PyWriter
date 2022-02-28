@@ -52,7 +52,6 @@ class MainTk(Ui):
         self._statusText = ''
         self.kwargs = kwargs
         self._ywPrj = None
-
         self._root = tk.Tk()
         self._root.title(title)
         self._mainMenu = tk.Menu(self._root)
@@ -62,10 +61,8 @@ class MainTk(Ui):
         self._fileMenu.add_command(label='Close', command=lambda: self._close_project())
         self._fileMenu.entryconfig('Close', state='disabled')
         self._fileMenu.add_command(label='Exit', command=self._root.quit)
-
         self._extend_menu()
         # Hook for subclasses
-
         self._root.config(menu=self._mainMenu) 
         self._titleBar = tk.Label(self._root, text='', padx=5, pady=2)
         self._titleBar.pack(expand=False, anchor='w')
@@ -121,17 +118,13 @@ class MainTk(Ui):
         """
         self._set_status(self._statusText)
         initDir = os.path.dirname(self.kwargs['yw_last_open'])
-
         if not initDir:
             initDir = './'
-
         if not fileName or not os.path.isfile(fileName):
             fileName = filedialog.askopenfilename(filetypes=fileTypes, defaultextension='.yw7', initialdir=initDir)
-
         if fileName:
             self.kwargs['yw_last_open'] = fileName
             self._pathBar.config(text=os.path.normpath(fileName))
-
         return fileName
 
     def _close_project(self):
@@ -164,17 +157,14 @@ class MainTk(Ui):
         Display the message at the status bar.
         Overrides the superclass method.
         """
-
         if message.startswith(ERROR):
             self._statusBar.config(bg='red')
             self._statusBar.config(fg='white')
             self.infoHowText = message.split(ERROR, maxsplit=1)[1].strip()
-
         else:
             self._statusBar.config(bg='green')
             self._statusBar.config(fg='white')
             self.infoHowText = message
-
         self._statusBar.config(text=self.infoHowText)
 
     def _set_status(self, message):

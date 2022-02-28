@@ -36,13 +36,11 @@ class CsvSceneList(CsvFile):
         Extends the superclass method.
         """
         message = super().read()
-
         if message.startswith(ERROR):
             return message
 
         for cells in self._rows:
             i = 0
-
             if 'ScID:' in cells[i]:
                 scId = re.search('ScID\:([0-9]+)', cells[0]).group(1)
                 self.scenes[scId] = Scene()
@@ -55,13 +53,10 @@ class CsvSceneList(CsvFile):
                 i += 1
                 self.scenes[scId].sceneNotes = self._convert_to_yw(cells[i])
                 i += 1
-
                 if Scene.REACTION_MARKER.lower() in cells[i].lower():
                     self.scenes[scId].isReactionScene = True
-
                 else:
                     self.scenes[scId].isReactionScene = False
-
                 i += 1
                 self.scenes[scId].goal = cells[i]
                 i += 1
@@ -78,57 +73,40 @@ class CsvSceneList(CsvFile):
 
                 if cells[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field1 = cells[i]
-
                 else:
                     self.scenes[scId].field1 = '1'
-
                 i += 1
-
                 if cells[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field2 = cells[i]
-
                 else:
                     self.scenes[scId].field2 = '1'
-
                 i += 1
-
                 if cells[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field3 = cells[i]
-
                 else:
                     self.scenes[scId].field3 = '1'
-
                 i += 1
-
                 if cells[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field4 = cells[i]
-
                 else:
                     self.scenes[scId].field4 = '1'
-
                 i += 1
                 # Don't write back scene words total
                 i += 1
                 # Don't write back scene letters total
                 i += 1
-
                 try:
                     self.scenes[scId].status = Scene.STATUS.index(cells[i])
-
                 except ValueError:
                     pass
                     # Scene status remains None and will be ignored when
                     # writing back.
-
                 i += 1
                 ''' Cannot write back character IDs, because self.characters is None
                 charaNames = self._get_list(cells[i])
                 self.scenes[scId].characters = []
-
                 for charaName in charaNames:
-
                     for id, name in self.characters.items():
-
                         if name == charaName:
                             self.scenes[scId].characters.append(id)
                 '''
@@ -136,11 +114,8 @@ class CsvSceneList(CsvFile):
                 ''' Cannot write back location IDs, because self.locations is None
                 locaNames = self._get_list(cells[i])
                 self.scenes[scId].locations = []
-
                 for locaName in locaNames:
-
                     for id, name in self.locations.items():
-
                         if name == locaName:
                             self.scenes[scId].locations.append(id)
                 '''
@@ -148,13 +123,9 @@ class CsvSceneList(CsvFile):
                 ''' Cannot write back item IDs, because self.items is None
                 itemNames = self._get_list(cells[i])
                 self.scenes[scId].items = []
-
                 for itemName in itemNames:
-
                     for id, name in self.items.items():
-
                         if name == itemName:
                             self.scenes[scId].items.append(id)
                 '''
-
         return 'CSV data converted to novel structure.'

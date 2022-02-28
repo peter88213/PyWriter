@@ -30,12 +30,10 @@ class CsvCharList(CsvFile):
         Extends the superclass method.
         """
         message = super().read()
-
         if message.startswith(ERROR):
             return message
 
         for cells in self._rows:
-
             if 'CrID:' in cells[0]:
                 crId = re.search('CrID\:([0-9]+)', cells[0]).group(1)
                 self.srtCharacters.append(crId)
@@ -46,14 +44,10 @@ class CsvCharList(CsvFile):
                 self.characters[crId].desc = self._convert_to_yw(cells[4])
                 self.characters[crId].bio = cells[5]
                 self.characters[crId].goals = cells[6]
-
                 if Character.MAJOR_MARKER in cells[7]:
                     self.characters[crId].isMajor = True
-
                 else:
                     self.characters[crId].isMajor = False
-
                 self.characters[crId].tags = self._get_list(cells[8])
                 self.characters[crId].notes = self._convert_to_yw(cells[9])
-
         return 'Character data read in.'

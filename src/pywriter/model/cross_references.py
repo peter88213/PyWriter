@@ -93,42 +93,30 @@ class CrossReferences():
 
         for crId in novel.srtCharacters:
             self.scnPerChr[crId] = []
-
             if novel.characters[crId].tags:
-
                 for tag in novel.characters[crId].tags:
-
                     if not tag in self.chrPerTag:
                         self.chrPerTag[tag] = []
-
                     self.chrPerTag[tag].append(crId)
 
         #--- Locations per tag.
 
         for lcId in novel.srtLocations:
             self.scnPerLoc[lcId] = []
-
             if novel.locations[lcId].tags:
-
                 for tag in novel.locations[lcId].tags:
-
                     if not tag in self.locPerTag:
                         self.locPerTag[tag] = []
-
                     self.locPerTag[tag].append(lcId)
 
         #--- Items per tag.
 
         for itId in novel.srtItems:
             self.scnPerItm[itId] = []
-
             if novel.items[itId].tags:
-
                 for tag in novel.items[itId].tags:
-
                     if not tag in self.itmPerTag:
                         self.itmPerTag[tag] = []
-
                     self.itmPerTag[tag].append(itId)
                     
         #--- Process chapters and scenes.
@@ -142,31 +130,25 @@ class CrossReferences():
                 #--- Scenes per character.
 
                 if novel.scenes[scId].characters:
-
                     for crId in novel.scenes[scId].characters:
                         self.scnPerChr[crId].append(scId)
 
                 #--- Scenes per location.
 
                 if novel.scenes[scId].locations:
-
                     for lcId in novel.scenes[scId].locations:
                         self.scnPerLoc[lcId].append(scId)
 
                 #--- Scenes per item.
 
                 if novel.scenes[scId].items:
-
                     for itId in novel.scenes[scId].items:
                         self.scnPerItm[itId].append(scId)
 
                 #--- Scenes per tag.
 
                 if novel.scenes[scId].tags:
-
                     for tag in novel.scenes[scId].tags:
-
                         if not tag in self.scnPerTag:
                             self.scnPerTag[tag] = []
-
                         self.scnPerTag[tag].append(scId)

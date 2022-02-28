@@ -37,19 +37,16 @@ class ImportTargetFactory(FileFactory):
         """
         fileName, __ = os.path.splitext(sourcePath)
         sourceSuffix = kwargs['suffix']
-
         if sourceSuffix:
             ywPathBasis = fileName.split(sourceSuffix)[0]
-
         else:
             ywPathBasis = fileName
 
         # Look for an existing yWriter project to rewrite.
 
         for fileClass in self._fileClasses:
-
             if os.path.isfile(f'{ywPathBasis}{fileClass.EXTENSION}'):
                 targetFile = fileClass(f'{ywPathBasis}{fileClass.EXTENSION}', **kwargs)
                 return 'Target object created.', None, targetFile
-
+            
         return f'{ERROR}No yWriter project to write.', None, None

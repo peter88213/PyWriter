@@ -162,13 +162,10 @@ class Novel():
         - Format the path string according to Python's requirements. 
         - Accept only filenames with the right suffix and extension.
         """
-
         if self.SUFFIX is not None:
             suffix = self.SUFFIX
-
         else:
             suffix = ''
-
         if filePath.lower().endswith(f'{suffix}{self.EXTENSION}'.lower()):
             self._filePath = filePath
             head, tail = os.path.split(os.path.realpath(filePath))

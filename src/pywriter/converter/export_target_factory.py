@@ -36,15 +36,11 @@ class ExportTargetFactory(FileFactory):
         """
         fileName, __ = os.path.splitext(sourcePath)
         suffix = kwargs['suffix']
-
         for fileClass in self._fileClasses:
-
             if fileClass.SUFFIX == suffix:
-
                 if suffix is None:
                     suffix = ''
-
                 targetFile = fileClass(f'{fileName}{suffix}{fileClass.EXTENSION}', **kwargs)
                 return 'Target object created.', None, targetFile
-
+        
         return f'{ERROR}File type of "{os.path.normpath(sourcePath)}" not supported.', None, None

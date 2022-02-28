@@ -40,11 +40,8 @@ class HtmlLocations(HtmlFile):
         
         Overrides the superclass method.
         """
-
         if tag == 'div':
-
             if attrs[0][0] == 'id':
-
                 if attrs[0][1].startswith('LcID'):
                     self._lcId = re.search('[0-9]+', attrs[0][1]).group()
                     self.srtLocations.append(self._lcId)
@@ -59,12 +56,10 @@ class HtmlLocations(HtmlFile):
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
         if self._lcId is not None:
-
             if tag == 'div':
                 self.locations[self._lcId].desc = ''.join(self._lines)
                 self._lines = []
                 self._lcId = None
-
             elif tag == 'p':
                 self._lines.append('\n')
 

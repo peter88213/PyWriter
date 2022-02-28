@@ -26,13 +26,9 @@ class ImportSourceFactory(FileFactory):
         - sourceFile: a Novel subclass instance, or None in case of error
         - targetFile: None
         """
-
         for fileClass in self._fileClasses:
-
             if fileClass.SUFFIX is not None:
-
                 if sourcePath.endswith(f'{fileClass.SUFFIX }{fileClass.EXTENSION}'):
                     sourceFile = fileClass(sourcePath, **kwargs)
                     return 'Source object created.', sourceFile, None
-
         return f'{ERROR}This document is not meant to be written back.', None, None

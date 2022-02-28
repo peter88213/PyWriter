@@ -50,28 +50,22 @@ class HtmlProof(HtmlFile):
         scId = ''
         chId = ''
         inScene = False
-
         for line in self._lines:
-
             if '[ScID' in line:
                 scId = re.search('[0-9]+', line).group()
                 self.scenes[scId] = Scene()
                 self.chapters[chId].srtScenes.append(scId)
                 inScene = True
-
             elif '[/ScID' in line:
                 self.scenes[scId].sceneContent = '\n'.join(sceneText)
                 sceneText = []
                 inScene = False
-
             elif '[ChID' in line:
                 chId = re.search('[0-9]+', line).group()
                 self.chapters[chId] = Chapter()
                 self.srtChapters.append(chId)
-
             elif '[/ChID' in line:
                 pass
-
             elif inScene:
                 sceneText.append(line)
 
@@ -84,13 +78,10 @@ class HtmlProof(HtmlFile):
         
         Overrides the superclass method.
         """
-
         if tag == 'p':
             self._prefix = ''
-
         elif tag == 'h2':
             self._prefix = Splitter.CHAPTER_SEPARATOR
-
         elif tag == 'h1':
             self._prefix = Splitter.PART_SEPARATOR
 
@@ -113,6 +104,5 @@ class HtmlProof(HtmlFile):
         
         Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
-        
         if self._prefix is not None:
             self._lines.append(f'{self._prefix}{data}')

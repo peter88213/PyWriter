@@ -32,7 +32,6 @@ class YwCnvUi(YwCnv):
         """Define instance variables."""
         self.ui = Ui('')
         # Per default, 'silent mode' is active.
-
         self.newFile = None
         # Also indicates successful conversion.
 
@@ -70,7 +69,6 @@ class YwCnvUi(YwCnv):
 
         if message.startswith(ERROR):
             self.newFile = None
-
         else:
             self.newFile = target.filePath
 
@@ -97,10 +95,8 @@ class YwCnvUi(YwCnv):
 
         self.ui.set_info_what(
             f'Create a yWriter project file from {source.DESCRIPTION}\nNew project: "{os.path.normpath(target.filePath)}"')
-
         if os.path.isfile(target.filePath):
             self.ui.set_info_how(f'{ERROR}"{os.path.normpath(target.filePath)}" already exists.')
-
         else:
             # Convert source into target.
 
@@ -114,7 +110,6 @@ class YwCnvUi(YwCnv):
 
             if message.startswith(ERROR):
                 self.newFile = None
-
             else:
                 self.newFile = target.filePath
 
@@ -157,7 +152,6 @@ class YwCnvUi(YwCnv):
 
         if message.startswith(ERROR):
             self.newFile = None
-
         else:
             self.newFile = target.filePath
 
@@ -173,28 +167,20 @@ class YwCnvUi(YwCnv):
 
     def _delete_tempfile(self, filePath):
         """Delete filePath if it is a temporary file no longer needed."""
-
         if filePath.endswith('.html'):
             # Might it be a temporary text document?
-
             if os.path.isfile(filePath.replace('.html', '.odt')):
                 # Does a corresponding Office document exist?
-
                 try:
                     os.remove(filePath)
-
                 except:
                     pass
-
         elif filePath.endswith('.csv'):
             # Might it be a temporary spreadsheet document?
-
             if os.path.isfile(filePath.replace('.csv', '.ods')):
                 # Does a corresponding Office document exist?
-
                 try:
                     os.remove(filePath)
-
                 except:
                     pass
 

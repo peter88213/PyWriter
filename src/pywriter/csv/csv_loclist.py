@@ -19,7 +19,6 @@ class CsvLocList(CsvFile):
     """
     DESCRIPTION = 'Location list'
     SUFFIX = '_loclist'
-
     _rowTitles = ['ID', 'Name', 'Description', 'Aka', 'Tags']
 
     def read(self):
@@ -30,12 +29,10 @@ class CsvLocList(CsvFile):
         Extends the superclass method.
         """
         message = super().read()
-
         if message.startswith(ERROR):
             return message
 
         for cells in self._rows:
-
             if 'LcID:' in cells[0]:
                 lcId = re.search('LcID\:([0-9]+)', cells[0]).group(1)
                 self.srtLocations.append(lcId)
@@ -44,5 +41,4 @@ class CsvLocList(CsvFile):
                 self.locations[lcId].desc = self._convert_to_yw(cells[2])
                 self.locations[lcId].aka = cells[3]
                 self.locations[lcId].tags = self._get_list(cells[4])
-
         return 'Location data read in.'

@@ -161,41 +161,30 @@ class OdsPlotList(OdsFile):
         Overrides the superclass template method.
         """
         projectTemplateMapping = super()._get_fileHeaderMapping()
-
         charList = []
-
         for crId in self.srtCharacters:
             charList.append(self.characters[crId].title)
             # Collect character names to identify storylines
-
         if self.fieldTitle1 in charList or self._STORYLINE_MARKER in self.fieldTitle1.lower():
             self.arc1 = True
-
         else:
             self.arc1 = False
             projectTemplateMapping['FieldTitle1'] = self._NOT_APPLICABLE
-
         if self.fieldTitle2 in charList or self._STORYLINE_MARKER in self.fieldTitle2.lower():
             self.arc2 = True
-
         else:
             self.arc2 = False
             projectTemplateMapping['FieldTitle2'] = self._NOT_APPLICABLE
-
         if self.fieldTitle3 in charList or self._STORYLINE_MARKER in self.fieldTitle3.lower():
             self.arc3 = True
-
         else:
             self.arc3 = False
             projectTemplateMapping['FieldTitle3'] = self._NOT_APPLICABLE
-
         if self.fieldTitle4 in charList or self._STORYLINE_MARKER in self.fieldTitle4.lower():
             self.arc4 = True
-
         else:
             self.arc4 = False
             projectTemplateMapping['FieldTitle4'] = self._NOT_APPLICABLE
-
         return projectTemplateMapping
 
     def _get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
@@ -218,26 +207,18 @@ class OdsPlotList(OdsFile):
 
         if self.scenes[scId].field1 == '1' or not self.arc1:
             sceneMapping['Field1'] = '"string">\n'
-
         else:
             sceneMapping['Field1'] = f'"float" office:value="{sceneMapping["Field1"]}">\n      <text:p>{sceneMapping["Field1"]}</text:p>'
-
         if self.scenes[scId].field2 == '1' or not self.arc2:
             sceneMapping['Field2'] = '"string">\n'
-
         else:
             sceneMapping['Field2'] = f'"float" office:value="{sceneMapping["Field2"]}">\n      <text:p>{sceneMapping["Field2"]}</text:p>'
-
         if self.scenes[scId].field3 == '1' or not self.arc3:
             sceneMapping['Field3'] = '"string">\n'
-
         else:
             sceneMapping['Field3'] = f'"float" office:value="{sceneMapping["Field3"]}">\n      <text:p>{sceneMapping["Field3"]}</text:p>'
-
         if self.scenes[scId].field4 == '1' or not self.arc4:
             sceneMapping['Field4'] = '"string">\n'
-
         else:
             sceneMapping['Field4'] = f'"float" office:value="{sceneMapping["Field4"]}">\n      <text:p>{sceneMapping["Field4"]}</text:p>'
-
         return sceneMapping

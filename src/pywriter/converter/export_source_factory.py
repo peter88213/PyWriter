@@ -29,11 +29,9 @@ class ExportSourceFactory(FileFactory):
         - targetFile: None
         """
         __, fileExtension = os.path.splitext(sourcePath)
-
         for fileClass in self._fileClasses:
-
             if fileClass.EXTENSION == fileExtension:
                 sourceFile = fileClass(sourcePath, **kwargs)
                 return 'Source object created.', sourceFile, None
-
+            
         return f'{ERROR}File type of "{os.path.normpath(sourcePath)}" not supported.', None, None

@@ -296,14 +296,10 @@ class OdsFile(OdfFile):
             ('<', '&lt;'),
             ('\n', '</text:p>\n<text:p>'),
         ]
-
         try:
             text = text.rstrip()
-
             for yw, od in ODS_REPLACEMENTS:
                 text = text.replace(yw, od)
-
         except AttributeError:
             text = ''
-
         return text

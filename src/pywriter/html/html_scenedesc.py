@@ -23,36 +23,25 @@ class HtmlSceneDesc(HtmlFile):
 
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
-
         if self._scId is not None:
-
             if tag == 'div':
                 text = ''.join(self._lines)
-
                 if text.startswith(self._COMMENT_START):
-
                     try:
                         scTitle, scContent = text.split(
                             sep=self._COMMENT_END, maxsplit=1)
-
                         if self._SC_TITLE_BRACKET in scTitle:
                             self.scenes[self._scId].title = scTitle.split(
                                 self._SC_TITLE_BRACKET)[1].strip()
-
                         text = scContent
-
                     except:
                         pass
-
                 self.scenes[self._scId].desc = text
                 self._lines = []
                 self._scId = None
-
             elif tag == 'p':
                 self._lines.append('\n')
-
         elif self._chId is not None:
-
             if tag == 'div':
                 self._chId = None
 
@@ -64,11 +53,8 @@ class HtmlSceneDesc(HtmlFile):
         
         Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
-        
         if self._scId is not None:
             self._lines.append(data.strip())
-
         elif self._chId is not None:
-
             if not self.chapters[self._chId].title:
                 self.chapters[self._chId].title = data.strip()

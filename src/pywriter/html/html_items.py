@@ -40,11 +40,8 @@ class HtmlItems(HtmlFile):
         
         Overrides the superclass method.
         """
-
         if tag == 'div':
-
             if attrs[0][0] == 'id':
-
                 if attrs[0][1].startswith('ItID'):
                     self._itId = re.search('[0-9]+', attrs[0][1]).group()
                     self.srtItems.append(self._itId)
@@ -58,14 +55,11 @@ class HtmlItems(HtmlFile):
 
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
-
         if self._itId is not None:
-
             if tag == 'div':
                 self.items[self._itId].desc = ''.join(self._lines)
                 self._lines = []
                 self._itId = None
-
             elif tag == 'p':
                 self._lines.append('\n')
 
@@ -77,6 +71,5 @@ class HtmlItems(HtmlFile):
         
         Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
-        
         if self._itId is not None:
             self._lines.append(data.strip())

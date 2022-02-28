@@ -38,30 +38,24 @@ class DataFiles(Yw7File):
         characterPath = f'{path}_Characters.xml'
         characterSubtree = ywProject.tree.find('CHARACTERS')
         characterTree = ET.ElementTree(characterSubtree)
-
         try:
             characterTree.write(characterPath, xml_declaration=False, encoding='utf-8')
-
         except(PermissionError):
             return f'{ERROR}"{os.path.normpath(characterPath)}" is write protected.'
 
         locationPath = f'{path}_Locations.xml'
         locationSubtree = ywProject.tree.find('LOCATIONS')
         locationTree = ET.ElementTree(locationSubtree)
-
         try:
             locationTree.write(locationPath, xml_declaration=False, encoding='utf-8')
-
         except(PermissionError):
             return f'{ERROR}"{os.path.normpath(locationPath)}" is write protected.'
 
         itemPath = f'{path}_Items.xml'
         itemSubtree = ywProject.tree.find('ITEMS')
         itemTree = ET.ElementTree(itemSubtree)
-
         try:
             itemTree.write(itemPath, xml_declaration=False, encoding='utf-8')
-
         except(PermissionError):
             return f'{ERROR}"{os.path.normpath(itemPath)}" is write protected.'
 
@@ -81,19 +75,16 @@ class DataFiles(Yw7File):
         path, __ = os.path.splitext(filePath)
         characterPath = f'{path}_Characters.xml'
         message = super()._postprocess_xml_file(characterPath)
-
         if message.startswith(ERROR):
             return message
 
         locationPath = f'{path}_Locations.xml'
         message = super()._postprocess_xml_file(locationPath)
-
         if message.startswith(ERROR):
             return message
 
         itemPath = f'{path}_Items.xml'
         message = super()._postprocess_xml_file(itemPath)
-
         if message.startswith(ERROR):
             return message
 

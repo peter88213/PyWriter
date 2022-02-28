@@ -54,14 +54,12 @@ class YwCnv():
         # Make the source object read the source file.
 
         message = source.read()
-
         if message.startswith(ERROR):
             return message
 
         # Make the target object merge the source object's instance variables.
 
         message = target.merge(source)
-
         if message.startswith(ERROR):
             return message
 

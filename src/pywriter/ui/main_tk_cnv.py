@@ -43,7 +43,6 @@ class MainTkCnv(MainTk):
         self._ywExtension = Yw7File.EXTENSION
         self._docExtension = None
 
-
     def _extend_menu(self):
         """Add main menu entries.
         
@@ -82,37 +81,29 @@ class MainTkCnv(MainTk):
         Extends the superclass method.
         """
         fileName = super().open_project(fileName, fileTypes=self.kwargs['file_types'])
-
         if not fileName:
             return ''
-
         self._sourcePath = fileName
         self._enable_menu()
-        
         if fileName.endswith(self._ywExtension):
             self._titleBar.config(text=self._EXPORT_DESC)
-        
         elif fileName.endswith(self._docExtension):
             self._titleBar.config(text=self._IMPORT_DESC)
-        
         return fileName
 
     def _reverse_direction(self):
         """Swap source and target file names."""
         fileName, fileExtension = os.path.splitext(self._sourcePath)
-
         if fileExtension == self._ywExtension:
             self._sourcePath = f'{fileName}{self._docExtension}'
             self._pathBar.config(text=os.path.normpath(self._sourcePath))
             self._titleBar.config(text=self._IMPORT_DESC)
             self._set_status('')
-
         elif fileExtension == self._docExtension:
             self._sourcePath = f'{fileName}{self._ywExtension}'
             self._pathBar.config(text=os.path.normpath(self._sourcePath))
             self._titleBar.config(text=self._EXPORT_DESC)
             self._set_status('')
-
 
     def _convert_file(self):
         """Call the converter's conversion method, if a source file is selected."""

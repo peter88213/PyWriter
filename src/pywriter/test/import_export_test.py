@@ -73,7 +73,6 @@ class ImportExportTest(ExportTest):
     def _remove_all_tempfiles(self):
         """Clean up the test execution directory."""
         super()._remove_all_tempfiles()
-        
         try:
             os.remove(self._testImpFile)
         except:

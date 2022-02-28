@@ -50,13 +50,10 @@ class HtmlOutline(HtmlFile):
             self.chapters[self._chId].srtScenes = []
             self.srtChapters.append(self._chId)
             self.chapters[self._chId].oldType = '0'
-
             if tag == 'h1':
                 self.chapters[self._chId].chLevel = 1
-
             else:
                 self.chapters[self._chId].chLevel = 0
-
         elif tag == 'h3':
             self._lines = []
             self._scCount += 1
@@ -65,19 +62,14 @@ class HtmlOutline(HtmlFile):
             self.chapters[self._chId].srtScenes.append(self._scId)
             self.scenes[self._scId].sceneContent = ''
             self.scenes[self._scId].status = Scene.STATUS.index('Outline')
-
         elif tag == 'div':
             self._scId = None
             self._chId = None
-
         elif tag == 'meta':
-
             if attrs[0][1].lower() == 'author':
                 self.authorName = attrs[1][1]
-
             if attrs[0][1].lower() == 'description':
                 self.desc = attrs[1][1]
-
         elif tag == 'title':
             self._lines = []
 
@@ -89,24 +81,18 @@ class HtmlOutline(HtmlFile):
 
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
-
         if tag == 'p':
             self._lines.append('\n')
-
             if self._scId is not None:
                 self.scenes[self._scId].desc = ''.join(self._lines)
-
             elif self._chId is not None:
                 self.chapters[self._chId].desc = ''.join(self._lines)
-
         elif tag in ('h1', 'h2'):
             self.chapters[self._chId].title = ''.join(self._lines)
             self._lines = []
-
         elif tag == 'h3':
             self.scenes[self._scId].title = ''.join(self._lines)
             self._lines = []
-
         elif tag == 'title':
             self.title = ''.join(self._lines)
 

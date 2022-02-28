@@ -19,7 +19,6 @@ class CsvItemList(CsvFile):
     """
     DESCRIPTION = 'Item list'
     SUFFIX = '_itemlist'
-
     _rowTitles = ['ID', 'Name', 'Description', 'Aka', 'Tags']
 
     def read(self):
@@ -30,12 +29,10 @@ class CsvItemList(CsvFile):
         Extends the superclass method.
         """
         message = super().read()
-
         if message.startswith(ERROR):
             return message
 
         for cells in self._rows:
-
             if 'ItID:' in cells[0]:
                 itId = re.search('ItID\:([0-9]+)', cells[0]).group(1)
                 self.srtItems.append(itId)
@@ -44,5 +41,4 @@ class CsvItemList(CsvFile):
                 self.items[itId].desc = self._convert_to_yw(cells[2])
                 self.items[itId].aka = cells[3]
                 self.items[itId].tags = self._get_list(cells[4])
-
         return 'Item data read in.'

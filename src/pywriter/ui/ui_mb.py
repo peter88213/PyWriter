@@ -50,10 +50,8 @@ class UiMb(Ui):
             
         Overrides the superclass method.
         """
-
         if message.startswith(ERROR):
             message = message.split(ERROR, maxsplit=1)[1].strip()
             messagebox.showerror(self._title, message)
-
         else:
             messagebox.showinfo(self._title, message)

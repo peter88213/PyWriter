@@ -30,18 +30,14 @@ class UiTk(Ui):
         Extends the superclass constructor.
         """
         super().__init__(title)
-
         self._root = Tk()
         self._root.minsize(400, 150)
         self._root.resizable(width=FALSE, height=FALSE)
         self._root.title(title)
-
         self._appInfo = Label(self._root, text='')
         self._appInfo.pack(padx=20, pady=5)
-
         self._processInfo = Label(self._root, text='', padx=20)
         self._processInfo.pack(pady=20, fill='both')
-
         self._root.quitButton = Button(text="Quit", command=quit)
         self._root.quitButton.config(height=1, width=10)
         self._root.quitButton.pack(pady=10)
@@ -77,17 +73,14 @@ class UiTk(Ui):
         Display the message at the _processinfo label.
         Overrides the superclass method.
         """
-
         if message.startswith(ERROR):
             self._processInfo.config(bg='red')
             self._processInfo.config(fg='white')
             self.infoHowText = message.split(ERROR, maxsplit=1)[1].strip()
-
         else:
             self._processInfo.config(bg='green')
             self._processInfo.config(fg='white')
             self.infoHowText = message
-
         self._processInfo.config(text=self.infoHowText)
 
     def start(self):

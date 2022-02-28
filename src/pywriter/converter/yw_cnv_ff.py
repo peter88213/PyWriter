@@ -37,7 +37,6 @@ class YwCnvFf(YwCnvUi):
         importTargetFactory -- ImportTargetFactory.
         newProjectFactory -- FileFactory (a stub to be overridden by subclasses).
     """
-
     EXPORT_SOURCE_CLASSES = []
     EXPORT_TARGET_CLASSES = []
     IMPORT_SOURCE_CLASSES = []
@@ -71,44 +70,30 @@ class YwCnvFf(YwCnvUi):
         if not os.path.isfile(sourcePath):
             self.ui.set_info_how(f'{ERROR}File "{os.path.normpath(sourcePath)}" not found.')
             return
-
+        
         message, source, __ = self.exportSourceFactory.make_file_objects(sourcePath, **kwargs)
-
         if message.startswith(ERROR):
             # The source file is not a yWriter project.
-
             message, source, __ = self.importSourceFactory.make_file_objects(sourcePath, **kwargs)
-
             if message.startswith(ERROR):
                 # A new yWriter project might be required.
-
                 message, source, target = self.newProjectFactory.make_file_objects(sourcePath, **kwargs)
-
                 if message.startswith(ERROR):
                     self.ui.set_info_how(message)
-
                 else:
                     self.create_yw7(source, target)
-
             else:
                 # Try to update an existing yWriter project.
-
                 kwargs['suffix'] = source.SUFFIX
                 message, __, target = self.importTargetFactory.make_file_objects(sourcePath, **kwargs)
-
                 if message.startswith(ERROR):
                     self.ui.set_info_how(message)
-
                 else:
                     self.import_to_yw(source, target)
-
         else:
             # The source file is a yWriter project.
-
             message, __, target = self.exportTargetFactory.make_file_objects(sourcePath, **kwargs)
-
             if message.startswith(ERROR):
                 self.ui.set_info_how(message)
-
             else:
                 self.export_from_yw(source, target)

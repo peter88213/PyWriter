@@ -24,7 +24,6 @@ def read_html_file(filePath):
         try:
             with open(filePath, 'r') as f:
                 content = (f.read())
-
         except(FileNotFoundError):
             return f'{ERROR}"{os.path.normpath(filePath)}" not found.', None
 

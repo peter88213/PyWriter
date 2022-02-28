@@ -106,24 +106,16 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         Overrides the superclass method.
         """
         lines = []
-
         for scId in scenes:
-
             if self.scenes[scId].isNotesScene:
                 template = Template(self._notesSceneTemplate)
-
             elif self.scenes[scId].isTodoScene:
                 template = Template(self._todoSceneTemplate)
-
             elif self.scenes[scId].isUnused:
                 template = Template(self._unusedSceneTemplate)
-
             else:
                 template = Template(self._sceneTemplate)
-
-            lines.append(template.safe_substitute(
-                self._get_sceneMapping(scId)))
-
+            lines.append(template.safe_substitute(self._get_sceneMapping(scId)))
         return lines
 
     def _get_sceneTags(self):
@@ -133,14 +125,10 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """
         lines = []
         headerTemplate = Template(self._scnPerTagtemplate)
-
         for tag in self._xr.scnPerTag:
-
             if self._xr.scnPerTag[tag]:
-                lines.append(headerTemplate.safe_substitute(
-                    self._get_tagMapping(tag)))
+                lines.append(headerTemplate.safe_substitute(self._get_tagMapping(tag)))
                 lines.extend(self._get_scenes(self._xr.scnPerTag[tag]))
-
         return lines
 
     def _get_characters(self):
@@ -151,14 +139,10 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """
         lines = []
         headerTemplate = Template(self._scnPerChrTemplate)
-
         for crId in self._xr.scnPerChr:
-
             if self._xr.scnPerChr[crId]:
-                lines.append(headerTemplate.safe_substitute(
-                    self._get_characterMapping(crId)))
+                lines.append(headerTemplate.safe_substitute(self._get_characterMapping(crId)))
                 lines.extend(self._get_scenes(self._xr.scnPerChr[crId]))
-
         return lines
 
     def _get_locations(self):
@@ -169,14 +153,10 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """
         lines = []
         headerTemplate = Template(self._scnPerLocTemplate)
-
         for lcId in self._xr.scnPerLoc:
-
             if self._xr.scnPerLoc[lcId]:
-                lines.append(headerTemplate.safe_substitute(
-                    self._get_locationMapping(lcId)))
+                lines.append(headerTemplate.safe_substitute(self._get_locationMapping(lcId)))
                 lines.extend(self._get_scenes(self._xr.scnPerLoc[lcId]))
-
         return lines
 
     def _get_items(self):
@@ -187,14 +167,10 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """
         lines = []
         headerTemplate = Template(self._scnPerItmTemplate)
-
         for itId in self._xr.scnPerItm:
-
             if self._xr.scnPerItm[itId]:
-                lines.append(headerTemplate.safe_substitute(
-                    self._get_itemMapping(itId)))
+                lines.append(headerTemplate.safe_substitute(self._get_itemMapping(itId)))
                 lines.extend(self._get_scenes(self._xr.scnPerItm[itId]))
-
         return lines
 
     def _get_characterTags(self):
@@ -205,16 +181,11 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         lines = []
         headerTemplate = Template(self._chrPerTagTemplate)
         template = Template(self._characterTemplate)
-
         for tag in self._xr.chrPerTag:
-
             if self._xr.chrPerTag[tag]:
                 lines.append(headerTemplate.safe_substitute(self._get_tagMapping(tag)))
-
                 for crId in self._xr.chrPerTag[tag]:
-                    lines.append(template.safe_substitute(
-                        self._get_characterMapping(crId)))
-
+                    lines.append(template.safe_substitute(self._get_characterMapping(crId)))
         return lines
 
     def _get_locationTags(self):
@@ -225,17 +196,11 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         lines = []
         headerTemplate = Template(self._locPerTagTemplate)
         template = Template(self._locationTemplate)
-
         for tag in self._xr.locPerTag:
-
             if self._xr.locPerTag[tag]:
-                lines.append(headerTemplate.safe_substitute(
-                    self._get_tagMapping(tag)))
-
+                lines.append(headerTemplate.safe_substitute(self._get_tagMapping(tag)))
                 for lcId in self._xr.locPerTag[tag]:
-                    lines.append(template.safe_substitute(
-                        self._get_locationMapping(lcId)))
-
+                    lines.append(template.safe_substitute(self._get_locationMapping(lcId)))
         return lines
 
     def _get_itemTags(self):
@@ -246,17 +211,11 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         lines = []
         headerTemplate = Template(self._itmPerTagTemplate)
         template = Template(self._itemTemplate)
-
         for tag in self._xr.itmPerTag:
-
             if self._xr.itmPerTag[tag]:
-                lines.append(headerTemplate.safe_substitute(
-                    self._get_tagMapping(tag)))
-
+                lines.append(headerTemplate.safe_substitute(self._get_tagMapping(tag)))
                 for itId in self._xr.itmPerTag[tag]:
-                    lines.append(template.safe_substitute(
-                        self._get_itemMapping(itId)))
-
+                    lines.append(template.safe_substitute(self._get_itemMapping(itId)))
         return lines
 
     def _get_text(self):
@@ -266,7 +225,6 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         Overrides the superclass method.
         """
         self._xr.generate_xref(self)
-
         lines = self._get_fileHeader()
         lines.extend(self._get_characters())
         lines.extend(self._get_locations())

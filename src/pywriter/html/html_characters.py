@@ -15,7 +15,6 @@ class HtmlCharacters(HtmlFile):
 
     Import a character sheet with invisibly tagged descriptions.
     """
-
     DESCRIPTION = 'Character descriptions'
     SUFFIX = '_characters'
 
@@ -42,23 +41,17 @@ class HtmlCharacters(HtmlFile):
         
         Overrides the superclass method.
         """
-        
         if tag == 'div':
-
             if attrs[0][0] == 'id':
-
                 if attrs[0][1].startswith('CrID_desc'):
                     self._crId = re.search('[0-9]+', attrs[0][1]).group()
                     self.srtCharacters.append(self._crId)
                     self.characters[self._crId] = Character()
                     self._section = 'desc'
-
                 elif attrs[0][1].startswith('CrID_bio'):
                     self._section = 'bio'
-
                 elif attrs[0][1].startswith('CrID_goals'):
                     self._section = 'goals'
-
                 elif attrs[0][1].startswith('CrID_notes'):
                     self._section = 'notes'
 
@@ -70,31 +63,24 @@ class HtmlCharacters(HtmlFile):
 
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
-        
         if self._crId is not None:
-
             if tag == 'div':
-
                 if self._section == 'desc':
                     self.characters[self._crId].desc = ''.join(self._lines)
                     self._lines = []
                     self._section = None
-
                 elif self._section == 'bio':
                     self.characters[self._crId].bio = ''.join(self._lines)
                     self._lines = []
                     self._section = None
-
                 elif self._section == 'goals':
                     self.characters[self._crId].goals = ''.join(self._lines)
                     self._lines = []
                     self._section = None
-
                 elif self._section == 'notes':
                     self.characters[self._crId].notes = ''.join(self._lines)
                     self._lines = []
                     self._section = None
-
             elif tag == 'p':
                 self._lines.append('\n')
 
@@ -106,6 +92,5 @@ class HtmlCharacters(HtmlFile):
         
         Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
-        
         if self._section is not None:
             self._lines.append(data.strip())

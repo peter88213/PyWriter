@@ -34,12 +34,9 @@ class HtmlManuscript(HtmlFile):
         Extends the superclass method by processing inline chapter and scene dividers.
         """
         super().handle_starttag(tag, attrs)
-
         if self._scId is not None:
-
             if tag == 'h1':
                 self._lines.append(Splitter.PART_SEPARATOR)
-
             elif tag == 'h2':
                 self._lines.append(Splitter.CHAPTER_SEPARATOR)
 
@@ -52,19 +49,15 @@ class HtmlManuscript(HtmlFile):
         Use marked comments at scene start as scene titles.
         Overrides the superclass method.
         """
-        
         if self._scId is not None: 
-            
             if not self._lines:
                 # Comment is at scene start
-                
                 if self._SC_TITLE_BRACKET in data:
                     # Comment is marked as a scene title
                     try:   
                         self.scenes[self._scId].title = data.split(self._SC_TITLE_BRACKET)[1].strip()
                     except:
                         pass
-                    
                     return
 
             self._lines.append(f'{self._COMMENT_START}{data.strip()}{self._COMMENT_END}')
@@ -78,26 +71,19 @@ class HtmlManuscript(HtmlFile):
 
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
-
         if self._scId is not None:
-
             if tag == 'div':
                 text = ''.join(self._lines)
                 self.scenes[self._scId].sceneContent = text
                 self._lines = []
                 self._scId = None
-
             elif tag == 'p':
                 self._lines.append('\n')
-
             elif tag == 'h1':
                 self._lines.append('\n')
-
             elif tag == 'h2':
                 self._lines.append('\n')
-
         elif self._chId is not None:
-
             if tag == 'div':
                 self._chId = None
 
@@ -109,13 +95,9 @@ class HtmlManuscript(HtmlFile):
         
         Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
-       
         if self._scId is not None:
-            
             if not data.isspace():
                 self._lines.append(data)
-
         elif self._chId is not None:
-
             if not self.chapters[self._chId].title:
                 self.chapters[self._chId].title = data.strip()

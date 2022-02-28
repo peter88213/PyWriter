@@ -70,7 +70,6 @@ class OdfFile(FileExport):
             self._tear_down()
             os.mkdir(self._tempDir)
             os.mkdir(f'{self._tempDir}/META-INF')
-
         except:
             return f'{ERROR}Cannot create "{os.path.normpath(self._tempDir)}".'
 
@@ -107,7 +106,6 @@ class OdfFile(FileExport):
         )
         template = Template(self._STYLES_XML)
         text = template.safe_substitute(localeMapping)
-
         try:
             with open(f'{self._tempDir}/styles.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
@@ -124,7 +122,6 @@ class OdfFile(FileExport):
         )
         template = Template(self._META_XML)
         text = template.safe_substitute(metaMapping)
-
         try:
             with open(f'{self._tempDir}/meta.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
@@ -145,20 +142,15 @@ class OdfFile(FileExport):
         # structure of an ODS file except "content.xml".
 
         message = self._set_up()
-
         if message.startswith(ERROR):
             return message
 
         # Add "content.xml" to the temporary directory.
 
         self._originalPath = self._filePath
-
         self._filePath = f'{self._tempDir}/content.xml'
-
         message = super().write()
-
         self._filePath = self._originalPath
-
         if message.startswith(ERROR):
             return message
 
@@ -167,27 +159,21 @@ class OdfFile(FileExport):
 
         workdir = os.getcwd()
         backedUp = False
-
         if os.path.isfile(self.filePath):
-
             try:
                 os.replace(self.filePath, f'{self.filePath}.bak')
                 backedUp = True
-                
             except:
                 return f'{ERROR}Cannot overwrite "{os.path.normpath(self.filePath)}".'
-            
+
         try:
             with zipfile.ZipFile(self.filePath, 'w') as odfTarget:
                 os.chdir(self._tempDir)
-
                 for file in self._ODF_COMPONENTS:
                     odfTarget.write(file, compress_type=zipfile.ZIP_DEFLATED)
         except:
-
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
-
             os.chdir(workdir)
             return f'{ERROR}Cannot generate "{os.path.normpath(self.filePath)}".'
 

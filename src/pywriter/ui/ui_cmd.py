@@ -37,10 +37,8 @@ class UiCmd(Ui):
         Overrides the superclass method.       
         """
         result = input(f'WARNING: {text} (y/n)')
-
         if result.lower() == 'y':
             return True
-
         else:
             return False
 
@@ -64,9 +62,7 @@ class UiCmd(Ui):
         Print the message, replacing the error marker, if any.
         Overrides the superclass method.
         """
-        
         if message.startswith(ERROR):
             message = f'FAIL: {message.split(ERROR, maxsplit=1)[1].strip()}'
-
         self.infoHowText = message
         print(message)

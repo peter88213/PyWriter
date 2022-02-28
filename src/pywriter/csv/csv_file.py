@@ -25,10 +25,8 @@ class CsvFile(Novel):
     """
     EXTENSION = '.csv'
     # overwrites Novel.EXTENSION
-
     _SEPARATOR = ','
     # delimits data fields within a record.
-
     _rowTitles = []
 
     def __init__(self, filePath, **kwargs):
@@ -56,20 +54,16 @@ class CsvFile(Novel):
         """
         self._rows = []
         cellsPerRow = len(self._rowTitles)
-
         try:
             with open(self.filePath, newline='', encoding='utf-8') as f:
                 reader = csv.reader(f, delimiter=self._SEPARATOR)
-
                 for row in reader:
                     # Each row read from the csv file is returned
                     # as a list of strings
-
                     if len(row) != cellsPerRow:
                         return f'{ERROR}Wrong csv structure.'
 
                     self._rows.append(row)
-
         except(FileNotFoundError):
             return f'{ERROR}"{os.path.normpath(self.filePath)}" not found.'
 
@@ -90,8 +84,6 @@ class CsvFile(Novel):
         """
         elements = []
         tempList = text.split(',')
-
         for element in tempList:
             elements.append(element.strip())
-
         return elements

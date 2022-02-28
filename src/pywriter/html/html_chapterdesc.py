@@ -23,19 +23,14 @@ class HtmlChapterDesc(HtmlFile):
 
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
-        
         if self._chId is not None:
-
             if tag == 'div':
                 self.chapters[self._chId].desc = ''.join(self._lines)
                 self._lines = []
                 self._chId = None
-
             elif tag == 'p':
                 self._lines.append('\n')
-
             elif tag == 'h1' or tag == 'h2':
-
                 if not self.chapters[self._chId].title:
                     self.chapters[self._chId].title = ''.join(self._lines)
                     self._lines = []
@@ -48,6 +43,5 @@ class HtmlChapterDesc(HtmlFile):
         
         Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
-        
         if self._chId is not None:
             self._lines.append(data.strip())

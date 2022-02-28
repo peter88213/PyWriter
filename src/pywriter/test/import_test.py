@@ -29,10 +29,8 @@ class ImportTest():
   
     def _init_paths(self):
         """Initialize the test data and execution paths."""  
-        
         if not hasattr(self, '_dataPath'):
             self._dataPath = f'data/{self._importClass.SUFFIX}/'
-            
         self._execPath = 'yw7/'        
         self._testYwFile = f'{self._execPath}yw7 Sample Project.yw7'
         self._refYwFile = f'{self._dataPath}normal.yw7'        
@@ -47,13 +45,10 @@ class ImportTest():
         - Remove files that may remain from previous tests.
         """
         self._init_paths()
-
         try:
             os.mkdir(self._execPath)
-
         except:
             pass
-
         self._remove_all_tempfiles()
 
     def test_imp_to_yw7(self):
@@ -88,14 +83,11 @@ class ImportTest():
 
     def _remove_all_tempfiles(self):
         """Clean up the test execution directory."""
-        
         try:
             os.remove(self._testImpFile)
         except:
             pass
-        
         try:
             os.remove(self._testYwFile)
-        
         except:
             pass

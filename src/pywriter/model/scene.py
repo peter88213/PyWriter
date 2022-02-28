@@ -220,13 +220,10 @@ class Scene():
         self._sceneContent = text
         text = re.sub('\[.+?\]|\.|\,| -', '', self._sceneContent)
         # Remove yWriter raw markup for word count
-
         wordList = text.split()
         self.wordCount = len(wordList)
-
         text = re.sub('\[.+?\]', '', self._sceneContent)
         # Remove yWriter raw markup for letter count
-
         text = text.replace('\n', '')
         text = text.replace('\r', '')
         self.letterCount = len(text)

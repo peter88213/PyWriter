@@ -25,7 +25,6 @@ class HtmlImport(HtmlFile):
     """
     DESCRIPTION = 'Work in progress'
     SUFFIX = ''
-
     _SCENE_DIVIDER = '* * *'
     _LOW_WORDCOUNT = 10
 
@@ -60,7 +59,6 @@ class HtmlImport(HtmlFile):
         
         Overrides the superclass method.
         """
-
         if tag in ('h1', 'h2'):
             self._scId = None
             self._lines = []
@@ -70,15 +68,11 @@ class HtmlImport(HtmlFile):
             self.chapters[self._chId].srtScenes = []
             self.srtChapters.append(self._chId)
             self.chapters[self._chId].oldType = '0'
-
             if tag == 'h1':
                 self.chapters[self._chId].chLevel = 1
-
             else:
                 self.chapters[self._chId].chLevel = 0
-
         elif tag == 'p':
-
             if self._scId is None and self._chId is not None:
                 self._lines = []
                 self._scCount += 1
@@ -87,19 +81,14 @@ class HtmlImport(HtmlFile):
                 self.chapters[self._chId].srtScenes.append(self._scId)
                 self.scenes[self._scId].status = '1'
                 self.scenes[self._scId].title = f'Scene {self._scCount}'
-
         elif tag == 'div':
             self._scId = None
             self._chId = None
-
         elif tag == 'meta':
-
             if attrs[0][1].lower() == 'author':
                 self.authorName = attrs[1][1]
-
             if attrs[0][1].lower() == 'description':
                 self.desc = attrs[1][1]
-
         elif tag == 'title':
             self._lines = []
 
@@ -111,23 +100,17 @@ class HtmlImport(HtmlFile):
 
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
-
         if tag == 'p':
             self._lines.append('\n')
-
             if self._scId is not None:
                 self.scenes[self._scId].sceneContent = ''.join(self._lines)
-
                 if self.scenes[self._scId].wordCount < self._LOW_WORDCOUNT:
                     self.scenes[self._scId].status = Scene.STATUS.index('Outline')
-
                 else:
                     self.scenes[self._scId].status = Scene.STATUS.index('Draft')
-
         elif tag in ('h1', 'h2'):
             self.chapters[self._chId].title = ''.join(self._lines)
             self._lines = []
-
         elif tag == 'title':
             self.title = ''.join(self._lines)
 
@@ -139,31 +122,23 @@ class HtmlImport(HtmlFile):
         
         Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
         """
-        
         if self._scId is not None and self._SCENE_DIVIDER in data:
             self._scId = None
-
         else:
             data = data.strip()
 
             # Convert prefixed comment into scene title.
 
             if not self._lines and data.startswith(self._COMMENT_START):
-
                 try:
                     scTitle, scContent = data.split(
                         sep=self._COMMENT_END, maxsplit=1)
-
                     if self._SC_TITLE_BRACKET in scTitle:
                         scTitle = scTitle.split(self._SC_TITLE_BRACKET)[1]
-
                     else:
                         scTitle = scTitle.lstrip(self._COMMENT_START)
-
                     self.scenes[self._scId].title = scTitle.strip()
                     data = scContent
-
                 except:
                     pass
-
             self._lines.append(data)

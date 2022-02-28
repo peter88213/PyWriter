@@ -217,17 +217,12 @@ class OdsSceneList(OdsFile):
         Extends the superclass template method.
         """
         sceneMapping = super()._get_sceneMapping(scId, sceneNumber, wordsTotal, lettersTotal)
-
         if self.scenes[scId].field1 == '1':
             sceneMapping['Field1'] = ''
-
         if self.scenes[scId].field2 == '1':
             sceneMapping['Field2'] = ''
-
         if self.scenes[scId].field3 == '1':
             sceneMapping['Field3'] = ''
-
         if self.scenes[scId].field4 == '1':
             sceneMapping['Field4'] = ''
-
         return sceneMapping
