@@ -1,0 +1,1 @@
+The *.puml* files in this directory are [PlantUML](https://plantuml.com) DSL files for creating the sequence diagrams.

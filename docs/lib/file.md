@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](pywriter) > file
+[home](../index) > [The pywriter library](index) > file
 
 ---
 
