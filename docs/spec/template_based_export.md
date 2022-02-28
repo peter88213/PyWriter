@@ -1,4 +1,4 @@
-[home](../index) > [specifications](index) > Template-based file export
+[home](../index) > [Specifications](index) > Template-based file export
 
 # Template-based file export
 
