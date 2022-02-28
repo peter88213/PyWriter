@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > test
+[home](../index) > [pywriter library overview](index) > test
 
 ---
 
@@ -20,4 +20,6 @@
 
 ### Detailed class diagram
 
-![test package detailed class diagram](img/test_package_detailed_class_diagram.png)
+[![test package detailed class diagram](img/test_package_detailed_class_diagram.png)](img/test_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*

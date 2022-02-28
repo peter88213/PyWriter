@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > yw
+[home](../index) > [pywriter library overview](index) > yw
 
 ---
 
@@ -18,4 +18,6 @@
 
 ### Detailed class diagram
 
-![yw package detailed class diagram](img/yw_package_detailed_class_diagram.png)
+[![yw package detailed class diagram](img/yw_package_detailed_class_diagram.png))(img/yw_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*

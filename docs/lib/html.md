@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > html
+[home](../index) > [pywriter library overview](index) > html
 
 ---
 
@@ -31,4 +31,6 @@ is much easier to parse than the odt format.
 
 ### Detailed class diagram
 
-![html package detailed class diagram](img/html_package_detailed_class_diagram.png)
+[![html package detailed class diagram](img/html_package_detailed_class_diagram.png)](img/html_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*

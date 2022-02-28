@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > configuration
+[home](../index) > [pywriter library overview](index) > configuration
 
 ---
 
@@ -19,4 +19,6 @@ This package contains modules for configuration persistence.
 
 ### Detailed class diagram
 
-![config package detailed class diagram](img/config_package_detailed_class_diagram.png)
+[![config package detailed class diagram](img/config_package_detailed_class_diagram.png)](img/config_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*

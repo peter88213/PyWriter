@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > ods
+[home](../index) > [pywriter library overview](index) > ods
 
 ---
 
@@ -21,4 +21,6 @@
 
 ### Detailed class diagram
 
-![ods package detailed class diagram](img/ods_package_detailed_class_diagram.png)
+[![ods package detailed class diagram](img/ods_package_detailed_class_diagram.png)](img/ods_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*

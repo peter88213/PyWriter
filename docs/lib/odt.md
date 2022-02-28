@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > odt
+[home](../index) > [pywriter library overview](index) > odt
 
 ---
 
@@ -27,4 +27,6 @@
 
 ### Detailed class diagram
 
-![odt package detailed class diagram](img/odt_package_detailed_class_diagram.png)
+[![odt package detailed class diagram](img/odt_package_detailed_class_diagram.png)](img/odt_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*

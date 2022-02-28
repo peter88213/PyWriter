@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > csv
+[home](../index) > [pywriter library overview](index) > csv
 
 ---
 
@@ -30,4 +30,6 @@ is much easier to parse than the ods format.
 
 ### Detailed class diagram
 
-![csv package ditailed class diagram](img/csv_package_detailed_class_diagram.png)
+[![csv package ditailed class diagram](img/csv_package_detailed_class_diagram.png)](img/csv_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*

@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > odf
+[home](../index) > [pywriter library overview](index) > odf
 
 ---
 
@@ -16,4 +16,6 @@
 
 ### Detailed class diagram
 
-![odf package class diagram](img/odf_package_detailed_class_diagram.png)
+[![odf package class diagram](img/odf_package_detailed_class_diagram.png)](img/odf_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*

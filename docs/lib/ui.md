@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > ui
+[home](../index) > [pywriter library overview](index) > ui
 
 ---
 
@@ -22,4 +22,6 @@
 
 ### Detailed class diagram
 
-![ui package detailed class diagram](img/ui_package_detailed_class_diagram.png)
+[![ui package detailed class diagram](img/ui_package_detailed_class_diagram.png)](img/ui_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*

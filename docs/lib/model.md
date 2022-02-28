@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > model
+[home](../index) > [pywriter library overview](index) > model
 
 ---
 
@@ -22,4 +22,6 @@
 
 ### Detailed class diagram
 
-![model package detailed class diagram](img/model_package_detailed_class_diagram.png)
+[![model package detailed class diagram](img/model_package_detailed_class_diagram.png)](img/model_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*

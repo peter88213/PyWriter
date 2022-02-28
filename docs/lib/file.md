@@ -1,4 +1,4 @@
-[home](../index) > [The pywriter library](index) > file
+[home](../index) > [pywriter library overview](index) > file
 
 ---
 
@@ -23,4 +23,6 @@ elements, such as characters, locations ans items, and fills templates.
 
 ### Detailed class diagram
 
-![file package detailed class diagram](img/file_package_detailed_class_diagram.png)
+[![file package detailed class diagram](img/file_package_detailed_class_diagram.png)](img/file_package_detailed_class_diagram.png)
+
+*Click on the diagram to enlarge*
