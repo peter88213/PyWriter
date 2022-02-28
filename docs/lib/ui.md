@@ -18,7 +18,9 @@
 
 ### Overview
 
-![ui package class diagram](img/ui_package_class_diagram.png)
+[![ui package class diagram](img/ui_package_class_diagram.png)](img/ui_package_class_diagram.png)
+
+*Click on the diagram to enlarge*
 
 ### Detailed class diagram
 
