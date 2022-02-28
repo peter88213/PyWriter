@@ -61,8 +61,10 @@ class MainTk(Ui):
         self._fileMenu.add_command(label='Close', command=lambda: self._close_project())
         self._fileMenu.entryconfig('Close', state='disabled')
         self._fileMenu.add_command(label='Exit', command=self._root.quit)
+        
         self._extend_menu()
         # Hook for subclasses
+        
         self._root.config(menu=self._mainMenu) 
         self._titleBar = tk.Label(self._root, text='', padx=5, pady=2)
         self._titleBar.pack(expand=False, anchor='w')

@@ -33,7 +33,6 @@ class ImportTargetFactory(FileFactory):
         - A message beginning with the ERROR constant in case of error
         - sourceFile: None
         - targetFile: a YwFile subclass instance, or None in case of error
-
         """
         fileName, __ = os.path.splitext(sourcePath)
         sourceSuffix = kwargs['suffix']
