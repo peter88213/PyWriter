@@ -15,11 +15,13 @@ For more information, see my [GitHub home page](https://peter88213.github.io).
 
 [Use cases](uc)
 
+[Document types](doctypes)
+
+[Template and placeholder specifications for file export](export)
+
 [pywriter library overview](lib)
 
 [Example application sequences](sd)
-
-[Specifications](spec)
 
 ## Development
 

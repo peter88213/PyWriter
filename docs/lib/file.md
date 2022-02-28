@@ -8,7 +8,7 @@ This is how the file generation from a yWriter project is generally done:
 The write method runs through all chapters, scenes, and world building 
 elements, such as characters, locations ans items, and fills templates. 
 
-[List of templates and placeholders](../spec/template_based_export)
+[Template and placeholder specifications for file export](../export)
 
 ## Modules
  

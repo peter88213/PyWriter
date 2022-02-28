@@ -1,19 +1,21 @@
-[home](../index) > [Specifications](index) > Template-based file export
+[home](index) > Template and placeholder specifications for file export
 
-# Template-based file export
+# Template and placeholder specifications for file export
+
+Template-based file export: The application script iterates over chapters, scenes, characters, locations, and items, selecting a template for each and replacing the placeholders with project data.
 
 ## List of templates
 
 ### Project level templates
 
-- **fileHeader** 
+- **fileHeader** (Text at the beginning of the exported file)
 - **partTemplate** (chapter header; applied to chapters marked "section beginning")
 
 - **characterTemplate** (applied to characters)
 - **locationTemplate** (applied to locations)
 - **itemTemplate** (applied to items)
 
-- **fileFooter** 
+- **fileFooter** (Text at the end of the exported file)
 
 ### Chapter level templates
 
@@ -48,8 +50,8 @@
 
 There are two options:
 
-1. $Placeholder
-2. ${Placeholder}
+1. `$Placeholder` -- If the placeholder is followed by a character that is clearly recognizable as a separator, e.g. a blank. 
+2. `${Placeholder}` -- If the placeholder is followed by a character that is not recognizable as a separator.
 
 
 ### "Project template" placeholders

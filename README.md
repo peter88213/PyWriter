@@ -23,9 +23,7 @@ For more information, see my [GitHub home page](https://peter88213.github.io).
 ### Development tools
 
 - [Python](https://python.org) version 3.9
-- [Eclipse IDE](https://eclipse.org)
-- [PyDev](https://pydev.org) Python development plugin for the Eclipse IDE
-- [EGit](https://www.eclipse.org/egit/) Eclipse Team provider for the Git version control system
+- [Eclipse IDE](https://eclipse.org) with [PyDev](https://pydev.org) and [EGit](https://www.eclipse.org/egit/)
 - [Apache Ant](https://ant.apache.org/) for building application scripts
 
 ### Documentation tools

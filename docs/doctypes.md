@@ -1,4 +1,4 @@
-[Home](../../index) > [Specifications](index) > Document types
+[Home](index) > Document types
 
 # Document types
 
