@@ -8,10 +8,10 @@ from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 
 
-class Splitter():
+class Splitter:
     """Helper class for scene and chapter splitting.
     
-    When importing scenes to yWriter, they may contain manually inserted scene and chapter dividers.
+    When importing scenes to yWriter, they may contain manuallyinserted scene and chapter dividers.
     The Splitter class updates a Novel instance by splitting such scenes and creating new chapters and scenes. 
     
     Public methods:
@@ -62,6 +62,7 @@ class Splitter():
                 splitCount -- int: number of parent's splittings.
             """
             WARNING = ' (!) '
+
             # Mark metadata of split scenes.
             newScene = Scene()
             if parent.title:
@@ -82,7 +83,6 @@ class Splitter():
                 parent.outcome = f'{WARNING}{parent.outcome}'
 
             # Reset the parent's status to Draft, if not Outline.
-
             if parent.status > 2:
                 parent.status = 2
             newScene.status = parent.status
@@ -100,7 +100,6 @@ class Splitter():
             novel.scenes[sceneId] = newScene
 
         # Get the maximum chapter ID and scene ID.
-
         chIdMax = 0
         scIdMax = 0
         for chId in novel.srtChapters:
@@ -110,8 +109,7 @@ class Splitter():
             if int(scId) > scIdMax:
                 scIdMax = int(scId)
                 
-        #--- Process chapters and scenes.
-
+        #Process chapters and scenes.
         srtChapters = []
         for chId in novel.srtChapters:
             srtChapters.append(chId)
@@ -128,8 +126,7 @@ class Splitter():
                 inScene = True
                 sceneSplitCount = 0
 
-                #--- Search scene content for dividers.
-
+                #Search scene content for dividers.
                 for line in lines:
                     if line.startswith(self.PART_SEPARATOR):
                         if inScene:

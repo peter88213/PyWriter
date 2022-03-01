@@ -10,7 +10,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.csv.csv_file import CsvFile
 from pywriter.model.chapter import Chapter
@@ -25,13 +24,10 @@ class CsvPlotList(CsvFile):
     """
     DESCRIPTION = 'Plot list'
     SUFFIX = '_plotlist'
-
     _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
     # '1' is assigned N/A (empty table cell).
-
     _NOT_APPLICABLE = 'N/A'
     # Scene field column header for fields not being assigned to a storyline
-
     _rowTitles = ['ID', 'Plot section', 'Plot event', 'Scene title', 'Details', 'Scene', 'Words total',
                  '$FieldTitle1', '$FieldTitle2', '$FieldTitle3', '$FieldTitle4']
 
@@ -64,9 +60,7 @@ class CsvPlotList(CsvFile):
                 i += 1
                 # Don't write back wordCount
                 i += 1
-
                 # Transfer scene ratings; set to 1 if deleted
-
                 if cells[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field1 = cells[i]
                 elif tableHeader[i] != self._NOT_APPLICABLE:

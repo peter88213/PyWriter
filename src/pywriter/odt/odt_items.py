@@ -12,7 +12,6 @@ class OdtItems(OdtFile):
 
     Export a item sheet with invisibly tagged descriptions.
     """
-
     DESCRIPTION = 'Item descriptions'
     SUFFIX = '_items'
 

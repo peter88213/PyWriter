@@ -10,7 +10,6 @@ import os
 import re
 from html import unescape
 import xml.etree.ElementTree as ET
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
@@ -35,7 +34,6 @@ class Yw7File(Novel):
     """
     DESCRIPTION = 'yWriter 7 project'
     EXTENSION = '.yw7'
-
     _CDATA_TAGS = ['Title', 'AuthorName', 'Bio', 'Desc',
                    'FieldTitle1', 'FieldTitle2', 'FieldTitle3',
                    'FieldTitle4', 'LaTeXHeaderFile', 'Tags',
@@ -75,7 +73,6 @@ class Yw7File(Novel):
         root = self.tree.getroot()
 
         #--- Read locations from the xml element tree.
-
         for loc in root.iter('LOCATION'):
             lcId = loc.find('ID').text
             self.srtLocations.append(lcId)
@@ -99,7 +96,6 @@ class Yw7File(Novel):
                     self.locations[lcId].tags = self._strip_spaces(tags)
 
         #--- Read items from the xml element tree.
-
         for itm in root.iter('ITEM'):
             itId = itm.find('ID').text
             self.srtItems.append(itId)
@@ -123,7 +119,6 @@ class Yw7File(Novel):
                     self.items[itId].tags = self._strip_spaces(tags)
 
         #--- Read characters from the xml element tree.
-
         for crt in root.iter('CHARACTER'):
             crId = crt.find('ID').text
             self.srtCharacters.append(crId)
@@ -164,7 +159,6 @@ class Yw7File(Novel):
                 self.characters[crId].isMajor = False
 
         #--- Read attributes at novel level from the xml element tree.
-
         prj = root.find('PROJECT')
         
         if prj.find('Title') is not None:
@@ -192,7 +186,6 @@ class Yw7File(Novel):
             self.fieldTitle4 = prj.find('FieldTitle4').text
 
         #--- Read attributes at chapter level from the xml element tree.
-
         self.srtChapters = []
         # This is necessary for re-reading.
         for chp in root.iter('CHAPTER'):
@@ -253,7 +246,6 @@ class Yw7File(Novel):
                         self.chapters[chId].srtScenes.append(scId)
 
         #--- Read attributes at scene level from the xml element tree.
-
         for scn in root.iter('SCENE'):
             scId = scn.find('ID').text
             self.scenes[scId] = Scene()
@@ -440,7 +432,6 @@ class Yw7File(Novel):
                 return message
 
         #--- Merge and re-order locations.
-
         if source.srtLocations:
             self.srtLocations = source.srtLocations
             temploc = self.locations
@@ -475,7 +466,6 @@ class Yw7File(Novel):
                     self.locations[lcId].tags = temploc[lcId].tags
 
         #--- Merge and re-order items.
-
         if source.srtItems:
             self.srtItems = source.srtItems
             tempitm = self.items
@@ -510,7 +500,6 @@ class Yw7File(Novel):
                     self.items[itId].tags = tempitm[itId].tags
 
         #--- Merge and re-order characters.
-
         if source.srtCharacters:
             self.srtCharacters = source.srtCharacters
             tempchr = self.characters
@@ -565,7 +554,6 @@ class Yw7File(Novel):
                     self.characters[crId].isMajor = tempchr[crId].isMajor
 
         #--- Merge scenes.
-
         sourceHasSceneContent = False
         for scId in source.scenes:
             if not scId in self.scenes:
@@ -647,7 +635,6 @@ class Yw7File(Novel):
                         self.scenes[scId].items.append(itId)
 
         #--- Merge chapters.
-
         for chId in source.chapters:
             if not chId in self.chapters:
                 self.chapters[chId] = Chapter()
@@ -690,7 +677,6 @@ class Yw7File(Novel):
                 merge_lists(source.chapters[chId].srtScenes, self.chapters[chId].srtScenes)
 
         #--- Merge project attributes.
-
         if source.title:
             # avoids deleting the title, if it is empty by accident
             self.title = source.title
@@ -748,9 +734,7 @@ class Yw7File(Novel):
                     xmlScn.find('Desc').text = prjScn.desc
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Desc').text = prjScn.desc
-            
-            # Scene content is overwritten in subclasses.
-            
+                       
             if xmlScn.find('SceneContent') is None:
                 ET.SubElement(xmlScn, 'SceneContent').text = prjScn.sceneContent
 
@@ -900,7 +884,6 @@ class Yw7File(Novel):
                     ET.SubElement(xmlScn, 'LastsMinutes').text = prjScn.lastsMinutes
 
             # Plot related information
-            
             if prjScn.isReactionScene:
                 if xmlScn.find('ReactionScene') is None:
                     ET.SubElement(xmlScn, 'ReactionScene').text = '-1'
@@ -937,8 +920,7 @@ class Yw7File(Novel):
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'ImageFile').text = prjScn.image
                     
-            # Characters/locations/items
-            
+            # Characters/locations/items           
             if prjScn.characters is not None:
                 characters = xmlScn.find('Characters')
                 try:
@@ -1150,7 +1132,6 @@ class Yw7File(Novel):
                     ET.SubElement(xmlPrj, 'FieldTitle4').text = self.fieldTitle4
 
         #--- Start write method.
-
         if self.is_locked():
             return f'{ERROR}yWriter seems to be open. Please close first.'
 

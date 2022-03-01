@@ -8,7 +8,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import csv
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.model.novel import Novel
 
@@ -58,8 +57,6 @@ class CsvFile(Novel):
             with open(self.filePath, newline='', encoding='utf-8') as f:
                 reader = csv.reader(f, delimiter=self._SEPARATOR)
                 for row in reader:
-                    # Each row read from the csv file is returned
-                    # as a list of strings
                     if len(row) != cellsPerRow:
                         return f'{ERROR}Wrong csv structure.'
 

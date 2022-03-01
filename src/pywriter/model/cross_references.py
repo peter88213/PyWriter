@@ -6,7 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 
-class CrossReferences():
+class CrossReferences:
     """Dictionaries containing a novel's cross references.
 
     Public methods:
@@ -90,7 +90,6 @@ class CrossReferences():
         self.srtScenes = []
 
         #--- Characters per tag.
-
         for crId in novel.srtCharacters:
             self.scnPerChr[crId] = []
             if novel.characters[crId].tags:
@@ -100,7 +99,6 @@ class CrossReferences():
                     self.chrPerTag[tag].append(crId)
 
         #--- Locations per tag.
-
         for lcId in novel.srtLocations:
             self.scnPerLoc[lcId] = []
             if novel.locations[lcId].tags:
@@ -110,7 +108,6 @@ class CrossReferences():
                     self.locPerTag[tag].append(lcId)
 
         #--- Items per tag.
-
         for itId in novel.srtItems:
             self.scnPerItm[itId] = []
             if novel.items[itId].tags:
@@ -120,7 +117,6 @@ class CrossReferences():
                     self.itmPerTag[tag].append(itId)
                     
         #--- Process chapters and scenes.
-
         for chId in novel.srtChapters:
 
             for scId in novel.chapters[chId].srtScenes:
@@ -128,25 +124,21 @@ class CrossReferences():
                 self.chpPerScn[scId] = chId
 
                 #--- Scenes per character.
-
                 if novel.scenes[scId].characters:
                     for crId in novel.scenes[scId].characters:
                         self.scnPerChr[crId].append(scId)
 
                 #--- Scenes per location.
-
                 if novel.scenes[scId].locations:
                     for lcId in novel.scenes[scId].locations:
                         self.scnPerLoc[lcId].append(scId)
 
                 #--- Scenes per item.
-
                 if novel.scenes[scId].items:
                     for itId in novel.scenes[scId].items:
                         self.scnPerItm[itId].append(scId)
 
                 #--- Scenes per tag.
-
                 if novel.scenes[scId].tags:
                     for tag in novel.scenes[scId].tags:
                         if not tag in self.scnPerTag:

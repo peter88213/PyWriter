@@ -13,7 +13,6 @@ import tempfile
 from shutil import rmtree
 from datetime import datetime
 from string import Template
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.file.file_export import FileExport
 
@@ -64,8 +63,7 @@ class OdfFile(FileExport):
         Return a message beginning with the ERROR constant in case of error.
         """
         
-        # Create and open a temporary directory for the files to zip.
-
+        #--- Create and open a temporary directory for the files to zip.
         try:
             self._tear_down()
             os.mkdir(self._tempDir)
@@ -73,32 +71,28 @@ class OdfFile(FileExport):
         except:
             return f'{ERROR}Cannot create "{os.path.normpath(self._tempDir)}".'
 
-        # Generate mimetype.
-
+        #--- Generate mimetype.
         try:
             with open(f'{self._tempDir}/mimetype', 'w', encoding='utf-8') as f:
                 f.write(self._MIMETYPE)
         except:
             return f'{ERROR}Cannot write "mimetype"'
 
-        # Generate settings.xml.
-
+        #--- Generate settings.xml.
         try:
             with open(f'{self._tempDir}/settings.xml', 'w', encoding='utf-8') as f:
                 f.write(self._SETTINGS_XML)
         except:
             return f'{ERROR}Cannot write "settings.xml"'
 
-        # Generate META-INF\manifest.xml.
-
+        #--- Generate META-INF\manifest.xml.
         try:
             with open(f'{self._tempDir}/META-INF/manifest.xml', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_XML)
         except:
             return f'{ERROR}Cannot write "manifest.xml"'
 
-        # Generate styles.xml with system language set as document language.
-
+        #--- Generate styles.xml with system language set as document language.
         lng, ctr = locale.getdefaultlocale()[0].split('_')
         localeMapping = dict(
             Language=lng,
@@ -112,8 +106,7 @@ class OdfFile(FileExport):
         except:
             return f'{ERROR}Cannot write "styles.xml"'
 
-        # Generate meta.xml with actual document metadata.
-
+        #--- Generate meta.xml with actual document metadata.
         metaMapping = dict(
             Author=self.authorName,
             Title=self.title,
@@ -138,15 +131,13 @@ class OdfFile(FileExport):
         Extends the super class method, adding ZIP file operations.
         """
 
-        # Create a temporary directory containing the internal
-        # structure of an ODS file except "content.xml".
-
+        #--- Create a temporary directory
+        # containing the internal structure of an ODS file except "content.xml".
         message = self._set_up()
         if message.startswith(ERROR):
             return message
 
-        # Add "content.xml" to the temporary directory.
-
+        #--- Add "content.xml" to the temporary directory.
         self._originalPath = self._filePath
         self._filePath = f'{self._tempDir}/content.xml'
         message = super().write()
@@ -154,9 +145,7 @@ class OdfFile(FileExport):
         if message.startswith(ERROR):
             return message
 
-        # Pack the contents of the temporary directory
-        # into the ODF file.
-
+        #--- Pack the contents of the temporary directory into the ODF file.
         workdir = os.getcwd()
         backedUp = False
         if os.path.isfile(self.filePath):
@@ -177,8 +166,7 @@ class OdfFile(FileExport):
             os.chdir(workdir)
             return f'{ERROR}Cannot generate "{os.path.normpath(self.filePath)}".'
 
-        # Remove temporary data.
-
+        #--- Remove temporary data.
         os.chdir(workdir)
         self._tear_down()
         return f'"{os.path.normpath(self.filePath)}" written.'

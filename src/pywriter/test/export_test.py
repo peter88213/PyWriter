@@ -8,7 +8,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import zipfile
 from shutil import copyfile
-
 from pywriter.test.helper import read_file
 from pywriter.converter.yw7_converter import Yw7Converter
 from pywriter.converter.yw_cnv import YwCnv

@@ -8,7 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 
-class Filter():
+class Filter:
     """Filter an entity (chapter/scene/character/location/item) by filter criteria.
     
     Public methods:

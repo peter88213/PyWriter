@@ -5,14 +5,12 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from string import Template
-
 from pywriter.model.cross_references import CrossReferences
 from pywriter.odt.odt_file import OdtFile
 
 
 class OdtXref(OdtFile):
     """OpenDocument xml cross reference file representation."""
-
     DESCRIPTION = 'Cross reference'
     SUFFIX = '_xref'
 

@@ -8,7 +8,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 from string import Template
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.model.character import Character
 from pywriter.model.scene import Scene
@@ -26,7 +25,6 @@ class FileExport(Novel):
     This class is generic and contains no conversion algorithm and no templates.
     """
     SUFFIX = ''
-
     _fileHeader = ''
     _partTemplate = ''
     _chapterTemplate = ''
@@ -196,7 +194,6 @@ class FileExport(Novel):
         """
         
         #--- Create a comma separated tag list.
-
         if sceneNumber == 0:
             sceneNumber = ''
         if self.scenes[scId].tags is not None:
@@ -205,7 +202,6 @@ class FileExport(Novel):
             tags = ''
 
         #--- Create a comma separated character list.
-
         try:
             # Note: Due to a bug, yWriter scenes might hold invalid
             # viepoint characters
@@ -219,7 +215,6 @@ class FileExport(Novel):
             viewpointChar = ''
 
         #--- Create a comma separated location list.
-
         if self.scenes[scId].locations is not None:
             sLcList = []
             for lcId in self.scenes[scId].locations:
@@ -229,7 +224,6 @@ class FileExport(Novel):
             sceneLocs = ''
 
         #--- Create a comma separated item list.
-
         if self.scenes[scId].items is not None:
             sItList = []
             for itId in self.scenes[scId].items:
@@ -239,14 +233,12 @@ class FileExport(Novel):
             sceneItems = ''
 
         #--- Create A/R marker string.
-
         if self.scenes[scId].isReactionScene:
             reactionScene = Scene.REACTION_MARKER
         else:
             reactionScene = Scene.ACTION_MARKER
 
         #--- Create a combined scDate information.
-
         if self.scenes[scId].date is not None and self.scenes[scId].date != Scene.NULL_DATE:
             scDay = ''
             scDate = self.scenes[scId].date
@@ -261,7 +253,6 @@ class FileExport(Novel):
                 cmbDate = ''
 
         #--- Create a combined time information.
-
         if self.scenes[scId].time is not None and self.scenes[scId].date != Scene.NULL_DATE:
             scHour = ''
             scMinute = ''
@@ -285,7 +276,6 @@ class FileExport(Novel):
                 cmbTime = ''
 
         #--- Create a combined duration information.
-
         if self.scenes[scId].lastsDays is not None and self.scenes[scId].lastsDays != '0':
             lastsDays = self.scenes[scId].lastsDays
             days = f'{self.scenes[scId].lastsDays}d '
@@ -591,13 +581,11 @@ class FileExport(Novel):
                 lines.append(template.safe_substitute(self._get_chapterMapping(chId, dispNumber)))
 
             #--- Process scenes.
-
             sceneLines, sceneNumber, wordsTotal, lettersTotal = self._get_scenes(
                 chId, sceneNumber, wordsTotal, lettersTotal, doNotExport)
             lines.extend(sceneLines)
 
             #--- Process chapter ending.
-
             template = None
             if self.chapters[chId].chType == 2:
                 if self._todoChapterEndTemplate:

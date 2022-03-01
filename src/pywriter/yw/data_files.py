@@ -6,7 +6,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import xml.etree.ElementTree as ET
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.yw.yw7_file import Yw7File
 

@@ -8,10 +8,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 from urllib.parse import quote
 import os
-
 from pywriter.pywriter_globals import ERROR
 
-class Novel():
+
+class Novel:
     """Abstract yWriter project file representation.
 
     This class represents a file containing a novel with additional 

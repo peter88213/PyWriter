@@ -9,7 +9,6 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.ui.ui import Ui
 

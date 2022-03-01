@@ -6,7 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 
-class Chapter():
+class Chapter:
     """yWriter chapter representation.
     
     Public instance variables:

@@ -5,9 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.converter.yw_cnv_ff import YwCnvFf
-
 from pywriter.yw.yw7_file import Yw7File
-
 from pywriter.odt.odt_proof import OdtProof
 from pywriter.odt.odt_manuscript import OdtManuscript
 from pywriter.odt.odt_scenedesc import OdtSceneDesc
@@ -19,7 +17,6 @@ from pywriter.odt.odt_characters import OdtCharacters
 from pywriter.odt.odt_items import OdtItems
 from pywriter.odt.odt_locations import OdtLocations
 from pywriter.odt.odt_xref import OdtXref
-
 from pywriter.ods.ods_charlist import OdsCharList
 from pywriter.ods.ods_loclist import OdsLocList
 from pywriter.ods.ods_itemlist import OdsItemList
@@ -36,7 +33,6 @@ class Yw7Exporter(YwCnvFf):
     Overrides the superclass constants EXPORT_SOURCE_CLASSES, EXPORT_TARGET_CLASSES.    
     """
     EXPORT_SOURCE_CLASSES = [Yw7File]
-
     EXPORT_TARGET_CLASSES = [OdtProof,
                              OdtManuscript,
                              OdtBriefSynopsis,

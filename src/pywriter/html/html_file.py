@@ -8,7 +8,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from html.parser import HTMLParser
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.model.novel import Novel
 from pywriter.model.chapter import Chapter
@@ -59,14 +58,12 @@ class HtmlFile(Novel, HTMLParser):
         """
 
         #--- Clean up polluted HTML code.
-
         text = re.sub('</*font.*?>', '', text)
         text = re.sub('</*span.*?>', '', text)
         text = re.sub('</*FONT.*?>', '', text)
         text = re.sub('</*SPAN.*?>', '', text)
 
         #--- Put everything in one line.
-
         text = text.replace('\n', ' ')
         text = text.replace('\r', ' ')
         text = text.replace('\t', ' ')
@@ -74,7 +71,6 @@ class HtmlFile(Novel, HTMLParser):
             text = text.replace('  ', ' ').strip()
 
         #--- Replace HTML tags by yWriter markup.
-
         text = text.replace('<i>', '[i]')
         text = text.replace('<I>', '[i]')
         text = text.replace('</i>', '[/i]')
@@ -93,7 +89,6 @@ class HtmlFile(Novel, HTMLParser):
         text = re.sub('<STRONG.*?>', '[b]', text)
 
         #--- Remove orphaned tags.
-
         text = text.replace('[/b][b]', '')
         text = text.replace('[/i][i]', '')
         text = text.replace('[/b][b]', '')
@@ -111,8 +106,7 @@ class HtmlFile(Novel, HTMLParser):
         """
         text = self._convert_to_yw(text)
 
-        # Remove misplaced formatting tags.
-
+        #--- Remove misplaced formatting tags.
         text = re.sub('\[\/*[b|i]\]', '', text)
         return text
 

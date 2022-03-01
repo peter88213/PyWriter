@@ -7,7 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from configparser import ConfigParser
 
 
-class Configuration():
+class Configuration:
     """Application configuration, representing an INI file.
 
         INI file sections:

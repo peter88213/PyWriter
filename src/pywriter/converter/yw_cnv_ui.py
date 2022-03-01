@@ -9,7 +9,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import sys
 import webbrowser
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.ui.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
@@ -51,22 +50,10 @@ class YwCnvUi(YwCnv):
         Error handling:
         - If the conversion fails, newFile is set to None.
         """
-
-        # Send specific information about the conversion to the UI.
-
         self.ui.set_info_what(
             f'Input: {source.DESCRIPTION} "{os.path.normpath(source.filePath)}"\nOutput: {target.DESCRIPTION} "{os.path.normpath(target.filePath)}"')
-
-        # Convert source into target.
-
         message = self.convert(source, target)
-
-        # Pass the message to the UI.
-
         self.ui.set_info_how(message)
-
-        # Save the new file pathname.
-
         if message.startswith(ERROR):
             self.newFile = None
         else:
@@ -90,24 +77,13 @@ class YwCnvUi(YwCnv):
           an error message is sent to the UI.
         - If the conversion fails, newFile is set to None.
         """
-
-        # Send specific information about the conversion to the UI.
-
         self.ui.set_info_what(
             f'Create a yWriter project file from {source.DESCRIPTION}\nNew project: "{os.path.normpath(target.filePath)}"')
         if os.path.isfile(target.filePath):
             self.ui.set_info_how(f'{ERROR}"{os.path.normpath(target.filePath)}" already exists.')
         else:
-            # Convert source into target.
-
             message = self.convert(source, target)
-
-            # Pass the message to the UI.
-
             self.ui.set_info_how(message)
-
-            # Save the new file pathname.
-
             if message.startswith(ERROR):
                 self.newFile = None
             else:
@@ -130,26 +106,11 @@ class YwCnvUi(YwCnv):
         Error handling:
         - If the conversion fails, newFile is set to None.
         """
-
-        # Send specific information about the conversion to the UI.
-
         self.ui.set_info_what(
             f'Input: {source.DESCRIPTION} "{os.path.normpath(source.filePath)}"\nOutput: {target.DESCRIPTION} "{os.path.normpath(target.filePath)}"')
-
-        # Convert source into target.
-
         message = self.convert(source, target)
-
-        # Pass the message to the UI.
-
         self.ui.set_info_how(message)
-
-        # Delete the temporay file, if exists.
-
         self._delete_tempfile(source.filePath)
-
-        # Save the new file pathname.
-
         if message.startswith(ERROR):
             self.newFile = None
         else:

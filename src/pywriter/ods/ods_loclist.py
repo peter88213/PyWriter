@@ -9,7 +9,6 @@ from pywriter.ods.ods_file import OdsFile
 
 class OdsLocList(OdsFile):
     """ODS location list representation."""
-
     DESCRIPTION = 'Location list'
     SUFFIX = '_loclist'
 

@@ -35,8 +35,6 @@ class OdtExport(OdtFile):
 '''
 
     _sceneDivider = '<text:p text:style-name="Heading_20_4">* * *</text:p>\n'
-    #sceneDivider = '<text:p text:style-name="Heading_20_5"></text:p>\n'
-
     _fileFooter = OdtFile._CONTENT_XML_FOOTER
 
     def _get_chapterMapping(self, chId, chapterNumber):

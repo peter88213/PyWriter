@@ -9,14 +9,11 @@ from pywriter.ods.ods_file import OdsFile
 
 class OdsPlotList(OdsFile):
     """ODS plot list representation with plot related metadata."""
-
     DESCRIPTION = 'Plot list'
     SUFFIX = '_plotlist'
-
     _STORYLINE_MARKER = 'story'
     # Field names containing this string (case insensitive)
     # are associated to storylines
-
     _NOT_APPLICABLE = 'N/A'
     # Scene field column header for fields not being assigned to a storyline
 

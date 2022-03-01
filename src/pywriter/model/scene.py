@@ -7,7 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 
 
-class Scene():
+class Scene:
     """yWriter scene representation.
     
     Public instance variables:

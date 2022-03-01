@@ -7,7 +7,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 from shutil import copyfile
-
 from pywriter.test.helper import read_file
 from pywriter.converter.yw7_converter import Yw7Converter
 from pywriter.converter.yw_cnv import YwCnv
@@ -24,8 +23,7 @@ class ImportTest():
     
     Subclasses must also inherit from unittest.TestCase
     """
-    _importClass = None
-    
+    _importClass = None  
   
     def _init_paths(self):
         """Initialize the test data and execution paths."""  

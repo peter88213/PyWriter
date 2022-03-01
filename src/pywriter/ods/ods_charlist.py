@@ -12,7 +12,7 @@ class OdsCharList(OdsFile):
 
     DESCRIPTION = 'Character list'
     SUFFIX = '_charlist'
-
+    
     _fileHeader = f'''{OdsFile._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
     <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co2" table:default-cell-style-name="Default"/>
@@ -58,7 +58,6 @@ class OdsCharList(OdsFile):
     </table:table-row>
 
 '''
-
     _characterTemplate = '''   <table:table-row table:style-name="ro2">
      <table:table-cell office:value-type="string">
       <text:p>CrID:$ID</text:p>

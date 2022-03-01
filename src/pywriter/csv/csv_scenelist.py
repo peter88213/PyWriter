@@ -5,7 +5,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.csv.csv_file import CsvFile
 from pywriter.model.scene import Scene
@@ -19,10 +18,8 @@ class CsvSceneList(CsvFile):
     """
     DESCRIPTION = 'Scene list'
     SUFFIX = '_scenelist'
-
     _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
     # '1' is assigned N/A (empty table cell).
-
     _rowTitles = ['Scene link', 'Scene title', 'Scene description', 'Tags', 'Scene notes', 'A/R',
                  'Goal', 'Conflict', 'Outcome', 'Scene', 'Words total',
                  '$FieldTitle1', '$FieldTitle2', '$FieldTitle3', '$FieldTitle4',
@@ -70,7 +67,6 @@ class CsvSceneList(CsvFile):
                 i += 1
 
                 # Transfer scene ratings; set to 1 if deleted
-
                 if cells[i] in self._SCENE_RATINGS:
                     self.scenes[scId].field1 = cells[i]
                 else:
@@ -102,30 +98,9 @@ class CsvSceneList(CsvFile):
                     # Scene status remains None and will be ignored when
                     # writing back.
                 i += 1
-                ''' Cannot write back character IDs, because self.characters is None
-                charaNames = self._get_list(cells[i])
-                self.scenes[scId].characters = []
-                for charaName in charaNames:
-                    for id, name in self.characters.items():
-                        if name == charaName:
-                            self.scenes[scId].characters.append(id)
-                '''
+                # Can't write back character IDs, because self.characters is None.
                 i += 1
-                ''' Cannot write back location IDs, because self.locations is None
-                locaNames = self._get_list(cells[i])
-                self.scenes[scId].locations = []
-                for locaName in locaNames:
-                    for id, name in self.locations.items():
-                        if name == locaName:
-                            self.scenes[scId].locations.append(id)
-                '''
+                # Can't write back location IDs, because self.locations is None.
                 i += 1
-                ''' Cannot write back item IDs, because self.items is None
-                itemNames = self._get_list(cells[i])
-                self.scenes[scId].items = []
-                for itemName in itemNames:
-                    for id, name in self.items.items():
-                        if name == itemName:
-                            self.scenes[scId].items.append(id)
-                '''
+                # Can't write back item IDs, because self.items is None.
         return 'CSV data converted to novel structure.'

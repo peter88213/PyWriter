@@ -5,7 +5,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.converter.yw_cnv_ui import YwCnvUi
 from pywriter.converter.file_factory import FileFactory
@@ -66,7 +65,6 @@ class YwCnvFf(YwCnvUi):
         This is a template method that calls superclass methods as primitive operations by case.
         """
         self.newFile = None
-
         if not os.path.isfile(sourcePath):
             self.ui.set_info_how(f'{ERROR}File "{os.path.normpath(sourcePath)}" not found.')
             return

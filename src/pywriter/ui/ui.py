@@ -7,11 +7,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import ERROR
-
 import sys
 
 
-class Ui():
+class Ui:
     """Base class for UI facades, implementing a 'silent mode'.
     
     Public methods:

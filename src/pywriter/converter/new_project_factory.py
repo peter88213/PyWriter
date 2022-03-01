@@ -5,7 +5,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-
 from pywriter.pywriter_globals import ERROR
 from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_file import Yw7File
@@ -24,7 +23,6 @@ class NewProjectFactory(FileFactory):
     Class constant:
         DO_NOT_IMPORT -- list of suffixes from file classes not meant to be imported.    
     """
-
     DO_NOT_IMPORT = ['_xref', '_brf_synopsis']
 
     def make_file_objects(self, sourcePath, **kwargs):
@@ -77,4 +75,5 @@ class NewProjectFactory(FileFactory):
         for suffix in self.DO_NOT_IMPORT:
             if fileName.endswith(suffix):
                 return False
+        
         return True

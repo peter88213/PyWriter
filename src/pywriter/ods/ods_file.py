@@ -11,10 +11,7 @@ from pywriter.odf.odf_file import OdfFile
 
 class OdsFile(OdfFile):
     """Generic OpenDocument spreadsheet document representation."""
-
     EXTENSION = '.ods'
-    # overwrites Novel.EXTENSION
-
     _ODF_COMPONENTS = ['META-INF', 'content.xml', 'meta.xml', 'mimetype',
                       'settings.xml', 'styles.xml', 'META-INF/manifest.xml']
 

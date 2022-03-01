@@ -7,11 +7,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-
 from pywriter.pywriter_globals import ERROR
 
 
-class YwCnv():
+class YwCnv:
     """Base class for Novel file conversion.
 
     Public methods:
@@ -36,9 +35,6 @@ class YwCnv():
         - Pass the error messages of the called methods of source and target.
         - The success message comes from target.write(), if called.       
         """
-
-        # Initial error handling.
-
         if source.filePath is None:
             return f'{ERROR}Source "{os.path.normpath(source.filePath)}" is not of the supported type.'
 
@@ -51,19 +47,13 @@ class YwCnv():
         if os.path.isfile(target.filePath) and not self._confirm_overwrite(target.filePath):
             return f'{ERROR}Action canceled by user.'
 
-        # Make the source object read the source file.
-
         message = source.read()
         if message.startswith(ERROR):
             return message
 
-        # Make the target object merge the source object's instance variables.
-
         message = target.merge(source)
         if message.startswith(ERROR):
             return message
-
-        # Make the source object write the target file.
 
         return target.write()
 
