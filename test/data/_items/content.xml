@@ -6,7 +6,7 @@
   <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
   <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
    </office:font-face-decls>
- <office:automatic-styles />
+ <office:automatic-styles/>
  <office:body>
   <office:text text:use-soft-page-breaks="true">
 
