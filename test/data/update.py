@@ -1,20 +1,25 @@
-"""Add CDATA statement to yw7 file <ImageFile> tags."""
+"""Update test files."""
+import sys
 
-import re, sys
-
-tag = 'ImageFile'
-
-ywFile = sys.argv[1]
-
-with open(ywFile, 'r', encoding='utf-8') as f:
-    lines = f.readlines()
+filePath = sys.argv[1]
+with open(filePath, 'r', encoding='utf-8') as f:
+    text = f.read()
     
-newlines = []
-
-for line in lines:
-    line = re.sub(f' \<{tag}\>$', f'<{tag}><![CDATA[', line)
-    line = re.sub(f' \<\/{tag}\>$', f']]></{tag}>', line)
-    newlines.append(line)
+old = '''
+ <office:automatic-styles>
+  <style:style style:name="Sect1" style:family="section">
+   <style:section-properties style:editable="false">
+    <style:columns fo:column-count="1" fo:column-gap="0cm"/>
+   </style:section-properties>
+  </style:style>
+ </office:automatic-styles>
+'''
     
-with open(ywFile, 'w', encoding='utf-8') as f:
-    f.writelines(newlines)
+new = '''
+ <office:automatic-styles />
+'''    
+
+if old in text: 
+    text = text.replace(old, new)
+    with open(filePath, 'w', encoding='utf-8') as f:
+        f.write(text)

@@ -29,13 +29,7 @@ class OdtFile(OdfFile):
   <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
   <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
    </office:font-face-decls>
- <office:automatic-styles>
-  <style:style style:name="Sect1" style:family="section">
-   <style:section-properties style:editable="false">
-    <style:columns fo:column-count="1" fo:column-gap="0cm"/>
-   </style:section-properties>
-  </style:style>
- </office:automatic-styles>
+ <office:automatic-styles />
  <office:body>
   <office:text text:use-soft-page-breaks="true">
 
