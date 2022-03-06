@@ -15,17 +15,16 @@ from pywriter.converter.import_target_factory import ImportTargetFactory
 
 
 class YwCnvFf(YwCnvUi):
-    """Class for Novel file conversion using factory methods 
-    to create target and source classes.
+    """Class for Novel file conversion using factory methods to create target and source classes.
 
     Public methods:
-        run(sourcePath, **kwargs) -- Create source and target objects and run conversion.
+        run(sourcePath, **kwargs) -- create source and target objects and run conversion.
 
     Class constants:
-        EXPORT_SOURCE_CLASSES -- List of YwFile subclasses from which can be exported.
-        EXPORT_TARGET_CLASSES -- List of FileExport subclasses to which export is possible.
-        IMPORT_SOURCE_CLASSES -- List of Novel subclasses from which can be imported.
-        IMPORT_TARGET_CLASSES -- List of YwFile subclasses to which import is possible.
+        EXPORT_SOURCE_CLASSES -- list of YwFile subclasses from which can be exported.
+        EXPORT_TARGET_CLASSES -- list of FileExport subclasses to which export is possible.
+        IMPORT_SOURCE_CLASSES -- list of Novel subclasses from which can be imported.
+        IMPORT_TARGET_CLASSES -- list of YwFile subclasses to which import is possible.
 
     All lists are empty and meant to be overridden by subclasses.
 
