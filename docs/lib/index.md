@@ -28,7 +28,11 @@ Three methods make up the basic function:
 
 The **YwCnv** converter base class calls the 'read' method of the source object specified as argument, and the 'merge' and 'write' methods of the target object specified as argument. 
 
-The **YwCnvUi** subclass has several **fileFactory** subclasses to instantiate the source and target object according to the source file name specified as argument. 
+The **YwCnvUi** subclass provides a user interface and methods specialized for import/export.
+
+The **YwCnvFf** subclass has several **fileFactory** subclasses to instantiate the source and target object according to the source file name specified as argument. 
+
+There are [example sequence diagrams](../sd) that show how the conversion works. 
 
 
 ## Packages
