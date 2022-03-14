@@ -1892,6 +1892,9 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <Title><![CDATA[@Chapter 32]]></Title>
       <SortOrder>36</SortOrder>
       <Type>0</Type>
+      <Fields>
+        <Field_SuppressChapterTitle>1</Field_SuppressChapterTitle>
+      </Fields>
       <Scenes>
         <ScID>119</ScID>
       </Scenes>

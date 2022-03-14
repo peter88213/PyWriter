@@ -77,19 +77,19 @@ class Yw7File(Novel):
             lcId = loc.find('ID').text
             self.srtLocations.append(lcId)
             self.locations[lcId] = WorldElement()
-            
+
             if loc.find('Title') is not None:
                 self.locations[lcId].title = loc.find('Title').text
-            
+
             if loc.find('ImageFile') is not None:
                 self.locations[lcId].image = loc.find('ImageFile').text
-            
+
             if loc.find('Desc') is not None:
                 self.locations[lcId].desc = loc.find('Desc').text
-            
+
             if loc.find('AKA') is not None:
                 self.locations[lcId].aka = loc.find('AKA').text
-            
+
             if loc.find('Tags') is not None:
                 if loc.find('Tags').text is not None:
                     tags = loc.find('Tags').text.split(';')
@@ -100,19 +100,19 @@ class Yw7File(Novel):
             itId = itm.find('ID').text
             self.srtItems.append(itId)
             self.items[itId] = WorldElement()
-            
+
             if itm.find('Title') is not None:
                 self.items[itId].title = itm.find('Title').text
-            
+
             if itm.find('ImageFile') is not None:
                 self.items[itId].image = itm.find('ImageFile').text
-            
+
             if itm.find('Desc') is not None:
                 self.items[itId].desc = itm.find('Desc').text
-            
+
             if itm.find('AKA') is not None:
                 self.items[itId].aka = itm.find('AKA').text
-            
+
             if itm.find('Tags') is not None:
                 if itm.find('Tags').text is not None:
                     tags = itm.find('Tags').text.split(';')
@@ -123,36 +123,36 @@ class Yw7File(Novel):
             crId = crt.find('ID').text
             self.srtCharacters.append(crId)
             self.characters[crId] = Character()
-            
+
             if crt.find('Title') is not None:
                 self.characters[crId].title = crt.find('Title').text
-            
+
             if crt.find('ImageFile') is not None:
                 self.characters[crId].image = crt.find('ImageFile').text
-            
+
             if crt.find('Desc') is not None:
                 self.characters[crId].desc = crt.find('Desc').text
-            
+
             if crt.find('AKA') is not None:
                 self.characters[crId].aka = crt.find('AKA').text
-            
+
             if crt.find('Tags') is not None:
                 if crt.find('Tags').text is not None:
                     tags = crt.find('Tags').text.split(';')
                     self.characters[crId].tags = self._strip_spaces(tags)
-            
+
             if crt.find('Notes') is not None:
                 self.characters[crId].notes = crt.find('Notes').text
-            
+
             if crt.find('Bio') is not None:
                 self.characters[crId].bio = crt.find('Bio').text
-            
+
             if crt.find('Goals') is not None:
                 self.characters[crId].goals = crt.find('Goals').text
-            
+
             if crt.find('FullName') is not None:
                 self.characters[crId].fullName = crt.find('FullName').text
-            
+
             if crt.find('Major') is not None:
                 self.characters[crId].isMajor = True
             else:
@@ -160,28 +160,28 @@ class Yw7File(Novel):
 
         #--- Read attributes at novel level from the xml element tree.
         prj = root.find('PROJECT')
-        
+
         if prj.find('Title') is not None:
             self.title = prj.find('Title').text
-        
+
         if prj.find('AuthorName') is not None:
             self.authorName = prj.find('AuthorName').text
-        
+
         if prj.find('Bio') is not None:
             self.authorBio = prj.find('Bio').text
-        
+
         if prj.find('Desc') is not None:
             self.desc = prj.find('Desc').text
-        
+
         if prj.find('FieldTitle1') is not None:
             self.fieldTitle1 = prj.find('FieldTitle1').text
-        
+
         if prj.find('FieldTitle2') is not None:
             self.fieldTitle2 = prj.find('FieldTitle2').text
-        
+
         if prj.find('FieldTitle3') is not None:
             self.fieldTitle3 = prj.find('FieldTitle3').text
-        
+
         if prj.find('FieldTitle4') is not None:
             self.fieldTitle4 = prj.find('FieldTitle4').text
 
@@ -192,24 +192,24 @@ class Yw7File(Novel):
             chId = chp.find('ID').text
             self.chapters[chId] = Chapter()
             self.srtChapters.append(chId)
-            
+
             if chp.find('Title') is not None:
                 self.chapters[chId].title = chp.find('Title').text
-            
+
             if chp.find('Desc') is not None:
                 self.chapters[chId].desc = chp.find('Desc').text
-            
+
             if chp.find('SectionStart') is not None:
                 self.chapters[chId].chLevel = 1
             else:
                 self.chapters[chId].chLevel = 0
-            
+
             if chp.find('Type') is not None:
                 self.chapters[chId].oldType = int(chp.find('Type').text)
-            
+
             if chp.find('ChapterType') is not None:
                 self.chapters[chId].chType = int(chp.find('ChapterType').text)
-            
+
             if chp.find('Unused') is not None:
                 self.chapters[chId].isUnused = True
             else:
@@ -219,17 +219,17 @@ class Yw7File(Novel):
                 if self.chapters[chId].title.startswith('@'):
                     self.chapters[chId].suppressChapterTitle = True
             for chFields in chp.findall('Fields'):
-                
+
                 if chFields.find('Field_SuppressChapterTitle') is not None:
                     if chFields.find('Field_SuppressChapterTitle').text == '1':
                         self.chapters[chId].suppressChapterTitle = True
-                
+
                 if chFields.find('Field_IsTrash') is not None:
                     if chFields.find('Field_IsTrash').text == '1':
                         self.chapters[chId].isTrash = True
                     else:
                         self.chapters[chId].isTrash = False
-                
+
                 if chFields.find('Field_SuppressChapterBreak') is not None:
                     if chFields.find('Field_SuppressChapterBreak').text == '1':
                         self.chapters[chId].suppressChapterBreak = True
@@ -238,24 +238,22 @@ class Yw7File(Novel):
                 else:
                     self.chapters[chId].suppressChapterBreak = False
             self.chapters[chId].srtScenes = []
-            
             if chp.find('Scenes') is not None:
-                if not self.chapters[chId].isTrash:
-                    for scn in chp.find('Scenes').findall('ScID'):
-                        scId = scn.text
-                        self.chapters[chId].srtScenes.append(scId)
+                for scn in chp.find('Scenes').findall('ScID'):
+                    scId = scn.text
+                    self.chapters[chId].srtScenes.append(scId)
 
         #--- Read attributes at scene level from the xml element tree.
         for scn in root.iter('SCENE'):
             scId = scn.find('ID').text
             self.scenes[scId] = Scene()
-            
+
             if scn.find('Title') is not None:
                 self.scenes[scId].title = scn.find('Title').text
-            
+
             if scn.find('Desc') is not None:
                 self.scenes[scId].desc = scn.find('Desc').text
-            
+
             if scn.find('RTFFile') is not None:
                 self.scenes[scId].rtfFile = scn.find('RTFFile').text
 
@@ -263,16 +261,16 @@ class Yw7File(Novel):
             if scn.find('WordCount') is not None:
                 self.scenes[scId].wordCount = int(
                     scn.find('WordCount').text)
-            
+
             if scn.find('LetterCount') is not None:
                 self.scenes[scId].letterCount = int(
                     scn.find('LetterCount').text)
-            
+
             if scn.find('SceneContent') is not None:
                 sceneContent = scn.find('SceneContent').text
                 if sceneContent is not None:
                     self.scenes[scId].sceneContent = sceneContent
-            
+
             if scn.find('Unused') is not None:
                 self.scenes[scId].isUnused = True
             else:
@@ -280,48 +278,48 @@ class Yw7File(Novel):
             self.scenes[scId].isNotesScene = False
             self.scenes[scId].isTodoScene = False
             for scFields in scn.findall('Fields'):
-                
+
                 if scFields.find('Field_SceneType') is not None:
                     if scFields.find('Field_SceneType').text == '1':
                         self.scenes[scId].isNotesScene = True
                     if scFields.find('Field_SceneType').text == '2':
                         self.scenes[scId].isTodoScene = True
-            
+
             if scn.find('ExportCondSpecific') is None:
-                self.scenes[scId].doNotExport = False           
+                self.scenes[scId].doNotExport = False
             elif scn.find('ExportWhenRTF') is not None:
                 self.scenes[scId].doNotExport = False
             else:
                 self.scenes[scId].doNotExport = True
-            
+
             if scn.find('Status') is not None:
                 self.scenes[scId].status = int(scn.find('Status').text)
-            
+
             if scn.find('Notes') is not None:
                 self.scenes[scId].sceneNotes = scn.find('Notes').text
-            
+
             if scn.find('Tags') is not None:
                 if scn.find('Tags').text is not None:
                     tags = scn.find('Tags').text.split(';')
                     self.scenes[scId].tags = self._strip_spaces(tags)
-            
+
             if scn.find('Field1') is not None:
                 self.scenes[scId].field1 = scn.find('Field1').text
-            
+
             if scn.find('Field2') is not None:
                 self.scenes[scId].field2 = scn.find('Field2').text
-            
+
             if scn.find('Field3') is not None:
                 self.scenes[scId].field3 = scn.find('Field3').text
-            
+
             if scn.find('Field4') is not None:
                 self.scenes[scId].field4 = scn.find('Field4').text
-            
+
             if scn.find('AppendToPrev') is not None:
                 self.scenes[scId].appendToPrev = True
             else:
                 self.scenes[scId].appendToPrev = False
-            
+
             if scn.find('SpecificDateTime') is not None:
                 dateTime = scn.find('SpecificDateTime').text.split(' ')
                 for dt in dateTime:
@@ -332,56 +330,56 @@ class Yw7File(Novel):
             else:
                 if scn.find('Day') is not None:
                     self.scenes[scId].day = scn.find('Day').text
-                
+
                 if scn.find('Hour') is not None:
                     self.scenes[scId].hour = scn.find('Hour').text
-                
+
                 if scn.find('Minute') is not None:
                     self.scenes[scId].minute = scn.find('Minute').text
-            
+
             if scn.find('LastsDays') is not None:
                 self.scenes[scId].lastsDays = scn.find('LastsDays').text
-            
+
             if scn.find('LastsHours') is not None:
                 self.scenes[scId].lastsHours = scn.find('LastsHours').text
-            
+
             if scn.find('LastsMinutes') is not None:
                 self.scenes[scId].lastsMinutes = scn.find('LastsMinutes').text
-            
+
             if scn.find('ReactionScene') is not None:
                 self.scenes[scId].isReactionScene = True
             else:
                 self.scenes[scId].isReactionScene = False
-            
+
             if scn.find('SubPlot') is not None:
                 self.scenes[scId].isSubPlot = True
             else:
                 self.scenes[scId].isSubPlot = False
-            
+
             if scn.find('Goal') is not None:
                 self.scenes[scId].goal = scn.find('Goal').text
-            
+
             if scn.find('Conflict') is not None:
                 self.scenes[scId].conflict = scn.find('Conflict').text
-            
+
             if scn.find('Outcome') is not None:
                 self.scenes[scId].outcome = scn.find('Outcome').text
-            
+
             if scn.find('ImageFile') is not None:
                 self.scenes[scId].image = scn.find('ImageFile').text
-            
+
             if scn.find('Characters') is not None:
                 for crId in scn.find('Characters').iter('CharID'):
                     if self.scenes[scId].characters is None:
                         self.scenes[scId].characters = []
                     self.scenes[scId].characters.append(crId.text)
-            
+
             if scn.find('Locations') is not None:
                 for lcId in scn.find('Locations').iter('LocID'):
                     if self.scenes[scId].locations is None:
                         self.scenes[scId].locations = []
                     self.scenes[scId].locations.append(lcId.text)
-            
+
             if scn.find('Items') is not None:
                 for itId in scn.find('Items').iter('ItemID'):
                     if self.scenes[scId].items is None:
@@ -425,6 +423,7 @@ class Yw7File(Novel):
                     j += 1
                 else:
                     j = tgtLst.index(srcLst[i]) + 1
+
         if os.path.isfile(self.filePath):
             message = self.read()
             # initialize data
@@ -734,22 +733,22 @@ class Yw7File(Novel):
                     xmlScn.find('Desc').text = prjScn.desc
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Desc').text = prjScn.desc
-                       
+
             if xmlScn.find('SceneContent') is None:
                 ET.SubElement(xmlScn, 'SceneContent').text = prjScn.sceneContent
 
             if xmlScn.find('WordCount') is None:
                 ET.SubElement(xmlScn, 'WordCount').text = str(prjScn.wordCount)
-            
+
             if xmlScn.find('LetterCount') is None:
                 ET.SubElement(xmlScn, 'LetterCount').text = str(prjScn.letterCount)
-            
+
             if prjScn.isUnused:
                 if xmlScn.find('Unused') is None:
                     ET.SubElement(xmlScn, 'Unused').text = '-1'
             elif xmlScn.find('Unused') is not None:
                 xmlScn.remove(xmlScn.find('Unused'))
-            
+
             if prjScn.isNotesScene:
                 scFields = xmlScn.find('Fields')
                 try:
@@ -762,7 +761,7 @@ class Yw7File(Novel):
                 if scFields.find('Field_SceneType') is not None:
                     if scFields.find('Field_SceneType').text == '1':
                         scFields.remove(scFields.find('Field_SceneType'))
-            
+
             if prjScn.isTodoScene:
                 scFields = xmlScn.find('Fields')
                 try:
@@ -775,49 +774,49 @@ class Yw7File(Novel):
                 if scFields.find('Field_SceneType') is not None:
                     if scFields.find('Field_SceneType').text == '2':
                         scFields.remove(scFields.find('Field_SceneType'))
-            
+
             if prjScn.status is not None:
                 try:
                     xmlScn.find('Status').text = str(prjScn.status)
                 except:
                     ET.SubElement(xmlScn, 'Status').text = str(prjScn.status)
-            
+
             if prjScn.sceneNotes is not None:
                 try:
                     xmlScn.find('Notes').text = prjScn.sceneNotes
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Notes').text = prjScn.sceneNotes
-            
+
             if prjScn.tags is not None:
                 try:
                     xmlScn.find('Tags').text = ';'.join(prjScn.tags)
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Tags').text = ';'.join(prjScn.tags)
-            
+
             if prjScn.field1 is not None:
                 try:
                     xmlScn.find('Field1').text = prjScn.field1
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Field1').text = prjScn.field1
-            
+
             if prjScn.field2 is not None:
                 try:
                     xmlScn.find('Field2').text = prjScn.field2
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Field2').text = prjScn.field2
-            
+
             if prjScn.field3 is not None:
                 try:
                     xmlScn.find('Field3').text = prjScn.field3
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Field3').text = prjScn.field3
-            
+
             if prjScn.field4 is not None:
                 try:
                     xmlScn.find('Field4').text = prjScn.field4
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Field4').text = prjScn.field4
-            
+
             if prjScn.appendToPrev:
                 if xmlScn.find('AppendToPrev') is None:
                     ET.SubElement(xmlScn, 'AppendToPrev').text = '-1'
@@ -835,18 +834,18 @@ class Yw7File(Novel):
 
                     if xmlScn.find('Day') is not None:
                         xmlScn.remove(xmlScn.find('Day'))
-                    
+
                     if xmlScn.find('Hour') is not None:
                         xmlScn.remove(xmlScn.find('Hour'))
-                    
+
                     if xmlScn.find('Minute') is not None:
                         xmlScn.remove(xmlScn.find('Minute'))
-            
+
             elif (prjScn.day is not None) or (prjScn.hour is not None) or (prjScn.minute is not None):
-                
+
                 if xmlScn.find('SpecificDateTime') is not None:
                     xmlScn.remove(xmlScn.find('SpecificDateTime'))
-                
+
                 if xmlScn.find('SpecificDateMode') is not None:
                     xmlScn.remove(xmlScn.find('SpecificDateMode'))
                 if prjScn.day is not None:
@@ -864,19 +863,19 @@ class Yw7File(Novel):
                         xmlScn.find('Minute').text = prjScn.minute
                     except(AttributeError):
                         ET.SubElement(xmlScn, 'Minute').text = prjScn.minute
-            
+
             if prjScn.lastsDays is not None:
                 try:
                     xmlScn.find('LastsDays').text = prjScn.lastsDays
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'LastsDays').text = prjScn.lastsDays
-            
+
             if prjScn.lastsHours is not None:
                 try:
                     xmlScn.find('LastsHours').text = prjScn.lastsHours
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'LastsHours').text = prjScn.lastsHours
-            
+
             if prjScn.lastsMinutes is not None:
                 try:
                     xmlScn.find('LastsMinutes').text = prjScn.lastsMinutes
@@ -889,38 +888,38 @@ class Yw7File(Novel):
                     ET.SubElement(xmlScn, 'ReactionScene').text = '-1'
             elif xmlScn.find('ReactionScene') is not None:
                 xmlScn.remove(xmlScn.find('ReactionScene'))
-            
+
             if prjScn.isSubPlot:
                 if xmlScn.find('SubPlot') is None:
                     ET.SubElement(xmlScn, 'SubPlot').text = '-1'
             elif xmlScn.find('SubPlot') is not None:
                 xmlScn.remove(xmlScn.find('SubPlot'))
-            
+
             if prjScn.goal is not None:
                 try:
                     xmlScn.find('Goal').text = prjScn.goal
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Goal').text = prjScn.goal
-            
+
             if prjScn.conflict is not None:
                 try:
                     xmlScn.find('Conflict').text = prjScn.conflict
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Conflict').text = prjScn.conflict
-            
+
             if prjScn.outcome is not None:
                 try:
                     xmlScn.find('Outcome').text = prjScn.outcome
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'Outcome').text = prjScn.outcome
-            
+
             if prjScn.image is not None:
                 try:
                     xmlScn.find('ImageFile').text = prjScn.image
                 except(AttributeError):
                     ET.SubElement(xmlScn, 'ImageFile').text = prjScn.image
-                    
-            # Characters/locations/items           
+
+            # Characters/locations/items
             if prjScn.characters is not None:
                 characters = xmlScn.find('Characters')
                 try:
@@ -930,7 +929,7 @@ class Yw7File(Novel):
                     characters = ET.SubElement(xmlScn, 'Characters')
                 for crId in prjScn.characters:
                     ET.SubElement(characters, 'CharID').text = crId
-            
+
             if prjScn.locations is not None:
                 locations = xmlScn.find('Locations')
                 try:
@@ -940,7 +939,7 @@ class Yw7File(Novel):
                     locations = ET.SubElement(xmlScn, 'Locations')
                 for lcId in prjScn.locations:
                     ET.SubElement(locations, 'LocID').text = lcId
-            
+
             if prjScn.items is not None:
                 items = xmlScn.find('Items')
                 try:
@@ -960,19 +959,19 @@ class Yw7File(Novel):
                 xmlChp.find('Title').text = prjChp.title
             except(AttributeError):
                 ET.SubElement(xmlChp, 'Title').text = prjChp.title
-            
+
             if prjChp.desc is not None:
                 try:
                     xmlChp.find('Desc').text = prjChp.desc
                 except(AttributeError):
                     ET.SubElement(xmlChp, 'Desc').text = prjChp.desc
-            
+
             if xmlChp.find('SectionStart') is not None:
                 if prjChp.chLevel == 0:
                     xmlChp.remove(xmlChp.find('SectionStart'))
             elif prjChp.chLevel == 1:
                 ET.SubElement(xmlChp, 'SectionStart').text = '-1'
-            
+
             if prjChp.oldType is not None:
                 try:
                     xmlChp.find('Type').text = str(prjChp.oldType)
@@ -990,6 +989,42 @@ class Yw7File(Novel):
                     ET.SubElement(xmlChp, 'Unused').text = '-1'
             elif xmlChp.find('Unused') is not None:
                 xmlChp.remove(xmlChp.find('Unused'))
+
+            if prjChp.suppressChapterTitle:
+                chFields = xmlChp.find('Fields')
+                try:
+                    chFields.find('Field_SuppressChapterTitle').text = '1'
+                except(AttributeError):
+                    chFields = ET.SubElement(xmlChp, 'Fields')
+                    ET.SubElement(chFields, 'Field_SuppressChapterTitle').text = '1'
+            elif xmlChp.find('Fields') is not None:
+                chFields = xmlChp.find('Fields')
+                if chFields.find('Field_SuppressChapterTitle') is not None:
+                    chFields.find('Field_SuppressChapterTitle').text = '0'
+
+            if prjChp.suppressChapterBreak:
+                chFields = xmlChp.find('Fields')
+                try:
+                    chFields.find('Field_SuppressChapterBreak').text = '1'
+                except(AttributeError):
+                    chFields = ET.SubElement(xmlChp, 'Fields')
+                    ET.SubElement(chFields, 'Field_SuppressChapterBreak').text = '1'
+            elif xmlChp.find('Fields') is not None:
+                chFields = xmlChp.find('Fields')
+                if chFields.find('Field_SuppressChapterBreak') is not None:
+                    chFields.find('Field_SuppressChapterBreak').text = '0'
+
+            if prjChp.isTrash:
+                chFields = xmlChp.find('Fields')
+                try:
+                    chFields.find('Field_IsTrash').text = '1'
+                except(AttributeError):
+                    chFields = ET.SubElement(xmlChp, 'Fields')
+                    ET.SubElement(chFields, 'Field_IsTrash').text = '1'
+            elif xmlChp.find('Fields') is not None:
+                chFields = xmlChp.find('Fields')
+                if chFields.find('Field_IsTrash') is not None:
+                    chFields.remove(chFields.find('Field_IsTrash'))
 
             #--- Rebuild the chapter's scene list.
 
@@ -1263,7 +1298,7 @@ class Yw7File(Novel):
         Otherwise, return False. 
         """
         return os.path.isfile(f'{self.filePath}.lock')
-    
+
     def _write_element_tree(self, ywProject):
         """Write back the xml element tree to a .yw7 xml file located at filePath.
         
@@ -1282,7 +1317,6 @@ class Yw7File(Novel):
             return f'{ERROR}Cannot write "{os.path.normpath(ywProject.filePath)}".'
 
         return 'yWriter XML tree written.'
-
 
     def _postprocess_xml_file(self, filePath):
         '''Postprocess an xml file created by ElementTree.
