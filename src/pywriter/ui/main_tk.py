@@ -59,12 +59,12 @@ class MainTk(Ui):
         self._fileMenu.add_command(label='Open...', command=lambda: self.open_project(''))
         self._fileMenu.add_command(label='Close', command=lambda: self._close_project())
         self._fileMenu.entryconfig('Close', state='disabled')
-        self._fileMenu.add_command(label='Exit', command=self._root.quit)
-        
+        self._fileMenu.add_command(label='Exit', command=lambda: self._on_quit())
+
         self._extend_menu()
         # Hook for subclasses
-        
-        self._root.config(menu=self._mainMenu) 
+
+        self._root.config(menu=self._mainMenu)
         self._titleBar = tk.Label(self._root, text='', padx=5, pady=2)
         self._titleBar.pack(expand=False, anchor='w')
         self._mainWindow = tk.Frame()
@@ -174,3 +174,7 @@ class MainTk(Ui):
         self._statusBar.config(bg=self._root.cget('background'))
         self._statusBar.config(fg='black')
         self._statusBar.config(text=message)
+
+    def _on_quit(self):
+        """Gracefully exit."""
+        self._root.quit()
