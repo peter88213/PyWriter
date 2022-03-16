@@ -662,18 +662,17 @@ class Yw7File(Novel):
             # Existing scenes may be moved to another chapter.
             # Deletion of scenes is not considered.
             # The scene's sort order may not change.
-            if source.chapters[chId].srtScenes is not None:
 
-                # Remove scenes that have been moved to another chapter from the scene list.
-                srtScenes = []
-                for scId in self.chapters[chId].srtScenes:
-                    if scId in source.chapters[chId].srtScenes or not scId in source.scenes:
-                        srtScenes.append(scId)
-                        # The scene has not moved to another chapter or isn't imported
-                    self.chapters[chId].srtScenes = srtScenes
+            # Remove scenes that have been moved to another chapter from the scene list.
+            srtScenes = []
+            for scId in self.chapters[chId].srtScenes:
+                if scId in source.chapters[chId].srtScenes or not scId in source.scenes:
+                    # The scene has not moved to another chapter or isn't imported
+                    srtScenes.append(scId)
+            self.chapters[chId].srtScenes = srtScenes
 
-                # Add new or moved scenes to the scene list.
-                merge_lists(source.chapters[chId].srtScenes, self.chapters[chId].srtScenes)
+            # Add new or moved scenes to the scene list.
+            merge_lists(source.chapters[chId].srtScenes, self.chapters[chId].srtScenes)
 
         #--- Merge project attributes.
         if source.title:
@@ -1027,11 +1026,12 @@ class Yw7File(Novel):
                     chFields.remove(chFields.find('Field_IsTrash'))
 
             #--- Rebuild the chapter's scene list.
-
-            if prjChp.srtScenes:
+            try:
                 xScnList = xmlChp.find('Scenes')
-                if xScnList is not None:
-                    xmlChp.remove(xScnList)
+                xmlChp.remove(xScnList)
+            except:
+                pass
+            if prjChp.srtScenes:
                 sortSc = ET.SubElement(xmlChp, 'Scenes')
                 for scId in prjChp.srtScenes:
                     ET.SubElement(sortSc, 'ScID').text = scId
