@@ -68,6 +68,10 @@ class MainTk(Ui):
         self._pathBar = tk.Label(self._root, text='', padx=5, pady=3)
         self._pathBar.pack(expand=False, anchor='w')
 
+        #--- Event bindings.
+        self._root.bind('<Control_L>o', self._open_project)
+        self._root.bind('<Control_L>q', self._on_quit)
+
     def _build_main_menu(self):
         """Add main menu entries.
         
@@ -75,10 +79,10 @@ class MainTk(Ui):
         """
         self._fileMenu = tk.Menu(self._mainMenu, title='my title', tearoff=0)
         self._mainMenu.add_cascade(label='File', menu=self._fileMenu)
-        self._fileMenu.add_command(label='Open...', command=lambda: self.open_project(''))
-        self._fileMenu.add_command(label='Close', command=lambda: self._close_project())
+        self._fileMenu.add_command(label='Open...', command=self._open_project)
+        self._fileMenu.add_command(label='Close', command=self._close_project)
         self._fileMenu.entryconfig('Close', state='disabled')
-        self._fileMenu.add_command(label='Exit', command=lambda: self._on_quit())
+        self._fileMenu.add_command(label='Exit', command=self._on_quit)
 
     def _disable_menu(self):
         """Disable menu entries when no project is open.
@@ -128,7 +132,14 @@ class MainTk(Ui):
             self._pathBar.config(text=os.path.normpath(fileName))
         return fileName
 
-    def _close_project(self):
+    def _open_project(self, event=None):
+        """Create a yWriter project instance and read the file.
+        
+        This non-public method is meant for event handling.
+        """
+        self.open_project('')
+
+    def _close_project(self, event=None):
         """Close the yWriter project without saving and reset the user interface.
         
         To be extended by subclasses.
@@ -175,6 +186,6 @@ class MainTk(Ui):
         self._statusBar.config(fg='black')
         self._statusBar.config(text=message)
 
-    def _on_quit(self):
+    def _on_quit(self, event=None):
         """Gracefully exit."""
         self._root.quit()
