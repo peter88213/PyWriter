@@ -20,7 +20,7 @@ class MainTkCnv(MainTk):
         converter -- converter strategy class.
 
     Adds a "Swap" and a "Run" entry to the main menu.
-    """    
+    """
     _EXPORT_DESC = 'Export from yWriter.'
     _IMPORT_DESC = 'Import to yWriter.'
 
@@ -42,11 +42,12 @@ class MainTkCnv(MainTk):
         self._ywExtension = Yw7File.EXTENSION
         self._docExtension = None
 
-    def _extend_menu(self):
+    def _build_main_menu(self):
         """Add main menu entries.
         
-        Overrides the superclass template method. 
+        Extends the superclass template method. 
         """
+        super()._build_main_menu()
         self._mainMenu.add_command(label='Swap', command=self._reverse_direction)
         self._mainMenu.entryconfig('Swap', state='disabled')
         self._mainMenu.add_command(label='Run', command=self._convert_file)
@@ -107,6 +108,6 @@ class MainTkCnv(MainTk):
     def _convert_file(self):
         """Call the converter's conversion method, if a source file is selected."""
         self._set_status('')
-        self.kwargs['yw_last_open'] =self._sourcePath
+        self.kwargs['yw_last_open'] = self._sourcePath
         self.converter.run(self._sourcePath, **self.kwargs)
 

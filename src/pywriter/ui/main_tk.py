@@ -54,14 +54,8 @@ class MainTk(Ui):
         self._root = tk.Tk()
         self._root.title(title)
         self._mainMenu = tk.Menu(self._root)
-        self._fileMenu = tk.Menu(self._mainMenu, title='my title', tearoff=0)
-        self._mainMenu.add_cascade(label='File', menu=self._fileMenu)
-        self._fileMenu.add_command(label='Open...', command=lambda: self.open_project(''))
-        self._fileMenu.add_command(label='Close', command=lambda: self._close_project())
-        self._fileMenu.entryconfig('Close', state='disabled')
-        self._fileMenu.add_command(label='Exit', command=lambda: self._on_quit())
 
-        self._extend_menu()
+        self._build_main_menu()
         # Hook for subclasses
 
         self._root.config(menu=self._mainMenu)
@@ -74,11 +68,17 @@ class MainTk(Ui):
         self._pathBar = tk.Label(self._root, text='', padx=5, pady=3)
         self._pathBar.pack(expand=False, anchor='w')
 
-    def _extend_menu(self):
-        """Create an object that represents the project file.
+    def _build_main_menu(self):
+        """Add main menu entries.
         
         This is a template method that can be overridden by subclasses. 
         """
+        self._fileMenu = tk.Menu(self._mainMenu, title='my title', tearoff=0)
+        self._mainMenu.add_cascade(label='File', menu=self._fileMenu)
+        self._fileMenu.add_command(label='Open...', command=lambda: self.open_project(''))
+        self._fileMenu.add_command(label='Close', command=lambda: self._close_project())
+        self._fileMenu.entryconfig('Close', state='disabled')
+        self._fileMenu.add_command(label='Exit', command=lambda: self._on_quit())
 
     def _disable_menu(self):
         """Disable menu entries when no project is open.
