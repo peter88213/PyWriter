@@ -37,6 +37,7 @@ class MainTk(Ui):
          
         Required keyword arguments:
             yw_last_open -- str: initial file.
+            root_geometry -- str: geometry of the root window.
         
         Operation:
         - Create a main menu to be extended by subclasses.
@@ -48,19 +49,21 @@ class MainTk(Ui):
         Extends the superclass constructor.
         """
         super().__init__(title)
+        self._title = title
         self._statusText = ''
         self.kwargs = kwargs
         self._ywPrj = None
         self._root = tk.Tk()
+        self._root.protocol("WM_DELETE_WINDOW", self._on_quit)
         self._root.title(title)
+        if kwargs['root_geometry']:
+            self._root.geometry(kwargs['root_geometry'])
         self._mainMenu = tk.Menu(self._root)
 
         self._build_main_menu()
         # Hook for subclasses
 
         self._root.config(menu=self._mainMenu)
-        self._titleBar = tk.Label(self._root, text='', padx=5, pady=2)
-        self._titleBar.pack(expand=False, anchor='w')
         self._mainWindow = tk.Frame()
         self._mainWindow.pack(expand=True, fill='both')
         self._statusBar = tk.Label(self._root, text='', anchor='w', padx=5, pady=2)
@@ -145,7 +148,7 @@ class MainTk(Ui):
         To be extended by subclasses.
         """
         self._ywPrj = None
-        self._titleBar.config(text='')
+        self._root.title(self._title)
         self._set_status('')
         self._pathBar.config(text='')
         self._disable_menu()
@@ -188,4 +191,5 @@ class MainTk(Ui):
 
     def _on_quit(self, event=None):
         """Gracefully exit."""
+        self.kwargs['root_geometry'] = self._root.winfo_geometry()
         self._root.quit()

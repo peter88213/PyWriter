@@ -86,9 +86,9 @@ class MainTkCnv(MainTk):
         self._sourcePath = fileName
         self._enable_menu()
         if fileName.endswith(self._ywExtension):
-            self._titleBar.config(text=self._EXPORT_DESC)
+            self._root.title(f'{self._EXPORT_DESC} - {self._title}')
         elif fileName.endswith(self._docExtension):
-            self._titleBar.config(text=self._IMPORT_DESC)
+            self._root.title(f'{self._IMPORT_DESC} - {self._title}')
         return fileName
 
     def _reverse_direction(self):
@@ -97,12 +97,12 @@ class MainTkCnv(MainTk):
         if fileExtension == self._ywExtension:
             self._sourcePath = f'{fileName}{self._docExtension}'
             self._pathBar.config(text=os.path.normpath(self._sourcePath))
-            self._titleBar.config(text=self._IMPORT_DESC)
+            self._root.title(f'{self._IMPORT_DESC} - {self._title}')
             self._set_status('')
         elif fileExtension == self._docExtension:
             self._sourcePath = f'{fileName}{self._ywExtension}'
             self._pathBar.config(text=os.path.normpath(self._sourcePath))
-            self._titleBar.config(text=self._EXPORT_DESC)
+            self._root.title(f'{self._EXPORT_DESC} - {self._title}')
             self._set_status('')
 
     def _convert_file(self):
