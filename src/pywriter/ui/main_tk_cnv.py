@@ -96,18 +96,18 @@ class MainTkCnv(MainTk):
         fileName, fileExtension = os.path.splitext(self._sourcePath)
         if fileExtension == self._ywExtension:
             self._sourcePath = f'{fileName}{self._docExtension}'
-            self._pathBar.config(text=os.path.normpath(self._sourcePath))
+            self._show_path(os.path.normpath(self._sourcePath))
             self._root.title(f'{self._IMPORT_DESC} - {self._title}')
-            self._set_status('')
+            self._show_status('')
         elif fileExtension == self._docExtension:
             self._sourcePath = f'{fileName}{self._ywExtension}'
-            self._pathBar.config(text=os.path.normpath(self._sourcePath))
+            self._show_path(os.path.normpath(self._sourcePath))
             self._root.title(f'{self._EXPORT_DESC} - {self._title}')
-            self._set_status('')
+            self._show_status('')
 
     def _convert_file(self):
         """Call the converter's conversion method, if a source file is selected."""
-        self._set_status('')
+        self._show_status('')
         self.kwargs['yw_last_open'] = self._sourcePath
         self.converter.run(self._sourcePath, **self.kwargs)
 

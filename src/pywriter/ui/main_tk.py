@@ -71,8 +71,8 @@ class MainTk(Ui):
         self._mainWindow.pack(expand=True, fill='both')
         self._statusBar = tk.Label(self._root, text='', anchor='w', padx=5, pady=2)
         self._statusBar.pack(expand=False, fill='both')
-        self._pathBar = tk.Label(self._root, text='', padx=5, pady=3)
-        self._pathBar.pack(expand=False, anchor='w')
+        self._pathBar = tk.Label(self._root, text='', anchor='w', padx=5, pady=3)
+        self._pathBar.pack(expand=False, fill='both')
 
         #--- Event bindings.
         self._root.bind(kwargs['key_restore_status'], self._restore_status)
@@ -128,7 +128,7 @@ class MainTk(Ui):
         Return the file name.
         To be extended by subclasses.
         """
-        self._set_status(self._statusText)
+        self._show_status(self._statusText)
         initDir = os.path.dirname(self.kwargs['yw_last_open'])
         if not initDir:
             initDir = './'
@@ -136,7 +136,7 @@ class MainTk(Ui):
             fileName = filedialog.askopenfilename(filetypes=fileTypes, defaultextension='.yw7', initialdir=initDir)
         if fileName:
             self.kwargs['yw_last_open'] = fileName
-            self._pathBar.config(text=os.path.normpath(fileName))
+            self._show_path(os.path.normpath(fileName))
         return fileName
 
     def _open_project(self, event=None):
@@ -153,8 +153,8 @@ class MainTk(Ui):
         """
         self._ywPrj = None
         self._root.title(self._title)
-        self._set_status('')
-        self._pathBar.config(text='')
+        self._show_status('')
+        self._show_path('')
         self._disable_menu()
 
     def ask_yes_no(self, text):
@@ -186,16 +186,21 @@ class MainTk(Ui):
             self.infoHowText = message
         self._statusBar.config(text=self.infoHowText)
 
-    def _set_status(self, message):
+    def _show_status(self, message):
         """Put text on the status bar."""
         self._statusText = message
         self._statusBar.config(bg=self._root.cget('background'))
         self._statusBar.config(fg='black')
         self._statusBar.config(text=message)
 
-    def _restore_status(self, event=''):
+    def _show_path(self, message):
+        """Put text on the path bar."""
+        self._pathText = message
+        self._pathBar.config(text=message)
+
+    def _restore_status(self, event=None):
         """Overwrite error message with the status before."""
-        self._set_status(self._statusText)
+        self._show_status(self._statusText)
 
     def _on_quit(self, event=None):
         """Gracefully exit."""
