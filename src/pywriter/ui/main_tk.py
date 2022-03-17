@@ -38,6 +38,9 @@ class MainTk(Ui):
         Required keyword arguments:
             yw_last_open -- str: initial file.
             root_geometry -- str: geometry of the root window.
+            key_restore_status -- str: "Restore Status bar" key binding.
+            key_open_project -- str: "Open Project" key binding.
+            key_on_quit -- str: "Exit" key binding.
         
         Operation:
         - Create a main menu to be extended by subclasses.
@@ -72,8 +75,9 @@ class MainTk(Ui):
         self._pathBar.pack(expand=False, anchor='w')
 
         #--- Event bindings.
-        self._root.bind('<Control_L>o', self._open_project)
-        self._root.bind('<Control_L>q', self._on_quit)
+        self._root.bind(kwargs['key_restore_status'], self._restore_status)
+        self._root.bind(kwargs['key_open_project'], self._open_project)
+        self._root.bind(kwargs['key_on_quit'], self._on_quit)
 
     def _build_main_menu(self):
         """Add main menu entries.
@@ -161,7 +165,7 @@ class MainTk(Ui):
             
         Overrides the superclass method.       
         """
-        return messagebox.askyesno('WARNING', text)
+        return messagebox.askyesno(self._title, text)
 
     def set_info_how(self, message):
         """Show how the converter is doing.
@@ -188,6 +192,10 @@ class MainTk(Ui):
         self._statusBar.config(bg=self._root.cget('background'))
         self._statusBar.config(fg='black')
         self._statusBar.config(text=message)
+
+    def _restore_status(self, event=''):
+        """Overwrite error message with the status before."""
+        self._set_status(self._statusText)
 
     def _on_quit(self, event=None):
         """Gracefully exit."""
