@@ -135,6 +135,8 @@ class MainTk(Ui):
         if not fileName or not os.path.isfile(fileName):
             fileName = filedialog.askopenfilename(filetypes=fileTypes, defaultextension='.yw7', initialdir=initDir)
         if fileName:
+            if self._ywPrj is not None:
+                self._close_project()
             self.kwargs['yw_last_open'] = fileName
             self._show_path(os.path.normpath(fileName))
         return fileName
