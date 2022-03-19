@@ -40,7 +40,7 @@ class MainTk(Ui):
             root_geometry -- str: geometry of the root window.
             key_restore_status -- str: "Restore Status bar" key binding.
             key_open_project -- str: "Open Project" key binding.
-            key_on_quit -- str: "Exit" key binding.
+            key_quit_program -- str: "Exit" key binding.
         
         Operation:
         - Create a main menu to be extended by subclasses.
@@ -77,7 +77,7 @@ class MainTk(Ui):
         #--- Event bindings.
         self._root.bind(kwargs['key_restore_status'], self._restore_status)
         self._root.bind(kwargs['key_open_project'], self._open_project)
-        self._root.bind(kwargs['key_on_quit'], self._on_quit)
+        self._root.bind(kwargs['key_quit_program'], self._on_quit)
 
     def _build_main_menu(self):
         """Add main menu entries.
