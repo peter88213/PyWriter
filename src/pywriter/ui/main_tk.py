@@ -28,6 +28,9 @@ class MainTk(Ui):
 
     Main menu, title bar, main window frame, status bar, path bar.
     """
+    _KEY_RESTORE_STATUS = ('<Escape>', 'Esc')
+    _KEY_OPEN_PROJECT = ('<Control-o>', 'Ctrl-O')
+    _KEY_QUIT_PROGRAM = ('<Control-q>', 'Ctrl-Q')
 
     def __init__(self, title, **kwargs):
         """Initialize the GUI window and instance variables.
@@ -38,9 +41,6 @@ class MainTk(Ui):
         Required keyword arguments:
             yw_last_open -- str: initial file.
             root_geometry -- str: geometry of the root window.
-            key_restore_status -- str: "Restore Status bar" key binding.
-            key_open_project -- str: "Open Project" key binding.
-            key_quit_program -- str: "Exit" key binding.
         
         Operation:
         - Create a main menu to be extended by subclasses.
@@ -75,9 +75,9 @@ class MainTk(Ui):
         self._pathBar.pack(expand=False, fill='both')
 
         #--- Event bindings.
-        self._root.bind(kwargs['key_restore_status'], self._restore_status)
-        self._root.bind(kwargs['key_open_project'], self._open_project)
-        self._root.bind(kwargs['key_quit_program'], self._on_quit)
+        self._root.bind(self._KEY_RESTORE_STATUS[0], self._restore_status)
+        self._root.bind(self._KEY_OPEN_PROJECT[0], self._open_project)
+        self._root.bind(self._KEY_QUIT_PROGRAM[0], self._on_quit)
 
     def _build_main_menu(self):
         """Add main menu entries.
@@ -85,11 +85,11 @@ class MainTk(Ui):
         This is a template method that can be overridden by subclasses. 
         """
         self._fileMenu = tk.Menu(self._mainMenu, title='my title', tearoff=0)
-        self._mainMenu.add_cascade(label='File', menu=self._fileMenu)
-        self._fileMenu.add_command(label='Open...', command=self._open_project)
-        self._fileMenu.add_command(label='Close', command=self._close_project)
+        self._mainMenu.add_cascade(label='File', underline=0, menu=self._fileMenu)
+        self._fileMenu.add_command(label='Open...', underline=0, accelerator=self._KEY_OPEN_PROJECT[1], command=lambda: self.open_project(''))
+        self._fileMenu.add_command(label='Close', underline=0, command=self._close_project)
         self._fileMenu.entryconfig('Close', state='disabled')
-        self._fileMenu.add_command(label='Exit', command=self._on_quit)
+        self._fileMenu.add_command(label='Exit', underline=1, accelerator=self._KEY_QUIT_PROGRAM[1], command=self._on_quit)
 
     def _disable_menu(self):
         """Disable menu entries when no project is open.
