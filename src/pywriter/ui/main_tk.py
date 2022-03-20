@@ -11,6 +11,7 @@ from tkinter import filedialog
 from tkinter import messagebox
 from pywriter.pywriter_globals import ERROR
 from pywriter.ui.ui import Ui
+from pywriter.yw.yw7_file import Yw7File
 
 
 class MainTk(Ui):
@@ -18,8 +19,8 @@ class MainTk(Ui):
 
     Public methods:
         start() -- start the Tk main loop.
-        open_project(fileName, fileTypes=[('yWriter 7 project', '.yw7')]) 
-            -- select a valid project file and display the path.
+        select_project(self, fileName) -- return a project file path.
+        open_project(fileName) -- create a yWriter project instance and read the file.
         ask_yes_no(text) -- query yes or no with a pop-up box.
         set_info_how(message) -- show how the converter is doing.
 
@@ -31,6 +32,7 @@ class MainTk(Ui):
     _KEY_RESTORE_STATUS = ('<Escape>', 'Esc')
     _KEY_OPEN_PROJECT = ('<Control-o>', 'Ctrl-O')
     _KEY_QUIT_PROGRAM = ('<Control-q>', 'Ctrl-Q')
+    _YW_CLASS = Yw7File
 
     def __init__(self, title, **kwargs):
         """Initialize the GUI window and instance variables.
@@ -52,6 +54,7 @@ class MainTk(Ui):
         Extends the superclass constructor.
         """
         super().__init__(title)
+        self._fileTypes = [('yWriter 7 project', '.yw7')]
         self._title = title
         self._statusText = ''
         self.kwargs = kwargs
@@ -112,8 +115,8 @@ class MainTk(Ui):
         """
         self._root.mainloop()
 
-    def open_project(self, fileName, fileTypes=[('yWriter 7 project', '.yw7')]):
-        """Select a valid project file and display the path.
+    def select_project(self, fileName):
+        """Return a project file path.
 
         Positional arguments:
             fileName -- str: project file path.
@@ -125,21 +128,55 @@ class MainTk(Ui):
         1. use file name argument
         2. open file select dialog
 
-        Return the file name.
-        To be extended by subclasses.
+        On error, return an empty string.
         """
-        self._show_status(self._statusText)
         initDir = os.path.dirname(self.kwargs['yw_last_open'])
         if not initDir:
             initDir = './'
         if not fileName or not os.path.isfile(fileName):
-            fileName = filedialog.askopenfilename(filetypes=fileTypes, defaultextension='.yw7', initialdir=initDir)
-        if fileName:
-            if self._ywPrj is not None:
-                self._close_project()
-            self.kwargs['yw_last_open'] = fileName
-            self._show_path(os.path.normpath(fileName))
+            fileName = filedialog.askopenfilename(filetypes=self._fileTypes, defaultextension='.yw7', initialdir=initDir)
+        if not fileName:
+            return ''
+
         return fileName
+
+    def open_project(self, fileName):
+        """Create a yWriter project instance and read the file.
+
+        Positional arguments:
+            fileName -- str: project file path.
+            
+        Display project title and file path.
+        Return True on success, otherwise return False.
+        To be extended by subclasses.
+        """
+        self._show_status(self._statusText)
+        fileName = self.select_project(fileName)
+        if not fileName:
+            return False
+
+        if self._ywPrj is not None:
+            self._close_project()
+        self.kwargs['yw_last_open'] = fileName
+        self._ywPrj = self._YW_CLASS(fileName)
+        message = self._ywPrj.read()
+        if message.startswith(ERROR):
+            self._close_project()
+            self.set_info_how(message)
+            return False
+
+        self._show_path(f'{os.path.normpath(self._ywPrj.filePath)}')
+        if self._ywPrj.title:
+            titleView = self._ywPrj.title
+        else:
+            titleView = 'Untitled yWriter project'
+        if self._ywPrj.authorName:
+            authorView = self._ywPrj.authorName
+        else:
+            authorView = 'Unknown author'
+        self._root.title(f'{titleView} by {authorView} - {self._title}')
+        self._enable_menu()
+        return True
 
     def _open_project(self, event=None):
         """Create a yWriter project instance and read the file.

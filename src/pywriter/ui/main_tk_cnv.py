@@ -37,6 +37,7 @@ class MainTkCnv(MainTk):
         Extends the superclass constructor.
         """
         super().__init__(title, **kwargs)
+        self._fileTypes = kwargs['file_types']
         self.converter = None
         self._sourcePath = None
         self._ywExtension = Yw7File.EXTENSION
@@ -72,24 +73,26 @@ class MainTkCnv(MainTk):
         self._mainMenu.entryconfig('Swap', state='normal')
 
     def open_project(self, fileName):
-        """Create a source object instance and read the file.
+        """Select a valid project file and display the path.
         
         Positional arguments:
             fileName -- str: project file path.
             
-        Return the file name.
+        Return True on success, otherwise return False.
         Extends the superclass method.
         """
-        fileName = super().open_project(fileName, fileTypes=self.kwargs['file_types'])
+        fileName = super().select_project(fileName)
         if not fileName:
-            return ''
+            return False
+        self.kwargs['yw_last_open'] = fileName
         self._sourcePath = fileName
         self._enable_menu()
         if fileName.endswith(self._ywExtension):
             self._root.title(f'{self._EXPORT_DESC} - {self._title}')
         elif fileName.endswith(self._docExtension):
             self._root.title(f'{self._IMPORT_DESC} - {self._title}')
-        return fileName
+        self._show_path(f'{os.path.normpath(fileName)}')
+        return True
 
     def _reverse_direction(self):
         """Swap source and target file names."""
