@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""""Provide a tkinter GUI base class for converter applications.
+""""Provide a tkinter GUI framework for converter applications.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -88,9 +88,9 @@ class MainTkCnv(MainTk):
         self._sourcePath = fileName
         self._enable_menu()
         if fileName.endswith(self._ywExtension):
-            self._root.title(f'{self._EXPORT_DESC} - {self._title}')
+            self.root.title(f'{self._EXPORT_DESC} - {self._title}')
         elif fileName.endswith(self._docExtension):
-            self._root.title(f'{self._IMPORT_DESC} - {self._title}')
+            self.root.title(f'{self._IMPORT_DESC} - {self._title}')
         self._show_path(f'{os.path.normpath(fileName)}')
         return True
 
@@ -100,17 +100,17 @@ class MainTkCnv(MainTk):
         if fileExtension == self._ywExtension:
             self._sourcePath = f'{fileName}{self._docExtension}'
             self._show_path(os.path.normpath(self._sourcePath))
-            self._root.title(f'{self._IMPORT_DESC} - {self._title}')
-            self._show_status('')
+            self.root.title(f'{self._IMPORT_DESC} - {self._title}')
+            self.show_status('')
         elif fileExtension == self._docExtension:
             self._sourcePath = f'{fileName}{self._ywExtension}'
             self._show_path(os.path.normpath(self._sourcePath))
-            self._root.title(f'{self._EXPORT_DESC} - {self._title}')
-            self._show_status('')
+            self.root.title(f'{self._EXPORT_DESC} - {self._title}')
+            self.show_status('')
 
     def _convert_file(self):
         """Call the converter's conversion method, if a source file is selected."""
-        self._show_status('')
+        self.show_status('')
         self.kwargs['yw_last_open'] = self._sourcePath
         self.converter.run(self._sourcePath, **self.kwargs)
 

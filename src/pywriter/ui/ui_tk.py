@@ -18,6 +18,9 @@ class UiTk(Ui):
         set_info_what(message) -- show what the converter is going to do.
         set_info_how(message) -- show how the converter is doing.
         start() -- start the Tk main loop.
+
+    Public instance variables: 
+        root -- tk root window.
     """
 
     def __init__(self, title):
@@ -29,17 +32,17 @@ class UiTk(Ui):
         Extends the superclass constructor.
         """
         super().__init__(title)
-        self._root = Tk()
-        self._root.minsize(400, 150)
-        self._root.resizable(width=FALSE, height=FALSE)
-        self._root.title(title)
-        self._appInfo = Label(self._root, text='')
+        self.root = Tk()
+        self.root.minsize(400, 150)
+        self.root.resizable(width=FALSE, height=FALSE)
+        self.root.title(title)
+        self._appInfo = Label(self.root, text='')
         self._appInfo.pack(padx=20, pady=5)
-        self._processInfo = Label(self._root, text='', padx=20)
+        self._processInfo = Label(self.root, text='', padx=20)
         self._processInfo.pack(pady=20, fill='both')
-        self._root.quitButton = Button(text="Quit", command=quit)
-        self._root.quitButton.config(height=1, width=10)
-        self._root.quitButton.pack(pady=10)
+        self.root.quitButton = Button(text="Quit", command=quit)
+        self.root.quitButton.config(height=1, width=10)
+        self.root.quitButton.pack(pady=10)
 
     def ask_yes_no(self, text):
         """Query yes or no with a pop-up box.
@@ -84,7 +87,7 @@ class UiTk(Ui):
 
     def start(self):
         """Start the Tk main loop."""
-        self._root.mainloop()
+        self.root.mainloop()
 
     def _show_open_button(self, open_cmd):
         """Add an 'Open' button to the main window.
@@ -92,6 +95,6 @@ class UiTk(Ui):
         Positional argument:
             open_cmd -- subclass method that opens the file.
         """
-        self._root.openButton = Button(text="Open", command=open_cmd)
-        self._root.openButton.config(height=1, width=10)
-        self._root.openButton.pack(pady=10)
+        self.root.openButton = Button(text="Open", command=open_cmd)
+        self.root.openButton.config(height=1, width=10)
+        self.root.openButton.pack(pady=10)
