@@ -29,7 +29,7 @@ class MainTk(Ui):
     Public instance variables: 
         kwargs -- keyword arguments buffer.
         ywPrj -- yWriter project to work with.
-        root -- tk root window.
+        root -- tk top level window.
 
     Main menu, title bar, main window frame, status bar, path bar.
     """
