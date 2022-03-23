@@ -748,28 +748,28 @@ class Yw7File(Novel):
             elif xmlScn.find('Unused') is not None:
                 xmlScn.remove(xmlScn.find('Unused'))
 
+            scFields = xmlScn.find('Fields')
             if prjScn.isNotesScene:
-                scFields = xmlScn.find('Fields')
+                if scFields is None:
+                    scFields = ET.SubElement(xmlScn, 'Fields')
                 try:
                     scFields.find('Field_SceneType').text = '1'
                 except(AttributeError):
-                    scFields = ET.SubElement(xmlScn, 'Fields')
                     ET.SubElement(scFields, 'Field_SceneType').text = '1'
-            elif xmlScn.find('Fields') is not None:
-                scFields = xmlScn.find('Fields')
+            elif scFields is not None:
                 if scFields.find('Field_SceneType') is not None:
                     if scFields.find('Field_SceneType').text == '1':
                         scFields.remove(scFields.find('Field_SceneType'))
 
+            scFields = xmlScn.find('Fields')
             if prjScn.isTodoScene:
-                scFields = xmlScn.find('Fields')
+                if scFields is None:
+                    scFields = ET.SubElement(xmlScn, 'Fields')
                 try:
                     scFields.find('Field_SceneType').text = '2'
                 except(AttributeError):
-                    scFields = ET.SubElement(xmlScn, 'Fields')
                     ET.SubElement(scFields, 'Field_SceneType').text = '2'
-            elif xmlScn.find('Fields') is not None:
-                scFields = xmlScn.find('Fields')
+            elif scFields is not None:
                 if scFields.find('Field_SceneType') is not None:
                     if scFields.find('Field_SceneType').text == '2':
                         scFields.remove(scFields.find('Field_SceneType'))
@@ -989,39 +989,39 @@ class Yw7File(Novel):
             elif xmlChp.find('Unused') is not None:
                 xmlChp.remove(xmlChp.find('Unused'))
 
+            chFields = xmlChp.find('Fields')
             if prjChp.suppressChapterTitle:
-                chFields = xmlChp.find('Fields')
+                if chFields is None:
+                    chFields = ET.SubElement(xmlChp, 'Fields')
                 try:
                     chFields.find('Field_SuppressChapterTitle').text = '1'
                 except(AttributeError):
-                    chFields = ET.SubElement(xmlChp, 'Fields')
                     ET.SubElement(chFields, 'Field_SuppressChapterTitle').text = '1'
-            elif xmlChp.find('Fields') is not None:
-                chFields = xmlChp.find('Fields')
+            elif chFields is not None:
                 if chFields.find('Field_SuppressChapterTitle') is not None:
                     chFields.find('Field_SuppressChapterTitle').text = '0'
 
+            chFields = xmlChp.find('Fields')
             if prjChp.suppressChapterBreak:
-                chFields = xmlChp.find('Fields')
+                if chFields is None:
+                    chFields = ET.SubElement(xmlChp, 'Fields')
                 try:
                     chFields.find('Field_SuppressChapterBreak').text = '1'
                 except(AttributeError):
-                    chFields = ET.SubElement(xmlChp, 'Fields')
                     ET.SubElement(chFields, 'Field_SuppressChapterBreak').text = '1'
-            elif xmlChp.find('Fields') is not None:
-                chFields = xmlChp.find('Fields')
+            elif chFields is not None:
                 if chFields.find('Field_SuppressChapterBreak') is not None:
                     chFields.find('Field_SuppressChapterBreak').text = '0'
 
+            chFields = xmlChp.find('Fields')
             if prjChp.isTrash:
-                chFields = xmlChp.find('Fields')
+                if chFields is None:
+                    chFields = ET.SubElement(xmlChp, 'Fields')
                 try:
                     chFields.find('Field_IsTrash').text = '1'
                 except(AttributeError):
-                    chFields = ET.SubElement(xmlChp, 'Fields')
                     ET.SubElement(chFields, 'Field_IsTrash').text = '1'
-            elif xmlChp.find('Fields') is not None:
-                chFields = xmlChp.find('Fields')
+            elif chFields is not None:
                 if chFields.find('Field_IsTrash') is not None:
                     chFields.remove(chFields.find('Field_IsTrash'))
 
