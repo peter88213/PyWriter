@@ -18,6 +18,7 @@ html_items -- Provide a class for html item invisibly tagged descriptions import
 html_locations -- Provide a class for html invisibly tagged location descriptions import.
 html_import -- Provide a class for html 'work in progress' import.
 html_outline -- Provide a class for html outline import.
+html_notes -- Provide a class for html invisibly tagged "Notes" chapters import.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

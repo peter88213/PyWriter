@@ -9,12 +9,6 @@ Template-based file export: The application script iterates over chapters, scene
 ### Project level templates
 
 - **fileHeader** (Text at the beginning of the exported file)
-- **partTemplate** (chapter header; applied to chapters marked "section beginning")
-
-- **characterTemplate** (applied to characters)
-- **locationTemplate** (applied to locations)
-- **itemTemplate** (applied to items)
-
 - **fileFooter** (Text at the end of the exported file)
 
 ### Chapter level templates
@@ -41,7 +35,17 @@ Template-based file export: The application script iterates over chapters, scene
 - **notExportedSceneTemplate** (applied to scenes not to be "exported as RTF")
 - **notesSceneTemplate** (applied to scenes marked "notes")
 - **todoSceneTemplate** (applied to scenes marked "todo")
-- **sceneDivider** (lead scenes, beginning from the second in chapter)
+- **sceneDivider** (lead scenes, beginning from the second in chapter)
+
+### World building templates
+
+- **characterSectionHeading** (precedes the characters)
+- **characterTemplate** (applied to each character)
+- **locationSectionHeading** (precedes the locations)
+- **locationTemplate** (applied to each location)
+- **itemSectionHeading** (precedes the items)
+- **itemTemplate** (applied to each item)
+
 
 
 ## Placeholders

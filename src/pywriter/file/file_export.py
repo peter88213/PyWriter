@@ -28,6 +28,7 @@ class FileExport(Novel):
     _fileHeader = ''
     _partTemplate = ''
     _chapterTemplate = ''
+    _notesPartTemplate = ''
     _notesChapterTemplate = ''
     _todoChapterTemplate = ''
     _unusedChapterTemplate = ''
@@ -104,39 +105,39 @@ class FileExport(Novel):
             self.fieldTitle1 = source.fieldTitle1
         else:
             self.fieldTitle1 = 'Field 1'
-        
+
         if source.fieldTitle2 is not None:
             self.fieldTitle2 = source.fieldTitle2
         else:
             self.fieldTitle2 = 'Field 2'
-        
+
         if source.fieldTitle3 is not None:
             self.fieldTitle3 = source.fieldTitle3
         else:
             self.fieldTitle3 = 'Field 3'
-        
+
         if source.fieldTitle4 is not None:
             self.fieldTitle4 = source.fieldTitle4
         else:
             self.fieldTitle4 = 'Field 4'
-        
+
         if source.srtChapters:
             self.srtChapters = source.srtChapters
-        
+
         if source.scenes is not None:
             self.scenes = source.scenes
-        
+
         if source.chapters is not None:
             self.chapters = source.chapters
-        
+
         if source.srtCharacters:
             self.srtCharacters = source.srtCharacters
             self.characters = source.characters
-        
+
         if source.srtLocations:
             self.srtLocations = source.srtLocations
             self.locations = source.locations
-        
+
         if source.srtItems:
             self.srtItems = source.srtItems
             self.items = source.items
@@ -170,7 +171,7 @@ class FileExport(Novel):
         """
         if chapterNumber == 0:
             chapterNumber = ''
-        
+
         chapterMapping = dict(
             ID=chId,
             ChapterNumber=chapterNumber,
@@ -192,7 +193,7 @@ class FileExport(Novel):
         
         This is a template method that can be extended or overridden by subclasses.
         """
-        
+
         #--- Create a comma separated tag list.
         if sceneNumber == 0:
             sceneNumber = ''
@@ -295,7 +296,7 @@ class FileExport(Novel):
             lastsMinutes = ''
             minutes = ''
         duration = f'{days}{hours}{minutes}'
-        
+
         sceneMapping = dict(
             ID=scId,
             SceneNumber=sceneNumber,
@@ -358,7 +359,7 @@ class FileExport(Novel):
             characterStatus = Character.MAJOR_MARKER
         else:
             characterStatus = Character.MINOR_MARKER
-        
+
         characterMapping = dict(
             ID=crId,
             Title=self._convert_from_yw(self.characters[crId].title, True),
@@ -388,7 +389,7 @@ class FileExport(Novel):
             tags = self._get_string(self.locations[lcId].tags)
         else:
             tags = ''
-        
+
         locationMapping = dict(
             ID=lcId,
             Title=self._convert_from_yw(self.locations[lcId].title, True),
@@ -413,7 +414,7 @@ class FileExport(Novel):
             tags = self._get_string(self.items[itId].tags)
         else:
             tags = ''
-        
+
         itemMapping = dict(
             ID=itId,
             Title=self._convert_from_yw(self.items[itId].title, True),
@@ -558,7 +559,11 @@ class FileExport(Novel):
                     template = Template(self._todoChapterTemplate)
             elif self.chapters[chId].chType == 1:
                 # Chapter is "Notes" type (implies "unused").
-                if self._notesChapterTemplate:
+                if self.chapters[chId].chLevel == 1:
+                    # Chapter is "Notes Part" type.
+                    if self._notesPartTemplate:
+                        template = Template(self._notesPartTemplate)
+                elif self._notesChapterTemplate:
                     template = Template(self._notesChapterTemplate)
             elif self.chapters[chId].isUnused:
                 # Chapter is "really" unused.
@@ -690,10 +695,10 @@ class FileExport(Novel):
         if os.path.isfile(self.filePath):
             try:
                 os.replace(self.filePath, f'{self.filePath}.bak')
-                backedUp = True            
+                backedUp = True
             except:
                 return f'{ERROR}Cannot overwrite "{os.path.normpath(self.filePath)}".'
-            
+
         try:
             with open(self.filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
