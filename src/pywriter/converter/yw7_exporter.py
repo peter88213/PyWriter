@@ -45,6 +45,7 @@ class Yw7Exporter(YwCnvFf):
                              OdtItems,
                              OdtLocations,
                              OdtXref,
+                             OdtNotes,
                              OdsCharList,
                              OdsLocList,
                              OdsItemList,

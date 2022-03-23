@@ -41,5 +41,5 @@ class ExportTargetFactory(FileFactory):
                     suffix = ''
                 targetFile = fileClass(f'{fileName}{suffix}{fileClass.EXTENSION}', **kwargs)
                 return 'Target object created.', None, targetFile
-        
-        return f'{ERROR}File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
+
+        return f'{ERROR}Export type "{suffix}" not supported.', None, None

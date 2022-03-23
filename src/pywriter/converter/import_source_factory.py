@@ -31,4 +31,5 @@ class ImportSourceFactory(FileFactory):
                 if sourcePath.endswith(f'{fileClass.SUFFIX }{fileClass.EXTENSION}'):
                     sourceFile = fileClass(sourcePath, **kwargs)
                     return 'Source object created.', sourceFile, None
+
         return f'{ERROR}This document is not meant to be written back.', None, None

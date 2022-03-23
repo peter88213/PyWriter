@@ -13,7 +13,7 @@ class OdtNotes(OdtManuscript):
 
     Export a manuscript with invisibly tagged chapters and scenes.
     """
-    DESCRIPTION = '"Notes" chapters'
+    DESCRIPTION = 'Notes chapters'
     SUFFIX = '_notes'
 
     _partTemplate = ''
