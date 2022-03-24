@@ -120,7 +120,7 @@ class HtmlImport(HtmlFile):
         Positional arguments:
             data -- str: text to be stored. 
         
-        Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
+        Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
         """
         if self._scId is not None and self._SCENE_DIVIDER in data:
             self._scId = None

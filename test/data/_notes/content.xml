@@ -13,14 +13,10 @@
 <text:p text:style-name="Title">Hal Spacejock book one - Sample yWriter Project</text:p>
 <text:p text:style-name="Subtitle">Simon Haynes</text:p>
 <text:section text:style-name="Sect1" text:name="ChID:33">
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:33%7Cregion">Info</text:a></text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Info</text:h>
 <text:section text:style-name="Sect1" text:name="ScID:120">
-<text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
-<text:p>~ Information about the sample project ~</text:p>
-<text:p/>
-<text:p><text:a xlink:href="../yw7%20Sample%20Project_scenes.odt#ScID:120%7Cregion">→Summary</text:a></text:p>
-</office:annotation>*** IMPORTANT ***</text:p>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Information about the sample project</text:h>
+<text:p text:style-name="Text_20_body">*** IMPORTANT ***</text:p>
 <text:p text:style-name="First_20_line_20_indent">Uninstalling yWriter5 will uninstall (delete) this sample project.</text:p>
 <text:p text:style-name="First_20_line_20_indent">Reinstalling yWriter5 will overwrite this sample project.</text:p>
 <text:p text:style-name="First_20_line_20_indent" />
@@ -30,46 +26,28 @@
 </text:section>
 </text:section>
 <text:section text:style-name="Sect1" text:name="ChID:35">
-<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../yw7%20Sample%20Project_parts.odt#ChID:35%7Cregion">Part 2</text:a></text:h>
+<text:h text:style-name="Heading_20_1" text:outline-level="1">Part 2</text:h>
 </text:section>
 <text:section text:style-name="Sect1" text:name="ChID:18">
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:18%7Cregion">Chapter 18</text:a></text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 18</text:h>
 <text:section text:style-name="Sect1" text:name="ScID:51">
-<text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
-<text:p>~ Terry places the 'bomb' ~</text:p>
-<text:p/>
-<text:p><text:a xlink:href="../yw7%20Sample%20Project_scenes.odt#ScID:51%7Cregion">→Summary</text:a></text:p>
-</office:annotation></text:p>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Terry places the 'bomb'</text:h>
+<text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:53">
-<text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
-<text:p>~ Hal buys food ~</text:p>
-<text:p/>
-<text:p><text:a xlink:href="../yw7%20Sample%20Project_scenes.odt#ScID:53%7Cregion">→Summary</text:a></text:p>
-</office:annotation></text:p>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Hal buys food</text:h>
+<text:p text:style-name="Text_20_body"></text:p>
 </text:section>
 </text:section>
 <text:section text:style-name="Sect1" text:name="ChID:19">
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:19%7Cregion">Chapter 19</text:a></text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 19</text:h>
 <text:section text:style-name="Sect1" text:name="ScID:55">
-<text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
-<text:p>~ Karl leaves a note, takes Clunk. ~</text:p>
-<text:p/>
-<text:p><text:a xlink:href="../yw7%20Sample%20Project_scenes.odt#ScID:55%7Cregion">→Summary</text:a></text:p>
-</office:annotation></text:p>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Karl leaves a note, takes Clunk.</text:h>
+<text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:57">
-<text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
-<text:p>~ Hal about to hyperspace. ~</text:p>
-<text:p/>
-<text:p><text:a xlink:href="../yw7%20Sample%20Project_scenes.odt#ScID:57%7Cregion">→Summary</text:a></text:p>
-</office:annotation></text:p>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">Hal about to hyperspace.</text:h>
+<text:p text:style-name="Text_20_body"></text:p>
 </text:section>
 </text:section>
   </office:text>

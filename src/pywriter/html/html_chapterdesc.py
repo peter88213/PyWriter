@@ -41,7 +41,7 @@ class HtmlChapterDesc(HtmlFile):
         Positional arguments:
             data -- str: text to be stored. 
         
-        Overrides HTMLparser.handle_data() called by the parser when a comment is encountered.
+        Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
         """
         if self._chId is not None:
             self._lines.append(data.strip())

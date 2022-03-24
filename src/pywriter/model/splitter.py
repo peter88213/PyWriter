@@ -23,7 +23,7 @@ class Splitter:
     """
     PART_SEPARATOR = '# '
     CHAPTER_SEPARATOR = '## '
-    _SCENE_SEPARATOR = '* * *'
+    SCENE_SEPARATOR = '* * *'
     _CLIP_TITLE = 20
     # Maximum length of newly generated scene titles.
 
@@ -152,7 +152,7 @@ class Splitter:
                         chapterId = str(chIdMax)
                         create_chapter(chapterId, 'New chapter', line.replace(self.CHAPTER_SEPARATOR, ''), 0)
                         srtChapters.append(chapterId)
-                    elif line.startswith(self._SCENE_SEPARATOR):
+                    elif line.startswith(self.SCENE_SEPARATOR):
                         novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
                         newLines = []
                         sceneSplitCount += 1

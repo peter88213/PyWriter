@@ -20,22 +20,19 @@ class OdtNotes(OdtManuscript):
     _chapterTemplate = ''
 
     _notesPartTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
-<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../${ProjectName}_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+<text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
 '''
 
     _notesChapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../${ProjectName}_chapters.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
     _notesSceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
-<text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
-<text:p>~ ${Title} ~</text:p>
-<text:p/>
-<text:p><text:a xlink:href="../${ProjectName}_scenes.odt#ScID:$ID%7Cregion">→Summary</text:a></text:p>
-</office:annotation>$SceneContent</text:p>
+<text:h text:style-name="Heading_20_3" text:outline-level="3">$Title</text:h>
+<text:p text:style-name="Text_20_body">$SceneContent</text:p>
 </text:section>
 '''
+    _sceneDivider = ''
 
     _notesChapterEndTemplate = '''</text:section>
 '''
