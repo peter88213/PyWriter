@@ -35,10 +35,42 @@ class HtmlManuscript(HtmlFile):
         """
         super().handle_starttag(tag, attrs)
         if self._scId is not None:
-            if tag == 'h1':
-                self._lines.append(Splitter.PART_SEPARATOR)
+            self._getScTitle = False
+            if tag == 'h3':
+                if self.scenes[self._scId].title is None:
+                    self._getScTitle = True
+                else:
+                    self._lines.append(f'{Splitter.SCENE_SEPARATOR} ')
             elif tag == 'h2':
-                self._lines.append(Splitter.CHAPTER_SEPARATOR)
+                self._lines.append(f'{Splitter.CHAPTER_SEPARATOR} ')
+            elif tag == 'h1':
+                self._lines.append(f'{Splitter.PART_SEPARATOR} ')
+
+    def handle_endtag(self, tag):
+        """Recognize the end of the scene section and save data.
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+
+        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
+        """
+        if self._scId is not None:
+            if tag == 'div':
+                text = ''.join(self._lines)
+                self.scenes[self._scId].sceneContent = text
+                self._lines = []
+                self._scId = None
+            elif tag == 'p':
+                self._lines.append('\n')
+            elif tag == 'h1':
+                self._lines.append('\n')
+            elif tag == 'h2':
+                self._lines.append('\n')
+            elif tag == 'h3' and not self._getScTitle:
+                self._lines.append('\n')
+        elif self._chId is not None:
+            if tag == 'div':
+                self._chId = None
 
     def handle_comment(self, data):
         """Process inline comments within scene content.
@@ -62,30 +94,6 @@ class HtmlManuscript(HtmlFile):
 
             self._lines.append(f'{self._COMMENT_START}{data.strip()}{self._COMMENT_END}')
 
-    def handle_endtag(self, tag):
-        """Recognize the end of the scene section and save data.
-        
-        Positional arguments:
-            tag -- str: name of the tag converted to lower case.
-
-        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
-        """
-        if self._scId is not None:
-            if tag == 'div':
-                text = ''.join(self._lines)
-                self.scenes[self._scId].sceneContent = text
-                self._lines = []
-                self._scId = None
-            elif tag == 'p':
-                self._lines.append('\n')
-            elif tag == 'h1':
-                self._lines.append('\n')
-            elif tag == 'h2':
-                self._lines.append('\n')
-        elif self._chId is not None:
-            if tag == 'div':
-                self._chId = None
-
     def handle_data(self, data):
         """Collect data within scene sections.
 
@@ -95,8 +103,10 @@ class HtmlManuscript(HtmlFile):
         Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
         """
         if self._scId is not None:
-            if not data.isspace():
+            if self._getScTitle:
+                self.scenes[self._scId].title = data.strip()
+            elif not data.isspace():
                 self._lines.append(data)
         elif self._chId is not None:
-            if self.chapters[self._chId].title is not None:
+            if self.chapters[self._chId].title is None:
                 self.chapters[self._chId].title = data.strip()

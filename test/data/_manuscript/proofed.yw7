@@ -1509,7 +1509,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
     </SCENE>
     <SCENE>
       <ID>124</ID>
-      <Title><![CDATA[Hal going to port co... Split: 2]]></Title>
+      <Title><![CDATA[The landing patch]]></Title>
       <BelongsToChID>37</BelongsToChID>
       <SceneContent><![CDATA[The area around the [i]Black Gull[/i] was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
 
@@ -1520,7 +1520,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
     </SCENE>
     <SCENE>
       <ID>125</ID>
-      <Title><![CDATA[Clunk calls, the lan... Split: 1]]></Title>
+      <Title><![CDATA[Fire alarm]]></Title>
       <BelongsToChID>5</BelongsToChID>
       <SceneContent><![CDATA[“Who is this? What are you talking about?”
 “The grass is burning,” cried the voice. “There’s a fire on the landing field!”

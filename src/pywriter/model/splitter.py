@@ -21,9 +21,9 @@ class Splitter:
         PART_SEPARATOR -- marker indicating the beginning of a new part, splitting a scene.
         CHAPTER_SEPARATOR -- marker indicating the beginning of a new chapter, splitting a scene.
     """
-    PART_SEPARATOR = '# '
-    CHAPTER_SEPARATOR = '## '
-    SCENE_SEPARATOR = '* * *'
+    PART_SEPARATOR = '#'
+    CHAPTER_SEPARATOR = '##'
+    SCENE_SEPARATOR = '###'
     _CLIP_TITLE = 20
     # Maximum length of newly generated scene titles.
 
@@ -53,7 +53,7 @@ class Splitter:
             newChapter.chType = 0
             novel.chapters[chapterId] = newChapter
 
-        def create_scene(sceneId, parent, splitCount):
+        def create_scene(sceneId, parent, splitCount, title):
             """Create a new scene and add it to the novel.
             
             Positional arguments:
@@ -65,7 +65,9 @@ class Splitter:
 
             # Mark metadata of split scenes.
             newScene = Scene()
-            if parent.title:
+            if title:
+                newScene.title = title
+            elif parent.title:
                 if len(parent.title) > self._CLIP_TITLE:
                     title = f'{parent.title[:self._CLIP_TITLE]}...'
                 else:
@@ -108,8 +110,8 @@ class Splitter:
         for scId in novel.scenes:
             if int(scId) > scIdMax:
                 scIdMax = int(scId)
-                
-        #Process chapters and scenes.
+
+        # Process chapters and scenes.
         srtChapters = []
         for chId in novel.srtChapters:
             srtChapters.append(chId)
@@ -126,47 +128,51 @@ class Splitter:
                 inScene = True
                 sceneSplitCount = 0
 
-                #Search scene content for dividers.
+                # Search scene content for dividers.
                 for line in lines:
-                    if line.startswith(self.PART_SEPARATOR):
-                        if inScene:
-                            novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
-                            newLines = []
-                            sceneSplitCount = 0
-                            inScene = False
-                        novel.chapters[chapterId].srtScenes = srtScenes
-                        srtScenes = []
-                        chIdMax += 1
-                        chapterId = str(chIdMax)
-                        create_chapter(chapterId, 'New part', line.replace(self.PART_SEPARATOR, ''), 1)
-                        srtChapters.append(chapterId)
-                    elif line.startswith(self.CHAPTER_SEPARATOR):
-                        if inScene:
-                            novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
-                            newLines = []
-                            sceneSplitCount = 0
-                            inScene = False
-                        novel.chapters[chapterId].srtScenes = srtScenes
-                        srtScenes = []
-                        chIdMax += 1
-                        chapterId = str(chIdMax)
-                        create_chapter(chapterId, 'New chapter', line.replace(self.CHAPTER_SEPARATOR, ''), 0)
-                        srtChapters.append(chapterId)
-                    elif line.startswith(self.SCENE_SEPARATOR):
+                    if line.startswith(self.SCENE_SEPARATOR):
+                        # Split the scene.
                         novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
                         newLines = []
                         sceneSplitCount += 1
                         scIdMax += 1
                         sceneId = str(scIdMax)
-                        create_scene(sceneId, novel.scenes[scId], sceneSplitCount)
+                        create_scene(sceneId, novel.scenes[scId], sceneSplitCount, line.strip('# '))
                         srtScenes.append(sceneId)
                         inScene = True
+                    elif line.startswith(self.CHAPTER_SEPARATOR):
+                        # Start a new chapter.
+                        if inScene:
+                            novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
+                            newLines = []
+                            sceneSplitCount = 0
+                            inScene = False
+                        novel.chapters[chapterId].srtScenes = srtScenes
+                        srtScenes = []
+                        chIdMax += 1
+                        chapterId = str(chIdMax)
+                        create_chapter(chapterId, 'New chapter', line.strip('# '), 0)
+                        srtChapters.append(chapterId)
+                    elif line.startswith(self.PART_SEPARATOR):
+                        # start a new part.
+                        if inScene:
+                            novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
+                            newLines = []
+                            sceneSplitCount = 0
+                            inScene = False
+                        novel.chapters[chapterId].srtScenes = srtScenes
+                        srtScenes = []
+                        chIdMax += 1
+                        chapterId = str(chIdMax)
+                        create_chapter(chapterId, 'New part', line.strip('# '), 1)
+                        srtChapters.append(chapterId)
                     elif not inScene:
+                        # Append a scene without heading to a new chapter or part.
                         newLines.append(line)
                         sceneSplitCount += 1
                         scIdMax += 1
                         sceneId = str(scIdMax)
-                        create_scene(sceneId, novel.scenes[scId], sceneSplitCount)
+                        create_scene(sceneId, novel.scenes[scId], sceneSplitCount, '')
                         srtScenes.append(sceneId)
                         inScene = True
                     else:

@@ -25,7 +25,7 @@ _Example_
 -   [Export item descriptions](#export-item-descriptions) -- suffix = `_items`
 -   [Export cross reference](#export-cross-reference) -- suffix = `_xref`
 -   [Export brief synopsis](#export-brief-synopsis) -- suffix = `_brf_synopsis`
--   [Export "Notes" chapters](#export-notes-chapters) -- suffix = `_notes`
+-   [Export Notes chapters](#export-notes-chapters) -- suffix = `_notes`
 
 
 ### Generate ODS (spreadsheet document)
@@ -34,7 +34,6 @@ _Example_
 -   [Export location list](#export-location-list) -- suffix = `_loclist`
 -   [Export item list](#export-item-list) -- suffix = `_itemlist`
 -   [Export scene list](#export-scene-list) -- suffix = `_scenelist`
--   [Export plot list](#export-plot-list) -- suffix = `_plotlist`
 
 ## Import to an existing yWriter project
 
@@ -124,7 +123,8 @@ text document (odt) with chapter and scene markers. File name suffix is
 -   Scenes can be split by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
     -  *Heading 2* --› New chapter title.
-    -  `* * *` --› Scene divider.
+    -  `###` --› Scene divider.  Optionally, you can append the 
+       scene title to the scene divider.
 
 
 
@@ -146,7 +146,8 @@ seen in the Navigator). File name suffix is `_manuscript`.
 -  Scenes can be split by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
     -  *Heading 2* --› New chapter title.
-    -  `* * *` --› Scene divider.
+    -  `###` --› Scene divider.  Optionally, you can append the 
+       scene title to the scene divider.
 
 [Top of page](#top)
 
@@ -261,7 +262,7 @@ suffix is `_brf_synopsis`.
 
 ------------------------------------------------------------------------
 
-## Export "Notes" chapters
+## Export Notes chapters
 
 Write yWriter 7 "Notes" chapters with child scenes into a new 
 OpenDocument text document (odt) with invisible chapter and scene 
@@ -273,7 +274,8 @@ as scene titles if surrounded by `~`.
 -  Scenes can be split by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
     -  *Heading 2* --› New chapter title.
-    -  `* * *` --› Scene divider.
+    -  `###` --› Scene divider. Optionally, you can append the 
+       scene title to the scene divider.
 
 [Top of page](#top)
 

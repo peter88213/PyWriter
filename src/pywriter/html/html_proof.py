@@ -80,9 +80,9 @@ class HtmlProof(HtmlFile):
         if tag == 'p':
             self._prefix = ''
         elif tag == 'h2':
-            self._prefix = Splitter.CHAPTER_SEPARATOR
+            self._prefix = f'{Splitter.CHAPTER_SEPARATOR} '
         elif tag == 'h1':
-            self._prefix = Splitter.PART_SEPARATOR
+            self._prefix = f'{Splitter.PART_SEPARATOR} '
 
     def handle_endtag(self, tag):
         """Recognize the paragraph's end.      
