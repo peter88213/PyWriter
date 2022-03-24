@@ -427,7 +427,7 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_igwxEJThEeyxtJCGKSzKUg" name="CHAPTER_SEPARATOR" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_irNtkJThEeyxtJCGKSzKUg" name="_SCENE_SEPARATOR" visibility="protected" isStatic="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_irNtkJThEeyxtJCGKSzKUg" name="SCENE_SEPARATOR" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_izUgsJThEeyxtJCGKSzKUg" name="_CLIP_TITLE" visibility="protected" isStatic="true">
@@ -1182,6 +1182,9 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_M5LboPscEeq-TdV6dVW08A" name="_chapterTemplate" visibility="protected" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Z3_AgKuiEeygzau3MRja0w" name="_notesPartTemplate" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_M-Qv8PscEeq-TdV6dVW08A" name="_notesChapterTemplate" visibility="protected" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -1418,6 +1421,388 @@
         </ownedEnd>
       </packagedElement>
     </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_C8dO4IfQEeq_kJF_AkSaiA" name="html">
+      <packagedElement xmi:type="uml:Class" xmi:id="_Zo7VgDIKEeqilJYfjdmi4Q" name="HtmlProof">
+        <generalization xmi:type="uml:Generalization" xmi:id="_UZGlMDILEeqilJYfjdmi4Q" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_yLUhQJToEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_yLXkkJToEeyxtJCGKSzKUg" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_55ixMJToEeyxtJCGKSzKUg" name="_prefix" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_0tSuwJToEeyxtJCGKSzKUg" name="__init__" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_0tSuwZToEeyxtJCGKSzKUg" name="filePath">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_0tSuwpToEeyxtJCGKSzKUg" name="kwargs">
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_0tXAMJToEeyxtJCGKSzKUg" name="_preprocess" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_0tXAMZToEeyxtJCGKSzKUg" name="text">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_0tXAMpToEeyxtJCGKSzKUg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_0taDgJToEeyxtJCGKSzKUg" name="_postprocess" visibility="protected"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_2td2wJToEeyxtJCGKSzKUg" name="handle_starttag" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_2thhIJToEeyxtJCGKSzKUg" name="handle_endtag" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_2thhIZToEeyxtJCGKSzKUg" name="tag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_2tlykJToEeyxtJCGKSzKUg" name="handle_data" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_2tlykZToEeyxtJCGKSzKUg" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_RkzFwCthEeqgj_wxJ3Xgsg" name="HtmlManuscript">
+        <generalization xmi:type="uml:Generalization" xmi:id="_ymU0IIeyEeq_kJF_AkSaiA" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_j3MUUJToEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_j3PXoJToEeyxtJCGKSzKUg" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_lNQIUJToEeyxtJCGKSzKUg" name="_preprocess" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_lNQIUZToEeyxtJCGKSzKUg" name="text">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_lNQIUpToEeyxtJCGKSzKUg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_r9OAQJToEeyxtJCGKSzKUg" name="handle_starttag" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_r9QcgJToEeyxtJCGKSzKUg" name="handle_comment"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_ta6GQJToEeyxtJCGKSzKUg" name="handle_endtag" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ta6GQZToEeyxtJCGKSzKUg" name="tag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_ta9JkJToEeyxtJCGKSzKUg" name="handle_data" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ta9JkZToEeyxtJCGKSzKUg" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_GB4c8KubEeygzau3MRja0w" name="HtmlNotes">
+        <generalization xmi:type="uml:Generalization" xmi:id="_GB4c8aubEeygzau3MRja0w" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_GB4c8qubEeygzau3MRja0w" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_GB4c86ubEeygzau3MRja0w" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GB4c9KubEeygzau3MRja0w" name="_preprocess" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_GB4c9aubEeygzau3MRja0w" name="text">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_GB4c9qubEeygzau3MRja0w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GB4c96ubEeygzau3MRja0w" name="handle_starttag" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GB4c-aubEeygzau3MRja0w" name="handle_endtag" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_GB4c-qubEeygzau3MRja0w" name="tag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GB4c-6ubEeygzau3MRja0w" name="handle_data" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_GB4c_KubEeygzau3MRja0w" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_hODTUKubEeygzau3MRja0w" name="_postprocess" visibility="protected"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xCJCcDFsEeq5SLjbDFDS4A" name="HtmlSceneDesc">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xCJCcTFsEeq5SLjbDFDS4A" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xNeq4JTmEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_4LHLYJTmEeyxtJCGKSzKUg" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_6yMiYJTmEeyxtJCGKSzKUg" name="handle_endtag" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_6yMiYZTmEeyxtJCGKSzKUg" name="tag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_6yQMwJTmEeyxtJCGKSzKUg" name="handle_data" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_6yQMwZTmEeyxtJCGKSzKUg" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_PFuK0DFtEeq5SLjbDFDS4A" name="HtmlChapterDesc">
+        <generalization xmi:type="uml:Generalization" xmi:id="_PFuK0TFtEeq5SLjbDFDS4A" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_GGaBkJTnEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_GGdE4JTnEeyxtJCGKSzKUg" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_L7SKQJTnEeyxtJCGKSzKUg" name="handle_endtag" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_L7SKQZTnEeyxtJCGKSzKUg" name="tag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_L7VNkJTnEeyxtJCGKSzKUg" name="handle_data" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_L7VNkZTnEeyxtJCGKSzKUg" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_FrYL8Pw_Eeq5hMee5ike2Q" name="HtmlImport">
+        <generalization xmi:type="uml:Generalization" xmi:id="_MmYC4L8FEeuLVoie0Ovs3Q" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_atI1AJTnEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_atLRQJTnEeyxtJCGKSzKUg" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_oEVfoJTnEeyxtJCGKSzKUg" name="_SCENE_DIVIDER" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_oEZKAJTnEeyxtJCGKSzKUg" name="_LOW_WORDCOUNT" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_0z_CEJTnEeyxtJCGKSzKUg" name="__init__" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_0z_CEZTnEeyxtJCGKSzKUg" name="filePath">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_0z_CEpTnEeyxtJCGKSzKUg" name="kwargs">
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_00CscJTnEeyxtJCGKSzKUg" name="_preprocess" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_00CscZTnEeyxtJCGKSzKUg" name="text">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_00CscpTnEeyxtJCGKSzKUg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_00FvwJTnEeyxtJCGKSzKUg" name="handle_starttag" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_2ZEwkJTnEeyxtJCGKSzKUg" name="handle_endtag" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_2ZEwkZTnEeyxtJCGKSzKUg" name="tag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_2ZIa8JTnEeyxtJCGKSzKUg" name="handle_data" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_2ZIa8ZTnEeyxtJCGKSzKUg" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_8SW1YPyyEeqEK6KdQRY5bw" name="HtmlFile">
+        <generalization xmi:type="uml:Generalization" xmi:id="_G8Vr0PyzEeqEK6KdQRY5bw" general="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_zWEA0CthEeqgj_wxJ3Xgsg">
+          <general xmi:type="uml:Class" href="Python.uml#_uzf0kCthEeqgj_wxJ3Xgsg"/>
+        </generalization>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_K_DdcJTlEeyxtJCGKSzKUg" name="_COMMENT_START" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LEqWMJTlEeyxtJCGKSzKUg" name="_COMMENT_END" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LKi7wJTlEeyxtJCGKSzKUg" name="_SC_TITLE_BRACKET" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ZuRD4JTlEeyxtJCGKSzKUg" name="_lines" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ih1yUJTlEeyxtJCGKSzKUg" name="_scId" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_llJLQJTlEeyxtJCGKSzKUg" name="_chId" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_vzt4EJTlEeyxtJCGKSzKUg" name="__init__" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_vzt4EZTlEeyxtJCGKSzKUg" name="filePath">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_vzt4EpTlEeyxtJCGKSzKUg" name="kwargs">
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tv4YEJTlEeyxtJCGKSzKUg" name="_convert_to_yw" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_tv4YEZTlEeyxtJCGKSzKUg" name="text">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_tv4YEpTlEeyxtJCGKSzKUg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Gvw9EJTmEeyxtJCGKSzKUg" name="_preprocess" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Gvw9EZTmEeyxtJCGKSzKUg" name="text">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Gvw9EpTmEeyxtJCGKSzKUg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_SugnAJTmEeyxtJCGKSzKUg" name="_postprocess" visibility="protected"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_B52zgJTlEeyxtJCGKSzKUg" name="handle_starttag" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_B5520JTlEeyxtJCGKSzKUg" name="handle_comment"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tvy4gJTlEeyxtJCGKSzKUg" name="read">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_tvy4gZTlEeyxtJCGKSzKUg" direction="return" effect="read">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_PM7B8PyzEeqEK6KdQRY5bw" name="HtmlPartDesc">
+        <generalization xmi:type="uml:Generalization" xmi:id="_TEGu4PyzEeqEK6KdQRY5bw" general="_PFuK0DFtEeq5SLjbDFDS4A"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_QMoDoJTnEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_QMp40JTnEeyxtJCGKSzKUg" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_BYcnUL8EEeuLVoie0Ovs3Q" name="HtmlOutline">
+        <generalization xmi:type="uml:Generalization" xmi:id="_NaiqwL8FEeuLVoie0Ovs3Q" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Q6oHMJTpEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Q6rKgJTpEeyxtJCGKSzKUg" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VAg-gJTpEeyxtJCGKSzKUg" name="_chCount" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_YDEwkJTpEeyxtJCGKSzKUg" name="_scCount" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q6uN0JTpEeyxtJCGKSzKUg" name="__init__" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q6uN0ZTpEeyxtJCGKSzKUg" name="filePath">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q6uN0pTpEeyxtJCGKSzKUg" name="kwargs">
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q6xRIJTpEeyxtJCGKSzKUg" name="handle_starttag" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q6ztYJTpEeyxtJCGKSzKUg" name="handle_endtag" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q6ztYZTpEeyxtJCGKSzKUg" name="tag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q63XwJTpEeyxtJCGKSzKUg" name="handle_data" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q63XwZTpEeyxtJCGKSzKUg" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_RBR9YL8EEeuLVoie0Ovs3Q" name="HtmlCharacters">
+        <generalization xmi:type="uml:Generalization" xmi:id="_KCi0ML8FEeuLVoie0Ovs3Q" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Ox-OEJToEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_OyBRYJToEeyxtJCGKSzKUg" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_OyDtoJToEeyxtJCGKSzKUg" name="_crId" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_RJF2cJToEeyxtJCGKSzKUg" name="_section" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_OyHYAJToEeyxtJCGKSzKUg" name="__init__" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_OyHYAZToEeyxtJCGKSzKUg" name="filePath">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_OyHYApToEeyxtJCGKSzKUg" name="kwargs">
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_OyKbUJToEeyxtJCGKSzKUg" name="handle_starttag" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_OyM3kJToEeyxtJCGKSzKUg" name="handle_endtag" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_OyM3kZToEeyxtJCGKSzKUg" name="tag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_OyP64JToEeyxtJCGKSzKUg" name="handle_data" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_OyP64ZToEeyxtJCGKSzKUg" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Tt57sL8EEeuLVoie0Ovs3Q" name="HtmlLocations">
+        <generalization xmi:type="uml:Generalization" xmi:id="_LYAyUL8FEeuLVoie0Ovs3Q" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_KcusIJToEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_KcxIYJToEeyxtJCGKSzKUg" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_KczkoJToEeyxtJCGKSzKUg" name="_lcId" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Kc1Z0JToEeyxtJCGKSzKUg" name="__init__" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Kc1Z0ZToEeyxtJCGKSzKUg" name="filePath">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Kc1Z0pToEeyxtJCGKSzKUg" name="kwargs">
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Kc32EJToEeyxtJCGKSzKUg" name="handle_starttag" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Kc5rQJToEeyxtJCGKSzKUg" name="handle_endtag" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Kc5rQZToEeyxtJCGKSzKUg" name="tag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Kc8HgJToEeyxtJCGKSzKUg" name="handle_data" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Kc8HgZToEeyxtJCGKSzKUg" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_VI89YL8EEeuLVoie0Ovs3Q" name="HtmlItems">
+        <generalization xmi:type="uml:Generalization" xmi:id="_L56lgL8FEeuLVoie0Ovs3Q" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_DXw0kJToEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_DXz34JToEeyxtJCGKSzKUg" name="SUFFIX" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_GkczAJToEeyxtJCGKSzKUg" name="_itId" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_DX27MJToEeyxtJCGKSzKUg" name="__init__" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_DX27MZToEeyxtJCGKSzKUg" name="filePath">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_DX27MpToEeyxtJCGKSzKUg" name="kwargs">
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_DX4wYJToEeyxtJCGKSzKUg" name="handle_starttag" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_DX6lkJToEeyxtJCGKSzKUg" name="handle_endtag" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_DX6lkZToEeyxtJCGKSzKUg" name="tag">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_DX8awJToEeyxtJCGKSzKUg" name="handle_data" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_DX8awZToEeyxtJCGKSzKUg" name="data">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_9_bNAJTeEeyxtJCGKSzKUg" client="_8SW1YPyyEeqEK6KdQRY5bw" supplier="_C8dO4IfQEeq_kJF_AkSaiA"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_-vwdwJTeEeyxtJCGKSzKUg" client="_8SW1YPyyEeqEK6KdQRY5bw" supplier="_ypTQMCtbEeqgj_wxJ3Xgsg"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_QQUVAJTgEeyxtJCGKSzKUg" client="_RBR9YL8EEeuLVoie0Ovs3Q" supplier="_ZSkdEJEXEeqtx4SqQAS9Eg"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_RBodMJTgEeyxtJCGKSzKUg" client="_VI89YL8EEeuLVoie0Ovs3Q" supplier="_LIE_MJEVEeqtx4SqQAS9Eg"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_SRgJoJTgEeyxtJCGKSzKUg" client="_Tt57sL8EEeuLVoie0Ovs3Q" supplier="_LIE_MJEVEeqtx4SqQAS9Eg"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_4a0DAJTgEeyxtJCGKSzKUg" client="_Zo7VgDIKEeqilJYfjdmi4Q" supplier="_parT0G1QEeyo8PGsOj-8FQ"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_9D340JTgEeyxtJCGKSzKUg" client="_RkzFwCthEeqgj_wxJ3Xgsg" supplier="_C8dO4IfQEeq_kJF_AkSaiA"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_tco8sL3xEeuITv7MyBA5yA" name="ui">
       <ownedComment xmi:type="uml:Comment" xmi:id="_fHzUMH7HEey1Ut-6sSExGQ" annotatedElement="_eePr0PxDEeq5hMee5ike2Q">
         <body>Simple GUI&#xD;
@@ -1572,20 +1957,20 @@ or success information</body>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_VruYIH7DEey1Ut-6sSExGQ" name="MainTk">
         <generalization xmi:type="uml:Generalization" xmi:id="_jUwRYJDREey_Lt93nuuNDA" general="_JtCGsPxDEeq5hMee5ike2Q"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_gtqdcKm2Eeypfrg0dY4-Ag" name="_KEY_RESTORE_STATUS" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="Python.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_K7EcoKufEeygzau3MRja0w" name="_KEY_RESTORE_STATUS" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_4evF8Km2Eeypfrg0dY4-Ag" name="_KEY_OPEN_PROJECT" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="Python.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_S8xpQKufEeygzau3MRja0w" name="_KEY_OPEN_PROJECT" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_4l8hMKm2Eeypfrg0dY4-Ag" name="_KEY_QUIT_PROGRAM" visibility="protected" isStatic="true">
-          <type xmi:type="uml:PrimitiveType" href="Python.uml#_EqR4MJC9Eey_Lt93nuuNDA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VsU_wKufEeygzau3MRja0w" name="_KEY_QUIT_PROGRAM" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_4tON4Km2Eeypfrg0dY4-Ag" name="_YW_CLASS" visibility="protected" isStatic="true" type="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_OjNpwKm3Eeypfrg0dY4-Ag" name="_fileTypes" visibility="protected">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_YjA5AKufEeygzau3MRja0w" name="_YW_CLASS" visibility="protected" isStatic="true" type="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_mrE1UKueEeygzau3MRja0w" name="_fileTypes" visibility="protected">
           <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_ZME7UKm2Eeypfrg0dY4-Ag" name="_title" visibility="protected">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_0G9LoKueEeygzau3MRja0w" name="_title" visibility="protected">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Y2KBAJDQEey_Lt93nuuNDA" name="_statusText" visibility="protected">
@@ -1621,15 +2006,15 @@ or success information</body>
             <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_pCoH0Km3Eeypfrg0dY4-Ag" name="_build_main_menu" visibility="protected"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_6QSOcJDQEey_Lt93nuuNDA" name="_build_main_menu" visibility="protected"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_9Vo10JDQEey_Lt93nuuNDA" name="_disable_menu" visibility="protected"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_BPCJQJDREey_Lt93nuuNDA" name="_enable_menu" visibility="protected"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_FgKnQJDREey_Lt93nuuNDA" name="start"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_fJyFUKm1Eeypfrg0dY4-Ag" name="select_project">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fJyFUam1Eeypfrg0dY4-Ag" name="fileName">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_2PW4AKudEeygzau3MRja0w" name="select_project">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_2PW4AaudEeygzau3MRja0w" name="fileName">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fJyFU6m1Eeypfrg0dY4-Ag" direction="return">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_2PW4AqudEeygzau3MRja0w" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
@@ -1641,8 +2026,8 @@ or success information</body>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_6QSOcJDQEey_Lt93nuuNDA" name="_open_project" visibility="protected"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_deC8sJDREey_Lt93nuuNDA" name="_close_project"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_5ffMAKudEeygzau3MRja0w" name="_open_project" visibility="protected"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_deC8sJDREey_Lt93nuuNDA" name="_close_project" visibility="protected"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_rA8hAJDREey_Lt93nuuNDA" name="ask_yes_no">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_rA9IEJDREey_Lt93nuuNDA" name="text">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1661,32 +2046,29 @@ or success information</body>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_AeANIKm4Eeypfrg0dY4-Ag" name="_show_path" visibility="protected">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_AeANIam4Eeypfrg0dY4-Ag" name="message">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q3EWcKueEeygzau3MRja0w" name="_show_path" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q3EWcaueEeygzau3MRja0w" name="message">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_G4WaYKm4Eeypfrg0dY4-Ag" name="_restore_status" visibility="protected">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_SKfdAKm4Eeypfrg0dY4-Ag" name="event">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Zhyq4KueEeygzau3MRja0w" name="_restore_status" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Zhyq4aueEeygzau3MRja0w" name="event">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_XHuMAKm4Eeypfrg0dY4-Ag" name="_on_quit" visibility="public">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_XHuMAam4Eeypfrg0dY4-Ag" name="event">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_fY7dYKueEeygzau3MRja0w" name="_on_quit" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fY7dYaueEeygzau3MRja0w" name="event">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_0uCngJDIEey_Lt93nuuNDA" name="MainTkCnv">
         <generalization xmi:type="uml:Generalization" xmi:id="_6R6fwJDIEey_Lt93nuuNDA" general="_VruYIH7DEey1Ut-6sSExGQ"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_ZkFs8JDvEeyEl8hC1hWOFQ" name="_EXPORT_DESC" visibility="protected" isStatic="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ZkFs8JDvEeyEl8hC1hWOFQ" name="_EXPORT_DESC" visibility="protected">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_f46hAJDvEeyEl8hC1hWOFQ" name="_IMPORT_DESC" visibility="protected" isStatic="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_f46hAJDvEeyEl8hC1hWOFQ" name="_IMPORT_DESC" visibility="protected">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_h5YiUKm5Eeypfrg0dY4-Ag" name="_fileTypes" visibility="protected">
-          <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_9CgMgpDSEey_Lt93nuuNDA" name="converter" type="_WAqBgCtrEeqgj_wxJ3Xgsg" association="_9Ce-YJDSEey_Lt93nuuNDA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_L4QqYJDUEey_Lt93nuuNDA" name="_sourcePath" visibility="protected">
@@ -1706,14 +2088,14 @@ or success information</body>
             <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_ZWqbIJDSEey_Lt93nuuNDA" name="build_main_menu" visibility="protected"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_ZWqbIJDSEey_Lt93nuuNDA" name="_build_main_menu" visibility="protected"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ZWuskJDSEey_Lt93nuuNDA" name="_disable_menu" visibility="protected"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ZW0zMJDSEey_Lt93nuuNDA" name="_enable_menu" visibility="protected"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_ZW5rsJDSEey_Lt93nuuNDA" name="open_project">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZW5rsZDSEey_Lt93nuuNDA" name="fileName">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_08bQgKudEeygzau3MRja0w" name="open_project">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_08bQgaudEeygzau3MRja0w" name="fileName">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_f2Pc8JDuEeyEl8hC1hWOFQ" direction="return">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_08bQgqudEeygzau3MRja0w" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
           </ownedParameter>
         </ownedOperation>
@@ -2529,6 +2911,44 @@ or success information</body>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_l74xMcwMEeuVlZjMUHKreQ" key="nature" value="UML_Nature"/>
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_l75YQ8wMEeuVlZjMUHKreQ" name="novel" type="_A5iFcL7-EeuLVoie0Ovs3Q" association="_l73jEMwMEeuVlZjMUHKreQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_k4zfEKuhEeygzau3MRja0w" name="OdtNotes">
+        <generalization xmi:type="uml:Generalization" xmi:id="_k4zfEauhEeygzau3MRja0w" general="_GEGi0IewEeq_kJF_AkSaiA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_k4zfE6uhEeygzau3MRja0w" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_k4zfEquhEeygzau3MRja0w" name="SUFFIX" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_k4zfFauhEeygzau3MRja0w" name="_partTemplate" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_k4zfFquhEeygzau3MRja0w" name="_chapterTemplate" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9izUKuhEeygzau3MRja0w" name="_notesPartTemplate" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_EEpQAKuiEeygzau3MRja0w" name="_notesChapterTemplate" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_IYtGMKuiEeygzau3MRja0w" name="_notesSceneTemplate" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_k4zfF6uhEeygzau3MRja0w" name="_sceneTemplate" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_k4zfGauhEeygzau3MRja0w" name="_sceneDivider" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_k4zfGKuhEeygzau3MRja0w" name="_notesChapterEndTemplate" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_oCL1YKuiEeygzau3MRja0w" name="_get_chapters" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_oCL1YauiEeygzau3MRja0w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="__7zicPbjEeuIY7rtcArmxw" name="config">
