@@ -22,7 +22,6 @@ from pywriter.ods.ods_charlist import OdsCharList
 from pywriter.ods.ods_loclist import OdsLocList
 from pywriter.ods.ods_itemlist import OdsItemList
 from pywriter.ods.ods_scenelist import OdsSceneList
-from pywriter.ods.ods_plotlist import OdsPlotList
 
 
 class Yw7Exporter(YwCnvFf):
@@ -50,4 +49,4 @@ class Yw7Exporter(YwCnvFf):
                              OdsLocList,
                              OdsItemList,
                              OdsSceneList,
-                             OdsPlotList]
+                             ]

@@ -10,7 +10,6 @@ csv_file -- Provide a generic class for csv file import.
 csv_charlist -- Provide a class for csv character list import. 
 csv_itemlist -- Provide a class for csv item list import.
 csv_loclist -- Provide a class for csv location list import.
-csv_plotlist -- Provide a class for csv plot list import.
 csv_scenelist -- Provide a class for csv scene list import.
 
 Copyright (c) 2022 Peter Triesberger

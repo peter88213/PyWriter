@@ -23,7 +23,6 @@ from pywriter.ods.ods_charlist import OdsCharList
 from pywriter.ods.ods_loclist import OdsLocList
 from pywriter.ods.ods_itemlist import OdsItemList
 from pywriter.ods.ods_scenelist import OdsSceneList
-from pywriter.ods.ods_plotlist import OdsPlotList
 from pywriter.html.html_proof import HtmlProof
 from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.html.html_notes import HtmlNotes
@@ -34,7 +33,6 @@ from pywriter.html.html_characters import HtmlCharacters
 from pywriter.html.html_locations import HtmlLocations
 from pywriter.html.html_items import HtmlItems
 from pywriter.csv.csv_scenelist import CsvSceneList
-from pywriter.csv.csv_plotlist import CsvPlotList
 from pywriter.csv.csv_charlist import CsvCharList
 from pywriter.csv.csv_loclist import CsvLocList
 from pywriter.csv.csv_itemlist import CsvItemList
@@ -68,7 +66,6 @@ class Yw7Converter(YwCnvFf):
                              OdsLocList,
                              OdsItemList,
                              OdsSceneList,
-                             OdsPlotList,
                              OdtXref,
                              OdtNotes,
                              ]
@@ -85,7 +82,6 @@ class Yw7Converter(YwCnvFf):
                              CsvLocList,
                              CsvItemList,
                              CsvSceneList,
-                             CsvPlotList,
                              ]
     IMPORT_TARGET_CLASSES = [Yw7File]
     CREATE_SOURCE_CLASSES = []
