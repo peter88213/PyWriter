@@ -301,6 +301,14 @@ Start with v5 development. This version is backward-incompatible.
 - Provide generic test case classes.
 
 
+#### v5.2
+
+- New document types for "Notes" chapters import and export.
+- Drop support for the "Plot List" document types.
+- Change the way how scenes are split: Scene divider is "###". 
+  Optionally, the scene title may be appended.
+
+
 
 ## Future:
 
