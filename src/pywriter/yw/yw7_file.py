@@ -706,14 +706,8 @@ class Yw7File(Novel):
             sceneSplitter.split_scenes(self)
         return 'yWriter project data updated or created.'
 
-    def write(self):
-        """Write instance variables to the yWriter xml file.
-        
-        Open the yWriter xml file located at filePath and replace the instance variables 
-        not being None. Create new XML elements if necessary.
-        Return a message beginning with the ERROR constant in case of error.
-        Overrides the superclass method.
-        """
+    def _build_element_tree(self):
+        """Modify the yWriter project attributes of an existing xml element tree."""
 
         def build_scene_subtree(xmlScn, prjScn):
             if prjScn.title is not None:
@@ -1166,14 +1160,11 @@ class Yw7File(Novel):
                 except(AttributeError):
                     ET.SubElement(xmlPrj, 'FieldTitle4').text = self.fieldTitle4
 
-        #--- Start write method.
-        if self.is_locked():
-            return f'{ERROR}yWriter seems to be open. Please close first.'
-
         TAG = 'YWRITER7'
         xmlScenes = {}
         xmlChapters = {}
         try:
+            # Try processing an existing tree.
             root = self.tree.getroot()
             xmlPrj = root.find('PROJECT')
             locations = root.find('LOCATIONS')
@@ -1182,6 +1173,7 @@ class Yw7File(Novel):
             scenes = root.find('SCENES')
             chapters = root.find('CHAPTERS')
         except(AttributeError):
+            # Build a new tree.
             root = ET.Element(TAG)
             xmlPrj = ET.SubElement(root, 'PROJECT')
             locations = ET.SubElement(root, 'LOCATIONS')
@@ -1285,6 +1277,19 @@ class Yw7File(Novel):
             except:
                 pass
         self.tree = ET.ElementTree(root)
+
+    def write(self):
+        """Write instance variables to the yWriter xml file.
+        
+        Open the yWriter xml file located at filePath and replace the instance variables 
+        not being None. Create new XML elements if necessary.
+        Return a message beginning with the ERROR constant in case of error.
+        Overrides the superclass method.
+        """
+        if self.is_locked():
+            return f'{ERROR}yWriter seems to be open. Please close first.'
+
+        self._build_element_tree()
         message = self._write_element_tree(self)
         if message.startswith(ERROR):
             return message
