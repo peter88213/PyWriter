@@ -706,6 +706,32 @@ class Yw7File(Novel):
             sceneSplitter.split_scenes(self)
         return 'yWriter project data updated or created.'
 
+    def write(self):
+        """Write instance variables to the yWriter xml file.
+        
+        Open the yWriter xml file located at filePath and replace the instance variables 
+        not being None. Create new XML elements if necessary.
+        Return a message beginning with the ERROR constant in case of error.
+        Overrides the superclass method.
+        """
+        if self.is_locked():
+            return f'{ERROR}yWriter seems to be open. Please close first.'
+
+        self._build_element_tree()
+        message = self._write_element_tree(self)
+        if message.startswith(ERROR):
+            return message
+
+        return self._postprocess_xml_file(self.filePath)
+
+    def is_locked(self):
+        """Check whether the yw7 file is locked by yWriter.
+        
+        Return True if a .lock file placed by yWriter exists.
+        Otherwise, return False. 
+        """
+        return os.path.isfile(f'{self.filePath}.lock')
+
     def _build_element_tree(self):
         """Modify the yWriter project attributes of an existing xml element tree."""
 
@@ -1277,32 +1303,6 @@ class Yw7File(Novel):
             except:
                 pass
         self.tree = ET.ElementTree(root)
-
-    def write(self):
-        """Write instance variables to the yWriter xml file.
-        
-        Open the yWriter xml file located at filePath and replace the instance variables 
-        not being None. Create new XML elements if necessary.
-        Return a message beginning with the ERROR constant in case of error.
-        Overrides the superclass method.
-        """
-        if self.is_locked():
-            return f'{ERROR}yWriter seems to be open. Please close first.'
-
-        self._build_element_tree()
-        message = self._write_element_tree(self)
-        if message.startswith(ERROR):
-            return message
-
-        return self._postprocess_xml_file(self.filePath)
-
-    def is_locked(self):
-        """Check whether the yw7 file is locked by yWriter.
-        
-        Return True if a .lock file placed by yWriter exists.
-        Otherwise, return False. 
-        """
-        return os.path.isfile(f'{self.filePath}.lock')
 
     def _write_element_tree(self, ywProject):
         """Write back the xml element tree to a .yw7 xml file located at filePath.

@@ -958,6 +958,7 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
           </ownedParameter>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_gBSi0LENEeyEIOJq8s9sSw" name="_build_element_tree" visibility="protected"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_hDLsII94Eey0x9qBdTLxTA" name="_write_element_tree" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_lyllEI95Eey0x9qBdTLxTA" name="ywProject" type="_S2CgoCtgEeqgj_wxJ3Xgsg"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_rCYqwI95Eey0x9qBdTLxTA" direction="return">
