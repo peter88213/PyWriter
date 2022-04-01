@@ -8,8 +8,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import sys
-import webbrowser
 from pywriter.pywriter_globals import ERROR
+from pywriter.file.doc_open import open_document
 from pywriter.ui.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
 
@@ -147,5 +147,5 @@ class YwCnvUi(YwCnv):
 
     def _open_newFile(self):
         """Open the converted file for editing and exit the converter script."""
-        webbrowser.open(self.newFile)
+        open_document(self.newFile)
         sys.exit(0)

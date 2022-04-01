@@ -11,6 +11,7 @@ Modules:
 
 file_export.py -- Provide a generic class for template-based file export.
 filter.py -- Provide a generic filter class for template-based file export.
+doc_open -- Helper module for opening documents.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

@@ -14,6 +14,7 @@ elements, such as characters, locations ans items, and fills templates.
  
 - **file_export** -- Provide a generic class for template-based file export.
 - **filter** -- Provide a generic filter class for template-based file export.
+- **doc_open** -- Helper module for opening documents.
 
 ## Classes
 
