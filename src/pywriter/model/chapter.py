@@ -79,3 +79,6 @@ class Chapter:
         # The chapter's scene IDs. The order of its elements
         # corresponds to the chapter's order of the scenes.
 
+        self.noNumber = None
+        # bool
+        # True = Exclude the chapter from renumbering.
