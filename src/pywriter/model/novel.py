@@ -151,6 +151,10 @@ class Novel:
 
         self.filePath = filePath
 
+        self.kwVar = {}
+        # dictionary
+        # Optional key/value instance variables for customization.
+
     @property
     def filePath(self):
         return self._filePath

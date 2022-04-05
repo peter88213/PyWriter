@@ -210,6 +210,10 @@ class Scene:
         # str
         # xml: <ImageFile>
 
+        self.kwVar = {}
+        # dictionary
+        # Optional key/value instance variables for customization.
+
     @property
     def sceneContent(self):
         return self._sceneContent
