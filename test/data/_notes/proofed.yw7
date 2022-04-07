@@ -846,8 +846,8 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
-      <WordCount>6</WordCount>
-      <LetterCount>46</LetterCount>
+      <WordCount>18</WordCount>
+      <LetterCount>95</LetterCount>
       <Characters>
         <CharID>6</CharID>
       </Characters>
@@ -855,7 +855,11 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
 		</Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[And now for something completely different ...]]></SceneContent>
+      <SceneContent><![CDATA[And now for something completely different …
+- First point
+- Second point
+- Third point
+That’s all.]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>53</ID>

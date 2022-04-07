@@ -15,6 +15,7 @@ class HtmlManuscript(HtmlFile):
     """
     DESCRIPTION = 'Editable manuscript'
     SUFFIX = '_manuscript'
+    _BULLET = '-'
 
     def _preprocess(self, text):
         """Process the html text before parsing.
@@ -45,6 +46,8 @@ class HtmlManuscript(HtmlFile):
                 self._lines.append(f'{Splitter.CHAPTER_SEPARATOR} ')
             elif tag == 'h1':
                 self._lines.append(f'{Splitter.PART_SEPARATOR} ')
+            elif tag == 'li':
+                self._lines.append(f'{self._BULLET} ')
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.

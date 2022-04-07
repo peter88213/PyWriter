@@ -167,6 +167,9 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_a-zAQZEVEeqtx4SqQAS9Eg"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_q6mnwLaJEeyevL_WP6UbFA" name="kwVar" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_ZSkdEJEXEeqtx4SqQAS9Eg" name="Character">
         <generalization xmi:type="uml:Generalization" xmi:id="_d-PiAJEXEeqtx4SqQAS9Eg" general="_LIE_MJEVEeqtx4SqQAS9Eg"/>
@@ -233,6 +236,9 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_pQ1lACuoEeqsNupfleJppQ" name="srtScenes" isOrdered="true" association="_pQyhsCuoEeqsNupfleJppQ">
           <type xmi:type="uml:Class" href="Python.uml#_JI8bgCuoEeqsNupfleJppQ"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_rmePQLaJEeyevL_WP6UbFA" name="kwVar" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ce2zwCwKEequtbdKEmlZqQ" name="__init__" visibility="public"/>
       </packagedElement>
@@ -395,6 +401,9 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_cKM0gY83EeyWxuxLhWA0gA"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_peZIcLaJEeyevL_WP6UbFA" name="kwVar" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_eu15YCwKEequtbdKEmlZqQ" name="__init__" visibility="public"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_4-Ru8MwKEeuVlZjMUHKreQ" name="CrossReferences">
@@ -518,6 +527,9 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_LB6P8I8NEeyWxuxLhWA0gA" name="_projectPath" visibility="protected" isDerived="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Nw-mMLaJEeyevL_WP6UbFA" name="kwVar" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Ut2VkCwKEequtbdKEmlZqQ" name="__init__" visibility="public">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_wJKdUI83EeyWxuxLhWA0gA" name="filePath">
@@ -2589,6 +2601,9 @@ or success information</body>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_NDVD4PshEeq-TdV6dVW08A" name="DESCRIPTION" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_EP74ULaKEeyevL_WP6UbFA" name="_BULLET" visibility="protected" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QHAlsJPoEeyHVdwmt40umw" name="_fileHeader" visibility="protected" isStatic="true">
