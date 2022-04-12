@@ -95,6 +95,8 @@ text document (odt).
     indented.
 -   Starting from the second paragraph, paragraphs begin with
     indentation of the first line.
+-   Paragraphs starting with `> ` are formatted as quotations.
+-   Paragraphs starting with list strokes (`- `) are formatted as lists.
 -   Scenes marked "attach to previous scene" in yWriter appear like
     continuous paragraphs.
 
@@ -140,8 +142,8 @@ seen in the Navigator). File name suffix is `_manuscript`.
 
 -  Only "normal" chapters and scenes are exported. Chapters and
    scenes marked "unused", "todo" or "notes" are not exported.
--  Comments right at the beginning of the scenes are written back 
-   as scene titles if surrounded by `~`.
+-  Comments within scenes are written back as scene titles 
+   if surrounded by `~`.
 -  Chapters and scenes can neither be rearranged nor deleted.
 -  Scenes can be split by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
@@ -268,8 +270,8 @@ Write yWriter 7 "Notes" chapters with child scenes into a new
 OpenDocument text document (odt) with invisible chapter and scene 
 sections (to be seen in the Navigator). File name suffix is `_notes`.
 
--  Comments right at the beginning of the scenes are written back 
-as scene titles if surrounded by `~`.
+-  Comments within scenes are written back as scene titles
+   if surrounded by `~`.
 -  Chapters and scenes can neither be rearranged nor deleted.
 -  Scenes can be split by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
@@ -351,30 +353,6 @@ row in the scene list. Scenes of the "Unused", "Notes", or "ToDo"
 type are omitted.
 
 File name suffix is `_scenelist`.
-
-[Top of page](#top)
-
-------------------------------------------------------------------------
-
-## Export plot list
-
-Generate a new OpenDocument spreadsheet (ods) listing plot
-related metadata that can be displayed and edited. 
-
-- ID (Hyperlink to the manuscript)
-- Plot section (Title of "Notes" chapter)
-- Plot event (Scene tag)
-- Scene title
-- Details (Notes)
-- Sequential scene number
-- Words total
-- Rating 1
-- Rating 2
-- Rating 3
-- Rating 4
-
-File name suffix is `_plotlist`.
-
 
 [Top of page](#top)
 

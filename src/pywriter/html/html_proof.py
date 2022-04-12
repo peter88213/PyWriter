@@ -77,12 +77,16 @@ class HtmlProof(HtmlFile):
         
         Overrides the superclass method.
         """
-        if tag == 'p':
+        if tag == 'p' and self._prefix is None:
             self._prefix = ''
         elif tag == 'h2':
             self._prefix = f'{Splitter.CHAPTER_SEPARATOR} '
         elif tag == 'h1':
             self._prefix = f'{Splitter.PART_SEPARATOR} '
+        elif tag == 'li':
+            self._prefix = f'{self._BULLET} '
+        elif tag == 'blockquote':
+            self._prefix = f'{self._INDENT} '
 
     def handle_endtag(self, tag):
         """Recognize the paragraph's end.      
@@ -92,7 +96,7 @@ class HtmlProof(HtmlFile):
 
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
-        if tag in ['p', 'h2', 'h1']:
+        if tag in ['p', 'h2', 'h1', 'blockquote']:
             self._prefix = None
 
     def handle_data(self, data):

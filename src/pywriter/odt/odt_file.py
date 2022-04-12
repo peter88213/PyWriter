@@ -322,6 +322,10 @@ class OdtFile(OdfFile):
    <style:paragraph-properties loext:contextual-spacing="false" fo:margin-top="0cm" fo:margin-bottom="0cm" style:page-number="auto"/>
    <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:letter-spacing="normal" fo:font-style="italic" fo:font-weight="normal"/>
   </style:style>
+  <style:style style:name="Quotations" style:family="paragraph" style:parent-style-name="Text_20_body" style:class="html" style:master-page-name="">
+   <style:paragraph-properties loext:contextual-spacing="false" fo:margin="100%" fo:margin-left="1cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:text-indent="0cm" style:auto-text-indent="false" style:page-number="auto"/>
+   <style:text-properties style:font-name="Consolas"/>
+  </style:style>
   <style:style style:name="yWriter_20_mark" style:display-name="yWriter mark" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Standard" style:class="text">
    <style:text-properties fo:color="#008000" fo:font-size="10pt"/>
   </style:style>
@@ -397,15 +401,16 @@ class OdtFile(OdfFile):
         
         Overrides the superclass method.
         """
-        if quick:            
+        if quick:
             # Just clean up a one-liner without sophisticated formatting.
             try:
                 return text.replace('&', '&amp;').replace('>', '&gt;').replace('<', '&lt;')
-            
+
             except AttributeError:
                 return ''
 
         ODT_REPLACEMENTS = [
+            ('\n> ', '</text:p>\r<text:p text:style-name="Quotations">'),
             ('&', '&amp;'),
             ('>', '&gt;'),
             ('<', '&lt;'),
@@ -446,6 +451,8 @@ class OdtFile(OdfFile):
                 line = line.replace('[b][/b]', '')
                 newlines.append(line)
             text = '\n'.join(newlines).rstrip()
+
+            # Process the replacements list.
             for yw, od in ODT_REPLACEMENTS:
                 text = text.replace(yw, od)
 

@@ -27,6 +27,8 @@ class HtmlFile(Novel, HTMLParser):
     _COMMENT_START = '/*'
     _COMMENT_END = '*/'
     _SC_TITLE_BRACKET = '~'
+    _BULLET = '-'
+    _INDENT = '>'
 
     def __init__(self, filePath, **kwargs):
         """Initialize the HTML parser and local instance variables for parsing.
@@ -147,7 +149,7 @@ class HtmlFile(Novel, HTMLParser):
         
         Overrides HTMLparser.handle_comment() called by the parser when a comment is encountered.
         """
-        if self._scId is not None: 
+        if self._scId is not None:
             self._lines.append(f'{self._COMMENT_START}{data}{self._COMMENT_END}')
 
     def read(self):

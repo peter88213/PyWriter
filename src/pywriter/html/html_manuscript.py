@@ -15,7 +15,6 @@ class HtmlManuscript(HtmlFile):
     """
     DESCRIPTION = 'Editable manuscript'
     SUFFIX = '_manuscript'
-    _BULLET = '-'
 
     def _preprocess(self, text):
         """Process the html text before parsing.
@@ -48,6 +47,8 @@ class HtmlManuscript(HtmlFile):
                 self._lines.append(f'{Splitter.PART_SEPARATOR} ')
             elif tag == 'li':
                 self._lines.append(f'{self._BULLET} ')
+            elif tag == 'blockquote':
+                self._lines.append(f'{self._INDENT} ')
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
@@ -71,6 +72,8 @@ class HtmlManuscript(HtmlFile):
                 self._lines.append('\n')
             elif tag == 'h3' and not self._getScTitle:
                 self._lines.append('\n')
+            elif tag == 'blockquote':
+                self._lines.append('\n')
         elif self._chId is not None:
             if tag == 'div':
                 self._chId = None
@@ -87,13 +90,14 @@ class HtmlManuscript(HtmlFile):
         if self._scId is not None:
             if not self._lines:
                 # Comment is at scene start
-                if self._SC_TITLE_BRACKET in data:
-                    # Comment is marked as a scene title
-                    try:
-                        self.scenes[self._scId].title = data.split(self._SC_TITLE_BRACKET)[1].strip()
-                    except:
-                        pass
-                    return
+                pass
+            if self._SC_TITLE_BRACKET in data:
+                # Comment is marked as a scene title
+                try:
+                    self.scenes[self._scId].title = data.split(self._SC_TITLE_BRACKET)[1].strip()
+                except:
+                    pass
+                return
 
             self._lines.append(f'{self._COMMENT_START}{data.strip()}{self._COMMENT_END}')
 

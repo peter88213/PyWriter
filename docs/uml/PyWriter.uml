@@ -1505,7 +1505,7 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_GB4c8KubEeygzau3MRja0w" name="HtmlNotes">
-        <generalization xmi:type="uml:Generalization" xmi:id="_GB4c8aubEeygzau3MRja0w" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_GB4c8aubEeygzau3MRja0w" general="_RkzFwCthEeqgj_wxJ3Xgsg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_GB4c8qubEeygzau3MRja0w" name="DESCRIPTION" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -1625,6 +1625,12 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_LKi7wJTlEeyxtJCGKSzKUg" name="_SC_TITLE_BRACKET" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_tUFpULpHEeyjPNQvnUvoKw" name="_BULLET" visibility="protected" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_te6ZQLpHEeyjPNQvnUvoKw" name="_INDENT" visibility="protected" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ZuRD4JTlEeyxtJCGKSzKUg" name="_lines" visibility="protected">
