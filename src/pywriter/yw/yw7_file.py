@@ -1289,7 +1289,6 @@ class Yw7File(Novel):
                 ET.SubElement(xmlChapters[chId], 'ID').text = chId
             build_chapter_subtree(xmlChapters[chId], self.chapters[chId], sortOrder)
             chapters.append(xmlChapters[chId])
-        indent(root)
 
         # Modify the scene contents of an existing xml element tree.
         for scn in root.iter('SCENE'):
@@ -1302,6 +1301,7 @@ class Yw7File(Novel):
                 scn.remove(scn.find('RTFFile'))
             except:
                 pass
+        indent(root)
         self.tree = ET.ElementTree(root)
 
     def _write_element_tree(self, ywProject):
