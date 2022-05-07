@@ -14,7 +14,11 @@ class MainTkCnv(MainTk):
     """A tkinter GUI base class for yWriter file conversion.
 
     Public methods:
+        disable_menu() -- disable menu entries when no project is open.
+        enable_menu() -- enable menu entries when a project is open.
         open_project(fileName) -- select a valid project file and display the path.
+        reverse_direction() -- swap source and target file names.
+        convert_file() -- call the converter's conversion method, if a source file is selected.
 
     Public instance variables:
         converter -- converter strategy class.
@@ -49,28 +53,28 @@ class MainTkCnv(MainTk):
         Extends the superclass template method. 
         """
         super()._build_main_menu()
-        self._mainMenu.add_command(label='Swap', command=self._reverse_direction)
-        self._mainMenu.entryconfig('Swap', state='disabled')
-        self._mainMenu.add_command(label='Run', command=self._convert_file)
-        self._mainMenu.entryconfig('Run', state='disabled')
+        self.mainMenu.add_command(label='Swap', command=self.reverse_direction)
+        self.mainMenu.entryconfig('Swap', state='disabled')
+        self.mainMenu.add_command(label='Run', command=self.convert_file)
+        self.mainMenu.entryconfig('Run', state='disabled')
 
-    def _disable_menu(self):
+    def disable_menu(self):
         """Disable menu entries when no project is open.
         
         Extends the superclass method.      
         """
-        super()._disable_menu()
-        self._mainMenu.entryconfig('Run', state='disabled')
-        self._mainMenu.entryconfig('Swap', state='disabled')
+        super().disable_menu()
+        self.mainMenu.entryconfig('Run', state='disabled')
+        self.mainMenu.entryconfig('Swap', state='disabled')
 
-    def _enable_menu(self):
+    def enable_menu(self):
         """Enable menu entries when a project is open.
         
         Extends the superclass method.
         """
-        super()._enable_menu()
-        self._mainMenu.entryconfig('Run', state='normal')
-        self._mainMenu.entryconfig('Swap', state='normal')
+        super().enable_menu()
+        self.mainMenu.entryconfig('Run', state='normal')
+        self.mainMenu.entryconfig('Swap', state='normal')
 
     def open_project(self, fileName):
         """Select a valid project file and display the path.
@@ -86,29 +90,29 @@ class MainTkCnv(MainTk):
             return False
         self.kwargs['yw_last_open'] = fileName
         self._sourcePath = fileName
-        self._enable_menu()
+        self.enable_menu()
         if fileName.endswith(self._ywExtension):
             self.root.title(f'{self._EXPORT_DESC} - {self._title}')
         elif fileName.endswith(self._docExtension):
             self.root.title(f'{self._IMPORT_DESC} - {self._title}')
-        self._show_path(f'{os.path.normpath(fileName)}')
+        self.show_path(f'{os.path.normpath(fileName)}')
         return True
 
-    def _reverse_direction(self):
+    def reverse_direction(self):
         """Swap source and target file names."""
         fileName, fileExtension = os.path.splitext(self._sourcePath)
         if fileExtension == self._ywExtension:
             self._sourcePath = f'{fileName}{self._docExtension}'
-            self._show_path(os.path.normpath(self._sourcePath))
+            self.show_path(os.path.normpath(self._sourcePath))
             self.root.title(f'{self._IMPORT_DESC} - {self._title}')
             self.show_status('')
         elif fileExtension == self._docExtension:
             self._sourcePath = f'{fileName}{self._ywExtension}'
-            self._show_path(os.path.normpath(self._sourcePath))
+            self.show_path(os.path.normpath(self._sourcePath))
             self.root.title(f'{self._EXPORT_DESC} - {self._title}')
             self.show_status('')
 
-    def _convert_file(self):
+    def convert_file(self):
         """Call the converter's conversion method, if a source file is selected."""
         self.show_status('')
         self.kwargs['yw_last_open'] = self._sourcePath

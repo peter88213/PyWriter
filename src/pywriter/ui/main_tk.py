@@ -18,20 +18,30 @@ class MainTk(Ui):
     """A tkinter GUI root class.
 
     Public methods:
+        disable_menu() -- disable menu entries when no project is open.
+        enable_menu() -- enable menu entries when a project is open.
         start() -- start the Tk main loop.
         select_project(self, fileName) -- return a project file path.
         open_project(fileName) -- create a yWriter project instance and read the file.
+        close_project() -- close the yWriter project without saving and reset the user interface.
         ask_yes_no(text) -- query yes or no with a pop-up box.
         set_info_how(message) -- show how the converter is doing.
         show_status(message) -- put text on the status bar.
-        on_quit(event=None) -- save keyword arguments before exiting the program.
+        show_path(message) -- put text on the path bar."
+        restore_status() -- overwrite error message with the status before.
+        on_quit() -- save keyword arguments before exiting the program.
         
     Public instance variables: 
+        title -- str: Application title.
+        statusText -- str: Text to be displayed at the status bar.
         kwargs -- keyword arguments buffer.
         ywPrj -- yWriter project to work with.
         root -- tk top level window.
-
-    Main menu, title bar, main window frame, status bar, path bar.
+        mainMenu -- top level menubar.
+        mainWindow -- tk frame in the top level window.
+        statusBar -- tk label in the top level window.
+        pathBar -- tk label in the top level window.
+        fileMenu -- "File" submenu in main menu. 
     """
     _KEY_RESTORE_STATUS = ('<Escape>', 'Esc')
     _KEY_OPEN_PROJECT = ('<Control-o>', 'Ctrl-O')
@@ -68,21 +78,21 @@ class MainTk(Ui):
         self.root.title(title)
         if kwargs['root_geometry']:
             self.root.geometry(kwargs['root_geometry'])
-        self._mainMenu = tk.Menu(self.root)
+        self.mainMenu = tk.Menu(self.root)
 
         self._build_main_menu()
         # Hook for subclasses
 
-        self.root.config(menu=self._mainMenu)
-        self._mainWindow = tk.Frame()
-        self._mainWindow.pack(expand=True, fill='both')
-        self._statusBar = tk.Label(self.root, text='', anchor='w', padx=5, pady=2)
-        self._statusBar.pack(expand=False, fill='both')
-        self._pathBar = tk.Label(self.root, text='', anchor='w', padx=5, pady=3)
-        self._pathBar.pack(expand=False, fill='both')
+        self.root.config(menu=self.mainMenu)
+        self.mainWindow = tk.Frame()
+        self.mainWindow.pack(expand=True, fill='both')
+        self.statusBar = tk.Label(self.root, text='', anchor='w', padx=5, pady=2)
+        self.statusBar.pack(expand=False, fill='both')
+        self.pathBar = tk.Label(self.root, text='', anchor='w', padx=5, pady=3)
+        self.pathBar.pack(expand=False, fill='both')
 
         #--- Event bindings.
-        self.root.bind(self._KEY_RESTORE_STATUS[0], self._restore_status)
+        self.root.bind(self._KEY_RESTORE_STATUS[0], self.restore_status)
         self.root.bind(self._KEY_OPEN_PROJECT[0], self._open_project)
         self.root.bind(self._KEY_QUIT_PROGRAM[0], self.on_quit)
 
@@ -91,26 +101,26 @@ class MainTk(Ui):
         
         This is a template method that can be overridden by subclasses. 
         """
-        self._fileMenu = tk.Menu(self._mainMenu, title='my title', tearoff=0)
-        self._mainMenu.add_cascade(label='File', underline=0, menu=self._fileMenu)
-        self._fileMenu.add_command(label='Open...', underline=0, accelerator=self._KEY_OPEN_PROJECT[1], command=lambda: self.open_project(''))
-        self._fileMenu.add_command(label='Close', underline=0, command=self._close_project)
-        self._fileMenu.entryconfig('Close', state='disabled')
-        self._fileMenu.add_command(label='Exit', underline=1, accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
+        self.fileMenu = tk.Menu(self.mainMenu, title='my title', tearoff=0)
+        self.mainMenu.add_cascade(label='File', underline=0, menu=self.fileMenu)
+        self.fileMenu.add_command(label='Open...', underline=0, accelerator=self._KEY_OPEN_PROJECT[1], command=lambda: self.open_project(''))
+        self.fileMenu.add_command(label='Close', underline=0, command=self.close_project)
+        self.fileMenu.entryconfig('Close', state='disabled')
+        self.fileMenu.add_command(label='Exit', underline=1, accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
 
-    def _disable_menu(self):
+    def disable_menu(self):
         """Disable menu entries when no project is open.
         
         To be extended by subclasses.
         """
-        self._fileMenu.entryconfig('Close', state='disabled')
+        self.fileMenu.entryconfig('Close', state='disabled')
 
-    def _enable_menu(self):
+    def enable_menu(self):
         """Enable menu entries when a project is open.
         
         To be extended by subclasses.
         """
-        self._fileMenu.entryconfig('Close', state='normal')
+        self.fileMenu.entryconfig('Close', state='normal')
 
     def start(self):
         """Start the Tk main loop.
@@ -160,16 +170,16 @@ class MainTk(Ui):
             return False
 
         if self.ywPrj is not None:
-            self._close_project()
+            self.close_project()
         self.kwargs['yw_last_open'] = fileName
         self.ywPrj = self._YW_CLASS(fileName)
         message = self.ywPrj.read()
         if message.startswith(ERROR):
-            self._close_project()
+            self.close_project()
             self.set_info_how(message)
             return False
 
-        self._show_path(f'{os.path.normpath(self.ywPrj.filePath)}')
+        self.show_path(f'{os.path.normpath(self.ywPrj.filePath)}')
         if self.ywPrj.title:
             titleView = self.ywPrj.title
         else:
@@ -179,7 +189,7 @@ class MainTk(Ui):
         else:
             authorView = 'Unknown author'
         self.root.title(f'{titleView} by {authorView} - {self._title}')
-        self._enable_menu()
+        self.enable_menu()
         return True
 
     def _open_project(self, event=None):
@@ -189,7 +199,7 @@ class MainTk(Ui):
         """
         self.open_project('')
 
-    def _close_project(self, event=None):
+    def close_project(self, event=None):
         """Close the yWriter project without saving and reset the user interface.
         
         To be extended by subclasses.
@@ -197,8 +207,8 @@ class MainTk(Ui):
         self.ywPrj = None
         self.root.title(self._title)
         self.show_status('')
-        self._show_path('')
-        self._disable_menu()
+        self.show_path('')
+        self.disable_menu()
 
     def ask_yes_no(self, text):
         """Query yes or no with a pop-up box.
@@ -220,28 +230,28 @@ class MainTk(Ui):
         Overrides the superclass method.
         """
         if message.startswith(ERROR):
-            self._statusBar.config(bg='red')
-            self._statusBar.config(fg='white')
+            self.statusBar.config(bg='red')
+            self.statusBar.config(fg='white')
             self.infoHowText = message.split(ERROR, maxsplit=1)[1].strip()
         else:
-            self._statusBar.config(bg='green')
-            self._statusBar.config(fg='white')
+            self.statusBar.config(bg='green')
+            self.statusBar.config(fg='white')
             self.infoHowText = message
-        self._statusBar.config(text=self.infoHowText)
+        self.statusBar.config(text=self.infoHowText)
 
     def show_status(self, message):
         """Put text on the status bar."""
         self._statusText = message
-        self._statusBar.config(bg=self.root.cget('background'))
-        self._statusBar.config(fg='black')
-        self._statusBar.config(text=message)
+        self.statusBar.config(bg=self.root.cget('background'))
+        self.statusBar.config(fg='black')
+        self.statusBar.config(text=message)
 
-    def _show_path(self, message):
+    def show_path(self, message):
         """Put text on the path bar."""
         self._pathText = message
-        self._pathBar.config(text=message)
+        self.pathBar.config(text=message)
 
-    def _restore_status(self, event=None):
+    def restore_status(self, event=None):
         """Overwrite error message with the status before."""
         self.show_status(self._statusText)
 
