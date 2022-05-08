@@ -73,6 +73,8 @@ class Yw7File(Novel):
         root = self.tree.getroot()
 
         #--- Read locations from the xml element tree.
+        self.srtLocations = []
+        # This is necessary for re-reading.
         for loc in root.iter('LOCATION'):
             lcId = loc.find('ID').text
             self.srtLocations.append(lcId)
@@ -96,6 +98,8 @@ class Yw7File(Novel):
                     self.locations[lcId].tags = self._strip_spaces(tags)
 
         #--- Read items from the xml element tree.
+        self.srtItems = []
+        # This is necessary for re-reading.
         for itm in root.iter('ITEM'):
             itId = itm.find('ID').text
             self.srtItems.append(itId)
@@ -119,6 +123,8 @@ class Yw7File(Novel):
                     self.items[itId].tags = self._strip_spaces(tags)
 
         #--- Read characters from the xml element tree.
+        self.srtCharacters = []
+        # This is necessary for re-reading.
         for crt in root.iter('CHARACTER'):
             crId = crt.find('ID').text
             self.srtCharacters.append(crId)
@@ -1058,7 +1064,6 @@ class Yw7File(Novel):
 
         def build_location_subtree(xmlLoc, prjLoc, sortOrder):
             ET.SubElement(xmlLoc, 'ID').text = lcId
-
             if prjLoc.title is not None:
                 ET.SubElement(xmlLoc, 'Title').text = prjLoc.title
 
