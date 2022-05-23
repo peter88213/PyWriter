@@ -308,7 +308,19 @@ Start with v5 development. This version is backward-incompatible.
 - Change the way how scenes are split: Scene divider is "###". 
   Optionally, the scene title may be appended.
 
+#### v5.4
 
+Extend document formatting.
+- Support "Quotations" style.
+- Support lists.
+
+#### v5.6
+
+Extend the MainTk API for complex applications.
+
+#### v5.8
+
+Read, merge, and write .yw7 custom fields.
 
 ## Future:
 
