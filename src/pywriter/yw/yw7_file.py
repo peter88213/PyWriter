@@ -111,15 +111,15 @@ class Yw7File(Novel):
                     self.locations[lcId].tags = self._strip_spaces(tags)
 
             #--- Initialize custom keyword variables.
-            for field in self._LOC_KWVAR:
-                self.locations[lcId].kwVar[field] = None
+            for fieldName in self._LOC_KWVAR:
+                self.locations[lcId].kwVar[fieldName] = None
 
             #--- Read location custom fields.
             for lcFields in loc.findall('Fields'):
-                for field in self._LOC_KWVAR:
-                    value = lcFields.find(field)
-                    if value is not None:
-                        self.locations[lcId].kwVar[field] = value.text
+                for fieldName in self._LOC_KWVAR:
+                    field = lcFields.find(fieldName)
+                    if field is not None:
+                        self.locations[lcId].kwVar[fieldName] = field.text
 
         #--- Read items from the xml element tree.
         self.srtItems = []
@@ -147,15 +147,15 @@ class Yw7File(Novel):
                     self.items[itId].tags = self._strip_spaces(tags)
 
             #--- Initialize custom keyword variables.
-            for field in self._ITM_KWVAR:
-                self.items[itId].kwVar[field] = None
+            for fieldName in self._ITM_KWVAR:
+                self.items[itId].kwVar[fieldName] = None
 
             #--- Read item custom fields.
             for itFields in itm.findall('Fields'):
-                for field in self._ITM_KWVAR:
-                    value = itFields.find(field)
-                    if value is not None:
-                        self.items[itId].kwVar[field] = value.text
+                for fieldName in self._ITM_KWVAR:
+                    field = itFields.find(fieldName)
+                    if field is not None:
+                        self.items[itId].kwVar[fieldName] = field.text
 
         #--- Read characters from the xml element tree.
         self.srtCharacters = []
@@ -200,15 +200,15 @@ class Yw7File(Novel):
                 self.characters[crId].isMajor = False
 
             #--- Initialize custom keyword variables.
-            for field in self._CRT_KWVAR:
-                self.characters[crId].kwVar[field] = None
+            for fieldName in self._CRT_KWVAR:
+                self.characters[crId].kwVar[fieldName] = None
 
             #--- Read character custom fields.
             for crFields in crt.findall('Fields'):
-                for field in self._CRT_KWVAR:
-                    value = crFields.find(field)
-                    if value is not None:
-                        self.characters[crId].kwVar[field] = value.text
+                for fieldName in self._CRT_KWVAR:
+                    field = crFields.find(fieldName)
+                    if field is not None:
+                        self.characters[crId].kwVar[fieldName] = field.text
 
         #--- Read attributes at novel level from the xml element tree.
         prj = root.find('PROJECT')
@@ -238,15 +238,15 @@ class Yw7File(Novel):
             self.fieldTitle4 = prj.find('FieldTitle4').text
 
         #--- Initialize custom keyword variables.
-        for field in self._PRJ_KWVAR:
-            self.kwVar[field] = None
+        for fieldName in self._PRJ_KWVAR:
+            self.kwVar[fieldName] = None
 
         #--- Read project custom fields.
         for prjFields in prj.findall('Fields'):
-            for field in self._PRJ_KWVAR:
-                value = prjFields.find(field)
-                if value is not None:
-                    self.kwVar[field] = value.text
+            for fieldName in self._PRJ_KWVAR:
+                field = prjFields.find(fieldName)
+                if field is not None:
+                    self.kwVar[fieldName] = field.text
 
         #--- Read attributes at chapter level from the xml element tree.
         self.srtChapters = []
@@ -283,8 +283,8 @@ class Yw7File(Novel):
                     self.chapters[chId].suppressChapterTitle = True
 
             #--- Initialize custom keyword variables.
-            for field in self._CHP_KWVAR:
-                self.chapters[chId].kwVar[field] = None
+            for fieldName in self._CHP_KWVAR:
+                self.chapters[chId].kwVar[fieldName] = None
 
             #--- Read chapter fields.
             for chFields in chp.findall('Fields'):
@@ -301,10 +301,10 @@ class Yw7File(Novel):
                         self.chapters[chId].suppressChapterBreak = True
 
                 #--- Read chapter custom fields.
-                for field in self._CHP_KWVAR:
-                    value = chFields.find(field)
-                    if value is not None:
-                        self.chapters[chId].kwVar[field] = value.text
+                for fieldName in self._CHP_KWVAR:
+                    field = chFields.find(fieldName)
+                    if field is not None:
+                        self.chapters[chId].kwVar[fieldName] = field.text
 
             self.chapters[chId].srtScenes = []
             if chp.find('Scenes') is not None:
@@ -348,8 +348,8 @@ class Yw7File(Novel):
             self.scenes[scId].isTodoScene = False
 
             #--- Initialize custom keyword variables.
-            for field in self._SCN_KWVAR:
-                self.scenes[scId].kwVar[field] = None
+            for fieldName in self._SCN_KWVAR:
+                self.scenes[scId].kwVar[fieldName] = None
 
             #--- Read scene fields.
             for scFields in scn.findall('Fields'):
@@ -361,10 +361,10 @@ class Yw7File(Novel):
                         self.scenes[scId].isTodoScene = True
 
                 #--- Read scene custom fields.
-                for field in self._SCN_KWVAR:
-                    value = scFields.find(field)
-                    if value is not None:
-                        self.scenes[scId].kwVar[field] = value.text
+                for fieldName in self._SCN_KWVAR:
+                    field = scFields.find(fieldName)
+                    if field is not None:
+                        self.scenes[scId].kwVar[fieldName] = field.text
 
             if scn.find('ExportCondSpecific') is None:
                 self.scenes[scId].doNotExport = False
