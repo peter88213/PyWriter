@@ -544,10 +544,11 @@ class Yw7File(Novel):
                     self.locations[lcId].tags = source.locations[lcId].tags
                 else:
                     self.locations[lcId].tags = temploc[lcId].tags
-                if source.locations[lcId].kwVar is not None:
-                    self.locations[lcId].kwVar = source.locations[lcId].kwVar
-                else:
-                    self.locations[lcId].kwVar = temploc[lcId].kwVar
+                for fieldName in self._LOC_KWVAR:
+                    try:
+                        self.locations[lcId].kwVar[fieldName] = source.locations[lcId].kwVar[fieldName]
+                    except:
+                        self.locations[lcId].kwVar[fieldName] = temploc[lcId].kwVar[fieldName]
 
         #--- Merge and re-order items.
         if source.srtItems:
@@ -582,10 +583,11 @@ class Yw7File(Novel):
                     self.items[itId].tags = source.items[itId].tags
                 else:
                     self.items[itId].tags = tempitm[itId].tags
-                if source.items[itId].kwVar is not None:
-                    self.items[itId].kwVar = source.items[itId].kwVar
-                else:
-                    self.items[itId].kwVar = tempitm[itId].kwVar
+                for fieldName in self._ITM_KWVAR:
+                    try:
+                        self.items[itId].kwVar[fieldName] = source.items[itId].kwVar[fieldName]
+                    except:
+                        self.items[itId].kwVar[fieldName] = tempitm[itId].kwVar[fieldName]
 
         #--- Merge and re-order characters.
         if source.srtCharacters:
@@ -640,10 +642,11 @@ class Yw7File(Novel):
                     self.characters[crId].isMajor = source.characters[crId].isMajor
                 else:
                     self.characters[crId].isMajor = tempchr[crId].isMajor
-                if source.characters[crId].kwVar is not None:
-                    self.characters[crId].kwVar = source.characters[crId].kwVar
-                else:
-                    self.characters[crId].kwVar = tempchr[crId].kwVar
+                for fieldName in self._CRT_KWVAR:
+                    try:
+                        self.characters[crId].kwVar[fieldName] = source.characters[crId].kwVar[fieldName]
+                    except:
+                        self.characters[crId].kwVar[fieldName] = tempchr[crId].kwVar[fieldName]
 
         #--- Merge scenes.
         sourceHasSceneContent = False
@@ -725,8 +728,11 @@ class Yw7File(Novel):
                 for itId in source.scenes[scId].items:
                     if itId in self.items:
                         self.scenes[scId].items.append(itId)
-            if source.scenes[scId].kwVar is not None:
-                self.scenes[scId].kwVar = source.scenes[scId].kwVar
+            for fieldName in self._SCN_KWVAR:
+                try:
+                    self.scenes[scId].kwVar[fieldName] = source.scenes[scId].kwVar[fieldName]
+                except:
+                    pass
 
         #--- Merge chapters.
         for chId in source.chapters:
@@ -751,8 +757,11 @@ class Yw7File(Novel):
                 self.chapters[chId].suppressChapterBreak = source.chapters[chId].suppressChapterBreak
             if source.chapters[chId].isTrash is not None:
                 self.chapters[chId].isTrash = source.chapters[chId].isTrash
-            if source.chapters[chId].kwVar is not None:
-                self.chapters[chId].kwVar = source.chapters[chId].kwVar
+            for fieldName in self._CHP_KWVAR:
+                try:
+                    self.chapters[chId].kwVar[fieldName] = source.chapters[chId].kwVar[fieldName]
+                except:
+                    pass
 
             #--- Merge the chapter's scene list.
             # New scenes may be added.
@@ -789,8 +798,11 @@ class Yw7File(Novel):
             self.fieldTitle3 = source.fieldTitle3
         if source.fieldTitle4 is not None:
             self.fieldTitle4 = source.fieldTitle4
-        if source.kwVar is not None:
-            self.kwVar = source.kwVar
+        for fieldName in self._PRJ_KWVAR:
+            try:
+                self.kwVar[fieldName] = source.kwVar[fieldName]
+            except:
+                pass
 
         # Add new chapters to the chapter list.
         # Deletion of chapters is not considered.
