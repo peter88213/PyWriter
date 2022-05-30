@@ -7,7 +7,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 from pywriter.pywriter_globals import ERROR
 from pywriter.csv.csv_file import CsvFile
-from pywriter.model.character import Character
 
 
 class CsvCharList(CsvFile):
@@ -35,14 +34,14 @@ class CsvCharList(CsvFile):
             if 'CrID:' in cells[0]:
                 crId = re.search('CrID\:([0-9]+)', cells[0]).group(1)
                 self.srtCharacters.append(crId)
-                self.characters[crId] = Character()
+                self.characters[crId] = self.CHARACTER_CLASS()
                 self.characters[crId].title = cells[1]
                 self.characters[crId].fullName = cells[2]
                 self.characters[crId].aka = cells[3]
                 self.characters[crId].desc = self._convert_to_yw(cells[4])
                 self.characters[crId].bio = cells[5]
                 self.characters[crId].goals = cells[6]
-                if Character.MAJOR_MARKER in cells[7]:
+                if self.CHARACTER_CLASS.MAJOR_MARKER in cells[7]:
                     self.characters[crId].isMajor = True
                 else:
                     self.characters[crId].isMajor = False

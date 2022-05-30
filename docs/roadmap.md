@@ -322,6 +322,11 @@ Extend the MainTk API for complex applications.
 
 Read, merge, and write .yw7 custom fields.
 
+#### v5.10
+
+Create chapters, scenes, characters, and world elements via class references, 
+thus allowing custom classes.
+
 ## Future:
 
 #### Full LibreOffice/OpenOffice integration

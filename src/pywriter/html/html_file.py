@@ -10,8 +10,6 @@ import re
 from html.parser import HTMLParser
 from pywriter.pywriter_globals import ERROR
 from pywriter.model.novel import Novel
-from pywriter.model.chapter import Chapter
-from pywriter.model.scene import Scene
 from pywriter.html.html_fop import read_html_file
 
 
@@ -133,11 +131,11 @@ class HtmlFile(Novel, HTMLParser):
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('ScID'):
                     self._scId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.scenes[self._scId] = Scene()
+                    self.scenes[self._scId] = self.SCENE_CLASS()
                     self.chapters[self._chId].srtScenes.append(self._scId)
                 elif attrs[0][1].startswith('ChID'):
                     self._chId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.chapters[self._chId] = Chapter()
+                    self.chapters[self._chId] = self.CHAPTER_CLASS()
                     self.chapters[self._chId].srtScenes = []
                     self.srtChapters.append(self._chId)
 

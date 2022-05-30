@@ -6,8 +6,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from pywriter.html.html_file import HtmlFile
-from pywriter.model.chapter import Chapter
-from pywriter.model.scene import Scene
 from pywriter.model.splitter import Splitter
 
 
@@ -52,7 +50,7 @@ class HtmlProof(HtmlFile):
         for line in self._lines:
             if '[ScID' in line:
                 scId = re.search('[0-9]+', line).group()
-                self.scenes[scId] = Scene()
+                self.scenes[scId] = self.SCENE_CLASS()
                 self.chapters[chId].srtScenes.append(scId)
                 inScene = True
             elif '[/ScID' in line:
@@ -61,7 +59,7 @@ class HtmlProof(HtmlFile):
                 inScene = False
             elif '[ChID' in line:
                 chId = re.search('[0-9]+', line).group()
-                self.chapters[chId] = Chapter()
+                self.chapters[chId] = self.CHAPTER_CLASS()
                 self.srtChapters.append(chId)
             elif '[/ChID' in line:
                 pass

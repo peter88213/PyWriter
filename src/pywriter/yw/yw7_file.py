@@ -12,10 +12,6 @@ from html import unescape
 import xml.etree.ElementTree as ET
 from pywriter.pywriter_globals import ERROR
 from pywriter.model.novel import Novel
-from pywriter.model.chapter import Chapter
-from pywriter.model.scene import Scene
-from pywriter.model.character import Character
-from pywriter.model.world_element import WorldElement
 from pywriter.model.splitter import Splitter
 from pywriter.yw.xml_indent import indent
 
@@ -91,7 +87,7 @@ class Yw7File(Novel):
         for loc in root.iter('LOCATION'):
             lcId = loc.find('ID').text
             self.srtLocations.append(lcId)
-            self.locations[lcId] = WorldElement()
+            self.locations[lcId] = self.WE_CLASS()
 
             if loc.find('Title') is not None:
                 self.locations[lcId].title = loc.find('Title').text
@@ -127,7 +123,7 @@ class Yw7File(Novel):
         for itm in root.iter('ITEM'):
             itId = itm.find('ID').text
             self.srtItems.append(itId)
-            self.items[itId] = WorldElement()
+            self.items[itId] = self.WE_CLASS()
 
             if itm.find('Title') is not None:
                 self.items[itId].title = itm.find('Title').text
@@ -163,7 +159,7 @@ class Yw7File(Novel):
         for crt in root.iter('CHARACTER'):
             crId = crt.find('ID').text
             self.srtCharacters.append(crId)
-            self.characters[crId] = Character()
+            self.characters[crId] = self.CHARACTER_CLASS()
 
             if crt.find('Title') is not None:
                 self.characters[crId].title = crt.find('Title').text
@@ -253,7 +249,7 @@ class Yw7File(Novel):
         # This is necessary for re-reading.
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
-            self.chapters[chId] = Chapter()
+            self.chapters[chId] = self.CHAPTER_CLASS()
             self.srtChapters.append(chId)
 
             if chp.find('Title') is not None:
@@ -315,7 +311,7 @@ class Yw7File(Novel):
         #--- Read attributes at scene level from the xml element tree.
         for scn in root.iter('SCENE'):
             scId = scn.find('ID').text
-            self.scenes[scId] = Scene()
+            self.scenes[scId] = self.SCENE_CLASS()
 
             if scn.find('Title') is not None:
                 self.scenes[scId].title = scn.find('Title').text
@@ -519,10 +515,10 @@ class Yw7File(Novel):
             for lcId in source.srtLocations:
 
                 # Build a new self.locations dictionary sorted like the source.
-                self.locations[lcId] = WorldElement()
+                self.locations[lcId] = self.WE_CLASS()
                 if not lcId in temploc:
                     # A new location has been added
-                    temploc[lcId] = WorldElement()
+                    temploc[lcId] = self.WE_CLASS()
                 if source.locations[lcId].title:
                     # avoids deleting the title, if it is empty by accident
                     self.locations[lcId].title = source.locations[lcId].title
@@ -558,10 +554,10 @@ class Yw7File(Novel):
             for itId in source.srtItems:
 
                 # Build a new self.items dictionary sorted like the source.
-                self.items[itId] = WorldElement()
+                self.items[itId] = self.WE_CLASS()
                 if not itId in tempitm:
                     # A new item has been added
-                    tempitm[itId] = WorldElement()
+                    tempitm[itId] = self.WE_CLASS()
                 if source.items[itId].title:
                     # avoids deleting the title, if it is empty by accident
                     self.items[itId].title = source.items[itId].title
@@ -597,10 +593,10 @@ class Yw7File(Novel):
             for crId in source.srtCharacters:
 
                 # Build a new self.characters dictionary sorted like the source.
-                self.characters[crId] = Character()
+                self.characters[crId] = self.CHARACTER_CLASS()
                 if not crId in tempchr:
                     # A new character has been added
-                    tempchr[crId] = Character()
+                    tempchr[crId] = self.CHARACTER_CLASS()
                 if source.characters[crId].title:
                     # avoids deleting the title, if it is empty by accident
                     self.characters[crId].title = source.characters[crId].title
@@ -652,7 +648,7 @@ class Yw7File(Novel):
         sourceHasSceneContent = False
         for scId in source.scenes:
             if not scId in self.scenes:
-                self.scenes[scId] = Scene()
+                self.scenes[scId] = self.SCENE_CLASS()
             if source.scenes[scId].title:
                 # avoids deleting the title, if it is empty by accident
                 self.scenes[scId].title = source.scenes[scId].title
@@ -737,7 +733,7 @@ class Yw7File(Novel):
         #--- Merge chapters.
         for chId in source.chapters:
             if not chId in self.chapters:
-                self.chapters[chId] = Chapter()
+                self.chapters[chId] = self.CHAPTER_CLASS()
             if source.chapters[chId].title:
                 # avoids deleting the title, if it is empty by accident
                 self.chapters[chId].title = source.chapters[chId].title

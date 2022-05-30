@@ -5,7 +5,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.html.html_manuscript import HtmlManuscript
-from pywriter.model.splitter import Splitter
 
 
 class HtmlNotes(HtmlManuscript):

@@ -13,8 +13,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.html.html_file import HtmlFile
-from pywriter.model.chapter import Chapter
-from pywriter.model.scene import Scene
 
 
 class HtmlOutline(HtmlFile):
@@ -46,7 +44,7 @@ class HtmlOutline(HtmlFile):
             self._lines = []
             self._chCount += 1
             self._chId = str(self._chCount)
-            self.chapters[self._chId] = Chapter()
+            self.chapters[self._chId] = self.CHAPTER_CLASS()
             self.chapters[self._chId].srtScenes = []
             self.srtChapters.append(self._chId)
             self.chapters[self._chId].oldType = '0'
@@ -58,10 +56,10 @@ class HtmlOutline(HtmlFile):
             self._lines = []
             self._scCount += 1
             self._scId = str(self._scCount)
-            self.scenes[self._scId] = Scene()
+            self.scenes[self._scId] = self.SCENE_CLASS()
             self.chapters[self._chId].srtScenes.append(self._scId)
             self.scenes[self._scId].sceneContent = ''
-            self.scenes[self._scId].status = Scene.STATUS.index('Outline')
+            self.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Outline')
         elif tag == 'div':
             self._scId = None
             self._chId = None

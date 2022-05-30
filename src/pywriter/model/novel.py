@@ -9,6 +9,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from urllib.parse import quote
 import os
 from pywriter.pywriter_globals import ERROR
+from pywriter.model.chapter import Chapter
+from pywriter.model.scene import Scene
+from pywriter.model.character import Character
+from pywriter.model.world_element import WorldElement
 
 
 class Novel:
@@ -47,6 +51,11 @@ class Novel:
     EXTENSION = None
     SUFFIX = None
     # To be extended by subclass methods.
+
+    CHAPTER_CLASS = Chapter
+    SCENE_CLASS = Scene
+    CHARACTER_CLASS = Character
+    WE_CLASS = WorldElement
 
     def __init__(self, filePath, **kwargs):
         """Initialize instance variables.

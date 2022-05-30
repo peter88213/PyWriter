@@ -5,7 +5,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
-from pywriter.model.character import Character
 from pywriter.html.html_file import HtmlFile
 
 
@@ -45,7 +44,7 @@ class HtmlCharacters(HtmlFile):
                 if attrs[0][1].startswith('CrID_desc'):
                     self._crId = re.search('[0-9]+', attrs[0][1]).group()
                     self.srtCharacters.append(self._crId)
-                    self.characters[self._crId] = Character()
+                    self.characters[self._crId] = self.CHARACTER_CLASS()
                     self._section = 'desc'
                 elif attrs[0][1].startswith('CrID_bio'):
                     self._section = 'bio'

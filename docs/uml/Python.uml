@@ -250,5 +250,6 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_93KcgL5AEeuITv7MyBA5yA" value="*"/>
       </ownedAttribute>
     </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_1f8MkN_7EeyzqaAn72d4EA" name="Class reference"/>
   </packagedElement>
 </uml:Model>

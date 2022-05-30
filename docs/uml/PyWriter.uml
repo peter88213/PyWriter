@@ -420,8 +420,6 @@
         <ownedEnd xmi:type="uml:Property" xmi:id="_hff64cwLEeuVlZjMUHKreQ" name="_xr" type="_4-Ru8MwKEeuVlZjMUHKreQ" association="_hfYmIMwLEeuVlZjMUHKreQ"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_hfdeoMwLEeuVlZjMUHKreQ" name="novel" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_hfYmIMwLEeuVlZjMUHKreQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_UnrJgG1REeyo8PGsOj-8FQ" client="_parT0G1QEeyo8PGsOj-8FQ" supplier="_0ErCACtbEeqgj_wxJ3Xgsg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_Zfw50G1REeyo8PGsOj-8FQ" client="_parT0G1QEeyo8PGsOj-8FQ" supplier="_ypTQMCtbEeqgj_wxJ3Xgsg"/>
       <packagedElement xmi:type="uml:Association" xmi:id="_BYZbwG1SEeyo8PGsOj-8FQ" memberEnd="_BYe7UG1SEeyo8PGsOj-8FQ _BYhXkW1SEeyo8PGsOj-8FQ" navigableOwnedEnd="_BYe7UG1SEeyo8PGsOj-8FQ">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BYb4AG1SEeyo8PGsOj-8FQ" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BYb4AW1SEeyo8PGsOj-8FQ" key="nature" value="UML_Nature"/>
@@ -455,6 +453,18 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_cKFlcPsSEeq-TdV6dVW08A" name="SUFFIX" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_78_vkN_7EeyzqaAn72d4EA" name="CHAPTER_CLASS" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_1f8MkN_7EeyzqaAn72d4EA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_CtDuIN_8EeyzqaAn72d4EA" name="SCENE_CLASS" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_1f8MkN_7EeyzqaAn72d4EA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_DN38MN_8EeyzqaAn72d4EA" name="CHARACTER_CLASS" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_1f8MkN_7EeyzqaAn72d4EA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_DZeIMN_8EeyzqaAn72d4EA" name="WE_CLASS" visibility="public" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_1f8MkN_7EeyzqaAn72d4EA"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_To3swCtVEeqgj_wxJ3Xgsg" name="title" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1023,10 +1033,6 @@
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_6pjUQI92Eey0x9qBdTLxTA" client="_S2CgoCtgEeqgj_wxJ3Xgsg" supplier="_ypTQMCtbEeqgj_wxJ3Xgsg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_8OTEgI92Eey0x9qBdTLxTA" client="_S2CgoCtgEeqgj_wxJ3Xgsg" supplier="_0ErCACtbEeqgj_wxJ3Xgsg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_-EtMgI92Eey0x9qBdTLxTA" client="_S2CgoCtgEeqgj_wxJ3Xgsg" supplier="_ZSkdEJEXEeqtx4SqQAS9Eg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="__GyUkI92Eey0x9qBdTLxTA" client="_S2CgoCtgEeqgj_wxJ3Xgsg" supplier="_LIE_MJEVEeqtx4SqQAS9Eg"/>
       <packagedElement xmi:type="uml:Association" xmi:id="_3f758MwQEeuVlZjMUHKreQ" memberEnd="_3f9IEswQEeuVlZjMUHKreQ _3f9vIswQEeuVlZjMUHKreQ">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3f9IEMwQEeuVlZjMUHKreQ" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3f9IEcwQEeuVlZjMUHKreQ" key="nature" value="UML_Nature"/>
@@ -1175,10 +1181,6 @@
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_wbtj0JKCEeyF7cNQ8xAkzg" client="_Etc0wIe3Eeq_kJF_AkSaiA" supplier="_0ErCACtbEeqgj_wxJ3Xgsg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_JfjbwJKDEeyF7cNQ8xAkzg" client="_DcHksL8DEeuLVoie0Ovs3Q" supplier="_ZSkdEJEXEeqtx4SqQAS9Eg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_7DdwMJKDEeyF7cNQ8xAkzg" client="_FiKEIL8DEeuLVoie0Ovs3Q" supplier="_LIE_MJEVEeqtx4SqQAS9Eg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_7sthgJKDEeyF7cNQ8xAkzg" client="_HRf60L8DEeuLVoie0Ovs3Q" supplier="_LIE_MJEVEeqtx4SqQAS9Eg"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_r0wO4PsPEeq-TdV6dVW08A" name="File">
       <packagedElement xmi:type="uml:Class" xmi:id="_vHrYMPsPEeq-TdV6dVW08A" name="FileExport" isAbstract="true">
@@ -1392,7 +1394,7 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_3tPnoI_YEeynvIR1yn0cow" client="_vHrYMPsPEeq-TdV6dVW08A" supplier="_ZSkdEJEXEeqtx4SqQAS9Eg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_4TS7AI_YEeynvIR1yn0cow" client="_vHrYMPsPEeq-TdV6dVW08A" supplier="_30rZEofvEeuRjYowZVZmEQ _r0wO4PsPEeq-TdV6dVW08A"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_4TS7AI_YEeynvIR1yn0cow" client="_r0wO4PsPEeq-TdV6dVW08A" supplier="_30rZEofvEeuRjYowZVZmEQ _r0wO4PsPEeq-TdV6dVW08A"/>
       <packagedElement xmi:type="uml:Association" xmi:id="_M-4fkNcZEeuOsLFcfhIZmQ" memberEnd="_M-9_INcZEeuOsLFcfhIZmQ _M-_0UdcZEeuOsLFcfhIZmQ" navigableOwnedEnd="_M-_0UdcZEeuOsLFcfhIZmQ">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_M-8xANcZEeuOsLFcfhIZmQ" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_M-8xAdcZEeuOsLFcfhIZmQ" key="nature" value="UML_Nature"/>
@@ -1814,11 +1816,6 @@
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_9_bNAJTeEeyxtJCGKSzKUg" client="_8SW1YPyyEeqEK6KdQRY5bw" supplier="_C8dO4IfQEeq_kJF_AkSaiA"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_-vwdwJTeEeyxtJCGKSzKUg" client="_8SW1YPyyEeqEK6KdQRY5bw" supplier="_ypTQMCtbEeqgj_wxJ3Xgsg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_QQUVAJTgEeyxtJCGKSzKUg" client="_RBR9YL8EEeuLVoie0Ovs3Q" supplier="_ZSkdEJEXEeqtx4SqQAS9Eg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_RBodMJTgEeyxtJCGKSzKUg" client="_VI89YL8EEeuLVoie0Ovs3Q" supplier="_LIE_MJEVEeqtx4SqQAS9Eg"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_SRgJoJTgEeyxtJCGKSzKUg" client="_Tt57sL8EEeuLVoie0Ovs3Q" supplier="_LIE_MJEVEeqtx4SqQAS9Eg"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_4a0DAJTgEeyxtJCGKSzKUg" client="_Zo7VgDIKEeqilJYfjdmi4Q" supplier="_parT0G1QEeyo8PGsOj-8FQ"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_9D340JTgEeyxtJCGKSzKUg" client="_RkzFwCthEeqgj_wxJ3Xgsg" supplier="_C8dO4IfQEeq_kJF_AkSaiA"/>
     </packagedElement>

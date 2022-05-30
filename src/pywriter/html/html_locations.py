@@ -5,7 +5,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
-from pywriter.model.world_element import WorldElement
 from pywriter.html.html_file import HtmlFile
 
 
@@ -44,7 +43,7 @@ class HtmlLocations(HtmlFile):
                 if attrs[0][1].startswith('LcID'):
                     self._lcId = re.search('[0-9]+', attrs[0][1]).group()
                     self.srtLocations.append(self._lcId)
-                    self.locations[self._lcId] = WorldElement()
+                    self.locations[self._lcId] = self.WE_CLASS()
 
     def handle_endtag(self, tag):
         """Recognize the end of the location section and save data.

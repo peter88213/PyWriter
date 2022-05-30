@@ -14,8 +14,6 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.html.html_file import HtmlFile
-from pywriter.model.chapter import Chapter
-from pywriter.model.scene import Scene
 
 
 class HtmlImport(HtmlFile):
@@ -64,7 +62,7 @@ class HtmlImport(HtmlFile):
             self._lines = []
             self._chCount += 1
             self._chId = str(self._chCount)
-            self.chapters[self._chId] = Chapter()
+            self.chapters[self._chId] = self.CHAPTER_CLASS()
             self.chapters[self._chId].srtScenes = []
             self.srtChapters.append(self._chId)
             self.chapters[self._chId].oldType = '0'
@@ -77,7 +75,7 @@ class HtmlImport(HtmlFile):
                 self._lines = []
                 self._scCount += 1
                 self._scId = str(self._scCount)
-                self.scenes[self._scId] = Scene()
+                self.scenes[self._scId] = self.SCENE_CLASS()
                 self.chapters[self._chId].srtScenes.append(self._scId)
                 self.scenes[self._scId].status = '1'
                 self.scenes[self._scId].title = f'Scene {self._scCount}'
@@ -105,9 +103,9 @@ class HtmlImport(HtmlFile):
             if self._scId is not None:
                 self.scenes[self._scId].sceneContent = ''.join(self._lines)
                 if self.scenes[self._scId].wordCount < self._LOW_WORDCOUNT:
-                    self.scenes[self._scId].status = Scene.STATUS.index('Outline')
+                    self.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Outline')
                 else:
-                    self.scenes[self._scId].status = Scene.STATUS.index('Draft')
+                    self.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Draft')
         elif tag in ('h1', 'h2'):
             self.chapters[self._chId].title = ''.join(self._lines)
             self._lines = []
