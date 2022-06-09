@@ -194,12 +194,14 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
       <Title><![CDATA[Part 1]]></Title>
       <SectionStart>-1</SectionStart>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
     </CHAPTER>
     <CHAPTER>
       <ID>2</ID>
       <SortOrder>2</SortOrder>
       <Title><![CDATA[Chapter 1]]></Title>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>1</ScID>
       </Scenes>
@@ -209,6 +211,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
       <SortOrder>3</SortOrder>
       <Title><![CDATA[Chapter 2]]></Title>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>2</ScID>
         <ScID>3</ScID>
@@ -219,6 +222,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
       <SortOrder>4</SortOrder>
       <Title><![CDATA[Chapter 3]]></Title>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>4</ScID>
       </Scenes>
@@ -228,6 +232,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
       <SortOrder>5</SortOrder>
       <Title><![CDATA[Chapter 4]]></Title>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>5</ScID>
         <ScID>6</ScID>
@@ -240,6 +245,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
       <SortOrder>6</SortOrder>
       <Title><![CDATA[Chapter 5]]></Title>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>9</ScID>
         <ScID>10</ScID>
@@ -250,6 +256,7 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
       <SortOrder>7</SortOrder>
       <Title><![CDATA[Chapter 6]]></Title>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>11</ScID>
         <ScID>12</ScID>
