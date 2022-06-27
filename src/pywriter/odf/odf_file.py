@@ -62,7 +62,7 @@ class OdfFile(FileExport):
         Prepare the temporary directory containing the internal structure of an ODF file except 'content.xml'.
         Return a message beginning with the ERROR constant in case of error.
         """
-        
+
         #--- Create and open a temporary directory for the files to zip.
         try:
             self._tear_down()
@@ -161,9 +161,9 @@ class OdfFile(FileExport):
                 for file in self._ODF_COMPONENTS:
                     odfTarget.write(file, compress_type=zipfile.ZIP_DEFLATED)
         except:
+            os.chdir(workdir)
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
-            os.chdir(workdir)
             return f'{ERROR}Cannot generate "{os.path.normpath(self.filePath)}".'
 
         #--- Remove temporary data.
