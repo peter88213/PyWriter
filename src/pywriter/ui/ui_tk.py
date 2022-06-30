@@ -89,7 +89,7 @@ class UiTk(Ui):
         """Start the Tk main loop."""
         self.root.mainloop()
 
-    def _show_open_button(self, open_cmd):
+    def show_open_button(self, open_cmd):
         """Add an 'Open' button to the main window.
         
         Positional argument:
