@@ -13,6 +13,9 @@ from pywriter.converter.yw7_converter import Yw7Converter
 from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
 
+UPDATE = False
+
+
 class ExportTest():
     """Test case: Import and export yWriter project.
     
@@ -25,20 +28,19 @@ class ExportTest():
     Subclasses must also inherit from unittest.TestCase
     """
     _exportClass = None
-    
-  
+
     def _init_paths(self):
-        """Initialize the test data and execution paths."""  
+        """Initialize the test data and execution paths."""
         if not hasattr(self, '_dataPath'):
             self._dataPath = f'data/{self._exportClass.SUFFIX}/'
-        self._execPath = 'yw7/'       
+        self._execPath = 'yw7/'
         self._testExpFile = f'{self._execPath}yw7 Sample Project{self._exportClass.SUFFIX}{self._exportClass.EXTENSION}'
-        self._odfCntntFile = 'content.xml'        
+        self._odfCntntFile = 'content.xml'
         self._testYwFile = f'{self._execPath}yw7 Sample Project.yw7'
         self._ywBakFile = f'{self._testYwFile}.bak'
         self._refYwFile = f'{self._dataPath}normal.yw7'
         self._prfYwFile = f'{self._dataPath}proofed.yw7'
-    
+
     def setUp(self):
         """Set up the test environment.
         
@@ -67,6 +69,8 @@ class ExportTest():
         with zipfile.ZipFile(self._testExpFile, 'r') as myzip:
             myzip.extract(self._odfCntntFile, self._execPath)
             myzip.close
+        if UPDATE:
+            copyfile(f'{self._execPath}{self._odfCntntFile}', f'{self._dataPath}{self._odfCntntFile}')
         self.assertEqual(read_file(f'{self._execPath}{self._odfCntntFile}'),
                          read_file(f'{self._dataPath}{self._odfCntntFile}'))
 
@@ -78,7 +82,7 @@ class ExportTest():
         converter = Yw7Converter()
         kwargs = {'suffix': self._exportClass.SUFFIX}
         converter.run(self._testYwFile, **kwargs)
-        self.assertEqual(converter.ui.infoHowText,f'"{ os.path.normpath(self._testExpFile)}" written.')
+        self.assertEqual(converter.ui.infoHowText, f'"{ os.path.normpath(self._testExpFile)}" written.')
         with zipfile.ZipFile(self._testExpFile, 'r') as myzip:
             myzip.extract(self._odfCntntFile, self._execPath)
             myzip.close
@@ -91,7 +95,6 @@ class ExportTest():
         This method is called by the unit test framework.
         """
         self._remove_all_tempfiles()
-
 
     def _remove_all_tempfiles(self):
         """Clean up the test execution directory."""
@@ -111,5 +114,4 @@ class ExportTest():
             os.remove(f'{self._execPath}{self._odfCntntFile}')
         except:
             pass
-    
 
