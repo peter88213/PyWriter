@@ -68,7 +68,6 @@ class ExportTest():
         self.assertEqual(converter.convert(ywFile, documentFile), f'"{ os.path.normpath(self._testExpFile)}" written.')
         with zipfile.ZipFile(self._testExpFile, 'r') as myzip:
             myzip.extract(self._odfCntntFile, self._execPath)
-            myzip.close
         if UPDATE:
             copyfile(f'{self._execPath}{self._odfCntntFile}', f'{self._dataPath}{self._odfCntntFile}')
         self.assertEqual(read_file(f'{self._execPath}{self._odfCntntFile}'),
@@ -85,7 +84,6 @@ class ExportTest():
         self.assertEqual(converter.ui.infoHowText, f'"{ os.path.normpath(self._testExpFile)}" written.')
         with zipfile.ZipFile(self._testExpFile, 'r') as myzip:
             myzip.extract(self._odfCntntFile, self._execPath)
-            myzip.close
         self.assertEqual(read_file(f'{self._execPath}{self._odfCntntFile}'),
                          read_file(f'{self._dataPath}{self._odfCntntFile}'))
 
