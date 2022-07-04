@@ -469,6 +469,11 @@ class FileExport(Novel):
             dispNumber = 0
             if not self._sceneFilter.accept(self, scId):
                 continue
+
+            sceneContent = self.scenes[scId].sceneContent
+            if sceneContent is None:
+                sceneContent = ''
+
             # The order counts; be aware that "Todo" and "Notes" scenes are
             # always unused.
             if self.scenes[scId].isTodoScene:
@@ -502,6 +507,12 @@ class FileExport(Novel):
                     template = Template(self._notExportedSceneTemplate)
                 else:
                     continue
+
+            elif sceneContent.startswith('<HTML>'):
+                continue
+
+            elif sceneContent.startswith('<TEX>'):
+                continue
 
             else:
                 sceneNumber += 1
