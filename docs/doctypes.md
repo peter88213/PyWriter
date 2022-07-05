@@ -145,7 +145,7 @@ seen in the Navigator). File name suffix is `_manuscript`.
 
 -  Only "normal" chapters and scenes are exported. Chapters and
    scenes marked "unused", "todo" or "notes" are not exported.
--   Scenes beginning with <HTML> or <TEX> are not exported.
+-  Scenes beginning with <HTML> or <TEX> are not exported.
 -  Comments within scenes are written back as scene titles 
    if surrounded by `~`.
 -  Chapters and scenes can neither be rearranged nor deleted.
