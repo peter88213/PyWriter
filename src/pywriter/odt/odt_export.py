@@ -4,6 +4,8 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import re
+
 from pywriter.odt.odt_file import OdtFile
 
 
@@ -51,3 +53,22 @@ class OdtExport(OdtFile):
         if self.chapters[chId].suppressChapterTitle:
             chapterMapping['Title'] = ''
         return chapterMapping
+
+    def _convert_from_yw(self, text, quick=False):
+        """Return text, converted from yw7 markup to target format.
+        
+        Positional arguments:
+            text -- string to convert.
+        
+        Optional arguments:
+            quick -- bool: if True, apply a conversion mode for one-liners without formatting.
+        
+        Extends the superclass method.
+        """
+        if text and not quick:
+            # Remove inline raw code.
+            YW_SPECIAL_CODES = ('HTM', 'TEX', 'RTF', 'epub', 'mobi', 'rtfimg', 'RTFBRK')
+            for specialCode in YW_SPECIAL_CODES:
+                text = re.sub(f'\<{specialCode} .+?\/{specialCode}\>', '', text)
+        text = super()._convert_from_yw(text, quick)
+        return(text)
