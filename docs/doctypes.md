@@ -79,9 +79,10 @@ text document (odt).
     scenes marked "unused", "todo" or "notes" are not exported.
 -   Only scenes that are intended for RTF export in yWriter will be
     exported.
+-   Scenes beginning with <HTML> or <TEX> are not exported.
 -   Comments in the text bracketed with slashes and asterisks (like
     `/* this is a comment */`) are converted to author's comments.
--   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
+-   Interspersed HTML, TEX, or RTF commands are removed.
 -   Gobal variables and project variables are not resolved.
 -   Chapter titles appear as first level heading if the chapter is
     marked as beginning of a new section in yWriter. Such headings are
@@ -115,8 +116,10 @@ text document (odt) with chapter and scene markers. File name suffix is
 -   Document's filename: `<yW project name>_proof.odt`.
 -   Text markup: Bold and italics are supported. Other highlighting such
     as underline and strikethrough are lost.
--   All chapters and scenes will be exported, whether "used" or
+-   Scenes beginning with <HTML> or <TEX> are not exported.
+-   All other chapters and scenes are exported, whether "used" or
     "unused".
+-   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
 -   The document contains chapter `[ChID:x]` and scene `[ScID:y]`
     markers according to yWriter 5 standard. **Do not touch lines
     containing the markers** if you want to be able to reimport the
@@ -142,6 +145,7 @@ seen in the Navigator). File name suffix is `_manuscript`.
 
 -  Only "normal" chapters and scenes are exported. Chapters and
    scenes marked "unused", "todo" or "notes" are not exported.
+-   Scenes beginning with <HTML> or <TEX> are not exported.
 -  Comments within scenes are written back as scene titles 
    if surrounded by `~`.
 -  Chapters and scenes can neither be rearranged nor deleted.
@@ -252,6 +256,7 @@ suffix is `_brf_synopsis`.
     scenes marked "unused", "todo" or "notes" are not exported.
 -   Only scenes that are intended for RTF export in yWriter will be
     exported.
+-   Titles of scenes beginning with <HTML> or <TEX> are not exported.
 -   Chapter titles appear as first level heading if the chapter is
     marked as beginning of a new section in yWriter. Such headings are
     considered as "part" headings.
@@ -351,6 +356,7 @@ Generate a new OpenDocument spreadsheet (ods) listing the following:
 Only "normal" scenes that would be exported as RTF in yWriter get a 
 row in the scene list. Scenes of the "Unused", "Notes", or "ToDo" 
 type are omitted.
+Scenes beginning with <HTML> or <TEX> are omitted.
 
 File name suffix is `_scenelist`.
 
