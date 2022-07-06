@@ -7,6 +7,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
+import re
 from string import Template
 from pywriter.pywriter_globals import ERROR
 from pywriter.model.character import Character
@@ -745,3 +746,14 @@ class FileExport(Novel):
         if text is None:
             text = ''
         return(text)
+
+    def _remove_inline_code(self, text):
+        """Remove inline raw code from text and return the result."""
+        if text:
+            text = text.replace('<RTFBRK>', '')
+            YW_SPECIAL_CODES = ('HTM', 'TEX', 'RTF', 'epub', 'mobi', 'rtfimg')
+            for specialCode in YW_SPECIAL_CODES:
+                text = re.sub(f'\<{specialCode} .+?\/{specialCode}\>', '', text)
+        else:
+            text = ''
+        return text
