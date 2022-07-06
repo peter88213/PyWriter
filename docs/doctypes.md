@@ -97,7 +97,6 @@ text document (odt).
 -   Starting from the second paragraph, paragraphs begin with
     indentation of the first line.
 -   Paragraphs starting with `> ` are formatted as quotations.
--   Paragraphs starting with list strokes (`- `) are formatted as lists.
 -   Scenes marked "attach to previous scene" in yWriter appear like
     continuous paragraphs.
 

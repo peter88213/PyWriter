@@ -71,4 +71,11 @@ class OdtExport(OdtFile):
             for specialCode in YW_SPECIAL_CODES:
                 text = re.sub(f'\<{specialCode} .+?\/{specialCode}\>', '', text)
         text = super()._convert_from_yw(text, quick)
+
+        # Set style of paragraphs that start with "> " to "Quotations".
+        quotMarks = ('"First_20_line_20_indent">&gt; ',
+                         '"Text_20_body">&gt; ',
+                         )
+        for quotMark in quotMarks:
+            text = text.replace(quotMark, '"Quotations">')
         return(text)
