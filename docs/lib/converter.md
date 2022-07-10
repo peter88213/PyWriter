@@ -27,12 +27,5 @@ a target file. Typically, one of the two is a yWriter project file.
 
 ## Classes
 
-### Overview
-
 ![converter package class diagram](img/converter_package_class_diagram.png)
 
-### Detailed class diagram
-
-[![converter package detailed class diagram](img/converter_package_detailed_class_diagram.png)](img/converter_package_detailed_class_diagram.png)
-
-*Click on the diagram to enlarge*

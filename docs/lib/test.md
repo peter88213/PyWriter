@@ -14,14 +14,8 @@
 
 ## Classes
 
-### Overview
 
 [![test package class diagram](img/test_package_class_diagram.png)](img/test_package_class_diagram.png)
 
 *Click on the diagram to enlarge*
 
-### Detailed class diagram
-
-[![test package detailed class diagram](img/test_package_detailed_class_diagram.png)](img/test_package_detailed_class_diagram.png)
-
-*Click on the diagram to enlarge*

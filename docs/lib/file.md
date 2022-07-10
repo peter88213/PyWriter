@@ -18,12 +18,6 @@ elements, such as characters, locations ans items, and fills templates.
 
 ## Classes
 
-### Overview
 
 ![file package class diagram](img/file_package_class_diagram.png)
 
-### Detailed class diagram
-
-[![file package detailed class diagram](img/file_package_detailed_class_diagram.png)](img/file_package_detailed_class_diagram.png)
-
-*Click on the diagram to enlarge*

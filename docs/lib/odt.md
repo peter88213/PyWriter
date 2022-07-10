@@ -21,12 +21,6 @@
 
 ## Classes
 
-### Overview
 
 ![odt package class diagram](img/odt_package_class_diagram.png)
 
-### Detailed class diagram
-
-[![odt package detailed class diagram](img/odt_package_detailed_class_diagram.png)](img/odt_package_detailed_class_diagram.png)
-
-*Click on the diagram to enlarge*

@@ -17,12 +17,5 @@
 
 ## Classes
 
-### Overview
-
 ![model package class diagram](img/model_package_class_diagram.png)
 
-### Detailed class diagram
-
-[![model package detailed class diagram](img/model_package_detailed_class_diagram.png)](img/model_package_detailed_class_diagram.png)
-
-*Click on the diagram to enlarge*

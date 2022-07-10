@@ -15,12 +15,6 @@
 
 ## Classes
 
-### Overview
 
 ![ods package class diagram](img/ods_package_class_diagram.png)
 
-### Detailed class diagram
-
-[![ods package detailed class diagram](img/ods_package_detailed_class_diagram.png)](img/ods_package_detailed_class_diagram.png)
-
-*Click on the diagram to enlarge*

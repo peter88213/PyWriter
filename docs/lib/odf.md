@@ -10,12 +10,6 @@
 
 ## Classes
 
-### Overview
 
 ![odf package class diagram](img/odf_package_class_diagram.png)
 
-### Detailed class diagram
-
-[![odf package class diagram](img/odf_package_detailed_class_diagram.png)](img/odf_package_detailed_class_diagram.png)
-
-*Click on the diagram to enlarge*

@@ -25,12 +25,6 @@ is much easier to parse than the odt format.
 
 ## Classes
 
-### Overview
 
 ![html package class diagram](img/html_package_class_diagram.png)
 
-### Detailed class diagram
-
-[![html package detailed class diagram](img/html_package_detailed_class_diagram.png)](img/html_package_detailed_class_diagram.png)
-
-*Click on the diagram to enlarge*

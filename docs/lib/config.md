@@ -13,10 +13,5 @@ This package contains modules for configuration persistence.
 
 ## Classes
 
-### Overview
-
 ![config package class diagram](img/config_package_class_diagram.png)
 
-### Detailed class diagram
-
-![config package detailed class diagram](img/config_package_detailed_class_diagram.png)
