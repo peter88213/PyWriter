@@ -15,6 +15,7 @@ class UiCmd(Ui):
         ask_yes_no(text) -- query yes or no at the console.
         set_info_what(message) -- show what the converter is going to do.
         set_info_how(message) -- show how the converter is doing.
+        show_warning(message) -- Display a warning message.
     """
 
     def __init__(self, title):
@@ -66,3 +67,7 @@ class UiCmd(Ui):
             message = f'FAIL: {message.split(ERROR, maxsplit=1)[1].strip()}'
         self.infoHowText = message
         print(message)
+
+    def show_warning(self, message):
+        """Display a warning message."""
+        print(f'\nWARNING: {message}\n')

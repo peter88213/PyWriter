@@ -18,6 +18,7 @@ class Ui:
         set_info_what(message) -- show what the converter is going to do.
         set_info_how(message) -- show how the converter is doing.
         start() -- launch the GUI, if any.
+        show_warning(message) -- Stub for displaying a warning message.
         
     Public instance variables:
         infoWhatText -- buffer for general messages.
@@ -71,3 +72,6 @@ class Ui:
         To be overridden by subclasses requiring
         special action to launch the user interaction.
         """
+
+    def show_warning(self, message):
+        """Stub for displaying a warning message."""

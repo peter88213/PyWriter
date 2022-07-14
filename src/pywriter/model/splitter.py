@@ -35,6 +35,9 @@ class Splitter:
         
         Positional argument: 
             novel -- Novel instance to update.
+        
+        Return True if the sructure has changed, 
+        otherwise return False.        
         """
 
         def create_chapter(chapterId, title, desc, level):
@@ -116,6 +119,7 @@ class Splitter:
                 scIdMax = int(scId)
 
         # Process chapters and scenes.
+        scenesSplit = False
         srtChapters = []
         for chId in novel.srtChapters:
             srtChapters.append(chId)
@@ -149,6 +153,7 @@ class Splitter:
                         sceneId = str(scIdMax)
                         create_scene(sceneId, novel.scenes[scId], sceneSplitCount, title, desc)
                         srtScenes.append(sceneId)
+                        scenesSplit = True
                         inScene = True
                     elif line.startswith(self.CHAPTER_SEPARATOR):
                         # Start a new chapter.
@@ -165,6 +170,7 @@ class Splitter:
                             title = 'New chapter'
                         create_chapter(chapterId, title, desc, 0)
                         srtChapters.append(chapterId)
+                        scenesSplit = True
                     elif line.startswith(self.PART_SEPARATOR):
                         # start a new part.
                         if inScene:
@@ -188,9 +194,11 @@ class Splitter:
                         sceneId = str(scIdMax)
                         create_scene(sceneId, novel.scenes[scId], sceneSplitCount, '', '')
                         srtScenes.append(sceneId)
+                        scenesSplit = True
                         inScene = True
                     else:
                         newLines.append(line)
                 novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
             novel.chapters[chapterId].srtScenes = srtScenes
         novel.srtChapters = srtChapters
+        return scenesSplit

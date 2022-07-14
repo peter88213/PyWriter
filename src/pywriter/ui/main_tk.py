@@ -30,6 +30,7 @@ class MainTk(Ui):
         show_path(message) -- put text on the path bar."
         restore_status() -- overwrite error message with the status before.
         on_quit() -- save keyword arguments before exiting the program.
+        show_warning(message) -- Display a warning message box.
         
     Public instance variables: 
         title -- str: Application title.
@@ -259,3 +260,7 @@ class MainTk(Ui):
         """Save keyword arguments before exiting the program."""
         self.kwargs['root_geometry'] = self.root.winfo_geometry()
         self.root.quit()
+
+    def show_warning(self, message):
+        """Display a warning message box."""
+        messagebox.showwarning(self._title, message)

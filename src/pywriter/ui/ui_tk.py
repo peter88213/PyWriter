@@ -18,6 +18,7 @@ class UiTk(Ui):
         set_info_what(message) -- show what the converter is going to do.
         set_info_how(message) -- show how the converter is doing.
         start() -- start the Tk main loop.
+        show_warning(message) -- Display a warning message box.
 
     Public instance variables: 
         root -- tk root window.
@@ -98,3 +99,7 @@ class UiTk(Ui):
         self.root.openButton = Button(text="Open", command=open_cmd)
         self.root.openButton.config(height=1, width=10)
         self.root.openButton.pack(pady=10)
+
+    def show_warning(self, message):
+        """Display a warning message box."""
+        messagebox.showwarning(self._title, message)

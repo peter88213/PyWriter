@@ -115,6 +115,8 @@ class YwCnvUi(YwCnv):
             self.newFile = None
         else:
             self.newFile = target.filePath
+            if target.scenesSplit:
+                self.ui.show_warning('New scenes created during conversion.')
 
     def _confirm_overwrite(self, filePath):
         """Return boolean permission to overwrite the target file.

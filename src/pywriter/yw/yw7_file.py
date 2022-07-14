@@ -61,6 +61,7 @@ class Yw7File(Novel):
         """
         super().__init__(filePath)
         self.tree = None
+        self.scenesSplit = False
 
         #--- Initialize custom keyword variables.
         for field in self._PRJ_KWVAR:
@@ -810,7 +811,7 @@ class Yw7File(Novel):
         # in order to avoid creating duplicate IDs.
         if sourceHasSceneContent:
             sceneSplitter = Splitter()
-            sceneSplitter.split_scenes(self)
+            self.scenesSplit = sceneSplitter.split_scenes(self)
         return 'yWriter project data updated or created.'
 
     def write(self):

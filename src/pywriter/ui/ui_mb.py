@@ -16,6 +16,7 @@ class UiMb(Ui):
     Public methods:
         ask_yes_no(text) -- query yes or no with a pop-up box.
         set_info_how(message) -- show a pop-up message in case of error.
+        show_warning(message) -- Display a warning message box.
     """
 
     def __init__(self, title):
@@ -54,3 +55,7 @@ class UiMb(Ui):
             messagebox.showerror(self._title, message)
         else:
             messagebox.showinfo(self._title, message)
+
+    def show_warning(self, message):
+        """Display a warning message box."""
+        messagebox.showwarning(self._title, message)
