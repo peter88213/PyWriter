@@ -182,7 +182,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <SCENE>
       <ID>1</ID>
       <Title><![CDATA[Meet Hal, threatened by Vurdi]]></Title>
-      <Desc><![CDATA[ (!) Hal Spacejock is aboard his ship, the Black Gull, which is parked at the spaceport on planet Lamira. Hal's waiting for a cargo job, he's not fussy as long as it's legal. So far, after several days, the only jobs he's been offered have involved smuggling, gun-running or drugs.
+      <Desc><![CDATA[(!)Hal Spacejock is aboard his ship, the Black Gull, which is parked at the spaceport on planet Lamira. Hal's waiting for a cargo job, he's not fussy as long as it's legal. So far, after several days, the only jobs he's been offered have involved smuggling, gun-running or drugs.
 Always short of money, Hal has arranged an interview with his financial backers in the hope of increasing his loan. There's a knock, but when Hal goes to let the loan people in he's confronted by a large robot which pins him to the deck. It's Brutus, an enforcer belonging to Vurdi the debt collector. Vurdi enters and explains that he's arrived to collect overdue payments on behalf of the loan company. Hal is confused, he thought they were supposed to be lending him money. Vurdi explains that it was a ploy to get aboard, since the company has had trouble getting face-to-face with Hal.
 Hal doesn't have any money, so Vurdi says he'll take an arm or leg instead, and sets Brutus on him.
 During the scuffle, Hal manages to tell Vurdi that he accepted a cargo job earlier in the day, and will use the proceeds to settle his debts. Vurdi is suspicious, but calls Brutus off and gives Hal 24 hours.
@@ -245,7 +245,7 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
     <SCENE>
       <ID>3</ID>
       <Title><![CDATA[Hal takes a call from Jerling]]></Title>
-      <Desc><![CDATA[ (!) Back with Hal, Jerling's call comes through and the businessman explains about his cargo, reassures Hal it's not stolen goods, then explains he has a pilot at the Lamira Spaceport (the same location as Hal) who needs a lift to Seraph IV. If Hal can take him, the pilot will return the favour by landing Hal's ship when they arrive at the destination.
+      <Desc><![CDATA[(!)Back with Hal, Jerling's call comes through and the businessman explains about his cargo, reassures Hal it's not stolen goods, then explains he has a pilot at the Lamira Spaceport (the same location as Hal) who needs a lift to Seraph IV. If Hal can take him, the pilot will return the favour by landing Hal's ship when they arrive at the destination.
 Hal says he doesn't need help, Jerling explains that the landing is at night, with no guidance. This makes Hal suspicious about the job again, but he decides that nothing could be worse than another session with Brutus. Jerling reassures him that the pilot can handle everything and reminds him that delivery is to his premises on Forg. Hal agrees to the job, starts to ask for an advance but Jerling disconnects.]]></Desc>
       <BelongsToChID>2</BelongsToChID>
       <Field1>1</Field1>

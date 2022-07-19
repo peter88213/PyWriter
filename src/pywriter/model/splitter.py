@@ -66,7 +66,7 @@ class Splitter:
                 title -- str: title of the scene to create.
                 desc -- str: description of the scene to create.
             """
-            WARNING = ' (!) '
+            WARNING = '(!)'
 
             # Mark metadata of split scenes.
             newScene = novel.SCENE_CLASS()
