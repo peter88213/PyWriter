@@ -28,6 +28,7 @@ class Yw7File(Novel):
 
     Public instance variables:
         tree -- xml element tree of the yWriter project
+        scenesSplit -- bool: True, if a scene or chapter is split during merging.
     """
     DESCRIPTION = 'yWriter 7 project'
     EXTENSION = '.yw7'
