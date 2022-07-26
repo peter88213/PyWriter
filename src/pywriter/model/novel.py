@@ -150,11 +150,11 @@ class Novel:
         # str
         # Path to the file. The setter only accepts files of a supported type as specified by EXTENSION.
 
-        self._projectName = None
+        self.projectName = None
         # str
         # URL-coded file name without suffix and extension.
 
-        self._projectPath = None
+        self.projectPath = None
         # str
         # URL-coded path to the project directory.
 
