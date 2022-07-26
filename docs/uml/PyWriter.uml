@@ -535,10 +535,10 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_MfXwYIegEeqZkamAUXuhyQ"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_4dzbkI8MEeyWxuxLhWA0gA" name="_projectName" visibility="protected" isDerived="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_4dzbkI8MEeyWxuxLhWA0gA" name="projectName" visibility="public" isDerived="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_LB6P8I8NEeyWxuxLhWA0gA" name="_projectPath" visibility="protected" isDerived="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LB6P8I8NEeyWxuxLhWA0gA" name="projectPath" visibility="public" isDerived="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Nw-mMLaJEeyevL_WP6UbFA" name="kwVar" visibility="public">
