@@ -45,6 +45,8 @@ class Novel:
         srtItems -- list: the novel's sorted item IDs.
         characters -- dict: (key: ID, value: character instance).
         srtCharacters -- list: the novel's sorted character IDs.
+        projectName -- str: URL-coded file name without suffix and extension. 
+        projectPath -- str: URL-coded path to the project directory. 
         filePath -- str: path to the file (property with getter and setter). 
     """
     DESCRIPTION = 'Novel'
