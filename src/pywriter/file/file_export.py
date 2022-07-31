@@ -9,7 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import re
 from string import Template
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.model.character import Character
 from pywriter.model.scene import Scene
 from pywriter.model.novel import Novel
@@ -709,7 +709,7 @@ class FileExport(Novel):
                 os.replace(self.filePath, f'{self.filePath}.bak')
                 backedUp = True
             except:
-                return f'{ERROR}Cannot overwrite "{os.path.normpath(self.filePath)}".'
+                return f'{ERROR}{MSG_CANNOT_OVERWRITE}: "{os.path.normpath(self.filePath)}".'
 
         try:
             with open(self.filePath, 'w', encoding='utf-8') as f:
@@ -717,9 +717,9 @@ class FileExport(Novel):
         except:
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
-            return f'{ERROR}Cannot write "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}{MSG_CANNOT_WRITE}: "{os.path.normpath(self.filePath)}".'
 
-        return f'"{os.path.normpath(self.filePath)}" written.'
+        return f'{MSG_WRITTEN}: "{os.path.normpath(self.filePath)}".'
 
     def _get_string(self, elements):
         """Join strings from a list.

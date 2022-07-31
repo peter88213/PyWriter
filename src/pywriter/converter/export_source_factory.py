@@ -5,7 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.converter.file_factory import FileFactory
 
 
@@ -32,5 +32,5 @@ class ExportSourceFactory(FileFactory):
             if fileClass.EXTENSION == fileExtension:
                 sourceFile = fileClass(sourcePath, **kwargs)
                 return 'Source object created.', sourceFile, None
-            
-        return f'{ERROR}File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
+
+        return f'{ERROR}{MSG_NOT_SUPPORTED}: "{os.path.normpath(sourcePath)}".', None, None

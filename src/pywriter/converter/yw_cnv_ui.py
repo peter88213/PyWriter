@@ -8,7 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import sys
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.file.doc_open import open_document
 from pywriter.ui.ui import Ui
 from pywriter.converter.yw_cnv import YwCnv
@@ -80,7 +80,7 @@ class YwCnvUi(YwCnv):
         self.ui.set_info_what(
             f'Create a yWriter project file from {source.DESCRIPTION}\nNew project: "{os.path.normpath(target.filePath)}"')
         if os.path.isfile(target.filePath):
-            self.ui.set_info_how(f'{ERROR}"{os.path.normpath(target.filePath)}" already exists.')
+            self.ui.set_info_how(f'{ERROR}{MSG_ALREADY_EXISTS}: "{os.path.normpath(target.filePath)}".')
         else:
             message = self.convert(source, target)
             self.ui.set_info_how(message)

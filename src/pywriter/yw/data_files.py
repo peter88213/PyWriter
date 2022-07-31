@@ -6,7 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import xml.etree.ElementTree as ET
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.yw.yw7_file import Yw7File
 
 
@@ -40,7 +40,7 @@ class DataFiles(Yw7File):
         try:
             characterTree.write(characterPath, xml_declaration=False, encoding='utf-8')
         except(PermissionError):
-            return f'{ERROR}"{os.path.normpath(characterPath)}" is write protected.'
+            return f'{ERROR}{MSG_WRITE_PROTECTED}: "{os.path.normpath(characterPath)}".'
 
         locationPath = f'{path}_Locations.xml'
         locationSubtree = ywProject.tree.find('LOCATIONS')
@@ -48,7 +48,7 @@ class DataFiles(Yw7File):
         try:
             locationTree.write(locationPath, xml_declaration=False, encoding='utf-8')
         except(PermissionError):
-            return f'{ERROR}"{os.path.normpath(locationPath)}" is write protected.'
+            return f'{ERROR}{MSG_WRITE_PROTECTED}: "{os.path.normpath(locationPath)}".'
 
         itemPath = f'{path}_Items.xml'
         itemSubtree = ywProject.tree.find('ITEMS')
@@ -56,7 +56,7 @@ class DataFiles(Yw7File):
         try:
             itemTree.write(itemPath, xml_declaration=False, encoding='utf-8')
         except(PermissionError):
-            return f'{ERROR}"{os.path.normpath(itemPath)}" is write protected.'
+            return f'{ERROR}{MSG_WRITE_PROTECTED}: "{os.path.normpath(itemPath)}".'
 
         return 'All XML data files written.'
 

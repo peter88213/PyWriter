@@ -5,7 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 
 
 def read_html_file(filePath):
@@ -24,6 +24,6 @@ def read_html_file(filePath):
             with open(filePath, 'r') as f:
                 content = (f.read())
         except(FileNotFoundError):
-            return f'{ERROR}"{os.path.normpath(filePath)}" not found.', None
+            return f'{ERROR}{MSG_NOT_FOUND}: "{os.path.normpath(filePath)}".', None
 
     return 'HTML data read in.', content

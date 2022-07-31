@@ -7,6 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 from shutil import copyfile
+from pywriter.pywriter_globals import *
 from pywriter.test.helper import read_file
 from pywriter.test.export_test import ExportTest
 from pywriter.converter.yw7_converter import Yw7Converter
@@ -53,7 +54,7 @@ class ImportExportTest(ExportTest):
         ywFile = Yw7File(self._testYwFile)
         documentFile = self._importClass(self._testImpFile)
         converter = YwCnv()
-        self.assertEqual(converter.convert(documentFile, ywFile), f'"{ os.path.normpath(self._testYwFile)}" written.')
+        self.assertEqual(converter.convert(documentFile, ywFile), f'{MSG_WRITTEN}: "{ os.path.normpath(self._testYwFile)}".')
         if UPDATE:
             copyfile(self._testYwFile, self._prfYwFile)
             copyfile(self._ywBakFile, self._refYwFile)
@@ -70,7 +71,7 @@ class ImportExportTest(ExportTest):
         copyfile(self._prfImpFile, self._testImpFile)
         converter = Yw7Converter()
         converter.run(self._testImpFile)
-        self.assertEqual(converter.ui.infoHowText, f'"{ os.path.normpath(self._testYwFile)}" written.')
+        self.assertEqual(converter.ui.infoHowText, f'{MSG_WRITTEN}: "{ os.path.normpath(self._testYwFile)}".')
         self.assertEqual(read_file(self._testYwFile), read_file(self._prfYwFile))
         self.assertEqual(read_file(self._ywBakFile), read_file(self._refYwFile))
 

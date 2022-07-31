@@ -7,7 +7,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.odf.odf_file import OdfFile
 
 
@@ -387,7 +387,7 @@ class OdtFile(OdfFile):
             with open(f'{self._tempDir}/manifest.rdf', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_RDF)
         except:
-            return f'{ERROR}Cannot write "manifest.rdf"'
+            return f'{ERROR}{MSG_CANNOT_WRITE}: "manifest.rdf"'
 
         return 'ODT structure generated.'
 

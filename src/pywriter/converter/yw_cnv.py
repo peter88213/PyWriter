@@ -7,7 +7,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 
 
 class YwCnv:
@@ -36,16 +36,16 @@ class YwCnv:
         - The success message comes from target.write(), if called.       
         """
         if source.filePath is None:
-            return f'{ERROR}Source "{os.path.normpath(source.filePath)}" is not of the supported type.'
+            return f'{ERROR}{MSG_NOT_SUPPORTED}: "{os.path.normpath(source.filePath)}".'
 
         if not os.path.isfile(source.filePath):
-            return f'{ERROR}"{os.path.normpath(source.filePath)}" not found.'
+            return f'{ERROR}{MSG_NOT_FOUND}: "{os.path.normpath(source.filePath)}".'
 
         if target.filePath is None:
-            return f'{ERROR}Target "{os.path.normpath(target.filePath)}" is not of the supported type.'
+            return f'{ERROR}{MSG_TARGET_NOT_SUPPORTED}: "{os.path.normpath(target.filePath)}".'
 
         if os.path.isfile(target.filePath) and not self._confirm_overwrite(target.filePath):
-            return f'{ERROR}Action canceled by user.'
+            return f'{ERROR}{MSG_USER_CANCEL}.'
 
         message = source.read()
         if message.startswith(ERROR):

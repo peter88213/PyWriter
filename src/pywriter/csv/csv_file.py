@@ -8,7 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import csv
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.model.novel import Novel
 
 
@@ -41,8 +41,7 @@ class CsvFile(Novel):
         """
         super().__init__(filePath)
         self._rows = []
-        
-        
+
     def read(self):
         """Parse the file and get the instance variables.
         
@@ -58,14 +57,14 @@ class CsvFile(Novel):
                 reader = csv.reader(f, delimiter=self._SEPARATOR)
                 for row in reader:
                     if len(row) != cellsPerRow:
-                        return f'{ERROR}Wrong csv structure.'
+                        return f'{ERROR}{MSG_WRONG_CSV_STRUCTURE}.'
 
                     self._rows.append(row)
         except(FileNotFoundError):
-            return f'{ERROR}"{os.path.normpath(self.filePath)}" not found.'
+            return f'{ERROR}{MSG_NOT_FOUND}: "{os.path.normpath(self.filePath)}".'
 
         except:
-            return f'{ERROR}Can not parse "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}{MSG_CANNOT_PARSE}: "{os.path.normpath(self.filePath)}".'
 
         return 'CSV data read in.'
 

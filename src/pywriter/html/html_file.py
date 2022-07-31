@@ -8,7 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from html.parser import HTMLParser
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.model.novel import Novel
 from pywriter.html.html_fop import read_html_file
 

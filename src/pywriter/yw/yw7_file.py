@@ -10,7 +10,7 @@ import os
 import re
 from html import unescape
 import xml.etree.ElementTree as ET
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.model.novel import Novel
 from pywriter.model.splitter import Splitter
 from pywriter.yw.xml_indent import indent
@@ -75,11 +75,11 @@ class Yw7File(Novel):
         Overrides the superclass method.
         """
         if self.is_locked():
-            return f'{ERROR}yWriter seems to be open. Please close first.'
+            return f'{ERROR}{MSG_YWRITER_OPEN}.'
         try:
             self.tree = ET.parse(self.filePath)
         except:
-            return f'{ERROR}Can not process "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}{MSG_CANNOT_PROCESS}: "{os.path.normpath(self.filePath)}".'
 
         root = self.tree.getroot()
 
@@ -824,7 +824,7 @@ class Yw7File(Novel):
         Overrides the superclass method.
         """
         if self.is_locked():
-            return f'{ERROR}yWriter seems to be open. Please close first.'
+            return f'{ERROR}{MSG_YWRITER_OPEN}.'
 
         self._build_element_tree()
         message = self._write_element_tree(self)
@@ -1300,7 +1300,7 @@ class Yw7File(Novel):
             if prjCrt.isMajor:
                 ET.SubElement(xmlCrt, 'Major').text = '-1'
 
-             #--- Write character custom fields.
+            #--- Write character custom fields.
             crFields = xmlCrt.find('Fields')
             for field in self._CRT_KWVAR:
                 if field in self.characters[crId].kwVar and self.characters[crId].kwVar[field]:
@@ -1521,7 +1521,7 @@ class Yw7File(Novel):
         except:
             if backedUp:
                 os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
-            return f'{ERROR}Cannot write "{os.path.normpath(ywProject.filePath)}".'
+            return f'{ERROR}{MSG_CANNOT_WRITE}: "{os.path.normpath(ywProject.filePath)}".'
 
         return 'yWriter XML tree written.'
 
@@ -1555,9 +1555,9 @@ class Yw7File(Novel):
             with open(filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
-            return f'{ERROR}Can not write "{os.path.normpath(filePath)}".'
+            return f'{ERROR}{MSG_CANNOT_WRITE}: "{os.path.normpath(filePath)}".'
 
-        return f'"{os.path.normpath(filePath)}" written.'
+        return f'{MSG_WRITTEN}: "{os.path.normpath(filePath)}".'
 
     def _strip_spaces(self, lines):
         """Local helper method.

@@ -5,7 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.converter.yw_cnv_ui import YwCnvUi
 from pywriter.converter.file_factory import FileFactory
 from pywriter.converter.export_source_factory import ExportSourceFactory
@@ -65,9 +65,9 @@ class YwCnvFf(YwCnvUi):
         """
         self.newFile = None
         if not os.path.isfile(sourcePath):
-            self.ui.set_info_how(f'{ERROR}File "{os.path.normpath(sourcePath)}" not found.')
+            self.ui.set_info_how(f'{ERROR}{MSG_NOT_FOUND}: "{os.path.normpath(sourcePath)}".')
             return
-        
+
         message, source, __ = self.exportSourceFactory.make_file_objects(sourcePath, **kwargs)
         if message.startswith(ERROR):
             # The source file is not a yWriter project.

@@ -5,7 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.html.html_import import HtmlImport
@@ -37,8 +37,8 @@ class NewProjectFactory(FileFactory):
         - targetFile: a Novel subclass instance
         """
         if not self._canImport(sourcePath):
-            return f'{ERROR}This document is not meant to be written back.', None, None
-        
+            return f'{ERROR}{MSG_WRITE_NOT_BACK}.', None, None
+
         fileName, __ = os.path.splitext(sourcePath)
         targetFile = Yw7File(f'{fileName}{Yw7File.EXTENSION}', **kwargs)
         if sourcePath.endswith('.html'):
@@ -46,21 +46,21 @@ class NewProjectFactory(FileFactory):
             message, content = read_html_file(sourcePath)
             if message.startswith(ERROR):
                 return message, None, None
-            
+
             if "<h3" in content.lower():
                 sourceFile = HtmlOutline(sourcePath, **kwargs)
             else:
                 sourceFile = HtmlImport(sourcePath, **kwargs)
             return 'Source and target objects created.', sourceFile, targetFile
-            
+
         else:
             for fileClass in self._fileClasses:
                 if fileClass.SUFFIX is not None:
                     if sourcePath.endswith(f'{fileClass.SUFFIX}{fileClass.EXTENSION}'):
                         sourceFile = fileClass(sourcePath, **kwargs)
                         return 'Source and target objects created.', sourceFile, targetFile
-                    
-            return f'{ERROR}File type of "{os.path.normpath(sourcePath)}" not supported.', None, None
+
+            return f'{ERROR}{MSG_NOT_SUPPORTED}: "{os.path.normpath(sourcePath)}".', None, None
 
     def _canImport(self, sourcePath):
         """Check whether the source file can be imported to yWriter.
@@ -75,5 +75,5 @@ class NewProjectFactory(FileFactory):
         for suffix in self.DO_NOT_IMPORT:
             if fileName.endswith(suffix):
                 return False
-        
+
         return True

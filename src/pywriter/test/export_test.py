@@ -8,6 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import zipfile
 from shutil import copyfile
+from pywriter.pywriter_globals import *
 from pywriter.test.helper import read_file
 from pywriter.converter.yw7_converter import Yw7Converter
 from pywriter.converter.yw_cnv import YwCnv
@@ -65,7 +66,7 @@ class ExportTest():
         ywFile = Yw7File(self._testYwFile)
         documentFile = self._exportClass(self._testExpFile)
         converter = YwCnv()
-        self.assertEqual(converter.convert(ywFile, documentFile), f'"{ os.path.normpath(self._testExpFile)}" written.')
+        self.assertEqual(converter.convert(ywFile, documentFile), f'{MSG_WRITTEN}: "{ os.path.normpath(self._testExpFile)}".')
         with zipfile.ZipFile(self._testExpFile, 'r') as myzip:
             myzip.extract(self._odfCntntFile, self._execPath)
         if UPDATE:
@@ -81,7 +82,7 @@ class ExportTest():
         converter = Yw7Converter()
         kwargs = {'suffix': self._exportClass.SUFFIX}
         converter.run(self._testYwFile, **kwargs)
-        self.assertEqual(converter.ui.infoHowText, f'"{ os.path.normpath(self._testExpFile)}" written.')
+        self.assertEqual(converter.ui.infoHowText, f'{MSG_WRITTEN}: "{ os.path.normpath(self._testExpFile)}".')
         with zipfile.ZipFile(self._testExpFile, 'r') as myzip:
             myzip.extract(self._odfCntntFile, self._execPath)
         self.assertEqual(read_file(f'{self._execPath}{self._odfCntntFile}'),

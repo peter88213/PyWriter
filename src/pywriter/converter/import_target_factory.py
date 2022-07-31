@@ -5,7 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-from pywriter.pywriter_globals import ERROR
+from pywriter.pywriter_globals import *
 from pywriter.converter.file_factory import FileFactory
 
 
@@ -45,5 +45,5 @@ class ImportTargetFactory(FileFactory):
             if os.path.isfile(f'{ywPathBasis}{fileClass.EXTENSION}'):
                 targetFile = fileClass(f'{ywPathBasis}{fileClass.EXTENSION}', **kwargs)
                 return 'Target object created.', None, targetFile
-            
-        return f'{ERROR}No yWriter project to write.', None, None
+
+        return f'{ERROR}{MSG_NO_PROJECT}.', None, None
