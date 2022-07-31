@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2022-07-31 23:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+msgid "File written"
+msgstr "Datei gespeichert"
+
+msgid "Cannot write file"
+msgstr "Kann Datei nicht schreiben"
+
+msgid "Cannot create file"
+msgstr "Kann Datei nicht erzeugen"
+
+msgid "Cannot create directory"
+msgstr "Kann Verzeichnis nicht erzeugen"
+
+msgid "Cannot overwrite file"
+msgstr "Kann Datei nicht überschreiben"
+
+msgid "File is write protected"
+msgstr "Datei ist schreibgeschützt"
+
+msgid "yWriter seems to be open. Please close first"
+msgstr "yWriter scheint offen zu sein. Bitte schließen!"
+
+msgid "Can not process file"
+msgstr "Kann Datei nicht verarbeiten"
+
+msgid "File not found"
+msgstr "Datei nicht gefunden"
+
+msgid "File already exists"
+msgstr "Datei existiert bereits"
+
+msgid "This document is not meant to be written back"
+msgstr "Dieses Dokument ist nicht zum Zurückschreiben gedacht"
+
+msgid "File type is not supported"
+msgstr "Dateityp wird nicht unterstützt"
+
+msgid "Target is not of the supported type"
+msgstr "Ziel ist kein unterstützter Typ"
+
+msgid "Action canceled by user"
+msgstr "Vorgang vom Benutzer abgebrochen"
+
+msgid "Export type is not supported"
+msgstr "Exporttyp nicht unterstützt"
+
+msgid "No yWriter project to write"
+msgstr "Kein yWriter-Projekt zu schreiben"
+
+msgid "Wrong csv structure"
+msgstr "Falsche csv-Struktur"
+
+msgid "Cannot parse File"
+msgstr "Kann Datei nicht parsen"
+
