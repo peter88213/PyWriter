@@ -1521,7 +1521,7 @@ class Yw7File(Novel):
         except:
             if backedUp:
                 os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
-            return f'{ERROR}{MSG_CANNOT_WRITE}: "{os.path.normpath(ywProject.filePath)}".'
+            return f'{ERROR}{MSG_CANNOT_WRITE_FILE}: "{os.path.normpath(ywProject.filePath)}".'
 
         return 'yWriter XML tree written.'
 
@@ -1555,9 +1555,9 @@ class Yw7File(Novel):
             with open(filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
-            return f'{ERROR}{MSG_CANNOT_WRITE}: "{os.path.normpath(filePath)}".'
+            return f'{ERROR}{MSG_CANNOT_WRITE_FILE}: "{os.path.normpath(filePath)}".'
 
-        return f'{MSG_WRITTEN}: "{os.path.normpath(filePath)}".'
+        return f'{MSG_FILE_WRITTEN}: "{os.path.normpath(filePath)}".'
 
     def _strip_spaces(self, lines):
         """Local helper method.

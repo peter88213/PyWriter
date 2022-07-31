@@ -33,4 +33,4 @@ class ExportSourceFactory(FileFactory):
                 sourceFile = fileClass(sourcePath, **kwargs)
                 return 'Source object created.', sourceFile, None
 
-        return f'{ERROR}{MSG_NOT_SUPPORTED}: "{os.path.normpath(sourcePath)}".', None, None
+        return f'{ERROR}{MSG_UNSUPPORTED_TYPE}: "{os.path.normpath(sourcePath)}".', None, None

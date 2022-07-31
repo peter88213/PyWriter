@@ -42,4 +42,4 @@ class ExportTargetFactory(FileFactory):
                 targetFile = fileClass(f'{fileName}{suffix}{fileClass.EXTENSION}', **kwargs)
                 return 'Target object created.', None, targetFile
 
-        return f'{ERROR}{MSG_EXPORT_NOT_SUPPORTED}: "{suffix}".', None, None
+        return f'{ERROR}{MSG_UNSUPPORTED_EXPORT}: "{suffix}".', None, None

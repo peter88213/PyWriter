@@ -36,13 +36,13 @@ class YwCnv:
         - The success message comes from target.write(), if called.       
         """
         if source.filePath is None:
-            return f'{ERROR}{MSG_NOT_SUPPORTED}: "{os.path.normpath(source.filePath)}".'
+            return f'{ERROR}{MSG_UNSUPPORTED_TYPE}: "{os.path.normpath(source.filePath)}".'
 
         if not os.path.isfile(source.filePath):
-            return f'{ERROR}{MSG_NOT_FOUND}: "{os.path.normpath(source.filePath)}".'
+            return f'{ERROR}{MSG_FILE_NOT_FOUND}: "{os.path.normpath(source.filePath)}".'
 
         if target.filePath is None:
-            return f'{ERROR}{MSG_TARGET_NOT_SUPPORTED}: "{os.path.normpath(target.filePath)}".'
+            return f'{ERROR}{MSG_UNSUPPORTED_TARGET}: "{os.path.normpath(target.filePath)}".'
 
         if os.path.isfile(target.filePath) and not self._confirm_overwrite(target.filePath):
             return f'{ERROR}{MSG_USER_CANCEL}.'

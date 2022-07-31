@@ -62,7 +62,7 @@ class ImportTest():
         ywFile = Yw7File(self._testYwFile)
         documentFile = self._importClass(self._testImpFile)
         converter = YwCnv()
-        self.assertEqual(converter.convert(documentFile, ywFile), f'{MSG_WRITTEN}: "{os.path.normpath(self._testYwFile)}".')
+        self.assertEqual(converter.convert(documentFile, ywFile), f'{MSG_FILE_WRITTEN}: "{os.path.normpath(self._testYwFile)}".')
         if UPDATE:
             copyfile(self._testYwFile, self._refYwFile)
         self.assertEqual(read_file(self._testYwFile), read_file(self._refYwFile))
@@ -75,7 +75,7 @@ class ImportTest():
         copyfile(self._refImpFile, self._testImpFile)
         converter = Yw7Converter()
         converter.run(self._testImpFile)
-        self.assertEqual(converter.ui.infoHowText, f'{MSG_WRITTEN}: "{os.path.normpath(self._testYwFile)}".')
+        self.assertEqual(converter.ui.infoHowText, f'{MSG_FILE_WRITTEN}: "{os.path.normpath(self._testYwFile)}".')
         self.assertEqual(read_file(self._testYwFile), read_file(self._refYwFile))
 
     def tearDown(self):

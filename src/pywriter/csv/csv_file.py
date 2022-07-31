@@ -61,7 +61,7 @@ class CsvFile(Novel):
 
                     self._rows.append(row)
         except(FileNotFoundError):
-            return f'{ERROR}{MSG_NOT_FOUND}: "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}{MSG_FILE_NOT_FOUND}: "{os.path.normpath(self.filePath)}".'
 
         except:
             return f'{ERROR}{MSG_CANNOT_PARSE}: "{os.path.normpath(self.filePath)}".'
