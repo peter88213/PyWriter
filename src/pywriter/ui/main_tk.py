@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """"Provide a tkinter GUI framework with main menu and main window.
 
 Copyright (c) 2022 Peter Triesberger
