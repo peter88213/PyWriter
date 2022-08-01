@@ -4,13 +4,13 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import os
+import sys
 import gettext
 import locale
-from pathlib import Path
 
 # Initialize localization.
-HOME_PATH = str(Path.home()).replace('\\', '/')
-LOCALE_PATH = f'{HOME_PATH}/.pywriter/locale/'
+LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
 CURRENT_LOCALE = locale.getdefaultlocale()[0]
 try:
     t = gettext.translation('pywriter', LOCALE_PATH, languages=[CURRENT_LOCALE])
