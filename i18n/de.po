@@ -69,3 +69,15 @@ msgstr "Falsche csv-Struktur"
 msgid "Cannot parse File"
 msgstr "Kann Datei nicht parsen"
 
+msgid "Overwrite existing file"
+msgstr "Datei überschreiben"
+
+msgid "WARNING"
+msgstr "WARNUNG"
+
+msgid "Quit"
+msgstr "Beenden"
+
+msgid "Open"
+msgstr "Öffnen"
+

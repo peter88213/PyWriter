@@ -126,7 +126,7 @@ class YwCnvUi(YwCnv):
         
         Overrides the superclass method.
         """
-        return self.ui.ask_yes_no(f'Overwrite existing file "{os.path.normpath(filePath)}"?')
+        return self.ui.ask_yes_no(f'{MSG_ASK_OVERWRITE}: "{os.path.normpath(filePath)}"?')
 
     def _delete_tempfile(self, filePath):
         """Delete filePath if it is a temporary file no longer needed."""

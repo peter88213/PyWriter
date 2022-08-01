@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-08-01 08:07+0200\n"
+"POT-Creation-Date: 2022-08-01 09:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,5 +67,17 @@ msgid "Wrong csv structure"
 msgstr ""
 
 msgid "Cannot parse File"
+msgstr ""
+
+msgid "Overwrite existing file"
+msgstr ""
+
+msgid "WARNING"
+msgstr ""
+
+msgid "Quit"
+msgstr ""
+
+msgid "Open"
 msgstr ""
 

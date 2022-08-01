@@ -9,6 +9,8 @@ import sys
 import gettext
 import locale
 
+ERROR = '!'
+
 # Initialize localization.
 LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
 CURRENT_LOCALE = locale.getdefaultlocale()[0]
@@ -20,7 +22,7 @@ except:
     def _(message):
         return message
 
-ERROR = '!'
+# Translate messages.
 MSG_FILE_WRITTEN = _('File written')
 MSG_CANNOT_WRITE_FILE = _('Cannot write file')
 MSG_CANNOT_CREATE_FILE = _('Cannot create file')
@@ -40,4 +42,8 @@ MSG_NO_PROJECT = _('No yWriter project to write')
 MSG_WRONG_CSV_STRUCTURE = _('Wrong csv structure')
 MSG_CANNOT_PARSE = _('Cannot parse File')
 
+MSG_ASK_OVERWRITE = _('Overwrite existing file')
+MSG_WARNING = _('WARNING')
+MSG_BTN_QUIT = _('Quit')
+MSG_BTN_OPEN = _('Open')
 del _
