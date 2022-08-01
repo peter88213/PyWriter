@@ -1,1 +1,0 @@
-"c:\program files\python39\tools\i18n\pygettext.py" -d pywriter --no-location ..\src\pywriter\pywriter_globals.py

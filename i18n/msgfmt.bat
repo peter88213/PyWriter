@@ -1,1 +1,0 @@
-"c:\program files\python39\tools\i18n\msgfmt.py" %1

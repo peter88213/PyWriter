@@ -1,0 +1,1 @@
+.\msgfmt.py -o ..\i18n\de\pywriter.mo ..\i18n\de.po

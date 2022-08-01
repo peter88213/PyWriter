@@ -1,0 +1,1 @@
+.\pygettext.py -d pywriter -o ..\i18n\pywriter.pot --no-location ..\src\pywriter\pywriter_globals.py
