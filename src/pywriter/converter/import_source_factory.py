@@ -32,4 +32,4 @@ class ImportSourceFactory(FileFactory):
                     sourceFile = fileClass(sourcePath, **kwargs)
                     return 'Source object created.', sourceFile, None
 
-        return f'{ERROR}{MSG_WRITE_NOT_BACK}.', None, None
+        return f'{ERROR}{_("This document is not meant to be written back")}.', None, None

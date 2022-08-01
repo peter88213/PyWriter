@@ -24,6 +24,6 @@ def read_html_file(filePath):
             with open(filePath, 'r') as f:
                 content = (f.read())
         except(FileNotFoundError):
-            return f'{ERROR}{MSG_FILE_NOT_FOUND}: "{os.path.normpath(filePath)}".', None
+            return f'{ERROR}{_("File not found")}: "{os.path.normpath(filePath)}".', None
 
     return 'HTML data read in.', content

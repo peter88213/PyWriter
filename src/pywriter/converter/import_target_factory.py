@@ -46,4 +46,4 @@ class ImportTargetFactory(FileFactory):
                 targetFile = fileClass(f'{ywPathBasis}{fileClass.EXTENSION}', **kwargs)
                 return 'Target object created.', None, targetFile
 
-        return f'{ERROR}{MSG_NO_PROJECT}.', None, None
+        return f'{ERROR}{_("No yWriter project to write")}.', None, None

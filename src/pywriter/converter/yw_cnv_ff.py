@@ -65,7 +65,7 @@ class YwCnvFf(YwCnvUi):
         """
         self.newFile = None
         if not os.path.isfile(sourcePath):
-            self.ui.set_info_how(f'{ERROR}{MSG_FILE_NOT_FOUND}: "{os.path.normpath(sourcePath)}".')
+            self.ui.set_info_how(f'{ERROR}{_("File not found")}: "{os.path.normpath(sourcePath)}".')
             return
 
         message, source, __ = self.exportSourceFactory.make_file_objects(sourcePath, **kwargs)

@@ -80,7 +80,7 @@ class YwCnvUi(YwCnv):
         self.ui.set_info_what(
             f'Create a yWriter project file from {source.DESCRIPTION}\nNew project: "{os.path.normpath(target.filePath)}"')
         if os.path.isfile(target.filePath):
-            self.ui.set_info_how(f'{ERROR}{MSG_ALREADY_EXISTS}: "{os.path.normpath(target.filePath)}".')
+            self.ui.set_info_how(f'{ERROR}{_("File already exists")}: "{os.path.normpath(target.filePath)}".')
         else:
             message = self.convert(source, target)
             self.ui.set_info_how(message)
@@ -126,7 +126,7 @@ class YwCnvUi(YwCnv):
         
         Overrides the superclass method.
         """
-        return self.ui.ask_yes_no(f'{MSG_ASK_OVERWRITE}: "{os.path.normpath(filePath)}"?')
+        return self.ui.ask_yes_no(f'{_("Overwrite existing file")}: "{os.path.normpath(filePath)}"?')
 
     def _delete_tempfile(self, filePath):
         """Delete filePath if it is a temporary file no longer needed."""

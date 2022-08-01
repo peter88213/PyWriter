@@ -69,28 +69,28 @@ class OdfFile(FileExport):
             os.mkdir(self._tempDir)
             os.mkdir(f'{self._tempDir}/META-INF')
         except:
-            return f'{ERROR}{MSG_CANNOT_CREATE_DIR}: "{os.path.normpath(self._tempDir)}".'
+            return f'{ERROR}{_("Cannot create directory")}: "{os.path.normpath(self._tempDir)}".'
 
         #--- Generate mimetype.
         try:
             with open(f'{self._tempDir}/mimetype', 'w', encoding='utf-8') as f:
                 f.write(self._MIMETYPE)
         except:
-            return f'{ERROR}{MSG_CANNOT_WRITE_FILE}: "mimetype"'
+            return f'{ERROR}{_("Cannot write file")}: "mimetype"'
 
         #--- Generate settings.xml.
         try:
             with open(f'{self._tempDir}/settings.xml', 'w', encoding='utf-8') as f:
                 f.write(self._SETTINGS_XML)
         except:
-            return f'{ERROR}{MSG_CANNOT_WRITE_FILE}: "settings.xml"'
+            return f'{ERROR}{_("Cannot write file")}: "settings.xml"'
 
         #--- Generate META-INF\manifest.xml.
         try:
             with open(f'{self._tempDir}/META-INF/manifest.xml', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_XML)
         except:
-            return f'{ERROR}{MSG_CANNOT_WRITE_FILE}: "manifest.xml"'
+            return f'{ERROR}{_("Cannot write file")}: "manifest.xml"'
 
         #--- Generate styles.xml with system language set as document language.
         lng, ctr = locale.getdefaultlocale()[0].split('_')
@@ -104,7 +104,7 @@ class OdfFile(FileExport):
             with open(f'{self._tempDir}/styles.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
-            return f'{ERROR}{MSG_CANNOT_WRITE_FILE}: "styles.xml"'
+            return f'{ERROR}{_("Cannot write file")}: "styles.xml"'
 
         #--- Generate meta.xml with actual document metadata.
         metaMapping = dict(
@@ -119,7 +119,7 @@ class OdfFile(FileExport):
             with open(f'{self._tempDir}/meta.xml', 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
-            return f'{ERROR}{MSG_CANNOT_WRITE_FILE}: "meta.xml".'
+            return f'{ERROR}{_("Cannot write file")}: "meta.xml".'
 
         return 'ODF structure generated.'
 
@@ -153,7 +153,7 @@ class OdfFile(FileExport):
                 os.replace(self.filePath, f'{self.filePath}.bak')
                 backedUp = True
             except:
-                return f'{ERROR}{MSG_CANNOT_OVERWRITE}: "{os.path.normpath(self.filePath)}".'
+                return f'{ERROR}{_("Cannot overwrite file")}: "{os.path.normpath(self.filePath)}".'
 
         try:
             with zipfile.ZipFile(self.filePath, 'w') as odfTarget:
@@ -164,9 +164,9 @@ class OdfFile(FileExport):
             os.chdir(workdir)
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
-            return f'{ERROR}{MSG_CANNOT_CREATE_FILE}: "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}{_("Cannot create file")}: "{os.path.normpath(self.filePath)}".'
 
         #--- Remove temporary data.
         os.chdir(workdir)
         self._tear_down()
-        return f'{MSG_FILE_WRITTEN}: "{os.path.normpath(self.filePath)}".'
+        return f'{_("File written")}: "{os.path.normpath(self.filePath)}".'

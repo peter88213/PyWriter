@@ -41,7 +41,7 @@ class UiTk(Ui):
         self._appInfo.pack(padx=20, pady=5)
         self._processInfo = Label(self.root, text='', padx=20)
         self._processInfo.pack(pady=20, fill='both')
-        self.root.quitButton = Button(text=MSG_BTN_QUIT, command=quit)
+        self.root.quitButton = Button(text=_("Quit"), command=quit)
         self.root.quitButton.config(height=1, width=10)
         self.root.quitButton.pack(pady=10)
 
@@ -53,7 +53,7 @@ class UiTk(Ui):
             
         Overrides the superclass method.       
         """
-        return messagebox.askyesno(MSG_WARNING, text)
+        return messagebox.askyesno(_("WARNING"), text)
 
     def set_info_what(self, message):
         """Show what the converter is going to do.
@@ -96,7 +96,7 @@ class UiTk(Ui):
         Positional argument:
             open_cmd -- subclass method that opens the file.
         """
-        self.root.openButton = Button(text=MSG_BTN_OPEN, command=open_cmd)
+        self.root.openButton = Button(text=_("Open"), command=open_cmd)
         self.root.openButton.config(height=1, width=10)
         self.root.openButton.pack(pady=10)
 

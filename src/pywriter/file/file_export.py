@@ -709,7 +709,7 @@ class FileExport(Novel):
                 os.replace(self.filePath, f'{self.filePath}.bak')
                 backedUp = True
             except:
-                return f'{ERROR}{MSG_CANNOT_OVERWRITE}: "{os.path.normpath(self.filePath)}".'
+                return f'{ERROR}{_("Cannot overwrite file")}: "{os.path.normpath(self.filePath)}".'
 
         try:
             with open(self.filePath, 'w', encoding='utf-8') as f:
@@ -717,9 +717,9 @@ class FileExport(Novel):
         except:
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
-            return f'{ERROR}{MSG_CANNOT_WRITE_FILE}: "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}{_("Cannot write file")}: "{os.path.normpath(self.filePath)}".'
 
-        return f'{MSG_FILE_WRITTEN}: "{os.path.normpath(self.filePath)}".'
+        return f'{_("File written")}: "{os.path.normpath(self.filePath)}".'
 
     def _get_string(self, elements):
         """Join strings from a list.

@@ -37,7 +37,7 @@ class UiCmd(Ui):
             
         Overrides the superclass method.       
         """
-        result = input(f'{MSG_WARNING}: {text} (y/n)')
+        result = input(f'{_("WARNING")}: {text} (y/n)')
         if result.lower() == 'y':
             return True
         else:

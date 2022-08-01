@@ -387,7 +387,7 @@ class OdtFile(OdfFile):
             with open(f'{self._tempDir}/manifest.rdf', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_RDF)
         except:
-            return f'{ERROR}{MSG_CANNOT_WRITE_FILE}: "manifest.rdf"'
+            return f'{ERROR}{_("Cannot write file")}: "manifest.rdf"'
 
         return 'ODT structure generated.'
 

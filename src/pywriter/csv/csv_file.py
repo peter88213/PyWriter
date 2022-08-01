@@ -57,14 +57,14 @@ class CsvFile(Novel):
                 reader = csv.reader(f, delimiter=self._SEPARATOR)
                 for row in reader:
                     if len(row) != cellsPerRow:
-                        return f'{ERROR}{MSG_WRONG_CSV_STRUCTURE}.'
+                        return f'{ERROR}{_("Wrong csv structure")}.'
 
                     self._rows.append(row)
         except(FileNotFoundError):
-            return f'{ERROR}{MSG_FILE_NOT_FOUND}: "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}{_("File not found")}: "{os.path.normpath(self.filePath)}".'
 
         except:
-            return f'{ERROR}{MSG_CANNOT_PARSE}: "{os.path.normpath(self.filePath)}".'
+            return f'{ERROR}{_("Cannot parse File")}: "{os.path.normpath(self.filePath)}".'
 
         return 'CSV data read in.'
 

@@ -37,7 +37,7 @@ class NewProjectFactory(FileFactory):
         - targetFile: a Novel subclass instance
         """
         if not self._canImport(sourcePath):
-            return f'{ERROR}{MSG_WRITE_NOT_BACK}.', None, None
+            return f'{ERROR}{_("This document is not meant to be written back")}.', None, None
 
         fileName, __ = os.path.splitext(sourcePath)
         targetFile = Yw7File(f'{fileName}{Yw7File.EXTENSION}', **kwargs)
@@ -60,7 +60,7 @@ class NewProjectFactory(FileFactory):
                         sourceFile = fileClass(sourcePath, **kwargs)
                         return 'Source and target objects created.', sourceFile, targetFile
 
-            return f'{ERROR}{MSG_UNSUPPORTED_TYPE}: "{os.path.normpath(sourcePath)}".', None, None
+            return f'{ERROR}{_("File type is not supported")}: "{os.path.normpath(sourcePath)}".', None, None
 
     def _canImport(self, sourcePath):
         """Check whether the source file can be imported to yWriter.
