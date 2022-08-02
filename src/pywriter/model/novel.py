@@ -222,7 +222,7 @@ class Novel:
         
         This is a stub to be overridden by subclass methods.
         """
-        return text
+        return text.rstrip()
 
     def _convert_from_yw(self, text, quick=False):
         """Return text, converted from yw7 markup to target format.
@@ -235,4 +235,4 @@ class Novel:
         
         This is a stub to be overridden by subclass methods.
         """
-        return text
+        return text.rstrip()

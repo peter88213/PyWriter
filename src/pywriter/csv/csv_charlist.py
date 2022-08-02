@@ -39,8 +39,8 @@ class CsvCharList(CsvFile):
                 self.characters[crId].fullName = cells[2]
                 self.characters[crId].aka = cells[3]
                 self.characters[crId].desc = self._convert_to_yw(cells[4])
-                self.characters[crId].bio = cells[5]
-                self.characters[crId].goals = cells[6]
+                self.characters[crId].bio = self._convert_to_yw(cells[5])
+                self.characters[crId].goals = self._convert_to_yw(cells[6])
                 if self.CHARACTER_CLASS.MAJOR_MARKER in cells[7]:
                     self.characters[crId].isMajor = True
                 else:

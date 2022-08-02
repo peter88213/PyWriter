@@ -35,8 +35,8 @@ class CsvItemList(CsvFile):
                 itId = re.search('ItID\:([0-9]+)', cells[0]).group(1)
                 self.srtItems.append(itId)
                 self.items[itId] = self.WE_CLASS()
-                self.items[itId].title = cells[1]
+                self.items[itId].title = self._convert_to_yw(cells[1])
                 self.items[itId].desc = self._convert_to_yw(cells[2])
-                self.items[itId].aka = cells[3]
+                self.items[itId].aka = self._convert_to_yw(cells[3])
                 self.items[itId].tags = self._get_list(cells[4])
         return 'Item data read in.'

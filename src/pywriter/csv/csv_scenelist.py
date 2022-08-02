@@ -41,7 +41,7 @@ class CsvSceneList(CsvFile):
                 scId = re.search('ScID\:([0-9]+)', cells[0]).group(1)
                 self.scenes[scId] = self.SCENE_CLASS()
                 i += 1
-                self.scenes[scId].title = cells[i]
+                self.scenes[scId].title = self._convert_to_yw(cells[i])
                 i += 1
                 self.scenes[scId].desc = self._convert_to_yw(cells[i])
                 i += 1
@@ -54,11 +54,11 @@ class CsvSceneList(CsvFile):
                 else:
                     self.scenes[scId].isReactionScene = False
                 i += 1
-                self.scenes[scId].goal = cells[i]
+                self.scenes[scId].goal = self._convert_to_yw(cells[i])
                 i += 1
-                self.scenes[scId].conflict = cells[i]
+                self.scenes[scId].conflict = self._convert_to_yw(cells[i])
                 i += 1
-                self.scenes[scId].outcome = cells[i]
+                self.scenes[scId].outcome = self._convert_to_yw(cells[i])
                 i += 1
                 # Don't write back sceneCount
                 i += 1
@@ -67,22 +67,22 @@ class CsvSceneList(CsvFile):
 
                 # Transfer scene ratings; set to 1 if deleted
                 if cells[i] in self._SCENE_RATINGS:
-                    self.scenes[scId].field1 = cells[i]
+                    self.scenes[scId].field1 = self._convert_to_yw(cells[i])
                 else:
                     self.scenes[scId].field1 = '1'
                 i += 1
                 if cells[i] in self._SCENE_RATINGS:
-                    self.scenes[scId].field2 = cells[i]
+                    self.scenes[scId].field2 = self._convert_to_yw(cells[i])
                 else:
                     self.scenes[scId].field2 = '1'
                 i += 1
                 if cells[i] in self._SCENE_RATINGS:
-                    self.scenes[scId].field3 = cells[i]
+                    self.scenes[scId].field3 = self._convert_to_yw(cells[i])
                 else:
                     self.scenes[scId].field3 = '1'
                 i += 1
                 if cells[i] in self._SCENE_RATINGS:
-                    self.scenes[scId].field4 = cells[i]
+                    self.scenes[scId].field4 = self._convert_to_yw(cells[i])
                 else:
                     self.scenes[scId].field4 = '1'
                 i += 1
