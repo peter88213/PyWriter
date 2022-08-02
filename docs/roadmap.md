@@ -325,7 +325,28 @@ Read, merge, and write .yw7 custom fields.
 #### v5.10
 
 Create chapters, scenes, characters, and world elements via class references, 
-thus allowing custom classes.
+thus allowing custom classes (extends the API).
+
+#### v5.12
+
+- When splitting scenes, process title and description of new chapters/scenes, separated by "|" (changes behavior).
+
+#### v5.14
+
+- When exporting chapters and scenes to odt, remove inline code, e.g. HTM and TEX (changes behavior).
+
+#### v5.16
+
+- When exporting chapters and scenes to odt, set style of paragraphs that start with "> " to "Quotations" (changes behavior).
+
+#### v5.18
+
+- Add a popup warning widget to the user interface (extends the API).
+
+#### v5.20
+
+- Add internationalization according to GNU coding standards (extends the API).
+- Provide full German localization.
 
 ## Future:
 
