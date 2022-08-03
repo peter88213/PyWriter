@@ -12,7 +12,7 @@ class OdtProof(OdtFile):
 
     Export a manuscript with visibly tagged chapters and scenes.
     """
-    DESCRIPTION = 'Tagged manuscript for proofing'
+    DESCRIPTION = _('Tagged manuscript for proofing')
     SUFFIX = '_proof'
 
     _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>

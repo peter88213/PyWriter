@@ -10,7 +10,7 @@ from pywriter.ods.ods_file import OdsFile
 class OdsCharList(OdsFile):
     """ODS character list representation."""
 
-    DESCRIPTION = 'Character list'
+    DESCRIPTION = _('Character list')
     SUFFIX = '_charlist'
     
     _fileHeader = f'''{OdsFile._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">

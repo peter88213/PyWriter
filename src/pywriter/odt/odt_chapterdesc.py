@@ -12,7 +12,7 @@ class OdtChapterDesc(OdtFile):
 
     Export a synopsis with invisibly tagged chapter descriptions.
     """
-    DESCRIPTION = 'Chapter descriptions'
+    DESCRIPTION = _('Chapter descriptions')
     SUFFIX = '_chapters'
 
     _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>

@@ -13,7 +13,7 @@ class HtmlManuscript(HtmlFile):
 
     Import a manuscript with invisibly tagged chapters and scenes.
     """
-    DESCRIPTION = 'Editable manuscript'
+    DESCRIPTION = _('Editable manuscript')
     SUFFIX = '_manuscript'
 
     def _preprocess(self, text):

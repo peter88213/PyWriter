@@ -13,7 +13,7 @@ class HtmlCharacters(HtmlFile):
 
     Import a character sheet with invisibly tagged descriptions.
     """
-    DESCRIPTION = 'Character descriptions'
+    DESCRIPTION = _('Character descriptions')
     SUFFIX = '_characters'
 
     def __init__(self, filePath, **kwargs):

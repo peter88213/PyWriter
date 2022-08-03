@@ -14,7 +14,7 @@ class OdtPartDesc(OdtFile):
 
     Export a synopsis with invisibly tagged part descriptions.
     """
-    DESCRIPTION = 'Part descriptions'
+    DESCRIPTION = _('Part descriptions')
     SUFFIX = '_parts'
 
     _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>

@@ -20,7 +20,7 @@ class DataFiles(Yw7File):
     xml files. This class represents a set of three xml files generated from
     a yWriter 7 project.
     """
-    DESCRIPTION = 'yWriter XML data files'
+    DESCRIPTION = _('yWriter XML data files')
     EXTENSION = '.xml'
 
     def _write_element_tree(self, ywProject):

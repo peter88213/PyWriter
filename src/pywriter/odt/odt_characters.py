@@ -12,7 +12,7 @@ class OdtCharacters(OdtFile):
 
     Export a character sheet with invisibly tagged descriptions.
     """
-    DESCRIPTION = 'Character descriptions'
+    DESCRIPTION = _('Character descriptions')
     SUFFIX = '_characters'
 
     _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>

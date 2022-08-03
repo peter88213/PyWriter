@@ -13,7 +13,7 @@ class HtmlLocations(HtmlFile):
 
     Import a location sheet with invisibly tagged descriptions.
     """
-    DESCRIPTION = 'Location descriptions'
+    DESCRIPTION = _('Location descriptions')
     SUFFIX = '_locations'
 
     def __init__(self, filePath, **kwargs):

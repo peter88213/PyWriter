@@ -20,7 +20,7 @@ class HtmlOutline(HtmlFile):
 
     Import an outline without chapter and scene tags.
     """
-    DESCRIPTION = 'Novel outline'
+    DESCRIPTION = _('Novel outline')
     SUFFIX = ''
 
     def __init__(self, filePath, **kwargs):

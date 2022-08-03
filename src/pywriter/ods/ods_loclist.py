@@ -9,7 +9,7 @@ from pywriter.ods.ods_file import OdsFile
 
 class OdsLocList(OdsFile):
     """ODS location list representation."""
-    DESCRIPTION = 'Location list'
+    DESCRIPTION = _('Location list')
     SUFFIX = '_loclist'
 
     _fileHeader = f'''{OdsFile._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">

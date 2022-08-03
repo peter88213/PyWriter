@@ -13,5 +13,5 @@ class HtmlPartDesc(HtmlChapterDesc):
     Parts are chapters marked in yWriter as beginning of a new section.
     Import a synopsis with invisibly tagged part descriptions.
     """
-    DESCRIPTION = 'Part descriptions'
+    DESCRIPTION = _('Part descriptions')
     SUFFIX = '_parts'

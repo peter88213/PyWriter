@@ -51,7 +51,7 @@ class YwCnvUi(YwCnv):
         - If the conversion fails, newFile is set to None.
         """
         self.ui.set_info_what(
-            f'Input: {source.DESCRIPTION} "{os.path.normpath(source.filePath)}"\nOutput: {target.DESCRIPTION} "{os.path.normpath(target.filePath)}"')
+            f'{_("Input")}: {source.DESCRIPTION} "{os.path.normpath(source.filePath)}"\n{_("Output")}: {target.DESCRIPTION} "{os.path.normpath(target.filePath)}"')
         message = self.convert(source, target)
         self.ui.set_info_how(message)
         if message.startswith(ERROR):

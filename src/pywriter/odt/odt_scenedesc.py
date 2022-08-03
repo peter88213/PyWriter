@@ -12,7 +12,7 @@ class OdtSceneDesc(OdtFile):
 
     Export a full synopsis with invisibly tagged scene descriptions.
     """
-    DESCRIPTION = 'Scene descriptions'
+    DESCRIPTION = _('Scene descriptions')
     SUFFIX = '_scenes'
 
     _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>

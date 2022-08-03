@@ -12,7 +12,7 @@ class HtmlSceneDesc(HtmlFile):
 
     Import a full synopsis with invisibly tagged scene descriptions.
     """
-    DESCRIPTION = 'Scene descriptions'
+    DESCRIPTION = _('Scene descriptions')
     SUFFIX = '_scenes'
 
     def handle_endtag(self, tag):

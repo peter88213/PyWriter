@@ -30,7 +30,7 @@ class Yw7File(Novel):
         tree -- xml element tree of the yWriter project
         scenesSplit -- bool: True, if a scene or chapter is split during merging.
     """
-    DESCRIPTION = 'yWriter 7 project'
+    DESCRIPTION = _('yWriter 7 project')
     EXTENSION = '.yw7'
     _CDATA_TAGS = ['Title', 'AuthorName', 'Bio', 'Desc',
                    'FieldTitle1', 'FieldTitle2', 'FieldTitle3',

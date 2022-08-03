@@ -11,7 +11,7 @@ from pywriter.odt.odt_file import OdtFile
 
 class OdtXref(OdtFile):
     """OpenDocument xml cross reference file representation."""
-    DESCRIPTION = 'Cross reference'
+    DESCRIPTION = _('Cross reference')
     SUFFIX = '_xref'
 
     _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>

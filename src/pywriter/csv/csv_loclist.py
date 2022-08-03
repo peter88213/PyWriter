@@ -15,7 +15,7 @@ class CsvLocList(CsvFile):
     Public methods:
         read() -- parse the file and get the instance variables.
     """
-    DESCRIPTION = 'Location list'
+    DESCRIPTION = _('Location list')
     SUFFIX = '_loclist'
     _rowTitles = ['ID', 'Name', 'Description', 'Aka', 'Tags']
 

@@ -15,7 +15,7 @@ class CsvSceneList(CsvFile):
     Public methods:
         read() -- parse the file and get the instance variables.
     """
-    DESCRIPTION = 'Scene list'
+    DESCRIPTION = _('Scene list')
     SUFFIX = '_scenelist'
     _SCENE_RATINGS = ['2', '3', '4', '5', '6', '7', '8', '9', '10']
     # '1' is assigned N/A (empty table cell).

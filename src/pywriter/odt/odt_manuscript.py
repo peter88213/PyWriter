@@ -12,7 +12,7 @@ class OdtManuscript(OdtFile):
 
     Export a manuscript with invisibly tagged chapters and scenes.
     """
-    DESCRIPTION = 'Editable manuscript'
+    DESCRIPTION = _('Editable manuscript')
     SUFFIX = '_manuscript'
 
     _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>

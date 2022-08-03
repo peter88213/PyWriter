@@ -12,7 +12,7 @@ class OdtLocations(OdtFile):
 
     Export a location sheet with invisibly tagged descriptions.
     """
-    DESCRIPTION = 'Location descriptions'
+    DESCRIPTION = _('Location descriptions')
     SUFFIX = '_locations'
 
     _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>

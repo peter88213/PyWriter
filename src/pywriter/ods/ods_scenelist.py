@@ -10,7 +10,7 @@ from pywriter.ods.ods_file import OdsFile
 class OdsSceneList(OdsFile):
     """ODS scene list representation."""
 
-    DESCRIPTION = 'Scene list'
+    DESCRIPTION = _('Scene list')
     SUFFIX = '_scenelist'
 
     # Column width:

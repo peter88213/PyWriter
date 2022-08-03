@@ -12,7 +12,7 @@ class HtmlChapterDesc(HtmlFile):
 
     Import a brief synopsis with invisibly tagged chapter descriptions.
     """
-    DESCRIPTION = 'Chapter descriptions'
+    DESCRIPTION = _('Chapter descriptions')
     SUFFIX = '_chapters'
 
     def handle_endtag(self, tag):

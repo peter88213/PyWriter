@@ -49,7 +49,7 @@ class Novel:
         projectPath -- str: URL-coded path to the project directory. 
         filePath -- str: path to the file (property with getter and setter). 
     """
-    DESCRIPTION = 'Novel'
+    DESCRIPTION = _('Novel')
     EXTENSION = None
     SUFFIX = None
     # To be extended by subclass methods.

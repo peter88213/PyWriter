@@ -68,7 +68,7 @@ class MainTk(Ui):
         Extends the superclass constructor.
         """
         super().__init__(title)
-        self._fileTypes = [('yWriter 7 project', '.yw7')]
+        self._fileTypes = [(_('yWriter 7 project'), '.yw7')]
         self._title = title
         self._statusText = ''
         self.kwargs = kwargs
@@ -102,25 +102,25 @@ class MainTk(Ui):
         This is a template method that can be overridden by subclasses. 
         """
         self.fileMenu = tk.Menu(self.mainMenu, title='my title', tearoff=0)
-        self.mainMenu.add_cascade(label='File', underline=0, menu=self.fileMenu)
-        self.fileMenu.add_command(label='Open...', underline=0, accelerator=self._KEY_OPEN_PROJECT[1], command=lambda: self.open_project(''))
-        self.fileMenu.add_command(label='Close', underline=0, command=self.close_project)
-        self.fileMenu.entryconfig('Close', state='disabled')
-        self.fileMenu.add_command(label='Exit', underline=1, accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
+        self.mainMenu.add_cascade(label=_('File'), underline=0, menu=self.fileMenu)
+        self.fileMenu.add_command(label=_('Open...'), underline=0, accelerator=self._KEY_OPEN_PROJECT[1], command=lambda: self.open_project(''))
+        self.fileMenu.add_command(label=_('Close'), underline=0, command=self.close_project)
+        self.fileMenu.entryconfig(_('Close'), state='disabled')
+        self.fileMenu.add_command(label=_('Exit'), underline=1, accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
 
     def disable_menu(self):
         """Disable menu entries when no project is open.
         
         To be extended by subclasses.
         """
-        self.fileMenu.entryconfig('Close', state='disabled')
+        self.fileMenu.entryconfig(_('Close'), state='disabled')
 
     def enable_menu(self):
         """Enable menu entries when a project is open.
         
         To be extended by subclasses.
         """
-        self.fileMenu.entryconfig('Close', state='normal')
+        self.fileMenu.entryconfig(_('Close'), state='normal')
 
     def start(self):
         """Start the Tk main loop.
@@ -183,11 +183,11 @@ class MainTk(Ui):
         if self.ywPrj.title:
             titleView = self.ywPrj.title
         else:
-            titleView = 'Untitled yWriter project'
+            titleView = _('Untitled yWriter project')
         if self.ywPrj.authorName:
             authorView = self.ywPrj.authorName
         else:
-            authorView = 'Unknown author'
+            authorView = _('Unknown author')
         self.root.title(f'{titleView} by {authorView} - {self._title}')
         self.enable_menu()
         return True

@@ -15,7 +15,7 @@ class CsvItemList(CsvFile):
     Public methods:
         read() -- parse the file and get the instance variables.
     """
-    DESCRIPTION = 'Item list'
+    DESCRIPTION = _('Item list')
     SUFFIX = '_itemlist'
     _rowTitles = ['ID', 'Name', 'Description', 'Aka', 'Tags']
 

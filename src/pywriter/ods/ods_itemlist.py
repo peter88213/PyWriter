@@ -10,7 +10,7 @@ from pywriter.ods.ods_file import OdsFile
 class OdsItemList(OdsFile):
     """ODS item list representation."""
 
-    DESCRIPTION = 'Item list'
+    DESCRIPTION = _('Item list')
     SUFFIX = '_itemlist'
 
     _fileHeader = f'''{OdsFile._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">

@@ -12,7 +12,7 @@ class OdtBriefSynopsis(OdtFile):
 
     Export a brief synopsis with chapter titles and scene titles.
     """
-    DESCRIPTION = 'Brief synopsis'
+    DESCRIPTION = _('Brief synopsis')
     SUFFIX = '_brf_synopsis'
 
     _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>

@@ -15,7 +15,7 @@ class CsvCharList(CsvFile):
     Public methods:
         read() -- parse the file and get the instance variables.
     """
-    DESCRIPTION = 'Character list'
+    DESCRIPTION = _('Character list')
     SUFFIX = '_charlist'
     _rowTitles = ['ID', 'Name', 'Full name', 'Aka', 'Description', 'Bio', 'Goals', 'Importance', 'Tags', 'Notes']
 

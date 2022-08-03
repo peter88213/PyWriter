@@ -7,6 +7,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
+import pgettext
 
 
 def inline_module(file, package, packagePath, text, processedModules):
@@ -64,9 +65,18 @@ def inline_module(file, package, packagePath, text, processedModules):
 def run(sourceFile, targetFile, package, packagePath):
     text = ''
     processedModules = []
-    text = (inline_module(sourceFile, package, packagePath, text, processedModules))
+    text = inline_module(sourceFile, package, packagePath, text, processedModules)
     with open(targetFile, 'w', encoding='utf-8') as f:
         print(f'Writing "{targetFile}"...\n')
         f.write(text)
+    
+    # Generate a template file (pot) for message translation.
+    try:
+        pot = pgettext.PotFile('../i18n/messages.pot')
+        pot.scan_file(targetFile)
+        print(f'Writing "{pot.filePath}"...\n')
+        pot.write_pot()
+    except:
+        print('WARNING: Cannot write pot file.')
 
 

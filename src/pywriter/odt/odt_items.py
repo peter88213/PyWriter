@@ -12,7 +12,7 @@ class OdtItems(OdtFile):
 
     Export a item sheet with invisibly tagged descriptions.
     """
-    DESCRIPTION = 'Item descriptions'
+    DESCRIPTION = _('Item descriptions')
     SUFFIX = '_items'
 
     _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>

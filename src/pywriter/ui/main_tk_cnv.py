@@ -53,9 +53,9 @@ class MainTkCnv(MainTk):
         """
         super()._build_main_menu()
         self.mainMenu.add_command(label='Swap', command=self.reverse_direction)
-        self.mainMenu.entryconfig('Swap', state='disabled')
+        self.mainMenu.entryconfig(_('Swap'), state='disabled')
         self.mainMenu.add_command(label='Run', command=self.convert_file)
-        self.mainMenu.entryconfig('Run', state='disabled')
+        self.mainMenu.entryconfig(_('Run'), state='disabled')
 
     def disable_menu(self):
         """Disable menu entries when no project is open.
@@ -63,8 +63,8 @@ class MainTkCnv(MainTk):
         Extends the superclass method.      
         """
         super().disable_menu()
-        self.mainMenu.entryconfig('Run', state='disabled')
-        self.mainMenu.entryconfig('Swap', state='disabled')
+        self.mainMenu.entryconfig(_('Run'), state='disabled')
+        self.mainMenu.entryconfig(_('Swap'), state='disabled')
 
     def enable_menu(self):
         """Enable menu entries when a project is open.
@@ -72,8 +72,8 @@ class MainTkCnv(MainTk):
         Extends the superclass method.
         """
         super().enable_menu()
-        self.mainMenu.entryconfig('Run', state='normal')
-        self.mainMenu.entryconfig('Swap', state='normal')
+        self.mainMenu.entryconfig(_('Run'), state='normal')
+        self.mainMenu.entryconfig(_('Swap'), state='normal')
 
     def open_project(self, fileName):
         """Select a valid project file and display the path.

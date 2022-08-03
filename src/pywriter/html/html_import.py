@@ -21,7 +21,7 @@ class HtmlImport(HtmlFile):
 
     Import untagged chapters and scenes.
     """
-    DESCRIPTION = 'Work in progress'
+    DESCRIPTION = _('Work in progress')
     SUFFIX = ''
     _SCENE_DIVIDER = '* * *'
     _LOW_WORDCOUNT = 10

@@ -14,7 +14,7 @@ class HtmlProof(HtmlFile):
 
     Import a manuscript with visibly tagged chapters and scenes.
     """
-    DESCRIPTION = 'Tagged manuscript for proofing'
+    DESCRIPTION = _('Tagged manuscript for proofing')
     SUFFIX = '_proof'
 
     def __init__(self, filePath, **kwargs):

@@ -13,7 +13,7 @@ class HtmlItems(HtmlFile):
 
     Import a item sheet with invisibly tagged descriptions.
     """
-    DESCRIPTION = 'Item descriptions'
+    DESCRIPTION = _('Item descriptions')
     SUFFIX = '_items'
 
     def __init__(self, filePath, **kwargs):
