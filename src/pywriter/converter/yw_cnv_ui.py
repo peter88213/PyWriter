@@ -51,7 +51,7 @@ class YwCnvUi(YwCnv):
         - If the conversion fails, newFile is set to None.
         """
         self.ui.set_info_what(
-            f'{_("Input")}: {source.DESCRIPTION} "{os.path.normpath(source.filePath)}"\n{_("Output")}: {target.DESCRIPTION} "{os.path.normpath(target.filePath)}"')
+            _('Input: {0} "{1}"\nOutput: {2} "{3}"').format(source.DESCRIPTION, os.path.normpath(source.filePath), target.DESCRIPTION, os.path.normpath(target.filePath)))
         message = self.convert(source, target)
         self.ui.set_info_how(message)
         if message.startswith(ERROR):
@@ -78,7 +78,7 @@ class YwCnvUi(YwCnv):
         - If the conversion fails, newFile is set to None.
         """
         self.ui.set_info_what(
-            f'Create a yWriter project file from {source.DESCRIPTION}\nNew project: "{os.path.normpath(target.filePath)}"')
+            _('Create a yWriter project file from {0}\nNew project: "{1}"').format(source.DESCRIPTION, os.path.normpath(target.filePath)))
         if os.path.isfile(target.filePath):
             self.ui.set_info_how(f'{ERROR}{_("File already exists")}: "{os.path.normpath(target.filePath)}".')
         else:
@@ -107,7 +107,7 @@ class YwCnvUi(YwCnv):
         - If the conversion fails, newFile is set to None.
         """
         self.ui.set_info_what(
-            f'Input: {source.DESCRIPTION} "{os.path.normpath(source.filePath)}"\nOutput: {target.DESCRIPTION} "{os.path.normpath(target.filePath)}"')
+            _('Input: {0} "{1}"\nOutput: {2} "{3}"').format(source.DESCRIPTION, os.path.normpath(source.filePath), target.DESCRIPTION, os.path.normpath(target.filePath)))
         message = self.convert(source, target)
         self.ui.set_info_how(message)
         self._delete_tempfile(source.filePath)
@@ -126,7 +126,7 @@ class YwCnvUi(YwCnv):
         
         Overrides the superclass method.
         """
-        return self.ui.ask_yes_no(f'{_("Overwrite existing file")}: "{os.path.normpath(filePath)}"?')
+        return self.ui.ask_yes_no(_('Overwrite existing file "{}"?').format(os.path.normpath(filePath)))
 
     def _delete_tempfile(self, filePath):
         """Delete filePath if it is a temporary file no longer needed."""

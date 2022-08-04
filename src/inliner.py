@@ -44,7 +44,7 @@ def inline_module(file, package, packagePath, text, processedModules):
                 if 'import' in line:
                     importModule = re.match('from (.+?) import.+', line)
                     if (importModule is not None) and (package in importModule.group(1)):
-                        packageName= re.sub('\.', '\/', importModule.group(1))
+                        packageName = re.sub('\.', '\/', importModule.group(1))
                         moduleName = f'{packagePath}{packageName}'
                         if not (moduleName in processedModules):
                             processedModules.append(moduleName)
@@ -69,7 +69,7 @@ def run(sourceFile, targetFile, package, packagePath):
     with open(targetFile, 'w', encoding='utf-8') as f:
         print(f'Writing "{targetFile}"...\n')
         f.write(text)
-    
+
     # Generate a template file (pot) for message translation.
     try:
         pot = pgettext.PotFile('../i18n/messages.pot')
@@ -78,5 +78,4 @@ def run(sourceFile, targetFile, package, packagePath):
         pot.write_pot()
     except:
         print('WARNING: Cannot write pot file.')
-
 

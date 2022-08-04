@@ -4,6 +4,7 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.pywriter_globals import *
 from pywriter.ods.ods_file import OdsFile
 
 
@@ -60,4 +61,4 @@ class OdsLocList(OdsFile):
     </table:table-row>
 
 '''
-    _fileFooter = OdsFile._CONTENT_XML_FOOTER 
+    _fileFooter = OdsFile._CONTENT_XML_FOOTER

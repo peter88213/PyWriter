@@ -4,6 +4,7 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.pywriter_globals import *
 from pywriter.ods.ods_file import OdsFile
 
 
@@ -202,7 +203,7 @@ class OdsSceneList(OdsFile):
 
 '''
 
-    _fileFooter = OdsFile._CONTENT_XML_FOOTER 
+    _fileFooter = OdsFile._CONTENT_XML_FOOTER
 
     def _get_sceneMapping(self, scId, sceneNumber, wordsTotal, lettersTotal):
         """Return a mapping dictionary for a scene section.

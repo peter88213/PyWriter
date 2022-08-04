@@ -12,7 +12,7 @@ import re
 from string import Template
 from datetime import datetime
 
-msgPatterns= [re.compile('_\(\"(.+?)\"\)'),
+msgPatterns = [re.compile('_\(\"(.+?)\"\)'),
               re.compile('_\(\'(.+?)\'\)'),
               ]
 
@@ -34,8 +34,10 @@ msgstr ""
 "Generated-By: PyWriter gettext.py ${version}\\n"
 
 '''
+
+
 class PotFile:
-   
+
     def __init__(self, filePath='messages.pot'):
         self.filePath = filePath
         self.msgList = []
@@ -50,7 +52,7 @@ class PotFile:
             entry = f'\nmsgid "{message}"\nmsgstr ""\n'
             potText += entry
         with open(self.filePath, 'w', encoding='utf-8') as f:
-            f.write(potText)       
+            f.write(potText)
 
     def get_messages(self, text):
         """Scan source code looking for message strings.
@@ -61,7 +63,7 @@ class PotFile:
         for msgPattern in msgPatterns:
             result.extend(msgPattern.findall(text))
         return result
-    
+
     def scan_file(self, filename):
         with open(filename, 'r', encoding='utf-8') as f:
             text = f.read()
@@ -71,7 +73,7 @@ class PotFile:
         with os.scandir(path) as it:
             for entry in it:
                 if entry.name.endswith('.py') and entry.is_file():
-                    file = f'{entry.path}'.replace('\\','/')
+                    file = f'{entry.path}'.replace('\\', '/')
                     self.scan_file(file)
                 elif entry.is_dir():
                     self.scan_dir(entry.path)

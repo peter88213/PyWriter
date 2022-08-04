@@ -5,6 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from string import Template
+from pywriter.pywriter_globals import *
 from pywriter.odt.odt_manuscript import OdtManuscript
 
 
