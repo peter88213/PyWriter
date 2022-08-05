@@ -37,6 +37,12 @@ msgstr ""
 
 
 class PotFile:
+    """GNU gettext pot file generator.
+    
+    Recursive source code scanner looking for message strings.
+    Escape double quotes in messages.
+    This works also for Python 3.6+ f-strings.   
+    """
 
     def __init__(self, filePath='messages.pot'):
         self.filePath = filePath
@@ -49,16 +55,15 @@ class PotFile:
         hdTemplate = Template(potHeader)
         potText = hdTemplate.safe_substitute(map)
         for message in set(self.msgList):
+            message = message.replace('"', '\\"')
+            print(message)
             entry = f'\nmsgid "{message}"\nmsgstr ""\n'
             potText += entry
         with open(self.filePath, 'w', encoding='utf-8') as f:
             f.write(potText)
+            print(f'\nPot file "{self.filePath}" written.')
 
     def get_messages(self, text):
-        """Scan source code looking for message strings.
-        
-        This works also for Python 3.6+ f-strings.   
-        """
         result = []
         for msgPattern in msgPatterns:
             result.extend(msgPattern.findall(text))
@@ -67,6 +72,7 @@ class PotFile:
     def scan_file(self, filename):
         with open(filename, 'r', encoding='utf-8') as f:
             text = f.read()
+            print(f'Processing "{filename}"...')
         self.msgList.extend(self.get_messages(text))
 
     def scan_dir(self, path):

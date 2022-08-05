@@ -40,6 +40,10 @@ class MainTkCnv(MainTk):
         Extends the superclass constructor.
         """
         super().__init__(title, **kwargs)
+
+        self.m['Swap'] = ['Swap', 0]
+        self.m['Run'] = ['Run', 0]
+
         self._fileTypes = kwargs['file_types']
         self.converter = None
         self._sourcePath = None
@@ -52,10 +56,10 @@ class MainTkCnv(MainTk):
         Extends the superclass template method. 
         """
         super()._build_main_menu()
-        self.mainMenu.add_command(label='Swap', command=self.reverse_direction)
-        self.mainMenu.entryconfig(_('Swap'), state='disabled')
-        self.mainMenu.add_command(label='Run', command=self.convert_file)
-        self.mainMenu.entryconfig(_('Run'), state='disabled')
+        self.mainMenu.add_command(label=self.m['Swap'][0], underline=self.m['Swap'][1], command=self.reverse_direction)
+        self.mainMenu.entryconfig(self.m['Swap'][0], state='disabled')
+        self.mainMenu.add_command(label=self.m['Run'][0], underline=self.m['Run'][1], command=self.convert_file)
+        self.mainMenu.entryconfig(self.m['Run'][0], state='disabled')
 
     def disable_menu(self):
         """Disable menu entries when no project is open.
@@ -63,8 +67,8 @@ class MainTkCnv(MainTk):
         Extends the superclass method.      
         """
         super().disable_menu()
-        self.mainMenu.entryconfig(_('Run'), state='disabled')
-        self.mainMenu.entryconfig(_('Swap'), state='disabled')
+        self.mainMenu.entryconfig(self.m['Run'][0], state='disabled')
+        self.mainMenu.entryconfig(self.m['Swap'][0], state='disabled')
 
     def enable_menu(self):
         """Enable menu entries when a project is open.
@@ -72,8 +76,8 @@ class MainTkCnv(MainTk):
         Extends the superclass method.
         """
         super().enable_menu()
-        self.mainMenu.entryconfig(_('Run'), state='normal')
-        self.mainMenu.entryconfig(_('Swap'), state='normal')
+        self.mainMenu.entryconfig(self.m['Run'][0], state='normal')
+        self.mainMenu.entryconfig(self.m['Swap'][0], state='normal')
 
     def open_project(self, fileName):
         """Select a valid project file and display the path.

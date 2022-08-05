@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-08-04 07:58:15\n"
+"POT-Creation-Date: 2022-08-05 08:41:16\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,155 +15,140 @@ msgstr ""
 "Generated-By: PyWriter gettext.py 0.1\n"
 
 
-msgid "WARNING"
-msgstr ""
-
-msgid "Export type is not supported"
-msgstr ""
-
-msgid "Overwrite existing file "{}"?"
-msgstr ""
-
-msgid "Notes chapters"
-msgstr ""
-
-msgid "Can not process file"
-msgstr ""
-
-msgid "Close"
-msgstr ""
-
-msgid "Cannot write file"
-msgstr ""
-
-msgid "Character list"
-msgstr ""
-
-msgid "Run"
+msgid "yWriter 7 project"
 msgstr ""
 
 msgid "Brief synopsis"
 msgstr ""
 
-msgid "yWriter XML data files"
+msgid "File written"
 msgstr ""
 
-msgid "File type is not supported"
-msgstr ""
-
-msgid "Unknown author"
-msgstr ""
-
-msgid "Cannot create file"
-msgstr ""
-
-msgid "Location descriptions"
-msgstr ""
-
-msgid "Swap"
-msgstr ""
-
-msgid "Scene descriptions"
-msgstr ""
-
-msgid "Character descriptions"
-msgstr ""
-
-msgid "Part descriptions"
-msgstr ""
-
-msgid "Quit"
-msgstr ""
-
-msgid "Tagged manuscript for proofing"
-msgstr ""
-
-msgid "File not found"
-msgstr ""
-
-msgid "Open..."
-msgstr ""
-
-msgid "Cannot overwrite file"
-msgstr ""
-
-msgid "Scene list"
-msgstr ""
-
-msgid "yWriter seems to be open. Please close first"
-msgstr ""
-
-msgid "Novel"
-msgstr ""
-
-msgid "Novel outline"
-msgstr ""
-
-msgid "Editable manuscript"
-msgstr ""
-
-msgid "Open"
-msgstr ""
-
-msgid "Item list"
-msgstr ""
-
-msgid "yWriter 7 project"
-msgstr ""
-
-msgid "Untitled yWriter project"
-msgstr ""
-
-msgid "Input: {0} "{1}"\nOutput: {2} "{3}""
-msgstr ""
-
-msgid "This document is not meant to be written back"
-msgstr ""
-
-msgid "No yWriter project to write"
-msgstr ""
-
-msgid "Item descriptions"
-msgstr ""
-
-msgid "Location list"
-msgstr ""
-
-msgid "Chapter descriptions"
+msgid "WARNING"
 msgstr ""
 
 msgid "File already exists"
 msgstr ""
 
-msgid "Create a yWriter project file from {0}\nNew project: "{1}""
+msgid "Character list"
+msgstr ""
+
+msgid "Editable manuscript"
+msgstr ""
+
+msgid "Unknown author"
+msgstr ""
+
+msgid "Quit"
+msgstr ""
+
+msgid "Scene list"
+msgstr ""
+
+msgid "File type is not supported"
+msgstr ""
+
+msgid "This document is not meant to be written back"
+msgstr ""
+
+msgid "yWriter XML data files"
+msgstr ""
+
+msgid "manuscript"
 msgstr ""
 
 msgid "Wrong csv structure"
 msgstr ""
 
-msgid "Work in progress"
+msgid "Cannot create directory"
 msgstr ""
 
-msgid "Cross reference"
-msgstr ""
-
-msgid "File written"
+msgid "Cannot create file"
 msgstr ""
 
 msgid "File is write protected"
 msgstr ""
 
-msgid "Action canceled by user"
+msgid "Tagged manuscript for proofing"
+msgstr ""
+
+msgid "yWriter seems to be open. Please close first"
+msgstr ""
+
+msgid "Cannot write file"
+msgstr ""
+
+msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
+msgstr ""
+
+msgid "Can not process file"
 msgstr ""
 
 msgid "Cannot parse File"
 msgstr ""
 
-msgid "File"
+msgid "Chapter descriptions"
 msgstr ""
 
-msgid "Cannot create directory"
+msgid "Novel outline"
 msgstr ""
 
-msgid "Exit"
+msgid "File not found"
+msgstr ""
+
+msgid "Action canceled by user"
+msgstr ""
+
+msgid "Cross reference"
+msgstr ""
+
+msgid "Part descriptions"
+msgstr ""
+
+msgid "Novel"
+msgstr ""
+
+msgid "Overwrite existing file \"{}\"?"
+msgstr ""
+
+msgid "Cannot overwrite file"
+msgstr ""
+
+msgid "Character descriptions"
+msgstr ""
+
+msgid "Item descriptions"
+msgstr ""
+
+msgid "Untitled yWriter project"
+msgstr ""
+
+msgid "Work in progress"
+msgstr ""
+
+msgid "Item list"
+msgstr ""
+
+msgid "Location list"
+msgstr ""
+
+msgid "Export type is not supported"
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "Location descriptions"
+msgstr ""
+
+msgid "Notes chapters"
+msgstr ""
+
+msgid "Create a yWriter project file from {0}\nNew project: \"{1}\""
+msgstr ""
+
+msgid "No yWriter project to write"
+msgstr ""
+
+msgid "Scene descriptions"
 msgstr ""

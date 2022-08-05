@@ -13,13 +13,13 @@ ERROR = '!'
 
 # Initialize localization.
 LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
-CURRENT_LOCALE = locale.getdefaultlocale()[0]
+CURRENT_LANGUAGE = locale.getdefaultlocale()[0][:2]
 try:
-    t = gettext.translation('pywriter', LOCALE_PATH, languages=[CURRENT_LOCALE])
+    t = gettext.translation('pywriter', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
     _ = t.gettext
 except:
 
     def _(message):
         return message
 
-__all__ = ['ERROR', '_', 'LOCALE_PATH', 'CURRENT_LOCALE']
+__all__ = ['ERROR', '_', 'LOCALE_PATH', 'CURRENT_LANGUAGE']
