@@ -62,7 +62,7 @@ class HtmlManuscript(HtmlFile):
         if self._scId is not None:
             if tag == 'div':
                 text = ''.join(self._lines)
-                self.scenes[self._scId].sceneContent = text
+                self.scenes[self._scId].sceneContent = text.rstrip()
                 self._lines = []
                 self._scId = None
             elif tag == 'p':

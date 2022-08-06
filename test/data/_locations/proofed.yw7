@@ -71,7 +71,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <LOCATION>
       <ID>4</ID>
       <Title><![CDATA[Jerling Enterprises]]></Title>
-      <Desc><![CDATA[]]></Desc>
+      <Desc />
       <SortOrder>4</SortOrder>
     </LOCATION>
   </LOCATIONS>

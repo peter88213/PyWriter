@@ -56,7 +56,7 @@ class HtmlItems(HtmlFile):
         """
         if self._itId is not None:
             if tag == 'div':
-                self.items[self._itId].desc = ''.join(self._lines)
+                self.items[self._itId].desc = ''.join(self._lines).rstrip()
                 self._lines = []
                 self._itId = None
             elif tag == 'p':

@@ -26,7 +26,7 @@ class HtmlChapterDesc(HtmlFile):
         """
         if self._chId is not None:
             if tag == 'div':
-                self.chapters[self._chId].desc = ''.join(self._lines)
+                self.chapters[self._chId].desc = ''.join(self._lines).rstrip()
                 self._lines = []
                 self._chId = None
             elif tag == 'p':

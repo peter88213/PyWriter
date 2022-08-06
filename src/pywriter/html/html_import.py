@@ -103,7 +103,7 @@ class HtmlImport(HtmlFile):
         if tag == 'p':
             self._lines.append('\n')
             if self._scId is not None:
-                self.scenes[self._scId].sceneContent = ''.join(self._lines)
+                self.scenes[self._scId].sceneContent = ''.join(self._lines).rstrip()
                 if self.scenes[self._scId].wordCount < self._LOW_WORDCOUNT:
                     self.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Outline')
                 else:

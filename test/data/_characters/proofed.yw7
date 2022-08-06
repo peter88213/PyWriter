@@ -78,7 +78,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <CHARACTER>
       <ID>1</ID>
       <Title><![CDATA[Hal]]></Title>
-      <Desc><![CDATA[]]></Desc>
+      <Desc />
       <ImageFile><![CDATA[Hal1Facp_NEW.jpg]]></ImageFile>
       <SortOrder>1</SortOrder>
       <Notes><![CDATA[About Hal ...]]></Notes>
@@ -90,7 +90,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <CHARACTER>
       <ID>2</ID>
       <Title><![CDATA[Jerling]]></Title>
-      <Desc><![CDATA[]]></Desc>
+      <Desc />
       <SortOrder>2</SortOrder>
       <Notes><![CDATA[About Walter ...]]></Notes>
       <AKA><![CDATA[Walter]]></AKA>
@@ -101,7 +101,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <CHARACTER>
       <ID>3</ID>
       <Title><![CDATA[Clunk]]></Title>
-      <Desc><![CDATA[]]></Desc>
+      <Desc />
       <SortOrder>3</SortOrder>
       <Notes><![CDATA[About Clunk ...]]></Notes>
       <AKA><![CDATA[XG99]]></AKA>
@@ -116,13 +116,13 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <SortOrder>4</SortOrder>
       <Notes><![CDATA[]]></Notes>
       <Bio><![CDATA[A freelance debt collector looking for that one big client to shake down. Has his sights on Hal and Farrell.]]></Bio>
-      <Goals><![CDATA[]]></Goals>
+      <Goals />
       <FullName><![CDATA[Vurdi Makalukar]]></FullName>
     </CHARACTER>
     <CHARACTER>
       <ID>5</ID>
       <Title><![CDATA[Farrell]]></Title>
-      <Desc><![CDATA[]]></Desc>
+      <Desc />
       <SortOrder>5</SortOrder>
       <Notes><![CDATA[]]></Notes>
       <Bio><![CDATA[Younger brother of Gordon Hinchfig, Farrell is a wastrel playboy whose money has been cut off.]]></Bio>
@@ -132,7 +132,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <CHARACTER>
       <ID>6</ID>
       <Title><![CDATA[Terry]]></Title>
-      <Desc><![CDATA[]]></Desc>
+      <Desc />
       <SortOrder>6</SortOrder>
       <Notes><![CDATA[]]></Notes>
       <Bio><![CDATA[Farrell's driver, bodyguard and dirty tricks man. Rough and tough, not someone to cross.]]></Bio>
@@ -141,7 +141,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <CHARACTER>
       <ID>7</ID>
       <Title><![CDATA[Carina]]></Title>
-      <Desc><![CDATA[]]></Desc>
+      <Desc />
       <SortOrder>7</SortOrder>
       <Notes><![CDATA[]]></Notes>
       <Bio><![CDATA[Walter Jerling's private assistant]]></Bio>
@@ -151,7 +151,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <CHARACTER>
       <ID>8</ID>
       <Title><![CDATA[Mike]]></Title>
-      <Desc><![CDATA[]]></Desc>
+      <Desc />
       <SortOrder>8</SortOrder>
       <Notes><![CDATA[]]></Notes>
       <Bio><![CDATA[Computer expert at Hinchfig Enterprises.]]></Bio>
@@ -160,7 +160,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <CHARACTER>
       <ID>9</ID>
       <Title><![CDATA[Gordon]]></Title>
-      <Desc><![CDATA[]]></Desc>
+      <Desc />
       <SortOrder>9</SortOrder>
       <Notes><![CDATA[]]></Notes>
       <Bio><![CDATA[Owner of Hinchfig Enterprises, which he inherited from his parents. His father had business acumen and a flair for new products. Gordon has none, and so he slavishly follows his late father's methods with little of his success. His lack of business nous is the reason the company is in trouble, and the reason Farrell Hinchfig no longer has cash to throw around.]]></Bio>
@@ -173,8 +173,8 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Desc><![CDATA[The Black Gull's flight computer]]></Desc>
       <SortOrder>10</SortOrder>
       <Notes><![CDATA[]]></Notes>
-      <Bio><![CDATA[]]></Bio>
-      <Goals><![CDATA[]]></Goals>
+      <Bio />
+      <Goals />
     </CHARACTER>
     <CHARACTER>
       <ID>11</ID>
@@ -182,17 +182,17 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Desc><![CDATA[Vurdi's enforcer robot.]]></Desc>
       <SortOrder>11</SortOrder>
       <Notes><![CDATA[]]></Notes>
-      <Bio><![CDATA[]]></Bio>
-      <Goals><![CDATA[]]></Goals>
+      <Bio />
+      <Goals />
     </CHARACTER>
     <CHARACTER>
       <ID>12</ID>
       <Title><![CDATA[Portmaster]]></Title>
-      <Desc><![CDATA[]]></Desc>
+      <Desc />
       <SortOrder>12</SortOrder>
       <Notes><![CDATA[]]></Notes>
-      <Bio><![CDATA[]]></Bio>
-      <Goals><![CDATA[]]></Goals>
+      <Bio />
+      <Goals />
       <FullName><![CDATA[Portmaster Linten]]></FullName>
     </CHARACTER>
   </CHARACTERS>

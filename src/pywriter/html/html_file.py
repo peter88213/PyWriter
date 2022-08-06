@@ -92,7 +92,7 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('[/b][b]', '')
         text = text.replace('[/i][i]', '')
         text = text.replace('[/b][b]', '')
-        return text.strip()
+        return text
 
     def _preprocess(self, text):
         """Clean up the HTML code and strip yWriter 7 raw markup.

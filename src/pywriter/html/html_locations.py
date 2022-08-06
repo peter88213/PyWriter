@@ -56,7 +56,7 @@ class HtmlLocations(HtmlFile):
         """
         if self._lcId is not None:
             if tag == 'div':
-                self.locations[self._lcId].desc = ''.join(self._lines)
+                self.locations[self._lcId].desc = ''.join(self._lines).rstrip()
                 self._lines = []
                 self._lcId = None
             elif tag == 'p':

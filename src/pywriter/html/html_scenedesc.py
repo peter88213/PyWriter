@@ -37,7 +37,7 @@ class HtmlSceneDesc(HtmlFile):
                         text = scContent
                     except:
                         pass
-                self.scenes[self._scId].desc = text
+                self.scenes[self._scId].desc = text.rstrip()
                 self._lines = []
                 self._scId = None
             elif tag == 'p':

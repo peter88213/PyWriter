@@ -65,15 +65,15 @@ class HtmlCharacters(HtmlFile):
         if self._crId is not None:
             if tag == 'div':
                 if self._section == 'desc':
-                    self.characters[self._crId].desc = ''.join(self._lines)
+                    self.characters[self._crId].desc = ''.join(self._lines).rstrip()
                     self._lines = []
                     self._section = None
                 elif self._section == 'bio':
-                    self.characters[self._crId].bio = ''.join(self._lines)
+                    self.characters[self._crId].bio = ''.join(self._lines).rstrip()
                     self._lines = []
                     self._section = None
                 elif self._section == 'goals':
-                    self.characters[self._crId].goals = ''.join(self._lines)
+                    self.characters[self._crId].goals = ''.join(self._lines).rstrip()
                     self._lines = []
                     self._section = None
                 elif self._section == 'notes':
