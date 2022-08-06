@@ -68,7 +68,7 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('\r', ' ')
         text = text.replace('\t', ' ')
         while '  ' in text:
-            text = text.replace('  ', ' ').strip()
+            text = text.replace('  ', ' ')
 
         #--- Replace HTML tags by yWriter markup.
         text = text.replace('<i>', '[i]')
@@ -92,7 +92,7 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('[/b][b]', '')
         text = text.replace('[/i][i]', '')
         text = text.replace('[/b][b]', '')
-        return text
+        return text.strip()
 
     def _preprocess(self, text):
         """Clean up the HTML code and strip yWriter 7 raw markup.
