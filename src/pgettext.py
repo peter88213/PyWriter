@@ -54,7 +54,9 @@ class PotFile:
                }
         hdTemplate = Template(potHeader)
         potText = hdTemplate.safe_substitute(map)
-        for message in set(self.msgList):
+        self.msgList = list(set(self.msgList))
+        self.msgList.sort()
+        for message in self.msgList:
             message = message.replace('"', '\\"')
             print(message)
             entry = f'\nmsgid "{message}"\nmsgstr ""\n'

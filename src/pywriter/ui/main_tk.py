@@ -72,14 +72,6 @@ class MainTk(Ui):
         self._title = title
         self._statusText = ''
         self.kwargs = kwargs
-
-        self.m = {
-            'File': ['File', 0],
-            'Open...': ['Open...', 0],
-            'Close': ['Close', 0],
-            'Exit':['Exit', 1],
-            }
-
         self.ywPrj = None
         self.root = tk.Tk()
         self.root.protocol("WM_DELETE_WINDOW", self.on_quit)
@@ -110,25 +102,25 @@ class MainTk(Ui):
         This is a template method that can be overridden by subclasses. 
         """
         self.fileMenu = tk.Menu(self.mainMenu, tearoff=0)
-        self.mainMenu.add_cascade(label=self.m['File'][0], underline=self.m['File'][1], menu=self.fileMenu)
-        self.fileMenu.add_command(label=self.m['Open...'][0], underline=self.m['Open...'][1], accelerator=self._KEY_OPEN_PROJECT[1], command=lambda: self.open_project(''))
-        self.fileMenu.add_command(label=self.m['Close'][0], underline=self.m['Close'][1], command=self.close_project)
-        self.fileMenu.entryconfig(self.m['Close'][0], state='disabled')
-        self.fileMenu.add_command(label=self.m['Exit'][0], underline=self.m['Exit'][1], accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
+        self.mainMenu.add_cascade(label=_('File'), menu=self.fileMenu)
+        self.fileMenu.add_command(label=_('Open...'), accelerator=self._KEY_OPEN_PROJECT[1], command=lambda: self.open_project(''))
+        self.fileMenu.add_command(label=_('Close'), command=self.close_project)
+        self.fileMenu.entryconfig(_('Close'), state='disabled')
+        self.fileMenu.add_command(label=_('Exit'), accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
 
     def disable_menu(self):
         """Disable menu entries when no project is open.
         
         To be extended by subclasses.
         """
-        self.fileMenu.entryconfig(self.m['Close'][0], state='disabled')
+        self.fileMenu.entryconfig(_('Close'), state='disabled')
 
     def enable_menu(self):
         """Enable menu entries when a project is open.
         
         To be extended by subclasses.
         """
-        self.fileMenu.entryconfig(self.m['Close'][0], state='normal')
+        self.fileMenu.entryconfig(_('Close'), state='normal')
 
     def start(self):
         """Start the Tk main loop.

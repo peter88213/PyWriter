@@ -34,7 +34,7 @@ msgid "File is write protected"
 msgstr "Datei ist schreibgeschützt"
 
 msgid "yWriter seems to be open. Please close first"
-msgstr "yWriter scheint offen zu sein. Bitte schließen!"
+msgstr "yWriter scheint offen zu sein. Bitte schließen"
 
 msgid "Can not process file"
 msgstr "Kann Datei nicht verarbeiten"
