@@ -1,1 +1,0 @@
-.\pygettext.py -d pywriter --output-dir=..\i18n\ -o pywriter.pot --no-location ..\src\pywriter\pywriter_globals.py
