@@ -188,7 +188,7 @@ class MainTk(Ui):
             authorView = self.ywPrj.authorName
         else:
             authorView = _('Unknown author')
-        self.root.title(f'{titleView} by {authorView} - {self._title}')
+        self.root.title(f'{titleView} {_("by")} {authorView} - {self._title}')
         self.enable_menu()
         return True
 
