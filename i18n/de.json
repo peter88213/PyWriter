@@ -112,8 +112,6 @@
   "New Location": "Neuer Schauplatz",
   "New Part": "Neuer Teil",
   "New Scene": "Neue Szene",
-  "New chapter": "Neues Kapitel",
-  "New part": "Neuer Teil",
   "New scenes created during conversion.": "W\u00e4hrend der Konvertierung wurden neue Szenen erzeugt",
   "No yWriter project to write": "Kein yWriter-Projekt zu schreiben",
   "Normal": "Normal",
@@ -194,7 +192,7 @@
   "manuscript": "Manuskript",
   "yWriter 7 project": "yWriter 7-Projekt",
   "yWriter XML data files": "yWriter XML-Datendateien",
-  "yWriter seems to be open. Please close first": "yWriter scheint offen zu sein. Bitte schlie\u00dfen!",
+  "yWriter seems to be open. Please close first": "yWriter scheint offen zu sein. Bitte schlie\u00dfen",
   "{0} (last saved on {1})": "{0} (zuletzt gespeichert: {1})",
   "{0} parts, {1} chapters, {2} scenes, {3} words": "{0} Teile, {1} Kapitel, {2} Szenen, {3} W\u00f6rter"
 }

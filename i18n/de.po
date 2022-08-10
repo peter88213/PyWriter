@@ -16,6 +16,14 @@ msgstr ""
 
 
 
+
+
+
+
+
+
+
+
 msgid "Action canceled by user"
 msgstr "Vorgang vom Benutzer abgebrochen"
 
@@ -100,11 +108,14 @@ msgstr "Schauplatzbeschreibungen"
 msgid "Location list"
 msgstr "Schauplatzliste"
 
-msgid "New chapter"
+msgid "New Chapter"
 msgstr "Neues Kapitel"
 
-msgid "New part"
+msgid "New Part"
 msgstr "Neuer Teil"
+
+msgid "New Scene"
+msgstr "Neue Szene"
 
 msgid "New scenes created during conversion."
 msgstr "Während der Konvertierung wurden neue Szenen erzeugt"

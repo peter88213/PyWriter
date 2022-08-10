@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-08-10 16:13:00\n"
+"POT-Creation-Date: 2022-08-10 23:00:35\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,10 +99,13 @@ msgstr ""
 msgid "Location list"
 msgstr ""
 
-msgid "New chapter"
+msgid "New Chapter"
 msgstr ""
 
-msgid "New part"
+msgid "New Part"
+msgstr ""
+
+msgid "New Scene"
 msgstr ""
 
 msgid "New scenes created during conversion."

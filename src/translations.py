@@ -3,7 +3,21 @@
 This module can be used as a standalone script.
 
 Usage: 
-translations.py po-File
+translations.py language-code
+
+File structure:
+
+├── PyWriter/
+│   ├── i18n/
+│   │   └── <language>.json
+│   └── src/
+│       └── translations.py
+└── <project>/
+    ├── i18n/ 
+    │   ├── messages.pot
+    │   └── <language>.po
+    └── src/
+        └── <calling script>
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -12,6 +26,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import sys
 import os
 import json
+
+POT_PATH = '../i18n'
+POT_FILE = 'messages.pot'
+JSON_PATH = '../../PyWriter/i18n'
 
 
 class Translations:
@@ -23,13 +41,10 @@ class Translations:
     - The JSON dictionary is updated by translations found in the initial '.po' file.
     """
 
-    def __init__(self, poFile):
-        self.poFile = poFile.replace('\\', '/')
-        self.lngFile = f'{os.path.splitext(self.poFile)[0]}.json'
-        filePath = os.path.dirname(self.poFile)
-        if not filePath:
-            filePath = '.'
-        self.potFile = f'{filePath}/messages.pot'
+    def __init__(self, languageCode):
+        self.poFile = f'{POT_PATH}/{languageCode}.po'
+        self.potFile = f'{POT_PATH}/{POT_FILE}'
+        self.lngFile = f'{JSON_PATH}/{languageCode}.json'
         self.msgDict = {}
         self.msgList = []
         self.header = ''
@@ -182,7 +197,7 @@ class Translations:
         return message
 
 
-def main(poFileName):
+def main(languageCode):
     """Update a '.po' translation file.
     
     - Add missing entries from the '.pot' template file.
@@ -192,7 +207,7 @@ def main(poFileName):
     Return True, if all messages have translations.
     Return False, if messages need to be translated. 
     """
-    translations = Translations(poFileName)
+    translations = Translations(languageCode)
     translations.read_json()
     translations.read_pot()
     translations.read_po()

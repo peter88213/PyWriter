@@ -80,7 +80,7 @@ class Splitter:
                     title = parent.title
                 newScene.title = f'{title} Split: {splitCount}'
             else:
-                newScene.title = f'New scene Split: {splitCount}'
+                newScene.title = f'_("New Scene") Split: {splitCount}'
             if desc:
                 newScene.desc = desc
             if parent.desc and not parent.desc.startswith(WARNING):
@@ -168,7 +168,7 @@ class Splitter:
                         chIdMax += 1
                         chapterId = str(chIdMax)
                         if not title:
-                            title = _('New chapter')
+                            title = _('New Chapter')
                         create_chapter(chapterId, title, desc, 0)
                         srtChapters.append(chapterId)
                         scenesSplit = True
@@ -184,7 +184,7 @@ class Splitter:
                         chIdMax += 1
                         chapterId = str(chIdMax)
                         if not title:
-                            title = _('New part')
+                            title = _('New Part')
                         create_chapter(chapterId, title, desc, 1)
                         srtChapters.append(chapterId)
                     elif not inScene:
