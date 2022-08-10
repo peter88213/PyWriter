@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-08-08 21:29:52\n"
+"POT-Creation-Date: 2022-08-10 09:37:50\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,6 +99,15 @@ msgstr ""
 msgid "Location list"
 msgstr ""
 
+msgid "New chapter"
+msgstr ""
+
+msgid "New part"
+msgstr ""
+
+msgid "New scenes created during conversion."
+msgstr ""
+
 msgid "No yWriter project to write"
 msgstr ""
 
@@ -157,6 +166,9 @@ msgid "Work in progress"
 msgstr ""
 
 msgid "Wrong csv structure"
+msgstr ""
+
+msgid "by"
 msgstr ""
 
 msgid "manuscript"

@@ -14,83 +14,173 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 
-msgid "by"
-msgstr "von"
 
-msgid "File written"
-msgstr "Datei gespeichert"
-
-msgid "Cannot write file"
-msgstr "Kann Datei nicht schreiben"
-
-msgid "Cannot create file"
-msgstr "Kann Datei nicht erzeugen"
-
-msgid "Cannot create directory"
-msgstr "Kann Verzeichnis nicht erzeugen"
-
-msgid "Cannot overwrite file"
-msgstr "Kann Datei nicht überschreiben"
-
-msgid "File is write protected"
-msgstr "Datei ist schreibgeschützt"
-
-msgid "yWriter seems to be open. Please close first"
-msgstr "yWriter scheint offen zu sein. Bitte schließen"
-
-msgid "Can not process file"
-msgstr "Kann Datei nicht verarbeiten"
-
-msgid "File not found"
-msgstr "Datei nicht gefunden"
-
-msgid "File already exists"
-msgstr "Datei existiert bereits"
-
-msgid "This document is not meant to be written back"
-msgstr "Dieses Dokument ist nicht zum Zurückschreiben gedacht"
-
-msgid "File type is not supported"
-msgstr "Dateityp wird nicht unterstützt"
-
-msgid "Target is not of the supported type"
-msgstr "Ziel ist kein unterstützter Typ"
 
 msgid "Action canceled by user"
 msgstr "Vorgang vom Benutzer abgebrochen"
 
-msgid "Export type is not supported"
-msgstr "Exporttyp nicht unterstützt"
+msgid "Brief synopsis"
+msgstr "Kurzzusammenfassung"
 
-msgid "No yWriter project to write"
-msgstr "Kein yWriter-Projekt zu schreiben"
+msgid "Can not process file"
+msgstr "Kann Datei nicht verarbeiten"
 
-msgid "Wrong csv structure"
-msgstr "Falsche csv-Struktur"
+msgid "Cannot create directory"
+msgstr "Kann Verzeichnis nicht erzeugen"
+
+msgid "Cannot create file"
+msgstr "Kann Datei nicht erzeugen"
+
+msgid "Cannot overwrite file"
+msgstr "Kann Datei nicht überschreiben"
 
 msgid "Cannot parse File"
 msgstr "Kann Datei nicht parsen"
 
-msgid "Overwrite existing file"
-msgstr "Datei überschreiben"
+msgid "Cannot write file"
+msgstr "Kann Datei nicht schreiben"
 
-msgid "WARNING"
-msgstr "WARNUNG"
+msgid "Chapter descriptions"
+msgstr "Kapitelbeschreibung"
 
-msgid "Quit"
+msgid "Character descriptions"
+msgstr "Figurenbeschreibung"
+
+msgid "Character list"
+msgstr "Figurenliste"
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Create a yWriter project file from {0}\nNew project: \"{1}\""
+msgstr "Erzeuge eine yWriter-Projektdatei aus {0}.n\nNeues Projekt: \"{1}\""
+
+msgid "Cross reference"
+msgstr "Querverweise"
+
+msgid "Editable manuscript"
+msgstr "Manuskript zum Editieren"
+
+msgid "Exit"
 msgstr "Beenden"
 
-msgid "Open"
-msgstr "Öffnen"
+msgid "Export type is not supported"
+msgstr "Exporttyp nicht unterstützt"
 
-msgid "Overwrite existing file \"{}\"?"
-msgstr "Bestehende Datei \"{}\" überschreiben?"
+msgid "File"
+msgstr "Datei"
+
+msgid "File already exists"
+msgstr "Datei existiert bereits"
+
+msgid "File is write protected"
+msgstr "Datei ist schreibgeschützt"
+
+msgid "File not found"
+msgstr "Datei nicht gefunden"
+
+msgid "File type is not supported"
+msgstr "Dateityp wird nicht unterstützt"
+
+msgid "File written"
+msgstr "Datei gespeichert"
 
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""
 
+msgid "Item descriptions"
+msgstr "Gegenstandsbeschreibungen"
+
+msgid "Item list"
+msgstr "Gegenstandsliste"
+
+msgid "Location descriptions"
+msgstr "Schauplatzbeschreibungen"
+
+msgid "Location list"
+msgstr "Schauplatzliste"
+
+msgid "New chapter"
+msgstr "Neues Kapitel"
+
+msgid "New part"
+msgstr "Neuer Teil"
+
+msgid "New scenes created during conversion."
+msgstr "Während der Konvertierung wurden neue Szenen erzeugt"
+
+msgid "No yWriter project to write"
+msgstr "Kein yWriter-Projekt zu schreiben"
+
+msgid "Notes chapters"
+msgstr "Notizenkapitel"
+
+msgid "Novel"
+msgstr "Roman"
+
+msgid "Novel outline"
+msgstr "Romanstruktur"
+
+msgid "Open"
+msgstr "Öffnen"
+
+msgid "Open..."
+msgstr "Öffnen..."
+
+msgid "Overwrite existing file \"{}\"?"
+msgstr "Bestehende Datei \"{}\" überschreiben?"
+
+msgid "Part descriptions"
+msgstr "Teilebeschreibungen"
+
+msgid "Quit"
+msgstr "Beenden"
+
+msgid "Run"
+msgstr "Start"
+
+msgid "Scene descriptions"
+msgstr "Szenebeschreibungen"
+
+msgid "Scene list"
+msgstr "Szenenliste"
+
+msgid "Swap"
+msgstr "Richtung wechseln"
+
+msgid "Tagged manuscript for proofing"
+msgstr "Manuskript mit Markierungen zum Überarbeiten"
+
+msgid "This document is not meant to be written back"
+msgstr "Dieses Dokument ist nicht zum Zurückschreiben gedacht"
+
+msgid "Unknown author"
+msgstr "Unbekannter Autor"
+
+msgid "Untitled yWriter project"
+msgstr "yWriter-Projekt ohne Titel"
+
+msgid "WARNING"
+msgstr "WARNUNG"
+
 msgid "Work in progress"
 msgstr "Manuskript in Arbeit"
 
+msgid "Wrong csv structure"
+msgstr "Falsche csv-Struktur"
+
+msgid "by"
+msgstr "von"
+
+msgid "manuscript"
+msgstr "Manuskript"
+
 msgid "yWriter 7 project"
 msgstr "yWriter 7-Projekt"
+
+msgid "yWriter XML data files"
+msgstr "yWriter XML-Datendateien"
+
+msgid "yWriter seems to be open. Please close first"
+msgstr "yWriter scheint offen zu sein. Bitte schließen"
+

@@ -4,6 +4,7 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.pywriter_globals import *
 
 
 class Splitter:
@@ -167,7 +168,7 @@ class Splitter:
                         chIdMax += 1
                         chapterId = str(chIdMax)
                         if not title:
-                            title = 'New chapter'
+                            title = _('New chapter')
                         create_chapter(chapterId, title, desc, 0)
                         srtChapters.append(chapterId)
                         scenesSplit = True
@@ -183,7 +184,7 @@ class Splitter:
                         chIdMax += 1
                         chapterId = str(chIdMax)
                         if not title:
-                            title = 'New part'
+                            title = _('New part')
                         create_chapter(chapterId, title, desc, 1)
                         srtChapters.append(chapterId)
                     elif not inScene:

@@ -36,7 +36,13 @@ class ImportTargetFactory(FileFactory):
         fileName, __ = os.path.splitext(sourcePath)
         sourceSuffix = kwargs['suffix']
         if sourceSuffix:
-            ywPathBasis = fileName.split(sourceSuffix)[0]
+            # Remove the suffix from the source file name.
+            # This should also work if the file name already contains the suffix,
+            # e.g. "test_notes_notes.odt".
+            e = fileName.split(sourceSuffix)
+            if len(e) > 1:
+                e.pop()
+            ywPathBasis = ''.join(e)
         else:
             ywPathBasis = fileName
 
