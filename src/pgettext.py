@@ -87,11 +87,28 @@ class PotFile:
                     self.scan_dir(entry.path)
 
 
+def main(path):
+    # Generate a template file (pot) for message translation.
+    potFile = '../i18n/messages.pot'
+    print(f'Writing "{potFile}" ...')
+    if os.path.isfile(potFile):
+        os.replace(potFile, f'{potFile}.bak')
+        backedUp = True
+    else:
+        backedUp = False
+    try:
+        pot = PotFile(potFile)
+        pot.scan_dir(path)
+        pot.write_pot()
+    except:
+        if backedUp:
+            os.replace(f'{potFile}.bak', potFile)
+        print(f'ERROR: Cannot write file: "{potFile}".')
+
+
 if __name__ == '__main__':
     try:
         path = sys.argv[1]
     except:
         path = '.'
-    pot = PotFile('messages.pot')
-    pot.scan_dir(path)
-    pot.write_pot()
+    main(path)

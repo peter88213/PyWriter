@@ -74,6 +74,7 @@
   "Export part descriptions for editing": "Teilebeschreibungen zum Editieren exportieren",
   "Export scene descriptions for editing": "Szenenbeschreibungen zum Editieren exportieren",
   "Export scene list (spreadsheet)": "Szenenliste exportieren (Tabelle)",
+  "Export to yWriter": "Zu yWriter exportieren",
   "Export type is not supported": "Exporttyp nicht unterst\u00fctzt",
   "File": "Datei",
   "File already exists": "Datei existiert bereits",
@@ -86,6 +87,7 @@
   "Full name": "Vollst. Name",
   "Goal": "Ziel",
   "Goals": "Ziele",
+  "Import from yWriter": "Aus yWriter importieren",
   "Input: {0} \\\"{1}\\\"\\nOutput: {2} \\\"{3}\\\"": "Quelle: {0} \\\"{1}\\\"\\nZiel: {2} \\\"{3}\\\"",
   "Item": "Gegenstand",
   "Item descriptions": "Gegenstandsbeschreibungen",
@@ -134,6 +136,8 @@
   "Part descriptions": "Teilebeschreibungen",
   "Part number prefix": "Pr\u00e4fix Teilenummer",
   "Part number suffix": "Suffix Teilenummer",
+  "Please choose a yWriter 7 project": "Bitte ein yWriter-Projekt w\u00e4hlen",
+  "Please close document first": "Bitte zuerst das Dokument schlie\u00dfen",
   "Promote Chapter": "Kapitel hochstufen",
   "Promote chapter \\\"{}\\\" to part?": "Kapitel \\\"{}\\\" zum Teil hochstufen?",
   "Quit": "Beenden",
@@ -190,7 +194,7 @@
   "manuscript": "Manuskript",
   "yWriter 7 project": "yWriter 7-Projekt",
   "yWriter XML data files": "yWriter XML-Datendateien",
-  "yWriter seems to be open. Please close first": "yWriter scheint offen zu sein. Bitte schlie\u00dfen",
+  "yWriter seems to be open. Please close first": "yWriter scheint offen zu sein. Bitte schlie\u00dfen!",
   "{0} (last saved on {1})": "{0} (zuletzt gespeichert: {1})",
   "{0} parts, {1} chapters, {2} scenes, {3} words": "{0} Teile, {1} Kapitel, {2} Szenen, {3} W\u00f6rter"
 }
