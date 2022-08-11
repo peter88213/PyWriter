@@ -348,6 +348,11 @@ thus allowing custom classes (extends the API).
 - Add internationalization according to GNU coding standards (extends the API).
 - Provide full German localization.
 
+#### v5.22
+
+- New document types for "ToDo" chapters import and export.
+
+
 ## Future:
 
 #### Full LibreOffice/OpenOffice integration
