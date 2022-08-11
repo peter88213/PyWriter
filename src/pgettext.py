@@ -4,7 +4,7 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-VERSION = '0.2'
+VERSION = '0.3'
 
 import os
 import sys
@@ -22,6 +22,7 @@ potHeader = '''\
 #
 msgid ""
 msgstr ""
+"Project-Id-Version: ${appVersion}\\n"
 "POT-Creation-Date: ${datetime}\\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n"
@@ -32,6 +33,7 @@ msgstr ""
 "Generated-By: PyWriter pgettext.py ${version}\\n"
 
 '''
+POT_FILE = '../i18n/messages.pot'
 
 
 class PotFile:
@@ -42,23 +44,24 @@ class PotFile:
     This works also for Python 3.6+ f-strings.   
     """
 
-    def __init__(self, filePath='messages.pot', app=''):
+    def __init__(self, filePath='messages.pot', app='', appVersion='unknown'):
         self.filePath = filePath
         self.msgList = []
         self.app = app
+        self.appVersion = appVersion
 
     def write_pot(self):
-        map = {'app':self.app,
-               'datetime':datetime.today().replace(microsecond=0).isoformat(sep=' '),
-               'version': VERSION,
-               }
+        msgMap = {'app':self.app,
+                'appVersion': self.appVersion,
+                'datetime':datetime.today().replace(microsecond=0).isoformat(sep=' '),
+                'version': VERSION,
+                }
         hdTemplate = Template(potHeader)
-        potText = hdTemplate.safe_substitute(map)
+        potText = hdTemplate.safe_substitute(msgMap)
         self.msgList = list(set(self.msgList))
         self.msgList.sort()
         for message in self.msgList:
             message = message.replace('"', '\\"')
-            print(message)
             entry = f'\nmsgid "{message}"\nmsgstr ""\n'
             potText += entry
         with open(self.filePath, 'w', encoding='utf-8') as f:
@@ -89,21 +92,20 @@ class PotFile:
 
 def main(path):
     # Generate a template file (pot) for message translation.
-    potFile = '../i18n/messages.pot'
-    print(f'Writing "{potFile}" ...')
-    if os.path.isfile(potFile):
-        os.replace(potFile, f'{potFile}.bak')
+    print(f'Writing "{POT_FILE}" ...')
+    if os.path.isfile(POT_FILE):
+        os.replace(POT_FILE, f'{POT_FILE}.bak')
         backedUp = True
     else:
         backedUp = False
     try:
-        pot = PotFile(potFile)
+        pot = PotFile(POT_FILE)
         pot.scan_dir(path)
         pot.write_pot()
     except:
         if backedUp:
-            os.replace(f'{potFile}.bak', potFile)
-        print(f'ERROR: Cannot write file: "{potFile}".')
+            os.replace(f'{POT_FILE}.bak', POT_FILE)
+        print(f'ERROR: Cannot write file: "{POT_FILE}".')
 
 
 if __name__ == '__main__':

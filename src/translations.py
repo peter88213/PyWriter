@@ -40,6 +40,7 @@ poHeader = '''\
 #
 msgid ""
 msgstr ""
+"Project-Id-Version: ${appVersion}\\n"
 ${pot_creation}
 "PO-Revision-Date: ${datetime}\\n"
 "Last-Translator: Peter Triesberger\\n"
@@ -61,7 +62,7 @@ class Translations:
     - The JSON dictionary is updated by translations found in the initial '.po' file.
     """
 
-    def __init__(self, languageCode, app=''):
+    def __init__(self, languageCode, app='', appVersion='unknown'):
         self.poFile = f'{POT_PATH}/{languageCode}.po'
         self.potFile = f'{POT_PATH}/{POT_FILE}'
         self.lngFile = f'{JSON_PATH}/{languageCode}.json'
@@ -69,6 +70,7 @@ class Translations:
         self.msgList = []
         self.header = ''
         self.app = app
+        self.appVersion = appVersion
         self.currentDateTime = datetime.today().replace(microsecond=0).isoformat(sep=" ")
         self.potCreation = f'"POT-Creation-Date: {self.currentDateTime}\\n"'
 
@@ -158,12 +160,13 @@ class Translations:
             elif inHeader:
                 if line.startswith('msgid "'):
                     # Create header.
-                    map = {'app': self.app,
-                           'datetime':self.currentDateTime,
-                           'pot_creation': self.potCreation,
-                           }
+                    msgMap = {'app': self.app,
+                              'appVersion': self.appVersion,
+                              'datetime':self.currentDateTime,
+                              'pot_creation': self.potCreation,
+                              }
                     hdTemplate = Template(poHeader)
-                    self.header = hdTemplate.safe_substitute(map)
+                    self.header = hdTemplate.safe_substitute(msgMap)
                     inHeader = False
             if not inHeader:
                 if line.startswith('msgid "'):
@@ -223,7 +226,7 @@ class Translations:
         return message
 
 
-def main(languageCode, app=''):
+def main(languageCode, app='', appVersion='unknown'):
     """Update a '.po' translation file.
     
     - Add missing entries from the '.pot' template file.
@@ -233,7 +236,7 @@ def main(languageCode, app=''):
     Return True, if all messages have translations.
     Return False, if messages need to be translated. 
     """
-    translations = Translations(languageCode, app)
+    translations = Translations(languageCode, app, appVersion)
     translations.read_json()
     translations.read_pot()
     translations.read_po()
