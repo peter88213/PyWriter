@@ -64,7 +64,7 @@ class OdtTodo(OdtManuscript):
             # The order counts; be aware that "Todo" chapters are always unused.
             doNotExport = False
             template = None
-            if self.chapters[chId].chType == 1:
+            if self.chapters[chId].chType == 2:
                 # Chapter is "Todo" type (implies "unused").
                 if self.chapters[chId].chLevel == 1:
                     # Chapter is "Todo Part" type.
