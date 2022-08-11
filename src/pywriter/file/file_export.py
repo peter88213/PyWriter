@@ -30,6 +30,7 @@ class FileExport(Novel):
     _partTemplate = ''
     _chapterTemplate = ''
     _notesPartTemplate = ''
+    _todoPartTemplate = ''
     _notesChapterTemplate = ''
     _todoChapterTemplate = ''
     _unusedChapterTemplate = ''
@@ -566,8 +567,12 @@ class FileExport(Novel):
             if sceneCount > 0 and notExportCount == sceneCount:
                 doNotExport = True
             if self.chapters[chId].chType == 2:
-                # Chapter is "ToDo" type (implies "unused").
-                if self._todoChapterTemplate:
+                # Chapter is "Todo" type (implies "unused").
+                if self.chapters[chId].chLevel == 1:
+                    # Chapter is "Todo Part" type.
+                    if self._todoPartTemplate:
+                        template = Template(self._todoPartTemplate)
+                elif self._todoChapterTemplate:
                     template = Template(self._todoChapterTemplate)
             elif self.chapters[chId].chType == 1:
                 # Chapter is "Notes" type (implies "unused").
