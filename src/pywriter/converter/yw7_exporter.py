@@ -18,6 +18,7 @@ from pywriter.odt.odt_items import OdtItems
 from pywriter.odt.odt_locations import OdtLocations
 from pywriter.odt.odt_xref import OdtXref
 from pywriter.odt.odt_notes import OdtNotes
+from pywriter.odt.odt_todo import OdtTodo
 from pywriter.ods.ods_charlist import OdsCharList
 from pywriter.ods.ods_loclist import OdsLocList
 from pywriter.ods.ods_itemlist import OdsItemList
@@ -45,6 +46,7 @@ class Yw7Exporter(YwCnvFf):
                              OdtLocations,
                              OdtXref,
                              OdtNotes,
+                             OdtTodo,
                              OdsCharList,
                              OdsLocList,
                              OdsItemList,

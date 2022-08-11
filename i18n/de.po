@@ -3,8 +3,9 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-08-10 23:00:35\n"
-"PO-Revision-Date: 2022-08-11 12:48:28\n"
+"Project-Id-Version: unknown\n"
+"POT-Creation-Date: 2022-08-11 17:17:01\n"
+"PO-Revision-Date: 2022-08-11 17:18:48\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -152,6 +153,9 @@ msgstr "Manuskript mit Markierungen zum Überarbeiten"
 
 msgid "This document is not meant to be written back"
 msgstr "Dieses Dokument ist nicht zum Zurückschreiben gedacht"
+
+msgid "Todo chapters"
+msgstr "Planungskapitel"
 
 msgid "Unknown author"
 msgstr "Unbekannter Autor"
