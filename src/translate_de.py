@@ -29,12 +29,16 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from shutil import copyfile
 import translations
 import msgfmt
 
+APP_NAME = 'PyWriter'
 PO_PATH = '../i18n/de.po'
 MO_PATH = '../i18n/locale/de/LC_MESSAGES/pywriter.mo'
+MO_COPY = '../src/sample/locale/de/LC_MESSAGES/pywriter.mo'
 
-if translations.main('de'):
+if translations.main('de', app=APP_NAME):
     print(f'Writing "{MO_PATH}" ...')
     msgfmt.make(PO_PATH, MO_PATH)
+    copyfile(MO_PATH, MO_COPY)

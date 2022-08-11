@@ -4,7 +4,7 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-VERSION = '0.1'
+VERSION = '0.2'
 
 import os
 import sys
@@ -17,21 +17,19 @@ msgPatterns = [re.compile('_\(\"(.+?)\"\)'),
               ]
 
 potHeader = '''\
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# ${app} Dictionary
+# Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\\n"
 "POT-Creation-Date: ${datetime}\\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n"
-"Language-Team: LANGUAGE <LL@li.org>\\n"
+"Language: LANGUAGE\\n"
 "MIME-Version: 1.0\\n"
 "Content-Type: text/plain; charset=UTF-8\\n"
 "Content-Transfer-Encoding: 8bit\\n"
-"Generated-By: PyWriter gettext.py ${version}\\n"
+"Generated-By: PyWriter pgettext.py ${version}\\n"
 
 '''
 
@@ -44,12 +42,14 @@ class PotFile:
     This works also for Python 3.6+ f-strings.   
     """
 
-    def __init__(self, filePath='messages.pot'):
+    def __init__(self, filePath='messages.pot', app=''):
         self.filePath = filePath
         self.msgList = []
+        self.app = app
 
     def write_pot(self):
-        map = {'datetime':datetime.today().replace(microsecond=0).isoformat(sep=' '),
+        map = {'app':self.app,
+               'datetime':datetime.today().replace(microsecond=0).isoformat(sep=' '),
                'version': VERSION,
                }
         hdTemplate = Template(potHeader)

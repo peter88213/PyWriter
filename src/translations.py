@@ -23,13 +23,33 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+
 import sys
 import os
 import json
+from string import Template
+from datetime import datetime
 
 POT_PATH = '../i18n'
 POT_FILE = 'messages.pot'
 JSON_PATH = '../../PyWriter/i18n'
+
+poHeader = '''\
+# ${app} Dictionary (English-German)
+# Copyright (C) 2022 Peter Triesberger
+#
+msgid ""
+msgstr ""
+${pot_creation}
+"PO-Revision-Date: ${datetime}\\n"
+"Last-Translator: Peter Triesberger\\n"
+"Language: de\\n"
+"MIME-Version: 1.0\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+
+
+'''
 
 
 class Translations:
@@ -41,13 +61,42 @@ class Translations:
     - The JSON dictionary is updated by translations found in the initial '.po' file.
     """
 
-    def __init__(self, languageCode):
+    def __init__(self, languageCode, app=''):
         self.poFile = f'{POT_PATH}/{languageCode}.po'
         self.potFile = f'{POT_PATH}/{POT_FILE}'
         self.lngFile = f'{JSON_PATH}/{languageCode}.json'
         self.msgDict = {}
         self.msgList = []
         self.header = ''
+        self.app = app
+        self.currentDateTime = datetime.today().replace(microsecond=0).isoformat(sep=" ")
+        self.potCreation = f'"POT-Creation-Date: {self.currentDateTime}\\n"'
+
+    def read_pot(self):
+        """Read the messages of the '.pot' file.
+        
+        Parse the file and collect messages in msgList.
+        """
+        msgCount = 0
+        print(f'Reading "{self.potFile}" ...')
+        with open(self.potFile, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+        inHeader = True
+        for line in lines:
+            line = line.strip()
+            if line.startswith('msgid ""'):
+                pass
+            elif inHeader:
+                if line.startswith('"POT-Creation-Date'):
+                    self.potCreation = line
+                elif line.startswith('msgid "'):
+                    inHeader = False
+            if not inHeader:
+                if line.startswith('msgid "'):
+                    self.msgList.append(self._extract_text('msgid "', line))
+                    msgCount += 1
+            self.msgList.sort()
+        print(f'{msgCount} entries read.')
 
     def read_json(self):
         """Read a JSON translation file and add the translations to msgDict.
@@ -92,34 +141,6 @@ class Translations:
             print(f'ERROR: Cannot write file: "{self.lngFile}".')
             return False
 
-    def read_pot(self):
-        """Read the messages of the '.pot' file.
-        
-        Parse the file and collect messages in msgList.
-        """
-        msgCount = 0
-        print(f'Reading "{self.potFile}" ...')
-        with open(self.potFile, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-        inHeader = True
-        headerLines = []
-        for line in lines:
-            line = line.strip()
-            if line.startswith('msgid ""'):
-                headerLines.append(line)
-            elif inHeader:
-                if line.startswith('msgid "'):
-                    inHeader = False
-                    self.header = '\n'.join(headerLines)
-                else:
-                    headerLines.append(line)
-            if not inHeader:
-                if line.startswith('msgid "'):
-                    self.msgList.append(self._extract_text('msgid "', line))
-                    msgCount += 1
-            self.msgList.sort()
-        print(f'{msgCount} entries read.')
-
     def read_po(self):
         """Read the existing translations of the '.po' file.
         
@@ -130,17 +151,20 @@ class Translations:
         with open(self.poFile, 'r', encoding='utf-8') as f:
             lines = f.readlines()
         inHeader = True
-        headerLines = []
         for line in lines:
             line = line.strip()
             if line.startswith('msgid ""'):
-                headerLines.append(line)
+                pass
             elif inHeader:
                 if line.startswith('msgid "'):
+                    # Create header.
+                    map = {'app': self.app,
+                           'datetime':self.currentDateTime,
+                           'pot_creation': self.potCreation,
+                           }
+                    hdTemplate = Template(poHeader)
+                    self.header = hdTemplate.safe_substitute(map)
                     inHeader = False
-                    self.header = '\n'.join(headerLines)
-                else:
-                    headerLines.append(line)
             if not inHeader:
                 if line.startswith('msgid "'):
                     message = self._extract_text('msgid "', line)
@@ -157,7 +181,7 @@ class Translations:
         Return True, if all messages have translations.
         Return False, if messages need to be translated. 
         """
-        lines = [self.header, '\n', '\n']
+        lines = [self.header]
         missingCount = 0
         msgCount = 0
         for message in self.msgList:
@@ -165,8 +189,10 @@ class Translations:
                 translation = self.msgDict[message]
             except:
                 translation = ''
-                missingCount += 1
             lines.append(f'msgid "{message}"\nmsgstr "{translation}"\n\n')
+            if not translation:
+                print(f'Translation missing for "{message}".')
+                missingCount += 1
             msgCount += 1
         print(f'Writing "{self.poFile}" ...')
         if os.path.isfile(self.poFile):
@@ -197,7 +223,7 @@ class Translations:
         return message
 
 
-def main(languageCode):
+def main(languageCode, app=''):
     """Update a '.po' translation file.
     
     - Add missing entries from the '.pot' template file.
@@ -207,7 +233,7 @@ def main(languageCode):
     Return True, if all messages have translations.
     Return False, if messages need to be translated. 
     """
-    translations = Translations(languageCode)
+    translations = Translations(languageCode, app)
     translations.read_json()
     translations.read_pot()
     translations.read_po()
