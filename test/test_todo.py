@@ -1,19 +1,19 @@
 """Integration tests for the pyWriter project.
 
-Test the conversion of the "Notes" chapters.
+Test the conversion of the "Todo" chapters.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.html.html_notes import HtmlNotes
-from pywriter.odt.odt_notes import OdtNotes
+from pywriter.html.html_todo import HtmlTodo
+from pywriter.odt.odt_todo import OdtTodo
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 
 
 class NrmOpr(ImportExportTest, unittest.TestCase):
-    _importClass = HtmlNotes
-    _exportClass = OdtNotes
+    _importClass = HtmlTodo
+    _exportClass = OdtTodo
 
     # The test methods must be defined here to identify the source of failure.
 
