@@ -1,11 +1,11 @@
-#  Dictionary (English-German)
+# PyWriter Dictionary (English-German)
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: unknown\n"
-"POT-Creation-Date: 2022-08-11 17:17:01\n"
-"PO-Revision-Date: 2022-08-12 11:37:28\n"
+"POT-Creation-Date: 2022-08-12 21:55:20\n"
+"PO-Revision-Date: 2022-08-12 21:55:56\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,9 @@ msgstr ""
 
 msgid "Action canceled by user"
 msgstr "Vorgang vom Benutzer abgebrochen"
+
+msgid "Bio"
+msgstr "Biographie"
 
 msgid "Brief synopsis"
 msgstr "Kurzzusammenfassung"
@@ -55,6 +58,9 @@ msgstr "Erzeuge eine yWriter-Projektdatei aus {0}.n\nNeues Projekt: \"{1}\""
 msgid "Cross reference"
 msgstr "Querverweise"
 
+msgid "Description"
+msgstr "Beschreibung"
+
 msgid "Editable manuscript"
 msgstr "Manuskript zum Bearbeiten"
 
@@ -81,6 +87,9 @@ msgstr "Dateityp wird nicht unterstützt"
 
 msgid "File written"
 msgstr "Datei gespeichert"
+
+msgid "Goals"
+msgstr "Ziele"
 
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""
@@ -111,6 +120,9 @@ msgstr "Während der Konvertierung wurden neue Szenen erzeugt"
 
 msgid "No yWriter project to write"
 msgstr "Kein yWriter-Projekt zu schreiben"
+
+msgid "Notes"
+msgstr "Notizen"
 
 msgid "Notes chapters"
 msgstr "Notizen-Kapitel"
