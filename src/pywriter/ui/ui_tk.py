@@ -4,7 +4,7 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from tkinter import *
+import tkinter as tk
 from tkinter import messagebox
 from pywriter.pywriter_globals import *
 from pywriter.ui.ui import Ui
@@ -33,15 +33,15 @@ class UiTk(Ui):
         Extends the superclass constructor.
         """
         super().__init__(title)
-        self.root = Tk()
+        self.root = tk.Tk()
         self.root.minsize(400, 150)
-        self.root.resizable(width=FALSE, height=FALSE)
+        self.root.resizable(width=tk.FALSE, height=tk.FALSE)
         self.root.title(title)
-        self._appInfo = Label(self.root, text='')
+        self._appInfo = tk.Label(self.root, text='')
         self._appInfo.pack(padx=20, pady=5)
-        self._processInfo = Label(self.root, text='', padx=20)
+        self._processInfo = tk.Label(self.root, text='', padx=20)
         self._processInfo.pack(pady=20, fill='both')
-        self.root.quitButton = Button(text=_("Quit"), command=quit)
+        self.root.quitButton = tk.Button(text=_("Quit"), command=quit)
         self.root.quitButton.config(height=1, width=10)
         self.root.quitButton.pack(pady=10)
 
@@ -96,7 +96,7 @@ class UiTk(Ui):
         Positional argument:
             open_cmd -- subclass method that opens the file.
         """
-        self.root.openButton = Button(text=_("Open"), command=open_cmd)
+        self.root.openButton = tk.Button(text=_("Open"), command=open_cmd)
         self.root.openButton.config(height=1, width=10)
         self.root.openButton.pack(pady=10)
 
