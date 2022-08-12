@@ -56,7 +56,7 @@ msgid "Cross reference"
 msgstr "Querverweise"
 
 msgid "Editable manuscript"
-msgstr "Manuskript zum Editieren"
+msgstr "Manuskript zum Bearbeiten"
 
 msgid "Exit"
 msgstr "Beenden"
