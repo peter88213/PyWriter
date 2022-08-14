@@ -352,6 +352,9 @@ thus allowing custom classes (extends the API).
 
 - New document types for "ToDo" chapters import and export.
 
+#### v5.24
+
+- Provide a tkinter Rich Text box class.
 
 ## Future:
 
