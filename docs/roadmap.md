@@ -21,7 +21,7 @@ __As of v2.12__ , the following applies to the  __minor versions__ :
 __As of v2.16__ , the following applies:
 
 -  __Major version__  numbers are incremented for API changes which are not backward-compatible.
--  __Minor version__  numbers are incremented for releases which add new, but backward-compatible, API features. The latest minor release with an odd number might belong th the next major release development, thus not being necessarily backward-compatible.
+-  __Minor version__  numbers are incremented for releases which add new, but backward-compatible, API features. The latest minor release with an odd number might belong to the next major release development, thus not being necessarily backward-compatible.
 -  __Patch__  numbers are incremented for minor changes and bug fixes which do not change the API. 
 
 ## Version 1.x: Standalone exporters and importers for proof reading
