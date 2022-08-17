@@ -13,7 +13,6 @@ class Chapter:
         title -- str: chapter title (may be the heading).
         desc -- str: chapter description in a single string.
         chLevel -- int: chapter level (part/chapter).
-        oldType -- int: chapter type (Chapter/Other).
         chType -- int: chapter type yWriter 7.0.7.2+ (Normal/Notes/Todo).
         isUnused -- bool: True, if the chapter is marked "Unused".
         suppressChapterTitle -- bool: uppress chapter title when exporting.
@@ -38,13 +37,6 @@ class Chapter:
         # 0 = chapter level
         # 1 = section level ("this chapter begins a section")
 
-        self.oldType = None
-        # int
-        # xml: <Type>
-        # 0 = chapter type (marked "Chapter")
-        # 1 = other type (marked "Other")
-        # Applies to projects created by a yWriter version prior to 7.0.7.2.
-
         self.chType = None
         # int
         # xml: <ChapterType>
@@ -52,6 +44,11 @@ class Chapter:
         # 1 = Notes
         # 2 = Todo
         # Applies to projects created by yWriter version 7.0.7.2+.
+        #
+        # xml: <Type>
+        # 0 = chapter type (marked "Chapter")
+        # 1 = other type (marked "Other")
+        # Applies to projects created by a yWriter version prior to 7.0.7.2.
 
         self.isUnused = None
         # bool

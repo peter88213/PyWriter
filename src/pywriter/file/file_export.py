@@ -497,13 +497,6 @@ class FileExport(Novel):
                 else:
                     continue
 
-            elif self.chapters[chId].oldType == 1:
-                # Scene is "Info" type (old file format).
-                if self._notesSceneTemplate:
-                    template = Template(self._notesSceneTemplate)
-                else:
-                    continue
-
             elif self.scenes[scId].doNotExport or doNotExport:
                 if self._notExportedSceneTemplate:
                     template = Template(self._notExportedSceneTemplate)
@@ -586,10 +579,6 @@ class FileExport(Novel):
                 # Chapter is "really" unused.
                 if self._unusedChapterTemplate:
                     template = Template(self._unusedChapterTemplate)
-            elif self.chapters[chId].oldType == 1:
-                # Chapter is "Info" type (old file format).
-                if self._notesChapterTemplate:
-                    template = Template(self._notesChapterTemplate)
             elif doNotExport:
                 if self._notExportedChapterTemplate:
                     template = Template(self._notExportedChapterTemplate)
@@ -618,9 +607,6 @@ class FileExport(Novel):
             elif self.chapters[chId].isUnused:
                 if self._unusedChapterEndTemplate:
                     template = Template(self._unusedChapterEndTemplate)
-            elif self.chapters[chId].oldType == 1:
-                if self._notesChapterEndTemplate:
-                    template = Template(self._notesChapterEndTemplate)
             elif doNotExport:
                 if self._notExportedChapterEndTemplate:
                     template = Template(self._notExportedChapterEndTemplate)

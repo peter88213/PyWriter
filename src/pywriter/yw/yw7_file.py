@@ -265,11 +265,12 @@ class Yw7File(Novel):
             else:
                 self.chapters[chId].chLevel = 0
 
-            if chp.find('Type') is not None:
-                self.chapters[chId].oldType = int(chp.find('Type').text)
-
             if chp.find('ChapterType') is not None:
                 self.chapters[chId].chType = int(chp.find('ChapterType').text)
+            elif chp.find('Type') is not None:
+                self.chapters[chId].chType = int(chp.find('Type').text)
+            else:
+                self.chapters[chId].chType = 0
 
             if chp.find('Unused') is not None:
                 self.chapters[chId].isUnused = True
@@ -743,8 +744,6 @@ class Yw7File(Novel):
                 self.chapters[chId].desc = source.chapters[chId].desc
             if source.chapters[chId].chLevel is not None:
                 self.chapters[chId].chLevel = source.chapters[chId].chLevel
-            if source.chapters[chId].oldType is not None:
-                self.chapters[chId].oldType = source.chapters[chId].oldType
             if source.chapters[chId].chType is not None:
                 self.chapters[chId].chType = source.chapters[chId].chType
             if source.chapters[chId].isUnused is not None:
@@ -1115,17 +1114,20 @@ class Yw7File(Novel):
             elif prjChp.chLevel == 1:
                 ET.SubElement(xmlChp, 'SectionStart').text = '-1'
 
-            if prjChp.oldType is not None:
-                try:
-                    xmlChp.find('Type').text = str(prjChp.oldType)
-                except(AttributeError):
-                    ET.SubElement(xmlChp, 'Type').text = str(prjChp.oldType)
-
-            if prjChp.chType is not None:
-                try:
-                    xmlChp.find('ChapterType').text = str(prjChp.chType)
-                except(AttributeError):
-                    ET.SubElement(xmlChp, 'ChapterType').text = str(prjChp.chType)
+            if prjChp.chType is None:
+                prjChp.chType = 0
+            try:
+                xmlChp.find('ChapterType').text = str(prjChp.chType)
+            except(AttributeError):
+                ET.SubElement(xmlChp, 'ChapterType').text = str(prjChp.chType)
+            if prjChp.chType == 0:
+                oldType = '0'
+            else:
+                oldType = '1'
+            try:
+                xmlChp.find('Type').text = oldType
+            except(AttributeError):
+                ET.SubElement(xmlChp, 'Type').text = oldType
 
             if prjChp.isUnused:
                 if xmlChp.find('Unused') is None:

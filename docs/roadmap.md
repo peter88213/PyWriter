@@ -356,6 +356,10 @@ thus allowing custom classes (extends the API).
 
 - Provide a tkinter Rich Text box class.
 
+#### v6.0
+
+- Remove Chapter.oldType from the API. 
+
 ## Future:
 
 #### Full LibreOffice/OpenOffice integration

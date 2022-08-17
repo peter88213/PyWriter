@@ -1518,6 +1518,10 @@ Reinstalling yWriter5 will overwrite this sample project.
 Therefore, rather than modifying this project with your own content, [b]please create a new project for your own work[/b]. ([i]Project - Create Empty Project[/i], or [i]Project - New Project Wizard[/i])
 
 Any new projects created with yWriter5 will not be deleted, overwritten or modified when you uninstall or reinstall the software.]]></SceneContent>
+      <Unused>-1</Unused>
+      <Fields>
+        <Field_SceneType>1</Field_SceneType>
+      </Fields>
     </SCENE>
     <SCENE>
       <ID>121</ID>
@@ -1547,6 +1551,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Info]]></Title>
       <SortOrder>1</SortOrder>
       <Type>1</Type>
+      <ChapterType>1</ChapterType>
       <Scenes>
         <ScID>120</ScID>
       </Scenes>
@@ -1560,6 +1565,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
         <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
       </Fields>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>1</ScID>
       </Scenes>
@@ -1569,6 +1575,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 2]]></Title>
       <SortOrder>3</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>2</ScID>
         <ScID>3</ScID>
@@ -1579,6 +1586,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 3]]></Title>
       <SortOrder>4</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>4</ScID>
       </Scenes>
@@ -1588,6 +1596,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 4]]></Title>
       <SortOrder>5</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>5</ScID>
         <ScID>6</ScID>
@@ -1600,6 +1609,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 5]]></Title>
       <SortOrder>6</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>9</ScID>
         <ScID>10</ScID>
@@ -1614,6 +1624,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
         <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
       </Fields>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>58</ScID>
         <ScID>12</ScID>
@@ -1624,6 +1635,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 7]]></Title>
       <SortOrder>8</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>15</ScID>
       </Scenes>
@@ -1633,6 +1645,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 8]]></Title>
       <SortOrder>9</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>17</ScID>
       </Scenes>
@@ -1642,6 +1655,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 9]]></Title>
       <SortOrder>10</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>19</ScID>
       </Scenes>
@@ -1651,6 +1665,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 10]]></Title>
       <SortOrder>11</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>22</ScID>
       </Scenes>
@@ -1660,6 +1675,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 11]]></Title>
       <SortOrder>12</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>25</ScID>
         <ScID>27</ScID>
@@ -1670,6 +1686,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 12]]></Title>
       <SortOrder>13</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>29</ScID>
         <ScID>31</ScID>
@@ -1680,6 +1697,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 13]]></Title>
       <SortOrder>14</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>34</ScID>
       </Scenes>
@@ -1689,12 +1707,14 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 14]]></Title>
       <SortOrder>15</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
     </CHAPTER>
     <CHAPTER>
       <ID>15</ID>
       <Title><![CDATA[Chapter 15]]></Title>
       <SortOrder>16</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>38</ScID>
         <ScID>40</ScID>
@@ -1705,6 +1725,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 16]]></Title>
       <SortOrder>17</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>43</ScID>
         <ScID>45</ScID>
@@ -1715,6 +1736,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 17]]></Title>
       <SortOrder>18</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>47</ScID>
         <ScID>49</ScID>
@@ -1725,6 +1747,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 18]]></Title>
       <SortOrder>19</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>51</ScID>
         <ScID>53</ScID>
@@ -1735,6 +1758,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 19]]></Title>
       <SortOrder>20</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>55</ScID>
         <ScID>57</ScID>
@@ -1745,6 +1769,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 20]]></Title>
       <SortOrder>21</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>60</ScID>
         <ScID>62</ScID>
@@ -1756,6 +1781,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 21]]></Title>
       <SortOrder>22</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>66</ScID>
         <ScID>68</ScID>
@@ -1766,6 +1792,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 22]]></Title>
       <SortOrder>23</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>71</ScID>
       </Scenes>
@@ -1775,6 +1802,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 23]]></Title>
       <SortOrder>24</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>74</ScID>
       </Scenes>
@@ -1784,6 +1812,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 24]]></Title>
       <SortOrder>25</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>77</ScID>
         <ScID>79</ScID>
@@ -1795,6 +1824,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 25]]></Title>
       <SortOrder>26</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>84</ScID>
         <ScID>86</ScID>
@@ -1805,6 +1835,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 26]]></Title>
       <SortOrder>27</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>89</ScID>
       </Scenes>
@@ -1814,6 +1845,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 27]]></Title>
       <SortOrder>28</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>92</ScID>
         <ScID>94</ScID>
@@ -1824,6 +1856,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 28]]></Title>
       <SortOrder>29</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>96</ScID>
         <ScID>98</ScID>
@@ -1834,6 +1867,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 29]]></Title>
       <SortOrder>30</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>101</ScID>
         <ScID>103</ScID>
@@ -1845,6 +1879,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 30]]></Title>
       <SortOrder>31</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>108</ScID>
         <ScID>110</ScID>
@@ -1856,6 +1891,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 31]]></Title>
       <SortOrder>32</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>114</ScID>
         <ScID>116</ScID>
@@ -1866,6 +1902,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Chapter 32]]></Title>
       <SortOrder>33</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>119</ScID>
       </Scenes>
@@ -1881,6 +1918,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
         <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
       </Fields>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>121</ScID>
       </Scenes>
