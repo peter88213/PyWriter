@@ -148,25 +148,32 @@ class Translations:
         
         Parse the file and collect translations in msgDict.
         """
-        msgCount = 0
+
+        # Create the header.
+        msgMap = {'app': self.app,
+                  'appVersion': self.appVersion,
+                  'datetime':self.currentDateTime,
+                  'pot_creation': self.potCreation,
+                  }
+        hdTemplate = Template(poHeader)
+        self.header = hdTemplate.safe_substitute(msgMap)
+
         print(f'Reading "{self.poFile}" ...')
-        with open(self.poFile, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+        try:
+            with open(self.poFile, 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+        except FileNotFoundError:
+            print('Not found.')
+            return
+
         inHeader = True
+        msgCount = 0
         for line in lines:
             line = line.strip()
             if line.startswith('msgid ""'):
                 pass
             elif inHeader:
                 if line.startswith('msgid "'):
-                    # Create header.
-                    msgMap = {'app': self.app,
-                              'appVersion': self.appVersion,
-                              'datetime':self.currentDateTime,
-                              'pot_creation': self.potCreation,
-                              }
-                    hdTemplate = Template(poHeader)
-                    self.header = hdTemplate.safe_substitute(msgMap)
                     inHeader = False
             if not inHeader:
                 if line.startswith('msgid "'):
