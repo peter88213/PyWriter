@@ -102,10 +102,10 @@ def main(path):
         pot = PotFile(POT_FILE)
         pot.scan_dir(path)
         pot.write_pot()
-    except:
+    except Exception as ex:
         if backedUp:
             os.replace(f'{POT_FILE}.bak', POT_FILE)
-        print(f'ERROR: Cannot write file: "{POT_FILE}".')
+        print(f'ERROR: Cannot write file: "{POT_FILE}".\n{ex}')
 
 
 if __name__ == '__main__':

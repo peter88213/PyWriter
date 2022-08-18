@@ -115,7 +115,8 @@ class Translations:
             print(f'{len(self.msgDict)} translations total.')
             return True
 
-        except:
+        except Exception as ex:
+            print(ex)
             return False
 
     def write_json(self):
@@ -133,14 +134,19 @@ class Translations:
         try:
             with open(self.lngFile, 'w', encoding='utf-8') as f:
                 print(f'Writing "{self.lngFile}" ...')
-                json.dump(self.msgDict, f, sort_keys=True, indent=2)
+                msgDict = {}
+                # dict for non-empty entries
+                for msg in self.msgDict:
+                    if self.msgDict[msg]:
+                        msgDict[msg] = self.msgDict[msg]
+                json.dump(msgDict, f, ensure_ascii=False, sort_keys=True, indent=2)
                 print(f'{len(self.msgDict)} translations written.')
             return True
 
-        except:
+        except Exception as ex:
             if backedUp:
                 os.replace(f'{self.lngFile}.bak', self.lngFile)
-            print(f'ERROR: Cannot write file: "{self.lngFile}".')
+            print(f'ERROR: Cannot write file: "{self.lngFile}".\n{ex}')
             return False
 
     def read_po(self):
@@ -213,10 +219,10 @@ class Translations:
         try:
             with open(self.poFile, 'w', encoding='utf-8') as f:
                 f.writelines(lines)
-        except:
+        except Exception as ex:
             if backedUp:
                 os.replace(f'{self.poFile}.bak', self.poFile)
-            print(f'ERROR: Cannot write file: "{self.poFile}".')
+            print(f'ERROR: Cannot write file: "{self.poFile}".\n{ex}')
             return False
 
         if missingCount > 0:
