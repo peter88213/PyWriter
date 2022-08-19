@@ -1946,7 +1946,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
         <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
       </Fields>
-      <Type>0</Type>
+      <Type>1</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>121</ScID>

@@ -1575,7 +1575,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <WordCount>4</WordCount>
       <LetterCount>20</LetterCount>
       <Fields>
-        <Field_SceneType>2</Field_SceneType>
+        <Field_SceneType>1</Field_SceneType>
       </Fields>
       <Status>1</Status>
       <Unused>-1</Unused>
@@ -1588,6 +1588,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Title><![CDATA[Arcs]]></Title>
       <ChapterType>2</ChapterType>
       <Type>1</Type>
+      <Unused>-1</Unused>
       <Scenes>
         <ScID>11</ScID>
         <ScID>13</ScID>
@@ -1956,7 +1957,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
         <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
       </Fields>
-      <Type>0</Type>
+      <Type>1</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>121</ScID>

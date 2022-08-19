@@ -1818,6 +1818,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       </Fields>
       <Type>1</Type>
       <ChapterType>1</ChapterType>
+      <Unused>-1</Unused>
     </CHAPTER>
     <CHAPTER>
       <ID>1</ID>
@@ -1916,6 +1917,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       </Fields>
       <Type>1</Type>
       <ChapterType>1</ChapterType>
+      <Unused>-1</Unused>
     </CHAPTER>
     <CHAPTER>
       <ID>9</ID>
@@ -2101,6 +2103,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       </Fields>
       <Type>1</Type>
       <ChapterType>1</ChapterType>
+      <Unused>-1</Unused>
     </CHAPTER>
     <CHAPTER>
       <ID>25</ID>
@@ -2199,7 +2202,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Fields>
         <Field_IsTrash>1</Field_IsTrash>
       </Fields>
-      <Type>0</Type>
+      <Type>1</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>120</ScID>

@@ -1557,6 +1557,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <SortOrder>1</SortOrder>
       <Type>1</Type>
       <ChapterType>1</ChapterType>
+      <Unused>-1</Unused>
       <Scenes>
         <ScID>120</ScID>
       </Scenes>
@@ -1942,7 +1943,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
         <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
       </Fields>
-      <Type>0</Type>
+      <Type>1</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>121</ScID>
