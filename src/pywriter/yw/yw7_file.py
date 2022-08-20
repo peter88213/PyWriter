@@ -279,7 +279,6 @@ class Yw7File(Novel):
             # Unused | -1     | x    | x           | 3
 
             self.chapters[chId].chType = 0
-            self.chapters[chId].isUnused = False
             if chp.find('Unused') is not None:
                 yUnused = True
             else:
@@ -289,23 +288,18 @@ class Yw7File(Novel):
                 yChapterType = chp.find('ChapterType').text
                 if yChapterType == '2':
                     self.chapters[chId].chType = 2
-                    self.chapters[chId].isUnused = True
                 elif yChapterType == '1':
                     self.chapters[chId].chType = 1
-                    self.chapters[chId].isUnused = True
                 elif yUnused:
                     self.chapters[chId].chType = 3
-                    self.chapters[chId].isUnused = True
             else:
                 # The file may be created with a yWriter version prior to 7.0.7.2
                 if chp.find('Type') is not None:
                     yType = chp.find('Type').text
                     if yType == '1':
                         self.chapters[chId].chType = 1
-                        self.chapters[chId].isUnused = True
                     elif yUnused:
                         self.chapters[chId].chType = 3
-                        self.chapters[chId].isUnused = True
 
             self.chapters[chId].suppressChapterTitle = False
             if self.chapters[chId].title is not None:
@@ -761,14 +755,8 @@ class Yw7File(Novel):
                 self.chapters[chId].desc = source.chapters[chId].desc
             if source.chapters[chId].chLevel is not None:
                 self.chapters[chId].chLevel = source.chapters[chId].chLevel
-            if source.chapters[chId].isUnused is not None:
-                self.chapters[chId].isUnused = source.chapters[chId].isUnused
-                if self.chapters[chId].isUnused:
-                    self.chapters[chId].chType = 3
-                elif source.chapters[chId].chType is not None:
-                    self.chapters[chId].chType = source.chapters[chId].chType
-                else:
-                    self.chapters[chId].chType = 0
+            if source.chapters[chId].chType is not None:
+                self.chapters[chId].chType = source.chapters[chId].chType
             if source.chapters[chId].suppressChapterTitle is not None:
                 self.chapters[chId].suppressChapterTitle = source.chapters[chId].suppressChapterTitle
             if source.chapters[chId].suppressChapterBreak is not None:
@@ -1138,8 +1126,8 @@ class Yw7File(Novel):
 
             # This is how yWriter 7.1.3.0 writes the chapter type:
             #
-            # Type   |<Unused>|<Type>|<ChapterType>|prjChp.chType
-            #--------+--------+------+-------------+-------------
+            # Type   |<Unused>|<Type>|<ChapterType>|chType
+            #--------+--------+------+-------------+------
             # Normal | N/A    | 0    | 0           | 0
             # Notes  | -1     | 1    | 1           | 1
             # Todo   | -1     | 1    | 2           | 2
@@ -1153,9 +1141,6 @@ class Yw7File(Novel):
                 )
             if prjChp.chType is None:
                 prjChp.chType = 0
-            elif not prjChp.chType in (1, 2):
-                if prjChp.isUnused:
-                    prjChp.chType = 3
             yUnused, yType, yChapterType = chTypeEncoding[prjChp.chType]
             try:
                 xmlChp.find('ChapterType').text = yChapterType
@@ -1647,7 +1632,7 @@ class Yw7File(Novel):
                     self.scenes[scId].isNotesScene = False
                     self.scenes[scId].isTodoScene = True
                     self.scenes[scId].isUnused = True
-            elif self.chapters[chId].isUnused or self.chapters[chId].chType == 3:
+            elif self.chapters[chId].chType == 3:
                 for scId in self.chapters[chId].srtScenes:
                     self.scenes[scId].isNotesScene = False
                     self.scenes[scId].isTodoScene = False

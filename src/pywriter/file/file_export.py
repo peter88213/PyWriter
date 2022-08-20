@@ -491,7 +491,7 @@ class FileExport(Novel):
                 else:
                     continue
 
-            elif self.scenes[scId].isUnused or self.chapters[chId].isUnused:
+            elif self.scenes[scId].isUnused or self.chapters[chId].chType == 3:
                 if self._unusedSceneTemplate:
                     template = Template(self._unusedSceneTemplate)
                 else:
@@ -560,7 +560,7 @@ class FileExport(Novel):
             if sceneCount > 0 and notExportCount == sceneCount:
                 doNotExport = True
             if self.chapters[chId].chType == 2:
-                # Chapter is "Todo" type (implies "unused").
+                # Chapter is "Todo" type.
                 if self.chapters[chId].chLevel == 1:
                     # Chapter is "Todo Part" type.
                     if self._todoPartTemplate:
@@ -568,15 +568,15 @@ class FileExport(Novel):
                 elif self._todoChapterTemplate:
                     template = Template(self._todoChapterTemplate)
             elif self.chapters[chId].chType == 1:
-                # Chapter is "Notes" type (implies "unused").
+                # Chapter is "Notes" type.
                 if self.chapters[chId].chLevel == 1:
                     # Chapter is "Notes Part" type.
                     if self._notesPartTemplate:
                         template = Template(self._notesPartTemplate)
                 elif self._notesChapterTemplate:
                     template = Template(self._notesChapterTemplate)
-            elif self.chapters[chId].isUnused:
-                # Chapter is "really" unused.
+            elif self.chapters[chId].chType == 3:
+                # Chapter is "unused" type.
                 if self._unusedChapterTemplate:
                     template = Template(self._unusedChapterTemplate)
             elif doNotExport:
@@ -604,7 +604,7 @@ class FileExport(Novel):
             elif self.chapters[chId].chType == 1:
                 if self._notesChapterEndTemplate:
                     template = Template(self._notesChapterEndTemplate)
-            elif self.chapters[chId].isUnused:
+            elif self.chapters[chId].chType == 3:
                 if self._unusedChapterEndTemplate:
                     template = Template(self._unusedChapterEndTemplate)
             elif doNotExport:

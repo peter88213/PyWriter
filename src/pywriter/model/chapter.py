@@ -39,20 +39,37 @@ class Chapter:
 
         self.chType = None
         # int
-        # xml: <ChapterType>
         # 0 = Normal
         # 1 = Notes
         # 2 = Todo
+        # 3= Unused
         # Applies to projects created by yWriter version 7.0.7.2+.
         #
+        # xml: <ChapterType>
         # xml: <Type>
-        # 0 = chapter type (marked "Chapter")
-        # 1 = other type (marked "Other")
-        # Applies to projects created by a yWriter version prior to 7.0.7.2.
-
-        self.isUnused = None
-        # bool
-        # xml: <Unused> -1
+        # xml: <Unused>
+        #
+        # This is how yWriter 7.1.3.0 reads the chapter type:
+        #
+        # Type   |<Unused>|<Type>|<ChapterType>|chType
+        # -------+--------+------+--------------------
+        # Normal | N/A    | N/A  | N/A         | 0
+        # Normal | N/A    | 0    | N/A         | 0
+        # Notes  | x      | 1    | N/A         | 1
+        # Unused | -1     | 0    | N/A         | 3
+        # Normal | N/A    | x    | 0           | 0
+        # Notes  | x      | x    | 1           | 1
+        # Todo   | x      | x    | 2           | 2
+        # Unused | -1     | x    | x           | 3
+        #
+        # This is how yWriter 7.1.3.0 writes the chapter type:
+        #
+        # Type   |<Unused>|<Type>|<ChapterType>|chType
+        #--------+--------+------+-------------+------
+        # Normal | N/A    | 0    | 0           | 0
+        # Notes  | -1     | 1    | 1           | 1
+        # Todo   | -1     | 1    | 2           | 2
+        # Unused | -1     | 1    | 0           | 3
 
         self.suppressChapterTitle = None
         # bool
