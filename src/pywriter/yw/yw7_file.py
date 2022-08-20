@@ -508,12 +508,12 @@ class Yw7File(Novel):
             """Insert srcLst items to tgtLst, if missing.
             """
             j = 0
-            for i in range(len(srcLst)):
-                if not srcLst[i] in tgtLst:
-                    tgtLst.insert(j, srcLst[i])
+            for item in srcLst:
+                if not item in tgtLst:
+                    tgtLst.insert(j, item)
                     j += 1
                 else:
-                    j = tgtLst.index(srcLst[i]) + 1
+                    j = tgtLst.index(item) + 1
 
         if os.path.isfile(self.filePath):
             message = self.read()
