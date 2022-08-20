@@ -5,6 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
+from pywriter.pywriter_globals import *
 from pywriter.ui.main_tk import MainTk
 from pywriter.yw.yw7_file import Yw7File
 
