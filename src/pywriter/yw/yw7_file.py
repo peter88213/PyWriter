@@ -364,31 +364,41 @@ class Yw7File(Novel):
                 if sceneContent is not None:
                     self.scenes[scId].sceneContent = sceneContent
 
-            if scn.find('Unused') is not None:
-                self.scenes[scId].isUnused = True
-            else:
-                self.scenes[scId].isUnused = False
-            self.scenes[scId].isNotesScene = False
-            self.scenes[scId].isTodoScene = False
+            #--- Read scene type.
 
-            #--- Initialize custom keyword variables.
-            for fieldName in self._SCN_KWVAR:
-                self.scenes[scId].kwVar[fieldName] = None
+            # This is how yWriter 7.1.3.0 reads the scene type:
+            #
+            # Type   |<Unused>|Field_SceneType>|scType
+            #--------+--------+----------------+------
+            # Notes  | x      | 1              | 1
+            # Todo   | x      | 2              | 2
+            # Unused | -1     | N/A            | 3
+            # Unused | -1     | 0              | 3
+            # Normal | N/A    | N/A            | 0
+            # Normal | N/A    | 0              | 0
 
-            #--- Read scene fields.
+            self.scenes[scId].scType = 0
+
             for scFields in scn.findall('Fields'):
-                self.scenes[scId].isTodoScene = False
-                if scFields.find('Field_SceneType') is not None:
-                    if scFields.find('Field_SceneType').text == '1':
-                        self.scenes[scId].isNotesScene = True
-                    if scFields.find('Field_SceneType').text == '2':
-                        self.scenes[scId].isTodoScene = True
-
                 #--- Read scene custom fields.
                 for fieldName in self._SCN_KWVAR:
                     field = scFields.find(fieldName)
                     if field is not None:
                         self.scenes[scId].kwVar[fieldName] = field.text
+
+                # Read scene type, if any.
+                if scFields.find('Field_SceneType') is not None:
+                    if scFields.find('Field_SceneType').text == '1':
+                        self.scenes[scId].scType = 1
+                    elif scFields.find('Field_SceneType').text == '2':
+                        self.scenes[scId].scType = 2
+            if scn.find('Unused') is not None:
+                if self.scenes[scId].scType == 0:
+                    self.scenes[scId].scType = 3
+
+            #--- Initialize custom keyword variables.
+            for fieldName in self._SCN_KWVAR:
+                self.scenes[scId].kwVar[fieldName] = None
 
             if scn.find('ExportCondSpecific') is None:
                 self.scenes[scId].doNotExport = False
@@ -671,12 +681,8 @@ class Yw7File(Novel):
             if source.scenes[scId].sceneContent is not None:
                 self.scenes[scId].sceneContent = source.scenes[scId].sceneContent
                 sourceHasSceneContent = True
-            if source.scenes[scId].isUnused is not None:
-                self.scenes[scId].isUnused = source.scenes[scId].isUnused
-            if source.scenes[scId].isNotesScene is not None:
-                self.scenes[scId].isNotesScene = source.scenes[scId].isNotesScene
-            if source.scenes[scId].isTodoScene is not None:
-                self.scenes[scId].isTodoScene = source.scenes[scId].isTodoScene
+            if source.scenes[scId].scType is not None:
+                self.scenes[scId].scType = source.scenes[scId].scType
             if source.scenes[scId].status is not None:
                 self.scenes[scId].status = source.scenes[scId].status
             if source.scenes[scId].sceneNotes is not None:
@@ -880,37 +886,49 @@ class Yw7File(Novel):
             if xmlScn.find('LetterCount') is None:
                 ET.SubElement(xmlScn, 'LetterCount').text = str(prjScn.letterCount)
 
-            if prjScn.isUnused:
+            #--- Write scene type.
+            #
+            # This is how yWriter 7.1.3.0 writes the scene type:
+            #
+            # Type   |<Unused>|Field_SceneType>|scType
+            #--------+--------+----------------+------
+            # Normal | N/A    | N/A            | 0
+            # Notes  | -1     | 1              | 1
+            # Todo   | -1     | 2              | 2
+            # Unused | -1     | 0              | 3
+
+            scTypeEncoding = (
+                (False, None),
+                (True, '1'),
+                (True, '2'),
+                (True, '0'),
+                )
+            if prjScn.scType is None:
+                prjScn.scType = 0
+            yUnused, ySceneType = scTypeEncoding[prjScn.scType]
+
+            # <Unused> (remove, if scene is "Normal").
+            if yUnused:
                 if xmlScn.find('Unused') is None:
                     ET.SubElement(xmlScn, 'Unused').text = '-1'
             elif xmlScn.find('Unused') is not None:
                 xmlScn.remove(xmlScn.find('Unused'))
 
-            #--- Write scene fields.
+            # <Fields><Field_SceneType> (remove, if scene is "Normal")
             scFields = xmlScn.find('Fields')
-            if prjScn.isNotesScene:
-                if scFields is None:
-                    scFields = ET.SubElement(xmlScn, 'Fields')
-                try:
-                    scFields.find('Field_SceneType').text = '1'
-                except(AttributeError):
-                    ET.SubElement(scFields, 'Field_SceneType').text = '1'
-            elif scFields is not None:
-                if scFields.find('Field_SceneType') is not None:
-                    if scFields.find('Field_SceneType').text == '1':
-                        scFields.remove(scFields.find('Field_SceneType'))
-
-            if prjScn.isTodoScene:
-                if scFields is None:
-                    scFields = ET.SubElement(xmlScn, 'Fields')
-                try:
-                    scFields.find('Field_SceneType').text = '2'
-                except(AttributeError):
-                    ET.SubElement(scFields, 'Field_SceneType').text = '2'
-            elif scFields is not None:
-                if scFields.find('Field_SceneType') is not None:
-                    if scFields.find('Field_SceneType').text == '2':
-                        scFields.remove(scFields.find('Field_SceneType'))
+            if scFields is not None:
+                fieldScType = scFields.find('Field_SceneType')
+                if ySceneType is None:
+                    if fieldScType is not None:
+                        scFields.remove(fieldScType)
+                else:
+                    try:
+                        fieldScType.text = ySceneType
+                    except(AttributeError):
+                        ET.SubElement(scFields, 'Field_SceneType').text = ySceneType
+            elif ySceneType is not None:
+                scFields = ET.SubElement(xmlScn, 'Fields')
+                ET.SubElement(scFields, 'Field_SceneType').text = ySceneType
 
             #--- Write scene custom fields.
             for field in self._SCN_KWVAR:
@@ -1622,19 +1640,7 @@ class Yw7File(Novel):
     def adjust_scene_types(self):
         """Make sure that scenes in non-"Normal" chapters inherit the chapter's type."""
         for chId in self.chapters:
-            if self.chapters[chId].chType == 1:
+            if self.chapters[chId].chType != 0:
                 for scId in self.chapters[chId].srtScenes:
-                    self.scenes[scId].isNotesScene = True
-                    self.scenes[scId].isTodoScene = False
-                    self.scenes[scId].isUnused = True
-            elif self.chapters[chId].chType == 2:
-                for scId in self.chapters[chId].srtScenes:
-                    self.scenes[scId].isNotesScene = False
-                    self.scenes[scId].isTodoScene = True
-                    self.scenes[scId].isUnused = True
-            elif self.chapters[chId].chType == 3:
-                for scId in self.chapters[chId].srtScenes:
-                    self.scenes[scId].isNotesScene = False
-                    self.scenes[scId].isTodoScene = False
-                    self.scenes[scId].isUnused = True
+                    self.scenes[scId].scType = self.chapters[chId].chType
 

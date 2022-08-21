@@ -478,20 +478,20 @@ class FileExport(Novel):
 
             # The order counts; be aware that "Todo" and "Notes" scenes are
             # always unused.
-            if self.scenes[scId].isTodoScene:
+            if self.scenes[scId].scType == 2:
                 if self._todoSceneTemplate:
                     template = Template(self._todoSceneTemplate)
                 else:
                     continue
 
-            elif self.scenes[scId].isNotesScene:
+            elif self.scenes[scId].scType == 1:
                 # Scene is "Notes" type.
                 if self._notesSceneTemplate:
                     template = Template(self._notesSceneTemplate)
                 else:
                     continue
 
-            elif self.scenes[scId].isUnused or self.chapters[chId].chType == 3:
+            elif self.scenes[scId].scType == 3 or self.chapters[chId].chType == 3:
                 if self._unusedSceneTemplate:
                     template = Template(self._unusedSceneTemplate)
                 else:

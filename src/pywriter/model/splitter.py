@@ -96,9 +96,7 @@ class Splitter:
             if parent.status > 2:
                 parent.status = 2
             newScene.status = parent.status
-            newScene.isNotesScene = parent.isNotesScene
-            newScene.isUnused = parent.isUnused
-            newScene.isTodoScene = parent.isTodoScene
+            newScene.scType = parent.scType
             newScene.date = parent.date
             newScene.time = parent.time
             newScene.day = parent.day

@@ -1453,6 +1453,9 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent><![CDATA[This bird is not dead ...]]></SceneContent>
+      <Fields>
+        <Field_SceneType>0</Field_SceneType>
+      </Fields>
     </SCENE>
     <SCENE>
       <ID>120</ID>

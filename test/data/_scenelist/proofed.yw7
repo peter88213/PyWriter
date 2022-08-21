@@ -1777,6 +1777,9 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent><![CDATA[ ]]></SceneContent>
+      <Fields>
+        <Field_SceneType>0</Field_SceneType>
+      </Fields>
     </SCENE>
     <SCENE>
       <ID>120</ID>
@@ -1804,6 +1807,9 @@ Reinstalling yWriter5 will overwrite this sample project.
 Therefore, rather than modifying this project with your own content, [b]please create a new project for your own work[/b]. ([i]Project - Create Empty Project[/i], or [i]Project - New Project Wizard[/i])
 
 Any new projects created with yWriter5 will not be deleted, overwritten or modified when you uninstall or reinstall the software.]]></SceneContent>
+      <Fields>
+        <Field_SceneType>0</Field_SceneType>
+      </Fields>
     </SCENE>
   </SCENES>
   <CHAPTERS>

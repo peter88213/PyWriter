@@ -1492,6 +1492,9 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Items>
 		</Items>
       <SceneContent><![CDATA[This bird is not dead ...]]></SceneContent>
+      <Fields>
+        <Field_SceneType>0</Field_SceneType>
+      </Fields>
     </SCENE>
     <SCENE>
       <ID>120</ID>
@@ -1543,6 +1546,9 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
 		</Items>
       <SceneContent><![CDATA[This text is not needed.]]></SceneContent>
       <Unused>-1</Unused>
+      <Fields>
+        <Field_SceneType>0</Field_SceneType>
+      </Fields>
     </SCENE>
   </SCENES>
   <CHAPTERS>

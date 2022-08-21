@@ -24,5 +24,5 @@ class HtmlNotes(HtmlManuscript):
         for chId in self.srtChapters:
             self.chapters[chId].chType = 1
             for scId in self.chapters[chId].srtScenes:
-                self.scenes[scId].isNotesScene = True
+                self.scenes[scId].scType = 1
 

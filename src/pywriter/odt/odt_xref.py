@@ -106,11 +106,11 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """
         lines = []
         for scId in scenes:
-            if self.scenes[scId].isNotesScene:
+            if self.scenes[scId].scType == 1:
                 template = Template(self._notesSceneTemplate)
-            elif self.scenes[scId].isTodoScene:
+            elif self.scenes[scId].scType == 2:
                 template = Template(self._todoSceneTemplate)
-            elif self.scenes[scId].isUnused:
+            elif self.scenes[scId].scType == 3:
                 template = Template(self._unusedSceneTemplate)
             else:
                 template = Template(self._sceneTemplate)

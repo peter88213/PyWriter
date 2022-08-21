@@ -17,9 +17,7 @@ class Scene:
         rtfFile -- str: RTF file name (yWriter 5).
         wordCount - int: word count (derived; updated by the sceneContent setter).
         letterCount - int: letter count (derived; updated by the sceneContent setter).
-        isUnused -- bool: True if the scene is marked "Unused". 
-        isNotesScene -- bool: True if the scene type is "Notes".
-        isTodoScene -- bool: True if the scene type is "Todo". 
+        scType -- int: Scene type (Normal/Notes/Todo/Unused).
         doNotExport -- bool: True if the scene is not to be exported to RTF.
         status -- int: scene status (Outline/Draft/1st Edit/2nd Edit/Done).
         sceneNotes -- str: scene notes in a single string.
@@ -86,17 +84,31 @@ class Scene:
         # xml: <LetterCount>
         # To be updated by the sceneContent setter
 
-        self.isUnused = None
-        # bool
-        # xml: <Unused> -1
-
-        self.isNotesScene = None
-        # bool
-        # xml: <Fields><Field_SceneType> 1
-
-        self.isTodoScene = None
-        # bool
-        # xml: <Fields><Field_SceneType> 2
+        self.scType = None
+        # Scene type (Normal/Notes/Todo/Unused).
+        #
+        # xml: <Unused>
+        # xml: <Fields><Field_SceneType>
+        #
+        # This is how yWriter 7.1.3.0 reads the scene type:
+        #
+        # Type   |<Unused>|Field_SceneType>|scType
+        #--------+--------+----------------+------
+        # Notes  | x      | 1              | 1
+        # Todo   | x      | 2              | 2
+        # Unused | -1     | N/A            | 3
+        # Unused | -1     | 0              | 3
+        # Normal | N/A    | N/A            | 0
+        # Normal | N/A    | 0              | 0
+        #
+        # This is how yWriter 7.1.3.0 writes the scene type:
+        #
+        # Type   |<Unused>|Field_SceneType>|scType
+        #--------+--------+----------------+------
+        # Normal | N/A    | N/A            | 0
+        # Notes  | -1     | 1              | 1
+        # Todo   | -1     | 2              | 2
+        # Unused | -1     | 0              | 3
 
         self.doNotExport = None
         # bool

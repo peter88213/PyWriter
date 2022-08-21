@@ -24,5 +24,5 @@ class HtmlTodo(HtmlManuscript):
         for chId in self.srtChapters:
             self.chapters[chId].chType = 2
             for scId in self.chapters[chId].srtScenes:
-                self.scenes[scId].isTodoScene = True
+                self.scenes[scId].scType = 2
 
