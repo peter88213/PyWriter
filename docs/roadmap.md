@@ -360,6 +360,16 @@ thus allowing custom classes (extends the API).
 
 - Remove Chapter.oldType from the API. 
 
+#### v7.0
+
+- Read and write project notes.
+- Rename Scene.sceneNotes --> Scene.notes.
+- Remove Scene.rtfFile from the API. 
+- Remove Scene.isTodoScene from the API. 
+- Remove Scene.isNotesScene from the API. 
+- Remove Scene.isUnused from the API. 
+- Remove Chapter.isUnused from the API. 
+
 ## Future:
 
 #### Full LibreOffice/OpenOffice integration
