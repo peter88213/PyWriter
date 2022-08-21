@@ -339,7 +339,7 @@ class FileExport(Novel):
             Viewpoint=viewpointChar,
             Locations=sceneLocs,
             Items=sceneItems,
-            Notes=self._convert_from_yw(self.scenes[scId].sceneNotes),
+            Notes=self._convert_from_yw(self.scenes[scId].notes),
             ProjectName=self._convert_from_yw(self.projectName, True),
             ProjectPath=self.projectPath,
         )

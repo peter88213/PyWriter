@@ -47,7 +47,7 @@ class CsvSceneList(CsvFile):
                 i += 1
                 self.scenes[scId].tags = self._get_list(cells[i])
                 i += 1
-                self.scenes[scId].sceneNotes = self._convert_to_yw(cells[i])
+                self.scenes[scId].notes = self._convert_to_yw(cells[i])
                 i += 1
                 if self.SCENE_CLASS.REACTION_MARKER.lower() in cells[i].lower():
                     self.scenes[scId].isReactionScene = True

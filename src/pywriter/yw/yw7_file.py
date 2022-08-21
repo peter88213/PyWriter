@@ -347,18 +347,6 @@ class Yw7File(Novel):
             if scn.find('Desc') is not None:
                 self.scenes[scId].desc = scn.find('Desc').text
 
-            if scn.find('RTFFile') is not None:
-                self.scenes[scId].rtfFile = scn.find('RTFFile').text
-
-            # This is relevant for yW5 files with no SceneContent:
-            if scn.find('WordCount') is not None:
-                self.scenes[scId].wordCount = int(
-                    scn.find('WordCount').text)
-
-            if scn.find('LetterCount') is not None:
-                self.scenes[scId].letterCount = int(
-                    scn.find('LetterCount').text)
-
             if scn.find('SceneContent') is not None:
                 sceneContent = scn.find('SceneContent').text
                 if sceneContent is not None:
@@ -400,6 +388,7 @@ class Yw7File(Novel):
             for fieldName in self._SCN_KWVAR:
                 self.scenes[scId].kwVar[fieldName] = None
 
+            #--- Export when RTF.
             if scn.find('ExportCondSpecific') is None:
                 self.scenes[scId].doNotExport = False
             elif scn.find('ExportWhenRTF') is not None:
@@ -411,7 +400,7 @@ class Yw7File(Novel):
                 self.scenes[scId].status = int(scn.find('Status').text)
 
             if scn.find('Notes') is not None:
-                self.scenes[scId].sceneNotes = scn.find('Notes').text
+                self.scenes[scId].notes = scn.find('Notes').text
 
             if scn.find('Tags') is not None:
                 if scn.find('Tags').text is not None:
@@ -502,6 +491,24 @@ class Yw7File(Novel):
                     self.scenes[scId].items.append(itId.text)
 
         self.adjust_scene_types()
+
+        #--- Read project notes from the xml element tree.
+        self.srtPrjNotes = []
+        # This is necessary for re-reading.
+
+        try:
+            for pnt in root.find('PROJECTNOTES'):
+                if pnt.find('ID') is not None:
+                    pnId = pnt.find('ID').text
+                    self.srtPrjNotes.append(pnId)
+                    self.projectNotes[pnId] = self.PN_CLASS()
+                    if pnt.find('Title') is not None:
+                        self.projectNotes[pnId].title = pnt.find('Title').text
+                    if pnt.find('Desc') is not None:
+                        self.projectNotes[pnId].desc = pnt.find('Desc').text
+        except:
+            pass
+
         return 'yWriter project data read in.'
 
     def merge(self, source):
@@ -685,8 +692,8 @@ class Yw7File(Novel):
                 self.scenes[scId].scType = source.scenes[scId].scType
             if source.scenes[scId].status is not None:
                 self.scenes[scId].status = source.scenes[scId].status
-            if source.scenes[scId].sceneNotes is not None:
-                self.scenes[scId].sceneNotes = source.scenes[scId].sceneNotes
+            if source.scenes[scId].notes is not None:
+                self.scenes[scId].notes = source.scenes[scId].notes
             if source.scenes[scId].tags is not None:
                 self.scenes[scId].tags = source.scenes[scId].tags
             if source.scenes[scId].field1 is not None:
@@ -951,11 +958,11 @@ class Yw7File(Novel):
                 except:
                     ET.SubElement(xmlScn, 'Status').text = str(prjScn.status)
 
-            if prjScn.sceneNotes is not None:
+            if prjScn.notes is not None:
                 try:
-                    xmlScn.find('Notes').text = prjScn.sceneNotes
+                    xmlScn.find('Notes').text = prjScn.notes
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Notes').text = prjScn.sceneNotes
+                    ET.SubElement(xmlScn, 'Notes').text = prjScn.notes
 
             if prjScn.tags is not None:
                 try:
@@ -1211,13 +1218,13 @@ class Yw7File(Novel):
 
             #--- Write chapter custom fields.
             for field in self._CHP_KWVAR:
-                if field in self.chapters[chId].kwVar and self.chapters[chId].kwVar[field]:
+                if field in prjChp.kwVar and prjChp.kwVar[field]:
                     if chFields is None:
                         chFields = ET.SubElement(xmlChp, 'Fields')
                     try:
-                        chFields.find(field).text = self.chapters[chId].kwVar[field]
+                        chFields.find(field).text = prjChp.kwVar[field]
                     except(AttributeError):
-                        ET.SubElement(chFields, field).text = self.chapters[chId].kwVar[field]
+                        ET.SubElement(chFields, field).text = prjChp.kwVar[field]
                 elif chFields is not None:
                     try:
                         chFields.remove(chFields.find(field))
@@ -1236,7 +1243,6 @@ class Yw7File(Novel):
                     ET.SubElement(sortSc, 'ScID').text = scId
 
         def build_location_subtree(xmlLoc, prjLoc, sortOrder):
-            ET.SubElement(xmlLoc, 'ID').text = lcId
             if prjLoc.title is not None:
                 ET.SubElement(xmlLoc, 'Title').text = prjLoc.title
 
@@ -1270,9 +1276,16 @@ class Yw7File(Novel):
                     except:
                         pass
 
-        def build_item_subtree(xmlItm, prjItm, sortOrder):
-            ET.SubElement(xmlItm, 'ID').text = itId
+        def build_prjNote_subtree(xmlPnt, prjPnt, sortOrder):
+            if prjPnt.title is not None:
+                ET.SubElement(xmlPnt, 'Title').text = prjPnt.title
 
+            if prjPnt.desc is not None:
+                ET.SubElement(xmlPnt, 'Desc').text = prjPnt.desc
+
+            ET.SubElement(xmlPnt, 'SortOrder').text = str(sortOrder)
+
+        def build_item_subtree(xmlItm, prjItm, sortOrder):
             if prjItm.title is not None:
                 ET.SubElement(xmlItm, 'Title').text = prjItm.title
 
@@ -1307,8 +1320,6 @@ class Yw7File(Novel):
                         pass
 
         def build_character_subtree(xmlCrt, prjCrt, sortOrder):
-            ET.SubElement(xmlCrt, 'ID').text = crId
-
             if prjCrt.title is not None:
                 ET.SubElement(xmlCrt, 'Title').text = prjCrt.title
 
@@ -1439,6 +1450,7 @@ class Yw7File(Novel):
             locations = root.find('LOCATIONS')
             items = root.find('ITEMS')
             characters = root.find('CHARACTERS')
+            prjNotes = root.find('PROJECTNOTES')
             scenes = root.find('SCENES')
             chapters = root.find('CHAPTERS')
         except(AttributeError):
@@ -1448,6 +1460,7 @@ class Yw7File(Novel):
             locations = ET.SubElement(root, 'LOCATIONS')
             items = ET.SubElement(root, 'ITEMS')
             characters = ET.SubElement(root, 'CHARACTERS')
+            prjNotes = ET.SubElement(root, 'PROJECTNOTES')
             scenes = ET.SubElement(root, 'SCENES')
             chapters = ET.SubElement(root, 'CHAPTERS')
 
@@ -1467,6 +1480,7 @@ class Yw7File(Novel):
         for lcId in self.srtLocations:
             sortOrder += 1
             xmlLoc = ET.SubElement(locations, 'LOCATION')
+            ET.SubElement(xmlLoc, 'ID').text = lcId
             build_location_subtree(xmlLoc, self.locations[lcId], sortOrder)
 
         #--- Process items.
@@ -1481,6 +1495,7 @@ class Yw7File(Novel):
         for itId in self.srtItems:
             sortOrder += 1
             xmlItm = ET.SubElement(items, 'ITEM')
+            ET.SubElement(xmlItm, 'ID').text = itId
             build_item_subtree(xmlItm, self.items[itId], sortOrder)
 
         #--- Process characters.
@@ -1495,7 +1510,28 @@ class Yw7File(Novel):
         for crId in self.srtCharacters:
             sortOrder += 1
             xmlCrt = ET.SubElement(characters, 'CHARACTER')
+            ET.SubElement(xmlCrt, 'ID').text = crId
             build_character_subtree(xmlCrt, self.characters[crId], sortOrder)
+
+        #--- Process project notes.
+
+        # Remove PROJECTNOTE entries in order to rewrite
+        # the PROJECTNOTES section in a modified sort order.
+        if prjNotes is not None:
+            for xmlPnt in prjNotes.findall('PROJECTNOTE'):
+                prjNotes.remove(xmlPnt)
+            if not self.srtPrjNotes:
+                root.remove(prjNotes)
+        elif self.srtPrjNotes:
+            prjNotes = ET.SubElement(root, 'PROJECTNOTES')
+        if self.srtPrjNotes:
+            # Add the new XML prjNote subtrees to the project tree.
+            sortOrder = 0
+            for pnId in self.srtPrjNotes:
+                sortOrder += 1
+                xmlPnt = ET.SubElement(prjNotes, 'PROJECTNOTE')
+                ET.SubElement(xmlPnt, 'ID').text = pnId
+                build_prjNote_subtree(xmlPnt, self.projectNotes[pnId], sortOrder)
 
         #--- Process scenes.
 

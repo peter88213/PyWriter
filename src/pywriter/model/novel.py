@@ -12,6 +12,7 @@ from pywriter.pywriter_globals import *
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.character import Character
+from pywriter.model.basic_element import BasicElement
 from pywriter.model.world_element import WorldElement
 
 
@@ -45,6 +46,8 @@ class Novel:
         srtItems -- list: the novel's sorted item IDs.
         characters -- dict: (key: ID, value: character instance).
         srtCharacters -- list: the novel's sorted character IDs.
+        projectNotes -- dict:  (key: ID, value: projectNote instance).
+        srtPrjNotes -- list: the novel's sorted project notes.
         projectName -- str: URL-coded file name without suffix and extension. 
         projectPath -- str: URL-coded path to the project directory. 
         filePath -- str: path to the file (property with getter and setter). 
@@ -58,6 +61,7 @@ class Novel:
     SCENE_CLASS = Scene
     CHARACTER_CLASS = Character
     WE_CLASS = WorldElement
+    PN_CLASS = BasicElement
 
     def __init__(self, filePath, **kwargs):
         """Initialize instance variables.
@@ -147,6 +151,16 @@ class Novel:
         self.srtCharacters = []
         # list of str
         # The novel's character IDs. The order of its elements corresponds to the XML project file.
+
+        self.projectNotes = {}
+        # dict
+        # xml: <PROJECTNOTES>
+        # key = note ID, value = note instance.
+        # The order of the elements does not matter.
+
+        self.srtPrjNotes = []
+        # list of str
+        # The novel's projectNote IDs. The order of its elements corresponds to the XML project file.
 
         self._filePath = None
         # str

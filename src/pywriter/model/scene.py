@@ -5,22 +5,20 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
+from pywriter.model.basic_element import BasicElement
 
 
-class Scene:
+class Scene(BasicElement):
     """yWriter scene representation.
     
     Public instance variables:
-        title -- str: scene title.
-        desc -- str: scene description in a single string.
         sceneContent -- str: scene content (property with getter and setter).
-        rtfFile -- str: RTF file name (yWriter 5).
         wordCount - int: word count (derived; updated by the sceneContent setter).
         letterCount - int: letter count (derived; updated by the sceneContent setter).
         scType -- int: Scene type (Normal/Notes/Todo/Unused).
         doNotExport -- bool: True if the scene is not to be exported to RTF.
         status -- int: scene status (Outline/Draft/1st Edit/2nd Edit/Done).
-        sceneNotes -- str: scene notes in a single string.
+        notes -- str: scene notes in a single string.
         tags -- list of scene tags. 
         field1 -- int: scene ratings field 1.
         field2 -- int: scene ratings field 2.
@@ -56,24 +54,16 @@ class Scene:
     NULL_TIME = '00:00:00'
 
     def __init__(self):
-        """Initialize instance variables."""
-        self.title = None
-        # str
-        # xml: <Title>
-
-        self.desc = None
-        # str
-        # xml: <Desc>
+        """Initialize instance variables.
+        
+        Extends the superclass constructor.
+        """
+        super().__init__()
 
         self._sceneContent = None
         # str
         # xml: <SceneContent>
         # Scene text with yW7 raw markup.
-
-        self.rtfFile = None
-        # str
-        # xml: <RTFFile>
-        # Name of the file containing the scene in yWriter 5.
 
         self.wordCount = 0
         # int # xml: <WordCount>
@@ -124,7 +114,7 @@ class Scene:
         # 5 - Done
         # See also the STATUS list for conversion.
 
-        self.sceneNotes = None
+        self.notes = None
         # str
         # xml: <Notes>
 

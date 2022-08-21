@@ -4,9 +4,10 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from pywriter.model.basic_element import BasicElement
 
 
-class Chapter:
+class Chapter(BasicElement):
     """yWriter chapter representation.
     
     Public instance variables:
@@ -21,14 +22,11 @@ class Chapter:
     """
 
     def __init__(self):
-        """Initialize instance variables."""
-        self.title = None
-        # str
-        # xml: <Title>
-
-        self.desc = None
-        # str
-        # xml: <Desc>
+        """Initialize instance variables.
+        
+        Extends the superclass constructor.
+        """
+        super().__init__()
 
         self.chLevel = None
         # int
