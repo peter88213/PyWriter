@@ -13,8 +13,7 @@ class Chapter:
         title -- str: chapter title (may be the heading).
         desc -- str: chapter description in a single string.
         chLevel -- int: chapter level (part/chapter).
-        chType -- int: chapter type yWriter 7.0.7.2+ (Normal/Notes/Todo).
-        isUnused -- bool: True, if the chapter is marked "Unused".
+        chType -- int: chapter type (Normal/Notes/Todo/Unused).
         suppressChapterTitle -- bool: uppress chapter title when exporting.
         isTrash -- bool: True, if the chapter is the project's trash bin.
         suppressChapterBreak -- bool: Suppress chapter break when exporting.
