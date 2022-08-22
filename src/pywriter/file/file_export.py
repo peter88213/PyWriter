@@ -214,8 +214,8 @@ class FileExport(Novel):
             # Note: Due to a bug, yWriter scenes might hold invalid
             # viepoint characters
             sChList = []
-            for chId in self.scenes[scId].characters:
-                sChList.append(self.characters[chId].title)
+            for crId in self.scenes[scId].characters:
+                sChList.append(self.characters[crId].title)
             sceneChars = self._get_string(sChList)
             viewpointChar = sChList[0]
         except:

@@ -1704,6 +1704,7 @@ class Yw7File(Novel):
                 self.kwVar[field] = ''
                 hasChanged = True
         for chId in self.chapters:
+            # Deliberatey not iterate srtChapters: make sure to get all chapters.
             for field in self._CHP_KWVAR:
                 if self.chapters[chId].kwVar[field]:
                     self.chapters[chId].kwVar[field] = ''
@@ -1717,7 +1718,7 @@ class Yw7File(Novel):
 
     def adjust_scene_types(self):
         """Make sure that scenes in non-"Normal" chapters inherit the chapter's type."""
-        for chId in self.chapters:
+        for chId in self.srtChapters:
             if self.chapters[chId].chType != 0:
                 for scId in self.chapters[chId].srtScenes:
                     self.scenes[scId].scType = self.chapters[chId].chType
