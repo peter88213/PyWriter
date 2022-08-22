@@ -12,7 +12,7 @@
         <memberEnd xmi:type="uml:Property" href="Python.uml#_-NLtACuxEeq6NdJQFgby7A"/>
         <memberEnd xmi:type="uml:Property" href="#_-NMUESuxEeq6NdJQFgby7A"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_-NMUESuxEeq6NdJQFgby7A" name="scenes" association="_-NEYQCuxEeq6NdJQFgby7A">
-          <type xmi:type="uml:Class" href="Python.uml#_hnQSkCuqEeqsNupfleJppQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_QJO1ICutEeq6j_3L0bwv2g" memberEnd="_QJPcMiutEeq6j_3L0bwv2g _QJQDQSutEeq6j_3L0bwv2g">
@@ -34,7 +34,7 @@
         <memberEnd xmi:type="uml:Property" href="Python.uml#_41fzcSutEeq6j_3L0bwv2g"/>
         <memberEnd xmi:type="uml:Property" href="#_41hBkCutEeq6j_3L0bwv2g"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_41hBkCutEeq6j_3L0bwv2g" name="chapters" association="_41elUCutEeq6j_3L0bwv2g">
-          <type xmi:type="uml:Class" href="Python.uml#_Cqx6sCunEeqsNupfleJppQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_pQyhsCuoEeqsNupfleJppQ" visibility="public" memberEnd="_pQ1lACuoEeqsNupfleJppQ _pQ2MEiuoEeqsNupfleJppQ">
@@ -122,7 +122,7 @@
         <memberEnd xmi:type="uml:Property" href="Python.uml#_W-GOIpEZEeqtx4SqQAS9Eg"/>
         <memberEnd xmi:type="uml:Property" href="#_W-HcQJEZEeqtx4SqQAS9Eg"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_W-HcQJEZEeqtx4SqQAS9Eg" name="characters" association="_W-FAAJEZEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="Python.uml#_mAsc4JEUEeqtx4SqQAS9Eg"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_X-uksJEZEeqtx4SqQAS9Eg">
@@ -132,7 +132,7 @@
         <memberEnd xmi:type="uml:Property" href="Python.uml#_X-vy0ZEZEeqtx4SqQAS9Eg"/>
         <memberEnd xmi:type="uml:Property" href="#_X-wZ4JEZEeqtx4SqQAS9Eg"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_X-wZ4JEZEeqtx4SqQAS9Eg" name="items" association="_X-uksJEZEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="Python.uml#_pU9qAJEUEeqtx4SqQAS9Eg"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_ZxmQgJEZEeqtx4SqQAS9Eg">
@@ -210,7 +210,7 @@
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_FW_ZcYfuEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_pQ1lACuoEeqsNupfleJppQ" name="srtScenes" isOrdered="true" association="_pQyhsCuoEeqsNupfleJppQ">
-          <type xmi:type="uml:Class" href="Python.uml#_JI8bgCuoEeqsNupfleJppQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ce2zwCwKEequtbdKEmlZqQ" name="__init__" visibility="public"/>
       </packagedElement>
@@ -307,7 +307,7 @@
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_Bb3GAYgBEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_brzIMogCEeuRjYowZVZmEQ" name="characters" association="_brxTAIgCEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="Python.uml#_XCUIgIfqEeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_Ss76UIgDEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_qV6zQYgCEeuRjYowZVZmEQ" name="locations" association="_qV4-EIgCEeuRjYowZVZmEQ">
@@ -315,7 +315,7 @@
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_UmL68IgDEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_w97pEYgCEeuRjYowZVZmEQ" name="items" association="_w95z4IgCEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="Python.uml#_nYshEIfqEeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_VqiT4IgDEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_bqJF4IgDEeuRjYowZVZmEQ" name="date">
@@ -445,13 +445,13 @@
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_XwCBwYefEeqZkamAUXuhyQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_PFYygCutEeq6j_3L0bwv2g" name="chapters" visibility="public" aggregation="composite" association="_PFVvMCutEeq6j_3L0bwv2g">
-          <type xmi:type="uml:Class" href="Python.uml#_Cqx6sCunEeqsNupfleJppQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QJPcMiutEeq6j_3L0bwv2g" name="scenes" visibility="public" aggregation="composite" association="_QJO1ICutEeq6j_3L0bwv2g">
-          <type xmi:type="uml:Class" href="Python.uml#_hnQSkCuqEeqsNupfleJppQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_gQMusDXfEeqSIpxCmEaNZA" name="srtChapters" visibility="public" isOrdered="true" association="_gQGoEDXfEeqSIpxCmEaNZA">
-          <type xmi:type="uml:Class" href="Python.uml#_yH7asDXeEeqSIpxCmEaNZA"/>
+          <type xmi:type="uml:Class" href="Python.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Vzre4pEYEeqtx4SqQAS9Eg" name="locations" visibility="public" aggregation="composite" association="_VzppsJEYEeqtx4SqQAS9Eg">
           <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
@@ -461,18 +461,18 @@
           <type xmi:type="uml:Class" href="Python.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_UyKXgpEYEeqtx4SqQAS9Eg" name="items" visibility="public" aggregation="composite" association="_UyH7QJEYEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="Python.uml#_pU9qAJEUEeqtx4SqQAS9Eg"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UyK-kZEYEeqtx4SqQAS9Eg" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_dXz1gYfrEeuRjYowZVZmEQ" name="srtItems" visibility="public" isOrdered="true" association="_dXyAUIfrEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="Python.uml#_nYshEIfqEeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TtwUMpEYEeqtx4SqQAS9Eg" name="characters" visibility="public" aggregation="composite" association="_TtufAJEYEeqtx4SqQAS9Eg">
-          <type xmi:type="uml:Class" href="Python.uml#_mAsc4JEUEeqtx4SqQAS9Eg"/>
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ttw7QZEYEeqtx4SqQAS9Eg" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_a-yIoIfrEeuRjYowZVZmEQ" name="srtCharacters" visibility="public" isOrdered="true" association="_a-spEIfrEeuRjYowZVZmEQ">
-          <type xmi:type="uml:Class" href="Python.uml#_XCUIgIfqEeuRjYowZVZmEQ"/>
+          <type xmi:type="uml:Class" href="Python.uml#_X4T8YIfqEeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ad9wwCtfEeqgj_wxJ3Xgsg" name="filePath" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -483,6 +483,9 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_LB6P8I8NEeyWxuxLhWA0gA" name="projectPath" visibility="public" isDerived="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_o-ZQkCIzEe28s9q9Ccm9lg" name="projectNotes" aggregation="composite" association="_o-UYECIzEe28s9q9Ccm9lg">
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Ut2VkCwKEequtbdKEmlZqQ" name="__init__" visibility="public">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_wJKdUI83EeyWxuxLhWA0gA" name="filePath">
@@ -537,6 +540,22 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_BJUc8CIHEe2-76mOAU7NWg" name="kwVar" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_o-UYECIzEe28s9q9Ccm9lg" memberEnd="_o-ZQkCIzEe28s9q9Ccm9lg _o-Z3oCIzEe28s9q9Ccm9lg">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_o-XbYCIzEe28s9q9Ccm9lg" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_o-YCcCIzEe28s9q9Ccm9lg" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_o-Z3oCIzEe28s9q9Ccm9lg" name="novel" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_o-UYECIzEe28s9q9Ccm9lg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_7Ozs4CIzEe28s9q9Ccm9lg">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7O07ACIzEe28s9q9Ccm9lg" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7O07ASIzEe28s9q9Ccm9lg" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <memberEnd xmi:type="uml:Property" href="Python.uml#_7O07AiIzEe28s9q9Ccm9lg"/>
+        <memberEnd xmi:type="uml:Property" href="#_7O2JICIzEe28s9q9Ccm9lg"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_7O2JICIzEe28s9q9Ccm9lg" name="projectNotes" association="_7Ozs4CIzEe28s9q9Ccm9lg">
+          <type xmi:type="uml:Class" href="Python.uml#_pREBcJEUEeqtx4SqQAS9Eg"/>
+        </ownedEnd>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_seuasCwTEequtbdKEmlZqQ" name="converter">

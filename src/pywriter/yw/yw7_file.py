@@ -687,6 +687,36 @@ class Yw7File(Novel):
                     except:
                         self.characters[crId].kwVar[fieldName] = tempchr[crId].kwVar[fieldName]
 
+        #--- Merge and re-order projectNotes.
+        if source.srtPrjNotes:
+            self.srtPrjNotes = source.srtPrjNotes
+            tempPrjn = self.projectNotes
+            self.projectNotes = {}
+            for pnId in source.srtPrjNotes:
+
+                # Build a new self.projectNotes dictionary sorted like the source.
+                self.projectNotes[pnId] = self.PN_CLASS()
+                if not pnId in tempPrjn:
+                    # A new projecNote has been added
+                    tempPrjn[pnId] = self.PN_CLASS()
+
+                if source.projectNotes[pnId].title:
+                    # avoids deleting the title, if it is empty by accident
+                    self.projectNotes[pnId].title = source.projectNotes[pnId].title
+                else:
+                    self.projectNotes[pnId].title = tempPrjn[pnId].title
+
+                if source.projectNotes[pnId].desc is not None:
+                    self.projectNotes[pnId].desc = source.projectNotes[pnId].desc
+                else:
+                    self.projectNotes[pnId].desc = tempPrjn[pnId].desc
+
+                for fieldName in self._prn_KWVAR:
+                    try:
+                        self.projectNotes[pnId].kwVar[fieldName] = source.projectNotes[pnId].kwVar[fieldName]
+                    except:
+                        self.projectNotes[pnId].kwVar[fieldName] = tempPrjn[pnId].kwVar[fieldName]
+
         #--- Merge scenes.
         sourceHasSceneContent = False
         for scId in source.scenes:

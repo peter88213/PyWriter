@@ -143,6 +143,11 @@ class FileExport(Novel):
         if source.srtItems:
             self.srtItems = source.srtItems
             self.items = source.items
+
+        if source.srtPrjNotes:
+            self.srtPrjNotes = source.srtPrjNotes
+            self.projectNotes = source.projectNotes
+
         return 'Export data updated from novel.'
 
     def _get_fileHeaderMapping(self):

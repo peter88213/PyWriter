@@ -86,88 +86,50 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_J8OkMI9jEeyklMyKAJOE0w" name="built-in">
     <packagedElement xmi:type="uml:Class" xmi:id="_hATxcMFrEeu3Uqtx9hJ-Ng" name="callable"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_mAsc4JEUEeqtx4SqQAS9Eg" name="DictOfCharacters">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mAsc4ZEUEeqtx4SqQAS9Eg" name="crId">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mAsc4pEUEeqtx4SqQAS9Eg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mAsc45EUEeqtx4SqQAS9Eg" value="*"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_W-GOIpEZEeqtx4SqQAS9Eg" name="characters[crId]" aggregation="shared">
-        <type xmi:type="uml:Class" href="PyWriter.uml#_ZSkdEJEXEeqtx4SqQAS9Eg"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_W-G1MJEZEeqtx4SqQAS9Eg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_W-G1MZEZEeqtx4SqQAS9Eg" value="*"/>
-        <association xmi:type="uml:Association" href="PyWriter.uml#_W-FAAJEZEeqtx4SqQAS9Eg"/>
-      </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_pREBcJEUEeqtx4SqQAS9Eg" name="DictOfLocations">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_pREBcZEUEeqtx4SqQAS9Eg" name="lcId">
+    <packagedElement xmi:type="uml:Class" xmi:id="_pREBcJEUEeqtx4SqQAS9Eg" name="IdDict">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_pREBcZEUEeqtx4SqQAS9Eg" name="ID">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pREBcpEUEeqtx4SqQAS9Eg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pREBc5EUEeqtx4SqQAS9Eg" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ZxoFspEZEeqtx4SqQAS9Eg" name="location[lcId]" aggregation="shared">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ZxoFspEZEeqtx4SqQAS9Eg" name="locations[ID]" aggregation="shared">
         <type xmi:type="uml:Class" href="PyWriter.uml#_LIE_MJEVEeqtx4SqQAS9Eg"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TSk6cMJNEeuoILv35KfERQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Qxzm0MJNEeuoILv35KfERQ" value="*"/>
         <association xmi:type="uml:Association" href="PyWriter.uml#_ZxmQgJEZEeqtx4SqQAS9Eg"/>
       </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_pU9qAJEUEeqtx4SqQAS9Eg" name="DictOfItems">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_pU9qAZEUEeqtx4SqQAS9Eg" name="itId">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pU9qApEUEeqtx4SqQAS9Eg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pU9qA5EUEeqtx4SqQAS9Eg" value="*"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_X-vy0ZEZEeqtx4SqQAS9Eg" name="item[itId]" aggregation="shared">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_X-vy0ZEZEeqtx4SqQAS9Eg" name="item[ID]" aggregation="shared">
         <type xmi:type="uml:Class" href="PyWriter.uml#_LIE_MJEVEeqtx4SqQAS9Eg"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X-vy0pEZEeqtx4SqQAS9Eg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X-vy05EZEeqtx4SqQAS9Eg" value="*"/>
         <association xmi:type="uml:Association" href="PyWriter.uml#_X-uksJEZEeqtx4SqQAS9Eg"/>
       </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_yH7asDXeEeqSIpxCmEaNZA" name="ListOfChapters">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_uZpVoDXfEeqSIpxCmEaNZA" name="chId" visibility="public">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_45PhADXfEeqSIpxCmEaNZA"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_45n7gDXfEeqSIpxCmEaNZA" value="*"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_W-GOIpEZEeqtx4SqQAS9Eg" name="characters[ID]" aggregation="shared">
+        <type xmi:type="uml:Class" href="PyWriter.uml#_ZSkdEJEXEeqtx4SqQAS9Eg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_W-G1MJEZEeqtx4SqQAS9Eg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_W-G1MZEZEeqtx4SqQAS9Eg" value="*"/>
+        <association xmi:type="uml:Association" href="PyWriter.uml#_W-FAAJEZEeqtx4SqQAS9Eg"/>
       </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_0HtrsDXfEeqSIpxCmEaNZA" name="append"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_hnQSkCuqEeqsNupfleJppQ" name="DictOfScenes">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_3WnskCurEeq6j_3L0bwv2g" name="scId">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gekvECuxEeq6NdJQFgby7A"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_geyxgCuxEeq6NdJQFgby7A" value="*"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-NLtACuxEeq6NdJQFgby7A" name="scenes[scId]" aggregation="shared">
-        <type xmi:type="uml:Class" href="PyWriter.uml#_0ErCACtbEeqgj_wxJ3Xgsg"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-NLtASuxEeq6NdJQFgby7A"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-NMUECuxEeq6NdJQFgby7A" value="*"/>
-        <association xmi:type="uml:Association" href="PyWriter.uml#_-NEYQCuxEeq6NdJQFgby7A"/>
-      </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_Cqx6sCunEeqsNupfleJppQ" name="DictOfChapters">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_223OcCurEeq6j_3L0bwv2g" name="chId">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gdHWgCuxEeq6NdJQFgby7A"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gdctsCuxEeq6NdJQFgby7A" value="*"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_41fzcSutEeq6j_3L0bwv2g" name="chapters[chId]" aggregation="shared">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_41fzcSutEeq6j_3L0bwv2g" name="chapters[ID]" aggregation="shared">
         <type xmi:type="uml:Class" href="PyWriter.uml#_ypTQMCtbEeqgj_wxJ3Xgsg"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_41gagCutEeq6j_3L0bwv2g"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_41gagSutEeq6j_3L0bwv2g" value="*"/>
         <association xmi:type="uml:Association" href="PyWriter.uml#_41elUCutEeq6j_3L0bwv2g"/>
       </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_JI8bgCuoEeqsNupfleJppQ" name="ListOfScenes">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_WZiu4CuoEeqsNupfleJppQ" name="scId">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fWyWsCuoEeqsNupfleJppQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ejRPECuoEeqsNupfleJppQ" value="*"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-NLtACuxEeq6NdJQFgby7A" name="scenes[ID]" aggregation="shared">
+        <type xmi:type="uml:Class" href="PyWriter.uml#_0ErCACtbEeqgj_wxJ3Xgsg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-NLtASuxEeq6NdJQFgby7A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-NMUECuxEeq6NdJQFgby7A" value="*"/>
+        <association xmi:type="uml:Association" href="PyWriter.uml#_-NEYQCuxEeq6NdJQFgby7A"/>
       </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_uD1cICu3Eeq3sPxyt0AihA" name="append"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_7O07AiIzEe28s9q9Ccm9lg" name="projectNotes[ID]" aggregation="shared">
+        <type xmi:type="uml:Class" href="PyWriter.uml#_gWQsACIFEe2-76mOAU7NWg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7O1iECIzEe28s9q9Ccm9lg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7O1iESIzEe28s9q9Ccm9lg" value="*"/>
+        <association xmi:type="uml:Association" href="PyWriter.uml#_7Ozs4CIzEe28s9q9Ccm9lg"/>
+      </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_gusT8IehEeqZkamAUXuhyQ" name="ListOfTags">
+    <packagedElement xmi:type="uml:Class" xmi:id="_gusT8IehEeqZkamAUXuhyQ" name="ListOfStrings">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_gusT8YehEeqZkamAUXuhyQ" name="tag">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gusT8oehEeqZkamAUXuhyQ"/>
@@ -175,29 +137,13 @@
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_gusT9IehEeqZkamAUXuhyQ" name="append"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_XCUIgIfqEeuRjYowZVZmEQ" name="ListOfCharacters">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_XCUIgYfqEeuRjYowZVZmEQ" name="crId" visibility="public">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XCUIgofqEeuRjYowZVZmEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XCUIg4fqEeuRjYowZVZmEQ" value="*"/>
-      </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_XCUIhIfqEeuRjYowZVZmEQ" name="append"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_X4T8YIfqEeuRjYowZVZmEQ" name="ListOfLocations">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_X4T8YYfqEeuRjYowZVZmEQ" name="lcId" visibility="public">
+    <packagedElement xmi:type="uml:Class" xmi:id="_X4T8YIfqEeuRjYowZVZmEQ" name="IdList">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_X4T8YYfqEeuRjYowZVZmEQ" name="ID" visibility="public">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X4T8YofqEeuRjYowZVZmEQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X4T8Y4fqEeuRjYowZVZmEQ" value="*"/>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_X4T8ZIfqEeuRjYowZVZmEQ" name="append"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_nYshEIfqEeuRjYowZVZmEQ" name="ListOfItems">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_nYshEYfqEeuRjYowZVZmEQ" name="itId" visibility="public">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nYshEofqEeuRjYowZVZmEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nYshE4fqEeuRjYowZVZmEQ" value="*"/>
-      </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_nYshFIfqEeuRjYowZVZmEQ" name="append"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_Ct1yoIf-EeuRjYowZVZmEQ" name="TupleOfStatus">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_TRGJkIf-EeuRjYowZVZmEQ" name="0">
