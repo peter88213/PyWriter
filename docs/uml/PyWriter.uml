@@ -152,23 +152,13 @@
         <ownedEnd xmi:type="uml:Property" xmi:id="_gQNVwTXfEeqSIpxCmEaNZA" name="novel" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_gQGoEDXfEeqSIpxCmEaNZA"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_LIE_MJEVEeqtx4SqQAS9Eg" name="WorldElement">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_XmPJAJEVEeqtx4SqQAS9Eg" name="title">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_XmPJAZEVEeqtx4SqQAS9Eg"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_XmSMUJEVEeqtx4SqQAS9Eg" name="desc">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_XmSMUZEVEeqtx4SqQAS9Eg"/>
-        </ownedAttribute>
+        <generalization xmi:type="uml:Generalization" xmi:id="_q8yl0CIFEe2-76mOAU7NWg" general="_gWQsACIFEe2-76mOAU7NWg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_hrGgMpEVEeqtx4SqQAS9Eg" name="tags" association="_hrErAJEVEeqtx4SqQAS9Eg">
           <type xmi:type="uml:Class" href="Python.uml#_gusT8IehEeqZkamAUXuhyQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_a-zAQJEVEeqtx4SqQAS9Eg" name="aka">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_a-zAQZEVEeqtx4SqQAS9Eg"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_q6mnwLaJEeyevL_WP6UbFA" name="kwVar" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_ZSkdEJEXEeqtx4SqQAS9Eg" name="Character">
@@ -198,29 +188,14 @@
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_ypTQMCtbEeqgj_wxJ3Xgsg" name="Chapter">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_SGuD4CtdEeqgj_wxJ3Xgsg" name="title">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_mnG1oIedEeqZkamAUXuhyQ"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_wPL4QC1KEeqtbohuTq_ZAA" name="desc">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_o7MYIIedEeqZkamAUXuhyQ"/>
-        </ownedAttribute>
+        <generalization xmi:type="uml:Generalization" xmi:id="_srzsYCIFEe2-76mOAU7NWg" general="_gWQsACIFEe2-76mOAU7NWg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_PByKIIedEeqZkamAUXuhyQ" name="chLevel" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_Z_lUcIedEeqZkamAUXuhyQ"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_3io4wIftEeuRjYowZVZmEQ" name="oldType">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_3io4wYftEeuRjYowZVZmEQ"/>
-        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_VF0SQCtdEeqgj_wxJ3Xgsg" name="chType">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_jIc9cIedEeqZkamAUXuhyQ"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_rhu8kIedEeqZkamAUXuhyQ" name="isUnused" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_yXiWwIedEeqZkamAUXuhyQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-0mUYIedEeqZkamAUXuhyQ" name="suppressChapterTitle" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
@@ -237,12 +212,10 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_pQ1lACuoEeqsNupfleJppQ" name="srtScenes" isOrdered="true" association="_pQyhsCuoEeqsNupfleJppQ">
           <type xmi:type="uml:Class" href="Python.uml#_JI8bgCuoEeqsNupfleJppQ"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_rmePQLaJEeyevL_WP6UbFA" name="kwVar" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
-        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_ce2zwCwKEequtbdKEmlZqQ" name="__init__" visibility="public"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_0ErCACtbEeqgj_wxJ3Xgsg" name="Scene">
+        <generalization xmi:type="uml:Generalization" xmi:id="_vJQmQCIFEe2-76mOAU7NWg" general="_gWQsACIFEe2-76mOAU7NWg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_30rZEofvEeuRjYowZVZmEQ" name="STATUS" isStatic="true" association="_30qK8IfvEeuRjYowZVZmEQ">
           <type xmi:type="uml:Class" href="Python.uml#_Ct1yoIf-EeuRjYowZVZmEQ"/>
         </ownedAttribute>
@@ -260,21 +233,9 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ui47cI_ZEeynvIR1yn0cow" name="NULL_TIME" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_f53DoCtdEeqgj_wxJ3Xgsg" name="title">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_o_TUsIegEeqZkamAUXuhyQ"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_g884UCtdEeqgj_wxJ3Xgsg" name="desc">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_qvUg0IegEeqZkamAUXuhyQ"/>
-        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ixhNQCtdEeqgj_wxJ3Xgsg" name="sceneContent">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_nVDZYIegEeqZkamAUXuhyQ"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_io3aQIf9EeuRjYowZVZmEQ" name="rtfFile">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_io3aQYf9EeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_kmLBwCtdEeqgj_wxJ3Xgsg" name="wordCount" visibility="public" isDerived="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
@@ -284,16 +245,8 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_tWIyEIegEeqZkamAUXuhyQ"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_5VangIegEeqZkamAUXuhyQ" name="isUnused" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_9isgQIegEeqZkamAUXuhyQ"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_ou8nsIf9EeuRjYowZVZmEQ" name="isNoteScene" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_ou8nsYf9EeuRjYowZVZmEQ"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_o7E_MIf9EeuRjYowZVZmEQ" name="isTodoScene" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_o7E_MIf9EeuRjYowZVZmEQ" name="scType" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_o7E_MYf9EeuRjYowZVZmEQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_pG50sIf9EeuRjYowZVZmEQ" name="doNotExport" visibility="public">
@@ -304,7 +257,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_kPfScIgAEeuRjYowZVZmEQ"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_VM8SkIeiEeqZkamAUXuhyQ" name="sceneNotes" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VM8SkIeiEeqZkamAUXuhyQ" name="notes" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_YOTx0IeiEeqZkamAUXuhyQ"/>
         </ownedAttribute>
@@ -401,9 +354,6 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <defaultValue xmi:type="uml:LiteralNull" xmi:id="_cKM0gY83EeyWxuxLhWA0gA"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_peZIcLaJEeyevL_WP6UbFA" name="kwVar" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
-        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_eu15YCwKEequtbdKEmlZqQ" name="__init__" visibility="public"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_4-Ru8MwKEeuVlZjMUHKreQ" name="CrossReferences">
@@ -448,6 +398,7 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_SZHKgCtUEeqgj_wxJ3Xgsg" name="Novel" isAbstract="true">
+        <generalization xmi:type="uml:Generalization" xmi:id="_08YUECIIEe2-76mOAU7NWg" general="_gWQsACIFEe2-76mOAU7NWg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_WkB74PsSEeq-TdV6dVW08A" name="DESCRIPTION" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -468,14 +419,6 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_DZeIMN_8EeyzqaAn72d4EA" name="WE_CLASS" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="Python.uml#_1f8MkN_7EeyzqaAn72d4EA"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_To3swCtVEeqgj_wxJ3Xgsg" name="title" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_qHcTYIeeEeqZkamAUXuhyQ"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TZeKEDQBEeqKbaMl5EbWAw" name="desc" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_lb2G8IeeEeqZkamAUXuhyQ" name="None"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_uI1FMIeeEeqZkamAUXuhyQ" name="authorName" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -541,9 +484,6 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_LB6P8I8NEeyWxuxLhWA0gA" name="projectPath" visibility="public" isDerived="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_Nw-mMLaJEeyevL_WP6UbFA" name="kwVar" visibility="public">
-          <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
-        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Ut2VkCwKEequtbdKEmlZqQ" name="__init__" visibility="public">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_wJKdUI83EeyWxuxLhWA0gA" name="filePath">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -584,6 +524,19 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
         </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_gWQsACIFEe2-76mOAU7NWg" name="BasicElement">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Nm-s8CIGEe2-76mOAU7NWg" name="title">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_Nm-s8SIGEe2-76mOAU7NWg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_NnMIUCIGEe2-76mOAU7NWg" name="desc">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <defaultValue xmi:type="uml:LiteralNull" xmi:id="_NnMIUSIGEe2-76mOAU7NWg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_BJUc8CIHEe2-76mOAU7NWg" name="kwVar" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
+        </ownedAttribute>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_seuasCwTEequtbdKEmlZqQ" name="converter">

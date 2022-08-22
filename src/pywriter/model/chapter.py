@@ -11,8 +11,6 @@ class Chapter(BasicElement):
     """yWriter chapter representation.
     
     Public instance variables:
-        title -- str: chapter title (may be the heading).
-        desc -- str: chapter description in a single string.
         chLevel -- int: chapter level (part/chapter).
         chType -- int: chapter type (Normal/Notes/Todo/Unused).
         suppressChapterTitle -- bool: uppress chapter title when exporting.
@@ -89,7 +87,3 @@ class Chapter(BasicElement):
         # xml: <Scenes><ScID>
         # The chapter's scene IDs. The order of its elements
         # corresponds to the chapter's order of the scenes.
-
-        self.kwVar = {}
-        # dictionary
-        # Optional key/value instance variables for customization.

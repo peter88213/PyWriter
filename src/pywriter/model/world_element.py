@@ -35,6 +35,3 @@ class WorldElement(BasicElement):
         # str
         # xml: <AKA>
 
-        self.kwVar = {}
-        # dictionary
-        # Optional key/value instance variables for customization.

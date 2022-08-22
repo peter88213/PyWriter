@@ -9,14 +9,14 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from urllib.parse import quote
 import os
 from pywriter.pywriter_globals import *
+from pywriter.model.basic_element import BasicElement
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.model.character import Character
-from pywriter.model.basic_element import BasicElement
 from pywriter.model.world_element import WorldElement
 
 
-class Novel:
+class Novel(BasicElement):
     """Abstract yWriter project file representation.
 
     This class represents a file containing a novel with additional 
@@ -29,8 +29,6 @@ class Novel:
         write() -- write instance variables to the file.
 
     Public instance variables:
-        title -- str: title.
-        desc -- str: description in a single string.
         authorName -- str: author's name.
         author bio -- str: information about the author.
         fieldTitle1 -- str: scene rating field title 1.
@@ -70,15 +68,11 @@ class Novel:
             filePath -- str: path to the file represented by the Novel instance.
             
         Optional arguments:
-            kwargs -- keyword arguments to be used by subclasses.            
+            kwargs -- keyword arguments to be used by subclasses.  
+            
+        Extends the superclass constructor.          
         """
-        self.title = None
-        # str
-        # xml: <PROJECT><Title>
-
-        self.desc = None
-        # str
-        # xml: <PROJECT><Desc>
+        super().__init__()
 
         self.authorName = None
         # str
@@ -175,10 +169,6 @@ class Novel:
         # URL-coded path to the project directory.
 
         self.filePath = filePath
-
-        self.kwVar = {}
-        # dictionary
-        # Optional key/value instance variables for customization.
 
     @property
     def filePath(self):

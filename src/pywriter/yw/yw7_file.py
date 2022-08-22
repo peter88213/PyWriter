@@ -47,6 +47,7 @@ class Yw7File(Novel):
     _CRT_KWVAR = ()
     _LOC_KWVAR = ()
     _ITM_KWVAR = ()
+    _PNT_KWVAR = ()
     # Keyword variables for custom fields in the .yw7 XML file.
 
     def __init__(self, filePath, **kwargs):
@@ -367,6 +368,10 @@ class Yw7File(Novel):
 
             self.scenes[scId].scType = 0
 
+            #--- Initialize custom keyword variables.
+            for fieldName in self._SCN_KWVAR:
+                self.scenes[scId].kwVar[fieldName] = None
+
             for scFields in scn.findall('Fields'):
                 #--- Read scene custom fields.
                 for fieldName in self._SCN_KWVAR:
@@ -383,10 +388,6 @@ class Yw7File(Novel):
             if scn.find('Unused') is not None:
                 if self.scenes[scId].scType == 0:
                     self.scenes[scId].scType = 3
-
-            #--- Initialize custom keyword variables.
-            for fieldName in self._SCN_KWVAR:
-                self.scenes[scId].kwVar[fieldName] = None
 
             #--- Export when RTF.
             if scn.find('ExportCondSpecific') is None:
@@ -506,6 +507,17 @@ class Yw7File(Novel):
                         self.projectNotes[pnId].title = pnt.find('Title').text
                     if pnt.find('Desc') is not None:
                         self.projectNotes[pnId].desc = pnt.find('Desc').text
+
+                #--- Initialize project note custom fields.
+                for fieldName in self._PNT_KWVAR:
+                    self.projectNotes[pnId].kwVar[fieldName] = None
+
+                #--- Read project note custom fields.
+                for pnFields in pnt.findall('Fields'):
+                    field = pnFields.find(fieldName)
+                    if field is not None:
+                        self.projectNotes[pnId].kwVar[fieldName] = field.text
+
         except:
             pass
 

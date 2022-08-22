@@ -3,6 +3,7 @@
 Modules:
 
 novel -- Provide a generic class for yWriter project representation.
+basic_element -- Provide a generic class for yWriter element representation.
 chapter -- Provide a class for yWriter chapter representation.
 scene -- Provide a class for yWriter scene representation.
 world_element -- Provide a generic class for yWriter story world element representation.

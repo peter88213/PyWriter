@@ -1,4 +1,4 @@
-"""Provide a generic class for yWriter story world element representation.
+"""Provide a generic class for yWriter element representation.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -12,6 +12,7 @@ class BasicElement:
     Public instance variables:
         title -- str: title (name).
         desc -- str: description.
+        kwVar -- dict: custom keyword variables.
     """
 
     def __init__(self):
@@ -23,3 +24,7 @@ class BasicElement:
         self.desc = None
         # str
         # xml: <Desc>
+
+        self.kwVar = {}
+        # dictionary
+        # Optional key/value instance variables for customization.
