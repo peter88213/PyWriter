@@ -55,6 +55,7 @@ class FileExport(Novel):
     _itemSectionHeading = ''
     _itemTemplate = ''
     _fileFooter = ''
+    _projectNoteTemplate = ''
 
     def __init__(self, filePath, **kwargs):
         """Initialize filter strategy class instances.
@@ -434,6 +435,23 @@ class FileExport(Novel):
         )
         return itemMapping
 
+    def _get_prjNoteMapping(self, pnId):
+        """Return a mapping dictionary for a project note.
+        
+        Positional arguments:
+            pnId -- str: project note ID.
+        
+        This is a template method that can be extended or overridden by subclasses.
+        """
+        itemMapping = dict(
+            ID=pnId,
+            Title=self._convert_from_yw(self.projectNotes[pnId].title, True),
+            Desc=self._convert_from_yw(self.projectNotes[pnId].desc, True),
+            ProjectName=self._convert_from_yw(self.projectName, True),
+            ProjectPath=self.projectPath,
+        )
+        return itemMapping
+
     def _get_fileHeader(self):
         """Process the file header.
         
@@ -678,6 +696,22 @@ class FileExport(Novel):
                 lines.append(template.safe_substitute(self._get_itemMapping(itId)))
         return lines
 
+    def _get_projectNotes(self):
+        """Process the project notes. 
+        
+        Iterate through the sorted project note list and apply the template, 
+        substituting placeholders according to the item mapping dictionary.
+        Skip items not accepted by the item filter.
+        Return a list of strings.
+        This is a template method that can be extended or overridden by subclasses.
+        """
+        lines = []
+        template = Template(self._projectNoteTemplate)
+        for pnId in self.srtPrjNotes:
+            map = self._get_prjNoteMapping(pnId)
+            lines.append(template.safe_substitute(map))
+        return lines
+
     def _get_text(self):
         """Call all processing methods.
         
@@ -689,6 +723,7 @@ class FileExport(Novel):
         lines.extend(self._get_characters())
         lines.extend(self._get_locations())
         lines.extend(self._get_items())
+        lines.extend(self._get_projectNotes())
         lines.append(self._fileFooter)
         return ''.join(lines)
 
