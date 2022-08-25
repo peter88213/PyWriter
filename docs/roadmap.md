@@ -363,12 +363,23 @@ thus allowing custom classes (extends the API).
 #### v7.0
 
 - Read and write project notes.
-- Rename Scene.sceneNotes --> Scene.notes.
-- Remove Scene.rtfFile from the API. 
+- Move keyword variables type definition from Yw7File to Novel.
+
+For the "Notes", "Todo", and "Unused" chapter and scene types use enumerations rather than booleans.
 - Remove Scene.isTodoScene from the API. 
 - Remove Scene.isNotesScene from the API. 
 - Remove Scene.isUnused from the API. 
-- Remove Chapter.isUnused from the API. 
+- Add Scene.scType to the API, replacing the boolean type representations.
+- Remove Chapter.isUnused from the API.
+- Redefine Chapter.chType to replace the boolean isUnused representation.
+
+Clean up yWriter 5 remainder.
+- Remove Scene.rtfFile from the API.
+
+Refactor for standardization.
+- Rename Scene.sceneNotes --> Scene.notes.
+- Make the Novel class a BasicElement subclass.
+- Move the kwVar instance variable to BasicElement.
 
 ## Future:
 

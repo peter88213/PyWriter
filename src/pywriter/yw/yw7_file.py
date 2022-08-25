@@ -41,15 +41,6 @@ class Yw7File(Novel):
     # Names of xml elements containing CDATA.
     # ElementTree.write omits CDATA tags, so they have to be inserted afterwards.
 
-    _PRJ_KWVAR = ()
-    _CHP_KWVAR = ()
-    _SCN_KWVAR = ()
-    _CRT_KWVAR = ()
-    _LOC_KWVAR = ()
-    _ITM_KWVAR = ()
-    _PNT_KWVAR = ()
-    # Keyword variables for custom fields in the .yw7 XML file.
-
     def __init__(self, filePath, **kwargs):
         """Initialize instance variables.
         
