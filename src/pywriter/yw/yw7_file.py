@@ -97,7 +97,7 @@ class Yw7File(Novel):
 
             if loc.find('Tags') is not None:
                 if loc.find('Tags').text is not None:
-                    tags = loc.find('Tags').text.split(';')
+                    tags = string_to_list(loc.find('Tags').text)
                     self.locations[lcId].tags = self._strip_spaces(tags)
 
             #--- Initialize custom keyword variables.
@@ -133,7 +133,7 @@ class Yw7File(Novel):
 
             if itm.find('Tags') is not None:
                 if itm.find('Tags').text is not None:
-                    tags = itm.find('Tags').text.split(';')
+                    tags = string_to_list(itm.find('Tags').text)
                     self.items[itId].tags = self._strip_spaces(tags)
 
             #--- Initialize custom keyword variables.
@@ -169,7 +169,7 @@ class Yw7File(Novel):
 
             if crt.find('Tags') is not None:
                 if crt.find('Tags').text is not None:
-                    tags = crt.find('Tags').text.split(';')
+                    tags = string_to_list(crt.find('Tags').text)
                     self.characters[crId].tags = self._strip_spaces(tags)
 
             if crt.find('Notes') is not None:
@@ -396,7 +396,7 @@ class Yw7File(Novel):
 
             if scn.find('Tags') is not None:
                 if scn.find('Tags').text is not None:
-                    tags = scn.find('Tags').text.split(';')
+                    tags = string_to_list(scn.find('Tags').text)
                     self.scenes[scId].tags = self._strip_spaces(tags)
 
             if scn.find('Field1') is not None:
@@ -999,9 +999,9 @@ class Yw7File(Novel):
 
             if prjScn.tags is not None:
                 try:
-                    xmlScn.find('Tags').text = ';'.join(prjScn.tags)
+                    xmlScn.find('Tags').text = list_to_string(prjScn.tags)
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Tags').text = ';'.join(prjScn.tags)
+                    ET.SubElement(xmlScn, 'Tags').text = list_to_string(prjScn.tags)
 
             if prjScn.field1 is not None:
                 try:
@@ -1289,7 +1289,7 @@ class Yw7File(Novel):
                 ET.SubElement(xmlLoc, 'AKA').text = prjLoc.aka
 
             if prjLoc.tags is not None:
-                ET.SubElement(xmlLoc, 'Tags').text = ';'.join(prjLoc.tags)
+                ET.SubElement(xmlLoc, 'Tags').text = list_to_string(prjLoc.tags)
 
             ET.SubElement(xmlLoc, 'SortOrder').text = str(sortOrder)
 
@@ -1332,7 +1332,7 @@ class Yw7File(Novel):
                 ET.SubElement(xmlItm, 'AKA').text = prjItm.aka
 
             if prjItm.tags is not None:
-                ET.SubElement(xmlItm, 'Tags').text = ';'.join(prjItm.tags)
+                ET.SubElement(xmlItm, 'Tags').text = list_to_string(prjItm.tags)
 
             ET.SubElement(xmlItm, 'SortOrder').text = str(sortOrder)
 
@@ -1371,7 +1371,7 @@ class Yw7File(Novel):
                 ET.SubElement(xmlCrt, 'AKA').text = prjCrt.aka
 
             if prjCrt.tags is not None:
-                ET.SubElement(xmlCrt, 'Tags').text = ';'.join(prjCrt.tags)
+                ET.SubElement(xmlCrt, 'Tags').text = list_to_string(prjCrt.tags)
 
             if prjCrt.bio is not None:
                 ET.SubElement(xmlCrt, 'Bio').text = prjCrt.bio
