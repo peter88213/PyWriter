@@ -59,7 +59,7 @@ def list_to_string(elements, divider=';'):
     a comma plus a space. The space allows word wrap in 
     spreadsheet cells.
     """
-    text = (divider).join(elements)
+    text = divider.join(elements)
     return text
 
 
