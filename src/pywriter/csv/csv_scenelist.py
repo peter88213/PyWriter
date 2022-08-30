@@ -45,7 +45,7 @@ class CsvSceneList(CsvFile):
                 i += 1
                 self.scenes[scId].desc = self._convert_to_yw(cells[i])
                 i += 1
-                self.scenes[scId].tags = self._get_list(cells[i])
+                self.scenes[scId].tags = string_to_list(cells[i], divider=self._DIVIDER)
                 i += 1
                 self.scenes[scId].notes = self._convert_to_yw(cells[i])
                 i += 1

@@ -57,6 +57,8 @@ class FileExport(Novel):
     _fileFooter = ''
     _projectNoteTemplate = ''
 
+    _DIVIDER = ', '
+
     def __init__(self, filePath, **kwargs):
         """Initialize filter strategy class instances.
         
@@ -206,7 +208,7 @@ class FileExport(Novel):
         if sceneNumber == 0:
             sceneNumber = ''
         if self.scenes[scId].tags is not None:
-            tags = self._get_string(self.scenes[scId].tags)
+            tags = list_to_string(self.scenes[scId].tags, divider=self._DIVIDER)
         else:
             tags = ''
 
@@ -217,7 +219,7 @@ class FileExport(Novel):
             sChList = []
             for crId in self.scenes[scId].characters:
                 sChList.append(self.characters[crId].title)
-            sceneChars = self._get_string(sChList)
+            sceneChars = list_to_string(sChList, divider=self._DIVIDER)
             viewpointChar = sChList[0]
         except:
             sceneChars = ''
@@ -228,7 +230,7 @@ class FileExport(Novel):
             sLcList = []
             for lcId in self.scenes[scId].locations:
                 sLcList.append(self.locations[lcId].title)
-            sceneLocs = self._get_string(sLcList)
+            sceneLocs = list_to_string(sLcList, divider=self._DIVIDER)
         else:
             sceneLocs = ''
 
@@ -237,7 +239,7 @@ class FileExport(Novel):
             sItList = []
             for itId in self.scenes[scId].items:
                 sItList.append(self.items[itId].title)
-            sceneItems = self._get_string(sItList)
+            sceneItems = list_to_string(sItList, divider=self._DIVIDER)
         else:
             sceneItems = ''
 
@@ -360,7 +362,7 @@ class FileExport(Novel):
         This is a template method that can be extended or overridden by subclasses.
         """
         if self.characters[crId].tags is not None:
-            tags = self._get_string(self.characters[crId].tags)
+            tags = list_to_string(self.characters[crId].tags, divider=self._DIVIDER)
         else:
             tags = ''
         if self.characters[crId].isMajor:
@@ -394,7 +396,7 @@ class FileExport(Novel):
         This is a template method that can be extended or overridden by subclasses.
         """
         if self.locations[lcId].tags is not None:
-            tags = self._get_string(self.locations[lcId].tags)
+            tags = list_to_string(self.locations[lcId].tags, divider=self._DIVIDER)
         else:
             tags = ''
 
@@ -419,7 +421,7 @@ class FileExport(Novel):
         This is a template method that can be extended or overridden by subclasses.
         """
         if self.items[itId].tags is not None:
-            tags = self._get_string(self.items[itId].tags)
+            tags = list_to_string(self.items[itId].tags, divider=self._DIVIDER)
         else:
             tags = ''
 
@@ -751,17 +753,6 @@ class FileExport(Novel):
             return f'{ERROR}{_("Cannot write file")}: "{os.path.normpath(self.filePath)}".'
 
         return f'{_("File written")}: "{os.path.normpath(self.filePath)}".'
-
-    def _get_string(self, elements):
-        """Join strings from a list.
-        
-        Return a string which is the concatenation of the 
-        members of the list of strings "elements", separated by 
-        a comma plus a space. The space allows word wrap in 
-        spreadsheet cells.
-        """
-        text = (', ').join(elements)
-        return text
 
     def _convert_from_yw(self, text, quick=False):
         """Return text, converted from yw7 markup to target format.

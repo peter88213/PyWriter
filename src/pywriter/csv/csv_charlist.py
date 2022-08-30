@@ -45,6 +45,6 @@ class CsvCharList(CsvFile):
                     self.characters[crId].isMajor = True
                 else:
                     self.characters[crId].isMajor = False
-                self.characters[crId].tags = self._get_list(cells[8])
+                self.characters[crId].tags = string_to_list(cells[8], divider=self._DIVIDER)
                 self.characters[crId].notes = self._convert_to_yw(cells[9])
         return 'Character data read in.'

@@ -38,5 +38,5 @@ class CsvLocList(CsvFile):
                 self.locations[lcId].title = self._convert_to_yw(cells[1])
                 self.locations[lcId].desc = self._convert_to_yw(cells[2])
                 self.locations[lcId].aka = self._convert_to_yw(cells[3])
-                self.locations[lcId].tags = self._get_list(cells[4])
+                self.locations[lcId].tags = string_to_list(cells[4], divider=self._DIVIDER)
         return 'Location data read in.'

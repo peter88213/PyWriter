@@ -38,5 +38,5 @@ class CsvItemList(CsvFile):
                 self.items[itId].title = self._convert_to_yw(cells[1])
                 self.items[itId].desc = self._convert_to_yw(cells[2])
                 self.items[itId].aka = self._convert_to_yw(cells[3])
-                self.items[itId].tags = self._get_list(cells[4])
+                self.items[itId].tags = string_to_list(cells[4], divider=self._DIVIDER)
         return 'Item data read in.'

@@ -10,6 +10,7 @@ import os
 import csv
 from pywriter.pywriter_globals import *
 from pywriter.model.novel import Novel
+from pywriter.file.file_export import FileExport
 
 
 class CsvFile(Novel):
@@ -27,6 +28,8 @@ class CsvFile(Novel):
     _SEPARATOR = ','
     # delimits data fields within a record.
     _rowTitles = []
+
+    _DIVIDER = FileExport._DIVIDER
 
     def __init__(self, filePath, **kwargs):
         """Initialize instance variables.
