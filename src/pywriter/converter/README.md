@@ -1,4 +1,4 @@
-# Software design
+## Class diagram
 
-![converter package class diagram](../../../docs/lib/converter_package_class_diagram.svg)
+![converter package class diagram](../../../docs/img/converter_package_class_diagram.svg)
 

@@ -1,4 +1,4 @@
-# Software design
+## Class diagram
 
-![html package class diagram](../../../docs/lib/html_package_class_diagram.svg)
+![html package class diagram](../../../docs/img/html_package_class_diagram.svg)
 

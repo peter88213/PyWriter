@@ -1,4 +1,4 @@
-# Software design
+## Class diagram
 
-![config package class diagram](../../../docs/lib/config_package_class_diagram.svg)
+![config package class diagram](../../../docs/img/config_package_class_diagram.svg)
 

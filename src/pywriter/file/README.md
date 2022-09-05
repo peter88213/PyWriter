@@ -1,4 +1,4 @@
-# Software design
+## Class diagram
 
-![file package class diagram](../../../docs/lib/file_package_class_diagram.svg)
+![file package class diagram](../../../docs/img/file_package_class_diagram.svg)
 

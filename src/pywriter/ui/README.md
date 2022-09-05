@@ -1,5 +1,5 @@
-# Software design
+## Class diagram
 
-![ui package class diagram](../../../docs/lib/ui_package_class_diagram.svg)
+![ui package class diagram](../../../docs/img/ui_package_class_diagram.svg)
 
 

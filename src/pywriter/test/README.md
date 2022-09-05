@@ -1,5 +1,5 @@
-# Software design
+## Class diagram
 
-![test package class diagram](../../../docs/lib/test_package_class_diagram.svg)
+![test package class diagram](../../../docs/img/test_package_class_diagram.svg)
 
 

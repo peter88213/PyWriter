@@ -1,4 +1,4 @@
-# Software design
+## Class diagram
 
-![odt package class diagram](../../../docs/lib/odt_package_class_diagram.svg)
+![odt package class diagram](../../../docs/img/odt_package_class_diagram.svg)
 
