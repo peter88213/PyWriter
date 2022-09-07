@@ -53,7 +53,7 @@ msgid "Close"
 msgstr "Schließen"
 
 msgid "Create a yWriter project file from {0}\nNew project: \"{1}\""
-msgstr "Erzeuge eine yWriter-Projektdatei aus {0}.n\nNeues Projekt: \"{1}\""
+msgstr "Erzeuge eine yWriter-Projektdatei aus {0}\nNeues Projekt: \"{1}\""
 
 msgid "Cross reference"
 msgstr "Querverweise"
