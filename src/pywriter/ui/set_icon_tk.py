@@ -6,9 +6,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import sys
+import tkinter as tk
 
 
-def set_icon(widget, icon='logo', path=f'{os.path.dirname(sys.argv[0])}/icons/'):
+def set_icon(widget, icon='logo', path=None):
     """Set the window icon to the "widget" window and all its children.
     
     Positional arguments:
@@ -23,14 +24,22 @@ def set_icon(widget, icon='logo', path=f'{os.path.dirname(sys.argv[0])}/icons/')
     
     Return False, if an error occurs, otherwise return True.
     """
+    if path is None:
+        path = os.path.dirname(sys.argv[0])
+        if not path:
+            path = '.'
+        path = f'{path}/icons'
     if os.name == 'nt':
-        extension = '.ico'
+        try:
+            widget.iconbitmap(default=f'{path}/{icon}.ico')
+        except:
+            return False
     else:
-        extension = '.png'
-    try:
-        widget.iconbitmap(default=f'{path}{icon}{extension}')
-    except:
-        return False
+        try:
+            pic = tk.PhotoImage(file=f'{path}/{icon}.png')
+            widget.iconphoto(False, pic)
+        except:
+            return False
 
     return True
 
