@@ -2,6 +2,7 @@
 
 Modules:
 
+set_icon_tk -- Helper module to set a custom icon at the tk windows.
 ui -- Provide a base class for user interface facades.
 ui_cmd -- Provide a facade class for a command line user interface.
 ui_tk -- Provide a facade class for a Tkinter based GUI.
