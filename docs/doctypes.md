@@ -26,6 +26,7 @@ _Example_
 -   [Export cross reference](#export-cross-reference) -- suffix = `_xref`
 -   [Export brief synopsis](#export-brief-synopsis) -- suffix = `_brf_synopsis`
 -   [Export Notes chapters](#export-notes-chapters) -- suffix = `_notes`
+-   [Export Todo chapters](#export-todo-chapters) -- suffix = `_todo`
 
 
 ### Generate ODS (spreadsheet document)
@@ -100,6 +101,7 @@ text document (odt).
 -   Scenes marked "attach to previous scene" in yWriter appear like
     continuous paragraphs.
 
+
 [Top of page](#top)
 
 ------------------------------------------------------------------------
@@ -121,13 +123,13 @@ text document (odt) with chapter and scene markers. File name suffix is
 -   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
 -   The document contains chapter `[ChID:x]` and scene `[ScID:y]`
     markers according to yWriter 5 standard. **Do not touch lines
-    containing the markers** if you want to be able to reimport the
-    document into yWriter.
--   Chapters and scenes can neither be rearranged nor deleted.
--   Scenes can be split by inserting headings or a scene divider:
+    containing the markers** if you want to be able to write the
+    document back into yWriter.
+-   Chapters and scenes can neither be rearranged nor deleted. 
+-   You can split scenes by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
     -  *Heading 2* --› New chapter title.
-    -  `###` --› Scene divider.  Optionally, you can append the 
+    -  `###` --› Scene divider. Optionally, you can append the 
        scene title to the scene divider.
 
 
@@ -142,16 +144,20 @@ Write yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt) with invisible chapter and scene sections (to be
 seen in the Navigator). File name suffix is `_manuscript`.
 
--  Only "normal" chapters and scenes are exported. Chapters and
-   scenes marked "unused", "todo" or "notes" are not exported.
--  Scenes beginning with `<HTML>` or `<TEX>` are not exported.
--  Comments within scenes are written back as scene titles 
-   if surrounded by `~`.
--  Chapters and scenes can neither be rearranged nor deleted.
--  Scenes can be split by inserting headings or a scene divider:
+-   Only "normal" chapters and scenes are exported. Chapters and
+    scenes marked "unused", "todo" or "notes" are not exported.
+-   Scenes beginning with `<HTML>` or `<TEX>` are not exported.
+-   Comments within scenes are written back as scene titles 
+    if surrounded by `~`.
+-   Comments in the text bracketed with slashes and asterisks (like
+    `/* this is a comment */`) are converted to author's comments.
+-   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
+-   Gobal variables and project variables are not resolved.
+-   Chapters and scenes can neither be rearranged nor deleted.
+-   You can split scenes by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
     -  *Heading 2* --› New chapter title.
-    -  `###` --› Scene divider.  Optionally, you can append the 
+    -  `###` --› Scene divider. Optionally, you can also append the 
        scene title to the scene divider.
 
 [Top of page](#top)
@@ -273,6 +279,25 @@ suffix is `_brf_synopsis`.
 Write yWriter 7 "Notes" chapters with child scenes into a new 
 OpenDocument text document (odt) with invisible chapter and scene 
 sections (to be seen in the Navigator). File name suffix is `_notes`.
+
+-  Comments within scenes are written back as scene titles
+   if surrounded by `~`.
+-  Chapters and scenes can neither be rearranged nor deleted.
+-  Scenes can be split by inserting headings or a scene divider:
+    -  *Heading 1* --› New chapter title (beginning a new section).
+    -  *Heading 2* --› New chapter title.
+    -  `###` --› Scene divider. Optionally, you can append the 
+       scene title to the scene divider.
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Export Todo chapters
+
+Write yWriter 7 "Todo" chapters with child scenes into a new 
+OpenDocument text document (odt) with invisible chapter and scene 
+sections (to be seen in the Navigator). File name suffix is `_todo`.
 
 -  Comments within scenes are written back as scene titles
    if surrounded by `~`.
