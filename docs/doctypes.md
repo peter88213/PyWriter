@@ -93,7 +93,7 @@ text document (odt).
     as "chapter" headings.
 -   Scene titles appear as navigable comments pinned to the beginning of
     the scene.
--   Usually, scenes are separated by blank lines. The first line is not
+-   Scenes are separated by `* * *`. The first line is not
     indented.
 -   Starting from the second paragraph, paragraphs begin with
     indentation of the first line.
