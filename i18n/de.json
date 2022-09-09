@@ -116,6 +116,7 @@
   "Goal": "Ziel",
   "Goals": "Ziele",
   "Help": "Hilfe",
+  "Help file not found. Please check the installation": "Hilfedatei nicht gefunden. Bitte die Installation prüfen.",
   "Import from yWriter": "Aus yWriter importieren",
   "Information": "Information",
   "Input: {0} \\\"{1}\\\"\\nOutput: {2} \\\"{3}\\\"": "Quelle: {0} \\\"{1}\\\"\\nZiel: {2} \\\"{3}\\\"",
