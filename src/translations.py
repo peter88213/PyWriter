@@ -187,7 +187,8 @@ class Translations:
                     msgCount += 1
                 elif line.startswith('msgstr "'):
                     translation = self._extract_text('msgstr "', line)
-                    self.msgDict[message] = translation
+                    if translation:
+                        self.msgDict[message] = translation
         print(f'{msgCount} entries read.')
         print(f'{len(self.msgDict)} translations total.')
 
