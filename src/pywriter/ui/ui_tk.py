@@ -33,7 +33,7 @@ class UiTk(Ui):
         Extends the superclass constructor.
         """
         super().__init__(title)
-        self._title = title
+        self.title = title
         self.root = tk.Tk()
         self.root.minsize(400, 150)
         self.root.resizable(width=tk.FALSE, height=tk.FALSE)
@@ -103,4 +103,4 @@ class UiTk(Ui):
 
     def show_warning(self, message):
         """Display a warning message box."""
-        messagebox.showwarning(self._title, message)
+        messagebox.showwarning(self.title, message)

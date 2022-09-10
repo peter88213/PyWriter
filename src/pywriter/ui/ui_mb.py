@@ -30,7 +30,7 @@ class UiMb(Ui):
         super().__init__(title)
         root = tk.Tk()
         root.withdraw()
-        self._title = title
+        self.title = title
 
     def ask_yes_no(self, text):
         """Query yes or no with a pop-up box.
@@ -40,7 +40,7 @@ class UiMb(Ui):
             
         Overrides the superclass method.       
         """
-        return messagebox.askyesno(self._title, text)
+        return messagebox.askyesno(self.title, text)
 
     def set_info_how(self, message):
         """Show a pop-up message in case of error.
@@ -52,10 +52,10 @@ class UiMb(Ui):
         """
         if message.startswith(ERROR):
             message = message.split(ERROR, maxsplit=1)[1].strip()
-            messagebox.showerror(self._title, message)
+            messagebox.showerror(self.title, message)
         else:
-            messagebox.showinfo(self._title, message)
+            messagebox.showinfo(self.title, message)
 
     def show_warning(self, message):
         """Display a warning message box."""
-        messagebox.showwarning(self._title, message)
+        messagebox.showwarning(self.title, message)
