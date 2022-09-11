@@ -465,22 +465,28 @@ class Yw7File(Novel):
                 self.scenes[scId].image = scn.find('ImageFile').text
 
             if scn.find('Characters') is not None:
-                for crId in scn.find('Characters').iter('CharID'):
-                    if self.scenes[scId].characters is None:
-                        self.scenes[scId].characters = []
-                    self.scenes[scId].characters.append(crId.text)
+                for characters in scn.find('Characters').iter('CharID'):
+                    crId = characters.text
+                    if crId in self.srtCharacters:
+                        if self.scenes[scId].characters is None:
+                            self.scenes[scId].characters = []
+                        self.scenes[scId].characters.append(crId)
 
             if scn.find('Locations') is not None:
-                for lcId in scn.find('Locations').iter('LocID'):
-                    if self.scenes[scId].locations is None:
-                        self.scenes[scId].locations = []
-                    self.scenes[scId].locations.append(lcId.text)
+                for locations in scn.find('Locations').iter('LocID'):
+                    lcId = locations.text
+                    if lcId in self.srtLocations:
+                        if self.scenes[scId].locations is None:
+                            self.scenes[scId].locations = []
+                        self.scenes[scId].locations.append(lcId)
 
             if scn.find('Items') is not None:
-                for itId in scn.find('Items').iter('ItemID'):
-                    if self.scenes[scId].items is None:
-                        self.scenes[scId].items = []
-                    self.scenes[scId].items.append(itId.text)
+                for items in scn.find('Items').iter('ItemID'):
+                    itId = items.text
+                    if itId in self.srtItems:
+                        if self.scenes[scId].items is None:
+                            self.scenes[scId].items = []
+                        self.scenes[scId].items.append(itId)
 
         self.adjust_scene_types()
 
