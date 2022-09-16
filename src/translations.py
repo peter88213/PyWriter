@@ -31,7 +31,6 @@ from string import Template
 from datetime import datetime
 
 POT_PATH = '../i18n'
-POT_FILE = 'messages.pot'
 JSON_PATH = '../../PyWriter/i18n'
 
 poHeader = '''\
@@ -62,9 +61,9 @@ class Translations:
     - The JSON dictionary is updated by translations found in the initial '.po' file.
     """
 
-    def __init__(self, languageCode, app='', appVersion='unknown'):
+    def __init__(self, languageCode, app='', appVersion='unknown', potFile='messages.pot'):
         self.poFile = f'{POT_PATH}/{languageCode}.po'
-        self.potFile = f'{POT_PATH}/{POT_FILE}'
+        self.potFile = f'{POT_PATH}/{potFile}'
         self.lngFile = f'{JSON_PATH}/{languageCode}.json'
         self.msgDict = {}
         self.msgList = []
@@ -240,7 +239,7 @@ class Translations:
         return message
 
 
-def main(languageCode, app='', appVersion='unknown'):
+def main(languageCode, app='', appVersion='unknown', potFile='messages.pot'):
     """Update a '.po' translation file.
     
     - Add missing entries from the '.pot' template file.
@@ -250,7 +249,7 @@ def main(languageCode, app='', appVersion='unknown'):
     Return True, if all messages have translations.
     Return False, if messages need to be translated. 
     """
-    translations = Translations(languageCode, app, appVersion)
+    translations = Translations(languageCode, app, appVersion, potFile)
     translations.read_json()
     translations.read_pot()
     translations.read_po()
