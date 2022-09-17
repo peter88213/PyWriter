@@ -599,7 +599,7 @@ class Yw7File(Novel):
                     try:
                         self.locations[lcId].kwVar[fieldName] = source.locations[lcId].kwVar[fieldName]
                     except:
-                        self.locations[lcId].kwVar[fieldName] = temploc[lcId].kwVar[fieldName]
+                        self.locations[lcId].kwVar[fieldName] = temploc[lcId].kwVar.get(fieldName, None)
 
         #--- Merge and re-order items.
         if source.srtItems:
@@ -638,7 +638,7 @@ class Yw7File(Novel):
                     try:
                         self.items[itId].kwVar[fieldName] = source.items[itId].kwVar[fieldName]
                     except:
-                        self.items[itId].kwVar[fieldName] = tempitm[itId].kwVar[fieldName]
+                        self.items[itId].kwVar[fieldName] = tempitm[itId].kwVar.get(fieldName, None)
 
         #--- Merge and re-order characters.
         if source.srtCharacters:
@@ -697,7 +697,7 @@ class Yw7File(Novel):
                     try:
                         self.characters[crId].kwVar[fieldName] = source.characters[crId].kwVar[fieldName]
                     except:
-                        self.characters[crId].kwVar[fieldName] = tempchr[crId].kwVar[fieldName]
+                        self.characters[crId].kwVar[fieldName] = tempchr[crId].kwVar.get(fieldName, None)
 
         #--- Merge and re-order projectNotes.
         if source.srtPrjNotes:
@@ -727,7 +727,7 @@ class Yw7File(Novel):
                     try:
                         self.projectNotes[pnId].kwVar[fieldName] = source.projectNotes[pnId].kwVar[fieldName]
                     except:
-                        self.projectNotes[pnId].kwVar[fieldName] = tempPrjn[pnId].kwVar[fieldName]
+                        self.projectNotes[pnId].kwVar[fieldName] = tempPrjn[pnId].kwVar.get(fieldName, None)
 
         #--- Merge scenes.
         sourceHasSceneContent = False
@@ -993,7 +993,7 @@ class Yw7File(Novel):
 
             #--- Write scene custom fields.
             for field in self._SCN_KWVAR:
-                if field in self.scenes[scId].kwVar and self.scenes[scId].kwVar[field]:
+                if self.scenes[scId].kwVar.get(field, None):
                     if scFields is None:
                         scFields = ET.SubElement(xmlScn, 'Fields')
                     try:
@@ -1272,7 +1272,7 @@ class Yw7File(Novel):
 
             #--- Write chapter custom fields.
             for field in self._CHP_KWVAR:
-                if field in prjChp.kwVar and prjChp.kwVar[field]:
+                if prjChp.kwVar.get(field, None):
                     if chFields is None:
                         chFields = ET.SubElement(xmlChp, 'Fields')
                     try:
@@ -1317,7 +1317,7 @@ class Yw7File(Novel):
             #--- Write location custom fields.
             lcFields = xmlLoc.find('Fields')
             for field in self._LOC_KWVAR:
-                if field in self.locations[lcId].kwVar and self.locations[lcId].kwVar[field]:
+                if self.locations[lcId].kwVar.get(field, None):
                     if lcFields is None:
                         lcFields = ET.SubElement(xmlLoc, 'Fields')
                     try:
@@ -1360,7 +1360,7 @@ class Yw7File(Novel):
             #--- Write item custom fields.
             itFields = xmlItm.find('Fields')
             for field in self._ITM_KWVAR:
-                if field in self.items[itId].kwVar and self.items[itId].kwVar[field]:
+                if self.items[itId].kwVar.get(field, None):
                     if itFields is None:
                         itFields = ET.SubElement(xmlItm, 'Fields')
                     try:
@@ -1409,7 +1409,7 @@ class Yw7File(Novel):
             #--- Write character custom fields.
             crFields = xmlCrt.find('Fields')
             for field in self._CRT_KWVAR:
-                if field in self.characters[crId].kwVar and self.characters[crId].kwVar[field]:
+                if self.characters[crId].kwVar.get(field, None):
                     if crFields is None:
                         crFields = ET.SubElement(xmlCrt, 'Fields')
                     try:
@@ -1480,7 +1480,7 @@ class Yw7File(Novel):
             #--- Write project custom fields.
             prjFields = xmlPrj.find('Fields')
             for field in self._PRJ_KWVAR:
-                setting = self.kwVar[field]
+                setting = self.kwVar.get(field, None)
                 if setting:
                     if prjFields is None:
                         prjFields = ET.SubElement(xmlPrj, 'Fields')
@@ -1712,18 +1712,18 @@ class Yw7File(Novel):
         """
         hasChanged = False
         for field in self._PRJ_KWVAR:
-            if self.kwVar[field]:
+            if self.kwVar.get(field, None):
                 self.kwVar[field] = ''
                 hasChanged = True
         for chId in self.chapters:
             # Deliberatey not iterate srtChapters: make sure to get all chapters.
             for field in self._CHP_KWVAR:
-                if self.chapters[chId].kwVar[field]:
+                if self.chapters[chId].kwVar.get(field, None):
                     self.chapters[chId].kwVar[field] = ''
                     hasChanged = True
         for scId in self.scenes:
             for field in self._SCN_KWVAR:
-                if self.scenes[scId].kwVar[field]:
+                if self.scenes[scId].kwVar.get(field, None):
                     self.scenes[scId].kwVar[field] = ''
                     hasChanged = True
         return hasChanged
