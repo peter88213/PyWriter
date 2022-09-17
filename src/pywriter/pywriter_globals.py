@@ -24,7 +24,7 @@ except:
 
 
 def string_to_list(text, divider=';'):
-    """Convert a string into a list.
+    """Convert a string into a list with unique elements.
     
     Positional arguments:
         text -- string containing divider-separated substrings.
@@ -32,17 +32,22 @@ def string_to_list(text, divider=';'):
     Optional arguments:
         divider -- string that divides the substrings.
     
-    Split a string into a list of strings.
+    Split a string into a list of strings. Retain the order, but discard duplicates.
     Remove leading and trailing spaces, if any.
     Return a list of strings.
+    If an error occurs, return an empty list.
     """
     elements = []
-    tempList = text.split(divider)
-    for element in tempList:
-        element = element.strip()
-        if element and not element in elements:
-            elements.append(element)
-    return elements
+    try:
+        tempList = text.split(divider)
+        for element in tempList:
+            element = element.strip()
+            if element and not element in elements:
+                elements.append(element)
+        return elements
+
+    except:
+        return []
 
 
 def list_to_string(elements, divider=';'):
@@ -58,9 +63,14 @@ def list_to_string(elements, divider=';'):
     members of the list of strings "elements", separated by 
     a comma plus a space. The space allows word wrap in 
     spreadsheet cells.
+    If an error occurs, return an empty string.
     """
-    text = divider.join(elements)
-    return text
+    try:
+        text = divider.join(elements)
+        return text
+
+    except:
+        return ''
 
 
 __all__ = ['ERROR', '_', 'LOCALE_PATH', 'CURRENT_LANGUAGE', 'string_to_list', 'list_to_string']
