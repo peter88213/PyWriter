@@ -2,13 +2,16 @@
 
 [yWriter 7](http://www.spacejock.com/yWriter7.html) is a free word processor whose strengths are structuring novels and controlling the progress during the writing process. The PyWriter library provides Python classes to read and write yWriter 7 projects and convert the project data to and from several file formats such as odt, ods, csv, and html.
 
-For more information, see the [Project home page](https://peter88213.github.io/PyWriter/)
+## Requirements
+
+- [Python 3.6+](https://www.python.org). 
 
 ## Applications
 
-The PyWriter project started with a library for yWriter7 file operations such as export and import scenes. Based on this library, there now are several, supporting the novelist's work with yWriter in combination with a powerful Office suite. 
+Based on the  _pywriter_  library, there now are several applications, supporting the novelist's work with yWriter in combination with a powerful Office suite. 
 
-For more information, see my [GitHub home page](https://peter88213.github.io).   
+For more information, see my [GitHub home page](https://peter88213.github.io).
+
 
 ## Development
 

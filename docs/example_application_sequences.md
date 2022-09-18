@@ -1,7 +1,3 @@
-[Home](../index) > Example application sequences
-
----
-
 # Example application sequences
 
 The [src/samples](https://github.com/peter88213/PyWriter/tree/main/src/sample) directory contains some sample Python converter scripts using the classes of the pywriter library. 

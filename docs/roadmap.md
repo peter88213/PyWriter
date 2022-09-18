@@ -1,8 +1,4 @@
-[home](index) > roadmap
-
----
-
-# The pywriter development roadmap
+# The PyWriter development roadmap
 
 ## About versioning
 

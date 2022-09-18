@@ -1,5 +1,3 @@
-[home](index) > Template and placeholder specifications for file export
-
 # Template and placeholder specifications for file export
 
 Template-based file export: The application script iterates over chapters, scenes, characters, locations, and items, selecting a template for each and replacing the placeholders with project data.
@@ -35,7 +33,8 @@ Template-based file export: The application script iterates over chapters, scene
 - **notExportedSceneTemplate** (applied to scenes not to be "exported as RTF")
 - **notesSceneTemplate** (applied to scenes marked "notes")
 - **todoSceneTemplate** (applied to scenes marked "todo")
-- **sceneDivider** (lead scenes, beginning from the second in chapter)
+- **sceneDivider** (lead scenes, beginning from the second in chapter)
+
 
 ### World building templates
 

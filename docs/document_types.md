@@ -1,5 +1,3 @@
-[Home](index) > Document types
-
 # Document types
 
 The document types are recognized by a suffix added to the yWriter project name.
