@@ -37,7 +37,7 @@ def set_icon(widget, icon='logo', path=None):
     else:
         try:
             pic = tk.PhotoImage(file=f'{path}/{icon}.png')
-            widget.iconphoto(False, pic)
+            widget.iconphoto(True, pic)
         except:
             return False
 
