@@ -239,10 +239,12 @@ class Translations:
         return message
 
 
-def main(languageCode, app='', appVersion='unknown', potFile='messages.pot'):
+def main(languageCode, app='', appVersion='unknown', potFile='messages.pot', json=False):
     """Update a '.po' translation file.
     
     - Add missing entries from the '.pot' template file.
+    
+    If json is True:
     - Add missing translations from the JSON dictionary to the '.po' file.
     - Update the JSON dictionary from the '.po' file.
     
@@ -250,10 +252,12 @@ def main(languageCode, app='', appVersion='unknown', potFile='messages.pot'):
     Return False, if messages need to be translated. 
     """
     translations = Translations(languageCode, app, appVersion, potFile)
-    translations.read_json()
+    if json:
+        translations.read_json()
     translations.read_pot()
     translations.read_po()
-    translations.write_json()
+    if json:
+        translations.write_json()
     if translations.write_po():
         return True
     else:
