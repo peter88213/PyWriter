@@ -4,12 +4,14 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from tkinter import scrolledtext
+import tkinter as tk
 from tkinter import font as tkFont
+from tkinter import ttk
 
 
-class RichTextTk(scrolledtext.ScrolledText):
-    """A text box applying formatting.
+class RichTextTk(tk.Text):
+    """A text box with a ttk scrollbar, applying formatting.
+    
     Kudos to Bryan Oakley
     https://stackoverflow.com/questions/63099026/fomatted-text-in-tkinter
     """
@@ -29,8 +31,33 @@ class RichTextTk(scrolledtext.ScrolledText):
     H3_SPACING = 1.5
     CENTER_SPACING = 1.5
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, master=None, **kw):
+        """Define tags for headings and bold/italic.
+        
+        Copied from tkinter.scrolledtext and modified (use ttk widgets).
+        Extends the supeclass constructor.
+        """
+        # Add a scrollbar:
+        self.frame = ttk.Frame(master)
+        self.vbar = ttk.Scrollbar(self.frame)
+        self.vbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        kw.update({'yscrollcommand': self.vbar.set})
+        tk.Text.__init__(self, self.frame, **kw)
+        self.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.vbar['command'] = self.yview
+
+        # Copy geometry methods of self.frame without overriding Text
+        # methods -- hack!
+        text_meths = vars(tk.Text).keys()
+        methods = vars(tk.Pack).keys() | vars(tk.Grid).keys() | vars(tk.Place).keys()
+        methods = methods.difference(text_meths)
+
+        for m in methods:
+            if m[0] != '_' and m != 'config' and m != 'configure':
+                setattr(self, m, getattr(self.frame, m))
+
+        # This part is "rich text" specific:
         defaultFont = tkFont.nametofont(self.cget('font'))
 
         em = defaultFont.measure('m')
