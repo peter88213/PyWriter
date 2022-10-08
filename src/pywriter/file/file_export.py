@@ -151,6 +151,9 @@ class FileExport(Novel):
             self.srtPrjNotes = source.srtPrjNotes
             self.projectNotes = source.projectNotes
 
+        if source.kwVar:
+            self.kwVar = source.kwVar
+
         return 'Export data updated from novel.'
 
     def _get_fileHeaderMapping(self):
