@@ -8,6 +8,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import re
+import locale
 from html import unescape
 import xml.etree.ElementTree as ET
 from pywriter.pywriter_globals import *
@@ -40,6 +41,11 @@ class Yw7File(Novel):
                    'Outcome', 'Goal', 'Conflict']
     # Names of xml elements containing CDATA.
     # ElementTree.write omits CDATA tags, so they have to be inserted afterwards.
+
+    _PRJ_KWVAR = (
+        'Field_LanguageCode',
+        'Field_CountryCode',
+        )
 
     def __init__(self, filePath, **kwargs):
         """Initialize instance variables.
@@ -1734,4 +1740,24 @@ class Yw7File(Novel):
             if self.chapters[chId].chType != 0:
                 for scId in self.chapters[chId].srtScenes:
                     self.scenes[scId].scType = self.chapters[chId].chType
+
+    def check_locale(self):
+        """Check the document's locale (language code and country code).
+        
+        If a reasonable looking locale is set, return True, 
+        otherwise set the system locale and return False.        
+        """
+        try:
+            docLng = self.kwVar['Field_LanguageCode']
+            if len(docLng) == 2:
+                docCtr = self.kwVar['Field_CountryCode']
+                if len(docCtr) == 2:
+                    return True
+
+        except:
+            pass
+        sysLng, sysCtr = locale.getdefaultlocale()[0].split('_')
+        self.kwVar['Field_LanguageCode'] = sysLng
+        self.kwVar['Field_CountryCode'] = sysCtr
+        return False
 
