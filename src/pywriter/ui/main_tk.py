@@ -180,17 +180,24 @@ class MainTk(Ui):
             return False
 
         self.show_path(f'{os.path.normpath(self.ywPrj.filePath)}')
+        self.set_title()
+        self.enable_menu()
+        return True
+
+    def set_title(self):
+        """Set the main window title. 
+        
+        'Document title by author - application'
+        """
         if self.ywPrj.title:
             titleView = self.ywPrj.title
         else:
-            titleView = _('Untitled yWriter project')
+            titleView = _('Untitled project')
         if self.ywPrj.authorName:
             authorView = self.ywPrj.authorName
         else:
             authorView = _('Unknown author')
         self.root.title(f'{titleView} {_("by")} {authorView} - {self.title}')
-        self.enable_menu()
-        return True
 
     def _open_project(self, event=None):
         """Create a yWriter project instance and read the file.
