@@ -1745,19 +1745,28 @@ class Yw7File(Novel):
         """Check the document's locale (language code and country code).
         
         If a reasonable looking locale is set, return True, 
-        otherwise set the system locale and return False.        
+        if the locale is missing, set the system locale and return False,  
+        otherwise set "no language" and return False.        
         """
         try:
+            # Plausibility check: code must have two characters.
             docLng = self.kwVar['Field_LanguageCode']
             if len(docLng) == 2:
                 docCtr = self.kwVar['Field_CountryCode']
                 if len(docCtr) == 2:
                     return True
+                    # keep the setting
 
         except:
-            pass
-        sysLng, sysCtr = locale.getdefaultlocale()[0].split('_')
-        self.kwVar['Field_LanguageCode'] = sysLng
-        self.kwVar['Field_CountryCode'] = sysCtr
-        return False
+            # Language or country field doesn't exist as strings.
+            sysLng, sysCtr = locale.getdefaultlocale()[0].split('_')
+            self.kwVar['Field_LanguageCode'] = sysLng
+            self.kwVar['Field_CountryCode'] = sysCtr
+            return False
+
+        else:
+            # Existing language or country field looks not plausible
+            self.kwVar['Field_LanguageCode'] = 'zxx'
+            self.kwVar['Field_CountryCode'] = 'none'
+            return False
 

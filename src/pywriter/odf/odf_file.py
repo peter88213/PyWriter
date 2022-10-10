@@ -93,16 +93,17 @@ class OdfFile(FileExport):
             return f'{ERROR}{_("Cannot write file")}: "manifest.xml"'
 
         #--- Generate styles.xml.
-        # If no reasonable looking language/country is set, use the system language/country.
+        # If no language/country is set, use the system language/country.
+        # If the language/country are set, but don't look reasonable, use "no language" settings.
         sysLng, sysCtr = locale.getdefaultlocale()[0].split('_')
         localeMapping = dict(
-            Language=sysLng,
-            Country=sysCtr,
+            Language='zxx',
+            Country='none',
         )
         try:
-            docLng = self.kwVar['Field_LanguageCode']
+            docLng = self.kwVar.get('Field_LanguageCode', sysLng)
             if len(docLng) == 2:
-                docCtr = self.kwVar['Field_CountryCode']
+                docCtr = self.kwVar.get('Field_CountryCode', sysCtr)
                 if len(docCtr) == 2:
                     localeMapping['Language'] = docLng
                     localeMapping['Country'] = docCtr
