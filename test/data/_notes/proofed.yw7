@@ -47,7 +47,9 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <DeadlineStartDate4>2005-01-02</DeadlineStartDate4>
     <DeadlineStartDate5>2005-01-08</DeadlineStartDate5>
     <Fields>
-		</Fields>
+      <Field_LanguageCode>en</Field_LanguageCode>
+      <Field_CountryCode>AU</Field_CountryCode>
+    </Fields>
   </PROJECT>
   <LOCATIONS>
     <LOCATION>

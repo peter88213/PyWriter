@@ -39,7 +39,14 @@ class HtmlOutline(HtmlFile):
         self._scCount = 0
 
     def handle_starttag(self, tag, attrs):
-
+        """Recognize the paragraph's beginning.
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
+        
+        Overrides the superclass method.
+        """
         if tag in ('h1', 'h2'):
             self._scId = None
             self._lines = []
@@ -71,6 +78,16 @@ class HtmlOutline(HtmlFile):
                 self.desc = attrs[1][1]
         elif tag == 'title':
             self._lines = []
+        elif tag == 'body':
+            for attr in attrs:
+                if attr[0].lower() == 'lang':
+                    try:
+                        lngCode, ctrCode = attr[1].split('-')
+                        self.kwVar['Field_LanguageCode'] = lngCode
+                        self.kwVar['Field_CountryCode'] = ctrCode
+                    except:
+                        pass
+                    break
 
     def handle_endtag(self, tag):
         """Recognize the paragraph's end.
@@ -78,7 +95,7 @@ class HtmlOutline(HtmlFile):
         Positional arguments:
             tag -- str: name of the tag converted to lower case.
 
-        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
+        Overrides the superclass method.
         """
         if tag == 'p':
             self._lines.append('\n')
@@ -101,6 +118,6 @@ class HtmlOutline(HtmlFile):
         Positional arguments:
             data -- str: text to be stored. 
         
-        Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
+        Overrides the superclass method.
         """
         self._lines.append(data.strip())

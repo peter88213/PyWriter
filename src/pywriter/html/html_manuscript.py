@@ -50,6 +50,16 @@ class HtmlManuscript(HtmlFile):
                 self._lines.append(f'{self._BULLET} ')
             elif tag == 'blockquote':
                 self._lines.append(f'{self._INDENT} ')
+        elif tag == 'body':
+            for attr in attrs:
+                if attr[0].lower() == 'lang':
+                    try:
+                        lngCode, ctrCode = attr[1].split('-')
+                        self.kwVar['Field_LanguageCode'] = lngCode
+                        self.kwVar['Field_CountryCode'] = ctrCode
+                    except:
+                        pass
+                    break
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
