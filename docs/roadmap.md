@@ -4,21 +4,28 @@
 
 This project uses semantic versioning with three-part numbers.
 
-__Up to v2.16__ , the following applies: 
+**Up to v2.16** , the following applies: 
 
--  __Major version__  numbers are incremented for changes on the upper architectural level.
--  __Minor version__  numbers are incremented for releases which change the API in any way.
--  __Patch__  numbers are incremented for minor changes and bug fixes which do not change the API. 
+- **Major version** numbers are incremented for changes on the upper architectural level.
+- **Minor version** numbers are incremented for releases which change the API in any way.
+- **Patch** numbers are incremented for minor changes and bug fixes which do not change the API. 
 
-__As of v2.12__ , the following applies to the  __minor versions__ :
--  __Even numbers__  indicate releases, published on the  _master_  branch. 
--  __Odd numbers__  are development versions, initially not on the  _master_  branch.
+**As of v2.12** , the following applies to the **minor versions** :
+- **Even numbers** indicate releases, published on the _master_ branch. 
+- **Odd numbers** are development versions, initially not on the _master_ branch.
 
-__As of v2.16__ , the following applies:
+**As of v2.16** , the following applies:
 
--  __Major version__  numbers are incremented for API changes which are not backward-compatible.
--  __Minor version__  numbers are incremented for releases which add new, but backward-compatible, API features. The latest minor release with an odd number might belong to the next major release development, thus not being necessarily backward-compatible.
--  __Patch__  numbers are incremented for minor changes and bug fixes which do not change the API. 
+- **Major version** numbers are incremented for API changes which are not backward-compatible.
+- **Minor version** numbers are incremented for releases which add new, but backward-compatible, API features. The latest minor release with an odd number might belong to the next major release development, thus not being necessarily backward-compatible.
+- **Patch** numbers are incremented for minor changes and bug fixes which do not change the API. 
+
+**As of v7.10** , the following applies:
+
+- **Major version** numbers are incremented for API changes which are not backward-compatible.
+- **Minor version** numbers are incremented for releases which add new, but backward-compatible, API features. 
+  The latest untagged minor version builds might belong to the next major release development, thus not being necessarily backward-compatible.
+- **Patch** numbers are incremented for minor changes and bug fixes which do not change the API. 
 
 ## Version 1.x: Standalone exporters and importers for proof reading
 
