@@ -46,6 +46,8 @@ class HtmlFile(Novel, HTMLParser):
         self._lines = []
         self._scId = None
         self._chId = None
+        self._newline = False
+        self._language = ''
 
     def _convert_to_yw(self, text):
         """Convert html formatting tags to yWriter 7 raw markup.
@@ -63,38 +65,23 @@ class HtmlFile(Novel, HTMLParser):
         while '  ' in text:
             text = text.replace('  ', ' ')
 
-        #--- Convert inline language changing markup.
-        text = re.sub('<SPAN LANG="(.+?)">(.+?)</SPAN>', '[lang=\\1]\\2[/lang=\\1]', text)
-        text = re.sub('<span lang="(.+?)">(.+?)</span>', '[lang=\\1]\\2[/lang=\\1]', text)
+        return text
 
-        #--- Clean up polluted HTML code.
-        text = re.sub('</*font.*?>', '', text)
-        text = re.sub('</*span.*?>', '', text)
-        text = re.sub('</*FONT.*?>', '', text)
-        text = re.sub('</*SPAN.*?>', '', text)
-
-        #--- Replace HTML tags by yWriter markup.
-        text = text.replace('<i>', '[i]')
-        text = text.replace('<I>', '[i]')
-        text = text.replace('</i>', '[/i]')
-        text = text.replace('</I>', '[/i]')
-        text = text.replace('</em>', '[/i]')
-        text = text.replace('</EM>', '[/i]')
-        text = text.replace('<b>', '[b]')
-        text = text.replace('<B>', '[b]')
-        text = text.replace('</b>', '[/b]')
-        text = text.replace('</B>', '[/b]')
-        text = text.replace('</strong>', '[/b]')
-        text = text.replace('</STRONG>', '[/b]')
-        text = re.sub('<em.*?>', '[i]', text)
-        text = re.sub('<EM.*?>', '[i]', text)
-        text = re.sub('<strong.*?>', '[b]', text)
-        text = re.sub('<STRONG.*?>', '[b]', text)
-
+    def _cleanup_scene(self, text):
+        """Clean up yWriter markup.
+        
+        Positional arguments:
+            text -- string to clean up.
+        
+        Return a yw7 markup string.
+        """
         #--- Remove orphaned tags.
         text = text.replace('[/b][b]', '')
         text = text.replace('[/i][i]', '')
         text = text.replace('[/b][b]', '')
+
+        #--- Remove misplaced formatting tags.
+        # text = re.sub('\[\/*[b|i]\]', '', text)
         return text
 
     def _preprocess(self, text):
@@ -108,9 +95,6 @@ class HtmlFile(Novel, HTMLParser):
         Return a string.
         """
         text = self._convert_to_yw(text)
-
-        #--- Remove misplaced formatting tags.
-        text = re.sub('\[\/*[b|i]\]', '', text)
         return text
 
     def _postprocess(self):

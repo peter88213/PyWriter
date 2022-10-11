@@ -37,7 +37,15 @@ class HtmlManuscript(HtmlFile):
         super().handle_starttag(tag, attrs)
         if self._scId is not None:
             self._getScTitle = False
-            if tag == 'h3':
+            if tag == 'em' or tag == 'i':
+                self._lines.append('[i]')
+            elif tag == 'strong' or tag == 'b':
+                self._lines.append('[b]')
+            elif tag == 'span':
+                if attrs[0][0].lower() == 'lang':
+                    self._language = attrs[0][1]
+                    self._lines.append(f'[lang={self._language}]')
+            elif tag == 'h3':
                 if self.scenes[self._scId].title is None:
                     self._getScTitle = True
                 else:
@@ -70,13 +78,21 @@ class HtmlManuscript(HtmlFile):
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
         if self._scId is not None:
-            if tag == 'div':
+            if tag == 'p':
+                self._lines.append('\n')
+            elif tag == 'em' or tag == 'i':
+                self._lines.append('[/i]')
+            elif tag == 'strong' or tag == 'b':
+                self._lines.append('[/b]')
+            elif tag == 'span':
+                if self._language:
+                    self._lines.append(f'[/lang={self._language}]')
+                    self._language = ''
+            elif tag == 'div':
                 text = ''.join(self._lines)
-                self.scenes[self._scId].sceneContent = text.rstrip()
+                self.scenes[self._scId].sceneContent = self._cleanup_scene(text).rstrip()
                 self._lines = []
                 self._scId = None
-            elif tag == 'p':
-                self._lines.append('\n')
             elif tag == 'h1':
                 self._lines.append('\n')
             elif tag == 'h2':

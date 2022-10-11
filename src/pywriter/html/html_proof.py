@@ -78,6 +78,14 @@ class HtmlProof(HtmlFile):
         """
         if tag == 'p' and self._prefix is None:
             self._prefix = ''
+        elif tag == 'em' or tag == 'i':
+            self._lines.append('[i]')
+        elif tag == 'strong' or tag == 'b':
+            self._lines.append('[b]')
+        elif tag == 'span':
+            if attrs[0][0].lower() == 'lang':
+                self._language = attrs[0][1]
+                self._lines.append(f'[lang={self._language}]')
         elif tag == 'h2':
             self._prefix = f'{Splitter.CHAPTER_SEPARATOR} '
         elif tag == 'h1':
@@ -107,6 +115,14 @@ class HtmlProof(HtmlFile):
         """
         if tag in ['p', 'h2', 'h1', 'blockquote']:
             self._prefix = None
+        elif tag == 'em' or tag == 'i':
+            self._lines.append('[/i]')
+        elif tag == 'strong' or tag == 'b':
+            self._lines.append('[/b]')
+        elif tag == 'span':
+            if self._language:
+                self._lines.append(f'[/lang={self._language}]')
+                self._language = ''
 
     def handle_data(self, data):
         """Copy the scene paragraphs.      

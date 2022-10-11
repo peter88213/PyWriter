@@ -58,7 +58,26 @@ class HtmlImport(HtmlFile):
         
         Overrides the superclass method.
         """
-        if tag in ('h1', 'h2'):
+        if tag == 'p':
+            if self._scId is None and self._chId is not None:
+                self._lines = []
+                self._scCount += 1
+                self._scId = str(self._scCount)
+                self.scenes[self._scId] = self.SCENE_CLASS()
+                self.chapters[self._chId].srtScenes.append(self._scId)
+                self.scenes[self._scId].status = '1'
+                self.scenes[self._scId].title = f'Scene {self._scCount}'
+        elif tag == 'br':
+            self._newline = True
+        elif tag == 'em' or tag == 'i':
+            self._lines.append('[i]')
+        elif tag == 'strong' or tag == 'b':
+            self._lines.append('[b]')
+        elif tag == 'span':
+            if attrs[0][0].lower() == 'lang':
+                self._language = attrs[0][1]
+                self._lines.append(f'[lang={self._language}]')
+        elif tag in ('h1', 'h2'):
             self._scId = None
             self._lines = []
             self._chCount += 1
@@ -71,15 +90,6 @@ class HtmlImport(HtmlFile):
                 self.chapters[self._chId].chLevel = 1
             else:
                 self.chapters[self._chId].chLevel = 0
-        elif tag == 'p':
-            if self._scId is None and self._chId is not None:
-                self._lines = []
-                self._scCount += 1
-                self._scId = str(self._scCount)
-                self.scenes[self._scId] = self.SCENE_CLASS()
-                self.chapters[self._chId].srtScenes.append(self._scId)
-                self.scenes[self._scId].status = '1'
-                self.scenes[self._scId].title = f'Scene {self._scCount}'
         elif tag == 'div':
             self._scId = None
             self._chId = None
@@ -111,12 +121,23 @@ class HtmlImport(HtmlFile):
         """
         if tag == 'p':
             self._lines.append('\n')
+            self._newline = True
             if self._scId is not None:
-                self.scenes[self._scId].sceneContent = ''.join(self._lines).rstrip()
+                sceneText = ''.join(self._lines).rstrip()
+                sceneText = self._cleanup_scene(sceneText)
+                self.scenes[self._scId].sceneContent = sceneText
                 if self.scenes[self._scId].wordCount < self._LOW_WORDCOUNT:
                     self.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Outline')
                 else:
                     self.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Draft')
+        elif tag == 'em' or tag == 'i':
+            self._lines.append('[/i]')
+        elif tag == 'strong' or tag == 'b':
+            self._lines.append('[/b]')
+        elif tag == 'span':
+            if self._language:
+                self._lines.append(f'[/lang={self._language}]')
+                self._language = ''
         elif tag in ('h1', 'h2'):
             self.chapters[self._chId].title = ''.join(self._lines)
             self._lines = []
@@ -154,5 +175,7 @@ class HtmlImport(HtmlFile):
         if self._scId is not None and self._SCENE_DIVIDER in data:
             self._scId = None
         else:
-            data = data.strip()
+            if self._newline:
+                data = data.rstrip()
+                self._newline = False
             self._lines.append(data)
