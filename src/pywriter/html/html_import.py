@@ -76,6 +76,8 @@ class HtmlImport(HtmlFile):
         elif tag == 'span':
             if attrs[0][0].lower() == 'lang':
                 self._language = attrs[0][1]
+                if not self._language in self.languages:
+                    self.languages.append(self._language)
                 self._lines.append(f'[lang={self._language}]')
         elif tag in ('h1', 'h2'):
             self._scId = None

@@ -120,6 +120,11 @@ class Novel(BasicElement):
         # The order of the elements does not matter (the novel's order of the scenes is defined by
         # the order of the chapters and the order of the scenes within the chapters)
 
+        self.languages = []
+        # list of str
+        # List of non-document languages occurring as scene markup.
+        # Format: ll-CC, where ll is the language code, and CC is the country code.
+
         self.srtChapters = []
         # list of str
         # The novel's chapter IDs. The order of its elements corresponds to the novel's order of the chapters.
