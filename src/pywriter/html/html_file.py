@@ -56,19 +56,22 @@ class HtmlFile(Novel, HTMLParser):
         Return a yw7 markup string.
         Overrides the superclass method.
         """
-
-        #--- Clean up polluted HTML code.
-        text = re.sub('</*font.*?>', '', text)
-        text = re.sub('</*span.*?>', '', text)
-        text = re.sub('</*FONT.*?>', '', text)
-        text = re.sub('</*SPAN.*?>', '', text)
-
         #--- Put everything in one line.
         text = text.replace('\n', ' ')
         text = text.replace('\r', ' ')
         text = text.replace('\t', ' ')
         while '  ' in text:
             text = text.replace('  ', ' ')
+
+        #--- Convert inline language changing markup.
+        text = re.sub('<SPAN LANG="(.+?)">(.+?)</SPAN>', '[lang=\\1]\\2[/lang=\\1]', text)
+        text = re.sub('<span lang="(.+?)">(.+?)</span>', '[lang=\\1]\\2[/lang=\\1]', text)
+
+        #--- Clean up polluted HTML code.
+        text = re.sub('</*font.*?>', '', text)
+        text = re.sub('</*span.*?>', '', text)
+        text = re.sub('</*FONT.*?>', '', text)
+        text = re.sub('</*SPAN.*?>', '', text)
 
         #--- Replace HTML tags by yWriter markup.
         text = text.replace('<i>', '[i]')
