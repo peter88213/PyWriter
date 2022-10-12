@@ -30,7 +30,6 @@ class HtmlProof(HtmlFile):
         """
         super().__init__(filePath)
         self._prefix = None
-        self._doNothing = False
 
     def handle_starttag(self, tag, attrs):
         """Recognize the paragraph's beginning.

@@ -104,6 +104,12 @@ class HtmlImport(HtmlFile):
                     except:
                         pass
                     break
+        elif tag == 'li':
+                self._lines.append(f'{self._BULLET} ')
+        elif tag == 'ul':
+                self._doNothing = True
+        elif tag == 'blockquote':
+            self._lines.append(f'{self._INDENT} ')
 
     def handle_endtag(self, tag):
         """Recognize the paragraph's end.
@@ -113,7 +119,7 @@ class HtmlImport(HtmlFile):
 
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
-        if tag == 'p':
+        if tag in ('p', 'blockquote'):
             self._lines.append('\n')
             self._newline = True
             if self._scId is not None:
@@ -166,7 +172,9 @@ class HtmlImport(HtmlFile):
         
         Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
         """
-        if self._scId is not None and self._SCENE_DIVIDER in data:
+        if self._doNothing:
+            self._doNothing = False
+        elif self._scId is not None and self._SCENE_DIVIDER in data:
             self._scId = None
         else:
             if self._newline:

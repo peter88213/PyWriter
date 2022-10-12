@@ -48,6 +48,7 @@ class HtmlFile(Novel, HTMLParser):
         self._chId = None
         self._newline = False
         self._language = ''
+        self._doNothing = False
 
     def _convert_to_yw(self, text):
         """Convert html formatting tags to yWriter 7 raw markup.
