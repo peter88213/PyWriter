@@ -30,42 +30,7 @@ class HtmlProof(HtmlFile):
         """
         super().__init__(filePath)
         self._prefix = None
-
-    def _preprocess(self, text):
-        """Process the html text before parsing.
-        
-        Convert html formatting tags to yWriter 7 raw markup.
-        Overrides the superclass method.
-        """
-        return self._convert_to_yw(text)
-
-    def _postprocess(self):
-        """Parse the converted text to identify chapters and scenes.
-        
-        Overrides the superclass method.
-        """
-        sceneText = []
-        scId = ''
-        chId = ''
-        inScene = False
-        for line in self._lines:
-            if '[ScID' in line:
-                scId = re.search('[0-9]+', line).group()
-                self.scenes[scId] = self.SCENE_CLASS()
-                self.chapters[chId].srtScenes.append(scId)
-                inScene = True
-            elif '[/ScID' in line:
-                self.scenes[scId].sceneContent = '\n'.join(sceneText)
-                sceneText = []
-                inScene = False
-            elif '[ChID' in line:
-                chId = re.search('[0-9]+', line).group()
-                self.chapters[chId] = self.CHAPTER_CLASS()
-                self.srtChapters.append(chId)
-            elif '[/ChID' in line:
-                pass
-            elif inScene:
-                sceneText.append(line)
+        self._doNothing = False
 
     def handle_starttag(self, tag, attrs):
         """Recognize the paragraph's beginning.
@@ -76,7 +41,7 @@ class HtmlProof(HtmlFile):
         
         Overrides the superclass method.
         """
-        if tag == 'p' and self._prefix is None:
+        if tag == 'p':
             self._prefix = ''
         elif tag == 'em' or tag == 'i':
             self._lines.append('[i]')
@@ -106,6 +71,9 @@ class HtmlProof(HtmlFile):
                     except:
                         pass
                     break
+        elif tag == 'br':
+            self._doNothing = True
+            # avoid inserting an unwanted blank
 
     def handle_endtag(self, tag):
         """Recognize the paragraph's end.      
@@ -116,7 +84,8 @@ class HtmlProof(HtmlFile):
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
         if tag in ['p', 'h2', 'h1', 'blockquote']:
-            self._prefix = None
+            self._newline = True
+            self._prefix = ''
         elif tag == 'em' or tag == 'i':
             self._lines.append('[/i]')
         elif tag == 'strong' or tag == 'b':
@@ -127,12 +96,32 @@ class HtmlProof(HtmlFile):
                 self._language = ''
 
     def handle_data(self, data):
-        """Copy the scene paragraphs.      
+        """Parse the paragraphs and build the document structure.      
 
         Positional arguments:
-            data -- str: text to be stored. 
+            data -- str: text to be parsed. 
         
         Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
         """
-        if self._prefix is not None:
+        if self._doNothing:
+            self._doNothing = False
+        elif '[ScID' in data:
+            self._scId = re.search('[0-9]+', data).group()
+            self.scenes[self._scId] = self.SCENE_CLASS()
+            self.chapters[self._chId].srtScenes.append(self._scId)
+            self._lines = []
+        elif '[/ScID' in data:
+            text = ''.join(self._lines)
+            self.scenes[self._scId].sceneContent = self._cleanup_scene(text).strip()
+            self._scId = None
+        elif '[ChID' in data:
+            self._chId = re.search('[0-9]+', data).group()
+            self.chapters[self._chId] = self.CHAPTER_CLASS()
+            self.srtChapters.append(self._chId)
+        elif '[/ChID' in data:
+            self._chId = None
+        elif self._scId is not None:
+            if self._newline:
+                self._newline = False
+                data = f'{data.rstrip()}\n'
             self._lines.append(f'{self._prefix}{data}')

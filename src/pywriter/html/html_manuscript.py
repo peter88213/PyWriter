@@ -17,14 +17,6 @@ class HtmlManuscript(HtmlFile):
     DESCRIPTION = _('Editable manuscript')
     SUFFIX = '_manuscript'
 
-    def _preprocess(self, text):
-        """Process the html text before parsing.
-        
-        Convert html formatting tags to yWriter 7 raw markup.
-        Overrides the superclass method.
-        """
-        return self._convert_to_yw(text)
-
     def handle_starttag(self, tag, attrs):
         """Identify scenes and chapters.
         

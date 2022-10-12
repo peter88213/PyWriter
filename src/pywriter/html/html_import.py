@@ -41,14 +41,6 @@ class HtmlImport(HtmlFile):
         self._chCount = 0
         self._scCount = 0
 
-    def _preprocess(self, text):
-        """Process the html text before parsing.
-        
-        Convert html formatting tags to yWriter 7 raw markup.
-        Overrides the superclass method.
-        """
-        return self._convert_to_yw(text)
-
     def handle_starttag(self, tag, attrs):
         """Recognize the paragraph's beginning.
         

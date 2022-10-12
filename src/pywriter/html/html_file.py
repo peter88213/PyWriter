@@ -85,17 +85,12 @@ class HtmlFile(Novel, HTMLParser):
         return text
 
     def _preprocess(self, text):
-        """Clean up the HTML code and strip yWriter 7 raw markup.
+        """Process HTML text before parsing.
         
         Positional arguments:
             text -- str: HTML text to be processed.
-        
-        This prevents accidentally applied formatting from being transferred to the yWriter metadata.
-        If rich text is applicable, such as in scenes, overwrite this method in a subclass.
-        Return a string.
         """
-        text = self._convert_to_yw(text)
-        return text
+        return self._convert_to_yw(text)
 
     def _postprocess(self):
         """Process the plain text after parsing.
