@@ -115,6 +115,7 @@ text document (odt) with chapter and scene markers. File name suffix is
 -   Document's filename: `<yW project name>_proof.odt`.
 -   Text markup: Bold and italics are supported. Other highlighting such
     as underline and strikethrough are lost.
+-   Paragraphs starting with `> ` are formatted as quotations.
 -   Scenes beginning with `<HTML>` or `<TEX>` are not exported.
 -   All other chapters and scenes are exported, whether "used" or
     "unused".
@@ -144,6 +145,9 @@ seen in the Navigator). File name suffix is `_manuscript`.
 
 -   Only "normal" chapters and scenes are exported. Chapters and
     scenes marked "unused", "todo" or "notes" are not exported.
+-   Text markup: Bold and italics are supported. Other highlighting such
+    as underline and strikethrough are lost.
+-   Paragraphs starting with `> ` are formatted as quotations.
 -   Scenes beginning with `<HTML>` or `<TEX>` are not exported.
 -   Comments within scenes are written back as scene titles 
     if surrounded by `~`.

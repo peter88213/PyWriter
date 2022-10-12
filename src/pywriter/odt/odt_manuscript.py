@@ -4,11 +4,12 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import re
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_narrative import OdtNarrative
 
 
-class OdtManuscript(OdtFile):
+class OdtManuscript(OdtNarrative):
     """ODT manuscript file representation.
 
     Export a manuscript with invisibly tagged chapters and scenes.
@@ -16,7 +17,7 @@ class OdtManuscript(OdtFile):
     DESCRIPTION = _('Editable manuscript')
     SUFFIX = '_manuscript'
 
-    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtNarrative._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -53,7 +54,7 @@ class OdtManuscript(OdtFile):
     _chapterEndTemplate = '''</text:section>
 '''
 
-    _fileFooter = OdtFile._CONTENT_XML_FOOTER
+    _fileFooter = OdtNarrative._CONTENT_XML_FOOTER
 
     def _get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section.
@@ -69,3 +70,4 @@ class OdtManuscript(OdtFile):
         if self.chapters[chId].suppressChapterTitle:
             chapterMapping['Title'] = ''
         return chapterMapping
+

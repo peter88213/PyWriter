@@ -6,16 +6,16 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_narrative import OdtNarrative
 
 
-class OdtExport(OdtFile):
+class OdtExport(OdtNarrative):
     """ODT novel file representation.
 
     Export a non-reimportable manuscript with chapters and scenes.
     """
     DESCRIPTION = _('manuscript')
-    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtNarrative._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -35,7 +35,7 @@ class OdtExport(OdtFile):
 '''
 
     _sceneDivider = '<text:p text:style-name="Heading_20_4">* * *</text:p>\n'
-    _fileFooter = OdtFile._CONTENT_XML_FOOTER
+    _fileFooter = OdtNarrative._CONTENT_XML_FOOTER
 
     def _get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section.
@@ -67,26 +67,4 @@ class OdtExport(OdtFile):
             text = self._remove_inline_code(text)
         text = super()._convert_from_yw(text, quick)
         return(text)
-
-    def _get_text(self):
-        """Call all processing methods.
-        
-        Return a string to be written to the output file.
-        Overrides the superclass method.
-        """
-        lines = self._get_fileHeader()
-        lines.extend(self._get_chapters())
-        lines.append(self._fileFooter)
-        text = ''.join(lines)
-
-        # Set style of paragraphs that start with "> " to "Quotations".
-        # This is done here to include the scene openings.
-        if '&gt; ' in text:
-            quotMarks = ('"First_20_line_20_indent">&gt; ',
-                         '"Text_20_body">&gt; ',
-                         )
-            for quotMark in quotMarks:
-                text = text.replace(quotMark, '"Quotations">')
-            text = re.sub('"Text_20_body"\>(\<office\:annotation\>.+?\<\/office\:annotation\>)\&gt\; ', '"Quotations">\\1', text)
-        return text
 

@@ -392,7 +392,7 @@ class OdtFile(OdfFile):
         return 'ODT structure generated.'
 
     def _convert_from_yw(self, text, quick=False):
-        """Return text, converted from yw7 markup to target format.
+        """Return text without markup, converted to target format.
         
         Positional arguments:
             text -- string to convert.
@@ -408,51 +408,14 @@ class OdtFile(OdfFile):
                 # Just clean up a one-liner without sophisticated formatting.
                 return text
 
-            # process italics and bold markup reaching across linebreaks
-            italics = False
-            bold = False
-            newlines = []
-            lines = text.split('\n')
-            for line in lines:
-                if italics:
-                    line = f'[i]{line}'
-                    italics = False
-                while line.count('[i]') > line.count('[/i]'):
-                    line = f'{line}[/i]'
-                    italics = True
-                while line.count('[/i]') > line.count('[i]'):
-                    line = f'[i]{line}'
-                line = line.replace('[i][/i]', '')
-                if bold:
-                    line = f'[b]{line}'
-                    bold = False
-                while line.count('[b]') > line.count('[/b]'):
-                    line = f'{line}[/b]'
-                    bold = True
-                while line.count('[/b]') > line.count('[b]'):
-                    line = f'[b]{line}'
-                line = line.replace('[b][/b]', '')
-                newlines.append(line)
-            text = '\n'.join(newlines).rstrip()
-
-            # Apply odt formating.
+            # Apply odt linebreaks.
             ODT_REPLACEMENTS = [
                 ('\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'),
                 ('\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'),
                 ('\r', '\n'),
-                ('[i]', '<text:span text:style-name="Emphasis">'),
-                ('[/i]', '</text:span>'),
-                ('[b]', '<text:span text:style-name="Strong_20_Emphasis">'),
-                ('[/b]', '</text:span>'),
-                ('/*', f'<office:annotation><dc:creator>{self.authorName}</dc:creator><text:p>'),
-                ('*/', '</text:p></office:annotation>'),
             ]
             for yw, od in ODT_REPLACEMENTS:
                 text = text.replace(yw, od)
-
-            # Remove highlighting, alignment,
-            # strikethrough, and underline tags.
-                text = re.sub('\[\/*[h|c|r|s|u]\d*\]', '', text)
         else:
             text = ''
         return text

@@ -70,7 +70,7 @@ class HtmlProof(HtmlFile):
                     except:
                         pass
                     break
-        elif tag == 'br':
+        elif tag in ('br', 'ul'):
             self._doNothing = True
             # avoid inserting an unwanted blank
 
