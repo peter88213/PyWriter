@@ -95,9 +95,9 @@ text document (odt).
     indented.
 -   Starting from the second paragraph, paragraphs begin with
     indentation of the first line.
--   Paragraphs starting with `> ` are formatted as quotations.
 -   Scenes marked "attach to previous scene" in yWriter appear like
     continuous paragraphs.
+-   Paragraphs starting with `> ` are formatted as quotations.
 
 
 [Top of page](#top)
@@ -115,7 +115,6 @@ text document (odt) with chapter and scene markers. File name suffix is
 -   Document's filename: `<yW project name>_proof.odt`.
 -   Text markup: Bold and italics are supported. Other highlighting such
     as underline and strikethrough are lost.
--   Paragraphs starting with `> ` are formatted as quotations.
 -   Scenes beginning with `<HTML>` or `<TEX>` are not exported.
 -   All other chapters and scenes are exported, whether "used" or
     "unused".
@@ -130,6 +129,7 @@ text document (odt) with chapter and scene markers. File name suffix is
     -  *Heading 2* --› New chapter title.
     -  `###` --› Scene divider. Optionally, you can append the 
        scene title to the scene divider.
+-   Paragraphs starting with `> ` are formatted as quotations.
 
 
 
@@ -147,7 +147,6 @@ seen in the Navigator). File name suffix is `_manuscript`.
     scenes marked "unused", "todo" or "notes" are not exported.
 -   Text markup: Bold and italics are supported. Other highlighting such
     as underline and strikethrough are lost.
--   Paragraphs starting with `> ` are formatted as quotations.
 -   Scenes beginning with `<HTML>` or `<TEX>` are not exported.
 -   Comments within scenes are written back as scene titles 
     if surrounded by `~`.
@@ -161,6 +160,7 @@ seen in the Navigator). File name suffix is `_manuscript`.
     -  *Heading 2* --› New chapter title.
     -  `###` --› Scene divider. Optionally, you can also append the 
        scene title to the scene divider.
+-   Paragraphs starting with `> ` are formatted as quotations.
 
 [Top of page](#top)
 
@@ -290,6 +290,7 @@ sections (to be seen in the Navigator). File name suffix is `_notes`.
     -  *Heading 2* --› New chapter title.
     -  `###` --› Scene divider. Optionally, you can append the 
        scene title to the scene divider.
+-  Paragraphs starting with `> ` are formatted as quotations.
 
 [Top of page](#top)
 
@@ -309,6 +310,7 @@ sections (to be seen in the Navigator). File name suffix is `_todo`.
     -  *Heading 2* --› New chapter title.
     -  `###` --› Scene divider. Optionally, you can append the 
        scene title to the scene divider.
+-  Paragraphs starting with `> ` are formatted as quotations.
 
 [Top of page](#top)
 
