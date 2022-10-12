@@ -2545,7 +2545,7 @@ or success information</body>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_PdkzoIewEeq_kJF_AkSaiA" name="OdtProof">
-        <generalization xmi:type="uml:Generalization" xmi:id="_PdkzoYewEeq_kJF_AkSaiA" general="_FoJAYDINEeqilJYfjdmi4Q"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_PdkzoYewEeq_kJF_AkSaiA" general="_W1tJAEpYEe2BPpZBUlmj5Q"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_N9NSMPshEeq-TdV6dVW08A" name="DESCRIPTION" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -2602,7 +2602,7 @@ or success information</body>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_GEGi0IewEeq_kJF_AkSaiA" name="OdtManuscript">
-        <generalization xmi:type="uml:Generalization" xmi:id="_JfazIIewEeq_kJF_AkSaiA" general="_FoJAYDINEeqilJYfjdmi4Q"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_JfazIIewEeq_kJF_AkSaiA" general="_W1tJAEpYEe2BPpZBUlmj5Q"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_NDSnoPshEeq-TdV6dVW08A" name="SUFFIX" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -2676,7 +2676,7 @@ or success information</body>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_DZYogL79EeuLVoie0Ovs3Q" name="OdtExport">
-        <generalization xmi:type="uml:Generalization" xmi:id="_DZYogb79EeuLVoie0Ovs3Q" general="_FoJAYDINEeqilJYfjdmi4Q"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_DZYogb79EeuLVoie0Ovs3Q" general="_W1tJAEpYEe2BPpZBUlmj5Q"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_pTe1MJPoEeyHVdwmt40umw" name="_fileHeader" visibility="protected" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -2979,6 +2979,12 @@ or success information</body>
             <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
           </ownedParameter>
         </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_UZZeoEpYEe2BPpZBUlmj5Q" name="OdtTodo">
+        <generalization xmi:type="uml:Generalization" xmi:id="_I9z6MEpaEe2BPpZBUlmj5Q" general="_GEGi0IewEeq_kJF_AkSaiA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_W1tJAEpYEe2BPpZBUlmj5Q" name="OdtFormatted">
+        <generalization xmi:type="uml:Generalization" xmi:id="_sqCGEEpaEe2BPpZBUlmj5Q" general="_FoJAYDINEeqilJYfjdmi4Q"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="__7zicPbjEeuIY7rtcArmxw" name="config">

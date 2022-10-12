@@ -9,7 +9,7 @@ odt_export -- Provide a class for ODT chapters and scenes export.
 odt_file -- Provide a generic class for ODT file export.
 odt_items -- Provide a class for ODT item invisibly tagged descriptions export.
 odt_locations -- Provide a class for ODT invisibly tagged location descriptions export.
-odt_narrative -- Provide an abstract class for ODT documents containing the narrative part.
+odt_formatted -- Provide a base class for ODT documents containing text that is formatted in yWriter.
 odt_manuscript -- Provide a class for ODT invisibly tagged chapters and scenes export.
 odt_notes -- Provide a class for ODT invisibly tagged "Notes" chapters export.
 odt_partdesc -- Provide a class for ODT invisibly tagged part descriptions export.

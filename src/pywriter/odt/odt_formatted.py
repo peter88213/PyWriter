@@ -1,4 +1,4 @@
-"""Provide an abstract class for ODT documents containing the narrative part.
+"""Provide a base class for ODT documents containing text that is formatted in yWriter.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -9,7 +9,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_file import OdtFile
 
 
-class OdtNarrative(OdtFile):
+class OdtFormatted(OdtFile):
     """ODT file representation.
 
     Provide methods for processing chapters with formatted text.

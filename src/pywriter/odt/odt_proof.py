@@ -5,10 +5,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_narrative import OdtNarrative
+from pywriter.odt.odt_formatted import OdtFormatted
 
 
-class OdtProof(OdtNarrative):
+class OdtProof(OdtFormatted):
     """ODT proof reading file representation.
 
     Export a manuscript with visibly tagged chapters and scenes.
@@ -16,7 +16,7 @@ class OdtProof(OdtNarrative):
     DESCRIPTION = _('Tagged manuscript for proofing')
     SUFFIX = '_proof'
 
-    _fileHeader = f'''{OdtNarrative._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtFormatted._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -75,4 +75,4 @@ class OdtProof(OdtNarrative):
     _todoChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[/ChID (ToDo)]</text:p>
 '''
 
-    _fileFooter = OdtNarrative._CONTENT_XML_FOOTER
+    _fileFooter = OdtFormatted._CONTENT_XML_FOOTER

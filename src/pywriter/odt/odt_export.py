@@ -6,16 +6,16 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_narrative import OdtNarrative
+from pywriter.odt.odt_formatted import OdtFormatted
 
 
-class OdtExport(OdtNarrative):
+class OdtExport(OdtFormatted):
     """ODT novel file representation.
 
     Export a non-reimportable manuscript with chapters and scenes.
     """
     DESCRIPTION = _('manuscript')
-    _fileHeader = f'''{OdtNarrative._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtFormatted._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -35,7 +35,7 @@ class OdtExport(OdtNarrative):
 '''
 
     _sceneDivider = '<text:p text:style-name="Heading_20_4">* * *</text:p>\n'
-    _fileFooter = OdtNarrative._CONTENT_XML_FOOTER
+    _fileFooter = OdtFormatted._CONTENT_XML_FOOTER
 
     def _get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section.
