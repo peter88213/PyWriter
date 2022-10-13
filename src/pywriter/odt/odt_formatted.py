@@ -80,7 +80,10 @@ class OdtFormatted(OdtFile):
             for line in lines:
                 for tag in tags:
                     if isOpen[tag]:
-                        line = f'{opening[tag]}{line}'
+                        if line.startswith('&gt; '):
+                            line = f"&gt; {opening[tag]}{line.lstrip('&gt; ')}"
+                        else:
+                            line = f'{opening[tag]}{line}'
                         isOpen[tag] = False
                     while line.count(opening[tag]) > line.count(closing[tag]):
                         line = f'{line}{closing[tag]}'
