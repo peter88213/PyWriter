@@ -177,7 +177,19 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     </PROJECTNOTE>
   </PROJECTNOTES>
   <PROJECTVARS>
-	</PROJECTVARS>
+    <PROJECTVAR>
+      <ID>1</ID>
+      <Title><![CDATA[lang=zxx]]></Title>
+      <Desc><![CDATA[<HTM <SPAN LANG="zxx"> /HTM>]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+    <PROJECTVAR>
+      <ID>2</ID>
+      <Title><![CDATA[/lang=zxx]]></Title>
+      <Desc><![CDATA[<HTM </SPAN> /HTM>]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+  </PROJECTVARS>
   <PROJECTEXPS>
 	</PROJECTEXPS>
   <SCENES>

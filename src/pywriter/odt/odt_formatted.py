@@ -50,35 +50,8 @@ class OdtFormatted(OdtFile):
                 # Just clean up a one-liner without sophisticated formatting.
                 return text
 
-            # process italics and bold markup reaching across linebreaks
-            italics = False
-            bold = False
-            newlines = []
-            lines = text.split('\n')
-            for line in lines:
-                if italics:
-                    line = f'[i]{line}'
-                    italics = False
-                while line.count('[i]') > line.count('[/i]'):
-                    line = f'{line}[/i]'
-                    italics = True
-                while line.count('[/i]') > line.count('[i]'):
-                    line = f'[i]{line}'
-                line = line.replace('[i][/i]', '')
-                if bold:
-                    line = f'[b]{line}'
-                    bold = False
-                while line.count('[b]') > line.count('[/b]'):
-                    line = f'{line}[/b]'
-                    bold = True
-                while line.count('[/b]') > line.count('[b]'):
-                    line = f'[b]{line}'
-                line = line.replace('[b][/b]', '')
-                newlines.append(line)
-            text = '\n'.join(newlines).rstrip()
-
-            # Apply odt formating.
-            ODT_REPLACEMENTS = [
+            tags = ['i', 'b']
+            odtReplacements = [
                 ('\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'),
                 ('\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'),
                 ('\r', '\n'),
@@ -90,15 +63,41 @@ class OdtFormatted(OdtFile):
                 ('*/', '</text:p></office:annotation>'),
             ]
             for i, language in enumerate(self.languages, 1):
-                ODT_REPLACEMENTS.append((f'[lang={language}]', f'<text:span text:style-name="T{i}">'))
-                ODT_REPLACEMENTS.append((f'[/lang={language}]', '</text:span>'))
+                tags.append(f'lang={language}')
+                odtReplacements.append((f'[lang={language}]', f'<text:span text:style-name="T{i}">'))
+                odtReplacements.append((f'[/lang={language}]', '</text:span>'))
 
-            for yw, od in ODT_REPLACEMENTS:
+            #--- Process markup reaching across linebreaks.
+            newlines = []
+            lines = text.split('\n')
+            isOpen = {}
+            opening = {}
+            closing = {}
+            for tag in tags:
+                isOpen[tag] = False
+                opening[tag] = f'[{tag}]'
+                closing[tag] = f'[/{tag}]'
+            for line in lines:
+                for tag in tags:
+                    if isOpen[tag]:
+                        line = f'{opening[tag]}{line}'
+                        isOpen[tag] = False
+                    while line.count(opening[tag]) > line.count(closing[tag]):
+                        line = f'{line}{closing[tag]}'
+                        isOpen[tag] = True
+                    while line.count(closing[tag]) > line.count(opening[tag]):
+                        line = f'{opening[tag]}{line}'
+                    line = line.replace(f'{opening[tag]}{closing[tag]}', '')
+                newlines.append(line)
+            text = '\n'.join(newlines).rstrip()
+
+            #--- Apply odt formating.
+            for yw, od in odtReplacements:
                 text = text.replace(yw, od)
 
             # Remove highlighting, alignment,
             # strikethrough, and underline tags.
-                text = re.sub('\[\/*[h|c|r|s|u]\d*\]', '', text)
+            text = re.sub('\[\/*[h|c|r|s|u]\d*\]', '', text)
         else:
             text = ''
         return text
