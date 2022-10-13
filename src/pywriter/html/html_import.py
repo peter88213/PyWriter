@@ -14,10 +14,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.html.html_file import HtmlFile
+from pywriter.html.html_formatted import HtmlFormatted
 
 
-class HtmlImport(HtmlFile):
+class HtmlImport(HtmlFormatted):
     """HTML 'work in progress' file representation.
 
     Import untagged chapters and scenes.

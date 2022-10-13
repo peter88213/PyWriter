@@ -13,6 +13,9 @@ from pywriter.odt.odt_file import OdtFile
 class OdtFormatted(OdtFile):
     """ODT file representation.
 
+    Public methods:
+        write() -- Determine the languages used in the document before writing.
+    
     Provide methods for processing chapters with formatted text.
     """
     _CONTENT_XML_HEADER = '''<?xml version="1.0" encoding="UTF-8"?>
@@ -29,10 +32,6 @@ class OdtFormatted(OdtFile):
   <office:text text:use-soft-page-breaks="true">
 
 '''
-
-    _LANG_STYLE = f'''  <style:style style:name="T$number" style:family="text">
-   <style:text-properties fo:language="$language" fo:country="$country"/>
-  </style:style>'''
 
     def _convert_from_yw(self, text, quick=False):
         """Return text, converted from yw7 markup to target format.
@@ -90,6 +89,10 @@ class OdtFormatted(OdtFile):
                 ('/*', f'<office:annotation><dc:creator>{self.authorName}</dc:creator><text:p>'),
                 ('*/', '</text:p></office:annotation>'),
             ]
+            for i, language in enumerate(self.languages, 1):
+                ODT_REPLACEMENTS.append((f'[lang={language}]', f'<text:span text:style-name="T{i}">'))
+                ODT_REPLACEMENTS.append((f'[/lang={language}]', '</text:span>'))
+
             for yw, od in ODT_REPLACEMENTS:
                 text = text.replace(yw, od)
 
@@ -129,9 +132,32 @@ class OdtFormatted(OdtFile):
         
         Extends the superclass method.
         """
+        styleMapping = {}
+        if self.languages:
+            lines = ['<office:automatic-styles>']
+            for i, language in enumerate(self.languages, 1):
+                try:
+                    lngCode, ctrCode = language.split('-')
+                except:
+                    lngCode = 'zxx'
+                    ctrCode = 'none'
+                lines.append(f'''  <style:style style:name="T{i}" style:family="text">
+   <style:text-properties fo:language="{lngCode}" fo:country="{ctrCode}" style:language-asian="{lngCode}" style:country-asian="{ctrCode}" style:language-complex="{lngCode}" style:country-complex="{ctrCode}"/>
+  </style:style>''')
+            lines.append(' </office:automatic-styles>')
+            styleMapping['automaticStyles'] = '\n'.join(lines)
+        else:
+            styleMapping['automaticStyles'] = '<office:automatic-styles/>'
         template = Template(self._CONTENT_XML_HEADER)
-        styleMapping = {'automaticStyles': '<office:automatic-styles/>'}
         projectTemplateMapping = super()._get_fileHeaderMapping()
         projectTemplateMapping['ContentHeader'] = template.safe_substitute(styleMapping)
         return projectTemplateMapping
 
+    def write(self):
+        """Determine the languages used in the document before writing.
+        
+        Extends the superclass method.
+        """
+        if self.languages is None:
+            self.get_languages()
+        return super().write()

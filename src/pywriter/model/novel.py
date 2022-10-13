@@ -24,9 +24,10 @@ class Novel(BasicElement):
     of the information included in an yWriter project file).
 
     Public methods:
-        read() -- parse the file and get the instance variables.
-        merge(source) -- update instance variables from a source instance.
-        write() -- write instance variables to the file.
+        read() -- Parse the file and get the instance variables.
+        merge(source) -- Update instance variables from a source instance.
+        write() -- Write instance variables to the file.
+        get_languages() -- Determine the languages used in the document.
 
     Public instance variables:
         authorName -- str: author's name.
@@ -120,7 +121,7 @@ class Novel(BasicElement):
         # The order of the elements does not matter (the novel's order of the scenes is defined by
         # the order of the chapters and the order of the scenes within the chapters)
 
-        self.languages = []
+        self.languages = None
         # list of str
         # List of non-document languages occurring as scene markup.
         # Format: ll-CC, where ll is the language code, and CC is the country code.
@@ -254,3 +255,19 @@ class Novel(BasicElement):
         This is a stub to be overridden by subclass methods.
         """
         return text.rstrip()
+
+    def get_languages(self):
+        """Determine the languages used in the document.
+        
+        Populate the self.languages list with all language codes found in the scene contents.        
+        Example:
+        - language markup: 'Standard text [lang=en-AU]Australian text[/lang=en-AU].'
+        - language code: 'en-AU'
+        """
+        self.languages = []
+        for scId in self.scenes:
+            text = self.scenes[scId].sceneContent
+            if text:
+                for language in get_languages(text):
+                    if not language in self.languages:
+                        self.languages.append(language)

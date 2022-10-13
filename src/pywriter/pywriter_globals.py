@@ -5,6 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
+import re
 import sys
 import gettext
 import locale
@@ -73,4 +74,22 @@ def list_to_string(elements, divider=';'):
         return ''
 
 
-__all__ = ['ERROR', '_', 'LOCALE_PATH', 'CURRENT_LANGUAGE', 'string_to_list', 'list_to_string']
+LANGUAGE_TAG = re.compile('\[lang=(.*?)\]')
+
+
+def get_languages(text):
+    """Return a generator object with the language codes appearing in text.
+    
+    Example:
+    - language markup: 'Standard text [lang=en-AU]Australian text[/lang=en-AU].'
+    - language code: 'en-AU'
+    """
+    if text:
+        m = LANGUAGE_TAG.search(text)
+        while m:
+            text = text[m.span()[1]:]
+            yield m.group(1)
+            m = LANGUAGE_TAG.search(text)
+
+
+__all__ = ['ERROR', '_', 'LOCALE_PATH', 'CURRENT_LANGUAGE', 'string_to_list', 'list_to_string', 'get_languages']
