@@ -13,6 +13,7 @@ from html import unescape
 import xml.etree.ElementTree as ET
 from pywriter.pywriter_globals import *
 from pywriter.model.novel import Novel
+from pywriter.model.id_generator import create_id
 from pywriter.model.splitter import Splitter
 from pywriter.yw.xml_indent import indent
 
@@ -908,6 +909,8 @@ class Yw7File(Novel):
         if self.is_locked():
             return f'{ERROR}{_("yWriter seems to be open. Please close first")}.'
 
+        if self.languages is None:
+            self.get_languages()
         self._build_element_tree()
         message = self._write_element_tree(self)
         if message.startswith(ERROR):
@@ -1593,6 +1596,42 @@ class Yw7File(Novel):
                 ET.SubElement(xmlPnt, 'ID').text = pnId
                 build_prjNote_subtree(xmlPnt, self.projectNotes[pnId], sortOrder)
 
+        #--- Process project variables.
+        if self.languages:
+            projectvars = root.find('PROJECTVARS')
+            if projectvars is None:
+                projectvars = ET.SubElement(root, 'PROJECTVARS')
+            prjVars = []
+            languages = self.languages.copy()
+            for projectvar in projectvars.findall('PROJECTVAR'):
+                prjVars.append(projectvar.find('ID').text)
+                title = projectvar.find('Title').text
+
+                # Collect language codes.
+                if title.startswith('lang='):
+                    try:
+                        __, langCode = title.split('=')
+                        languages.remove(langCode)
+                    except:
+                        pass
+
+            # Define project variables for the missing language code tags.
+            for langCode in languages:
+                pvId = create_id(prjVars)
+                prjVars.append(pvId)
+                projectvar = ET.SubElement(projectvars, 'PROJECTVAR')
+                ET.SubElement(projectvar, 'ID').text = pvId
+                ET.SubElement(projectvar, 'Title').text = f'lang={langCode}'
+                ET.SubElement(projectvar, 'Desc').text = f'<HTM <SPAN LANG="{langCode}"> /HTM>'
+                ET.SubElement(projectvar, 'Tags').text = '0'
+                pvId = create_id(prjVars)
+                prjVars.append(pvId)
+                projectvar = ET.SubElement(projectvars, 'PROJECTVAR')
+                ET.SubElement(projectvar, 'ID').text = pvId
+                ET.SubElement(projectvar, 'Title').text = f'/lang={langCode}'
+                ET.SubElement(projectvar, 'Desc').text = f'<HTM </SPAN> /HTM>'
+                ET.SubElement(projectvar, 'Tags').text = '0'
+
         #--- Process scenes.
 
         # Save the original XML scene subtrees
@@ -1640,6 +1679,7 @@ class Yw7File(Novel):
                 scn.remove(scn.find('RTFFile'))
             except:
                 pass
+
         indent(root)
         self.tree = ET.ElementTree(root)
 
