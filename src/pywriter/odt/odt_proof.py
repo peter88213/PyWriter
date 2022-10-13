@@ -16,7 +16,7 @@ class OdtProof(OdtFormatted):
     DESCRIPTION = _('Tagged manuscript for proofing')
     SUFFIX = '_proof'
 
-    _fileHeader = f'''{OdtFormatted._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''$ContentHeader<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 

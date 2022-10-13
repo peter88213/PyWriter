@@ -15,7 +15,7 @@ class OdtExport(OdtFormatted):
     Export a non-reimportable manuscript with chapters and scenes.
     """
     DESCRIPTION = _('manuscript')
-    _fileHeader = f'''{OdtFormatted._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''$ContentHeader<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
