@@ -7,6 +7,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from urllib.parse import quote
+import locale
 import os
 from pywriter.pywriter_globals import *
 from pywriter.model.basic_element import BasicElement
@@ -28,6 +29,7 @@ class Novel(BasicElement):
         merge(source) -- Update instance variables from a source instance.
         write() -- Write instance variables to the file.
         get_languages() -- Determine the languages used in the document.
+        check_locale() -- Check the document's locale (language code and country code).
 
     Public instance variables:
         authorName -- str: author's name.
@@ -183,6 +185,9 @@ class Novel(BasicElement):
         # str
         # URL-coded path to the project directory.
 
+        self.languageCode = None
+        self.countryCode = None
+
         self.filePath = filePath
 
     @property
@@ -271,3 +276,30 @@ class Novel(BasicElement):
                 for language in get_languages(text):
                     if not language in self.languages:
                         self.languages.append(language)
+
+    def check_locale(self):
+        """Check the document's locale (language code and country code).
+        
+        If the locale is missing, set the system locale.  
+        If the locale doesn't look plausible, set "no language".        
+        """
+        try:
+            # Plausibility check: code must have two characters.
+            if len(self.languageCode) == 2:
+                if len(self.countryCode) == 2:
+                    return
+                    # keep the setting
+
+        except:
+            # Language or country isn't set.
+            sysLng, sysCtr = locale.getdefaultlocale()[0].split('_')
+            self.languageCode = sysLng
+            self.countryCode = sysCtr
+            return
+
+        else:
+            # Existing language or country field looks not plausible
+            self.languageCode = 'zxx'
+            self.countryCode = 'none'
+            return
+

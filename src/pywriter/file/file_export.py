@@ -154,6 +154,12 @@ class FileExport(Novel):
         if source.kwVar:
             self.kwVar = source.kwVar
 
+        if source.languageCode is not None:
+            self.languageCode = source.languageCode
+
+        if source.countryCode is not None:
+            self.countryCode = source.countryCode
+
         if source.languages is not None:
             self.languages = source.languages
 

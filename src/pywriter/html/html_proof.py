@@ -50,8 +50,8 @@ class HtmlProof(HtmlFormatted):
                 if attr[0].lower() == 'lang':
                     try:
                         lngCode, ctrCode = attr[1].split('-')
-                        self.kwVar['Field_LanguageCode'] = lngCode
-                        self.kwVar['Field_CountryCode'] = ctrCode
+                        self.languageCode = lngCode
+                        self.countryCode = ctrCode
                     except:
                         pass
                     break
