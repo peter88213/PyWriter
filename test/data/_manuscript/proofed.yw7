@@ -177,7 +177,19 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     </PROJECTNOTE>
   </PROJECTNOTES>
   <PROJECTVARS>
-	</PROJECTVARS>
+    <PROJECTVAR>
+      <ID>1</ID>
+      <Title><![CDATA[lang=zxx]]></Title>
+      <Desc><![CDATA[<HTM <SPAN LANG="zxx"> /HTM>]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+    <PROJECTVAR>
+      <ID>2</ID>
+      <Title><![CDATA[/lang=zxx]]></Title>
+      <Desc><![CDATA[<HTM </SPAN> /HTM>]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+  </PROJECTVARS>
   <PROJECTEXPS>
 	</PROJECTEXPS>
   <SCENES>
@@ -1495,7 +1507,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <ID>122</ID>
       <Title><![CDATA[Meet Hal, threatened... Split: 1]]></Title>
       <BelongsToChID>1</BelongsToChID>
-      <SceneContent><![CDATA[The wide viewscreen above the console turned red, and the word ‘SaLE’ appeared in vibrating yellow text. The letters grew legs and marched off the screen, bringing a wire basket on wheels into view.
+      <SceneContent><![CDATA[The wide viewscreen above the console turned red, and the word ‘[lang=zxx]SaLE[/lang=zxx]’ appeared in vibrating yellow text. The letters grew legs and marched off the screen, bringing a wire basket on wheels into view.
 “I don’t need all this crap,” said Hal. “Just show me the deal.”
 “Almost there,” said the Navcom. “Keep watching.”
 A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers which dropped to the ground and formed the words ‘Special Offer’. a gust of wind blew the feathers away, and a book title flashed up on the screen.

@@ -4,7 +4,6 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import re
 from pywriter.pywriter_globals import *
 from pywriter.odt.odt_formatted import OdtFormatted
 
@@ -15,7 +14,7 @@ class OdtExport(OdtFormatted):
     Export a non-reimportable manuscript with chapters and scenes.
     """
     DESCRIPTION = _('manuscript')
-    _fileHeader = f'''{OdtFormatted._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''$ContentHeader<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 

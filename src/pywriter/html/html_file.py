@@ -68,23 +68,6 @@ class HtmlFile(Novel, HTMLParser):
 
         return text
 
-    def _cleanup_scene(self, text):
-        """Clean up yWriter markup.
-        
-        Positional arguments:
-            text -- string to clean up.
-        
-        Return a yw7 markup string.
-        """
-        #--- Remove orphaned tags.
-        text = text.replace('[/b][b]', '')
-        text = text.replace('[/i][i]', '')
-        text = text.replace('[/b][b]', '')
-
-        #--- Remove misplaced formatting tags.
-        # text = re.sub('\[\/*[b|i]\]', '', text)
-        return text
-
     def _preprocess(self, text):
         """Process HTML text before parsing.
         
