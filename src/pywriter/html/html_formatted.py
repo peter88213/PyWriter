@@ -34,10 +34,15 @@ class HtmlFormatted(HtmlFile):
         
         Return a yw7 markup string.
         """
-        #--- Remove orphaned tags.
-        text = text.replace('[/b][b]', '')
-        text = text.replace('[/i][i]', '')
-        text = text.replace('[/b][b]', '')
+        #--- Remove redundant tags.
+        # In contrast to Office Writer, yWriter accepts markup reaching across linebreaks.
+        tags = ['i', 'b']
+        for language in self.languages:
+            tags.append(f'lang={language}')
+        for tag in tags:
+            text = text.replace(f'[/{tag}][{tag}]', '')
+            text = text.replace(f'[/{tag}]\n[{tag}]', '\n')
+            text = text.replace(f'[/{tag}]\n> [{tag}]', '\n> ')
 
         #--- Remove misplaced formatting tags.
         # text = re.sub('\[\/*[b|i]\]', '', text)
