@@ -1348,6 +1348,18 @@ class Yw7File(Novel):
 
             ET.SubElement(xmlPnt, 'SortOrder').text = str(sortOrder)
 
+        def add_projectvariable(title, desc, tags):
+            # Note:
+            # prjVars, projectvars are caller's variables
+            pvId = create_id(prjVars)
+            prjVars.append(pvId)
+            # side effect
+            projectvar = ET.SubElement(projectvars, 'PROJECTVAR')
+            ET.SubElement(projectvar, 'ID').text = pvId
+            ET.SubElement(projectvar, 'Title').text = title
+            ET.SubElement(projectvar, 'Desc').text = desc
+            ET.SubElement(projectvar, 'Tags').text = tags
+
         def build_item_subtree(xmlItm, prjItm, sortOrder):
             if prjItm.title is not None:
                 ET.SubElement(xmlItm, 'Title').text = prjItm.title
@@ -1602,6 +1614,7 @@ class Yw7File(Novel):
             if projectvars is None:
                 projectvars = ET.SubElement(root, 'PROJECTVARS')
             prjVars = []
+            # list of all project variable IDs
             languages = self.languages.copy()
             for projectvar in projectvars.findall('PROJECTVAR'):
                 prjVars.append(projectvar.find('ID').text)
@@ -1617,20 +1630,13 @@ class Yw7File(Novel):
 
             # Define project variables for the missing language code tags.
             for langCode in languages:
-                pvId = create_id(prjVars)
-                prjVars.append(pvId)
-                projectvar = ET.SubElement(projectvars, 'PROJECTVAR')
-                ET.SubElement(projectvar, 'ID').text = pvId
-                ET.SubElement(projectvar, 'Title').text = f'lang={langCode}'
-                ET.SubElement(projectvar, 'Desc').text = f'<HTM <SPAN LANG="{langCode}"> /HTM>'
-                ET.SubElement(projectvar, 'Tags').text = '0'
-                pvId = create_id(prjVars)
-                prjVars.append(pvId)
-                projectvar = ET.SubElement(projectvars, 'PROJECTVAR')
-                ET.SubElement(projectvar, 'ID').text = pvId
-                ET.SubElement(projectvar, 'Title').text = f'/lang={langCode}'
-                ET.SubElement(projectvar, 'Desc').text = f'<HTM </SPAN> /HTM>'
-                ET.SubElement(projectvar, 'Tags').text = '0'
+                add_projectvariable(f'lang={langCode}',
+                                    f'<HTM <SPAN LANG="{langCode}"> /HTM>',
+                                    '0')
+                add_projectvariable(f'/lang={langCode}',
+                                    f'<HTM </SPAN> /HTM>',
+                                    '0')
+                # adding new IDs to the prjVars list
 
         #--- Process scenes.
 
