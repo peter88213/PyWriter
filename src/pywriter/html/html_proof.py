@@ -36,7 +36,7 @@ class HtmlProof(HtmlFormatted):
                 self._language = attrs[0][1]
                 if not self._language in self.languages:
                     self.languages.append(self._language)
-                # self._lines.append(f'[lang={self._language}]')
+                self._lines.append(f'[lang={self._language}]')
         elif tag == 'h2':
             self._lines.append(f'{Splitter.CHAPTER_SEPARATOR} ')
         elif tag == 'h1':
@@ -75,7 +75,7 @@ class HtmlProof(HtmlFormatted):
             self._lines.append('[/b]')
         elif tag == 'span':
             if self._language:
-                # self._lines.append(f'[/lang={self._language}]')
+                self._lines.append(f'[/lang={self._language}]')
                 self._language = ''
 
     def handle_data(self, data):

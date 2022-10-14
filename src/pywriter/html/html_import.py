@@ -70,7 +70,7 @@ class HtmlImport(HtmlFormatted):
                 self._language = attrs[0][1]
                 if not self._language in self.languages:
                     self.languages.append(self._language)
-                # self._lines.append(f'[lang={self._language}]')
+                self._lines.append(f'[lang={self._language}]')
         elif tag in ('h1', 'h2'):
             self._scId = None
             self._lines = []
@@ -136,7 +136,7 @@ class HtmlImport(HtmlFormatted):
             self._lines.append('[/b]')
         elif tag == 'span':
             if self._language:
-                # self._lines.append(f'[/lang={self._language}]')
+                self._lines.append(f'[/lang={self._language}]')
                 self._language = ''
         elif tag in ('h1', 'h2'):
             self.chapters[self._chId].title = ''.join(self._lines)

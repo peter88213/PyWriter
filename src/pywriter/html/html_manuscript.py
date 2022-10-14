@@ -38,7 +38,7 @@ class HtmlManuscript(HtmlFormatted):
                     self._language = attrs[0][1]
                     if not self._language in self.languages:
                         self.languages.append(self._language)
-                    # self._lines.append(f'[lang={self._language}]')
+                    self._lines.append(f'[lang={self._language}]')
             elif tag == 'h3':
                 if self.scenes[self._scId].title is None:
                     self._getScTitle = True
@@ -80,7 +80,7 @@ class HtmlManuscript(HtmlFormatted):
                 self._lines.append('[/b]')
             elif tag == 'span':
                 if self._language:
-                    # self._lines.append(f'[/lang={self._language}]')
+                    self._lines.append(f'[/lang={self._language}]')
                     self._language = ''
             elif tag == 'div':
                 text = ''.join(self._lines)
