@@ -384,6 +384,38 @@ Refactor for standardization.
 - Make the Novel class a BasicElement subclass.
 - Move the kwVar instance variable to BasicElement.
 
+
+#### v7.2
+
+- Provide global functions for list conversion.
+
+#### v7.4
+
+- Support custom window icons.
+- Replace tkinter widgets by ttk widgets, if available.
+
+#### v7.6
+
+- Write non-system language and country codes when converting to ODF.
+
+#### v7.8
+
+- Add mainTk.set_title() method.
+
+#### v7.10
+
+- Read language and country codes when converting from HTML.
+- When importing a work in progress from html, process lists and quotation paragraphs.
+- When exporting to ODT, paragraphs that start with "> " are formatted as "Quotations".
+
+#### v7.11
+
+- Use language markup for text passages when converting ODF and HTML.
+
+#### v7.12
+
+- Move the document's locale from Novel.kwVar to Novel instance attributes.
+
 ## Future:
 
 #### Full LibreOffice/OpenOffice integration

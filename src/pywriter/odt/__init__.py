@@ -15,6 +15,7 @@ odt_notes -- Provide a class for ODT invisibly tagged "Notes" chapters export.
 odt_partdesc -- Provide a class for ODT invisibly tagged part descriptions export.
 odt_proof -- Provide a class for ODT visibly tagged chapters and scenes export.
 odt_scenedesc -- Provide a class for ODT invisibly tagged scene descriptions export.
+odt_todo -- Provide a class for ODT invisibly tagged "Todo" chapters export.
 odt_xref -- Provide a class for ODT ross reference export.
 
 Copyright (c) 2022 Peter Triesberger
