@@ -1416,7 +1416,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_C8dO4IfQEeq_kJF_AkSaiA" name="html">
       <packagedElement xmi:type="uml:Class" xmi:id="_Zo7VgDIKEeqilJYfjdmi4Q" name="HtmlProof">
-        <generalization xmi:type="uml:Generalization" xmi:id="_UZGlMDILEeqilJYfjdmi4Q" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_UZGlMDILEeqilJYfjdmi4Q" general="_MhthwEyqEe280--RDNrMWQ"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_yLUhQJToEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -1456,7 +1456,7 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_RkzFwCthEeqgj_wxJ3Xgsg" name="HtmlManuscript">
-        <generalization xmi:type="uml:Generalization" xmi:id="_ymU0IIeyEeq_kJF_AkSaiA" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_ymU0IIeyEeq_kJF_AkSaiA" general="_MhthwEyqEe280--RDNrMWQ"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_j3MUUJToEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -1552,7 +1552,7 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_FrYL8Pw_Eeq5hMee5ike2Q" name="HtmlImport">
-        <generalization xmi:type="uml:Generalization" xmi:id="_MmYC4L8FEeuLVoie0Ovs3Q" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_MmYC4L8FEeuLVoie0Ovs3Q" general="_MhthwEyqEe280--RDNrMWQ"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_atI1AJTnEeyxtJCGKSzKUg" name="DESCRIPTION" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -1796,6 +1796,12 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_4a0DAJTgEeyxtJCGKSzKUg" client="_Zo7VgDIKEeqilJYfjdmi4Q" supplier="_parT0G1QEeyo8PGsOj-8FQ"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_9D340JTgEeyxtJCGKSzKUg" client="_RkzFwCthEeqgj_wxJ3Xgsg" supplier="_C8dO4IfQEeq_kJF_AkSaiA"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_EgVFQEyqEe280--RDNrMWQ" name="HtmlTodo">
+        <generalization xmi:type="uml:Generalization" xmi:id="_WUHP8EyqEe280--RDNrMWQ" general="_RkzFwCthEeqgj_wxJ3Xgsg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_MhthwEyqEe280--RDNrMWQ" name="HtmlFormatted">
+        <generalization xmi:type="uml:Generalization" xmi:id="_Y7x1wEyqEe280--RDNrMWQ" general="_8SW1YPyyEeqEK6KdQRY5bw"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_tco8sL3xEeuITv7MyBA5yA" name="ui">
       <ownedComment xmi:type="uml:Comment" xmi:id="_fHzUMH7HEey1Ut-6sSExGQ" annotatedElement="_eePr0PxDEeq5hMee5ike2Q">
