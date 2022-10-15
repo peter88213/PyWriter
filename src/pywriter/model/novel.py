@@ -283,23 +283,23 @@ class Novel(BasicElement):
         If the locale is missing, set the system locale.  
         If the locale doesn't look plausible, set "no language".        
         """
-        try:
-            # Plausibility check: code must have two characters.
-            if len(self.languageCode) == 2:
-                if len(self.countryCode) == 2:
-                    return
-                    # keep the setting
-
-        except:
+        if not self.languageCode or not self.countryCode:
             # Language or country isn't set.
             sysLng, sysCtr = locale.getdefaultlocale()[0].split('_')
             self.languageCode = sysLng
             self.countryCode = sysCtr
             return
 
-        else:
-            # Existing language or country field looks not plausible
-            self.languageCode = 'zxx'
-            self.countryCode = 'none'
-            return
+        try:
+            # Plausibility check: code must have two characters.
+            if len(self.languageCode) == 2:
+                if len(self.countryCode) == 2:
+                    return
+                    # keep the setting
+        except:
+            # code isn't a string
+            pass
+        # Existing language or country field looks not plausible
+        self.languageCode = 'zxx'
+        self.countryCode = 'none'
 
