@@ -112,6 +112,7 @@ class Yw7File(Novel):
                     if field is not None:
                         self.kwVar[fieldName] = field.text
 
+            # This is for projects written with v7.6 - v7.10:
             if self.kwVar['Field_LanguageCode']:
                 self.languageCode = self.kwVar['Field_LanguageCode']
             if self.kwVar['Field_CountryCode']:
@@ -270,6 +271,31 @@ class Yw7File(Novel):
                         field = pnFields.find(fieldName)
                         if field is not None:
                             self.projectNotes[pnId].kwVar[fieldName] = field.text
+            except:
+                pass
+
+        def read_projectvariables(root):
+            #--- Read relevant project variables from the xml element tree.
+            try:
+                for projectvar in root.find('PROJECTVARIABLES'):
+                    if projectvar.find('Title') is not None:
+                        title = projectvar.find('Title').text
+                        if title == 'Language':
+                            if projectvar.find('Desc') is not None:
+                                self.languageCode = projectvar.find('Desc').text
+
+                        elif title == 'Country':
+                            if projectvar.find('Desc') is not None:
+                                self.countryCode = projectvar.find('Desc').text
+
+                        elif title.startswith('lang='):
+                            try:
+                                __, langCode = title.split('=')
+                                if self.languages is None:
+                                    self.languages = []
+                                self.languages.append(langCode)
+                            except:
+                                pass
             except:
                 pass
 
@@ -540,6 +566,7 @@ class Yw7File(Novel):
         read_locations(root)
         read_items(root)
         read_characters(root)
+        read_projectvariables(root)
         read_projectnotes(root)
         read_scenes(root)
         read_chapters(root)
@@ -929,6 +956,9 @@ class Yw7File(Novel):
 
         if source.countryCode is not None:
             self.countryCode = source.countryCode
+
+        if source.languages is not None:
+            self.languages = source.languages
 
         for fieldName in self._PRJ_KWVAR:
             try:
@@ -1556,6 +1586,11 @@ class Yw7File(Novel):
                 self.kwVar['Field_CountryCode'] = self.countryCode
 
             #--- Write project custom fields.
+
+            # This is for projects written with v7.6 - v7.10:
+            self.kwVar['Field_LanguageCode'] = None
+            self.kwVar['Field_CountryCode'] = None
+
             prjFields = xmlPrj.find('Fields')
             for field in self._PRJ_KWVAR:
                 setting = self.kwVar.get(field, None)
