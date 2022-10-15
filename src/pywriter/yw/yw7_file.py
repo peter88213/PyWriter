@@ -274,10 +274,10 @@ class Yw7File(Novel):
             except:
                 pass
 
-        def read_projectvariables(root):
+        def read_projectvars(root):
             #--- Read relevant project variables from the xml element tree.
             try:
-                for projectvar in root.find('PROJECTVARIABLES'):
+                for projectvar in root.find('PROJECTVARS'):
                     if projectvar.find('Title') is not None:
                         title = projectvar.find('Title').text
                         if title == 'Language':
@@ -566,7 +566,7 @@ class Yw7File(Novel):
         read_locations(root)
         read_items(root)
         read_characters(root)
-        read_projectvariables(root)
+        read_projectvars(root)
         read_projectnotes(root)
         read_scenes(root)
         read_chapters(root)
@@ -1701,13 +1701,16 @@ class Yw7File(Novel):
                 build_prjNote_subtree(xmlPnt, self.projectNotes[pnId], sortOrder)
 
         #--- Process project variables.
-        if self.languages:
+        if self.languages or self.languageCode or self.countryCode:
+            self.check_locale()
             projectvars = root.find('PROJECTVARS')
             if projectvars is None:
                 projectvars = ET.SubElement(root, 'PROJECTVARS')
             prjVars = []
             # list of all project variable IDs
             languages = self.languages.copy()
+            hasLanguageCode = False
+            hasCountryCode = False
             for projectvar in projectvars.findall('PROJECTVAR'):
                 prjVars.append(projectvar.find('ID').text)
                 title = projectvar.find('Title').text
@@ -1719,6 +1722,26 @@ class Yw7File(Novel):
                         languages.remove(langCode)
                     except:
                         pass
+
+                # Get the document's locale.
+                elif title == 'Language':
+                    projectvar.find('Desc').text = self.languageCode
+                    hasLanguageCode = True
+
+                elif title == 'Country':
+                    projectvar.find('Desc').text = self.countryCode
+                    hasCountryCode = True
+
+            # Define project variables for the missing locale.
+            if not hasLanguageCode:
+                add_projectvariable('Language',
+                                    self.languageCode,
+                                    '0')
+
+            if not hasCountryCode:
+                add_projectvariable('Country',
+                                    self.countryCode,
+                                    '0')
 
             # Define project variables for the missing language code tags.
             for langCode in languages:

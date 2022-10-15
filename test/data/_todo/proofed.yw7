@@ -47,9 +47,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <DeadlineStartDate4>2005-01-02</DeadlineStartDate4>
     <DeadlineStartDate5>2005-01-08</DeadlineStartDate5>
     <Fields>
-      <Field_LanguageCode>en</Field_LanguageCode>
-      <Field_CountryCode>AU</Field_CountryCode>
-    </Fields>
+      </Fields>
   </PROJECT>
   <LOCATIONS>
     <LOCATION>
@@ -177,7 +175,19 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     </PROJECTNOTE>
   </PROJECTNOTES>
   <PROJECTVARS>
-	</PROJECTVARS>
+    <PROJECTVAR>
+      <ID>1</ID>
+      <Title><![CDATA[Language]]></Title>
+      <Desc><![CDATA[en]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+    <PROJECTVAR>
+      <ID>2</ID>
+      <Title><![CDATA[Country]]></Title>
+      <Desc><![CDATA[AU]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+  </PROJECTVARS>
   <PROJECTEXPS>
 	</PROJECTEXPS>
   <SCENES>

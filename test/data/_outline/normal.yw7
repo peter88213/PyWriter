@@ -5,10 +5,6 @@
     <Title><![CDATA[Hal Spacejock book one - Sample yWriter Project]]></Title>
     <Desc><![CDATA[An incompetent, accident-prone pilot is given one last chance to save his ship. An ageing robot is trusted with a midnight landing in a deserted field. And a desperate businessman is prepared to sacrifice both of them to get what he wants... Combining relentless action with non-stop laughs, Hal Spacejock explodes onto the science fiction scene with the subtlety of a meteor strike and the hushed reverence of a used car salesman.]]></Desc>
     <AuthorName><![CDATA[Simon Haynes]]></AuthorName>
-    <Fields>
-      <Field_LanguageCode>en</Field_LanguageCode>
-      <Field_CountryCode>AU</Field_CountryCode>
-    </Fields>
   </PROJECT>
   <LOCATIONS />
   <ITEMS />
@@ -172,4 +168,18 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
       </Scenes>
     </CHAPTER>
   </CHAPTERS>
+  <PROJECTVARS>
+    <PROJECTVAR>
+      <ID>1</ID>
+      <Title><![CDATA[Language]]></Title>
+      <Desc><![CDATA[en]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+    <PROJECTVAR>
+      <ID>2</ID>
+      <Title><![CDATA[Country]]></Title>
+      <Desc><![CDATA[AU]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+  </PROJECTVARS>
 </YWRITER7>
