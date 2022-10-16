@@ -909,6 +909,9 @@
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_Z0qIUnewEeyoo8DPyEkfSw" name="converter" type="_mbjA8PxAEeq5hMee5ike2Q" association="_Z0kBsHewEeyoo8DPyEkfSw"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_lKwRoE06Ee2fLoDAy354_Q" name="Yw7Importer">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xR8F4E06Ee2fLoDAy354_Q" general="_WAqBgCtrEeqgj_wxJ3Xgsg"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_PZBEwIelEeqZkamAUXuhyQ" name="yw">
       <packagedElement xmi:type="uml:Class" xmi:id="_S2CgoCtgEeqgj_wxJ3Xgsg" name="Yw7File" isAbstract="true">
