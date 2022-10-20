@@ -19,7 +19,7 @@ For more information, see my [GitHub home page](https://peter88213.github.io).
 
 ### Conventions
 
-- Minimum Python version is 3.6. 
+- Minimum Python version is 3.7. 
 - The Python **source code formatting** follows widely the [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide, except the maximum line length, which is 120 characters here.
 - The **code commenting** follows the [PEP 257](https://www.python.org/dev/peps/pep-0257) convention. [pydoc](https://docs.python.org/3/library/pydoc.html) can be used to display documentation for the *pywriter* modules and classes.
 

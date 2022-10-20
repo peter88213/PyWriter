@@ -416,6 +416,14 @@ Refactor for standardization.
 
 - Move the document's locale from Novel.kwVar to Novel instance attributes.
 
+#### v7.13
+
+- Provide an import-only converter module.
+
+#### v7.14
+
+- Count words like in LibreOffice. See: https://help.libreoffice.org/latest/en-GB/text/swriter/guide/words_count.html.
+
 ## Future:
 
 #### Full LibreOffice/OpenOffice integration

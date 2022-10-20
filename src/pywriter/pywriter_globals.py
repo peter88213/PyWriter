@@ -12,7 +12,18 @@ import locale
 
 ERROR = '!'
 
-# Initialize localization.
+__all__ = ['ERROR', '_',
+           'LOCALE_PATH',
+           'CURRENT_LANGUAGE',
+           'ADDITIONAL_WORD_LIMITS',
+           'NO_WORD_LIMITS',
+           'NON_LETTERS',
+           'string_to_list',
+           'list_to_string',
+           'get_languages',
+           ]
+
+#--- Initialize localization.
 LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
 CURRENT_LANGUAGE = locale.getdefaultlocale()[0][:2]
 try:
@@ -22,6 +33,20 @@ except:
 
     def _(message):
         return message
+
+#--- Regular expressions for counting words and characters like in LibreOffice.
+# See: https://help.libreoffice.org/latest/en-GB/text/swriter/guide/words_count.html
+
+ADDITIONAL_WORD_LIMITS = re.compile('--|—|–')
+# this is to be replaced by spaces, thus making dashes and dash replacements word limits
+
+NO_WORD_LIMITS = re.compile('\[.+?\]|\/\*.+?\*\/|-|^\>', re.MULTILINE)
+# this is to be replaced by empty strings, thus excluding markup and comments from
+# word counting, and making hyphens join words
+
+NON_LETTERS = re.compile('\[.+?\]|\/\*.+?\*\/|\n|\r')
+# this is to be replaced by empty strings, thus excluding markup, comments, and linefeeds
+# from letter counting
 
 
 def string_to_list(text, divider=';'):
@@ -91,5 +116,3 @@ def get_languages(text):
             yield m.group(1)
             m = LANGUAGE_TAG.search(text)
 
-
-__all__ = ['ERROR', '_', 'LOCALE_PATH', 'CURRENT_LANGUAGE', 'string_to_list', 'list_to_string', 'get_languages']
