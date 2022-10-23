@@ -33,12 +33,15 @@ class HtmlManuscript(HtmlFormatted):
                 self._lines.append('[i]')
             elif tag == 'strong' or tag == 'b':
                 self._lines.append('[b]')
-            elif tag == 'span':
-                if attrs[0][0].lower() == 'lang':
-                    self._language = attrs[0][1]
-                    if not self._language in self.languages:
-                        self.languages.append(self._language)
-                    self._lines.append(f'[lang={self._language}]')
+            elif tag in ('span', 'p'):
+                try:
+                    if attrs[0][0] == 'lang':
+                        self._language = attrs[0][1]
+                        if not self._language in self.languages:
+                            self.languages.append(self._language)
+                        self._lines.append(f'[lang={self._language}]')
+                except:
+                    pass
             elif tag == 'h3':
                 if self.scenes[self._scId].title is None:
                     self._getScTitle = True
@@ -52,9 +55,17 @@ class HtmlManuscript(HtmlFormatted):
                 self._lines.append(f'{self._BULLET} ')
             elif tag == 'blockquote':
                 self._lines.append(f'{self._INDENT} ')
+                try:
+                    if attrs[0][0] == 'lang':
+                        self._language = attrs[0][1]
+                        if not self._language in self.languages:
+                            self.languages.append(self._language)
+                        self._lines.append(f'[lang={self._language}]')
+                except:
+                    pass
         elif tag == 'body':
             for attr in attrs:
-                if attr[0].lower() == 'lang':
+                if attr[0] == 'lang':
                     try:
                         lngCode, ctrCode = attr[1].split('-')
                         self.languageCode = lngCode
@@ -72,7 +83,10 @@ class HtmlManuscript(HtmlFormatted):
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
         if self._scId is not None:
-            if tag == 'p':
+            if tag in ('p', 'blockquote'):
+                if self._language:
+                    self._lines.append(f'[/lang={self._language}]')
+                    self._language = ''
                 self._lines.append('\n')
             elif tag == 'em' or tag == 'i':
                 self._lines.append('[/i]')
@@ -92,8 +106,6 @@ class HtmlManuscript(HtmlFormatted):
             elif tag == 'h2':
                 self._lines.append('\n')
             elif tag == 'h3' and not self._getScTitle:
-                self._lines.append('\n')
-            elif tag == 'blockquote':
                 self._lines.append('\n')
         elif self._chId is not None:
             if tag == 'div':

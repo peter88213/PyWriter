@@ -59,6 +59,14 @@ class HtmlImport(HtmlFormatted):
                 self.chapters[self._chId].srtScenes.append(self._scId)
                 self.scenes[self._scId].status = '1'
                 self.scenes[self._scId].title = f'Scene {self._scCount}'
+            try:
+                if attrs[0][0] == 'lang':
+                    self._language = attrs[0][1]
+                    if not self._language in self.languages:
+                        self.languages.append(self._language)
+                    self._lines.append(f'[lang={self._language}]')
+            except:
+                pass
         elif tag == 'br':
             self._newline = True
         elif tag == 'em' or tag == 'i':
@@ -66,7 +74,7 @@ class HtmlImport(HtmlFormatted):
         elif tag == 'strong' or tag == 'b':
             self._lines.append('[b]')
         elif tag == 'span':
-            if attrs[0][0].lower() == 'lang':
+            if attrs[0][0] == 'lang':
                 self._language = attrs[0][1]
                 if not self._language in self.languages:
                     self.languages.append(self._language)
@@ -96,7 +104,7 @@ class HtmlImport(HtmlFormatted):
             self._lines = []
         elif tag == 'body':
             for attr in attrs:
-                if attr[0].lower() == 'lang':
+                if attr[0] == 'lang':
                     try:
                         lngCode, ctrCode = attr[1].split('-')
                         self.languageCode = lngCode
@@ -110,6 +118,14 @@ class HtmlImport(HtmlFormatted):
                 self._doNothing = True
         elif tag == 'blockquote':
             self._lines.append(f'{self._INDENT} ')
+            try:
+                if attrs[0][0] == 'lang':
+                    self._language = attrs[0][1]
+                    if not self._language in self.languages:
+                        self.languages.append(self._language)
+                    self._lines.append(f'[lang={self._language}]')
+            except:
+                pass
 
     def handle_endtag(self, tag):
         """Recognize the paragraph's end.
@@ -120,6 +136,9 @@ class HtmlImport(HtmlFormatted):
         Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
         """
         if tag in ('p', 'blockquote'):
+            if self._language:
+                self._lines.append(f'[/lang={self._language}]')
+                self._language = ''
             self._lines.append('\n')
             self._newline = True
             if self._scId is not None:
