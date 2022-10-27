@@ -285,7 +285,7 @@ class Novel(BasicElement):
         """
         if not self.languageCode or not self.countryCode:
             # Language or country isn't set.
-            sysLng, sysCtr = locale.getdefaultlocale()[0].split('_')
+            sysLng, sysCtr = locale.getlocale()[0].split('_')
             self.languageCode = sysLng
             self.countryCode = sysCtr
             return
