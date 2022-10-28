@@ -4,7 +4,7 @@
 
 ## Requirements
 
-- [Python 3.6+](https://www.python.org). 
+- [Python](https://www.python.org) version 3.6+.
 
 ## Applications
 
@@ -19,13 +19,13 @@ For more information, see my [GitHub home page](https://peter88213.github.io).
 
 ### Conventions
 
-- Minimum Python version is 3.7. 
+- Minimum Python version is 3.6. 
 - The Python **source code formatting** follows widely the [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide, except the maximum line length, which is 120 characters here.
 - The **code commenting** follows the [PEP 257](https://www.python.org/dev/peps/pep-0257) convention. [pydoc](https://docs.python.org/3/library/pydoc.html) can be used to display documentation for the *pywriter* modules and classes.
 
 ### Development tools
 
-- [Python](https://python.org) version 3.10
+- [Python](https://python.org) version 3.10.8
 - [Eclipse IDE](https://eclipse.org) with [PyDev](https://pydev.org) and [EGit](https://www.eclipse.org/egit/)
 - [Apache Ant](https://ant.apache.org/) for building application scripts
 
