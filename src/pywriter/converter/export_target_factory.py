@@ -25,10 +25,11 @@ class ExportTargetFactory(FileFactory):
         Required keyword arguments: 
             suffix -- str: target file name suffix.
 
-        Return a tuple with three elements:
-        - A message beginning with the ERROR constant in case of error
+        Return a tuple with two elements:
         - sourceFile: None
-        - targetFile: a FileExport subclass instance, or None in case of error 
+        - targetFile: a FileExport subclass instance
+        
+        Raise the "Error" exception in case of error.          
         """
         fileName, __ = os.path.splitext(sourcePath)
         suffix = kwargs['suffix']
@@ -37,6 +38,6 @@ class ExportTargetFactory(FileFactory):
                 if suffix is None:
                     suffix = ''
                 targetFile = fileClass(f'{fileName}{suffix}{fileClass.EXTENSION}', **kwargs)
-                return 'Target object created.', None, targetFile
+                return None, targetFile
 
-        return f'{ERROR}{_("Export type is not supported")}: "{suffix}".', None, None
+        raise Error(f'{_("Export type is not supported")}: "{suffix}".')

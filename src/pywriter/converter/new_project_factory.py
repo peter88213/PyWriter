@@ -31,27 +31,25 @@ class NewProjectFactory(FileFactory):
         Positional arguments:
             sourcePath -- str: path to the source file to convert.
 
-        Return a tuple with three elements:
-        - A message beginning with the ERROR constant in case of error
+        Return a tuple with two elements:
         - sourceFile: a Novel subclass instance
         - targetFile: a Novel subclass instance
+        
+        Raise the "Error" exception in case of error. 
         """
         if not self._canImport(sourcePath):
-            return f'{ERROR}{_("This document is not meant to be written back")}.', None, None
+            raise Error(f'{_("This document is not meant to be written back")}.')
 
         fileName, __ = os.path.splitext(sourcePath)
         targetFile = Yw7File(f'{fileName}{Yw7File.EXTENSION}', **kwargs)
         if sourcePath.endswith('.html'):
             # The source file might be an outline or a "work in progress".
-            message, content = read_html_file(sourcePath)
-            if message.startswith(ERROR):
-                return message, None, None
-
+            content = read_html_file(sourcePath)
             if "<h3" in content.lower():
                 sourceFile = HtmlOutline(sourcePath, **kwargs)
             else:
                 sourceFile = HtmlImport(sourcePath, **kwargs)
-            return 'Source and target objects created.', sourceFile, targetFile
+            return sourceFile, targetFile
 
         else:
             for fileClass in self._fileClasses:
@@ -60,7 +58,7 @@ class NewProjectFactory(FileFactory):
                         sourceFile = fileClass(sourcePath, **kwargs)
                         return 'Source and target objects created.', sourceFile, targetFile
 
-            return f'{ERROR}{_("File type is not supported")}: "{os.path.normpath(sourcePath)}".', None, None
+            raise Error(f'{_("File type is not supported")}: "{os.path.normpath(sourcePath)}".')
 
     def _canImport(self, sourcePath):
         """Check whether the source file can be imported to yWriter.

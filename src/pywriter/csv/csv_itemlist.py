@@ -23,13 +23,10 @@ class CsvItemList(CsvFile):
         """Parse the file and get the instance variables.
         
         Parse the csv file located at filePath, fetching the item attributes contained.
-        Return a message beginning with the ERROR constant in case of error.
+        Raise the "Error" exception in case of error. 
         Extends the superclass method.
         """
-        message = super().read()
-        if message.startswith(ERROR):
-            return message
-
+        super().read()
         for cells in self._rows:
             if 'ItID:' in cells[0]:
                 itId = re.search('ItID\:([0-9]+)', cells[0]).group(1)
@@ -39,4 +36,3 @@ class CsvItemList(CsvFile):
                 self.items[itId].desc = self._convert_to_yw(cells[2])
                 self.items[itId].aka = self._convert_to_yw(cells[3])
                 self.items[itId].tags = string_to_list(cells[4], divider=self._DIVIDER)
-        return 'Item data read in.'

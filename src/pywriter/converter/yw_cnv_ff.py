@@ -68,29 +68,34 @@ class YwCnvFf(YwCnvUi):
             self.ui.set_info_how(f'{ERROR}{_("File not found")}: "{os.path.normpath(sourcePath)}".')
             return
 
-        message, source, __ = self.exportSourceFactory.make_file_objects(sourcePath, **kwargs)
-        if message.startswith(ERROR):
+        try:
+            source, __ = self.exportSourceFactory.make_file_objects(sourcePath, **kwargs)
+        except Error:
             # The source file is not a yWriter project.
-            message, source, __ = self.importSourceFactory.make_file_objects(sourcePath, **kwargs)
-            if message.startswith(ERROR):
+            try:
+                source, __ = self.importSourceFactory.make_file_objects(sourcePath, **kwargs)
+            except Error:
                 # A new yWriter project might be required.
-                message, source, target = self.newProjectFactory.make_file_objects(sourcePath, **kwargs)
-                if message.startswith(ERROR):
-                    self.ui.set_info_how(message)
+                try:
+                    source, target = self.newProjectFactory.make_file_objects(sourcePath, **kwargs)
+                except Error as ex:
+                    self.ui.set_info_how(f'{ERROR}{str(ex)}')
                 else:
                     self.create_yw7(source, target)
             else:
                 # Try to update an existing yWriter project.
                 kwargs['suffix'] = source.SUFFIX
-                message, __, target = self.importTargetFactory.make_file_objects(sourcePath, **kwargs)
-                if message.startswith(ERROR):
-                    self.ui.set_info_how(message)
+                try:
+                    __, target = self.importTargetFactory.make_file_objects(sourcePath, **kwargs)
+                except Error as ex:
+                    self.ui.set_info_how(f'{ERROR}{str(ex)}')
                 else:
                     self.import_to_yw(source, target)
         else:
             # The source file is a yWriter project.
-            message, __, target = self.exportTargetFactory.make_file_objects(sourcePath, **kwargs)
-            if message.startswith(ERROR):
-                self.ui.set_info_how(message)
+            try:
+                __, target = self.exportTargetFactory.make_file_objects(sourcePath, **kwargs)
+            except Error as ex:
+                self.ui.set_info_how(f'{ERROR}{str(ex)}')
             else:
                 self.export_from_yw(source, target)

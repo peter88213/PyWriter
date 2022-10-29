@@ -28,13 +28,9 @@ class CsvSceneList(CsvFile):
         """Parse the file and get the instance variables.
         
         Parse the csv file located at filePath, fetching the Scene attributes contained.
-        Return a message beginning with the ERROR constant in case of error.
         Extends the superclass method.
         """
-        message = super().read()
-        if message.startswith(ERROR):
-            return message
-
+        super().read()
         for cells in self._rows:
             i = 0
             if 'ScID:' in cells[i]:
@@ -102,4 +98,3 @@ class CsvSceneList(CsvFile):
                 # Can't write back location IDs, because self.locations is None.
                 i += 1
                 # Can't write back item IDs, because self.items is None.
-        return 'CSV data converted to novel structure.'

@@ -372,23 +372,19 @@ class OdtFile(OdfFile):
         """Helper method for ZIP file generation.
 
         Add rdf manifest to the temporary directory containing the internal structure of an ODF file.
-        Return a message beginning with the ERROR constant in case of error.
+        Raise the "Error" exception in case of error. 
         Extends the superclass method.
         """
 
         # Generate the common ODF components.
-        message = super()._set_up()
-        if message.startswith(ERROR):
-            return message
+        super()._set_up()
 
         # Generate manifest.rdf
         try:
             with open(f'{self._tempDir}/manifest.rdf', 'w', encoding='utf-8') as f:
                 f.write(self._MANIFEST_RDF)
         except:
-            return f'{ERROR}{_("Cannot write file")}: "manifest.rdf"'
-
-        return 'ODT structure generated.'
+            raise Error(f'{_("Cannot write file")}: "manifest.rdf"')
 
     def _convert_from_yw(self, text, quick=False):
         """Return text without markup, converted to target format.

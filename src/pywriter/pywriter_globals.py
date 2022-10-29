@@ -10,9 +10,7 @@ import sys
 import gettext
 import locale
 
-ERROR = '!'
-
-__all__ = ['ERROR', '_',
+__all__ = ['ERROR', 'Error', '_',
            'LOCALE_PATH',
            'CURRENT_LANGUAGE',
            'ADDITIONAL_WORD_LIMITS',
@@ -22,6 +20,13 @@ __all__ = ['ERROR', '_',
            'list_to_string',
            'get_languages',
            ]
+
+ERROR = '!'
+
+
+class Error(Exception):
+    """Base class for exceptions."""
+
 
 #--- Initialize localization.
 LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'

@@ -21,15 +21,16 @@ class ImportSourceFactory(FileFactory):
         Positional arguments:
             sourcePath -- str: path to the source file to convert.
 
-        Return a tuple with three elements:
-        - A message beginning with the ERROR constant in case of error
+        Return a tuple with two elements:
         - sourceFile: a Novel subclass instance, or None in case of error
         - targetFile: None
+
+        Raise the "Error" exception in case of error. 
         """
         for fileClass in self._fileClasses:
             if fileClass.SUFFIX is not None:
                 if sourcePath.endswith(f'{fileClass.SUFFIX }{fileClass.EXTENSION}'):
                     sourceFile = fileClass(sourcePath, **kwargs)
-                    return 'Source object created.', sourceFile, None
+                    return sourceFile, None
 
-        return f'{ERROR}{_("This document is not meant to be written back")}.', None, None
+        raise Error(f'{_("This document is not meant to be written back")}.')

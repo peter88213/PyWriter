@@ -27,35 +27,27 @@ class YwCnv:
         1. Make the source object read the source file.
         2. Make the target object merge the source object's instance variables.
         3. Make the target object write the target file.
-        Return a message beginning with the ERROR constant in case of error.
-
+        
         Error handling:
         - Check if source and target are correctly initialized.
         - Ask for permission to overwrite target.
-        - Pass the error messages of the called methods of source and target.
-        - The success message comes from target.write(), if called.       
+        - Raise the "Error" exception in case of error. 
         """
         if source.filePath is None:
-            return f'{ERROR}{_("File type is not supported")}: "{os.path.normpath(source.filePath)}".'
+            raise Error(f'{_("File type is not supported")}: "{os.path.normpath(source.filePath)}".')
 
         if not os.path.isfile(source.filePath):
-            return f'{ERROR}{_("File not found")}: "{os.path.normpath(source.filePath)}".'
+            raise Error(f'{_("File not found")}: "{os.path.normpath(source.filePath)}".')
 
         if target.filePath is None:
-            return f'{ERROR}{_("File type is not supported")}: "{os.path.normpath(target.filePath)}".'
+            raise Error(f'{_("File type is not supported")}: "{os.path.normpath(target.filePath)}".')
 
         if os.path.isfile(target.filePath) and not self._confirm_overwrite(target.filePath):
-            return f'{ERROR}{_("Action canceled by user")}.'
+            raise Error(f'{_("Action canceled by user")}.')
 
-        message = source.read()
-        if message.startswith(ERROR):
-            return message
-
-        message = target.merge(source)
-        if message.startswith(ERROR):
-            return message
-
-        return target.write()
+        source.read()
+        target.merge(source)
+        target.write()
 
     def _confirm_overwrite(self, fileName):
         """Return boolean permission to overwrite the target file.

@@ -173,10 +173,11 @@ class MainTk(Ui):
             self.close_project()
         self.kwargs['yw_last_open'] = fileName
         self.ywPrj = self._YW_CLASS(fileName)
-        message = self.ywPrj.read()
-        if message.startswith(ERROR):
+        try:
+            self.ywPrj.read()
+        except Error as ex:
             self.close_project()
-            self.set_info_how(message)
+            self.set_info_how(f'{ERROR}{str(ex)}')
             return False
 
         self.show_path(f'{os.path.normpath(self.ywPrj.filePath)}')

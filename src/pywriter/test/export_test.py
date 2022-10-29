@@ -66,7 +66,7 @@ class ExportTest():
         ywFile = Yw7File(self._testYwFile)
         documentFile = self._exportClass(self._testExpFile)
         converter = YwCnv()
-        self.assertEqual(converter.convert(ywFile, documentFile), f'{_("File written")}: "{ os.path.normpath(self._testExpFile)}".')
+        converter.convert(ywFile, documentFile)
         with zipfile.ZipFile(self._testExpFile, 'r') as myzip:
             myzip.extract(self._odfCntntFile, self._execPath)
         if UPDATE:

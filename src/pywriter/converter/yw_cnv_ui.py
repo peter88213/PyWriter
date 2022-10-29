@@ -52,12 +52,16 @@ class YwCnvUi(YwCnv):
         """
         self.ui.set_info_what(
             _('Input: {0} "{1}"\nOutput: {2} "{3}"').format(source.DESCRIPTION, os.path.normpath(source.filePath), target.DESCRIPTION, os.path.normpath(target.filePath)))
-        message = self.convert(source, target)
-        self.ui.set_info_how(message)
-        if message.startswith(ERROR):
+        try:
+            self.convert(source, target)
+        except Error as ex:
+            message = f'{ERROR}{str(ex)}'
             self.newFile = None
         else:
+            message = f'{_("File written")}: "{os.path.normpath(target.filePath)}".'
             self.newFile = target.filePath
+        finally:
+            self.ui.set_info_how(message)
 
     def create_yw7(self, source, target):
         """Create target from source.
@@ -82,13 +86,17 @@ class YwCnvUi(YwCnv):
         if os.path.isfile(target.filePath):
             self.ui.set_info_how(f'{ERROR}{_("File already exists")}: "{os.path.normpath(target.filePath)}".')
         else:
-            message = self.convert(source, target)
-            self.ui.set_info_how(message)
-            self._delete_tempfile(source.filePath)
-            if message.startswith(ERROR):
+            try:
+                self.convert(source, target)
+            except Error as ex:
+                message = f'{ERROR}{str(ex)}'
                 self.newFile = None
             else:
+                message = f'{_("File written")}: "{os.path.normpath(target.filePath)}".'
                 self.newFile = target.filePath
+            finally:
+                self.ui.set_info_how(message)
+                self._delete_tempfile(source.filePath)
 
     def import_to_yw(self, source, target):
         """Convert from any file format to yWriter project.
@@ -109,15 +117,19 @@ class YwCnvUi(YwCnv):
         """
         self.ui.set_info_what(
             _('Input: {0} "{1}"\nOutput: {2} "{3}"').format(source.DESCRIPTION, os.path.normpath(source.filePath), target.DESCRIPTION, os.path.normpath(target.filePath)))
-        message = self.convert(source, target)
-        self.ui.set_info_how(message)
-        self._delete_tempfile(source.filePath)
-        if message.startswith(ERROR):
+        try:
+            self.convert(source, target)
+        except Error as ex:
+            message = f'{ERROR}{str(ex)}'
             self.newFile = None
         else:
+            message = f'{_("File written")}: "{os.path.normpath(target.filePath)}".'
             self.newFile = target.filePath
             if target.scenesSplit:
                 self.ui.show_warning(_('New scenes created during conversion.'))
+        finally:
+            self.ui.set_info_how(message)
+            self._delete_tempfile(source.filePath)
 
     def _confirm_overwrite(self, filePath):
         """Return boolean permission to overwrite the target file.

@@ -54,7 +54,7 @@ class ImportExportTest(ExportTest):
         ywFile = Yw7File(self._testYwFile)
         documentFile = self._importClass(self._testImpFile)
         converter = YwCnv()
-        self.assertEqual(converter.convert(documentFile, ywFile), f'{_("File written")}: "{ os.path.normpath(self._testYwFile)}".')
+        converter.convert(documentFile, ywFile)
         if UPDATE:
             copyfile(self._testYwFile, self._prfYwFile)
             copyfile(self._ywBakFile, self._refYwFile)

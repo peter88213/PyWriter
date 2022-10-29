@@ -22,15 +22,16 @@ class ExportSourceFactory(FileFactory):
         Positional arguments:
             sourcePath -- str: path to the source file to convert.
 
-        Return a tuple with three elements:
-        - A message beginning with the ERROR constant in case of error
-        - sourceFile: a YwFile subclass instance, or None in case of error
+        Return a tuple with two elements:
+        - sourceFile: a YwFile subclass instance
         - targetFile: None
+
+        Raise the "Error" exception in case of error. 
         """
         __, fileExtension = os.path.splitext(sourcePath)
         for fileClass in self._fileClasses:
             if fileClass.EXTENSION == fileExtension:
                 sourceFile = fileClass(sourcePath, **kwargs)
-                return 'Source object created.', sourceFile, None
+                return sourceFile, None
 
-        return f'{ERROR}{_("File type is not supported")}: "{os.path.normpath(sourcePath)}".', None, None
+        raise Error(f'{_("File type is not supported")}: "{os.path.normpath(sourcePath)}".')

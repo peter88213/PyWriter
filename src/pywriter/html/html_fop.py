@@ -11,9 +11,8 @@ from pywriter.pywriter_globals import *
 def read_html_file(filePath):
     """Open a html file being encoded utf-8 or ANSI.
     
-    Return a tuple:
-    message = Message beginning with the ERROR constant in case of error.
-    content = The file content in a single string. None in case of error.
+    Return the file content in a single string. None in case of error.
+    Raise the "Error" exception in case of error. 
     """
     try:
         with open(filePath, 'r', encoding='utf-8') as f:
@@ -24,6 +23,6 @@ def read_html_file(filePath):
             with open(filePath, 'r') as f:
                 content = (f.read())
         except(FileNotFoundError):
-            return f'{ERROR}{_("File not found")}: "{os.path.normpath(filePath)}".', None
+            raise Error(f'{_("File not found")}: "{os.path.normpath(filePath)}".')
 
-    return 'HTML data read in.', content
+    return content

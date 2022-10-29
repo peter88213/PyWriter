@@ -25,10 +25,11 @@ class ImportTargetFactory(FileFactory):
         Required keyword arguments: 
             suffix -- str: target file name suffix.
 
-        Return a tuple with three elements:
-        - A message beginning with the ERROR constant in case of error
+        Return a tuple with two elements:
         - sourceFile: None
-        - targetFile: a YwFile subclass instance, or None in case of error
+        - targetFile: a YwFile subclass instance
+
+        Raise the "Error" exception in case of error. 
         """
         fileName, __ = os.path.splitext(sourcePath)
         sourceSuffix = kwargs['suffix']
@@ -47,6 +48,6 @@ class ImportTargetFactory(FileFactory):
         for fileClass in self._fileClasses:
             if os.path.isfile(f'{ywPathBasis}{fileClass.EXTENSION}'):
                 targetFile = fileClass(f'{ywPathBasis}{fileClass.EXTENSION}', **kwargs)
-                return 'Target object created.', None, targetFile
+                return None, targetFile
 
-        return f'{ERROR}{_("No yWriter project to write")}.', None, None
+        raise Error(f'{_("No yWriter project to write")}.')

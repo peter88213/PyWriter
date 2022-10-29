@@ -119,15 +119,10 @@ class HtmlFile(Novel, HTMLParser):
     def read(self):
         """Parse the file and get the instance variables.
         
-        Return a message beginning with the ERROR constant in case of error.
         This is a template method for subclasses tailored to the 
         content of the respective HTML file.
         """
-        message, content = read_html_file(self._filePath)
-        if message.startswith(ERROR):
-            return message
-
+        content = read_html_file(self._filePath)
         content = self._preprocess(content)
         self.feed(content)
         self._postprocess()
-        return 'Created novel structure from HTML data.'

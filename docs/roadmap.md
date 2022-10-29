@@ -424,6 +424,11 @@ Refactor for standardization.
 
 - Count words like in LibreOffice. See: https://help.libreoffice.org/latest/en-GB/text/swriter/guide/words_count.html.
 
+## Version 8: Revise error handling
+
+- Throw exceptions instead of returning error messages.
+
+
 ## Future:
 
 #### Full LibreOffice/OpenOffice integration

@@ -31,7 +31,7 @@ class DataFiles(Yw7File):
             
         Extract the characters/locations/items xml subtrees from a yWriter project.
         Generate the xml file paths from the .yw7 path and write each subtree to an xml file.
-        Return a message beginning with the ERROR constant in case of error.
+        Raise the "Error" exception in case of error. 
         """
         path, __ = os.path.splitext(ywProject.filePath)
         characterPath = f'{path}_Characters.xml'
@@ -40,7 +40,7 @@ class DataFiles(Yw7File):
         try:
             characterTree.write(characterPath, xml_declaration=False, encoding='utf-8')
         except(PermissionError):
-            return f'{ERROR}{_("File is write protected")}: "{os.path.normpath(characterPath)}".'
+            raise Error(f'{_("File is write protected")}: "{os.path.normpath(characterPath)}".')
 
         locationPath = f'{path}_Locations.xml'
         locationSubtree = ywProject.tree.find('LOCATIONS')
@@ -48,7 +48,7 @@ class DataFiles(Yw7File):
         try:
             locationTree.write(locationPath, xml_declaration=False, encoding='utf-8')
         except(PermissionError):
-            return f'{ERROR}{_("File is write protected")}: "{os.path.normpath(locationPath)}".'
+            raise Error(f'{_("File is write protected")}: "{os.path.normpath(locationPath)}".')
 
         itemPath = f'{path}_Items.xml'
         itemSubtree = ywProject.tree.find('ITEMS')
@@ -56,9 +56,7 @@ class DataFiles(Yw7File):
         try:
             itemTree.write(itemPath, xml_declaration=False, encoding='utf-8')
         except(PermissionError):
-            return f'{ERROR}{_("File is write protected")}: "{os.path.normpath(itemPath)}".'
-
-        return 'All XML data files written.'
+            raise Error(f'{_("File is write protected")}: "{os.path.normpath(itemPath)}".')
 
     def _postprocess_xml_file(self, filePath):
         '''Postprocess three xml files created by ElementTree.
@@ -68,26 +66,15 @@ class DataFiles(Yw7File):
             
         Generate the xml file paths from the .yw7 path. 
         Read, postprocess and write the characters, locations, and items xml files.        
-        Return a message beginning with the ERROR constant in case of error.
         Extends the superclass method.
         '''
         path, __ = os.path.splitext(filePath)
         characterPath = f'{path}_Characters.xml'
-        message = super()._postprocess_xml_file(characterPath)
-        if message.startswith(ERROR):
-            return message
-
+        super()._postprocess_xml_file(characterPath)
         locationPath = f'{path}_Locations.xml'
-        message = super()._postprocess_xml_file(locationPath)
-        if message.startswith(ERROR):
-            return message
-
+        super()._postprocess_xml_file(locationPath)
         itemPath = f'{path}_Items.xml'
-        message = super()._postprocess_xml_file(itemPath)
-        if message.startswith(ERROR):
-            return message
-
-        return 'All XML data files written.'
+        super()._postprocess_xml_file(itemPath)
 
     def merge(self, source):
         """Update instance variables from a source instance.
@@ -95,7 +82,6 @@ class DataFiles(Yw7File):
         Positional arguments:
             source -- Novel subclass instance to merge.
         
-        Return a message beginning with the ERROR constant in case of error.
         Overrides the superclass method.
         """
         self.characters = source.characters
@@ -104,4 +90,3 @@ class DataFiles(Yw7File):
         self.srtLocations = source.srtLocations
         self.items = source.items
         self.srtItems = source.srtItems
-        return 'XML Data file content updated from novel.'

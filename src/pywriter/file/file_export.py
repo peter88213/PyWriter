@@ -83,7 +83,6 @@ class FileExport(Novel):
         Positional arguments:
             source -- Novel subclass instance to merge.
         
-        Return a message beginning with the ERROR constant in case of error.
         Overrides the superclass method.
         """
         if source.title is not None:
@@ -162,8 +161,6 @@ class FileExport(Novel):
 
         if source.languages is not None:
             self.languages = source.languages
-
-        return 'Export data updated from novel.'
 
     def _get_fileHeaderMapping(self):
         """Return a mapping dictionary for the project section.
@@ -745,7 +742,8 @@ class FileExport(Novel):
         """Write instance variables to the export file.
         
         Create a template-based output file. 
-        Return a message beginning with the ERROR constant in case of error.
+        Return a message in case of success.
+        Raise the "Error" exception in case of error. 
         """
         text = self._get_text()
         backedUp = False
@@ -754,7 +752,7 @@ class FileExport(Novel):
                 os.replace(self.filePath, f'{self.filePath}.bak')
                 backedUp = True
             except:
-                return f'{ERROR}{_("Cannot overwrite file")}: "{os.path.normpath(self.filePath)}".'
+                raise Error(f'{_("Cannot overwrite file")}: "{os.path.normpath(self.filePath)}".')
 
         try:
             with open(self.filePath, 'w', encoding='utf-8') as f:
@@ -762,7 +760,7 @@ class FileExport(Novel):
         except:
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
-            return f'{ERROR}{_("Cannot write file")}: "{os.path.normpath(self.filePath)}".'
+            raise Error(f'{_("Cannot write file")}: "{os.path.normpath(self.filePath)}".')
 
         return f'{_("File written")}: "{os.path.normpath(self.filePath)}".'
 

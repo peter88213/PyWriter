@@ -23,13 +23,10 @@ class CsvLocList(CsvFile):
         """Parse the file and get the instance variables.
         
         Parse the csv file located at filePath, fetching the location attributes contained.
-        Return a message beginning with the ERROR constant in case of error.
+        Raise the "Error" exception in case of error. 
         Extends the superclass method.
         """
-        message = super().read()
-        if message.startswith(ERROR):
-            return message
-
+        super().read()
         for cells in self._rows:
             if 'LcID:' in cells[0]:
                 lcId = re.search('LcID\:([0-9]+)', cells[0]).group(1)
@@ -39,4 +36,3 @@ class CsvLocList(CsvFile):
                 self.locations[lcId].desc = self._convert_to_yw(cells[2])
                 self.locations[lcId].aka = self._convert_to_yw(cells[3])
                 self.locations[lcId].tags = string_to_list(cells[4], divider=self._DIVIDER)
-        return 'Location data read in.'
