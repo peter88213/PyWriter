@@ -56,7 +56,7 @@ class NewProjectFactory(FileFactory):
                 if fileClass.SUFFIX is not None:
                     if sourcePath.endswith(f'{fileClass.SUFFIX}{fileClass.EXTENSION}'):
                         sourceFile = fileClass(sourcePath, **kwargs)
-                        return 'Source and target objects created.', sourceFile, targetFile
+                        return sourceFile, targetFile
 
             raise Error(f'{_("File type is not supported")}: "{os.path.normpath(sourcePath)}".')
 
