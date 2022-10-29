@@ -571,7 +571,6 @@ class Yw7File(Novel):
         read_scenes(root)
         read_chapters(root)
         self.adjust_scene_types()
-        return 'yWriter project data read in.'
 
     def merge(self, source):
         """Update instance variables from a source instance.
@@ -975,7 +974,6 @@ class Yw7File(Novel):
             sceneSplitter = Splitter()
             self.scenesSplit = sceneSplitter.split_scenes(self)
         self.adjust_scene_types()
-        return 'yWriter project data updated or created.'
 
     def write(self):
         """Write instance variables to the yWriter xml file.

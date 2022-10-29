@@ -162,6 +162,8 @@ class FileExport(Novel):
         if source.languages is not None:
             self.languages = source.languages
 
+        return ''
+
     def _get_fileHeaderMapping(self):
         """Return a mapping dictionary for the project section.
         
