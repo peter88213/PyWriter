@@ -63,8 +63,8 @@ class UiCmd(Ui):
         Print the message, replacing the error marker, if any.
         Overrides the superclass method.
         """
-        if message.startswith(ERROR):
-            message = f'FAIL: {message.split(ERROR, maxsplit=1)[1].strip()}'
+        if message.startswith('!'):
+            message = f'FAIL: {message.split("!", maxsplit=1)[1].strip()}'
         self.infoHowText = message
         print(message)
 

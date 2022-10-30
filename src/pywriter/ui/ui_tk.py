@@ -77,10 +77,10 @@ class UiTk(Ui):
         Display the message at the _processinfo label.
         Overrides the superclass method.
         """
-        if message.startswith(ERROR):
+        if message.startswith('!'):
             self._processInfo.config(bg='red')
             self._processInfo.config(fg='white')
-            self.infoHowText = message.split(ERROR, maxsplit=1)[1].strip()
+            self.infoHowText = message.split('!', maxsplit=1)[1].strip()
         else:
             self._processInfo.config(bg='green')
             self._processInfo.config(fg='white')

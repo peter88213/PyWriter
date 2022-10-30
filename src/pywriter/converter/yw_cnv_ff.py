@@ -65,7 +65,7 @@ class YwCnvFf(YwCnvUi):
         """
         self.newFile = None
         if not os.path.isfile(sourcePath):
-            self.ui.set_info_how(f'{ERROR}{_("File not found")}: "{os.path.normpath(sourcePath)}".')
+            self.ui.set_info_how(f'!{_("File not found")}: "{os.path.normpath(sourcePath)}".')
             return
 
         try:
@@ -79,7 +79,7 @@ class YwCnvFf(YwCnvUi):
                 try:
                     source, target = self.newProjectFactory.make_file_objects(sourcePath, **kwargs)
                 except Error as ex:
-                    self.ui.set_info_how(f'{ERROR}{str(ex)}')
+                    self.ui.set_info_how(f'!{str(ex)}')
                 else:
                     self.create_yw7(source, target)
             else:
@@ -88,7 +88,7 @@ class YwCnvFf(YwCnvUi):
                 try:
                     __, target = self.importTargetFactory.make_file_objects(sourcePath, **kwargs)
                 except Error as ex:
-                    self.ui.set_info_how(f'{ERROR}{str(ex)}')
+                    self.ui.set_info_how(f'!{str(ex)}')
                 else:
                     self.import_to_yw(source, target)
         else:
@@ -96,6 +96,6 @@ class YwCnvFf(YwCnvUi):
             try:
                 __, target = self.exportTargetFactory.make_file_objects(sourcePath, **kwargs)
             except Error as ex:
-                self.ui.set_info_how(f'{ERROR}{str(ex)}')
+                self.ui.set_info_how(f'!{str(ex)}')
             else:
                 self.export_from_yw(source, target)

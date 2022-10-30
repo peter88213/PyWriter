@@ -177,7 +177,7 @@ class MainTk(Ui):
             self.ywPrj.read()
         except Error as ex:
             self.close_project()
-            self.set_info_how(f'{ERROR}{str(ex)}')
+            self.set_info_how(f'!{str(ex)}')
             return False
 
         self.show_path(f'{os.path.normpath(self.ywPrj.filePath)}')
@@ -237,10 +237,10 @@ class MainTk(Ui):
         Display the message at the status bar.
         Overrides the superclass method.
         """
-        if message.startswith(ERROR):
+        if message.startswith('!'):
             self.statusBar.config(bg='red')
             self.statusBar.config(fg='white')
-            self.infoHowText = message.split(ERROR, maxsplit=1)[1].strip()
+            self.infoHowText = message.split('!', maxsplit=1)[1].strip()
         else:
             self.statusBar.config(bg='green')
             self.statusBar.config(fg='white')

@@ -10,7 +10,8 @@ import sys
 import gettext
 import locale
 
-__all__ = ['ERROR', 'Error', '_',
+__all__ = ['Error',
+           '_',
            'LOCALE_PATH',
            'CURRENT_LANGUAGE',
            'ADDITIONAL_WORD_LIMITS',
@@ -20,8 +21,6 @@ __all__ = ['ERROR', 'Error', '_',
            'list_to_string',
            'get_languages',
            ]
-
-ERROR = '!'
 
 
 class Error(Exception):

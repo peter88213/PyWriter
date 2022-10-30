@@ -55,7 +55,7 @@ class YwCnvUi(YwCnv):
         try:
             self.convert(source, target)
         except Error as ex:
-            message = f'{ERROR}{str(ex)}'
+            message = f'!{str(ex)}'
             self.newFile = None
         else:
             message = f'{_("File written")}: "{os.path.normpath(target.filePath)}".'
@@ -84,12 +84,12 @@ class YwCnvUi(YwCnv):
         self.ui.set_info_what(
             _('Create a yWriter project file from {0}\nNew project: "{1}"').format(source.DESCRIPTION, os.path.normpath(target.filePath)))
         if os.path.isfile(target.filePath):
-            self.ui.set_info_how(f'{ERROR}{_("File already exists")}: "{os.path.normpath(target.filePath)}".')
+            self.ui.set_info_how(f'!{_("File already exists")}: "{os.path.normpath(target.filePath)}".')
         else:
             try:
                 self.convert(source, target)
             except Error as ex:
-                message = f'{ERROR}{str(ex)}'
+                message = f'!{str(ex)}'
                 self.newFile = None
             else:
                 message = f'{_("File written")}: "{os.path.normpath(target.filePath)}".'
@@ -120,7 +120,7 @@ class YwCnvUi(YwCnv):
         try:
             self.convert(source, target)
         except Error as ex:
-            message = f'{ERROR}{str(ex)}'
+            message = f'!{str(ex)}'
             self.newFile = None
         else:
             message = f'{_("File written")}: "{os.path.normpath(target.filePath)}".'
