@@ -70,6 +70,9 @@ There are two options:
 - **$FieldTitle3** - Rating names: field 3
 - **$FieldTitle4** - Rating names: field 4
 
+- **$Language** - Language code acc. to ISO 639-1
+- **$Country** - Country code acc. to ISO 3166-2
+
 ### "Chapter template" placeholders
 
 - **$ID** - Chapter ID,
@@ -77,6 +80,9 @@ There are two options:
 
 - **$Title** - Chapter title
 - **$Desc** - Chapter description, html-formatted
+
+- **$Language** - Language code acc. to ISO 639-1
+- **$Country** - Country code acc. to ISO 3166-2
 
 ### "Scene template" placeholders
 
@@ -131,6 +137,9 @@ There are two options:
 - **$Items** - Comma-separated list of items assigned to the scene
 
 - **$Notes** - Scene notes
+
+- **$Language** - Language code acc. to ISO 639-1
+- **$Country** - Country code acc. to ISO 3166-2
 
 
 ### "Character template" placeholders

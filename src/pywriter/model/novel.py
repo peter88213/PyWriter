@@ -186,7 +186,12 @@ class Novel(BasicElement):
         # URL-coded path to the project directory.
 
         self.languageCode = None
+        # str
+        # Language code acc. to ISO 639-1.
+
         self.countryCode = None
+        # str
+        # Country code acc. to ISO 3166-2.
 
         self.filePath = filePath
 

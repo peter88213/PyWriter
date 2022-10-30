@@ -178,6 +178,8 @@ class FileExport(Novel):
             FieldTitle2=self._convert_from_yw(self.fieldTitle2, True),
             FieldTitle3=self._convert_from_yw(self.fieldTitle3, True),
             FieldTitle4=self._convert_from_yw(self.fieldTitle4, True),
+            Language=self.languageCode,
+            Country=self.countryCode,
         )
         return projectTemplateMapping
 
@@ -200,6 +202,8 @@ class FileExport(Novel):
             Desc=self._convert_from_yw(self.chapters[chId].desc),
             ProjectName=self._convert_from_yw(self.projectName, True),
             ProjectPath=self.projectPath,
+            Language=self.languageCode,
+            Country=self.countryCode,
         )
         return chapterMapping
 
@@ -361,6 +365,8 @@ class FileExport(Novel):
             Notes=self._convert_from_yw(self.scenes[scId].notes),
             ProjectName=self._convert_from_yw(self.projectName, True),
             ProjectPath=self.projectPath,
+            Language=self.languageCode,
+            Country=self.countryCode,
         )
         return sceneMapping
 
