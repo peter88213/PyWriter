@@ -145,10 +145,10 @@ class OdfFile(FileExport):
         if os.path.isfile(self.filePath):
             try:
                 os.replace(self.filePath, f'{self.filePath}.bak')
-                backedUp = True
             except:
                 raise Error(f'{_("Cannot overwrite file")}: "{os.path.normpath(self.filePath)}".')
-
+            else:
+                backedUp = True
         try:
             with zipfile.ZipFile(self.filePath, 'w') as odfTarget:
                 os.chdir(self._tempDir)

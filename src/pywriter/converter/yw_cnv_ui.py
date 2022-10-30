@@ -117,11 +117,11 @@ class YwCnvUi(YwCnv):
         """
         self.ui.set_info_what(
             _('Input: {0} "{1}"\nOutput: {2} "{3}"').format(source.DESCRIPTION, os.path.normpath(source.filePath), target.DESCRIPTION, os.path.normpath(target.filePath)))
+        self.newFile = None
         try:
             self.convert(source, target)
         except Error as ex:
             message = f'!{str(ex)}'
-            self.newFile = None
         else:
             message = f'{_("File written")}: "{os.path.normpath(target.filePath)}".'
             self.newFile = target.filePath

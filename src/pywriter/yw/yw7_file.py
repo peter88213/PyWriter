@@ -1801,11 +1801,14 @@ class Yw7File(Novel):
         
         Raise the "Error" exception in case of error. 
         """
+        backedUp = False
         if os.path.isfile(ywProject.filePath):
-            os.replace(ywProject.filePath, f'{ywProject.filePath}.bak')
-            backedUp = True
-        else:
-            backedUp = False
+            try:
+                os.replace(ywProject.filePath, f'{ywProject.filePath}.bak')
+            except:
+                raise Error(f'{_("Cannot overwrite file")}: "{os.path.normpath(ywProject.filePath)}".')
+            else:
+                backedUp = True
         try:
             ywProject.tree.write(ywProject.filePath, xml_declaration=False, encoding='utf-8')
         except:
