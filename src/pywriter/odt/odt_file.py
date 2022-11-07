@@ -398,17 +398,21 @@ class OdtFile(OdfFile):
         Overrides the superclass method.
         """
         if text:
-            text = text.replace('&', '&amp;').replace('>', '&gt;').replace('<', '&lt;')
-            if quick:
-                # Just clean up a one-liner without sophisticated formatting.
-                return text
-
-            # Apply odt linebreaks.
+            # Apply XML predefineded entities.
             ODT_REPLACEMENTS = [
-                ('\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'),
-                ('\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'),
-                ('\r', '\n'),
-            ]
+                ('&', '&amp;'),
+                ('>', '&gt;'),
+                ('<', '&lt;'),
+                ("'", '&apos;'),
+                ('"', '&quot;'),
+                ]
+            if not quick:
+                # Apply odt linebreaks.
+                ODT_REPLACEMENTS.extend([
+                    ('\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'),
+                    ('\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'),
+                    ('\r', '\n'),
+                    ])
             for yw, od in ODT_REPLACEMENTS:
                 text = text.replace(yw, od)
         else:
