@@ -759,7 +759,7 @@ class FileExport(Novel):
             try:
                 os.replace(self.filePath, f'{self.filePath}.bak')
             except:
-                raise Error(f'{_("Cannot overwrite file")}: "{os.path.normpath(self.filePath)}".')
+                raise Error(f'{_("Cannot overwrite file")}: "{norm_path(self.filePath)}".')
             else:
                 backedUp = True
         try:
@@ -768,7 +768,7 @@ class FileExport(Novel):
         except:
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
-            raise Error(f'{_("Cannot write file")}: "{os.path.normpath(self.filePath)}".')
+            raise Error(f'{_("Cannot write file")}: "{norm_path(self.filePath)}".')
 
     def _convert_from_yw(self, text, quick=False):
         """Return text, converted from yw7 markup to target format.

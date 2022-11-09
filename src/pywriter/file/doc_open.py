@@ -10,15 +10,15 @@ import os
 def open_document(document):
     """Open a document with the operating system's standard application."""
     try:
-        os.startfile(os.path.normpath(document))
+        os.startfile(norm_path(document))
         # Windows
     except:
         try:
-            os.system('xdg-open "%s"' % os.path.normpath(document))
+            os.system('xdg-open "%s"' % norm_path(document))
             # Linux
         except:
             try:
-                os.system('open "%s"' % os.path.normpath(document))
+                os.system('open "%s"' % norm_path(document))
                 # Mac
             except:
                 pass

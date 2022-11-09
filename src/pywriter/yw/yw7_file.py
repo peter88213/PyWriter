@@ -559,7 +559,7 @@ class Yw7File(Novel):
         try:
             self.tree = ET.parse(self.filePath)
         except:
-            raise Error(f'{_("Can not process file")}: "{os.path.normpath(self.filePath)}".')
+            raise Error(f'{_("Can not process file")}: "{norm_path(self.filePath)}".')
 
         root = self.tree.getroot()
         read_project(root)
@@ -1806,7 +1806,7 @@ class Yw7File(Novel):
             try:
                 os.replace(ywProject.filePath, f'{ywProject.filePath}.bak')
             except:
-                raise Error(f'{_("Cannot overwrite file")}: "{os.path.normpath(ywProject.filePath)}".')
+                raise Error(f'{_("Cannot overwrite file")}: "{norm_path(ywProject.filePath)}".')
             else:
                 backedUp = True
         try:
@@ -1814,7 +1814,7 @@ class Yw7File(Novel):
         except:
             if backedUp:
                 os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
-            raise Error(f'{_("Cannot write file")}: "{os.path.normpath(ywProject.filePath)}".')
+            raise Error(f'{_("Cannot write file")}: "{norm_path(ywProject.filePath)}".')
 
     def _postprocess_xml_file(self, filePath):
         '''Postprocess an xml file created by ElementTree.
@@ -1846,7 +1846,7 @@ class Yw7File(Novel):
             with open(filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
-            raise Error(f'{_("Cannot write file")}: "{os.path.normpath(filePath)}".')
+            raise Error(f'{_("Cannot write file")}: "{norm_path(filePath)}".')
 
     def _strip_spaces(self, lines):
         """Local helper method.

@@ -69,7 +69,7 @@ class OdfFile(FileExport):
             os.mkdir(self._tempDir)
             os.mkdir(f'{self._tempDir}/META-INF')
         except:
-            raise Error(f'{_("Cannot create directory")}: "{os.path.normpath(self._tempDir)}".')
+            raise Error(f'{_("Cannot create directory")}: "{norm_path(self._tempDir)}".')
 
         #--- Generate mimetype.
         try:
@@ -146,7 +146,7 @@ class OdfFile(FileExport):
             try:
                 os.replace(self.filePath, f'{self.filePath}.bak')
             except:
-                raise Error(f'{_("Cannot overwrite file")}: "{os.path.normpath(self.filePath)}".')
+                raise Error(f'{_("Cannot overwrite file")}: "{norm_path(self.filePath)}".')
             else:
                 backedUp = True
         try:
@@ -158,9 +158,9 @@ class OdfFile(FileExport):
             os.chdir(workdir)
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
-            raise Error(f'{_("Cannot create file")}: "{os.path.normpath(self.filePath)}".')
+            raise Error(f'{_("Cannot create file")}: "{norm_path(self.filePath)}".')
 
         #--- Remove temporary data.
         os.chdir(workdir)
         self._tear_down()
-        return f'{_("File written")}: "{os.path.normpath(self.filePath)}".'
+        return f'{_("File written")}: "{norm_path(self.filePath)}".'

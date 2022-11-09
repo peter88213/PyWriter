@@ -51,14 +51,14 @@ class YwCnvUi(YwCnv):
         - If the conversion fails, newFile is set to None.
         """
         self.ui.set_info_what(
-            _('Input: {0} "{1}"\nOutput: {2} "{3}"').format(source.DESCRIPTION, os.path.normpath(source.filePath), target.DESCRIPTION, os.path.normpath(target.filePath)))
+            _('Input: {0} "{1}"\nOutput: {2} "{3}"').format(source.DESCRIPTION, norm_path(source.filePath), target.DESCRIPTION, norm_path(target.filePath)))
         try:
             self.convert(source, target)
         except Error as ex:
             message = f'!{str(ex)}'
             self.newFile = None
         else:
-            message = f'{_("File written")}: "{os.path.normpath(target.filePath)}".'
+            message = f'{_("File written")}: "{norm_path(target.filePath)}".'
             self.newFile = target.filePath
         finally:
             self.ui.set_info_how(message)
@@ -82,9 +82,9 @@ class YwCnvUi(YwCnv):
         - If the conversion fails, newFile is set to None.
         """
         self.ui.set_info_what(
-            _('Create a yWriter project file from {0}\nNew project: "{1}"').format(source.DESCRIPTION, os.path.normpath(target.filePath)))
+            _('Create a yWriter project file from {0}\nNew project: "{1}"').format(source.DESCRIPTION, norm_path(target.filePath)))
         if os.path.isfile(target.filePath):
-            self.ui.set_info_how(f'!{_("File already exists")}: "{os.path.normpath(target.filePath)}".')
+            self.ui.set_info_how(f'!{_("File already exists")}: "{norm_path(target.filePath)}".')
         else:
             try:
                 self.convert(source, target)
@@ -92,7 +92,7 @@ class YwCnvUi(YwCnv):
                 message = f'!{str(ex)}'
                 self.newFile = None
             else:
-                message = f'{_("File written")}: "{os.path.normpath(target.filePath)}".'
+                message = f'{_("File written")}: "{norm_path(target.filePath)}".'
                 self.newFile = target.filePath
             finally:
                 self.ui.set_info_how(message)
@@ -116,14 +116,14 @@ class YwCnvUi(YwCnv):
         - If the conversion fails, newFile is set to None.
         """
         self.ui.set_info_what(
-            _('Input: {0} "{1}"\nOutput: {2} "{3}"').format(source.DESCRIPTION, os.path.normpath(source.filePath), target.DESCRIPTION, os.path.normpath(target.filePath)))
+            _('Input: {0} "{1}"\nOutput: {2} "{3}"').format(source.DESCRIPTION, norm_path(source.filePath), target.DESCRIPTION, norm_path(target.filePath)))
         self.newFile = None
         try:
             self.convert(source, target)
         except Error as ex:
             message = f'!{str(ex)}'
         else:
-            message = f'{_("File written")}: "{os.path.normpath(target.filePath)}".'
+            message = f'{_("File written")}: "{norm_path(target.filePath)}".'
             self.newFile = target.filePath
             if target.scenesSplit:
                 self.ui.show_warning(_('New scenes created during conversion.'))
@@ -139,7 +139,7 @@ class YwCnvUi(YwCnv):
         
         Overrides the superclass method.
         """
-        return self.ui.ask_yes_no(_('Overwrite existing file "{}"?').format(os.path.normpath(filePath)))
+        return self.ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(filePath)))
 
     def _delete_tempfile(self, filePath):
         """Delete filePath if it is a temporary file no longer needed."""

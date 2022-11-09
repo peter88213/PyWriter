@@ -34,13 +34,13 @@ class YwCnv:
         - Raise the "Error" exception in case of error. 
         """
         if source.filePath is None:
-            raise Error(f'{_("File type is not supported")}: "{os.path.normpath(source.filePath)}".')
+            raise Error(f'{_("File type is not supported")}: "{norm_path(source.filePath)}".')
 
         if not os.path.isfile(source.filePath):
-            raise Error(f'{_("File not found")}: "{os.path.normpath(source.filePath)}".')
+            raise Error(f'{_("File not found")}: "{norm_path(source.filePath)}".')
 
         if target.filePath is None:
-            raise Error(f'{_("File type is not supported")}: "{os.path.normpath(target.filePath)}".')
+            raise Error(f'{_("File type is not supported")}: "{norm_path(target.filePath)}".')
 
         if os.path.isfile(target.filePath) and not self._confirm_overwrite(target.filePath):
             raise Error(f'{_("Action canceled by user")}.')

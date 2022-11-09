@@ -64,9 +64,9 @@ class CsvFile(Novel):
 
                     self._rows.append(row)
         except(FileNotFoundError):
-            raise Error(f'{_("File not found")}: "{os.path.normpath(self.filePath)}".')
+            raise Error(f'{_("File not found")}: "{norm_path(self.filePath)}".')
         except:
-            raise Error(f'{_("Cannot parse File")}: "{os.path.normpath(self.filePath)}".')
+            raise Error(f'{_("Cannot parse File")}: "{norm_path(self.filePath)}".')
 
     def _get_list(self, text):
         """Convert a string into a list.

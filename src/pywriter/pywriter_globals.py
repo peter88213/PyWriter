@@ -17,6 +17,7 @@ __all__ = ['Error',
            'ADDITIONAL_WORD_LIMITS',
            'NO_WORD_LIMITS',
            'NON_LETTERS',
+           'norm_path',
            'string_to_list',
            'list_to_string',
            'get_languages',
@@ -51,6 +52,12 @@ NO_WORD_LIMITS = re.compile('\[.+?\]|\/\*.+?\*\/|-|^\>', re.MULTILINE)
 NON_LETTERS = re.compile('\[.+?\]|\/\*.+?\*\/|\n|\r')
 # this is to be replaced by empty strings, thus excluding markup, comments, and linefeeds
 # from letter counting
+
+
+def norm_path(path):
+    if path is None:
+        path = ''
+    return os.path.normpath(path)
 
 
 def string_to_list(text, divider=';'):

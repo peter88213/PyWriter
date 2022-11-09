@@ -58,7 +58,7 @@ class NewProjectFactory(FileFactory):
                         sourceFile = fileClass(sourcePath, **kwargs)
                         return sourceFile, targetFile
 
-            raise Error(f'{_("File type is not supported")}: "{os.path.normpath(sourcePath)}".')
+            raise Error(f'{_("File type is not supported")}: "{norm_path(sourcePath)}".')
 
     def _canImport(self, sourcePath):
         """Check whether the source file can be imported to yWriter.

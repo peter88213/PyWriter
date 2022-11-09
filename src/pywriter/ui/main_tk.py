@@ -180,7 +180,7 @@ class MainTk(Ui):
             self.set_info_how(f'!{str(ex)}')
             return False
 
-        self.show_path(f'{os.path.normpath(self.ywPrj.filePath)}')
+        self.show_path(f'{norm_path(self.ywPrj.filePath)}')
         self.set_title()
         self.enable_menu()
         return True

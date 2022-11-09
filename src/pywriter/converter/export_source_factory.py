@@ -34,4 +34,4 @@ class ExportSourceFactory(FileFactory):
                 sourceFile = fileClass(sourcePath, **kwargs)
                 return sourceFile, None
 
-        raise Error(f'{_("File type is not supported")}: "{os.path.normpath(sourcePath)}".')
+        raise Error(f'{_("File type is not supported")}: "{norm_path(sourcePath)}".')

@@ -65,7 +65,7 @@ class YwCnvFf(YwCnvUi):
         """
         self.newFile = None
         if not os.path.isfile(sourcePath):
-            self.ui.set_info_how(f'!{_("File not found")}: "{os.path.normpath(sourcePath)}".')
+            self.ui.set_info_how(f'!{_("File not found")}: "{norm_path(sourcePath)}".')
             return
 
         try:

@@ -40,7 +40,7 @@ class DataFiles(Yw7File):
         try:
             characterTree.write(characterPath, xml_declaration=False, encoding='utf-8')
         except(PermissionError):
-            raise Error(f'{_("File is write protected")}: "{os.path.normpath(characterPath)}".')
+            raise Error(f'{_("File is write protected")}: "{norm_path(characterPath)}".')
 
         locationPath = f'{path}_Locations.xml'
         locationSubtree = ywProject.tree.find('LOCATIONS')
@@ -48,7 +48,7 @@ class DataFiles(Yw7File):
         try:
             locationTree.write(locationPath, xml_declaration=False, encoding='utf-8')
         except(PermissionError):
-            raise Error(f'{_("File is write protected")}: "{os.path.normpath(locationPath)}".')
+            raise Error(f'{_("File is write protected")}: "{norm_path(locationPath)}".')
 
         itemPath = f'{path}_Items.xml'
         itemSubtree = ywProject.tree.find('ITEMS')
@@ -56,7 +56,7 @@ class DataFiles(Yw7File):
         try:
             itemTree.write(itemPath, xml_declaration=False, encoding='utf-8')
         except(PermissionError):
-            raise Error(f'{_("File is write protected")}: "{os.path.normpath(itemPath)}".')
+            raise Error(f'{_("File is write protected")}: "{norm_path(itemPath)}".')
 
     def _postprocess_xml_file(self, filePath):
         '''Postprocess three xml files created by ElementTree.

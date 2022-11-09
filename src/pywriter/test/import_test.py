@@ -75,7 +75,7 @@ class ImportTest():
         copyfile(self._refImpFile, self._testImpFile)
         converter = Yw7Converter()
         converter.run(self._testImpFile)
-        self.assertEqual(converter.ui.infoHowText, f'{_("File written")}: "{os.path.normpath(self._testYwFile)}".')
+        self.assertEqual(converter.ui.infoHowText, f'{_("File written")}: "{norm_path(self._testYwFile)}".')
         self.assertEqual(read_file(self._testYwFile), read_file(self._refYwFile))
 
     def tearDown(self):
