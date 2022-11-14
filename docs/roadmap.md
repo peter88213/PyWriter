@@ -429,6 +429,12 @@ Refactor for standardization.
 - Throw exceptions instead of returning error messages.
 
 
+## Version 9: Structure change
+
+Use the novel structure as a strategy class instead of making all file types inherit from it.
+Thus, the merge method is no nonger necessary.
+
+
 ## Future:
 
 #### Full LibreOffice/OpenOffice integration
