@@ -30,9 +30,9 @@ class CsvLocList(CsvFile):
         for cells in self._rows:
             if 'LcID:' in cells[0]:
                 lcId = re.search('LcID\:([0-9]+)', cells[0]).group(1)
-                self.srtLocations.append(lcId)
-                self.locations[lcId] = self.WE_CLASS()
-                self.locations[lcId].title = self._convert_to_yw(cells[1])
-                self.locations[lcId].desc = self._convert_to_yw(cells[2])
-                self.locations[lcId].aka = self._convert_to_yw(cells[3])
-                self.locations[lcId].tags = string_to_list(cells[4], divider=self._DIVIDER)
+                self.novel.srtLocations.append(lcId)
+                self.novel.locations[lcId] = self.WE_CLASS()
+                self.novel.locations[lcId].title = self._convert_to_yw(cells[1])
+                self.novel.locations[lcId].desc = self._convert_to_yw(cells[2])
+                self.novel.locations[lcId].aka = self._convert_to_yw(cells[3])
+                self.novel.locations[lcId].tags = string_to_list(cells[4], divider=self._DIVIDER)

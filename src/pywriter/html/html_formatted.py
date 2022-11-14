@@ -18,13 +18,13 @@ class HtmlFormatted(HtmlFile):
     _BULLET = '-'
     _INDENT = '>'
 
-    def __init__(self, filePath, **kwargs):
+    def read(self):
         """Add instance variables.
 
         Extends the superclass constructor.
         """
-        super().__init__(filePath)
-        self.languages = []
+        self.novel.languages = []
+        super().read()
 
     def _cleanup_scene(self, text):
         """Clean up yWriter markup.
@@ -37,7 +37,7 @@ class HtmlFormatted(HtmlFile):
         #--- Remove redundant tags.
         # In contrast to Office Writer, yWriter accepts markup reaching across linebreaks.
         tags = ['i', 'b']
-        for language in self.languages:
+        for language in self.novel.languages:
             tags.append(f'lang={language}')
         for tag in tags:
             text = text.replace(f'[/{tag}][{tag}]', '')

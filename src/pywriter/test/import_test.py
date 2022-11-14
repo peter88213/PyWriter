@@ -10,8 +10,8 @@ from shutil import copyfile
 from pywriter.pywriter_globals import *
 from pywriter.test.helper import read_file
 from pywriter.converter.yw7_converter import Yw7Converter
-from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
+from pywriter.model.novel import Novel
 
 UPDATE = False
 
@@ -54,20 +54,6 @@ class ImportTest():
         self._remove_all_tempfiles()
 
     def test_imp_to_yw7(self):
-        """Test HTML/CSV import to yWriter, using the YwCnv converter class. 
-        
-        Compare the generated yWriter project file with the reference file.
-        """
-        copyfile(self._refImpFile, self._testImpFile)
-        ywFile = Yw7File(self._testYwFile)
-        documentFile = self._importClass(self._testImpFile)
-        converter = YwCnv()
-        converter.convert(documentFile, ywFile)
-        if UPDATE:
-            copyfile(self._testYwFile, self._refYwFile)
-        self.assertEqual(read_file(self._testYwFile), read_file(self._refYwFile))
-
-    def test_imp_to_yw7_ui(self):
         """Test HTML/CSV import to yWriter, using the YwCnvUi converter class. 
         
         Compare the generated yWriter project file with the reference file.

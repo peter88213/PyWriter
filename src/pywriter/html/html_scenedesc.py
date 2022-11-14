@@ -32,12 +32,12 @@ class HtmlSceneDesc(HtmlFile):
                         scTitle, scContent = text.split(
                             sep=self._COMMENT_END, maxsplit=1)
                         if self._SC_TITLE_BRACKET in scTitle:
-                            self.scenes[self._scId].title = scTitle.split(
+                            self.novel.scenes[self._scId].title = scTitle.split(
                                 self._SC_TITLE_BRACKET)[1].strip()
                         text = scContent
                     except:
                         pass
-                self.scenes[self._scId].desc = text.rstrip()
+                self.novel.scenes[self._scId].desc = text.rstrip()
                 self._lines = []
                 self._scId = None
             elif tag == 'p':
@@ -57,5 +57,5 @@ class HtmlSceneDesc(HtmlFile):
         if self._scId is not None:
             self._lines.append(data.strip())
         elif self._chId is not None:
-            if not self.chapters[self._chId].title:
-                self.chapters[self._chId].title = data.strip()
+            if not self.novel.chapters[self._chId].title:
+                self.novel.chapters[self._chId].title = data.strip()

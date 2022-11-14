@@ -11,8 +11,8 @@ from shutil import copyfile
 from pywriter.pywriter_globals import *
 from pywriter.test.helper import read_file
 from pywriter.converter.yw7_converter import Yw7Converter
-from pywriter.converter.yw_cnv import YwCnv
 from pywriter.yw.yw7_file import Yw7File
+from pywriter.model.novel import Novel
 
 UPDATE = False
 
@@ -59,22 +59,6 @@ class ExportTest():
         copyfile(self._refYwFile, self._testYwFile)
 
     def test_yw7_to_exp(self):
-        """Test ODF export from yWriter, using the YwCnv converter class. 
-        
-        Compare the generated content XML file with the reference file.
-        """
-        ywFile = Yw7File(self._testYwFile)
-        documentFile = self._exportClass(self._testExpFile)
-        converter = YwCnv()
-        converter.convert(ywFile, documentFile)
-        with zipfile.ZipFile(self._testExpFile, 'r') as myzip:
-            myzip.extract(self._odfCntntFile, self._execPath)
-        if UPDATE:
-            copyfile(f'{self._execPath}{self._odfCntntFile}', f'{self._dataPath}{self._odfCntntFile}')
-        self.assertEqual(read_file(f'{self._execPath}{self._odfCntntFile}'),
-                         read_file(f'{self._dataPath}{self._odfCntntFile}'))
-
-    def test_yw7_to_exp_ui(self):
         """Test ODF export from yWriter, using the YwCnvUi converter class. 
         
         Compare the generated content XML file with the reference file.

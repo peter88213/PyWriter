@@ -61,7 +61,7 @@ class OdtManuscript(OdtFormatted):
         Extends the superclass method.
         """
         chapterMapping = super()._get_chapterMapping(chId, chapterNumber)
-        if self.chapters[chId].suppressChapterTitle:
+        if self.novel.chapters[chId].suppressChapterTitle:
             chapterMapping['Title'] = ''
         return chapterMapping
 

@@ -37,13 +37,13 @@ class HtmlManuscript(HtmlFormatted):
                 try:
                     if attrs[0][0] == 'lang':
                         self._language = attrs[0][1]
-                        if not self._language in self.languages:
-                            self.languages.append(self._language)
+                        if not self._language in self.novel.languages:
+                            self.novel.languages.append(self._language)
                         self._lines.append(f'[lang={self._language}]')
                 except:
                     pass
             elif tag == 'h3':
-                if self.scenes[self._scId].title is None:
+                if self.novel.scenes[self._scId].title is None:
                     self._getScTitle = True
                 else:
                     self._lines.append(f'{Splitter.SCENE_SEPARATOR} ')
@@ -58,8 +58,8 @@ class HtmlManuscript(HtmlFormatted):
                 try:
                     if attrs[0][0] == 'lang':
                         self._language = attrs[0][1]
-                        if not self._language in self.languages:
-                            self.languages.append(self._language)
+                        if not self._language in self.novel.languages:
+                            self.novel.languages.append(self._language)
                         self._lines.append(f'[lang={self._language}]')
                 except:
                     pass
@@ -68,8 +68,8 @@ class HtmlManuscript(HtmlFormatted):
                 if attr[0] == 'lang':
                     try:
                         lngCode, ctrCode = attr[1].split('-')
-                        self.languageCode = lngCode
-                        self.countryCode = ctrCode
+                        self.novel.languageCode = lngCode
+                        self.novel.countryCode = ctrCode
                     except:
                         pass
                     break
@@ -98,7 +98,7 @@ class HtmlManuscript(HtmlFormatted):
                     self._language = ''
             elif tag == 'div':
                 text = ''.join(self._lines)
-                self.scenes[self._scId].sceneContent = self._cleanup_scene(text).rstrip()
+                self.novel.scenes[self._scId].sceneContent = self._cleanup_scene(text).rstrip()
                 self._lines = []
                 self._scId = None
             elif tag == 'h1':
@@ -127,7 +127,7 @@ class HtmlManuscript(HtmlFormatted):
             if self._SC_TITLE_BRACKET in data:
                 # Comment is marked as a scene title
                 try:
-                    self.scenes[self._scId].title = data.split(self._SC_TITLE_BRACKET)[1].strip()
+                    self.novel.scenes[self._scId].title = data.split(self._SC_TITLE_BRACKET)[1].strip()
                 except:
                     pass
                 return
@@ -144,9 +144,9 @@ class HtmlManuscript(HtmlFormatted):
         """
         if self._scId is not None:
             if self._getScTitle:
-                self.scenes[self._scId].title = data.strip()
+                self.novel.scenes[self._scId].title = data.strip()
             elif not data.isspace():
                 self._lines.append(data)
         elif self._chId is not None:
-            if self.chapters[self._chId].title is None:
+            if self.novel.chapters[self._chId].title is None:
                 self.chapters[self._chId].title = data.strip()

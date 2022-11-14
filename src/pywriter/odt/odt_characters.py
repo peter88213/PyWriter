@@ -53,8 +53,8 @@ class OdtCharacters(OdtFile):
         Extends the superclass method.
         """
         characterMapping = OdtFile._get_characterMapping(self, crId)
-        if self.characters[crId].aka:
-            characterMapping['AKA'] = f' ("{self.characters[crId].aka}")'
-        if self.characters[crId].fullName:
-            characterMapping['FullName'] = f'/{self.characters[crId].fullName}'
+        if self.novel.characters[crId].aka:
+            characterMapping['AKA'] = f' ("{self.novel.characters[crId].aka}")'
+        if self.novel.characters[crId].fullName:
+            characterMapping['FullName'] = f'/{self.novel.characters[crId].fullName}'
         return characterMapping

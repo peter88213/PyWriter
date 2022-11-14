@@ -35,8 +35,8 @@ class HtmlProof(HtmlFormatted):
             try:
                 if attrs[0][0] == 'lang':
                     self._language = attrs[0][1]
-                    if not self._language in self.languages:
-                        self.languages.append(self._language)
+                    if not self._language in self.novel.languages:
+                        self.novel.languages.append(self._language)
                     self._lines.append(f'[lang={self._language}]')
             except:
                 pass
@@ -51,8 +51,8 @@ class HtmlProof(HtmlFormatted):
             try:
                 if attrs[0][0] == 'lang':
                     self._language = attrs[0][1]
-                    if not self._language in self.languages:
-                        self.languages.append(self._language)
+                    if not self._language in self.novel.languages:
+                        self.novel.languages.append(self._language)
                     self._lines.append(f'[lang={self._language}]')
             except:
                 pass
@@ -61,8 +61,8 @@ class HtmlProof(HtmlFormatted):
                 if attr[0] == 'lang':
                     try:
                         lngCode, ctrCode = attr[1].split('-')
-                        self.languageCode = lngCode
-                        self.countryCode = ctrCode
+                        self.novel.languageCode = lngCode
+                        self.novel.countryCode = ctrCode
                     except:
                         pass
                     break
@@ -104,17 +104,17 @@ class HtmlProof(HtmlFormatted):
             self._doNothing = False
         elif '[ScID' in data:
             self._scId = re.search('[0-9]+', data).group()
-            self.scenes[self._scId] = self.SCENE_CLASS()
-            self.chapters[self._chId].srtScenes.append(self._scId)
+            self.novel.scenes[self._scId] = self.SCENE_CLASS()
+            self.novel.chapters[self._chId].srtScenes.append(self._scId)
             self._lines = []
         elif '[/ScID' in data:
             text = ''.join(self._lines)
-            self.scenes[self._scId].sceneContent = self._cleanup_scene(text).strip()
+            self.novel.scenes[self._scId].sceneContent = self._cleanup_scene(text).strip()
             self._scId = None
         elif '[ChID' in data:
             self._chId = re.search('[0-9]+', data).group()
-            self.chapters[self._chId] = self.CHAPTER_CLASS()
-            self.srtChapters.append(self._chId)
+            self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
+            self.novel.srtChapters.append(self._chId)
         elif '[/ChID' in data:
             self._chId = None
         elif self._scId is not None:

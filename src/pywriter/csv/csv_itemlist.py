@@ -30,9 +30,9 @@ class CsvItemList(CsvFile):
         for cells in self._rows:
             if 'ItID:' in cells[0]:
                 itId = re.search('ItID\:([0-9]+)', cells[0]).group(1)
-                self.srtItems.append(itId)
-                self.items[itId] = self.WE_CLASS()
-                self.items[itId].title = self._convert_to_yw(cells[1])
-                self.items[itId].desc = self._convert_to_yw(cells[2])
-                self.items[itId].aka = self._convert_to_yw(cells[3])
-                self.items[itId].tags = string_to_list(cells[4], divider=self._DIVIDER)
+                self.novel.srtItems.append(itId)
+                self.novel.items[itId] = self.WE_CLASS()
+                self.novel.items[itId].title = self._convert_to_yw(cells[1])
+                self.novel.items[itId].desc = self._convert_to_yw(cells[2])
+                self.novel.items[itId].aka = self._convert_to_yw(cells[3])
+                self.novel.items[itId].tags = string_to_list(cells[4], divider=self._DIVIDER)

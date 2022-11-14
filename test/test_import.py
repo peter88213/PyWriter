@@ -13,18 +13,16 @@ import unittest
 class NrmOpr(ImportTest, unittest.TestCase):
     _importClass = HtmlImport
     _dataPath = 'data/_import/'
-        
+
     # The test methods must be defined here to identify the source of failure.
 
     def test_imp_to_yw7(self):
         super().test_imp_to_yw7()
-        
-    def test_imp_to_yw7_ui(self):
-        super().test_imp_to_yw7_ui()
 
 
 def main():
     unittest.main()
+
 
 if __name__ == '__main__':
     main()

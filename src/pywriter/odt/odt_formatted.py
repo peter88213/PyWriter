@@ -63,10 +63,10 @@ class OdtFormatted(OdtFile):
                     ('[/i]', '</text:span>'),
                     ('[b]', '<text:span text:style-name="Strong_20_Emphasis">'),
                     ('[/b]', '</text:span>'),
-                    ('/*', f'<office:annotation><dc:creator>{self.authorName}</dc:creator><text:p>'),
+                    ('/*', f'<office:annotation><dc:creator>{self.novel.authorName}</dc:creator><text:p>'),
                     ('*/', '</text:p></office:annotation>'),
                 ])
-                for i, language in enumerate(self.languages, 1):
+                for i, language in enumerate(self.novel.languages, 1):
                     tags.append(f'lang={language}')
                     odtReplacements.append((f'[lang={language}]', f'<text:span text:style-name="T{i}">'))
                     odtReplacements.append((f'[/lang={language}]', '</text:span>'))
@@ -139,9 +139,9 @@ class OdtFormatted(OdtFile):
         Extends the superclass method.
         """
         styleMapping = {}
-        if self.languages:
+        if self.novel.languages:
             lines = ['<office:automatic-styles>']
-            for i, language in enumerate(self.languages, 1):
+            for i, language in enumerate(self.novel.languages, 1):
                 try:
                     lngCode, ctrCode = language.split('-')
                 except:
@@ -164,6 +164,6 @@ class OdtFormatted(OdtFile):
         
         Extends the superclass method.
         """
-        if self.languages is None:
-            self.get_languages()
+        if self.novel.languages is None:
+            self.novel.get_languages()
         return super().write()

@@ -38,6 +38,6 @@ class OdtItems(OdtFile):
         Extends the superclass method.
         """
         itemMapping = super()._get_itemMapping(itId)
-        if self.items[itId].aka:
-            itemMapping['AKA'] = f' ("{self.items[itId].aka}")'
+        if self.novel.items[itId].aka:
+            itemMapping['AKA'] = f' ("{self.novel.items[itId].aka}")'
         return itemMapping

@@ -17,13 +17,11 @@ class NrmOpr(ExportTest, unittest.TestCase):
 
     def test_yw7_to_exp(self):
         super().test_yw7_to_exp()
-        
-    def test_yw7_to_exp_ui(self):
-        super().test_yw7_to_exp_ui()
-        
+
 
 def main():
     unittest.main()
+
 
 if __name__ == '__main__':
     main()

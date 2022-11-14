@@ -44,8 +44,8 @@ class HtmlCharacters(HtmlFile):
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('CrID_desc'):
                     self._crId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.srtCharacters.append(self._crId)
-                    self.characters[self._crId] = self.CHARACTER_CLASS()
+                    self.novel.srtCharacters.append(self._crId)
+                    self.novel.characters[self._crId] = self.CHARACTER_CLASS()
                     self._section = 'desc'
                 elif attrs[0][1].startswith('CrID_bio'):
                     self._section = 'bio'
@@ -65,19 +65,19 @@ class HtmlCharacters(HtmlFile):
         if self._crId is not None:
             if tag == 'div':
                 if self._section == 'desc':
-                    self.characters[self._crId].desc = ''.join(self._lines).rstrip()
+                    self.novel.characters[self._crId].desc = ''.join(self._lines).rstrip()
                     self._lines = []
                     self._section = None
                 elif self._section == 'bio':
-                    self.characters[self._crId].bio = ''.join(self._lines).rstrip()
+                    self.novel.characters[self._crId].bio = ''.join(self._lines).rstrip()
                     self._lines = []
                     self._section = None
                 elif self._section == 'goals':
-                    self.characters[self._crId].goals = ''.join(self._lines).rstrip()
+                    self.novel.characters[self._crId].goals = ''.join(self._lines).rstrip()
                     self._lines = []
                     self._section = None
                 elif self._section == 'notes':
-                    self.characters[self._crId].notes = ''.join(self._lines)
+                    self.novel.characters[self._crId].notes = ''.join(self._lines)
                     self._lines = []
                     self._section = None
             elif tag == 'p':

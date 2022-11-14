@@ -56,7 +56,7 @@ class OdtTodo(OdtManuscript):
         sceneNumber = 0
         wordsTotal = 0
         lettersTotal = 0
-        for chId in self.srtChapters:
+        for chId in self.novel.srtChapters:
             dispNumber = 0
             if not self._chapterFilter.accept(self, chId):
                 continue
@@ -64,9 +64,9 @@ class OdtTodo(OdtManuscript):
             # The order counts; be aware that "Todo" chapters are always unused.
             doNotExport = False
             template = None
-            if self.chapters[chId].chType == 2:
+            if self.novel.chapters[chId].chType == 2:
                 # Chapter is "Todo" type (implies "unused").
-                if self.chapters[chId].chLevel == 1:
+                if self.novel.chapters[chId].chLevel == 1:
                     # Chapter is "Todo Part" type.
                     if self._todoPartTemplate:
                         template = Template(self._todoPartTemplate)

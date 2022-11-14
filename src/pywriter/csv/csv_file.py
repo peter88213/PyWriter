@@ -9,11 +9,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import csv
 from pywriter.pywriter_globals import *
-from pywriter.model.novel import Novel
+from pywriter.file.file import File
 from pywriter.file.file_export import FileExport
 
 
-class CsvFile(Novel):
+class CsvFile(File):
     """csv file representation.
 
     Public methods:
@@ -24,7 +24,7 @@ class CsvFile(Novel):
     - Data fields are delimited by the _SEPARATOR character.
     """
     EXTENSION = '.csv'
-    # overwrites Novel.EXTENSION
+    # overwrites File.EXTENSION
     _SEPARATOR = ','
     # delimits data fields within a record.
     _rowTitles = []
@@ -35,7 +35,7 @@ class CsvFile(Novel):
         """Initialize instance variables.
 
         Positional arguments:
-            filePath -- str: path to the file represented by the Novel instance.
+            filePath -- str: path to the file represented by the File instance.
             
         Optional arguments:
             kwargs -- keyword arguments to be used by subclasses.            

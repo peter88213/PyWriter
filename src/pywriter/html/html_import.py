@@ -55,15 +55,15 @@ class HtmlImport(HtmlFormatted):
                 self._lines = []
                 self._scCount += 1
                 self._scId = str(self._scCount)
-                self.scenes[self._scId] = self.SCENE_CLASS()
-                self.chapters[self._chId].srtScenes.append(self._scId)
-                self.scenes[self._scId].status = '1'
-                self.scenes[self._scId].title = f'Scene {self._scCount}'
+                self.novel.scenes[self._scId] = self.SCENE_CLASS()
+                self.novel.chapters[self._chId].srtScenes.append(self._scId)
+                self.novel.scenes[self._scId].status = '1'
+                self.novel.scenes[self._scId].title = f'Scene {self._scCount}'
             try:
                 if attrs[0][0] == 'lang':
                     self._language = attrs[0][1]
-                    if not self._language in self.languages:
-                        self.languages.append(self._language)
+                    if not self._language in self.novel.languages:
+                        self.novel.languages.append(self._language)
                     self._lines.append(f'[lang={self._language}]')
             except:
                 pass
@@ -76,30 +76,30 @@ class HtmlImport(HtmlFormatted):
         elif tag == 'span':
             if attrs[0][0] == 'lang':
                 self._language = attrs[0][1]
-                if not self._language in self.languages:
-                    self.languages.append(self._language)
+                if not self._language in self.novel.languages:
+                    self.novel.languages.append(self._language)
                 self._lines.append(f'[lang={self._language}]')
         elif tag in ('h1', 'h2'):
             self._scId = None
             self._lines = []
             self._chCount += 1
             self._chId = str(self._chCount)
-            self.chapters[self._chId] = self.CHAPTER_CLASS()
-            self.chapters[self._chId].srtScenes = []
-            self.srtChapters.append(self._chId)
-            self.chapters[self._chId].chType = 0
+            self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
+            self.novel.chapters[self._chId].srtScenes = []
+            self.novel.srtChapters.append(self._chId)
+            self.novel.chapters[self._chId].chType = 0
             if tag == 'h1':
-                self.chapters[self._chId].chLevel = 1
+                self.novel.chapters[self._chId].chLevel = 1
             else:
-                self.chapters[self._chId].chLevel = 0
+                self.novel.chapters[self._chId].chLevel = 0
         elif tag == 'div':
             self._scId = None
             self._chId = None
         elif tag == 'meta':
             if attrs[0][1].lower() == 'author':
-                self.authorName = attrs[1][1]
+                self.novel.authorName = attrs[1][1]
             if attrs[0][1].lower() == 'description':
-                self.desc = attrs[1][1]
+                self.novel.desc = attrs[1][1]
         elif tag == 'title':
             self._lines = []
         elif tag == 'body':
@@ -107,8 +107,8 @@ class HtmlImport(HtmlFormatted):
                 if attr[0] == 'lang':
                     try:
                         lngCode, ctrCode = attr[1].split('-')
-                        self.languageCode = lngCode
-                        self.countryCode = ctrCode
+                        self.novel.languageCode = lngCode
+                        self.novel.countryCode = ctrCode
                     except:
                         pass
                     break
@@ -121,8 +121,8 @@ class HtmlImport(HtmlFormatted):
             try:
                 if attrs[0][0] == 'lang':
                     self._language = attrs[0][1]
-                    if not self._language in self.languages:
-                        self.languages.append(self._language)
+                    if not self._language in self.novel.languages:
+                        self.novel.languages.append(self._language)
                     self._lines.append(f'[lang={self._language}]')
             except:
                 pass
@@ -144,11 +144,11 @@ class HtmlImport(HtmlFormatted):
             if self._scId is not None:
                 sceneText = ''.join(self._lines).rstrip()
                 sceneText = self._cleanup_scene(sceneText)
-                self.scenes[self._scId].sceneContent = sceneText
-                if self.scenes[self._scId].wordCount < self._LOW_WORDCOUNT:
-                    self.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Outline')
+                self.novel.scenes[self._scId].sceneContent = sceneText
+                if self.novel.scenes[self._scId].wordCount < self._LOW_WORDCOUNT:
+                    self.novel.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Outline')
                 else:
-                    self.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Draft')
+                    self.novel.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Draft')
         elif tag == 'em' or tag == 'i':
             self._lines.append('[/i]')
         elif tag == 'strong' or tag == 'b':
@@ -158,10 +158,10 @@ class HtmlImport(HtmlFormatted):
                 self._lines.append(f'[/lang={self._language}]')
                 self._language = ''
         elif tag in ('h1', 'h2'):
-            self.chapters[self._chId].title = ''.join(self._lines)
+            self.novel.chapters[self._chId].title = ''.join(self._lines)
             self._lines = []
         elif tag == 'title':
-            self.title = ''.join(self._lines)
+            self.novel.title = ''.join(self._lines)
 
     def handle_comment(self, data):
         """Process inline comments within scene content.
@@ -176,7 +176,7 @@ class HtmlImport(HtmlFormatted):
             if not self._lines:
                 # Comment is at scene start
                 try:
-                    self.scenes[self._scId].title = data.strip()
+                    self.novel.scenes[self._scId].title = data.strip()
                 except:
                     pass
                 return
@@ -200,3 +200,8 @@ class HtmlImport(HtmlFormatted):
                 data = data.rstrip()
                 self._newline = False
             self._lines.append(data)
+
+    def read(self):
+        self.novel.languages = []
+        super().read()
+

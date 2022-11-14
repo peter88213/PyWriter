@@ -52,30 +52,30 @@ class HtmlOutline(HtmlFile):
             self._lines = []
             self._chCount += 1
             self._chId = str(self._chCount)
-            self.chapters[self._chId] = self.CHAPTER_CLASS()
-            self.chapters[self._chId].srtScenes = []
-            self.srtChapters.append(self._chId)
-            self.chapters[self._chId].chType = 0
+            self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
+            self.novel.chapters[self._chId].srtScenes = []
+            self.novel.srtChapters.append(self._chId)
+            self.novel.chapters[self._chId].chType = 0
             if tag == 'h1':
-                self.chapters[self._chId].chLevel = 1
+                self.novel.chapters[self._chId].chLevel = 1
             else:
-                self.chapters[self._chId].chLevel = 0
+                self.novel.chapters[self._chId].chLevel = 0
         elif tag == 'h3':
             self._lines = []
             self._scCount += 1
             self._scId = str(self._scCount)
-            self.scenes[self._scId] = self.SCENE_CLASS()
-            self.chapters[self._chId].srtScenes.append(self._scId)
-            self.scenes[self._scId].sceneContent = ''
-            self.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Outline')
+            self.novel.scenes[self._scId] = self.SCENE_CLASS()
+            self.novel.chapters[self._chId].srtScenes.append(self._scId)
+            self.novel.scenes[self._scId].sceneContent = ''
+            self.novel.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Outline')
         elif tag == 'div':
             self._scId = None
             self._chId = None
         elif tag == 'meta':
             if attrs[0][1].lower() == 'author':
-                self.authorName = attrs[1][1]
+                self.novel.authorName = attrs[1][1]
             if attrs[0][1].lower() == 'description':
-                self.desc = attrs[1][1]
+                self.novel.desc = attrs[1][1]
         elif tag == 'title':
             self._lines = []
         elif tag == 'body':
@@ -83,8 +83,8 @@ class HtmlOutline(HtmlFile):
                 if attr[0].lower() == 'lang':
                     try:
                         lngCode, ctrCode = attr[1].split('-')
-                        self.languageCode = lngCode
-                        self.countryCode = ctrCode
+                        self.novel.languageCode = lngCode
+                        self.novel.countryCode = ctrCode
                     except:
                         pass
                     break
@@ -100,17 +100,17 @@ class HtmlOutline(HtmlFile):
         if tag == 'p':
             self._lines.append('\n')
             if self._scId is not None:
-                self.scenes[self._scId].desc = ''.join(self._lines)
+                self.novel.scenes[self._scId].desc = ''.join(self._lines)
             elif self._chId is not None:
-                self.chapters[self._chId].desc = ''.join(self._lines)
+                self.novel.chapters[self._chId].desc = ''.join(self._lines)
         elif tag in ('h1', 'h2'):
-            self.chapters[self._chId].title = ''.join(self._lines)
+            self.novel.chapters[self._chId].title = ''.join(self._lines)
             self._lines = []
         elif tag == 'h3':
-            self.scenes[self._scId].title = ''.join(self._lines)
+            self.novel.scenes[self._scId].title = ''.join(self._lines)
             self._lines = []
         elif tag == 'title':
-            self.title = ''.join(self._lines)
+            self.novel.title = ''.join(self._lines)
 
     def handle_data(self, data):
         """Collect data within scene sections.

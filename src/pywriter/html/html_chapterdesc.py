@@ -26,14 +26,14 @@ class HtmlChapterDesc(HtmlFile):
         """
         if self._chId is not None:
             if tag == 'div':
-                self.chapters[self._chId].desc = ''.join(self._lines).rstrip()
+                self.novel.chapters[self._chId].desc = ''.join(self._lines).rstrip()
                 self._lines = []
                 self._chId = None
             elif tag == 'p':
                 self._lines.append('\n')
             elif tag == 'h1' or tag == 'h2':
-                if not self.chapters[self._chId].title:
-                    self.chapters[self._chId].title = ''.join(self._lines)
+                if not self.novel.chapters[self._chId].title:
+                    self.novel.chapters[self._chId].title = ''.join(self._lines)
                     self._lines = []
 
     def handle_data(self, data):

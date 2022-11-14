@@ -30,17 +30,17 @@ class CsvCharList(CsvFile):
         for cells in self._rows:
             if 'CrID:' in cells[0]:
                 crId = re.search('CrID\:([0-9]+)', cells[0]).group(1)
-                self.srtCharacters.append(crId)
-                self.characters[crId] = self.CHARACTER_CLASS()
-                self.characters[crId].title = cells[1]
-                self.characters[crId].fullName = cells[2]
-                self.characters[crId].aka = cells[3]
-                self.characters[crId].desc = self._convert_to_yw(cells[4])
-                self.characters[crId].bio = self._convert_to_yw(cells[5])
-                self.characters[crId].goals = self._convert_to_yw(cells[6])
+                self.novel.srtCharacters.append(crId)
+                self.novel.characters[crId] = self.CHARACTER_CLASS()
+                self.novel.characters[crId].title = cells[1]
+                self.novel.characters[crId].fullName = cells[2]
+                self.novel.characters[crId].aka = cells[3]
+                self.novel.characters[crId].desc = self._convert_to_yw(cells[4])
+                self.novel.characters[crId].bio = self._convert_to_yw(cells[5])
+                self.novel.characters[crId].goals = self._convert_to_yw(cells[6])
                 if self.CHARACTER_CLASS.MAJOR_MARKER in cells[7]:
-                    self.characters[crId].isMajor = True
+                    self.novel.characters[crId].isMajor = True
                 else:
-                    self.characters[crId].isMajor = False
-                self.characters[crId].tags = string_to_list(cells[8], divider=self._DIVIDER)
-                self.characters[crId].notes = self._convert_to_yw(cells[9])
+                    self.novel.characters[crId].isMajor = False
+                self.novel.characters[crId].tags = string_to_list(cells[8], divider=self._DIVIDER)
+                self.novel.characters[crId].notes = self._convert_to_yw(cells[9])

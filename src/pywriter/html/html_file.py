@@ -9,11 +9,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 from html.parser import HTMLParser
 from pywriter.pywriter_globals import *
-from pywriter.model.novel import Novel
+from pywriter.file.file import File
 from pywriter.html.html_fop import read_html_file
 
 
-class HtmlFile(Novel, HTMLParser):
+class HtmlFile(File, HTMLParser):
     """Generic HTML file representation.
     
     Public methods:
@@ -32,7 +32,7 @@ class HtmlFile(Novel, HTMLParser):
         """Initialize the HTML parser and local instance variables for parsing.
         
         Positional arguments:
-            filePath -- str: path to the file represented by the Novel instance.
+            filePath -- str: path to the file represented by the File instance.
             
         Optional arguments:
             kwargs -- keyword arguments to be used by subclasses.            
@@ -97,13 +97,13 @@ class HtmlFile(Novel, HTMLParser):
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('ScID'):
                     self._scId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.scenes[self._scId] = self.SCENE_CLASS()
-                    self.chapters[self._chId].srtScenes.append(self._scId)
+                    self.novel.scenes[self._scId] = self.SCENE_CLASS()
+                    self.novel.chapters[self._chId].srtScenes.append(self._scId)
                 elif attrs[0][1].startswith('ChID'):
                     self._chId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.chapters[self._chId] = self.CHAPTER_CLASS()
-                    self.chapters[self._chId].srtScenes = []
-                    self.srtChapters.append(self._chId)
+                    self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
+                    self.novel.chapters[self._chId].srtScenes = []
+                    self.novel.srtChapters.append(self._chId)
 
     def handle_comment(self, data):
         """Process inline comments within scene content.
