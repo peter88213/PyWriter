@@ -398,7 +398,7 @@ class OdtFile(OdfFile):
         Overrides the superclass method.
         """
         if text:
-            # Apply XML predefineded entities.
+            # Apply XML predefined entities.
             ODT_REPLACEMENTS = [
                 ('&', '&amp;'),
                 ('>', '&gt;'),
