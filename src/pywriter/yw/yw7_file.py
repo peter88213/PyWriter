@@ -1003,12 +1003,23 @@ class Yw7File(File):
     def _build_element_tree(self):
         """Modify the yWriter project attributes of an existing xml element tree."""
 
+        def set_element(parent, tag, text, index):
+            subelement = parent.find(tag)
+            if subelement is None:
+                if text is not None:
+                    subelement = ET.Element(tag)
+                    parent.insert(index, subelement)
+                    subelement.text = text
+                    index += 1
+            elif text is not None:
+                subelement.text = text
+                index += 1
+            return index
+
         def build_scene_subtree(xmlScn, prjScn):
-            if prjScn.title is not None:
-                try:
-                    xmlScn.find('Title').text = prjScn.title
-                except(AttributeError):
-                    ET.SubElement(xmlScn, 'Title').text = prjScn.title
+            i = 1
+            i = set_element(xmlScn, 'Title', prjScn.title, i)
+
             if xmlScn.find('BelongsToChID') is None:
                 for chId in self.novel.chapters:
                     if scId in self.novel.chapters[chId].srtScenes:
@@ -1265,26 +1276,19 @@ class Yw7File(File):
                     ET.SubElement(items, 'ItemID').text = itId
 
         def build_chapter_subtree(xmlChp, prjChp, sortOrder):
-            try:
-                xmlChp.find('SortOrder').text = str(sortOrder)
-            except(AttributeError):
-                ET.SubElement(xmlChp, 'SortOrder').text = str(sortOrder)
-            try:
-                xmlChp.find('Title').text = prjChp.title
-            except(AttributeError):
-                ET.SubElement(xmlChp, 'Title').text = prjChp.title
-
-            if prjChp.desc is not None:
-                try:
-                    xmlChp.find('Desc').text = prjChp.desc
-                except(AttributeError):
-                    ET.SubElement(xmlChp, 'Desc').text = prjChp.desc
+            i = 1
+            i = set_element(xmlChp, 'Title', prjChp.title, i)
+            i = set_element(xmlChp, 'Desc', prjChp.desc, i)
+            i = set_element(xmlChp, 'SortOrder', str(sortOrder), i)
 
             if xmlChp.find('SectionStart') is not None:
                 if prjChp.chLevel == 0:
                     xmlChp.remove(xmlChp.find('SectionStart'))
             elif prjChp.chLevel == 1:
-                ET.SubElement(xmlChp, 'SectionStart').text = '-1'
+                elem = ET.Element('SectionStart')
+                elem.text = '-1'
+                xmlChp.inseret(i, elem)
+                i += 1
 
             # This is how yWriter 7.1.3.0 writes the chapter type:
             #
@@ -1307,22 +1311,34 @@ class Yw7File(File):
             try:
                 xmlChp.find('ChapterType').text = yChapterType
             except(AttributeError):
-                ET.SubElement(xmlChp, 'ChapterType').text = yChapterType
+                elem = ET.Element('ChapterType')
+                elem.text = yChapterType
+                xmlChp.insert(i, elem)
+            i += 1
             try:
                 xmlChp.find('Type').text = yType
             except(AttributeError):
-                ET.SubElement(xmlChp, 'Type').text = yType
+                elem = ET.Element('Type')
+                elem.text = yType
+                xmlChp.insert(i, elem)
+            i += 1
             if yUnused:
                 if xmlChp.find('Unused') is None:
-                    ET.SubElement(xmlChp, 'Unused').text = '-1'
+                    elem = ET.Element('Unused')
+                    elem.text = '-1'
+                    xmlChp.insert(i, elem)
+                    i += 1
             elif xmlChp.find('Unused') is not None:
                 xmlChp.remove(xmlChp.find('Unused'))
+            else:
+                i += 1
 
             #--- Write chapter fields.
             chFields = xmlChp.find('Fields')
             if prjChp.suppressChapterTitle:
                 if chFields is None:
-                    chFields = ET.SubElement(xmlChp, 'Fields')
+                    chFields = ET.Element('Fields')
+                    xmlChp.insert(i, chFields)
                 try:
                     chFields.find('Field_SuppressChapterTitle').text = '1'
                 except(AttributeError):
@@ -1333,7 +1349,8 @@ class Yw7File(File):
 
             if prjChp.suppressChapterBreak:
                 if chFields is None:
-                    chFields = ET.SubElement(xmlChp, 'Fields')
+                    chFields = ET.Element('Fields')
+                    xmlChp.insert(i, chFields)
                 try:
                     chFields.find('Field_SuppressChapterBreak').text = '1'
                 except(AttributeError):
@@ -1344,11 +1361,13 @@ class Yw7File(File):
 
             if prjChp.isTrash:
                 if chFields is None:
-                    chFields = ET.SubElement(xmlChp, 'Fields')
+                    chFields = ET.Element('Fields')
+                    xmlChp.insert(i, chFields)
                 try:
                     chFields.find('Field_IsTrash').text = '1'
                 except(AttributeError):
                     ET.SubElement(chFields, 'Field_IsTrash').text = '1'
+
             elif chFields is not None:
                 if chFields.find('Field_IsTrash') is not None:
                     chFields.remove(chFields.find('Field_IsTrash'))
@@ -1357,7 +1376,8 @@ class Yw7File(File):
             for field in self._CHP_KWVAR:
                 if prjChp.kwVar.get(field, None):
                     if chFields is None:
-                        chFields = ET.SubElement(xmlChp, 'Fields')
+                        chFields = ET.Element('Fields')
+                        xmlChp.insert(i, chFields)
                     try:
                         chFields.find(field).text = prjChp.kwVar[field]
                     except(AttributeError):
@@ -1367,15 +1387,14 @@ class Yw7File(File):
                         chFields.remove(chFields.find(field))
                     except:
                         pass
+            if chFields is not None:
+                i += 1
 
             #--- Rebuild the chapter's scene list.
-            try:
-                xScnList = xmlChp.find('Scenes')
-                xmlChp.remove(xScnList)
-            except:
-                pass
-            if prjChp.srtScenes:
-                sortSc = ET.SubElement(xmlChp, 'Scenes')
+            xScnList = xmlChp.find('Scenes')
+            if prjChp.srtScenes and not xScnList:
+                sortSc = ET.Element('Scenes')
+                xmlChp.insert(i, sortSc)
                 for scId in prjChp.srtScenes:
                     ET.SubElement(sortSc, 'ScID').text = scId
 

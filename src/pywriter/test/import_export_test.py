@@ -11,8 +11,6 @@ from pywriter.pywriter_globals import *
 from pywriter.test.helper import read_file
 from pywriter.test.export_test import ExportTest
 from pywriter.converter.yw7_converter import Yw7Converter
-from pywriter.yw.yw7_file import Yw7File
-from pywriter.model.novel import Novel
 
 UPDATE = False
 
@@ -54,6 +52,8 @@ class ImportExportTest(ExportTest):
         converter = Yw7Converter()
         converter.run(self._testImpFile)
         self.assertEqual(converter.ui.infoHowText, f'{_("File written")}: "{ norm_path(self._testYwFile)}".')
+        if UPDATE:
+            copyfile(self._testYwFile, self._prfYwFile)
         self.assertEqual(read_file(self._testYwFile), read_file(self._prfYwFile))
         self.assertEqual(read_file(self._ywBakFile), read_file(self._refYwFile))
 

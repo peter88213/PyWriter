@@ -97,13 +97,15 @@ class HtmlFile(File, HTMLParser):
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('ScID'):
                     self._scId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.novel.scenes[self._scId] = self.SCENE_CLASS()
-                    self.novel.chapters[self._chId].srtScenes.append(self._scId)
+                    if not self._scId in self.novel.scenes:
+                        self.novel.scenes[self._scId] = self.SCENE_CLASS()
+                        self.novel.chapters[self._chId].srtScenes.append(self._scId)
                 elif attrs[0][1].startswith('ChID'):
                     self._chId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
-                    self.novel.chapters[self._chId].srtScenes = []
-                    self.novel.srtChapters.append(self._chId)
+                    if not self._chId in self.novel.chapters:
+                        self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
+                        self.novel.chapters[self._chId].srtScenes = []
+                        self.novel.srtChapters.append(self._chId)
 
     def handle_comment(self, data):
         """Process inline comments within scene content.

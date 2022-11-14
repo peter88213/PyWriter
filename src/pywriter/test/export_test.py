@@ -11,8 +11,6 @@ from shutil import copyfile
 from pywriter.pywriter_globals import *
 from pywriter.test.helper import read_file
 from pywriter.converter.yw7_converter import Yw7Converter
-from pywriter.yw.yw7_file import Yw7File
-from pywriter.model.novel import Novel
 
 UPDATE = False
 
@@ -69,6 +67,8 @@ class ExportTest():
         self.assertEqual(converter.ui.infoHowText, f'{_("File written")}: "{ norm_path(self._testExpFile)}".')
         with zipfile.ZipFile(self._testExpFile, 'r') as myzip:
             myzip.extract(self._odfCntntFile, self._execPath)
+        if UPDATE:
+            copyfile(f'{self._execPath}{self._odfCntntFile}', f'{self._dataPath}{self._odfCntntFile}')
         self.assertEqual(read_file(f'{self._execPath}{self._odfCntntFile}'),
                          read_file(f'{self._dataPath}{self._odfCntntFile}'))
 
