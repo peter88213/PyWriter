@@ -22,6 +22,9 @@ class HtmlFile(File, HTMLParser):
         read --
     """
     EXTENSION = '.html'
+
+    _TYPE = 0
+
     _COMMENT_START = '/*'
     _COMMENT_END = '*/'
     _SC_TITLE_BRACKET = '~'
@@ -100,12 +103,14 @@ class HtmlFile(File, HTMLParser):
                     if not self._scId in self.novel.scenes:
                         self.novel.scenes[self._scId] = self.SCENE_CLASS()
                         self.novel.chapters[self._chId].srtScenes.append(self._scId)
+                    self.novel.scenes[self._scId].scType = self._TYPE
                 elif attrs[0][1].startswith('ChID'):
                     self._chId = re.search('[0-9]+', attrs[0][1]).group()
                     if not self._chId in self.novel.chapters:
                         self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
                         self.novel.chapters[self._chId].srtScenes = []
                         self.novel.srtChapters.append(self._chId)
+                    self.novel.chapters[self._chId].chType = self._TYPE
 
     def handle_comment(self, data):
         """Process inline comments within scene content.

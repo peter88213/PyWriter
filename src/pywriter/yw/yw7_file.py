@@ -986,8 +986,19 @@ class Yw7File(File):
         if self.is_locked():
             raise Error(f'{_("yWriter seems to be open. Please close first")}.')
 
+        # Split scenes if at least one scene has content.
+
+        for scId in self.novel.scenes:
+            if self.novel.scenes[scId].sceneContent:
+                sceneSplitter = Splitter()
+                self.scenesSplit = sceneSplitter.split_scenes(self)
+                break
+
         if self.novel.languages is None:
             self.novel.get_languages()
+
+        self.adjust_scene_types()
+
         self._build_element_tree()
         self._write_element_tree(self)
         self._postprocess_xml_file(self.filePath)

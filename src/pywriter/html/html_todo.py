@@ -16,13 +16,4 @@ class HtmlTodo(HtmlManuscript):
     DESCRIPTION = _('Todo chapters')
     SUFFIX = '_todo'
 
-    def _postprocess(self):
-        """Make all chapters and scenes "Todo" type.
-        
-        Overrides the superclass method.
-        """
-        for chId in self.novel.srtChapters:
-            self.novel.chapters[chId].chType = 2
-            for scId in self.novel.chapters[chId].srtScenes:
-                self.novel.scenes[scId].scType = 2
-
+    _TYPE = 2

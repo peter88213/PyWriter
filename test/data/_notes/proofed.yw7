@@ -1919,11 +1919,11 @@ This is not a joke.]]></SceneContent>
       <ID>32</ID>
       <Title><![CDATA[@Chapter 32]]></Title>
       <SortOrder>35</SortOrder>
-      <Type>0</Type>
-      <ChapterType>0</ChapterType>
       <Fields>
         <Field_SuppressChapterTitle>1</Field_SuppressChapterTitle>
       </Fields>
+      <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>119</ScID>
       </Scenes>

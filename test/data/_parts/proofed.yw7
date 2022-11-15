@@ -1735,6 +1735,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>35</ID>
       <Title><![CDATA[Part 2]]></Title>
+      <Desc><![CDATA[This would be the second part, if the novel was divided into parts.]]></Desc>
       <SortOrder>20</SortOrder>
       <Fields>
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
@@ -1743,7 +1744,6 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <SectionStart>-1</SectionStart>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
-      <Desc><![CDATA[This would be the second part, if the novel was divided into parts.]]></Desc>
     </CHAPTER>
     <CHAPTER>
       <ID>18</ID>

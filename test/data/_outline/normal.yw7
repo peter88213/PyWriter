@@ -114,31 +114,31 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
   <CHAPTERS>
     <CHAPTER>
       <ID>1</ID>
-      <SortOrder>1</SortOrder>
       <Title><![CDATA[Part 1]]></Title>
       <Desc><![CDATA[The first part of the novel.]]></Desc>
+      <SortOrder>1</SortOrder>
       <SectionStart>-1</SectionStart>
-      <ChapterType>0</ChapterType>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
     </CHAPTER>
     <CHAPTER>
       <ID>2</ID>
-      <SortOrder>2</SortOrder>
       <Title><![CDATA[Chapter 1]]></Title>
       <Desc><![CDATA[The first chapter of the novel.]]></Desc>
-      <ChapterType>0</ChapterType>
+      <SortOrder>2</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>1</ScID>
       </Scenes>
     </CHAPTER>
     <CHAPTER>
       <ID>3</ID>
-      <SortOrder>3</SortOrder>
       <Title><![CDATA[Chapter 2]]></Title>
       <Desc><![CDATA[The second chapter of the novel.]]></Desc>
-      <ChapterType>0</ChapterType>
+      <SortOrder>3</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>2</ScID>
         <ScID>3</ScID>
@@ -146,20 +146,20 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
     </CHAPTER>
     <CHAPTER>
       <ID>4</ID>
-      <SortOrder>4</SortOrder>
       <Title><![CDATA[Chapter 3]]></Title>
-      <ChapterType>0</ChapterType>
+      <SortOrder>4</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>4</ScID>
       </Scenes>
     </CHAPTER>
     <CHAPTER>
       <ID>5</ID>
-      <SortOrder>5</SortOrder>
       <Title><![CDATA[Chapter 4]]></Title>
-      <ChapterType>0</ChapterType>
+      <SortOrder>5</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>5</ScID>
         <ScID>6</ScID>

@@ -16,13 +16,4 @@ class HtmlNotes(HtmlManuscript):
     DESCRIPTION = _('Notes chapters')
     SUFFIX = '_notes'
 
-    def _postprocess(self):
-        """Make all chapters and scenes "Notes" type.
-        
-        Overrides the superclass method.
-        """
-        for chId in self.novel.srtChapters:
-            self.novel.chapters[chId].chType = 1
-            for scId in self.novel.chapters[chId].srtScenes:
-                self.novel.scenes[scId].scType = 1
-
+    _TYPE = 1

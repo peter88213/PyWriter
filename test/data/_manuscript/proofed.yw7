@@ -1575,10 +1575,10 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
     <CHAPTER>
       <ID>33</ID>
       <Title><![CDATA[Info]]></Title>
+      <Unused>-1</Unused>
       <SortOrder>1</SortOrder>
       <Type>1</Type>
       <ChapterType>1</ChapterType>
-      <Unused>-1</Unused>
       <Scenes>
         <ScID>120</ScID>
       </Scenes>
@@ -1639,11 +1639,11 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
     </CHAPTER>
     <CHAPTER>
       <ID>37</ID>
-      <SortOrder>7</SortOrder>
       <Title><![CDATA[New Chapter]]></Title>
       <Desc><![CDATA[Inserted chapter]]></Desc>
-      <ChapterType>0</ChapterType>
+      <SortOrder>7</SortOrder>
       <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>123</ScID>
         <ScID>124</ScID>
@@ -1962,11 +1962,11 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <ID>32</ID>
       <Title><![CDATA[@Chapter 32]]></Title>
       <SortOrder>36</SortOrder>
-      <Type>0</Type>
-      <ChapterType>0</ChapterType>
       <Fields>
         <Field_SuppressChapterTitle>1</Field_SuppressChapterTitle>
       </Fields>
+      <Type>0</Type>
+      <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>119</ScID>
       </Scenes>

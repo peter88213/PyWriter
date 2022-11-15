@@ -56,7 +56,7 @@ class OdtNotes(OdtManuscript):
         sceneNumber = 0
         wordsTotal = 0
         lettersTotal = 0
-        for chId in self.srtChapters:
+        for chId in self.novel.srtChapters:
             dispNumber = 0
             if not self._chapterFilter.accept(self, chId):
                 continue
@@ -64,9 +64,9 @@ class OdtNotes(OdtManuscript):
             # The order counts; be aware that "Notes" chapters are always unused.
             doNotExport = False
             template = None
-            if self.chapters[chId].chType == 1:
+            if self.novel.chapters[chId].chType == 1:
                 # Chapter is "Notes" type (implies "unused").
-                if self.chapters[chId].chLevel == 1:
+                if self.novel.chapters[chId].chLevel == 1:
                     # Chapter is "Notes Part" type.
                     if self._notesPartTemplate:
                         template = Template(self._notesPartTemplate)

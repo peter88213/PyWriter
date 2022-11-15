@@ -104,8 +104,9 @@ class HtmlProof(HtmlFormatted):
             self._doNothing = False
         elif '[ScID' in data:
             self._scId = re.search('[0-9]+', data).group()
-            self.novel.scenes[self._scId] = self.SCENE_CLASS()
-            self.novel.chapters[self._chId].srtScenes.append(self._scId)
+            if not self._scId in self.novel.scenes:
+                self.novel.scenes[self._scId] = self.SCENE_CLASS()
+                self.novel.chapters[self._chId].srtScenes.append(self._scId)
             self._lines = []
         elif '[/ScID' in data:
             text = ''.join(self._lines)
@@ -113,8 +114,9 @@ class HtmlProof(HtmlFormatted):
             self._scId = None
         elif '[ChID' in data:
             self._chId = re.search('[0-9]+', data).group()
-            self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
-            self.novel.srtChapters.append(self._chId)
+            if not self._chId in self.novel.chapters:
+                self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
+                self.novel.srtChapters.append(self._chId)
         elif '[/ChID' in data:
             self._chId = None
         elif self._scId is not None:

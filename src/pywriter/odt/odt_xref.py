@@ -80,7 +80,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """
         sceneNumber = self._xr.srtScenes.index(scId) + 1
         sceneMapping = super()._get_sceneMapping(scId, sceneNumber, 0, 0)
-        chapterNumber = self.srtChapters.index(self._xr.chpPerScn[scId]) + 1
+        chapterNumber = self.novel.srtChapters.index(self._xr.chpPerScn[scId]) + 1
         sceneMapping['Chapter'] = str(chapterNumber)
         return sceneMapping
 
@@ -106,11 +106,11 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """
         lines = []
         for scId in scenes:
-            if self.scenes[scId].scType == 1:
+            if self.novel.scenes[scId].scType == 1:
                 template = Template(self._notesSceneTemplate)
-            elif self.scenes[scId].scType == 2:
+            elif self.novel.scenes[scId].scType == 2:
                 template = Template(self._todoSceneTemplate)
-            elif self.scenes[scId].scType == 3:
+            elif self.novel.scenes[scId].scType == 3:
                 template = Template(self._unusedSceneTemplate)
             else:
                 template = Template(self._sceneTemplate)
@@ -223,7 +223,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         Return a string to be written to the output file.
         Overrides the superclass method.
         """
-        self._xr.generate_xref(self)
+        self._xr.generate_xref(self.novel)
         lines = self._get_fileHeader()
         lines.extend(self._get_characters())
         lines.extend(self._get_locations())
