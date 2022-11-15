@@ -38,6 +38,6 @@ class OdtLocations(OdtFile):
         Extends the superclass method.
         """
         locationMapping = super()._get_locationMapping(lcId)
-        if self.locations[lcId].aka:
-            locationMapping['AKA'] = f' ("{self.locations[lcId].aka}")'
+        if self.novel.locations[lcId].aka:
+            locationMapping['AKA'] = f' ("{self.novel.locations[lcId].aka}")'
         return locationMapping

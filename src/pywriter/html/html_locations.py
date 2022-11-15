@@ -43,8 +43,9 @@ class HtmlLocations(HtmlFile):
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('LcID'):
                     self._lcId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.novel.srtLocations.append(self._lcId)
-                    self.novel.locations[self._lcId] = self.WE_CLASS()
+                    if not self._lcId in self.novel.locations:
+                        self.novel.srtLocations.append(self._lcId)
+                        self.novel.locations[self._lcId] = self.WE_CLASS()
 
     def handle_endtag(self, tag):
         """Recognize the end of the location section and save data.
