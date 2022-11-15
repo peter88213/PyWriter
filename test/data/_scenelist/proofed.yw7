@@ -1817,6 +1817,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <ID>33</ID>
       <Title><![CDATA[Act 1]]></Title>
       <Desc><![CDATA[The hero and his world.]]></Desc>
+      <Unused>-1</Unused>
       <SortOrder>1</SortOrder>
       <Fields>
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
@@ -1824,7 +1825,6 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       </Fields>
       <Type>1</Type>
       <ChapterType>1</ChapterType>
-      <Unused>-1</Unused>
     </CHAPTER>
     <CHAPTER>
       <ID>1</ID>
@@ -1916,6 +1916,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <ID>35</ID>
       <Title><![CDATA[Act 2]]></Title>
       <Desc><![CDATA[Action!]]></Desc>
+      <Unused>-1</Unused>
       <SortOrder>10</SortOrder>
       <Fields>
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
@@ -1923,7 +1924,6 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       </Fields>
       <Type>1</Type>
       <ChapterType>1</ChapterType>
-      <Unused>-1</Unused>
     </CHAPTER>
     <CHAPTER>
       <ID>9</ID>
@@ -2102,6 +2102,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <ID>36</ID>
       <Title><![CDATA[Act 3]]></Title>
       <Desc><![CDATA[Solution.]]></Desc>
+      <Unused>-1</Unused>
       <SortOrder>27</SortOrder>
       <Fields>
         <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
@@ -2109,7 +2110,6 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       </Fields>
       <Type>1</Type>
       <ChapterType>1</ChapterType>
-      <Unused>-1</Unused>
     </CHAPTER>
     <CHAPTER>
       <ID>25</ID>

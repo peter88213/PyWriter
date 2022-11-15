@@ -35,7 +35,8 @@ class CsvSceneList(CsvFile):
             i = 0
             if 'ScID:' in cells[i]:
                 scId = re.search('ScID\:([0-9]+)', cells[0]).group(1)
-                self.novel.scenes[scId] = self.SCENE_CLASS()
+                if not scId in self.novel.scenes:
+                    self.novel.scenes[scId] = self.SCENE_CLASS()
                 i += 1
                 self.novel.scenes[scId].title = self._convert_to_yw(cells[i])
                 i += 1
