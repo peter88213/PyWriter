@@ -43,8 +43,9 @@ class HtmlItems(HtmlFile):
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('ItID'):
                     self._itId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.novel.srtItems.append(self._itId)
-                    self.novel.items[self._itId] = self.WE_CLASS()
+                    if not self._itId in self.novel.items:
+                        self.novel.srtItems.append(self._itId)
+                        self.novel.items[self._itId] = self.WE_CLASS()
 
     def handle_endtag(self, tag):
         """Recognize the end of the item section and save data.

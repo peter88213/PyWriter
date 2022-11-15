@@ -1276,20 +1276,6 @@ class Yw7File(File):
                     ET.SubElement(items, 'ItemID').text = itId
 
         def build_chapter_subtree(xmlChp, prjChp, sortOrder):
-            i = 1
-            i = set_element(xmlChp, 'Title', prjChp.title, i)
-            i = set_element(xmlChp, 'Desc', prjChp.desc, i)
-            i = set_element(xmlChp, 'SortOrder', str(sortOrder), i)
-
-            if xmlChp.find('SectionStart') is not None:
-                if prjChp.chLevel == 0:
-                    xmlChp.remove(xmlChp.find('SectionStart'))
-            elif prjChp.chLevel == 1:
-                elem = ET.Element('SectionStart')
-                elem.text = '-1'
-                xmlChp.inseret(i, elem)
-                i += 1
-
             # This is how yWriter 7.1.3.0 writes the chapter type:
             #
             # Type   |<Unused>|<Type>|<ChapterType>|chType
@@ -1308,30 +1294,22 @@ class Yw7File(File):
             if prjChp.chType is None:
                 prjChp.chType = 0
             yUnused, yType, yChapterType = chTypeEncoding[prjChp.chType]
-            try:
-                xmlChp.find('ChapterType').text = yChapterType
-            except(AttributeError):
-                elem = ET.Element('ChapterType')
-                elem.text = yChapterType
-                xmlChp.insert(i, elem)
-            i += 1
-            try:
-                xmlChp.find('Type').text = yType
-            except(AttributeError):
-                elem = ET.Element('Type')
-                elem.text = yType
-                xmlChp.insert(i, elem)
-            i += 1
+
+            i = 1
+            i = set_element(xmlChp, 'Title', prjChp.title, i)
+            i = set_element(xmlChp, 'Desc', prjChp.desc, i)
+
             if yUnused:
                 if xmlChp.find('Unused') is None:
                     elem = ET.Element('Unused')
                     elem.text = '-1'
                     xmlChp.insert(i, elem)
-                    i += 1
             elif xmlChp.find('Unused') is not None:
                 xmlChp.remove(xmlChp.find('Unused'))
-            else:
+            if xmlChp.find('Unused') is not None:
                 i += 1
+
+            i = set_element(xmlChp, 'SortOrder', str(sortOrder), i)
 
             #--- Write chapter fields.
             chFields = xmlChp.find('Fields')
@@ -1387,8 +1365,21 @@ class Yw7File(File):
                         chFields.remove(chFields.find(field))
                     except:
                         pass
-            if chFields is not None:
+            if xmlChp.find('Fields') is not None:
                 i += 1
+
+            if xmlChp.find('SectionStart') is not None:
+                if prjChp.chLevel == 0:
+                    xmlChp.remove(xmlChp.find('SectionStart'))
+            elif prjChp.chLevel == 1:
+                elem = ET.Element('SectionStart')
+                elem.text = '-1'
+                xmlChp.inseret(i, elem)
+            if xmlChp.find('SectionStart') is not None:
+                i += 1
+
+            i = set_element(xmlChp, 'Type', yType, i)
+            i = set_element(xmlChp, 'ChapterType', yChapterType, i)
 
             #--- Rebuild the chapter's scene list.
             xScnList = xmlChp.find('Scenes')

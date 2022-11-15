@@ -1,0 +1,29 @@
+<!ELEMENT YWRITER7 (PROJECT, LOCATIONS, ITEMS, CHARACTERS, PROJECTNOTES, PROJECTVARS, PROJECTEXPS, SCENES, CHAPTERS, WCLOG)>
+    
+    <!ELEMENT PROJECT (ver, Title, AuthorName, Bio, FieldTitle1, FieldTitle2, FieldTitle3, FieldTitle4, LastFullBackup, WordTarget, WordTargetStartDate, WordTargetEndDate, WordCountStart, EndFrontMatterChID, EndMiddleChID, EndBeginningCHID, LatexSingleQuotes, LatexSuppressChapterTitles, LatexSceneDivider, HTMLSceneDivider, HtmlEncoding, HtmlUnicode, LatexHeaderFile, MRUSpecificDate, MRUSpecificTime, LastViewedScID, DeadlineDate1, DeadlineDate2, DeadlineDate3, DeadlineDate4, DeadlineDate5, DeadlineStartDate1, DeadlineStartDate2, DeadlineStartDate3, DeadlineStartDate4, DeadlineStartDate5 Fields)>
+    
+    <!ELEMENT LOCATIONS (LOCATION*)>
+        <!ELEMENT LOCATION (ID, Title, Desc, Tags, ImageFile, SortOrder)>
+    
+    <!ELEMENT ITEMS (ITEM*)>
+        <!ELEMENT ITEM (ID, Title, Desc, Tags, ImageFile, SortOrder)>
+    
+    <!ELEMENT CHARACTERS (CHARACTER*)>
+        <!ELEMENT CHARACTER (ID, Title, Desc, Tags, ImageFile, Notes, SortOrder, AKA, Bio, Goals, FullName)>
+    
+    <!ELEMENT PROJECTNOTES (PROJECTNOTE*)>
+        <!ELEMENT PROJECTNOTE (ID, Title, Desc, SortOrder)>
+    
+    <!ELEMENT PROJECTVARS (PROJECTVAR*)>
+        <!ELEMENT PROJECTVAR (ID, Title, Desc)>
+    
+    <!ELEMENT PROJECTEXPS ()>
+    
+    <!ELEMENT SCENES (SCENE*)>
+        <!ELEMENT SCENE (ID, Title, Desc, Tags, ImageFile, Notes, Unused?, Fields, BelongsToChID, Minute, Hour, Day, (SpecificDateMode, SpecificDateTime)?, LastsMinutes, LastsHours, LastsDays, Field1, Field2, Field3, Field4, Status, WordCount, LetterCount, Characters, Locations, Items, SceneContent )>
+    
+    <!ELEMENT CHAPTERS (CHAPTER*)>
+        <!ELEMENT CHAPTER (ID, Title, Desc, Unused?, SortOrder, Fields, SectionStart?, Type, ChapterType, Scenes)>
+    
+    <!ELEMENT WCLOG (WC*)>
+        <!ELEMENT WC (Date, count, TotalCount)>
