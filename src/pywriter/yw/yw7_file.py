@@ -1374,7 +1374,7 @@ class Yw7File(File):
             elif prjChp.chLevel == 1:
                 elem = ET.Element('SectionStart')
                 elem.text = '-1'
-                xmlChp.inseret(i, elem)
+                xmlChp.insert(i, elem)
             if xmlChp.find('SectionStart') is not None:
                 i += 1
 
