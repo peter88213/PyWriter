@@ -27,11 +27,13 @@ class CsvItemList(CsvFile):
         Extends the superclass method.
         """
         super().read()
+        self.novel.srtItems = []
         for cells in self._rows:
             if 'ItID:' in cells[0]:
                 itId = re.search('ItID\:([0-9]+)', cells[0]).group(1)
                 self.novel.srtItems.append(itId)
-                self.novel.items[itId] = self.WE_CLASS()
+                if not itId in self.novel.items:
+                    self.novel.items[itId] = self.WE_CLASS()
                 self.novel.items[itId].title = self._convert_to_yw(cells[1])
                 self.novel.items[itId].desc = self._convert_to_yw(cells[2])
                 self.novel.items[itId].aka = self._convert_to_yw(cells[3])

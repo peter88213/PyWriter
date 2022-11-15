@@ -27,11 +27,13 @@ class CsvCharList(CsvFile):
         Extends the superclass method.
         """
         super().read()
+        self.novel.srtCharacters = []
         for cells in self._rows:
             if 'CrID:' in cells[0]:
                 crId = re.search('CrID\:([0-9]+)', cells[0]).group(1)
                 self.novel.srtCharacters.append(crId)
-                self.novel.characters[crId] = self.CHARACTER_CLASS()
+                if not crId in self.novel.characters:
+                    self.novel.characters[crId] = self.CHARACTER_CLASS()
                 self.novel.characters[crId].title = cells[1]
                 self.novel.characters[crId].fullName = cells[2]
                 self.novel.characters[crId].aka = cells[3]

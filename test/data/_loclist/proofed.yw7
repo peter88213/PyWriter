@@ -1571,10 +1571,10 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
     <CHAPTER>
       <ID>33</ID>
       <Title><![CDATA[Info]]></Title>
+      <Unused>-1</Unused>
       <SortOrder>1</SortOrder>
       <Type>1</Type>
       <ChapterType>1</ChapterType>
-      <Unused>-1</Unused>
       <Scenes>
         <ScID>120</ScID>
       </Scenes>
