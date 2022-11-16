@@ -15,8 +15,8 @@
 <text:p text:style-name="Subtitle">Simon Haynes</text:p>
 <text:section text:style-name="Sect1" text:name="ChID:33">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Info</text:h>
-<text:section text:style-name="Sect1" text:name="ScID:120">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Information about the sample project</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:120">
 <text:p text:style-name="Text_20_body">*** IMPORTANT ***</text:p>
 <text:p text:style-name="First_20_line_20_indent">Uninstalling yWriter5 will uninstall (delete) this sample project.</text:p>
 <text:p text:style-name="First_20_line_20_indent">Reinstalling yWriter5 will overwrite this sample project.</text:p>
@@ -31,23 +31,23 @@
 </text:section>
 <text:section text:style-name="Sect1" text:name="ChID:18">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 18</text:h>
-<text:section text:style-name="Sect1" text:name="ScID:51">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Terry places the &apos;bomb&apos;</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:51">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:section text:style-name="Sect1" text:name="ScID:53">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Hal buys food</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:53">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
 </text:section>
 <text:section text:style-name="Sect1" text:name="ChID:19">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 19</text:h>
-<text:section text:style-name="Sect1" text:name="ScID:55">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Karl leaves a note, takes Clunk.</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:55">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:section text:style-name="Sect1" text:name="ScID:57">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">Hal about to hyperspace.</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:57">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
 </text:section>

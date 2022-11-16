@@ -1582,8 +1582,8 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
   <CHAPTERS>
     <CHAPTER>
       <ID>37</ID>
-      <SortOrder>1</SortOrder>
       <Title><![CDATA[Arcs]]></Title>
+      <SortOrder>1</SortOrder>
       <ChapterType>2</ChapterType>
       <Scenes>
         <ScID>11</ScID>

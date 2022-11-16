@@ -28,8 +28,8 @@ class OdtNotes(OdtManuscript):
 <text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
-    _notesSceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
-<text:h text:style-name="Heading_20_3" text:outline-level="3">$Title</text:h>
+    _notesSceneTemplate = '''<text:h text:style-name="Heading_20_3" text:outline-level="3">$Title</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:$ID">
 <text:p text:style-name="Text_20_body">$SceneContent</text:p>
 </text:section>
 '''

@@ -15,16 +15,16 @@
 <text:p text:style-name="Subtitle">Simon Haynes</text:p>
 <text:section text:style-name="Sect1" text:name="ChID:37">
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Arcs</text:h>
-<text:section text:style-name="Sect1" text:name="ScID:11">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">A</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:11">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:section text:style-name="Sect1" text:name="ScID:13">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">B</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:13">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
-<text:section text:style-name="Sect1" text:name="ScID:14">
 <text:h text:style-name="Heading_20_3" text:outline-level="3">C</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:14">
 <text:p text:style-name="Text_20_body"></text:p>
 </text:section>
 </text:section>
