@@ -20,7 +20,6 @@ class FileExport(File):
     """Abstract yWriter project file exporter representation.
     
     Public methods:
-        merge(source) -- update instance variables from a source instance.
         write() -- write instance variables to the export file.
     
     This class is generic and contains no conversion algorithm and no templates.

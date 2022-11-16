@@ -25,7 +25,6 @@ class File:
 
     Public methods:
         read() -- Parse the file and get the instance variables.
-        merge(source) -- Update instance variables from a source instance.
         write() -- Write instance variables to the file.
 
     Public instance variables:

@@ -12,10 +12,7 @@ from pywriter.yw.yw7_file import Yw7File
 
 class DataFiles(Yw7File):
     """yWriter XML data files representation.
-
-    Public methods: 
-        merge(source) -- Update instance variables from a source instance.
-        
+       
     yWriter can import or export characters, locations and items as separate
     xml files. This class represents a set of three xml files generated from
     a yWriter 7 project.
@@ -76,17 +73,3 @@ class DataFiles(Yw7File):
         itemPath = f'{path}_Items.xml'
         super()._postprocess_xml_file(itemPath)
 
-    def merge(self, source):
-        """Update instance variables from a source instance.
-        
-        Positional arguments:
-            source -- Novel subclass instance to merge.
-        
-        Overrides the superclass method.
-        """
-        self.characters = source.characters
-        self.srtCharacters = source.srtCharacters
-        self.locations = source.locations
-        self.srtLocations = source.srtLocations
-        self.items = source.items
-        self.srtItems = source.srtItems
