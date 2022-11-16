@@ -13,7 +13,6 @@ import xml.etree.ElementTree as ET
 from pywriter.pywriter_globals import *
 from pywriter.file.file import File
 from pywriter.model.id_generator import create_id
-from pywriter.model.splitter import Splitter
 from pywriter.yw.xml_indent import indent
 
 

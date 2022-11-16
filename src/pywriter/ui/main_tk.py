@@ -10,6 +10,7 @@ from tkinter import filedialog
 from tkinter import messagebox
 from pywriter.pywriter_globals import *
 from pywriter.ui.ui import Ui
+from pywriter.model.novel import Novel
 from pywriter.yw.yw7_file import Yw7File
 
 
@@ -73,6 +74,7 @@ class MainTk(Ui):
         self._statusText = ''
         self.kwargs = kwargs
         self.ywPrj = None
+        self.novel = None
         self.root = tk.Tk()
         self.root.protocol("WM_DELETE_WINDOW", self.on_quit)
         self.root.title(title)
@@ -173,6 +175,8 @@ class MainTk(Ui):
             self.close_project()
         self.kwargs['yw_last_open'] = fileName
         self.ywPrj = self._YW_CLASS(fileName)
+        self.novel = Novel()
+        self.ywPrj.novel = self.novel
         try:
             self.ywPrj.read()
         except Error as ex:
@@ -190,12 +194,12 @@ class MainTk(Ui):
         
         'Document title by author - application'
         """
-        if self.ywPrj.title:
-            titleView = self.ywPrj.title
+        if self.novel.title:
+            titleView = self.novel.title
         else:
             titleView = _('Untitled project')
-        if self.ywPrj.authorName:
-            authorView = self.ywPrj.authorName
+        if self.novel.authorName:
+            authorView = self.novel.authorName
         else:
             authorView = _('Unknown author')
         self.root.title(f'{titleView} {_("by")} {authorView} - {self.title}')
