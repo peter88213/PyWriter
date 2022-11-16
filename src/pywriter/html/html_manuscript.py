@@ -28,7 +28,6 @@ class HtmlManuscript(HtmlFormatted):
         """
         super().handle_starttag(tag, attrs)
         if self._scId is not None:
-            self._getScTitle = False
             if tag == 'em' or tag == 'i':
                 self._lines.append('[i]')
             elif tag == 'strong' or tag == 'b':
@@ -43,10 +42,7 @@ class HtmlManuscript(HtmlFormatted):
                 except:
                     pass
             elif tag == 'h3':
-                if self.novel.scenes[self._scId].title is None:
-                    self._getScTitle = True
-                else:
-                    self._lines.append(f'{Splitter.SCENE_SEPARATOR} ')
+                self._lines.append(f'{Splitter.SCENE_SEPARATOR} ')
             elif tag == 'h2':
                 self._lines.append(f'{Splitter.CHAPTER_SEPARATOR} ')
             elif tag == 'h1':
@@ -105,7 +101,7 @@ class HtmlManuscript(HtmlFormatted):
                 self._lines.append('\n')
             elif tag == 'h2':
                 self._lines.append('\n')
-            elif tag == 'h3' and not self._getScTitle:
+            elif tag == 'h3':
                 self._lines.append('\n')
         elif self._chId is not None:
             if tag == 'div':
@@ -143,9 +139,7 @@ class HtmlManuscript(HtmlFormatted):
         Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
         """
         if self._scId is not None:
-            if self._getScTitle:
-                self.novel.scenes[self._scId].title = data.strip()
-            elif not data.isspace():
+            if not data.isspace():
                 self._lines.append(data)
         elif self._chId is not None:
             if self.novel.chapters[self._chId].title is None:
