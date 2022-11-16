@@ -43,6 +43,8 @@ class HtmlManuscript(HtmlFormatted):
                     pass
             elif tag == 'h3':
                 self._skip_data = True
+                # this is for downward compatibility with "notes" and "todo"
+                # documents generated with PyWriter v8 and before.
             elif tag == 'h2':
                 self._lines.append(f'{Splitter.CHAPTER_SEPARATOR} ')
             elif tag == 'h1':

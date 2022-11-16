@@ -28,13 +28,13 @@ activate converter
 converter ->> exportSourceFactory : make_file_objects(sourcePath, **kwargs)
 
 activate exportSourceFactory
-exportSourceFactory -->> converter : message
+exportSourceFactory -->> converter : exception
 deactivate exportSourceFactory
 
 converter ->> importSourceFactory : make_file_objects(sourcePath, **kwargs)
 
 activate importSourceFactory
-importSourceFactory -->> converter : message
+importSourceFactory -->> converter : exception
 deactivate importSourceFactory
 
 converter ->> newProjectFactory : make_file_objects(sourcePath, **kwargs)
@@ -44,33 +44,23 @@ create "source : HtmlImport" as source
 newProjectFactory ->> source : HtmlImport()
 create "target : Yw7File" as target
 newProjectFactory ->> target : Yw7File()
-newProjectFactory -->> converter : message, source, target
+newProjectFactory -->> converter : source, target
 deactivate newProjectFactory
 
 converter ->> converter : create_yw7(source, target)
 activate converter
 converter ->> "ui : UiTk" : set_info_what(message)
-converter ->> converter : convert(source, target)
-activate converter
 
 converter ->> source : read()
 activate source
-source -->> converter : message
 deactivate source
-
-converter ->> target : merge(source)
-activate target
-target -->>  converter : message
-deactivate target
 
 converter ->> target : write()
 activate target
-target -->>  converter : message
 deactivate converter
 deactivate target
 
 converter ->> "ui : UiTk" : set_info_how(message)
-deactivate converter
 deactivate converter
 
 script ->> "ui : UiTk" : start()

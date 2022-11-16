@@ -28,7 +28,7 @@ activate converter
 converter ->> exportSourceFactory : make_file_objects(sourcePath, **kwargs)
 
 activate exportSourceFactory
-exportSourceFactory -->> converter : message
+exportSourceFactory -->> converter : exception
 deactivate exportSourceFactory
 
 converter ->> importSourceFactory : make_file_objects(sourcePath, **kwargs)
@@ -36,7 +36,7 @@ converter ->> importSourceFactory : make_file_objects(sourcePath, **kwargs)
 activate importSourceFactory
 create "source : HtmlProof" as source
 importSourceFactory ->> source : HtmlProof()
-importSourceFactory -->> converter : message, source
+importSourceFactory -->> converter : source
 deactivate importSourceFactory
 
 converter ->> importTargetFactory : make_file_objects(sourcePath, **kwargs)
@@ -44,33 +44,23 @@ converter ->> importTargetFactory : make_file_objects(sourcePath, **kwargs)
 activate importTargetFactory
 create "target : Yw7File" as target
 importTargetFactory ->> target : Yw7File()
-importTargetFactory -->> converter : message, target
+importTargetFactory -->> converter : target
 deactivate importTargetFactory
 
 converter ->> converter : import_to_yw(source, target)
 activate converter
 converter ->> "ui : UiTk" : set_info_what(message)
-converter ->> converter : convert(source, target)
-activate converter
+
+converter ->> target : read()
+activate target
+deactivate target
 
 converter ->> source : read()
 activate source
-source -->> converter : message
 deactivate source
-
-converter ->> target : merge(source)
-activate target
-target -->> target : read()
-activate target
-target -->> target : message
-deactivate target
-target -->>  converter : message
-deactivate target
 
 converter ->> target : write()
 activate target
-target -->>  converter : message
-deactivate converter
 deactivate target
 
 converter ->> "ui : UiTk" : set_info_how(message)
