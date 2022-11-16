@@ -5,6 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.html.html_file import HtmlFile
+from pywriter.model.splitter import Splitter
 
 
 class HtmlFormatted(HtmlFile):
@@ -25,6 +26,10 @@ class HtmlFormatted(HtmlFile):
         """
         self.novel.languages = []
         super().read()
+
+        # Split scenes, if necessary.
+        sceneSplitter = Splitter()
+        self.scenesSplit = sceneSplitter.split_scenes(self)
 
     def _cleanup_scene(self, text):
         """Clean up yWriter markup.

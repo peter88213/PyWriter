@@ -986,18 +986,8 @@ class Yw7File(File):
         if self.is_locked():
             raise Error(f'{_("yWriter seems to be open. Please close first")}.')
 
-        # Split scenes if at least one scene has content.
-
-        for scId in self.novel.scenes:
-            if self.novel.scenes[scId].sceneContent:
-                sceneSplitter = Splitter()
-                self.scenesSplit = sceneSplitter.split_scenes(self)
-                break
-
         if self.novel.languages is None:
             self.novel.get_languages()
-
-        self.adjust_scene_types()
 
         self._build_element_tree()
         self._write_element_tree(self)
@@ -1393,12 +1383,18 @@ class Yw7File(File):
             i = set_element(xmlChp, 'ChapterType', yChapterType, i)
 
             #--- Rebuild the chapter's scene list.
-            xScnList = xmlChp.find('Scenes')
-            if prjChp.srtScenes and not xScnList:
-                sortSc = ET.Element('Scenes')
-                xmlChp.insert(i, sortSc)
+            xmlScnList = xmlChp.find('Scenes')
+
+            # Remove the Scenes section.
+            if xmlScnList is not None:
+                xmlChp.remove(xmlScnList)
+
+            # Rebuild the Scenes section in a modified sort order.
+            if prjChp.srtScenes:
+                xmlScnList = ET.Element('Scenes')
+                xmlChp.insert(i, xmlScnList)
                 for scId in prjChp.srtScenes:
-                    ET.SubElement(sortSc, 'ScID').text = scId
+                    ET.SubElement(xmlScnList, 'ScID').text = scId
 
         def build_location_subtree(xmlLoc, prjLoc, sortOrder):
             if prjLoc.title is not None:
