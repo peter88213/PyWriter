@@ -67,7 +67,7 @@ class HtmlProof(HtmlFormatted):
                         pass
                     break
         elif tag in ('br', 'ul'):
-            self._doNothing = True
+            self._skip_data = True
             # avoid inserting an unwanted blank
 
     def handle_endtag(self, tag):
@@ -100,8 +100,8 @@ class HtmlProof(HtmlFormatted):
         
         Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
         """
-        if self._doNothing:
-            self._doNothing = False
+        if self._skip_data:
+            self._skip_data = False
         elif '[ScID' in data:
             self._scId = re.search('[0-9]+', data).group()
             if not self._scId in self.novel.scenes:

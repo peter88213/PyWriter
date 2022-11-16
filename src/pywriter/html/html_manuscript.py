@@ -42,7 +42,7 @@ class HtmlManuscript(HtmlFormatted):
                 except:
                     pass
             elif tag == 'h3':
-                self._lines.append(f'{Splitter.SCENE_SEPARATOR} ')
+                self._skip_data = True
             elif tag == 'h2':
                 self._lines.append(f'{Splitter.CHAPTER_SEPARATOR} ')
             elif tag == 'h1':
@@ -101,8 +101,6 @@ class HtmlManuscript(HtmlFormatted):
                 self._lines.append('\n')
             elif tag == 'h2':
                 self._lines.append('\n')
-            elif tag == 'h3':
-                self._lines.append('\n')
         elif self._chId is not None:
             if tag == 'div':
                 self._chId = None
@@ -138,7 +136,9 @@ class HtmlManuscript(HtmlFormatted):
         
         Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
         """
-        if self._scId is not None:
+        if self._skip_data:
+            self._skip_data = False
+        elif self._scId is not None:
             if not data.isspace():
                 self._lines.append(data)
         elif self._chId is not None:

@@ -115,7 +115,7 @@ class HtmlImport(HtmlFormatted):
         elif tag == 'li':
                 self._lines.append(f'{self._BULLET} ')
         elif tag == 'ul':
-                self._doNothing = True
+                self._skip_data = True
         elif tag == 'blockquote':
             self._lines.append(f'{self._INDENT} ')
             try:
@@ -191,8 +191,8 @@ class HtmlImport(HtmlFormatted):
         
         Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
         """
-        if self._doNothing:
-            self._doNothing = False
+        if self._skip_data:
+            self._skip_data = False
         elif self._scId is not None and self._SCENE_DIVIDER in data:
             self._scId = None
         else:
