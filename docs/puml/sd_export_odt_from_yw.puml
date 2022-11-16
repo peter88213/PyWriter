@@ -47,10 +47,12 @@ converter ->> "ui : UiTk" : set_info_what(message)
 
 converter ->> source : read()
 activate source
+source -->> converter
 deactivate source
 
 converter ->> target : write()
 activate target
+target -->> converter
 deactivate target
 
 converter ->> "ui : UiTk" : set_info_how(message)
