@@ -73,6 +73,18 @@ class Novel(BasicElement):
         # str
         # xml: <PROJECT><FieldTitle4>
 
+        self.wordTarget = None
+        # int
+        # xml: <PROJECT><wordTarget>
+
+        self.wordCountStart = None
+        # int
+        # xml: <PROJECT><wordCountStart>
+
+        self.wordTarget = None
+        # int
+        # xml: <PROJECT><wordCountStart>
+
         self.chapters = {}
         # dict
         # xml: <CHAPTERS><CHAPTER><ID>

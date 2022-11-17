@@ -101,6 +101,18 @@ class Yw7File(File):
             if prj.find('FieldTitle4') is not None:
                 self.novel.fieldTitle4 = prj.find('FieldTitle4').text
 
+            #--- Read word target data.
+            if prj.find('WordCountStart') is not None:
+                try:
+                    self.novel.wordCountStart = int(prj.find('WordCountStart').text)
+                except:
+                    self.novel.wordCountStart = 0
+            if prj.find('WordTarget') is not None:
+                try:
+                    self.novel.wordTarget = int(prj.find('WordTarget').text)
+                except:
+                    self.novel.wordTarget = 0
+
             #--- Initialize custom keyword variables.
             for fieldName in self._PRJ_KWVAR:
                 self.novel.kwVar[fieldName] = None
@@ -1189,10 +1201,18 @@ class Yw7File(File):
                 except(AttributeError):
                     ET.SubElement(xmlPrj, 'FieldTitle4').text = self.novel.fieldTitle4
 
-            if self.novel.languageCode:
-                self.novel.kwVar['Field_LanguageCode'] = self.novel.languageCode
-            if self.novel.countryCode:
-                self.novel.kwVar['Field_CountryCode'] = self.novel.countryCode
+            #--- Write word target data.
+            if self.novel.wordCountStart is not None:
+                try:
+                    xmlPrj.find('WordCountStart').text = str(self.novel.wordCountStart)
+                except(AttributeError):
+                    ET.SubElement(xmlPrj, 'WordCountStart').text = str(self.novel.wordCountStart)
+
+            if self.novel.wordTarget is not None:
+                try:
+                    xmlPrj.find('WordTarget').text = str(self.novel.wordTarget)
+                except(AttributeError):
+                    ET.SubElement(xmlPrj, 'WordTarget').text = str(self.novel.wordTarget)
 
             #--- Write project custom fields.
 
