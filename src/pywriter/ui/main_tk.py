@@ -36,7 +36,7 @@ class MainTk(Ui):
         title -- str: Application title.
         statusText -- str: Text to be displayed at the status bar.
         kwargs -- keyword arguments buffer.
-        ywPrj -- yWriter project to work with.
+        prjFile -- yWriter project to work with.
         root -- tk top level window.
         mainMenu -- top level menubar.
         mainWindow -- tk frame in the top level window.
@@ -73,7 +73,7 @@ class MainTk(Ui):
         self.title = title
         self._statusText = ''
         self.kwargs = kwargs
-        self.ywPrj = None
+        self.prjFile = None
         self.novel = None
         self.root = tk.Tk()
         self.root.protocol("WM_DELETE_WINDOW", self.on_quit)
@@ -171,20 +171,20 @@ class MainTk(Ui):
         if not fileName:
             return False
 
-        if self.ywPrj is not None:
+        if self.prjFile is not None:
             self.close_project()
         self.kwargs['yw_last_open'] = fileName
-        self.ywPrj = self._YW_CLASS(fileName)
+        self.prjFile = self._YW_CLASS(fileName)
         self.novel = Novel()
-        self.ywPrj.novel = self.novel
+        self.prjFile.novel = self.novel
         try:
-            self.ywPrj.read()
+            self.prjFile.read()
         except Error as ex:
             self.close_project()
             self.set_info_how(f'!{str(ex)}')
             return False
 
-        self.show_path(f'{norm_path(self.ywPrj.filePath)}')
+        self.show_path(f'{norm_path(self.prjFile.filePath)}')
         self.set_title()
         self.enable_menu()
         return True
@@ -216,7 +216,7 @@ class MainTk(Ui):
         
         To be extended by subclasses.
         """
-        self.ywPrj = None
+        self.prjFile = None
         self.root.title(self.title)
         self.show_status('')
         self.show_path('')
