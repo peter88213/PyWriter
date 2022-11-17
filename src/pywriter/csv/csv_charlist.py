@@ -34,15 +34,23 @@ class CsvCharList(CsvFile):
                 self.novel.srtCharacters.append(crId)
                 if not crId in self.novel.characters:
                     self.novel.characters[crId] = self.CHARACTER_CLASS()
-                self.novel.characters[crId].title = cells[1]
-                self.novel.characters[crId].fullName = cells[2]
-                self.novel.characters[crId].aka = cells[3]
-                self.novel.characters[crId].desc = self._convert_to_yw(cells[4])
-                self.novel.characters[crId].bio = self._convert_to_yw(cells[5])
-                self.novel.characters[crId].goals = self._convert_to_yw(cells[6])
+                if self.novel.characters[crId].title or cells[1]:
+                    self.novel.characters[crId].title = cells[1]
+                if self.novel.characters[crId].fullName or cells[2]:
+                    self.novel.characters[crId].fullName = cells[2]
+                if self.novel.characters[crId].aka or cells[3]:
+                    self.novel.characters[crId].aka = cells[3]
+                if self.novel.characters[crId].desc or cells[4]:
+                    self.novel.characters[crId].desc = self._convert_to_yw(cells[4])
+                if self.novel.characters[crId].bio or cells[5]:
+                    self.novel.characters[crId].bio = self._convert_to_yw(cells[5])
+                if self.novel.characters[crId].goals  or cells[6]:
+                    self.novel.characters[crId].goals = self._convert_to_yw(cells[6])
                 if self.CHARACTER_CLASS.MAJOR_MARKER in cells[7]:
                     self.novel.characters[crId].isMajor = True
                 else:
                     self.novel.characters[crId].isMajor = False
-                self.novel.characters[crId].tags = string_to_list(cells[8], divider=self._DIVIDER)
-                self.novel.characters[crId].notes = self._convert_to_yw(cells[9])
+                if self.novel.characters[crId].tags or cells[8]:
+                    self.novel.characters[crId].tags = string_to_list(cells[8], divider=self._DIVIDER)
+                if self.novel.characters[crId].notes or cells[9]:
+                    self.novel.characters[crId].notes = self._convert_to_yw(cells[9])
