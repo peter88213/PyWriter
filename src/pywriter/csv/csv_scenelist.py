@@ -6,6 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from pywriter.pywriter_globals import *
+from pywriter.model.scene import Scene
 from pywriter.csv.csv_file import CsvFile
 
 
@@ -36,7 +37,7 @@ class CsvSceneList(CsvFile):
             if 'ScID:' in cells[i]:
                 scId = re.search('ScID\:([0-9]+)', cells[0]).group(1)
                 if not scId in self.novel.scenes:
-                    self.novel.scenes[scId] = self.SCENE_CLASS()
+                    self.novel.scenes[scId] = Scene()
                 i += 1
                 self.novel.scenes[scId].title = self._convert_to_yw(cells[i])
                 i += 1
@@ -48,7 +49,7 @@ class CsvSceneList(CsvFile):
                 if cells[i] or self.novel.scenes[scId].notes:
                     self.novel.scenes[scId].notes = self._convert_to_yw(cells[i])
                 i += 1
-                if self.SCENE_CLASS.REACTION_MARKER.lower() in cells[i].lower():
+                if Scene.REACTION_MARKER.lower() in cells[i].lower():
                     self.novel.scenes[scId].isReactionScene = True
                 else:
                     self.novel.scenes[scId].isReactionScene = False
@@ -93,7 +94,7 @@ class CsvSceneList(CsvFile):
                 # Don't write back scene letters total
                 i += 1
                 try:
-                    self.novel.scenes[scId].status = self.SCENE_CLASS.STATUS.index(cells[i])
+                    self.novel.scenes[scId].status = Scene.STATUS.index(cells[i])
                 except ValueError:
                     pass
                     # Scene status remains None and will be ignored when

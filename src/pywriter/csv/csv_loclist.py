@@ -6,6 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from pywriter.pywriter_globals import *
+from pywriter.model.world_element import WorldElement
 from pywriter.csv.csv_file import CsvFile
 
 
@@ -33,7 +34,7 @@ class CsvLocList(CsvFile):
                 lcId = re.search('LcID\:([0-9]+)', cells[0]).group(1)
                 self.novel.srtLocations.append(lcId)
                 if not lcId in self.novel.locations:
-                    self.novel.locations[lcId] = self.WE_CLASS()
+                    self.novel.locations[lcId] = WorldElement()
                 if self.novel.locations[lcId].title or cells[1]:
                     self.novel.locations[lcId].title = self._convert_to_yw(cells[1])
                 if self.novel.locations[lcId].desc or cells[2]:

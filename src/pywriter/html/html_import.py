@@ -14,6 +14,8 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
+from pywriter.model.chapter import Chapter
+from pywriter.model.scene import Scene
 from pywriter.html.html_formatted import HtmlFormatted
 
 
@@ -55,7 +57,7 @@ class HtmlImport(HtmlFormatted):
                 self._lines = []
                 self._scCount += 1
                 self._scId = str(self._scCount)
-                self.novel.scenes[self._scId] = self.SCENE_CLASS()
+                self.novel.scenes[self._scId] = Scene()
                 self.novel.chapters[self._chId].srtScenes.append(self._scId)
                 self.novel.scenes[self._scId].status = '1'
                 self.novel.scenes[self._scId].title = f'Scene {self._scCount}'
@@ -84,7 +86,7 @@ class HtmlImport(HtmlFormatted):
             self._lines = []
             self._chCount += 1
             self._chId = str(self._chCount)
-            self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
+            self.novel.chapters[self._chId] = Chapter()
             self.novel.chapters[self._chId].srtScenes = []
             self.novel.srtChapters.append(self._chId)
             self.novel.chapters[self._chId].chType = 0
@@ -146,9 +148,9 @@ class HtmlImport(HtmlFormatted):
                 sceneText = self._cleanup_scene(sceneText)
                 self.novel.scenes[self._scId].sceneContent = sceneText
                 if self.novel.scenes[self._scId].wordCount < self._LOW_WORDCOUNT:
-                    self.novel.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Outline')
+                    self.novel.scenes[self._scId].status = Scene.STATUS.index('Outline')
                 else:
-                    self.novel.scenes[self._scId].status = self.SCENE_CLASS.STATUS.index('Draft')
+                    self.novel.scenes[self._scId].status = Scene.STATUS.index('Draft')
         elif tag == 'em' or tag == 'i':
             self._lines.append('[/i]')
         elif tag == 'strong' or tag == 'b':

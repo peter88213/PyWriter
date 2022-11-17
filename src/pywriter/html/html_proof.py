@@ -6,6 +6,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from pywriter.pywriter_globals import *
+from pywriter.model.chapter import Chapter
+from pywriter.model.scene import Scene
 from pywriter.html.html_formatted import HtmlFormatted
 from pywriter.model.splitter import Splitter
 
@@ -105,7 +107,7 @@ class HtmlProof(HtmlFormatted):
         elif '[ScID' in data:
             self._scId = re.search('[0-9]+', data).group()
             if not self._scId in self.novel.scenes:
-                self.novel.scenes[self._scId] = self.SCENE_CLASS()
+                self.novel.scenes[self._scId] = Scene()
                 self.novel.chapters[self._chId].srtScenes.append(self._scId)
             self._lines = []
         elif '[/ScID' in data:
@@ -115,7 +117,7 @@ class HtmlProof(HtmlFormatted):
         elif '[ChID' in data:
             self._chId = re.search('[0-9]+', data).group()
             if not self._chId in self.novel.chapters:
-                self.novel.chapters[self._chId] = self.CHAPTER_CLASS()
+                self.novel.chapters[self._chId] = Chapter()
                 self.novel.srtChapters.append(self._chId)
         elif '[/ChID' in data:
             self._chId = None

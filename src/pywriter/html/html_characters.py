@@ -6,6 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import re
 from pywriter.pywriter_globals import *
+from pywriter.model.character import Character
 from pywriter.html.html_file import HtmlFile
 
 
@@ -46,7 +47,7 @@ class HtmlCharacters(HtmlFile):
                     self._crId = re.search('[0-9]+', attrs[0][1]).group()
                     if not self._crId in self.novel.characters:
                         self.novel.srtCharacters.append(self._crId)
-                        self.novel.characters[self._crId] = self.CHARACTER_CLASS()
+                        self.novel.characters[self._crId] = Character()
                     self._section = 'desc'
                 elif attrs[0][1].startswith('CrID_bio'):
                     self._section = 'bio'

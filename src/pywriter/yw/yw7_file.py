@@ -11,6 +11,11 @@ import re
 from html import unescape
 import xml.etree.ElementTree as ET
 from pywriter.pywriter_globals import *
+from pywriter.model.chapter import Chapter
+from pywriter.model.scene import Scene
+from pywriter.model.character import Character
+from pywriter.model.world_element import WorldElement
+from pywriter.model.basic_element import BasicElement
 from pywriter.file.file import File
 from pywriter.model.id_generator import create_id
 from pywriter.yw.xml_indent import indent
@@ -120,7 +125,7 @@ class Yw7File(File):
             for loc in root.iter('LOCATION'):
                 lcId = loc.find('ID').text
                 self.novel.srtLocations.append(lcId)
-                self.novel.locations[lcId] = self.WE_CLASS()
+                self.novel.locations[lcId] = WorldElement()
 
                 if loc.find('Title') is not None:
                     self.novel.locations[lcId].title = loc.find('Title').text
@@ -157,7 +162,7 @@ class Yw7File(File):
             for itm in root.iter('ITEM'):
                 itId = itm.find('ID').text
                 self.novel.srtItems.append(itId)
-                self.novel.items[itId] = self.WE_CLASS()
+                self.novel.items[itId] = WorldElement()
 
                 if itm.find('Title') is not None:
                     self.novel.items[itId].title = itm.find('Title').text
@@ -194,7 +199,7 @@ class Yw7File(File):
             for crt in root.iter('CHARACTER'):
                 crId = crt.find('ID').text
                 self.novel.srtCharacters.append(crId)
-                self.novel.characters[crId] = self.CHARACTER_CLASS()
+                self.novel.characters[crId] = Character()
 
                 if crt.find('Title') is not None:
                     self.novel.characters[crId].title = crt.find('Title').text
@@ -251,7 +256,7 @@ class Yw7File(File):
                     if pnt.find('ID') is not None:
                         pnId = pnt.find('ID').text
                         self.novel.srtPrjNotes.append(pnId)
-                        self.novel.projectNotes[pnId] = self.PN_CLASS()
+                        self.novel.projectNotes[pnId] = BasicElement()
                         if pnt.find('Title') is not None:
                             self.novel.projectNotes[pnId].title = pnt.find('Title').text
                         if pnt.find('Desc') is not None:
@@ -298,7 +303,7 @@ class Yw7File(File):
             #--- Read attributes at scene level from the xml element tree.
             for scn in root.iter('SCENE'):
                 scId = scn.find('ID').text
-                self.novel.scenes[scId] = self.SCENE_CLASS()
+                self.novel.scenes[scId] = Scene()
 
                 if scn.find('Title') is not None:
                     self.novel.scenes[scId].title = scn.find('Title').text
@@ -461,7 +466,7 @@ class Yw7File(File):
             # This is necessary for re-reading.
             for chp in root.iter('CHAPTER'):
                 chId = chp.find('ID').text
-                self.novel.chapters[chId] = self.CHAPTER_CLASS()
+                self.novel.chapters[chId] = Chapter()
                 self.novel.srtChapters.append(chId)
 
                 if chp.find('Title') is not None:
