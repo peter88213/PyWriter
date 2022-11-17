@@ -34,7 +34,11 @@ class CsvItemList(CsvFile):
                 self.novel.srtItems.append(itId)
                 if not itId in self.novel.items:
                     self.novel.items[itId] = self.WE_CLASS()
-                self.novel.items[itId].title = self._convert_to_yw(cells[1])
-                self.novel.items[itId].desc = self._convert_to_yw(cells[2])
-                self.novel.items[itId].aka = self._convert_to_yw(cells[3])
-                self.novel.items[itId].tags = string_to_list(cells[4], divider=self._DIVIDER)
+                if self.novel.items[itId].title or cells[1]:
+                    self.novel.items[itId].title = self._convert_to_yw(cells[1])
+                if self.novel.items[itId].desc or cells[2]:
+                    self.novel.items[itId].desc = self._convert_to_yw(cells[2])
+                if self.novel.items[itId].aka or cells[3]:
+                    self.novel.items[itId].aka = self._convert_to_yw(cells[3])
+                if self.novel.items[itId].tags or cells[4]:
+                    self.novel.items[itId].tags = string_to_list(cells[4], divider=self._DIVIDER)
