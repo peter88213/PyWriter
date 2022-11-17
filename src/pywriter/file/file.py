@@ -32,13 +32,13 @@ class File:
     SUFFIX = None
     # To be extended by subclass methods.
 
-    _PRJ_KWVAR = ()
-    _CHP_KWVAR = ()
-    _SCN_KWVAR = ()
-    _CRT_KWVAR = ()
-    _LOC_KWVAR = ()
-    _ITM_KWVAR = ()
-    _PNT_KWVAR = ()
+    _PRJ_KWVAR = []
+    _CHP_KWVAR = []
+    _SCN_KWVAR = []
+    _CRT_KWVAR = []
+    _LOC_KWVAR = []
+    _ITM_KWVAR = []
+    _PNT_KWVAR = []
     # Keyword variables for custom fields in the .yw7 XML file.
 
     def __init__(self, filePath, **kwargs):

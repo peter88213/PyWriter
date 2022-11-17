@@ -213,6 +213,14 @@ class Scene(BasicElement):
         # str
         # xml: <ImageFile>
 
+        self.scnArcs = None
+        # List of str
+        # xml: <Field_SceneArcs>
+
+        self.scnStyle = None
+        # int
+        # xml: <Field_SceneStyle>
+
     @property
     def sceneContent(self):
         return self._sceneContent

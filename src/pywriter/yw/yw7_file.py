@@ -45,10 +45,14 @@ class Yw7File(File):
     # Names of xml elements containing CDATA.
     # ElementTree.write omits CDATA tags, so they have to be inserted afterwards.
 
-    _PRJ_KWVAR = (
+    _PRJ_KWVAR = [
         'Field_LanguageCode',
         'Field_CountryCode',
-        )
+        ]
+    _SCN_KWVAR = [
+        'Field_SceneArcs',
+        'Field_SceneStyle',
+        ]
 
     def __init__(self, filePath, **kwargs):
         """Initialize instance variables.
@@ -587,6 +591,11 @@ class Yw7File(File):
         read_chapters(root)
         self.adjust_scene_types()
 
+        #--- Set custom instance variables.
+        for scId in self.novel.scenes:
+            self.novel.scenes[scId].scnArcs = self.novel.scenes[scId].kwVar.get('Field_SceneArcs', None)
+            self.novel.scenes[scId].scnStyle = self.novel.scenes[scId].kwVar.get('Field_SceneStyle', None)
+
     def write(self):
         """Write instance variables to the yWriter xml file.
         
@@ -600,6 +609,13 @@ class Yw7File(File):
 
         if self.novel.languages is None:
             self.novel.get_languages()
+
+        #--- Get custom instance variables.
+        for scId in self.novel.scenes:
+            if self.novel.scenes[scId].scnArcs is not None:
+                self.novel.scenes[scId].kwVar['Field_SceneArcs'] = self.novel.scenes[scId].scnArcs
+            if self.novel.scenes[scId].scnStyle is not None:
+                self.novel.scenes[scId].kwVar['Field_SceneStyle'] = self.novel.scenes[scId].scnStyle
 
         self._build_element_tree()
         self._write_element_tree(self)
