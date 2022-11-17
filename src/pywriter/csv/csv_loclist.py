@@ -34,7 +34,11 @@ class CsvLocList(CsvFile):
                 self.novel.srtLocations.append(lcId)
                 if not lcId in self.novel.locations:
                     self.novel.locations[lcId] = self.WE_CLASS()
-                self.novel.locations[lcId].title = self._convert_to_yw(cells[1])
-                self.novel.locations[lcId].desc = self._convert_to_yw(cells[2])
-                self.novel.locations[lcId].aka = self._convert_to_yw(cells[3])
-                self.novel.locations[lcId].tags = string_to_list(cells[4], divider=self._DIVIDER)
+                if self.novel.locations[lcId].title or cells[1]:
+                    self.novel.locations[lcId].title = self._convert_to_yw(cells[1])
+                if self.novel.locations[lcId].desc or cells[2]:
+                    self.novel.locations[lcId].desc = self._convert_to_yw(cells[2])
+                if self.novel.locations[lcId].aka or cells[3]:
+                    self.novel.locations[lcId].aka = self._convert_to_yw(cells[3])
+                if self.novel.locations[lcId].tags or cells[4]:
+                    self.novel.locations[lcId].tags = string_to_list(cells[4], divider=self._DIVIDER)
