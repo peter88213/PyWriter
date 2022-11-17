@@ -42,20 +42,25 @@ class CsvSceneList(CsvFile):
                 i += 1
                 self.novel.scenes[scId].desc = self._convert_to_yw(cells[i])
                 i += 1
-                self.novel.scenes[scId].tags = string_to_list(cells[i], divider=self._DIVIDER)
+                if cells[i] or self.novel.scenes[scId].tags:
+                    self.novel.scenes[scId].tags = string_to_list(cells[i], divider=self._DIVIDER)
                 i += 1
-                self.novel.scenes[scId].notes = self._convert_to_yw(cells[i])
+                if cells[i] or self.novel.scenes[scId].notes:
+                    self.novel.scenes[scId].notes = self._convert_to_yw(cells[i])
                 i += 1
                 if self.SCENE_CLASS.REACTION_MARKER.lower() in cells[i].lower():
                     self.novel.scenes[scId].isReactionScene = True
                 else:
                     self.novel.scenes[scId].isReactionScene = False
                 i += 1
-                self.novel.scenes[scId].goal = self._convert_to_yw(cells[i])
+                if cells[i] or self.novel.scenes[scId].goal:
+                    self.novel.scenes[scId].goal = self._convert_to_yw(cells[i])
                 i += 1
-                self.novel.scenes[scId].conflict = self._convert_to_yw(cells[i])
+                if cells[i] or self.novel.scenes[scId].conflict:
+                    self.novel.scenes[scId].conflict = self._convert_to_yw(cells[i])
                 i += 1
-                self.novel.scenes[scId].outcome = self._convert_to_yw(cells[i])
+                if cells[i] or self.novel.scenes[scId].outcome:
+                    self.novel.scenes[scId].outcome = self._convert_to_yw(cells[i])
                 i += 1
                 # Don't write back sceneCount
                 i += 1
