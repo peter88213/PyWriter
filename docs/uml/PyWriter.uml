@@ -631,25 +631,7 @@
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_TschgDPiEeqKbaMl5EbWAw" name="YwCnv" isAbstract="true">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_cVeY4L4cEeuITv7MyBA5yA" name="convert">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_UVAe8JCtEey_Lt93nuuNDA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_wuSBoJCtEey_Lt93nuuNDA" name="source" type="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_y4AuQJCtEey_Lt93nuuNDA" name="target" type="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_aPjCIDPiEeqKbaMl5EbWAw" name="_confirm_overwrite" visibility="protected">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Dm6J8JCtEey_Lt93nuuNDA" name="fileName">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_FV3mIJCtEey_Lt93nuuNDA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-          </ownedParameter>
-        </ownedOperation>
-      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_mbjA8PxAEeq5hMee5ike2Q" name="YwCnvUi" isAbstract="true">
-        <generalization xmi:type="uml:Generalization" xmi:id="_l3wbYDPiEeqKbaMl5EbWAw" general="_TschgDPiEeqKbaMl5EbWAw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_r_JKgL4eEeuITv7MyBA5yA" name="newFile">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -681,6 +663,21 @@
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_dnMBYIeqEeq_kJF_AkSaiA" name="_open_newFile" visibility="protected"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_cVeY4L4cEeuITv7MyBA5yA" name="check">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_UVAe8JCtEey_Lt93nuuNDA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_wuSBoJCtEey_Lt93nuuNDA" name="source" type="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_y4AuQJCtEey_Lt93nuuNDA" name="target" type="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_aPjCIDPiEeqKbaMl5EbWAw" name="_confirm_overwrite" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Dm6J8JCtEey_Lt93nuuNDA" name="fileName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_FV3mIJCtEey_Lt93nuuNDA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_7-9fEPxAEeq5hMee5ike2Q" name="FileFactory">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ep78kr4hEeuITv7MyBA5yA" name="_fileClasses" visibility="protected" association="_ep6HYL4hEeuITv7MyBA5yA">
@@ -893,15 +890,15 @@
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MSL_QMKtEeu379CuP61w2A" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MSMmUMKtEeu379CuP61w2A" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_MSObgcKtEeu379CuP61w2A" type="_TschgDPiEeqKbaMl5EbWAw" association="_MSIU4MKtEeu379CuP61w2A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_MSNNYMKtEeu379CuP61w2A" name="source" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_MSIU4MKtEeu379CuP61w2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_MSObgcKtEeu379CuP61w2A" type="_mbjA8PxAEeq5hMee5ike2Q" association="_MSIU4MKtEeu379CuP61w2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_MSNNYMKtEeu379CuP61w2A" name="source" type="_hsKdIGqBEe2kI90TKb9lNQ" association="_MSIU4MKtEeu379CuP61w2A"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_N02E0MKtEeu379CuP61w2A" memberEnd="_N036AMKtEeu379CuP61w2A _N04hEcKtEeu379CuP61w2A" navigableOwnedEnd="_N036AMKtEeu379CuP61w2A">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_N03S8MKtEeu379CuP61w2A" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_N03S8cKtEeu379CuP61w2A" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_N04hEcKtEeu379CuP61w2A" type="_TschgDPiEeqKbaMl5EbWAw" association="_N02E0MKtEeu379CuP61w2A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_N036AMKtEeu379CuP61w2A" name="target" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_N02E0MKtEeu379CuP61w2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_N04hEcKtEeu379CuP61w2A" type="_mbjA8PxAEeq5hMee5ike2Q" association="_N02E0MKtEeu379CuP61w2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_N036AMKtEeu379CuP61w2A" name="target" type="_hsKdIGqBEe2kI90TKb9lNQ" association="_N02E0MKtEeu379CuP61w2A"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_Z0kBsHewEeyoo8DPyEkfSw" memberEnd="_Z0oTIHewEeyoo8DPyEkfSw _Z0qIUnewEeyoo8DPyEkfSw">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Z0md8HewEeyoo8DPyEkfSw" source="org.eclipse.papyrus">
@@ -915,7 +912,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_PZBEwIelEeqZkamAUXuhyQ" name="yw">
       <packagedElement xmi:type="uml:Class" xmi:id="_S2CgoCtgEeqgj_wxJ3Xgsg" name="Yw7File" isAbstract="true">
-        <generalization xmi:type="uml:Generalization" xmi:id="_S2CgoStgEeqgj_wxJ3Xgsg" general="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_S2CgoStgEeqgj_wxJ3Xgsg" general="_hsKdIGqBEe2kI90TKb9lNQ"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_a0QMEI91Eey0x9qBdTLxTA" name="DESCRIPTION" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -1076,7 +1073,7 @@
       <packagedElement xmi:type="uml:Usage" xmi:id="_OfoZUIffEeq_kJF_AkSaiA" client="_nxQV8IfcEeq_kJF_AkSaiA" supplier="_ZoscoIfYEeq_kJF_AkSaiA"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_PYsIQIffEeq_kJF_AkSaiA" client="_nxQV8IfcEeq_kJF_AkSaiA" supplier="_ypTQMCtbEeqgj_wxJ3Xgsg"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_hkf2MPyzEeqEK6KdQRY5bw" name="CsvFile">
-        <generalization xmi:type="uml:Generalization" xmi:id="_nRDJUPyzEeqEK6KdQRY5bw" general="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_nRDJUPyzEeqEK6KdQRY5bw" general="_hsKdIGqBEe2kI90TKb9lNQ"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_OuqhwJJ_EeyF7cNQ8xAkzg" name="EXTENSION" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -1165,7 +1162,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_r0wO4PsPEeq-TdV6dVW08A" name="File">
       <packagedElement xmi:type="uml:Class" xmi:id="_vHrYMPsPEeq-TdV6dVW08A" name="FileExport" isAbstract="true">
-        <generalization xmi:type="uml:Generalization" xmi:id="_9sLjcPsPEeq-TdV6dVW08A" general="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_9sLjcPsPEeq-TdV6dVW08A" general="_hsKdIGqBEe2kI90TKb9lNQ"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_obd_UI_bEeynvIR1yn0cow" name="SUFFIX" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -1416,6 +1413,15 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TZeOYI_qEeynvIR1yn0cow"/>
         </ownedEnd>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_hsKdIGqBEe2kI90TKb9lNQ" name="File">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_rmbt4GqBEe2kI90TKb9lNQ" name="novel" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_rmVnQGqBEe2kI90TKb9lNQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_rmVnQGqBEe2kI90TKb9lNQ" memberEnd="_rmbt4GqBEe2kI90TKb9lNQ _rmexMGqBEe2kI90TKb9lNQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rmafwGqBEe2kI90TKb9lNQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rmafwWqBEe2kI90TKb9lNQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_rmexMGqBEe2kI90TKb9lNQ" name="file" type="_hsKdIGqBEe2kI90TKb9lNQ" association="_rmVnQGqBEe2kI90TKb9lNQ"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_C8dO4IfQEeq_kJF_AkSaiA" name="html">
       <packagedElement xmi:type="uml:Class" xmi:id="_Zo7VgDIKEeqilJYfjdmi4Q" name="HtmlProof">
@@ -1597,7 +1603,7 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_8SW1YPyyEeqEK6KdQRY5bw" name="HtmlFile">
-        <generalization xmi:type="uml:Generalization" xmi:id="_G8Vr0PyzEeqEK6KdQRY5bw" general="_SZHKgCtUEeqgj_wxJ3Xgsg"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_G8Vr0PyzEeqEK6KdQRY5bw" general="_hsKdIGqBEe2kI90TKb9lNQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_zWEA0CthEeqgj_wxJ3Xgsg">
           <general xmi:type="uml:Class" href="Python.uml#_uzf0kCthEeqgj_wxJ3Xgsg"/>
         </generalization>
@@ -2002,7 +2008,7 @@ or success information</body>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_VmEbMJDOEey_Lt93nuuNDA" name="kwargs" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="Python.uml#_Ci24sJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_o57cEpDPEey_Lt93nuuNDA" name="ywPrj" visibility="public" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_o561AJDPEey_Lt93nuuNDA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_o57cEpDPEey_Lt93nuuNDA" name="prjFile" visibility="public" type="_hsKdIGqBEe2kI90TKb9lNQ" association="_o561AJDPEey_Lt93nuuNDA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_hO4SQH7DEey1Ut-6sSExGQ" name="root" visibility="public" aggregation="composite" association="_hO12AH7DEey1Ut-6sSExGQ">
           <type xmi:type="uml:Class" href="Python.uml#_GssmIIerEeq_kJF_AkSaiA"/>
         </ownedAttribute>
@@ -3036,7 +3042,7 @@ or success information</body>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_91Mn0JV_EeyYRYGRhyGnVA" name="test">
       <packagedElement xmi:type="uml:Class" xmi:id="_kqe5kJWEEeyYRYGRhyGnVA" name="ImportTest">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_Erwy0JWHEeyYRYGRhyGnVA" name="_importClass" visibility="protected" isStatic="true" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_ErrTQJWHEeyYRYGRhyGnVA">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Erwy0JWHEeyYRYGRhyGnVA" name="_importClass" visibility="protected" isStatic="true" type="_hsKdIGqBEe2kI90TKb9lNQ" association="_ErrTQJWHEeyYRYGRhyGnVA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ErxZ4JWHEeyYRYGRhyGnVA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EryA8JWHEeyYRYGRhyGnVA" value="1"/>
         </ownedAttribute>
@@ -3073,18 +3079,6 @@ or success information</body>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ODn6EJWHEeyYRYGRhyGnVA"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_FcivgJWHEeyYRYGRhyGnVA" memberEnd="_Fcj9oZWHEeyYRYGRhyGnVA _FckksZWHEeyYRYGRhyGnVA" navigableOwnedEnd="_Fcj9oZWHEeyYRYGRhyGnVA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FcjWkJWHEeyYRYGRhyGnVA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Fcj9oJWHEeyYRYGRhyGnVA" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_FckksZWHEeyYRYGRhyGnVA" name="testcase" type="_kqe5kJWEEeyYRYGRhyGnVA" association="_FcivgJWHEeyYRYGRhyGnVA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_O3aHcJWHEeyYRYGRhyGnVA"/>
-        </ownedEnd>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Fcj9oZWHEeyYRYGRhyGnVA" name="converter" type="_TschgDPiEeqKbaMl5EbWAw" association="_FcivgJWHEeyYRYGRhyGnVA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Fcj9opWHEeyYRYGRhyGnVA"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FckksJWHEeyYRYGRhyGnVA" value="1"/>
-        </ownedEnd>
-      </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_GWgdYJWHEeyYRYGRhyGnVA" memberEnd="_GWi5oZWHEeyYRYGRhyGnVA _GWkHwJWHEeyYRYGRhyGnVA" navigableOwnedEnd="_GWi5oZWHEeyYRYGRhyGnVA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GWiSkJWHEeyYRYGRhyGnVA" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GWi5oJWHEeyYRYGRhyGnVA" key="nature" value="UML_Nature"/>
@@ -3111,7 +3105,7 @@ or success information</body>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_RAcJIJWKEeyYRYGRhyGnVA" name="ImportExportTest">
         <generalization xmi:type="uml:Generalization" xmi:id="_KtsGwJWMEeyYRYGRhyGnVA" general="_lxdhAJWKEeyYRYGRhyGnVA"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_WiOEwZWMEeyYRYGRhyGnVA" name="_importClass" visibility="protected" isStatic="true" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_WiMPkJWMEeyYRYGRhyGnVA">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_WiOEwZWMEeyYRYGRhyGnVA" name="_importClass" visibility="protected" isStatic="true" type="_hsKdIGqBEe2kI90TKb9lNQ" association="_WiMPkJWMEeyYRYGRhyGnVA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WiS9QJWMEeyYRYGRhyGnVA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WiWnoJWMEeyYRYGRhyGnVA" value="1"/>
         </ownedAttribute>
@@ -3206,18 +3200,6 @@ or success information</body>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2nT8cZWNEeyYRYGRhyGnVA" value="1"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_-UPy8JWNEeyYRYGRhyGnVA" memberEnd="_-UQaApWNEeyYRYGRhyGnVA _-URBEpWNEeyYRYGRhyGnVA" navigableOwnedEnd="_-UQaApWNEeyYRYGRhyGnVA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-UQaAJWNEeyYRYGRhyGnVA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-UQaAZWNEeyYRYGRhyGnVA" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-URBEpWNEeyYRYGRhyGnVA" name="testcase" type="_lxdhAJWKEeyYRYGRhyGnVA" association="_-UPy8JWNEeyYRYGRhyGnVA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6dpfYJWOEeyYRYGRhyGnVA"/>
-        </ownedEnd>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-UQaApWNEeyYRYGRhyGnVA" name="converter" type="_TschgDPiEeqKbaMl5EbWAw" association="_-UPy8JWNEeyYRYGRhyGnVA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-URBEJWNEeyYRYGRhyGnVA"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-URBEZWNEeyYRYGRhyGnVA" value="1"/>
-        </ownedEnd>
-      </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_ERAsUJWOEeyYRYGRhyGnVA" memberEnd="_ERB6cpWOEeyYRYGRhyGnVA _ERChgZWOEeyYRYGRhyGnVA" navigableOwnedEnd="_ERB6cpWOEeyYRYGRhyGnVA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ERB6cJWOEeyYRYGRhyGnVA" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ERB6cZWOEeyYRYGRhyGnVA" key="nature" value="UML_Nature"/>
@@ -3228,18 +3210,6 @@ or success information</body>
         <ownedEnd xmi:type="uml:Property" xmi:id="_ERB6cpWOEeyYRYGRhyGnVA" name="yw7File" type="_S2CgoCtgEeqgj_wxJ3Xgsg" association="_ERAsUJWOEeyYRYGRhyGnVA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ERB6c5WOEeyYRYGRhyGnVA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ERChgJWOEeyYRYGRhyGnVA" value="1"/>
-        </ownedEnd>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_IMitwJWOEeyYRYGRhyGnVA" memberEnd="_IMj74ZWOEeyYRYGRhyGnVA _IMj75JWOEeyYRYGRhyGnVA" navigableOwnedEnd="_IMj74ZWOEeyYRYGRhyGnVA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IMjU0JWOEeyYRYGRhyGnVA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_IMj74JWOEeyYRYGRhyGnVA" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_IMj75JWOEeyYRYGRhyGnVA" name="testcase" type="_RAcJIJWKEeyYRYGRhyGnVA" association="_IMitwJWOEeyYRYGRhyGnVA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_orH48JWOEeyYRYGRhyGnVA"/>
-        </ownedEnd>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_IMj74ZWOEeyYRYGRhyGnVA" name="converter" type="_TschgDPiEeqKbaMl5EbWAw" association="_IMitwJWOEeyYRYGRhyGnVA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IMj74pWOEeyYRYGRhyGnVA"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IMj745WOEeyYRYGRhyGnVA" value="1"/>
         </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_MpBqsJWPEeyYRYGRhyGnVA" memberEnd="_MpC40pWPEeyYRYGRhyGnVA _MpDf4JWPEeyYRYGRhyGnVA" navigableOwnedEnd="_MpC40pWPEeyYRYGRhyGnVA">
