@@ -1,4 +1,4 @@
-""""Provide a tkinter Rich Text box class.
+"""Provide a tkinter Rich Text box class.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
