@@ -214,12 +214,18 @@ class Scene(BasicElement):
         # xml: <ImageFile>
 
         self.scnArcs = None
-        # List of str
+        # str
         # xml: <Field_SceneArcs>
+        # Semicolon-separated arc titles.
+        # Example: 'A' for 'A-Storyline'.
+        # If the scene is "Todo" type, an assigned single arc
+        # should be defined by it.
 
         self.scnStyle = None
-        # int
+        # str
         # xml: <Field_SceneStyle>
+        # May be 'explaining', 'descriptive', or 'summarizing'.
+        # None is the default, meaning 'staged'.
 
     @property
     def sceneContent(self):
