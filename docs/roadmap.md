@@ -435,6 +435,12 @@ Use the novel structure as a strategy class instead of making all file types inh
 Thus, the merge method is no nonger necessary.
 
 
+## Version 10: Streamline the global variables and functions module
+
+API change: 
+- Move the constants ADDITIONAL_WORD_LIMITS, NO_WORD_LIMITS , and 'NON_LETTERS' to the scene module.
+- Integrate the get_languages() function as languages() in the Novel.get_languages() method.
+
 ## Future:
 
 #### Full LibreOffice/OpenOffice integration

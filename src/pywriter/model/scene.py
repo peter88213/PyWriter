@@ -8,6 +8,20 @@ import re
 from pywriter.model.basic_element import BasicElement
 from pywriter.pywriter_globals import *
 
+#--- Regular expressions for counting words and characters like in LibreOffice.
+# See: https://help.libreoffice.org/latest/en-GB/text/swriter/guide/words_count.html
+
+ADDITIONAL_WORD_LIMITS = re.compile('--|—|–')
+# this is to be replaced by spaces, thus making dashes and dash replacements word limits
+
+NO_WORD_LIMITS = re.compile('\[.+?\]|\/\*.+?\*\/|-|^\>', re.MULTILINE)
+# this is to be replaced by empty strings, thus excluding markup and comments from
+# word counting, and making hyphens join words
+
+NON_LETTERS = re.compile('\[.+?\]|\/\*.+?\*\/|\n|\r')
+# this is to be replaced by empty strings, thus excluding markup, comments, and linefeeds
+# from letter counting
+
 
 class Scene(BasicElement):
     """yWriter scene representation.

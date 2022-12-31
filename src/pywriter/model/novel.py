@@ -7,8 +7,11 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import locale
+import re
 from pywriter.pywriter_globals import *
 from pywriter.model.basic_element import BasicElement
+
+LANGUAGE_TAG = re.compile('\[lang=(.*?)\]')
 
 
 class Novel(BasicElement):
@@ -164,11 +167,26 @@ class Novel(BasicElement):
         - language markup: 'Standard text [lang=en-AU]Australian text[/lang=en-AU].'
         - language code: 'en-AU'
         """
+
+        def languages(text):
+            """Return a generator object with the language codes appearing in text.
+            
+            Example:
+            - language markup: 'Standard text [lang=en-AU]Australian text[/lang=en-AU].'
+            - language code: 'en-AU'
+            """
+            if text:
+                m = LANGUAGE_TAG.search(text)
+                while m:
+                    text = text[m.span()[1]:]
+                    yield m.group(1)
+                    m = LANGUAGE_TAG.search(text)
+
         self.languages = []
         for scId in self.scenes:
             text = self.scenes[scId].sceneContent
             if text:
-                for language in get_languages(text):
+                for language in languages(text):
                     if not language in self.languages:
                         self.languages.append(language)
 
