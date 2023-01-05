@@ -16,7 +16,7 @@ File structure:
     ├── i18n/ 
     │   ├── messages.pot
     │   └── <language>.po
-    └── src/
+    └── tools/
         └── <calling script>
 
 Copyright (c) 2022 Peter Triesberger
