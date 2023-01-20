@@ -69,7 +69,6 @@ class Yw7File(File):
         self.tree = None
         self.scenesSplit = False
 
-        #--- Initialize custom keyword variables.
     def read(self):
         """Parse the yWriter xml file and get the instance variables.
         
