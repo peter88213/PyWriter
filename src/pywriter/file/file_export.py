@@ -176,7 +176,7 @@ class FileExport(File):
         else:
             reactionScene = Scene.ACTION_MARKER
 
-        #--- Create a combined scDate information.
+        #--- Date or day.
         if self.novel.scenes[scId].date is not None and self.novel.scenes[scId].date != Scene.NULL_DATE:
             scDay = ''
             scDate = self.novel.scenes[scId].date
@@ -190,9 +190,10 @@ class FileExport(File):
                 scDay = ''
                 cmbDate = ''
 
-        #--- Create a combined time information.
+        #--- Time.
         if self.novel.scenes[scId].time is not None:
-            scTime = self.novel.scenes[scId].time
+            scTime = self.novel.scenes[scId].time.rsplit(':', 1)[0]
+            # remove seconds
         else:
             scTime = ''
 

@@ -66,7 +66,7 @@ class Scene(BasicElement):
     ACTION_MARKER = 'A'
     REACTION_MARKER = 'R'
     NULL_DATE = '0001-01-01'
-    NULL_TIME = '00:00'
+    NULL_TIME = '00:00:00'
 
     def __init__(self):
         """Initialize instance variables.
@@ -195,7 +195,7 @@ class Scene(BasicElement):
         # xml: <SpecificDateTime>1900-06-01 20:38:00
 
         self.time = None
-        # str (hh:mm)
+        # str (hh:mm:ss)
         # xml: <SpecificDateMode>-1
         # xml: <SpecificDateTime>1900-06-01 20:38:00
 

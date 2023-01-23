@@ -367,7 +367,7 @@ class Yw7File(File):
                     if self.novel.scenes[scId].scType == 0:
                         self.novel.scenes[scId].scType = 3
 
-                #--- Export when RTF.
+                # Export when RTF.
                 if scn.find('ExportCondSpecific') is None:
                     self.novel.scenes[scId].doNotExport = False
                 elif scn.find('ExportWhenRTF') is not None:
@@ -403,33 +403,31 @@ class Yw7File(File):
                 else:
                     self.novel.scenes[scId].appendToPrev = False
 
+                #--- Date/time.
                 if scn.find('SpecificDateTime') is not None:
                     dateTime = scn.find('SpecificDateTime').text.split(' ')
                     for dt in dateTime:
                         if '-' in dt:
                             self.novel.scenes[scId].date = dt
                         elif ':' in dt:
-                            self.novel.scenes[scId].time = dt.rsplit(':', 1)[0]
+                            self.novel.scenes[scId].time = dt
                 else:
-                    hasUnspecificDateTime = False
                     if scn.find('Day') is not None:
                         self.novel.scenes[scId].day = scn.find('Day').text
-                        hasUnspecificDateTime = True
 
+                    hasUnspecificTime = False
                     if scn.find('Hour') is not None:
-                        hour = scn.find('Hour').text
-                        hasUnspecificDateTime = True
+                        hour = scn.find('Hour').text.zfill(2)
+                        hasUnspecificTime = True
                     else:
                         hour = '00'
-
                     if scn.find('Minute') is not None:
-                        minute = scn.find('Minute').text
-                        hasUnspecificDateTime = True
+                        minute = scn.find('Minute').text.zfill(2)
+                        hasUnspecificTime = True
                     else:
                         minute = '00'
-
-                    if hasUnspecificDateTime:
-                        self.novel.scenes[scId].time = f'{hour.zfill(2)}:{minute.zfill(2)}'
+                    if hasUnspecificTime:
+                        self.novel.scenes[scId].time = f'{hour}:{minute}:00'
 
                 if scn.find('LastsDays') is not None:
                     self.novel.scenes[scId].lastsDays = scn.find('LastsDays').text
@@ -787,7 +785,7 @@ class Yw7File(File):
             elif xmlScn.find('AppendToPrev') is not None:
                 xmlScn.remove(xmlScn.find('AppendToPrev'))
 
-            # Date/time information
+            #--- Write date/time.
             if (prjScn.date is not None) and (prjScn.time is not None):
                 dateTime = f'{prjScn.date} {prjScn.time}'
                 if xmlScn.find('SpecificDateTime') is not None:
@@ -819,16 +817,16 @@ class Yw7File(File):
                         xmlScn.find('Day').text = prjScn.day
                     except(AttributeError):
                         ET.SubElement(xmlScn, 'Day').text = prjScn.day
-                if prjScn.time is not None is not None:
-                    hour, minute = prjScn.time.split(':')
+                if prjScn.time is not None:
+                    hours, minutes, seconds = prjScn.time.split(':')
                     try:
-                        xmlScn.find('Hour').text = hour
+                        xmlScn.find('Hour').text = hours
                     except(AttributeError):
-                        ET.SubElement(xmlScn, 'Hour').text = hour
+                        ET.SubElement(xmlScn, 'Hour').text = hours
                     try:
-                        xmlScn.find('Minute').text = minute
+                        xmlScn.find('Minute').text = minutes
                     except(AttributeError):
-                        ET.SubElement(xmlScn, 'Minute').text = minute
+                        ET.SubElement(xmlScn, 'Minute').text = minutes
 
             if prjScn.lastsDays is not None:
                 try:
