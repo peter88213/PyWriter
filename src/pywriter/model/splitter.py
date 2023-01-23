@@ -102,8 +102,6 @@ class Splitter:
             newScene.date = parent.date
             newScene.time = parent.time
             newScene.day = parent.day
-            newScene.hour = parent.hour
-            newScene.minute = parent.minute
             newScene.lastsDays = parent.lastsDays
             newScene.lastsHours = parent.lastsHours
             newScene.lastsMinutes = parent.lastsMinutes

@@ -191,27 +191,10 @@ class FileExport(File):
                 cmbDate = ''
 
         #--- Create a combined time information.
-        if self.novel.scenes[scId].time is not None and self.novel.scenes[scId].date != Scene.NULL_DATE:
-            scHour = ''
-            scMinute = ''
+        if self.novel.scenes[scId].time is not None:
             scTime = self.novel.scenes[scId].time
-            cmbTime = self.novel.scenes[scId].time.rsplit(':', 1)[0]
         else:
             scTime = ''
-            if self.novel.scenes[scId].hour or self.novel.scenes[scId].minute:
-                if self.novel.scenes[scId].hour:
-                    scHour = self.novel.scenes[scId].hour
-                else:
-                    scHour = '00'
-                if self.novel.scenes[scId].minute:
-                    scMinute = self.novel.scenes[scId].minute
-                else:
-                    scMinute = '00'
-                cmbTime = f'{scHour.zfill(2)}:{scMinute.zfill(2)}'
-            else:
-                scHour = ''
-                scMinute = ''
-                cmbTime = ''
 
         #--- Create a combined duration information.
         if self.novel.scenes[scId].lastsDays is not None and self.novel.scenes[scId].lastsDays != '0':
@@ -256,10 +239,7 @@ class FileExport(File):
             Date=scDate,
             Time=scTime,
             Day=scDay,
-            Hour=scHour,
-            Minute=scMinute,
             ScDate=cmbDate,
-            ScTime=cmbTime,
             LastsDays=lastsDays,
             LastsHours=lastsHours,
             LastsMinutes=lastsMinutes,

@@ -315,7 +315,7 @@ class Yw7File(File):
                 pass
 
         def read_scenes(root):
-            #--- Read attributes at scene level from the xml element tree.
+            """ Read attributes at scene level from the xml element tree."""
             for scn in root.iter('SCENE'):
                 scId = scn.find('ID').text
                 self.novel.scenes[scId] = Scene()
@@ -409,16 +409,27 @@ class Yw7File(File):
                         if '-' in dt:
                             self.novel.scenes[scId].date = dt
                         elif ':' in dt:
-                            self.novel.scenes[scId].time = dt
+                            self.novel.scenes[scId].time = dt.rsplit(':', 1)[0]
                 else:
+                    hasUnspecificDateTime = False
                     if scn.find('Day') is not None:
                         self.novel.scenes[scId].day = scn.find('Day').text
+                        hasUnspecificDateTime = True
 
                     if scn.find('Hour') is not None:
-                        self.novel.scenes[scId].hour = scn.find('Hour').text
+                        hour = scn.find('Hour').text
+                        hasUnspecificDateTime = True
+                    else:
+                        hour = '00'
 
                     if scn.find('Minute') is not None:
-                        self.novel.scenes[scId].minute = scn.find('Minute').text
+                        minute = scn.find('Minute').text
+                        hasUnspecificDateTime = True
+                    else:
+                        minute = '00'
+
+                    if hasUnspecificDateTime:
+                        self.novel.scenes[scId].time = f'{hour.zfill(2)}:{minute.zfill(2)}'
 
                 if scn.find('LastsDays') is not None:
                     self.novel.scenes[scId].lastsDays = scn.find('LastsDays').text
@@ -780,6 +791,8 @@ class Yw7File(File):
             if (prjScn.date is not None) and (prjScn.time is not None):
                 dateTime = f'{prjScn.date} {prjScn.time}'
                 if xmlScn.find('SpecificDateTime') is not None:
+                    if dateTime.count(':') < 2:
+                        dateTime = f'{dateTime}:00'
                     xmlScn.find('SpecificDateTime').text = dateTime
                 else:
                     ET.SubElement(xmlScn, 'SpecificDateTime').text = dateTime
@@ -794,7 +807,7 @@ class Yw7File(File):
                     if xmlScn.find('Minute') is not None:
                         xmlScn.remove(xmlScn.find('Minute'))
 
-            elif (prjScn.day is not None) or (prjScn.hour is not None) or (prjScn.minute is not None):
+            elif (prjScn.day is not None) or (prjScn.time is not None):
 
                 if xmlScn.find('SpecificDateTime') is not None:
                     xmlScn.remove(xmlScn.find('SpecificDateTime'))
@@ -806,16 +819,16 @@ class Yw7File(File):
                         xmlScn.find('Day').text = prjScn.day
                     except(AttributeError):
                         ET.SubElement(xmlScn, 'Day').text = prjScn.day
-                if prjScn.hour is not None:
+                if prjScn.time is not None is not None:
+                    hour, minute = prjScn.time.split(':')
                     try:
-                        xmlScn.find('Hour').text = prjScn.hour
+                        xmlScn.find('Hour').text = hour
                     except(AttributeError):
-                        ET.SubElement(xmlScn, 'Hour').text = prjScn.hour
-                if prjScn.minute is not None:
+                        ET.SubElement(xmlScn, 'Hour').text = hour
                     try:
-                        xmlScn.find('Minute').text = prjScn.minute
+                        xmlScn.find('Minute').text = minute
                     except(AttributeError):
-                        ET.SubElement(xmlScn, 'Minute').text = prjScn.minute
+                        ET.SubElement(xmlScn, 'Minute').text = minute
 
             if prjScn.lastsDays is not None:
                 try:

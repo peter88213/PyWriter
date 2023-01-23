@@ -27,7 +27,7 @@ This project uses semantic versioning with three-part numbers.
   The latest untagged minor version builds might belong to the next major release development, thus not being necessarily backward-compatible.
 - **Patch** numbers are incremented for minor changes and bug fixes which do not change the API. 
 
-## Version 1.x: Standalone exporters and importers for proof reading
+## Version 1: Standalone exporters and importers for proof reading
 
 Standalone exporters and importers to and from office word processors. 
 
@@ -101,7 +101,7 @@ Standalone exporters and importers to and from office word processors.
 
 - Support outline import.
 
-## Version 2.x: Template-based exporters
+## Version 2: Template-based exporters
 
 Standalone exporters and importers to be used by Open/LibreOffice extensions. 
 
@@ -177,7 +177,7 @@ Change scene and plot list export from csv to ods file format.
 Start with v3 development. This version is backward-incompatible.
 
 
-## Version 3.x: New user interface concept
+## Version 3: New user interface concept
 
 The converter is now even more loosely coupled with its user interface. 
 This should make it easier for application developers to customize user interaction, 
@@ -259,7 +259,7 @@ Expand the document structure by splitting scenes.
 Start with v4 development. This version is backward-incompatible.
 
 
-## Version 4.x: Build the novel tree independently from the existing yWriter project
+## Version 4: Build the novel tree independently from the existing yWriter project
 
 - Write back the whole yWriter project structure.
     - Create new xml subtrees when writing back a yWriter project.
@@ -281,7 +281,7 @@ Start with v4 development. This version is backward-incompatible.
 Start with v5 development. This version is backward-incompatible.
 
 
-## Version 5.x: Overall quality improvement
+## Version 5: Overall quality improvement
 
 #### Improve the design
 
@@ -359,11 +359,11 @@ thus allowing custom classes (extends the API).
 
 - Provide a tkinter Rich Text box class.
 
-#### v6.0
+## Version 6: Clean up the API
 
 - Remove Chapter.oldType from the API. 
 
-#### v7.0
+## Version 7: Improve standardization, add project notes
 
 - Read and write project notes.
 - Move keyword variables type definition from Yw7File to Novel.
@@ -429,7 +429,7 @@ Refactor for standardization.
 - Throw exceptions instead of returning error messages.
 
 
-## Version 9: Structure change
+## Version 9: Major structure change
 
 Use the novel structure as a strategy class instead of making all file types inherit from it.
 Thus, the merge method is no nonger necessary.
@@ -440,6 +440,12 @@ Thus, the merge method is no nonger necessary.
 API change: 
 - Move the constants ADDITIONAL_WORD_LIMITS, NO_WORD_LIMITS , and 'NON_LETTERS' to the scene module.
 - Integrate the get_languages() function as languages() in the Novel.get_languages() method.
+
+## Version 11: Clean up date/time
+
+- Use the same time string for both date/time modes.
+- Changing the date/time mode means just switching between date and day.
+
 
 ## Future:
 

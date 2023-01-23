@@ -109,14 +109,11 @@ There are two options:
 - **$Field3** - Scene rating: field 3
 - **$Field4** - Scene rating: field 4
 
-- **$Date** - Specific scene date
-- **$Time** - Specific scene time
-- **$Day** - Time scene begins: day
-- **$Hour** - Time scene begins: hour
-- **$Minute** - Time scene begins: minute
+- **$Date** - Specific scene date (yyyy-mm-dd)
+- **$Time** - Time scene begins: (hh:mm)
+- **$Day** - Day scene begins 
 - 
-- **$ScDate** - Combination of date and day
-- **$ScTime** - Combination of time and hour and minute
+- **$ScDate** - Date or day
 
 - **$LastsDays** - Amount of time scene lasts: days
 - **$LastsHours** - Amount of time scene lasts: hours
