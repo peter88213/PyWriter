@@ -9,6 +9,9 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import re
 from html import unescape
+from datetime import datetime
+from datetime import date
+from datetime import time
 import xml.etree.ElementTree as ET
 from pywriter.pywriter_globals import *
 from pywriter.model.chapter import Chapter
@@ -403,17 +406,30 @@ class Yw7File(File):
                 else:
                     self.novel.scenes[scId].appendToPrev = False
 
-                #--- Date/time.
+                #--- Scene start.
                 if scn.find('SpecificDateTime') is not None:
-                    dateTime = scn.find('SpecificDateTime').text.split(' ')
-                    for dt in dateTime:
-                        if '-' in dt:
-                            self.novel.scenes[scId].date = dt
-                        elif ':' in dt:
-                            self.novel.scenes[scId].time = dt
+                    dateTimeStr = scn.find('SpecificDateTime').text
+
+                    # Check SpecificDateTime for ISO compliance.
+                    try:
+                        dateTime = datetime.fromisoformat(dateTimeStr)
+                    except:
+                        self.novel.scenes[scId].date = ''
+                        self.novel.scenes[scId].time = ''
+                    else:
+                        startDateTime = dateTime.isoformat().split('T')
+                        self.novel.scenes[scId].date = startDateTime[0]
+                        self.novel.scenes[scId].time = startDateTime[1]
                 else:
                     if scn.find('Day') is not None:
-                        self.novel.scenes[scId].day = scn.find('Day').text
+                        day = scn.find('Day').text
+
+                        # Check if Day represents an integer.
+                        try:
+                            int(day)
+                        except ValueError:
+                            day = ''
+                        self.novel.scenes[scId].day = day
 
                     hasUnspecificTime = False
                     if scn.find('Hour') is not None:
@@ -429,6 +445,7 @@ class Yw7File(File):
                     if hasUnspecificTime:
                         self.novel.scenes[scId].time = f'{hour}:{minute}:00'
 
+                #--- Scene duration.
                 if scn.find('LastsDays') is not None:
                     self.novel.scenes[scId].lastsDays = scn.find('LastsDays').text
 
@@ -654,6 +671,24 @@ class Yw7File(File):
             return index
 
         def build_scene_subtree(xmlScn, prjScn):
+
+            def remove_date_time():
+                """Delete all scene start data."""
+                if xmlScn.find('SpecificDateTime') is not None:
+                    xmlScn.remove(xmlScn.find('SpecificDateTime'))
+
+                if xmlScn.find('SpecificDateMode') is not None:
+                    xmlScn.remove(xmlScn.find('SpecificDateMode'))
+
+                if xmlScn.find('Day') is not None:
+                    xmlScn.remove(xmlScn.find('Day'))
+
+                if xmlScn.find('Hour') is not None:
+                    xmlScn.remove(xmlScn.find('Hour'))
+
+                if xmlScn.find('Minute') is not None:
+                    xmlScn.remove(xmlScn.find('Minute'))
+
             i = 1
             i = set_element(xmlScn, 'Title', prjScn.title, i)
 
@@ -785,10 +820,16 @@ class Yw7File(File):
             elif xmlScn.find('AppendToPrev') is not None:
                 xmlScn.remove(xmlScn.find('AppendToPrev'))
 
-            #--- Write date/time.
+            #--- Write scene start.
             if (prjScn.date is not None) and (prjScn.time is not None):
-                dateTime = f'{prjScn.date} {prjScn.time}'
-                if xmlScn.find('SpecificDateTime') is not None:
+                separator = ' '
+                dateTime = f'{prjScn.date}{separator}{prjScn.time}'
+
+                # Remove scene start data from XML, if date and time are empty strings.
+                if dateTime == separator:
+                    remove_date_time()
+
+                elif xmlScn.find('SpecificDateTime') is not None:
                     if dateTime.count(':') < 2:
                         dateTime = f'{dateTime}:00'
                     xmlScn.find('SpecificDateTime').text = dateTime
@@ -807,44 +848,53 @@ class Yw7File(File):
 
             elif (prjScn.day is not None) or (prjScn.time is not None):
 
-                if xmlScn.find('SpecificDateTime') is not None:
-                    xmlScn.remove(xmlScn.find('SpecificDateTime'))
+                # Remove scene start data from XML, if day and time are empty strings.
+                if not prjScn.day and not prjScn.time:
+                    remove_date_time()
 
-                if xmlScn.find('SpecificDateMode') is not None:
-                    xmlScn.remove(xmlScn.find('SpecificDateMode'))
-                if prjScn.day is not None:
-                    try:
-                        xmlScn.find('Day').text = prjScn.day
-                    except(AttributeError):
-                        ET.SubElement(xmlScn, 'Day').text = prjScn.day
-                if prjScn.time is not None:
-                    hours, minutes, seconds = prjScn.time.split(':')
-                    try:
-                        xmlScn.find('Hour').text = hours
-                    except(AttributeError):
-                        ET.SubElement(xmlScn, 'Hour').text = hours
-                    try:
-                        xmlScn.find('Minute').text = minutes
-                    except(AttributeError):
-                        ET.SubElement(xmlScn, 'Minute').text = minutes
+                else:
+                    if xmlScn.find('SpecificDateTime') is not None:
+                        xmlScn.remove(xmlScn.find('SpecificDateTime'))
 
+                    if xmlScn.find('SpecificDateMode') is not None:
+                        xmlScn.remove(xmlScn.find('SpecificDateMode'))
+                    if prjScn.day is not None:
+                        try:
+                            xmlScn.find('Day').text = prjScn.day
+                        except(AttributeError):
+                            ET.SubElement(xmlScn, 'Day').text = prjScn.day
+                    if prjScn.time is not None:
+                        hours, minutes, seconds = prjScn.time.split(':')
+                        try:
+                            xmlScn.find('Hour').text = hours
+                        except(AttributeError):
+                            ET.SubElement(xmlScn, 'Hour').text = hours
+                        try:
+                            xmlScn.find('Minute').text = minutes
+                        except(AttributeError):
+                            ET.SubElement(xmlScn, 'Minute').text = minutes
+
+            #--- Write scene duration.
             if prjScn.lastsDays is not None:
                 try:
                     xmlScn.find('LastsDays').text = prjScn.lastsDays
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'LastsDays').text = prjScn.lastsDays
+                    if prjScn.lastsDays:
+                        ET.SubElement(xmlScn, 'LastsDays').text = prjScn.lastsDays
 
             if prjScn.lastsHours is not None:
                 try:
                     xmlScn.find('LastsHours').text = prjScn.lastsHours
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'LastsHours').text = prjScn.lastsHours
+                    if prjScn.lastsHours:
+                        ET.SubElement(xmlScn, 'LastsHours').text = prjScn.lastsHours
 
             if prjScn.lastsMinutes is not None:
                 try:
                     xmlScn.find('LastsMinutes').text = prjScn.lastsMinutes
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'LastsMinutes').text = prjScn.lastsMinutes
+                    if prjScn.lastsMinutes:
+                        ET.SubElement(xmlScn, 'LastsMinutes').text = prjScn.lastsMinutes
 
             # Plot related information
             if prjScn.isReactionScene:
@@ -913,6 +963,48 @@ class Yw7File(File):
                     items = ET.SubElement(xmlScn, 'Items')
                 for itId in prjScn.items:
                     ET.SubElement(items, 'ItemID').text = itId
+
+            ''' Removing empty characters/locations/items entries
+            
+            if prjScn.characters is not None:
+                characters = xmlScn.find('Characters')
+                if characters is not None:
+                    for oldCrId in characters.findall('CharID'):
+                        characters.remove(oldCrId)
+                if prjScn.characters:
+                    if characters is None:
+                        characters = ET.SubElement(xmlScn, 'Characters')
+                    for crId in prjScn.characters:
+                        ET.SubElement(characters, 'CharID').text = crId
+                elif characters is not None:
+                    xmlScn.remove(xmlScn.find('Characters'))
+
+            if prjScn.locations is not None:
+                locations = xmlScn.find('Locations')
+                if locations is not None:
+                    for oldLcId in locations.findall('LocID'):
+                        locations.remove(oldLcId)
+                if prjScn.locations:
+                    if locations is None:
+                        locations = ET.SubElement(xmlScn, 'Locations')
+                    for lcId in prjScn.locations:
+                        ET.SubElement(locations, 'LocID').text = lcId
+                elif locations is not None:
+                    xmlScn.remove(xmlScn.find('Locations'))
+
+            if prjScn.items is not None:
+                items = xmlScn.find('Items')
+                if items is not None:
+                    for oldItId in items.findall('ItemID'):
+                        items.remove(oldItId)
+                if prjScn.items:
+                    if items is None:
+                        items = ET.SubElement(xmlScn, 'Items')
+                    for itId in prjScn.items:
+                        ET.SubElement(items, 'ItemID').text = itId
+                elif items is not None:
+                    xmlScn.remove(xmlScn.find('Items'))
+            '''
 
         def build_chapter_subtree(xmlChp, prjChp, sortOrder):
             # This is how yWriter 7.1.3.0 writes the chapter type:
