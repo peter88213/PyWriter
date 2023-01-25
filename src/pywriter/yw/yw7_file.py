@@ -10,8 +10,6 @@ import os
 import re
 from html import unescape
 from datetime import datetime
-from datetime import date
-from datetime import time
 import xml.etree.ElementTree as ET
 from pywriter.pywriter_globals import *
 from pywriter.model.chapter import Chapter
