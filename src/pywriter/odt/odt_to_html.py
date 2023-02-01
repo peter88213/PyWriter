@@ -6,9 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import sys
-from shutil import rmtree
 import zipfile
-import tempfile
 from xml import sax
 from pywriter.pywriter_globals import *
 
@@ -28,8 +26,7 @@ class OdtToHtml(sax.ContentHandler):
         self._comment = None
 
     def startElement(self, name, attrs):
-        """Map XML element to HTML equivalent and call handle_starttag().
-        
+        """Overrides the xml.sax.ContentHandler method             
         """
         xmlAttributes = {}
         for attribute in attrs.items():
@@ -56,8 +53,7 @@ class OdtToHtml(sax.ContentHandler):
             self._lines.append(self._HTML_HEADER)
 
     def endElement(self, name):
-        """Map XML element to HTML equivalent and call handle_endtag().
-        
+        """Overrides the xml.sax.ContentHandler method     
         """
         if name == 'text:p':
             if self._comment is None:
@@ -77,8 +73,7 @@ class OdtToHtml(sax.ContentHandler):
             self._lines.append('</html>\n')
 
     def characters(self, content):
-        """Map XML character data to HTML equivalent and call handle_data().
-        
+        """Overrides the xml.sax.ContentHandler method             
         """
         if self._comment is not None:
             if self._comment == 1:
@@ -89,38 +84,21 @@ class OdtToHtml(sax.ContentHandler):
             self._lines.append(content)
 
     def read(self, filePath):
-        """Parse the file and get the instance variables.
+        """Unpack content.xml and convert its contents to HTML.
         
-        This is a template method for subclasses tailored to the 
-        content of the respective XML file.
+        Positional arguments:
+            filePath -- str: Path of the ODT file. 
         """
         self.filePath = filePath
-        self._tempDir = tempfile.mkdtemp(suffix='.tmp', prefix='odf_')
         try:
             with zipfile.ZipFile(self.filePath, 'r') as odfFile:
-                odfFile.extract('content.xml', self._tempDir)
+                content = odfFile.read('content.xml')
         except ValueError:
             raise Error(f'{_("Cannot read file")}: "{norm_path(self.filePath)}".')
-            self._tear_down()
 
-        try:
-            with open(f'{self._tempDir}/content.xml', 'r', encoding='utf-8') as contentXml:
-                content = contentXml.read()
-        except:
-            self._tear_down()
-            raise Error(f'{_("Cannot read file")}: "{norm_path(self.filePath)}".')
-
-        self._tear_down()
         self._lines = []
         sax.parseString(content, self)
         return ''.join(self._lines)
-
-    def _tear_down(self):
-        """Delete the temporary directory containing the unpacked ODF directory structure."""
-        try:
-            rmtree(self._tempDir)
-        except:
-            pass
 
 
 def main(filePath):
