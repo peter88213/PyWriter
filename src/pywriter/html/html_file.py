@@ -2,7 +2,7 @@
 
 Other html file representations inherit from this class.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -12,7 +12,7 @@ from pywriter.pywriter_globals import *
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.file.file import File
-from pywriter.html.html_fop import read_html_file
+from pywriter.odt.odt_to_html import OdtToHtml
 
 
 class HtmlFile(File, HTMLParser):
@@ -23,7 +23,7 @@ class HtmlFile(File, HTMLParser):
         handle comment --
         read --
     """
-    EXTENSION = '.html'
+    EXTENSION = '.odt'
 
     _TYPE = 0
 
@@ -131,7 +131,7 @@ class HtmlFile(File, HTMLParser):
         This is a template method for subclasses tailored to the 
         content of the respective HTML file.
         """
-        content = read_html_file(self._filePath)
+        content = OdtToHtml().read(self.filePath)
         content = self._preprocess(content)
         self.feed(content)
         self._postprocess()

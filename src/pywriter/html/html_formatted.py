@@ -20,9 +20,9 @@ class HtmlFormatted(HtmlFile):
     _INDENT = '>'
 
     def read(self):
-        """Add instance variables.
-
-        Extends the superclass constructor.
+        """Parse the file and get the instance variables.
+        
+        Extends the superclass method.
         """
         self.novel.languages = []
         super().read()
