@@ -10,7 +10,7 @@ from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.html.html_import import HtmlImport
 from pywriter.html.html_outline import HtmlOutline
-from pywriter.html.html_fop import read_html_file
+from pywriter.odt.odt_to_html import OdtToHtml
 
 
 class NewProjectFactory(FileFactory):
@@ -42,9 +42,9 @@ class NewProjectFactory(FileFactory):
 
         fileName, __ = os.path.splitext(sourcePath)
         targetFile = Yw7File(f'{fileName}{Yw7File.EXTENSION}', **kwargs)
-        if sourcePath.endswith('.html'):
+        if sourcePath.endswith('.odt'):
             # The source file might be an outline or a "work in progress".
-            content = read_html_file(sourcePath)
+            content = OdtToHtml().read(sourcePath)
             if "<h3" in content.lower():
                 sourceFile = HtmlOutline(sourcePath, **kwargs)
             else:
