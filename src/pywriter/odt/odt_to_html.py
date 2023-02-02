@@ -45,35 +45,30 @@ class OdtToHtml(sax.ContentHandler):
             if self._comment is not None:
                 self._comment += 1
             elif style == 'Quotations':
-                self._lines.append('<blockquote>')
+                self.handle_starttag('blockquote', [()])
                 self._paragraph = True
                 self._blockquote = True
             else:
-                self._lines.append('<p>')
+                self.handle_starttag('p', [()])
                 self._paragraph = True
         elif name == 'text:span':
             if style in self._emTags:
                 self._em = True
-                self._lines.append('<em>')
+                self.handle_starttag('em', [()])
             elif style in self._strongTags:
                 self._strong = True
-                self._lines.append('<strong>')
+                self.handle_starttag('strong', [()])
             elif style in self._languageTags:
                 self._lang = True
-                self._lines.append(f'<span lang="{self._languageTags[style]}">')
+                self.handle_starttag('span', [('lang', self._languageTags[style])])
         elif name == 'text:section':
             sectionId = xmlAttributes['text:name']
-            self._lines.append(f"<div id='{sectionId}'>\n")
+            self.handle_starttag('div', [('id', sectionId)])
         elif name == 'office:annotation':
-            self._lines.append('<!-- ')
             self._comment = 0
         elif name == 'text:h':
             self._heading = f'h{xmlAttributes["text:outline-level"]}'
-            self._lines.append(f'<{self._heading}>')
-        elif name == 'office:body':
-            self._lines.append('<body>\n')
-        elif name == 'office:document-content':
-            self._lines.append(self._HTML_HEADER)
+            self.handle_starttag(self._heading, [()])
         elif name == 'style:style':
             self._style = xmlAttributes.get('style:name', None)
         elif name == 'style:text-properties':
@@ -94,33 +89,27 @@ class OdtToHtml(sax.ContentHandler):
         if name == 'text:p':
             if self._comment is None:
                 if self._blockquote:
-                    self._lines.append('</blockquote>\n')
+                    self.handle_endtag('blockquote')
                     self._blockquote = False
                 else:
-                    self._lines.append('</p>\n')
+                    self.handle_endtag('p')
                 self._paragraph = False
         elif name == 'text:span':
             if self._em:
                 self._em = False
-                self._lines.append('</em>')
+                self.handle_endtag('em')
             elif self._strong:
                 self._strong = False
-                self._lines.append('</strong>')
+                self.handle_endtag('strong')
             elif self._lang:
                 self._lang = False
-                self._lines.append('</span>')
         elif name == 'text:section':
-            self._lines.append(f"</div>\n")
+            self.handle_endtag('div')
         elif name == 'office:annotation':
-            self._lines.append(' -->')
             self._comment = None
         elif name == 'text:h':
-            self._lines.append(f'</{self._heading}>\n')
+            self.handle_endtag(self._heading)
             self._heading = None
-        elif name == 'office:body':
-            self._lines.append('</body>')
-        elif name == 'office:document-content':
-            self._lines.append('</html>\n')
         elif name == 'style:style':
             self._style = None
 
@@ -129,32 +118,57 @@ class OdtToHtml(sax.ContentHandler):
         """
         if self._comment is not None:
             if self._comment == 1:
-                self._lines.append(content)
+                self.handle_comment(content)
         elif self._paragraph:
-            self._lines.append(content)
+            self.handle_data(content)
         elif self._heading is not None:
-            self._lines.append(content)
+            self.handle_data(content)
 
-    def read(self, filePath):
-        """Unpack content.xml and convert its contents to HTML.
+    def handle_starttag(self, tag, attrs):
+        """Stub for a start tag handler.
         
         Positional arguments:
-            filePath -- str: Path of the ODT file. 
+            tag -- str: name of the tag converted to lower case.
+            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         """
-        self.filePath = filePath
+
+    def handle_endtag(self, tag):
+        """Stub for an end tag handler.
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+        """
+
+    def handle_data(self, data):
+        """Stub for a data handler.
+
+        Positional arguments:
+            data -- str: text to be stored. 
+        """
+
+    def handle_comment(self, data):
+        """Stub for a comment handler.
+        
+        Positional arguments:
+            data -- str: comment text. 
+        """
+
+    def read(self):
+        """Unpack content.xml and convert its contents to HTML.
+        """
         try:
             with zipfile.ZipFile(self.filePath, 'r') as odfFile:
                 content = odfFile.read('content.xml')
         except:
             raise Error(f'{_("Cannot read file")}: "{norm_path(self.filePath)}".')
 
-        self._lines = []
         sax.parseString(content, self)
-        return ''.join(self._lines)
 
 
 def main(filePath):
-    htmlText = OdtToHtml().read(filePath)
+    converter = OdtToHtml()
+    converter.filePath = filePath
+    htmlText = converter.read(filePath)
     with open(f'{os.path.splitext(filePath)[0]}.html', 'w', encoding='utf-8') as f:
         f.write(htmlText)
 

@@ -1,13 +1,12 @@
 """Provide a generic class for ODT file import.
 
-Other odt file readers inherit from this class.
+Other ODTt file readers inherit from this class.
 
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
-from html.parser import HTMLParser
 from pywriter.pywriter_globals import *
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
@@ -15,7 +14,7 @@ from pywriter.file.file import File
 from pywriter.odt.odt_to_html import OdtToHtml
 
 
-class HtmlFile(File, HTMLParser):
+class HtmlFile(File, OdtToHtml):
     """Generic ODT file reader.
     
     Public methods:
@@ -36,7 +35,7 @@ class HtmlFile(File, HTMLParser):
     _INDENT = '>'
 
     def __init__(self, filePath, **kwargs):
-        """Initialize the HTML parser and local instance variables for parsing.
+        """Initialize the ODT parser and local instance variables for parsing.
         
         Positional arguments:
             filePath -- str: path to the file represented by the File instance.
@@ -44,12 +43,11 @@ class HtmlFile(File, HTMLParser):
         Optional arguments:
             kwargs -- keyword arguments to be used by subclasses.            
 
-        The HTML parser works like a state machine. 
+        The ODT parser works like a state machine. 
         Scene ID, chapter ID and processed lines must be saved between the transitions.         
         Extends the superclass constructor.
         """
         super().__init__(filePath)
-        HTMLParser.__init__(self)
         self._lines = []
         self._scId = None
         self._chId = None
@@ -82,9 +80,9 @@ class HtmlFile(File, HTMLParser):
             tag -- str: name of the tag converted to lower case.
             attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         
-        Overrides HTMLparser.handle_starttag() called by the parser to handle the start of a tag. 
-        This method is applicable to HTML files that are divided into chapters and scenes. 
-        For differently structured HTML files  do override this method in a subclass.
+        Overrides the superclass method. 
+        This method is applicable to ODT files that are divided into chapters and scenes. 
+        For differently structured ODT files  do override this method in a subclass.
         """
         if tag == 'div':
             if attrs[0][0] == 'id':
@@ -102,24 +100,6 @@ class HtmlFile(File, HTMLParser):
                         self.novel.srtChapters.append(self._chId)
                     self.novel.chapters[self._chId].chType = self._TYPE
 
-    def handle_endtag(self, tag):
-        """Stub for an end tag handler.
-        
-        Positional arguments:
-            tag -- str: name of the tag converted to lower case.
-
-        Overrides the superclass method.
-        """
-
-    def handle_data(self, data):
-        """Stub for a data handler.
-
-        Positional arguments:
-            data -- str: text to be stored. 
-        
-        Overrides the superclass method.
-        """
-
     def handle_comment(self, data):
         """Process inline comments within scene content.
         
@@ -132,10 +112,6 @@ class HtmlFile(File, HTMLParser):
             self._lines.append(f'{self._COMMENT_START}{data}{self._COMMENT_END}')
 
     def read(self):
-        """Parse the file and get the instance variables.
-        
-        This is a template method for subclasses tailored to the 
-        content of the respective HTML file.
+        """Unpack content.xml and convert its contents to HTML.
         """
-        content = OdtToHtml().read(self.filePath)
-        self.feed(content)
+        OdtToHtml.read(self)

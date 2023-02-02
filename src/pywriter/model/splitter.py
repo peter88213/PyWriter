@@ -82,7 +82,7 @@ class Splitter:
                     title = parent.title
                 newScene.title = f'{title} Split: {splitCount}'
             else:
-                newScene.title = f'_("New Scene") Split: {splitCount}'
+                newScene.title = f'{_("New Scene")} Split: {splitCount}'
             if desc:
                 newScene.desc = desc
             if parent.desc and not parent.desc.startswith(WARNING):
