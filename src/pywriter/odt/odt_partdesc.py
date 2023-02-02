@@ -2,7 +2,7 @@
 
 Parts are chapters marked `This chapter  begins a new section` in yWriter.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -11,7 +11,7 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtPartDesc(OdtFile):
-    """ODT part summaries file representation.
+    """ODT part summaries file writer.
 
     Export a synopsis with invisibly tagged part descriptions.
     """

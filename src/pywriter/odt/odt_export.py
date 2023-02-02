@@ -1,6 +1,6 @@
 """Provide a class for ODT chapters and scenes export.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -9,7 +9,7 @@ from pywriter.odt.odt_formatted import OdtFormatted
 
 
 class OdtExport(OdtFormatted):
-    """ODT novel file representation.
+    """ODT novel file writer.
 
     Export a non-reimportable manuscript with chapters and scenes.
     """

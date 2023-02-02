@@ -1,6 +1,6 @@
 """Provide a class for ODT invisibly tagged "Todo" chapters export.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -10,7 +10,7 @@ from pywriter.odt.odt_manuscript import OdtManuscript
 
 
 class OdtTodo(OdtManuscript):
-    """ODT "Todo" chapters file representation.
+    """ODT "Todo" chapters file writer.
 
     Export a manuscript with invisibly tagged chapters and scenes.
     """

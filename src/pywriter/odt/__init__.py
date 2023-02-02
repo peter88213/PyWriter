@@ -18,7 +18,7 @@ odt_scenedesc -- Provide a class for ODT invisibly tagged scene descriptions exp
 odt_todo -- Provide a class for ODT invisibly tagged "Todo" chapters export.
 odt_xref -- Provide a class for ODT ross reference export.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

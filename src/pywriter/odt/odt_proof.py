@@ -1,6 +1,6 @@
 """Provide a class for ODT visibly tagged chapters and scenes export.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -9,7 +9,7 @@ from pywriter.odt.odt_formatted import OdtFormatted
 
 
 class OdtProof(OdtFormatted):
-    """ODT proof reading file representation.
+    """ODT proof reading file writer.
 
     Export a manuscript with visibly tagged chapters and scenes.
     """

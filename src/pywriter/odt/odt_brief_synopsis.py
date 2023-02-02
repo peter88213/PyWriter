@@ -1,6 +1,6 @@
 """Provide a class for ODT brief synopsis export.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -9,7 +9,7 @@ from pywriter.odt.odt_file import OdtFile
 
 
 class OdtBriefSynopsis(OdtFile):
-    """ODT brief synopsis file representation.
+    """ODT brief synopsis file writer.
 
     Export a brief synopsis with chapter titles and scene titles.
     """

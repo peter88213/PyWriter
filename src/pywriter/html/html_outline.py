@@ -8,7 +8,7 @@ An outline has at least one third level heading.
 -   Heading 3 -- New scene title.
 -   All other text is considered to be chapter/scene description.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

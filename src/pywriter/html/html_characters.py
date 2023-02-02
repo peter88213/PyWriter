@@ -1,6 +1,6 @@
 """Provide a class for ODT invisibly tagged character descriptions import.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -24,11 +24,11 @@ class HtmlCharacters(HtmlFile):
         Positional arguments:
             filePath -- str: path to the file represented by the Novel instance.
             
-        The HTML parser works like a state machine. 
+        The ODT parser works like a state machine. 
         Character ID and section title must be saved between the transitions.         
         Extends the superclass constructor.
         """
-        HtmlFile.__init__(self, filePath)
+        super().__init__(filePath)
         self._crId = None
         self._section = None
 
