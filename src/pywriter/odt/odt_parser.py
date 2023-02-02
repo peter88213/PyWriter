@@ -14,19 +14,22 @@ class OdtParser(sax.ContentHandler):
     """An ODT document parser, emulating the html.parser.HTMLParser API.
     
     Public methods:
+        feed_file(filePath) -- Feed an ODT file to the parser.
     
-    1. HTMLParser compatible API
+      HTMLParser compatible API
         handle_starttag -- Stub for a start tag handler to be implemented in a subclass.
         handle_endtag -- Stub for an end tag handler to be implemented in a subclass.
         handle_data -- Stub for a data handler to be implemented in a subclass.
         handle_comment -- Stub for a comment handler to be implemented in a subclass.
         
-    2. Methods overriding xml.sax.ContentHandler methods (not meant to be overridden by subclasses)
+      Methods overriding xml.sax.ContentHandler methods (not meant to be overridden by subclasses)
         startElement -- Signals the start of an element in non-namespace mode.
         endElement -- Signals the end of an element in non-namespace mode.
         characters -- Receive notification of character data.
     
-    This class must be inherited by a subclass.
+    The data is presented as from an Open/LibreOffice HTML export file.
+    The PyWriter HTML import classes thus can be reused.
+    
     TODO: Convert lists.
     """
 
@@ -43,6 +46,60 @@ class OdtParser(sax.ContentHandler):
         self._strong = False
         self._lang = False
         self._style = None
+
+    def feed_file(self, filePath):
+        """Feed an ODT file to the parser.
+        
+        Positional arguments:
+            filePath -- str: ODT document path.
+        
+        First unzip the ODT file located at self.filePath, 
+        and get languageCode, countryCode, title, desc, and authorName,        
+        Then call the sax parser for content.xml.
+        """
+        try:
+            with zipfile.ZipFile(filePath, 'r') as odfFile:
+                content = odfFile.read('content.xml')
+                meta = odfFile.read('meta.xml')
+                styles = odfFile.read('styles.xml')
+        except:
+            raise Error(f'{_("Cannot read file")}: "{norm_path(filePath)}".')
+
+        #--- Get title, description, and author from 'meta.xml'.
+        root = ET.fromstring(meta)
+        meta = None
+        for element in root.iter():
+            if element.tag.endswith('title'):
+                if element.text:
+                    self.handle_starttag('title', [()])
+                    self.handle_data(element.text)
+                    self.handle_endtag('title')
+            elif element.tag.endswith('description'):
+                if element.text:
+                    self.handle_starttag('meta', [('', 'description'), ('', element.text)])
+            elif element.tag.endswith('initial-creator'):
+                if element.text:
+                    self.handle_starttag('meta', [('', 'author'), ('', element.text)])
+
+        #--- Get language and country from 'styles.xml'.
+        root = ET.fromstring(styles)
+        styles = None
+        lngCode = None
+        ctrCode = None
+        for element in root.iter():
+            if element.tag.endswith('text-properties'):
+                for attribute in element.attrib:
+                    if attribute.endswith('language'):
+                        lngCode = element.attrib[attribute]
+                    elif attribute.endswith('country'):
+                        ctrCode = element.attrib[attribute]
+            if lngCode and ctrCode:
+                self.handle_starttag('body', [('lang', f'{lngCode}-{ctrCode}')])
+                break
+        root = None
+
+        #--- Parse 'content.xml'.
+        sax.parseString(content, self)
 
     def startElement(self, name, attrs):
         """Signals the start of an element in non-namespace mode.
@@ -172,56 +229,4 @@ class OdtParser(sax.ContentHandler):
         Positional arguments:
             data -- str: comment text. 
         """
-
-    def read(self):
-        """Read ODT file.
-        
-        First unzip the ODT file located at self.filePath, 
-        and get languageCode, countryCode, title, desc, and authorName,        
-        where filePath is a subclass instance variable.        
-        Then call the sax parser for content.xml.
-        """
-        try:
-            with zipfile.ZipFile(self.filePath, 'r') as odfFile:
-                content = odfFile.read('content.xml')
-                meta = odfFile.read('meta.xml')
-                styles = odfFile.read('styles.xml')
-        except:
-            raise Error(f'{_("Cannot read file")}: "{norm_path(self.filePath)}".')
-
-        #--- Get language and country from 'styles.xml'.
-        root = ET.fromstring(styles)
-        styles = None
-        lngCode = None
-        ctrCode = None
-        for element in root.iter():
-            if element.tag.endswith('text-properties'):
-                for attribute in element.attrib:
-                    if attribute.endswith('language'):
-                        lngCode = element.attrib[attribute]
-                    elif attribute.endswith('country'):
-                        ctrCode = element.attrib[attribute]
-            if lngCode and ctrCode:
-                self.handle_starttag('body', [('lang', f'{lngCode}-{ctrCode}')])
-                break
-
-        #--- Get title, description, and author from 'meta.xml'.
-        root = ET.fromstring(meta)
-        meta = None
-        for element in root.iter():
-            if element.tag.endswith('title'):
-                if element.text:
-                    self.handle_starttag('title', [()])
-                    self.handle_data(element.text)
-                    self.handle_endtag('title')
-            elif element.tag.endswith('description'):
-                if element.text:
-                    self.handle_starttag('meta', [('', 'description'), ('', element.text)])
-            elif element.tag.endswith('initial-creator'):
-                if element.text:
-                    self.handle_starttag('meta', [('', 'author'), ('', element.text)])
-        root = None
-
-        #--- Parse 'content.xml'.
-        sax.parseString(content, self)
 

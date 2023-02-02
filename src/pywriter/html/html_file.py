@@ -112,4 +112,4 @@ class HtmlFile(File, OdtParser):
             self._lines.append(f'{self._COMMENT_START}{data}{self._COMMENT_END}')
 
     def read(self):
-        OdtParser.read(self)
+        OdtParser.feed_file(self, self.filePath)
