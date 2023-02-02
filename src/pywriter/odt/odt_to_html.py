@@ -25,6 +25,10 @@ class OdtToHtml(sax.ContentHandler):
         self._paragraph = False
         self._comment = None
         self._blockquote = False
+        self._em = False
+        self._strong = False
+        self._emTags = ['Emphasis']
+        self._strongTags = ['Strong_20_Emphasis']
 
     def startElement(self, name, attrs):
         """Overrides the xml.sax.ContentHandler method             
@@ -44,6 +48,14 @@ class OdtToHtml(sax.ContentHandler):
                 self._lines.append('<p>')
                 self._paragraph = True
                 self._blockquote = False
+        elif name == 'text:span':
+            style = xmlAttributes.get('text:style-name', '')
+            if style in self._emTags:
+                self._em = True
+                self._lines.append('<em>')
+            elif style in self._strongTags:
+                self._strong = True
+                self._lines.append('<strong>')
         elif name == 'text:section':
             sectionId = xmlAttributes['text:name']
             self._lines.append(f"<div id='{sectionId}'>\n")
@@ -69,6 +81,13 @@ class OdtToHtml(sax.ContentHandler):
                 else:
                     self._lines.append('</p>\n')
                 self._paragraph = False
+        elif name == 'text:span':
+            if self._em:
+                self._em = False
+                self._lines.append('</em>')
+            elif self._strong:
+                self._strong = False
+                self._lines.append('</strong>')
         elif name == 'text:section':
             self._lines.append(f"</div>\n")
         elif name == 'office:annotation':
