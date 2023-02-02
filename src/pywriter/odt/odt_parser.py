@@ -6,13 +6,13 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import zipfile
 from xml import sax
+import xml.etree.ElementTree as ET
 from pywriter.pywriter_globals import *
 
 
 class OdtParser(sax.ContentHandler):
     """An ODT document parser, emulating the html.parser API.
     
-    TODO: Get project title, project description, and author name.
     TODO: Get document language and country.
     TODO: Convert lists.
     """
@@ -160,8 +160,23 @@ class OdtParser(sax.ContentHandler):
         try:
             with zipfile.ZipFile(self.filePath, 'r') as odfFile:
                 content = odfFile.read('content.xml')
+                meta = odfFile.read('meta.xml')
+                styles = odfFile.read('styles.xml')
         except:
             raise Error(f'{_("Cannot read file")}: "{norm_path(self.filePath)}".')
 
+        metaTree = ET.fromstring(meta)
+        for e in metaTree.iter():
+            if e.tag.endswith('title'):
+                if e.text:
+                    self.novel.title = e.text
+            elif e.tag.endswith('description'):
+                if e.text:
+                    self.novel.desc = e.text
+            elif e.tag.endswith('initial-creator'):
+                if e.text:
+                    self.novel.authorName = e.text
+
+        stylesTree = ET.fromstring(styles)
         sax.parseString(content, self)
 
