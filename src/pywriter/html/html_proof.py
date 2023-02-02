@@ -29,9 +29,9 @@ class HtmlProof(HtmlFormatted):
         
         Overrides the superclass method.
         """
-        if tag == 'em' or tag == 'i':
+        if tag == 'em':
             self._lines.append('[i]')
-        elif tag == 'strong' or tag == 'b':
+        elif tag == 'strong':
             self._lines.append('[b]')
         elif tag in ('span', 'p'):
             try:
@@ -85,9 +85,9 @@ class HtmlProof(HtmlFormatted):
                 self._lines.append(f'[/lang={self._language}]')
                 self._language = ''
             self._newline = True
-        elif tag == 'em' or tag == 'i':
+        elif tag == 'em':
             self._lines.append('[/i]')
-        elif tag == 'strong' or tag == 'b':
+        elif tag == 'strong':
             self._lines.append('[/b]')
         elif tag == 'span':
             if self._language:

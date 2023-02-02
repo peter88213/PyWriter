@@ -71,9 +71,9 @@ class HtmlImport(HtmlFormatted):
                 pass
         elif tag == 'br':
             self._newline = True
-        elif tag == 'em' or tag == 'i':
+        elif tag == 'em':
             self._lines.append('[i]')
-        elif tag == 'strong' or tag == 'b':
+        elif tag == 'strong':
             self._lines.append('[b]')
         elif tag == 'span':
             if attrs[0][0] == 'lang':
@@ -151,9 +151,9 @@ class HtmlImport(HtmlFormatted):
                     self.novel.scenes[self._scId].status = Scene.STATUS.index('Outline')
                 else:
                     self.novel.scenes[self._scId].status = Scene.STATUS.index('Draft')
-        elif tag == 'em' or tag == 'i':
+        elif tag == 'em':
             self._lines.append('[/i]')
-        elif tag == 'strong' or tag == 'b':
+        elif tag == 'strong':
             self._lines.append('[/b]')
         elif tag == 'span':
             if self._language:

@@ -28,9 +28,9 @@ class HtmlManuscript(HtmlFormatted):
         """
         super().handle_starttag(tag, attrs)
         if self._scId is not None:
-            if tag == 'em' or tag == 'i':
+            if tag == 'em':
                 self._lines.append('[i]')
-            elif tag == 'strong' or tag == 'b':
+            elif tag == 'strong':
                 self._lines.append('[b]')
             elif tag in ('span', 'p'):
                 try:
@@ -86,9 +86,9 @@ class HtmlManuscript(HtmlFormatted):
                     self._lines.append(f'[/lang={self._language}]')
                     self._language = ''
                 self._lines.append('\n')
-            elif tag == 'em' or tag == 'i':
+            elif tag == 'em':
                 self._lines.append('[/i]')
-            elif tag == 'strong' or tag == 'b':
+            elif tag == 'strong':
                 self._lines.append('[/b]')
             elif tag == 'span':
                 if self._language:
