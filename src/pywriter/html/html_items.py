@@ -1,4 +1,4 @@
-"""Provide a class for html item invisibly tagged descriptions import.
+"""Provide a class for ODT item invisibly tagged descriptions import.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -11,7 +11,7 @@ from pywriter.html.html_file import HtmlFile
 
 
 class HtmlItems(HtmlFile):
-    """HTML item descriptions file representation.
+    """ODT item descriptions file reader.
 
     Import a item sheet with invisibly tagged descriptions.
     """
@@ -24,7 +24,7 @@ class HtmlItems(HtmlFile):
         Positional arguments:
             filePath -- str: path to the file represented by the Novel instance.
             
-        The HTML parser works like a state machine. 
+        The ODT parser works like a state machine. 
         The item ID must be saved between the transitions.         
         Extends the superclass constructor.
         """
@@ -54,7 +54,7 @@ class HtmlItems(HtmlFile):
         Positional arguments:
             tag -- str: name of the tag converted to lower case.
 
-        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
+        Overrides the superclass method.
         """
         if self._itId is not None:
             if tag == 'div':
@@ -70,7 +70,7 @@ class HtmlItems(HtmlFile):
         Positional arguments:
             data -- str: text to be stored. 
         
-        Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
+        Overrides the superclass method.
         """
         if self._itId is not None:
             self._lines.append(data.strip())

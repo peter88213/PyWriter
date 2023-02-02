@@ -1,4 +1,4 @@
-"""Provide a class for html invisibly tagged character descriptions import.
+"""Provide a class for ODT invisibly tagged character descriptions import.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -11,7 +11,7 @@ from pywriter.html.html_file import HtmlFile
 
 
 class HtmlCharacters(HtmlFile):
-    """HTML character descriptions file representation.
+    """ODT character descriptions file reader.
 
     Import a character sheet with invisibly tagged descriptions.
     """
@@ -62,7 +62,7 @@ class HtmlCharacters(HtmlFile):
         Positional arguments:
             tag -- str: name of the tag converted to lower case.
 
-        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
+        Overrides the superclass method.
         """
         if self._crId is not None:
             if tag == 'div':
@@ -91,7 +91,7 @@ class HtmlCharacters(HtmlFile):
         Positional arguments:
             data -- str: text to be stored. 
         
-        Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
+        Overrides the superclass method.
         """
         if self._section is not None:
             self._lines.append(data.strip())

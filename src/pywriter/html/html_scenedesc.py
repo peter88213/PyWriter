@@ -1,4 +1,4 @@
-"""Provide a class for html invisibly tagged scene descriptions import.
+"""Provide a class for ODT invisibly tagged scene descriptions import.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -9,7 +9,7 @@ from pywriter.html.html_file import HtmlFile
 
 
 class HtmlSceneDesc(HtmlFile):
-    """HTML scene summaries file representation.
+    """ODT scene summaries file reader.
 
     Import a full synopsis with invisibly tagged scene descriptions.
     """
@@ -22,7 +22,7 @@ class HtmlSceneDesc(HtmlFile):
         Positional arguments:
             tag -- str: name of the tag converted to lower case.
 
-        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
+        Overrides the superclass method.
         """
         if self._scId is not None:
             if tag == 'div':
@@ -52,7 +52,7 @@ class HtmlSceneDesc(HtmlFile):
         Positional arguments:
             data -- str: text to be stored. 
         
-        Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
+        Overrides the superclass method.
         """
         if self._scId is not None:
             self._lines.append(data.strip())

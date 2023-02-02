@@ -1,4 +1,4 @@
-"""Provide a base class for HTML documents containing text that is formatted in yWriter.
+"""Provide a base class for ODT documents containing text that is formatted in yWriter.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -9,7 +9,7 @@ from pywriter.model.splitter import Splitter
 
 
 class HtmlFormatted(HtmlFile):
-    """HTML file representation.
+    """ODT file reader.
 
     Provide methods and data for processing chapters with formatted text.
     """

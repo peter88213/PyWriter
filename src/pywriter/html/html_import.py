@@ -1,4 +1,4 @@
-"""Provide a class for html 'work in progress' import.
+"""Provide a class for ODT 'work in progress' import.
 
 Conventions:
 A work in progress has no third level heading.
@@ -20,7 +20,7 @@ from pywriter.html.html_formatted import HtmlFormatted
 
 
 class HtmlImport(HtmlFormatted):
-    """HTML 'work in progress' file representation.
+    """ODT 'work in progress' file reader.
 
     Import untagged chapters and scenes.
     """
@@ -35,7 +35,7 @@ class HtmlImport(HtmlFormatted):
         Positional arguments:
             filePath -- str: path to the file represented by the Novel instance.
             
-        The HTML parser works like a state machine. 
+        The ODT parser works like a state machine. 
         Chapter and scene count must be saved between the transitions.         
         Extends the superclass constructor.
         """
@@ -135,7 +135,7 @@ class HtmlImport(HtmlFormatted):
         Positional arguments:
             tag -- str: name of the tag converted to lower case.
 
-        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
+        Overrides the superclass method.
         """
         if tag in ('p', 'blockquote'):
             if self._language:
@@ -172,7 +172,7 @@ class HtmlImport(HtmlFormatted):
             data -- str: comment text. 
         
         Use marked comments at scene start as scene titles.
-        Overrides HTMLparser.handle_comment() called by the parser when a comment is encountered.
+        Overrides the superclass method.
         """
         if self._scId is not None:
             if not self._lines:
@@ -191,7 +191,7 @@ class HtmlImport(HtmlFormatted):
         Positional arguments:
             data -- str: text to be stored. 
         
-        Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
+        Overrides the superclass method.
         """
         if self._skip_data:
             self._skip_data = False

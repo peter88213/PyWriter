@@ -1,4 +1,4 @@
-"""Provide a class for html visibly tagged chapters and scenes import.
+"""Provide a class for ODT visibly tagged chapters and scenes import.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -13,7 +13,7 @@ from pywriter.model.splitter import Splitter
 
 
 class HtmlProof(HtmlFormatted):
-    """HTML proof reading file representation.
+    """ODT proof reading file reader.
 
     Import a manuscript with visibly tagged chapters and scenes.
     """
@@ -78,7 +78,7 @@ class HtmlProof(HtmlFormatted):
         Positional arguments:
             tag -- str: name of the tag converted to lower case.
 
-        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
+        Overrides the superclass method.
         """
         if tag in ['p', 'h2', 'h1', 'blockquote']:
             if self._language:
@@ -100,7 +100,7 @@ class HtmlProof(HtmlFormatted):
         Positional arguments:
             data -- str: text to be parsed. 
         
-        Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
+        Overrides the superclass method.
         """
         if self._skip_data:
             self._skip_data = False

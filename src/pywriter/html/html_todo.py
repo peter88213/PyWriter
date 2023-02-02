@@ -1,4 +1,4 @@
-"""Provide a class for html invisibly tagged "Todo" chapters import.
+"""Provide a class for ODT invisibly tagged "Todo" chapters import.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -9,7 +9,7 @@ from pywriter.html.html_manuscript import HtmlManuscript
 
 
 class HtmlTodo(HtmlManuscript):
-    """HTML "Todo" chapters file representation.
+    """ODT "Todo" chapters file reader.
 
     Import a manuscript with invisibly tagged chapters and scenes.
     """

@@ -1,4 +1,4 @@
-"""Provide a class for html outline import.
+"""Provide a class for ODT outline import.
 
 Conventions:
 An outline has at least one third level heading.
@@ -19,7 +19,7 @@ from pywriter.html.html_file import HtmlFile
 
 
 class HtmlOutline(HtmlFile):
-    """HTML outline file representation.
+    """ODT outline file reader.
 
     Import an outline without chapter and scene tags.
     """
@@ -32,7 +32,7 @@ class HtmlOutline(HtmlFile):
         Positional arguments:
             filePath -- str: path to the file represented by the Novel instance.
             
-        The HTML parser works like a state machine. 
+        The ODT parser works like a state machine. 
         Chapter and scene count must be saved between the transitions.         
         Extends the superclass constructor.
         """

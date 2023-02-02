@@ -1,4 +1,4 @@
-"""Provide a class for html invisibly tagged chapters and scenes import.
+"""Provide a class for ODT invisibly tagged chapters and scenes import.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -10,7 +10,7 @@ from pywriter.model.splitter import Splitter
 
 
 class HtmlManuscript(HtmlFormatted):
-    """HTML manuscript file representation.
+    """ODT manuscript file reader.
 
     Import a manuscript with invisibly tagged chapters and scenes.
     """
@@ -78,7 +78,7 @@ class HtmlManuscript(HtmlFormatted):
         Positional arguments:
             tag -- str: name of the tag converted to lower case.
 
-        Overrides HTMLparser.handle_endtag() called by the HTML parser to handle the end tag of an element.
+        Overrides the superclass method.
         """
         if self._scId is not None:
             if tag in ('p', 'blockquote'):
@@ -114,7 +114,7 @@ class HtmlManuscript(HtmlFormatted):
             data -- str: comment text. 
         
         Use marked comments at scene start as scene titles.
-        Overrides HTMLparser.handle_comment() called by the parser when a comment is encountered.
+        Overrides the superclass method.
         """
         if self._scId is not None:
             if not self._lines:
@@ -136,7 +136,7 @@ class HtmlManuscript(HtmlFormatted):
         Positional arguments:
             data -- str: text to be stored. 
         
-        Overrides HTMLparser.handle_data() called by the parser to process arbitrary data.
+        Overrides the superclass method.
         """
         if self._skip_data:
             self._skip_data = False

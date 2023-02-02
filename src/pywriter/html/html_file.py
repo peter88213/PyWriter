@@ -1,6 +1,6 @@
-"""Provide a generic class for html file import.
+"""Provide a generic class for ODT file import.
 
-Other html file representations inherit from this class.
+Other odt file readers inherit from this class.
 
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -16,12 +16,14 @@ from pywriter.odt.odt_to_html import OdtToHtml
 
 
 class HtmlFile(File, HTMLParser):
-    """Generic HTML file representation.
+    """Generic ODT file reader.
     
     Public methods:
-        handle_starttag -- identify scenes and chapters.
-        handle comment --
-        read --
+        handle_starttag(tag, attrs) -- Identify scenes and chapters.
+        handle_endtag(tag) -- Stub for an end tag handler.
+        handle_data(data) -- Stub for a data handler.
+        handle comment(data) -- Process inline comments within scene content.
+        read() -- Parse the file and get the instance variables.
     """
     EXTENSION = '.odt'
 
@@ -73,20 +75,6 @@ class HtmlFile(File, HTMLParser):
 
         return text
 
-    def _preprocess(self, text):
-        """Process HTML text before parsing.
-        
-        Positional arguments:
-            text -- str: HTML text to be processed.
-        """
-        return self._convert_to_yw(text)
-
-    def _postprocess(self):
-        """Process the plain text after parsing.
-        
-        This is a hook for subclasses.
-        """
-
     def handle_starttag(self, tag, attrs):
         """Identify scenes and chapters.
         
@@ -114,13 +102,31 @@ class HtmlFile(File, HTMLParser):
                         self.novel.srtChapters.append(self._chId)
                     self.novel.chapters[self._chId].chType = self._TYPE
 
+    def handle_endtag(self, tag):
+        """Stub for an end tag handler.
+        
+        Positional arguments:
+            tag -- str: name of the tag converted to lower case.
+
+        Overrides the superclass method.
+        """
+
+    def handle_data(self, data):
+        """Stub for a data handler.
+
+        Positional arguments:
+            data -- str: text to be stored. 
+        
+        Overrides the superclass method.
+        """
+
     def handle_comment(self, data):
         """Process inline comments within scene content.
         
         Positional arguments:
             data -- str: comment text. 
         
-        Overrides HTMLparser.handle_comment() called by the parser when a comment is encountered.
+        Overrides the superclass method.
         """
         if self._scId is not None:
             self._lines.append(f'{self._COMMENT_START}{data}{self._COMMENT_END}')
@@ -132,6 +138,4 @@ class HtmlFile(File, HTMLParser):
         content of the respective HTML file.
         """
         content = OdtToHtml().read(self.filePath)
-        content = self._preprocess(content)
         self.feed(content)
-        self._postprocess()
