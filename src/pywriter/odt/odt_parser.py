@@ -11,8 +11,22 @@ from pywriter.pywriter_globals import *
 
 
 class OdtParser(sax.ContentHandler):
-    """An ODT document parser, emulating the html.parser API.
+    """An ODT document parser, emulating the html.parser.HTMLParser API.
     
+    Public methods:
+    
+    1. HTMLParser compatible API
+        handle_starttag -- Stub for a start tag handler to be implemented in a subclass.
+        handle_endtag -- Stub for an end tag handler to be implemented in a subclass.
+        handle_data -- Stub for a data handler to be implemented in a subclass.
+        handle_comment -- Stub for a comment handler to be implemented in a subclass.
+        
+    2. Methods overriding xml.sax.ContentHandler methods (not meant to be overridden by subclasses)
+        startElement -- Signals the start of an element in non-namespace mode.
+        endElement -- Signals the end of an element in non-namespace mode.
+        characters -- Receive notification of character data.
+    
+    This class must be inherited by a subclass.
     TODO: Convert lists.
     """
 
@@ -31,7 +45,9 @@ class OdtParser(sax.ContentHandler):
         self._style = None
 
     def startElement(self, name, attrs):
-        """Overrides the xml.sax.ContentHandler method             
+        """Signals the start of an element in non-namespace mode.
+        
+        Overrides the xml.sax.ContentHandler method             
         """
         xmlAttributes = {}
         for attribute in attrs.items():
@@ -82,7 +98,9 @@ class OdtParser(sax.ContentHandler):
                 self._languageTags[self._style] = f'{language}-{country}'
 
     def endElement(self, name):
-        """Overrides the xml.sax.ContentHandler method     
+        """Signals the end of an element in non-namespace mode.
+        
+        Overrides the xml.sax.ContentHandler method     
         """
         if name == 'text:p':
             if self._commentParagraphCount is None:
@@ -114,7 +132,9 @@ class OdtParser(sax.ContentHandler):
             self._style = None
 
     def characters(self, content):
-        """Overrides the xml.sax.ContentHandler method             
+        """Receive notification of character data.
+        
+        Overrides the xml.sax.ContentHandler method             
         """
         if self._commentParagraphCount is not None:
             if self._commentParagraphCount == 1:
@@ -125,7 +145,7 @@ class OdtParser(sax.ContentHandler):
             self.handle_data(content)
 
     def handle_starttag(self, tag, attrs):
-        """Stub for a start tag handler.
+        """Stub for a start tag handler to be implemented in a subclass.
         
         Positional arguments:
             tag -- str: name of the tag converted to lower case.
@@ -133,28 +153,33 @@ class OdtParser(sax.ContentHandler):
         """
 
     def handle_endtag(self, tag):
-        """Stub for an end tag handler.
+        """Stub for an end tag handler to be implemented in a subclass.
         
         Positional arguments:
             tag -- str: name of the tag converted to lower case.
         """
 
     def handle_data(self, data):
-        """Stub for a data handler.
+        """Stub for a data handler to be implemented in a subclass.
 
         Positional arguments:
             data -- str: text to be stored. 
         """
 
     def handle_comment(self, data):
-        """Stub for a comment handler.
+        """Stub for a comment handler to be implemented in a subclass.
         
         Positional arguments:
             data -- str: comment text. 
         """
 
     def read(self):
-        """Unpack content.xml and convert its contents to HTML.
+        """Read ODT file.
+        
+        First unzip the ODT file located at self.filePath, 
+        and get languageCode, countryCode, title, desc, and authorName,        
+        where filePath is a subclass instance variable.        
+        Then call the sax parser for content.xml.
         """
         try:
             with zipfile.ZipFile(self.filePath, 'r') as odfFile:
@@ -164,26 +189,39 @@ class OdtParser(sax.ContentHandler):
         except:
             raise Error(f'{_("Cannot read file")}: "{norm_path(self.filePath)}".')
 
-        root = ET.fromstring(meta)
-        for element in root.iter():
-            if element.tag.endswith('title'):
-                if element.text:
-                    self.novel.title = element.text
-            elif element.tag.endswith('description'):
-                if element.text:
-                    self.novel.desc = element.text
-            elif element.tag.endswith('initial-creator'):
-                if element.text:
-                    self.novel.authorName = element.text
-
+        #--- Get language and country from 'styles.xml'.
         root = ET.fromstring(styles)
+        styles = None
+        lngCode = None
+        ctrCode = None
         for element in root.iter():
             if element.tag.endswith('text-properties'):
                 for attribute in element.attrib:
                     if attribute.endswith('language'):
-                        self.novel.languageCode = element.attrib[attribute]
+                        lngCode = element.attrib[attribute]
                     elif attribute.endswith('country'):
-                        self.novel.countryCode = element.attrib[attribute]
+                        ctrCode = element.attrib[attribute]
+            if lngCode and ctrCode:
+                self.handle_starttag('body', [('lang', f'{lngCode}-{ctrCode}')])
+                break
 
+        #--- Get title, description, and author from 'meta.xml'.
+        root = ET.fromstring(meta)
+        meta = None
+        for element in root.iter():
+            if element.tag.endswith('title'):
+                if element.text:
+                    self.handle_starttag('title', [()])
+                    self.handle_data(element.text)
+                    self.handle_endtag('title')
+            elif element.tag.endswith('description'):
+                if element.text:
+                    self.handle_starttag('meta', [('', 'description'), ('', element.text)])
+            elif element.tag.endswith('initial-creator'):
+                if element.text:
+                    self.handle_starttag('meta', [('', 'author'), ('', element.text)])
+        root = None
+
+        #--- Parse 'content.xml'.
         sax.parseString(content, self)
 

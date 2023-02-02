@@ -74,15 +74,15 @@ class HtmlOutline(HtmlFile):
             self._scId = None
             self._chId = None
         elif tag == 'meta':
-            if attrs[0][1].lower() == 'author':
+            if attrs[0][1] == 'author':
                 self.novel.authorName = attrs[1][1]
-            if attrs[0][1].lower() == 'description':
+            if attrs[0][1] == 'description':
                 self.novel.desc = attrs[1][1]
         elif tag == 'title':
             self._lines = []
         elif tag == 'body':
             for attr in attrs:
-                if attr[0].lower() == 'lang':
+                if attr[0] == 'lang':
                     try:
                         lngCode, ctrCode = attr[1].split('-')
                         self.novel.languageCode = lngCode
