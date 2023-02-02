@@ -24,6 +24,7 @@ class OdtToHtml(sax.ContentHandler):
         self._heading = None
         self._paragraph = False
         self._comment = None
+        self._blockquote = False
 
     def startElement(self, name, attrs):
         """Overrides the xml.sax.ContentHandler method             
@@ -35,9 +36,14 @@ class OdtToHtml(sax.ContentHandler):
         if name == 'text:p':
             if self._comment is not None:
                 self._comment += 1
+            elif xmlAttributes.get('text:style-name', None) == 'Quotations':
+                self._lines.append('<blockquote>')
+                self._paragraph = True
+                self._blockquote = True
             else:
                 self._lines.append('<p>')
                 self._paragraph = True
+                self._blockquote = False
         elif name == 'text:section':
             sectionId = xmlAttributes['text:name']
             self._lines.append(f"<div id='{sectionId}'>\n")
@@ -57,7 +63,11 @@ class OdtToHtml(sax.ContentHandler):
         """
         if name == 'text:p':
             if self._comment is None:
-                self._lines.append('</p>\n')
+                if self._blockquote:
+                    self._lines.append('</blockquote>\n')
+                    self._blockquote = False
+                else:
+                    self._lines.append('</p>\n')
                 self._paragraph = False
         elif name == 'text:section':
             self._lines.append(f"</div>\n")
