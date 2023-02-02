@@ -12,6 +12,9 @@ from pywriter.pywriter_globals import *
 class OdtParser(sax.ContentHandler):
     """An ODT document parser, emulating the html.parser API.
     
+    TODO: Get project title, project description, and author name.
+    TODO: Get document language and country.
+    TODO: Convert lists.
     """
 
     def __init__(self):
@@ -99,6 +102,7 @@ class OdtParser(sax.ContentHandler):
                 self.handle_endtag('strong')
             elif self._lang:
                 self._lang = False
+                self.handle_endtag('span')
         elif name == 'text:section':
             self.handle_endtag('div')
         elif name == 'office:annotation':
