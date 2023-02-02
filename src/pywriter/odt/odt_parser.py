@@ -13,7 +13,6 @@ from pywriter.pywriter_globals import *
 class OdtParser(sax.ContentHandler):
     """An ODT document parser, emulating the html.parser API.
     
-    TODO: Get document language and country.
     TODO: Convert lists.
     """
 
@@ -165,18 +164,26 @@ class OdtParser(sax.ContentHandler):
         except:
             raise Error(f'{_("Cannot read file")}: "{norm_path(self.filePath)}".')
 
-        metaTree = ET.fromstring(meta)
-        for e in metaTree.iter():
-            if e.tag.endswith('title'):
-                if e.text:
-                    self.novel.title = e.text
-            elif e.tag.endswith('description'):
-                if e.text:
-                    self.novel.desc = e.text
-            elif e.tag.endswith('initial-creator'):
-                if e.text:
-                    self.novel.authorName = e.text
+        root = ET.fromstring(meta)
+        for element in root.iter():
+            if element.tag.endswith('title'):
+                if element.text:
+                    self.novel.title = element.text
+            elif element.tag.endswith('description'):
+                if element.text:
+                    self.novel.desc = element.text
+            elif element.tag.endswith('initial-creator'):
+                if element.text:
+                    self.novel.authorName = element.text
 
-        stylesTree = ET.fromstring(styles)
+        root = ET.fromstring(styles)
+        for element in root.iter():
+            if element.tag.endswith('text-properties'):
+                for attribute in element.attrib:
+                    if attribute.endswith('language'):
+                        self.novel.languageCode = element.attrib[attribute]
+                    elif attribute.endswith('country'):
+                        self.novel.countryCode = element.attrib[attribute]
+
         sax.parseString(content, self)
 
