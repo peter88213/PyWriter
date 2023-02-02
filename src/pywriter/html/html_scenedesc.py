@@ -55,7 +55,7 @@ class HtmlSceneDesc(HtmlFile):
         Overrides the superclass method.
         """
         if self._scId is not None:
-            self._lines.append(data.strip())
+            self._lines.append(data)
         elif self._chId is not None:
             if not self.novel.chapters[self._chId].title:
                 self.novel.chapters[self._chId].title = data.strip()
