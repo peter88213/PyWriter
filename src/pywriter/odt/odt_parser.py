@@ -1,23 +1,18 @@
-"""Provide a class for converting ODT content to HTML.
+"""Provide a class for parsing ODT documents.
 
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import os
-import sys
 import zipfile
 from xml import sax
 from pywriter.pywriter_globals import *
 
 
-class OdtToHtml(sax.ContentHandler):
-
-    _HTML_HEADER = '''<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-</head>
-'''
+class OdtParser(sax.ContentHandler):
+    """An ODT document parser, emulating the html.parser API.
+    
+    """
 
     def __init__(self):
         super().__init__()
@@ -26,7 +21,7 @@ class OdtToHtml(sax.ContentHandler):
         self._languageTags = {}
         self._heading = None
         self._paragraph = False
-        self._comment = None
+        self._commentParagraphCount = None
         self._blockquote = False
         self._em = False
         self._strong = False
@@ -42,8 +37,8 @@ class OdtToHtml(sax.ContentHandler):
             xmlAttributes[attrKey] = attrValue
         style = xmlAttributes.get('text:style-name', '')
         if name == 'text:p':
-            if self._comment is not None:
-                self._comment += 1
+            if self._commentParagraphCount is not None:
+                self._commentParagraphCount += 1
             elif style == 'Quotations':
                 self.handle_starttag('blockquote', [()])
                 self._paragraph = True
@@ -65,7 +60,8 @@ class OdtToHtml(sax.ContentHandler):
             sectionId = xmlAttributes['text:name']
             self.handle_starttag('div', [('id', sectionId)])
         elif name == 'office:annotation':
-            self._comment = 0
+            self._commentParagraphCount = 0
+            self._comment = ''
         elif name == 'text:h':
             self._heading = f'h{xmlAttributes["text:outline-level"]}'
             self.handle_starttag(self._heading, [()])
@@ -87,7 +83,7 @@ class OdtToHtml(sax.ContentHandler):
         """Overrides the xml.sax.ContentHandler method     
         """
         if name == 'text:p':
-            if self._comment is None:
+            if self._commentParagraphCount is None:
                 if self._blockquote:
                     self.handle_endtag('blockquote')
                     self._blockquote = False
@@ -106,7 +102,8 @@ class OdtToHtml(sax.ContentHandler):
         elif name == 'text:section':
             self.handle_endtag('div')
         elif name == 'office:annotation':
-            self._comment = None
+            self.handle_comment(self._comment)
+            self._commentParagraphCount = None
         elif name == 'text:h':
             self.handle_endtag(self._heading)
             self._heading = None
@@ -116,9 +113,9 @@ class OdtToHtml(sax.ContentHandler):
     def characters(self, content):
         """Overrides the xml.sax.ContentHandler method             
         """
-        if self._comment is not None:
-            if self._comment == 1:
-                self.handle_comment(content)
+        if self._commentParagraphCount is not None:
+            if self._commentParagraphCount == 1:
+                self._comment = f'{self._comment}{content}'
         elif self._paragraph:
             self.handle_data(content)
         elif self._heading is not None:
@@ -163,16 +160,4 @@ class OdtToHtml(sax.ContentHandler):
             raise Error(f'{_("Cannot read file")}: "{norm_path(self.filePath)}".')
 
         sax.parseString(content, self)
-
-
-def main(filePath):
-    converter = OdtToHtml()
-    converter.filePath = filePath
-    htmlText = converter.read(filePath)
-    with open(f'{os.path.splitext(filePath)[0]}.html', 'w', encoding='utf-8') as f:
-        f.write(htmlText)
-
-
-if __name__ == '__main__':
-    main(sys.argv[1])
 

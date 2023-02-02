@@ -11,7 +11,6 @@ from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.html.html_import import HtmlImport
 from pywriter.html.html_outline import HtmlOutline
-from pywriter.odt.odt_to_html import OdtToHtml
 
 
 class NewProjectFactory(FileFactory):

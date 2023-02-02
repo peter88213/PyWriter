@@ -11,10 +11,10 @@ from pywriter.pywriter_globals import *
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
 from pywriter.file.file import File
-from pywriter.odt.odt_to_html import OdtToHtml
+from pywriter.odt.odt_parser import OdtParser
 
 
-class HtmlFile(File, OdtToHtml):
+class HtmlFile(File, OdtParser):
     """Generic ODT file reader.
     
     Public methods:
@@ -112,6 +112,4 @@ class HtmlFile(File, OdtToHtml):
             self._lines.append(f'{self._COMMENT_START}{data}{self._COMMENT_END}')
 
     def read(self):
-        """Unpack content.xml and convert its contents to HTML.
-        """
-        OdtToHtml.read(self)
+        OdtParser.read(self)

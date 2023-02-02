@@ -12,6 +12,7 @@ odt_locations -- Provide a class for ODT invisibly tagged location descriptions 
 odt_formatted -- Provide a base class for ODT documents containing text that is formatted in yWriter.
 odt_manuscript -- Provide a class for ODT invisibly tagged chapters and scenes export.
 odt_notes -- Provide a class for ODT invisibly tagged "Notes" chapters export.
+odt_parser -- Provide a class for parsing ODT documents.
 odt_partdesc -- Provide a class for ODT invisibly tagged part descriptions export.
 odt_proof -- Provide a class for ODT visibly tagged chapters and scenes export.
 odt_scenedesc -- Provide a class for ODT invisibly tagged scene descriptions export.
