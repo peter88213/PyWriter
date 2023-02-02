@@ -8,7 +8,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import zipfile
-import locale
 import tempfile
 from shutil import rmtree
 from datetime import datetime

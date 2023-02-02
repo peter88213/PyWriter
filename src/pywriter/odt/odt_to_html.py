@@ -21,14 +21,17 @@ class OdtToHtml(sax.ContentHandler):
 
     def __init__(self):
         super().__init__()
+        self._emTags = ['Emphasis']
+        self._strongTags = ['Strong_20_Emphasis']
+        self._languageTags = {}
         self._heading = None
         self._paragraph = False
         self._comment = None
         self._blockquote = False
         self._em = False
         self._strong = False
-        self._emTags = ['Emphasis']
-        self._strongTags = ['Strong_20_Emphasis']
+        self._lang = False
+        self._style = None
 
     def startElement(self, name, attrs):
         """Overrides the xml.sax.ContentHandler method             
@@ -37,25 +40,27 @@ class OdtToHtml(sax.ContentHandler):
         for attribute in attrs.items():
             attrKey, attrValue = attribute
             xmlAttributes[attrKey] = attrValue
+        style = xmlAttributes.get('text:style-name', '')
         if name == 'text:p':
             if self._comment is not None:
                 self._comment += 1
-            elif xmlAttributes.get('text:style-name', None) == 'Quotations':
+            elif style == 'Quotations':
                 self._lines.append('<blockquote>')
                 self._paragraph = True
                 self._blockquote = True
             else:
                 self._lines.append('<p>')
                 self._paragraph = True
-                self._blockquote = False
         elif name == 'text:span':
-            style = xmlAttributes.get('text:style-name', '')
             if style in self._emTags:
                 self._em = True
                 self._lines.append('<em>')
             elif style in self._strongTags:
                 self._strong = True
                 self._lines.append('<strong>')
+            elif style in self._languageTags:
+                self._lang = True
+                self._lines.append(f'<span lang="{self._languageTags[style]}">')
         elif name == 'text:section':
             sectionId = xmlAttributes['text:name']
             self._lines.append(f"<div id='{sectionId}'>\n")
@@ -69,6 +74,19 @@ class OdtToHtml(sax.ContentHandler):
             self._lines.append('<body>\n')
         elif name == 'office:document-content':
             self._lines.append(self._HTML_HEADER)
+        elif name == 'style:style':
+            self._style = xmlAttributes.get('style:name', None)
+        elif name == 'style:text-properties':
+            if xmlAttributes.get('style:font-style-complex', None) == 'italic':
+                self._emTags.append(self._style)
+            elif xmlAttributes.get('style:font-weight-complex', None) == 'bold':
+                self._strongTags.append(self._style)
+            elif xmlAttributes.get('style:language-complex', False):
+                self._languageTags[self._style] = xmlAttributes['style:language-complex']
+            elif xmlAttributes.get('fo:language', False):
+                language = xmlAttributes['fo:language']
+                country = xmlAttributes['fo:country']
+                self._languageTags[self._style] = f'{language}-{country}'
 
     def endElement(self, name):
         """Overrides the xml.sax.ContentHandler method     
@@ -88,6 +106,9 @@ class OdtToHtml(sax.ContentHandler):
             elif self._strong:
                 self._strong = False
                 self._lines.append('</strong>')
+            elif self._lang:
+                self._lang = False
+                self._lines.append('</span>')
         elif name == 'text:section':
             self._lines.append(f"</div>\n")
         elif name == 'office:annotation':
@@ -100,6 +121,8 @@ class OdtToHtml(sax.ContentHandler):
             self._lines.append('</body>')
         elif name == 'office:document-content':
             self._lines.append('</html>\n')
+        elif name == 'style:style':
+            self._style = None
 
     def characters(self, content):
         """Overrides the xml.sax.ContentHandler method             
