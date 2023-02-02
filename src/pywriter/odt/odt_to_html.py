@@ -103,7 +103,7 @@ class OdtToHtml(sax.ContentHandler):
         try:
             with zipfile.ZipFile(self.filePath, 'r') as odfFile:
                 content = odfFile.read('content.xml')
-        except ValueError:
+        except:
             raise Error(f'{_("Cannot read file")}: "{norm_path(self.filePath)}".')
 
         self._lines = []

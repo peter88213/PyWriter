@@ -5,6 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
+import zipfile
 from pywriter.pywriter_globals import *
 from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_file import Yw7File
@@ -44,8 +45,13 @@ class NewProjectFactory(FileFactory):
         targetFile = Yw7File(f'{fileName}{Yw7File.EXTENSION}', **kwargs)
         if sourcePath.endswith('.odt'):
             # The source file might be an outline or a "work in progress".
-            content = OdtToHtml().read(sourcePath)
-            if "<h3" in content.lower():
+            try:
+                with zipfile.ZipFile(sourcePath, 'r') as odfFile:
+                    content = odfFile.read('content.xml')
+            except:
+                raise Error(f'{_("Cannot read file")}: "{norm_path(sourcePath)}".')
+
+            if bytes('text:outline-level="3"', encoding='utf-8') in content:
                 sourceFile = HtmlOutline(sourcePath, **kwargs)
             else:
                 sourceFile = HtmlImport(sourcePath, **kwargs)
