@@ -94,7 +94,11 @@ class OdtParser(sax.ContentHandler):
                     elif attribute.endswith('country'):
                         ctrCode = element.attrib[attribute]
             if lngCode and ctrCode:
-                self.handle_starttag('body', [('lang', f'{lngCode}-{ctrCode}')])
+                if ctrCode != 'none':
+                    locale = f'{lngCode}-{ctrCode}'
+                else:
+                    locale = lngCode
+                self.handle_starttag('body', [('lang', locale)])
                 break
         root = None
 
@@ -150,9 +154,13 @@ class OdtParser(sax.ContentHandler):
             elif xmlAttributes.get('style:language-complex', False):
                 self._languageTags[self._style] = xmlAttributes['style:language-complex']
             elif xmlAttributes.get('fo:language', False):
-                language = xmlAttributes['fo:language']
-                country = xmlAttributes['fo:country']
-                self._languageTags[self._style] = f'{language}-{country}'
+                lngCode = xmlAttributes['fo:language']
+                ctrCode = xmlAttributes['fo:country']
+                if ctrCode != 'none':
+                    locale = f'{lngCode}-{ctrCode}'
+                else:
+                    locale = lngCode
+                self._languageTags[self._style] = locale
 
     def endElement(self, name):
         """Signals the end of an element in non-namespace mode.
