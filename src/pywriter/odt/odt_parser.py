@@ -123,14 +123,8 @@ class OdtParser(sax.ContentHandler):
                 self.handle_starttag('blockquote', [()])
                 self._paragraph = True
                 self._blockquote = True
-            elif style == 'Heading_20_1':
-                self._heading = 'h1'
-                self.handle_starttag(self._heading, [()])
-            elif style == 'Heading_20_2':
-                self._heading = 'h2'
-                self.handle_starttag(self._heading, [()])
-            elif style == 'Heading_20_3':
-                self._heading = 'h3'
+            elif style.startswith('Heading'):
+                self._heading = f'h{style[-1]}'
                 self.handle_starttag(self._heading, [()])
             elif style in self._headingTags:
                 self._heading = self._headingTags[style]
@@ -155,16 +149,16 @@ class OdtParser(sax.ContentHandler):
             self._commentParagraphCount = 0
             self._comment = ''
         elif name == 'text:h':
-            self._heading = f'h{xmlAttributes["text:outline-level"]}'
+            try:
+                self._heading = f'h{xmlAttributes["text:outline-level"]}'
+            except:
+                self._heading = f'h{style[-1]}'
             self.handle_starttag(self._heading, [()])
         elif name == 'style:style':
             self._style = xmlAttributes.get('style:name', None)
-            if xmlAttributes.get('style:parent-style-name', None) == 'Heading_20_1':
-                self._headingTags[self._style] = 'h1'
-            elif xmlAttributes.get('style:parent-style-name', None) == 'Heading_20_2':
-                self._headingTags[self._style] = 'h2'
-            elif xmlAttributes.get('style:parent-style-name', None) == 'Heading_20_3':
-                self._headingTags[self._style] = 'h3'
+            styleName = xmlAttributes.get('style:parent-style-name', '')
+            if styleName.startswith('Heading'):
+                self._headingTags[self._style] = f'h{styleName[-1]}'
         elif name == 'style:text-properties':
             if xmlAttributes.get('style:font-style-complex', None) == 'italic':
                 self._emTags.append(self._style)

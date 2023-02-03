@@ -50,7 +50,7 @@ class NewProjectFactory(FileFactory):
             except:
                 raise Error(f'{_("Cannot read file")}: "{norm_path(sourcePath)}".')
 
-            if bytes('text:outline-level="3"', encoding='utf-8') in content:
+            if bytes('Heading_20_3', encoding='utf-8') in content:
                 sourceFile = HtmlOutline(sourcePath, **kwargs)
             else:
                 sourceFile = HtmlImport(sourcePath, **kwargs)
