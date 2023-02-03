@@ -38,6 +38,7 @@ class OdtParser(sax.ContentHandler):
         self._emTags = ['Emphasis']
         self._strongTags = ['Strong_20_Emphasis']
         self._languageTags = {}
+        self._headingTags = {}
         self._heading = None
         self._paragraph = False
         self._commentParagraphCount = None
@@ -122,6 +123,18 @@ class OdtParser(sax.ContentHandler):
                 self.handle_starttag('blockquote', [()])
                 self._paragraph = True
                 self._blockquote = True
+            elif style == 'Heading_20_1':
+                self._heading = 'h1'
+                self.handle_starttag(self._heading, [()])
+            elif style == 'Heading_20_2':
+                self._heading = 'h2'
+                self.handle_starttag(self._heading, [()])
+            elif style == 'Heading_20_3':
+                self._heading = 'h3'
+                self.handle_starttag(self._heading, [()])
+            elif style in self._headingTags:
+                self._heading = self._headingTags[style]
+                self.handle_starttag(self._heading, [()])
             else:
                 self.handle_starttag('p', [()])
                 self._paragraph = True
@@ -146,6 +159,12 @@ class OdtParser(sax.ContentHandler):
             self.handle_starttag(self._heading, [()])
         elif name == 'style:style':
             self._style = xmlAttributes.get('style:name', None)
+            if xmlAttributes.get('style:parent-style-name', None) == 'Heading_20_1':
+                self._headingTags[self._style] = 'h1'
+            elif xmlAttributes.get('style:parent-style-name', None) == 'Heading_20_2':
+                self._headingTags[self._style] = 'h2'
+            elif xmlAttributes.get('style:parent-style-name', None) == 'Heading_20_3':
+                self._headingTags[self._style] = 'h3'
         elif name == 'style:text-properties':
             if xmlAttributes.get('style:font-style-complex', None) == 'italic':
                 self._emTags.append(self._style)
@@ -172,6 +191,9 @@ class OdtParser(sax.ContentHandler):
                 if self._blockquote:
                     self.handle_endtag('blockquote')
                     self._blockquote = False
+                elif self._heading:
+                    self.handle_endtag(self._heading)
+                    self._heading = None
                 else:
                     self.handle_endtag('p')
                 self._paragraph = False
