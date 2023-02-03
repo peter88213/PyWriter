@@ -1,20 +1,19 @@
-"""Provide a generic class for csv file import.
+"""Provide a generic class for ODS file import.
 
-Other csv file representations inherit from this class.
+Other ODS file readers inherit from this class.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import os
-import csv
 from pywriter.pywriter_globals import *
 from pywriter.file.file import File
 from pywriter.file.file_export import FileExport
+from pywriter.ods.ods_parser import OdsParser
 
 
-class CsvFile(File):
-    """csv file representation.
+class OdsReader(File):
+    """Generic OpenDocument spreadsheet document reader.
 
     Public methods:
         read() -- parse the file and get the instance variables.
@@ -23,7 +22,7 @@ class CsvFile(File):
     - Records are separated by line breaks.
     - Data fields are delimited by the _SEPARATOR character.
     """
-    EXTENSION = '.csv'
+    EXTENSION = '.ods'
     # overwrites File.EXTENSION
     _SEPARATOR = ','
     # delimits data fields within a record.
@@ -55,31 +54,9 @@ class CsvFile(File):
         """
         self._rows = []
         cellsPerRow = len(self._rowTitles)
-        try:
-            with open(self.filePath, newline='', encoding='utf-8') as f:
-                reader = csv.reader(f, delimiter=self._SEPARATOR)
-                for row in reader:
-                    if len(row) != cellsPerRow:
-                        raise Error(f'{_("Wrong csv structure")}.')
+        reader = OdsParser()
+        self._rows = reader.feed_file(self.filePath, cellsPerRow)
+        for row in self._rows:
+            if len(row) != cellsPerRow:
+                raise Error(f'{_("Wrong table structure")}.')
 
-                    self._rows.append(row)
-        except(FileNotFoundError):
-            raise Error(f'{_("File not found")}: "{norm_path(self.filePath)}".')
-        except:
-            raise Error(f'{_("Cannot parse File")}: "{norm_path(self.filePath)}".')
-
-    def _get_list(self, text):
-        """Convert a string into a list.
-        
-        Positional arguments:
-            text -- string containing comma-separated substrings.
-        
-        Split a sequence of comma separated strings into a list of strings.
-        Remove leading and trailing spaces, if any.
-        Return a list of strings.
-        """
-        elements = []
-        tempList = text.split(',')
-        for element in tempList:
-            elements.append(element.strip())
-        return elements

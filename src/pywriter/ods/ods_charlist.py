@@ -1,20 +1,20 @@
 """Provide a class for ODS character list export.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.ods.ods_file import OdsFile
+from pywriter.ods.ods_writer import OdsWriter
 
 
-class OdsCharList(OdsFile):
-    """ODS character list representation."""
+class OdsCharList(OdsWriter):
+    """ODS character list writer."""
 
     DESCRIPTION = _('Character list')
     SUFFIX = '_charlist'
 
-    _fileHeader = f'''{OdsFile._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
+    _fileHeader = f'''{OdsWriter._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
     <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co2" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
@@ -95,4 +95,4 @@ class OdsCharList(OdsFile):
 
 '''
 
-    _fileFooter = OdsFile._CONTENT_XML_FOOTER
+    _fileFooter = OdsWriter._CONTENT_XML_FOOTER

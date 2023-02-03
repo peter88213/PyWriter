@@ -1,19 +1,19 @@
 """Provide a class for ODS location list export.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.ods.ods_file import OdsFile
+from pywriter.ods.ods_writer import OdsWriter
 
 
-class OdsLocList(OdsFile):
-    """ODS location list representation."""
+class OdsLocList(OdsWriter):
+    """ODS location list writer."""
     DESCRIPTION = _('Location list')
     SUFFIX = '_loclist'
 
-    _fileHeader = f'''{OdsFile._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
+    _fileHeader = f'''{OdsWriter._CONTENT_XML_HEADER}{DESCRIPTION}" table:style-name="ta1" table:print="false">
     <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
     <table:table-column table:style-name="co4" table:default-cell-style-name="Default"/>
@@ -61,4 +61,4 @@ class OdsLocList(OdsFile):
     </table:table-row>
 
 '''
-    _fileFooter = OdsFile._CONTENT_XML_FOOTER
+    _fileFooter = OdsWriter._CONTENT_XML_FOOTER

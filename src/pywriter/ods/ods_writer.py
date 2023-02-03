@@ -1,16 +1,16 @@
 """Provide a generic class for ODS file export.
 
-Other ODS file representations inherit from this class.
+Other ODS file writers inherit from this class.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.odf.odf_file import OdfFile
 
 
-class OdsFile(OdfFile):
-    """Generic OpenDocument spreadsheet document representation."""
+class OdsWriter(OdfFile):
+    """Generic OpenDocument spreadsheet document writer."""
     EXTENSION = '.ods'
     _ODF_COMPONENTS = ['META-INF', 'content.xml', 'meta.xml', 'mimetype',
                       'settings.xml', 'styles.xml', 'META-INF/manifest.xml']

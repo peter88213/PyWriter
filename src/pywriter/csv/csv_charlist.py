@@ -1,17 +1,17 @@
-"""Provide a class for csv character list import.
+"""Provide a class for ODS character list import.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
 from pywriter.pywriter_globals import *
 from pywriter.model.character import Character
-from pywriter.csv.csv_file import CsvFile
+from pywriter.ods.ods_reader import OdsReader
 
 
-class CsvCharList(CsvFile):
-    """csv file representation of a yWriter project's characters table. 
+class CsvCharList(OdsReader):
+    """ODS character list reader. 
     
     Public methods:
         read() -- parse the file and get the instance variables.
