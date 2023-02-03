@@ -69,8 +69,6 @@ class HtmlImport(HtmlFormatted):
                     self._lines.append(f'[lang={self._language}]')
             except:
                 pass
-        elif tag == 'br':
-            self._newline = True
         elif tag == 'em':
             self._lines.append('[i]')
         elif tag == 'strong':
@@ -116,8 +114,6 @@ class HtmlImport(HtmlFormatted):
                     break
         elif tag == 'li':
                 self._lines.append(f'{self._BULLET} ')
-        elif tag == 'ul':
-                self._skip_data = True
         elif tag == 'blockquote':
             self._lines.append(f'{self._INDENT} ')
             try:
@@ -142,7 +138,6 @@ class HtmlImport(HtmlFormatted):
                 self._lines.append(f'[/lang={self._language}]')
                 self._language = ''
             self._lines.append('\n')
-            self._newline = True
             if self._scId is not None:
                 sceneText = ''.join(self._lines).rstrip()
                 sceneText = self._cleanup_scene(sceneText)
@@ -193,14 +188,9 @@ class HtmlImport(HtmlFormatted):
         
         Overrides the superclass method.
         """
-        if self._skip_data:
-            self._skip_data = False
-        elif self._scId is not None and self._SCENE_DIVIDER in data:
+        if self._scId is not None and self._SCENE_DIVIDER in data:
             self._scId = None
         else:
-            if self._newline:
-                data = data.rstrip()
-                self._newline = False
             self._lines.append(data)
 
     def read(self):

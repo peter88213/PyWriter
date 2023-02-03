@@ -99,20 +99,22 @@ class HtmlOutline(HtmlFile):
 
         Overrides the superclass method.
         """
+        text = ''.join(self._lines)
         if tag == 'p':
-            self._lines.append('\n')
+            text = f'{text.strip()}\n'
+            self._lines = [text]
             if self._scId is not None:
-                self.novel.scenes[self._scId].desc = ''.join(self._lines)
+                self.novel.scenes[self._scId].desc = text
             elif self._chId is not None:
-                self.novel.chapters[self._chId].desc = ''.join(self._lines)
+                self.novel.chapters[self._chId].desc = text
         elif tag in ('h1', 'h2'):
-            self.novel.chapters[self._chId].title = ''.join(self._lines)
+            self.novel.chapters[self._chId].title = text.strip()
             self._lines = []
         elif tag == 'h3':
-            self.novel.scenes[self._scId].title = ''.join(self._lines)
+            self.novel.scenes[self._scId].title = text.strip()
             self._lines = []
         elif tag == 'title':
-            self.novel.title = ''.join(self._lines)
+            self.novel.title = text.strip()
 
     def handle_data(self, data):
         """Collect data within scene sections.
@@ -122,4 +124,4 @@ class HtmlOutline(HtmlFile):
         
         Overrides the superclass method.
         """
-        self._lines.append(data.strip())
+        self._lines.append(data)
