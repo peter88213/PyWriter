@@ -29,8 +29,6 @@ class OdtParser(sax.ContentHandler):
     
     The data is presented as from an Open/LibreOffice HTML export file.
     The PyWriter HTML import classes thus can be reused.
-    
-    TODO: Convert lists.
     """
 
     def __init__(self):
@@ -43,6 +41,7 @@ class OdtParser(sax.ContentHandler):
         self._paragraph = False
         self._commentParagraphCount = None
         self._blockquote = False
+        self._list = False
         self._em = False
         self._strong = False
         self._lang = False
@@ -129,6 +128,9 @@ class OdtParser(sax.ContentHandler):
             elif style in self._headingTags:
                 self._heading = self._headingTags[style]
                 self.handle_starttag(self._heading, [()])
+            elif self._list:
+                self.handle_starttag('li', [()])
+                self._paragraph = True
             else:
                 self.handle_starttag('p', [()])
                 self._paragraph = True
@@ -154,6 +156,8 @@ class OdtParser(sax.ContentHandler):
             except:
                 self._heading = f'h{style[-1]}'
             self.handle_starttag(self._heading, [()])
+        elif name == 'text:list-item':
+            self._list = True
         elif name == 'style:style':
             self._style = xmlAttributes.get('style:name', None)
             styleName = xmlAttributes.get('style:parent-style-name', '')
@@ -209,6 +213,8 @@ class OdtParser(sax.ContentHandler):
         elif name == 'text:h':
             self.handle_endtag(self._heading)
             self._heading = None
+        elif name == 'text:list-item':
+            self._list = False
         elif name == 'style:style':
             self._style = None
 
