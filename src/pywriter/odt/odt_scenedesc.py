@@ -5,10 +5,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtSceneDesc(OdtFile):
+class OdtSceneDesc(OdtWriter):
     """ODT scene summaries file writer.
 
     Export a full synopsis with invisibly tagged scene descriptions.
@@ -16,7 +16,7 @@ class OdtSceneDesc(OdtFile):
     DESCRIPTION = _('Scene descriptions')
     SUFFIX = '_scenes'
 
-    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtWriter._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -54,4 +54,4 @@ class OdtSceneDesc(OdtFile):
     _chapterEndTemplate = '''</text:section>
 '''
 
-    _fileFooter = OdtFile._CONTENT_XML_FOOTER
+    _fileFooter = OdtWriter._CONTENT_XML_FOOTER

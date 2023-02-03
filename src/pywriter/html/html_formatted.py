@@ -4,11 +4,11 @@ Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.html.html_file import HtmlFile
+from pywriter.odt.odt_reader import OdtReader
 from pywriter.model.splitter import Splitter
 
 
-class HtmlFormatted(HtmlFile):
+class HtmlFormatted(OdtReader):
     """ODT file reader.
 
     Provide methods and data for processing chapters with formatted text.

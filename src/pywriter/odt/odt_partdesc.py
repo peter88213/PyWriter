@@ -7,10 +7,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtPartDesc(OdtFile):
+class OdtPartDesc(OdtWriter):
     """ODT part summaries file writer.
 
     Export a synopsis with invisibly tagged part descriptions.
@@ -18,7 +18,7 @@ class OdtPartDesc(OdtFile):
     DESCRIPTION = _('Part descriptions')
     SUFFIX = '_parts'
 
-    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtWriter._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -28,4 +28,4 @@ class OdtPartDesc(OdtFile):
 </text:section>
 '''
 
-    _fileFooter = OdtFile._CONTENT_XML_FOOTER
+    _fileFooter = OdtWriter._CONTENT_XML_FOOTER

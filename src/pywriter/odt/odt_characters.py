@@ -5,10 +5,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtCharacters(OdtFile):
+class OdtCharacters(OdtWriter):
     """ODT character descriptions file writer.
 
     Export a character sheet with invisibly tagged descriptions.
@@ -16,7 +16,7 @@ class OdtCharacters(OdtFile):
     DESCRIPTION = _('Character descriptions')
     SUFFIX = '_characters'
 
-    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtWriter._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -41,7 +41,7 @@ class OdtCharacters(OdtFile):
 </text:section>
 '''
 
-    _fileFooter = OdtFile._CONTENT_XML_FOOTER
+    _fileFooter = OdtWriter._CONTENT_XML_FOOTER
 
     def _get_characterMapping(self, crId):
         """Return a mapping dictionary for a character section.
@@ -52,7 +52,7 @@ class OdtCharacters(OdtFile):
         Special formatting of alternate and full name. 
         Extends the superclass method.
         """
-        characterMapping = OdtFile._get_characterMapping(self, crId)
+        characterMapping = OdtWriter._get_characterMapping(self, crId)
         if self.novel.characters[crId].aka:
             characterMapping['AKA'] = f' ("{self.novel.characters[crId].aka}")'
         if self.novel.characters[crId].fullName:

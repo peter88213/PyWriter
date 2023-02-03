@@ -7,10 +7,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 from string import Template
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtFormatted(OdtFile):
+class OdtFormatted(OdtWriter):
     """ODT file writer.
 
     Public methods:

@@ -10,7 +10,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odf.odf_file import OdfFile
 
 
-class OdtFile(OdfFile):
+class OdtWriter(OdfFile):
     """Generic OpenDocument text document writer."""
 
     EXTENSION = '.odt'

@@ -15,10 +15,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from pywriter.pywriter_globals import *
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.html.html_file import HtmlFile
+from pywriter.odt.odt_reader import OdtReader
 
 
-class HtmlOutline(HtmlFile):
+class HtmlOutline(OdtReader):
     """ODT outline file reader.
 
     Import an outline without chapter and scene tags.

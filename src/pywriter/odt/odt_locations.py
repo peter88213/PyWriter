@@ -5,10 +5,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtLocations(OdtFile):
+class OdtLocations(OdtWriter):
     """ODT location descriptions file writer.
 
     Export a location sheet with invisibly tagged descriptions.
@@ -16,7 +16,7 @@ class OdtLocations(OdtFile):
     DESCRIPTION = _('Location descriptions')
     SUFFIX = '_locations'
 
-    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtWriter._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -26,7 +26,7 @@ class OdtLocations(OdtFile):
 </text:section>
 '''
 
-    _fileFooter = OdtFile._CONTENT_XML_FOOTER
+    _fileFooter = OdtWriter._CONTENT_XML_FOOTER
 
     def _get_locationMapping(self, lcId):
         """Return a mapping dictionary for a location section.

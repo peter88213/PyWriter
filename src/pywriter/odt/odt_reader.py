@@ -1,6 +1,6 @@
 """Provide a generic class for ODT file import.
 
-Other ODTt file readers inherit from this class.
+Other ODT file readers inherit from this class.
 
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
@@ -14,7 +14,7 @@ from pywriter.file.file import File
 from pywriter.odt.odt_parser import OdtParser
 
 
-class HtmlFile(File, OdtParser):
+class OdtReader(File, OdtParser):
     """Generic ODT file reader.
     
     Public methods:

@@ -7,15 +7,15 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from string import Template
 from pywriter.pywriter_globals import *
 from pywriter.model.cross_references import CrossReferences
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtXref(OdtFile):
+class OdtXref(OdtWriter):
     """OpenDocument xml cross reference file writer."""
     DESCRIPTION = _('Cross reference')
     SUFFIX = '_xref'
 
-    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtWriter._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
     _sceneTemplate = '''<text:p text:style-name="yWriter_20_mark">
@@ -60,7 +60,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 '''
     _scnPerTagtemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes tagged $Tag:</text:h>
 '''
-    _fileFooter = OdtFile._CONTENT_XML_FOOTER
+    _fileFooter = OdtWriter._CONTENT_XML_FOOTER
 
     def __init__(self, filePath, **kwargs):
         """Apply the strategy pattern by delegating the cross reference to an external object.

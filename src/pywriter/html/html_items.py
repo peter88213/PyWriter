@@ -7,10 +7,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 from pywriter.pywriter_globals import *
 from pywriter.model.world_element import WorldElement
-from pywriter.html.html_file import HtmlFile
+from pywriter.odt.odt_reader import OdtReader
 
 
-class HtmlItems(HtmlFile):
+class HtmlItems(OdtReader):
     """ODT item descriptions file reader.
 
     Import a item sheet with invisibly tagged descriptions.

@@ -7,10 +7,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 from pywriter.pywriter_globals import *
 from pywriter.model.character import Character
-from pywriter.html.html_file import HtmlFile
+from pywriter.odt.odt_reader import OdtReader
 
 
-class HtmlCharacters(HtmlFile):
+class HtmlCharacters(OdtReader):
     """ODT character descriptions file reader.
 
     Import a character sheet with invisibly tagged descriptions.

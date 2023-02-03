@@ -5,10 +5,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtChapterDesc(OdtFile):
+class OdtChapterDesc(OdtWriter):
     """ODT chapter summaries file writer.
 
     Export a synopsis with invisibly tagged chapter descriptions.
@@ -16,7 +16,7 @@ class OdtChapterDesc(OdtFile):
     DESCRIPTION = _('Chapter descriptions')
     SUFFIX = '_chapters'
 
-    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtWriter._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -29,4 +29,4 @@ class OdtChapterDesc(OdtFile):
 </text:section>
 '''
 
-    _fileFooter = OdtFile._CONTENT_XML_FOOTER
+    _fileFooter = OdtWriter._CONTENT_XML_FOOTER

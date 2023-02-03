@@ -5,10 +5,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_file import OdtFile
+from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtItems(OdtFile):
+class OdtItems(OdtWriter):
     """ODT item descriptions file writer.
 
     Export a item sheet with invisibly tagged descriptions.
@@ -16,7 +16,7 @@ class OdtItems(OdtFile):
     DESCRIPTION = _('Item descriptions')
     SUFFIX = '_items'
 
-    _fileHeader = f'''{OdtFile._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
+    _fileHeader = f'''{OdtWriter._CONTENT_XML_HEADER}<text:p text:style-name="Title">$Title</text:p>
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
@@ -26,7 +26,7 @@ class OdtItems(OdtFile):
 </text:section>
 '''
 
-    _fileFooter = OdtFile._CONTENT_XML_FOOTER
+    _fileFooter = OdtWriter._CONTENT_XML_FOOTER
 
     def _get_itemMapping(self, itId):
         """Return a mapping dictionary for an item section.

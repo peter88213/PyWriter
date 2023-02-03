@@ -4,7 +4,6 @@ Modules:
 
 html_chapterdesc -- Provide a class for ODT invisibly tagged chapter descriptions import.
 html_characters -- Provide a class for ODT invisibly tagged character descriptions import.
-html_file -- Provide a generic class for ODT file import.
 html_fop -- Helper module for HTML file operations.
 html_formatted -- Provide a base class for ODT documents containing text that is formatted in yWriter.
 html_import -- Provide a class for ODT 'work in progress' import.

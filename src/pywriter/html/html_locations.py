@@ -7,10 +7,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import re
 from pywriter.pywriter_globals import *
 from pywriter.model.world_element import WorldElement
-from pywriter.html.html_file import HtmlFile
+from pywriter.odt.odt_reader import OdtReader
 
 
-class HtmlLocations(HtmlFile):
+class HtmlLocations(OdtReader):
     """ODT location descriptions file reader.
 
     Import a location sheet with invisibly tagged descriptions.
