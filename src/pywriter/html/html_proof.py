@@ -81,10 +81,10 @@ class HtmlProof(HtmlFormatted):
         Overrides the superclass method.
         """
         if tag in ['p', 'h2', 'h1', 'blockquote']:
+            self._lines.append('\n')
             if self._language:
                 self._lines.append(f'[/lang={self._language}]')
                 self._language = ''
-            self._newline = True
         elif tag == 'em':
             self._lines.append('[/i]')
         elif tag == 'strong':
@@ -122,7 +122,4 @@ class HtmlProof(HtmlFormatted):
         elif '[/ChID' in data:
             self._chId = None
         elif self._scId is not None:
-            if self._newline:
-                self._newline = False
-                data = f'{data.rstrip()}\n'
             self._lines.append(data)
