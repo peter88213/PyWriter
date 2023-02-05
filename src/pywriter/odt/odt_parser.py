@@ -165,12 +165,10 @@ class OdtParser(sax.ContentHandler):
             if styleName.startswith('Heading'):
                 self._headingTags[self._style] = f'h{styleName[-1]}'
         elif name == 'style:text-properties':
-            if xmlAttributes.get('style:font-style-complex', None) == 'italic':
+            if xmlAttributes.get('style:font-style', None) == 'italic':
                 self._emTags.append(self._style)
-            elif xmlAttributes.get('style:font-weight-complex', None) == 'bold':
+            elif xmlAttributes.get('style:font-weight', None) == 'bold':
                 self._strongTags.append(self._style)
-            elif xmlAttributes.get('style:language-complex', False):
-                self._languageTags[self._style] = xmlAttributes['style:language-complex']
             elif xmlAttributes.get('fo:language', False):
                 lngCode = xmlAttributes['fo:language']
                 ctrCode = xmlAttributes['fo:country']

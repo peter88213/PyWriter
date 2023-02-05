@@ -189,12 +189,24 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     </PROJECTVAR>
     <PROJECTVAR>
       <ID>3</ID>
+      <Title><![CDATA[lang=en-US]]></Title>
+      <Desc><![CDATA[<HTM <SPAN LANG="en-US"> /HTM>]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+    <PROJECTVAR>
+      <ID>4</ID>
+      <Title><![CDATA[/lang=en-US]]></Title>
+      <Desc><![CDATA[<HTM </SPAN> /HTM>]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+    <PROJECTVAR>
+      <ID>5</ID>
       <Title><![CDATA[lang=zxx]]></Title>
       <Desc><![CDATA[<HTM <SPAN LANG="zxx"> /HTM>]]></Desc>
       <Tags><![CDATA[0]]></Tags>
     </PROJECTVAR>
     <PROJECTVAR>
-      <ID>4</ID>
+      <ID>6</ID>
       <Title><![CDATA[/lang=zxx]]></Title>
       <Desc><![CDATA[<HTM </SPAN> /HTM>]]></Desc>
       <Tags><![CDATA[0]]></Tags>
@@ -234,7 +246,7 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
       </Locations>
       <Items>
 		</Items>
-      <SceneContent><![CDATA[Hal Spacejock was sitting at the [i]Black Gull’s[/i] flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he’d read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article’s claims. He didn’t feel any smarter and he couldn’t remember the last time he’d spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull’s onboard computer. Underpowered and outdated, it was still more than capable of running the ship’s accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.
+      <SceneContent><![CDATA[Hal Spacejock was sitting at the [i]Black Gull’s[/i] flight console, his attention riveted to a small [lang=en-US]chessboard[/lang=en-US] balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he’d read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article’s claims. He didn’t feel any smarter and he couldn’t remember the last time he’d spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull’s onboard computer. Underpowered and outdated, it was still more than capable of running the ship’s accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.
 “Your turn,” said the Navcom, in a neutral female voice.
 “I’m thinking.”
 “While you’re planning your opening move, can I tell you about a special offer?”
