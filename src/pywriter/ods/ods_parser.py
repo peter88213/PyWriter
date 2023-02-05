@@ -15,13 +15,8 @@ class OdsParser():
     """An ODS document parser.
     
     Public methods:
-        feed_file(filePath) -- Feed an ODS file to the parser.
+        get_rows(filePath, cellsPerRow) -- Return rows and cells from an ODS document.
            
-      Methods overriding xml.sax.ContentHandler methods (not meant to be overridden by subclasses)
-        startElement -- Signals the start of an element in non-namespace mode.
-        endElement -- Signals the end of an element in non-namespace mode.
-        characters -- Receive notification of character data.
-    
     Return a list of rows, containing lists of column cells.
     The PyWriter csv import classes thus can be reused.
     """
@@ -33,16 +28,14 @@ class OdsParser():
         self._inCell = None
         self.__cellsPerRow = 0
 
-    def feed_file(self, filePath, cellsPerRow):
-        """Feed an ODS file to the parser.
+    def get_rows(self, filePath, cellsPerRow):
+        """Return a nested list with rows and cells from an ODS document.
         
         Positional arguments:
             filePath -- str: ODS document path.
             cellsPerRow -- int: Number of cells per row.
         
-        First unzip the ODS file located at self.filePath, 
-        and get languageCode, countryCode, title, desc, and authorName,        
-        Then parse content.xml.
+        First unzip the ODS file located at self.filePath, then parse content.xml.
         """
         ns = dict(
             office='urn:oasis:names:tc:opendocument:xmlns:office:1.0',
@@ -100,13 +93,4 @@ class OdsParser():
                 rows.append(cells)
                 # print(cells)
         return rows
-
-
-def main(filePath):
-    reader = OdsParser()
-    reader.feed_file(filePath, 21)
-
-
-if __name__ == '__main__':
-    main(sys.argv[1])
 

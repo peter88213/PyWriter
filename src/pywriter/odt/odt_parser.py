@@ -100,6 +100,7 @@ class OdtParser(sax.ContentHandler):
                     locale = lngCode
                 self.handle_starttag('body', [('lang', locale)])
                 break
+
         root = None
 
         #--- Parse 'content.xml'.

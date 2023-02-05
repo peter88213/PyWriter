@@ -47,7 +47,7 @@ class OdsReader(File):
     def read(self):
         """Parse the file and get the instance variables.
         
-        Parse the csv file located at filePath, fetching the rows.
+        Parse the ODS file located at filePath, fetching the rows.
         Check the number of fields in each row.
         Raise the "Error" exception in case of error. 
         Overrides the superclass method.
@@ -55,7 +55,7 @@ class OdsReader(File):
         self._rows = []
         cellsPerRow = len(self._rowTitles)
         reader = OdsParser()
-        self._rows = reader.feed_file(self.filePath, cellsPerRow)
+        self._rows = reader.get_rows(self.filePath, cellsPerRow)
         for row in self._rows:
             if len(row) != cellsPerRow:
                 print(row)
