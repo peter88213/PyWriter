@@ -58,5 +58,7 @@ class OdsReader(File):
         self._rows = reader.feed_file(self.filePath, cellsPerRow)
         for row in self._rows:
             if len(row) != cellsPerRow:
+                print(row)
+                print(len(row), cellsPerRow)
                 raise Error(f'{_("Wrong table structure")}.')
 
