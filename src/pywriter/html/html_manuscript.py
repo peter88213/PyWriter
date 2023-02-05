@@ -32,7 +32,7 @@ class HtmlManuscript(HtmlFormatted):
                 self._lines.append('[i]')
             elif tag == 'strong':
                 self._lines.append('[b]')
-            elif tag in ('span', 'p'):
+            elif tag in ('lang', 'p'):
                 try:
                     if attrs[0][0] == 'lang':
                         self._language = attrs[0][1]
@@ -90,7 +90,7 @@ class HtmlManuscript(HtmlFormatted):
                 self._lines.append('[/i]')
             elif tag == 'strong':
                 self._lines.append('[/b]')
-            elif tag == 'span':
+            elif tag == 'lang':
                 if self._language:
                     self._lines.append(f'[/lang={self._language}]')
                     self._language = ''

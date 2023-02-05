@@ -42,9 +42,7 @@ class OdtParser(sax.ContentHandler):
         self._commentParagraphCount = None
         self._blockquote = False
         self._list = False
-        self._em = False
-        self._strong = False
-        self._lang = False
+        self._span = []
         self._style = None
 
     def feed_file(self, filePath):
@@ -137,14 +135,14 @@ class OdtParser(sax.ContentHandler):
                 self._paragraph = True
         elif name == 'text:span':
             if style in self._emTags:
-                self._em = True
+                self._span.append('em')
                 self.handle_starttag('em', [()])
             elif style in self._strongTags:
-                self._strong = True
+                self._span.append('strong')
                 self.handle_starttag('strong', [()])
             elif style in self._languageTags:
-                self._lang = True
-                self.handle_starttag('span', [('lang', self._languageTags[style])])
+                self._span.append('lang')
+                self.handle_starttag('lang', [('lang', self._languageTags[style])])
         elif name == 'text:section':
             sectionId = xmlAttributes['text:name']
             self.handle_starttag('div', [('id', sectionId)])
@@ -195,15 +193,9 @@ class OdtParser(sax.ContentHandler):
                     self.handle_endtag('p')
                 self._paragraph = False
         elif name == 'text:span':
-            if self._em:
-                self._em = False
-                self.handle_endtag('em')
-            elif self._strong:
-                self._strong = False
-                self.handle_endtag('strong')
-            elif self._lang:
-                self._lang = False
-                self.handle_endtag('span')
+            if self._span:
+                self.handle_endtag(self._span.pop())
+            print(f'</{self._span}>')
         elif name == 'text:section':
             self.handle_endtag('div')
         elif name == 'office:annotation':
