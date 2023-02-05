@@ -700,7 +700,8 @@ class Yw7File(File):
                 try:
                     xmlScn.find('Desc').text = prjScn.desc
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Desc').text = prjScn.desc
+                    if prjScn.desc:
+                        ET.SubElement(xmlScn, 'Desc').text = prjScn.desc
 
             if xmlScn.find('SceneContent') is None:
                 ET.SubElement(xmlScn, 'SceneContent').text = prjScn.sceneContent
@@ -780,37 +781,43 @@ class Yw7File(File):
                 try:
                     xmlScn.find('Notes').text = prjScn.notes
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Notes').text = prjScn.notes
+                    if prjScn.notes:
+                        ET.SubElement(xmlScn, 'Notes').text = prjScn.notes
 
             if prjScn.tags is not None:
                 try:
                     xmlScn.find('Tags').text = list_to_string(prjScn.tags)
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Tags').text = list_to_string(prjScn.tags)
+                    if prjScn.tags:
+                        ET.SubElement(xmlScn, 'Tags').text = list_to_string(prjScn.tags)
 
             if prjScn.field1 is not None:
                 try:
                     xmlScn.find('Field1').text = prjScn.field1
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Field1').text = prjScn.field1
+                    if prjScn.field1:
+                        ET.SubElement(xmlScn, 'Field1').text = prjScn.field1
 
             if prjScn.field2 is not None:
                 try:
                     xmlScn.find('Field2').text = prjScn.field2
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Field2').text = prjScn.field2
+                    if prjScn.field2:
+                        ET.SubElement(xmlScn, 'Field2').text = prjScn.field2
 
             if prjScn.field3 is not None:
                 try:
                     xmlScn.find('Field3').text = prjScn.field3
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Field3').text = prjScn.field3
+                    if prjScn.field3:
+                        ET.SubElement(xmlScn, 'Field3').text = prjScn.field3
 
             if prjScn.field4 is not None:
                 try:
                     xmlScn.find('Field4').text = prjScn.field4
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Field4').text = prjScn.field4
+                    if prjScn.field4:
+                        ET.SubElement(xmlScn, 'Field4').text = prjScn.field4
 
             if prjScn.appendToPrev:
                 if xmlScn.find('AppendToPrev') is None:
@@ -911,25 +918,29 @@ class Yw7File(File):
                 try:
                     xmlScn.find('Goal').text = prjScn.goal
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Goal').text = prjScn.goal
+                    if prjScn.goal:
+                        ET.SubElement(xmlScn, 'Goal').text = prjScn.goal
 
             if prjScn.conflict is not None:
                 try:
                     xmlScn.find('Conflict').text = prjScn.conflict
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Conflict').text = prjScn.conflict
+                    if prjScn.conflict:
+                        ET.SubElement(xmlScn, 'Conflict').text = prjScn.conflict
 
             if prjScn.outcome is not None:
                 try:
                     xmlScn.find('Outcome').text = prjScn.outcome
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'Outcome').text = prjScn.outcome
+                    if prjScn.outcome:
+                        ET.SubElement(xmlScn, 'Outcome').text = prjScn.outcome
 
             if prjScn.image is not None:
                 try:
                     xmlScn.find('ImageFile').text = prjScn.image
                 except(AttributeError):
-                    ET.SubElement(xmlScn, 'ImageFile').text = prjScn.image
+                    if prjScn.image:
+                        ET.SubElement(xmlScn, 'ImageFile').text = prjScn.image
 
             #--- Characters/locations/items
             if prjScn.characters is not None:
