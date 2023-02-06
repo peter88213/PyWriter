@@ -26,19 +26,28 @@ class File:
         projectName -- str: URL-coded file name without suffix and extension. 
         projectPath -- str: URL-coded path to the project directory. 
         filePath -- str: path to the file (property with getter and setter). 
+
+    Public class constants:
+        PRJ_KWVAR -- List of the names of the project keyword variables.
+        CHP_KWVAR -- List of the names of the chapter keyword variables.
+        SCN_KWVAR -- List of the names of the scene keyword variables.
+        CRT_KWVAR -- List of the names of the character keyword variables.
+        LOC_KWVAR -- List of the names of the location keyword variables.
+        ITM_KWVAR -- List of the names of the item keyword variables.
+        PNT_KWVAR -- List of the names of the project note keyword variables.
     """
     DESCRIPTION = _('File')
     EXTENSION = None
     SUFFIX = None
     # To be extended by subclass methods.
 
-    _PRJ_KWVAR = []
-    _CHP_KWVAR = []
-    _SCN_KWVAR = []
-    _CRT_KWVAR = []
-    _LOC_KWVAR = []
-    _ITM_KWVAR = []
-    _PNT_KWVAR = []
+    PRJ_KWVAR = []
+    CHP_KWVAR = []
+    SCN_KWVAR = []
+    CRT_KWVAR = []
+    LOC_KWVAR = []
+    ITM_KWVAR = []
+    PNT_KWVAR = []
     # Keyword variables for custom fields in the .yw7 XML file.
 
     def __init__(self, filePath, **kwargs):

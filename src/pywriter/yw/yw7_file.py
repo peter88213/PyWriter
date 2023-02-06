@@ -34,6 +34,10 @@ class Yw7File(File):
     Public instance variables:
         tree -- xml element tree of the yWriter project
         scenesSplit -- bool: True, if a scene or chapter is split during merging.
+        
+    Public class constants:
+        PRJ_KWVAR -- List of the names of the project keyword variables.
+        SCN_KWVAR -- List of the names of the scene keyword variables.
     """
     DESCRIPTION = _('yWriter 7 project')
     EXTENSION = '.yw7'
@@ -46,11 +50,11 @@ class Yw7File(File):
     # Names of xml elements containing CDATA.
     # ElementTree.write omits CDATA tags, so they have to be inserted afterwards.
 
-    _PRJ_KWVAR = [
+    PRJ_KWVAR = [
         'Field_LanguageCode',
         'Field_CountryCode',
         ]
-    _SCN_KWVAR = [
+    SCN_KWVAR = [
         'Field_SceneArcs',
         'Field_SceneStyle',
         ]
@@ -118,12 +122,12 @@ class Yw7File(File):
                     self.novel.wordTarget = 0
 
             #--- Initialize custom keyword variables.
-            for fieldName in self._PRJ_KWVAR:
+            for fieldName in self.PRJ_KWVAR:
                 self.novel.kwVar[fieldName] = None
 
             #--- Read project custom fields.
             for prjFields in prj.findall('Fields'):
-                for fieldName in self._PRJ_KWVAR:
+                for fieldName in self.PRJ_KWVAR:
                     field = prjFields.find(fieldName)
                     if field is not None:
                         self.novel.kwVar[fieldName] = field.text
@@ -161,12 +165,12 @@ class Yw7File(File):
                         self.novel.locations[lcId].tags = self._strip_spaces(tags)
 
                 #--- Initialize custom keyword variables.
-                for fieldName in self._LOC_KWVAR:
+                for fieldName in self.LOC_KWVAR:
                     self.novel.locations[lcId].kwVar[fieldName] = None
 
                 #--- Read location custom fields.
                 for lcFields in loc.findall('Fields'):
-                    for fieldName in self._LOC_KWVAR:
+                    for fieldName in self.LOC_KWVAR:
                         field = lcFields.find(fieldName)
                         if field is not None:
                             self.novel.locations[lcId].kwVar[fieldName] = field.text
@@ -198,12 +202,12 @@ class Yw7File(File):
                         self.novel.items[itId].tags = self._strip_spaces(tags)
 
                 #--- Initialize custom keyword variables.
-                for fieldName in self._ITM_KWVAR:
+                for fieldName in self.ITM_KWVAR:
                     self.novel.items[itId].kwVar[fieldName] = None
 
                 #--- Read item custom fields.
                 for itFields in itm.findall('Fields'):
-                    for fieldName in self._ITM_KWVAR:
+                    for fieldName in self.ITM_KWVAR:
                         field = itFields.find(fieldName)
                         if field is not None:
                             self.novel.items[itId].kwVar[fieldName] = field.text
@@ -252,12 +256,12 @@ class Yw7File(File):
                     self.novel.characters[crId].isMajor = False
 
                 #--- Initialize custom keyword variables.
-                for fieldName in self._CRT_KWVAR:
+                for fieldName in self.CRT_KWVAR:
                     self.novel.characters[crId].kwVar[fieldName] = None
 
                 #--- Read character custom fields.
                 for crFields in crt.findall('Fields'):
-                    for fieldName in self._CRT_KWVAR:
+                    for fieldName in self.CRT_KWVAR:
                         field = crFields.find(fieldName)
                         if field is not None:
                             self.novel.characters[crId].kwVar[fieldName] = field.text
@@ -279,7 +283,7 @@ class Yw7File(File):
                             self.novel.projectNotes[pnId].desc = pnt.find('Desc').text
 
                     #--- Initialize project note custom fields.
-                    for fieldName in self._PNT_KWVAR:
+                    for fieldName in self.PNT_KWVAR:
                         self.novel.projectNotes[pnId].kwVar[fieldName] = None
 
                     #--- Read project note custom fields.
@@ -348,12 +352,12 @@ class Yw7File(File):
                 self.novel.scenes[scId].scType = 0
 
                 #--- Initialize custom keyword variables.
-                for fieldName in self._SCN_KWVAR:
+                for fieldName in self.SCN_KWVAR:
                     self.novel.scenes[scId].kwVar[fieldName] = None
 
                 for scFields in scn.findall('Fields'):
                     #--- Read scene custom fields.
-                    for fieldName in self._SCN_KWVAR:
+                    for fieldName in self.SCN_KWVAR:
                         field = scFields.find(fieldName)
                         if field is not None:
                             self.novel.scenes[scId].kwVar[fieldName] = field.text
@@ -561,7 +565,7 @@ class Yw7File(File):
                         self.novel.chapters[chId].suppressChapterTitle = True
 
                 #--- Initialize custom keyword variables.
-                for fieldName in self._CHP_KWVAR:
+                for fieldName in self.CHP_KWVAR:
                     self.novel.chapters[chId].kwVar[fieldName] = None
 
                 #--- Read chapter fields.
@@ -579,7 +583,7 @@ class Yw7File(File):
                             self.novel.chapters[chId].suppressChapterBreak = True
 
                     #--- Read chapter custom fields.
-                    for fieldName in self._CHP_KWVAR:
+                    for fieldName in self.CHP_KWVAR:
                         field = chFields.find(fieldName)
                         if field is not None:
                             self.novel.chapters[chId].kwVar[fieldName] = field.text
@@ -593,7 +597,7 @@ class Yw7File(File):
                             self.novel.chapters[chId].srtScenes.append(scId)
 
         #--- Begin reading.
-        for field in self._PRJ_KWVAR:
+        for field in self.PRJ_KWVAR:
             self.novel.kwVar[field] = None
 
         if self.is_locked():
@@ -757,7 +761,7 @@ class Yw7File(File):
                 ET.SubElement(scFields, 'Field_SceneType').text = ySceneType
 
             #--- Write scene custom fields.
-            for field in self._SCN_KWVAR:
+            for field in self.SCN_KWVAR:
                 if self.novel.scenes[scId].kwVar.get(field, None):
                     if scFields is None:
                         scFields = ET.SubElement(xmlScn, 'Fields')
@@ -1091,7 +1095,7 @@ class Yw7File(File):
                     chFields.remove(chFields.find('Field_IsTrash'))
 
             #--- Write chapter custom fields.
-            for field in self._CHP_KWVAR:
+            for field in self.CHP_KWVAR:
                 if prjChp.kwVar.get(field, None):
                     if chFields is None:
                         chFields = ET.Element('Fields')
@@ -1155,7 +1159,7 @@ class Yw7File(File):
 
             #--- Write location custom fields.
             lcFields = xmlLoc.find('Fields')
-            for field in self._LOC_KWVAR:
+            for field in self.LOC_KWVAR:
                 if self.novel.locations[lcId].kwVar.get(field, None):
                     if lcFields is None:
                         lcFields = ET.SubElement(xmlLoc, 'Fields')
@@ -1210,7 +1214,7 @@ class Yw7File(File):
 
             #--- Write item custom fields.
             itFields = xmlItm.find('Fields')
-            for field in self._ITM_KWVAR:
+            for field in self.ITM_KWVAR:
                 if self.novel.items[itId].kwVar.get(field, None):
                     if itFields is None:
                         itFields = ET.SubElement(xmlItm, 'Fields')
@@ -1259,7 +1263,7 @@ class Yw7File(File):
 
             #--- Write character custom fields.
             crFields = xmlCrt.find('Fields')
-            for field in self._CRT_KWVAR:
+            for field in self.CRT_KWVAR:
                 if self.novel.characters[crId].kwVar.get(field, None):
                     if crFields is None:
                         crFields = ET.SubElement(xmlCrt, 'Fields')
@@ -1348,7 +1352,7 @@ class Yw7File(File):
             self.novel.kwVar['Field_CountryCode'] = None
 
             prjFields = xmlPrj.find('Fields')
-            for field in self._PRJ_KWVAR:
+            for field in self.PRJ_KWVAR:
                 setting = self.novel.kwVar.get(field, None)
                 if setting:
                     if prjFields is None:
@@ -1624,31 +1628,6 @@ class Yw7File(File):
         for line in lines:
             stripped.append(line.strip())
         return stripped
-
-    def reset_custom_variables(self):
-        """Set custom keyword variables to an empty string.
-        
-        Thus the write() method will remove the associated custom fields
-        from the .yw7 XML file. 
-        Return True, if a keyword variable has changed (i.e information is lost).
-        """
-        hasChanged = False
-        for field in self._PRJ_KWVAR:
-            if self.novel.kwVar.get(field, None):
-                self.novel.kwVar[field] = ''
-                hasChanged = True
-        for chId in self.novel.chapters:
-            # Deliberatey not iterate srtChapters: make sure to get all chapters.
-            for field in self._CHP_KWVAR:
-                if self.novel.chapters[chId].kwVar.get(field, None):
-                    self.novel.chapters[chId].kwVar[field] = ''
-                    hasChanged = True
-        for scId in self.novel.scenes:
-            for field in self._SCN_KWVAR:
-                if self.novel.scenes[scId].kwVar.get(field, None):
-                    self.novel.scenes[scId].kwVar[field] = ''
-                    hasChanged = True
-        return hasChanged
 
     def adjust_scene_types(self):
         """Make sure that scenes in non-"Normal" chapters inherit the chapter's type."""
