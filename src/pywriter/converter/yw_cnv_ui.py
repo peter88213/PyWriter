@@ -104,7 +104,6 @@ class YwCnvUi:
                 self.newFile = target.filePath
             finally:
                 self.ui.set_info_how(message)
-                self._delete_tempfile(source.filePath)
 
     def import_to_yw(self, source, target):
         """Convert from any file format to yWriter project.
@@ -143,7 +142,6 @@ class YwCnvUi:
                 self.ui.show_warning(_('New scenes created during conversion.'))
         finally:
             self.ui.set_info_how(message)
-            self._delete_tempfile(source.filePath)
 
     def _confirm_overwrite(self, filePath):
         """Return boolean permission to overwrite the target file.
@@ -154,25 +152,6 @@ class YwCnvUi:
         Overrides the superclass method.
         """
         return self.ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(filePath)))
-
-    def _delete_tempfile(self, filePath):
-        """Delete filePath if it is a temporary file no longer needed."""
-        if filePath.endswith('.html'):
-            # Might it be a temporary text document?
-            if os.path.isfile(filePath.replace('.html', '.odt')):
-                # Does a corresponding Office document exist?
-                try:
-                    os.remove(filePath)
-                except:
-                    pass
-        elif filePath.endswith('.csv'):
-            # Might it be a temporary spreadsheet document?
-            if os.path.isfile(filePath.replace('.csv', '.ods')):
-                # Does a corresponding Office document exist?
-                try:
-                    os.remove(filePath)
-                except:
-                    pass
 
     def _open_newFile(self):
         """Open the converted file for editing and exit the converter script."""
