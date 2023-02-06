@@ -6,14 +6,14 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.html.html_locations import HtmlLocations
-from pywriter.odt.odt_locations import OdtLocations
+from pywriter.odt.odt_w_locations import OdtWLocations
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 
 
 class NrmOpr(ImportExportTest, unittest.TestCase):
     _importClass = HtmlLocations
-    _exportClass = OdtLocations
+    _exportClass = OdtWLocations
 
     # The test methods must be defined here to identify the source of failure.
 

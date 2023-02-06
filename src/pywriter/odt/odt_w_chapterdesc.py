@@ -8,7 +8,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtChapterDesc(OdtWriter):
+class OdtWChapterDesc(OdtWriter):
     """ODT chapter summaries file writer.
 
     Export a synopsis with invisibly tagged chapter descriptions.

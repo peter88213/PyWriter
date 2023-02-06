@@ -10,7 +10,7 @@ from pywriter.model.scene import Scene
 from pywriter.ods.ods_reader import OdsReader
 
 
-class CsvSceneList(OdsReader):
+class OdsRSceneList(OdsReader):
     """ODS scene list reader. 
     
     Public methods:

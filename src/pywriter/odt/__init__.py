@@ -1,24 +1,38 @@
-"""Package for writing Open Document text documents.
+"""Package for reading and writing Open Document text documents.
 
 Modules:
 
-odt_brief_synopsis -- Provide a class for ODT brief synopsis export.
-odt_chapterdesc -- Provide a class for ODT invisibly tagged chapter descriptions export.
-odt_characters -- Provide a class for ODT invisibly tagged character descriptions export.
-odt_export -- Provide a class for ODT chapters and scenes export.
-odt_writer -- Provide a generic class for ODT file export.
-odt_items -- Provide a class for ODT item invisibly tagged descriptions export.
-odt_locations -- Provide a class for ODT invisibly tagged location descriptions export.
-odt_formatted -- Provide a base class for ODT documents containing text that is formatted in yWriter.
-odt_manuscript -- Provide a class for ODT invisibly tagged chapters and scenes export.
-odt_notes -- Provide a class for ODT invisibly tagged "Notes" chapters export.
 odt_parser -- Provide a class for parsing ODT documents.
-odt_partdesc -- Provide a class for ODT invisibly tagged part descriptions export.
-odt_proof -- Provide a class for ODT visibly tagged chapters and scenes export.
+odt_r_chapterdesc -- Provide a class for ODT invisibly tagged chapter descriptions import.
+odt_r_characters -- Provide a class for ODT invisibly tagged character descriptions import.
+odt_r_fop -- Helper module for HTML file operations.
+odt_r_formatted -- Provide a base class for ODT documents containing text that is formatted in yWriter.
+odt_r_import -- Provide a class for ODT 'work in progress' import.
+odt_r_items -- Provide a class for ODT item invisibly tagged descriptions import.
+odt_r_locations -- Provide a class for ODT invisibly tagged location descriptions import.
+odt_r_manuscript -- Provide a class for ODT invisibly tagged chapters and scenes import.
+odt_r_notes -- Provide a class for ODT invisibly tagged "Notes" chapters import.
+odt_r_outline -- Provide a class for ODT outline import.
+odt_r_partdesc -- Provide a class for ODT invisibly tagged part descriptions import.
+odt_r_proof -- Provide a class for ODT visibly tagged chapters and scenes import.
+odt_r_scenedesc -- Provide a class for ODT invisibly tagged scene descriptions import.
+odt_r_todo -- Provide a class for ODT invisibly tagged "Todo" chapters import.
 odt_reader -- Provide a generic class for ODT file import.
-odt_scenedesc -- Provide a class for ODT invisibly tagged scene descriptions export.
-odt_todo -- Provide a class for ODT invisibly tagged "Todo" chapters export.
-odt_xref -- Provide a class for ODT ross reference export.
+odt_w_brief_synopsis -- Provide a class for ODT brief synopsis export.
+odt_w_chapterdesc -- Provide a class for ODT invisibly tagged chapter descriptions export.
+odt_w_characters -- Provide a class for ODT invisibly tagged character descriptions export.
+odt_w_export -- Provide a class for ODT chapters and scenes export.
+odt_w_items -- Provide a class for ODT item invisibly tagged descriptions export.
+odt_w_locations -- Provide a class for ODT invisibly tagged location descriptions export.
+odt_w_formatted -- Provide a base class for ODT documents containing text that is formatted in yWriter.
+odt_w_manuscript -- Provide a class for ODT invisibly tagged chapters and scenes export.
+odt_w_notes -- Provide a class for ODT invisibly tagged "Notes" chapters export.
+odt_w_partdesc -- Provide a class for ODT invisibly tagged part descriptions export.
+odt_w_proof -- Provide a class for ODT visibly tagged chapters and scenes export.
+odt_w_scenedesc -- Provide a class for ODT invisibly tagged scene descriptions export.
+odt_w_todo -- Provide a class for ODT invisibly tagged "Todo" chapters export.
+odt_w_xref -- Provide a class for ODT ross reference export.
+odt_writer -- Provide a generic class for ODT file export.
 
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

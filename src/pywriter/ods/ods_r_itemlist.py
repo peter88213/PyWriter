@@ -10,7 +10,7 @@ from pywriter.model.world_element import WorldElement
 from pywriter.ods.ods_reader import OdsReader
 
 
-class CsvItemList(OdsReader):
+class OdsRItemList(OdsReader):
     """ODS item list reader.
     
     Public methods:

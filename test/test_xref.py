@@ -5,13 +5,13 @@ Test the cross reference generation.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_xref import OdtXref
+from pywriter.odt.odt_w_xref import OdtWXref
 from pywriter.test.export_test import ExportTest
 import unittest
 
 
 class NrmOpr(ExportTest, unittest.TestCase):
-    _exportClass = OdtXref
+    _exportClass = OdtWXref
 
     # The test methods must be defined here to identify the source of failure.
 

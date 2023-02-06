@@ -17,10 +17,10 @@ from pywriter.html.html_partdesc import HtmlPartDesc
 from pywriter.html.html_characters import HtmlCharacters
 from pywriter.html.html_locations import HtmlLocations
 from pywriter.html.html_items import HtmlItems
-from pywriter.csv.csv_scenelist import CsvSceneList
-from pywriter.csv.csv_charlist import CsvCharList
-from pywriter.csv.csv_loclist import CsvLocList
-from pywriter.csv.csv_itemlist import CsvItemList
+from pywriter.ods.ods_r_scenelist import OdsRSceneList
+from pywriter.ods.ods_r_charlist import OdsRCharList
+from pywriter.ods.ods_r_loclist import OdsRLocList
+from pywriter.ods.ods_r_itemlist import OdsRItemList
 
 
 class Yw7Importer(YwCnvFf):
@@ -47,10 +47,10 @@ class Yw7Importer(YwCnvFf):
                              HtmlLocations,
                              HtmlNotes,
                              HtmlTodo,
-                             CsvCharList,
-                             CsvLocList,
-                             CsvItemList,
-                             CsvSceneList,
+                             OdsRCharList,
+                             OdsRLocList,
+                             OdsRItemList,
+                             OdsRSceneList,
                              ]
     IMPORT_TARGET_CLASSES = [Yw7File]
     CREATE_SOURCE_CLASSES = []

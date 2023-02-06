@@ -10,7 +10,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtPartDesc(OdtWriter):
+class OdtWPartDesc(OdtWriter):
     """ODT part summaries file writer.
 
     Export a synopsis with invisibly tagged part descriptions.

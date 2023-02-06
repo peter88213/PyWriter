@@ -5,10 +5,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_formatted import OdtFormatted
+from pywriter.odt.odt_w_formatted import OdtWFormatted
 
 
-class OdtProof(OdtFormatted):
+class OdtWProof(OdtWFormatted):
     """ODT proof reading file writer.
 
     Export a manuscript with visibly tagged chapters and scenes.
@@ -75,4 +75,4 @@ class OdtProof(OdtFormatted):
     _todoChapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark_20_todo">[/ChID (ToDo)]</text:p>
 '''
 
-    _fileFooter = OdtFormatted._CONTENT_XML_FOOTER
+    _fileFooter = OdtWFormatted._CONTENT_XML_FOOTER

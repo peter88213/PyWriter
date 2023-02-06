@@ -8,7 +8,7 @@ from pywriter.pywriter_globals import *
 from pywriter.ods.ods_writer import OdsWriter
 
 
-class OdsLocList(OdsWriter):
+class OdsWLocList(OdsWriter):
     """ODS location list writer."""
     DESCRIPTION = _('Location list')
     SUFFIX = '_loclist'

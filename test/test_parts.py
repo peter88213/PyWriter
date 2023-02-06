@@ -6,14 +6,14 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.html.html_partdesc import HtmlPartDesc
-from pywriter.odt.odt_partdesc import OdtPartDesc
+from pywriter.odt.odt_w_partdesc import OdtWPartDesc
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 
 
 class NrmOpr(ImportExportTest, unittest.TestCase):
     _importClass = HtmlPartDesc
-    _exportClass = OdtPartDesc
+    _exportClass = OdtWPartDesc
 
     # The test methods must be defined here to identify the source of failure.
 

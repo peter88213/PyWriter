@@ -10,7 +10,7 @@ from pywriter.model.world_element import WorldElement
 from pywriter.ods.ods_reader import OdsReader
 
 
-class CsvLocList(OdsReader):
+class OdsRLocList(OdsReader):
     """ODS location list reader. 
     
     Public methods:

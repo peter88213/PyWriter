@@ -7,23 +7,23 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from pywriter.converter.yw_cnv_ff import YwCnvFf
 from pywriter.converter.new_project_factory import NewProjectFactory
 from pywriter.yw.yw7_file import Yw7File
-from pywriter.odt.odt_proof import OdtProof
-from pywriter.odt.odt_manuscript import OdtManuscript
-from pywriter.odt.odt_scenedesc import OdtSceneDesc
-from pywriter.odt.odt_chapterdesc import OdtChapterDesc
-from pywriter.odt.odt_partdesc import OdtPartDesc
-from pywriter.odt.odt_brief_synopsis import OdtBriefSynopsis
-from pywriter.odt.odt_export import OdtExport
-from pywriter.odt.odt_characters import OdtCharacters
-from pywriter.odt.odt_items import OdtItems
-from pywriter.odt.odt_locations import OdtLocations
-from pywriter.odt.odt_xref import OdtXref
-from pywriter.odt.odt_notes import OdtNotes
-from pywriter.odt.odt_todo import OdtTodo
-from pywriter.ods.ods_charlist import OdsCharList
-from pywriter.ods.ods_loclist import OdsLocList
-from pywriter.ods.ods_itemlist import OdsItemList
-from pywriter.ods.ods_scenelist import OdsSceneList
+from pywriter.odt.odt_w_proof import OdtWProof
+from pywriter.odt.odt_w_manuscript import OdtWManuscript
+from pywriter.odt.odt_w_scenedesc import OdtWSceneDesc
+from pywriter.odt.odt_w_chapterdesc import OdtWChapterDesc
+from pywriter.odt.odt_w_partdesc import OdtWPartDesc
+from pywriter.odt.odt_w_brief_synopsis import OdtWBriefSynopsis
+from pywriter.odt.odt_w_export import OdtWExport
+from pywriter.odt.odt_w_characters import OdtWCharacters
+from pywriter.odt.odt_w_items import OdtWItems
+from pywriter.odt.odt_w_locations import OdtWLocations
+from pywriter.odt.odt_w_xref import OdtWXref
+from pywriter.odt.odt_w_notes import OdtWNotes
+from pywriter.odt.odt_w_todo import OdtWTodo
+from pywriter.ods.ods_w_charlist import OdsWCharList
+from pywriter.ods.ods_w_loclist import OdsWLocList
+from pywriter.ods.ods_w_itemlist import OdsWItemList
+from pywriter.ods.ods_w_scenelist import OdsWSceneList
 from pywriter.html.html_proof import HtmlProof
 from pywriter.html.html_manuscript import HtmlManuscript
 from pywriter.html.html_notes import HtmlNotes
@@ -34,10 +34,10 @@ from pywriter.html.html_partdesc import HtmlPartDesc
 from pywriter.html.html_characters import HtmlCharacters
 from pywriter.html.html_locations import HtmlLocations
 from pywriter.html.html_items import HtmlItems
-from pywriter.csv.csv_scenelist import CsvSceneList
-from pywriter.csv.csv_charlist import CsvCharList
-from pywriter.csv.csv_loclist import CsvLocList
-from pywriter.csv.csv_itemlist import CsvItemList
+from pywriter.ods.ods_r_scenelist import OdsRSceneList
+from pywriter.ods.ods_r_charlist import OdsRCharList
+from pywriter.ods.ods_r_loclist import OdsRLocList
+from pywriter.ods.ods_r_itemlist import OdsRItemList
 
 
 class Yw7Converter(YwCnvFf):
@@ -54,23 +54,23 @@ class Yw7Converter(YwCnvFf):
                         and HtmlOutline - can be exported to a new yWriter project.
     """
     EXPORT_SOURCE_CLASSES = [Yw7File]
-    EXPORT_TARGET_CLASSES = [OdtExport,
-                             OdtProof,
-                             OdtManuscript,
-                             OdtBriefSynopsis,
-                             OdtSceneDesc,
-                             OdtChapterDesc,
-                             OdtPartDesc,
-                             OdtCharacters,
-                             OdtItems,
-                             OdtLocations,
-                             OdsCharList,
-                             OdsLocList,
-                             OdsItemList,
-                             OdsSceneList,
-                             OdtXref,
-                             OdtNotes,
-                             OdtTodo,
+    EXPORT_TARGET_CLASSES = [OdtWExport,
+                             OdtWProof,
+                             OdtWManuscript,
+                             OdtWBriefSynopsis,
+                             OdtWSceneDesc,
+                             OdtWChapterDesc,
+                             OdtWPartDesc,
+                             OdtWCharacters,
+                             OdtWItems,
+                             OdtWLocations,
+                             OdsWCharList,
+                             OdsWLocList,
+                             OdsWItemList,
+                             OdsWSceneList,
+                             OdtWXref,
+                             OdtWNotes,
+                             OdtWTodo,
                              ]
     IMPORT_SOURCE_CLASSES = [HtmlProof,
                              HtmlManuscript,
@@ -82,10 +82,10 @@ class Yw7Converter(YwCnvFf):
                              HtmlLocations,
                              HtmlNotes,
                              HtmlTodo,
-                             CsvCharList,
-                             CsvLocList,
-                             CsvItemList,
-                             CsvSceneList,
+                             OdsRCharList,
+                             OdsRLocList,
+                             OdsRItemList,
+                             OdsRSceneList,
                              ]
     IMPORT_TARGET_CLASSES = [Yw7File]
     CREATE_SOURCE_CLASSES = []

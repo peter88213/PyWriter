@@ -8,7 +8,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtSceneDesc(OdtWriter):
+class OdtWSceneDesc(OdtWriter):
     """ODT scene summaries file writer.
 
     Export a full synopsis with invisibly tagged scene descriptions.

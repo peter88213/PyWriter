@@ -8,7 +8,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtItems(OdtWriter):
+class OdtWItems(OdtWriter):
     """ODT item descriptions file writer.
 
     Export a item sheet with invisibly tagged descriptions.

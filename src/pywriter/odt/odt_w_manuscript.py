@@ -5,10 +5,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_formatted import OdtFormatted
+from pywriter.odt.odt_w_formatted import OdtWFormatted
 
 
-class OdtManuscript(OdtFormatted):
+class OdtWManuscript(OdtWFormatted):
     """ODT manuscript file writer.
 
     Export a manuscript with invisibly tagged chapters and scenes.
@@ -48,7 +48,7 @@ class OdtManuscript(OdtFormatted):
     _chapterEndTemplate = '''</text:section>
 '''
 
-    _fileFooter = OdtFormatted._CONTENT_XML_FOOTER
+    _fileFooter = OdtWFormatted._CONTENT_XML_FOOTER
 
     def _get_chapterMapping(self, chId, chapterNumber):
         """Return a mapping dictionary for a chapter section.

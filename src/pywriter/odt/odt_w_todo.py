@@ -6,10 +6,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 from string import Template
 from pywriter.pywriter_globals import *
-from pywriter.odt.odt_manuscript import OdtManuscript
+from pywriter.odt.odt_w_manuscript import OdtWManuscript
 
 
-class OdtTodo(OdtManuscript):
+class OdtWTodo(OdtWManuscript):
     """ODT "Todo" chapters file writer.
 
     Export a manuscript with invisibly tagged chapters and scenes.

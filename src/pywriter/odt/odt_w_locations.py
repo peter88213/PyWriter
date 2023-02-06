@@ -8,7 +8,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtLocations(OdtWriter):
+class OdtWLocations(OdtWriter):
     """ODT location descriptions file writer.
 
     Export a location sheet with invisibly tagged descriptions.

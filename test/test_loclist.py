@@ -5,15 +5,15 @@ Test the conversion of the location list.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.csv.csv_loclist import CsvLocList
-from pywriter.ods.ods_loclist import OdsLocList
+from pywriter.ods.ods_r_loclist import OdsRLocList
+from pywriter.ods.ods_w_loclist import OdsWLocList
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 
 
 class NrmOpr(ImportExportTest, unittest.TestCase):
-    _importClass = CsvLocList
-    _exportClass = OdsLocList
+    _importClass = OdsRLocList
+    _exportClass = OdsWLocList
 
     # The test methods must be defined here to identify the source of failure.
 

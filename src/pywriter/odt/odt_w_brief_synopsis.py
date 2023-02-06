@@ -8,7 +8,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtBriefSynopsis(OdtWriter):
+class OdtWBriefSynopsis(OdtWriter):
     """ODT brief synopsis file writer.
 
     Export a brief synopsis with chapter titles and scene titles.

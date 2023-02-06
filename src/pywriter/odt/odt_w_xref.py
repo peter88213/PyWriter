@@ -10,7 +10,7 @@ from pywriter.model.cross_references import CrossReferences
 from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtXref(OdtWriter):
+class OdtWXref(OdtWriter):
     """OpenDocument xml cross reference file writer."""
     DESCRIPTION = _('Cross reference')
     SUFFIX = '_xref'

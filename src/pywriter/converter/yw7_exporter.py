@@ -6,23 +6,23 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 from pywriter.converter.yw_cnv_ff import YwCnvFf
 from pywriter.yw.yw7_file import Yw7File
-from pywriter.odt.odt_proof import OdtProof
-from pywriter.odt.odt_manuscript import OdtManuscript
-from pywriter.odt.odt_scenedesc import OdtSceneDesc
-from pywriter.odt.odt_chapterdesc import OdtChapterDesc
-from pywriter.odt.odt_partdesc import OdtPartDesc
-from pywriter.odt.odt_brief_synopsis import OdtBriefSynopsis
-from pywriter.odt.odt_export import OdtExport
-from pywriter.odt.odt_characters import OdtCharacters
-from pywriter.odt.odt_items import OdtItems
-from pywriter.odt.odt_locations import OdtLocations
-from pywriter.odt.odt_xref import OdtXref
-from pywriter.odt.odt_notes import OdtNotes
-from pywriter.odt.odt_todo import OdtTodo
-from pywriter.ods.ods_charlist import OdsCharList
-from pywriter.ods.ods_loclist import OdsLocList
-from pywriter.ods.ods_itemlist import OdsItemList
-from pywriter.ods.ods_scenelist import OdsSceneList
+from pywriter.odt.odt_w_proof import OdtWProof
+from pywriter.odt.odt_w_manuscript import OdtWManuscript
+from pywriter.odt.odt_w_scenedesc import OdtWSceneDesc
+from pywriter.odt.odt_w_chapterdesc import OdtWChapterDesc
+from pywriter.odt.odt_w_partdesc import OdtWPartDesc
+from pywriter.odt.odt_w_brief_synopsis import OdtWBriefSynopsis
+from pywriter.odt.odt_w_export import OdtWExport
+from pywriter.odt.odt_w_characters import OdtWCharacters
+from pywriter.odt.odt_w_items import OdtWItems
+from pywriter.odt.odt_w_locations import OdtWLocations
+from pywriter.odt.odt_w_xref import OdtWXref
+from pywriter.odt.odt_w_notes import OdtWNotes
+from pywriter.odt.odt_w_todo import OdtWTodo
+from pywriter.ods.ods_w_charlist import OdsWCharList
+from pywriter.ods.ods_w_loclist import OdsWLocList
+from pywriter.ods.ods_w_itemlist import OdsWItemList
+from pywriter.ods.ods_w_scenelist import OdsWSceneList
 
 
 class Yw7Exporter(YwCnvFf):
@@ -34,21 +34,21 @@ class Yw7Exporter(YwCnvFf):
     Overrides the superclass constants EXPORT_SOURCE_CLASSES, EXPORT_TARGET_CLASSES.    
     """
     EXPORT_SOURCE_CLASSES = [Yw7File]
-    EXPORT_TARGET_CLASSES = [OdtProof,
-                             OdtManuscript,
-                             OdtBriefSynopsis,
-                             OdtSceneDesc,
-                             OdtChapterDesc,
-                             OdtPartDesc,
-                             OdtExport,
-                             OdtCharacters,
-                             OdtItems,
-                             OdtLocations,
-                             OdtXref,
-                             OdtNotes,
-                             OdtTodo,
-                             OdsCharList,
-                             OdsLocList,
-                             OdsItemList,
-                             OdsSceneList,
+    EXPORT_TARGET_CLASSES = [OdtWProof,
+                             OdtWManuscript,
+                             OdtWBriefSynopsis,
+                             OdtWSceneDesc,
+                             OdtWChapterDesc,
+                             OdtWPartDesc,
+                             OdtWExport,
+                             OdtWCharacters,
+                             OdtWItems,
+                             OdtWLocations,
+                             OdtWXref,
+                             OdtWNotes,
+                             OdtWTodo,
+                             OdsWCharList,
+                             OdsWLocList,
+                             OdsWItemList,
+                             OdsWSceneList,
                              ]

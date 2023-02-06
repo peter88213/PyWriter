@@ -5,13 +5,13 @@ Test the odt brief synopsis.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_brief_synopsis import OdtBriefSynopsis
+from pywriter.odt.odt_w_brief_synopsis import OdtWBriefSynopsis
 from pywriter.test.export_test import ExportTest
 import unittest
 
 
 class NrmOpr(ExportTest, unittest.TestCase):
-    _exportClass = OdtBriefSynopsis
+    _exportClass = OdtWBriefSynopsis
 
     # The test methods must be defined here to identify the source of failure.
 

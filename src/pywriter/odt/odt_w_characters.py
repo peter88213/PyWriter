@@ -8,7 +8,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtCharacters(OdtWriter):
+class OdtWCharacters(OdtWriter):
     """ODT character descriptions file writer.
 
     Export a character sheet with invisibly tagged descriptions.

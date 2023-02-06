@@ -10,7 +10,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_writer import OdtWriter
 
 
-class OdtFormatted(OdtWriter):
+class OdtWFormatted(OdtWriter):
     """ODT file writer.
 
     Public methods:

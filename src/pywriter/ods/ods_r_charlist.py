@@ -10,7 +10,7 @@ from pywriter.model.character import Character
 from pywriter.ods.ods_reader import OdsReader
 
 
-class CsvCharList(OdsReader):
+class OdsRCharList(OdsReader):
     """ODS character list reader. 
     
     Public methods:

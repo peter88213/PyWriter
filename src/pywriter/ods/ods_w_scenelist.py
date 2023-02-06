@@ -8,7 +8,7 @@ from pywriter.pywriter_globals import *
 from pywriter.ods.ods_writer import OdsWriter
 
 
-class OdsSceneList(OdsWriter):
+class OdsWSceneList(OdsWriter):
     """ODS scene list writer."""
 
     DESCRIPTION = _('Scene list')
