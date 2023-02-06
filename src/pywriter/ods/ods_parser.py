@@ -37,7 +37,7 @@ class OdsParser():
         
         First unzip the ODS file located at self.filePath, then parse content.xml.
         """
-        ns = dict(
+        namespaces = dict(
             office='urn:oasis:names:tc:opendocument:xmlns:office:1.0',
             text='urn:oasis:names:tc:opendocument:xmlns:text:1.0',
             table='urn:oasis:names:tc:opendocument:xmlns:table:1.0',
@@ -51,18 +51,18 @@ class OdsParser():
         root = ET.fromstring(content)
 
         #--- Parse 'content.xml'.
-        body = root.find('office:body', ns)
-        spreadsheet = body.find('office:spreadsheet', ns)
-        table = spreadsheet.find('table:table', ns)
+        body = root.find('office:body', namespaces)
+        spreadsheet = body.find('office:spreadsheet', namespaces)
+        table = spreadsheet.find('table:table', namespaces)
         rows = []
-        for row in table.findall('table:table-row', ns):
+        for row in table.findall('table:table-row', namespaces):
             cells = []
             i = 0
-            for cell in row.findall('table:table-cell', ns):
+            for cell in row.findall('table:table-cell', namespaces):
                 content = ''
-                if cell.find('text:p', ns) is not None:
+                if cell.find('text:p', namespaces) is not None:
                     paragraphs = []
-                    for par in cell.findall('text:p', ns):
+                    for par in cell.findall('text:p', namespaces):
                         strippedText = ''.join(par.itertext())
                         paragraphs.append(strippedText)
                     content = '\n'.join(paragraphs)
@@ -79,7 +79,7 @@ class OdsParser():
                     break
 
                 # Add repeated cells.
-                attribute = cell.get(f'{{{ns["table"]}}}number-columns-repeated')
+                attribute = cell.get(f'{{{namespaces["table"]}}}number-columns-repeated')
                 if attribute:
                     repeat = int(attribute) - 1
                     for j in range(repeat):

@@ -114,6 +114,10 @@ class OdtParser(sax.ContentHandler):
             xmlAttributes[attrKey] = attrValue
         style = xmlAttributes.get('text:style-name', '')
         if name == 'text:p':
+            if style in self._languageTags:
+                param = [('lang', self._languageTags[style])]
+            else:
+                param = [()]
             if self._commentParagraphCount is not None:
                 self._commentParagraphCount += 1
             elif style == 'Quotations':
@@ -130,7 +134,7 @@ class OdtParser(sax.ContentHandler):
                 self.handle_starttag('li', [()])
                 self._paragraph = True
             else:
-                self.handle_starttag('p', [()])
+                self.handle_starttag('p', param)
                 self._paragraph = True
         elif name == 'text:span':
             if style in self._emTags:
