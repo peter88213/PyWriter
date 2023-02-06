@@ -5,7 +5,7 @@ Test the odt export.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_w_export import OdtWExport
+from pywriter.odt_w.odt_w_export import OdtWExport
 from pywriter.test.export_test import ExportTest
 import unittest
 

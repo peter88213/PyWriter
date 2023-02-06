@@ -1,6 +1,6 @@
 """Provide a factory class for a document object to read and a new yWriter project.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -9,8 +9,8 @@ import zipfile
 from pywriter.pywriter_globals import *
 from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_file import Yw7File
-from pywriter.odt.odt_r_import import OdtRImport
-from pywriter.odt.odt_r_outline import OdtROutline
+from pywriter.odt_r.odt_r_import import OdtRImport
+from pywriter.odt_r.odt_r_outline import OdtROutline
 
 
 class NewProjectFactory(FileFactory):

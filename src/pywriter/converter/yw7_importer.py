@@ -1,26 +1,26 @@
 """Provide a converter class for yWriter 7 universal import.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.converter.yw_cnv_ff import YwCnvFf
 from pywriter.converter.new_project_factory import NewProjectFactory
 from pywriter.yw.yw7_file import Yw7File
-from pywriter.odt.odt_r_proof import OdtRProof
-from pywriter.odt.odt_r_manuscript import OdtRManuscript
-from pywriter.odt.odt_r_notes import OdtRNotes
-from pywriter.odt.odt_r_todo import OdtRTodo
-from pywriter.odt.odt_r_scenedesc import OdtRSceneDesc
-from pywriter.odt.odt_r_chapterdesc import OdtRChapterDesc
-from pywriter.odt.odt_r_partdesc import OdtRPartDesc
-from pywriter.odt.odt_r_characters import OdtRCharacters
-from pywriter.odt.odt_r_locations import OdtRLocations
-from pywriter.odt.odt_r_items import OdtRItems
-from pywriter.ods.ods_r_scenelist import OdsRSceneList
-from pywriter.ods.ods_r_charlist import OdsRCharList
-from pywriter.ods.ods_r_loclist import OdsRLocList
-from pywriter.ods.ods_r_itemlist import OdsRItemList
+from pywriter.odt_r.odt_r_proof import OdtRProof
+from pywriter.odt_r.odt_r_manuscript import OdtRManuscript
+from pywriter.odt_r.odt_r_notes import OdtRNotes
+from pywriter.odt_r.odt_r_todo import OdtRTodo
+from pywriter.odt_r.odt_r_scenedesc import OdtRSceneDesc
+from pywriter.odt_r.odt_r_chapterdesc import OdtRChapterDesc
+from pywriter.odt_r.odt_r_partdesc import OdtRPartDesc
+from pywriter.odt_r.odt_r_characters import OdtRCharacters
+from pywriter.odt_r.odt_r_locations import OdtRLocations
+from pywriter.odt_r.odt_r_items import OdtRItems
+from pywriter.ods_r.ods_r_scenelist import OdsRSceneList
+from pywriter.ods_r.ods_r_charlist import OdsRCharList
+from pywriter.ods_r.ods_r_loclist import OdsRLocList
+from pywriter.ods_r.ods_r_itemlist import OdsRItemList
 
 
 class Yw7Importer(YwCnvFf):

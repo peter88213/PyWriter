@@ -40,7 +40,7 @@ _Example_
 
 ## Import to an existing yWriter project
 
-### Source: HTML file (text document)
+### Source: ODT file (text document)
 
 -   [Import chapters and scenes for proof reading](#import-chapters-and-scenes-for-proof-reading) -- suffix = `_proof`
 -   [Import manuscript with chapter and scene sections](#import-manuscript-with-chapter-and-scene-sections) -- suffix = `_manuscript`
@@ -51,7 +51,7 @@ _Example_
 -   [Import location descriptions](#import-location-descriptions) -- suffix = `_locations`
 -   [Import item descriptions](#import-item-descriptions) -- suffix = `_items`
 
-### Source: CSV file (spreadsheet document)
+### Source: ODS file (spreadsheet document)
 
 -   [Import character list](#import-character-list) -- suffix = `_charlist`
 -   [Import location list](#import-location-list) -- suffix = `_loclist`
@@ -61,7 +61,7 @@ _Example_
 
 ## Create a new yWriter project
 
-### Source: HTML file (text document)
+### Source: ODT file (text document)
 
 -   [Import work in progress](#import-work-in-progress) -- no suffix
 -   [Import outline](#import-outline) -- no suffix

@@ -11,7 +11,7 @@ main_tk -- Provide a tkinter GUI framework with main menu and main window.
 main_tk_cnv -- Provide a tkinter GUI framework for converter applications.
 rich_text_tk -- Provide a tkinter Rich Text box class.
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

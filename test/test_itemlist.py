@@ -5,8 +5,8 @@ Test the conversion of the item list.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.ods.ods_r_itemlist import OdsRItemList
-from pywriter.ods.ods_w_itemlist import OdsWItemList
+from pywriter.ods_r.ods_r_itemlist import OdsRItemList
+from pywriter.ods_w.ods_w_itemlist import OdsWItemList
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 

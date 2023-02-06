@@ -5,7 +5,7 @@ Test the import of a work in progress.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_r_import import OdtRImport
+from pywriter.odt_r.odt_r_import import OdtRImport
 from pywriter.test.import_test import ImportTest
 import unittest
 

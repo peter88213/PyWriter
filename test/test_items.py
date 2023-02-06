@@ -5,8 +5,8 @@ Test the conversion of the item descriptions.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_r_items import OdtRItems
-from pywriter.odt.odt_w_items import OdtWItems
+from pywriter.odt_r.odt_r_items import OdtRItems
+from pywriter.odt_w.odt_w_items import OdtWItems
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 

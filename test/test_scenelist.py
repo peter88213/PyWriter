@@ -5,8 +5,8 @@ Test the conversion of the scenes list.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.ods.ods_r_scenelist import OdsRSceneList
-from pywriter.ods.ods_w_scenelist import OdsWSceneList
+from pywriter.ods_r.ods_r_scenelist import OdsRSceneList
+from pywriter.ods_w.ods_w_scenelist import OdsWSceneList
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 

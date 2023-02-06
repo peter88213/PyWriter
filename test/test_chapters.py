@@ -5,8 +5,8 @@ Test the conversion of the chapter descriptions.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_r_chapterdesc import OdtRChapterDesc
-from pywriter.odt.odt_w_chapterdesc import OdtWChapterDesc
+from pywriter.odt_r.odt_r_chapterdesc import OdtRChapterDesc
+from pywriter.odt_w.odt_w_chapterdesc import OdtWChapterDesc
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 

@@ -5,8 +5,8 @@ Test the conversion of the location list.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.ods.ods_r_loclist import OdsRLocList
-from pywriter.ods.ods_w_loclist import OdsWLocList
+from pywriter.ods_r.ods_r_loclist import OdsRLocList
+from pywriter.ods_w.ods_w_loclist import OdsWLocList
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 

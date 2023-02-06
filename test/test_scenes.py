@@ -5,8 +5,8 @@ Test the conversion of the scene descriptions.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt.odt_r_scenedesc import OdtRSceneDesc
-from pywriter.odt.odt_w_scenedesc import OdtWSceneDesc
+from pywriter.odt_r.odt_r_scenedesc import OdtRSceneDesc
+from pywriter.odt_w.odt_w_scenedesc import OdtWSceneDesc
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 
