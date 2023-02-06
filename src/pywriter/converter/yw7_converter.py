@@ -24,16 +24,16 @@ from pywriter.ods.ods_w_charlist import OdsWCharList
 from pywriter.ods.ods_w_loclist import OdsWLocList
 from pywriter.ods.ods_w_itemlist import OdsWItemList
 from pywriter.ods.ods_w_scenelist import OdsWSceneList
-from pywriter.html.html_proof import HtmlProof
-from pywriter.html.html_manuscript import HtmlManuscript
-from pywriter.html.html_notes import HtmlNotes
-from pywriter.html.html_todo import HtmlTodo
-from pywriter.html.html_scenedesc import HtmlSceneDesc
-from pywriter.html.html_chapterdesc import HtmlChapterDesc
-from pywriter.html.html_partdesc import HtmlPartDesc
-from pywriter.html.html_characters import HtmlCharacters
-from pywriter.html.html_locations import HtmlLocations
-from pywriter.html.html_items import HtmlItems
+from pywriter.odt.odt_r_proof import OdtRProof
+from pywriter.odt.odt_r_manuscript import OdtRManuscript
+from pywriter.odt.odt_r_notes import OdtRNotes
+from pywriter.odt.odt_r_todo import OdtRTodo
+from pywriter.odt.odt_r_scenedesc import OdtRSceneDesc
+from pywriter.odt.odt_r_chapterdesc import OdtRChapterDesc
+from pywriter.odt.odt_r_partdesc import OdtRPartDesc
+from pywriter.odt.odt_r_characters import OdtRCharacters
+from pywriter.odt.odt_r_locations import OdtRLocations
+from pywriter.odt.odt_r_items import OdtRItems
 from pywriter.ods.ods_r_scenelist import OdsRSceneList
 from pywriter.ods.ods_r_charlist import OdsRCharList
 from pywriter.ods.ods_r_loclist import OdsRLocList
@@ -72,16 +72,16 @@ class Yw7Converter(YwCnvFf):
                              OdtWNotes,
                              OdtWTodo,
                              ]
-    IMPORT_SOURCE_CLASSES = [HtmlProof,
-                             HtmlManuscript,
-                             HtmlSceneDesc,
-                             HtmlChapterDesc,
-                             HtmlPartDesc,
-                             HtmlCharacters,
-                             HtmlItems,
-                             HtmlLocations,
-                             HtmlNotes,
-                             HtmlTodo,
+    IMPORT_SOURCE_CLASSES = [OdtRProof,
+                             OdtRManuscript,
+                             OdtRSceneDesc,
+                             OdtRChapterDesc,
+                             OdtRPartDesc,
+                             OdtRCharacters,
+                             OdtRItems,
+                             OdtRLocations,
+                             OdtRNotes,
+                             OdtRTodo,
                              OdsRCharList,
                              OdsRLocList,
                              OdsRItemList,

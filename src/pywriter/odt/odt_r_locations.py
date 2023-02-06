@@ -10,7 +10,7 @@ from pywriter.model.world_element import WorldElement
 from pywriter.odt.odt_reader import OdtReader
 
 
-class HtmlLocations(OdtReader):
+class OdtRLocations(OdtReader):
     """ODT location descriptions file reader.
 
     Import a location sheet with invisibly tagged descriptions.

@@ -8,7 +8,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_reader import OdtReader
 
 
-class HtmlSceneDesc(OdtReader):
+class OdtRSceneDesc(OdtReader):
     """ODT scene summaries file reader.
 
     Import a full synopsis with invisibly tagged scene descriptions.

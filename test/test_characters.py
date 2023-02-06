@@ -5,14 +5,14 @@ Test the conversion of the character descriptions.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.html.html_characters import HtmlCharacters
+from pywriter.odt.odt_r_characters import OdtRCharacters
 from pywriter.odt.odt_w_characters import OdtWCharacters
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 
 
 class NrmOpr(ImportExportTest, unittest.TestCase):
-    _importClass = HtmlCharacters
+    _importClass = OdtRCharacters
     _exportClass = OdtWCharacters
 
     # The test methods must be defined here to identify the source of failure.

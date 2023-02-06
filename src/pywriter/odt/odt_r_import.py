@@ -16,10 +16,10 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from pywriter.pywriter_globals import *
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.html.html_formatted import HtmlFormatted
+from pywriter.odt.odt_r_formatted import OdtRFormatted
 
 
-class HtmlImport(HtmlFormatted):
+class OdtRImport(OdtRFormatted):
     """ODT 'work in progress' file reader.
 
     Import untagged chapters and scenes.

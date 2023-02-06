@@ -8,7 +8,7 @@ from pywriter.pywriter_globals import *
 from pywriter.odt.odt_reader import OdtReader
 
 
-class HtmlChapterDesc(OdtReader):
+class OdtRChapterDesc(OdtReader):
     """ODT chapter summaries file reader.
 
     Import a brief synopsis with invisibly tagged chapter descriptions.

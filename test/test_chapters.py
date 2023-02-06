@@ -5,14 +5,14 @@ Test the conversion of the chapter descriptions.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.html.html_chapterdesc import HtmlChapterDesc
+from pywriter.odt.odt_r_chapterdesc import OdtRChapterDesc
 from pywriter.odt.odt_w_chapterdesc import OdtWChapterDesc
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 
 
 class NrmOpr(ImportExportTest, unittest.TestCase):
-    _importClass = HtmlChapterDesc
+    _importClass = OdtRChapterDesc
     _exportClass = OdtWChapterDesc
 
     # The test methods must be defined here to identify the source of failure.

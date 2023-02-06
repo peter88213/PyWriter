@@ -8,7 +8,7 @@ from pywriter.odt.odt_reader import OdtReader
 from pywriter.model.splitter import Splitter
 
 
-class HtmlFormatted(OdtReader):
+class OdtRFormatted(OdtReader):
     """ODT file reader.
 
     Provide methods and data for processing chapters with formatted text.

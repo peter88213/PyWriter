@@ -8,11 +8,11 @@ import re
 from pywriter.pywriter_globals import *
 from pywriter.model.chapter import Chapter
 from pywriter.model.scene import Scene
-from pywriter.html.html_formatted import HtmlFormatted
+from pywriter.odt.odt_r_formatted import OdtRFormatted
 from pywriter.model.splitter import Splitter
 
 
-class HtmlProof(HtmlFormatted):
+class OdtRProof(OdtRFormatted):
     """ODT proof reading file reader.
 
     Import a manuscript with visibly tagged chapters and scenes.

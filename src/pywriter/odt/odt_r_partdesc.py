@@ -5,10 +5,10 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.pywriter_globals import *
-from pywriter.html.html_chapterdesc import HtmlChapterDesc
+from pywriter.odt.odt_r_chapterdesc import OdtRChapterDesc
 
 
-class HtmlPartDesc(HtmlChapterDesc):
+class OdtRPartDesc(OdtRChapterDesc):
     """ODT part summaries file reader.
 
     Parts are chapters marked in yWriter as beginning of a new section.

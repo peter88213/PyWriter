@@ -7,16 +7,16 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from pywriter.converter.yw_cnv_ff import YwCnvFf
 from pywriter.converter.new_project_factory import NewProjectFactory
 from pywriter.yw.yw7_file import Yw7File
-from pywriter.html.html_proof import HtmlProof
-from pywriter.html.html_manuscript import HtmlManuscript
-from pywriter.html.html_notes import HtmlNotes
-from pywriter.html.html_todo import HtmlTodo
-from pywriter.html.html_scenedesc import HtmlSceneDesc
-from pywriter.html.html_chapterdesc import HtmlChapterDesc
-from pywriter.html.html_partdesc import HtmlPartDesc
-from pywriter.html.html_characters import HtmlCharacters
-from pywriter.html.html_locations import HtmlLocations
-from pywriter.html.html_items import HtmlItems
+from pywriter.odt.odt_r_proof import OdtRProof
+from pywriter.odt.odt_r_manuscript import OdtRManuscript
+from pywriter.odt.odt_r_notes import OdtRNotes
+from pywriter.odt.odt_r_todo import OdtRTodo
+from pywriter.odt.odt_r_scenedesc import OdtRSceneDesc
+from pywriter.odt.odt_r_chapterdesc import OdtRChapterDesc
+from pywriter.odt.odt_r_partdesc import OdtRPartDesc
+from pywriter.odt.odt_r_characters import OdtRCharacters
+from pywriter.odt.odt_r_locations import OdtRLocations
+from pywriter.odt.odt_r_items import OdtRItems
 from pywriter.ods.ods_r_scenelist import OdsRSceneList
 from pywriter.ods.ods_r_charlist import OdsRCharList
 from pywriter.ods.ods_r_loclist import OdsRLocList
@@ -37,16 +37,16 @@ class Yw7Importer(YwCnvFf):
                         and HtmlOutline - can be exported to a new yWriter project.
     """
     EXPORT_SOURCE_CLASSES = [Yw7File]
-    IMPORT_SOURCE_CLASSES = [HtmlProof,
-                             HtmlManuscript,
-                             HtmlSceneDesc,
-                             HtmlChapterDesc,
-                             HtmlPartDesc,
-                             HtmlCharacters,
-                             HtmlItems,
-                             HtmlLocations,
-                             HtmlNotes,
-                             HtmlTodo,
+    IMPORT_SOURCE_CLASSES = [OdtRProof,
+                             OdtRManuscript,
+                             OdtRSceneDesc,
+                             OdtRChapterDesc,
+                             OdtRPartDesc,
+                             OdtRCharacters,
+                             OdtRItems,
+                             OdtRLocations,
+                             OdtRNotes,
+                             OdtRTodo,
                              OdsRCharList,
                              OdsRLocList,
                              OdsRItemList,

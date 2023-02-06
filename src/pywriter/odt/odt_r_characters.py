@@ -10,7 +10,7 @@ from pywriter.model.character import Character
 from pywriter.odt.odt_reader import OdtReader
 
 
-class HtmlCharacters(OdtReader):
+class OdtRCharacters(OdtReader):
     """ODT character descriptions file reader.
 
     Import a character sheet with invisibly tagged descriptions.

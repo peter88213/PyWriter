@@ -9,8 +9,8 @@ import zipfile
 from pywriter.pywriter_globals import *
 from pywriter.converter.file_factory import FileFactory
 from pywriter.yw.yw7_file import Yw7File
-from pywriter.html.html_import import HtmlImport
-from pywriter.html.html_outline import HtmlOutline
+from pywriter.odt.odt_r_import import OdtRImport
+from pywriter.odt.odt_r_outline import OdtROutline
 
 
 class NewProjectFactory(FileFactory):
@@ -51,9 +51,9 @@ class NewProjectFactory(FileFactory):
                 raise Error(f'{_("Cannot read file")}: "{norm_path(sourcePath)}".')
 
             if bytes('Heading_20_3', encoding='utf-8') in content:
-                sourceFile = HtmlOutline(sourcePath, **kwargs)
+                sourceFile = OdtROutline(sourcePath, **kwargs)
             else:
-                sourceFile = HtmlImport(sourcePath, **kwargs)
+                sourceFile = OdtRImport(sourcePath, **kwargs)
             return sourceFile, targetFile
 
         else:

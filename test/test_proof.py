@@ -5,14 +5,14 @@ Test the conversion of the proofread-manuscript.
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.html.html_proof import HtmlProof
+from pywriter.odt.odt_r_proof import OdtRProof
 from pywriter.odt.odt_w_proof import OdtWProof
 from pywriter.test.import_export_test import ImportExportTest
 import unittest
 
 
 class NrmOpr(ImportExportTest, unittest.TestCase):
-    _importClass = HtmlProof
+    _importClass = OdtRProof
     _exportClass = OdtWProof
 
     # The test methods must be defined here to identify the source of failure.

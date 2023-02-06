@@ -10,7 +10,7 @@ from pywriter.model.world_element import WorldElement
 from pywriter.odt.odt_reader import OdtReader
 
 
-class HtmlItems(OdtReader):
+class OdtRItems(OdtReader):
     """ODT item descriptions file reader.
 
     Import a item sheet with invisibly tagged descriptions.

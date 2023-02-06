@@ -18,7 +18,7 @@ from pywriter.model.scene import Scene
 from pywriter.odt.odt_reader import OdtReader
 
 
-class HtmlOutline(OdtReader):
+class OdtROutline(OdtReader):
     """ODT outline file reader.
 
     Import an outline without chapter and scene tags.
