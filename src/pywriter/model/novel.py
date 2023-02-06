@@ -196,8 +196,8 @@ class Novel(BasicElement):
         If the locale is missing, set the system locale.  
         If the locale doesn't look plausible, set "no language".        
         """
-        if not self.languageCode or not self.countryCode:
-            # Language or country isn't set.
+        if not self.languageCode:
+            # Language isn't set.
             try:
                 sysLng, sysCtr = locale.getlocale()[0].split('_')
             except:

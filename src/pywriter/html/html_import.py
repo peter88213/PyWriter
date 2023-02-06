@@ -104,14 +104,12 @@ class HtmlImport(HtmlFormatted):
             self._lines = []
         elif tag == 'body':
             for attr in attrs:
-                if attr[0] == 'lang':
-                    try:
-                        lngCode, ctrCode = attr[1].split('-')
-                        self.novel.languageCode = lngCode
-                        self.novel.countryCode = ctrCode
-                    except:
-                        pass
-                    break
+                if attr[0] == 'language':
+                    if attr[1]:
+                        self.novel.languageCode = attr[1]
+                elif attr[0] == 'country':
+                    if attr[1]:
+                        self.novel.countryCode = attr[1]
         elif tag == 'li':
                 self._lines.append(f'{self._BULLET} ')
         elif tag == 'blockquote':

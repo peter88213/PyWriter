@@ -55,51 +55,50 @@ class OdtParser(sax.ContentHandler):
         and get languageCode, countryCode, title, desc, and authorName,        
         Then call the sax parser for content.xml.
         """
+        namespaces = dict(
+            office='urn:oasis:names:tc:opendocument:xmlns:office:1.0',
+            style='urn:oasis:names:tc:opendocument:xmlns:style:1.0',
+            fo='urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0',
+            dc='http://purl.org/dc/elements/1.1/',
+            meta='urn:oasis:names:tc:opendocument:xmlns:meta:1.0'
+            )
+
         try:
             with zipfile.ZipFile(filePath, 'r') as odfFile:
                 content = odfFile.read('content.xml')
-                meta = odfFile.read('meta.xml')
                 styles = odfFile.read('styles.xml')
+                meta = odfFile.read('meta.xml')
         except:
             raise Error(f'{_("Cannot read file")}: "{norm_path(filePath)}".')
 
-        #--- Get title, description, and author from 'meta.xml'.
-        root = ET.fromstring(meta)
-        meta = None
-        for element in root.iter():
-            if element.tag.endswith('title'):
-                if element.text:
-                    self.handle_starttag('title', [()])
-                    self.handle_data(element.text)
-                    self.handle_endtag('title')
-            elif element.tag.endswith('description'):
-                if element.text:
-                    self.handle_starttag('meta', [('', 'description'), ('', element.text)])
-            elif element.tag.endswith('initial-creator'):
-                if element.text:
-                    self.handle_starttag('meta', [('', 'author'), ('', element.text)])
-
         #--- Get language and country from 'styles.xml'.
         root = ET.fromstring(styles)
-        styles = None
-        lngCode = None
-        ctrCode = None
-        for element in root.iter():
-            if element.tag.endswith('text-properties'):
-                for attribute in element.attrib:
-                    if attribute.endswith('language'):
-                        lngCode = element.attrib[attribute]
-                    elif attribute.endswith('country'):
-                        ctrCode = element.attrib[attribute]
-            if lngCode and ctrCode:
-                if ctrCode != 'none':
-                    locale = f'{lngCode}-{ctrCode}'
-                else:
-                    locale = lngCode
-                self.handle_starttag('body', [('lang', locale)])
+        styles = root.find('office:styles', namespaces)
+        for defaultStyle in styles.findall('style:default-style', namespaces):
+            if defaultStyle.get(f'{{{namespaces["style"]}}}family') == 'paragraph':
+                textProperties = defaultStyle.find('style:text-properties', namespaces)
+                lngCode = textProperties.get(f'{{{namespaces["fo"]}}}language')
+                ctrCode = textProperties.get(f'{{{namespaces["fo"]}}}country')
+                self.handle_starttag('body', [('language', lngCode), ('country', ctrCode)])
                 break
 
-        root = None
+        #--- Get title, description, and author from 'meta.xml'.
+        root = ET.fromstring(meta)
+        meta = root.find('office:meta', namespaces)
+        title = meta.find('dc:title', namespaces)
+        if title is not None:
+            if title.text:
+                self.handle_starttag('title', [()])
+                self.handle_data(title.text)
+                self.handle_endtag('title')
+        author = meta.find('meta:initial-creator', namespaces)
+        if author is not None:
+            if author.text:
+                self.handle_starttag('meta', [('', 'author'), ('', author.text)])
+        desc = meta.find('dc:description', namespaces)
+        if desc is not None:
+            if desc.text:
+                self.handle_starttag('meta', [('', 'description'), ('', desc.text)])
 
         #--- Parse 'content.xml'.
         sax.parseString(content, self)
@@ -195,7 +194,6 @@ class OdtParser(sax.ContentHandler):
         elif name == 'text:span':
             if self._span:
                 self.handle_endtag(self._span.pop())
-            print(f'</{self._span}>')
         elif name == 'text:section':
             self.handle_endtag('div')
         elif name == 'office:annotation':

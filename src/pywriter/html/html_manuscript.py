@@ -63,14 +63,12 @@ class HtmlManuscript(HtmlFormatted):
                     pass
         elif tag == 'body':
             for attr in attrs:
-                if attr[0] == 'lang':
-                    try:
-                        lngCode, ctrCode = attr[1].split('-')
-                        self.novel.languageCode = lngCode
-                        self.novel.countryCode = ctrCode
-                    except:
-                        pass
-                    break
+                if attr[0] == 'language':
+                    if attr[1]:
+                        self.novel.languageCode = attr[1]
+                elif attr[0] == 'country':
+                    if attr[1]:
+                        self.novel.countryCode = attr[1]
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
