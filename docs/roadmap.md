@@ -451,6 +451,11 @@ API change:
 Implement *read()* methods for the *OdfFile* subclasses. Thus the intermediate step via the HTML export
 can be omitted for ODF to yw7 conversion. 
 
+### v12.1
+
+- Make the File *_KWVAR class constants public.
+- Move the Yw7File.reset_custom_variables() method to a helper module.
+
 ## Future:
 
 #### Full LibreOffice/OpenOffice integration
