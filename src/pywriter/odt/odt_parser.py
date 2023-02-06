@@ -35,6 +35,7 @@ class OdtParser(sax.ContentHandler):
         super().__init__()
         self._emTags = ['Emphasis']
         self._strongTags = ['Strong_20_Emphasis']
+        self._blockquoteTags = ['Quotations']
         self._languageTags = {}
         self._headingTags = {}
         self._heading = None
@@ -120,8 +121,8 @@ class OdtParser(sax.ContentHandler):
                 param = [()]
             if self._commentParagraphCount is not None:
                 self._commentParagraphCount += 1
-            elif style == 'Quotations':
-                self.handle_starttag('blockquote', [()])
+            elif style in self._blockquoteTags:
+                self.handle_starttag('blockquote', param)
                 self._paragraph = True
                 self._blockquote = True
             elif style.startswith('Heading'):
@@ -165,12 +166,14 @@ class OdtParser(sax.ContentHandler):
             styleName = xmlAttributes.get('style:parent-style-name', '')
             if styleName.startswith('Heading'):
                 self._headingTags[self._style] = f'h{styleName[-1]}'
+            elif styleName == 'Quotations':
+                self._blockquoteTags.append(self._style)
         elif name == 'style:text-properties':
             if xmlAttributes.get('style:font-style', None) == 'italic':
                 self._emTags.append(self._style)
-            elif xmlAttributes.get('style:font-weight', None) == 'bold':
+            if xmlAttributes.get('style:font-weight', None) == 'bold':
                 self._strongTags.append(self._style)
-            elif xmlAttributes.get('fo:language', False):
+            if xmlAttributes.get('fo:language', False):
                 lngCode = xmlAttributes['fo:language']
                 ctrCode = xmlAttributes['fo:country']
                 if ctrCode != 'none':
