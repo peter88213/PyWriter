@@ -58,7 +58,7 @@ class YwCnvUi:
             source.read()
             target.novel = source.novel
             target.write()
-        except Error as ex:
+        except Exception as ex:
             message = f'!{str(ex)}'
             self.newFile = None
         else:
@@ -96,7 +96,7 @@ class YwCnvUi:
                 source.read()
                 target.novel = source.novel
                 target.write()
-            except Error as ex:
+            except Exception as ex:
                 message = f'!{str(ex)}'
                 self.newFile = None
             else:
@@ -133,7 +133,7 @@ class YwCnvUi:
             source.read()
             target.novel = source.novel
             target.write()
-        except Error as ex:
+        except Exception as ex:
             message = f'!{str(ex)}'
         else:
             message = f'{_("File written")}: "{norm_path(target.filePath)}".'
