@@ -25,7 +25,7 @@ For more information, see my [GitHub home page](https://peter88213.github.io).
 
 ### Development tools
 
-- [Python](https://python.org) version 3.11
+- [Python](https://python.org) version 3.9
 - [Eclipse IDE](https://eclipse.org) with [PyDev](https://pydev.org) and [EGit](https://www.eclipse.org/egit/)
 - [Apache Ant](https://ant.apache.org/) for building application scripts
 
