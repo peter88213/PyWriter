@@ -23,15 +23,12 @@ class WorldElement(BasicElement):
         """
         super().__init__()
 
-        self.image = None
-        # str
+        self.image: str = None
         # xml: <ImageFile>
 
-        self.tags = None
-        # list of str
+        self.tags: list[str] = None
         # xml: <Tags>
 
-        self.aka = None
-        # str
+        self.aka: str = None
         # xml: <AKA>
 
