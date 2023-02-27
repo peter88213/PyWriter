@@ -19,8 +19,6 @@ class OdtReader(File, OdtParser):
     
     Public methods:
         handle_starttag(tag, attrs) -- Identify scenes and chapters.
-        handle_endtag(tag) -- Stub for an end tag handler.
-        handle_data(data) -- Stub for a data handler.
         handle comment(data) -- Process inline comments within scene content.
         read() -- Parse the file and get the instance variables.
     """
@@ -77,7 +75,7 @@ class OdtReader(File, OdtParser):
         """Identify scenes and chapters.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag -- str: name of the tag.
             attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         
         Overrides the superclass method. 
@@ -105,7 +103,7 @@ class OdtReader(File, OdtParser):
         
         Positional arguments:
             data -- str: comment text. 
-        
+
         Overrides the superclass method.
         """
         if self._scId is not None:

@@ -977,7 +977,7 @@ class Yw7File(File):
                 for itId in prjScn.items:
                     ET.SubElement(items, 'ItemID').text = itId
 
-            ''' Removing empty characters/locations/items entries
+            """ Removing empty characters/locations/items entries
             
             if prjScn.characters is not None:
                 characters = xmlScn.find('Characters')
@@ -1016,8 +1016,8 @@ class Yw7File(File):
                     for itId in prjScn.items:
                         ET.SubElement(items, 'ItemID').text = itId
                 elif items is not None:
-                    xmlScn.remove(xmlScn.find('Items'))
-            '''
+            
+            """
 
         def build_chapter_subtree(xmlChp, prjChp, sortOrder):
             # This is how yWriter 7.1.3.0 writes the chapter type:
