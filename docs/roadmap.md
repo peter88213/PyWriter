@@ -446,7 +446,7 @@ API change:
 - Use the same time string for both date/time modes.
 - Changing the date/time mode means just switching between date and day.
 
-## Version 12: Parse ODF content.xml files
+## Version 12: Read ODT and ODS files
 
 Implement *read()* methods for the *OdfFile* subclasses. Thus the intermediate step via the HTML export
 can be omitted for ODF to yw7 conversion. 
