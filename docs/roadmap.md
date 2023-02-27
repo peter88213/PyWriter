@@ -456,13 +456,6 @@ can be omitted for ODF to yw7 conversion.
 - Make the File *_KWVAR class constants public.
 - Move the Yw7File.reset_custom_variables() method to a helper module.
 
-## Future:
-
-#### Full LibreOffice/OpenOffice integration
-
-- Data base support:
-	- Read/write a LibreOffice/OpenOffice supported data base.
-	- Generate Office documents from the data base.
 
 
 
