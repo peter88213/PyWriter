@@ -105,7 +105,7 @@ class File:
         Raise the "Error" exception in case of error. 
         This is a stub to be overridden by subclass methods.
         """
-        raise Error(f'Read method is not implemented.')
+        raise NotImplementedError
 
     def write(self):
         """Write instance variables to the file.
@@ -113,7 +113,7 @@ class File:
         Raise the "Error" exception in case of error. 
         This is a stub to be overridden by subclass methods.
         """
-        raise Error(f'Write method is not implemented.')
+        raise NotImplementedError
 
     def _convert_to_yw(self, text):
         """Return text, converted from source format to yw7 markup.

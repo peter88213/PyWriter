@@ -72,7 +72,7 @@ class Ui:
         To be overridden by subclasses requiring
         special action to launch the user interaction.
         """
-        return
+        pass
 
     def show_warning(self, message):
         """Stub for displaying a warning message.
@@ -80,4 +80,4 @@ class Ui:
         Positional arguments:
             message -- message to be displayed. 
         """
-        return
+        pass
