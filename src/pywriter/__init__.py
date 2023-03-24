@@ -16,14 +16,16 @@ pywriter_globals -- Provide global variables to be imported.
 
 Packages:
 
+config -- Package for configuration persistence.
 converter -- Modules for conversion of Novel subclasses.
-csv -- Modules for reading and writing csv spreadsheet documents.
 file -- Shared modules for template-based document generation.
-html -- Modules for reading html files.
 model -- Modules for representation of yWriter's meta model.
 odf -- Shared modules for writing Open Document files.
-ods -- Modules for writing Open Document spreadsheet documents.
-odt -- Modules for writing Open Document text documents.
+ods_r -- Modules for reading Open Document spreadsheet documents.
+ods_w -- Modules for writing Open Document spreadsheet documents.
+odt_r -- Modules for reading Open Document text documents.
+odt_w -- Modules for writing Open Document text documents.
+test -- Package for automated regression tests.
 ui -- Modules for user interfaces.
 yw -- Modules for reading and writing yWriter project files.
 
