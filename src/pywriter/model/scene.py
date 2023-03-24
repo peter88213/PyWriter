@@ -30,7 +30,7 @@ class Scene(BasicElement):
     Public instance variables:
         sceneContent: str -- scene content (property with getter and setter).
         wordCount: int -- word count (derived; updated by the sceneContent setter).
-        letterCount - int: letter count (derived; updated by the sceneContent setter).
+        letterCount: int -- letter count (derived; updated by the sceneContent setter).
         scType: int -- Scene type (Normal/Notes/Todo/Unused).
         doNotExport: bool -- True if the scene is not to be exported to RTF.
         status: int -- scene status (Outline/Draft/1st Edit/2nd Edit/Done).
