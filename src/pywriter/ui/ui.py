@@ -72,6 +72,12 @@ class Ui:
         To be overridden by subclasses requiring
         special action to launch the user interaction.
         """
+        return
 
     def show_warning(self, message):
-        """Stub for displaying a warning message."""
+        """Stub for displaying a warning message.
+
+        Positional arguments:
+            message -- message to be displayed. 
+        """
+        return

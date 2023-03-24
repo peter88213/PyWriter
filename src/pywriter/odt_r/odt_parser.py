@@ -231,6 +231,7 @@ class OdtParser(sax.ContentHandler):
             tag -- str: name of the tag converted to lower case.
             attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         """
+        return
 
     def handle_endtag(self, tag):
         """Stub for an end tag handler to be implemented in a subclass.
@@ -238,6 +239,7 @@ class OdtParser(sax.ContentHandler):
         Positional arguments:
             tag -- str: name of the tag converted to lower case.
         """
+        return
 
     def handle_data(self, data):
         """Stub for a data handler to be implemented in a subclass.
@@ -245,6 +247,7 @@ class OdtParser(sax.ContentHandler):
         Positional arguments:
             data -- str: text to be stored. 
         """
+        return
 
     def handle_comment(self, data):
         """Stub for a comment handler to be implemented in a subclass.
@@ -252,4 +255,5 @@ class OdtParser(sax.ContentHandler):
         Positional arguments:
             data -- str: comment text. 
         """
+        return
 

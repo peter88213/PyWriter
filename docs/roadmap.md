@@ -446,7 +446,7 @@ API change:
 - Use the same time string for both date/time modes.
 - Changing the date/time mode means just switching between date and day.
 
-## Version 12: Parse ODF content.xml files
+## Version 12: Read ODT and ODS files
 
 Implement *read()* methods for the *OdfFile* subclasses. Thus the intermediate step via the HTML export
 can be omitted for ODF to yw7 conversion. 
@@ -456,13 +456,6 @@ can be omitted for ODF to yw7 conversion.
 - Make the File *_KWVAR class constants public.
 - Move the Yw7File.reset_custom_variables() method to a helper module.
 
-## Future:
-
-#### Full LibreOffice/OpenOffice integration
-
-- Data base support:
-	- Read/write a LibreOffice/OpenOffice supported data base.
-	- Generate Office documents from the data base.
 
 
 
