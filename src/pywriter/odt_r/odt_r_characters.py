@@ -22,7 +22,7 @@ class OdtRCharacters(OdtReader):
         """Initialize local instance variables for parsing.
 
         Positional arguments:
-            filePath -- str: path to the file represented by the Novel instance.
+            filePath: str -- path to the file represented by the Novel instance.
             
         The ODT parser works like a state machine. 
         Character ID and section title must be saved between the transitions.         
@@ -36,7 +36,7 @@ class OdtRCharacters(OdtReader):
         """Identify characters with subsections.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
             attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         
         Overrides the superclass method.
@@ -60,7 +60,7 @@ class OdtRCharacters(OdtReader):
         """Recognize the end of the character section and save data.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
 
         Overrides the superclass method.
         """
@@ -89,7 +89,7 @@ class OdtRCharacters(OdtReader):
         """collect data within character sections.
 
         Positional arguments:
-            data -- str: text to be stored. 
+            data: str -- text to be stored. 
         
         Overrides the superclass method.
         """

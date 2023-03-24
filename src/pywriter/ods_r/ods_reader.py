@@ -31,7 +31,7 @@ class OdsReader(File):
         """Initialize instance variables.
 
         Positional arguments:
-            filePath -- str: path to the file represented by the File instance.
+            filePath: str -- path to the file represented by the File instance.
             
         Optional arguments:
             kwargs -- keyword arguments to be used by subclasses.            

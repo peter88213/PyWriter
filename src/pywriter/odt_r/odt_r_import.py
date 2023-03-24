@@ -33,7 +33,7 @@ class OdtRImport(OdtRFormatted):
         """Initialize local instance variables for parsing.
 
         Positional arguments:
-            filePath -- str: path to the file represented by the Novel instance.
+            filePath: str -- path to the file represented by the Novel instance.
             
         The ODT parser works like a state machine. 
         Chapter and scene count must be saved between the transitions.         
@@ -47,7 +47,7 @@ class OdtRImport(OdtRFormatted):
         """Recognize the paragraph's beginning.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
             attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         
         Overrides the superclass method.
@@ -127,7 +127,7 @@ class OdtRImport(OdtRFormatted):
         """Recognize the paragraph's end.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
 
         Overrides the superclass method.
         """
@@ -162,7 +162,7 @@ class OdtRImport(OdtRFormatted):
         """Process inline comments within scene content.
         
         Positional arguments:
-            data -- str: comment text. 
+            data: str -- comment text. 
         
         Use marked comments at scene start as scene titles.
         Overrides the superclass method.
@@ -182,7 +182,7 @@ class OdtRImport(OdtRFormatted):
         """Collect data within scene sections.
 
         Positional arguments:
-            data -- str: text to be stored. 
+            data: str -- text to be stored. 
         
         Overrides the superclass method.
         """

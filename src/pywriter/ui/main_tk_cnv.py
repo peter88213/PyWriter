@@ -80,7 +80,7 @@ class MainTkCnv(MainTk):
         """Select a valid project file and display the path.
         
         Positional arguments:
-            fileName -- str: project file path.
+            fileName: str -- project file path.
             
         Return True on success, otherwise return False.
         Extends the superclass method.

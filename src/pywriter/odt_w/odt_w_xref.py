@@ -74,7 +74,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """Return a mapping dictionary for a scene section.
 
         Positional arguments:
-            scId -- str: scene ID.
+            scId: str -- scene ID.
         
         Extends the superclass template method.
         """
@@ -88,7 +88,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
         """Return a mapping dictionary for a tags section. 
 
         Positional arguments:
-            tag -- str: a single scene tag.
+            tag: str -- a single scene tag.
         """
         tagMapping = dict(
             Tag=tag,

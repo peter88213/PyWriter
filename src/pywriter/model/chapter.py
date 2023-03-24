@@ -11,12 +11,12 @@ class Chapter(BasicElement):
     """yWriter chapter representation.
     
     Public instance variables:
-        chLevel -- int: chapter level (part/chapter).
-        chType -- int: chapter type (Normal/Notes/Todo/Unused).
-        suppressChapterTitle -- bool: uppress chapter title when exporting.
-        isTrash -- bool: True, if the chapter is the project's trash bin.
-        suppressChapterBreak -- bool: Suppress chapter break when exporting.
-        srtScenes -- list of str: the chapter's sorted scene IDs.        
+        chLevel: int -- chapter level (part/chapter).
+        chType: int -- chapter type (Normal/Notes/Todo/Unused).
+        suppressChapterTitle: bool -- uppress chapter title when exporting.
+        isTrash: bool -- True, if the chapter is the project's trash bin.
+        suppressChapterBreak: bool -- Suppress chapter break when exporting.
+        srtScenes: list of str -- the chapter's sorted scene IDs.        
     """
 
     def __init__(self):

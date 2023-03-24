@@ -24,7 +24,7 @@ class OdtRProof(OdtRFormatted):
         """Recognize the paragraph's beginning.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
             attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         
         Overrides the superclass method.
@@ -74,7 +74,7 @@ class OdtRProof(OdtRFormatted):
         """Recognize the paragraph's end.      
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
 
         Overrides the superclass method.
         """
@@ -96,7 +96,7 @@ class OdtRProof(OdtRFormatted):
         """Parse the paragraphs and build the document structure.      
 
         Positional arguments:
-            data -- str: text to be parsed. 
+            data: str -- text to be parsed. 
         
         Overrides the superclass method.
         """

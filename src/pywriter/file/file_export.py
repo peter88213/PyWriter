@@ -62,7 +62,7 @@ class FileExport(File):
         """Initialize filter strategy class instances.
         
         Positional arguments:
-            filePath -- str: path to the file represented by the File instance.
+            filePath: str -- path to the file represented by the File instance.
             
         Optional arguments:
             kwargs -- keyword arguments to be used by subclasses.            
@@ -99,8 +99,8 @@ class FileExport(File):
         """Return a mapping dictionary for a chapter section.
         
         Positional arguments:
-            chId -- str: chapter ID.
-            chapterNumber -- int: chapter number.
+            chId: str -- chapter ID.
+            chapterNumber: int -- chapter number.
         
         This is a template method that can be extended or overridden by subclasses.
         """
@@ -123,10 +123,10 @@ class FileExport(File):
         """Return a mapping dictionary for a scene section.
         
         Positional arguments:
-            scId -- str: scene ID.
-            sceneNumber -- int: scene number to be displayed.
-            wordsTotal -- int: accumulated wordcount.
-            lettersTotal -- int: accumulated lettercount.
+            scId: str -- scene ID.
+            sceneNumber: int -- scene number to be displayed.
+            wordsTotal: int -- accumulated wordcount.
+            lettersTotal: int -- accumulated lettercount.
         
         This is a template method that can be extended or overridden by subclasses.
         """
@@ -267,7 +267,7 @@ class FileExport(File):
         """Return a mapping dictionary for a character section.
         
         Positional arguments:
-            crId -- str: character ID.
+            crId: str -- character ID.
         
         This is a template method that can be extended or overridden by subclasses.
         """
@@ -301,7 +301,7 @@ class FileExport(File):
         """Return a mapping dictionary for a location section.
         
         Positional arguments:
-            lcId -- str: location ID.
+            lcId: str -- location ID.
         
         This is a template method that can be extended or overridden by subclasses.
         """
@@ -326,7 +326,7 @@ class FileExport(File):
         """Return a mapping dictionary for an item section.
         
         Positional arguments:
-            itId -- str: item ID.
+            itId: str -- item ID.
         
         This is a template method that can be extended or overridden by subclasses.
         """
@@ -351,7 +351,7 @@ class FileExport(File):
         """Return a mapping dictionary for a project note.
         
         Positional arguments:
-            pnId -- str: project note ID.
+            pnId: str -- project note ID.
         
         This is a template method that can be extended or overridden by subclasses.
         """
@@ -382,21 +382,21 @@ class FileExport(File):
         """Process the scenes.
         
         Positional arguments:
-            chId -- str: chapter ID.
-            sceneNumber -- int: number of previously processed scenes.
-            wordsTotal -- int: accumulated wordcount of the previous scenes.
-            lettersTotal -- int: accumulated lettercount of the previous scenes.
-            doNotExport -- bool: scene belongs to a chapter that is not to be exported.
+            chId: str -- chapter ID.
+            sceneNumber: int -- number of previously processed scenes.
+            wordsTotal: int -- accumulated wordcount of the previous scenes.
+            lettersTotal: int -- accumulated lettercount of the previous scenes.
+            doNotExport: bool -- scene belongs to a chapter that is not to be exported.
         
         Iterate through a sorted scene list and apply the templates, 
         substituting placeholders according to the scene mapping dictionary.
         Skip scenes not accepted by the scene filter.
         
         Return a tuple:
-            lines -- list of strings: the lines of the processed scene.
-            sceneNumber -- int: number of all processed scenes.
-            wordsTotal -- int: accumulated wordcount of all processed scenes.
-            lettersTotal -- int: accumulated lettercount of all processed scenes.
+            lines: list of strings -- the lines of the processed scene.
+            sceneNumber: int -- number of all processed scenes.
+            wordsTotal: int -- accumulated wordcount of all processed scenes.
+            lettersTotal: int -- accumulated lettercount of all processed scenes.
         
         This is a template method that can be extended or overridden by subclasses.
         """
@@ -670,7 +670,7 @@ class FileExport(File):
             text -- string to convert.
         
         Optional arguments:
-            quick -- bool: if True, apply a conversion mode for one-liners without formatting.
+            quick: bool -- if True, apply a conversion mode for one-liners without formatting.
         
         Overrides the superclass method.
         """

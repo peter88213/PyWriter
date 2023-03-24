@@ -10,9 +10,9 @@ class BasicElement:
     """Basic element representation (may be a project note).
     
     Public instance variables:
-        title -- str: title (name).
-        desc -- str: description.
-        kwVar -- dict: custom keyword variables.
+        title: str -- title (name).
+        desc: str -- description.
+        kwVar: dict -- custom keyword variables.
     """
 
     def __init__(self):

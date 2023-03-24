@@ -22,7 +22,7 @@ class OdtRItems(OdtReader):
         """Initialize local instance variables for parsing.
 
         Positional arguments:
-            filePath -- str: path to the file represented by the Novel instance.
+            filePath: str -- path to the file represented by the Novel instance.
             
         The ODT parser works like a state machine. 
         The item ID must be saved between the transitions.         
@@ -35,7 +35,7 @@ class OdtRItems(OdtReader):
         """Identify items.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
             attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         
         Overrides the superclass method.
@@ -52,7 +52,7 @@ class OdtRItems(OdtReader):
         """Recognize the end of the item section and save data.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
 
         Overrides the superclass method.
         """
@@ -68,7 +68,7 @@ class OdtRItems(OdtReader):
         """collect data within item sections.
 
         Positional arguments:
-            data -- str: text to be stored. 
+            data: str -- text to be stored. 
         
         Overrides the superclass method.
         """

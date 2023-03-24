@@ -28,36 +28,36 @@ class Scene(BasicElement):
     """yWriter scene representation.
     
     Public instance variables:
-        sceneContent -- str: scene content (property with getter and setter).
-        wordCount - int: word count (derived; updated by the sceneContent setter).
+        sceneContent: str -- scene content (property with getter and setter).
+        wordCount: int -- word count (derived; updated by the sceneContent setter).
         letterCount - int: letter count (derived; updated by the sceneContent setter).
-        scType -- int: Scene type (Normal/Notes/Todo/Unused).
-        doNotExport -- bool: True if the scene is not to be exported to RTF.
-        status -- int: scene status (Outline/Draft/1st Edit/2nd Edit/Done).
-        notes -- str: scene notes in a single string.
+        scType: int -- Scene type (Normal/Notes/Todo/Unused).
+        doNotExport: bool -- True if the scene is not to be exported to RTF.
+        status: int -- scene status (Outline/Draft/1st Edit/2nd Edit/Done).
+        notes: str -- scene notes in a single string.
         tags -- list of scene tags. 
-        field1 -- int: scene ratings field 1.
-        field2 -- int: scene ratings field 2.
-        field3 -- int: scene ratings field 3.
-        field4 -- int: scene ratings field 4.
-        appendToPrev -- bool: if True, append the scene without a divider to the previous scene.
-        isReactionScene -- bool: if True, the scene is "reaction". Otherwise, it's "action". 
-        isSubPlot -- bool: if True, the scene belongs to a sub-plot. Otherwise it's main plot.  
-        goal -- str: the main actor's scene goal. 
-        conflict -- str: what hinders the main actor to achieve his goal.
-        outcome -- str: what comes out at the end of the scene.
+        field1: int -- scene ratings field 1.
+        field2: int -- scene ratings field 2.
+        field3: int -- scene ratings field 3.
+        field4: int -- scene ratings field 4.
+        appendToPrev: bool -- if True, append the scene without a divider to the previous scene.
+        isReactionScene: bool -- if True, the scene is "reaction". Otherwise, it's "action". 
+        isSubPlot: bool -- if True, the scene belongs to a sub-plot. Otherwise it's main plot.  
+        goal: str -- the main actor's scene goal. 
+        conflict: str -- what hinders the main actor to achieve his goal.
+        outcome: str -- what comes out at the end of the scene.
         characters -- list of character IDs related to this scene.
         locations -- list of location IDs related to this scene. 
         items -- list of item IDs related to this scene.
-        date -- str: specific start date in ISO format (yyyy-mm-dd).
-        time -- str: specific start time in ISO format (hh:mm).
-        minute -- str: unspecific start time: minutes.
-        hour -- str: unspecific start time: hour.
-        day -- str: unspecific start time: day.
-        lastsMinutes -- str: scene duration: minutes.
-        lastsHours -- str: scene duration: hours.
-        lastsDays -- str: scene duration: days. 
-        image -- str:  path to an image related to the scene. 
+        date: str -- specific start date in ISO format (yyyy-mm-dd).
+        time: str -- specific start time in ISO format (hh:mm).
+        minute: str -- unspecific start time: minutes.
+        hour: str -- unspecific start time: hour.
+        day: str -- unspecific start time: day.
+        lastsMinutes: str -- scene duration: minutes.
+        lastsHours: str -- scene duration: hours.
+        lastsDays: str -- scene duration: days. 
+        image: str --  path to an image related to the scene. 
     """
     STATUS: set = (None, 'Outline', 'Draft', '1st Edit', '2nd Edit', 'Done')
     # Emulate an enumeration for the scene status

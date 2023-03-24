@@ -393,7 +393,7 @@ class OdtWriter(OdfFile):
             text -- string to convert.
         
         Optional arguments:
-            quick -- bool: if True, apply a conversion mode for one-liners without formatting.
+            quick: bool -- if True, apply a conversion mode for one-liners without formatting.
         
         Overrides the superclass method.
         """

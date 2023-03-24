@@ -20,7 +20,7 @@ class OdtRChapterDesc(OdtReader):
         """Recognize the end of the chapter section and save data.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
 
         Overrides the superclass method.
         """
@@ -40,7 +40,7 @@ class OdtRChapterDesc(OdtReader):
         """Collect data within chapter sections.
 
         Positional arguments:
-            data -- str: text to be stored. 
+            data: str -- text to be stored. 
         
         Overrides the superclass method.
         """

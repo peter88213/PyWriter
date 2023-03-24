@@ -47,7 +47,7 @@ class OdtParser(sax.ContentHandler):
         """Feed an ODT file to the parser.
         
         Positional arguments:
-            filePath -- str: ODT document path.
+            filePath: str -- ODT document path.
         
         First unzip the ODT file located at self.filePath, 
         and get languageCode, countryCode, title, desc, and authorName,        
@@ -228,7 +228,7 @@ class OdtParser(sax.ContentHandler):
         """Stub for a start tag handler to be implemented in a subclass.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
             attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         """
         return
@@ -237,7 +237,7 @@ class OdtParser(sax.ContentHandler):
         """Stub for an end tag handler to be implemented in a subclass.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
         """
         return
 
@@ -245,7 +245,7 @@ class OdtParser(sax.ContentHandler):
         """Stub for a data handler to be implemented in a subclass.
 
         Positional arguments:
-            data -- str: text to be stored. 
+            data: str -- text to be stored. 
         """
         return
 
@@ -253,7 +253,7 @@ class OdtParser(sax.ContentHandler):
         """Stub for a comment handler to be implemented in a subclass.
         
         Positional arguments:
-            data -- str: comment text. 
+            data: str -- comment text. 
         """
         return
 

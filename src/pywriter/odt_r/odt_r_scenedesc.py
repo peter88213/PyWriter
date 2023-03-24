@@ -20,7 +20,7 @@ class OdtRSceneDesc(OdtReader):
         """Recognize the end of the scene section and save data.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
 
         Overrides the superclass method.
         """
@@ -50,7 +50,7 @@ class OdtRSceneDesc(OdtReader):
         """Collect data within scene sections.
 
         Positional arguments:
-            data -- str: text to be stored. 
+            data: str -- text to be stored. 
         
         Overrides the superclass method.
         """

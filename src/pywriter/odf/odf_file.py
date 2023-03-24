@@ -33,7 +33,7 @@ class OdfFile(FileExport):
         """Create a temporary directory for zipfile generation.
         
         Positional arguments:
-            filePath -- str: path to the file represented by the Novel instance.
+            filePath: str -- path to the file represented by the Novel instance.
             
         Optional arguments:
             kwargs -- keyword arguments to be used by subclasses.            

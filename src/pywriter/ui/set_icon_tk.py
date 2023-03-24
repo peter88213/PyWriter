@@ -15,12 +15,12 @@ def set_icon(widget, icon='logo', path=None, default=True):
     Assign the "path"/"icon".png image to the "widget" window.
     
     Positional arguments:
-        widget -- tk object: The tk application window.
+        widget: tk object -- The tk application window.
         
     Optional arguments:
-        icon -- str: The icon filename without extension.
-        path -- str: The directory containing the icons.
-        default -- bool: If True, assign the icon to all subsequently opened toplevel windows.
+        icon: str -- The icon filename without extension.
+        path: str -- The directory containing the icons.
+        default: bool -- If True, assign the icon to all subsequently opened toplevel windows.
         
     If no path is specified, a subdirectory "icons" of the script location is used.     
     The "png" filetype is required as icon. 

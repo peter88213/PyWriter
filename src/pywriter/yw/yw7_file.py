@@ -33,7 +33,7 @@ class Yw7File(File):
 
     Public instance variables:
         tree -- xml element tree of the yWriter project
-        scenesSplit -- bool: True, if a scene or chapter is split during merging.
+        scenesSplit: bool -- True, if a scene or chapter is split during merging.
         
     Public class constants:
         PRJ_KWVAR -- List of the names of the project keyword variables.
@@ -63,7 +63,7 @@ class Yw7File(File):
         """Initialize instance variables.
         
         Positional arguments:
-            filePath -- str: path to the yw7 file.
+            filePath: str -- path to the yw7 file.
             
         Optional arguments:
             kwargs -- keyword arguments (not used here).            
@@ -1588,7 +1588,7 @@ class Yw7File(File):
         '''Postprocess an xml file created by ElementTree.
         
         Positional argument:
-            filePath -- str: path to xml file.
+            filePath: str -- path to xml file.
         
         Read the xml file, put a header on top, insert the missing CDATA tags,
         and replace xml entities by plain text (unescape). Overwrite the .yw7 xml file.

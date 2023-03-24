@@ -31,23 +31,23 @@ class Novel(BasicElement):
         check_locale() -- Check the document's locale (language code and country code).
 
     Public instance variables:
-        authorName -- str: author's name.
-        author bio -- str: information about the author.
-        fieldTitle1 -- str: scene rating field title 1.
-        fieldTitle2 -- str: scene rating field title 2.
-        fieldTitle3 -- str: scene rating field title 3.
-        fieldTitle4 -- str: scene rating field title 4.
-        chapters -- dict: (key: ID; value: chapter instance).
-        scenes -- dict: (key: ID, value: scene instance).
-        srtChapters -- list: the novel's sorted chapter IDs.
-        locations -- dict: (key: ID, value: WorldElement instance).
-        srtLocations -- list: the novel's sorted location IDs.
-        items -- dict: (key: ID, value: WorldElement instance).
-        srtItems -- list: the novel's sorted item IDs.
-        characters -- dict: (key: ID, value: character instance).
-        srtCharacters -- list: the novel's sorted character IDs.
-        projectNotes -- dict:  (key: ID, value: projectNote instance).
-        srtPrjNotes -- list: the novel's sorted project notes.
+        authorName: str -- author's name.
+        author bio: str -- information about the author.
+        fieldTitle1: str -- scene rating field title 1.
+        fieldTitle2: str -- scene rating field title 2.
+        fieldTitle3: str -- scene rating field title 3.
+        fieldTitle4: str -- scene rating field title 4.
+        chapters: dict -- (key: ID; value: chapter instance).
+        scenes: dict -- (key: ID, value: scene instance).
+        srtChapters: list -- the novel's sorted chapter IDs.
+        locations: dict -- (key: ID, value: WorldElement instance).
+        srtLocations: list -- the novel's sorted location IDs.
+        items: dict -- (key: ID, value: WorldElement instance).
+        srtItems: list -- the novel's sorted item IDs.
+        characters: dict -- (key: ID, value: character instance).
+        srtCharacters: list -- the novel's sorted character IDs.
+        projectNotes: dict --  (key: ID, value: projectNote instance).
+        srtPrjNotes: list -- the novel's sorted project notes.
     """
 
     def __init__(self):

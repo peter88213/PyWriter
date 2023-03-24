@@ -33,8 +33,8 @@ class MainTk(Ui):
         show_warning(message) -- Display a warning message box.
         
     Public instance variables: 
-        title -- str: Application title.
-        statusText -- str: Text to be displayed at the status bar.
+        title: str -- Application title.
+        statusText: str -- Text to be displayed at the status bar.
         kwargs -- keyword arguments buffer.
         prjFile -- yWriter project to work with.
         root -- tk top level window.
@@ -56,8 +56,8 @@ class MainTk(Ui):
             title -- application title to be displayed at the window frame.
          
         Required keyword arguments:
-            yw_last_open -- str: initial file.
-            root_geometry -- str: geometry of the root window.
+            yw_last_open: str -- initial file.
+            root_geometry: str -- geometry of the root window.
         
         Operation:
         - Create a main menu to be extended by subclasses.
@@ -135,7 +135,7 @@ class MainTk(Ui):
         """Return a project file path.
 
         Positional arguments:
-            fileName -- str: project file path.
+            fileName: str -- project file path.
             
         Optional arguments:
             fileTypes -- list of tuples for file selection (display text, extension).
@@ -160,7 +160,7 @@ class MainTk(Ui):
         """Create a yWriter project instance and read the file.
 
         Positional arguments:
-            fileName -- str: project file path.
+            fileName: str -- project file path.
             
         Display project title and file path.
         Return True on success, otherwise return False.

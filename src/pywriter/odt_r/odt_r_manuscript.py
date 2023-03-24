@@ -21,7 +21,7 @@ class OdtRManuscript(OdtRFormatted):
         """Identify scenes and chapters.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
             attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         
         Extends the superclass method by processing inline chapter and scene dividers.
@@ -74,7 +74,7 @@ class OdtRManuscript(OdtRFormatted):
         """Recognize the end of the scene section and save data.
         
         Positional arguments:
-            tag -- str: name of the tag converted to lower case.
+            tag: str -- name of the tag converted to lower case.
 
         Overrides the superclass method.
         """
@@ -109,7 +109,7 @@ class OdtRManuscript(OdtRFormatted):
         """Process inline comments within scene content.
         
         Positional arguments:
-            data -- str: comment text. 
+            data: str -- comment text. 
         
         Use marked comments at scene start as scene titles.
         Overrides the superclass method.
@@ -132,7 +132,7 @@ class OdtRManuscript(OdtRFormatted):
         """Collect data within scene sections.
 
         Positional arguments:
-            data -- str: text to be stored. 
+            data: str -- text to be stored. 
         
         Overrides the superclass method.
         """

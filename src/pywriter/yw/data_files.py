@@ -59,7 +59,7 @@ class DataFiles(Yw7File):
         '''Postprocess three xml files created by ElementTree.
         
         Positional argument:
-            filePath -- str: path to .yw7 xml file.
+            filePath: str -- path to .yw7 xml file.
             
         Generate the xml file paths from the .yw7 path. 
         Read, postprocess and write the characters, locations, and items xml files.        

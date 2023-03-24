@@ -36,7 +36,7 @@ class OdtReader(File, OdtParser):
         """Initialize the ODT parser and local instance variables for parsing.
         
         Positional arguments:
-            filePath -- str: path to the file represented by the File instance.
+            filePath: str -- path to the file represented by the File instance.
             
         Optional arguments:
             kwargs -- keyword arguments to be used by subclasses.            
@@ -75,7 +75,7 @@ class OdtReader(File, OdtParser):
         """Identify scenes and chapters.
         
         Positional arguments:
-            tag -- str: name of the tag.
+            tag: str -- name of the tag.
             attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         
         Overrides the superclass method. 
@@ -102,7 +102,7 @@ class OdtReader(File, OdtParser):
         """Process inline comments within scene content.
         
         Positional arguments:
-            data -- str: comment text. 
+            data: str -- comment text. 
 
         Overrides the superclass method.
         """

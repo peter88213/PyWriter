@@ -23,9 +23,9 @@ class File:
         write() -- Write instance variables to the file.
 
     Public instance variables:
-        projectName -- str: URL-coded file name without suffix and extension. 
-        projectPath -- str: URL-coded path to the project directory. 
-        filePath -- str: path to the file (property with getter and setter). 
+        projectName: str -- URL-coded file name without suffix and extension. 
+        projectPath: str -- URL-coded path to the project directory. 
+        filePath: str -- path to the file (property with getter and setter). 
 
     Public class constants:
         PRJ_KWVAR -- List of the names of the project keyword variables.
@@ -54,7 +54,7 @@ class File:
         """Initialize instance variables.
 
         Positional arguments:
-            filePath -- str: path to the file represented by the File instance.
+            filePath: str -- path to the file represented by the File instance.
             
         Optional arguments:
             kwargs -- keyword arguments to be used by subclasses.  
@@ -132,7 +132,7 @@ class File:
             text -- string to convert.
         
         Optional arguments:
-            quick -- bool: if True, apply a conversion mode for one-liners without formatting.
+            quick: bool -- if True, apply a conversion mode for one-liners without formatting.
         
         This is a stub to be overridden by subclass methods.
         """

@@ -40,8 +40,8 @@ class OdtWExport(OdtWFormatted):
         """Return a mapping dictionary for a chapter section.
         
         Positional arguments:
-            chId -- str: chapter ID.
-            chapterNumber -- int: chapter number.
+            chId: str -- chapter ID.
+            chapterNumber: int -- chapter number.
         
         Suppress the chapter title if necessary.
         Extends the superclass method.
@@ -58,7 +58,7 @@ class OdtWExport(OdtWFormatted):
             text -- string to convert.
         
         Optional arguments:
-            quick -- bool: if True, apply a conversion mode for one-liners without formatting.
+            quick: bool -- if True, apply a conversion mode for one-liners without formatting.
         
         Extends the superclass method.
         """

@@ -11,11 +11,11 @@ class Character(WorldElement):
     """yWriter character representation.
 
     Public instance variables:
-        notes -- str: character notes.
-        bio -- str: character biography.
-        goals -- str: character's goals in the story.
-        fullName -- str: full name (the title inherited may be a short name).
-        isMajor -- bool: True, if it's a major character.
+        notes: str -- character notes.
+        bio: str -- character biography.
+        goals: str -- character's goals in the story.
+        fullName: str -- full name (the title inherited may be a short name).
+        isMajor: bool -- True, if it's a major character.
     """
     MAJOR_MARKER: str = 'Major'
     MINOR_MARKER: str = 'Minor'
