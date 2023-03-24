@@ -9,9 +9,10 @@ https://github.com/peter88213/PyWriter/tree/main/src/pywriter/file#readme
 
 Modules:
 
-file_export.py -- Provide a generic class for template-based file export.
-filter.py -- Provide a generic filter class for template-based file export.
 doc_open -- Helper module for opening documents.
+file_export.py -- Provide a generic class for template-based file export.
+file -- Provide a generic class for yWriter project representation.
+filter.py -- Provide a generic filter class for template-based file export.
 
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
