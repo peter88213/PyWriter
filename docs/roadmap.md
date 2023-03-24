@@ -455,8 +455,11 @@ can be omitted for ODF to yw7 conversion.
 
 - Make the File *_KWVAR class constants public.
 - Move the Yw7File.reset_custom_variables() method to a helper module.
+- Provide type hints with the model package.
 
+### v12.2
 
+- Remove the main_tk_cnv module.
 
 
 
