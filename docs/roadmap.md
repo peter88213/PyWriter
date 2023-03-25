@@ -464,6 +464,6 @@ can be omitted for ODF to yw7 conversion.
 ### v12.3
 
 Enhance the MainTk GUI class.
-- New method: show_error()
+- New methods: show_error() and show_info().
 - Add optional title argument for show_warning and ask_yes_no. 
 
