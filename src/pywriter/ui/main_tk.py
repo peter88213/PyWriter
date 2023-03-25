@@ -284,7 +284,7 @@ class MainTk(Ui):
         Optional arguments:
             title -- title to be displayed on the window frame.
         """
-        if not title:
+        if title is None:
             title = self.title
         messagebox.showwarning(title, message)
 
@@ -294,6 +294,6 @@ class MainTk(Ui):
         Optional arguments:
             title -- title to be displayed on the window frame.
         """
-        if not title:
+        if title is None:
             title = self.title
         messagebox.showerror(title, message)
