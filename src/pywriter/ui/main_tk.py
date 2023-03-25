@@ -30,8 +30,9 @@ class MainTk(Ui):
         show_path(message) -- put text on the path bar."
         restore_status() -- overwrite error message with the status before.
         on_quit() -- save keyword arguments before exiting the program.
-        show_warning(message) -- Display a warning message box.
-        show_error(message) -- Display an error message box.
+        show_warning(message, title=None) -- Display a warning message box.
+        show_error(message, title=None) -- Display an error message box.
+        show_info(message, title=None) -- Display an informational message box.
         
     Public instance variables: 
         title: str -- Application title.
@@ -297,3 +298,13 @@ class MainTk(Ui):
         if title is None:
             title = self.title
         messagebox.showerror(title, message)
+
+    def show_info(self, message, title=None):
+        """Display an informational message box.
+        
+        Optional arguments:
+            title -- title to be displayed on the window frame.
+        """
+        if title is None:
+            title = self.title
+        messagebox.showinfo(title, message)
