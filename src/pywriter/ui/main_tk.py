@@ -37,7 +37,6 @@ class MainTk(Ui):
                 
     Public instance variables: 
         title: str -- Application title.
-        statusText: str -- Text to be displayed at the status bar.
         kwargs -- keyword arguments buffer.
         prjFile -- yWriter project to work with.
         root -- tk top level window.
