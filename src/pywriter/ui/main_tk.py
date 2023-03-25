@@ -24,13 +24,14 @@ class MainTk(Ui):
         select_project(self, fileName) -- return a project file path.
         open_project(fileName) -- create a yWriter project instance and read the file.
         close_project() -- close the yWriter project without saving and reset the user interface.
-        ask_yes_no(text) -- query yes or no with a pop-up box.
+        ask_yes_no(text, title=None) -- query yes or no with a pop-up box.
         set_info_how(message) -- show how the converter is doing.
         show_status(message) -- put text on the status bar.
         show_path(message) -- put text on the path bar."
         restore_status() -- overwrite error message with the status before.
         on_quit() -- save keyword arguments before exiting the program.
         show_warning(message) -- Display a warning message box.
+        show_error(message) -- Display an error message box.
         
     Public instance variables: 
         title: str -- Application title.
@@ -166,7 +167,7 @@ class MainTk(Ui):
         Return True on success, otherwise return False.
         To be extended by subclasses.
         """
-        self.show_status(self._statusText)
+        self.restore_status()
         fileName = self.select_project(fileName)
         if not fileName:
             return False
@@ -222,15 +223,20 @@ class MainTk(Ui):
         self.show_path('')
         self.disable_menu()
 
-    def ask_yes_no(self, text):
+    def ask_yes_no(self, text, title=None):
         """Query yes or no with a pop-up box.
         
         Positional arguments:
             text -- question to be asked in the pop-up box. 
             
+        Optional arguments:
+            title -- title to be displayed on the window frame.
+            
         Overrides the superclass method.       
         """
-        return messagebox.askyesno(self.title, text)
+        if not title:
+            title = self.title
+        return messagebox.askyesno(title, text)
 
     def set_info_how(self, message):
         """Show how the converter is doing.
@@ -272,6 +278,22 @@ class MainTk(Ui):
         self.kwargs['root_geometry'] = self.root.winfo_geometry()
         self.root.quit()
 
-    def show_warning(self, message):
-        """Display a warning message box."""
-        messagebox.showwarning(self.title, message)
+    def show_warning(self, message, title=None):
+        """Display a warning message box.
+        
+        Optional arguments:
+            title -- title to be displayed on the window frame.
+        """
+        if not title:
+            title = self.title
+        messagebox.showwarning(title, message)
+
+    def show_error(self, message, title=None):
+        """Display an error message box.
+        
+        Optional arguments:
+            title -- title to be displayed on the window frame.
+        """
+        if not title:
+            title = self.title
+        messagebox.showerror(title, message)

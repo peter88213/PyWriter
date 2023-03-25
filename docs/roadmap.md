@@ -461,5 +461,9 @@ can be omitted for ODF to yw7 conversion.
 
 - Remove the main_tk_cnv module.
 
+### v12.3
 
+Enhance the MainTk GUI class.
+- New method: show_error()
+- Add optional title argument for show_warning and ask_yes_no. 
 
