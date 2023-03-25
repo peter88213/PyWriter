@@ -18,22 +18,23 @@ class MainTk(Ui):
     """A tkinter GUI root class.
 
     Public methods:
+        ask_yes_no(text, title=None) -- query yes or no with a pop-up box.
+        close_project() -- close the yWriter project without saving and reset the user interface.
         disable_menu() -- disable menu entries when no project is open.
         enable_menu() -- enable menu entries when a project is open.
-        start() -- start the Tk main loop.
-        select_project(self, fileName) -- return a project file path.
-        open_project(fileName) -- create a yWriter project instance and read the file.
-        close_project() -- close the yWriter project without saving and reset the user interface.
-        ask_yes_no(text, title=None) -- query yes or no with a pop-up box.
-        set_info_how(message) -- show how the converter is doing.
-        show_status(message) -- put text on the status bar.
-        show_path(message) -- put text on the path bar."
-        restore_status() -- overwrite error message with the status before.
         on_quit() -- save keyword arguments before exiting the program.
-        show_warning(message, title=None) -- Display a warning message box.
+        open_project(fileName) -- create a yWriter project instance and read the file.
+        restore_status() -- overwrite error message with the status before.
+        select_project(self, fileName) -- return a project file path.
+        set_info_how(message) -- show how the converter is doing.
+        set_title() -- Set the main window title.
         show_error(message, title=None) -- Display an error message box.
         show_info(message, title=None) -- Display an informational message box.
-        
+        show_path(message) -- put text on the path bar."
+        show_status(message) -- put text on the status bar.
+        show_warning(message, title=None) -- Display a warning message box.
+        start() -- start the Tk main loop.
+                
     Public instance variables: 
         title: str -- Application title.
         statusText: str -- Text to be displayed at the status bar.
@@ -100,17 +101,31 @@ class MainTk(Ui):
         self.root.bind(self._KEY_OPEN_PROJECT[0], self._open_project)
         self.root.bind(self._KEY_QUIT_PROGRAM[0], self.on_quit)
 
-    def _build_main_menu(self):
-        """Add main menu entries.
+    def ask_yes_no(self, text, title=None):
+        """Query yes or no with a pop-up box.
         
-        This is a template method that can be overridden by subclasses. 
+        Positional arguments:
+            text -- question to be asked in the pop-up box. 
+            
+        Optional arguments:
+            title -- title to be displayed on the window frame.
+            
+        Overrides the superclass method.       
         """
-        self.fileMenu = tk.Menu(self.mainMenu, tearoff=0)
-        self.mainMenu.add_cascade(label=_('File'), menu=self.fileMenu)
-        self.fileMenu.add_command(label=_('Open...'), accelerator=self._KEY_OPEN_PROJECT[1], command=lambda: self.open_project(''))
-        self.fileMenu.add_command(label=_('Close'), command=self.close_project)
-        self.fileMenu.entryconfig(_('Close'), state='disabled')
-        self.fileMenu.add_command(label=_('Exit'), accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
+        if title is None:
+            title = self.title
+        return messagebox.askyesno(title, text)
+
+    def close_project(self, event=None):
+        """Close the yWriter project without saving and reset the user interface.
+        
+        To be extended by subclasses.
+        """
+        self.prjFile = None
+        self.root.title(self.title)
+        self.show_status('')
+        self.show_path('')
+        self.disable_menu()
 
     def disable_menu(self):
         """Disable menu entries when no project is open.
@@ -126,37 +141,10 @@ class MainTk(Ui):
         """
         self.fileMenu.entryconfig(_('Close'), state='normal')
 
-    def start(self):
-        """Start the Tk main loop.
-        
-        Note: This can not be done in the constructor method.
-        """
-        self.root.mainloop()
-
-    def select_project(self, fileName):
-        """Return a project file path.
-
-        Positional arguments:
-            fileName: str -- project file path.
-            
-        Optional arguments:
-            fileTypes -- list of tuples for file selection (display text, extension).
-
-        Priority:
-        1. use file name argument
-        2. open file select dialog
-
-        On error, return an empty string.
-        """
-        initDir = os.path.dirname(self.kwargs['yw_last_open'])
-        if not initDir:
-            initDir = './'
-        if not fileName or not os.path.isfile(fileName):
-            fileName = filedialog.askopenfilename(filetypes=self._fileTypes, defaultextension='.yw7', initialdir=initDir)
-        if not fileName:
-            return ''
-
-        return fileName
+    def on_quit(self, event=None):
+        """Save keyword arguments before exiting the program."""
+        self.kwargs['root_geometry'] = self.root.winfo_geometry()
+        self.root.quit()
 
     def open_project(self, fileName):
         """Create a yWriter project instance and read the file.
@@ -191,53 +179,34 @@ class MainTk(Ui):
         self.enable_menu()
         return True
 
-    def set_title(self):
-        """Set the main window title. 
-        
-        'Document title by author - application'
-        """
-        if self.novel.title:
-            titleView = self.novel.title
-        else:
-            titleView = _('Untitled project')
-        if self.novel.authorName:
-            authorView = self.novel.authorName
-        else:
-            authorView = _('Unknown author')
-        self.root.title(f'{titleView} {_("by")} {authorView} - {self.title}')
+    def restore_status(self, event=None):
+        """Overwrite error message with the status before."""
+        self.show_status(self._statusText)
 
-    def _open_project(self, event=None):
-        """Create a yWriter project instance and read the file.
-        
-        This non-public method is meant for event handling.
-        """
-        self.open_project('')
+    def select_project(self, fileName):
+        """Return a project file path.
 
-    def close_project(self, event=None):
-        """Close the yWriter project without saving and reset the user interface.
-        
-        To be extended by subclasses.
-        """
-        self.prjFile = None
-        self.root.title(self.title)
-        self.show_status('')
-        self.show_path('')
-        self.disable_menu()
-
-    def ask_yes_no(self, text, title=None):
-        """Query yes or no with a pop-up box.
-        
         Positional arguments:
-            text -- question to be asked in the pop-up box. 
+            fileName: str -- project file path.
             
         Optional arguments:
-            title -- title to be displayed on the window frame.
-            
-        Overrides the superclass method.       
+            fileTypes -- list of tuples for file selection (display text, extension).
+
+        Priority:
+        1. use file name argument
+        2. open file select dialog
+
+        On error, return an empty string.
         """
-        if not title:
-            title = self.title
-        return messagebox.askyesno(title, text)
+        initDir = os.path.dirname(self.kwargs['yw_last_open'])
+        if not initDir:
+            initDir = './'
+        if not fileName or not os.path.isfile(fileName):
+            fileName = filedialog.askopenfilename(filetypes=self._fileTypes, defaultextension='.yw7', initialdir=initDir)
+        if not fileName:
+            return ''
+
+        return fileName
 
     def set_info_how(self, message):
         """Show how the converter is doing.
@@ -258,36 +227,20 @@ class MainTk(Ui):
             self.infoHowText = message
         self.statusBar.config(text=self.infoHowText)
 
-    def show_status(self, message):
-        """Put text on the status bar."""
-        self._statusText = message
-        self.statusBar.config(bg=self.root.cget('background'))
-        self.statusBar.config(fg='black')
-        self.statusBar.config(text=message)
-
-    def show_path(self, message):
-        """Put text on the path bar."""
-        self._pathText = message
-        self.pathBar.config(text=message)
-
-    def restore_status(self, event=None):
-        """Overwrite error message with the status before."""
-        self.show_status(self._statusText)
-
-    def on_quit(self, event=None):
-        """Save keyword arguments before exiting the program."""
-        self.kwargs['root_geometry'] = self.root.winfo_geometry()
-        self.root.quit()
-
-    def show_warning(self, message, title=None):
-        """Display a warning message box.
+    def set_title(self):
+        """Set the main window title. 
         
-        Optional arguments:
-            title -- title to be displayed on the window frame.
+        'Document title by author - application'
         """
-        if title is None:
-            title = self.title
-        messagebox.showwarning(title, message)
+        if self.novel.title:
+            titleView = self.novel.title
+        else:
+            titleView = _('Untitled project')
+        if self.novel.authorName:
+            authorView = self.novel.authorName
+        else:
+            authorView = _('Unknown author')
+        self.root.title(f'{titleView} {_("by")} {authorView} - {self.title}')
 
     def show_error(self, message, title=None):
         """Display an error message box.
@@ -308,3 +261,52 @@ class MainTk(Ui):
         if title is None:
             title = self.title
         messagebox.showinfo(title, message)
+
+    def show_path(self, message):
+        """Put text on the path bar."""
+        self._pathText = message
+        self.pathBar.config(text=message)
+
+    def show_status(self, message):
+        """Put text on the status bar."""
+        self._statusText = message
+        self.statusBar.config(bg=self.root.cget('background'))
+        self.statusBar.config(fg='black')
+        self.statusBar.config(text=message)
+
+    def show_warning(self, message, title=None):
+        """Display a warning message box.
+        
+        Optional arguments:
+            title -- title to be displayed on the window frame.
+        """
+        if title is None:
+            title = self.title
+        messagebox.showwarning(title, message)
+
+    def start(self):
+        """Start the Tk main loop.
+        
+        Note: This can not be done in the constructor method.
+        """
+        self.root.mainloop()
+
+    def _build_main_menu(self):
+        """Add main menu entries.
+        
+        This is a template method that can be overridden by subclasses. 
+        """
+        self.fileMenu = tk.Menu(self.mainMenu, tearoff=0)
+        self.mainMenu.add_cascade(label=_('File'), menu=self.fileMenu)
+        self.fileMenu.add_command(label=_('Open...'), accelerator=self._KEY_OPEN_PROJECT[1], command=lambda: self.open_project(''))
+        self.fileMenu.add_command(label=_('Close'), command=self.close_project)
+        self.fileMenu.entryconfig(_('Close'), state='disabled')
+        self.fileMenu.add_command(label=_('Exit'), accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
+
+    def _open_project(self, event=None):
+        """Create a yWriter project instance and read the file.
+        
+        This non-public method is meant for event handling.
+        """
+        self.open_project('')
+
