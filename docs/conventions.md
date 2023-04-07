@@ -39,8 +39,12 @@ Thus, multiline strings not to be discarded during building *must* start and end
 - The code must be compatible with Python version 3.6. 
 - The Python source code formatting follows widely the [PEP 8](https://peps.python.org/pep-0008/) style guide, except the maximum line length, which is 120 characters here.
 - The code commenting follows the [PEP 257](https://peps.python.org/pep-0257) convention. [pydoc](https://docs.python.org/3/library/pydoc.html) can be used to display documentation for the *pywriter* modules and classes.
+- Instead of inserting inline comments, append block comments.
 - Strings are preferably enclosed in single quotes. Double quotes should only be used if nesting with single quotes is unavoidable.
 - Strings should not be concatenated with the `+` operator, but with f-strings. See [PEP 498](https://peps.python.org/pep-0498/).
 - All strings that appear on the user interface must be prepared for translation with GNU gettext, like: `_('See this message.')`.
+- A package's **__init__.py** must not contain executable code.
+- Each PyWriter class is implemented in its own module.
+- PyWriter classes are imported with `from <module> import <class>`.
 
 
