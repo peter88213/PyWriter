@@ -19,23 +19,13 @@ class ImportTest():
     
     Public methods:
         setUp() -- set up the test environment.
+        tearDown() -- clean up the test execution directory.
         test_imp_to_yw7() -- test HTML/CSV import to yWriter, using the YwCnv converter class.
         test_imp_to_yw7_ui() -- test HTML/CSV import to yWriter, using the YwCnvUi converter class.
-        tearDown() -- clean up the test execution directory.
     
     Subclasses must also inherit from unittest.TestCase
     """
     _importClass = None
-
-    def _init_paths(self):
-        """Initialize the test data and execution paths."""
-        if not hasattr(self, '_dataPath'):
-            self._dataPath = f'data/{self._importClass.SUFFIX}/'
-        self._execPath = 'yw7/'
-        self._testYwFile = f'{self._execPath}yw7 Sample Project.yw7'
-        self._refYwFile = f'{self._dataPath}normal.yw7'
-        self._testImpFile = f'{self._execPath}yw7 Sample Project{self._importClass.SUFFIX}{self._importClass.EXTENSION}'
-        self._refImpFile = f'{self._dataPath}normal{self._importClass.EXTENSION}'
 
     def setUp(self):
         """Set up the test environment.
@@ -51,6 +41,13 @@ class ImportTest():
             pass
         self._remove_all_tempfiles()
 
+    def tearDown(self):
+        """Clean up the test execution directory.
+        
+        This method is called by the unit test framework.
+        """
+        self._remove_all_tempfiles()
+
     def test_imp_to_yw7(self):
         """Test HTML/CSV import to yWriter, using the YwCnvUi converter class. 
         
@@ -64,12 +61,15 @@ class ImportTest():
             copyfile(self._testYwFile, self._refYwFile)
         self.assertEqual(read_file(self._testYwFile), read_file(self._refYwFile))
 
-    def tearDown(self):
-        """Clean up the test execution directory.
-        
-        This method is called by the unit test framework.
-        """
-        self._remove_all_tempfiles()
+    def _init_paths(self):
+        """Initialize the test data and execution paths."""
+        if not hasattr(self, '_dataPath'):
+            self._dataPath = f'data/{self._importClass.SUFFIX}/'
+        self._execPath = 'yw7/'
+        self._testYwFile = f'{self._execPath}yw7 Sample Project.yw7'
+        self._refYwFile = f'{self._dataPath}normal.yw7'
+        self._testImpFile = f'{self._execPath}yw7 Sample Project{self._importClass.SUFFIX}{self._importClass.EXTENSION}'
+        self._refImpFile = f'{self._dataPath}normal{self._importClass.EXTENSION}'
 
     def _remove_all_tempfiles(self):
         """Clean up the test execution directory."""

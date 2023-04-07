@@ -13,6 +13,11 @@ from pywriter.odt_r.odt_reader import OdtReader
 class OdtRLocations(OdtReader):
     """ODT location descriptions file reader.
 
+    Public methods:
+        handle_data -- Collect data within scene sections.
+        handle_endtag -- Recognize the paragraph's end.
+        handle_starttag -- Recognize the paragraph's beginning.
+
     Import a location sheet with invisibly tagged descriptions.
     """
     DESCRIPTION = _('Location descriptions')
@@ -31,22 +36,16 @@ class OdtRLocations(OdtReader):
         super().__init__(filePath)
         self._lcId = None
 
-    def handle_starttag(self, tag, attrs):
-        """Identify locations.
+    def handle_data(self, data):
+        """collect data within location sections.
         
         Positional arguments:
-            tag: str -- name of the tag converted to lower case.
-            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
+            data: str -- text to be stored. 
         
         Overrides the superclass method.
         """
-        if tag == 'div':
-            if attrs[0][0] == 'id':
-                if attrs[0][1].startswith('LcID'):
-                    self._lcId = re.search('[0-9]+', attrs[0][1]).group()
-                    if not self._lcId in self.novel.locations:
-                        self.novel.srtLocations.append(self._lcId)
-                        self.novel.locations[self._lcId] = WorldElement()
+        if self._lcId is not None:
+            self._lines.append(data.strip())
 
     def handle_endtag(self, tag):
         """Recognize the end of the location section and save data.
@@ -64,13 +63,20 @@ class OdtRLocations(OdtReader):
             elif tag == 'p':
                 self._lines.append('\n')
 
-    def handle_data(self, data):
-        """collect data within location sections.
+    def handle_starttag(self, tag, attrs):
+        """Identify locations.
         
         Positional arguments:
-            data: str -- text to be stored. 
+            tag: str -- name of the tag converted to lower case.
+            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
         
         Overrides the superclass method.
         """
-        if self._lcId is not None:
-            self._lines.append(data.strip())
+        if tag == 'div':
+            if attrs[0][0] == 'id':
+                if attrs[0][1].startswith('LcID'):
+                    self._lcId = re.search('[0-9]+', attrs[0][1]).group()
+                    if not self._lcId in self.novel.locations:
+                        self.novel.srtLocations.append(self._lcId)
+                        self.novel.locations[self._lcId] = WorldElement()
+

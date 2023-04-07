@@ -36,21 +36,6 @@ class OdtWExport(OdtWFormatted):
     _sceneDivider = '<text:p text:style-name="Heading_20_4">* * *</text:p>\n'
     _fileFooter = OdtWFormatted._CONTENT_XML_FOOTER
 
-    def _get_chapterMapping(self, chId, chapterNumber):
-        """Return a mapping dictionary for a chapter section.
-        
-        Positional arguments:
-            chId: str -- chapter ID.
-            chapterNumber: int -- chapter number.
-        
-        Suppress the chapter title if necessary.
-        Extends the superclass method.
-        """
-        chapterMapping = super()._get_chapterMapping(chId, chapterNumber)
-        if self.novel.chapters[chId].suppressChapterTitle:
-            chapterMapping['Title'] = ''
-        return chapterMapping
-
     def _convert_from_yw(self, text, quick=False):
         """Return text, converted from yw7 markup to target format.
         
@@ -66,4 +51,19 @@ class OdtWExport(OdtWFormatted):
             text = self._remove_inline_code(text)
         text = super()._convert_from_yw(text, quick)
         return(text)
+
+    def _get_chapterMapping(self, chId, chapterNumber):
+        """Return a mapping dictionary for a chapter section.
+        
+        Positional arguments:
+            chId: str -- chapter ID.
+            chapterNumber: int -- chapter number.
+        
+        Suppress the chapter title if necessary.
+        Extends the superclass method.
+        """
+        chapterMapping = super()._get_chapterMapping(chId, chapterNumber)
+        if self.novel.chapters[chId].suppressChapterTitle:
+            chapterMapping['Title'] = ''
+        return chapterMapping
 

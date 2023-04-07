@@ -15,10 +15,11 @@ class UiTk(Ui):
     
     Public methods:
         ask_yes_no(text) -- query yes or no with a pop-up box.
-        set_info_what(message) -- show what the converter is going to do.
         set_info_how(message) -- show how the converter is doing.
-        start() -- start the Tk main loop.
+        set_info_what(message) -- show what the converter is going to do.
+        show_open_button(open_cmd) -- Add an 'Open' button to the main window.
         show_warning(message) -- Display a warning message box.
+        start() -- start the Tk main loop.
 
     Public instance variables: 
         root -- tk root window.
@@ -56,18 +57,6 @@ class UiTk(Ui):
         """
         return messagebox.askyesno(_("WARNING"), text)
 
-    def set_info_what(self, message):
-        """Show what the converter is going to do.
-        
-        Positional arguments:
-            message -- message to be displayed. 
-            
-        Display the message at the _appinfo label.
-        Overrides the superclass method.
-        """
-        self.infoWhatText = message
-        self._appInfo.config(text=message)
-
     def set_info_how(self, message):
         """Show how the converter is doing.
         
@@ -87,9 +76,17 @@ class UiTk(Ui):
             self.infoHowText = message
         self._processInfo.config(text=self.infoHowText)
 
-    def start(self):
-        """Start the Tk main loop."""
-        self.root.mainloop()
+    def set_info_what(self, message):
+        """Show what the converter is going to do.
+        
+        Positional arguments:
+            message -- message to be displayed. 
+            
+        Display the message at the _appinfo label.
+        Overrides the superclass method.
+        """
+        self.infoWhatText = message
+        self._appInfo.config(text=message)
 
     def show_open_button(self, open_cmd):
         """Add an 'Open' button to the main window.
@@ -104,3 +101,8 @@ class UiTk(Ui):
     def show_warning(self, message):
         """Display a warning message box."""
         messagebox.showwarning(self.title, message)
+
+    def start(self):
+        """Start the Tk main loop."""
+        self.root.mainloop()
+

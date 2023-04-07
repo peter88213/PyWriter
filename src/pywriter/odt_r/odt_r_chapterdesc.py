@@ -11,6 +11,10 @@ from pywriter.odt_r.odt_reader import OdtReader
 class OdtRChapterDesc(OdtReader):
     """ODT chapter summaries file reader.
 
+    Public methods:
+        handle_data -- Collect data within scene sections.
+        handle_endtag -- Recognize the paragraph's end.
+
     Import a brief synopsis with invisibly tagged chapter descriptions.
     """
     DESCRIPTION = _('Chapter descriptions')

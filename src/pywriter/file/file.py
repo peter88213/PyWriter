@@ -115,16 +115,6 @@ class File:
         """
         raise NotImplementedError
 
-    def _convert_to_yw(self, text):
-        """Return text, converted from source format to yw7 markup.
-        
-        Positional arguments:
-            text -- string to convert.
-        
-        This is a stub to be overridden by subclass methods.
-        """
-        return text.rstrip()
-
     def _convert_from_yw(self, text, quick=False):
         """Return text, converted from yw7 markup to target format.
         
@@ -133,6 +123,16 @@ class File:
         
         Optional arguments:
             quick: bool -- if True, apply a conversion mode for one-liners without formatting.
+        
+        This is a stub to be overridden by subclass methods.
+        """
+        return text.rstrip()
+
+    def _convert_to_yw(self, text):
+        """Return text, converted from source format to yw7 markup.
+        
+        Positional arguments:
+            text -- string to convert.
         
         This is a stub to be overridden by subclass methods.
         """

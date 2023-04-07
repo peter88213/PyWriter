@@ -17,7 +17,6 @@ class OdsReader(File):
 
     Public methods:
         read() -- parse the file and get the instance variables.
-
     """
     EXTENSION = '.ods'
     # overwrites File.EXTENSION

@@ -27,13 +27,6 @@ class ImportExportTest(ExportTest):
     """
     _importClass = None
 
-    def _init_paths(self):
-        """Initialize the test data and execution paths."""
-        super()._init_paths()
-        self._testImpFile = f'{self._execPath}yw7 Sample Project{self._importClass.SUFFIX}{self._importClass.EXTENSION}'
-        self._refImpFile = f'{self._dataPath}normal{self._importClass.EXTENSION}'
-        self._prfImpFile = f'{self._dataPath}proofed{self._importClass.EXTENSION}'
-
     def test_data(self):
         """Verify test data integrity. 
 
@@ -56,6 +49,13 @@ class ImportExportTest(ExportTest):
             copyfile(self._testYwFile, self._prfYwFile)
         self.assertEqual(read_file(self._testYwFile), read_file(self._prfYwFile))
         self.assertEqual(read_file(self._ywBakFile), read_file(self._refYwFile))
+
+    def _init_paths(self):
+        """Initialize the test data and execution paths."""
+        super()._init_paths()
+        self._testImpFile = f'{self._execPath}yw7 Sample Project{self._importClass.SUFFIX}{self._importClass.EXTENSION}'
+        self._refImpFile = f'{self._dataPath}normal{self._importClass.EXTENSION}'
+        self._prfImpFile = f'{self._dataPath}proofed{self._importClass.EXTENSION}'
 
     def _remove_all_tempfiles(self):
         """Clean up the test execution directory."""

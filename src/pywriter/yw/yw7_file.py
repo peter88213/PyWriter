@@ -25,11 +25,11 @@ from pywriter.yw.xml_indent import indent
 class Yw7File(File):
     """yWriter 7 project file representation.
 
-    Public methods: 
+    Public methods:
+        adjust_scene_types() -- Make sure that scenes in non-"Normal" chapters inherit the chapter's type.
+        is_locked() -- check whether the yw7 file is locked by yWriter.
         read() -- parse the yWriter xml file and get the instance variables.
         write() -- write instance variables to the yWriter xml file.
-        is_locked() -- check whether the yw7 file is locked by yWriter.
-        remove_custom_fields() -- Remove custom fields from the yWriter file.
 
     Public instance variables:
         tree -- xml element tree of the yWriter project
@@ -73,6 +73,21 @@ class Yw7File(File):
         super().__init__(filePath)
         self.tree = None
         self.scenesSplit = False
+
+    def adjust_scene_types(self):
+        """Make sure that scenes in non-"Normal" chapters inherit the chapter's type."""
+        for chId in self.novel.srtChapters:
+            if self.novel.chapters[chId].chType != 0:
+                for scId in self.novel.chapters[chId].srtScenes:
+                    self.novel.scenes[scId].scType = self.novel.chapters[chId].chType
+
+    def is_locked(self):
+        """Check whether the yw7 file is locked by yWriter.
+        
+        Return True if a .lock file placed by yWriter exists.
+        Otherwise, return False. 
+        """
+        return os.path.isfile(f'{self.filePath}.lock')
 
     def read(self):
         """Parse the yWriter xml file and get the instance variables.
@@ -647,14 +662,6 @@ class Yw7File(File):
         self._build_element_tree()
         self._write_element_tree(self)
         self._postprocess_xml_file(self.filePath)
-
-    def is_locked(self):
-        """Check whether the yw7 file is locked by yWriter.
-        
-        Return True if a .lock file placed by yWriter exists.
-        Otherwise, return False. 
-        """
-        return os.path.isfile(f'{self.filePath}.lock')
 
     def _build_element_tree(self):
         """Modify the yWriter project attributes of an existing xml element tree."""
@@ -1564,26 +1571,6 @@ class Yw7File(File):
         indent(root)
         self.tree = ET.ElementTree(root)
 
-    def _write_element_tree(self, ywProject):
-        """Write back the xml element tree to a .yw7 xml file located at filePath.
-        
-        Raise the "Error" exception in case of error. 
-        """
-        backedUp = False
-        if os.path.isfile(ywProject.filePath):
-            try:
-                os.replace(ywProject.filePath, f'{ywProject.filePath}.bak')
-            except:
-                raise Error(f'{_("Cannot overwrite file")}: "{norm_path(ywProject.filePath)}".')
-            else:
-                backedUp = True
-        try:
-            ywProject.tree.write(ywProject.filePath, xml_declaration=False, encoding='utf-8')
-        except:
-            if backedUp:
-                os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
-            raise Error(f'{_("Cannot write file")}: "{norm_path(ywProject.filePath)}".')
-
     def _postprocess_xml_file(self, filePath):
         '''Postprocess an xml file created by ElementTree.
         
@@ -1629,10 +1616,23 @@ class Yw7File(File):
             stripped.append(line.strip())
         return stripped
 
-    def adjust_scene_types(self):
-        """Make sure that scenes in non-"Normal" chapters inherit the chapter's type."""
-        for chId in self.novel.srtChapters:
-            if self.novel.chapters[chId].chType != 0:
-                for scId in self.novel.chapters[chId].srtScenes:
-                    self.novel.scenes[scId].scType = self.novel.chapters[chId].chType
+    def _write_element_tree(self, ywProject):
+        """Write back the xml element tree to a .yw7 xml file located at filePath.
+        
+        Raise the "Error" exception in case of error. 
+        """
+        backedUp = False
+        if os.path.isfile(ywProject.filePath):
+            try:
+                os.replace(ywProject.filePath, f'{ywProject.filePath}.bak')
+            except:
+                raise Error(f'{_("Cannot overwrite file")}: "{norm_path(ywProject.filePath)}".')
+            else:
+                backedUp = True
+        try:
+            ywProject.tree.write(ywProject.filePath, xml_declaration=False, encoding='utf-8')
+        except:
+            if backedUp:
+                os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
+            raise Error(f'{_("Cannot write file")}: "{norm_path(ywProject.filePath)}".')
 

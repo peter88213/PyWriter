@@ -20,6 +20,24 @@ class DataFiles(Yw7File):
     DESCRIPTION = _('yWriter XML data files')
     EXTENSION = '.xml'
 
+    def _postprocess_xml_file(self, filePath):
+        '''Postprocess three xml files created by ElementTree.
+        
+        Positional argument:
+            filePath: str -- path to .yw7 xml file.
+            
+        Generate the xml file paths from the .yw7 path. 
+        Read, postprocess and write the characters, locations, and items xml files.        
+        Extends the superclass method.
+        '''
+        path, __ = os.path.splitext(filePath)
+        characterPath = f'{path}_Characters.xml'
+        super()._postprocess_xml_file(characterPath)
+        locationPath = f'{path}_Locations.xml'
+        super()._postprocess_xml_file(locationPath)
+        itemPath = f'{path}_Items.xml'
+        super()._postprocess_xml_file(itemPath)
+
     def _write_element_tree(self, ywProject):
         """Save the characters/locations/items subtrees as separate xml files
         
@@ -54,22 +72,4 @@ class DataFiles(Yw7File):
             itemTree.write(itemPath, xml_declaration=False, encoding='utf-8')
         except(PermissionError):
             raise Error(f'{_("File is write protected")}: "{norm_path(itemPath)}".')
-
-    def _postprocess_xml_file(self, filePath):
-        '''Postprocess three xml files created by ElementTree.
-        
-        Positional argument:
-            filePath: str -- path to .yw7 xml file.
-            
-        Generate the xml file paths from the .yw7 path. 
-        Read, postprocess and write the characters, locations, and items xml files.        
-        Extends the superclass method.
-        '''
-        path, __ = os.path.splitext(filePath)
-        characterPath = f'{path}_Characters.xml'
-        super()._postprocess_xml_file(characterPath)
-        locationPath = f'{path}_Locations.xml'
-        super()._postprocess_xml_file(locationPath)
-        itemPath = f'{path}_Items.xml'
-        super()._postprocess_xml_file(itemPath)
 
