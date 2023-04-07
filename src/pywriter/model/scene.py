@@ -205,8 +205,9 @@ class Scene(BasicElement):
 
         self.scnStyle: str = None
         # xml: <Field_SceneStyle>
-        # May be 'explaining', 'descriptive', or 'summarizing'.
+        # Mode of discourse. May be 'explaining', 'descriptive', or 'summarizing'.
         # None is the default, meaning 'staged'.
+        # TODO: Change the wording and use "Mode" instead of "Style".
 
     @property
     def sceneContent(self) -> str:
