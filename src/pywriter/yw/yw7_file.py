@@ -984,45 +984,46 @@ class Yw7File(File):
                 for itId in prjScn.items:
                     ET.SubElement(xmlItems, 'ItemID').text = itId
 
-            """ Removing empty xmlCharacters/xmlLocations/xmlItems entries
+            """ Removing empty characters/locations/items entries
             
-            if prjScn.xmlCharacters is not None:
-                xmlCharacters = xmlScene.find('Characters')
-                if xmlCharacters is not None:
-                    for oldCrId in xmlCharacters.findall('CharID'):
-                        xmlCharacters.remove(oldCrId)
-                if prjScn.xmlCharacters:
-                    if xmlCharacters is None:
-                        xmlCharacters = ET.SubElement(xmlScene, 'Characters')
-                    for crId in prjScn.xmlCharacters:
-                        ET.SubElement(xmlCharacters, 'CharID').text = crId
-                elif xmlCharacters is not None:
+            if prjScn.characters is not None:
+                characters = xmlScene.find('Characters')
+                if characters is not None:
+                    for oldCrId in characters.findall('CharID'):
+                        characters.remove(oldCrId)
+                if prjScn.characters:
+                    if characters is None:
+                        characters = ET.SubElement(xmlScene, 'Characters')
+                    for crId in prjScn.characters:
+                        ET.SubElement(characters, 'CharID').text = crId
+                elif characters is not None:
                     xmlScene.remove(xmlScene.find('Characters'))
 
-            if prjScn.xmlLocations is not None:
-                xmlLocations = xmlScene.find('Locations')
-                if xmlLocations is not None:
-                    for oldLcId in xmlLocations.findall('LocID'):
-                        xmlLocations.remove(oldLcId)
-                if prjScn.xmlLocations:
-                    if xmlLocations is None:
-                        xmlLocations = ET.SubElement(xmlScene, 'Locations')
-                    for lcId in prjScn.xmlLocations:
-                        ET.SubElement(xmlLocations, 'LocID').text = lcId
-                elif xmlLocations is not None:
+            if prjScn.locations is not None:
+                locations = xmlScene.find('Locations')
+                if locations is not None:
+                    for oldLcId in locations.findall('LocID'):
+                        locations.remove(oldLcId)
+                if prjScn.locations:
+                    if locations is None:
+                        locations = ET.SubElement(xmlScene, 'Locations')
+                    for lcId in prjScn.locations:
+                        ET.SubElement(locations, 'LocID').text = lcId
+                elif locations is not None:
                     xmlScene.remove(xmlScene.find('Locations'))
 
-            if prjScn.xmlItems is not None:
-                xmlItems = xmlScene.find('Items')
-                if xmlItems is not None:
-                    for oldItId in xmlItems.findall('ItemID'):
-                        xmlItems.remove(oldItId)
-                if prjScn.xmlItems:
-                    if xmlItems is None:
-                        xmlItems = ET.SubElement(xmlScene, 'Items')
-                    for itId in prjScn.xmlItems:
-                        ET.SubElement(xmlItems, 'ItemID').text = itId
-                elif xmlItems is not None:
+            if prjScn.items is not None:
+                items = xmlScene.find('Items')
+                if items is not None:
+                    for oldItId in items.findall('ItemID'):
+                        items.remove(oldItId)
+                if prjScn.items:
+                    if items is None:
+                        items = ET.SubElement(xmlScene, 'Items')
+                    for itId in prjScn.items:
+                        ET.SubElement(items, 'ItemID').text = itId
+                elif items is not None:
+                    xmlScene.remove(xmlScene.find('Items'))
             
             """
 
@@ -1596,6 +1597,9 @@ class Yw7File(File):
         text = '\n'.join(newlines)
         text = text.replace('[CDATA[ \n', '[CDATA[')
         text = text.replace('\n]]', ']]')
+        if not self.novel.chapters:
+            text = text.replace('<CHAPTERS />', '<CHAPTERS></CHAPTERS>')
+            # otherwise, yWriter fails to parse the file if there are no chapters.
         text = unescape(text)
         try:
             with open(filePath, 'w', encoding='utf-8') as f:
