@@ -95,7 +95,11 @@ class File:
             suffix = ''
         if filePath.lower().endswith(f'{suffix}{self.EXTENSION}'.lower()):
             self._filePath = filePath
-            head, tail = os.path.split(os.path.realpath(filePath))
+            try:
+                head, tail = os.path.split(os.path.realpath(filePath))
+                # realpath() completes relative paths, but may not work on virtual file systems.
+            except:
+                head, tail = os.path.split(filePath)
             self.projectPath = quote(head.replace('\\', '/'), '/:')
             self.projectName = quote(tail.replace(f'{suffix}{self.EXTENSION}', ''))
 
