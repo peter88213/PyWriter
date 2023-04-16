@@ -35,8 +35,9 @@ def inline_module(file, package, packagePath, text, processedModules, copyPyWrit
                 continue
 
             if line.lstrip().startswith('#'):
-                # Discard comment line.
-                continue
+                if not line.lstrip().startswith('#!'):
+                    # Discard comment line, but keep the shebang.
+                    continue
 
             if line.count('"""') == 1:
                 # Beginning or end of a multi-line docstring
