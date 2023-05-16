@@ -78,6 +78,5 @@ class OdtWManuscript(OdtWFormatted):
         """
         sceneMapping = super()._get_sceneMapping(scId, sceneNumber, wordsTotal, lettersTotal)
         sceneMapping['Summary'] = _('Summary')
-        sceneMapping['sceneCreator'] = _('scene title')
         return sceneMapping
 
