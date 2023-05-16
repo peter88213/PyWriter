@@ -467,3 +467,20 @@ Enhance the MainTk GUI class.
 - New methods: show_error() and show_info().
 - Add optional title argument for show_warning and ask_yes_no. 
 
+### v12.4
+
+- Make scenesSplit a File instance variable.
+- When creating a new scene on ODT import, localize the default title.
+
+### v12.5
+
+- Provide a helper routine for removing the language tags from the scene content.
+- Handle corrupt data in OdtRProof.
+
+### v12.6
+
+- Write Scene.doNotExport back to the yw7 file.
+
+### v12.7
+
+- Provide translations for scene related comments in the exported documents.
