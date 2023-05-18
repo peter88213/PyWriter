@@ -113,10 +113,8 @@ The point of this is that such language assignments are preserved even after mul
 Write yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt).
 
--   The document is placed in the same folder as the yWriter project.
--   Document's **filename**: `<yW project name>.odt`.
--   Text markup: Bold and italics are supported. Other highlighting such
-    as underline and strikethrough are lost.
+-   The document is placed in the same folder as the project.
+-   Document's **filename**: `<project name>.odt`.
 -   Only "normal" chapters and scenes are exported. Chapters and
     scenes marked "unused", "todo" or "notes" are not exported.
 -   Only scenes that are intended for RTF export in yWriter will be
@@ -126,21 +124,19 @@ text document (odt).
     `/* this is a comment */`) are converted to author's comments.
 -   Interspersed HTML, TEX, or RTF commands are removed.
 -   Gobal variables and project variables are not resolved.
--   Chapter titles appear as first level heading if the chapter is
-    marked as beginning of a new section in yWriter. Such headings are
-    considered as "part" headings.
--   Chapter titles appear as second level heading if the chapter is not
-    marked as beginning of a new section. Such headings are considered
-    as "chapter" headings.
+-   Part titles appear as first level heading.
+-   Chapter titles appear as second level heading.
 -   Scene titles appear as navigable comments pinned to the beginning of
     the scene.
 -   Scenes are separated by `* * *`. The first line is not
     indented.
 -   Starting from the second paragraph, paragraphs begin with
     indentation of the first line.
--   Scenes marked "attach to previous scene" in yWriter appear like
-    continuous paragraphs.
 -   Paragraphs starting with `> ` are formatted as quotations.
+-   Scenes marked "attach to previous scene" appear like
+    continuous paragraphs.
+-   Text markup: Bold and italics are supported. Other highlighting such
+    as underline and strikethrough are lost.
 
 
 [Top of page](#top)
@@ -158,18 +154,18 @@ text document (odt) with chapter and scene markers. File name suffix is
 -   Scenes beginning with `<HTML>` or `<TEX>` are not exported.
 -   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
 -   The document contains chapter `[ChID:x]` and scene `[ScID:y]`
-    markers according to yWriter 5 standard. **Do not touch lines
+    markers (according to yWriter 5 standard). **Do not touch lines
     containing the markers** if you want to be able to write the
-    document back into yWriter.
+    document back into *novelyst*.
 -   Chapters and scenes can neither be rearranged nor deleted. 
--   You can split scenes by inserting headings or a scene divider:
-    -  *Heading 1* --› New chapter title (beginning a new section).
-    -  *Heading 2* --› New chapter title.
-    -  `###` --› Scene divider. Optionally, you can append the 
-       scene title to the scene divider.
+-   With *OpenOffice/LibreOffice Writer*, you can split scenes by inserting headings or a scene divider:
+    -   *Heading 1* → New part title. Optionally, you can add a description, separated by `|`.
+    -   *Heading 2* → New chapter title. Optionally, you can add a description, separated by `|`.
+    -   `###` → Scene divider. Optionally, you can append the 
+        scene title to the scene divider. You can also add a description, separated by `|`.
+    -   **Note:** Export documents with split scenes from *Writer* to yw7 not more than once.      
 -   Text markup: Bold and italics are supported. Other highlighting such
     as underline and strikethrough are lost.
-
 
 
 [Top of page](#top)
@@ -189,14 +185,15 @@ seen in the Navigator). File name suffix is `_manuscript`.
     if surrounded by `~`.
 -   Comments in the text bracketed with slashes and asterisks (like
     `/* this is a comment */`) are converted to author's comments.
--   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
--   Gobal variables and project variables are not resolved.
+-   Interspersed HTML, TEX, or RTF commands for yWriter are taken over unchanged.
+-   Gobal variables and project variables from yWriter are not resolved.
 -   Chapters and scenes can neither be rearranged nor deleted.
--   You can split scenes by inserting headings or a scene divider:
-    -  *Heading 1* --› New chapter title (beginning a new section).
-    -  *Heading 2* --› New chapter title.
-    -  `###` --› Scene divider. Optionally, you can also append the 
-       scene title to the scene divider.
+-   With *OpenOffice/LibreOffice Writer*, you can split scenes by inserting headings or a scene divider:
+    -  *Heading 1* → New part title. Optionally, you can add a description, separated by `|`.
+    -  *Heading 2* → New chapter title. Optionally, you can add a description, separated by `|`.
+    -  `###` → Scene divider. Optionally, you can append the 
+       scene title to the scene divider. You can also add a description, separated by `|`.
+    - **Note:** Export documents with split scenes from *Writer* to yw7 not more than once.      
 -   Paragraphs starting with `> ` are formatted as quotations.
 -   Text markup: Bold and italics are supported. Other highlighting such
     as underline and strikethrough are lost.
@@ -324,11 +321,12 @@ sections (to be seen in the Navigator). File name suffix is `_notes`.
 -   Comments within scenes are written back as scene titles
     if surrounded by `~`.
 -   Chapters and scenes can neither be rearranged nor deleted.
--   Scenes can be split by inserting headings or a scene divider:
-    -  *Heading 1* --› New chapter title (beginning a new section).
-    -  *Heading 2* --› New chapter title.
-    -  `###` --› Scene divider. Optionally, you can append the 
-       scene title to the scene divider.
+-   With *OpenOffice/LibreOffice Writer*, you can split scenes by inserting headings or a scene divider:
+    -  *Heading 1* → New part title. Optionally, you can add a description, separated by `|`.
+    -  *Heading 2* → New chapter title. Optionally, you can add a description, separated by `|`.
+    -  `###` → Scene divider. Optionally, you can append the 
+       scene title to the scene divider. You can also add a description, separated by `|`.
+    - **Note:** Export documents with split scenes from *Writer* to yw7 not more than once.      
 -   Paragraphs starting with `> ` are formatted as quotations.
 -   Text markup: Bold and italics are supported. Other highlighting such
     as underline and strikethrough are lost.
@@ -346,11 +344,12 @@ sections (to be seen in the Navigator). File name suffix is `_todo`.
 -   Comments within scenes are written back as scene titles
     if surrounded by `~`.
 -   Chapters and scenes can neither be rearranged nor deleted.
--   Scenes can be split by inserting headings or a scene divider:
-    -  *Heading 1* --› New chapter title (beginning a new section).
-    -  *Heading 2* --› New chapter title.
-    -  `###` --› Scene divider. Optionally, you can append the 
-       scene title to the scene divider.
+-   With *OpenOffice/LibreOffice Writer*, you can split scenes by inserting headings or a scene divider:
+    -  *Heading 1* → New part title. Optionally, you can add a description, separated by `|`.
+    -  *Heading 2* → New chapter title. Optionally, you can add a description, separated by `|`.
+    -  `###` → Scene divider. Optionally, you can append the 
+       scene title to the scene divider. You can also add a description, separated by `|`.
+    - **Note:** Export documents with split scenes from *Writer* to yw7 not more than once.      
 -   Paragraphs starting with `> ` are formatted as quotations.
 -   Text markup: Bold and italics are supported. Other highlighting such
     as underline and strikethrough are lost.

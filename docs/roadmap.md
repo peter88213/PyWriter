@@ -487,5 +487,8 @@ Enhance the MainTk GUI class.
 
 ### v12.8
 
-- Modify the "Proofing document" classes for ODT exchange document conversion.
- 
+Modify the "Proofing document" classes for ODT exchange document conversion:
+
+- Exclude "Unused", "Notes" and "Todo" scenes from the document export.
+- Apply direct formatting instead of the emphasizing character styles.
+- Do not apply the "Quotation" paragraph style. 
