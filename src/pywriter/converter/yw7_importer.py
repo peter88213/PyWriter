@@ -17,7 +17,6 @@ from pywriter.odt_r.odt_r_partdesc import OdtRPartDesc
 from pywriter.odt_r.odt_r_characters import OdtRCharacters
 from pywriter.odt_r.odt_r_locations import OdtRLocations
 from pywriter.odt_r.odt_r_items import OdtRItems
-from pywriter.odt_r.odt_r_xch import OdtRXch
 from pywriter.ods_r.ods_r_scenelist import OdsRSceneList
 from pywriter.ods_r.ods_r_charlist import OdsRCharList
 from pywriter.ods_r.ods_r_loclist import OdsRLocList
@@ -48,7 +47,6 @@ class Yw7Importer(YwCnvFf):
                              OdtRLocations,
                              OdtRNotes,
                              OdtRTodo,
-                             OdtRXch,
                              OdsRCharList,
                              OdsRLocList,
                              OdsRItemList,

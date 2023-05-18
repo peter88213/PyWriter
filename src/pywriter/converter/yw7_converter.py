@@ -20,7 +20,6 @@ from pywriter.odt_w.odt_w_locations import OdtWLocations
 from pywriter.odt_w.odt_w_xref import OdtWXref
 from pywriter.odt_w.odt_w_notes import OdtWNotes
 from pywriter.odt_w.odt_w_todo import OdtWTodo
-from pywriter.odt_w.odt_w_xch import OdtWXch
 from pywriter.ods_w.ods_w_charlist import OdsWCharList
 from pywriter.ods_w.ods_w_loclist import OdsWLocList
 from pywriter.ods_w.ods_w_itemlist import OdsWItemList
@@ -35,7 +34,6 @@ from pywriter.odt_r.odt_r_partdesc import OdtRPartDesc
 from pywriter.odt_r.odt_r_characters import OdtRCharacters
 from pywriter.odt_r.odt_r_locations import OdtRLocations
 from pywriter.odt_r.odt_r_items import OdtRItems
-from pywriter.odt_r.odt_r_xch import OdtRXch
 from pywriter.ods_r.ods_r_scenelist import OdsRSceneList
 from pywriter.ods_r.ods_r_charlist import OdsRCharList
 from pywriter.ods_r.ods_r_loclist import OdsRLocList
@@ -66,7 +64,6 @@ class Yw7Converter(YwCnvFf):
                              OdtWCharacters,
                              OdtWItems,
                              OdtWLocations,
-                             OdtWXch,
                              OdsWCharList,
                              OdsWLocList,
                              OdsWItemList,
@@ -85,7 +82,6 @@ class Yw7Converter(YwCnvFf):
                              OdtRLocations,
                              OdtRNotes,
                              OdtRTodo,
-                             OdtRXch,
                              OdsRCharList,
                              OdsRLocList,
                              OdsRItemList,

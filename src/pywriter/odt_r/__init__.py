@@ -16,7 +16,6 @@ odt_r_partdesc -- Provide a class for ODT invisibly tagged part descriptions imp
 odt_r_proof -- Provide a class for ODT visibly tagged chapters and scenes import.
 odt_r_scenedesc -- Provide a class for ODT invisibly tagged scene descriptions import.
 odt_r_todo -- Provide a class for ODT invisibly tagged "Todo" chapters import.
-odt_r_xch -- Provide a class for ODT exchange document import.
 odt_reader -- Provide a generic class for ODT file import.
 
 Copyright (c) 2023 Peter Triesberger

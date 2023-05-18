@@ -15,7 +15,6 @@ odt_w_partdesc -- Provide a class for ODT invisibly tagged part descriptions exp
 odt_w_proof -- Provide a class for ODT visibly tagged chapters and scenes export.
 odt_w_scenedesc -- Provide a class for ODT invisibly tagged scene descriptions export.
 odt_w_todo -- Provide a class for ODT invisibly tagged "Todo" chapters export.
-odt_w_xch -- Provide a class for ODT exchange document export.
 odt_w_xref -- Provide a class for ODT ross reference export.
 odt_writer -- Provide a generic class for ODT file export.
 

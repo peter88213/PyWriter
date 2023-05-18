@@ -484,3 +484,8 @@ Enhance the MainTk GUI class.
 ### v12.7
 
 - Provide translations for scene related comments in the exported documents.
+
+### v12.8
+
+- Modify the "Proofing document" classes for ODT exchange document conversion.
+ 
