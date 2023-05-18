@@ -20,7 +20,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:1%7Cregion">Chapter 1</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:1">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Meet Hal, threatened by Vurdi ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:1%7Cregion">→Manuscript</text:a></text:p>
@@ -35,7 +35,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:2%7Cregion">Chapter 2</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:2">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Jerling buys team. Discusses Seraph. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:2%7Cregion">→Manuscript</text:a></text:p>
@@ -49,7 +49,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:3">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal takes a call from Jerling ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:3%7Cregion">→Manuscript</text:a></text:p>
@@ -61,7 +61,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:3%7Cregion">Chapter 3</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:4">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk arrives ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:4%7Cregion">→Manuscript</text:a></text:p>
@@ -74,7 +74,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:4%7Cregion">Chapter 4</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:5">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal going to port control ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:5%7Cregion">→Manuscript</text:a></text:p>
@@ -87,7 +87,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:6">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk checking computer for Incubots. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:6%7Cregion">→Manuscript</text:a></text:p>
@@ -97,7 +97,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:7">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal talking to the Portmaster ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:7%7Cregion">→Manuscript</text:a></text:p>
@@ -108,7 +108,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:8">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk takes call from Hal. Calls Jerling. Fire. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:8%7Cregion">→Manuscript</text:a></text:p>
@@ -120,7 +120,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:5%7Cregion">Chapter 5</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:9">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk calls, the landing field is on fire. Hal tells him to sit tight. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:9%7Cregion">→Manuscript</text:a></text:p>
@@ -130,7 +130,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:10">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk fighting the fire, ends up face-down ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:10%7Cregion">→Manuscript</text:a></text:p>
@@ -143,7 +143,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:6%7Cregion">Chapter 6</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:12">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal gets to the ship and lifts off. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:12%7Cregion">→Manuscript</text:a></text:p>
@@ -154,7 +154,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:7%7Cregion">Chapter 7</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:15">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal finds Clunk on rope, falls out after him. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:15%7Cregion">→Manuscript</text:a></text:p>
@@ -168,7 +168,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:8%7Cregion">Chapter 8</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:17">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Climb up rope to safety. Back in ship for hyperspace. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:17%7Cregion">→Manuscript</text:a></text:p>
@@ -179,7 +179,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:9%7Cregion">Chapter 9</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:19">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ In his office. Gordon OKs the deal ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:19%7Cregion">→Manuscript</text:a></text:p>
@@ -190,7 +190,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:10%7Cregion">Chapter 10</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:22">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Exits the ship to meet Bevan ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:22%7Cregion">→Manuscript</text:a></text:p>
@@ -201,7 +201,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:11%7Cregion">Chapter 11</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:25">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Getting food out. Frozen puddings. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:25%7Cregion">→Manuscript</text:a></text:p>
@@ -210,7 +210,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:27">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Says goodbye to Clunk ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:27%7Cregion">→Manuscript</text:a></text:p>
@@ -221,7 +221,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:12%7Cregion">Chapter 12</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:29">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal depressed. No escape from here. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:29%7Cregion">→Manuscript</text:a></text:p>
@@ -230,7 +230,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:31">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Lighten the ship. Preparing for liftoff. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:31%7Cregion">→Manuscript</text:a></text:p>
@@ -241,7 +241,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:13%7Cregion">Chapter 13</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:34">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Karl and Terry awaiting Hal. They take a call from their spy, intercept is at the orbiter. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:34%7Cregion">→Manuscript</text:a></text:p>
@@ -255,7 +255,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:15%7Cregion">Chapter 15</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:38">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Karl waiting impatiently ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:38%7Cregion">→Manuscript</text:a></text:p>
@@ -264,7 +264,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:40">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Karl and Terry confused about &apos;Chunk&apos; ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:40%7Cregion">→Manuscript</text:a></text:p>
@@ -275,7 +275,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:16%7Cregion">Chapter 16</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:43">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk slips out the back. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:43%7Cregion">→Manuscript</text:a></text:p>
@@ -284,7 +284,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:45">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Karl and Terry waiting. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:45%7Cregion">→Manuscript</text:a></text:p>
@@ -295,7 +295,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:17%7Cregion">Chapter 17</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:47">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk in orbit ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:47%7Cregion">→Manuscript</text:a></text:p>
@@ -304,7 +304,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:49">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk uses cylinder ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:49%7Cregion">→Manuscript</text:a></text:p>
@@ -318,7 +318,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:18%7Cregion">Chapter 18</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:51">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Terry places the &apos;bomb&apos; ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:51%7Cregion">→Manuscript</text:a></text:p>
@@ -327,7 +327,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:53">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal buys food ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:53%7Cregion">→Manuscript</text:a></text:p>
@@ -338,7 +338,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:19%7Cregion">Chapter 19</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:55">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Karl leaves a note, takes Clunk. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:55%7Cregion">→Manuscript</text:a></text:p>
@@ -347,7 +347,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:57">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal about to hyperspace. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:57%7Cregion">→Manuscript</text:a></text:p>
@@ -358,7 +358,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:20%7Cregion">Chapter 20</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:60">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal gets real Jerling&apos;s call. Has to get cargo and robot back. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:60%7Cregion">→Manuscript</text:a></text:p>
@@ -367,7 +367,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:62">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal sets course for Forg. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:62%7Cregion">→Manuscript</text:a></text:p>
@@ -376,7 +376,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:64">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Land on Forg, in rubbish. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:64%7Cregion">→Manuscript</text:a></text:p>
@@ -387,7 +387,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:21%7Cregion">Chapter 21</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:66">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal rents a car in Jerling&apos;s name and heads towards Forgberg and the Casino. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:66%7Cregion">→Manuscript</text:a></text:p>
@@ -396,7 +396,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:68">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal after almost running Clunk down. Picks him up. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:68%7Cregion">→Manuscript</text:a></text:p>
@@ -407,7 +407,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:22%7Cregion">Chapter 22</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:71">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Find car, go to find clothes. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:71%7Cregion">→Manuscript</text:a></text:p>
@@ -418,7 +418,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:23%7Cregion">Chapter 23</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:74">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal sells Clunk ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:74%7Cregion">→Manuscript</text:a></text:p>
@@ -429,7 +429,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:24%7Cregion">Chapter 24</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:77">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal annoyed at Clunk for buying only the best. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:77%7Cregion">→Manuscript</text:a></text:p>
@@ -438,7 +438,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:79">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk gambling. Fight with human couple. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:79%7Cregion">→Manuscript</text:a></text:p>
@@ -447,7 +447,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:81">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Sitting on the steps, battered and bruised. Limo arrives for Karl. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:81%7Cregion">→Manuscript</text:a></text:p>
@@ -458,7 +458,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:25%7Cregion">Chapter 25</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:84">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk travelling on the back of Karl&apos;s limo ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:84%7Cregion">→Manuscript</text:a></text:p>
@@ -467,7 +467,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:86">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk sees Hal catching up again. Limo stops. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:86%7Cregion">→Manuscript</text:a></text:p>
@@ -478,7 +478,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:26%7Cregion">Chapter 26</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:89">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk uploads the Navcom into the ship. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:89%7Cregion">→Manuscript</text:a></text:p>
@@ -489,7 +489,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:27%7Cregion">Chapter 27</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:92">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ The shop robots want Clunk to escape with them. Mention Hal&apos;s capture. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:92%7Cregion">→Manuscript</text:a></text:p>
@@ -498,7 +498,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:94">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk steals armoured car, drives it into the house. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:94%7Cregion">→Manuscript</text:a></text:p>
@@ -509,7 +509,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:28%7Cregion">Chapter 28</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:96">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Karl and Terry take the limo ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:96%7Cregion">→Manuscript</text:a></text:p>
@@ -518,7 +518,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:98">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Karl and Terry overtake and head for Spaceport. Looking for Volante. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:98%7Cregion">→Manuscript</text:a></text:p>
@@ -529,7 +529,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:29%7Cregion">Chapter 29</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:101">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal and Clunk fleeing in Gull ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:101%7Cregion">→Manuscript</text:a></text:p>
@@ -538,7 +538,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:103">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk wants to throw stuff at the flyer ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:103%7Cregion">→Manuscript</text:a></text:p>
@@ -547,7 +547,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:105">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal fetches the puddings. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:105%7Cregion">→Manuscript</text:a></text:p>
@@ -558,7 +558,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:30%7Cregion">Chapter 30</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:108">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal yells at Jerling, then cargo arrives on truck. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:108%7Cregion">→Manuscript</text:a></text:p>
@@ -567,7 +567,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:110">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Clunk outside, depressed. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:110%7Cregion">→Manuscript</text:a></text:p>
@@ -576,7 +576,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:112">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Karl bursts in, armed. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:112%7Cregion">→Manuscript</text:a></text:p>
@@ -587,7 +587,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:31%7Cregion">Chapter 31</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:114">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Terry ties Hal in hold, leaves back doors open. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:114%7Cregion">→Manuscript</text:a></text:p>
@@ -596,7 +596,7 @@
 <text:p text:style-name="Heading_20_4">* * *</text:p>
 <text:section text:style-name="Sect1" text:name="ScID:116">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Hal dodges Brutus, escapes the hold. ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:116%7Cregion">→Manuscript</text:a></text:p>
@@ -607,7 +607,7 @@
 <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../yw7%20Sample%20Project_chapters.odt#ChID:32%7Cregion">Chapter 32</text:a></text:h>
 <text:section text:style-name="Sect1" text:name="ScID:119">
 <text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>scene title</dc:creator>
+<dc:creator>Scene</dc:creator>
 <text:p>~ Black Gull hyperspaces to oblivion ~</text:p>
 <text:p/>
 <text:p><text:a xlink:href="../yw7%20Sample%20Project_manuscript.odt#ScID:119%7Cregion">→Manuscript</text:a></text:p>
