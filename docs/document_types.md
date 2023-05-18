@@ -153,11 +153,6 @@ Write yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt) with chapter and scene markers. File name suffix is
 `_proof`.
 
--   The proof read document is placed in the same folder as the yWriter
-    project.
--   Document's filename: `<yW project name>_proof.odt`.
--   Text markup: Bold and italics are supported. Other highlighting such
-    as underline and strikethrough are lost.
 -   Scenes beginning with `<HTML>` or `<TEX>` are not exported.
 -   All other chapters and scenes are exported, whether "used" or
     "unused".
@@ -173,6 +168,8 @@ text document (odt) with chapter and scene markers. File name suffix is
     -  `###` --› Scene divider. Optionally, you can append the 
        scene title to the scene divider.
 -   Paragraphs starting with `> ` are formatted as quotations.
+-   Text markup: Bold and italics are supported. Other highlighting such
+    as underline and strikethrough are lost.
 
 
 
@@ -188,8 +185,6 @@ seen in the Navigator). File name suffix is `_manuscript`.
 
 -   Only "normal" chapters and scenes are exported. Chapters and
     scenes marked "unused", "todo" or "notes" are not exported.
--   Text markup: Bold and italics are supported. Other highlighting such
-    as underline and strikethrough are lost.
 -   Scenes beginning with `<HTML>` or `<TEX>` are not exported.
 -   Comments within scenes are written back as scene titles 
     if surrounded by `~`.
@@ -204,6 +199,8 @@ seen in the Navigator). File name suffix is `_manuscript`.
     -  `###` --› Scene divider. Optionally, you can also append the 
        scene title to the scene divider.
 -   Paragraphs starting with `> ` are formatted as quotations.
+-   Text markup: Bold and italics are supported. Other highlighting such
+    as underline and strikethrough are lost.
 
 [Top of page](#top)
 
@@ -325,15 +322,17 @@ Write yWriter 7 "Notes" chapters with child scenes into a new
 OpenDocument text document (odt) with invisible chapter and scene 
 sections (to be seen in the Navigator). File name suffix is `_notes`.
 
--  Comments within scenes are written back as scene titles
-   if surrounded by `~`.
--  Chapters and scenes can neither be rearranged nor deleted.
--  Scenes can be split by inserting headings or a scene divider:
+-   Comments within scenes are written back as scene titles
+    if surrounded by `~`.
+-   Chapters and scenes can neither be rearranged nor deleted.
+-   Scenes can be split by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
     -  *Heading 2* --› New chapter title.
     -  `###` --› Scene divider. Optionally, you can append the 
        scene title to the scene divider.
--  Paragraphs starting with `> ` are formatted as quotations.
+-   Paragraphs starting with `> ` are formatted as quotations.
+-   Text markup: Bold and italics are supported. Other highlighting such
+    as underline and strikethrough are lost.
 
 [Top of page](#top)
 
@@ -345,15 +344,17 @@ Write yWriter 7 "Todo" chapters with child scenes into a new
 OpenDocument text document (odt) with invisible chapter and scene 
 sections (to be seen in the Navigator). File name suffix is `_todo`.
 
--  Comments within scenes are written back as scene titles
-   if surrounded by `~`.
--  Chapters and scenes can neither be rearranged nor deleted.
--  Scenes can be split by inserting headings or a scene divider:
+-   Comments within scenes are written back as scene titles
+    if surrounded by `~`.
+-   Chapters and scenes can neither be rearranged nor deleted.
+-   Scenes can be split by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
     -  *Heading 2* --› New chapter title.
     -  `###` --› Scene divider. Optionally, you can append the 
        scene title to the scene divider.
--  Paragraphs starting with `> ` are formatted as quotations.
+-   Paragraphs starting with `> ` are formatted as quotations.
+-   Text markup: Bold and italics are supported. Other highlighting such
+    as underline and strikethrough are lost.
 
 [Top of page](#top)
 
