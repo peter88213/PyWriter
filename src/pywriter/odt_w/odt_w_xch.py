@@ -50,8 +50,9 @@ class OdtWXch(OdtWFormatted):
             text -- string to convert.
         
         Optional arguments:
-            quick: bool -- if True, apply a conversion mode for one-liners without formatting.
+            quick: bool -- This argument is not used here.
         
+        Apply direct formatting instead of the emphasizing character styles.
         Overrides the superclass method.
         """
         if text:
@@ -63,52 +64,51 @@ class OdtWXch(OdtWFormatted):
                 ("'", '&apos;'),
                 ('"', '&quot;'),
                 ]
-            if not quick:
-                tags = ['i', 'b']
-                odtReplacements.extend([
-                    ('\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'),
-                    ('\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'),
-                    ('\r', '\n'),
-                    ('[/i]', '</text:span>'),
-                    ('[/b]', '</text:span>'),
-                    ('/*', f'<office:annotation><dc:creator>{self.novel.authorName}</dc:creator><text:p>'),
-                    ('*/', '</text:p></office:annotation>'),
-                ])
-                for i, language in enumerate(self.novel.languages, 1):
-                    tags.append(f'lang={language}')
-                    odtReplacements.append((f'[lang={language}]', f'<text:span text:style-name="T{i}">'))
-                    odtReplacements.append((f'[/lang={language}]', '</text:span>'))
-                odtReplacements.extend([
-                    ('[i]', f'<text:span text:style-name="T{i+1}">'),
-                    ('[b]', f'<text:span text:style-name="T{i+2}">'),
-                ])
+            tags = ['i', 'b']
+            odtReplacements.extend([
+                ('\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'),
+                ('\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'),
+                ('\r', '\n'),
+                ('[/i]', '</text:span>'),
+                ('[/b]', '</text:span>'),
+                ('/*', f'<office:annotation><dc:creator>{self.novel.authorName}</dc:creator><text:p>'),
+                ('*/', '</text:p></office:annotation>'),
+            ])
+            for i, language in enumerate(self.novel.languages, 1):
+                tags.append(f'lang={language}')
+                odtReplacements.append((f'[lang={language}]', f'<text:span text:style-name="T{i}">'))
+                odtReplacements.append((f'[/lang={language}]', '</text:span>'))
+            odtReplacements.extend([
+                ('[i]', f'<text:span text:style-name="T{i+1}">'),
+                ('[b]', f'<text:span text:style-name="T{i+2}">'),
+            ])
 
-                #--- Process markup reaching across linebreaks.
-                newlines = []
-                lines = text.split('\n')
-                isOpen = {}
-                opening = {}
-                closing = {}
+            #--- Process markup reaching across linebreaks.
+            newlines = []
+            lines = text.split('\n')
+            isOpen = {}
+            opening = {}
+            closing = {}
+            for tag in tags:
+                isOpen[tag] = False
+                opening[tag] = f'[{tag}]'
+                closing[tag] = f'[/{tag}]'
+            for line in lines:
                 for tag in tags:
-                    isOpen[tag] = False
-                    opening[tag] = f'[{tag}]'
-                    closing[tag] = f'[/{tag}]'
-                for line in lines:
-                    for tag in tags:
-                        if isOpen[tag]:
-                            if line.startswith('&gt; '):
-                                line = f"&gt; {opening[tag]}{line.lstrip('&gt; ')}"
-                            else:
-                                line = f'{opening[tag]}{line}'
-                            isOpen[tag] = False
-                        while line.count(opening[tag]) > line.count(closing[tag]):
-                            line = f'{line}{closing[tag]}'
-                            isOpen[tag] = True
-                        while line.count(closing[tag]) > line.count(opening[tag]):
+                    if isOpen[tag]:
+                        if line.startswith('&gt; '):
+                            line = f"&gt; {opening[tag]}{line.lstrip('&gt; ')}"
+                        else:
                             line = f'{opening[tag]}{line}'
-                        line = line.replace(f'{opening[tag]}{closing[tag]}', '')
-                    newlines.append(line)
-                text = '\n'.join(newlines).rstrip()
+                        isOpen[tag] = False
+                    while line.count(opening[tag]) > line.count(closing[tag]):
+                        line = f'{line}{closing[tag]}'
+                        isOpen[tag] = True
+                    while line.count(closing[tag]) > line.count(opening[tag]):
+                        line = f'{opening[tag]}{line}'
+                    line = line.replace(f'{opening[tag]}{closing[tag]}', '')
+                newlines.append(line)
+            text = '\n'.join(newlines).rstrip()
 
             #--- Apply odt formating.
             for yw, od in odtReplacements:
@@ -155,3 +155,14 @@ class OdtWXch(OdtWFormatted):
         projectTemplateMapping['ContentHeader'] = template.safe_substitute(styleMapping)
         return projectTemplateMapping
 
+    def _get_text(self):
+        """Call all processing methods.
+        
+        Return a string to be written to the output file.
+        Overrides the superclass method.
+        """
+        lines = self._get_fileHeader()
+        lines.extend(self._get_chapters())
+        lines.append(self._fileFooter)
+        text = ''.join(lines)
+        return text
