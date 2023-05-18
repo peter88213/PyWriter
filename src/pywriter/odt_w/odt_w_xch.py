@@ -5,6 +5,7 @@ For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import re
+from string import Template
 from pywriter.pywriter_globals import *
 from pywriter.odt_w.odt_w_formatted import OdtWFormatted
 
@@ -119,4 +120,38 @@ class OdtWXch(OdtWFormatted):
         else:
             text = ''
         return text
+
+    def _get_fileHeaderMapping(self):
+        """Return a mapping dictionary for the project section.
+        
+        Add "automatic-styles" items to the "content.xml" header, if required.
+        
+        Extends the superclass method.
+        """
+        styleMapping = {}
+        if self.novel.languages:
+            lines = ['<office:automatic-styles>']
+            for i, language in enumerate(self.novel.languages, 1):
+                try:
+                    lngCode, ctrCode = language.split('-')
+                except:
+                    lngCode = 'zxx'
+                    ctrCode = 'none'
+                lines.append(f'''  <style:style style:name="T{i}" style:family="text">
+   <style:text-properties fo:language="{lngCode}" fo:country="{ctrCode}" style:language-asian="{lngCode}" style:country-asian="{ctrCode}" style:language-complex="{lngCode}" style:country-complex="{ctrCode}"/>
+  </style:style>''')
+            lines.append(f'''  <style:style style:name="T{i+1}" style:family="text">
+   <style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+  </style:style>''')
+            lines.append(f'''  <style:style style:name="T{i+2}" style:family="text">
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>''')
+            lines.append(' </office:automatic-styles>')
+            styleMapping['automaticStyles'] = '\n'.join(lines)
+        else:
+            styleMapping['automaticStyles'] = '<office:automatic-styles/>'
+        template = Template(self._CONTENT_XML_HEADER)
+        projectTemplateMapping = super()._get_fileHeaderMapping()
+        projectTemplateMapping['ContentHeader'] = template.safe_substitute(styleMapping)
+        return projectTemplateMapping
 
