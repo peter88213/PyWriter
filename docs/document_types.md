@@ -155,7 +155,7 @@ text document (odt) with scene markers. File name suffix is
 -   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
 -   The document contains scene `[ScID:y]` markers. **Do not touch lines
     containing the markers** if you want to be able to write the
-    document back into *novelyst*.
+    document back to *yw7* format.
 -   Chapters and scenes can neither be rearranged nor deleted. 
 -   With *OpenOffice/LibreOffice Writer*, you can split scenes by inserting headings or a scene divider:
     -   *Heading 1* → New part title. Optionally, you can add a description, separated by `|`.
