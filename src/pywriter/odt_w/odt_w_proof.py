@@ -69,6 +69,7 @@ class OdtWProof(OdtWFormatted):
                 ('/*', f'<office:annotation><dc:creator>{self.novel.authorName}</dc:creator><text:p>'),
                 ('*/', '</text:p></office:annotation>'),
             ])
+            i = 0
             for i, language in enumerate(self.novel.languages, 1):
                 tags.append(f'lang={language}')
                 odtReplacements.append((f'[lang={language}]', f'<text:span text:style-name="T{i}">'))
@@ -124,27 +125,25 @@ class OdtWProof(OdtWFormatted):
         Extends the superclass method.
         """
         styleMapping = {}
-        if self.novel.languages:
-            lines = ['<office:automatic-styles>']
-            for i, language in enumerate(self.novel.languages, 1):
-                try:
-                    lngCode, ctrCode = language.split('-')
-                except:
-                    lngCode = 'zxx'
-                    ctrCode = 'none'
-                lines.append(f'''  <style:style style:name="T{i}" style:family="text">
+        i = 0
+        lines = ['<office:automatic-styles>']
+        for i, language in enumerate(self.novel.languages, 1):
+            try:
+                lngCode, ctrCode = language.split('-')
+            except:
+                lngCode = 'zxx'
+                ctrCode = 'none'
+            lines.append(f'''  <style:style style:name="T{i}" style:family="text">
    <style:text-properties fo:language="{lngCode}" fo:country="{ctrCode}" style:language-asian="{lngCode}" style:country-asian="{ctrCode}" style:language-complex="{lngCode}" style:country-complex="{ctrCode}"/>
   </style:style>''')
-            lines.append(f'''  <style:style style:name="T{i+1}" style:family="text">
+        lines.append(f'''  <style:style style:name="T{i+1}" style:family="text">
    <style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
   </style:style>''')
-            lines.append(f'''  <style:style style:name="T{i+2}" style:family="text">
+        lines.append(f'''  <style:style style:name="T{i+2}" style:family="text">
    <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
   </style:style>''')
-            lines.append(' </office:automatic-styles>')
-            styleMapping['automaticStyles'] = '\n'.join(lines)
-        else:
-            styleMapping['automaticStyles'] = '<office:automatic-styles/>'
+        lines.append(' </office:automatic-styles>')
+        styleMapping['automaticStyles'] = '\n'.join(lines)
         template = Template(self._CONTENT_XML_HEADER)
         projectTemplateMapping = super()._get_fileHeaderMapping()
         projectTemplateMapping['ContentHeader'] = template.safe_substitute(styleMapping)
