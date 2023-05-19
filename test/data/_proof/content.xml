@@ -23,10 +23,7 @@
 
 <text:p text:style-name="Title">Hal Spacejock book one - Sample yWriter Project</text:p>
 <text:p text:style-name="Subtitle">Simon Haynes</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:34]</text:p>
 <text:h text:style-name="Heading_20_1" text:outline-level="1">Part 1</text:h>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:1]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 1</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:1]</text:p>
 <text:p text:style-name="Text_20_body">Hal Spacejock was sitting at the Black Gull&apos;s flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he&apos;d read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article&apos;s claims. He didn&apos;t feel any smarter and he couldn&apos;t remember the last time he&apos;d spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull&apos;s onboard computer. Underpowered and outdated, it was still more than capable of running the ship&apos;s accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.</text:p>
@@ -47,8 +44,6 @@
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:2]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 2</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:2]</text:p>
 <text:p text:style-name="Text_20_body">On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.</text:p>
@@ -65,8 +60,6 @@
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:4]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 4</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:5]</text:p>
 <text:p text:style-name="Text_20_body">Hal emerged from the Black Gull&apos;s airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport&apos;s administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the &apos;A&apos; list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.</text:p>
@@ -106,8 +99,6 @@
 <text:p text:style-name="First_20_line_20_indent">&quot;I don&apos;t think he&apos;ll lend you any money,&quot; said Clunk dubiously.</text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:5]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 5</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:10]</text:p>
 <text:p text:style-name="Text_20_body">&quot;Deploy fire hose!&quot; shouted Clunk.</text:p>
@@ -117,32 +108,22 @@
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:7]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 7</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:15]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:8]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 8</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:17]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:9]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 9</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:19]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:10]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 10</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:22]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:11]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 11</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:25]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -151,8 +132,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:27]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:12]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 12</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:29]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -161,17 +140,11 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:31]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:13]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 13</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:34]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:14]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 14</text:h>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:15]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 15</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:38]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -180,8 +153,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:40]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:16]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 16</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:43]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -190,8 +161,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:45]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:17]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 17</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:47]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -200,11 +169,7 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:49]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:35]</text:p>
 <text:h text:style-name="Heading_20_1" text:outline-level="1">Part 2</text:h>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:18]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 18</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:51]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -213,8 +178,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:53]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:19]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 19</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:55]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -223,8 +186,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:57]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:20]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 20</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:60]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -237,8 +198,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:64]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:21]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 21</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:66]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -247,20 +206,14 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:68]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:22]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 22</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:71]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:23]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 23</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:74]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:24]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 24</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:77]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -273,8 +226,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:81]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:25]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 25</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:84]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -283,14 +234,10 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:86]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:26]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 26</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:89]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:27]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 27</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:92]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -299,8 +246,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:94]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:28]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 28</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:96]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -309,8 +254,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:98]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:29]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 29</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:101]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -323,8 +266,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:105]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:30]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 30</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:108]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -337,8 +278,6 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:112]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:31]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 31</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:114]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
@@ -347,13 +286,10 @@
 <text:p text:style-name="yWriter_20_mark">[ScID:116]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[ChID:32]</text:p>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 32</text:h>
 <text:p text:style-name="yWriter_20_mark">[ScID:119]</text:p>
 <text:p text:style-name="Text_20_body"></text:p>
 <text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
   </office:text>
  </office:body>
 </office:document-content>

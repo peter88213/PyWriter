@@ -22,23 +22,18 @@ class OdtWProof(OdtWFormatted):
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
-    _partTemplate = '''<text:p text:style-name="yWriter_20_mark">[ChID:$ID]</text:p>
-<text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
+    _partTemplate = '''<text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
 '''
 
-    _chapterTemplate = '''<text:p text:style-name="yWriter_20_mark">[ChID:$ID]</text:p>
-<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
+    _chapterTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
-    _sceneTemplate = '''<text:p text:style-name="yWriter_20_mark">[ScID:$ID]</text:p>
+    _sceneTemplate = '''<text:p text:style-name="scene_20_mark">[ScID:$ID]</text:p>
 <text:p text:style-name="Text_20_body">$SceneContent</text:p>
-<text:p text:style-name="yWriter_20_mark">[/ScID]</text:p>
+<text:p text:style-name="scene_20_mark">[/ScID]</text:p>
 '''
 
     _sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
-'''
-
-    _chapterEndTemplate = '''<text:p text:style-name="yWriter_20_mark">[/ChID]</text:p>
 '''
 
     _fileFooter = OdtWFormatted._CONTENT_XML_FOOTER
