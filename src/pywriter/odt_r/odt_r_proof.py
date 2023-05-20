@@ -119,4 +119,6 @@ class OdtRProof(OdtRFormatted):
         elif tag in ('br', 'ul'):
             self._skip_data = True
             # avoid inserting an unwanted blank
+        elif tag == 's':
+            self._lines.append(' ')
 
