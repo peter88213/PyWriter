@@ -15,7 +15,7 @@ from pywriter.converter.yw7_converter import Yw7Converter
 UPDATE = False
 
 
-class ExportTest():
+class ExportTest:
     """Test case: Import and export yWriter project.
     
     Public methods:
