@@ -54,6 +54,33 @@ class ImportFromWord(ImportExportTest, unittest.TestCase):
         pass
 
 
+class ImportFromGoogledocs(ImportExportTest, unittest.TestCase):
+    """Convert an ODT proofread document saved by MS Word."""
+    _importClass = OdtRProof
+    _exportClass = OdtWProof
+
+    def _init_paths(self):
+        """Initialize the test data and execution paths."""
+        super()._init_paths()
+        self._prfImpFile = f'{self._dataPath}googledocs{self._importClass.EXTENSION}'
+        self._prfYwFile = f'{self._dataPath}googledocs.yw7'
+
+    # The test methods must be defined here to identify the source of failure.
+
+    def test_imp_to_yw7(self):
+        super().test_imp_to_yw7()
+
+    @unittest.skip('unused')
+    def test_yw7_to_exp(self):
+        pass
+
+    def _remove_all_tempfiles(self):
+        super()._remove_all_tempfiles()
+
+    def test_data(self):
+        pass
+
+
 def main():
     unittest.main()
 
