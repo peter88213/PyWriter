@@ -57,7 +57,7 @@ class MainTk(Ui):
         Positional arguments:
             title -- application title to be displayed at the window frame.
          
-        Required keyword arguments:
+        Processed keyword arguments:
             yw_last_open: str -- initial file.
             root_geometry: str -- geometry of the root window.
         
@@ -80,7 +80,7 @@ class MainTk(Ui):
         self.root = tk.Tk()
         self.root.protocol("WM_DELETE_WINDOW", self.on_quit)
         self.root.title(title)
-        if kwargs['root_geometry']:
+        if kwargs.get('root_geometry', None):
             self.root.geometry(kwargs['root_geometry'])
         self.mainMenu = tk.Menu(self.root)
 
@@ -197,7 +197,7 @@ class MainTk(Ui):
 
         On error, return an empty string.
         """
-        initDir = os.path.dirname(self.kwargs['yw_last_open'])
+        initDir = os.path.dirname(self.kwargs.get('yw_last_open', ''))
         if not initDir:
             initDir = './'
         if not fileName or not os.path.isfile(fileName):
