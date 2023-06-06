@@ -12,6 +12,8 @@ Based on the  _pywriter_  library, there now are several applications, supportin
 
 For more information, see my [GitHub home page](https://peter88213.github.io).
 
+The diagram below shows a part of the "ecosystem" created around the *.yw7* file format. Nodes in green are based on the *PyWriter* library.
+
 ![The PyWriter ecosystem](docs/scap/PyWriter_ecosystem.png)
 
 ## Development
