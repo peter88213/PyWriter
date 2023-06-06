@@ -12,6 +12,7 @@ Based on the  _pywriter_  library, there now are several applications, supportin
 
 For more information, see my [GitHub home page](https://peter88213.github.io).
 
+![The PyWriter ecosystem](docs/scap/PyWriter_ecosystem.png)
 
 ## Development
 
