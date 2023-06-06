@@ -41,13 +41,13 @@
          <ConnectedNoteIDs>0, 4, 9</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 4</PointsToNoteIDs>
       </Note>
-      <Note Width="102.124" FontSize="12" ID="4" Position="734.4,284.1">
+      <Note Width="110.912" FontSize="12" ID="4" Position="734.4,284.1">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
             <Border Weight="1">0.690303 0.407263 0.550912</Border>
          </Appearance>
-         <String>project(_suffix).odt</String>
+         <String>project(_suffix).odt, project(_suffix).ods</String>
          <ConnectedNoteIDs>2-3, 5, 9, 11</ConnectedNoteIDs>
          <PointsToNoteIDs>3, 5, 9, 11</PointsToNoteIDs>
       </Note>
@@ -351,8 +351,8 @@
             <Border Weight="1">0.399100 0.583322 0.354864</Border>
          </Appearance>
          <String>yw-reporter</String>
-         <ConnectedNoteIDs>0, 44</ConnectedNoteIDs>
-         <PointsToNoteIDs>44</PointsToNoteIDs>
+         <ConnectedNoteIDs>0, 35, 44</ConnectedNoteIDs>
+         <PointsToNoteIDs>35, 44</PointsToNoteIDs>
       </Note>
       <Note Width="58.2031" FontSize="12" ID="48" Position="616.4,430.1">
          <Appearance>
@@ -412,7 +412,7 @@
          <ConnectedNoteIDs>40</ConnectedNoteIDs>
          <PointsToNoteIDs>40</PointsToNoteIDs>
       </Note>
-      <Note Width="105.737" FontSize="12" ID="44" Position="17.9,517.2">
+      <Note Width="105.737" FontSize="12" ID="44" Position="11.6,495.3">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -517,6 +517,15 @@
          </Appearance>
          <String>project.odm + *.odt</String>
          <ConnectedNoteIDs>33</ConnectedNoteIDs>
+      </Note>
+      <Note Width="98.0835" FontSize="12" ID="35" Position="46.8,529.7">
+         <Appearance>
+            <Alignment>Left</Alignment>
+            <Fill>0.898329 0.817472 0.865339</Fill>
+            <Border Weight="1">0.690303 0.407263 0.550912</Border>
+         </Appearance>
+         <String>project_report.csv</String>
+         <ConnectedNoteIDs>47</ConnectedNoteIDs>
       </Note>
    </Notes>
    <BackgroundShapes/>
