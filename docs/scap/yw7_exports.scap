@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<ScappleDocument ID="4336A9D4-55F7-488F-B05D-137534406CB0" Version="1.1">
+<ScappleDocument ID="07522C29-60F6-4E76-8D8D-5BFA52447EEF" Version="1.1">
    <Notes>
       <Note Width="65.5029" FontSize="12" ID="0" Position="415.7,344.9">
          <Appearance>
@@ -8,30 +8,30 @@
             <Border Weight="3">0.690303 0.407263 0.550912</Border>
          </Appearance>
          <String>project.yw7</String>
-         <ConnectedNoteIDs>1-3, 5, 7, 10, 12, 14, 19-20, 22, 29, 31, 39, 47</ConnectedNoteIDs>
+         <ConnectedNoteIDs>1-3, 5, 7, 10, 14, 19-20, 22, 29, 31, 39, 47</ConnectedNoteIDs>
          <PointsToNoteIDs>1-3, 5, 7, 10, 14, 19-20, 22, 29, 31, 39, 47</PointsToNoteIDs>
       </Note>
-      <Note Width="54.0527" FontSize="12" ID="1" Position="483.6,489.5">
+      <Note Width="54.0527" FontSize="12" ID="1" Position="490.6,505.9">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
             <Border Weight="1">0.485893 0.568933 0.756207</Border>
          </Appearance>
          <String>yWriter 7</String>
-         <ConnectedNoteIDs>0, 17-18, 26-27, 42</ConnectedNoteIDs>
-         <PointsToNoteIDs>17-18, 26-27, 42</PointsToNoteIDs>
+         <ConnectedNoteIDs>0, 15, 18, 26-27, 42</ConnectedNoteIDs>
+         <PointsToNoteIDs>15, 18, 26-27, 42</PointsToNoteIDs>
       </Note>
-      <Note Width="48.5107" FontSize="12" ID="2" Position="557.8,166.0">
+      <Note Width="48.5107" FontSize="12" ID="2" Position="524.2,223.0">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
             <Border Weight="1">0.399100 0.583322 0.354864</Border>
          </Appearance>
          <String>novelyst</String>
-         <ConnectedNoteIDs>0, 4, 10, 29</ConnectedNoteIDs>
-         <PointsToNoteIDs>4</PointsToNoteIDs>
+         <ConnectedNoteIDs>0, 4, 10, 12-13, 29</ConnectedNoteIDs>
+         <PointsToNoteIDs>4, 12-13</PointsToNoteIDs>
       </Note>
-      <Note Width="92.6758" FontSize="12" ID="3" Position="622.7,398.0">
+      <Note Width="92.6758" FontSize="12" ID="3" Position="543.8,388.6">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
@@ -41,7 +41,7 @@
          <ConnectedNoteIDs>0, 4, 9</ConnectedNoteIDs>
          <PointsToNoteIDs>4</PointsToNoteIDs>
       </Note>
-      <Note Width="102.124" FontSize="12" ID="4" Position="772.7,323.9">
+      <Note Width="102.124" FontSize="12" ID="4" Position="643.0,305.1">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -49,9 +49,9 @@
          </Appearance>
          <String>project(_suffix).odt</String>
          <ConnectedNoteIDs>2-3, 5, 9</ConnectedNoteIDs>
-         <PointsToNoteIDs>5</PointsToNoteIDs>
+         <PointsToNoteIDs>9</PointsToNoteIDs>
       </Note>
-      <Note Width="47.4976" FontSize="12" ID="5" Position="676.6,512.9">
+      <Note Width="47.4976" FontSize="12" ID="5" Position="546.2,290.2">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
@@ -90,7 +90,7 @@
          <String>Aeon Timeline 2</String>
          <ConnectedNoteIDs>6</ConnectedNoteIDs>
       </Note>
-      <Note Width="96.8872" FontSize="12" ID="9" Position="573.4,319.2">
+      <Note Width="96.8872" FontSize="12" ID="9" Position="689.0,388.7">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -98,7 +98,7 @@
          </Appearance>
          <String>LibreOffice Writer</String>
          <ConnectedNoteIDs>3-4, 28</ConnectedNoteIDs>
-         <PointsToNoteIDs>4, 28</PointsToNoteIDs>
+         <PointsToNoteIDs>28</PointsToNoteIDs>
       </Note>
       <Note Width="118.677" FontSize="12" ID="10" Position="207.1,203.5">
          <Appearance>
@@ -110,7 +110,7 @@
          <ConnectedNoteIDs>0, 2, 6</ConnectedNoteIDs>
          <PointsToNoteIDs>6</PointsToNoteIDs>
       </Note>
-      <Note Width="43.9575" FontSize="12" ID="14" Position="201.6,440.2">
+      <Note Width="43.9575" FontSize="12" ID="14" Position="202.4,367.5">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
@@ -120,7 +120,7 @@
          <ConnectedNoteIDs>0, 16</ConnectedNoteIDs>
          <PointsToNoteIDs>16</PointsToNoteIDs>
       </Note>
-      <Note Width="104.053" FontSize="12" ID="16" Position="35.9,485.6">
+      <Note Width="104.053" FontSize="12" ID="16" Position="35.1,370.0">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -129,7 +129,7 @@
          <String>project.md (export)</String>
          <ConnectedNoteIDs>14</ConnectedNoteIDs>
       </Note>
-      <Note Width="107.007" FontSize="12" ID="18" Position="592.9,665.2">
+      <Note Width="107.007" FontSize="12" ID="18" Position="611.7,575.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -138,7 +138,7 @@
          <String>Exported Project.txt</String>
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
       </Note>
-      <Note Width="50.7202" FontSize="12" ID="20" Position="201.5,486.0">
+      <Note Width="50.7202" FontSize="12" ID="20" Position="202.3,425.8">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
@@ -148,7 +148,7 @@
          <ConnectedNoteIDs>0, 21</ConnectedNoteIDs>
          <PointsToNoteIDs>21</PointsToNoteIDs>
       </Note>
-      <Note Width="68.4204" FontSize="12" ID="21" Position="63.2,548.5">
+      <Note Width="68.4204" FontSize="12" ID="21" Position="79.6,427.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -157,7 +157,7 @@
          <String>project.html</String>
          <ConnectedNoteIDs>20</ConnectedNoteIDs>
       </Note>
-      <Note Width="42.9565" FontSize="12" ID="22" Position="372.7,530.5">
+      <Note Width="42.9565" FontSize="12" ID="22" Position="400.0,457.8">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
@@ -167,7 +167,7 @@
          <ConnectedNoteIDs>0, 23</ConnectedNoteIDs>
          <PointsToNoteIDs>23</PointsToNoteIDs>
       </Note>
-      <Note Width="62.3047" FontSize="12" ID="23" Position="340.7,604.8">
+      <Note Width="62.3047" FontSize="12" ID="23" Position="369.6,518.8">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -177,7 +177,7 @@
          <ConnectedNoteIDs>22, 24</ConnectedNoteIDs>
          <PointsToNoteIDs>24</PointsToNoteIDs>
       </Note>
-      <Note Width="70.9229" FontSize="12" ID="24" Position="314.8,671.1">
+      <Note Width="70.9229" FontSize="12" ID="24" Position="344.4,581.2">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -187,7 +187,7 @@
          <ConnectedNoteIDs>23, 25</ConnectedNoteIDs>
          <PointsToNoteIDs>25</PointsToNoteIDs>
       </Note>
-      <Note Width="53.3325" FontSize="12" ID="25" Position="310.1,735.9">
+      <Note Width="53.3325" FontSize="12" ID="25" Position="336.7,641.3">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -196,7 +196,7 @@
          <String>book.qxp</String>
          <ConnectedNoteIDs>24</ConnectedNoteIDs>
       </Note>
-      <Note Width="108.63" FontSize="12" ID="26" Position="631.2,618.0">
+      <Note Width="108.63" FontSize="12" ID="26" Position="626.6,526.6">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -205,7 +205,7 @@
          <String>Exported Project.tex</String>
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
       </Note>
-      <Note Width="116.687" FontSize="12" ID="27" Position="651.5,562.6">
+      <Note Width="116.687" FontSize="12" ID="27" Position="630.5,482.9">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -214,7 +214,7 @@
          <String>Exported Project.html</String>
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
       </Note>
-      <Note Width="70.7886" FontSize="12" ID="28" Position="578.9,243.9">
+      <Note Width="70.7886" FontSize="12" ID="28" Position="703.9,439.9">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -253,7 +253,7 @@
          <ConnectedNoteIDs>0, 30</ConnectedNoteIDs>
          <PointsToNoteIDs>30</PointsToNoteIDs>
       </Note>
-      <Note Width="50.4517" FontSize="12" ID="32" Position="182.1,90.6">
+      <Note Width="50.4517" FontSize="12" ID="32" Position="182.1,99.2">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -262,7 +262,7 @@
          <String>Timeline</String>
          <ConnectedNoteIDs>30</ConnectedNoteIDs>
       </Note>
-      <Note Width="105.493" FontSize="12" ID="42" Position="388.4,707.4">
+      <Note Width="105.493" FontSize="12" ID="42" Position="555.6,624.6">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -271,7 +271,7 @@
          <String>Exported Project.rtf</String>
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
       </Note>
-      <Note Width="66.5649" FontSize="12" ID="47" Position="210.1,537.1">
+      <Note Width="66.5649" FontSize="12" ID="47" Position="224.2,469.9">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
@@ -281,7 +281,7 @@
          <ConnectedNoteIDs>0, 11</ConnectedNoteIDs>
          <PointsToNoteIDs>11</PointsToNoteIDs>
       </Note>
-      <Note Width="51.8066" FontSize="12" ID="19" Position="246.1,605.1">
+      <Note Width="51.8066" FontSize="12" ID="19" Position="303.2,493.3">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
@@ -291,7 +291,7 @@
          <ConnectedNoteIDs>0, 49</ConnectedNoteIDs>
          <PointsToNoteIDs>49</PointsToNoteIDs>
       </Note>
-      <Note Width="108.472" FontSize="12" ID="49" Position="150.0,674.6">
+      <Note Width="108.472" FontSize="12" ID="49" Position="175.8,576.1">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -310,7 +310,7 @@
          <ConnectedNoteIDs>0, 40</ConnectedNoteIDs>
          <PointsToNoteIDs>40</PointsToNoteIDs>
       </Note>
-      <Note Width="115.332" FontSize="12" ID="40" Position="40.6,304.3">
+      <Note Width="115.332" FontSize="12" ID="40" Position="24.2,319.1">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -320,7 +320,7 @@
          <ConnectedNoteIDs>39, 41</ConnectedNoteIDs>
          <PointsToNoteIDs>41</PointsToNoteIDs>
       </Note>
-      <Note Width="68.5669" FontSize="12" ID="41" Position="62.5,251.9">
+      <Note Width="68.5669" FontSize="12" ID="41" Position="46.1,269.1">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -329,7 +329,7 @@
          <String>NovelWriter</String>
          <ConnectedNoteIDs>40</ConnectedNoteIDs>
       </Note>
-      <Note Width="105.737" FontSize="12" ID="11" Position="105.4,598.4">
+      <Note Width="105.737" FontSize="12" ID="11" Position="59.3,470.3">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -338,37 +338,25 @@
          <String>project_report.html</String>
          <ConnectedNoteIDs>47</ConnectedNoteIDs>
       </Note>
-      <Note Width="53.4424" FontSize="12" ID="12" Position="201.6,390.2">
-         <Appearance>
-            <Alignment>Left</Alignment>
-            <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
-         </Appearance>
-         <String>mm2yw7</String>
-         <ConnectedNoteIDs>0, 15</ConnectedNoteIDs>
-         <PointsToNoteIDs>0</PointsToNoteIDs>
-      </Note>
-      <Note Width="111.682" FontSize="12" ID="13" Position="46.1,354.3">
-         <Appearance>
-            <Alignment>Left</Alignment>
-            <Fill>0.844068 0.869596 0.923064</Fill>
-            <Border Weight="1">0.485893 0.568933 0.756207</Border>
-         </Appearance>
-         <String>FreeMind, Freeplane</String>
-         <ConnectedNoteIDs>15</ConnectedNoteIDs>
-         <PointsToNoteIDs>15</PointsToNoteIDs>
-      </Note>
-      <Note Width="64.978" FontSize="12" ID="15" Position="70.3,402.7">
+      <Note Width="105.737" FontSize="12" ID="12" Position="602.3,150.0">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
             <Border Weight="1">0.690303 0.407263 0.550912</Border>
          </Appearance>
-         <String>project.mm</String>
-         <ConnectedNoteIDs>12-13</ConnectedNoteIDs>
-         <PointsToNoteIDs>12</PointsToNoteIDs>
+         <String>project_report.html</String>
+         <ConnectedNoteIDs>2</ConnectedNoteIDs>
       </Note>
-      <Note Width="117.053" FontSize="12" ID="17" Position="517.3,709.7">
+      <Note Width="102.808" FontSize="12" ID="13" Position="641.4,220.8">
+         <Appearance>
+            <Alignment>Left</Alignment>
+            <Fill>0.898329 0.817472 0.865339</Fill>
+            <Border Weight="1">0.690303 0.407263 0.550912</Border>
+         </Appearance>
+         <String>project(_suffix).ods</String>
+         <ConnectedNoteIDs>2</ConnectedNoteIDs>
+      </Note>
+      <Note Width="117.053" FontSize="12" ID="15" Position="447.8,657.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
