@@ -38,10 +38,7 @@ class ExportTest:
         - Create a test yWriter project.
         """
         self._init_paths()
-        try:
-            os.mkdir(self._execPath)
-        except:
-            pass
+        os.makedirs(self._execPath, exist_ok=True)
         self._remove_all_tempfiles()
         copyfile(self._refYwFile, self._testYwFile)
 
@@ -72,7 +69,7 @@ class ExportTest:
         """Initialize the test data and execution paths."""
         if not hasattr(self, '_dataPath'):
             self._dataPath = f'data/{self._exportClass.SUFFIX}/'
-        self._execPath = 'yw7/'
+        self._execPath = 'tmp/'
         self._testExpFile = f'{self._execPath}yw7 Sample Project{self._exportClass.SUFFIX}{self._exportClass.EXTENSION}'
         self._odfCntntFile = 'content.xml'
         self._testYwFile = f'{self._execPath}yw7 Sample Project.yw7'

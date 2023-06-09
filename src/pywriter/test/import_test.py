@@ -66,7 +66,7 @@ class ImportTest:
         """Initialize the test data and execution paths."""
         if not hasattr(self, '_dataPath'):
             self._dataPath = f'data/{self._importClass.SUFFIX}/'
-        self._execPath = 'yw7/'
+        self._execPath = 'tmp/'
         self._testYwFile = f'{self._execPath}yw7 Sample Project.yw7'
         self._refYwFile = f'{self._dataPath}normal.yw7'
         self._testImpFile = f'{self._execPath}yw7 Sample Project{self._importClass.SUFFIX}{self._importClass.EXTENSION}'
