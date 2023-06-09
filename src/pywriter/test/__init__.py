@@ -1,4 +1,4 @@
-"""Package for automated regression tests.
+"""Package for automated Regression test.
 
 Modules:
 

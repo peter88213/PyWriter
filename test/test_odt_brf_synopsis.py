@@ -1,4 +1,4 @@
-"""Integration tests for the pyWriter project.
+"""Regression test for the pyWriter project.
 
 Test the odt brief synopsis.
 

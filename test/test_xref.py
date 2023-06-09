@@ -1,4 +1,4 @@
-"""Integration tests for the PyWriter distributions.
+"""Regression test for the PyWriter distributions.
 
 Test the cross reference generation.
 

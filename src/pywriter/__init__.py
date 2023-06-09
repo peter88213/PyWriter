@@ -25,7 +25,7 @@ ods_r -- Modules for reading Open Document spreadsheet documents.
 ods_w -- Modules for writing Open Document spreadsheet documents.
 odt_r -- Modules for reading Open Document text documents.
 odt_w -- Modules for writing Open Document text documents.
-test -- Package for automated regression tests.
+test -- Package for automated Regression test.
 ui -- Modules for user interfaces.
 yw -- Modules for reading and writing yWriter project files.
 
