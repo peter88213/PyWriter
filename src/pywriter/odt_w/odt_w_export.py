@@ -82,15 +82,26 @@ class OdtWExport(OdtWFormatted):
     def _get_text(self):
 
         def replace_note(match):
+            noteType = match.group(1)
             self._noteCounter += 1
-            return f'<text:note text:id="ftn{self._noteCounter}" text:note-class="footnote"><text:note-citation text:label="*">*</text:note-citation><text:note-body><text:p text:style-name="Footnote">{match.group(1)}</text:p></text:note-body></text:note>'
+            self._noteNumber += 1
+            noteLabel = f'{self._noteNumber}'
+            if noteType.startswith('fn'):
+                noteClass = 'footnote'
+                if noteType.endswith('*'):
+                    self._noteNumber -= 1
+                    noteLabel = '*'
+            elif noteType.startswith('en'):
+                noteClass = 'endnote'
+            return f'<text:note text:id="ftn{self._noteCounter}" text:note-class="{noteClass}"><text:note-citation text:label="{noteLabel}">*</text:note-citation><text:note-body><text:p text:style-name="Footnote">{match.group(2)}</text:p></text:note-body></text:note>'
 
         text = super()._get_text()
         if text.find('/*') > 0:
             text = text.replace('\r', '@r@').replace('\n', '@n@')
             self._noteCounter = 0
+            self._noteNumber = 0
             simpleComment = f'<office:annotation><dc:creator>{self.novel.authorName}</dc:creator><text:p>\\1</text:p></office:annotation>'
-            text = re.sub('\/\* @fn\* (.*?)\*\/', replace_note, text)
+            text = re.sub('\/\* @([ef]n\**) (.*?)\*\/', replace_note, text)
             text = re.sub('\/\*(.*?)\*\/', simpleComment, text)
             text = text.replace('@r@', '\r').replace('@n@', '\n')
         return text
