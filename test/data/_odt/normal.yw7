@@ -417,7 +417,7 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 	<SCENE>
 		<ID>7</ID>
 		<Title><![CDATA[Hal talking to the Portmaster]]></Title>
-		<Desc><![CDATA[Hal is waiting in reception outside the Portmaster's office, browsing a magazine/* @fn The [I]Space Piston[/i] magazine */. He reads an article about overclocked robot brains being used in new robots, saving money but leading to risk of explosion. Hal wonders if Clunk is fitted with a defective brain - if any - and figures it would be just his luck if Jerling's robot/* @fn Brutus, remember? */ turned his ship into a fiery wreck while he was sitting around waiting for petty officials.
+		<Desc><![CDATA[Hal is waiting in reception outside the Portmaster's office, browsing a magazine. He reads an article about overclocked robot brains being used in new robots, saving money but leading to risk of explosion. Hal wonders if Clunk is fitted with a defective brain - if any - and figures it would be just his luck if Jerling's robot turned his ship into a fiery wreck while he was sitting around waiting for petty officials.
 The Portmaster invites him into his office, and Hal discovers there are overdue landing fees, stamp duty, fuel, snacks, etc etc to pay for. The Port of Lamira is going to auction Hal's ship to recover debts. Hal protests that he has a job which will cover the fees, but the Portmaster doesn't believe him.
 Hal decides to call his brand new best buddy Clunk, thinking the robot can ask Jerling for an advance on his fee.]]></Desc>
 		<BelongsToChID>4</BelongsToChID>
