@@ -99,6 +99,9 @@ class OdtWExport(OdtWFormatted):
             return f'<text:note text:id="ftn{self._noteCounter}" text:note-class="{noteClass}"><text:note-citation text:label="{noteLabel}">*</text:note-citation><text:note-body><text:p text:style-name="{noteStyle}">{text}</text:p></text:note-body></text:note>'
 
         text = super()._get_text()
+
+        #--- Convert comments, footnotes, and endnotes.
+        # This is done once for the entire document because of the document-wide note numbering.
         if text.find('/*') > 0:
             text = text.replace('\r', '@r@').replace('\n', '@n@')
             self._noteCounter = 0
