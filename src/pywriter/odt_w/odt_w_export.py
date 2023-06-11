@@ -4,6 +4,7 @@ Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import re
 from pywriter.pywriter_globals import *
 from pywriter.odt_w.odt_w_formatted import OdtWFormatted
 
@@ -66,4 +67,23 @@ class OdtWExport(OdtWFormatted):
         if self.novel.chapters[chId].suppressChapterTitle:
             chapterMapping['Title'] = ''
         return chapterMapping
+
+    def _get_replacements(self):
+        return [
+                ('\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'),
+                ('\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'),
+                ('\r', '\n'),
+                ('[i]', '<text:span text:style-name="Emphasis">'),
+                ('[/i]', '</text:span>'),
+                ('[b]', '<text:span text:style-name="Strong_20_Emphasis">'),
+                ('[/b]', '</text:span>'),
+                ]
+
+    def _get_text(self):
+        footNoteAsterisk = '<text:note text:id="ftn1" text:note-class="footnote"><text:note-citation text:label="*">*</text:note-citation><text:note-body><text:p text:style-name="Footnote">\\1</text:p></text:note-body></text:note>'
+        simpleComment = f'<office:annotation><dc:creator>{self.novel.authorName}</dc:creator><text:p>\\1</text:p></office:annotation>'
+        text = super()._get_text()
+        text = re.sub('\/\* @fn\* (.*?)\*\/', footNoteAsterisk, text)
+        text = re.sub('\/\*(.*?)\*\/', simpleComment, text)
+        return text
 
