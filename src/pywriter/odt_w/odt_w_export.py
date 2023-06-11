@@ -88,12 +88,15 @@ class OdtWExport(OdtWFormatted):
             noteLabel = f'{self._noteNumber}'
             if noteType.startswith('fn'):
                 noteClass = 'footnote'
+                noteStyle = 'Footnote'
                 if noteType.endswith('*'):
                     self._noteNumber -= 1
                     noteLabel = '*'
             elif noteType.startswith('en'):
                 noteClass = 'endnote'
-            return f'<text:note text:id="ftn{self._noteCounter}" text:note-class="{noteClass}"><text:note-citation text:label="{noteLabel}">*</text:note-citation><text:note-body><text:p text:style-name="Footnote">{match.group(2)}</text:p></text:note-body></text:note>'
+                noteStyle = 'Endnote'
+            text = match.group(2).replace('text:style-name="First_20_line_20_indent"', f'text:style-name="{noteStyle}"')
+            return f'<text:note text:id="ftn{self._noteCounter}" text:note-class="{noteClass}"><text:note-citation text:label="{noteLabel}">*</text:note-citation><text:note-body><text:p text:style-name="{noteStyle}">{text}</text:p></text:note-body></text:note>'
 
         text = super()._get_text()
         if text.find('/*') > 0:
