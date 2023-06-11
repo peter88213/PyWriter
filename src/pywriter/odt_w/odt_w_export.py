@@ -70,7 +70,8 @@ class OdtWExport(OdtWFormatted):
 
     def _get_replacements(self):
         return [
-                ('\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'),
+                ('\n\n', ('</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r'
+                          '<text:p text:style-name="Text_20_body">')),
                 ('\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'),
                 ('\r', '\n'),
                 ('[i]', '<text:span text:style-name="Emphasis">'),
@@ -95,8 +96,12 @@ class OdtWExport(OdtWFormatted):
             elif noteType.startswith('en'):
                 noteClass = 'endnote'
                 noteStyle = 'Endnote'
-            text = match.group(2).replace('text:style-name="First_20_line_20_indent"', f'text:style-name="{noteStyle}"')
-            return f'<text:note text:id="ftn{self._noteCounter}" text:note-class="{noteClass}"><text:note-citation text:label="{noteLabel}">*</text:note-citation><text:note-body><text:p text:style-name="{noteStyle}">{text}</text:p></text:note-body></text:note>'
+            text = match.group(2).replace('text:style-name="First_20_line_20_indent"',
+                                          f'text:style-name="{noteStyle}"')
+            return (f'<text:note text:id="ftn{self._noteCounter}" '
+                    f'text:note-class="{noteClass}"><text:note-citation '
+                    f'text:label="{noteLabel}">*</text:note-citation><text:note-body>'
+                    f'<text:p text:style-name="{noteStyle}">{text}</text:p></text:note-body></text:note>')
 
         text = super()._get_text()
 
@@ -106,7 +111,9 @@ class OdtWExport(OdtWFormatted):
             text = text.replace('\r', '@r@').replace('\n', '@n@')
             self._noteCounter = 0
             self._noteNumber = 0
-            simpleComment = f'<office:annotation><dc:creator>{self.novel.authorName}</dc:creator><text:p>\\1</text:p></office:annotation>'
+            simpleComment = (f'<office:annotation><dc:creator>{self.novel.authorName}'
+                             '</dc:creator><text:p>\\1</text:p></office:annotation>'
+                             )
             text = re.sub('\/\* @([ef]n\**) (.*?)\*\/', replace_note, text)
             text = re.sub('\/\*(.*?)\*\/', simpleComment, text)
             text = text.replace('@r@', '\r').replace('@n@', '\n')

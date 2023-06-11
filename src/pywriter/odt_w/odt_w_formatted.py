@@ -124,9 +124,11 @@ class OdtWFormatted(OdtWriter):
                 except:
                     lngCode = 'zxx'
                     ctrCode = 'none'
-                lines.append(f'''  <style:style style:name="T{i}" style:family="text">
-   <style:text-properties fo:language="{lngCode}" fo:country="{ctrCode}" style:language-asian="{lngCode}" style:country-asian="{ctrCode}" style:language-complex="{lngCode}" style:country-complex="{ctrCode}"/>
-  </style:style>''')
+                lines.append((f'  <style:style style:name="T{i}" style:family="text">\n'
+                              f'   <style:text-properties fo:language="{lngCode}" fo:country="{ctrCode}" '
+                              f'style:language-asian="{lngCode}" style:country-asian="{ctrCode}" '
+                              f'style:language-complex="{lngCode}" style:country-complex="{ctrCode}"/>\n'
+                              '  </style:style>'))
             lines.append(' </office:automatic-styles>')
             styleMapping['automaticStyles'] = '\n'.join(lines)
         else:
@@ -138,7 +140,8 @@ class OdtWFormatted(OdtWriter):
 
     def _get_replacements(self):
         return [
-                ('\n\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r<text:p text:style-name="Text_20_body">'),
+                ('\n\n', ('</text:p>\r<text:p text:style-name="First_20_line_20_indent" />\r'
+                          '<text:p text:style-name="Text_20_body">')),
                 ('\n', '</text:p>\r<text:p text:style-name="First_20_line_20_indent">'),
                 ('\r', '\n'),
                 ('[i]', '<text:span text:style-name="Emphasis">'),
@@ -168,6 +171,7 @@ class OdtWFormatted(OdtWriter):
                          )
             for quotMark in quotMarks:
                 text = text.replace(quotMark, '"Quotations">')
-            text = re.sub('"Text_20_body"\>(\<office\:annotation\>.+?\<\/office\:annotation\>)\&gt\; ', '"Quotations">\\1', text)
+            text = re.sub('"Text_20_body"\>(\<office\:annotation\>.+?\<\/office\:annotation\>)\&gt\; ',
+                          '"Quotations">\\1', text)
         return text
 
