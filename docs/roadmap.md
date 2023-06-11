@@ -492,3 +492,15 @@ Modify the "Proofing document" classes for ODT exchange document conversion:
 - Exclude "Unused", "Notes" and "Todo" scenes from the document export.
 - Apply direct formatting instead of the emphasizing character styles.
 - Do not apply the "Quotation" paragraph style. 
+
+### v12.9
+
+Parse ODT documents that are cluttered with "blank character" XML tags as created with Word. 
+
+### v12.12
+
+Read ODT documents without meta.xml as created with FreeMind.
+
+### v12.13
+
+When exporting an ODT document that is not meant for re-import, convert yWriter comments into footnotes or endnotes.
