@@ -198,7 +198,8 @@ class Splitter:
                         inScene = True
                     else:
                         newLines.append(line)
-                file.novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
+                if inScene:
+                    file.novel.scenes[sceneId].sceneContent = '\n'.join(newLines)
             file.novel.chapters[chapterId].srtScenes = srtScenes
         file.novel.srtChapters = srtChapters
         return scenesSplit
