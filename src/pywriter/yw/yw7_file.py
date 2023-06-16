@@ -837,17 +837,29 @@ class Yw7File(File):
                     ET.SubElement(xmlProject, 'FieldTitle4').text = self.novel.fieldTitle4
 
             #--- Write word target data.
-            if self.novel.wordCountStart is not None:
-                try:
-                    xmlProject.find('WordCountStart').text = str(self.novel.wordCountStart)
-                except(AttributeError):
-                    ET.SubElement(xmlProject, 'WordCountStart').text = str(self.novel.wordCountStart)
-
             if self.novel.wordTarget is not None:
                 try:
                     xmlProject.find('WordTarget').text = str(self.novel.wordTarget)
                 except(AttributeError):
                     ET.SubElement(xmlProject, 'WordTarget').text = str(self.novel.wordTarget)
+
+            if self.novel.wordTargetStartDate is not None:
+                try:
+                    xmlProject.find('WordTargetStartDate').text = self.novel.wordTargetStartDate
+                except(AttributeError):
+                    ET.SubElement(xmlProject, 'WordTargetStartDate').text = self.novel.wordTargetStartDate
+
+            if self.novel.wordTargetEndDate is not None:
+                try:
+                    xmlProject.find('WordTargetEndDate').text = self.novel.wordTargetEndDate
+                except(AttributeError):
+                    ET.SubElement(xmlProject, 'WordTargetEndDate').text = self.novel.wordTargetEndDate
+
+            if self.novel.wordCountStart is not None:
+                try:
+                    xmlProject.find('WordCountStart').text = str(self.novel.wordCountStart)
+                except(AttributeError):
+                    ET.SubElement(xmlProject, 'WordCountStart').text = str(self.novel.wordCountStart)
 
             #--- Write project custom fields.
 
@@ -1132,17 +1144,23 @@ class Yw7File(File):
             self.novel.fieldTitle4 = xmlProject.find('FieldTitle4').text
 
         #--- Read word target data.
-        if xmlProject.find('WordCountStart') is not None:
-            try:
-                self.novel.wordCountStart = int(xmlProject.find('WordCountStart').text)
-            except:
-                self.novel.wordCountStart = 0
         if xmlProject.find('WordTarget') is not None:
             try:
                 self.novel.wordTarget = int(xmlProject.find('WordTarget').text)
             except:
                 self.novel.wordTarget = 0
 
+        if xmlProject.find('WordTargetStartDate') is not None:
+            self.novel.wordTargetStartDate = xmlProject.find('WordTargetStartDate').text
+
+        if xmlProject.find('WordTargetEndDate') is not None:
+            self.novel.wordTargetEndDate = xmlProject.find('WordTargetEndDate').text
+
+        if xmlProject.find('WordCountStart') is not None:
+            try:
+                self.novel.wordCountStart = int(xmlProject.find('WordCountStart').text)
+            except:
+                self.novel.wordCountStart = 0
         #--- Initialize custom keyword variables.
         for fieldName in self.PRJ_KWVAR:
             self.novel.kwVar[fieldName] = None

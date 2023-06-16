@@ -74,12 +74,15 @@ class Novel(BasicElement):
         # xml: <PROJECT><FieldTitle4>
 
         self.wordTarget: int = None
-        # xml: <PROJECT><wordTarget>
+        # xml: <PROJECT><WordTarget>
+
+        self.wordTargetStartDate: str = None
+        # xml: <WordTargetStartDate>
+
+        self.wordTargetEndDate: str = None
+        # xml: <WordTargetEndDate>
 
         self.wordCountStart: int = None
-        # xml: <PROJECT><wordCountStart>
-
-        self.wordTarget: int = None
         # xml: <PROJECT><wordCountStart>
 
         self.chapters: dict[str, Chapter] = {}
