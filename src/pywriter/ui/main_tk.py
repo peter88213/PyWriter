@@ -92,6 +92,7 @@ class MainTk(Ui):
         self.mainWindow.pack(expand=True, fill='both')
         self.statusBar = tk.Label(self.root, text='', anchor='w', padx=5, pady=2)
         self.statusBar.pack(expand=False, fill='both')
+        self.statusBar.bind('<Button-1>', self.restore_status)
         self.pathBar = tk.Label(self.root, text='', anchor='w', padx=5, pady=3)
         self.pathBar.pack(expand=False, fill='both')
 
