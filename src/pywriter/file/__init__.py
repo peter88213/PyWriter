@@ -11,7 +11,7 @@ Modules:
 
 doc_open -- Helper module for opening documents.
 file_export.py -- Provide a generic class for template-based file export.
-file -- Provide a generic class for yWriter project representation.
+file -- Provide an abstract class for file representation.
 filter.py -- Provide a generic filter class for template-based file export.
 
 Copyright (c) 2023 Peter Triesberger

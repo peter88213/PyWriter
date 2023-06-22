@@ -1,4 +1,4 @@
-"""Provide a generic class for yWriter project representation.
+"""Provide an abstract class for file representation.
 
 All classes representing specific file formats inherit from this class.
 
@@ -6,12 +6,13 @@ Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from abc import ABC
 from urllib.parse import quote
 import os
 from pywriter.pywriter_globals import *
 
 
-class File:
+class File(ABC):
     """Abstract yWriter project file representation.
 
     This class represents a file containing a novel with additional 

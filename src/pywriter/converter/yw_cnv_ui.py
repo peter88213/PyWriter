@@ -1,4 +1,4 @@
-"""Provide a class for Novel file conversion with user interface.
+"""Provide a base class for Novel file conversion with user interface.
 
 All converters with a user interface inherit from this class. 
 

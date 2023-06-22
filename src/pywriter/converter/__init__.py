@@ -11,9 +11,8 @@ new_project_factory -- Provide a factory class for source and target objects to 
 yw7_converter -- Provide a converter class for yWriter 7 universal import and export.
 yw7_exporter -- Provide a converter class for universal export from a yWriter 7 project.
 yw7_importer -- Provide a converter class for yWriter 7 universal import.
-yw_cnv -- Provide the base class for Novel file conversion.
 yw_cnv_ff -- Provide a class for Novel file conversion with file factories.
-yw_cnv_ui -- Provide a class for Novel file conversion with user interface.
+yw_cnv_ui -- Provide a base class for Novel file conversion with user interface.
 
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
