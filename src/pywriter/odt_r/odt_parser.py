@@ -16,7 +16,7 @@ class OdtParser(sax.ContentHandler):
     Public methods:
         feed_file(filePath) -- Feed an ODT file to the parser.
     
-      Methods overriding xml.sax.ContentHandler methods (not meant to be overridden by subclasses)
+      Methods overriding xml.sax.ContentHandler methods:
         characters -- Receive notification of character data.
         endElement -- Signals the end of an element in non-namespace mode.
         startElement -- Signals the start of an element in non-namespace mode.

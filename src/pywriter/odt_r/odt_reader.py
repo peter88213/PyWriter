@@ -21,7 +21,7 @@ class OdtReader(File, ABC):
     Public methods:
         read() -- Parse the file and get the instance variables.
     
-    HTMLParser-like API used by the XML parser:
+      HTMLParser-like API used by the XML parser:
         handle comment(data) -- Process inline comments within scene content.
         handle_data -- Stub for a data handler to be implemented in a subclass.
         handle_endtag -- Stub for an end tag handler to be implemented in a subclass.

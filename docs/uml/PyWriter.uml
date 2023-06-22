@@ -678,7 +678,7 @@
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_7-9fEPxAEeq5hMee5ike2Q" name="FileFactory">
+      <packagedElement xmi:type="uml:Class" xmi:id="_7-9fEPxAEeq5hMee5ike2Q" name="FileFactory" isAbstract="true">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ep78kr4hEeuITv7MyBA5yA" name="_fileClasses" visibility="protected" association="_ep6HYL4hEeuITv7MyBA5yA">
           <type xmi:type="uml:Class" href="Python.uml#_5WZqEL4fEeuITv7MyBA5yA"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ep8joL4hEeuITv7MyBA5yA" value="1"/>
@@ -1071,7 +1071,7 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_OfoZUIffEeq_kJF_AkSaiA" client="_nxQV8IfcEeq_kJF_AkSaiA" supplier="_ZoscoIfYEeq_kJF_AkSaiA"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_PYsIQIffEeq_kJF_AkSaiA" client="_nxQV8IfcEeq_kJF_AkSaiA" supplier="_ypTQMCtbEeqgj_wxJ3Xgsg"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_hkf2MPyzEeqEK6KdQRY5bw" name="OdsReader">
+      <packagedElement xmi:type="uml:Class" xmi:id="_hkf2MPyzEeqEK6KdQRY5bw" name="OdsReader" isAbstract="true">
         <generalization xmi:type="uml:Generalization" xmi:id="_nRDJUPyzEeqEK6KdQRY5bw" general="_hsKdIGqBEe2kI90TKb9lNQ"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_OuqhwJJ_EeyF7cNQ8xAkzg" name="EXTENSION" visibility="public" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1085,7 +1085,6 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_nECKIJJ_EeyF7cNQ8xAkzg" name="_rows" visibility="protected">
           <type xmi:type="uml:PrimitiveType" href="Python.uml#_GKAlkJC9Eey_Lt93nuuNDA"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-rWXUKYsEe24AJPq6nlwFA" name="reader" type="_32yTQKYsEe24AJPq6nlwFA" association="_-rT7EKYsEe24AJPq6nlwFA"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_g2xWoJJ_EeyF7cNQ8xAkzg" name="__init__" visibility="public">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_g2xWoZJ_EeyF7cNQ8xAkzg" name="filePath">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1163,11 +1162,12 @@
         <supplier xmi:type="uml:Class" href="Python.uml#_QoWo4C1UEeqtbohuTq_ZAA"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_32yTQKYsEe24AJPq6nlwFA" name="OdsParser"/>
-      <packagedElement xmi:type="uml:Association" xmi:id="_-rT7EKYsEe24AJPq6nlwFA" memberEnd="_-rWXUKYsEe24AJPq6nlwFA _-rYzkaYsEe24AJPq6nlwFA">
+      <packagedElement xmi:type="uml:Association" xmi:id="_-rT7EKYsEe24AJPq6nlwFA" memberEnd="_-rWXUKYsEe24AJPq6nlwFA _-rYzkaYsEe24AJPq6nlwFA" navigableOwnedEnd="_-rWXUKYsEe24AJPq6nlwFA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-rVwQKYsEe24AJPq6nlwFA" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-rVwQaYsEe24AJPq6nlwFA" key="nature" value="UML_Nature"/>
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_-rYzkaYsEe24AJPq6nlwFA" name="source" type="_hkf2MPyzEeqEK6KdQRY5bw" association="_-rT7EKYsEe24AJPq6nlwFA"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_-rWXUKYsEe24AJPq6nlwFA" name="parser" type="_32yTQKYsEe24AJPq6nlwFA" association="_-rT7EKYsEe24AJPq6nlwFA"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_r0wO4PsPEeq-TdV6dVW08A" name="File">
@@ -1423,7 +1423,7 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TZeOYI_qEeynvIR1yn0cow"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_hsKdIGqBEe2kI90TKb9lNQ" name="File">
+      <packagedElement xmi:type="uml:Class" xmi:id="_hsKdIGqBEe2kI90TKb9lNQ" name="File" isAbstract="true">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_rmbt4GqBEe2kI90TKb9lNQ" name="novel" type="_SZHKgCtUEeqgj_wxJ3Xgsg" association="_rmVnQGqBEe2kI90TKb9lNQ"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_rmVnQGqBEe2kI90TKb9lNQ" memberEnd="_rmbt4GqBEe2kI90TKb9lNQ _rmexMGqBEe2kI90TKb9lNQ">
@@ -1612,9 +1612,8 @@
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_8SW1YPyyEeqEK6KdQRY5bw" name="OdtReader">
+      <packagedElement xmi:type="uml:Class" xmi:id="_8SW1YPyyEeqEK6KdQRY5bw" name="OdtReader" isAbstract="true">
         <generalization xmi:type="uml:Generalization" xmi:id="_G8Vr0PyzEeqEK6KdQRY5bw" general="_hsKdIGqBEe2kI90TKb9lNQ"/>
-        <generalization xmi:type="uml:Generalization" xmi:id="_zWEA0CthEeqgj_wxJ3Xgsg" general="_uzf0kCthEeqgj_wxJ3Xgsg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_K_DdcJTlEeyxtJCGKSzKUg" name="_COMMENT_START" visibility="protected" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
@@ -1847,6 +1846,13 @@
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_YLFSUC2HEeqtbohuTq_ZAA" name="feed"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_gJpG8BE0Ee6te95I-uc8OQ" memberEnd="_gJxCwBE0Ee6te95I-uc8OQ _gJzfARE0Ee6te95I-uc8OQ" navigableOwnedEnd="_gJxCwBE0Ee6te95I-uc8OQ _gJzfARE0Ee6te95I-uc8OQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gJvNkBE0Ee6te95I-uc8OQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gJv0oBE0Ee6te95I-uc8OQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_gJzfARE0Ee6te95I-uc8OQ" name="client" type="_8SW1YPyyEeqEK6KdQRY5bw" association="_gJpG8BE0Ee6te95I-uc8OQ"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_gJxCwBE0Ee6te95I-uc8OQ" name="parser" type="_uzf0kCthEeqgj_wxJ3Xgsg" association="_gJpG8BE0Ee6te95I-uc8OQ"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_tco8sL3xEeuITv7MyBA5yA" name="ui">
