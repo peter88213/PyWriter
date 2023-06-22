@@ -1,4 +1,4 @@
-"""Provide a generic class for ODT file import.
+"""Provide an abstract ODT file reader class.
 
 Other ODT file readers inherit from this class.
 
@@ -6,6 +6,7 @@ Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from abc import ABC
 import re
 from pywriter.pywriter_globals import *
 from pywriter.model.chapter import Chapter
@@ -14,13 +15,17 @@ from pywriter.file.file import File
 from pywriter.odt_r.odt_parser import OdtParser
 
 
-class OdtReader(File, OdtParser):
-    """Generic ODT file reader.
+class OdtReader(File, ABC):
+    """Abstract ODT file reader class.
     
     Public methods:
-        handle comment(data) -- Process inline comments within scene content.
-        handle_starttag(tag, attrs) -- Identify scenes and chapters.
         read() -- Parse the file and get the instance variables.
+    
+    HTMLParser-like API used by the XML parser:
+        handle comment(data) -- Process inline comments within scene content.
+        handle_data -- Stub for a data handler to be implemented in a subclass.
+        handle_endtag -- Stub for an end tag handler to be implemented in a subclass.
+        handle_starttag(tag, attrs) -- Identify scenes and chapters.
     """
     EXTENSION = '.odt'
 
@@ -64,6 +69,22 @@ class OdtReader(File, OdtParser):
         if self._scId is not None:
             self._lines.append(f'{self._COMMENT_START}{data}{self._COMMENT_END}')
 
+    def handle_data(self, data):
+        """Stub for a data handler to be implemented in a subclass.
+
+        Positional arguments:
+            data: str -- text to be stored. 
+        """
+        pass
+
+    def handle_endtag(self, tag):
+        """Stub for an end tag handler to be implemented in a subclass.
+        
+        Positional arguments:
+            tag: str -- name of the tag converted to lower case.
+        """
+        pass
+
     def handle_starttag(self, tag, attrs):
         """Identify scenes and chapters.
         
@@ -94,7 +115,8 @@ class OdtReader(File, OdtParser):
             self._lines.append(' ')
 
     def read(self):
-        OdtParser.feed_file(self, self.filePath)
+        parser = OdtParser(self)
+        parser.feed_file(self.filePath)
 
     def _convert_to_yw(self, text):
         """Convert html formatting tags to yWriter 7 raw markup.

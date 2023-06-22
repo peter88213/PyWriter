@@ -1,4 +1,4 @@
-"""Provide a generic class for ODS file import.
+"""Provide an abstract ODS file reader class.
 
 Other ODS file readers inherit from this class.
 
@@ -6,14 +6,15 @@ Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+from abc import ABC, abstractmethod
 from pywriter.pywriter_globals import *
 from pywriter.file.file import File
 from pywriter.file.file_export import FileExport
 from pywriter.ods_r.ods_parser import OdsParser
 
 
-class OdsReader(File):
-    """Generic OpenDocument spreadsheet document reader.
+class OdsReader(File, ABC):
+    """Abstract OpenDocument spreadsheet document reader.
 
     Public methods:
         read() -- parse the file and get the instance variables.
@@ -40,6 +41,7 @@ class OdsReader(File):
         super().__init__(filePath)
         self._rows = []
 
+    @abstractmethod
     def read(self):
         """Parse the file and get the instance variables.
         
@@ -50,8 +52,8 @@ class OdsReader(File):
         """
         self._rows = []
         cellsPerRow = len(self._rowTitles)
-        reader = OdsParser()
-        self._rows = reader.get_rows(self.filePath, cellsPerRow)
+        parser = OdsParser()
+        self._rows = parser.get_rows(self.filePath, cellsPerRow)
         for row in self._rows:
             if len(row) != cellsPerRow:
                 print(row)

@@ -60,10 +60,7 @@ class File(ABC):
             
         Optional arguments:
             kwargs -- keyword arguments to be used by subclasses.  
-            
-        Extends the superclass constructor.          
         """
-        super().__init__()
         self.novel = None
 
         self._filePath = None

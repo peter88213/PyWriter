@@ -16,7 +16,7 @@ odt_r_partdesc -- Provide a class for ODT invisibly tagged part descriptions imp
 odt_r_proof -- Provide a class for ODT visibly tagged chapters and scenes import.
 odt_r_scenedesc -- Provide a class for ODT invisibly tagged scene descriptions import.
 odt_r_todo -- Provide a class for ODT invisibly tagged "Todo" chapters import.
-odt_reader -- Provide a generic class for ODT file import.
+odt_reader -- Provide an abstract ODT file reader class.
 
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/PyWriter

@@ -11,7 +11,7 @@ from pywriter.pywriter_globals import *
 
 
 class OdtParser(sax.ContentHandler):
-    """An ODT document parser, emulating the html.parser.HTMLParser API.
+    """An ODT document parser, using the html.parser.HTMLParser API.
     
     Public methods:
         feed_file(filePath) -- Feed an ODT file to the parser.
@@ -21,14 +21,9 @@ class OdtParser(sax.ContentHandler):
         endElement -- Signals the end of an element in non-namespace mode.
         startElement -- Signals the start of an element in non-namespace mode.
       
-      HTMLParser-like API
-        handle_comment -- Stub for a comment handler to be implemented in a subclass.
-        handle_data -- Stub for a data handler to be implemented in a subclass.
-        handle_endtag -- Stub for an end tag handler to be implemented in a subclass.
-        handle_starttag -- Stub for a start tag handler to be implemented in a subclass.  
     """
 
-    def __init__(self):
+    def __init__(self, client):
         super().__init__()
         self._emTags = ['Emphasis']
         self._strongTags = ['Strong_20_Emphasis']
@@ -42,6 +37,7 @@ class OdtParser(sax.ContentHandler):
         self._list = False
         self._span = []
         self._style = None
+        self._client = client
 
     def feed_file(self, filePath):
         """Feed an ODT file to the parser.
@@ -81,7 +77,7 @@ class OdtParser(sax.ContentHandler):
                 textProperties = defaultStyle.find('style:text-properties', namespaces)
                 lngCode = textProperties.get(f'{{{namespaces["fo"]}}}language')
                 ctrCode = textProperties.get(f'{{{namespaces["fo"]}}}country')
-                self.handle_starttag('body', [('language', lngCode), ('country', ctrCode)])
+                self._client.handle_starttag('body', [('language', lngCode), ('country', ctrCode)])
                 break
 
         #--- Get title, description, and author from 'meta.xml'.
@@ -91,17 +87,17 @@ class OdtParser(sax.ContentHandler):
             title = meta.find('dc:title', namespaces)
             if title is not None:
                 if title.text:
-                    self.handle_starttag('title', [()])
-                    self.handle_data(title.text)
-                    self.handle_endtag('title')
+                    self._client.handle_starttag('title', [()])
+                    self._client.handle_data(title.text)
+                    self._client.handle_endtag('title')
             author = meta.find('meta:initial-creator', namespaces)
             if author is not None:
                 if author.text:
-                    self.handle_starttag('meta', [('', 'author'), ('', author.text)])
+                    self._client.handle_starttag('meta', [('', 'author'), ('', author.text)])
             desc = meta.find('dc:description', namespaces)
             if desc is not None:
                 if desc.text:
-                    self.handle_starttag('meta', [('', 'description'), ('', desc.text)])
+                    self._client.handle_starttag('meta', [('', 'description'), ('', desc.text)])
 
         #--- Parse 'content.xml'.
         sax.parseString(content, self)
@@ -115,9 +111,9 @@ class OdtParser(sax.ContentHandler):
             if self._commentParagraphCount == 1:
                 self._comment = f'{self._comment}{content}'
         elif self._paragraph:
-            self.handle_data(content)
+            self._client.handle_data(content)
         elif self._heading is not None:
-            self.handle_data(content)
+            self._client.handle_data(content)
 
     def endElement(self, name):
         """Signals the end of an element in non-namespace mode.
@@ -127,26 +123,26 @@ class OdtParser(sax.ContentHandler):
         if name == 'text:p':
             if self._commentParagraphCount is None:
                 while self._span:
-                    self.handle_endtag(self._span.pop())
+                    self._client.handle_endtag(self._span.pop())
                 if self._blockquote:
-                    self.handle_endtag('blockquote')
+                    self._client.handle_endtag('blockquote')
                     self._blockquote = False
                 elif self._heading:
-                    self.handle_endtag(self._heading)
+                    self._client.handle_endtag(self._heading)
                     self._heading = None
                 else:
-                    self.handle_endtag('p')
+                    self._client.handle_endtag('p')
                 self._paragraph = False
         elif name == 'text:span':
             if self._span:
-                self.handle_endtag(self._span.pop())
+                self._client.handle_endtag(self._span.pop())
         elif name == 'text:section':
-            self.handle_endtag('div')
+            self._client.handle_endtag('div')
         elif name == 'office:annotation':
-            self.handle_comment(self._comment)
+            self._client.handle_comment(self._comment)
             self._commentParagraphCount = None
         elif name == 'text:h':
-            self.handle_endtag(self._heading)
+            self._client.handle_endtag(self._heading)
             self._heading = None
         elif name == 'text:list-item':
             self._list = False
@@ -170,40 +166,40 @@ class OdtParser(sax.ContentHandler):
             if self._commentParagraphCount is not None:
                 self._commentParagraphCount += 1
             elif style in self._blockquoteTags:
-                self.handle_starttag('blockquote', param)
+                self._client.handle_starttag('blockquote', param)
                 self._paragraph = True
                 self._blockquote = True
             elif style.startswith('Heading'):
                 self._heading = f'h{style[-1]}'
-                self.handle_starttag(self._heading, [()])
+                self._client.handle_starttag(self._heading, [()])
             elif style in self._headingTags:
                 self._heading = self._headingTags[style]
-                self.handle_starttag(self._heading, [()])
+                self._client.handle_starttag(self._heading, [()])
             elif self._list:
-                self.handle_starttag('li', [()])
+                self._client.handle_starttag('li', [()])
                 self._paragraph = True
             else:
-                self.handle_starttag('p', param)
+                self._client.handle_starttag('p', param)
                 self._paragraph = True
             if style in self._emTags:
                 self._span.append('em')
-                self.handle_starttag('em', [()])
+                self._client.handle_starttag('em', [()])
             if style in self._strongTags:
                 self._span.append('strong')
-                self.handle_starttag('strong', [()])
+                self._client.handle_starttag('strong', [()])
         elif name == 'text:span':
             if style in self._emTags:
                 self._span.append('em')
-                self.handle_starttag('em', [()])
+                self._client.handle_starttag('em', [()])
             if style in self._strongTags:
                 self._span.append('strong')
-                self.handle_starttag('strong', [()])
+                self._client.handle_starttag('strong', [()])
             if style in self._languageTags:
                 self._span.append('lang')
-                self.handle_starttag('lang', [('lang', self._languageTags[style])])
+                self._client.handle_starttag('lang', [('lang', self._languageTags[style])])
         elif name == 'text:section':
             sectionId = xmlAttributes['text:name']
-            self.handle_starttag('div', [('id', sectionId)])
+            self._client.handle_starttag('div', [('id', sectionId)])
         elif name == 'office:annotation':
             self._commentParagraphCount = 0
             self._comment = ''
@@ -212,7 +208,7 @@ class OdtParser(sax.ContentHandler):
                 self._heading = f'h{xmlAttributes["text:outline-level"]}'
             except:
                 self._heading = f'h{style[-1]}'
-            self.handle_starttag(self._heading, [()])
+            self._client.handle_starttag(self._heading, [()])
         elif name == 'text:list-item':
             self._list = True
         elif name == 'style:style':
@@ -236,38 +232,5 @@ class OdtParser(sax.ContentHandler):
                     locale = lngCode
                 self._languageTags[self._style] = locale
         elif name == 'text:s':
-            self.handle_starttag('s', [()])
-
-    def handle_comment(self, data):
-        """Stub for a comment handler to be implemented in a subclass.
-        
-        Positional arguments:
-            data: str -- comment text. 
-        """
-        pass
-
-    def handle_data(self, data):
-        """Stub for a data handler to be implemented in a subclass.
-
-        Positional arguments:
-            data: str -- text to be stored. 
-        """
-        pass
-
-    def handle_endtag(self, tag):
-        """Stub for an end tag handler to be implemented in a subclass.
-        
-        Positional arguments:
-            tag: str -- name of the tag converted to lower case.
-        """
-        pass
-
-    def handle_starttag(self, tag, attrs):
-        """Stub for a start tag handler to be implemented in a subclass.
-        
-        Positional arguments:
-            tag: str -- name of the tag converted to lower case.
-            attrs -- list of (name, value) pairs containing the attributes found inside the tag’s <> brackets.
-        """
-        pass
+            self._client.handle_starttag('s', [()])
 
