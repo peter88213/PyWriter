@@ -504,3 +504,7 @@ Read ODT documents without meta.xml as created with FreeMind.
 ### v12.13
 
 When exporting an ODT document that is not meant for re-import, convert yWriter comments into footnotes or endnotes.
+
+### v12.14
+
+Read and write the word target start and end dates.
