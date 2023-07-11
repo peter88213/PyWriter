@@ -40,11 +40,11 @@ class RichTextTk(tk.Text):
         # Add a scrollbar:
         self.frame = ttk.Frame(master)
         self.vbar = ttk.Scrollbar(self.frame)
-        self.vbar.pack(side=tk.RIGHT, fill=tk.Y)
+        self.vbar.pack(side='right', fill='y')
 
         kw.update({'yscrollcommand': self.vbar.set})
         tk.Text.__init__(self, self.frame, **kw)
-        self.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.pack(side='left', fill='both', expand=True)
         self.vbar['command'] = self.yview
 
         # Copy geometry methods of self.frame without overriding Text

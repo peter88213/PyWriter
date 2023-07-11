@@ -37,7 +37,7 @@ class UiTk(Ui):
         self.title = title
         self.root = tk.Tk()
         self.root.minsize(400, 150)
-        self.root.resizable(width=tk.FALSE, height=tk.FALSE)
+        self.root.resizable(width='false', height='false')
         self.root.title(title)
         self._appInfo = tk.Label(self.root, text='')
         self._appInfo.pack(padx=20, pady=5)
