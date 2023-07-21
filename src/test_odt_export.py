@@ -1,23 +1,23 @@
 """Regression test for the pyWriter project.
 
-Test the import of an outline.
+Test the odt export.
 
 For further information see https://github.com/peter88213/PyWriter
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.odt_r.odt_r_outline import OdtROutline
-from pywriter.test.import_test import ImportTest
+from pywriter.odt_w.odt_w_export import OdtWExport
+from pywriter.test.export_test import ExportTest
 import unittest
 
 
-class NrmOpr(ImportTest, unittest.TestCase):
-    _importClass = OdtROutline
-    _dataPath = 'data/_outline/'
+class NrmOpr(ExportTest, unittest.TestCase):
+    _dataPath = '../test/data/_odt/'
+    _exportClass = OdtWExport
 
     # The test methods must be defined here to identify the source of failure.
 
-    def test_imp_to_yw7(self):
-        super().test_imp_to_yw7()
+    def test_yw7_to_exp(self):
+        super().test_yw7_to_exp()
 
 
 def main():

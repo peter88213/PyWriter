@@ -43,10 +43,6 @@ class ImportFromWord(ImportExportTest, unittest.TestCase):
     def test_imp_to_yw7(self):
         super().test_imp_to_yw7()
 
-    @unittest.skip('unused')
-    def test_yw7_to_exp(self):
-        pass
-
     def _remove_all_tempfiles(self):
         super()._remove_all_tempfiles()
 
@@ -69,10 +65,6 @@ class ImportFromGoogledocs(ImportExportTest, unittest.TestCase):
 
     def test_imp_to_yw7(self):
         super().test_imp_to_yw7()
-
-    @unittest.skip('unused')
-    def test_yw7_to_exp(self):
-        pass
 
     def _remove_all_tempfiles(self):
         super()._remove_all_tempfiles()
