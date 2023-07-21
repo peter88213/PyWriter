@@ -68,8 +68,8 @@ class ExportTest:
     def _init_paths(self):
         """Initialize the test data and execution paths."""
         if not hasattr(self, '_dataPath'):
-            self._dataPath = f'data/{self._exportClass.SUFFIX}/'
-        self._execPath = 'tmp/'
+            self._dataPath = f'../test/data/{self._exportClass.SUFFIX}/'
+        self._execPath = '../test/tmp/'
         self._testExpFile = f'{self._execPath}yw7 Sample Project{self._exportClass.SUFFIX}{self._exportClass.EXTENSION}'
         self._odfCntntFile = 'content.xml'
         self._testYwFile = f'{self._execPath}yw7 Sample Project.yw7'
