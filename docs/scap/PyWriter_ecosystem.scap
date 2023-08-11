@@ -1,17 +1,17 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<ScappleDocument ID="07522C29-60F6-4E76-8D8D-5BFA52447EEF" Version="1.1">
+<?xml version='1.0' encoding='UTF-8'?>
+<ScappleDocument ID="07522C29-60F6-4E76-8D8D-5BFA52447EEF" Version="1.2">
    <Notes>
-      <Note Width="65.5029" FontSize="12" ID="0" Position="415.7,344.9">
+      <Note Width="64.4531" FontSize="12" ID="0" Position="415.7,344.9">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
             <Border Weight="3">0.690303 0.407263 0.550912</Border>
          </Appearance>
          <String>project.yw7</String>
-         <ConnectedNoteIDs>1-3, 5, 7, 10-11, 13-14, 19-20, 22, 29, 31, 33, 39, 46-48, 52, 55</ConnectedNoteIDs>
+         <ConnectedNoteIDs>1-3, 5, 7, 10, 13-14, 19-20, 22, 29, 31, 33, 39, 46-48, 52, 55</ConnectedNoteIDs>
          <PointsToNoteIDs>1-3, 5, 7, 10, 14, 19-20, 22, 29, 31, 33, 46-48, 52</PointsToNoteIDs>
       </Note>
-      <Note Width="54.0527" FontSize="12" ID="1" Position="570.3,548.0">
+      <Note Width="55.0781" FontSize="12" ID="1" Position="570.3,548.0">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -21,47 +21,47 @@
          <ConnectedNoteIDs>0, 17-18, 26-27, 42-43, 51</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 18, 26-27, 43, 51</PointsToNoteIDs>
       </Note>
-      <Note Width="48.5107" FontSize="12" ID="2" Position="614.8,151.2">
+      <Note Width="48.0469" FontSize="12" ID="2" Position="614.8,151.2">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>novelyst</String>
          <ConnectedNoteIDs>0, 4, 10, 29, 50</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 4, 50</PointsToNoteIDs>
       </Note>
-      <Note Width="92.6758" FontSize="12" ID="3" Position="606.3,364.4">
+      <Note Width="93.3594" FontSize="12" ID="3" Position="625.0,357.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw-cnv extension</String>
          <ConnectedNoteIDs>0, 4, 9</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 4</PointsToNoteIDs>
       </Note>
-      <Note Width="110.912" FontSize="12" ID="4" Position="734.4,284.1">
+      <Note Width="111.694" FontSize="12" ID="4" Position="723.5,248.2">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
             <Border Weight="1">0.690303 0.407263 0.550912</Border>
          </Appearance>
          <String>project(_suffix).odt, project(_suffix).ods</String>
-         <ConnectedNoteIDs>2-3, 5, 9, 11</ConnectedNoteIDs>
-         <PointsToNoteIDs>3, 5, 9, 11</PointsToNoteIDs>
+         <ConnectedNoteIDs>2-3, 5, 9</ConnectedNoteIDs>
+         <PointsToNoteIDs>3, 5, 9</PointsToNoteIDs>
       </Note>
-      <Note Width="47.4976" FontSize="12" ID="5" Position="716.5,422.3">
+      <Note Width="46.4844" FontSize="12" ID="5" Position="716.5,422.3">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yW2OO</String>
          <ConnectedNoteIDs>0, 4</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 4</PointsToNoteIDs>
       </Note>
-      <Note Width="84.2407" FontSize="12" ID="6" Position="146.2,131.6">
+      <Note Width="83.9844" FontSize="12" ID="6" Position="146.2,131.6">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -71,17 +71,17 @@
          <ConnectedNoteIDs>7-8, 10</ConnectedNoteIDs>
          <PointsToNoteIDs>7-8, 10</PointsToNoteIDs>
       </Note>
-      <Note Width="52.5391" FontSize="12" ID="7" Position="276.6,209.8">
+      <Note Width="51.9531" FontSize="12" ID="7" Position="276.6,209.8">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>aeon2yw</String>
          <ConnectedNoteIDs>0, 6</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 6</PointsToNoteIDs>
       </Note>
-      <Note Width="88.5132" FontSize="12" ID="8" Position="146.8,74.6">
+      <Note Width="89.4531" FontSize="12" ID="8" Position="146.8,74.6">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -91,37 +91,27 @@
          <ConnectedNoteIDs>6</ConnectedNoteIDs>
          <PointsToNoteIDs>6</PointsToNoteIDs>
       </Note>
-      <Note Width="96.8872" FontSize="12" ID="9" Position="600.7,284.8">
+      <Note Width="98.8281" FontSize="12" ID="9" Position="574.9,257.5">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
             <Border Weight="1">0.485893 0.568933 0.756207</Border>
          </Appearance>
          <String>LibreOffice Writer</String>
-         <ConnectedNoteIDs>3-4, 11, 28</ConnectedNoteIDs>
+         <ConnectedNoteIDs>3-4, 28</ConnectedNoteIDs>
          <PointsToNoteIDs>4, 28</PointsToNoteIDs>
       </Note>
-      <Note Width="118.677" FontSize="12" ID="10" Position="301.6,153.5">
+      <Note Width="119.922" FontSize="12" ID="10" Position="301.6,153.5">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>novelyst_aeon2 plugin</String>
          <ConnectedNoteIDs>0, 2, 6</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 6</PointsToNoteIDs>
       </Note>
-      <Note Width="87.7563" FontSize="12" ID="11" Position="604.7,221.5">
-         <Appearance>
-            <Alignment>Left</Alignment>
-            <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
-         </Appearance>
-         <String>lo2yw extension</String>
-         <ConnectedNoteIDs>0, 4, 9</ConnectedNoteIDs>
-         <PointsToNoteIDs>0</PointsToNoteIDs>
-      </Note>
-      <Note Width="112.634" FontSize="12" ID="12" Position="39.9,302.0">
+      <Note Width="113.672" FontSize="12" ID="12" Position="39.9,302.0">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -131,27 +121,27 @@
          <ConnectedNoteIDs>13</ConnectedNoteIDs>
          <PointsToNoteIDs>13</PointsToNoteIDs>
       </Note>
-      <Note Width="46.9971" FontSize="12" ID="13" Position="200.0,306.6">
+      <Note Width="47.2656" FontSize="12" ID="13" Position="200.0,306.6">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>scappex</String>
          <ConnectedNoteIDs>0, 12</ConnectedNoteIDs>
          <PointsToNoteIDs>0</PointsToNoteIDs>
       </Note>
-      <Note Width="43.9575" FontSize="12" ID="14" Position="193.0,351.9">
+      <Note Width="43.3594" FontSize="12" ID="14" Position="193.0,351.9">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw2md</String>
          <ConnectedNoteIDs>0, 15-16</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 16</PointsToNoteIDs>
       </Note>
-      <Note Width="111.414" FontSize="12" ID="15" Position="22.6,343.4">
+      <Note Width="110.213" FontSize="12" ID="15" Position="22.6,343.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -161,7 +151,7 @@
          <ConnectedNoteIDs>14</ConnectedNoteIDs>
          <PointsToNoteIDs>14</PointsToNoteIDs>
       </Note>
-      <Note Width="104.053" FontSize="12" ID="16" Position="20.3,406.7">
+      <Note Width="105.078" FontSize="12" ID="16" Position="20.3,406.7">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -170,7 +160,7 @@
          <String>project.md (export)</String>
          <ConnectedNoteIDs>14</ConnectedNoteIDs>
       </Note>
-      <Note Width="57.1167" FontSize="12" ID="17" Position="591.4,657.4">
+      <Note Width="57.4219" FontSize="12" ID="17" Position="591.4,657.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -180,7 +170,7 @@
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
          <PointsToNoteIDs>1</PointsToNoteIDs>
       </Note>
-      <Note Width="105.493" FontSize="12" ID="18" Position="705.4,555.1">
+      <Note Width="105.859" FontSize="12" ID="18" Position="705.4,555.1">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -189,17 +179,17 @@
          <String>Exported Project.rtf</String>
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
       </Note>
-      <Note Width="50.7202" FontSize="12" ID="20" Position="198.4,401.6">
+      <Note Width="50.3906" FontSize="12" ID="20" Position="198.4,401.6">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw2html</String>
          <ConnectedNoteIDs>0, 21</ConnectedNoteIDs>
          <PointsToNoteIDs>21</PointsToNoteIDs>
       </Note>
-      <Note Width="68.4204" FontSize="12" ID="21" Position="35.9,453.1">
+      <Note Width="68.3594" FontSize="12" ID="21" Position="35.9,453.1">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -208,17 +198,17 @@
          <String>project.html</String>
          <ConnectedNoteIDs>20</ConnectedNoteIDs>
       </Note>
-      <Note Width="42.9565" FontSize="12" ID="22" Position="395.4,502.4">
+      <Note Width="42.5781" FontSize="12" ID="22" Position="395.4,502.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw2xtg</String>
          <ConnectedNoteIDs>0, 23</ConnectedNoteIDs>
          <PointsToNoteIDs>23</PointsToNoteIDs>
       </Note>
-      <Note Width="62.3047" FontSize="12" ID="23" Position="381.3,574.3">
+      <Note Width="62.8906" FontSize="12" ID="23" Position="381.3,574.3">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -228,7 +218,7 @@
          <ConnectedNoteIDs>22, 24</ConnectedNoteIDs>
          <PointsToNoteIDs>24</PointsToNoteIDs>
       </Note>
-      <Note Width="70.9229" FontSize="12" ID="24" Position="374.1,636.7">
+      <Note Width="69.9219" FontSize="12" ID="24" Position="374.1,636.7">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -238,7 +228,7 @@
          <ConnectedNoteIDs>23, 25</ConnectedNoteIDs>
          <PointsToNoteIDs>25</PointsToNoteIDs>
       </Note>
-      <Note Width="53.3325" FontSize="12" ID="25" Position="378.9,706.2">
+      <Note Width="51.9531" FontSize="12" ID="25" Position="378.9,706.2">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -247,7 +237,7 @@
          <String>book.qxp</String>
          <ConnectedNoteIDs>24</ConnectedNoteIDs>
       </Note>
-      <Note Width="108.63" FontSize="12" ID="26" Position="716.4,516.4">
+      <Note Width="108.984" FontSize="12" ID="26" Position="716.4,516.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -256,7 +246,7 @@
          <String>Exported Project.tex</String>
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
       </Note>
-      <Note Width="116.687" FontSize="12" ID="27" Position="716.4,470.4">
+      <Note Width="116.797" FontSize="12" ID="27" Position="716.4,470.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -265,7 +255,7 @@
          <String>Exported Project.html</String>
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
       </Note>
-      <Note Width="70.7886" FontSize="12" ID="28" Position="525.8,322.7">
+      <Note Width="69.9219" FontSize="12" ID="28" Position="525.8,322.7">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -274,17 +264,17 @@
          <String>project.epub</String>
          <ConnectedNoteIDs>9</ConnectedNoteIDs>
       </Note>
-      <Note Width="128.406" FontSize="12" ID="29" Position="561.7,70.4">
+      <Note Width="130.859" FontSize="12" ID="29" Position="561.7,70.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>novelyst_timeline plugin</String>
          <ConnectedNoteIDs>0, 2, 30</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 30</PointsToNoteIDs>
       </Note>
-      <Note Width="85.8643" FontSize="12" ID="30" Position="417.9,65.6">
+      <Note Width="87.1094" FontSize="12" ID="30" Position="417.9,65.6">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -294,17 +284,17 @@
          <ConnectedNoteIDs>29, 31-32</ConnectedNoteIDs>
          <PointsToNoteIDs>29, 31-32</PointsToNoteIDs>
       </Note>
-      <Note Width="65.7349" FontSize="12" ID="31" Position="429.0,122.7">
+      <Note Width="66.7969" FontSize="12" ID="31" Position="429.0,122.7">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw-timeline</String>
          <ConnectedNoteIDs>0, 30</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 30</PointsToNoteIDs>
       </Note>
-      <Note Width="50.4517" FontSize="12" ID="32" Position="298.5,67.2">
+      <Note Width="51.1719" FontSize="12" ID="32" Position="298.5,67.2">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -314,7 +304,7 @@
          <ConnectedNoteIDs>30</ConnectedNoteIDs>
          <PointsToNoteIDs>30</PointsToNoteIDs>
       </Note>
-      <Note Width="103.882" FontSize="12" ID="42" Position="499.3,694.9">
+      <Note Width="105.078" FontSize="12" ID="42" Position="499.3,694.9">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -324,7 +314,7 @@
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
          <PointsToNoteIDs>1</PointsToNoteIDs>
       </Note>
-      <Note Width="111.462" FontSize="12" ID="43" Position="650.9,628.5">
+      <Note Width="111.328" FontSize="12" ID="43" Position="650.9,628.5">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -334,46 +324,46 @@
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
          <PointsToNoteIDs>1</PointsToNoteIDs>
       </Note>
-      <Note Width="74.4751" FontSize="12" ID="46" Position="564.1,461.3">
+      <Note Width="74.6094" FontSize="12" ID="46" Position="564.1,461.3">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw-renumber</String>
          <ConnectedNoteIDs>0</ConnectedNoteIDs>
          <PointsToNoteIDs>0</PointsToNoteIDs>
       </Note>
-      <Note Width="66.5649" FontSize="12" ID="47" Position="200.0,446.5">
+      <Note Width="66.7969" FontSize="12" ID="47" Position="200.0,446.5">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw-reporter</String>
          <ConnectedNoteIDs>0, 35, 44</ConnectedNoteIDs>
          <PointsToNoteIDs>35, 44</PointsToNoteIDs>
       </Note>
-      <Note Width="58.2031" FontSize="12" ID="48" Position="616.4,430.1">
+      <Note Width="58.9844" FontSize="12" ID="48" Position="616.4,430.1">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw-viewer</String>
          <ConnectedNoteIDs>0</ConnectedNoteIDs>
       </Note>
-      <Note Width="51.8066" FontSize="12" ID="19" Position="218.8,499.6">
+      <Note Width="51.9531" FontSize="12" ID="19" Position="218.8,499.6">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw2oxml</String>
          <ConnectedNoteIDs>0, 49</ConnectedNoteIDs>
          <PointsToNoteIDs>49</PointsToNoteIDs>
       </Note>
-      <Note Width="108.472" FontSize="12" ID="49" Position="75.8,565.2">
+      <Note Width="108.984" FontSize="12" ID="49" Position="75.8,565.2">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -382,17 +372,17 @@
          <String>project(_suffix).docx</String>
          <ConnectedNoteIDs>19</ConnectedNoteIDs>
       </Note>
-      <Note Width="52.5391" FontSize="12" ID="39" Position="228.9,251.9">
+      <Note Width="51.9531" FontSize="12" ID="39" Position="228.9,251.9">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>aeon3yw</String>
          <ConnectedNoteIDs>0, 40</ConnectedNoteIDs>
          <PointsToNoteIDs>0</PointsToNoteIDs>
       </Note>
-      <Note Width="115.295" FontSize="12" ID="40" Position="60.1,248.0">
+      <Note Width="116.016" FontSize="12" ID="40" Position="60.1,248.0">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -402,7 +392,7 @@
          <ConnectedNoteIDs>39, 41</ConnectedNoteIDs>
          <PointsToNoteIDs>39, 41</PointsToNoteIDs>
       </Note>
-      <Note Width="88.5132" FontSize="12" ID="41" Position="75.8,185.5">
+      <Note Width="89.4531" FontSize="12" ID="41" Position="75.8,185.5">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -412,7 +402,7 @@
          <ConnectedNoteIDs>40</ConnectedNoteIDs>
          <PointsToNoteIDs>40</PointsToNoteIDs>
       </Note>
-      <Note Width="105.737" FontSize="12" ID="44" Position="11.6,495.3">
+      <Note Width="105.859" FontSize="12" ID="44" Position="11.6,495.3">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -421,7 +411,7 @@
          <String>project_report.html</String>
          <ConnectedNoteIDs>47</ConnectedNoteIDs>
       </Note>
-      <Note Width="105.737" FontSize="12" ID="50" Position="701.5,150.0">
+      <Note Width="105.859" FontSize="12" ID="50" Position="701.5,150.0">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -430,7 +420,7 @@
          <String>project_report.html</String>
          <ConnectedNoteIDs>2</ConnectedNoteIDs>
       </Note>
-      <Note Width="117.053" FontSize="12" ID="51" Position="695.3,594.9">
+      <Note Width="116.797" FontSize="12" ID="51" Position="695.3,594.9">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -439,17 +429,17 @@
          <String>Exported Project.docx</String>
          <ConnectedNoteIDs>1</ConnectedNoteIDs>
       </Note>
-      <Note Width="42.8589" FontSize="12" ID="52" Position="256.2,533.2">
+      <Note Width="41.7969" FontSize="12" ID="52" Position="256.2,533.2">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw2nw</String>
          <ConnectedNoteIDs>0, 53</ConnectedNoteIDs>
          <PointsToNoteIDs>0, 53</PointsToNoteIDs>
       </Note>
-      <Note Width="115.332" FontSize="12" ID="53" Position="146.9,604.3">
+      <Note Width="116.016" FontSize="12" ID="53" Position="146.9,604.3">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -459,7 +449,7 @@
          <ConnectedNoteIDs>52, 54</ConnectedNoteIDs>
          <PointsToNoteIDs>52, 54</PointsToNoteIDs>
       </Note>
-      <Note Width="68.5669" FontSize="12" ID="54" Position="164.8,665.2">
+      <Note Width="69.1406" FontSize="12" ID="54" Position="164.8,665.2">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -469,17 +459,17 @@
          <ConnectedNoteIDs>53</ConnectedNoteIDs>
          <PointsToNoteIDs>53</PointsToNoteIDs>
       </Note>
-      <Note Width="53.4424" FontSize="12" ID="55" Position="322.7,548.8">
+      <Note Width="53.5156" FontSize="12" ID="55" Position="322.7,548.8">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>mm2yw7</String>
          <ConnectedNoteIDs>0, 56</ConnectedNoteIDs>
          <PointsToNoteIDs>0</PointsToNoteIDs>
       </Note>
-      <Note Width="64.978" FontSize="12" ID="56" Position="296.1,609.0">
+      <Note Width="65.2344" FontSize="12" ID="56" Position="296.1,609.0">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -489,7 +479,7 @@
          <ConnectedNoteIDs>55, 57</ConnectedNoteIDs>
          <PointsToNoteIDs>55, 57</PointsToNoteIDs>
       </Note>
-      <Note Width="110.51" FontSize="12" ID="57" Position="263.3,669.9">
+      <Note Width="110.547" FontSize="12" ID="57" Position="263.3,669.9">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.844068 0.869596 0.923064</Fill>
@@ -499,17 +489,17 @@
          <ConnectedNoteIDs>56</ConnectedNoteIDs>
          <PointsToNoteIDs>56</PointsToNoteIDs>
       </Note>
-      <Note Width="50.3784" FontSize="12" ID="33" Position="475.8,525.4">
+      <Note Width="49.6094" FontSize="12" ID="33" Position="475.8,525.4">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.808835 0.872419 0.801343</Fill>
-            <Border Weight="1">0.399100 0.583322 0.354864</Border>
+            <Border Weight="1">0.3991 0.583322 0.354864</Border>
          </Appearance>
          <String>yw2odm</String>
          <ConnectedNoteIDs>0, 34</ConnectedNoteIDs>
          <PointsToNoteIDs>34</PointsToNoteIDs>
       </Note>
-      <Note Width="105.652" FontSize="12" ID="34" Position="460.2,604.3">
+      <Note Width="105.859" FontSize="12" ID="34" Position="460.2,604.3">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -518,7 +508,7 @@
          <String>project.odm + *.odt</String>
          <ConnectedNoteIDs>33</ConnectedNoteIDs>
       </Note>
-      <Note Width="98.0835" FontSize="12" ID="35" Position="46.8,529.7">
+      <Note Width="98.0469" FontSize="12" ID="35" Position="46.8,529.7">
          <Appearance>
             <Alignment>Left</Alignment>
             <Fill>0.898329 0.817472 0.865339</Fill>
@@ -528,46 +518,47 @@
          <ConnectedNoteIDs>47</ConnectedNoteIDs>
       </Note>
    </Notes>
-   <BackgroundShapes/>
+   <AutoFit>0-3, 5-10, 12-14, 16-35, 39-44, 46-57</AutoFit>
    <NoteStyles>
-      <Style AffectFontStyle="No" AffectAlignment="No" Name="Blue Bubble" ID="8F851FEE-38FC-42BE-818F-3A802712A9DA" AffectTextColor="No" AffectNoteBody="Yes" AffectSticky="No" AffectSize="No" AffectFade="No">
+      <Style AffectFade="No" ID="44E1C77F-6E22-40C3-A61D-D98E34EA74FF" AffectTextColor="No" AffectNoteBody="Yes" Name="Brown Bubble" AffectSticky="No" AffectFontStyle="No" AffectAlignment="No" AffectSize="No">
          <BorderThickness>1</BorderThickness>
-         <BorderColor>0.485893 0.568933 0.756207</BorderColor>
-         <FillColor>0.844068 0.869596 0.923064</FillColor>
+         <BorderColor>0.26949 0.164034 0.186694</BorderColor>
+         <FillColor>0.934157 0.888319 0.78529</FillColor>
       </Style>
-      <Style AffectFontStyle="Yes" AffectAlignment="Yes" Name="Title Text" ID="5519AEAE-504B-4E8A-96F7-0195A66E5624" AffectTextColor="No" AffectNoteBody="No" AffectSticky="No" AffectSize="No" AffectFade="No">
-         <IsBold>Yes</IsBold>
-         <FontSize>12.0</FontSize>
-      </Style>
-      <Style AffectFontStyle="No" AffectAlignment="No" Name="Red Text" ID="77BBF361-A24E-4208-9177-3A6E3EFB2764" AffectTextColor="Yes" AffectNoteBody="No" AffectSticky="No" AffectSize="No" AffectFade="No">
-         <TextColor>1.0 0.0 0.0</TextColor>
-      </Style>
-      <Style AffectFontStyle="No" AffectAlignment="No" Name="Pink Bubble" ID="D29821FF-A219-46AF-AB82-276D573FE98E" AffectTextColor="No" AffectNoteBody="Yes" AffectSticky="No" AffectSize="No" AffectFade="No">
+      <Style AffectFade="No" ID="D29821FF-A219-46AF-AB82-276D573FE98E" AffectTextColor="No" AffectNoteBody="Yes" Name="Pink Bubble" AffectSticky="No" AffectFontStyle="No" AffectAlignment="No" AffectSize="No">
          <BorderThickness>1</BorderThickness>
          <BorderColor>0.690303 0.407263 0.550912</BorderColor>
          <FillColor>0.898329 0.817472 0.865339</FillColor>
       </Style>
-      <Style AffectFontStyle="No" AffectAlignment="No" Name="Green Bubble" ID="90489E2C-CCB3-4130-9C0E-068565C8F69F" AffectTextColor="No" AffectNoteBody="Yes" AffectSticky="No" AffectSize="No" AffectFade="No">
+      <Style AffectFade="No" ID="5519AEAE-504B-4E8A-96F7-0195A66E5624" AffectTextColor="No" AffectNoteBody="No" Name="Title Text" AffectSticky="No" AffectFontStyle="Yes" AffectAlignment="Yes" AffectSize="No">
+         <IsBold>Yes</IsBold>
+         <FontSize>12.0</FontSize>
+      </Style>
+      <Style AffectFade="No" ID="90489E2C-CCB3-4130-9C0E-068565C8F69F" AffectTextColor="No" AffectNoteBody="Yes" Name="Green Bubble" AffectSticky="No" AffectFontStyle="No" AffectAlignment="No" AffectSize="No">
          <BorderThickness>1</BorderThickness>
-         <BorderColor>0.399100 0.583322 0.354864</BorderColor>
+         <BorderColor>0.3991 0.583322 0.354864</BorderColor>
          <FillColor>0.808835 0.872419 0.801343</FillColor>
       </Style>
-      <Style AffectFontStyle="No" AffectAlignment="No" Name="Yellow Bubble" ID="2AC7628D-51AB-47E6-A1FB-A67135384FF0" AffectTextColor="No" AffectNoteBody="Yes" AffectSticky="No" AffectSize="No" AffectFade="No">
+      <Style AffectFade="No" ID="2AC7628D-51AB-47E6-A1FB-A67135384FF0" AffectTextColor="No" AffectNoteBody="Yes" Name="Yellow Bubble" AffectSticky="No" AffectFontStyle="No" AffectAlignment="No" AffectSize="No">
          <BorderThickness>1</BorderThickness>
          <BorderColor>0.769436 0.762219 0.390143</BorderColor>
          <FillColor>0.912963 0.894118 0.644541</FillColor>
       </Style>
-      <Style AffectFontStyle="No" AffectAlignment="No" Name="Brown Bubble" ID="44E1C77F-6E22-40C3-A61D-D98E34EA74FF" AffectTextColor="No" AffectNoteBody="Yes" AffectSticky="No" AffectSize="No" AffectFade="No">
+      <Style AffectFade="No" ID="8F851FEE-38FC-42BE-818F-3A802712A9DA" AffectTextColor="No" AffectNoteBody="Yes" Name="Blue Bubble" AffectSticky="No" AffectFontStyle="No" AffectAlignment="No" AffectSize="No">
          <BorderThickness>1</BorderThickness>
-         <BorderColor>0.269490 0.164034 0.186694</BorderColor>
-         <FillColor>0.934157 0.888319 0.785290</FillColor>
+         <BorderColor>0.485893 0.568933 0.756207</BorderColor>
+         <FillColor>0.844068 0.869596 0.923064</FillColor>
+      </Style>
+      <Style AffectFade="No" ID="77BBF361-A24E-4208-9177-3A6E3EFB2764" AffectTextColor="Yes" AffectNoteBody="No" Name="Red Text" AffectSticky="No" AffectFontStyle="No" AffectAlignment="No" AffectSize="No">
+         <TextColor>1.0 0.0 0.0</TextColor>
       </Style>
    </NoteStyles>
    <UISettings>
       <BackgroundColor>1.0 0.988006 0.945006</BackgroundColor>
       <DefaultFont>Calibri</DefaultFont>
       <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
+      <NoteXPadding>4.00</NoteXPadding>
       <LeftToRight>Yes</LeftToRight>
    </UISettings>
-   <PrintSettings VerticalPagination="Auto" HorizontalPagination="Clip" Orientation="Portrait" RightMargin="12.000000" BottomMargin="12.000000" HorizontallyCentered="Yes" ScaleFactor="1.000000" PagesAcross="1" PaperType="iso-a4" PagesDown="1" TopMargin="12.000000" Collates="Yes" PaperSize="-1.000000,-1.000000" LeftMargin="12.000000" VerticallyCentered="Yes"/>
+   <PrintSettings Orientation="Portrait" RightMargin="12.000000" HorizontalPagination="Clip" VerticalPagination="Auto" HorizontallyCentered="Yes" PaperSize="-1.000000,-1.000000" PagesDown="1" PagesAcross="1" ScaleFactor="1.000000" VerticallyCentered="Yes" TopMargin="12.000000" BottomMargin="12.000000" PaperType="iso-a4" LeftMargin="12.000000" Collates="Yes"/>
 </ScappleDocument>
