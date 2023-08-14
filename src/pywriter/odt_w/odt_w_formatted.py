@@ -116,8 +116,11 @@ class OdtWFormatted(OdtWriter):
         Extends the superclass method.
         """
         styleMapping = {}
+        lines = ['<office:automatic-styles>']
+        lines.append(('  <style:style style:name="Bold" style:family="text">\n'
+                      '   <style:text-properties fo:font-weight="bold"/>\n'
+                      '  </style:style>'))
         if self.novel.languages:
-            lines = ['<office:automatic-styles>']
             for i, language in enumerate(self.novel.languages, 1):
                 try:
                     lngCode, ctrCode = language.split('-')
@@ -129,10 +132,8 @@ class OdtWFormatted(OdtWriter):
                               f'style:language-asian="{lngCode}" style:country-asian="{ctrCode}" '
                               f'style:language-complex="{lngCode}" style:country-complex="{ctrCode}"/>\n'
                               '  </style:style>'))
-            lines.append(' </office:automatic-styles>')
-            styleMapping['automaticStyles'] = '\n'.join(lines)
-        else:
-            styleMapping['automaticStyles'] = '<office:automatic-styles/>'
+        lines.append(' </office:automatic-styles>')
+        styleMapping['automaticStyles'] = '\n'.join(lines)
         template = Template(self._CONTENT_XML_HEADER)
         projectTemplateMapping = super()._get_fileHeaderMapping()
         projectTemplateMapping['ContentHeader'] = template.safe_substitute(styleMapping)
