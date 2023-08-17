@@ -50,7 +50,7 @@ class ImportTest:
         self._remove_all_tempfiles()
 
     def test_imp_to_yw7(self):
-        """Test HTML/CSV import to yWriter, using the YwCnvUi converter class. 
+        """Test ODF import to yWriter, using the YwCnvUi converter class. 
         
         Compare the generated yWriter project file with the reference file.
         """

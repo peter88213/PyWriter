@@ -36,7 +36,7 @@ class ImportExportTest(ExportTest):
         self.assertNotEqual(read_file(self._refYwFile), read_file(self._prfYwFile))
 
     def test_imp_to_yw7(self):
-        """Test HTML/CSV import to yWriter, using the YwCnvUi converter class. 
+        """Test ODF import to yWriter, using the YwCnvUi converter class. 
         
         - Overwrite the initial yWriter project file.
         - Compare the generated yWriter project file with the reference file.
