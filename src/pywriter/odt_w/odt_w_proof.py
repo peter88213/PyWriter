@@ -28,12 +28,10 @@ class OdtWProof(OdtWFormatted):
     _chapterTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
-    _sceneTemplate = '''<text:p text:style-name="scene_20_mark">[ScID:$ID]</text:p>
+    _sceneTemplate = '''<text:h text:style-name="Heading_20_3" text:outline-level="3">$Title</text:h>
+<text:p text:style-name="scene_20_mark">[ScID:$ID]</text:p>
 <text:p text:style-name="Text_20_body">$SceneContent</text:p>
 <text:p text:style-name="scene_20_mark">[/ScID]</text:p>
-'''
-
-    _sceneDivider = '''<text:p text:style-name="Heading_20_4">* * *</text:p>
 '''
 
     _fileFooter = OdtWFormatted._CONTENT_XML_FOOTER

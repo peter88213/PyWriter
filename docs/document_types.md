@@ -160,8 +160,9 @@ text document (odt) with scene markers. File name suffix is
 -   The document contains scene `[ScID:y]` markers. **Do not touch lines
     containing the markers** if you want to be able to write the
     document back to *yw7* format.
+-   The document contains chapter and scene headings. However, changes will not be written back.
 -   Chapters and scenes can neither be rearranged nor deleted. 
--   With *OpenOffice/LibreOffice Writer*, you can split scenes by inserting headings or a scene divider:
+-   When editing the document, you can split scenes by inserting headings or a scene divider:
     -   *Heading 1* → New part title. Optionally, you can add a description, separated by `|`.
     -   *Heading 2* → New chapter title. Optionally, you can add a description, separated by `|`.
     -   `###` → Scene divider. Optionally, you can append the 
