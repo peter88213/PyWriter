@@ -152,8 +152,6 @@ class Translations:
         """Read the existing translations of the '.po' file.
         
         Parse the file and collect translations in msgDict.
-        Return True, if all messages have translations.
-        Return False, if messages need to be translated. 
         """
 
         # Create the header.
@@ -171,10 +169,9 @@ class Translations:
                 lines = f.readlines()
         except FileNotFoundError:
             print('Not found.')
-            return False
+            return
 
         inHeader = True
-        allTranslated = True
         msgCount = 0
         for line in lines:
             line = line.strip()
@@ -191,11 +188,8 @@ class Translations:
                     translation = self._extract_text('msgstr "', line)
                     if translation:
                         self.msgDict[message] = translation
-                    else:
-                        allTranslated = False
         print(f'{msgCount} entries read.')
         print(f'{len(self.msgDict)} translations total.')
-        return allTranslated
 
     def write_po(self):
         """Write translations to the '.po' file.
@@ -261,16 +255,13 @@ def main(languageCode, app='', appVersion='unknown', potFile='messages.pot', jso
     if json:
         translations.read_json()
     translations.read_pot()
+    translations.read_po()
     if json:
         translations.write_json()
-    if not translations.read_po():
-        if translations.write_po():
-            return True
-
-        else:
-            return False
-
-    return True
+    if translations.write_po():
+        return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
