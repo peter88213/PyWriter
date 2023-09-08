@@ -43,6 +43,7 @@ class OdfFile(FileExport):
         super().__init__(filePath, **kwargs)
         self._tempDir = tempfile.mkdtemp(suffix='.tmp', prefix='odf_')
         self._originalPath = self._filePath
+        self.write_content_xml = super().write
 
     def __del__(self):
         """Make sure to delete the temporary directory, in case write() has not been called."""
@@ -63,7 +64,7 @@ class OdfFile(FileExport):
         #--- Add "content.xml" to the temporary directory.
         self._originalPath = self._filePath
         self._filePath = f'{self._tempDir}/content.xml'
-        super().write()
+        self.write_content_xml()
         self._filePath = self._originalPath
 
         #--- Pack the contents of the temporary directory into the ODF file.
