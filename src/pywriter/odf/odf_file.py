@@ -43,11 +43,13 @@ class OdfFile(FileExport):
         super().__init__(filePath, **kwargs)
         self._tempDir = tempfile.mkdtemp(suffix='.tmp', prefix='odf_')
         self._originalPath = self._filePath
-        self.write_content_xml = super().write
 
     def __del__(self):
         """Make sure to delete the temporary directory, in case write() has not been called."""
         self._tear_down()
+
+    def write_content_xml(self):
+        super().write()
 
     def write(self):
         """Write instance variables to the export file.
