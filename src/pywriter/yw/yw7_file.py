@@ -664,13 +664,13 @@ class Yw7File(File):
             #--- Write location custom fields.
             xmlLocationFields = xmlLoc.find('Fields')
             for field in self.LOC_KWVAR:
-                if self.novel.locations[lcId].kwVar.get(field, None):
+                if prjLoc.kwVar.get(field, None):
                     if xmlLocationFields is None:
                         xmlLocationFields = ET.SubElement(xmlLoc, 'Fields')
                     try:
-                        xmlLocationFields.find(field).text = self.novel.locations[lcId].kwVar[field]
+                        xmlLocationFields.find(field).text = prjLoc.kwVar[field]
                     except(AttributeError):
-                        ET.SubElement(xmlLocationFields, field).text = self.novel.locations[lcId].kwVar[field]
+                        ET.SubElement(xmlLocationFields, field).text = prjLoc.kwVar[field]
                 elif xmlLocationFields is not None:
                     try:
                         xmlLocationFields.remove(xmlLocationFields.find(field))
@@ -719,13 +719,13 @@ class Yw7File(File):
             #--- Write item custom fields.
             xmlItemFields = xmlItm.find('Fields')
             for field in self.ITM_KWVAR:
-                if self.novel.items[itId].kwVar.get(field, None):
+                if prjItm.kwVar.get(field, None):
                     if xmlItemFields is None:
                         xmlItemFields = ET.SubElement(xmlItm, 'Fields')
                     try:
-                        xmlItemFields.find(field).text = self.novel.items[itId].kwVar[field]
+                        xmlItemFields.find(field).text = prjItm.kwVar[field]
                     except(AttributeError):
-                        ET.SubElement(xmlItemFields, field).text = self.novel.items[itId].kwVar[field]
+                        ET.SubElement(xmlItemFields, field).text = prjItm.kwVar[field]
                 elif xmlItemFields is not None:
                     try:
                         xmlItemFields.remove(xmlItemFields.find(field))
@@ -768,13 +768,13 @@ class Yw7File(File):
             #--- Write character custom fields.
             xmlCharacterFields = xmlCrt.find('Fields')
             for field in self.CRT_KWVAR:
-                if self.novel.characters[crId].kwVar.get(field, None):
+                if prjCrt.kwVar.get(field, None):
                     if xmlCharacterFields is None:
                         xmlCharacterFields = ET.SubElement(xmlCrt, 'Fields')
                     try:
-                        xmlCharacterFields.find(field).text = self.novel.characters[crId].kwVar[field]
+                        xmlCharacterFields.find(field).text = prjCrt.kwVar[field]
                     except(AttributeError):
-                        ET.SubElement(xmlCharacterFields, field).text = self.novel.characters[crId].kwVar[field]
+                        ET.SubElement(xmlCharacterFields, field).text = prjCrt.kwVar[field]
                 elif xmlCharacterFields is not None:
                     try:
                         xmlCharacterFields.remove(xmlCharacterFields.find(field))
