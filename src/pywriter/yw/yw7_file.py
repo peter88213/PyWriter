@@ -449,7 +449,7 @@ class Yw7File(File):
                     if prjScn.image:
                         ET.SubElement(xmlScene, 'ImageFile').text = prjScn.image
 
-            #--- Characters/xmlLocations/xmlItems
+            #--- Characters/Locations/Items
             if prjScn.characters is not None:
                 xmlCharacters = xmlScene.find('Characters')
                 try:
@@ -899,7 +899,7 @@ class Yw7File(File):
 
         build_project_subtree(xmlProject)
 
-        #--- Process xmlLocations.
+        #--- Process Locations.
 
         # Remove LOCATION entries in order to rewrite
         # the LOCATIONS section in a modified sort order.
@@ -914,7 +914,7 @@ class Yw7File(File):
             ET.SubElement(xmlLoc, 'ID').text = lcId
             build_location_subtree(xmlLoc, self.novel.locations[lcId], sortOrder)
 
-        #--- Process xmlItems.
+        #--- Process Items.
 
         # Remove ITEM entries in order to rewrite
         # the ITEMS section in a modified sort order.
@@ -929,7 +929,7 @@ class Yw7File(File):
             ET.SubElement(xmlItm, 'ID').text = itId
             build_item_subtree(xmlItm, self.novel.items[itId], sortOrder)
 
-        #--- Process xmlCharacters.
+        #--- Process Characters.
 
         # Remove CHARACTER entries in order to rewrite
         # the CHARACTERS section in a modified sort order.
