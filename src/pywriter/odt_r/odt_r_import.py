@@ -101,9 +101,11 @@ class OdtRImport(OdtRFormatted):
                 sceneText = self._cleanup_scene(sceneText)
                 self.novel.scenes[self._scId].sceneContent = sceneText
                 if self.novel.scenes[self._scId].wordCount < self._LOW_WORDCOUNT:
-                    self.novel.scenes[self._scId].status = Scene.STATUS.index('Outline')
+                    self.novel.scenes[self._scId].status = 1
+                    # Outline
                 else:
-                    self.novel.scenes[self._scId].status = Scene.STATUS.index('Draft')
+                    self.novel.scenes[self._scId].status = 2
+                    # Draft
         elif tag == 'em':
             self._lines.append('[/i]')
         elif tag == 'strong':
@@ -134,7 +136,8 @@ class OdtRImport(OdtRFormatted):
                 self._scId = str(self._scCount)
                 self.novel.scenes[self._scId] = Scene()
                 self.novel.chapters[self._chId].srtScenes.append(self._scId)
-                self.novel.scenes[self._scId].status = '1'
+                self.novel.scenes[self._scId].status = 1
+                self.novel.scenes[self._scId].scType = 0
                 self.novel.scenes[self._scId].title = f'{_("Scene")} {self._scCount}'
             try:
                 if attrs[0][0] == 'lang':

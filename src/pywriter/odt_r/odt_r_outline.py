@@ -109,7 +109,8 @@ class OdtROutline(OdtReader):
             self.novel.scenes[self._scId] = Scene()
             self.novel.chapters[self._chId].srtScenes.append(self._scId)
             self.novel.scenes[self._scId].sceneContent = ''
-            self.novel.scenes[self._scId].status = Scene.STATUS.index('Outline')
+            self.novel.scenes[self._scId].status = 1
+            self.novel.scenes[self._scId].scType = 0
         elif tag == 'div':
             self._scId = None
             self._chId = None
