@@ -71,7 +71,7 @@ class OdtRCharacters(OdtReader):
                     self._lines = []
                     self._section = None
                 elif self._section == 'notes':
-                    self.novel.characters[self._crId].notes = ''.join(self._lines)
+                    self.novel.characters[self._crId].notes = ''.join(self._lines).rstrip()
                     self._lines = []
                     self._section = None
             elif tag == 'p':

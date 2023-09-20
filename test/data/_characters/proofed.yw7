@@ -114,7 +114,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Title><![CDATA[Vurdi]]></Title>
       <Desc><![CDATA[Green hair, blue nose.]]></Desc>
       <SortOrder>4</SortOrder>
-      <Notes><![CDATA[]]></Notes>
+      <Notes />
       <Bio><![CDATA[A freelance debt collector looking for that one big client to shake down. Has his sights on Hal and Farrell.]]></Bio>
       <Goals />
       <FullName><![CDATA[Vurdi Makalukar]]></FullName>
@@ -124,7 +124,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Title><![CDATA[Farrell]]></Title>
       <Desc />
       <SortOrder>5</SortOrder>
-      <Notes><![CDATA[]]></Notes>
+      <Notes />
       <Bio><![CDATA[Younger brother of Gordon Hinchfig, Farrell is a wastrel playboy whose money has been cut off.]]></Bio>
       <Goals><![CDATA[Pay off his gambling debts]]></Goals>
       <FullName><![CDATA[Farrell Hinchfig]]></FullName>
@@ -134,7 +134,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Title><![CDATA[Terry]]></Title>
       <Desc />
       <SortOrder>6</SortOrder>
-      <Notes><![CDATA[]]></Notes>
+      <Notes />
       <Bio><![CDATA[Farrell's driver, bodyguard and dirty tricks man. Rough and tough, not someone to cross.]]></Bio>
       <Goals><![CDATA[Whatever Farrell wants.]]></Goals>
     </CHARACTER>
@@ -143,7 +143,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Title><![CDATA[Carina]]></Title>
       <Desc />
       <SortOrder>7</SortOrder>
-      <Notes><![CDATA[]]></Notes>
+      <Notes />
       <Bio><![CDATA[Walter Jerling's private assistant]]></Bio>
       <Goals><![CDATA[Bit player]]></Goals>
       <FullName><![CDATA[Carina Rinoret]]></FullName>
@@ -153,7 +153,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Title><![CDATA[Mike]]></Title>
       <Desc />
       <SortOrder>8</SortOrder>
-      <Notes><![CDATA[]]></Notes>
+      <Notes />
       <Bio><![CDATA[Computer expert at Hinchfig Enterprises.]]></Bio>
       <Goals><![CDATA[Bit player]]></Goals>
     </CHARACTER>
@@ -162,7 +162,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Title><![CDATA[Gordon]]></Title>
       <Desc />
       <SortOrder>9</SortOrder>
-      <Notes><![CDATA[]]></Notes>
+      <Notes />
       <Bio><![CDATA[Owner of Hinchfig Enterprises, which he inherited from his parents. His father had business acumen and a flair for new products. Gordon has none, and so he slavishly follows his late father's methods with little of his success. His lack of business nous is the reason the company is in trouble, and the reason Farrell Hinchfig no longer has cash to throw around.]]></Bio>
       <Goals><![CDATA[Revitalise the company]]></Goals>
       <FullName><![CDATA[Gordon Hinchfig]]></FullName>
@@ -172,7 +172,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Title><![CDATA[Navcom]]></Title>
       <Desc><![CDATA[The Black Gull's flight computer]]></Desc>
       <SortOrder>10</SortOrder>
-      <Notes><![CDATA[]]></Notes>
+      <Notes />
       <Bio />
       <Goals />
     </CHARACTER>
@@ -181,7 +181,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Title><![CDATA[Brutus]]></Title>
       <Desc><![CDATA[Vurdi's enforcer robot.]]></Desc>
       <SortOrder>11</SortOrder>
-      <Notes><![CDATA[]]></Notes>
+      <Notes />
       <Bio />
       <Goals />
     </CHARACTER>
@@ -190,7 +190,7 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
       <Title><![CDATA[Portmaster]]></Title>
       <Desc />
       <SortOrder>12</SortOrder>
-      <Notes><![CDATA[]]></Notes>
+      <Notes />
       <Bio />
       <Goals />
       <FullName><![CDATA[Portmaster Linten]]></FullName>
