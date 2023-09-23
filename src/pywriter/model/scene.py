@@ -59,7 +59,7 @@ class Scene(BasicElement):
         lastsDays: str -- scene duration: days. 
         image: str --  path to an image related to the scene. 
     """
-    STATUS: set = (None, 'Outline', 'Draft', '1st Edit', '2nd Edit', 'Done')
+    STATUS: set = [None, 'Outline', 'Draft', '1st Edit', '2nd Edit', 'Done']
     # Emulate an enumeration for the scene status
     # Since the items are used to replace text,
     # they may contain spaces. This is why Enum cannot be used here.
