@@ -15,7 +15,7 @@
 <text:p text:style-name="Subtitle">Simon Haynes</text:p>
 <text:h text:style-name="Heading_20_1" text:outline-level="1">Part 1</text:h>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 1</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Meet Hal, threatened by Vurdi ~</text:p></office:annotation>Hal Spacejock was sitting at the Black Gull&apos;s<text:note text:id="ftn1" text:note-class="footnote"><text:note-citation text:label="*">*</text:note-citation><text:note-body><text:p text:style-name="Footnote">Hal&apos;s spaceship </text:p></text:note-body></text:note> flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he&apos;d read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article&apos;s claims. He didn&apos;t feel any smarter and he couldn&apos;t remember the last time he&apos;d spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull&apos;s onboard computer. Underpowered and outdated, it was still more than capable of running the ship&apos;s accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.</text:p>
+'<text:p text:style-name="Text_20_body">Hal Spacejock was sitting at the Black Gull&apos;s<text:note text:id="ftn1" text:note-class="footnote"><text:note-citation text:label="*">*</text:note-citation><text:note-body><text:p text:style-name="Footnote">Hal&apos;s spaceship </text:p></text:note-body></text:note> flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he&apos;d read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article&apos;s claims. He didn&apos;t feel any smarter and he couldn&apos;t remember the last time he&apos;d spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull&apos;s onboard computer. Underpowered and outdated, it was still more than capable of running the ship&apos;s accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;Your turn,&quot; said the Navcom, in a neutral female voice.</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;I&apos;m thinking.&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;While you&apos;re planning your opening move, can I tell you about a special offer?&quot;</text:p>
@@ -33,11 +33,11 @@
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 2</text:h>
-'<text:p text:style-name="Quotations"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Jerling buys team. Discusses Seraph. ~</text:p></office:annotation>On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means.</text:p>
+'<text:p text:style-name="Quotations">On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means.</text:p>
 <text:p text:style-name="Quotations">It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.</text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal takes a call from Jerling ~</text:p></office:annotation>Hal was pacing the Black Gull&apos;s flight deck, ready to put his fist through the nearest wall. &quot;What do you mean, you can&apos;t call Jerling back? What do you mean you didn&apos;t save his details?&quot;</text:p>
+'<text:p text:style-name="Text_20_body">Hal was pacing the Black Gull&apos;s flight deck, ready to put his fist through the nearest wall. &quot;What do you mean, you can&apos;t call Jerling back? What do you mean you didn&apos;t save his details?&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;I erased the record after you turned the job down.&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;So look it up again!&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;Negative, we can&apos;t afford the search fees.&quot; The Navcom hesitated. &quot;Incidentally, it&apos;s your move.&quot;</text:p>
@@ -46,18 +46,18 @@
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 3</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk arrives ~</text:p></office:annotation>&quot;No sign of Jerling&apos;s pilot,&quot; said Hal, who was standing in the Black Gull&apos;s airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. &quot;There could be an army out there and I wouldn&apos;t know it.&quot;</text:p>
+'<text:p text:style-name="Text_20_body">&quot;No sign of Jerling&apos;s pilot,&quot; said Hal, who was standing in the Black Gull&apos;s airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. &quot;There could be an army out there and I wouldn&apos;t know it.&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;Why don&apos;t you open the door?&quot; asked the Navcom.</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;No thanks. Vurdi&apos;s robot might be hanging around.&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 4</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal going to port control ~</text:p></office:annotation>Hal emerged from the Black Gull&apos;s airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport&apos;s administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the &apos;A&apos; list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.</text:p>
+'<text:p text:style-name="Text_20_body">Hal emerged from the Black Gull&apos;s airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport&apos;s administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the &apos;A&apos; list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.</text:p>
 <text:p text:style-name="First_20_line_20_indent">Hal&apos;s ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the <text:span text:style-name="Emphasis">Black Gull</text:span> was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.</text:p>
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk checking computer for Incubots. ~</text:p></office:annotation>Clunk dropped the last chess piece into the small wooden box and looked around the flight deck. Despite his best efforts with the mop, it didn&apos;t look particularly clean, but compared to its previous state it was as sterile as a hospital ward. After a moment&apos;s hesitation, he sat in the pilot&apos;s chair. &quot;Navcom, do you have a business directory?&quot;</text:p>
+'<text:p text:style-name="Text_20_body">Clunk dropped the last chess piece into the small wooden box and looked around the flight deck. Despite his best efforts with the mop, it didn&apos;t look particularly clean, but compared to its previous state it was as sterile as a hospital ward. After a moment&apos;s hesitation, he sat in the pilot&apos;s chair. &quot;Navcom, do you have a business directory?&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;Yes.&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;Run a search, please. All details on a company called Incubots.&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">There was a brief pause. &quot;Owned by Redge Muller. Incubots specialises in robot programming and advanced pilot training.&quot;</text:p>
@@ -66,12 +66,12 @@
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal talking to the Portmaster ~</text:p></office:annotation>Hal left the maintenance vehicle<text:note text:id="ftn2" text:note-class="endnote"><text:note-citation text:label="1">*</text:note-citation><text:note-body><text:p text:style-name="Endnote">Maintenance vehicle: some sort of cablecar. </text:p></text:note-body></text:note> in the spaceport&apos;s outer carpark and walked to the admin block<text:note text:id="ftn3" text:note-class="endnote"><text:note-citation text:label="2">*</text:note-citation><text:note-body><text:p text:style-name="Endnote">Admin block: looks like a greek temple. </text:p></text:note-body></text:note>. An information kiosk<text:note text:id="ftn4" text:note-class="footnote"><text:note-citation text:label="3">*</text:note-citation><text:note-body><text:p text:style-name="Footnote">a cozy place </text:p></text:note-body></text:note> directed him to an elevator<text:note text:id="ftn5" text:note-class="footnote"><text:note-citation text:label="4">*</text:note-citation><text:note-body><text:p text:style-name="Footnote">built by Limbus Vertical Transportation inc. </text:p></text:note-body></text:note>, where he pressed the button marked &apos;Portmaster&apos;.</text:p>
+'<text:p text:style-name="Text_20_body">Hal left the maintenance vehicle<text:note text:id="ftn2" text:note-class="endnote"><text:note-citation text:label="1">*</text:note-citation><text:note-body><text:p text:style-name="Endnote">Maintenance vehicle: some sort of cablecar. </text:p></text:note-body></text:note> in the spaceport&apos;s outer carpark and walked to the admin block<text:note text:id="ftn3" text:note-class="endnote"><text:note-citation text:label="2">*</text:note-citation><text:note-body><text:p text:style-name="Endnote">Admin block: looks like a greek temple. </text:p></text:note-body></text:note>. An information kiosk<text:note text:id="ftn4" text:note-class="footnote"><text:note-citation text:label="3">*</text:note-citation><text:note-body><text:p text:style-name="Footnote">a cozy place </text:p></text:note-body></text:note> directed him to an elevator<text:note text:id="ftn5" text:note-class="footnote"><text:note-citation text:label="4">*</text:note-citation><text:note-body><text:p text:style-name="Footnote">built by Limbus Vertical Transportation inc. </text:p></text:note-body></text:note>, where he pressed the button marked &apos;Portmaster&apos;.</text:p>
 <text:p text:style-name="First_20_line_20_indent">Hal watched the floor numbers changing as he dropped further and further underground. He&apos;d expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator&apos;s control panel. He&apos;d passed that already.</text:p>
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk takes call from Hal. Calls Jerling. Fire. ~</text:p></office:annotation>&quot;Simulation suspended, incoming message.&quot;</text:p>
+'<text:p text:style-name="Text_20_body">&quot;Simulation suspended, incoming message.&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">The cloud cities of Aklam faded from Clunk&apos;s vision. &quot;What?&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;Incoming message.&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;Are we meant to answer it?&quot;</text:p>
@@ -83,7 +83,7 @@
 <text:p text:style-name="First_20_line_20_indent">&quot;I don&apos;t think he&apos;ll lend you any money,&quot; said Clunk dubiously.</text:p>
 <text:p text:style-name="First_20_line_20_indent">. . .</text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 5</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk calls, the landing field is on fire. Hal tells him to sit tight. ~</text:p></office:annotation>Portmaster Linten studied Hal across the desk, eyes narrowed. &quot;Are you telling me this Jerling character will pay your bill?&quot;</text:p>
+'<text:p text:style-name="Text_20_body">Portmaster Linten studied Hal across the desk, eyes narrowed. &quot;Are you telling me this Jerling character will pay your bill?&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;He has to. I can&apos;t deliver his cargo if the Gull is stuck here, can I?&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">The commset buzzed and Linten leant forward. &quot;Yes?&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">There was a crackling sound. &quot;Help! Fire!&quot; said a voice over the noise.</text:p>
@@ -97,106 +97,106 @@
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk fighting the fire, ends up face-down ~</text:p></office:annotation>&quot;Deploy fire hose!&quot; shouted Clunk.</text:p>
+'<text:p text:style-name="Text_20_body">&quot;Deploy fire hose!&quot; shouted Clunk.</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;Deploying.&quot; There was a whining sound outside the hull, which stopped with a sharp crack.</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;What was that?&quot;</text:p>
 <text:p text:style-name="First_20_line_20_indent">&quot;The reel just fell off,&quot; said the Navcom.</text:p>
 <text:p text:style-name="First_20_line_20_indent" />
 <text:p text:style-name="Text_20_body">. . .</text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 6</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal gets to the ship and lifts off. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 7</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal finds Clunk on rope, falls out after him. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 8</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Climb up rope to safety. Back in ship for hyperspace. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 9</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ In his office. Gordon OKs the deal ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 10</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Exits the ship to meet Bevan ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 11</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Getting food out. Frozen puddings. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Says goodbye to Clunk ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 12</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal depressed. No escape from here. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Lighten the ship. Preparing for liftoff. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 13</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Karl and Terry awaiting Hal. They take a call from their spy, intercept is at the orbiter. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 14</text:h>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 15</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Karl waiting impatiently ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Karl and Terry confused about &apos;Chunk&apos; ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 16</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk slips out the back. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Karl and Terry waiting. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 17</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk in orbit ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk uses cylinder ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_1" text:outline-level="1">Part 2</text:h>
 <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 18</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Terry places the &apos;bomb&apos; ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal buys food ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 19</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Karl leaves a note, takes Clunk. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal about to hyperspace. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 20</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal gets real Jerling&apos;s call. Has to get cargo and robot back. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal sets course for Forg. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Land on Forg, in rubbish. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 21</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal rents a car in Jerling&apos;s name and heads towards Forgberg and the Casino. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal after almost running Clunk down. Picks him up. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 22</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Find car, go to find clothes. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 23</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal sells Clunk ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 24</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal annoyed at Clunk for buying only the best. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk gambling. Fight with human couple. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Sitting on the steps, battered and bruised. Limo arrives for Karl. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 25</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk travelling on the back of Karl&apos;s limo ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk sees Hal catching up again. Limo stops. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 26</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk uploads the Navcom into the ship. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 27</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ The shop robots want Clunk to escape with them. Mention Hal&apos;s capture. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk steals armoured car, drives it into the house. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 28</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Karl and Terry take the limo ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Karl and Terry overtake and head for Spaceport. Looking for Volante. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 29</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal and Clunk fleeing in Gull ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk wants to throw stuff at the flyer ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal fetches the puddings. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 30</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal yells at Jerling, then cargo arrives on truck. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Clunk outside, depressed. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Karl bursts in, armed. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2">Chapter 31</text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Terry ties Hal in hold, leaves back doors open. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:p text:style-name="Heading_20_4">* * *</text:p>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Hal dodges Brutus, escapes the hold. ~</text:p></office:annotation></text:p>
+'<text:p text:style-name="Text_20_body"></text:p>
     <text:h text:style-name="Heading_20_2" text:outline-level="2"></text:h>
-'<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>Scene</dc:creator><text:p>~ Black Gull hyperspaces to oblivion ~</text:p></office:annotation>This is the end.</text:p>
+'<text:p text:style-name="Text_20_body">This is the end.</text:p>
       </office:text>
  </office:body>
 </office:document-content>
