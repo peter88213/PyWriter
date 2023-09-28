@@ -25,13 +25,10 @@ class OdtWExport(OdtWFormatted):
     _chapterTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
-    _sceneTemplate = ''''<text:p text:style-name="Text_20_body"><office:annotation><dc:creator>$sceneTitle</dc:creator><text:p>~ ${Title} ~</text:p></office:annotation>$SceneContent</text:p>
+    _sceneTemplate = ''''<text:p text:style-name="Text_20_body">$SceneContent</text:p>
     '''
 
-    _appendedSceneTemplate = '''<text:p text:style-name="First_20_line_20_indent"><office:annotation>
-<dc:creator>$sceneTitle</dc:creator>
-<text:p>~ ${Title} ~</text:p>
-</office:annotation>$SceneContent</text:p>
+    _appendedSceneTemplate = '''<text:p text:style-name="First_20_line_20_indent">$SceneContent</text:p>
 '''
 
     _sceneDivider = '<text:p text:style-name="Heading_20_4">* * *</text:p>\n'

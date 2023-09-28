@@ -330,6 +330,9 @@ class OdtWriter(OdfFile):
   <style:style style:name="scene_20_mark_20_todo" style:display-name="Scene mark (todo type)" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Standard" style:class="text">
    <style:text-properties fo:color="#B22222" fo:font-size="10pt" fo:language="zxx" fo:country="none"/>
   </style:style>
+ <style:style style:name="Invisible_20_Heading_20_3" style:display-name="Invisible Heading 3" style:family="paragraph" style:parent-style-name="Heading_20_3" style:class="text">
+   <style:text-properties text:display="none"/>
+  </style:style>
   <style:style style:name="Emphasis" style:family="text">
    <style:text-properties fo:font-style="italic" fo:background-color="transparent"/>
   </style:style>
