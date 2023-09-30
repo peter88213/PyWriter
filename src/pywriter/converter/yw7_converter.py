@@ -7,6 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from pywriter.converter.yw_cnv_ff import YwCnvFf
 from pywriter.converter.new_project_factory import NewProjectFactory
 from pywriter.yw.yw7_file import Yw7File
+
 from pywriter.odt_w.odt_w_proof import OdtWProof
 from pywriter.odt_w.odt_w_manuscript import OdtWManuscript
 from pywriter.odt_w.odt_w_scenedesc import OdtWSceneDesc
@@ -20,10 +21,13 @@ from pywriter.odt_w.odt_w_locations import OdtWLocations
 from pywriter.odt_w.odt_w_xref import OdtWXref
 from pywriter.odt_w.odt_w_notes import OdtWNotes
 from pywriter.odt_w.odt_w_todo import OdtWTodo
+from pywriter.odt_w.odt_w_toc import OdtWToc
+
 from pywriter.ods_w.ods_w_charlist import OdsWCharList
 from pywriter.ods_w.ods_w_loclist import OdsWLocList
 from pywriter.ods_w.ods_w_itemlist import OdsWItemList
 from pywriter.ods_w.ods_w_scenelist import OdsWSceneList
+
 from pywriter.odt_r.odt_r_proof import OdtRProof
 from pywriter.odt_r.odt_r_manuscript import OdtRManuscript
 from pywriter.odt_r.odt_r_notes import OdtRNotes
@@ -34,6 +38,7 @@ from pywriter.odt_r.odt_r_partdesc import OdtRPartDesc
 from pywriter.odt_r.odt_r_characters import OdtRCharacters
 from pywriter.odt_r.odt_r_locations import OdtRLocations
 from pywriter.odt_r.odt_r_items import OdtRItems
+
 from pywriter.ods_r.ods_r_scenelist import OdsRSceneList
 from pywriter.ods_r.ods_r_charlist import OdsRCharList
 from pywriter.ods_r.ods_r_loclist import OdsRLocList
@@ -64,13 +69,14 @@ class Yw7Converter(YwCnvFf):
                              OdtWCharacters,
                              OdtWItems,
                              OdtWLocations,
+                             OdtWXref,
+                             OdtWNotes,
+                             OdtWTodo,
+                             OdtWToc,
                              OdsWCharList,
                              OdsWLocList,
                              OdsWItemList,
                              OdsWSceneList,
-                             OdtWXref,
-                             OdtWNotes,
-                             OdtWTodo,
                              ]
     IMPORT_SOURCE_CLASSES = [OdtRProof,
                              OdtRManuscript,

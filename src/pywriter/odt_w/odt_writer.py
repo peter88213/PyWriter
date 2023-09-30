@@ -186,7 +186,7 @@ class OdtWriter(OdfFile):
   <style:font-face style:name="Segoe UI" svg:font-family="&apos;Segoe UI&apos;"/>
   <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
   <style:font-face style:name="Consolas" svg:font-family="Consolas" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
-  </office:font-face-decls>
+  <style:font-face style:name="DejaVu Sans" svg:font-family="&apos;DejaVu Sans&apos;" style:font-adornments="Book" style:font-family-generic="swiss" style:font-pitch="variable"/>  </office:font-face-decls>
  <office:styles>
   <style:default-style style:family="graphic">
    <style:graphic-properties svg:stroke-color="#3465a4" draw:fill-color="#729fcf" fo:wrap-option="no-wrap" draw:shadow-offset-x="0.3cm" draw:shadow-offset-y="0.3cm" draw:start-line-spacing-horizontal="0.283cm" draw:start-line-spacing-vertical="0.283cm" draw:end-line-spacing-horizontal="0.283cm" draw:end-line-spacing-vertical="0.283cm" style:flow-with-text="true"/>
@@ -332,6 +332,24 @@ class OdtWriter(OdfFile):
   </style:style>
   <style:style style:name="Invisible_20_Heading_20_3" style:display-name="Invisible Heading 3" style:family="paragraph" style:parent-style-name="Heading_20_3" style:class="text">
    <style:text-properties text:display="none"/>
+  </style:style>
+  <style:style style:name="Toc" style:family="paragraph" style:parent-style-name="Standard" style:class="index">
+   <style:paragraph-properties fo:margin="100%" fo:margin-left="9.999cm" fo:margin-right="0cm" fo:line-height="100%" fo:text-indent="0cm" style:auto-text-indent="false"/>
+   <style:text-properties style:font-name="DejaVu Sans"/>
+  </style:style>
+  <style:style style:name="Toc_20_1" style:display-name="Toc 1" style:family="paragraph" style:parent-style-name="Toc" style:next-style-name="Text_20_body" style:default-outline-level="1" style:list-style-name="" style:class="index" style:master-page-name="">
+   <style:paragraph-properties loext:contextual-spacing="false" fo:margin="100%" fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0.73cm" fo:margin-bottom="0cm" fo:line-height="100%" fo:text-indent="0cm" style:auto-text-indent="false" style:page-number="auto">
+    <style:tab-stops/>
+   </style:paragraph-properties>
+   <style:text-properties fo:font-size="20pt" fo:font-weight="bold"/>
+  </style:style>
+  <style:style style:name="Toc_20_2" style:display-name="Toc 2" style:family="paragraph" style:parent-style-name="Toc" style:next-style-name="Text_20_body" style:default-outline-level="2" style:list-style-name="" style:class="index" style:master-page-name="">
+   <style:paragraph-properties loext:contextual-spacing="false" fo:margin="100%" fo:margin-left="0.7cm" fo:margin-right="0cm" fo:margin-top="0.499cm" fo:margin-bottom="0cm" fo:text-indent="0cm" style:auto-text-indent="false" style:page-number="auto"/>
+   <style:text-properties fo:font-size="16pt" fo:font-weight="bold"/>
+  </style:style>
+  <style:style style:name="Toc_20_3" style:display-name="Toc 3" style:family="paragraph" style:parent-style-name="Toc" style:next-style-name="Text_20_body" style:default-outline-level="3" style:list-style-name="" style:class="index" style:master-page-name="">
+   <style:paragraph-properties loext:contextual-spacing="false" fo:margin="100%" fo:margin-left="1.401cm" fo:margin-right="0cm" fo:margin-top="0.33cm" fo:margin-bottom="0cm" fo:text-indent="0cm" style:auto-text-indent="false" style:page-number="auto"/>
+   <style:text-properties fo:font-size="12pt" fo:font-weight="normal"/>
   </style:style>
   <style:style style:name="Emphasis" style:family="text">
    <style:text-properties fo:font-style="italic" fo:background-color="transparent"/>
