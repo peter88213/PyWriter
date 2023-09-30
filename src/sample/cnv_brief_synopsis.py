@@ -1,4 +1,4 @@
-"""Import and export yWriter brief synopsis. 
+"""Export yWriter brief synopsis. 
 
 This is a PyWriter sample application.
 
