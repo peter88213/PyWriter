@@ -21,11 +21,11 @@ class OdtWManuscript(OdtWFormatted):
 '''
 
     _partTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
-<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../${ProjectName}_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+<text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
 '''
 
     _chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../${ProjectName}_chapters.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2">$Title</text:h>
 '''
 
     _sceneTemplate = '''<text:h text:style-name="Invisible_20_Heading_20_3" text:outline-level="3">$Title</text:h>

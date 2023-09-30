@@ -21,30 +21,22 @@ class OdtWSceneDesc(OdtWriter):
 '''
 
     _partTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
-<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../${ProjectName}_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+<text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
 '''
 
     _chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
-<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../${ProjectName}_chapters.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../${ProjectName}_manuscript.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 '''
 
-    _sceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
-<text:p text:style-name="Text_20_body"><office:annotation>
-<dc:creator>$sceneTitle</dc:creator>
-<text:p>~ ${Title} ~</text:p>
-<text:p/>
-<text:p><text:a xlink:href="../${ProjectName}_manuscript.odt#ScID:$ID%7Cregion">→$Manuscript</text:a></text:p>
-</office:annotation>$Desc</text:p>
+    _sceneTemplate = '''<text:h text:style-name="Invisible_20_Heading_20_3" text:outline-level="3">$Title</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:$ID">
+<text:p text:style-name="Text_20_body">$Desc</text:p>
 </text:section>
 '''
 
-    _appendedSceneTemplate = '''<text:section text:style-name="Sect1" text:name="ScID:$ID">
-<text:p text:style-name="First_20_line_20_indent"><office:annotation>
-<dc:creator>$sceneTitle</dc:creator>
-<text:p>~ ${Title} ~</text:p>
-<text:p/>
-<text:p><text:a xlink:href="../${ProjectName}_manuscript.odt#ScID:$ID%7Cregion">→$Manuscript</text:a></text:p>
-</office:annotation>$Desc</text:p>
+    _appendedSceneTemplate = '''<text:h text:style-name="Invisible_20_Heading_20_3" text:outline-level="3">$Title</text:h>
+<text:section text:style-name="Sect1" text:name="ScID:$ID">
+<text:p text:style-name="First_20_line_20_indent">$Desc</text:p>
 </text:section>
 '''
 

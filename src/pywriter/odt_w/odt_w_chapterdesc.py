@@ -20,7 +20,7 @@ class OdtWChapterDesc(OdtWriter):
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
-    _partTemplate = '''<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../${ProjectName}_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
+    _partTemplate = '''<text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
 '''
 
     _chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">

@@ -331,6 +331,7 @@ class OdtWriter(OdfFile):
    <style:text-properties fo:color="#B22222" fo:font-size="10pt" fo:language="zxx" fo:country="none"/>
   </style:style>
   <style:style style:name="Invisible_20_Heading_20_3" style:display-name="Invisible Heading 3" style:family="paragraph" style:parent-style-name="Heading_20_3" style:class="text">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" fo:line-height="100%"/>
    <style:text-properties text:display="none"/>
   </style:style>
   <style:style style:name="Emphasis" style:family="text">
