@@ -55,7 +55,7 @@ class Yw7File(File):
         ]
     SCN_KWVAR = [
         'Field_SceneArcs',
-        'Field_SceneStyle',
+        'Field_SceneMode',
         ]
 
     def __init__(self, filePath, **kwargs):
@@ -118,7 +118,11 @@ class Yw7File(File):
         #--- Set custom instance variables.
         for scId in self.novel.scenes:
             self.novel.scenes[scId].scnArcs = self.novel.scenes[scId].kwVar.get('Field_SceneArcs', None)
-            self.novel.scenes[scId].scnStyle = self.novel.scenes[scId].kwVar.get('Field_SceneStyle', None)
+            scnMode = self.novel.scenes[scId].kwVar.get('Field_SceneMode', None)
+            try:
+                self.novel.scenes[scId].scnMode = int(scnMode)
+            except:
+                self.novel.scenes[scId].scnMode = None
 
     def write(self):
         """Write instance variables to the yWriter xml file.
@@ -138,9 +142,12 @@ class Yw7File(File):
         for scId in self.novel.scenes:
             if self.novel.scenes[scId].scnArcs is not None:
                 self.novel.scenes[scId].kwVar['Field_SceneArcs'] = self.novel.scenes[scId].scnArcs
-            if self.novel.scenes[scId].scnStyle is not None:
-                self.novel.scenes[scId].kwVar['Field_SceneStyle'] = self.novel.scenes[scId].scnStyle
-
+            if self.novel.scenes[scId].scnMode is not None:
+                if self.novel.scenes[scId].scnMode == 0:
+                    self.novel.scenes[scId].kwVar['Field_SceneMode'] = None
+                else:
+                    self.novel.scenes[scId].kwVar['Field_SceneMode'] = str(self.novel.scenes[scId].scnMode)
+            self.novel.scenes[scId].kwVar['Field_SceneStyle'] = None
         self._build_element_tree()
         self._write_element_tree(self)
         self._postprocess_xml_file(self.filePath)

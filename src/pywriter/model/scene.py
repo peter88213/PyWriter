@@ -72,7 +72,7 @@ class Scene(BasicElement):
     # Since the items are used to replace text,
     # they may contain spaces. This is why Enum cannot be used here.
 
-    MODES: list[str] = [None,
+    MODES: list[str] = [_('N/A'),
                   _('Narration'),
                   _('Dramatic action'),
                   _('Dialogue'),
@@ -220,10 +220,10 @@ class Scene(BasicElement):
         # If the scene is "Todo" type, an assigned single arc
         # should be defined by it.
 
-        self.scnStyle: str = None
-        # xml: <Field_SceneStyle>
+        self.scnMode: str = None
+        # xml: <Field_SceneMode>
         # Mode of discourse (Narration/Dramatic action/Dialogue/Description/Exposition).
-        # TODO: Change the wording and use "Mode" instead of "Style".
+        # See the MODES list.
 
     @property
     def sceneContent(self) -> str:
