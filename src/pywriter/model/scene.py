@@ -58,11 +58,28 @@ class Scene(BasicElement):
         lastsHours: str -- scene duration: hours.
         lastsDays: str -- scene duration: days. 
         image: str --  path to an image related to the scene. 
+        scnArcs: str -- Semicolon-separated arc titles.
+        scnStyle: str -- Mode of discourse (Narration/Dramatic action/Dialogue/Description/Exposition).
     """
-    STATUS: set = [None, 'Outline', 'Draft', '1st Edit', '2nd Edit', 'Done']
+    STATUS: list[str] = [None,
+                    'Outline',
+                    'Draft',
+                    '1st Edit',
+                    '2nd Edit',
+                    'Done'
+                    ]
     # Emulate an enumeration for the scene status
     # Since the items are used to replace text,
     # they may contain spaces. This is why Enum cannot be used here.
+
+    MODES: list[str] = [None,
+                  _('Narration'),
+                  _('Dramatic action'),
+                  _('Dialogue'),
+                  _('Description'),
+                  _('Exposition')
+                  ]
+    # Modes of discourse according to Jack M. Bickham.
 
     ACTION_MARKER: str = 'A'
     REACTION_MARKER: str = 'R'
@@ -205,8 +222,7 @@ class Scene(BasicElement):
 
         self.scnStyle: str = None
         # xml: <Field_SceneStyle>
-        # Mode of discourse. May be 'explaining', 'descriptive', or 'summarizing'.
-        # None is the default, meaning 'staged'.
+        # Mode of discourse (Narration/Dramatic action/Dialogue/Description/Exposition).
         # TODO: Change the wording and use "Mode" instead of "Style".
 
     @property
