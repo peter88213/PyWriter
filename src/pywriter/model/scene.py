@@ -59,7 +59,7 @@ class Scene(BasicElement):
         lastsDays: str -- scene duration: days. 
         image: str --  path to an image related to the scene. 
         scnArcs: str -- Semicolon-separated arc titles.
-        scnStyle: str -- Mode of discourse (Narration/Dramatic action/Dialogue/Description/Exposition).
+        scnMode: str -- Mode of discourse (Narration/Dramatic action/Dialogue/Description/Exposition).
     """
     STATUS: list[str] = [None,
                     'Outline',
