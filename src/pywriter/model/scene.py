@@ -220,10 +220,9 @@ class Scene(BasicElement):
         # If the scene is "Todo" type, an assigned single arc
         # should be defined by it.
 
-        self.scnMode: str = None
+        self.scnMode: int = None
         # xml: <Field_SceneMode>
-        # Mode of discourse (Narration/Dramatic action/Dialogue/Description/Exposition).
-        # See the MODES list.
+        # Mode of discourse (see the MODES list).
 
     @property
     def sceneContent(self) -> str:
