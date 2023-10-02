@@ -72,15 +72,6 @@ class Scene(BasicElement):
     # Since the items are used to replace text,
     # they may contain spaces. This is why Enum cannot be used here.
 
-    MODES: list[str] = [_('N/A'),
-                  _('Narration'),
-                  _('Dramatic action'),
-                  _('Dialogue'),
-                  _('Description'),
-                  _('Exposition')
-                  ]
-    # Modes of discourse according to Jack M. Bickham.
-
     ACTION_MARKER: str = 'A'
     REACTION_MARKER: str = 'R'
     NULL_DATE: str = '0001-01-01'
@@ -222,7 +213,7 @@ class Scene(BasicElement):
 
         self.scnMode: int = None
         # xml: <Field_SceneMode>
-        # Mode of discourse (see the MODES list).
+        # Mode of discourse.
 
     @property
     def sceneContent(self) -> str:
