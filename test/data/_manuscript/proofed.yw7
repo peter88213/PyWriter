@@ -1526,7 +1526,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       </Fields>
     </SCENE>
     <SCENE>
-      <ID>122</ID>
+      <ID>11</ID>
       <Title><![CDATA[Meet Hal, threatened... Split: 1]]></Title>
       <BelongsToChID>1</BelongsToChID>
       <SceneContent><![CDATA[The wide viewscreen above the console turned red, and the word ‘[lang=zxx]SaLE[/lang=zxx]’ appeared in vibrating yellow text. The letters grew legs and marched off the screen, bringing a wire basket on wheels into view.
@@ -1545,7 +1545,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <Day>1</Day>
     </SCENE>
     <SCENE>
-      <ID>123</ID>
+      <ID>13</ID>
       <Title><![CDATA[Hal going to port co... Split: 1]]></Title>
       <BelongsToChID>37</BelongsToChID>
       <SceneContent><![CDATA[Hal’s ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon.]]></SceneContent>
@@ -1554,7 +1554,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <Status>2</Status>
     </SCENE>
     <SCENE>
-      <ID>124</ID>
+      <ID>14</ID>
       <Title><![CDATA[The landing patch]]></Title>
       <BelongsToChID>37</BelongsToChID>
       <SceneContent><![CDATA[The area around the [i]Black Gull[/i] was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
@@ -1565,7 +1565,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <Status>2</Status>
     </SCENE>
     <SCENE>
-      <ID>125</ID>
+      <ID>16</ID>
       <Title><![CDATA[Fire alarm]]></Title>
       <BelongsToChID>5</BelongsToChID>
       <Desc><![CDATA[Clunk reports a fire on the airfield.]]></Desc>
@@ -1615,7 +1615,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>1</ScID>
-        <ScID>122</ScID>
+        <ScID>11</ScID>
       </Scenes>
     </CHAPTER>
     <CHAPTER>
@@ -1657,8 +1657,8 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
-        <ScID>123</ScID>
-        <ScID>124</ScID>
+        <ScID>13</ScID>
+        <ScID>14</ScID>
         <ScID>6</ScID>
         <ScID>7</ScID>
         <ScID>8</ScID>
@@ -1672,7 +1672,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>9</ScID>
-        <ScID>125</ScID>
+        <ScID>16</ScID>
         <ScID>10</ScID>
       </Scenes>
     </CHAPTER>

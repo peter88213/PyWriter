@@ -1527,7 +1527,7 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       </Fields>
     </SCENE>
     <SCENE>
-      <ID>122</ID>
+      <ID>11</ID>
       <Title><![CDATA[Meet Hal, threatened... Split: 1]]></Title>
       <BelongsToChID>1</BelongsToChID>
       <SceneContent><![CDATA[Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull's onboard computer. Underpowered and outdated, it was still more than capable of running the ship's accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.
@@ -1553,7 +1553,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <Day>1</Day>
     </SCENE>
     <SCENE>
-      <ID>123</ID>
+      <ID>13</ID>
       <Title><![CDATA[Hal takes a call fro... Split: 1]]></Title>
       <BelongsToChID>37</BelongsToChID>
       <SceneContent><![CDATA["Negative, we can't afford the search fees." The Navcom hesitated. "Incidentally, it's your move."
@@ -1598,7 +1598,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <ChapterType>0</ChapterType>
       <Scenes>
         <ScID>1</ScID>
-        <ScID>122</ScID>
+        <ScID>11</ScID>
       </Scenes>
     </CHAPTER>
     <CHAPTER>
@@ -1620,7 +1620,7 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
-        <ScID>123</ScID>
+        <ScID>13</ScID>
       </Scenes>
     </CHAPTER>
     <CHAPTER>
