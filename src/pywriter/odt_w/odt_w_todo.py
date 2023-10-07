@@ -46,7 +46,8 @@ class OdtWTodo(OdtWManuscript):
         For each chapter call the processing of its included scenes.
         Skip chapters not accepted by the chapter filter.
         Return a list of strings.
-        This is a template method that can be extended or overridden by subclasses.
+
+        Overrides the superclass method.
         """
         lines = []
         if not self._todoChapterEndTemplate:

@@ -61,7 +61,7 @@ class OdtRManuscript(OdtRFormatted):
                 self._lines.append(data)
         elif self._chId is not None:
             if self.novel.chapters[self._chId].title is None:
-                self.chapters[self._chId].title = data.strip()
+                self.novel.chapters[self._chId].title = data.strip()
 
     def handle_endtag(self, tag):
         """Recognize the end of the scene section and save data.
