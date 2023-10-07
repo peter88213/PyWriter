@@ -43,7 +43,7 @@ $SceneNumber (Ch $Chapter) $Title (ToDo)
 </text:p>
 '''
     _itemTemplate = '''<text:p text:style-name="Text_20_body">
-<text:a xlink:href="../${ProjectName}_items.odt#ItrID:$ID%7Cregion">$Title</text:a>
+<text:a xlink:href="../${ProjectName}_items.odt#ItID:$ID%7Cregion">$Title</text:a>
 </text:p>
 '''
     _scnPerChrTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2">Scenes with Character $Title:</text:h>
