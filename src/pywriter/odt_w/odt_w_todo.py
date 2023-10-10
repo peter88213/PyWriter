@@ -19,6 +19,8 @@ class OdtWTodo(OdtWManuscript):
 
     _partTemplate = ''
     _chapterTemplate = ''
+    _chapterEndTemplate = ''
+    _sceneTemplate = ''
 
     _todoPartTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
 <text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
@@ -38,53 +40,3 @@ class OdtWTodo(OdtWManuscript):
     _todoChapterEndTemplate = '''</text:section>
 '''
 
-    def _get_chapters(self):
-        """Process the chapters and nested scenes.
-        
-        Iterate through the sorted chapter list and apply the templates, 
-        substituting placeholders according to the chapter mapping dictionary.
-        For each chapter call the processing of its included scenes.
-        Skip chapters not accepted by the chapter filter.
-        Return a list of strings.
-
-        Overrides the superclass method.
-        """
-        lines = []
-        if not self._todoChapterEndTemplate:
-            return lines
-
-        chapterNumber = 0
-        sceneNumber = 0
-        wordsTotal = 0
-        lettersTotal = 0
-        for chId in self.novel.srtChapters:
-            dispNumber = 0
-            if not self._chapterFilter.accept(self, chId):
-                continue
-
-            # The order counts; be aware that "Todo" chapters are always unused.
-            doNotExport = False
-            template = None
-            if self.novel.chapters[chId].chType == 2:
-                # Chapter is "Todo" type (implies "unused").
-                if self.novel.chapters[chId].chLevel == 1:
-                    # Chapter is "Todo Part" type.
-                    if self._todoPartTemplate:
-                        template = Template(self._todoPartTemplate)
-                elif self._todoChapterTemplate:
-                    # Chapter is "Todo Chapter" type.
-                    template = Template(self._todoChapterTemplate)
-                    chapterNumber += 1
-                    dispNumber = chapterNumber
-                if template is not None:
-                    lines.append(template.safe_substitute(self._get_chapterMapping(chId, dispNumber)))
-
-                    #--- Process scenes.
-                    sceneLines, sceneNumber, wordsTotal, lettersTotal = self._get_scenes(
-                        chId, sceneNumber, wordsTotal, lettersTotal, doNotExport)
-                    lines.extend(sceneLines)
-
-                    #--- Process chapter ending.
-                    template = Template(self._todoChapterEndTemplate)
-                    lines.append(template.safe_substitute(self._get_chapterMapping(chId, dispNumber)))
-        return lines
