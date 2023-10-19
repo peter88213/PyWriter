@@ -15,7 +15,6 @@ Combining relentless action with non-stop laughs, Hal Spacejock explodes onto th
     <SCENE>
       <ID>1</ID>
       <Title><![CDATA[Meet Hal, threatened by Vurdi]]></Title>
-      <BelongsToChID>2</BelongsToChID>
       <SceneContent><![CDATA[Hal Spacejock was sitting at the [i]Black Gull's[/i] flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he'd read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article's claims. He didn't feel any smarter and he couldn't remember the last time he'd spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull's onboard computer. Underpowered and outdated, it was still more than capable of running the ship's accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.
 "Your turn," said the Navcom, in a neutral female voice.
 "I'm thinking."
@@ -33,24 +32,18 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 "Shall I add those titles to your basket?"
 
 . . .]]></SceneContent>
-      <WordCount>375</WordCount>
-      <LetterCount>2176</LetterCount>
       <Status>2</Status>
     </SCENE>
     <SCENE>
       <ID>2</ID>
       <Title><![CDATA[Jerling buys team. Discusses Seraph.]]></Title>
-      <BelongsToChID>3</BelongsToChID>
       <SceneContent><![CDATA[On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
 . . .]]></SceneContent>
-      <WordCount>66</WordCount>
-      <LetterCount>385</LetterCount>
       <Status>2</Status>
     </SCENE>
     <SCENE>
       <ID>3</ID>
       <Title><![CDATA[Hal takes a call from Jerling]]></Title>
-      <BelongsToChID>3</BelongsToChID>
       <SceneContent><![CDATA[Hal was pacing the Black Gull's flight deck, ready to put his fist through the nearest wall. "What do you mean, you can't call Jerling back? What do you mean you didn't save his details?"
 "I erased the record after you turned the job down."
 "So look it up again!"
@@ -59,39 +52,30 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 "You're only saying that because you're losing."
 
 . . .]]></SceneContent>
-      <WordCount>88</WordCount>
-      <LetterCount>475</LetterCount>
       <Status>2</Status>
     </SCENE>
     <SCENE>
       <ID>4</ID>
       <Title><![CDATA[Clunk arrives]]></Title>
-      <BelongsToChID>4</BelongsToChID>
       <SceneContent><![CDATA["No sign of Jerling's pilot," said Hal, who was standing in the Black Gull's airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. "There could be an army out there and I wouldn't know it."
 "Why don't you open the door?" asked the Navcom.
 "No thanks. Vurdi's robot might be hanging around."
 
 . . .]]></SceneContent>
-      <WordCount>67</WordCount>
-      <LetterCount>375</LetterCount>
       <Status>2</Status>
     </SCENE>
     <SCENE>
       <ID>5</ID>
       <Title><![CDATA[Hal going to port control]]></Title>
-      <BelongsToChID>5</BelongsToChID>
       <SceneContent><![CDATA[Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport's administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the 'A' list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.
 Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the [i]Black Gull[/i] was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
 
 . . .]]></SceneContent>
-      <WordCount>175</WordCount>
-      <LetterCount>1042</LetterCount>
       <Status>2</Status>
     </SCENE>
     <SCENE>
       <ID>6</ID>
       <Title><![CDATA[Clunk checking computer for Incubots.]]></Title>
-      <BelongsToChID>5</BelongsToChID>
       <SceneContent><![CDATA[Clunk dropped the last chess piece into the small wooden box and looked around the flight deck. Despite his best efforts with the mop, it didn't look particularly clean, but compared to its previous state it was as sterile as a hospital ward. After a moment's hesitation, he sat in the pilot's chair. "Navcom, do you have a business directory?"
 "Yes."
 "Run a search, please. All details on a company called Incubots."
@@ -100,26 +84,20 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 "Humans tell lies about the most trivial matters."
 
 . . .]]></SceneContent>
-      <WordCount>125</WordCount>
-      <LetterCount>722</LetterCount>
       <Status>2</Status>
     </SCENE>
     <SCENE>
       <ID>7</ID>
       <Title><![CDATA[Hal talking to the Portmaster]]></Title>
-      <BelongsToChID>5</BelongsToChID>
       <SceneContent><![CDATA[Hal left the maintenance vehicle in the spaceport's outer carpark and walked to the admin block. An information kiosk directed him to an elevator, where he pressed the button marked 'Portmaster'.
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
 
 . . .]]></SceneContent>
-      <WordCount>89</WordCount>
-      <LetterCount>532</LetterCount>
       <Status>2</Status>
     </SCENE>
     <SCENE>
       <ID>8</ID>
       <Title><![CDATA[Clunk takes call from Hal. Calls Jerling. Fire.]]></Title>
-      <BelongsToChID>5</BelongsToChID>
       <SceneContent><![CDATA["Simulation suspended, incoming message."
 The cloud cities of Aklam faded from Clunk's vision. "What?"
 "Incoming message."
@@ -131,14 +109,11 @@ Clunk sat up straight. "Please open the connection."
 "Call Jerling and get me a loan. I need three hundred in cash for landing fees and fuel."
 "I don't think he'll lend you any money," said Clunk dubiously.
 . . .]]></SceneContent>
-      <WordCount>74</WordCount>
-      <LetterCount>431</LetterCount>
       <Status>2</Status>
     </SCENE>
     <SCENE>
       <ID>9</ID>
       <Title><![CDATA[Clunk calls, the landing field is on fire. Hal tells him to sit tight.]]></Title>
-      <BelongsToChID>6</BelongsToChID>
       <SceneContent><![CDATA[Portmaster Linten studied Hal across the desk, eyes narrowed. "Are you telling me this Jerling character will pay your bill?"
 "He has to. I can't deliver his cargo if the Gull is stuck here, can I?"
 The commset buzzed and Linten leant forward. "Yes?"
@@ -152,436 +127,293 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 "You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"
 
 . . .]]></SceneContent>
-      <WordCount>156</WordCount>
-      <LetterCount>839</LetterCount>
       <Status>2</Status>
     </SCENE>
     <SCENE>
       <ID>10</ID>
       <Title><![CDATA[Clunk fighting the fire, ends up face-down]]></Title>
-      <BelongsToChID>6</BelongsToChID>
       <SceneContent><![CDATA["Deploy fire hose!" shouted Clunk.
 "Deploying." There was a whining sound outside the hull, which stopped with a sharp crack.
 "What was that?"
 "The reel just fell off," said the Navcom.
 
 . . .]]></SceneContent>
-      <WordCount>34</WordCount>
-      <LetterCount>187</LetterCount>
       <Status>2</Status>
     </SCENE>
     <SCENE>
       <ID>11</ID>
       <Title><![CDATA[Hal gets to the ship and lifts off.]]></Title>
-      <BelongsToChID>7</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>12</ID>
       <Title><![CDATA[Hal finds Clunk on rope, falls out after him.]]></Title>
-      <BelongsToChID>8</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>13</ID>
       <Title><![CDATA[Climb up rope to safety. Back in ship for hyperspace.]]></Title>
-      <BelongsToChID>9</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>14</ID>
       <Title><![CDATA[In his office. Gordon OKs the deal]]></Title>
-      <BelongsToChID>10</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>15</ID>
       <Title><![CDATA[Exits the ship to meet Bevan]]></Title>
-      <BelongsToChID>11</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>16</ID>
       <Title><![CDATA[Getting food out. Frozen puddings.]]></Title>
-      <BelongsToChID>12</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>17</ID>
       <Title><![CDATA[Says goodbye to Clunk]]></Title>
-      <BelongsToChID>12</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>18</ID>
       <Title><![CDATA[Hal depressed. No escape from here.]]></Title>
-      <BelongsToChID>13</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>19</ID>
       <Title><![CDATA[Lighten the ship. Preparing for liftoff.]]></Title>
-      <BelongsToChID>13</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>20</ID>
       <Title><![CDATA[Karl and Terry awaiting Hal. They take a call from their spy, intercept is at the orbiter.]]></Title>
-      <BelongsToChID>14</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>21</ID>
       <Title><![CDATA[Karl waiting impatiently]]></Title>
-      <BelongsToChID>16</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>22</ID>
       <Title><![CDATA[Karl and Terry confused about 'Chunk']]></Title>
-      <BelongsToChID>16</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>23</ID>
       <Title><![CDATA[Clunk slips out the back.]]></Title>
-      <BelongsToChID>17</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>24</ID>
       <Title><![CDATA[Karl and Terry waiting.]]></Title>
-      <BelongsToChID>17</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>25</ID>
       <Title><![CDATA[Clunk in orbit]]></Title>
-      <BelongsToChID>18</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>26</ID>
       <Title><![CDATA[Clunk uses cylinder]]></Title>
-      <BelongsToChID>18</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>27</ID>
       <Title><![CDATA[Terry places the 'bomb']]></Title>
-      <BelongsToChID>20</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>28</ID>
       <Title><![CDATA[Hal buys food]]></Title>
-      <BelongsToChID>20</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>29</ID>
       <Title><![CDATA[Karl leaves a note, takes Clunk.]]></Title>
-      <BelongsToChID>21</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>30</ID>
       <Title><![CDATA[Hal about to hyperspace.]]></Title>
-      <BelongsToChID>21</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>31</ID>
       <Title><![CDATA[Hal gets real Jerling's call. Has to get cargo and robot back.]]></Title>
-      <BelongsToChID>22</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>32</ID>
       <Title><![CDATA[Hal sets course for Forg.]]></Title>
-      <BelongsToChID>22</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>33</ID>
       <Title><![CDATA[Land on Forg, in rubbish.]]></Title>
-      <BelongsToChID>22</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>34</ID>
       <Title><![CDATA[Hal rents a car in Jerling's name and heads towards Forgberg and the Casino.]]></Title>
-      <BelongsToChID>23</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>35</ID>
       <Title><![CDATA[Hal after almost running Clunk down. Picks him up.]]></Title>
-      <BelongsToChID>23</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>36</ID>
       <Title><![CDATA[Find car, go to find clothes.]]></Title>
-      <BelongsToChID>24</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>37</ID>
       <Title><![CDATA[Hal sells Clunk]]></Title>
-      <BelongsToChID>25</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>38</ID>
       <Title><![CDATA[Hal annoyed at Clunk for buying only the best.]]></Title>
-      <BelongsToChID>26</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>39</ID>
       <Title><![CDATA[Clunk gambling. Fight with human couple.]]></Title>
-      <BelongsToChID>26</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>40</ID>
       <Title><![CDATA[Sitting on the steps, battered and bruised. Limo arrives for Karl.]]></Title>
-      <BelongsToChID>26</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>41</ID>
       <Title><![CDATA[Clunk travelling on the back of Karl's limo]]></Title>
-      <BelongsToChID>27</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>42</ID>
       <Title><![CDATA[Clunk sees Hal catching up again. Limo stops.]]></Title>
-      <BelongsToChID>27</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>43</ID>
       <Title><![CDATA[Clunk uploads the Navcom into the ship.]]></Title>
-      <BelongsToChID>28</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>44</ID>
       <Title><![CDATA[The shop robots want Clunk to escape with them. Mention Hal's capture.]]></Title>
-      <BelongsToChID>29</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>45</ID>
       <Title><![CDATA[Clunk steals armoured car, drives it into the house.]]></Title>
-      <BelongsToChID>29</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>46</ID>
       <Title><![CDATA[Karl and Terry take the limo]]></Title>
-      <BelongsToChID>30</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>47</ID>
       <Title><![CDATA[Karl and Terry overtake and head for Spaceport. Looking for Volante.]]></Title>
-      <BelongsToChID>30</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>48</ID>
       <Title><![CDATA[Hal and Clunk fleeing in Gull]]></Title>
-      <BelongsToChID>31</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>49</ID>
       <Title><![CDATA[Clunk wants to throw stuff at the flyer]]></Title>
-      <BelongsToChID>31</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>50</ID>
       <Title><![CDATA[Hal fetches the puddings.]]></Title>
-      <BelongsToChID>31</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>51</ID>
       <Title><![CDATA[Hal yells at Jerling, then cargo arrives on truck.]]></Title>
-      <BelongsToChID>32</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>52</ID>
       <Title><![CDATA[Clunk outside, depressed.]]></Title>
-      <BelongsToChID>32</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>53</ID>
       <Title><![CDATA[Karl bursts in, armed.]]></Title>
-      <BelongsToChID>32</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>54</ID>
       <Title><![CDATA[Terry ties Hal in hold, leaves back doors open.]]></Title>
-      <BelongsToChID>33</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>55</ID>
       <Title><![CDATA[Hal dodges Brutus, escapes the hold.]]></Title>
-      <BelongsToChID>33</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
     <SCENE>
       <ID>56</ID>
       <Title><![CDATA[Black Gull hyperspaces to oblivion]]></Title>
-      <BelongsToChID>34</BelongsToChID>
       <SceneContent />
-      <WordCount>0</WordCount>
-      <LetterCount>0</LetterCount>
       <Status>1</Status>
     </SCENE>
   </SCENES>
@@ -589,7 +421,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>1</ID>
       <Title><![CDATA[Part 1]]></Title>
-      <SortOrder>1</SortOrder>
       <SectionStart>-1</SectionStart>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
@@ -597,7 +428,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>2</ID>
       <Title><![CDATA[Chapter 1]]></Title>
-      <SortOrder>2</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -607,7 +437,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>3</ID>
       <Title><![CDATA[Chapter 2]]></Title>
-      <SortOrder>3</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -618,7 +447,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>4</ID>
       <Title><![CDATA[Chapter 3]]></Title>
-      <SortOrder>4</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -628,7 +456,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>5</ID>
       <Title><![CDATA[Chapter 4]]></Title>
-      <SortOrder>5</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -641,7 +468,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>6</ID>
       <Title><![CDATA[Chapter 5]]></Title>
-      <SortOrder>6</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -652,7 +478,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>7</ID>
       <Title><![CDATA[Chapter 6]]></Title>
-      <SortOrder>7</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -662,7 +487,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>8</ID>
       <Title><![CDATA[Chapter 7]]></Title>
-      <SortOrder>8</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -672,7 +496,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>9</ID>
       <Title><![CDATA[Chapter 8]]></Title>
-      <SortOrder>9</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -682,7 +505,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>10</ID>
       <Title><![CDATA[Chapter 9]]></Title>
-      <SortOrder>10</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -692,7 +514,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>11</ID>
       <Title><![CDATA[Chapter 10]]></Title>
-      <SortOrder>11</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -702,7 +523,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>12</ID>
       <Title><![CDATA[Chapter 11]]></Title>
-      <SortOrder>12</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -713,7 +533,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>13</ID>
       <Title><![CDATA[Chapter 12]]></Title>
-      <SortOrder>13</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -724,7 +543,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>14</ID>
       <Title><![CDATA[Chapter 13]]></Title>
-      <SortOrder>14</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -734,14 +552,12 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>15</ID>
       <Title><![CDATA[Chapter 14]]></Title>
-      <SortOrder>15</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
     </CHAPTER>
     <CHAPTER>
       <ID>16</ID>
       <Title><![CDATA[Chapter 15]]></Title>
-      <SortOrder>16</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -752,7 +568,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>17</ID>
       <Title><![CDATA[Chapter 16]]></Title>
-      <SortOrder>17</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -763,7 +578,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>18</ID>
       <Title><![CDATA[Chapter 17]]></Title>
-      <SortOrder>18</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -774,7 +588,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>19</ID>
       <Title><![CDATA[Part 2]]></Title>
-      <SortOrder>19</SortOrder>
       <SectionStart>-1</SectionStart>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
@@ -782,7 +595,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>20</ID>
       <Title><![CDATA[Chapter 18]]></Title>
-      <SortOrder>20</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -793,7 +605,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>21</ID>
       <Title><![CDATA[Chapter 19]]></Title>
-      <SortOrder>21</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -804,7 +615,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>22</ID>
       <Title><![CDATA[Chapter 20]]></Title>
-      <SortOrder>22</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -816,7 +626,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>23</ID>
       <Title><![CDATA[Chapter 21]]></Title>
-      <SortOrder>23</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -827,7 +636,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>24</ID>
       <Title><![CDATA[Chapter 22]]></Title>
-      <SortOrder>24</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -837,7 +645,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>25</ID>
       <Title><![CDATA[Chapter 23]]></Title>
-      <SortOrder>25</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -847,7 +654,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>26</ID>
       <Title><![CDATA[Chapter 24]]></Title>
-      <SortOrder>26</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -859,7 +665,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>27</ID>
       <Title><![CDATA[Chapter 25]]></Title>
-      <SortOrder>27</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -870,7 +675,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>28</ID>
       <Title><![CDATA[Chapter 26]]></Title>
-      <SortOrder>28</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -880,7 +684,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>29</ID>
       <Title><![CDATA[Chapter 27]]></Title>
-      <SortOrder>29</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -891,7 +694,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>30</ID>
       <Title><![CDATA[Chapter 28]]></Title>
-      <SortOrder>30</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -902,7 +704,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>31</ID>
       <Title><![CDATA[Chapter 29]]></Title>
-      <SortOrder>31</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -914,7 +715,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>32</ID>
       <Title><![CDATA[Chapter 30]]></Title>
-      <SortOrder>32</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -926,7 +726,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>33</ID>
       <Title><![CDATA[Chapter 31]]></Title>
-      <SortOrder>33</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
@@ -937,7 +736,6 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
     <CHAPTER>
       <ID>34</ID>
       <Title />
-      <SortOrder>34</SortOrder>
       <Type>0</Type>
       <ChapterType>0</ChapterType>
       <Scenes>
