@@ -480,44 +480,32 @@ class Yw7File(File):
                         ET.SubElement(xmlScene, 'ImageFile').text = prjScn.image
 
             #--- Characters/Locations/Items
-            if prjScn.characters is not None:
-                xmlCharacters = xmlScene.find('Characters')
-                if xmlCharacters is not None:
-                    for oldCrId in xmlCharacters.findall('CharID'):
-                        xmlCharacters.remove(oldCrId)
-                if prjScn.characters:
-                    if xmlCharacters is None:
-                        xmlCharacters = ET.SubElement(xmlScene, 'Characters')
-                    for crId in prjScn.characters:
-                        ET.SubElement(xmlCharacters, 'CharID').text = crId
-                elif xmlCharacters is not None:
-                    xmlScene.remove(xmlScene.find('Characters'))
+            try:
+                xmlScene.remove(xmlScene.find('Characters'))
+            except:
+                pass
+            if prjScn.characters:
+                xmlCharacters = ET.SubElement(xmlScene, 'Characters')
+                for crId in prjScn.characters:
+                    ET.SubElement(xmlCharacters, 'CharID').text = crId
 
-            if prjScn.locations is not None:
-                xmlLocations = xmlScene.find('Locations')
-                if xmlLocations is not None:
-                    for oldLcId in xmlLocations.findall('LocID'):
-                        xmlLocations.remove(oldLcId)
-                if prjScn.locations:
-                    if xmlLocations is None:
-                        xmlLocations = ET.SubElement(xmlScene, 'Locations')
-                    for lcId in prjScn.locations:
-                        ET.SubElement(xmlLocations, 'LocID').text = lcId
-                elif xmlLocations is not None:
-                    xmlScene.remove(xmlScene.find('Locations'))
+            try:
+                xmlScene.remove(xmlScene.find('Locations'))
+            except:
+                pass
+            if prjScn.locations:
+                xmlLocations = ET.SubElement(xmlScene, 'Locations')
+                for lcId in prjScn.locations:
+                    ET.SubElement(xmlLocations, 'LocID').text = lcId
 
-            if prjScn.items is not None:
-                xmlItems = xmlScene.find('Items')
-                if xmlItems is not None:
-                    for oldItId in xmlItems.findall('ItemID'):
-                        xmlItems.remove(oldItId)
-                if prjScn.items:
-                    if xmlItems is None:
-                        xmlItems = ET.SubElement(xmlScene, 'Items')
-                    for itId in prjScn.items:
-                        ET.SubElement(xmlItems, 'ItemID').text = itId
-                elif xmlItems is not None:
-                    xmlScene.remove(xmlScene.find('Items'))
+            try:
+                xmlScene.remove(xmlScene.find('Items'))
+            except:
+                pass
+            if prjScn.items:
+                xmlItems = ET.SubElement(xmlScene, 'Items')
+                for ItId in prjScn.items:
+                    ET.SubElement(xmlItems, 'ItmID').text = ItId
 
         def build_chapter_subtree(xmlChapter, prjChp):
             # This is how yWriter 7.1.3.0 writes the chapter type:

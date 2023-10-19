@@ -188,18 +188,6 @@ After Vurdi leaves, Hal discusses things with the Black Gull's onboard computer 
       <Field3>3</Field3>
       <Field4>3</Field4>
       <Status>4</Status>
-      <Characters>
-        <CharID>1</CharID>
-        <CharID>10</CharID>
-        <CharID>4</CharID>
-        <CharID>11</CharID>
-      </Characters>
-      <Locations>
-        <LocID>1</LocID>
-        <LocID>2</LocID>
-      </Locations>
-      <Items>
-		</Items>
       <SceneContent><![CDATA[Hal Spacejock was sitting at the Black Gull's flight console, his attention riveted to a small chessboard balanced amongst the toggle switches, flashing lights and status displays. a few weeks earlier he'd read an article extolling the benefits of the ancient game: how playing it would sharpen his mind, improve his memory and increase his attraction to the opposite sex. Chess had been an important part of his daily routine ever since, but after two hundred and seventy-six losses in a row Hal was beginning to doubt the article's claims. He didn't feel any smarter and he couldn't remember the last time he'd spoken to a member of the opposite sex, let alone had one attracted to him. Briefly, he wondered whether it had been such a clever idea to play against the Navcom, the Black Gull's onboard computer. Underpowered and outdated, it was still more than capable of running the ship's accounts, navigation and life support systems while beating humans at simple board games. However, since Hal was the only human aboard the Black Gull, his choice of opponents was limited.
 "Your turn," said the Navcom, in a neutral female voice.
 "I'm thinking."
@@ -217,6 +205,16 @@ A flock of pigeons burst from the basket, leaving a tumbling cloud of feathers w
 "Shall I add those titles to your basket?"
 
 . . .]]></SceneContent>
+      <Characters>
+        <CharID>1</CharID>
+        <CharID>10</CharID>
+        <CharID>4</CharID>
+        <CharID>11</CharID>
+      </Characters>
+      <Locations>
+        <LocID>1</LocID>
+        <LocID>2</LocID>
+      </Locations>
     </SCENE>
     <SCENE>
       <ID>2</ID>
@@ -236,6 +234,8 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
       <Field3>2</Field3>
       <Field4>2</Field4>
       <Status>4</Status>
+      <SceneContent><![CDATA[On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
+. . .]]></SceneContent>
       <Characters>
         <CharID>2</CharID>
         <CharID>7</CharID>
@@ -244,10 +244,6 @@ Jerling asks Carina to call the idiot, the one who thought it was stolen goods. 
         <LocID>3</LocID>
         <LocID>4</LocID>
       </Locations>
-      <Items>
-		</Items>
-      <SceneContent><![CDATA[On planet Forg, a small crowd had gathered outside the local sky hockey stadium. South Forgberg was not a prosperous area - the semi-detached houses were modest and the residents faced a constant struggle to live within their means. It was unusual to see building work or renovations, so the extensive refurbishment to the decrepit old stadium had been a talking point for months.
-. . .]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>3</ID>
@@ -261,16 +257,6 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
       <Field3>2</Field3>
       <Field4>3</Field4>
       <Status>4</Status>
-      <Characters>
-        <CharID>1</CharID>
-        <CharID>10</CharID>
-        <CharID>2</CharID>
-      </Characters>
-      <Locations>
-        <LocID>1</LocID>
-      </Locations>
-      <Items>
-		</Items>
       <SceneContent><![CDATA[Hal was pacing the Black Gull's flight deck, ready to put his fist through the nearest wall. "What do you mean, you can't call Jerling back? What do you mean you didn't save his details?"
 "I erased the record after you turned the job down."
 "So look it up again!"
@@ -279,6 +265,14 @@ Hal says he doesn't need help, Jerling explains that the landing is at night, wi
 "You're only saying that because you're losing."
 
 . . .]]></SceneContent>
+      <Characters>
+        <CharID>1</CharID>
+        <CharID>10</CharID>
+        <CharID>2</CharID>
+      </Characters>
+      <Locations>
+        <LocID>1</LocID>
+      </Locations>
     </SCENE>
     <SCENE>
       <ID>4</ID>
@@ -293,6 +287,11 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent><![CDATA["No sign of Jerling's pilot," said Hal, who was standing in the Black Gull's airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. "There could be an army out there and I wouldn't know it."
+"Why don't you open the door?" asked the Navcom.
+"No thanks. Vurdi's robot might be hanging around."
+
+. . .]]></SceneContent>
       <Characters>
         <CharID>1</CharID>
         <CharID>3</CharID>
@@ -301,13 +300,6 @@ Hal prepares the ship for takeoff, but ground control won't let him leave. The P
       <Locations>
         <LocID>1</LocID>
       </Locations>
-      <Items>
-		</Items>
-      <SceneContent><![CDATA["No sign of Jerling's pilot," said Hal, who was standing in the Black Gull's airlock peering through a scratched, yellowed porthole. He cupped his hands to the plastic and squinted, but it made little difference. "There could be an army out there and I wouldn't know it."
-"Why don't you open the door?" asked the Navcom.
-"No thanks. Vurdi's robot might be hanging around."
-
-. . .]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>5</ID>
@@ -324,18 +316,16 @@ Hal drives off, oblivious to the flames starting to flicker around the fallen ro
       <Field3>2</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent><![CDATA[Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport's administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the 'A' list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.
+Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the [i]Black Gull[/i] was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
+
+. . .]]></SceneContent>
       <Characters>
         <CharID>1</CharID>
       </Characters>
       <Locations>
         <LocID>2</LocID>
       </Locations>
-      <Items>
-		</Items>
-      <SceneContent><![CDATA[Hal emerged from the Black Gull's airlock, blinking in the sudden light. On the far side of the landing field the sun was setting behind the Lamira spaceport's administration block, which shimmered in the late afternoon heat. Clustered around the spaceport buildings were the 'A' list - modern, powerful ships fitted with every comfort. Parked close to the amenities, their crews could dine at one of several restaurants, enjoy the heated swimming pool and browse the shopping arcade at their leisure.
-Hal's ship was somewhat further down the alphabet, and was therefore sitting in a disused corner of the field about as far from the amenities as the nearest moon. The area around the [i]Black Gull[/i] was little more than a graveyard for derelicts, and most of the landing pads nearby were occupied by graffiti-splashed wrecks with jagged gaps in their crumpled hulls. Some of the ships seemed familiar, and when Hal looked closer he realised the rusted hulks were Rigel-class freighters like his own. One or two were actually in better shape.
-
-. . .]]></SceneContent>
     </SCENE>
     <SCENE>
       <ID>6</ID>
@@ -349,15 +339,6 @@ Sitting at the console, Clunk uses the Black Gull's simulation mode to practice 
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
-      <Characters>
-        <CharID>3</CharID>
-        <CharID>10</CharID>
-      </Characters>
-      <Locations>
-        <LocID>1</LocID>
-      </Locations>
-      <Items>
-		</Items>
       <SceneContent><![CDATA[Clunk dropped the last chess piece into the small wooden box and looked around the flight deck. Despite his best efforts with the mop, it didn't look particularly clean, but compared to its previous state it was as sterile as a hospital ward. After a moment's hesitation, he sat in the pilot's chair. "Navcom, do you have a business directory?"
 "Yes."
 "Run a search, please. All details on a company called Incubots."
@@ -366,6 +347,13 @@ Clunk looked relieved. "So that's what Mr. Jerling has in store for me. When I q
 "Humans tell lies about the most trivial matters."
 
 . . .]]></SceneContent>
+      <Characters>
+        <CharID>3</CharID>
+        <CharID>10</CharID>
+      </Characters>
+      <Locations>
+        <LocID>1</LocID>
+      </Locations>
     </SCENE>
     <SCENE>
       <ID>7</ID>
@@ -380,18 +368,14 @@ Hal decides to call his brand new best buddy Clunk, thinking the robot can ask J
       <Field3>2</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
-      <Characters>
-        <CharID>1</CharID>
-        <CharID>12</CharID>
-      </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
       <SceneContent><![CDATA[Hal left the maintenance vehicle in the spaceport's outer carpark and walked to the admin block. An information kiosk directed him to an elevator, where he pressed the button marked 'Portmaster'.
 Hal watched the floor numbers changing as he dropped further and further underground. He'd expected the Portmaster to have a spacious office with a view of the whole landing field, but instead he seemed to have an office in the basement. Below the basement, amended Hal, eying the elevator's control panel. He'd passed that already.
 
 . . .]]></SceneContent>
+      <Characters>
+        <CharID>1</CharID>
+        <CharID>12</CharID>
+      </Characters>
     </SCENE>
     <SCENE>
       <ID>8</ID>
@@ -405,17 +389,6 @@ Clunk notices smoke in the air. He runs to the airlock and discovers the landing
       <Field3>4</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
-      <Characters>
-        <CharID>3</CharID>
-        <CharID>2</CharID>
-        <CharID>1</CharID>
-        <CharID>10</CharID>
-      </Characters>
-      <Locations>
-        <LocID>1</LocID>
-      </Locations>
-      <Items>
-		</Items>
       <SceneContent><![CDATA["Simulation suspended, incoming message."
 The cloud cities of Aklam faded from Clunk's vision. "What?"
 "Incoming message."
@@ -427,6 +400,15 @@ Clunk sat up straight. "Please open the connection."
 "Call Jerling and get me a loan. I need three hundred in cash for landing fees and fuel."
 "I don't think he'll lend you any money," said Clunk dubiously.
 . . .]]></SceneContent>
+      <Characters>
+        <CharID>3</CharID>
+        <CharID>2</CharID>
+        <CharID>1</CharID>
+        <CharID>10</CharID>
+      </Characters>
+      <Locations>
+        <LocID>1</LocID>
+      </Locations>
     </SCENE>
     <SCENE>
       <ID>9</ID>
@@ -440,15 +422,6 @@ Then the control tower calls to say the landing field is on fire around the Blac
       <Field3>2</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
-      <Characters>
-        <CharID>1</CharID>
-        <CharID>3</CharID>
-        <CharID>12</CharID>
-      </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
       <SceneContent><![CDATA[Portmaster Linten studied Hal across the desk, eyes narrowed. "Are you telling me this Jerling character will pay your bill?"
 "He has to. I can't deliver his cargo if the Gull is stuck here, can I?"
 The commset buzzed and Linten leant forward. "Yes?"
@@ -462,6 +435,11 @@ There was a crackling sound. "Help! Fire!" said a voice over the noise.
 "You'll have to hurry, the fire's right up to the refuelling cluster. If that explodes--"
 
 . . .]]></SceneContent>
+      <Characters>
+        <CharID>1</CharID>
+        <CharID>3</CharID>
+        <CharID>12</CharID>
+      </Characters>
     </SCENE>
     <SCENE>
       <ID>10</ID>
@@ -476,20 +454,16 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
-      <Characters>
-        <CharID>3</CharID>
-        <CharID>10</CharID>
-      </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
       <SceneContent><![CDATA["Deploy fire hose!" shouted Clunk.
 "Deploying." There was a whining sound outside the hull, which stopped with a sharp crack.
 "What was that?"
 "The reel just fell off," said the Navcom.
 
 . . .]]></SceneContent>
+      <Characters>
+        <CharID>3</CharID>
+        <CharID>10</CharID>
+      </Characters>
     </SCENE>
     <SCENE>
       <ID>12</ID>
@@ -502,14 +476,10 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>15</ID>
@@ -525,14 +495,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>17</ID>
@@ -544,14 +510,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>19</ID>
@@ -561,14 +523,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>5</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>22</ID>
@@ -578,14 +536,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>25</ID>
@@ -595,14 +549,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>27</ID>
@@ -612,14 +562,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>29</ID>
@@ -629,14 +575,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>31</ID>
@@ -646,14 +588,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>34</ID>
@@ -663,14 +601,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>5</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>38</ID>
@@ -680,14 +614,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>5</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>40</ID>
@@ -697,14 +627,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>5</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>43</ID>
@@ -714,14 +640,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>3</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>45</ID>
@@ -731,14 +653,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>5</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>47</ID>
@@ -748,14 +666,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>3</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>49</ID>
@@ -765,14 +679,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>3</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>51</ID>
@@ -782,14 +692,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>6</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>53</ID>
@@ -799,14 +705,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>55</ID>
@@ -816,14 +718,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>5</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>57</ID>
@@ -833,14 +731,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>60</ID>
@@ -850,14 +744,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>62</ID>
@@ -867,14 +757,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>64</ID>
@@ -884,14 +770,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>66</ID>
@@ -901,14 +783,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>68</ID>
@@ -918,14 +796,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>71</ID>
@@ -935,14 +809,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>74</ID>
@@ -952,14 +822,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>77</ID>
@@ -969,14 +835,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>79</ID>
@@ -986,14 +848,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>3</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>81</ID>
@@ -1003,14 +861,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>84</ID>
@@ -1020,14 +874,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>3</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>86</ID>
@@ -1037,14 +887,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>3</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>89</ID>
@@ -1054,14 +900,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>3</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>92</ID>
@@ -1071,14 +913,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>3</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>94</ID>
@@ -1088,14 +926,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>3</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>96</ID>
@@ -1105,14 +939,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>5</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>98</ID>
@@ -1122,14 +952,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>5</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>101</ID>
@@ -1139,14 +965,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>103</ID>
@@ -1156,14 +978,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>105</ID>
@@ -1173,14 +991,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>108</ID>
@@ -1190,14 +1004,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>110</ID>
@@ -1207,14 +1017,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>3</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>112</ID>
@@ -1224,14 +1030,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>114</ID>
@@ -1241,14 +1043,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>116</ID>
@@ -1258,14 +1056,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>1</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>119</ID>
@@ -1275,14 +1069,10 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>4</Status>
+      <SceneContent />
       <Characters>
         <CharID>5</CharID>
       </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
-      <SceneContent />
     </SCENE>
     <SCENE>
       <ID>58</ID>
@@ -1295,17 +1085,13 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>1</Status>
-      <Characters>
-        <CharID>1</CharID>
-      </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
       <SceneContent><![CDATA[This bird is not dead ...]]></SceneContent>
       <Fields>
         <Field_SceneType>0</Field_SceneType>
       </Fields>
+      <Characters>
+        <CharID>1</CharID>
+      </Characters>
     </SCENE>
     <SCENE>
       <ID>120</ID>
@@ -1315,13 +1101,6 @@ Clunk's batteries are failing, and he can't hang on much longer.]]></Desc>
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>1</Status>
-      <Characters>
-        <CharID>1</CharID>
-      </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
       <SceneContent><![CDATA[*** IMPORTANT ***
 Uninstalling yWriter5 will uninstall (delete) this sample project.
 Reinstalling yWriter5 will overwrite this sample project.
@@ -1333,6 +1112,9 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Fields>
         <Field_SceneType>1</Field_SceneType>
       </Fields>
+      <Characters>
+        <CharID>1</CharID>
+      </Characters>
     </SCENE>
     <SCENE>
       <ID>121</ID>
@@ -1342,18 +1124,14 @@ Any new projects created with yWriter5 will not be deleted, overwritten or modif
       <Field3>1</Field3>
       <Field4>1</Field4>
       <Status>1</Status>
-      <Characters>
-        <CharID>1</CharID>
-      </Characters>
-      <Locations>
-		</Locations>
-      <Items>
-		</Items>
       <SceneContent><![CDATA[This text is not needed.]]></SceneContent>
       <Unused>-1</Unused>
       <Fields>
         <Field_SceneType>0</Field_SceneType>
       </Fields>
+      <Characters>
+        <CharID>1</CharID>
+      </Characters>
     </SCENE>
   </SCENES>
   <CHAPTERS>
