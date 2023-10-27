@@ -21,6 +21,7 @@ class OdtWNotes(OdtWManuscript):
     _chapterTemplate = ''
     _chapterEndTemplate = ''
     _sceneTemplate = ''
+    _appendedSceneTemplate = ''
 
     _notesPartTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
 <text:h text:style-name="Heading_20_1" text:outline-level="1">$Title</text:h>
