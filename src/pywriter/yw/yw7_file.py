@@ -139,11 +139,20 @@ class Yw7File(File):
         if self.is_locked():
             raise Error(f'{_("yWriter seems to be open. Please close first")}.')
         try:
-            self.tree = ET.parse(self.filePath)
+            try:
+                self.tree = ET.parse(self.filePath)
+                root = self.tree.getroot()
+            except:
+                # yw7 file may be UTF-16 encoded, with a wrong XML header (yWriter for iOS)
+                with open(self.filePath, 'r', encoding='utf-16') as f:
+                    xmlText = f.read()
+                root = ET.fromstring(xmlText)
+                xmlText = None
+                # saving memory
+                self.tree = ET.ElementTree(root)
         except:
             raise Error(f'{_("Can not process file")}: "{norm_path(self.filePath)}".')
 
-        root = self.tree.getroot()
         self._read_project(root)
         self._read_locations(root)
         self._read_items(root)
