@@ -557,11 +557,20 @@ class Yw7File(Novel):
         if self.is_locked():
             return f'{ERROR}{_("yWriter seems to be open. Please close first")}.'
         try:
-            self.tree = ET.parse(self.filePath)
-        except:
-            return f'{ERROR}{_("Can not process file")}: "{os.path.normpath(self.filePath)}".'
+            try:
+                self.tree = ET.parse(self.filePath)
+                root = self.tree.getroot()
+            except UnicodeError:
+                # yw7 file may be UTF-16 encoded, with a wrong XML header (yWriter for iOS)
+                with open(self.filePath, 'r', encoding='utf-16') as f:
+                    xmlText = f.read()
+                root = ET.fromstring(xmlText)
+                xmlText = None
+                # saving memory
+                self.tree = ET.ElementTree(root)
+        except Exception as ex:
+            return f'{ERROR}{_("Can not process file")} - {str(ex)}'
 
-        root = self.tree.getroot()
         read_project(root)
         read_locations(root)
         read_items(root)
@@ -998,7 +1007,7 @@ class Yw7File(Novel):
         if message.startswith(ERROR):
             return message
 
-        return self._postprocess_xml_file(self.filePath)
+        return self._post_xml_file(self.filePath)
 
     def is_locked(self):
         """Check whether the yw7 file is locked by yWriter.
@@ -1611,7 +1620,7 @@ class Yw7File(Novel):
         xmlScenes = {}
         xmlChapters = {}
         try:
-            # Try processing an existing tree.
+            # Try ing an existing tree.
             root = self.tree.getroot()
             xmlPrj = root.find('PROJECT')
             locations = root.find('LOCATIONS')
@@ -1823,8 +1832,8 @@ class Yw7File(Novel):
 
         return 'yWriter XML tree written.'
 
-    def _postprocess_xml_file(self, filePath):
-        '''Postprocess an xml file created by ElementTree.
+    def _post_xml_file(self, filePath):
+        '''Post an xml file created by ElementTree.
         
         Positional argument:
             filePath -- str: path to xml file.
