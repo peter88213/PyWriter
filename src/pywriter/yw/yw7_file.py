@@ -560,7 +560,7 @@ class Yw7File(Novel):
             try:
                 self.tree = ET.parse(self.filePath)
                 root = self.tree.getroot()
-            except UnicodeError:
+            except ET.ParseError:
                 # yw7 file may be UTF-16 encoded, with a wrong XML header (yWriter for iOS)
                 with open(self.filePath, 'r', encoding='utf-16') as f:
                     xmlText = f.read()
@@ -568,8 +568,8 @@ class Yw7File(Novel):
                 xmlText = None
                 # saving memory
                 self.tree = ET.ElementTree(root)
-        except Exception as ex:
-            return f'{ERROR}{_("Can not process file")} - {str(ex)}'
+        except:
+            return f'{ERROR}{_("Can not process file")}: "{os.path.normpath(self.filePath)}".'
 
         read_project(root)
         read_locations(root)
