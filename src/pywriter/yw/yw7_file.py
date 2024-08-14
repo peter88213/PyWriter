@@ -151,7 +151,10 @@ class Yw7File(File):
                 # saving memory
                 self.tree = ET.ElementTree(root)
         except:
-            raise Error(f'{_("Can not process file")}: "{norm_path(self.filePath)}".')
+            try:
+                self.tree = ET.parse(self.filePath)
+            except Exception as ex:
+                raise Error(f'{_("Can not process file")} - {str(ex)}')
 
         self._read_project(root)
         self._read_locations(root)
