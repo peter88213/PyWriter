@@ -12,8 +12,8 @@ import re
 from string import Template
 from datetime import datetime
 
-msgPatterns = [re.compile('_\(\"(.+?)\"\)'),
-              re.compile('_\(\'(.+?)\'\)'),
+msgPatterns = [re.compile(r'_\(\"(.+?)\"\)'),
+              re.compile(r'_\(\'(.+?)\'\)'),
               ]
 
 potHeader = '''\

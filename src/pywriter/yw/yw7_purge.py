@@ -67,7 +67,7 @@ def remove_language_tags(novel):
     Remove the language tags from the scene contents.
     Return True, if changes have been made to novel.
     """
-    languageTag = re.compile('\[\/*?lang=.*?\]')
+    languageTag = re.compile(r'\[\/*?lang=.*?\]')
     hasChanged = False
     for scId in novel.scenes:
         text = novel.scenes[scId].sceneContent

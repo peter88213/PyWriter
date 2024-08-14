@@ -111,8 +111,8 @@ class OdtWExport(OdtWFormatted):
             simpleComment = (f'<office:annotation><dc:creator>{self.novel.authorName}'
                              '</dc:creator><text:p>\\1</text:p></office:annotation>'
                              )
-            text = re.sub('\/\* *@([ef]n\**) (.*?)\*\/', replace_note, text)
-            text = re.sub('\/\*(.*?)\*\/', simpleComment, text)
-            text = text.replace('@r@', '\r').replace('@n@', '\n')
+            text = re.sub(r'\/\* *@([ef]n\**) (.*?)\*\/', replace_note, text)
+            text = re.sub(r'\/\*(.*?)\*\/', simpleComment, text)
+            text = text.replace(r'@r@', '\r').replace('@n@', '\n')
         return text
 
