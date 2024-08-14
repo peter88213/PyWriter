@@ -206,7 +206,7 @@ class Novel(BasicElement):
         else:
             suffix = ''
         if filePath.lower().endswith(f'{suffix}{self.EXTENSION}'.lower()):
-            self._filePath = filePath
+            self._filePath = filePath.replace('\\', '/')
             head, tail = os.path.split(os.path.realpath(filePath))
             self.projectPath = quote(head.replace('\\', '/'), '/:')
             self.projectName = quote(tail.replace(f'{suffix}{self.EXTENSION}', ''))
