@@ -201,12 +201,13 @@ class Novel(BasicElement):
         - Format the path string according to Python's requirements. 
         - Accept only filenames with the right suffix and extension.
         """
+        filePath = filePath.replace('\\', '/')
         if self.SUFFIX is not None:
             suffix = self.SUFFIX
         else:
             suffix = ''
         if filePath.lower().endswith(f'{suffix}{self.EXTENSION}'.lower()):
-            self._filePath = filePath.replace('\\', '/')
+            self._filePath = filePath
             head, tail = os.path.split(os.path.realpath(filePath))
             self.projectPath = quote(head.replace('\\', '/'), '/:')
             self.projectName = quote(tail.replace(f'{suffix}{self.EXTENSION}', ''))
