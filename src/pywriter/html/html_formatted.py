@@ -45,6 +45,6 @@ class HtmlFormatted(HtmlFile):
             text = text.replace(f'[/{tag}]\n> [{tag}]', '\n> ')
 
         #--- Remove misplaced formatting tags.
-        # text = re.sub('\[\/*[b|i]\]', '', text)
+        # text = re.sub(r'\[\/*[b|i]\]', '', text)
         return text
 

@@ -1854,8 +1854,8 @@ class Yw7File(Novel):
         newlines = ['<?xml version="1.0" encoding="utf-8"?>']
         for line in lines:
             for tag in self._CDATA_TAGS:
-                line = re.sub(f'\<{tag}\>', f'<{tag}><![CDATA[', line)
-                line = re.sub(f'\<\/{tag}\>', f']]></{tag}>', line)
+                line = re.sub(fr'\<{tag}\>', f'<{tag}><![CDATA[', line)
+                line = re.sub(fr'\<\/{tag}\>', f']]></{tag}>', line)
             newlines.append(line)
         text = '\n'.join(newlines)
         text = text.replace('[CDATA[ \n', '[CDATA[')
