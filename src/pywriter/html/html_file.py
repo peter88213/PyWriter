@@ -58,10 +58,10 @@ class HtmlFile(Novel, HTMLParser):
         """
 
         #--- Clean up polluted HTML code.
-        text = re.sub('</*font.*?>', '', text)
-        text = re.sub('</*span.*?>', '', text)
-        text = re.sub('</*FONT.*?>', '', text)
-        text = re.sub('</*SPAN.*?>', '', text)
+        text = re.sub(r'</*font.*?>', '', text)
+        text = re.sub(r'</*span.*?>', '', text)
+        text = re.sub(r'</*FONT.*?>', '', text)
+        text = re.sub(r'</*SPAN.*?>', '', text)
 
         #--- Put everything in one line.
         text = text.replace('\n', ' ')
@@ -83,10 +83,10 @@ class HtmlFile(Novel, HTMLParser):
         text = text.replace('</B>', '[/b]')
         text = text.replace('</strong>', '[/b]')
         text = text.replace('</STRONG>', '[/b]')
-        text = re.sub('<em.*?>', '[i]', text)
-        text = re.sub('<EM.*?>', '[i]', text)
-        text = re.sub('<strong.*?>', '[b]', text)
-        text = re.sub('<STRONG.*?>', '[b]', text)
+        text = re.sub(r'<em.*?>', '[i]', text)
+        text = re.sub(r'<EM.*?>', '[i]', text)
+        text = re.sub(r'<strong.*?>', '[b]', text)
+        text = re.sub(r'<STRONG.*?>', '[b]', text)
 
         #--- Remove orphaned tags.
         text = text.replace('[/b][b]', '')

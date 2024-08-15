@@ -87,6 +87,6 @@ class OdtExport(OdtFile):
                          )
             for quotMark in quotMarks:
                 text = text.replace(quotMark, '"Quotations">')
-            text = re.sub('"Text_20_body"\>(\<office\:annotation\>.+?\<\/office\:annotation\>)\&gt\; ', '"Quotations">\\1', text)
+            text = re.sub(r'"Text_20_body"\>(\<office\:annotation\>.+?\<\/office\:annotation\>)\&gt\; ', '"Quotations">\\1', text)
         return text
 

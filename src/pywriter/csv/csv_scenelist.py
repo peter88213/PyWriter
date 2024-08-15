@@ -38,7 +38,7 @@ class CsvSceneList(CsvFile):
         for cells in self._rows:
             i = 0
             if 'ScID:' in cells[i]:
-                scId = re.search('ScID\:([0-9]+)', cells[0]).group(1)
+                scId = re.search(r'ScID\:([0-9]+)', cells[0]).group(1)
                 self.scenes[scId] = self.SCENE_CLASS()
                 i += 1
                 self.scenes[scId].title = self._convert_to_yw(cells[i])

@@ -452,7 +452,7 @@ class OdtFile(OdfFile):
 
             # Remove highlighting, alignment,
             # strikethrough, and underline tags.
-                text = re.sub('\[\/*[h|c|r|s|u]\d*\]', '', text)
+                text = re.sub(r'\[\/*[h|c|r|s|u]\d*\]', '', text)
         else:
             text = ''
         return text

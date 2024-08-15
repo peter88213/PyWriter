@@ -222,13 +222,13 @@ class Scene:
     def sceneContent(self, text):
         """Set sceneContent updating word count and letter count."""
         self._sceneContent = text
-        text = re.sub('--|—|–|…', ' ', text)
+        text = re.sub(r'--|—|–|…', ' ', text)
         # Make dashes separate words
-        text = re.sub('\[.+?\]|\/\*.+?\*\/|\.|\,|-', '', text)
+        text = re.sub(r'\[.+?\]|\/\*.+?\*\/|\.|\,|-', '', text)
         # Remove comments and yWriter raw markup for word count; make hyphens join words
         wordList = text.split()
         self.wordCount = len(wordList)
-        text = re.sub('\[.+?\]|\/\*.+?\*\/', '', self._sceneContent)
+        text = re.sub(r'\[.+?\]|\/\*.+?\*\/', '', self._sceneContent)
         # Remove yWriter raw markup for letter count
         text = text.replace('\n', '')
         text = text.replace('\r', '')

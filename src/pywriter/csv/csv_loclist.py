@@ -32,7 +32,7 @@ class CsvLocList(CsvFile):
 
         for cells in self._rows:
             if 'LcID:' in cells[0]:
-                lcId = re.search('LcID\:([0-9]+)', cells[0]).group(1)
+                lcId = re.search(r'LcID\:([0-9]+)', cells[0]).group(1)
                 self.srtLocations.append(lcId)
                 self.locations[lcId] = self.WE_CLASS()
                 self.locations[lcId].title = self._convert_to_yw(cells[1])

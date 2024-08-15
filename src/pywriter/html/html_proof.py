@@ -50,7 +50,7 @@ class HtmlProof(HtmlFile):
         inScene = False
         for line in self._lines:
             if '[ScID' in line:
-                scId = re.search('[0-9]+', line).group()
+                scId = re.search(r'[0-9]+', line).group()
                 self.scenes[scId] = self.SCENE_CLASS()
                 self.chapters[chId].srtScenes.append(scId)
                 inScene = True
@@ -59,7 +59,7 @@ class HtmlProof(HtmlFile):
                 sceneText = []
                 inScene = False
             elif '[ChID' in line:
-                chId = re.search('[0-9]+', line).group()
+                chId = re.search(r'[0-9]+', line).group()
                 self.chapters[chId] = self.CHAPTER_CLASS()
                 self.srtChapters.append(chId)
             elif '[/ChID' in line:

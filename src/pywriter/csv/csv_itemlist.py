@@ -32,7 +32,7 @@ class CsvItemList(CsvFile):
 
         for cells in self._rows:
             if 'ItID:' in cells[0]:
-                itId = re.search('ItID\:([0-9]+)', cells[0]).group(1)
+                itId = re.search(r'ItID\:([0-9]+)', cells[0]).group(1)
                 self.srtItems.append(itId)
                 self.items[itId] = self.WE_CLASS()
                 self.items[itId].title = self._convert_to_yw(cells[1])
