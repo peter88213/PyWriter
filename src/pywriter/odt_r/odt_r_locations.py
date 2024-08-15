@@ -75,7 +75,7 @@ class OdtRLocations(OdtReader):
         if tag == 'div':
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('LcID'):
-                    self._lcId = re.search('[0-9]+', attrs[0][1]).group()
+                    self._lcId = re.search(r'[0-9]+', attrs[0][1]).group()
                     if not self._lcId in self.novel.locations:
                         self.novel.srtLocations.append(self._lcId)
                         self.novel.locations[self._lcId] = WorldElement()

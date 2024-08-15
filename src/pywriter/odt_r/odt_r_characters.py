@@ -89,7 +89,7 @@ class OdtRCharacters(OdtReader):
         if tag == 'div':
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('CrID_desc'):
-                    self._crId = re.search('[0-9]+', attrs[0][1]).group()
+                    self._crId = re.search(r'[0-9]+', attrs[0][1]).group()
                     if not self._crId in self.novel.characters:
                         self.novel.srtCharacters.append(self._crId)
                         self.novel.characters[self._crId] = Character()

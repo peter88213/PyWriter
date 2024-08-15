@@ -35,7 +35,7 @@ class OdsRSceneList(OdsReader):
         for cells in self._rows:
             i = 0
             if 'ScID:' in cells[i]:
-                scId = re.search('ScID\:([0-9]+)', cells[0]).group(1)
+                scId = re.search(r'ScID\:([0-9]+)', cells[0]).group(1)
                 if not scId in self.novel.scenes:
                     self.novel.scenes[scId] = Scene()
                 i += 1

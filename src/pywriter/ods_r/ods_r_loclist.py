@@ -31,7 +31,7 @@ class OdsRLocList(OdsReader):
         self.novel.srtLocations = []
         for cells in self._rows:
             if 'LcID:' in cells[0]:
-                lcId = re.search('LcID\:([0-9]+)', cells[0]).group(1)
+                lcId = re.search(r'LcID\:([0-9]+)', cells[0]).group(1)
                 self.novel.srtLocations.append(lcId)
                 if not lcId in self.novel.locations:
                     self.novel.locations[lcId] = WorldElement()

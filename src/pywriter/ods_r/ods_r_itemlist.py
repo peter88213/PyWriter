@@ -31,7 +31,7 @@ class OdsRItemList(OdsReader):
         self.novel.srtItems = []
         for cells in self._rows:
             if 'ItID:' in cells[0]:
-                itId = re.search('ItID\:([0-9]+)', cells[0]).group(1)
+                itId = re.search(r'ItID\:([0-9]+)', cells[0]).group(1)
                 self.novel.srtItems.append(itId)
                 if not itId in self.novel.items:
                     self.novel.items[itId] = WorldElement()

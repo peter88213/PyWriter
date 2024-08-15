@@ -35,7 +35,7 @@ class OdtRProof(OdtRFormatted):
             if self._skip_data:
                 self._skip_data = False
             elif '[ScID' in data:
-                self._scId = re.search('[0-9]+', data).group()
+                self._scId = re.search(r'[0-9]+', data).group()
                 self._lines = []
             elif '[/ScID' in data:
                 if self._scId in self.novel.scenes:

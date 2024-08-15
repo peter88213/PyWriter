@@ -4,7 +4,6 @@
 import re
 import unittest
 
-
 CLUTTERED = '''        <P CLASS="western"><A NAME="ScID:17"></A><A NAME="ScID:120"></A><!-- Climb up rope to safety. Back in ship for hyperspace. --><FONT COLOR="#000000"><SPAN STYLE="text-decoration: none"><FONT FACE="monospace"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><SPAN STYLE="background: #ffffff">And
         now for something </SPAN></SPAN></SPAN></FONT></FONT></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="text-decoration: none"><FONT FACE="monospace"><FONT SIZE=3><I><SPAN STYLE="font-weight: normal"><SPAN STYLE="background: #ffffff">completely</SPAN></SPAN></I></FONT></FONT></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="text-decoration: none"><FONT FACE="monospace"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><SPAN STYLE="background: #ffffff">
         different.</SPAN></SPAN></SPAN></FONT></FONT></SPAN></FONT></P>
@@ -17,10 +16,10 @@ STRIPPED = '<P CLASS="western"><A NAME="ScID:17"></A><A NAME="ScID:120"></A><!--
 
 
 def clean(text):
-    text = re.sub('</*font.*?>', '', text)
-    text = re.sub('</*span.*?>', '', text)
-    text = re.sub('</*FONT.*?>', '', text)
-    text = re.sub('</*SPAN.*?>', '', text)
+    text = re.sub(r'</*font.*?>', '', text)
+    text = re.sub(r'</*span.*?>', '', text)
+    text = re.sub(r'</*FONT.*?>', '', text)
+    text = re.sub(r'</*SPAN.*?>', '', text)
     text = text.replace('\n', ' ')
 
     while '  ' in text:

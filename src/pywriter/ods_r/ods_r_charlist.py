@@ -31,7 +31,7 @@ class OdsRCharList(OdsReader):
         self.novel.srtCharacters = []
         for cells in self._rows:
             if 'CrID:' in cells[0]:
-                crId = re.search('CrID\:([0-9]+)', cells[0]).group(1)
+                crId = re.search(r'CrID\:([0-9]+)', cells[0]).group(1)
                 self.novel.srtCharacters.append(crId)
                 if not crId in self.novel.characters:
                     self.novel.characters[crId] = Character()

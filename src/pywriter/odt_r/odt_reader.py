@@ -99,13 +99,13 @@ class OdtReader(File, ABC):
         if tag == 'div':
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('ScID'):
-                    self._scId = re.search('[0-9]+', attrs[0][1]).group()
+                    self._scId = re.search(r'[0-9]+', attrs[0][1]).group()
                     if not self._scId in self.novel.scenes:
                         self.novel.scenes[self._scId] = Scene()
                         self.novel.chapters[self._chId].srtScenes.append(self._scId)
                     self.novel.scenes[self._scId].scType = self._TYPE
                 elif attrs[0][1].startswith('ChID'):
-                    self._chId = re.search('[0-9]+', attrs[0][1]).group()
+                    self._chId = re.search(r'[0-9]+', attrs[0][1]).group()
                     if not self._chId in self.novel.chapters:
                         self.novel.chapters[self._chId] = Chapter()
                         self.novel.chapters[self._chId].srtScenes = []
