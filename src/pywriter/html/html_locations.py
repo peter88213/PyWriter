@@ -42,7 +42,7 @@ class HtmlLocations(HtmlFile):
         if tag == 'div':
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('LcID'):
-                    self._lcId = re.search('[0-9]+', attrs[0][1]).group()
+                    self._lcId = re.search(r'[0-9]+', attrs[0][1]).group()
                     self.srtLocations.append(self._lcId)
                     self.locations[self._lcId] = self.WE_CLASS()
 

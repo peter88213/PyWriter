@@ -32,7 +32,7 @@ class CsvCharList(CsvFile):
 
         for cells in self._rows:
             if 'CrID:' in cells[0]:
-                crId = re.search('CrID\:([0-9]+)', cells[0]).group(1)
+                crId = re.search(r'CrID\:([0-9]+)', cells[0]).group(1)
                 self.srtCharacters.append(crId)
                 self.characters[crId] = self.CHARACTER_CLASS()
                 self.characters[crId].title = cells[1]

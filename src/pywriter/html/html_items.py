@@ -42,7 +42,7 @@ class HtmlItems(HtmlFile):
         if tag == 'div':
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('ItID'):
-                    self._itId = re.search('[0-9]+', attrs[0][1]).group()
+                    self._itId = re.search(r'[0-9]+', attrs[0][1]).group()
                     self.srtItems.append(self._itId)
                     self.items[self._itId] = self.WE_CLASS()
 
