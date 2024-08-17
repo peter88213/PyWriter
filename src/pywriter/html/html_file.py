@@ -107,7 +107,7 @@ class HtmlFile(Novel, HTMLParser):
         text = self._convert_to_yw(text)
 
         #--- Remove misplaced formatting tags.
-        text = re.sub('\[\/*[b|i]\]', '', text)
+        text = re.sub(r'\[\/*[b|i]\]', '', text)
         return text
 
     def _postprocess(self):
@@ -130,11 +130,11 @@ class HtmlFile(Novel, HTMLParser):
         if tag == 'div':
             if attrs[0][0] == 'id':
                 if attrs[0][1].startswith('ScID'):
-                    self._scId = re.search('[0-9]+', attrs[0][1]).group()
+                    self._scId = re.search(r'[0-9]+', attrs[0][1]).group()
                     self.scenes[self._scId] = self.SCENE_CLASS()
                     self.chapters[self._chId].srtScenes.append(self._scId)
                 elif attrs[0][1].startswith('ChID'):
-                    self._chId = re.search('[0-9]+', attrs[0][1]).group()
+                    self._chId = re.search(r'[0-9]+', attrs[0][1]).group()
                     self.chapters[self._chId] = self.CHAPTER_CLASS()
                     self.chapters[self._chId].srtScenes = []
                     self.srtChapters.append(self._chId)
