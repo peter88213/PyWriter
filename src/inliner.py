@@ -62,7 +62,7 @@ def inline_module(file, package, packagePath, text, processedModules, copyPyWrit
                 if 'import' in line:
                     importModule = re.match(r'from (.+?) import.+', line)
                     if (importModule is not None) and (package in importModule.group(1)):
-                        packageName = re.sub(r'\.', '\/', importModule.group(1))
+                        packageName = re.sub(r'\.', r'\/', importModule.group(1))
                         moduleName = f'{packagePath}{packageName}'
                         if not (moduleName in processedModules):
                             processedModules.append(moduleName)
